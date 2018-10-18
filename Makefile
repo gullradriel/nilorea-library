@@ -10,7 +10,7 @@ VPATH=../src/
 CFLAGS=-DNOALLEGRO 
 
 ifeq ($(OS),Windows_NT)
-    CFLAGS+=-DWINDOWS -DNOSYSJRNL -D_GNU_SOURCE -DNOSYSJRNL -g -W -Wall -std=gnu99 -ggdb3 -O0 -I.\include \
+    CFLAGS+=-DWINDOWS -D_GNU_SOURCE -DNOSYSJRNL -g -W -Wall -std=gnu99 -ggdb3 -O0 -I.\include \
 	   -Wno-missing-braces \
 	   -Wextra \
 	   -Wno-missing-field-initializers \
@@ -39,7 +39,7 @@ ifeq ($(OS),Windows_NT)
 else
 	UNAME_S := $(shell uname -s)
     ifeq ($(UNAME_S),Linux)
-        CFLAGS+= -DLINUX -D_GNU_SOURCE -I./include/ -I/home/ace/include/ \
+        CFLAGS+= -DLINUX -DNOEVENTLOG -D_GNU_SOURCE -I./include/ -I/home/ace/include/ \
         -g -W -Wall -std=gnu99 -ggdb3 -O0 \
         -Wno-missing-braces \
         -Wextra \
@@ -66,7 +66,7 @@ else
     endif
     ifeq ($(UNAME_S),SunOS)
         CC=cc
-        CFLAGS+= -DSOLARIS -g -v -xc99 -DSOLARIS -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -D_GNU_SOURCE -I ./include/ -I/Home/aceb/include/
+        CFLAGS+= -DSOLARIS -g -v -xc99 -DSOLARIS -DDNOEVENTLOG -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -D_GNU_SOURCE -I ./include/ -I/Home/aceb/include/
     endif
 	RM=rm -f
 	EXT=

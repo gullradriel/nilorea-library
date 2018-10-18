@@ -6,9 +6,11 @@
  */
 
 
+#include "nilorea/n_common.h"
 #include "nilorea/n_log.h"
-#include "nilorea/n_list.h"
 #include "nilorea/n_str.h"
+#include "nilorea/n_list.h"
+#include "nilorea/n_hash.h"
 
 #define LIST_LIMIT   10
 #define NB_TEST_ELEM 15

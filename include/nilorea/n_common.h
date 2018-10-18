@@ -80,9 +80,14 @@ extern "C"
 #include <pthread.h>
 #endif
 
-#elif defined(WINDOWS) /* WINDOWS */  
+/* WINDOWS */  
+#elif defined(WINDOWS) 
 
 #include <windows.h>
+
+#ifndef PATH_MAX
+#define PATH_MAX MAX_PATH
+#endif
 
 #include <time.h>
 #ifndef NOALLEGRO
@@ -315,7 +320,9 @@ extern "C"
 
 	/* get running program current directory */
 	char *get_prog_dir( void );
-
+	/* get running program name */
+	char *get_prog_name( void );
+	
 #ifndef NOALLEGRO
 	/* Fill a keyboard buffer */
 	void get_keyboard( char *keybuf , int *cur , int min , int max );

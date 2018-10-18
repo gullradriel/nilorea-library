@@ -16,18 +16,6 @@ extern "C"
 	  @{
 	  */
 
-#ifdef LINUX
-/*! Feature test macro */
-#define _GNU_SOURCE
-#endif 
-#include "n_common.h"
-#include "n_log.h"
-#include "n_str.h"
-#include "n_list.h"
-#include "n_hash.h"
-#ifdef LINUX
-#undef _GNU_SOURCE
-#endif
 	/* init the nodup log internal hash_table */
 	int init_nodup_log( int max );
 	/* empty the nodup table */

@@ -13,9 +13,9 @@ extern "C"
 {
 #endif
 
-#include "nilorea/n_hash.h"
-#include "nilorea/n_str.h"
-#include "nilorea/n_log.h"
+#include "n_hash.h"
+#include "n_str.h"
+#include "n_log.h"
 
 	/*! Maximum config line length */
 #define MAX_CONFIG_LINE_LEN 1024

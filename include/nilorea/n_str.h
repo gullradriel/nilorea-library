@@ -37,7 +37,6 @@ extern "C"
 #include <unistd.h>
 
 
-#include "n_common.h"
 #include "n_list.h"
 
 	/*! local strdup */

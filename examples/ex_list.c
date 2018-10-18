@@ -6,6 +6,7 @@
  */
 
 
+#include "nilorea/n_common.h"
 #include "nilorea/n_log.h"
 #include "nilorea/n_list.h"
 #include "nilorea/n_str.h"

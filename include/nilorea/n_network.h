@@ -17,8 +17,8 @@ extern "C"
   @{
 */
 
-#include "nilorea/n_common.h"
 #include "nilorea/n_str.h"
+#include "nilorea/n_list.h"
 
 #if defined( LINUX ) || defined( SOLARIS ) || defined( AIX )
 #include <sys/types.h>

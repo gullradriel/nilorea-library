@@ -12,7 +12,9 @@
 #endif
 
 #include <pthread.h>
+#include "nilorea/n_common.h"
 #include "nilorea/n_log.h"
+
 
 
 /*! internal struct to handle log types */
@@ -21,19 +23,22 @@ typedef struct _code {
 	char *c_name;
 	/*! numeric value of log type */
 	int	c_val;
+	/*! event log value */
+	char *w_name;
+
 } CODE;
 
 /*! array of log levels */
 static CODE prioritynames[] = {
-	{	"EMERG",	 LOG_EMERG },		
-	{	"ALERT",	 LOG_ALERT },		
-	{	"CRITICAL",LOG_CRIT },		
-	{	"ERROR",	 LOG_ERR },		
-	{	"WARNING", LOG_WARNING},
-	{	"NOTICE",LOG_NOTICE },
-	{	"INFO",	LOG_INFO },
-	{	"DEBUG",	LOG_DEBUG },
-	{	NULL,		-1 }
+	{	"EMERG",	LOG_EMERG,		"ERROR" },
+	{	"ALERT",	LOG_ALERT,		"ERROR" },
+	{	"CRITICAL",	LOG_CRIT,		"ERROR" },
+	{	"ERROR",	LOG_ERR,		"ERROR" },
+	{	"WARNING",	LOG_WARNING,	"WARNING" },
+	{	"NOTICE",	LOG_NOTICE,		"SUCCESS" },
+	{	"INFO",		LOG_INFO,		"INFORMATION" },
+	{	"DEBUG",	LOG_DEBUG,		"INFORMATION" },
+	{	NULL,		-1,			 NULL }
 };
 
 
@@ -46,26 +51,46 @@ static int LOG_TYPE = LOG_STDERR ;
 /*! static FILE handling if logging to file is enabled */
 static FILE *log_file = NULL ;
 
+/*! static proc name, for windows event log */
+char *proc_name = NULL ;
 
 
 /*!\fn open_sysjrnl( char *identity )
-*\brief Open connection to syslog
-*\param identity Tag for syslog or NULL to use argv[0]
-*/
-void open_sysjrnl( char *identity )
+ *\brief Open connection to syslog or create internals for event log
+ *\param identity Tag for syslog or NULL to use argv[0]
+ */
+char *open_sysjrnl( char *identity )
 {
+	__n_assert( identity , return NULL );
+#ifndef NOSYSJRNL
 	/* LOG_CONS: log to console if no syslog available 
 	 * LOG_PID: add pid of calling process to log
-	 * 23: Local use 7
+	 * Local use 7 : compat with older logging systems
 	 */
-	openlog ( identity , LOG_CONS|LOG_PID|LOG_NDELAY , 23 );
+	openlog ( identity , LOG_CONS|LOG_PID|LOG_NDELAY , LOG_LOCAL7 );
+#endif
+	proc_name = strdup( identity );
+	return proc_name ;
 } /* open_sysjrnl */
 
 
 
+/*!\fn void close_sysjrnl( void )
+ * \brief Close syslog connection or clean internals for event log
+ */
+void close_sysjrnl( void )
+{
+#ifndef NOSYSJRNL
+	closelog();
+#endif
+	FreeNoLog( proc_name );
+} /* close_sysjrnl */
+ 
+
+
 /*!\fn void set_log_level( int log_level )
  *\brief Set the global log level value ( static int LOG_LEVEL )
- *\param log_level Log level value. Supported: JRNLONLY,NOLOG,LOG_NOTICE/INFO/ERR/DEBUG
+ *\param log_level Log level value. Supported: JRNLONLY,NOLOG,LOG_NOTICE/INFO/ERR/DEBUG,LOG_FILE/STDERR/SYSJRNL
  */
 void set_log_level( const int log_level )
 {
@@ -135,16 +160,47 @@ FILE *get_log_file( void )
 	return log_file ;
 } /*get_log_level() */
 
+#ifndef _vscprintf
+/* For some reason, MSVC fails to honour this #ifndef. */
+/* Hence function renamed to _vscprintf_so(). */
+int _vscprintf_so(const char * format, va_list pargs) {
+	int retval;
+	va_list argcopy;
+	va_copy(argcopy, pargs);
+	retval = vsnprintf(NULL, 0, format, argcopy);
+	va_end(argcopy);
+	return retval;}
+#endif 
 
+#ifndef vasprintf
+	int vasprintf(char **strp, const char *fmt, va_list ap) {
+		int len = _vscprintf_so(fmt, ap);
+		if (len == -1) return -1;
+		char *str = malloc((size_t) len + 1);
+		if (!str) return -1;
+		int r = vsnprintf(str, len + 1, fmt, ap); /* "secure" version of vsprintf */
+		if (r == -1) return free(str), -1;
+		*strp = str;
+		return r;}
+#endif 
 
-/*!\fn void _n_log( int level , const char *file , const char *func , int line , const char *format , ... ) 
- *\brief Logging function. log( level , const char *format , ... ) is a macro around _log
- *\param level Logging level 
- *\param file File containing the emmited log
- *\param func Function emmiting the log
- *\param line Line of the log
- *\param format Format and string of the log, printf style
- */
+#ifndef asprintf
+		int asprintf(char *strp[], const char *fmt, ...) {
+			va_list ap;
+			va_start(ap, fmt);
+			int r = vasprintf(strp, fmt, ap);
+			va_end(ap);
+			return r;}
+#endif
+
+			/*!\fn void _n_log( int level , const char *file , const char *func , int line , const char *format , ... ) 
+			 *\brief Logging function. log( level , const char *format , ... ) is a macro around _log
+			 *\param level Logging level 
+			 *\param file File containing the emmited log
+			 *\param func Function emmiting the log
+			 *\param line Line of the log
+			 *\param format Format and string of the log, printf style
+			 */
 void _n_log( int level , const char *file , const char *func , int line , const char *format , ... ) 
 {
 	va_list args ;
@@ -163,20 +219,34 @@ void _n_log( int level , const char *file , const char *func , int line , const 
 
 	if( level <= log_level )
 	{
-#ifndef NOSYSJRNL
 		char *syslogbuffer = NULL ;
+		char *eventbuffer = NULL ;
+		char *name = "NULL" ;
+		if( proc_name )
+			name = proc_name ;
+
+#ifndef NOEVENTLOG
+		size_t needed = 0 ;
 #endif
+
 		switch( LOG_TYPE )
 		{
-#ifndef NOSYSJRNL
 			case LOG_SYSJRNL :
 				va_start (args, format);
 				vasprintf( &syslogbuffer , format , args ); 
 				va_end( args );
+#ifndef NOSYSJRNL				
 				syslog( level , "%s->%s:%d %s" , file , func , line , syslogbuffer ); 
-				Free( syslogbuffer );
-				break;
 #endif
+#ifndef NOEVENTLOG
+				needed = snprintf( NULL , 0, "start /B EventCreate /t %s /id 666 /l APPLICATION /so %s /d \"%s\" > NUL 2>&1", prioritynames[ level ] . w_name , name , syslogbuffer );
+				Malloc( eventbuffer , char , needed + 4 );
+				sprintf( eventbuffer , "start /B EventCreate /t %s /id 666 /l APPLICATION /so %s /d \"%s\" > NUL 2>&1", prioritynames[ level ] . w_name , name , syslogbuffer );
+				system( eventbuffer );
+#endif
+				FreeNoLog( syslogbuffer );
+				FreeNoLog( eventbuffer );
+				break ;
 			default:
 				fprintf( out , "%s:%ld %s->%s:%d " , prioritynames[ level ] . c_name , time( NULL ) , file , func , line  ); 
 				va_start (args, format);

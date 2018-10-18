@@ -5,6 +5,7 @@
  *\date 24/03/05
  */
 
+#include "nilorea/n_common.h"
 #include "nilorea/n_config_file.h"
 
 

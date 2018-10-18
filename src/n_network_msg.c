@@ -5,8 +5,9 @@
  *\version 1.0
  *\date 10/05/2005
  */
-#include "nilorea/n_network.h"
+#include "nilorea/n_common.h"
 #include "nilorea/n_log.h"
+#include "nilorea/n_network.h"
 #include "nilorea/n_network_msg.h"
 
 /*!\fn static double double_swap( double value )

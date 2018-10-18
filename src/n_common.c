@@ -66,6 +66,41 @@ char *get_prog_dir( void )
 } /* get_prog_dir */
 
 
+/*!\fn char *get_prog_dir( void )
+ *\brief get current program running directory
+ *\return A copy of the current program running directory inside a string
+ */
+char *get_prog_name( void )
+{
+	char strbuf[ PATH_MAX ] = "" ;
+	int error = 0 ;
+#ifdef WINDOWS
+	int bytes = GetModuleFileName( NULL , strbuf , PATH_MAX );
+	error = errno ;
+	if(bytes != 0)
+	{
+		return strdup( basename(strbuf ) );
+	}
+#else
+	char procbuf[ PATH_MAX ] = "" ;
+#ifdef LINUX
+	sprintf( procbuf , "/proc/%d/exe", (int)getpid() );
+#elif defined SOLARIS
+	sprintf( procbuf , "/proc/%d/path/a.out", (int)getpid() );
+#endif
+	int bytes = MIN( readlink( procbuf , strbuf , PATH_MAX ) , PATH_MAX - 1 );
+	error = errno ;
+	if( bytes >= 0 )
+	{
+		strbuf[ bytes ] = '\0';
+		return strdup( basename( strbuf ) );
+	}
+#endif
+	fprintf( stderr , "%s" , strerror( error ) );
+	return NULL ;
+} /* get_prog_dir */
+
+
 
 #ifndef NOALLEGRO
 /*!\fn void get_keyboard( char *keybuf , int *cur , int min , int max )
