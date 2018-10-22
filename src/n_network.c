@@ -5,89 +5,509 @@
  *\date 10/05/2005
  */
 
-#include "nilorea/n_common.h"
-#include "nilorea/n_log.h"
-#include "nilorea/n_str.h"
-#include "nilorea/n_list.h"
 #include "nilorea/n_network.h"
 
+#if !defined( NETWORK_IPV4 ) && !defined( NETWORK_IPV6 )
+	#warning You must have NETWORK_IPV4 or NETWORK_IPV4 defined as a compilation flag ! NETWORK_IPV4 is set as default !
+	#define NETWORK_IPV4
+#endif
 
-/*!\fn NETWORK *netw_new( int send_list_limit , int recv_list_limit )
- *\brief Return an empty allocated network ready to be netw_closed
- *\param send_list_limit Thread engine number of tosend message limit
- *\param recv_list_limit Thread engine number of received message limit
- *\return NULL or a new empty network
+
+
+#ifdef NETWORK_IPV4
+	#include "n_network_4.c"
+	#warning Nilorea Library: using networking with ipv4
+#elif defined NETWORK_IPV6
+	#include "n_network_6.c"
+	#warning Nilorea Library: using networking with ipv6 
+#endif
+
+
+
+#ifdef WINDOWS
+
+/*--------------------------------------------------------------------------------------
+
+  By Marco Ladino - mladinox.. jan/2016
+
+
+  MinGW 3.45 thru 4.5 versions, don't have the socket functions:
+
+  --> inet_ntop(..)
+  --> inet_pton(..)
+
+  But with this adapted code using the original functions from FreeBSD,
+  one can to use it in the C/C++ Applications, without problem..!
+
+  This implementation, include tests for IPV4 and IPV6 addresses,
+  and is full C/C++ compatible..
+
+  --------------------------------------------------------------------------------------*/
+
+
+/*	$OpenBSD: strlcpy.c,v 1.11 2006/05/05 15:27:38 millert Exp $	*/
+
+/*-
+ * Copyright (c) 1998 Todd C. Miller <Todd.Miller@courtesan.com>
+ *
+ * Permission to use, copy, modify, and distribute this software for any
+ * purpose with or without fee is hereby granted, provided that the above
+ * copyright notice and this permission notice appear in all copies.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+ * MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+ * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+ * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
-NETWORK *netw_new( int send_list_limit , int recv_list_limit )
+
+//mladinox:: #include <sys/cdefs.h>
+//mladinox:: __FBSDID("$FreeBSD: stable/9/sys/libkern/strlcpy.c 243811 2012-12-03 18:08:44Z delphij $");
+//mladinox:: #include <sys/types.h>
+//mladinox:: #include <sys/libkern.h>
+
+/*
+ * Copy src to string dst of size siz.  At most siz-1 characters
+ * will be copied.  Always NUL terminates (unless siz == 0).
+ * Returns strlen(src); if retval >= siz, truncation occurred.
+ */
+size_t strlcpy(char *dst, const char *src, size_t siz)
 {
-	NETWORK *netw = NULL ;
+    char *d = dst;
+    const char *s = src;
+    size_t n = siz;
 
-	Malloc( netw, NETWORK , 1 );
-	__n_assert( netw, return NULL );
+    /* Copy as many bytes as will fit */
+    if (n != 0) {
+        while (--n != 0) {
+            if ((*d++ = *s++) == '\0')
+                break;
+        }
+    }
 
-	/* netw itself */
-	netw -> nb_pending = -1 ;
-	netw -> mode = -1 ;
-	netw -> state = NETW_EXITED ;
-	netw -> threaded_engine_status = NETW_THR_ENGINE_STOPPED ;
+    /* Not enough room in dst, add NUL and traverse rest of src */
+    if (n == 0) {
+        if (siz != 0)
+            *d = '\0';		/* NUL-terminate dst */
+        while (*s++)
+            ;
+    }
 
-	/* netw -> link */
-	netw -> link . sock = -1 ;
-	netw -> link . port =
-		netw -> link . ip = NULL ;
-	memset( &netw -> link . hints , 0 , sizeof( struct addrinfo ) );
-	memset( &netw -> link . raddr , 0 , sizeof( struct sockaddr_storage ) );
+    return(s - src - 1);	/* count does not include NUL */
+}
 
-	/*initiliaze mutexs*/
-	if ( pthread_mutex_init( &netw -> sendbolt , NULL ) != 0 )
-	{
-		n_log( LOG_ERR , "Error initializing netw -> sendbolt" ); 
-		Free( netw );
-		return NULL ;
+
+/*
+ * Copyright (c) 2004 by Internet Systems Consortium, Inc. ("ISC")
+ * Copyright (c) 1996-1999 by Internet Software Consortium.
+ *
+ * Permission to use, copy, modify, and distribute this software for any
+ * purpose with or without fee is hereby granted, provided that the above
+ * copyright notice and this permission notice appear in all copies.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS" AND ISC DISCLAIMS ALL WARRANTIES
+ * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+ * MERCHANTABILITY AND FITNESS.  IN NO EVENT SHALL ISC BE LIABLE FOR
+ * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+ * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT
+ * OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+ */
+
+
+//mladinox:: #if defined(LIBC_SCCS) && !defined(lint)
+//mladinox:: static const char rcsid[] = "$Id: inet_ntop.c,v 1.3.18.2 2005/11/03 23:02:22 marka Exp $";
+//mladinox:: #endif /* LIBC_SCCS and not lint */
+//mladinox:: #include <sys/cdefs.h>
+//mladinox:: __FBSDID("$FreeBSD: stable/9/sys/libkern/inet_ntop.c 213103 2010-09-24 15:01:45Z attilio $");
+//mladinox:: #include <sys/param.h>
+//mladinox:: #include <sys/socket.h>
+//mladinox:: #include <sys/systm.h>
+//mladinox:: #include <netinet/in.h>
+
+/*%
+ * WARNING: Don't even consider trying to compile this on a system where
+ * sizeof(int) < 4.  sizeof(int) > 4 is fine; all the world's not a VAX.
+ */
+
+static char	*inet_ntop4(const unsigned char *src, char *dst, socklen_t size);
+static char	*inet_ntop6(const unsigned char *src, char *dst, socklen_t size);
+
+/* char *
+ * inet_ntop(af, src, dst, size)
+ *	convert a network format address to presentation format.
+ * return:
+ *	pointer to presentation format address (`dst'), or NULL (see errno).
+ * author:
+ *	Paul Vixie, 1996.
+ */
+char *inet_ntop(int af, const void *src, char *dst, socklen_t size)
+{
+    switch (af) {
+        case AF_INET:
+            return (inet_ntop4((const unsigned char*)src, dst, size));
+        case AF_INET6:
+            return (inet_ntop6((const unsigned char*)src, dst, size));
+        default:
+            return (NULL);
+    }
+    /* NOTREACHED */
+}
+
+/* const char *
+ * inet_ntop4(src, dst, size)
+ *	format an IPv4 address
+ * return:
+ *	`dst' (as a const)
+ * notes:
+ *	(1) uses no statics
+ *	(2) takes a u_char* not an in_addr as input
+ * author:
+ *	Paul Vixie, 1996.
+ */
+static char *inet_ntop4(const unsigned char *src, char *dst, socklen_t size)
+{
+    static const char fmt[] = "%u.%u.%u.%u";
+    char tmp[sizeof "255.255.255.255"];
+    int l;
+
+    l = snprintf(tmp, sizeof(tmp), fmt, src[0], src[1], src[2], src[3]);
+    if (l <= 0 || (socklen_t) l >= size) {
+        return (NULL);
+    }
+    strlcpy(dst, tmp, size);
+    return (dst);
+}
+
+/* const char *
+ * inet_ntop6(src, dst, size)
+ *	convert IPv6 binary address into presentation (printable) format
+ * author:
+ *	Paul Vixie, 1996.
+ */
+static char *inet_ntop6(const unsigned char *src, char *dst, socklen_t size)
+{
+    /*
+     * Note that int32_t and int16_t need only be "at least" large enough
+     * to contain a value of the specified size.  On some systems, like
+     * Crays, there is no such thing as an integer variable with 16 bits.
+     * Keep this in mind if you think this function should have been coded
+     * to use pointer overlays.  All the world's not a VAX.
+     */
+    char tmp[sizeof "ffff:ffff:ffff:ffff:ffff:ffff:255.255.255.255"], *tp;
+    struct { int base, len; } best, cur;
+#define NS_IN6ADDRSZ	16
+#define NS_INT16SZ	2
+    u_int words[NS_IN6ADDRSZ / NS_INT16SZ];
+    int i;
+
+    /*
+     * Preprocess:
+     *	Copy the input (bytewise) array into a wordwise array.
+     *	Find the longest run of 0x00's in src[] for :: shorthanding.
+     */
+    memset(words, '\0', sizeof words);
+    for (i = 0; i < NS_IN6ADDRSZ; i++)
+        words[i / 2] |= (src[i] << ((1 - (i % 2)) << 3));
+    best.base = -1;
+    best.len = 0;
+    cur.base = -1;
+    cur.len = 0;
+    for (i = 0; i < (NS_IN6ADDRSZ / NS_INT16SZ); i++) {
+        if (words[i] == 0) {
+            if (cur.base == -1)
+                cur.base = i, cur.len = 1;
+            else
+                cur.len++;
+        } else {
+            if (cur.base != -1) {
+                if (best.base == -1 || cur.len > best.len)
+                    best = cur;
+                cur.base = -1;
+            }
+        }
+    }
+    if (cur.base != -1) {
+        if (best.base == -1 || cur.len > best.len)
+            best = cur;
+    }
+    if (best.base != -1 && best.len < 2)
+        best.base = -1;
+
+    /*
+     * Format the result.
+     */
+    tp = tmp;
+    for (i = 0; i < (NS_IN6ADDRSZ / NS_INT16SZ); i++) {
+        /* Are we inside the best run of 0x00's? */
+        if (best.base != -1 && i >= best.base &&
+                i < (best.base + best.len)) {
+            if (i == best.base)
+                *tp++ = ':';
+            continue;
+        }
+        /* Are we following an initial run of 0x00s or any real hex? */
+        if (i != 0)
+            *tp++ = ':';
+        /* Is this address an encapsulated IPv4? */
+        if (i == 6 && best.base == 0 && (best.len == 6 ||
+                    (best.len == 7 && words[7] != 0x0001) ||
+                    (best.len == 5 && words[5] == 0xffff))) {
+            if (!inet_ntop4(src+12, tp, sizeof tmp - (tp - tmp)))
+                return (NULL);
+            tp += strlen(tp);
+            break;
+        }
+        tp += sprintf(tp, "%x", words[i]);
+    }
+    /* Was it a trailing run of 0x00's? */
+    if (best.base != -1 && (best.base + best.len) == 
+            (NS_IN6ADDRSZ / NS_INT16SZ))
+        *tp++ = ':';
+    *tp++ = '\0';
+
+    /*
+     * Check for overflow, copy, and we're done.
+     */
+    if ((socklen_t)(tp - tmp) > size) {
+        return (NULL);
+    }
+    strcpy(dst, tmp);
+    return (dst);
+}
+
+
+//----------------
+/*
+ * Copyright (c) 2004 by Internet Systems Consortium, Inc. ("ISC")
+ * Copyright (c) 1996,1999 by Internet Software Consortium.
+ *
+ * Permission to use, copy, modify, and distribute this software for any
+ * purpose with or without fee is hereby granted, provided that the above
+ * copyright notice and this permission notice appear in all copies.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS" AND ISC DISCLAIMS ALL WARRANTIES
+ * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+ * MERCHANTABILITY AND FITNESS.  IN NO EVENT SHALL ISC BE LIABLE FOR
+ * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+ * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT
+ * OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+ */
+
+//mladinox:: #if defined(LIBC_SCCS) && !defined(lint)
+//mladinox:: static const char rcsid[] = "$Id: inet_pton.c,v 1.3.18.2 2005/07/28 07:38:07 marka Exp $";
+//mladinox:: #endif /* LIBC_SCCS and not lint */
+//mladinox:: #include <sys/cdefs.h>
+//mladinox:: __FBSDID("$FreeBSD: stable/9/sys/libkern/inet_pton.c 213103 2010-09-24 15:01:45Z attilio $");
+//mladinox:: #include <sys/param.h>
+//mladinox:: #include <sys/socket.h>
+//mladinox:: #include <sys/systm.h>
+//mladinox:: #include <netinet/in.h>
+//mladinox:: #if __FreeBSD_version < 700000
+//mladinox:: #define strchr index
+//mladinox:: #endif
+
+/*%
+ * WARNING: Don't even consider trying to compile this on a system where
+ * sizeof(int) < 4.  sizeof(int) > 4 is fine; all the world's not a VAX.
+ */
+
+static int	inet_pton4(const char *src, u_char *dst);
+static int	inet_pton6(const char *src, u_char *dst);
+
+/* int
+ * inet_pton(af, src, dst)
+ *	convert from presentation format (which usually means ASCII printable)
+ *	to network format (which is usually some kind of binary format).
+ * return:
+ *	1 if the address was valid for the specified address family
+ *	0 if the address wasn't valid (`dst' is untouched in this case)
+ *	-1 if some other error occurred (`dst' is untouched in this case, too)
+ * author:
+ *	Paul Vixie, 1996.
+ */
+int inet_pton(int af, const char *src, void *dst)
+{
+    switch (af) {
+        case AF_INET:
+            return (inet_pton4(src, (unsigned char *)dst));
+        case AF_INET6:
+            return (inet_pton6(src, (unsigned char *)dst));
+        default:
+            return (-1);
+    }
+    /* NOTREACHED */
+}
+
+/* int
+ * inet_pton4(src, dst)
+ *	like inet_aton() but without all the hexadecimal and shorthand.
+ * return:
+ *	1 if `src' is a valid dotted quad, else 0.
+ * notice:
+ *	does not touch `dst' unless it's returning 1.
+ * author:
+ *	Paul Vixie, 1996.
+ */
+static int inet_pton4(const char *src, u_char *dst)
+{
+    static const char digits[] = "0123456789";
+    int saw_digit, octets, ch;
+#define NS_INADDRSZ	4
+    u_char tmp[NS_INADDRSZ], *tp;
+
+    saw_digit = 0;
+    octets = 0;
+    *(tp = tmp) = 0;
+    while ((ch = *src++) != '\0') {
+        const char *pch;
+
+        if ((pch = strchr(digits, ch)) != NULL) {
+            u_int uiNew = *tp * 10 + (pch - digits);
+
+            if (saw_digit && *tp == 0)
+                return (0);
+            if (uiNew > 255)
+                return (0);
+            *tp = uiNew;
+            if (!saw_digit) {
+                if (++octets > 4)
+                    return (0);
+                saw_digit = 1;
+            }
+        } else if (ch == '.' && saw_digit) {
+            if (octets == 4)
+                return (0);
+            *++tp = 0;
+            saw_digit = 0;
+        } else
+            return (0);
+    }
+    if (octets < 4)
+        return (0);
+    memcpy(dst, tmp, NS_INADDRSZ);
+    return (1);
+}
+
+/* int
+ * inet_pton6(src, dst)
+ *	convert presentation level address to network order binary form.
+ * return:
+ *	1 if `src' is a valid [RFC1884 2.2] address, else 0.
+ * notice:
+ *	(1) does not touch `dst' unless it's returning 1.
+ *	(2) :: in a full address is silently ignored.
+ * credit:
+ *	inspired by Mark Andrews.
+ * author:
+ *	Paul Vixie, 1996.
+ */
+static int inet_pton6(const char *src, u_char *dst)
+{
+    static const char xdigits_l[] = "0123456789abcdef",
+                 xdigits_u[] = "0123456789ABCDEF";
+#define NS_IN6ADDRSZ	16
+#define NS_INT16SZ	2
+    u_char tmp[NS_IN6ADDRSZ], *tp, *endp, *colonp;
+    const char *xdigits, *curtok;
+    int ch, seen_xdigits;
+    u_int val;
+
+    memset((tp = tmp), '\0', NS_IN6ADDRSZ);
+    endp = tp + NS_IN6ADDRSZ;
+    colonp = NULL;
+    /* Leading :: requires some special handling. */
+    if (*src == ':')
+        if (*++src != ':')
+            return (0);
+    curtok = src;
+    seen_xdigits = 0;
+    val = 0;
+    while ((ch = *src++) != '\0') {
+        const char *pch;
+
+        if ((pch = strchr((xdigits = xdigits_l), ch)) == NULL)
+            pch = strchr((xdigits = xdigits_u), ch);
+        if (pch != NULL) {
+            val <<= 4;
+            val |= (pch - xdigits);
+            if (++seen_xdigits > 4)
+                return (0);
+            continue;
+        }
+        if (ch == ':') {
+            curtok = src;
+            if (!seen_xdigits) {
+                if (colonp)
+                    return (0);
+                colonp = tp;
+                continue;
+            } else if (*src == '\0') {
+                return (0);
+            }
+            if (tp + NS_INT16SZ > endp)
+                return (0);
+            *tp++ = (u_char) (val >> 8) & 0xff;
+            *tp++ = (u_char) val & 0xff;
+            seen_xdigits = 0;
+            val = 0;
+            continue;
+        }
+        if (ch == '.' && ((tp + NS_INADDRSZ) <= endp) &&
+                inet_pton4(curtok, tp) > 0) {
+            tp += NS_INADDRSZ;
+            seen_xdigits = 0;
+            break;	/*%< '\\0' was seen by inet_pton4(). */
+        }
+        return (0);
+    }
+    if (seen_xdigits) {
+        if (tp + NS_INT16SZ > endp)
+            return (0);
+        *tp++ = (u_char) (val >> 8) & 0xff;
+        *tp++ = (u_char) val & 0xff;
+    }
+    if (colonp != NULL) {
+        /*
+         * Since some memmove()'s erroneously fail to handle
+         * overlapping regions, we'll do the shift by hand.
+         */
+        const int n = tp - colonp;
+        int i;
+
+        if (tp == endp)
+            return (0);
+        for (i = 1; i <= n; i++) {
+            endp[- i] = colonp[n - i];
+            colonp[n - i] = 0;
+        }
+        tp = endp;
+    }
+    if (tp != endp)
+        return (0);
+    memcpy(dst, tmp, NS_IN6ADDRSZ);
+    return (1);
+}
+
+#endif /* ifdef WINDOWS */
+
+
+
+/*!\fn void *get_in_addr(struct sockaddr *sa)
+ *\brief get sockaddr, IPv4 or IPv6 
+ *\param sa socket_address
+ */
+void *get_in_addr(struct sockaddr *sa)
+{
+	if (sa->sa_family == AF_INET) {
+		return &(((struct sockaddr_in*)sa)->sin_addr);
 	}
-	/*initiliaze mutexs*/
-	if ( pthread_mutex_init( &netw -> recvbolt , NULL ) != 0 )
-	{
-		n_log( LOG_ERR , "Error initializing netw -> recvbolt" ); 
-		pthread_mutex_destroy( &netw -> sendbolt );
-		Free( netw );
-		return NULL ;
-	}
-	/*initiliaze mutexs*/
-	if ( pthread_mutex_init( &netw -> eventbolt , NULL ) != 0 )
-	{
-		n_log( LOG_ERR , "Error initializing netw -> eventbolt" ); 
-		pthread_mutex_destroy( &netw -> sendbolt );
-		pthread_mutex_destroy( &netw -> recvbolt );
-		Free( netw );
-		return NULL ;
-	}
-	/*initialize queues */
-	netw -> recv_buf = new_generic_list( recv_list_limit );
-	if( ! netw -> recv_buf )
-	{
-		n_log( LOG_ERR , "Error when creating receive list with %d item limit" , recv_list_limit );
-		netw_close( &netw );
-		return NULL ;
-	}
-	netw -> send_buf = new_generic_list( send_list_limit );
-	if( !netw -> send_buf )
-	{
-		n_log( LOG_ERR , "Error when creating send list with %d item limit" , send_list_limit );
-		netw_close( &netw );
-		return NULL ;
-	}
-	netw -> addr_infos_loaded = 0 ;
-	netw -> send_queue_wait = 25000 ;
-	netw -> send_queue_consecutive_wait = 1000 ;
-	netw -> pause_wait = 200000 ;
-	netw -> so_sndbuf = 0 ;
-	netw -> so_rcvbuf = 0 ;
-	netw -> tcpnodelay = 0 ;
+	return &(((struct sockaddr_in6*)sa)->sin6_addr);
+}
 
-	return netw ;
-
-} /* netw_new() */
 
 
 /*!\fn int netw_set_timers( NETWORK *netw , int send_queue_wait , int send_queue_consecutive_wait , int pause_wait )
@@ -108,22 +528,6 @@ int netw_set_timers( NETWORK *netw , int send_queue_wait , int send_queue_consec
 	pthread_mutex_unlock( &netw -> eventbolt );
 	return TRUE ;
 }
-
-
-
-/*!\fn void *get_in_addr(struct sockaddr *sa)
- *\brief get sockaddr, IPv4 or IPv6 
- *\param sa socket_address
- */
-void *get_in_addr(struct sockaddr *sa)
-{
-	if (sa->sa_family == AF_INET) {
-		return &(((struct sockaddr_in*)sa)->sin_addr);
-	}
-	return &(((struct sockaddr_in6*)sa)->sin6_addr);
-}
-
-
 
 /*!\fn int handle_wsa( int mode , int v1 , int v2 )
  *\brief Do not directly use, internal api.
@@ -248,119 +652,6 @@ int netw_setsockopt( SOCKET sock , int disable_naggle , int sock_send_buf , int 
 
 	return TRUE ;
 } /* netw_setsockopt( ... ) */
-
-
-
-/*!\fn int netw_connect_ex(NETWORK **netw , char *host , char *port, int disable_naggle , int sock_send_buf , int sock_recv_buf , int send_list_limit , int recv_list_limit )
- *\brief Use this to connect a NETWORK to any listening one
- *\param netw a NETWORK *object
- *\param host Host or IP to connect to
- *\param port Port to use to connect
- *\param disable_naggle Disable Naggle Algorithm. Set to 1 do activate, 0 or negative to leave defaults
- *\param sock_send_buf NETW_SOCKET_SEND_BUF socket parameter , 0 or negative to leave defaults
- *\param sock_recv_buf NETW_SOCKET_RECV_BUF socket parameter , 0 or negative to leave defaults
- *\param send_list_limit Internal sending list maximum number of item. 0 or negative for unrestricted
- *\param recv_list_limit Internal receiving list maximum number of item. 0 or negative for unrestricted
- *\return TRUE or FALSE
- */
-int netw_connect_ex( NETWORK **netw , char *host , char *port, int disable_naggle , int sock_send_buf , int sock_recv_buf , int send_list_limit , int recv_list_limit  )
-{
-	int error = 0 ,net_status = 0;
-
-	/*do not work over an already used netw*/
-	if( (*netw) )
-	{
-		n_log( LOG_ERR , "Unable to allocate (*netw), already existing. You must use empty NETWORK *structs." );
-		return FALSE ;
-	}
-
-	/*creating array*/
-	(*netw) = netw_new( send_list_limit , recv_list_limit );
-	__n_assert( (*netw) , return FALSE );
-
-	/*checking WSA when under windows*/
-	if ( handle_wsa( 1 , 2 , 2 ) == FALSE )
-	{
-		n_log( LOG_ERR , "Unable to load WSA dll's" );
-		Free( (*netw) );
-		return FALSE ;
-	}
-
-	/* Obtain address(es) matching host/port */
-	(*netw) -> link . hints . ai_family   = AF_UNSPEC;     /* Allow IPv4 or IPv6 */
-	(*netw) -> link . hints . ai_socktype = SOCK_STREAM;   /* Datagram socket */
-	(*netw) -> link . hints . ai_flags    = AI_PASSIVE;    /* For wildcard IP address */
-
-	/* Note: on some system, i.e Solaris, it WILL show leak in getaddrinfo.
-	 * Testing it inside a 1,100 loop showed not effect on the amount of leaked
-	 * memory */
-	error = getaddrinfo( host , port , &(*netw) -> link . hints , &(*netw) -> link . rhost );
-	if( error != 0 )
-	{
-		n_log( LOG_ERR , "Error when resolving %s:%s getaddrinfo: %s", host , port , gai_strerror( error ) );
-		netw_close( &(*netw) );
-		return FALSE ;
-	}
-	(*netw) -> addr_infos_loaded = 1 ;
-
-	/* getaddrinfo() returns a list of address structures.
-	   Try each address until we successfully connect(2).
-	   If socket(2) (or connect(2)) fails, we (close the socket
-	   and) try the next address. */
-	struct addrinfo *rp = NULL ;
-	for( rp = (*netw) -> link . rhost ; rp != NULL ; rp = rp -> ai_next )
-	{
-		int sock = socket( rp -> ai_family , rp -> ai_socktype , rp->ai_protocol );
-		error = errno ;
-		if( sock == -1 )
-		{  
-			n_log( LOG_ERR , "Error while trying to make a socket: %s"  ,strerror( error ) );
-			continue ;
-		}
-		if( netw_setsockopt( sock , disable_naggle , sock_send_buf , sock_recv_buf ) != TRUE )
-		{
-			n_log( LOG_ERR , "Some socket options could not be set on %d" , (*netw) -> link . sock );   
-		}
-		net_status = connect( sock , rp -> ai_addr , rp -> ai_addrlen );
-		error = errno ;
-		if( net_status == -1 )
-		{
-			n_log( LOG_ERR , "Error from connect(). host: %s:%s errno: %s" , host , port , strerror( error ) );
-			closesocket( sock );
-		}
-		else
-		{
-			(*netw) -> link . sock = sock ;
-			break;                  /* Success */
-		}
-	}
-	if( rp == NULL )
-	{
-		/* No address succeeded */
-		n_log( LOG_ERR , "Couldn't connect to %s:%s", host , port );
-		netw_close( &(*netw) );
-		return FALSE ;
-	}
-
-	/*storing connected port and ip adress*/
-	Malloc( (*netw) -> link . ip , char , INET6_ADDRSTRLEN + 2 );
-	__n_assert( (*netw) -> link . ip , netw_close( &(*netw ) ); return FALSE );
-	if( !inet_ntop( rp->ai_family , get_in_addr( (struct sockaddr *)rp -> ai_addr ) , (*netw) -> link . ip , INET6_ADDRSTRLEN ) )
-	{
-		n_log( LOG_ERR , "inet_ntop: %p , %s" , rp , strerror( errno ) );  
-	}
-
-
-	(*netw)->link . port = strdup( port );
-	__n_assert( (*netw) -> link . port , netw_close( &(*netw ) ); return FALSE );
-
-	n_log( LOG_DEBUG , "Connected to %s:%s" , (*netw) -> link . ip , (*netw) -> link . port );
-
-	netw_set( (*netw) , NETW_CLIENT|NETW_RUN|NETW_THR_ENGINE_STOPPED );
-
-	return TRUE ;
-} /* netw_connect_ex(...)*/
-
 
 
 /*!\fn int netw_connect( NETWORK **netw , char *host , char *port )
@@ -514,7 +805,6 @@ int netw_close( NETWORK **netw )
 				break;
 			if( res < 0 )
 			{
-				n_log( LOG_ERR , "read returned an error when closing socket %d: %s" , (*netw) -> link . sock , strerror( errno ) );
 				break ;
 			}
 		}
@@ -541,223 +831,6 @@ int netw_close( NETWORK **netw )
 
 
 
-/*!\fn int netw_make_listening( NETWORK **netw , char *port , int nbpending )
- *\brief Make a NETWORK be a Listening network
- *\param netw A NETWORK **network to make listening
- *\param port For choosing a PORT to listen to
- *\param nbpending Number of pending connection when listening
- *\return TRUE on success, FALSE on error
- */
-int netw_make_listening( NETWORK **netw , char *port , int nbpending )
-{
-	/*checking WSA when under windows*/
-	if ( handle_wsa( 1 , 2 , 2 ) == FALSE )
-	{
-		n_log( LOG_ERR , "Unable to load WSA dll's" );
-		return FALSE ;
-	}
-
-	if( *netw )
-	{
-		n_log( LOG_ERR , "Cannot use an allocated network. Please pass a NULL network to modify" );
-		return FALSE; 
-	}
-	(*netw) = netw_new( -1 , -1 ); 
-	(*netw) -> link . port = strdup( port );
-	/*creating array*/
-	(*netw) -> link . hints . ai_family   = AF_UNSPEC;     /* Allow IPv4 or IPv6 */
-	(*netw) -> link . hints . ai_socktype = SOCK_STREAM;   /* Datagram socket */
-	(*netw) -> link . hints . ai_flags    = AI_PASSIVE;    /* For wildcard IP address */
-	int error = getaddrinfo( NULL , port , &(*netw) -> link . hints , &(*netw) -> link . rhost );
-	if( error != 0)
-	{
-		n_log( LOG_ERR , "Error when creating listening socket on port %s", port , gai_strerror( error ) );
-		netw_close( &(*netw) );
-		return FALSE ;
-	}
-	(*netw) -> addr_infos_loaded = 1 ;
-
-	/* getaddrinfo() returns a list of address structures.
-	   Try each address until we successfully connect(2).
-	   If socket(2) (or connect(2)) fails, we (close the socket
-	   and) try the next address. */
-	struct addrinfo *rp = NULL ;
-	for( rp = (*netw) -> link . rhost ; rp != NULL ; rp = rp -> ai_next )
-	{
-		(*netw) -> link . sock = socket( rp -> ai_family , rp -> ai_socktype , rp->ai_protocol );
-		if( (*netw) -> link . sock == -1 )
-		{  
-			n_log( LOG_ERR , "Error while trying to make a socket: %s"  ,strerror( errno ) );
-			continue ;
-		}
-		if( netw_setsockopt( (*netw) -> link . sock , 0 , 0 , 0 ) != TRUE )
-		{
-			n_log( LOG_ERR , "Some socket options could not be set on %d" , (*netw) -> link . sock );   
-		}
-		if( bind( (*netw) -> link . sock , rp -> ai_addr , rp -> ai_addrlen ) == 0 )
-		{
-			break;                  /* Success */
-		}
-		error = errno ;
-		n_log( LOG_ERR , "Error from bind() on port %s errno: %s" , port , strerror( errno ) , error );
-		closesocket( (*netw) -> link .sock );
-	}
-	if( rp == NULL )
-	{
-		/* No address succeeded */
-		n_log( LOG_ERR , "Couldn't get a socket for listening on port %s", port );
-		netw_close( &(*netw) );
-		return FALSE ;
-	}
-
-	/* nb_pending connections*/
-	( *netw ) -> nb_pending = nbpending ;
-	listen( ( *netw ) -> link . sock, ( *netw ) -> nb_pending );
-
-	netw_set( (*netw) , NETW_SERVER|NETW_RUN|NETW_THR_ENGINE_STOPPED );
-
-	return TRUE;
-} /* netw_make_listening(...)*/
-
-
-
-/*!\fn NETWORK *netw_accept_from_ex( NETWORK *from , int disable_naggle , int sock_send_buf , int sock_recv_buf , int send_list_limit , int recv_list_limit , int non_blocking , int *retval )
- *\brief make a normal 'accept' . Network 'from' must be allocated with netw_make_listening.
- *\param from the network from where we accept
- *\param disable_naggle Disable Naggle Algorithm. Set to 1 do activate, 0 or negative to leave defaults
- *\param sock_send_buf NETW_SOCKET_SEND_BUF socket parameter , 0 or negative to leave defaults
- *\param sock_recv_buf NETW_SOCKET_RECV_BUF socket parameter , 0 or negative to leave defaults
- *\param send_list_limit Internal sending list maximum number of item. 0 or negative for unrestricted
- *\param recv_list_limit Internal receiving list maximum number of item. 0 or negative for unrestricted
- *\param non_blocking set to -1 to make it non blocking, to 0 for blocking, else it's the select timeout value in mseconds.
- *\param retval EAGAIN ou EWOULDBLOCK or errno
- *\return NULL on failure, if not a pointer to the connected network
- */
-NETWORK *netw_accept_from_ex( NETWORK *from , int disable_naggle , int sock_send_buf , int sock_recv_buf , int send_list_limit , int recv_list_limit , int non_blocking , int *retval )
-{
-	int tmp = 0 ;
-	fd_set accept_set ;
-
-	FD_ZERO( &accept_set );
-
-#if defined( LINUX ) || defined( SOLARIS ) || defined( AIX )
-	socklen_t sin_size = 0 ;
-#else
-	int sin_size = 0 ;
-#endif
-
-	NETWORK *netw = NULL ;
-
-	/*checking WSA when under windows*/
-	if( handle_wsa( 1 , 2 , 2 ) == FALSE )
-	{
-		n_log( LOG_ERR , "Unable to load WSA dll's" );
-		return NULL ;
-	}
-
-	__n_assert( from , return NULL );
-
-	netw = netw_new( send_list_limit , recv_list_limit );
-
-	sin_size = sizeof( netw -> link . raddr );
-
-	if( non_blocking > 0 )
-	{
-		struct timeval select_timeout ;
-		select_timeout . tv_sec = non_blocking ;
-		select_timeout . tv_usec = 0;
-
-		FD_SET( from -> link . sock , &accept_set );
-
-		int ret = select( from -> link . sock + 1 , &accept_set , NULL , NULL , &select_timeout );
-		if( ret == -1 )
-		{
-			if( retval != NULL )
-				(*retval) = errno ;
-			n_log( LOG_ERR , "Error on select with %d timeout" , non_blocking );
-			netw_close( &netw );
-			return NULL;
-		}
-		else if( ret == 0 )
-		{
-			/* that one produce waaaay too much logs under a lot of cases */
-			/* n_log( LOG_DEBUG , "No connection waiting on %d" , from -> link . sock ); */    
-			netw_close( &netw );
-			return NULL;
-		}
-		if( FD_ISSET(  from -> link . sock , &accept_set ) ) 
-		{          
-			tmp = accept( from -> link . sock, (struct sockaddr * )&netw -> link . raddr , &sin_size );
-			int error = errno ;
-			if ( tmp < 0 )
-			{
-				if( retval != NULL )
-					(*retval) = errno ;
-				n_log( LOG_DEBUG , "error accepting on %d, %s" , netw -> link . sock , strerror( error ) );
-				netw_close( &netw );
-				return NULL;
-			}
-		}
-		else
-		{
-			netw_close( &netw );
-			return NULL;
-		}
-	}
-	else if( non_blocking == -1 )
-	{
-		int flags = fcntl( from -> link . sock , F_GETFL , 0 );
-		if( !(flags&O_NONBLOCK) )
-			fcntl( from -> link . sock , F_SETFL , flags|O_NONBLOCK );
-		tmp = accept( from -> link . sock, (struct sockaddr *)&netw -> link . raddr  , &sin_size );
-
-		if( retval != NULL )
-			(*retval) = errno ;
-
-		if ( tmp < 0 )
-		{
-			netw_close( &netw );
-			return NULL;
-		}
-		/* make the obtained socket blocking if ever it was not */
-		flags = fcntl( tmp , F_GETFL , 0 );
-		flags = flags&(~O_NONBLOCK) ;
-		fcntl( tmp , F_SETFL , flags );
-	}
-	else
-	{
-		tmp = accept( from -> link . sock, (struct sockaddr *)&netw -> link . raddr , &sin_size );
-		int error = errno ;
-		if ( tmp < 0 )
-		{
-			n_log( LOG_ERR , "error accepting on %d, %s" , netw -> link . sock , error );
-			netw_close( &netw );
-			return NULL;
-		}
-	}
-
-	netw -> link . sock = tmp ;
-	netw -> link . port = strdup( from -> link . port );
-	Malloc( netw -> link . ip , char , INET6_ADDRSTRLEN + 1 );
-	if( !inet_ntop( netw -> link . raddr .ss_family , get_in_addr( (struct sockaddr*)&netw -> link . raddr) , netw -> link . ip , INET6_ADDRSTRLEN ) )
-	{
-		n_log( LOG_ERR , "inet_ntop: %p , %s" , netw -> link . raddr , strerror( errno ) );  
-	}
-
-	if( netw_setsockopt( netw -> link . sock , disable_naggle , sock_send_buf , sock_recv_buf ) != TRUE )
-	{
-		n_log( LOG_ERR , "Some socket options could not be set on %d" , netw-> link . sock );   
-	}
-
-	netw_set( netw , NETW_SERVER|NETW_RUN|NETW_THR_ENGINE_STOPPED );
-
-	n_log( LOG_DEBUG , "Connection accepted from %s:%s" , netw-> link . ip , netw -> link . port );
-
-	return netw;
-} /* netw_accept_from_ex(...) */
-
-
-
 /*!\fn NETWORK *netw_accept_from( NETWORK *from )
  *\brief make a normal blocking 'accept' . Network 'from' must be allocated with netw_make_listening.
  *\param from The network from which to obtaion the connection
@@ -765,7 +838,13 @@ NETWORK *netw_accept_from_ex( NETWORK *from , int disable_naggle , int sock_send
  */
 NETWORK *netw_accept_from( NETWORK *from )
 {
-	return netw_accept_from_ex( from , 0 , 0 , 0 , 0 , 0 , 0 , 0 );
+	int error = 0 ;
+	NETWORK *netw = netw_accept_from_ex( from , 0 , 0 , 0 , 0 , 0 , 0 , &error );
+	if( !netw )
+	{
+		n_log( LOG_ERR , "Error (%d) %s when acception from link %d" , error , strerror( error ) , from -> link . sock );
+	}
+	return netw ;
 } /* network_accept_from( ... ) */
 
 
@@ -778,8 +857,15 @@ NETWORK *netw_accept_from( NETWORK *from )
  */
 NETWORK *netw_accept_nonblock_from( NETWORK *from , int blocking )
 {
-	return netw_accept_from_ex( from , 0 , 0 , 0 , 0 , 0 , blocking , 0 );
+	int error = 0 ;
+	NETWORK *netw = netw_accept_from_ex( from , 0 , 0 , 0 , 0 , 0 , blocking , &error );
+	if( !netw )
+	{
+		n_log( LOG_ERR , "Error (%d) %s when acception from link %d" , error , strerror( error ) , from -> link . sock );
+	}
+	return netw ;
 } /* network_accept_from( ... ) */
+
 
 
 /*!\fn int netw_add_msg( NETWORK *netw , N_STR *msg )
@@ -1230,6 +1316,29 @@ int netw_stop_thr_engine( NETWORK *netw )
 
 
 
+/*!\fn int netw_get_queue_status( NETWORK *netw , int *nb_to_send , int *nb_to_read )
+ *\brief return the number of elements queued in the sending and receiving queue
+ *\param netw The network to request
+ *\param nb_to_send a pointer to an int which will get the number of elements to send 
+ *\param nb_to_read a pointer to an int which will get the number of elements to read
+ *\return TRUE or FALSE
+ */
+int netw_get_queue_status( NETWORK *netw , int *nb_to_send , int *nb_to_read )
+{
+	__n_assert( netw , return FALSE );
+
+	pthread_mutex_lock( &netw -> sendbolt );
+	(*nb_to_send) = netw -> send_buf -> nb_items ;
+	pthread_mutex_unlock( &netw -> sendbolt );
+
+	pthread_mutex_lock( &netw -> recvbolt );
+	(*nb_to_read) = netw -> recv_buf -> nb_items ;
+	pthread_mutex_unlock( &netw -> recvbolt );
+
+	return TRUE ;
+} /* netw_get_queue_status */
+
+
 /*!\fn send_data( SOCKET s , char *buf, NSTRBYTE n )
  *\brief send data onto the socket
  *\param s connected socket
@@ -1504,24 +1613,3 @@ int recv_php( SOCKET s, int *_code , char **buf )
 } /*recv_php(...)*/
 
 
-/*!\fn int netw_get_queue_status( NETWORK *netw , int *nb_to_send , int *nb_to_read )
- *\brief return the number of elements queued in the sending and receiving queue
- *\param netw The network to request
- *\param nb_to_send a pointer to an int which will get the number of elements to send 
- *\param nb_to_read a pointer to an int which will get the number of elements to read
- *\return TRUE or FALSE
- */
-int netw_get_queue_status( NETWORK *netw , int *nb_to_send , int *nb_to_read )
-{
-	__n_assert( netw , return FALSE );
-
-	pthread_mutex_lock( &netw -> sendbolt );
-	(*nb_to_send) = netw -> send_buf -> nb_items ;
-	pthread_mutex_unlock( &netw -> sendbolt );
-
-	pthread_mutex_lock( &netw -> recvbolt );
-	(*nb_to_read) = netw -> recv_buf -> nb_items ;
-	pthread_mutex_unlock( &netw -> recvbolt );
-
-	return TRUE ;
-} /* netw_get_queue_status */

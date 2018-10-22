@@ -9,7 +9,7 @@
 #define SERVER 0
 #define CLIENT 1
 
-int NB_ATTEMPTS=  1 ;
+int NB_ATTEMPTS=  2 ;
 
 NETWORK *server = NULL , /*! Network for server mode, accepting incomming */
 		*netw = NULL   ; /*! Network for managing conenctions */
@@ -176,13 +176,13 @@ int main(int argc, char **argv) {
 	{
 
 		/* create listening network */
-		if( netw_make_listening( &server , port , 10 ) == FALSE )
+		if( netw_make_listening( &server , port , 10 ) == FALSE ) 
 		{
 			n_log( LOG_ERR , "Fatal error with network initialization" );
 			exit( -1 );
 		}
 		int it = 0 ;
-		for( it = 0 ; it < NB_ATTEMPTS ; it ++ )
+		for( it = 0 ; it < (NB_ATTEMPTS/2) ; it ++ )
 		{
 			/* get any accepted client on a network */
 			if ( !( netw = netw_accept_from( server ) ) )
@@ -205,10 +205,10 @@ int main(int argc, char **argv) {
 		/* testing with thread pool */
 		int error = 0 , DONE = 0 ;
 		THREAD_POOL *thread_pool = new_thread_pool( 2 , 128 );
-		while( !DONE )
+		while( it < NB_ATTEMPTS )
 		{
 			/* get any accepted client on a network */
-			if ( ( netw = netw_accept_from_ex( server , 0 , 0 , 0 , 0 , 0 , -1 , &error ) ) )
+			if( ( netw = netw_accept_from_ex( server , 0 , 0 , 0 , 0 , 0 , -1 , &error ) ) ) 
 			{
 				/* someone is connected. starting some dialog */
 				if( add_threaded_process( thread_pool , &manage_client , (void *)netw , DIRECT_PROC) == FALSE )
@@ -216,8 +216,6 @@ int main(int argc, char **argv) {
 					n_log( LOG_ERR , "Error ading client management to thread pool" );
 				}
 				it ++ ;
-				if( it >= (NB_ATTEMPTS*2) )
-					DONE = 1 ;
 			}
 			else
 			{
@@ -237,13 +235,13 @@ int main(int argc, char **argv) {
 	{
 		for( int it = 0 ; it < NB_ATTEMPTS ; it ++ )
 		{
-			if( netw_connect( &netw , srv , port ) != TRUE )
+			n_log( LOG_NOTICE , "Attempt %d/%d: Connected to %s:%s" , it+1 , NB_ATTEMPTS , srv , port );
+			if( netw_connect( &netw , srv , port ) != TRUE ) 
 			{
 				/* there were some error when trying to connect */
 				n_log( LOG_ERR , "Unable to connect to %s:%s" , srv , port );
 				exit( 1 );
 			}
-			n_log( LOG_NOTICE , "Attempt %d: Connected to %s:%s" , it , srv , port );
 
 			/* backgrounding network send / recv */
 			netw_start_thr_engine( netw );

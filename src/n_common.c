@@ -66,9 +66,9 @@ char *get_prog_dir( void )
 } /* get_prog_dir */
 
 
-/*!\fn char *get_prog_dir( void )
- *\brief get current program running directory
- *\return A copy of the current program running directory inside a string
+/*!\fn char *get_prog_name( void )
+ *\brief get current program name
+ *\return A copy of the current program name inside a string
  */
 char *get_prog_name( void )
 {

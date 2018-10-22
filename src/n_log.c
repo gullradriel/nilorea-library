@@ -58,6 +58,7 @@ char *proc_name = NULL ;
 /*!\fn open_sysjrnl( char *identity )
  *\brief Open connection to syslog or create internals for event log
  *\param identity Tag for syslog or NULL to use argv[0]
+ *\return NULL or identity if success
  */
 char *open_sysjrnl( char *identity )
 {
