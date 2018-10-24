@@ -6,6 +6,7 @@
  */
 
 #include "nilorea/n_common.h"
+#include "nilorea/n_log.h"
 
 #if defined(LINUX) || defined(SOLARIS)
 #include <sys/types.h>

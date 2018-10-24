@@ -51,6 +51,9 @@ obj\\%.o: src\\%.c
 	$(CC) $(CFLAGS) -c $< -o $@
 else
 	UNAME_S := $(shell uname -s)
+	RM=rm -f
+	CC=gcc
+	EXT=
     ifeq ($(UNAME_S),Linux)
         CFLAGS+= -DLINUX -DNOEVENTLOG -I./include/ -I/home/ace/include/ \
         -g -W -Wall -std=gnu99 -ggdb3 -O0 \
@@ -81,9 +84,6 @@ else
         CC=cc
         CFLAGS+= -DSOLARIS -DDNOEVENTLOG -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -g -v -xc99 -I ./include/ -I/Home/aceb/include/
     endif
-	RM=rm -f
-	CC=gcc
-	EXT=
 	OBJECTS=$(SRC:%.c=obj/%.o) 
 obj/%.o: src/%.c
 	$(CC) $(CFLAGS) -c $< -o $@

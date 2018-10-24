@@ -45,10 +45,12 @@ extern "C"
 
 #include <sys/stat.h> 
 #include <sys/types.h> 
+#include <fcntl.h>
 #include <limits.h>
 #include <locale.h>
 #include <dlfcn.h>
 #include <libgen.h>
+	
     /*#include <sys/wait.h>
 #include <unistd.h> */
     /*! FORCE_INLINE portable macro */
@@ -96,8 +98,6 @@ extern "C"
 #endif
 
     /*#define opendir __mingw_opendir*/
-
-#include <fcntl.h>
 
 #else
 #error NO TARGET DEFINED ! (WINDOWS,LINUX)

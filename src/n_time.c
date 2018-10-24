@@ -12,29 +12,29 @@
 
 #if defined(WINDOWS)
 /*!\fn void u_sleep( __int64 usec) 
-*\brief u_sleep for windows
-*\param used Number of usec to sleep
-*/
+ *\brief u_sleep for windows
+ *\param used Number of usec to sleep
+ */
 void u_sleep( __int64 usec) 
 { 
-    HANDLE timer; 
-    LARGE_INTEGER ft; 
+	HANDLE timer; 
+	LARGE_INTEGER ft; 
 
-    ft.QuadPart = -(10*usec); // Convert to 100 nanosecond interval, negative value indicates relative time
+	ft.QuadPart = -(10*usec); // Convert to 100 nanosecond interval, negative value indicates relative time
 
-    timer = CreateWaitableTimer(NULL, TRUE, NULL); 
-    SetWaitableTimer(timer, &ft, 0, NULL, NULL, 0); 
-    WaitForSingleObject(timer, INFINITE); 
-    CloseHandle(timer); 
+	timer = CreateWaitableTimer(NULL, TRUE, NULL); 
+	SetWaitableTimer(timer, &ft, 0, NULL, NULL, 0); 
+	WaitForSingleObject(timer, INFINITE); 
+	CloseHandle(timer); 
 }
 #else
 /*!\fn void u_sleep( unsigned int usec) 
-*\brief wrapper around usleep for API consistency
-*\param usec Number of usec to sleep
-*/
+ *\brief wrapper around usleep for API consistency
+ *\param usec Number of usec to sleep
+ */
 void u_sleep( unsigned int usec ) 
 { 
-    usleep( usec );
+	usleep( usec );
 }
 #endif
 
@@ -46,14 +46,14 @@ void u_sleep( unsigned int usec )
 void PAUSE( void )
 {
 
-    char k[ 2 ] = "" ;
+	char k[ 2 ] = "" ;
 
-    printf( "Press a enter to continue..." );
+	printf( "Press a enter to continue..." );
 
-    fflush( stdin );
-    scanf( "%c", k );
+	fflush( stdin );
+	scanf( "%c", k );
 
-    printf( "\n" );
+	printf( "\n" );
 } /* PAUSE(...) */
 
 
@@ -65,20 +65,20 @@ void PAUSE( void )
  */
 int start_HiTimer( N_TIME *timer )
 {
-    /* set delta to 0 */
-    timer -> delta = 0;
+	/* set delta to 0 */
+	timer -> delta = 0;
 
 #if !defined( LINUX ) && !defined( SOLARIS ) && !defined( AIX )
-    if( QueryPerformanceFrequency( ( LARGE_INTEGER * ) & timer -> freq ) == 0 )
-        return FALSE ;
-    if( QueryPerformanceCounter( &timer -> startTime ) == 0 )
-        return FALSE ;
+	if( QueryPerformanceFrequency( ( LARGE_INTEGER * ) & timer -> freq ) == 0 )
+		return FALSE ;
+	if( QueryPerformanceCounter( &timer -> startTime ) == 0 )
+		return FALSE ;
 #else
-    if( gettimeofday( &timer -> startTime, 0 ) != 0 )
-        return FALSE ;
+	if( gettimeofday( &timer -> startTime, 0 ) != 0 )
+		return FALSE ;
 #endif
 
-    return TRUE ;      
+	return TRUE ;      
 } /* init_HiTimer(...) */
 
 
@@ -91,17 +91,17 @@ int start_HiTimer( N_TIME *timer )
 time_t get_usec( N_TIME *timer )
 {
 #ifdef WINDOWS
-    QueryPerformanceCounter( ( LARGE_INTEGER * ) & timer -> currentTime );
-    timer -> delta = 1000000 * ( timer -> currentTime . QuadPart - timer -> startTime . QuadPart ) / timer -> freq . QuadPart ;
-    timer -> startTime = timer -> currentTime ;
+	QueryPerformanceCounter( ( LARGE_INTEGER * ) & timer -> currentTime );
+	timer -> delta = 1000000 * ( timer -> currentTime . QuadPart - timer -> startTime . QuadPart ) / timer -> freq . QuadPart ;
+	timer -> startTime = timer -> currentTime ;
 #else
-    gettimeofday( &timer -> currentTime, 0 );
-    timer -> delta = ( timer -> currentTime . tv_sec   - timer -> startTime . tv_sec  ) * 1000000 + ( timer -> currentTime . tv_usec  - timer -> startTime . tv_usec );
-    timer -> startTime . tv_sec  = timer -> currentTime . tv_sec ;
-    timer -> startTime . tv_usec = timer -> currentTime . tv_usec ;
+	gettimeofday( &timer -> currentTime, 0 );
+	timer -> delta = ( timer -> currentTime . tv_sec   - timer -> startTime . tv_sec  ) * 1000000 + ( timer -> currentTime . tv_usec  - timer -> startTime . tv_usec );
+	timer -> startTime . tv_sec  = timer -> currentTime . tv_sec ;
+	timer -> startTime . tv_usec = timer -> currentTime . tv_usec ;
 #endif
 
-    return timer -> delta;
+	return timer -> delta;
 } /* get_usec( ... ) */
 
 
@@ -114,17 +114,17 @@ time_t get_usec( N_TIME *timer )
 time_t get_msec( N_TIME *timer )
 {
 #ifdef WINDOWS
-    QueryPerformanceCounter( ( LARGE_INTEGER * ) & timer -> currentTime );
-    timer -> delta = 1000 * ( timer -> currentTime . QuadPart - timer -> startTime . QuadPart ) / timer -> freq . QuadPart ;
-    timer -> startTime = timer -> currentTime ;
+	QueryPerformanceCounter( ( LARGE_INTEGER * ) & timer -> currentTime );
+	timer -> delta = 1000 * ( timer -> currentTime . QuadPart - timer -> startTime . QuadPart ) / timer -> freq . QuadPart ;
+	timer -> startTime = timer -> currentTime ;
 #else
-    gettimeofday( &timer -> currentTime, 0 );
-    timer -> delta = ( timer -> currentTime . tv_sec   - timer -> startTime . tv_sec  ) * 1000 + ( timer -> currentTime . tv_usec  - timer -> startTime . tv_usec ) / 1000 ;
-    timer -> startTime . tv_sec  = timer -> currentTime . tv_sec ;
-    timer -> startTime . tv_usec = timer -> currentTime . tv_usec ;
+	gettimeofday( &timer -> currentTime, 0 );
+	timer -> delta = ( timer -> currentTime . tv_sec   - timer -> startTime . tv_sec  ) * 1000 + ( timer -> currentTime . tv_usec  - timer -> startTime . tv_usec ) / 1000 ;
+	timer -> startTime . tv_sec  = timer -> currentTime . tv_sec ;
+	timer -> startTime . tv_usec = timer -> currentTime . tv_usec ;
 #endif
 
-    return timer -> delta;
+	return timer -> delta;
 } /* get_msec(...) */
 
 
@@ -136,15 +136,15 @@ time_t get_msec( N_TIME *timer )
  */
 time_t get_sec( N_TIME *timer ){
 #ifdef WINDOWS
-    QueryPerformanceCounter( ( LARGE_INTEGER * ) & timer -> currentTime );
-    timer -> delta = ( timer -> currentTime . QuadPart - timer -> startTime . QuadPart ) / timer -> freq . QuadPart ;
-    timer -> startTime = timer -> currentTime ;
+	QueryPerformanceCounter( ( LARGE_INTEGER * ) & timer -> currentTime );
+	timer -> delta = ( timer -> currentTime . QuadPart - timer -> startTime . QuadPart ) / timer -> freq . QuadPart ;
+	timer -> startTime = timer -> currentTime ;
 #else
-    gettimeofday( &timer -> currentTime, 0 );
-    timer -> delta = ( timer -> currentTime . tv_sec   - timer -> startTime . tv_sec  )  + ( timer -> currentTime . tv_usec  - timer -> startTime . tv_usec ) / 1000000 ;
-    timer -> startTime . tv_sec  = timer -> currentTime . tv_sec ;
-    timer -> startTime . tv_usec = timer -> currentTime . tv_usec ;
+	gettimeofday( &timer -> currentTime, 0 );
+	timer -> delta = ( timer -> currentTime . tv_sec   - timer -> startTime . tv_sec  )  + ( timer -> currentTime . tv_usec  - timer -> startTime . tv_usec ) / 1000000 ;
+	timer -> startTime . tv_sec  = timer -> currentTime . tv_sec ;
+	timer -> startTime . tv_usec = timer -> currentTime . tv_usec ;
 #endif
-    return timer -> delta;
+	return timer -> delta;
 }/* get_sec(...) */
 

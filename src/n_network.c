@@ -797,6 +797,8 @@ int netw_setsockopt( SOCKET sock , int disable_naggle , int sock_send_buf , int 
             return FALSE ;
         }
         (*netw) -> addr_infos_loaded = 1 ;
+       	Malloc( (*netw) -> link . ip , char , INET6_ADDRSTRLEN + 2 );
+  		__n_assert( (*netw) -> link . ip , netw_close( &(*netw ) ); return FALSE );
 
         /* getaddrinfo() returns a list of address structures. Try each address until we successfully connect. If socket or connect fails, we close the socket and try the next address. */
         struct addrinfo *rp = NULL ;
@@ -815,11 +817,16 @@ int netw_setsockopt( SOCKET sock , int disable_naggle , int sock_send_buf , int 
             {
                 n_log( LOG_ERR , "Some socket options could not be set on %d" , (*netw) -> link . sock );   
             }
-            net_status = connect( sock , rp -> ai_addr , rp -> ai_addrlen );
+            net_status = connect( sock , rp -> ai_addr , rp -> ai_addrlen ); 
+			  /*storing connected port and ip adress*/
+       		if( !inet_ntop( rp->ai_family , get_in_addr( (struct sockaddr *)rp -> ai_addr ) , (*netw) -> link . ip , INET6_ADDRSTRLEN ) )
+       		{
+            	n_log( LOG_ERR , "inet_ntop: %p , %s" , rp , strerror( errno ) );  
+	        }
             error = errno ;
             if( net_status == -1 )
             {
-                n_log( LOG_ERR , "Error while trying to connect to %s : %s : addr %s : %d , %s" , host , port , inet_ntoa((struct in_addr)addr->sin_addr) , ntohs( addr->sin_port ) , strerror( error ) );
+                n_log( LOG_ERR , "Error while trying to connect to %s : %s , resolved addr %s , %s" , host , port ,  (*netw) -> link . ip , strerror( error ) );
                 closesocket( sock );
                 continue ;
             }
@@ -2054,3 +2061,5 @@ int netw_setsockopt( SOCKET sock , int disable_naggle , int sock_send_buf , int 
 
         return TRUE ;
     }
+
+

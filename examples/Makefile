@@ -1,76 +1,53 @@
-dir_name=
 RM=
-CC=gcc
+CC=
 EXT=
 VPATH=../src/
+CC=gcc
 
-CFLAGS=-DNOALLEGRO -DNOSYSJRNL -I..\include \
-	   -g -W -Wall -std=gnu99 -ggdb3 -O0 \
-	   -Wno-missing-braces \
-	   -Wextra \
-	   -Wno-missing-field-initializers \
-	   -Wswitch-default \
-	   -Wswitch-enum \
-	   -Wcast-align \
-	   -Wpointer-arith \
-	   -Wbad-function-cast \
-	   -Wstrict-overflow=5 \
-	   -Wstrict-prototypes \
-	   -Winline \
-	   -Wundef \
-	   -Wnested-externs \
-	   -Wcast-qual \
-	   -Wunreachable-code \
-	   -Wlogical-op \
-	   -Wstrict-aliasing=2 \
-	   -Wredundant-decls \
-	   -Wold-style-definition \
-	   -Werror \
-	   -fno-omit-frame-pointer \
-	   -ffloat-store
-#	   	   -Wshadow \
-CLIBS=
+CFLAGS=-DNOALLEGRO
 
 ifeq ($(OS),Windows_NT)
- #   CCFLAGS += -D WIN32
- #   ifeq ($(PROCESSOR_ARCHITEW6432),AMD64)
- #       CCFLAGS += -D AMD64
- #   else
- #       ifeq ($(PROCESSOR_ARCHITECTURE),AMD64)
- #           CCFLAGS += -D AMD64
- #       endif
- #       ifeq ($(PROCESSOR_ARCHITECTURE),x86)
- #           CCFLAGS += -D IA32
- #       endif
- #  endif
-	CCFLAGS+= -D WIN32 
-	CFLAGS+= -DWINDOWS
+	CCFLAGS+= -DWIN32 -DWINDOWS -DNOSYSJRNL 
 	CLIBS= -Wl,-Bstatic -lpthread -Wl,-Bdynamic -lws2_32 -L../.
-	dir_name=$(shell date +%Y_%m_%d_%HH%MM%SS)
 	RM=del /Q
 	EXT=.exe
 else
-#    ifeq ($(UNAME_S),Darwin)
-#        CCFLAGS += -D OSX
-#    endif
-#    UNAME_P := $(shell uname -p)
-#    ifeq ($(UNAME_P),x86_64)
-#        CCFLAGS += -D AMD64
-#    endif
-#    ifneq ($(filter %86,$(UNAME_P)),)
-#        CCFLAGS += -D IA32
-#    endif
-#    ifneq ($(filter arm%,$(UNAME_P)),)
-#        CCFLAGS += -D ARM
-#    endif
 	UNAME_S := $(shell uname -s)
-    ifeq ($(UNAME_S),Linux)
-        CFLAGS+= -D LINUX
-    endif
-	dir_name=$(shell date +%Y_%m_%d_%HH%MM%SS)
-	CLIBS= -Wl,-Bstatic -lpthread -Wl,-Bdynamic -lws2_32
 	RM=rm -f
+	CC=gcc
 	EXT=
+    ifeq ($(UNAME_S),Linux)
+        CFLAGS+= -DLINUX -DNOEVENTLOG -I./include/ -I/home/ace/include/ \
+        -g -W -Wall -std=gnu99 -ggdb3 -O0 \
+        -Wno-missing-braces \
+        -Wextra \
+        -Wno-missing-field-initializers \
+        -Wswitch-default \
+        -Wswitch-enum \
+        -Wcast-align \
+        -Wpointer-arith \
+        -Wbad-function-cast \
+        -Wstrict-overflow=5 \
+        -Wstrict-prototypes \
+        -Winline \
+        -Wundef \
+        -Wnested-externs \
+        -Wcast-qual \
+        -Wunreachable-code \
+        -Wlogical-op \
+        -Wstrict-aliasing=2 \
+        -Wredundant-decls \
+        -Wold-style-definition \
+        -Werror \
+        -fno-omit-frame-pointer \
+        -ffloat-store #	   	   -Wshadow 
+        CLIBS=-L../.
+    endif
+    ifeq ($(UNAME_S),SunOS)
+        CC=cc
+        CFLAGS+= -DSOLARIS -DDNOEVENTLOG -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -g -v -xc99 -I ../include/ -I/Home/aceb/include/ 
+        CLIBS=-lm -lsocket -lnsl
+    endif
 endif
 
 TARGET=ex_list$(EXT) ex_nstr$(EXT) ex_exceptions$(EXT) ex_hash$(EXT) ex_network$(EXT) ex_monolith$(EXT)
@@ -96,15 +73,8 @@ ex_network$(EXT): n_log.o n_list.o n_str.o n_network_msg.o n_time.o n_thread_poo
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(CLIBS)  
 
 ex_monolith$(EXT): ex_monolith.o
-	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ -lnilorea $(CLIBS) 
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ -L.. -Bstatic -lnilorea -Bdynamic $(CLIBS) 
 	
 clean:
 	$(RM) *.o
 	$(RM) $(TARGET)
-
-backup:
-	mkdir -p "VERSION/$(dir_name)/examples"
-	cp Makefile *.sh *.c *.h VERSION/$(dir_name)/examples 
-	sleep 1
-install:
-	

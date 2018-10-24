@@ -25,11 +25,13 @@ extern "C" {
 #include <nilorea/n_hash.h>
 #include <nilorea/n_network.h>
 #include <nilorea/n_network_msg.h>
-#include <nilorea/n_gfx.h>
-#include <nilorea/n_3d.h>
-#include <nilorea/n_iso_engine.h>
-#include <nilorea/n_games.h>
-#include <nilorea/n_particles.h>
+#ifndef NOALLEGRO
+	#include <nilorea/n_gfx.h>
+	#include <nilorea/n_3d.h>
+	#include <nilorea/n_iso_engine.h>
+	#include <nilorea/n_games.h>
+	#include <nilorea/n_particles.h>
+#endif
 
 /*@}*/
 
