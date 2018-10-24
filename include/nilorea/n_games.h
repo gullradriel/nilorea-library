@@ -23,11 +23,9 @@ extern "C"
 	#include "n_log.h"
 	
 	#ifndef GFX_DIRECTX 
-		/*! If GFX_DIRECTX is not defined we try autodetection */
 		#define GFX_DIRECTX GFX_AUTODETECT
 	#endif	
 	#ifndef GFX_DIRECTX_WIN
-		/*! If GFX_DIRECTX_WIN is not defined we try windowed autodetection */
 		#define GFX_DIRECTX_WIN GFX_AUTODETECT_WINDOWED
 	#endif	
 	
@@ -61,7 +59,7 @@ extern "C"
 			draw_time ,
 			/*! time before a new logic update is done */			
 			logic_time,   
-			/*! minimum number of particle by particles systems */			
+			/*! time before a new logic update is done */			
 			nb_min_particles ,  			
 			/*! =0 for doing nothing, =1 if logic is done, = 2 if drawing is done too */
 			wait_for_slowing_down_cpu ,      
@@ -73,16 +71,20 @@ extern "C"
 			real_framerate ,
 			/*! Level number */
 			level ,
-			/*! Player position x */
+			/*! position x */
 			x ,
-			/*! Player position y */
+			/*! position y */
 			y ,
-			/*! Player position z */
+			/*! position z */
 			z ,
-			/*! Player left attack trigger */
+			/*! left attack trigger */
 			left_attack ,
-			/*! Player left attack trigger */
-			right_attack ;
+			/*! left attack trigger */
+			right_attack ,
+			/*! left attack trigger */
+			left_attack_pos ,
+			/*! left attack trigger */
+			right_attack_pos ;
 			
 		/*! screen buffer */
 		BITMAP *scrbuf ;

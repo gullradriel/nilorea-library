@@ -1,11 +1,10 @@
-/**\file ex_n_str.c
+/**\file ex_nstr.c
  *  Nilorea Library n_network api test
  *\author Castagnier Mickael
  *\version 1.0
  *\date 26/05/2015
  */
 
-#include "nilorea/n_common.h"
 #include "nilorea/n_str.h"
 #include "nilorea/n_log.h"
 
@@ -63,4 +62,3 @@ int main( void )
 	
 	return TRUE ;
 }
-

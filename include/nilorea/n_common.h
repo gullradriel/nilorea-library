@@ -13,15 +13,15 @@ extern "C"
 {
 #endif
 
-	/**\defgroup COMMONS COMMONS: generally used headers, defines, timers, allocators,...
-	  \addtogroup COMMONS
-	  @{
-	  */
+    /**\defgroup COMMONS COMMONS: generally used headers, defines, timers, allocators,...
+      \addtogroup COMMONS
+      @{
+      */
 
-	/*! feature test macro */
+    /*! feature test macro */
 #define __EXTENSIONS__
 
-	/* common headers */
+    /* common headers */
 
 #include <errno.h>
 #include <stdio.h>
@@ -49,9 +49,9 @@ extern "C"
 #include <locale.h>
 #include <dlfcn.h>
 #include <libgen.h>
-	/*#include <sys/wait.h>
+    /*#include <sys/wait.h>
 #include <unistd.h> */
-	/*! FORCE_INLINE portable macro */
+    /*! FORCE_INLINE portable macro */
 #if defined( _MSC_VER )
 #define FORCE_INLINE    __forceinline
 #elif defined( __linux__ ) || defined( LINUX ) || defined ( __MINGW32__ )
@@ -60,19 +60,18 @@ extern "C"
 #define FORCE_INLINE __attribute__((always_inline))
 #endif
 
-	/* cross compability */
+    /* cross compability */
 #if defined( LINUX ) || defined( SOLARIS ) || defined( AIX )
-#include <fcntl.h>
-#include <signal.h>
+
 #include <sys/time.h>
 #ifndef NOALLEGRO
 #ifndef  ALLEGRO_ALREADY_INCLUDED
-	/*! guard for mutliple allegro inclusion. Not that allegro's header would fail, but there would be multiple FONT declaration.*/
+    /*! guard for mutliple allegro inclusion. Not that allegro's header would fail, but there would be multiple FONT declaration.*/
 #define ALLEGRO_ALREADY_INLUDED 
 #include <allegro.h>
 
-	/*! default font for our usage */
-	FONT *allegro_font;
+    /*! default font for our usage */
+    FONT *allegro_font;
 #endif
 #endif   
 #ifdef LINUX
@@ -80,28 +79,23 @@ extern "C"
 #include <pthread.h>
 #endif
 
-/* WINDOWS */  
-#elif defined(WINDOWS) 
+#elif defined(WINDOWS) /* WINDOWS */  
 
 #include <windows.h>
-
-#ifndef PATH_MAX
-#define PATH_MAX MAX_PATH
-#endif
 
 #include <time.h>
 #ifndef NOALLEGRO
 #ifndef  ALLEGRO_ALREADY_INCLUDED
-	/*! guard for mutliple allegro inclusion. Not that allegro's header would fail, but there would be multiple FONT declaration.*/
+    /*! guard for mutliple allegro inclusion. Not that allegro's header would fail, but there would be multiple FONT declaration.*/
 #define ALLEGRO_ALREADY_INLUDED 
 #include <allegro.h>
 #include <winalleg.h>
-	/*! default font for our usage */
-	FONT *allegro_font;
+    /*! default font for our usage */
+    FONT *allegro_font;
 #endif
 #endif
 
-	/*#define opendir __mingw_opendir*/
+    /*#define opendir __mingw_opendir*/
 
 #include <fcntl.h>
 
@@ -109,234 +103,225 @@ extern "C"
 #error NO TARGET DEFINED ! (WINDOWS,LINUX)
 #endif
 
-
-#include "n_log.h"
-
-	/*! define true */
+    /*! define true */
 #ifndef true
 #define true (1==1)
 #endif
 
-	/*! define TRUE */
+    /*! define TRUE */
 #ifndef TRUE
 #define TRUE true
 #endif
 
-	/*! define false */
+    /*! define false */
 #ifndef false
 #define false (1==0)
 #endif
 
-	/*! define FALSE */
+    /*! define FALSE */
 #ifndef FALSE
 #define FALSE false
 #endif
 
-	/*!  returned by N_STRLIST functions to tell the caller that the list is empty */
+    /*!  returned by N_STRLIST functions to tell the caller that the list is empty */
 #ifndef EMPTY
 #define EMPTY 2
 #endif
 
-	/*! String or "NULL" string for logging purposes */	
+    /*! String or "NULL" string for logging purposes */	
 #define _str( __PTR ) ((__PTR)?(__PTR):"NULL")
-	/*! String or " " string for config purposes */	
+    /*! String or " " string for config purposes */	
 #define _strw( __PTR ) ((__PTR)?(__PTR):" ")
-	/*! N_STR or "NULL" string for logging purposes */	
+    /*! N_STR or "NULL" string for logging purposes */	
 #define _nstr( __PTR ) ((__PTR&&__PTR->data)?(__PTR->data):"NULL")
-	/*! N_STR or NULL string for logging purposes */	
+    /*! N_STR or NULL string for logging purposes */	
 #define _nstrp( __PTR ) ((__PTR&&__PTR->data)?(__PTR->data):NULL)
 
-	/*! Malloc Handler to get errors and set to 0 */
+    /*! Malloc Handler to get errors and set to 0 */
 #define Malloc( __ptr , __struct , __size ) \
-	if ( !(  __ptr  = (  __struct  *)calloc(  __size  , sizeof(  __struct  ) ) ) )   \
-	{                                                                                 \
-		n_log( LOG_ERR , "( %s *)malloc( %s * sizeof( %d ) ) Error at line %d of %s \n", #__ptr , #__struct , __size , __LINE__ , __FILE__); \
-	} 
+    if ( !(  __ptr  = (  __struct  *)calloc(  __size  , sizeof(  __struct  ) ) ) )   \
+    {                                                                                 \
+        n_log( LOG_ERR , "( %s *)malloc( %s * sizeof( %d ) ) Error at line %d of %s \n", #__ptr , #__struct , __size , __LINE__ , __FILE__); \
+    } 
 
-	/*! Malloca Handler to get errors and set to 0 */
+    /*! Malloca Handler to get errors and set to 0 */
 #define Alloca( __ptr , __size ) \
-	__ptr = alloca( __size ); \
-	if( ! __ptr ) \
-	{ \
-		n_log( LOG_ERR , "%s=alloca( %d ) Error at line %d of %s \n", #__ptr , __size , __LINE__ , __FILE__); \
-	} \
-	else \
-	memset( __ptr , 0 , __size ); 
+    __ptr = alloca( __size ); \
+    if( ! __ptr ) \
+    { \
+        n_log( LOG_ERR , "%s=alloca( %d ) Error at line %d of %s \n", #__ptr , __size , __LINE__ , __FILE__); \
+    } \
+    else \
+    memset( __ptr , 0 , __size ); 
 
 
-	/*! Free Handler to get errors */
+    /*! Free Handler to get errors */
 #define Free( __ptr ) \
-	if (  __ptr  )\
-	{\
-		free(  __ptr  );\
-		__ptr  = NULL;\
-	}\
-	else\
-	{\
-		n_log( LOG_DEBUG , "Free( %s ) already done or NULL at line %d of %s \n", #__ptr , __LINE__ , __FILE__ );\
-	}
-	/*! Free Handler without log */
+    if (  __ptr  )\
+    {\
+        free(  __ptr  );\
+        __ptr  = NULL;\
+    }\
+    else\
+    {\
+        n_log( LOG_DEBUG , "Free( %s ) already done or NULL at line %d of %s \n", #__ptr , __LINE__ , __FILE__ );\
+    }
+    /*! Free Handler without log */
 #define FreeNoLog( __ptr )\
-	if (  __ptr  )\
-	{\
-		free(  __ptr  );\
-		__ptr  = NULL;\
-	}  		
+    if (  __ptr  )\
+    {\
+        free(  __ptr  );\
+        __ptr  = NULL;\
+    }  		
 
 
-	/*! Realloc Handler to get errors */
+    /*! Realloc Handler to get errors */
 #define Realloc( __ptr, __struct , __size )  \
-	if( !(  __ptr  = (  __struct  *)realloc(  __ptr , __size  * sizeof(  __struct  ) ) ) )\
-	{ \
-		n_log( LOG_ERR , "( %s *)malloc( %s * sizeof( %d ) ) Error at line %d of %s \n", #__ptr , #__struct , __size , __LINE__ , __FILE__);\
-		__ptr = NULL;\
-	} 
+    if( !(  __ptr  = (  __struct  *)realloc(  __ptr , __size  * sizeof(  __struct  ) ) ) )\
+    { \
+        n_log( LOG_ERR , "( %s *)malloc( %s * sizeof( %d ) ) Error at line %d of %s \n", #__ptr , #__struct , __size , __LINE__ , __FILE__);\
+        __ptr = NULL;\
+    } 
 
-	/*! Realloc + zero new memory zone Handler to get errors */
+    /*! Realloc + zero new memory zone Handler to get errors */
 #define Reallocz( __ptr, __struct , __old_size , __size )  \
-	if ( !(  __ptr  = (  __struct  *)realloc(  __ptr , __size  * sizeof(  __struct  ) ) ) )\
-	{\
-		n_log( LOG_ERR , "( %s *)malloc( %s * sizeof( %d ) ) Error at line %d of %s \n", #__ptr , #__struct , __size , __LINE__ , __FILE__);\
-		__ptr = NULL;\
-	}\
-	else\
-	{\
-		if( __size > __old_size )memset( ( __ptr + __old_size ) , 0 , __size - __old_size );\
-	}
+    if ( !(  __ptr  = (  __struct  *)realloc(  __ptr , __size  * sizeof(  __struct  ) ) ) )\
+    {\
+        n_log( LOG_ERR , "( %s *)malloc( %s * sizeof( %d ) ) Error at line %d of %s \n", #__ptr , #__struct , __size , __LINE__ , __FILE__);\
+        __ptr = NULL;\
+    }\
+    else\
+    {\
+        if( __size > __old_size )memset( ( __ptr + __old_size ) , 0 , __size - __old_size );\
+    }
 
-	/*! macro to assert things */
+    /*! macro to assert things */
 #define __n_assert( __ptr , __ret ) \
-	if( !(__ptr) ) \
-	{ \
-		n_log( LOG_DEBUG , "%s is NULL at line %d of %s" , #__ptr ,  __LINE__ , __FILE__ );\
-		__ret ; \
-	}
+    if( !(__ptr) ) \
+    { \
+        n_log( LOG_DEBUG , "%s is NULL at line %d of %s" , #__ptr ,  __LINE__ , __FILE__ );\
+        __ret ; \
+    }
 
-	/*! next odd helper */
+    /*! next odd helper */
 #define next_odd( __val ) ( (__val)%2 == 0 ) ? (__val) : ( __val + 1 )
 
-	/*! next odd helper */
+    /*! next odd helper */
 #define next_even( __val ) ( (__val)%2 == 0 ) ? (__val + 1) : ( __val )
 
-	/*! shortener for if( a cond b ) a = b  */
+    /*! shortener for if( a cond b ) a = b  */
 #define equal_if( __var_a , __cond , __var_b ) if( (__var_a) __cond (__var_b) ) __var_a = (__var_b)
 
 
-	/*! init error checking in a function */
+    /*! init error checking in a function */
 #define init_error_check() \
-	static int ___error__check_flag = FALSE ;
+    static int ___error__check_flag = FALSE ;
 
-	/*! error checker type if( !toto ) */
+    /*! error checker type if( !toto ) */
 #define ifnull if( ! 
 
-		/*! error checker type if( 0 != toto ) */
+        /*! error checker type if( 0 != toto ) */
 #define ifzero if( 0 == 
 
-	/*! error checker type if( toto == FALSE )  */
+    /*! error checker type if( toto == FALSE )  */
 #define iffalse if( FALSE == 
 
-	/*! check for errors */
+    /*! check for errors */
 #define checkerror() if( ___error__check_flag == TRUE ) \
-	{ n_log( LOG_ERR , "checkerror return false at line %d of %s" , __LINE__ , __FILE__ ); \
-	goto error ; \
-	}
+    { n_log( LOG_ERR , "checkerror return false at line %d of %s" , __LINE__ , __FILE__ ); \
+    goto error ; \
+    }
 
-	/*! close a ifwhatever block */
+    /*! close a ifwhatever block */
 #define endif ){ ___error__check_flag = TRUE ; n_log( LOG_ERR , "First err was at line %d of %s" , __LINE__ , __FILE__ );} 
 
-	/*! pop up errors if any */
+    /*! pop up errors if any */
 #define get_error() \
-	(___error__check_flag == TRUE) 	
+    (___error__check_flag == TRUE) 	
 
 #ifdef RWLOCK_DEBUG
-	/*! Macro to change log level to DEBUG if we are debugging RWLOCKS */
 #define RWLOCK_LOGLEVEL LOG_DEBUG
 #else
-	/*! Default log level for RWLOCKS */
 #define RWLOCK_LOGLEVEL LOG_NULL
 #endif
 
-	/*! Macro for initializing a rwlock */
+    /*! Macro for initializing a rwlock */
 #define init_lock( __rwlock_mutex ) \
-	n_log( RWLOCK_LOGLEVEL , "init_lock %s" , #__rwlock_mutex ); \
-	pthread_rwlock_init( &(__rwlock_mutex) , NULL )
-	/*! Macro for acquiring a read lock on a rwlock mutex */
+    n_log( RWLOCK_LOGLEVEL , "init_lock %s" , #__rwlock_mutex ); \
+    pthread_rwlock_init( &(__rwlock_mutex) , NULL )
+    /*! Macro for acquiring a read lock on a rwlock mutex */
 #define read_lock( __rwlock_mutex ) \
-	n_log( RWLOCK_LOGLEVEL , "read_lock %s" , #__rwlock_mutex ); \
-	pthread_rwlock_rdlock( &(__rwlock_mutex) )
-	/*! Macro for acquiring a write lock on a rwlock mutex */
+    n_log( RWLOCK_LOGLEVEL , "read_lock %s" , #__rwlock_mutex ); \
+    pthread_rwlock_rdlock( &(__rwlock_mutex) )
+    /*! Macro for acquiring a write lock on a rwlock mutex */
 #define write_lock( __rwlock_mutex ) \
-	n_log( RWLOCK_LOGLEVEL , "write_lock %s" , #__rwlock_mutex ); \
-	pthread_rwlock_wrlock( &(__rwlock_mutex) )
-	/*! Macro for releasing read/write lock a rwlock mutex */
+    n_log( RWLOCK_LOGLEVEL , "write_lock %s" , #__rwlock_mutex ); \
+    pthread_rwlock_wrlock( &(__rwlock_mutex) )
+    /*! Macro for releasing read/write lock a rwlock mutex */
 #define unlock( __rwlock_mutex ) \
-	n_log( RWLOCK_LOGLEVEL , "unlock %s" , #__rwlock_mutex ); \
-	pthread_rwlock_unlock( &(__rwlock_mutex) )
-	/*! Macro to destroy rwlock mutex */
+    n_log( RWLOCK_LOGLEVEL , "unlock %s" , #__rwlock_mutex ); \
+    pthread_rwlock_unlock( &(__rwlock_mutex) )
+    /*! Macro to destroy rwlock mutex */
 #define rw_lock_destroy( __rwlock_mutex ) \
-	n_log( RWLOCK_LOGLEVEL , "destroy lock %s" , #__rwlock_mutex ); \
-	pthread_rwlock_destroy( &(__rwlock_mutex) )
+    n_log( RWLOCK_LOGLEVEL , "destroy lock %s" , #__rwlock_mutex ); \
+    pthread_rwlock_destroy( &(__rwlock_mutex) )
 
 
 #if !defined( LINUX ) && !defined( SOLARIS )
-	/* typedefine for unsigned category for basic native types */
-	/*! shortcut for unsigned int*/
-	typedef unsigned int uint;
-	/*! shortcut for unsigned long*/
-	typedef unsigned long ulong;
-	/*! shortcut for unsigned short*/
-	typedef unsigned short ushort;
-	/*! shortcut for unsigned char*/
-	typedef unsigned char uchar;
+    /* typedefine for unsigned category for basic native types */
+    /*! shortcut for unsigned int*/
+    typedef unsigned int uint;
+    /*! shortcut for unsigned long*/
+    typedef unsigned long ulong;
+    /*! shortcut for unsigned short*/
+    typedef unsigned short ushort;
+    /*! shortcut for unsigned char*/
+    typedef unsigned char uchar;
 #endif
 
 
-	/*! Flag for SET something , passing as a function parameter */
+    /*! Flag for SET something , passing as a function parameter */
 #define SET        1234
-	/*! Flag for GET something , passing as a function parameter */
+    /*! Flag for GET something , passing as a function parameter */
 #define GET        4321
-	/*! Default APP_STATUS Value */
+    /*! Default APP_STATUS Value */
 #define DEFAULT    1000
-	/*! Value of the state of an application who is running */
+    /*! Value of the state of an application who is running */
 #define RUNNING    1001
-	/*! Value of the state of an application who want to stop his activity */
+    /*! Value of the state of an application who want to stop his activity */
 #define STOPWANTED 1002
-	/*! Value of the state of an application who is stopped */
+    /*! Value of the state of an application who is stopped */
 #define STOPPED    1003
-	/*! Value of the state of an application who is paused */
+    /*! Value of the state of an application who is paused */
 #define PAUSED     1004
 
-	/*! Initialize the random sequence with time */
+    /*! Initialize the random sequence with time */
 #define randomize() { srand((unsigned)time(NULL)); rand(); }
 
 #ifndef MIN
-	/*! define MIN macro */
+    /*! define MIN macro */
 #define MIN(a,b) (((a)<(b))?(a):(b))
 #endif
 #ifndef MAX
-	/*! define MIN macro */
+    /*! define MIN macro */
 #define MAX(a,b) (((a)>(b))?(a):(b))
 #endif
 
-	/* get running program current directory */
-	char *get_prog_dir( void );
-	/* get running program name */
-	char *get_prog_name( void );
-	
+
+
+    /* get running program current directory */
+    char *get_prog_dir( void );
+
+
 #ifndef NOALLEGRO
-	/* Fill a keyboard buffer */
-	void get_keyboard( char *keybuf , int *cur , int min , int max );
+    /* Fill a keyboard buffer */
+    void get_keyboard( char *keybuf , int *cur , int min , int max );
 #include "lexmenu.h"	
 #endif
-	/* test if a file exist */
-	int file_exist( const char *filename );
 
-#ifndef WINDOWS
-	/* daemonize func */
-	int n_daemonize(void);
-#endif
+    int file_exist( const char *filename );
 
-	/*@}*/
+    /*@}*/
 
 #ifdef __cplusplus
 }

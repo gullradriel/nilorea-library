@@ -1,14 +1,10 @@
 dir_name=
 RM=
-
 CC=gcc
 EXT=
 VPATH=../src/
 
-CFLAGS=-DNOALLEGRO -DNETWORK_IPV4
-
-ifeq ($(OS),Windows_NT)
-    CFLAGS+=-DWINDOWS -DNOSYSJRNL \
+CFLAGS=-DNOALLEGRO -DNOSYSJRNL -I..\include \
 	   -g -W -Wall -std=gnu99 -ggdb3 -O0 \
 	   -Wno-missing-braces \
 	   -Wextra \
@@ -31,45 +27,48 @@ ifeq ($(OS),Windows_NT)
 	   -Wold-style-definition \
 	   -Werror \
 	   -fno-omit-frame-pointer \
-	   -ffloat-store #	   	   -Wshadow 
-	CLIBS= -Wl,-Bstatic -lpthread -Wl,-Bdynamic -lws2_32 -L../. 
+	   -ffloat-store
+#	   	   -Wshadow \
+CLIBS=
+
+ifeq ($(OS),Windows_NT)
+ #   CCFLAGS += -D WIN32
+ #   ifeq ($(PROCESSOR_ARCHITEW6432),AMD64)
+ #       CCFLAGS += -D AMD64
+ #   else
+ #       ifeq ($(PROCESSOR_ARCHITECTURE),AMD64)
+ #           CCFLAGS += -D AMD64
+ #       endif
+ #       ifeq ($(PROCESSOR_ARCHITECTURE),x86)
+ #           CCFLAGS += -D IA32
+ #       endif
+ #  endif
+	CCFLAGS+= -D WIN32 
+	CFLAGS+= -DWINDOWS
+	CLIBS= -Wl,-Bstatic -lpthread -Wl,-Bdynamic -lws2_32 -L../.
 	dir_name=$(shell date +%Y_%m_%d_%HH%MM%SS)
 	RM=del /Q
 	EXT=.exe
 else
-    UNAME_S := $(shell uname -s)
+#    ifeq ($(UNAME_S),Darwin)
+#        CCFLAGS += -D OSX
+#    endif
+#    UNAME_P := $(shell uname -p)
+#    ifeq ($(UNAME_P),x86_64)
+#        CCFLAGS += -D AMD64
+#    endif
+#    ifneq ($(filter %86,$(UNAME_P)),)
+#        CCFLAGS += -D IA32
+#    endif
+#    ifneq ($(filter arm%,$(UNAME_P)),)
+#        CCFLAGS += -D ARM
+#    endif
+	UNAME_S := $(shell uname -s)
     ifeq ($(UNAME_S),Linux)
-        CFLAGS+= -DLINUX -DNOEVENTLOG -D_GNU_SOURCE -I../include/ -I/home/ace/include/ \
-        -g -W -Wall -std=gnu99 -ggdb3 -O0 \
-        -Wno-missing-braces \
-        -Wextra \
-        -Wno-missing-field-initializers \
-        -Wswitch-default \
-        -Wswitch-enum \
-        -Wcast-align \
-        -Wpointer-arith \
-        -Wbad-function-cast \
-        -Wstrict-overflow=5 \
-        -Wstrict-prototypes \
-        -Winline \
-        -Wundef \
-        -Wnested-externs \
-        -Wcast-qual \
-        -Wunreachable-code \
-        -Wlogical-op \
-        -Wstrict-aliasing=2 \
-        -Wredundant-decls \
-        -Wold-style-definition \
-        -Werror \
-        -fno-omit-frame-pointer \
-        -ffloat-store #	   	   -Wshadow 
-    endif
-    ifeq ($(UNAME_S),SunOS)
-        CC=cc
-CFLAGS+= -DSOLARIS -g -v -xc99 -DSOLARIS -DNOEVENTLOG -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -D_GNU_SOURCE -I ../include/ -L../
-        CLIBS=-lm -lsocket -lnsl
+        CFLAGS+= -D LINUX
     endif
 	dir_name=$(shell date +%Y_%m_%d_%HH%MM%SS)
+	CLIBS= -Wl,-Bstatic -lpthread -Wl,-Bdynamic -lws2_32
 	RM=rm -f
 	EXT=
 endif
@@ -100,7 +99,8 @@ ex_monolith$(EXT): ex_monolith.o
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ -lnilorea $(CLIBS) 
 	
 clean:
-	$(RM) -f *.o
+	$(RM) *.o
+	$(RM) $(TARGET)
 
 backup:
 	mkdir -p "VERSION/$(dir_name)/examples"

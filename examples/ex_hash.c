@@ -1,4 +1,4 @@
-/**\file ex_n_network.c
+/**\file ex_hash.c
  *  Nilorea Library n_network api test
  *\author Castagnier Mickael
  *\version 1.0
@@ -6,11 +6,9 @@
  */
 
 
-#include "nilorea/n_common.h"
 #include "nilorea/n_log.h"
-#include "nilorea/n_str.h"
 #include "nilorea/n_list.h"
-#include "nilorea/n_hash.h"
+#include "nilorea/n_str.h"
 
 #define LIST_LIMIT   10
 #define NB_TEST_ELEM 15

@@ -1,3 +1,10 @@
+/**\file ex_exceptions.c
+ *  Nilorea Library n_network api test
+ *\author Castagnier Mickael
+ *\version 1.0
+ *\date 24/10/2018
+ */
+
 #include "nilorea/n_log.h"
 #include "nilorea/n_exceptions.h"
 

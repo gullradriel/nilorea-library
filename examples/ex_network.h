@@ -1,4 +1,4 @@
-/**\file ex_n_network.c
+/**\file ex_network.h
  *  Nilorea Library n_network api test
  *\author Castagnier Mickael
  *\version 1.0
@@ -6,12 +6,6 @@
  */
 
 #define NETMSG_DATA 1
-
-#include "nilorea/n_time.h"
-#include "nilorea/n_network.h"
-#include "nilorea/n_network_msg.h"
-#include "nilorea/n_thread_pool.h"
-#include <getopt.h>
 
 #include <sys/time.h>
 

@@ -1,9 +1,18 @@
-/**\file ex_n_network.c
+/**\file ex_network.c
  *  Nilorea Library n_network api test
  *\author Castagnier Mickael
  *\version 1.0
  *\date 26/05/2015
  */
+
+
+#include "nilorea/n_network.h"
+#include "nilorea/n_network_msg.h"
+#include "nilorea/n_thread_pool.h"
+
+
+#include <getopt.h>
+
 #include "ex_network.h"
 
 #define SERVER 0
@@ -14,48 +23,62 @@ int NB_ATTEMPTS=  2 ;
 NETWORK *server = NULL , /*! Network for server mode, accepting incomming */
 		*netw = NULL   ; /*! Network for managing conenctions */
 
-int mode = -1 ;
+int mode = -1 , ip_version = NETWORK_IPALL ;
 
 static pthread_t netw_thr ;
 
 void usage(void)
 {
 	fprintf( stderr , "     -v version\n"
-			"     -V log level: NOLOG, LOG_INFO, LOG_NOTICE, LOG_ERR, LOG_DEBUG\n"
-			"     -h help\n"
-			"     -s serveur name/ip (client mode)\n"
-			"     -p port\n" );
+					  "     -V log level: NOLOG, LOG_INFO, LOG_NOTICE, LOG_ERR, LOG_DEBUG\n"
+					  "     -h help\n"
+		              "     -a serveur address name/ip to bind (server mode)\n"
+		              "     -s serveur address name/ip to connect (client mode)\n"
+		              "     -p port\n"
+		              "     -i [v4,v6] ip version (default support both ipv4 and ipv6 )\n" );
 }
 
-
-
-void process_args( int argc , char **argv , char **server , char **port , int *nb )
+void process_args( int argc , char **argv , char **address , char **server , char **port , int *nb , int *ip_version )
 {
 	int getoptret = 0 , 
 		log_level = LOG_ERR;  /* default log level */
-
-	set_log_level( log_level );
 
 	/* Arguments optionnels */
 	/* -v version
 	 * -V log level
 	 * -h help 
-	 * -s serveur name/ip
+	 * -a address name/ip to bind to (server mode, NULL if not specified)
+	 * -s serveur address name/ip to connect (client mode)
 	 * -p port
+	 * -i v4 ip version (default support both ipv4 and ipv6 )
+	 * -i v6 ip version (   "       "     "    "    "   "   )    
 	 */
-
 	if( argc == 1 )
 	{
 		fprintf( stderr ,  "No arguments given, help:\n" );
 		usage();
 		exit( 1 );
 	}
-
-
-	while( ( getoptret = getopt( argc, argv, "hvs:V:p:n:" ) ) != EOF) 
+	while( ( getoptret = getopt( argc, argv, "hvs:V:p:n:i:a:" ) ) != EOF) 
 	{
 		switch( getoptret )
 		{
+			case 'i' :
+				if( !strcmp( "v4" , optarg ) )
+				{
+					(*ip_version) = NETWORK_IPV4 ;
+					n_log( LOG_NOTICE , "IPV4 selected" );
+				}
+				else if( !strcmp( "v6" , optarg ) )
+				{
+					(*ip_version) = NETWORK_IPV6 ;
+					n_log( LOG_NOTICE , "IPV6 selected" );
+				}
+				else 	
+				{
+					n_log( LOG_NOTICE , "IPV4/6 selected" );
+				}
+				break;
 			case 'v' :
 				fprintf( stderr , "Date de compilation : %s a %s.\n" , __DATE__ , __TIME__ );
 				exit( 1 );
@@ -101,6 +124,9 @@ void process_args( int argc , char **argv , char **server , char **port , int *n
 			case 's' :
 				(*server) = strdup( optarg ); 
 				break ;
+			case 'a' :
+				(*address) = strdup( optarg ); 
+				break ;
 			case 'n' :
 				(*nb) = atoi( optarg ); 
 				break ;
@@ -139,11 +165,14 @@ void process_args( int argc , char **argv , char **server , char **port , int *n
 
 int main(int argc, char **argv) {
 
+	char *addr = NULL ;
 	char *srv = NULL ;
 	char *port = NULL ;
+	
+	set_log_level( LOG_DEBUG );
 
 	/* processing args and set log_level */
-	process_args( argc, argv , &srv , &port ,&NB_ATTEMPTS );
+	process_args( argc, argv , &addr , &srv , &port ,&NB_ATTEMPTS , &ip_version );
 
 	if( !port )
 	{
@@ -151,6 +180,11 @@ int main(int argc, char **argv) {
 		exit( -1 );
 	}
 
+	if( srv && addr )
+	{
+		n_log( LOG_ERR , "Please specify only one of the following options: -a (server, addr to bind to) or -s (server on which to connect to)" ); 
+	}
+	
 	if( srv )
 	{
 		n_log( LOG_INFO , "Client mode, connecting to %s:%s" , srv , port );
@@ -176,13 +210,13 @@ int main(int argc, char **argv) {
 	{
 
 		/* create listening network */
-		if( netw_make_listening( &server , port , 10 ) == FALSE ) 
+		if( netw_make_listening( &server , addr , port , 10 , ip_version ) == FALSE )
 		{
 			n_log( LOG_ERR , "Fatal error with network initialization" );
 			exit( -1 );
 		}
 		int it = 0 ;
-		for( it = 0 ; it < (NB_ATTEMPTS/2) ; it ++ )
+		for( it = 0 ; it < NB_ATTEMPTS/2 ; it ++ )
 		{
 			/* get any accepted client on a network */
 			if ( !( netw = netw_accept_from( server ) ) )
@@ -203,12 +237,12 @@ int main(int argc, char **argv) {
 
 		}
 		/* testing with thread pool */
-		int error = 0 , DONE = 0 ;
+		int error = 0 ;
 		THREAD_POOL *thread_pool = new_thread_pool( 2 , 128 );
 		while( it < NB_ATTEMPTS )
 		{
 			/* get any accepted client on a network */
-			if( ( netw = netw_accept_from_ex( server , 0 , 0 , 0 , 0 , 0 , -1 , &error ) ) ) 
+			if ( ( netw = netw_accept_from_ex( server , 0 , 0 , 0 , 0 , 0 , -1 , &error ) ) )
 			{
 				/* someone is connected. starting some dialog */
 				if( add_threaded_process( thread_pool , &manage_client , (void *)netw , DIRECT_PROC) == FALSE )
@@ -235,13 +269,13 @@ int main(int argc, char **argv) {
 	{
 		for( int it = 0 ; it < NB_ATTEMPTS ; it ++ )
 		{
-			n_log( LOG_NOTICE , "Attempt %d/%d: Connected to %s:%s" , it+1 , NB_ATTEMPTS , srv , port );
-			if( netw_connect( &netw , srv , port ) != TRUE ) 
+			if( netw_connect( &netw , srv , port , ip_version ) != TRUE )
 			{
 				/* there were some error when trying to connect */
 				n_log( LOG_ERR , "Unable to connect to %s:%s" , srv , port );
 				exit( 1 );
 			}
+			n_log( LOG_NOTICE , "Attempt %d: Connected to %s:%s" , it , srv , port );
 
 			/* backgrounding network send / recv */
 			netw_start_thr_engine( netw );
@@ -260,7 +294,7 @@ int main(int argc, char **argv) {
 			if( tmpstr )
 			{
 				get_net_datas( tmpstr , &hostname , &recved_data );
-				n_log( LOG_NOTICE , "Got %s from %s" , recved_data ->data , hostname ->data );
+				n_log( LOG_NOTICE , "DATAS: %s - %s" , recved_data ->data , hostname ->data );
 				free_nstr( &tmpstr );
 				free_nstr( &recved_data );
 				free_nstr( &hostname );

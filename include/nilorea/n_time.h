@@ -41,11 +41,7 @@ extern "C"
 #endif
     } N_TIME;
 
-#ifdef WINDOWS
     void u_sleep( __int64 usec);
-#else
-	void u_sleep( unsigned int usec);
-#endif
 
     /* for the 'press a key to continue' */
     void PAUSE( void );

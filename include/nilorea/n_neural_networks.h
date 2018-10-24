@@ -354,6 +354,8 @@ void main()
    
   FinalizeApplication(&Net);
 }
+
+/*
 Simulator Output for the Time-Series Forecasting Application
 
 NMSE is 0.879 on Training Set and 0.834 on Test Set - saving Weights ...
@@ -417,4 +419,4 @@ Year    Sunspots    Open-Loop Prediction    Closed-Loop Prediction
 1977       0.215                   0.151                     0.193
 1978       0.489                   0.316                     0.274
 1979       0.754                   0.622                     0.373
-
+*/

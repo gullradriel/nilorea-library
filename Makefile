@@ -2,15 +2,24 @@
 #       Makefile pour la librairie Nilorea
 #
 RM=
-
-CC=gcc
+CC=
 EXT=
-VPATH=../src/
+VPATH=src/
 
-CFLAGS=-DNOALLEGRO 
+LIBNAME= libnilorea.a
+LIBNAME_D= libnilorea_d.a
+
+#SRC= n_common.c n_time.c n_log.c n_exceptions.c n_str.c n_list.c n_hash.c n_thread_pool.c n_network.c n_network_msg.c n_3d.c n_iso_engine.c lexmenu.c n_games.c n_particles.c
+SRC= n_common.c n_log.c n_exceptions.c n_str.c n_list.c n_hash.c n_time.c n_thread_pool.c n_network.c n_network_msg.c
+HDR=$(SRC:%.c=%.h) nilorea.h 
+OBJECTS=
+
+#CFLAGS += -D_GNU_SOURCE -Iinclude/ `pkg-config --cflags --libs allegro-5 allegro_acodec-5 allegro_audio-5 allegro_color-5 allegro_dialog-5 allegro_font-5 allegro_image-5 allegro_main-5 allegro_memfile-5 allegro_physfs-5 allegro_primitives-5 allegro_ttf-5`
+CFLAGS= -DNOALLEGRO -D_GNU_SOURCE
 
 ifeq ($(OS),Windows_NT)
-    CFLAGS+=-DWINDOWS -D_GNU_SOURCE -DNOSYSJRNL -g -W -Wall -std=gnu99 -ggdb3 -O0 -I.\include \
+    CFLAGS+=-DWINDOWS -DNOSYSJRNL -I.\include \
+        -g -W -Wall -std=gnu99 -ggdb3 -O0 \
 	   -Wno-missing-braces \
 	   -Wextra \
 	   -Wno-missing-field-initializers \
@@ -35,11 +44,15 @@ ifeq ($(OS),Windows_NT)
 	   -ffloat-store #	   	   -Wshadow 
 		CLIBS= -Wl,-Bstatic -lpthread -Wl,-Bdynamic -lws2_32 -L../.
 	RM=del /Q
+	CC=gcc
 	EXT=.exe
+	OBJECTS=$(SRC:%.c=obj\\%.o) 
+obj\\%.o: src\\%.c
+	$(CC) $(CFLAGS) -c $< -o $@
 else
 	UNAME_S := $(shell uname -s)
     ifeq ($(UNAME_S),Linux)
-        CFLAGS+= -DLINUX -DNOEVENTLOG -D_GNU_SOURCE -I./include/ -I/home/ace/include/ \
+        CFLAGS+= -DLINUX -DNOEVENTLOG -I./include/ -I/home/ace/include/ \
         -g -W -Wall -std=gnu99 -ggdb3 -O0 \
         -Wno-missing-braces \
         -Wextra \
@@ -66,34 +79,15 @@ else
     endif
     ifeq ($(UNAME_S),SunOS)
         CC=cc
-        CFLAGS+= -DSOLARIS -g -v -xc99 -DSOLARIS -DDNOEVENTLOG -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -D_GNU_SOURCE -I ./include/ -I/Home/aceb/include/
+        CFLAGS+= -DSOLARIS -DDNOEVENTLOG -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -g -v -xc99 -I ./include/ -I/Home/aceb/include/
     endif
 	RM=rm -f
+	CC=gcc
 	EXT=
-endif
-
-
-VPATH=src/
-#CFLAGS += -D_GNU_SOURCE -DNOSYSJRNL -DNOALLEGRO -DLINUX -W -Wall -std=gnu99 -g -Iinclude/ `pkg-config --cflags --libs allegro-5 allegro_acodec-5 allegro_audio-5 allegro_color-5 allegro_dialog-5 allegro_font-5 allegro_image-5 allegro_main-5 allegro_memfile-5 allegro_physfs-5 allegro_primitives-5 allegro_ttf-5`
-#CFLAGS += -D_GNU_SOURCE -DNOSYSJRNL -DNOALLEGRO -W -Wall -std=gnu99 -g -Iinclude/ -DWINDOWS
-
-
-LIBNAME= libnilorea.a
-LIBNAME_D= libnilorea_d.a
-
-COPY=cp
-RM=rm
-
-#SRC= n_common.c n_time.c n_log.c n_exceptions.c n_str.c n_list.c n_hash.c n_thread_pool.c n_network.c n_network_msg.c n_3d.c n_iso_engine.c lexmenu.c n_games.c n_particles.c
-SRC= n_common.c n_log.c n_exceptions.c n_str.c n_list.c n_hash.c n_time.c n_thread_pool.c n_network.c n_network_msg.c
-
-
-OBJECTS=$(SRC:%.c=obj/%.o) 
-
-HDR=$(SRC:%.c=%.h) nilorea.h 
-
+	OBJECTS=$(SRC:%.c=obj/%.o) 
 obj/%.o: src/%.c
 	$(CC) $(CFLAGS) -c $< -o $@
+endif
 
 main: $(OBJECTS)
 	$(AR) -r $(LIBNAME) $(OBJECTS)

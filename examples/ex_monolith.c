@@ -1,4 +1,4 @@
-/**\file ex_n_str.c
+/**\file ex_monolith.c
  *  Nilorea Library n_network api test
  *\author Castagnier Mickael
  *\version 1.0
@@ -57,6 +57,7 @@ int main(void)
 	
 	printf( "str:%s\n" , _nstr( nstr3 ) );
 	
+	
+	
 	return TRUE ;
 }
-

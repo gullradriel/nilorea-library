@@ -156,5 +156,4 @@ void PropagateLayer(NET* Net, LAYER* Lower, LAYER* Upper)
   }
 }
 
-}
 

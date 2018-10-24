@@ -23,7 +23,6 @@ extern "C"
 
 #include "n_str.h"
 #include "n_list.h"
-#include "n_network.h"
 
    /*! Network Message is identification request: (int)type , (int)id , (N_STR *)name , (N_STR *)password */
 #define NETMSG_IDENT_REQUEST 0
