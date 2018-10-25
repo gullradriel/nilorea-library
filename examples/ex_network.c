@@ -226,11 +226,16 @@ int main(int argc, char **argv) {
 			else
 			{
 				/* someone is connected. starting some dialog */
-				if( pthread_create ( &netw_thr , NULL, manage_client , (void *)netw ) != 0 )
+				int error = 0 ;
+				int pthread_error = 0 ;
+				errno = 0 ;
+				pthread_error = pthread_create ( &netw_thr , NULL, manage_client , (void *)netw );
+				error = errno ;
+				if( pthread_error != 0 )
 				{
-					n_log( LOG_ERR , "Error creating client management thread" );
+					n_log( LOG_ERR , "Error creating client management pthread:%d , error: %s" , pthread_error , strerror( error ) );
 					exit( -1 );
-				}
+				}  
 			}
 
 			pthread_join( netw_thr , NULL );
@@ -310,7 +315,9 @@ int main(int argc, char **argv) {
 		}
 	}
 
+	netw_close( &server );
 	FreeNoLog( srv );
+	FreeNoLog( addr );
 	FreeNoLog( port )
 
 		exit( 0 );

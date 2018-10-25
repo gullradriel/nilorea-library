@@ -1,4 +1,4 @@
-/**\file n_neural_networks.h
+/**\file n_neural_networks.c
  *  Neural network declarations
  *\author Castagnier Mickael
  *\version 1.0

@@ -45,8 +45,8 @@ else
     endif
     ifeq ($(UNAME_S),SunOS)
         CC=cc
-        CFLAGS+= -DSOLARIS -DDNOEVENTLOG -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -g -v -xc99 -I ../include/ -I/Home/aceb/include/ 
-        CLIBS=-lm -lsocket -lnsl
+        CFLAGS+= -DSOLARIS -DDNOEVENTLOG -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -g -v -xc99 -I ../include/ -I/Home/aceb/include/  -mt
+        CLIBS=-lm -lsocket -lnsl -lpthread -lrt
     endif
 endif
 

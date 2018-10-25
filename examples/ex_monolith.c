@@ -57,7 +57,9 @@ int main(void)
 	
 	printf( "str:%s\n" , _nstr( nstr3 ) );
 	
-	
+	free_nstr( &nstr );	
+	free_nstr( &nstr2 );	
+	free_nstr( &nstr3 );	
 	
 	return TRUE ;
 }

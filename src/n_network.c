@@ -562,7 +562,7 @@ NETWORK *netw_new( int send_list_limit , int recv_list_limit )
 } /* netw_new() */
 
 
-/*!\fn int netw_set_timers( NETWORk *netw , int send_queue_wait , int send_queue_consecutive_wait )
+/*!\fn int netw_set_timers( NETWORK *netw , int send_queue_wait , int send_queue_consecutive_wait , int pause_wait )
  * \brief set the timers used when activating threaded network
  * \param netw Network to tune
  * \param send_queue_wait Time between each send_queue check if last call wasn't sending anything
@@ -715,7 +715,7 @@ int netw_setsockopt( SOCKET sock , int disable_naggle , int sock_send_buf , int 
             return FALSE ;
         }
 
-        /* Do not close until all data is sent/reiceived, for 3 seconds */
+        /* Do not close until all data is sent/reiceived, for 3 seconds  */
         struct linger linger = { 0 , 0 };
         linger.l_onoff = 1 ;
         linger.l_linger = 3 ;
@@ -723,14 +723,14 @@ int netw_setsockopt( SOCKET sock , int disable_naggle , int sock_send_buf , int 
         {
             n_log( LOG_ERR , "Error from setsockopt(SO_LINGER). errno: %s" , strerror( errno ) );
             return FALSE ;
-        }
+        } 
 
         return TRUE ;
     } /* netw_setsockopt( ... ) */
 
 
 
-    /*!\fn int netw_connect_ex(NETWORK **netw , char *host , char *port, int disable_naggle , int sock_send_buf , int sock_recv_buf , int send_list_limit , int recv_list_limit , ip_version )
+    /*!\fn int netw_connect_ex(NETWORK **netw , char *host , char *port, int disable_naggle , int sock_send_buf , int sock_recv_buf , int send_list_limit , int recv_list_limit , int ip_version )
      *\brief Use this to connect a NETWORK to any listening one
      *\param netw a NETWORK *object
      *\param host Host or IP to connect to
@@ -1022,6 +1022,7 @@ int netw_setsockopt( SOCKET sock , int disable_naggle , int sock_send_buf , int 
                 }
             }
             closesocket( (*netw) -> link . sock );
+			n_log( LOG_DEBUG , "socket %d closed" , (*netw) -> link . sock );
         }
 
         FreeNoLog( (*netw) -> link . ip );
@@ -1115,6 +1116,10 @@ int netw_setsockopt( SOCKET sock , int disable_naggle , int sock_send_buf , int 
                 n_log( LOG_ERR , "Error while trying to make a socket: %s"  ,strerror( errno ) );
                 continue ;
             }
+			if( netw_setsockopt( (*netw) -> link . sock , 0 , 0 , 0 ) != TRUE )
+        	{
+            	n_log( LOG_ERR , "Some socket options could not be set on %d" , (*netw) -> link . sock );   
+	        }
             if( bind( (*netw) -> link . sock , rp -> ai_addr , rp -> ai_addrlen ) == 0 )
             {
 				char *ip = NULL ;
@@ -1138,11 +1143,7 @@ int netw_setsockopt( SOCKET sock , int disable_naggle , int sock_send_buf , int 
             netw_close( &(*netw) );
             return FALSE ;
         }
-		if( netw_setsockopt( (*netw) -> link . sock , 0 , 0 , 0 ) != TRUE )
-        {
-            n_log( LOG_ERR , "Some socket options could not be set on %d" , (*netw) -> link . sock );   
-        }
-
+	
         /* nb_pending connections*/
         ( *netw ) -> nb_pending = nbpending ;
         listen( ( *netw ) -> link . sock, ( *netw ) -> nb_pending );
@@ -1322,9 +1323,12 @@ int netw_setsockopt( SOCKET sock , int disable_naggle , int sock_send_buf , int 
         return netw_accept_from_ex( from , 0 , 0 , 0 , 0 , 0 , 0 , 0 );
     } /* network_accept_from( ... ) */
 
-    /*!\fn NETWORK *netw_accept_nonblock_from( NETWORK *from )
+
+
+    /*!\fn NETWORK *netw_accept_nonblock_from( NETWORK *from , int blocking )
      *\brief make a normal blocking 'accept' . Network 'from' must be allocated with netw_make_listening.
      *\param from The network from which to obtaion the connection
+     *\param blocking set to -1 to make it non blocking, to 0 for blocking, else it's the select timeout value in mseconds.
      *\return NULL 
      */
     NETWORK *netw_accept_nonblock_from( NETWORK *from , int blocking )
@@ -1388,7 +1392,7 @@ int netw_setsockopt( SOCKET sock , int disable_naggle , int sock_send_buf , int 
 
 
 
-    /*!\fn N_STR *netw_wait_msg( NETWORK *netw , int refresh , int timeout )
+    /*!\fn N_STR *netw_wait_msg( NETWORK *netw , long refresh , long timeout )
      *\brief Wait a message from aimed NETWORK. Recheck each usec until a valid
      *\param netw The link on which we wait a message
      *\param refresh The time in usec between each check until there is a message
@@ -1502,16 +1506,21 @@ int netw_setsockopt( SOCKET sock , int disable_naggle , int sock_send_buf , int 
         do
         {
             netw_get_state( netw , &state , NULL );
-            if( state&NETW_EXIT_ASKED )
+			if( state&NETW_EXITED )
+			{
+				DONE = 100 ;
+			}
+			else if( state&NETW_EXIT_ASKED )
             {
                 DONE = 100 ;
-                n_log( LOG_DEBUG , "%d Sending Quit !" , netw -> link . sock );
                 /* sending state */
                 nboctet = htonl( NETW_EXIT_ASKED );
                 memcpy( nboct , &nboctet , sizeof( NSTRBYTE ) );
+                n_log( LOG_DEBUG , "%d Sending Quit !" , netw -> link . sock );
                 net_status = send_data( netw -> link . sock , nboct , sizeof( NSTRBYTE ) );
                 if( net_status < 0 )
                     DONE = 4 ;
+                n_log( LOG_DEBUG , "%d Quit sent!" , netw -> link . sock );
             }
             else
             {
@@ -1624,13 +1633,14 @@ int netw_setsockopt( SOCKET sock , int disable_naggle , int sock_send_buf , int 
         {
             netw_get_state( netw , &state , NULL );
 
-            if( state&NETW_EXIT_ASKED )
+            if( state&NETW_EXIT_ASKED || state&NETW_EXITED )
             {
                 DONE = 100;
             }
             else
             {
-                if( !DONE && !(state&NETW_EXIT_ASKED) && !(state&NETW_EXITED) ) 
+                /*if( !DONE && !(state&NETW_EXIT_ASKED) && !(state&NETW_EXITED) ) */
+                if( !DONE ) 
                 {   
                     if( !(state&NETW_PAUSE) )
                     {

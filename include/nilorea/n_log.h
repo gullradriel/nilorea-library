@@ -22,11 +22,6 @@ extern "C"
 #include <pthread.h>
 #include "n_common.h"
 
-
-#if !defined(NOSYSJRNL) && ( defined( LINUX ) || defined( SOLARIS ) )
-#include <sysjrnl.h>
-#endif
-
    /*! no log output */
 #define LOG_NULL -1
    /*! internal, logging to file */
