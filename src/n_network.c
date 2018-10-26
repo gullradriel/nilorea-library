@@ -804,8 +804,6 @@ int netw_setsockopt( SOCKET sock , int disable_naggle , int sock_send_buf , int 
         struct addrinfo *rp = NULL ;
         for( rp = (*netw) -> link . rhost ; rp != NULL ; rp = rp -> ai_next )
         {
-            struct sockaddr_in *addr = NULL ;
-            addr = (struct sockaddr_in *)rp->ai_addr;
             int sock = socket( rp -> ai_family , rp -> ai_socktype , rp->ai_protocol );
             error = errno ;
             if( sock == -1 )
