@@ -196,14 +196,14 @@ CONFIG_FILE *load_config_file( char *filename , int *errors )
 				if( strlen( trim_nocopy( split_result[ 0 ] ) ) == 0 )
 				{
 					free_split_result( &split_result );
-					n_log( LOG_ERR , "couldn't find entry name at line %d of %s (string:%s)" , line_number , filename , (char *)buffer[ start ] ); 
+					n_log( LOG_ERR , "couldn't find entry name at line %d of %s (string:%s)" , line_number , filename , buffer[ start ] ); 
 					(*errors)++;
 					continue ;
 				}
 				if( strlen( trim_nocopy( split_result[ 1 ] ) ) == 0 )
 				{
 					free_split_result( &split_result );
-					n_log( LOG_ERR , "couldn't find value for entry at line %d of %s (string:%s)" , line_number , filename ,  (char *)buffer[ start ] ); 
+					n_log( LOG_ERR , "couldn't find value for entry at line %d of %s (string:%s)" , line_number , filename , buffer[ start ] ); 
 					(*errors)++;
 					continue ;
 				}
