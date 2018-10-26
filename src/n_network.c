@@ -1318,7 +1318,7 @@ int netw_setsockopt( SOCKET sock , int disable_naggle , int sock_send_buf , int 
      */
     NETWORK *netw_accept_from( NETWORK *from )
     {
-        return netw_accept_from_ex( from , 0 , 0 , 0 , 0 , 0 , 0 , 0 );
+        return netw_accept_from_ex( from , 0 , 0 , 0 , 0 , 0 , 0 , NULL );
     } /* network_accept_from( ... ) */
 
 
@@ -1331,7 +1331,7 @@ int netw_setsockopt( SOCKET sock , int disable_naggle , int sock_send_buf , int 
      */
     NETWORK *netw_accept_nonblock_from( NETWORK *from , int blocking )
     {
-        return netw_accept_from_ex( from , 0 , 0 , 0 , 0 , 0 , blocking , 0 );
+        return netw_accept_from_ex( from , 0 , 0 , 0 , 0 , 0 , blocking , NULL );
     } /* network_accept_from( ... ) */
 
 
