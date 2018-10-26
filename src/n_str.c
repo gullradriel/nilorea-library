@@ -96,6 +96,9 @@ char *trim_nocopy(char *s)
 {
 	__n_assert( s , return NULL );
 
+	if( strlen( s ) == 0 )
+		return s ;
+
 	char *start = s;
 
 	/* skip spaces at start */

@@ -48,6 +48,7 @@ CONFIG_FILE *load_config_file( char *filename , int *errors )
 	if( !in )
 	{
 		n_log( LOG_ERR , "Unable to open %s: %s" , _str( filename ) , strerror( error ) );
+		(*errors)++;
 		return NULL ;
 	}
 	Malloc( cfg_file , CONFIG_FILE , 1 );
@@ -67,10 +68,46 @@ CONFIG_FILE *load_config_file( char *filename , int *errors )
 	if( !cfg_file -> filename )
 	{
 		n_log( LOG_ERR , "couldn't strdup( %s )" , _str( filename ) );
+		(*errors)++;
 		Free( cfg_file );
 		fclose( in );
 		return NULL ;
 	}
+	/* adding default section */
+	CONFIG_FILE_SECTION *default_section = NULL ;
+	Malloc( default_section  , CONFIG_FILE_SECTION , 1 );
+	if( !default_section )
+	{
+		n_log( LOG_ERR , "couldn't allocate default_section" );
+		(*errors)++;
+		Free( cfg_file );
+		fclose( in );
+		return NULL ;
+	}
+
+	default_section -> section_name = strdup( "__DEFAULT__" );
+	if( !default_section -> section_name )
+	{
+		n_log( LOG_ERR , "couldn't allocate default_section name" );
+		(*errors)++;
+		Free( cfg_file );
+		Free( default_section );
+		fclose( in );
+		return NULL ;
+	}
+
+	default_section -> entries = new_ht( CONFIG_SECTION_HASH_TABLE_LEN );
+	if( !default_section -> entries )
+	{
+		n_log( LOG_ERR , "error creating hash table of size %d for default_section" , CONFIG_SECTION_HASH_TABLE_LEN );
+		(*errors)++;
+		Free( default_section -> section_name );
+		Free( default_section );
+		Free( cfg_file );
+		fclose( in );
+		return NULL ;
+	}
+	list_push( cfg_file -> sections , default_section , &destroy_config_file_section );
 
 	int line_number = 0 ;
 	while( fgets( buffer , MAX_CONFIG_LINE_LEN , in ) )
@@ -83,20 +120,14 @@ CONFIG_FILE *load_config_file( char *filename , int *errors )
 		bufptr = trim_nocopy( buffer );
 		if( strlen( bufptr ) == 0 )
 		{
-			n_log( LOG_DEBUG , "empty config line" );
 			continue ;
 		}
-
-		n_log( LOG_DEBUG , "RAWCFG:'%s'" , bufptr ); 
 
 		switch( bufptr[ 0 ] )
 		{
 			/* comment */
 			case '#' :
-				n_log( LOG_DEBUG , "comment" );
-				continue ;
 			case ';' :
-				n_log( LOG_DEBUG , "comment" );
 				continue ;
 				/* new section */
 			case '[' :
@@ -105,16 +136,17 @@ CONFIG_FILE *load_config_file( char *filename , int *errors )
 				if( skipu( bufptr , ']' , &end , 1 ) != TRUE )
 				{
 					n_log( LOG_ERR , "coulnd't find end of section at line %d of %s (string:%s)" , line_number , filename , buffer ); 
+					(*errors)++;
 					continue ;
 				}
 				/* keep only the name */
 				bufptr ++ ;
 				bufptr[ end - 1 ] = '\0' ;
 				bufptr = trim_nocopy( bufptr );
-				n_log( LOG_DEBUG , "%s" , bufptr );
 				if( strlen( bufptr ) == 0 )
 				{
 					n_log( LOG_ERR , "section without name at line %d" , line_number );
+					(*errors)++;
 					continue ;
 				}
 
@@ -125,6 +157,7 @@ CONFIG_FILE *load_config_file( char *filename , int *errors )
 				if( !section -> section_name )
 				{
 					n_log( LOG_ERR , "couldn't duplicate %s" , bufptr );
+					(*errors)++;
 					continue ;
 				}
 
@@ -132,9 +165,9 @@ CONFIG_FILE *load_config_file( char *filename , int *errors )
 				if( !section -> entries )
 				{
 					n_log( LOG_ERR , "error creating [%s] hash table of size %d" , bufptr , CONFIG_SECTION_HASH_TABLE_LEN );
+					(*errors)++;
 					continue ;
 				}
-				n_log( LOG_DEBUG , "[%s] created" , section -> section_name );
 				list_push( cfg_file -> sections , section , &destroy_config_file_section );
 				continue ;
 
@@ -142,30 +175,96 @@ CONFIG_FILE *load_config_file( char *filename , int *errors )
 			default:
 				if( !section )
 				{
-					n_log( LOG_ERR , "entry without section at line %d of %s (string:%s)" , line_number , filename , bufptr ); 
-					continue ;
+					section = default_section ;
+					n_log( LOG_DEBUG , "No section, setting __DEFAULT__ starting line %d of %s (string:%s)" , line_number , filename , bufptr ); 
 				}
+
 				split_result = split( bufptr , "=" , 0 );
 				if( !split_result )
 				{
 					n_log( LOG_ERR , "couldn't find entry separator '=' at line %d of %s (string:%s)" , line_number , filename , bufptr ); 
+					(*errors)++;
+					continue ;
+				}
+				if( split_count( split_result ) < 2 )
+				{
+					n_log( LOG_ERR , "Invalid split count at line %d of %s (string:%s, count:%d)" , line_number , filename , bufptr , split_count( split_result ) ); 
+					(*errors)++;
+					free_split_result( &split_result );
 					continue ;
 				}
 				if( strlen( trim_nocopy( split_result[ 0 ] ) ) == 0 )
 				{
 					free_split_result( &split_result );
 					n_log( LOG_ERR , "couldn't find entry name at line %d of %s (string:%s)" , line_number , filename , (char *)buffer[ start ] ); 
+					(*errors)++;
 					continue ;
 				}
-
 				if( strlen( trim_nocopy( split_result[ 1 ] ) ) == 0 )
 				{
 					free_split_result( &split_result );
 					n_log( LOG_ERR , "couldn't find value for entry at line %d of %s (string:%s)" , line_number , filename ,  (char *)buffer[ start ] ); 
+					(*errors)++;
 					continue ;
 				}
-				ht_put_ptr( section -> entries , trim_nocopy( split_result[ 0 ] ) , strdup( trim_nocopy( split_result[ 1 ] ) ) , free ); 
-				n_log( LOG_DEBUG , "[%s]%s=%s" , section -> section_name , trim_nocopy( split_result[ 0 ] ) , trim_nocopy( split_result[ 1 ] ) );
+				int it = strlen( trim_nocopy( split_result[ 1 ] ) ) ;
+				char delimiter = '\0' ;
+				while( it >= 0 )
+				{
+					if( split_result[ 1 ][ it ] == ';' || split_result[ 1 ][ it ] == '#' ) 
+					{
+						split_result[ 1 ][ it ] = '\0' ;
+						it -- ;
+						continue ;
+					}
+					if( split_result[ 1 ][ it ] == '"'  || split_result[ 1 ][ it ] == '\'' )
+					{
+						delimiter = split_result[ 1 ][ it ] ;
+						split_result[ 1 ][ it ] = '\0' ;
+						break ;
+					}
+					it-- ;
+				}
+				it = 0 ;
+				while( split_result[ 1 ][ it ] != '\0' )
+				{
+					if( split_result[ 1 ][ it ] == ';' || split_result[ 1 ][ it ] == '#' ) 
+					{
+						split_result[ 1 ][ it ] = '\0' ;
+						it ++ ;
+						continue ;
+					}
+					if( delimiter != '\0' && split_result[ 1 ][ it ] == delimiter )
+					{
+						split_result[ 1 ][ it ] = ' ' ;
+						break ;
+					}
+					it ++ ;
+				}
+				/* New test if key is empty */
+				if( strlen( trim_nocopy( split_result[ 1 ] ) ) == 0 )
+				{
+					free_split_result( &split_result );
+					n_log( LOG_ERR , "Value is empty at line %d of %s (string:%s)" , line_number , filename ,  buffer ); 
+					(*errors)++;
+					continue ;
+				}
+
+				char *result = NULL ;
+				N_STR *entry_key = NULL ;
+				int nb_entry_in_sections = 0 ;
+				while( TRUE )
+				{
+					nstrprintf( entry_key , "%s%d" , trim_nocopy( split_result[ 0 ] ) , nb_entry_in_sections );
+					if( ht_get_ptr( section -> entries , _nstr( entry_key ) , (void **)&result )  == FALSE )
+					{
+						break ;
+					}
+					nb_entry_in_sections ++ ;
+					free_nstr( &entry_key );
+				}
+				ht_put_ptr( section -> entries , _nstr( entry_key ) , strdup( trim_nocopy( split_result[ 1 ] ) ) , free ); 
+				free_nstr( &entry_key );
 				free_split_result( &split_result );
 				continue ;
 		}
@@ -173,10 +272,9 @@ CONFIG_FILE *load_config_file( char *filename , int *errors )
 	if( !feof( in ) )
 	{
 		n_log( LOG_ERR , "couldn't read EOF for %s" , filename );
+		(*errors)++;
 	}
 	fclose( in );
-
-	n_log( LOG_DEBUG , "config_file %s returned %p" , filename , cfg_file );
 
 	return cfg_file ;
 
@@ -188,7 +286,7 @@ CONFIG_FILE *load_config_file( char *filename , int *errors )
  *\brief Get the number of config file with section_name
  *\param cfg_file Config file to process 
  *\param section_name name of sections to search 
- *\return The number of named sections
+ *\return The number of named sections or a negative value
  */
 int get_nb_config_file_sections( CONFIG_FILE *cfg_file , char *section_name )
 {
@@ -209,49 +307,102 @@ int get_nb_config_file_sections( CONFIG_FILE *cfg_file , char *section_name )
 } /* get_nb_config_file_sections(...) */
 
 
-/*!\fn char *get_config_section_value( CONFIG_FILE *cfg_file , char *section_name , int position , char *entry )
+
+/*!\fn int get_nb_config_file_sections_entries( CONFIG_FILE *cfg_file , char *section_name ,  int section_position , char *entry )
+ *\brief Get the number of config file with section_name
+ *\param cfg_file Config file to process 
+ *\param section_name name of sections to search 
+ *\param section_position position of the section if there are multiples same name sections 
+ *\param entry name of entry to retrieve 
+ *\return The number of named sections entries or a negative value
+ */
+int get_nb_config_file_sections_entries( CONFIG_FILE *cfg_file , char *section_name , int section_position , char *entry )
+{
+	__n_assert( cfg_file , return -1 );
+	__n_assert( cfg_file -> sections , return -2 );
+	__n_assert( section_name , return -3 );
+	__n_assert( entry , return -4 );
+
+	int nb_sections = 0 ;
+	int nb_entry_in_sections = 0 ;
+	list_foreach( listnode , cfg_file -> sections )
+	{
+		CONFIG_FILE_SECTION *section = (CONFIG_FILE_SECTION *)listnode -> ptr ;
+		if( !strcmp( section -> section_name , section_name ) )
+		{
+			if( nb_sections == section_position )
+			{
+				char *result = NULL ;
+				N_STR *entry_key = NULL ;
+				while( TRUE )
+				{
+					nstrprintf( entry_key , "%s%d" , entry , nb_entry_in_sections );
+					if( ht_get_ptr( section -> entries , _nstr( entry_key ) , (void **)&result )  == FALSE )
+					{
+						free_nstr( &entry_key );
+						break ;
+					}
+					nb_entry_in_sections ++ ;
+					free_nstr( &entry_key );
+				}
+				break ;
+			}
+			nb_sections ++ ;
+		}
+	}
+	return nb_entry_in_sections ;
+} /* get_nb_config_file_sections_entries(...) */
+
+
+
+/*!\fn char *get_config_section_value( CONFIG_FILE *cfg_file , char *section_name , int section_position , char *entry , int entry_position )
  *\brief Function to parse sections and get entries values
  *\param cfg_file name of config file
  *\param section_name name of section
- *\param position section number
+ *\param section_position section number
  *\param entry entry name
+ *\param entry_position entry number
  *\return the value of the named entry in section[ position ]
  */
-char *get_config_section_value( CONFIG_FILE *cfg_file , char *section_name , int position , char *entry )
+char *get_config_section_value( CONFIG_FILE *cfg_file , char *section_name , int section_position , char *entry , int entry_position )
 {
 	__n_assert( cfg_file , return NULL );
 	__n_assert( cfg_file -> sections , return NULL );
 	__n_assert( section_name , return NULL );
 	__n_assert( entry , return NULL );
 
-	if( position >= cfg_file -> sections -> nb_items )
+	if( section_position >= cfg_file -> sections -> nb_items )
 	{
-		n_log( LOG_DEBUG , "position (%d) is higher than the number of item in list (%d)" , position ,  cfg_file -> sections -> nb_items );
+		n_log( LOG_DEBUG , "section_position (%d) is higher than the number of item in list (%d)" , section_position ,  cfg_file -> sections -> nb_items );
 		return NULL ;
 	}
 
-	int section_position = 0 ;
+	int section_position_it = 0 ;
 	HASH_TABLE *entries = NULL ;
 	list_foreach( listnode , cfg_file -> sections )
 	{
 		CONFIG_FILE_SECTION *section = (CONFIG_FILE_SECTION *)listnode -> ptr ;
 		if( !strcmp( section -> section_name , section_name ) )
 		{
-			if( section_position == position )
+			if( section_position_it == section_position )
 			{
 				entries = section -> entries ;
 				break ;
 			}
-			section_position ++ ;
+			section_position_it ++ ;
 		}
 	}
 
 	char *result = NULL ;
-	if( ht_get_ptr( entries , entry , (void **)&result )  == FALSE )
+	N_STR *entry_key = NULL ;
+	nstrprintf( entry_key , "%s%d" , entry , entry_position );
+	if( ht_get_ptr( entries , _nstr( entry_key ) , (void **)&result )  == FALSE )
 	{
-		n_log( LOG_DEBUG , "ht_get_ptr( %p , trim_nocopy( %s ) , (void **)&result ) returned FALSE !" , entries , entry );
+		/* n_log( LOG_DEBUG , "ht_get_ptr( %p , trim_nocopy( %s ) , (void **)&result ) returned FALSE !" , entries , _nstr( entry_key ) ); */
+		free_nstr( &entry_key );
 		return NULL ;
 	}
+	free_nstr( &entry_key );
 
 	return result ;
 } /* get_config_section_value */

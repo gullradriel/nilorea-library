@@ -307,7 +307,9 @@ extern "C"
 #define MAX(a,b) (((a)>(b))?(a):(b))
 #endif
 
-
+#ifndef WINDOWS
+	int n_daemonize( void );
+#endif
 
     /* get running program current directory */
     char *get_prog_dir( void );

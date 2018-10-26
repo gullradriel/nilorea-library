@@ -50,7 +50,7 @@ else
     endif
 endif
 
-TARGET=ex_list$(EXT) ex_nstr$(EXT) ex_exceptions$(EXT) ex_hash$(EXT) ex_network$(EXT) ex_monolith$(EXT)
+TARGET=ex_list$(EXT) ex_nstr$(EXT) ex_exceptions$(EXT) ex_hash$(EXT) ex_network$(EXT) ex_monolith$(EXT) ex_configfile$(EXT)
 
 %.o : %.c
 	$(CC) $(CFLAGS) -o $@ -c $<
@@ -74,6 +74,9 @@ ex_network$(EXT): n_log.o n_list.o n_str.o n_network_msg.o n_time.o n_thread_poo
 
 ex_monolith$(EXT): ex_monolith.o
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ -L.. -Bstatic -lnilorea -Bdynamic $(CLIBS) 
+
+ex_configfile$(EXT): n_log.o n_list.o n_str.o n_hash.o n_config_file.o ex_configfile.o
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(CLIBS)
 	
 clean:
 	$(RM) *.o

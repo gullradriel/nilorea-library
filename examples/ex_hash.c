@@ -6,123 +6,128 @@
  */
 
 
+#include "nilorea/n_str.h"
 #include "nilorea/n_log.h"
 #include "nilorea/n_list.h"
-#include "nilorea/n_str.h"
+#include "nilorea/n_hash.h"
 
-#define LIST_LIMIT   10
-#define NB_TEST_ELEM 15
+#define NB_ELEMENTS 16
 
-void print_list_info( LIST *list )
+
+typedef struct DATA
 {
-   __n_assert( list , return ); 
-   n_log( LOG_NOTICE , "List: %p, %d max_elements , %d elements" , list , list -> nb_max_items , list -> nb_items );
-}
+	N_STR *rnd_str ;
+	int value ;
+} DATA ;
 
-int nstrcmp( const void *a , const void *b )
+void destroy_data( void *ptr )
 {
-   const N_STR *s1 = a;
-   const N_STR *s2 = b;
-
-   if( !s1 || !s1 -> data )
-      return 1 ;
-   if( !s2 || !s2 -> data )
-      return -1 ;
-
-   return strcmp( s1 -> data , s2 -> data );
+	DATA *data = (DATA *)ptr ;
+	free_nstr( &data -> rnd_str );
+	Free( data );
 }
-
 
 int main( void )
 {
 
-   LIST *limited_list = new_generic_list( LIST_LIMIT );
-   LIST *unlimited_list = new_generic_list( 0 );
+	set_log_level( LOG_DEBUG );
 
-   __n_assert( limited_list , return FALSE );
-   __n_assert( unlimited_list , return FALSE );
+	HASH_TABLE *htable = new_ht( NB_ELEMENTS );
+	LIST *keys_list = new_generic_list( NB_ELEMENTS + 1 );
+	DATA *data = NULL ;
+	char *str = NULL ;
 
-   N_STR *nstr = NULL ;
-   
-   set_log_level( LOG_INFO );
-   
+	n_log( LOG_INFO , "Filling HashTable with %d random elements" , NB_ELEMENTS );
+	for( int it = 0 ; it < NB_ELEMENTS ; it ++ )
+	{
+		N_STR *nkey = NULL ;
+		int randomizator = rand()%5;
+		nstrprintf( nkey , "key%d_%d" , it , randomizator );
+		switch( randomizator )
+		{
 
-   n_log( LOG_NOTICE , "Limited list: adding %d element in limited element (%d) list, empty the list at the end" , NB_TEST_ELEM , LIST_LIMIT );
-   for( int it = 0 ; it < NB_TEST_ELEM ; it ++ )
-   {
-      nstrprintf( nstr , "Nombre aleatoire : %d" , rand()%1000 );
-      if( nstr )
-      {
-         int func = rand()%4 ;
-         switch( func )
-         {
-            case 0 :
-               n_log( LOG_NOTICE , "list_push" );
-               if( list_push( limited_list, nstr , &free_nstr_ptr ) == FALSE )
-                  free_nstr( &nstr );
-               break;
-            case 1 :
-               n_log( LOG_NOTICE , "list_unshift" );
-               if( list_unshift( limited_list, nstr , &free_nstr_ptr ) == FALSE )
-                  free_nstr( &nstr );
-               break;
-            case 2 :
-               n_log( LOG_NOTICE , "list_push_sorted" );
-               if( list_push_sorted( limited_list, nstr , nstrcmp , &free_nstr_ptr ) == FALSE )
-                  free_nstr( &nstr );
-               break;
-            case 3 :
-               n_log( LOG_NOTICE , "list_unshift" );
-               if( list_unshift_sorted( limited_list, nstr , nstrcmp , &free_nstr_ptr ) == FALSE )
-                  free_nstr( &nstr );
-               break;
 			default:
-			   n_log( LOG_ERR , "should never happen: no func %d !" , func );
-			   break ;
-         }
-         nstr = NULL ;
-         print_list_info( limited_list );
-      }
-   }
-   list_empty( limited_list );
-   n_log( LOG_NOTICE , "Limited list: adding %d element in limited element (%d) list, empty the list at the end" , NB_TEST_ELEM , LIST_LIMIT );
-   for( int it = 0 ; it < NB_TEST_ELEM ; it ++ )
-   {
-      nstrprintf( nstr , "Nombre aleatoire : %d" , rand()%1000 );
-      if( nstr )
-      {
-         int func = rand()%4 ;
-         switch( func )
-         {
-            case 0 :
-               n_log( LOG_NOTICE , "list_push" );
-               if( list_push( limited_list, nstr , free_nstr_ptr ) == FALSE )
-                  free_nstr( &nstr );
-               break;
-            case 1 :
-               n_log( LOG_NOTICE , "list_unshift" );
-               if( list_unshift( limited_list, nstr , free_nstr_ptr ) == FALSE )
-                  free_nstr( &nstr );
-               break;
-            case 2 :
-               n_log( LOG_NOTICE , "list_push_sorted" );
-               if( list_push_sorted( limited_list, nstr , nstrcmp , free_nstr_ptr ) == FALSE )
-                  free_nstr( &nstr );
-               break;
-            case 3 :
-               n_log( LOG_NOTICE , "list_unshift" );
-               if( list_unshift_sorted( limited_list, nstr , nstrcmp , free_nstr_ptr ) == FALSE )
-                  free_nstr( &nstr );
-               break;
+			case 0:
+				ht_put_int( htable , _nstr( nkey ) , 666 );
+				n_log( LOG_INFO , "Put int 666 with key %s" , _nstr( nkey ) );
+				break;
+			case 1:
+				ht_put_double( htable , _nstr( nkey ) , 3.14 );
+				n_log( LOG_INFO , "Put double 3.14 with key %s" , _nstr( nkey ) );
+				break;
+			case 2:
+				Malloc( data , DATA , 1 );
+				data -> rnd_str = NULL ;
+				nstrprintf( data -> rnd_str , "%s%d" , _nstr( nkey ) , rand()%10 );
+				data -> value = 7 ; 
+				ht_put_ptr( htable , _nstr( nkey ) , data , &destroy_data );
+				n_log( LOG_INFO , "Put ptr rnd_str %s value %d with key %s" , data -> rnd_str , data -> value , _nstr( nkey ) );
+				break;
+			case 3:
+				Malloc( str , char , 64 );
+				sprintf( str , "%s%d" , _nstr( nkey ) , rand()%10 );
+				ht_put_string( htable , _nstr( nkey ) , str );
+				n_log( LOG_INFO , "Put string %s key %s" , str , _nstr( nkey ) );
+				Free( str );
+				break;
+		}
+		/* asving key for ulterior use */
+		list_push( keys_list , nkey , free_nstr_ptr );
+	}
+	
+
+	n_log( LOG_INFO , "Reading hash table with saved keys" );
+	list_foreach( node , keys_list )
+	{
+		N_STR *nkey = (N_STR *)node -> ptr ;
+		HASH_NODE *htnode = ht_get_node( htable , _nstr( nkey ) );
+		switch( htnode -> type )
+		{
+			case HASH_INT:
+				n_log( LOG_INFO , "Get int %d with key %s" , htnode -> data . ival ,  _nstr( nkey ) );
+				break ;
+			case HASH_DOUBLE:
+				n_log( LOG_INFO , "Get double %g with key %s" , htnode -> data . fval ,  _nstr( nkey ) );
+				break ;
+			case HASH_PTR:
+				n_log( LOG_INFO , "Get rnd_str %s value %d with key %s" , ((DATA *)htnode -> data . ptr)->rnd_str ,  ((DATA *)htnode -> data . ptr)->value , _nstr( nkey ) );
+				break ;
+			case HASH_STRING:
+				n_log( LOG_INFO , "Get string %s with key %s" , htnode -> data . string , _nstr( nkey ) );
+				break ;
 			default:
-			   n_log( LOG_ERR , "should never happen: no func %d !" , func );
-			   break ;
-         }
-         nstr = NULL ;
-         print_list_info( limited_list );
-      }
-   }
-   list_destroy( &limited_list );
-   list_destroy( &unlimited_list );
+				n_log( LOG_INFO , "Get unknwow node key %s" , _nstr( nkey ) );
+				break ;
+		}
+	}
+
+	n_log( LOG_INFO , "Reading hash table with ht_foreach" );
+	ht_foreach( node , htable )
+	{
+		HASH_NODE *htnode = (HASH_NODE *)node -> ptr ;
+		switch( htnode -> type )
+		{
+			case HASH_INT:
+				n_log( LOG_INFO , "Get int %d with key %s" , htnode -> data . ival , htnode -> key );
+				break ;
+			case HASH_DOUBLE:
+				n_log( LOG_INFO , "Get double %g with key %s" , htnode -> data . fval , htnode -> key );
+				break ;
+			case HASH_PTR:
+				n_log( LOG_INFO , "Get rnd_str %s value %d with key %s" , ((DATA *)htnode -> data . ptr)->rnd_str ,  ((DATA *)htnode -> data . ptr)->value ,  htnode -> key );
+				break ;
+			case HASH_STRING:
+				n_log( LOG_INFO , "Get string %s with key %s" , htnode -> data . string , htnode -> key );
+				break ;
+			default:
+				n_log( LOG_INFO , "Get unknwow node key %s" ,  htnode -> key );
+				break ;
+		}
+	}
+
+	list_destroy( &keys_list );
+	destroy_ht( &htable );
+	exit( 0 );
 
 } /* END_OF_MAIN */
+

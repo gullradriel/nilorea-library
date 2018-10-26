@@ -20,38 +20,40 @@ extern "C"
 #define MAX_CONFIG_LINE_LEN 1024
 #define CONFIG_SECTION_HASH_TABLE_LEN 16
 
-   /**\defgroup CONFIGFILE CONFIGFILE: classic config file loading/saving 
-     \addtogroup CONFIGFILE
-     @{
-     */
-   
-   /*! Structure of a config section */
-   typedef struct CONFIG_FILE_SECTION
-   {
-      char *section_name ;
-      HASH_TABLE *entries ;
-   } CONFIG_FILE_SECTION ;
+	/**\defgroup CONFIGFILE CONFIGFILE: classic config file loading/saving 
+	  \addtogroup CONFIGFILE
+	  @{
+	  */
+
+	/*! Structure of a config section */
+	typedef struct CONFIG_FILE_SECTION
+	{
+		char *section_name ;
+		HASH_TABLE *entries ;
+	} CONFIG_FILE_SECTION ;
 
 
-   /*! Structure of a config file */
-   typedef struct CONFIG_FILE
-   {
-      char *filename ;
-      LIST *sections ;
-   } CONFIG_FILE ;
+	/*! Structure of a config file */
+	typedef struct CONFIG_FILE
+	{
+		char *filename ;
+		LIST *sections ;
+	} CONFIG_FILE ;
 
-   /* load a config from a file */
-   CONFIG_FILE *load_config_file( char *filename );
-   /* write file from config */
-   int write_config_file( CONFIG_FILE *cfg_file , char *filename );
-   /* get a loaded config value */
-   /*int get_cfg_value( CONFIG_FILE *cfg_file , char *section , char *entry );*/
-   /* put/update a config value */ 
-   /* int put_cfg_value( CONFIG_FILE *cfg_file , char *section , char *entry , char *val ); */
-   /* destroy a laoded config */
-   int destroy_config_file( CONFIG_FILE *cfg_file );
+	/* load a config from a file */
+	CONFIG_FILE *load_config_file( char *filename , int *errors);
+	/* write file from config */
+	int write_config_file( CONFIG_FILE *cfg_file , char *filename );
+	/* get a loaded config value */
+	char *get_config_section_value( CONFIG_FILE *cfg_file , char *section_name , int section_position , char *entry , int entry_position );
+	/* get the number of section for section name */
+	int get_nb_config_file_sections( CONFIG_FILE *cfg_file , char *section_name );
+	/* get the number of entries for section_name/entry */
+	int get_nb_config_file_sections_entries( CONFIG_FILE *cfg_file , char *section_name , int section_position , char *entry );
+	/* destroy a loaded config */
+	int destroy_config_file( CONFIG_FILE **cfg_file );
 
-   /*@}*/
+	/*@}*/
 
 #ifdef __cplusplus
 }

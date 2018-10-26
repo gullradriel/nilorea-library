@@ -500,7 +500,7 @@ int ht_put_ptr( HASH_TABLE *table , char *key , void  *val , void (*destructor)(
  *\brief put a null terminated char *string with given key in the targeted hash table
  *\param table Targeted hash table
  *\param key Associated value's key
- *\param val string value to put
+ *\param val string value to put (will be strdup'ed)
  *\return TRUE or FALSE
  */
 int ht_put_string( HASH_TABLE *table , char *key , char  *val )
