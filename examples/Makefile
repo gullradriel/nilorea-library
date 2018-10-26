@@ -7,8 +7,8 @@ CC=gcc
 CFLAGS=-DNOALLEGRO
 
 ifeq ($(OS),Windows_NT)
-	CCFLAGS+= -DWIN32 -DWINDOWS -DNOSYSJRNL 
-	CLIBS= -Wl,-Bstatic -lpthread -Wl,-Bdynamic -lws2_32 -L../.
+	CFLAGS+= -DWIN32 -DWINDOWS -DNOSYSJRNL -I../include
+	CLIBS= -Wl,-Bstatic -lpthread -Wl,-Bdynamic -lws2_32  -L../. 
 	RM=del /Q
 	EXT=.exe
 else
@@ -17,7 +17,7 @@ else
 	CC=gcc
 	EXT=
     ifeq ($(UNAME_S),Linux)
-        CFLAGS+= -DLINUX -DNOEVENTLOG -I./include/ -I/home/ace/include/ \
+        CFLAGS+= -DLINUX -DNOEVENTLOG -I../include \
         -g -W -Wall -std=gnu99 -ggdb3 -O0 \
         -Wno-missing-braces \
         -Wextra \
@@ -45,8 +45,8 @@ else
     endif
     ifeq ($(UNAME_S),SunOS)
         CC=cc
-        CFLAGS+= -DSOLARIS -DDNOEVENTLOG -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -g -v -xc99 -I ../include/ -I/Home/aceb/include/  -mt
-        CLIBS=-lm -lsocket -lnsl -lpthread -lrt
+        CFLAGS+= -DSOLARIS -DDNOEVENTLOG -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -g -v -xc99 -I ../include/ -mt
+        CLIBS=-lm -lsocket -lnsl -lpthread -lrt -L.. 
     endif
 endif
 
