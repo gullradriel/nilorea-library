@@ -315,10 +315,9 @@ int main(int argc, char **argv) {
 		}
 	}
 
-	netw_close( &server );
 	FreeNoLog( srv );
 	FreeNoLog( addr );
 	FreeNoLog( port )
 
-		exit( 0 );
+	exit( 0 );
 } /* END_OF_MAIN() */
