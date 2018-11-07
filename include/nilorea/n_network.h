@@ -246,6 +246,7 @@ extern "C"
    int netw_connect( NETWORK **netw , char *host , char *port , int ip_version );
    /* Closing */
    int netw_close( NETWORK **netw );
+   int netw_wait_close( NETWORK **netw );
    /* Stop a NETWORK connection sending and receing thread */
    int netw_stop_thr_engine( NETWORK *netw );
    /* Listening network */

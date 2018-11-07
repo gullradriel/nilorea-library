@@ -160,9 +160,8 @@ void* manage_client( void *ptr )
 
    netw_stop_thr_engine( netw );
    n_log( LOG_NOTICE , "manage_client stopped for netw %d" , netw -> link . sock );
-   netw_close( &netw );
-
-   /* pthread_exit( NULL ); */
+   netw_wait_close( &netw );
+   n_log( LOG_NOTICE , "network close" );
 
       return NULL;
 

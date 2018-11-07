@@ -267,7 +267,7 @@ int main(int argc, char **argv) {
 		wait_for_threaded_pool( thread_pool , 50000 );
 		n_log( LOG_NOTICE , "Destroying thread_pool..." );
 		destroy_threaded_pool( &thread_pool , 50000 );
-		n_log( LOG_NOTICE , "Closing server" );
+		n_log( LOG_NOTICE , "Close waiting server" );
 		netw_close( &server );
 	}
 	else if( mode == CLIENT )
@@ -311,6 +311,7 @@ int main(int argc, char **argv) {
 
 			netw_stop_thr_engine( netw );
 			n_log( LOG_NOTICE , "Closing client" );
+			u_sleep( 1000000 );
 			netw_close( &netw );
 		}
 	}

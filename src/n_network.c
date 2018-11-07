@@ -719,16 +719,6 @@ int netw_setsockopt( SOCKET sock , int disable_naggle , int sock_send_buf , int 
 	}
 #endif
 
-	/* Do not close until all data is sent/reiceived, for 3 seconds  */
-	struct linger linger = { 0 , 0 };
-	linger.l_onoff = 1 ;
-	linger.l_linger = 3 ;
-	if ( setsockopt( sock , SOL_SOCKET, SO_LINGER , (const char *)&linger , sizeof( linger ) ) == -1 )
-	{
-		n_log( LOG_ERR , "Error from setsockopt(SO_LINGER). errno: %s" , strerror( errno ) );
-		return FALSE ;
-	} 
-
 	return TRUE ;
 } /* netw_setsockopt( ... ) */
 
@@ -1005,24 +995,11 @@ int netw_close( NETWORK **netw )
 	{
 		netw_stop_thr_engine( (*netw ) ); 
 	}
+
 	/*closing connection*/
 	/* Now with end of send fix */
 	if( (*netw) -> link . sock != INVALID_SOCKET )
 	{
-		shutdown( (*netw) -> link . sock , SHUT_WR );
-		int res = 0 ;
-		char buffer[ 4096 ] = "" ;
-		for( ;; )
-		{
-			res = read( (*netw) -> link . sock , buffer , 4096 );
-			if( !res )
-				break;
-			if( res < 0 )
-			{
-				/*n_log( LOG_ERR , "read returned an error when closing socket %d: %s" , (*netw) -> link . sock , strerror( errno ) );*/
-				break ;
-			}
-		}
 		closesocket( (*netw) -> link . sock );
 		n_log( LOG_DEBUG , "socket %d closed" , (*netw) -> link . sock );
 	}
@@ -1045,6 +1022,46 @@ int netw_close( NETWORK **netw )
 	return TRUE;
 } /* netw_close(...)*/
 
+
+
+/*!\fn netw_wait_close( NETWORK **netw )
+ *\brief Closing a specified Network, destroy queues, free the structure
+ *\param netw A NETWORK *network to close
+ *\return TRUE on success , FALSE on failure
+ */
+int netw_wait_close( NETWORK **netw )
+{
+	int state = 0 , thr_engine_status = 0 ;
+	__n_assert( (*netw) , return FALSE );
+
+	netw_get_state( (*netw) , &state , &thr_engine_status );
+	if( thr_engine_status == NETW_THR_ENGINE_STARTED )
+	{
+		netw_stop_thr_engine( (*netw ) ); 
+	}
+
+	/* wait for close fix */
+	if( (*netw) -> link . sock != INVALID_SOCKET )
+	{
+		shutdown( (*netw) -> link . sock , SHUT_WR );
+		int res = 0 ;
+		char buffer[ 4096 ] = "" ;
+		for( ;; )
+		{
+			res = recv( (*netw) -> link . sock , buffer , 4096 , NETFLAGS );
+			if( !res )
+				break;
+			if( res < 0 )
+			{
+				n_log( LOG_ERR , "read returned an error when closing socket %d: %s" , (*netw) -> link . sock , strerror( errno ) );
+				break ;
+			}
+		}
+	}
+	
+	return netw_close( &(*netw) );
+	
+} /* netw_wait_close(...)*/
 
 
 /*!\fn int netw_make_listening( NETWORK **netw , char *addr , char *port , int nbpending  , int ip_version )
