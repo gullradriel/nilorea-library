@@ -90,26 +90,6 @@ extern "C"
    N_STR *make_str_from_msg( NETW_MSG *msg );
    /* Make a message from a single string */
    NETW_MSG *make_msg_from_str( N_STR *str );
-   /* Get the type of a message without modifying it */
-   int netw_msg_get_type( N_STR *msg );
-   /* Add a formatted NETWMSG_IDENT message to the specified network */
-   int netw_send_ident( NETWORK *netw , int type , int id , N_STR *name , N_STR *passwd  );
-   /* Add a formatted NETWMSG_IDENT message to the specified network */
-   int netw_send_position( NETWORK *netw , int id , double X , double Y , double vx , double vy , double acc_x , double acc_y , int time_stamp );
-   /* Add a string to the network */
-   int netw_send_string_to_all( NETWORK *netw , int id , char *name , char *chan , char *txt , int color );
-   /* Add a string to the network, aiming a specific user */
-   int netw_send_string_to( NETWORK *netw , int id_from , int id_to , char *name , char *txt , int color );
-   /* Add a ping reply to the network */
-   int netw_send_ping( NETWORK *netw , int type , int id_from , int id_to , int time );
-   /* Retrieves identification from netwmsg */
-   int netw_get_ident( N_STR *msg , int *type ,int *ident , N_STR **name , N_STR **passwd  );
-   /* Retrieves position from netwmsg */
-   int netw_get_position( N_STR *msg , int *id , double *X , double *Y , double *vx , double *vy , double *acc_x , double *acc_y , int *time_stamp );
-   /* Retrieves string from netwmsg */
-   int netw_get_string( N_STR *msg , int *id , N_STR **name , N_STR **chan , N_STR **txt , int *color );
-   /* Retrieves a ping travel elapsed time */
-   int netw_get_ping( N_STR *msg , int *type , int *from , int *to , int *time );
 
 /*@}*/   
       
