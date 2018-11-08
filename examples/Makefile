@@ -41,7 +41,7 @@ else
         -Werror \
         -fno-omit-frame-pointer \
         -ffloat-store #	   	   -Wshadow 
-        CLIBS=-L../.
+        CLIBS=-L../. -lpthread
     endif
     ifeq ($(UNAME_S),SunOS)
         CC=cc
