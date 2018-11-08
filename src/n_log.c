@@ -222,11 +222,11 @@ void _n_log( int level , const char *file , const char *func , int line , const 
 	{
 		char *syslogbuffer = NULL ;
 		char *eventbuffer = NULL ;
+#ifndef NOEVENTLOG
 		char *name = "NULL" ;
 		if( proc_name )
 			name = proc_name ;
 
-#ifndef NOEVENTLOG
 		size_t needed = 0 ;
 #endif
 
