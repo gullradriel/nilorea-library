@@ -4,15 +4,6 @@
  *\version 1.0
  *\date 26/05/2015
  */
-
-
-#include "nilorea/n_network.h"
-#include "nilorea/n_network_msg.h"
-#include "nilorea/n_thread_pool.h"
-
-
-#include <getopt.h>
-
 #include "ex_network.h"
 
 #define SERVER 0
