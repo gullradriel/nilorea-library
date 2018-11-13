@@ -17,13 +17,16 @@ extern "C"
 #include "n_str.h"
 #include "n_log.h"
 
-#define MAX_CONFIG_LINE_LEN 1024
-#define CONFIG_SECTION_HASH_TABLE_LEN 16
 
 	/**\defgroup CONFIGFILE CONFIGFILE: classic config file loading/saving 
 	  \addtogroup CONFIGFILE
 	  @{
 	  */
+
+	/*! maximum length of a single config line */
+#define MAX_CONFIG_LINE_LEN 1024
+	/*! size of the hash table of config sections entries */
+#define CONFIG_SECTION_HASH_TABLE_LEN 16
 
 	/*! Structure of a config section */
 	typedef struct CONFIG_FILE_SECTION
@@ -52,6 +55,35 @@ extern "C"
 	int get_nb_config_file_sections_entries( CONFIG_FILE *cfg_file , char *section_name , int section_position , char *entry );
 	/* destroy a loaded config */
 	int destroy_config_file( CONFIG_FILE **cfg_file );
+
+
+#define config_foreach( __config , __section_name , __key , __val ) \
+	if( !__config || !__config -> sections ) \
+	{ \
+		n_log( LOG_ERR , "No config file for %s" , #__config ); \
+	} \
+	else  \
+	{ \
+		list_foreach( listnode , __config -> sections ) \
+		{ \
+			CONFIG_FILE_SECTION *section = (CONFIG_FILE_SECTION *)listnode -> ptr ; \
+			__section_name = section -> section_name ; \
+			ht_foreach( entry , section -> entries ) \
+			{ \
+				HASH_NODE *htnode = (HASH_NODE *)entry -> ptr ; \
+				if( htnode && htnode -> data . ptr ) \
+				{ \
+					__key = htnode -> key ; \
+					__val = htnode -> data . ptr ; 
+
+#define config_endfor \
+				} \
+			} \
+		} \
+	} \
+
+
+
 
 	/*@}*/
 

@@ -104,6 +104,14 @@ int main( int argc , char *argv[] )
 			n_log( LOG_INFO , "command:%s" , (value!=NULL)?value:"NULL" );
 		}
 	}
+	n_log( LOG_INFO , "\n\nCONFIG_FILE foreach !!" );
+	
+	char *section_name = NULL , *key=NULL , *val = NULL ; 
+	config_foreach( config , section_name , key , val )
+	{
+		n_log( LOG_INFO , "[%s]%s:%s" , section_name , key , val );
+	}config_endfor;
+
 	destroy_config_file( &config );
 	exit( 0 );
 }

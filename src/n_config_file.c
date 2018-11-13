@@ -285,20 +285,26 @@ CONFIG_FILE *load_config_file( char *filename , int *errors )
 /*!\fn int get_nb_config_file_sections( CONFIG_FILE *cfg_file , char *section_name )
  *\brief Get the number of config file with section_name
  *\param cfg_file Config file to process 
- *\param section_name name of sections to search 
+ *\param section_name name of sections to search , or NULL to have a count of all available sections
  *\return The number of named sections or a negative value
  */
 int get_nb_config_file_sections( CONFIG_FILE *cfg_file , char *section_name )
 {
 	__n_assert( cfg_file , return -1 );
 	__n_assert( cfg_file -> sections , return -2 );
-	__n_assert( section_name , return -3 );
 
 	int nb_sections = 0 ;
 	list_foreach( listnode , cfg_file -> sections )
 	{
 		CONFIG_FILE_SECTION *section = (CONFIG_FILE_SECTION *)listnode -> ptr ;
-		if( !strcmp( section -> section_name , section_name ) )
+		if( section_name )
+		{
+			if( !strcmp( section -> section_name , section_name ) )
+			{
+				nb_sections ++ ;
+			}
+		}
+		else
 		{
 			nb_sections ++ ;
 		}
@@ -429,15 +435,3 @@ int destroy_config_file( CONFIG_FILE **cfg_file )
 
 	return TRUE ;
 } /* destroy_config_file */
-
-
-
-/* put/update a config value */ 
-/*int put_cfg_value( CONFIG_FILE *cfg_file , char *section , char *entry , char *val );*/
-
-
-
-/* write file from config */
-/* int write_config_file( CONFIG_FILE *cfg_file , char *filename );*/
-
-
