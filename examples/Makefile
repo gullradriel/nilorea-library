@@ -7,10 +7,34 @@ CC=gcc
 CFLAGS=-DNOALLEGRO
 
 ifeq ($(OS),Windows_NT)
-	CFLAGS+= -DWIN32 -DWINDOWS -DNOSYSJRNL -I../include
+	CFLAGS+= -DWIN32 -DWINDOWS -DNOSYSJRNL -I../include \
+-g -W -Wall -std=gnu99 -ggdb3 -O0 \
+-Wno-missing-braces \
+-Wextra \
+-Wno-missing-field-initializers \
+-Wswitch-default \
+-Wswitch-enum \
+-Wcast-align \
+-Wpointer-arith \
+-Wbad-function-cast \
+-Wstrict-overflow=5 \
+-Wstrict-prototypes \
+-Winline \
+-Wundef \
+-Wnested-externs \
+-Wcast-qual \
+-Wunreachable-code \
+-Wlogical-op \
+-Wstrict-aliasing=2 \
+-Wredundant-decls \
+-Wold-style-definition \
+-Werror \
+-fno-omit-frame-pointer \
+-ffloat-store #	   	   -Wshadow 
 	CLIBS= -Wl,-Bstatic -lpthread -Wl,-Bdynamic -lws2_32  -L../. 
 	RM=del /Q
 	EXT=.exe
+	TARGET=ex_list$(EXT) ex_nstr$(EXT) ex_exceptions$(EXT) ex_hash$(EXT) ex_network$(EXT) ex_monolith$(EXT) ex_configfile$(EXT)
 else
 	UNAME_S := $(shell uname -s)
 	RM=rm -f
@@ -48,9 +72,10 @@ else
         CFLAGS+= -DSOLARIS -DDNOEVENTLOG -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -g -v -xc99 -I ../include/ -mt
         CLIBS=-lm -lsocket -lnsl -lpthread -lrt -L.. 
     endif
+	TARGET=ex_list$(EXT) ex_nstr$(EXT) ex_exceptions$(EXT) ex_hash$(EXT) ex_network$(EXT) ex_monolith$(EXT) ex_configfile$(EXT) ex_signals$(EXT)
 endif
 
-TARGET=ex_list$(EXT) ex_nstr$(EXT) ex_exceptions$(EXT) ex_hash$(EXT) ex_network$(EXT) ex_monolith$(EXT) ex_configfile$(EXT) ex_signals$(EXT)
+
 
 %.o : %.c
 	$(CC) $(CFLAGS) -o $@ -c $<

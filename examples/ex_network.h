@@ -9,7 +9,10 @@
 #include <getopt.h>
 #include <sys/time.h>
 #include <sys/types.h>
-#include <sys/wait.h>
+#ifndef WINDOWS
+	#include <sys/wait.h>
+#endif
+
 #include "nilorea/n_network.h"
 #include "nilorea/n_network_msg.h"
 #include "nilorea/n_thread_pool.h"
