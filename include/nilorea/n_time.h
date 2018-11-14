@@ -1,4 +1,4 @@
-/**\file n_common.h
+/**\file n_time.h
  *  common headers and low-level hugly functions & define
  *\author Castagnier Mickael
  *\version 1.0
@@ -15,8 +15,8 @@ extern "C"
 
 #include "n_common.h"
 
-	/**\defgroup COMMONS COMMONS: generally used headers, defines, timers, allocators,...
-	  \addtogroup COMMONS
+	/**\defgroup N_TIME N_TIME: generally used headers, defines, timers, allocators,...
+	  \addtogroup N_TIME
 	  @{
 	  */
 
