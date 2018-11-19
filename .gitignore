@@ -1,4 +1,12 @@
-;gitignore
 *.o
 *.exe
 *.a
+.*.sw*
+examples/ex_configfile
+examples/ex_exceptions
+examples/ex_hash
+examples/ex_list
+examples/ex_monolith
+examples/ex_network
+examples/ex_nstr
+examples/ex_signals
