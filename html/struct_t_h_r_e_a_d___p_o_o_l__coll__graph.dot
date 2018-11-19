@@ -1,0 +1,31 @@
+digraph G
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{THREAD_POOL\n|+ lock\l+ max_threads\l+ nb_actives\l+ nb_max_waiting\l+ thread_list\l+ waiting_list\l|}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node2 -> Node1 [dir=back,color="darkorchid3",fontsize="10",style="dashed",label="thread_list",arrowtail="open",fontname="Helvetica"];
+  Node2 [label="{THREAD_POOL_NODE\n|+ destroy\l+ func\l+ global_lock\l+ lock\l+ param\l+ state\l+ th_end\l+ th_start\l+ thr\l+ thread_state\l+ type\l|}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$struct_t_h_r_e_a_d___p_o_o_l___n_o_d_e.html"];
+  Node3 -> Node2 [dir=back,color="darkorchid3",fontsize="10",style="dashed",label="global_lock\nlock",arrowtail="open",fontname="Helvetica"];
+  Node3 [label="{pthread_mutex_t\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node4 -> Node2 [dir=back,color="darkorchid3",fontsize="10",style="dashed",label="thr",arrowtail="open",fontname="Helvetica"];
+  Node4 [label="{pthread_t\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node5 -> Node2 [dir=back,color="darkorchid3",fontsize="10",style="dashed",label="th_end\nth_start",arrowtail="open",fontname="Helvetica"];
+  Node5 [label="{sem_t\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node6 -> Node2 [dir=back,color="darkorchid3",fontsize="10",style="dashed",label="thread_state\ntype\nstate",arrowtail="open",fontname="Helvetica"];
+  Node6 [label="{int\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node7 -> Node2 [dir=back,color="darkorchid3",fontsize="10",style="dashed",label="func\ndestroy",arrowtail="open",fontname="Helvetica"];
+  Node7 [label="{void *(*)(void *param)\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node8 -> Node2 [dir=back,color="darkorchid3",fontsize="10",style="dashed",label="param",arrowtail="open",fontname="Helvetica"];
+  Node8 [label="{void *\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node3 -> Node1 [dir=back,color="darkorchid3",fontsize="10",style="dashed",label="lock",arrowtail="open",fontname="Helvetica"];
+  Node6 -> Node1 [dir=back,color="darkorchid3",fontsize="10",style="dashed",label="nb_actives\nmax_threads\nnb_max_waiting",arrowtail="open",fontname="Helvetica"];
+  Node9 -> Node1 [dir=back,color="darkorchid3",fontsize="10",style="dashed",label="waiting_list",arrowtail="open",fontname="Helvetica"];
+  Node9 [label="{LIST\n|+ end\l+ nb_items\l+ nb_max_items\l+ start\l|}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$struct_l_i_s_t.html"];
+  Node6 -> Node9 [dir=back,color="darkorchid3",fontsize="10",style="dashed",label="nb_max_items\nnb_items",arrowtail="open",fontname="Helvetica"];
+  Node10 -> Node9 [dir=back,color="darkorchid3",fontsize="10",style="dashed",label="end\nstart",arrowtail="open",fontname="Helvetica"];
+  Node10 [label="{LIST_NODE\n|+ destroy_func\l+ next\l+ prev\l+ ptr\l|}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$struct_l_i_s_t___n_o_d_e.html"];
+  Node10 -> Node10 [dir=back,color="darkorchid3",fontsize="10",style="dashed",label="prev\nnext",arrowtail="open",fontname="Helvetica"];
+  Node11 -> Node10 [dir=back,color="darkorchid3",fontsize="10",style="dashed",label="destroy_func",arrowtail="open",fontname="Helvetica"];
+  Node11 [label="{void(*)(void *ptr)\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node8 -> Node10 [dir=back,color="darkorchid3",fontsize="10",style="dashed",label="ptr",arrowtail="open",fontname="Helvetica"];
+}

@@ -1,0 +1,22 @@
+digraph G
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir=LR;
+  Node1 [label="netw_connect_ex",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="get_in_addr",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$n__network_8c.html#afbef2c33f6dff3d4bc138b52bf0ad27d",tooltip="get sockaddr, IPv4 or IPv6"];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="handle_wsa",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group___n_e_t_w_o_r_k_i_n_g.html#gad783d5db0fcbd8e6888c9170ad408c93",tooltip="Do not directly use, internal api."];
+  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="netw_close",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group___n_e_t_w_o_r_k_i_n_g.html#gac345c1af1935cebb9ee33edd4c32267a",tooltip="Closing a specified Network, destroy queues, free the structure."];
+  Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="netw_new",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$n__network_8c.html#a9caee75e3a67942e37ccb4de2c889105",tooltip="Return an empty allocated network ready to be netw_closed."];
+  Node5 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="new_generic_list",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group___l_i_s_t.html#gaa82751b4d6a219771661843e61cefa2e",tooltip="Initialiaze a generic list container to max_items pointers."];
+  Node1 -> Node7 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="netw_set",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group___n_e_t_w_o_r_k_i_n_g.html#gaa8e1fe7978995197f08aa0ef24a76c33",tooltip="Restart or reset the specified network ability."];
+  Node1 -> Node8 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="netw_setsockopt",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group___n_e_t_w_o_r_k_i_n_g.html#ga5c1faa6cacdd3c7e2bc2306aa7f19990",tooltip="Modify common socket options. Enable SO_REUSEADDR."];
+}

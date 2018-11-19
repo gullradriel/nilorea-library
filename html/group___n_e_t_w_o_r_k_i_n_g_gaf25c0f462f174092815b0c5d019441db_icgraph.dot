@@ -1,0 +1,34 @@
+digraph G
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir=LR;
+  Node1 [label="netw_get_state",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [dir=back,color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="netw_close",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group___n_e_t_w_o_r_k_i_n_g.html#gac345c1af1935cebb9ee33edd4c32267a",tooltip="Closing a specified Network, destroy queues, free the structure."];
+  Node2 -> Node3 [dir=back,color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="netw_accept_from_ex",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group___n_e_t_w_o_r_k_i_n_g.html#ga6903e6bb35b526c0a6f5bd0fd2c571a4",tooltip="make a normal &#39;accept&#39; . Network &#39;from&#39; must be allocated with netw_make_listening."];
+  Node3 -> Node4 [dir=back,color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="netw_accept_from",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group___n_e_t_w_o_r_k_i_n_g.html#gaf21b84460e80c7853bcb8321d7c53065",tooltip="make a normal blocking &#39;accept&#39; . Network &#39;from&#39; must be allocated with netw_make_lis..."];
+  Node2 -> Node5 [dir=back,color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="netw_connect_ex",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group___n_e_t_w_o_r_k_i_n_g.html#ga567f5a4c8c81739e83aa69ccfb577ef2",tooltip="Use this to connect a NETWORK to any listening one."];
+  Node5 -> Node6 [dir=back,color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="netw_connect",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group___n_e_t_w_o_r_k_i_n_g.html#ga3d13e81cda3f034c25ee4de7f7ec92d8",tooltip="Use this to connect a NETWORK to any listening one, with following defaults: disable_naggle = 0 ..."];
+  Node2 -> Node7 [dir=back,color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="netw_make_listening",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group___n_e_t_w_o_r_k_i_n_g.html#ga567df9024dfd1acced5e1b560d4b1ef2",tooltip="Make a NETWORK be a Listening network."];
+  Node2 -> Node8 [dir=back,color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="netw_new",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$n__network_8c.html#a9caee75e3a67942e37ccb4de2c889105",tooltip="Return an empty allocated network ready to be netw_closed."];
+  Node8 -> Node3 [dir=back,color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 -> Node5 [dir=back,color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 -> Node7 [dir=back,color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node9 [dir=back,color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="netw_recv_func",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group___n_e_t_w_o_r_k_i_n_g.html#gad67570728a69ce2788b8bc9dcaa7c392",tooltip="To Thread Receiving function."];
+  Node9 -> Node10 [dir=back,color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 [label="netw_start_thr_engine",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group___n_e_t_w_o_r_k_i_n_g.html#ga5ba0555c5ccd261227c3c1216923d563",tooltip="Start the NETWORK netw Threaded Engine. Create a sending &amp; receiving thread."];
+  Node1 -> Node11 [dir=back,color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node11 [label="netw_send_func",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group___n_e_t_w_o_r_k_i_n_g.html#gaa3c12701bdb3cd2e1adaa00981ca3cc8",tooltip="Thread send function."];
+  Node11 -> Node10 [dir=back,color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node12 [dir=back,color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node12 [label="netw_stop_thr_engine",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group___n_e_t_w_o_r_k_i_n_g.html#ga29159184519b3129c0154b1a2c2a3e2f",tooltip="Stop a NETWORK connection sending and receing thread."];
+  Node12 -> Node2 [dir=back,color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

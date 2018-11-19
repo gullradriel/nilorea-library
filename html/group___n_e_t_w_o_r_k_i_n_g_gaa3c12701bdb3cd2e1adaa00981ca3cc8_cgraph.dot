@@ -1,0 +1,13 @@
+digraph G
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir=LR;
+  Node1 [label="netw_send_func",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="netw_get_state",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group___n_e_t_w_o_r_k_i_n_g.html#gaf25c0f462f174092815b0c5d019441db",tooltip="Get the state of a network."];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="netw_set",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group___n_e_t_w_o_r_k_i_n_g.html#gaa8e1fe7978995197f08aa0ef24a76c33",tooltip="Restart or reset the specified network ability."];
+  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="send_data",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group___n_e_t_w_o_r_k_i_n_g.html#gaf3dc736265484a58e6678c250e38cef8",tooltip="send data onto the socket"];
+}

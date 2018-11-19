@@ -1,0 +1,17 @@
+digraph G
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir=LR;
+  Node1 [label="netw_add_msg",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [dir=back,color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="netw_send_ident",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group___n_e_t_w_o_r_k___m_s_g.html#gae8345266fcf7a23c0e8ffe176b0e086f",tooltip="Add a formatted NETWMSG_IDENT message to the specified network."];
+  Node1 -> Node3 [dir=back,color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="netw_send_ping",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group___n_e_t_w_o_r_k___m_s_g.html#gad9588cf27263ecf40f57d3923ccf721a",tooltip="Add a ping reply to the network."];
+  Node1 -> Node4 [dir=back,color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="netw_send_position",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group___n_e_t_w_o_r_k___m_s_g.html#gafaf1202a5f56a9f2285fccfbcacb3a6c",tooltip="Add a formatted NETWMSG_IDENT message to the specified network."];
+  Node1 -> Node5 [dir=back,color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="netw_send_string_to",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group___n_e_t_w_o_r_k___m_s_g.html#ga58d8af6bc08bdd67a61a6921fff3204b",tooltip="Add a string to the network, aiming a specific user."];
+  Node1 -> Node6 [dir=back,color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="netw_send_string_to_all",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group___n_e_t_w_o_r_k___m_s_g.html#gaa37866d5bddb1f181484360619fd16f9",tooltip="Add a string to the network, aiming all server-side users."];
+}

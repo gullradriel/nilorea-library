@@ -1,0 +1,11 @@
+digraph G
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir=LR;
+  Node1 [label="add_threaded_process",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [dir=back,color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="refresh_thread_pool",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group___t_h_r_e_a_d_s.html#ga5d9ce1747e4b7cb58ce3767f7e56cd8b",tooltip="try to add some waiting DIRECT_PROCs on some free thread slots, else do nothing"];
+  Node2 -> Node3 [dir=back,color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="wait_for_threaded_pool",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group___t_h_r_e_a_d_s.html#ga992fc2a67a2d66733ccd10f7d9e2ead3",tooltip="Wait for all the launched process in the thread pool to terminate."];
+}

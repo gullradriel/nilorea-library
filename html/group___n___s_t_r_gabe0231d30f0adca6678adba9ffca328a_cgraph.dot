@@ -1,0 +1,9 @@
+digraph G
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir=LR;
+  Node1 [label="str_to_long",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="str_to_long_ex",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group___n___s_t_r.html#gaf2fb09488bdaa0e8662f639ea899627e",tooltip="Helper for string[start to end] to integer. Automatically add /0 for conversion. Leave values untouch..."];
+}

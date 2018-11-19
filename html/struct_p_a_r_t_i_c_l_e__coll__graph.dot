@@ -1,0 +1,13 @@
+digraph G
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{PARTICLE\n|+ ax\l+ ay\l+ az\l+ color\l+ lifetime\l+ mode\l+ next\l+ off_x\l+ off_y\l+ prev\l+ sprite\l+ vx\l+ vy\l+ vz\l+ x\l+ y\l+ z\l|}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node2 -> Node1 [dir=back,color="darkorchid3",fontsize="10",style="dashed",label="x\nvx\ny\nvy\nz\nvz\nax\nay\naz",arrowtail="open",fontname="Helvetica"];
+  Node2 [label="{double\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node3 -> Node1 [dir=back,color="darkorchid3",fontsize="10",style="dashed",label="off_x\nlifetime\noff_y\nmode\ncolor",arrowtail="open",fontname="Helvetica"];
+  Node3 [label="{int\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node4 -> Node1 [dir=back,color="darkorchid3",fontsize="10",style="dashed",label="sprite",arrowtail="open",fontname="Helvetica"];
+  Node4 [label="{BITMAP *\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node1 -> Node1 [dir=back,color="darkorchid3",fontsize="10",style="dashed",label="prev\nnext",arrowtail="open",fontname="Helvetica"];
+}

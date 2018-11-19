@@ -1,0 +1,34 @@
+digraph G
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{NETWORK\n|+ addr_infos_loaded\l+ eventbolt\l+ link\l+ mode\l+ nb_pending\l+ pause_wait\l+ recv_buf\l+ recv_thr\l+ recvbolt\l+ send_buf\l+ send_queue_consecutive_wait\l+ send_queue_wait\l+ send_thr\l+ sendbolt\l+ so_rcvbuf\l+ so_sndbuf\l+ state\l+ tcpnodelay\l+ threaded_engine_status\l|}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node2 -> Node1 [dir=back,color="darkorchid3",fontsize="10",style="dashed",label="recvbolt\neventbolt\nsendbolt",arrowtail="open",fontname="Helvetica"];
+  Node2 [label="{pthread_mutex_t\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node3 -> Node1 [dir=back,color="darkorchid3",fontsize="10",style="dashed",label="send_thr\nrecv_thr",arrowtail="open",fontname="Helvetica"];
+  Node3 [label="{pthread_t\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node4 -> Node1 [dir=back,color="darkorchid3",fontsize="10",style="dashed",label="link",arrowtail="open",fontname="Helvetica"];
+  Node4 [label="{N_SOCKET\n|+ hints\l+ ip\l+ port\l+ raddr\l+ rhost\l+ sock\l|}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$struct_n___s_o_c_k_e_t.html"];
+  Node5 -> Node4 [dir=back,color="darkorchid3",fontsize="10",style="dashed",label="sock",arrowtail="open",fontname="Helvetica"];
+  Node5 [label="{SOCKET\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node6 -> Node4 [dir=back,color="darkorchid3",fontsize="10",style="dashed",label="rhost",arrowtail="open",fontname="Helvetica"];
+  Node6 [label="{struct addrinfo *\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node7 -> Node4 [dir=back,color="darkorchid3",fontsize="10",style="dashed",label="hints",arrowtail="open",fontname="Helvetica"];
+  Node7 [label="{struct addrinfo\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node8 -> Node4 [dir=back,color="darkorchid3",fontsize="10",style="dashed",label="raddr",arrowtail="open",fontname="Helvetica"];
+  Node8 [label="{struct sockaddr_storage\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node9 -> Node4 [dir=back,color="darkorchid3",fontsize="10",style="dashed",label="port\nip",arrowtail="open",fontname="Helvetica"];
+  Node9 [label="{char *\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node10 -> Node1 [dir=back,color="darkorchid3",fontsize="10",style="dashed",label="mode\nsend_queue_consecutive_wait\nsend_queue_wait\nthreaded_engine_status\nso_rcvbuf\ntcpnodelay\npause_wait\nstate\nnb_pending\nso_sndbuf\n...",arrowtail="open",fontname="Helvetica"];
+  Node10 [label="{int\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node11 -> Node1 [dir=back,color="darkorchid3",fontsize="10",style="dashed",label="recv_buf\nsend_buf",arrowtail="open",fontname="Helvetica"];
+  Node11 [label="{LIST\n|+ end\l+ nb_items\l+ nb_max_items\l+ start\l|}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$struct_l_i_s_t.html"];
+  Node10 -> Node11 [dir=back,color="darkorchid3",fontsize="10",style="dashed",label="nb_max_items\nnb_items",arrowtail="open",fontname="Helvetica"];
+  Node12 -> Node11 [dir=back,color="darkorchid3",fontsize="10",style="dashed",label="end\nstart",arrowtail="open",fontname="Helvetica"];
+  Node12 [label="{LIST_NODE\n|+ destroy_func\l+ next\l+ prev\l+ ptr\l|}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$struct_l_i_s_t___n_o_d_e.html"];
+  Node12 -> Node12 [dir=back,color="darkorchid3",fontsize="10",style="dashed",label="prev\nnext",arrowtail="open",fontname="Helvetica"];
+  Node13 -> Node12 [dir=back,color="darkorchid3",fontsize="10",style="dashed",label="destroy_func",arrowtail="open",fontname="Helvetica"];
+  Node13 [label="{void(*)(void *ptr)\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node14 -> Node12 [dir=back,color="darkorchid3",fontsize="10",style="dashed",label="ptr",arrowtail="open",fontname="Helvetica"];
+  Node14 [label="{void *\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+}

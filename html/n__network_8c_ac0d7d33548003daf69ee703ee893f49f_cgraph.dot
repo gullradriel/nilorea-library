@@ -1,0 +1,34 @@
+digraph G
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir=LR;
+  Node1 [label="netw_connect_ex",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="get_in_addr",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$n__network_8c.html#afbef2c33f6dff3d4bc138b52bf0ad27d",tooltip="get sockaddr, IPv4 or IPv6"];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="handle_wsa",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$n__network_8c.html#ad783d5db0fcbd8e6888c9170ad408c93",tooltip="Do not directly use, internal api."];
+  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="netw_close",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$n__network_8c.html#a21ef00b81f8d13f6106f8c94ca13d8e0",tooltip="Closing a specified Network, destroy queues, free the structure."];
+  Node4 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="netw_get_state",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$n__network_8c.html#af25c0f462f174092815b0c5d019441db",tooltip="Get the state of a network."];
+  Node4 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="netw_set",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$n__network_8c.html#aa8e1fe7978995197f08aa0ef24a76c33",tooltip="Restart or reset the specified network ability."];
+  Node6 -> Node7 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="list_destroy",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$n__list_8c.html#a90d32fef68ce6f3ec0a7b4085690c755",tooltip="Empty and Free a list container. Call the destructor each time."];
+  Node7 -> Node8 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="list_empty",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$n__list_8c.html#a1dafe7a250ddad51fadd375f057287e7",tooltip="Empty a LIST list of pointers."];
+  Node6 -> Node8 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 -> Node9 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="netw_stop_thr_engine",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$n__network_8c.html#ae88f40a3bcc364e8a8721c2fedffaa4e",tooltip="Stop a NETWORK connection sending and receing thread."];
+  Node9 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node10 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 [label="netw_new",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$n__network_8c.html#a9caee75e3a67942e37ccb4de2c889105",tooltip="Return an empty allocated network ready to be netw_closed."];
+  Node10 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 -> Node11 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node11 [label="new_generic_list",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$n__list_8c.html#ada615e3b144e97bcff147dfe89f6fef6",tooltip="Initialiaze a generic list container to max_items pointers."];
+  Node1 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node12 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node12 [label="netw_setsockopt",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$n__network_8c.html#a5c1faa6cacdd3c7e2bc2306aa7f19990",tooltip="Modify common socket options. Enable SO_REUSEADDR."];
+}

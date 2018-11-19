@@ -1,0 +1,27 @@
+digraph G
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir=LR;
+  Node1 [label="create_msg",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [dir=back,color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="make_msg_from_str",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$n__network__msg_8c.html#a031bce4ba12a9f2d95a3fe8720404d83",tooltip="Make a single message of the string."];
+  Node2 -> Node3 [dir=back,color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="netw_get_ident",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$n__network__msg_8c.html#af2d84e34e50db7b3b7aca16c6bdb06f8",tooltip="Retrieves identification from netwmsg."];
+  Node2 -> Node4 [dir=back,color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="netw_get_ping",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$n__network__msg_8c.html#ae420c2ecf92f1d0391df32a383eb485c",tooltip="Retrieves a ping travel elapsed time."];
+  Node2 -> Node5 [dir=back,color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="netw_get_position",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$n__network__msg_8c.html#a241bf3b1ebc63dd986dfec1b0fe4998b",tooltip="Retrieves position from netwmsg."];
+  Node2 -> Node6 [dir=back,color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="netw_get_string",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$n__network__msg_8c.html#a810dcf6c6b78b21137c626ba499228ff",tooltip="Retrieves string from netwmsg."];
+  Node1 -> Node7 [dir=back,color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="netw_send_ident",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$n__network__msg_8c.html#ae8345266fcf7a23c0e8ffe176b0e086f",tooltip="Add a formatted NETWMSG_IDENT message to the specified network."];
+  Node1 -> Node8 [dir=back,color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="netw_send_ping",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$n__network__msg_8c.html#a660b0821177394fcfcb7afb8c24fd80a",tooltip="Add a ping reply to the network."];
+  Node1 -> Node9 [dir=back,color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="netw_send_position",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$n__network__msg_8c.html#a9dbcd5aef0dbecf19bceea2ddb46bdd4",tooltip="Add a formatted NETWMSG_IDENT message to the specified network."];
+  Node1 -> Node10 [dir=back,color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 [label="netw_send_string_to",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$n__network__msg_8c.html#a70307219ccb98fda70ef1ba236c52979",tooltip="Add a string to the network, aiming a specific user."];
+  Node1 -> Node11 [dir=back,color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node11 [label="netw_send_string_to_all",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$n__network__msg_8c.html#a16cdc3a012fc9127e1d297da1e16eee1",tooltip="Add a string to the network, aiming all server-side users."];
+}

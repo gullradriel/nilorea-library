@@ -1,0 +1,11 @@
+digraph G
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir=LR;
+  Node1 [label="unzip_nstr",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="new_nstr",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$n__str_8c.html#a873edbb1f8787d0a78a13ccbbed9b9f9",tooltip="create a new N_STR string"];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="UncompressData",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$n__zlib_8c.html#a00a2f19f44cc52a0f1f52b16f815e6a5",tooltip="Uncompress a string to another."];
+}
