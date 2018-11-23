@@ -38,6 +38,14 @@ extern "C"
 #include <sys/socket.h>
 #include <arpa/inet.h>
 #include <netdb.h>
+#include <sys/ioctl.h>
+
+	
+#ifdef LINUX
+#include <linux/sockios.h>
+#endif
+
+
 
 #ifndef MSG_NOSIGNAL
 #define MSG_NOSIGNAL 0

@@ -710,6 +710,10 @@ int netw_setsockopt( SOCKET sock , int disable_naggle , int sock_send_buf , int 
 		n_log( LOG_ERR , "Error from setsockopt(SO_REUSEADDR). errno: %s" , strerror( error ) );
 		return FALSE ;
 	}
+	struct timeval tv;
+	tv.tv_sec = 30 ;
+	tv.tv_usec = 0;
+	setsockopt(sock , SOL_SOCKET, SO_RCVTIMEO, (const char*)&tv, sizeof tv);
 #else
 	if ( setsockopt( sock , SOL_SOCKET, SO_REUSEADDR , (char *)&tmp , sizeof( tmp ) ) == -1 )
 	{
@@ -717,7 +721,20 @@ int netw_setsockopt( SOCKET sock , int disable_naggle , int sock_send_buf , int 
 		n_log( LOG_ERR , "Error from setsockopt(SO_REUSEADDR). errno: %s" , strerror( error ) );
 		return FALSE ;
 	}
+	// WINDOWS
+	DWORD timeout = 30000;
+	setsockopt(sock, SOL_SOCKET, SO_RCVTIMEO, (const char*)&timeout, sizeof timeout);
 #endif
+
+	struct linger ling;
+	ling.l_onoff=1;
+	ling.l_linger=30;
+	if( setsockopt(sock , SOL_SOCKET , SO_LINGER , &ling , sizeof( ling ) ) == -1 )
+	{
+		int error=errno ;
+		n_log( LOG_ERR , "Error from setsockopt(SO_LINGER). errno: %s" , strerror( error ) );
+		return FALSE ;
+	}
 
 	return TRUE ;
 } /* netw_setsockopt( ... ) */
@@ -1024,8 +1041,25 @@ int netw_close( NETWORK **netw )
 
 
 
+#ifdef __linux__
+void depleteSendBuffer(int fd) 
+{
+	int lastOutstanding=-1;
+	for(;;) {
+		int outstanding;
+		ioctl(fd, SIOCOUTQ, &outstanding);
+		if(outstanding != lastOutstanding) 
+			printf("Outstanding: %d\n", outstanding);
+		lastOutstanding = outstanding;
+		if(!outstanding)
+			break;
+		usleep(1000);
+	}
+}
+#endif
+
 /*!\fn netw_wait_close( NETWORK **netw )
- *\brief Closing a specified Network, destroy queues, free the structure
+ *\brief Wait for peer closing a specified Network, destroy queues, free the structure
  *\param netw A NETWORK *network to close
  *\return TRUE on success , FALSE on failure
  */
@@ -1043,7 +1077,20 @@ int netw_wait_close( NETWORK **netw )
 	/* wait for close fix */
 	if( (*netw) -> link . sock != INVALID_SOCKET )
 	{
+#ifdef LINUX
+		/* deplete send buffer */
+		while( TRUE )
+		{
+			int outstanding;
+			ioctl((*netw) -> link . sock , SIOCOUTQ, &outstanding);
+			if(!outstanding)
+				break;
+			usleep(1000);
+		}
+#endif
+
 		shutdown( (*netw) -> link . sock , SHUT_WR );
+
 		int res = 0 ;
 		char buffer[ 4096 ] = "" ;
 		for( ;; )
@@ -1058,9 +1105,9 @@ int netw_wait_close( NETWORK **netw )
 			}
 		}
 	}
-	
+
 	return netw_close( &(*netw) );
-	
+
 } /* netw_wait_close(...)*/
 
 
