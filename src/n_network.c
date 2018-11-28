@@ -668,7 +668,7 @@ int netw_setsockopt( SOCKET sock , int disable_naggle , int sock_send_buf , int 
 	{
 		if ( setsockopt( sock , IPPROTO_TCP, TCP_NODELAY, ( const char * ) &disable_naggle, sizeof( disable_naggle ) ) == -1 )
 		{
-			n_log( LOG_ERR , "Error from setsockopt(TCP_NODELAY). errno: %s" , strerror( errno ) );
+			n_log( LOG_ERR , "Error from setsockopt(TCP_NODELAY) on socket %d. errno: %s" , sock , strerror( errno ) );
 			return FALSE ;
 		}
 	}
@@ -676,7 +676,7 @@ int netw_setsockopt( SOCKET sock , int disable_naggle , int sock_send_buf , int 
 	{
 		if ( setsockopt( sock , IPPROTO_TCP, TCP_NODELAY, ( const char * ) &disable_naggle, sizeof( disable_naggle ) ) == -1 )
 		{
-			n_log( LOG_ERR , "Error from setsockopt(TCP_NODELAY). errno: %s" , strerror( errno ) );
+			n_log( LOG_ERR , "Error from setsockopt(TCP_NODELAY) on socket %d. errno: %s" , sock , strerror( errno ) );
 			return FALSE ;
 		}
 	}
@@ -686,7 +686,7 @@ int netw_setsockopt( SOCKET sock , int disable_naggle , int sock_send_buf , int 
 	{
 		if ( setsockopt ( sock , SOL_SOCKET, SO_SNDBUF, ( const char * ) &sock_send_buf, sizeof( sock_send_buf ) ) == -1 )
 		{
-			n_log( LOG_ERR , "Error from setsockopt(SO_SNDBUF). errno: %s" , strerror( errno ) );
+			n_log( LOG_ERR , "Error from setsockopt(SO_SNDBUF) on socket %d. errno: %s" , sock , strerror( errno ) );
 			return FALSE ;
 		}
 	}
@@ -696,7 +696,7 @@ int netw_setsockopt( SOCKET sock , int disable_naggle , int sock_send_buf , int 
 	{
 		if ( setsockopt ( sock , SOL_SOCKET, SO_RCVBUF, ( const char * ) &sock_recv_buf, sizeof( sock_recv_buf ) ) == -1 )
 		{
-			n_log( LOG_ERR , "Error from setsockopt(SO_RCVBUF). errno: %s" , strerror( errno ) );
+			n_log( LOG_ERR , "Error from setsockopt(SO_RCVBUF) on socket %d. errno: %s" , sock , strerror( errno ) );
 			return FALSE ;
 		}
 	}
@@ -707,23 +707,45 @@ int netw_setsockopt( SOCKET sock , int disable_naggle , int sock_send_buf , int 
 	if ( setsockopt( sock , SOL_SOCKET, (SO_REUSEPORT | SO_REUSEADDR) , (char *)&tmp , sizeof( tmp ) ) == -1 )
 	{
 		int error=errno ;
-		n_log( LOG_ERR , "Error from setsockopt(SO_REUSEADDR). errno: %s" , strerror( error ) );
+		n_log( LOG_ERR , "Error from setsockopt(SO_REUSEADDR) on socket %d. errno: %s" , sock , strerror( error ) );
 		return FALSE ;
 	}
 	struct timeval tv;
 	tv.tv_sec = 30 ;
 	tv.tv_usec = 0;
-	setsockopt(sock , SOL_SOCKET, SO_RCVTIMEO, (const char*)&tv, sizeof tv);
+	if( setsockopt(sock , SOL_SOCKET, SO_RCVTIMEO, (const char*)&tv, sizeof tv) == -1 )
+	{
+		int error=errno ;
+		n_log( LOG_ERR , "Error from setsockopt(SO_RCVTIMEO) on socket %d. errno: %s" , sock , strerror( error ) );
+		return FALSE ;
+	}
+	if( setsockopt(sock , SOL_SOCKET, SO_SNDTIMEO, (const char*)&tv, sizeof tv) == -1 )
+	{
+		int error=errno ;
+		n_log( LOG_ERR , "Error from setsockopt(SO_SNDTIMEO) on socket %d. errno: %s" , sock , strerror( error ) );
+		return FALSE ;
+	}
 #else
 	if ( setsockopt( sock , SOL_SOCKET, SO_REUSEADDR , (char *)&tmp , sizeof( tmp ) ) == -1 )
 	{
 		int error=errno ;
-		n_log( LOG_ERR , "Error from setsockopt(SO_REUSEADDR). errno: %s" , strerror( error ) );
+		n_log( LOG_ERR , "Error from setsockopt(SO_REUSEADDR) on socket %d. errno: %s" , sock , strerror( error ) );
 		return FALSE ;
 	}
 	// WINDOWS
 	DWORD timeout = 30000;
-	setsockopt(sock, SOL_SOCKET, SO_RCVTIMEO, (const char*)&timeout, sizeof timeout);
+	if( setsockopt(sock, SOL_SOCKET, SO_RCVTIMEO, (const char*)&timeout, sizeof timeout) == -1 )
+	{
+		int error=errno ;
+		n_log( LOG_ERR , "Error from setsockopt(SO_RCVTIMEO) on socket %d. errno: %s" , sock , strerror( error ) );
+		return FALSE ;
+	}
+	if( setsockopt(sock, SOL_SOCKET, SO_SNDTIMEO, (const char*)&timeout, sizeof timeout) == -1 )
+	{
+		int error=errno ;
+		n_log( LOG_ERR , "Error from setsockopt(SO_SNDTIMEO) on socket %d. errno: %s" , sock , strerror( error ) );
+		return FALSE ;
+	}
 #endif
 
 	struct linger ling;
@@ -732,7 +754,7 @@ int netw_setsockopt( SOCKET sock , int disable_naggle , int sock_send_buf , int 
 	if( setsockopt(sock , SOL_SOCKET , SO_LINGER , &ling , sizeof( ling ) ) == -1 )
 	{
 		int error=errno ;
-		n_log( LOG_ERR , "Error from setsockopt(SO_LINGER). errno: %s" , strerror( error ) );
+		n_log( LOG_ERR , "Error from setsockopt(SO_LINGER) on socket %d. errno: %s" , sock ,strerror( error ) );
 		return FALSE ;
 	}
 
@@ -1572,7 +1594,11 @@ void *netw_send_func( void *NET )
 	do
 	{
 		netw_get_state( netw , &state , NULL );
-		if( state&NETW_EXITED )
+		if( state&NETW_ERROR )
+		{
+			DONE = 666 ;
+		}
+		else if( state&NETW_EXITED )
 		{
 			DONE = 100 ;
 		}
@@ -1702,6 +1728,10 @@ void *netw_recv_func( void *NET )
 		if( state&NETW_EXIT_ASKED || state&NETW_EXITED )
 		{
 			DONE = 100;
+		}
+		if( state&NETW_ERROR )
+		{
+			DONE = 666 ;
 		}
 		else
 		{
