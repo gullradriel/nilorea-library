@@ -725,6 +725,15 @@ int netw_setsockopt( SOCKET sock , int disable_naggle , int sock_send_buf , int 
 		n_log( LOG_ERR , "Error from setsockopt(SO_SNDTIMEO) on socket %d. errno: %s" , sock , strerror( error ) );
 		return FALSE ;
 	}
+	struct linger ling;
+	ling.l_onoff=1;
+	ling.l_linger=30;
+	if( setsockopt(sock , SOL_SOCKET , SO_LINGER , &ling , sizeof( ling ) ) == -1 )
+	{
+		int error=errno ;
+		n_log( LOG_ERR , "Error from setsockopt(SO_LINGER) on socket %d. errno: %s" , sock ,strerror( error ) );
+		return FALSE ;
+	}
 #else
 	if ( setsockopt( sock , SOL_SOCKET, SO_REUSEADDR , (char *)&tmp , sizeof( tmp ) ) == -1 )
 	{
@@ -746,17 +755,16 @@ int netw_setsockopt( SOCKET sock , int disable_naggle , int sock_send_buf , int 
 		n_log( LOG_ERR , "Error from setsockopt(SO_SNDTIMEO) on socket %d. errno: %s" , sock , strerror( error ) );
 		return FALSE ;
 	}
-#endif
-
 	struct linger ling;
 	ling.l_onoff=1;
 	ling.l_linger=30;
-	if( setsockopt(sock , SOL_SOCKET , SO_LINGER , &ling , sizeof( ling ) ) == -1 )
+	if( setsockopt(sock , SOL_SOCKET , SO_LINGER , (const char*)&ling , sizeof( ling ) ) == -1 )
 	{
 		int error=errno ;
 		n_log( LOG_ERR , "Error from setsockopt(SO_LINGER) on socket %d. errno: %s" , sock ,strerror( error ) );
 		return FALSE ;
 	}
+#endif
 
 	return TRUE ;
 } /* netw_setsockopt( ... ) */
