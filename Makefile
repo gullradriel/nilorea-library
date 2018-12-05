@@ -13,7 +13,7 @@ CFLAGS=
 
 ifeq ($(OS),Windows_NT)
 	CFLAGS+= -I.\include \
--g -W -Wall -std=gnu99 -ggdb3 -O0 \
+-g -W -Wall -D_XOPEN_SOURCE=600 -D_XOPEN_SOURCE_EXTENTED -std=gnu99 -ggdb3 -O0 \
 -Wno-missing-braces \
 -Wextra \
 -Wno-missing-field-initializers \
@@ -56,7 +56,7 @@ else
 	
     ifeq ($(UNAME_S),Linux)
 		CFLAGS+= -I./include/ \
--g -W -Wall -std=gnu99 -ggdb3 -O0 \
+-g -W -Wall -D_XOPEN_SOURCE=600 -D_XOPEN_SOURCE_EXTENTED -std=gnu99 -ggdb3 -O0 \
 -Wno-missing-braces \
 -Wextra \
 -Wno-missing-field-initializers \

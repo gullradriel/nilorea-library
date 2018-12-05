@@ -17,7 +17,6 @@
 #ifdef __windows__
 #include <windows.h>
 #else
-#include <stdio.h>
 #include <errno.h>
 #include <strings.h>
 #include <unistd.h>
@@ -26,6 +25,8 @@
 #include <fcntl.h>
 #ifdef __linux__
 #include <string.h>
+#include <linux/limits.h>
+#include <unistd.h>
 #endif
 #endif
 

@@ -1425,7 +1425,8 @@ int str_sanitize_ex( char *string, const unsigned int string_len, const char *ma
 	__n_assert( string , return FALSE );
 	__n_assert( mask , return FALSE );
 
-	for( unsigned int it = 0 ; it < string_len ; it ++ )
+	unsigned int it = 0 ;
+	for( it = 0 ; it < string_len ; it ++ )
 	{
 		unsigned int mask_it = 0 ;
 		while(mask[mask_it]!='\0'&&mask_it<masklen)

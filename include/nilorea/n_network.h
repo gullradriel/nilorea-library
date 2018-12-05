@@ -29,7 +29,6 @@ extern "C"
 
 #if defined( __linux__ ) || defined( __sun ) || defined( _AIX )
 #include <sys/types.h>
-#include <unistd.h>
 #include <fcntl.h>
 #include <signal.h>
 #define _OPEN_SYS_SOCK_IPV6 1

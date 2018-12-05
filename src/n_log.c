@@ -4,13 +4,6 @@
  *\date 2013-03-12
  */
 
-/* for vasprintf */
-#ifdef __linux__
-#ifndef _GNU_SOURCE
-#define _GNU_SOURCE
-#endif
-#endif
-
 #include "nilorea/n_common.h"
 #include "nilorea/n_log.h"
 
@@ -226,12 +219,11 @@ void _n_log( int level , const char *file , const char *func , int line , const 
 	{
 		char *syslogbuffer = NULL ;
 		char *eventbuffer = NULL ;
-#ifndef NOEVENTLOG
+#ifdef __windows__
+		size_t needed = 0 ;
 		char *name = "NULL" ;
 		if( proc_name )
 			name = proc_name ;
-
-		size_t needed = 0 ;
 #endif
 
 		switch( LOG_TYPE )

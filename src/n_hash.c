@@ -111,7 +111,8 @@ void MurmurHash3_x86_32 ( const void * key, int len, uint32_t seed, void * out )
 	/* body */
 	const uint32_t * blocks = (const uint32_t *)(data + nblocks*4);
 
-	for(int i = -nblocks; i; i++)
+	int i = 0 ;
+	for(i = -nblocks; i; i++)
 	{
 		uint32_t k1 = getblock(blocks,i);
 
@@ -177,7 +178,8 @@ void MurmurHash3_x86_128 ( const void * key, const int len, uint32_t seed, void 
 	/* body */
 	const uint32_t * blocks = (const uint32_t *)(data + nblocks*16);
 
-	for(int i = -nblocks; i; i++)
+	int i = 0 ;
+	for( i = -nblocks ; i; i++)
 	{
 		uint32_t k1 = getblock(blocks,i*4+0);
 		uint32_t k2 = getblock(blocks,i*4+1);
@@ -326,7 +328,8 @@ HASH_TABLE *new_ht( int size )
 	table -> hash_table = (LIST **)calloc( size , sizeof( LIST *) );
 	__n_assert( table -> hash_table , n_log( LOG_ERR , "Can't allocate table -> hash_table !" );Free( table );return NULL );
 
-	for( int it = 0 ; it < size ; it ++ )
+	int it = 0 ;
+	for(  it = 0 ; it < size ; it ++ )
 	{
 		table -> hash_table[ it ] = new_generic_list( 0 );  
 	}
@@ -769,7 +772,8 @@ int empty_ht( HASH_TABLE *table )
 
 	__n_assert( table , return FALSE );
 
-	for( int index = 0 ; index < table -> size ; index ++ )
+	int index = 0 ;
+	for( index = 0 ; index < table -> size ; index ++ )
 	{
 		while( table -> hash_table[ index ] -> start )
 		{
@@ -796,7 +800,8 @@ int destroy_ht( HASH_TABLE **table )
 	{
 		empty_ht( (*table) );
 
-		for( int it = 0 ; it < (*table) -> size ; it ++ )
+		int it = 0 ;
+		for( it = 0 ; it < (*table) -> size ; it ++ )
 		{
 			if( (*table) -> hash_table[ it ] )
 				list_destroy( &(*table) -> hash_table[ it ] );

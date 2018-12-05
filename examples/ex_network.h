@@ -19,7 +19,7 @@
 #include "nilorea/n_network_msg.h"
 #include "nilorea/n_thread_pool.h"
 
-#ifdef LINUX
+#ifdef __linux__
 void sigchld_handler( int sig )
 {
 	// waitpid() might overwrite errno, so we save and restore it:

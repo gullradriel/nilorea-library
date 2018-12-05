@@ -20,13 +20,9 @@ extern "C" {
 
 #if defined( __linux__ ) || defined( _AIX ) || defined( __sun )
 #include <arpa/inet.h>
-#ifndef _XOPEN_SOURCE
-#define _XOPEN_SOURCE 500
 #include <string.h>
-#undef _X_OPEN_SOURCE
 #else
 #include <string.h>
-#endif
 #endif
 
 #include <stdint.h>
