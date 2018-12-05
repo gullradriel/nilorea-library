@@ -55,7 +55,7 @@ else
 	OBJECTS=$(SRC:%.c=obj/%.o)
 	
     ifeq ($(UNAME_S),Linux)
-		CFLAGS+= -DLINUX -DNOEVENTLOG -I./include/ \
+		CFLAGS+= -I./include/ \
 -g -W -Wall -std=gnu99 -ggdb3 -O0 \
 -Wno-missing-braces \
 -Wextra \
@@ -83,7 +83,7 @@ else
 	
     ifeq ($(UNAME_S),SunOS)
         CC=cc
-        CFLAGS+= -DSOLARIS -DDNOEVENTLOG -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -g -v -xc99 -I ./include/ -mt
+        CFLAGS+= -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -g -v -xc99 -I ./include/ -mt
     endif
 
 obj/%.o: src/%.c

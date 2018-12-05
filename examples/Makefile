@@ -41,7 +41,7 @@ else
 	CC=gcc
 	EXT=
     ifeq ($(UNAME_S),Linux)
-        CFLAGS+= -DLINUX -DNOEVENTLOG -I../include \
+        CFLAGS+= -I../include \
         -g -W -Wall -std=gnu99 -ggdb3 -O0 \
         -Wno-missing-braces \
         -Wextra \
@@ -69,7 +69,7 @@ else
     endif
     ifeq ($(UNAME_S),SunOS)
         CC=cc
-        CFLAGS+= -DSOLARIS -DDNOEVENTLOG -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -g -v -xc99 -I ../include/ -mt
+        CFLAGS+= -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -g -v -xc99 -I ../include/ -mt
         CLIBS=-lm -lsocket -lnsl -lpthread -lrt -L.. 
     endif
 	TARGET=ex_list$(EXT) ex_nstr$(EXT) ex_exceptions$(EXT) ex_hash$(EXT) ex_network$(EXT) ex_monolith$(EXT) ex_configfile$(EXT) ex_signals$(EXT)
