@@ -4,6 +4,9 @@
  *\version 1.0
  *\date 26/05/2015
  */
+#include <stdio.h>
+#include <errno.h>
+
 #include "ex_network.h"
 
 #define SERVER 0
@@ -187,7 +190,7 @@ int main(int argc, char **argv) {
 		mode = SERVER ;
 	}
 
-	#ifndef __windows__
+	#ifdef __linux__
 	struct sigaction sa;
 	sa.sa_handler = sigchld_handler; // reap all dead processes
 	sigemptyset(&sa.sa_mask);

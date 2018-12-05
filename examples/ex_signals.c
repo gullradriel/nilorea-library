@@ -69,7 +69,15 @@ void stack_overflow(void)
 /* break out with ctrl+c to test SIGINT handling */
 void infinite_loop(void)
 {
-	while(1) {};
+	int a = 1 ;
+	int b = 1 ;
+	int c = 1 ;
+	while( a == 1 )
+	{
+		b=c;
+		c=a;
+		a=b;
+	}
 }
 
 void illegal_instruction(void)

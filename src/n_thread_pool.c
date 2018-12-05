@@ -4,14 +4,16 @@
  *\version 1.0
  *\date 30/04/2014
  */
- 
- #include <unistd.h>
- #include <pthread.h>
- 
- #include "nilorea/n_common.h"
- #include "nilorea/n_log.h"
+
+#include "nilorea/n_common.h"
+#include "nilorea/n_log.h"
 #include "nilorea/n_thread_pool.h"
 #include "nilorea/n_time.h"
+
+#include <unistd.h>
+#include <pthread.h>
+#include <string.h>
+#include <errno.h>
 
 /*!\fn void *thread_pool_processing_function( void *param )
  * \brief Internal thread pool processing function
@@ -60,7 +62,7 @@ void *thread_pool_processing_function( void *param )
 			pthread_mutex_lock( &node -> lock );
 			node -> func = NULL ;
 			node -> param = NULL ;
-			
+
 			node -> state = IDLE_PROC ;
 
 			int type = node -> type ;
@@ -86,7 +88,7 @@ void *thread_pool_processing_function( void *param )
 
 	pthread_exit( NULL );
 
-#ifndef __sun__
+#ifndef __sun
 	return NULL ;
 #endif
 
@@ -175,39 +177,39 @@ THREAD_POOL *new_thread_pool( int nbmaxthr , int nb_max_waiting )
 int add_threaded_process( THREAD_POOL *thread_pool , void *(*func_ptr)(void *param) , void *param ,  int mode )
 {
 
-if( !thread_pool )
-	return FALSE ;
-
-if( !thread_pool -> thread_list )
-	return FALSE ;
-
-int it = 0 ;
-while( it < thread_pool -> max_threads )
-{
-	pthread_mutex_lock( &thread_pool -> thread_list[ it ] -> lock );
-	if( thread_pool -> thread_list[ it ] -> thread_state == RUNNING_THREAD && thread_pool -> thread_list[ it ] -> state == IDLE_PROC )
-	{
-		pthread_mutex_unlock( &thread_pool -> thread_list[ it ] -> lock );
-		break ;
-	}
-	pthread_mutex_unlock( &thread_pool -> thread_list[ it ] -> lock );
-	it ++ ;
-}
-if( it >= thread_pool -> max_threads )
-{
-	/* if already coming from queue, or if it should be part of a synced start, do not re-add && return FALSE  */
-	if( mode&NOQUEUE || mode&SYNCED_PROC )
-	{
+	if( !thread_pool )
 		return FALSE ;
-	}
-	if( thread_pool -> waiting_list -> nb_items < thread_pool -> nb_max_waiting ) 
+
+	if( !thread_pool -> thread_list )
+		return FALSE ;
+
+	int it = 0 ;
+	while( it < thread_pool -> max_threads )
 	{
-		THREAD_WAITING_PROC *proc = NULL ;
-		Malloc( proc , THREAD_WAITING_PROC , 1 );
-		proc -> func = func_ptr ;
-		proc -> param = param ;
-		pthread_mutex_lock( &thread_pool -> lock );
-		list_push( thread_pool -> waiting_list , proc , free );
+		pthread_mutex_lock( &thread_pool -> thread_list[ it ] -> lock );
+		if( thread_pool -> thread_list[ it ] -> thread_state == RUNNING_THREAD && thread_pool -> thread_list[ it ] -> state == IDLE_PROC )
+		{
+			pthread_mutex_unlock( &thread_pool -> thread_list[ it ] -> lock );
+			break ;
+		}
+		pthread_mutex_unlock( &thread_pool -> thread_list[ it ] -> lock );
+		it ++ ;
+	}
+	if( it >= thread_pool -> max_threads )
+	{
+		/* if already coming from queue, or if it should be part of a synced start, do not re-add && return FALSE  */
+		if( mode&NOQUEUE || mode&SYNCED_PROC )
+		{
+			return FALSE ;
+		}
+		if( thread_pool -> waiting_list -> nb_items < thread_pool -> nb_max_waiting ) 
+		{
+			THREAD_WAITING_PROC *proc = NULL ;
+			Malloc( proc , THREAD_WAITING_PROC , 1 );
+			proc -> func = func_ptr ;
+			proc -> param = param ;
+			pthread_mutex_lock( &thread_pool -> lock );
+			list_push( thread_pool -> waiting_list , proc , free );
 			n_log( LOG_DEBUG , "Adding %p %p to waitlist" , proc -> func , proc -> param );
 			pthread_mutex_unlock( &thread_pool -> lock );
 			return TRUE ;
@@ -218,7 +220,7 @@ if( it >= thread_pool -> max_threads )
 			return FALSE ;
 		}
 	}
-		
+
 	pthread_mutex_lock( &thread_pool -> thread_list[ it ] -> lock );
 	if( mode&DIRECT_PROC )
 	{
@@ -386,7 +388,7 @@ int destroy_threaded_pool( THREAD_POOL **pool , int delay )
 	pthread_mutex_lock( &(*pool) -> lock );
 	list_destroy(  &(*pool) -> waiting_list );
 	pthread_mutex_unlock( &(*pool) -> lock );
-	
+
 	pthread_mutex_destroy( &(*pool) -> lock );
 
 	Free( (*pool) );

@@ -27,7 +27,7 @@ extern "C"
 #define NETWORK_IPV4  1
 #define NETWORK_IPV6  2
 
-#if defined( __linux__ ) || defined( __sun__ ) || defined( _AIX )
+#if defined( __linux__ ) || defined( __sun ) || defined( _AIX )
 #include <sys/types.h>
 #include <unistd.h>
 #include <fcntl.h>
@@ -63,7 +63,7 @@ extern "C"
    /*! missing flag */
 #define INVALID_SOCKET -1
 
-#elif defined __windows__   /* Else it should be __windows__ */
+#elif defined __windows__
 
 #define SHUT_WR SD_SEND
 #define SHUT_RD SD_RECEIVE
@@ -131,8 +131,6 @@ extern "C"
    /*! Netflag for sigpipe */
 #define NETFLAGS 0           /* no flags needed for microsoft */
 
-#else
-#error NO VALID OS DEFINED. PLEASE DEFINE ONE OF THE FOLLOWING: __linux__,WIN,_AIX,__sun__
 #endif
 
    /*! NETWORK -> mode value for a CLIENT (meaning connecting) */

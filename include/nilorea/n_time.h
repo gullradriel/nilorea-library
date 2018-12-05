@@ -17,8 +17,11 @@ extern "C"
 
 #include <time.h>
 #include <limits.h>
+
 #ifdef __windows__
 #include <windows.h>
+#else
+	#include <sys/time.h>
 #endif
 
 	/**\defgroup N_TIME N_TIME: generally used headers, defines, timers, allocators,...
@@ -32,7 +35,7 @@ extern "C"
 	{
 		/*! time since last poll */
 		time_t delta;
-#if !defined( __linux__ ) && !defined( __sun__ ) && !defined( _AIX )
+#ifdef __windows__
 		/*! queryperformancefrequency storage */
 		LARGE_INTEGER freq;
 		/*! start time W32*/

@@ -40,11 +40,11 @@ extern "C"
 #endif
 
     /*! FORCE_INLINE portable macro */
-#if defined( _MSC_VER )
+#ifdef __windows__ 
 #define FORCE_INLINE    __forceinline
-#elif defined( __linux__ ) || defined( __linux__ ) || defined ( __MINGW32__ )
+#elif defined __linux__
 #define FORCE_INLINE inline __attribute__((always_inline))
-#elif defined(__sun__)
+#else
 #define FORCE_INLINE __attribute__((always_inline))
 #endif
 
@@ -212,7 +212,7 @@ extern "C"
     pthread_rwlock_destroy( &(__rwlock_mutex) )
 
 
-#if !defined( __linux__ ) && !defined( __sun__ )
+#ifdef __windows__
     /* typedefine for unsigned category for basic native types */
     /*! shortcut for unsigned int*/
     typedef unsigned int uint;

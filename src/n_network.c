@@ -612,7 +612,7 @@ void *get_in_addr(struct sockaddr *sa)
 int handle_wsa( int mode , int v1 , int v2 )
 {
 	int compiler_warning_suppressor = 0 ;
-#if !defined( __linux__ ) && !defined( __sun__ ) && !defined( _AIX )
+#if !defined( __linux__ ) && !defined( __sun ) && !defined( _AIX )
 	static WSADATA WSAdata; /*WSA world*/
 	static int WSA_IS_INITIALIZED = 0; /*status checking*/
 
@@ -649,7 +649,7 @@ int handle_wsa( int mode , int v1 , int v2 )
 			}
 			break;
 	} /*switch(...)*/
-#endif /*#ifndef __linux__ __sun__ _AIX */
+#endif /*#ifndef __linux__ __sun _AIX */
 	compiler_warning_suppressor = mode + v1 + v2 ;
 	compiler_warning_suppressor = TRUE ;
 	return compiler_warning_suppressor ;
@@ -1274,7 +1274,7 @@ NETWORK *netw_accept_from_ex( NETWORK *from , int disable_naggle , int sock_send
 
 	FD_ZERO( &accept_set );
 
-#if defined( __linux__ ) || defined( __sun__ ) || defined( _AIX )
+#if defined( __linux__ ) || defined( __sun ) || defined( _AIX )
 	socklen_t sin_size = 0 ;
 #else
 	int sin_size = 0 ;
@@ -1340,7 +1340,7 @@ NETWORK *netw_accept_from_ex( NETWORK *from , int disable_naggle , int sock_send
 	}
 	else if( non_blocking == -1 )
 	{
-#if defined(__linux__) || defined(__sun__)
+#if defined(__linux__) || defined(__sun)
 		int flags = fcntl( from -> link . sock , F_GETFL , 0 );
 		if( !(flags&O_NONBLOCK) )
 			fcntl( from -> link . sock , F_SETFL , flags|O_NONBLOCK );
@@ -1365,7 +1365,7 @@ NETWORK *netw_accept_from_ex( NETWORK *from , int disable_naggle , int sock_send
 			return NULL;
 		}
 		/* make the obtained socket blocking if ever it was not */
-#if defined(__linux__) || defined(__sun__)
+#if defined(__linux__) || defined(__sun)
 		flags = fcntl( tmp , F_GETFL , 0 );
 		flags = flags&(~O_NONBLOCK) ;
 		fcntl( tmp , F_SETFL , flags );
@@ -1705,7 +1705,7 @@ void *netw_send_func( void *NET )
 	pthread_exit( 0 );
 
 	/* suppress compiler warning */
-#if !defined( __linux__ ) && !defined( __sun__ )
+#if !defined( __linux__ ) && !defined( __sun )
 	return NULL ;
 #endif
 } /* netw_send_func(...) */
@@ -1840,7 +1840,7 @@ void *netw_recv_func( void *NET )
 	pthread_exit( 0 );
 
 	/* suppress compiler warning */
-#if !defined( __linux__ ) && !defined( __sun__ )
+#if !defined( __linux__ ) && !defined( __sun )
 	return NULL ;
 #endif
 } /* netw_recv_func(...) */

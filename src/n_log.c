@@ -17,7 +17,9 @@
 #include <pthread.h>
 #include <string.h>
 
-
+#ifndef __windows__
+#include <syslog.h>
+#endif
 
 /*! internal struct to handle log types */
 typedef struct _code {

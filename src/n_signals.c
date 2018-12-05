@@ -5,7 +5,7 @@
  *\date 08/11/2018
  */
 #include <stdint.h>
-#ifndef __sun__
+#ifndef __sun
 	#include <inttypes.h>
 #endif
 

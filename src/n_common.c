@@ -16,6 +16,17 @@
 
 #ifdef __windows__
 #include <windows.h>
+#else
+#include <stdio.h>
+#include <errno.h>
+#include <strings.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#ifdef __linux__
+#include <string.h>
+#endif
 #endif
 
 /*! int file_exist( const char *filename )
@@ -56,7 +67,7 @@ char *get_prog_dir( void )
 	char procbuf[ PATH_MAX ] = "" ;
 #ifdef __linux__
 	sprintf( procbuf , "/proc/%d/exe", (int)getpid() );
-#elif defined __sun__
+#elif defined __sun
 	sprintf( procbuf , "/proc/%d/path/a.out", (int)getpid() );
 #endif
 	int bytes = MIN( readlink( procbuf , strbuf , PATH_MAX ) , PATH_MAX - 1 );
@@ -91,7 +102,7 @@ char *get_prog_name( void )
 	char procbuf[ PATH_MAX ] = "" ;
 #ifdef __linux__
 	sprintf( procbuf , "/proc/%d/exe", (int)getpid() );
-#elif defined __sun__
+#elif defined __sun
 	sprintf( procbuf , "/proc/%d/path/a.out", (int)getpid() );
 #endif
 	int bytes = MIN( readlink( procbuf , strbuf , PATH_MAX ) , PATH_MAX - 1 );
@@ -132,17 +143,17 @@ int n_daemonize( void )
 	{
 		close(x);
 	}
- 	int fd = open("/dev/null",O_RDWR, 0);
-    if (fd != -1)
-    {
-        dup2 (fd, STDIN_FILENO);
-        dup2 (fd, STDOUT_FILENO);
-        dup2 (fd, STDERR_FILENO);
-        if (fd > 2)
-        {
-            close (fd);
-        }
-    }
+	int fd = open("/dev/null",O_RDWR, 0);
+	if (fd != -1)
+	{
+		dup2 (fd, STDIN_FILENO);
+		dup2 (fd, STDOUT_FILENO);
+		dup2 (fd, STDERR_FILENO);
+		if (fd > 2)
+		{
+			close (fd);
+		}
+	}
 	else
 	{
 		n_log( LOG_ERR , "Failed to open /dev/null" );

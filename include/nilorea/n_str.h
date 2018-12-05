@@ -21,6 +21,9 @@ extern "C"
      @{
      */
 
+#include "n_common.h"
+#include "n_list.h"
+
 #ifdef __linux__
 #ifndef _XOPEN_SOURCE
 #define _XOPEN_SOURCE 500
@@ -35,9 +38,6 @@ extern "C"
 #include <fcntl.h>
 #include <unistd.h>
 
-
-#include "n_common.h"
-#include "n_list.h"
 
    /*! local strdup */
 #define local_strdup( __src_ )\
@@ -138,7 +138,7 @@ extern "C"
     } )
 
 
-#if defined(__linux__) || defined(__sun__)
+#ifndef __windows__
 #include <inttypes.h>
    /*! N_STR base unit */
    typedef int32_t NSTRBYTE;
