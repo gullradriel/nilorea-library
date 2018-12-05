@@ -15,6 +15,12 @@ extern "C"
 
 #include "n_common.h"
 
+#include <time.h>
+#include <limits.h>
+#ifdef __windows__
+#include <windows.h>
+#endif
+
 	/**\defgroup N_TIME N_TIME: generally used headers, defines, timers, allocators,...
 	  \addtogroup N_TIME
 	  @{
@@ -26,7 +32,7 @@ extern "C"
 	{
 		/*! time since last poll */
 		time_t delta;
-#if !defined( LINUX ) && !defined( SOLARIS ) && !defined( AIX )
+#if !defined( __linux__ ) && !defined( __sun__ ) && !defined( _AIX )
 		/*! queryperformancefrequency storage */
 		LARGE_INTEGER freq;
 		/*! start time W32*/
@@ -41,7 +47,7 @@ extern "C"
 #endif
 	} N_TIME;
 
-#if defined WINDOWS
+#if defined __windows__
 	void u_sleep( __int64 usec);
 #else
 	void u_sleep( unsigned int usec );

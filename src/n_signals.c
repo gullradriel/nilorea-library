@@ -5,11 +5,11 @@
  *\date 08/11/2018
  */
 #include <stdint.h>
-#ifndef SOLARIS
+#ifndef __sun__
 	#include <inttypes.h>
 #endif
 
-#ifdef WINDOWS
+#ifdef __windows__
   #include <windows.h>
   #include <imagehlp.h>
 #else

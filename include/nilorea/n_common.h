@@ -21,86 +21,31 @@ extern "C"
     /*! feature test macro */
 #define __EXTENSIONS__
 
-    /* common headers */
-
-#include <errno.h>
-#include <stdio.h>
-#include <stdlib.h>
-#if defined(_MSC_VER) || defined(__MINGW32__)
-#define __BYTE_ORDER __BYTE_ORDER__
-#define __BIG_ENDIAN __ORDER_BIG_ENDIAN__
-#define __LITTLE_ENDIAN __ORDER_LITTLE_ENDIAN__
-#include <malloc.h>    
-#else
-#include <alloca.h>     
+#if defined( _WIN32 ) || defined( _WIN64 )
+#ifndef __windows__
+	#define __windows__
 #endif
-#include <stdarg.h>
-#include <string.h>
-#include <strings.h>
-#include <ctype.h>
-#include <malloc.h>
-#include <math.h>
-#include <time.h>
-#include <dirent.h>
+#endif
 
-#include <sys/stat.h> 
-#include <sys/types.h> 
-#include <fcntl.h>
-#include <limits.h>
-#include <locale.h>
-#include <dlfcn.h>
-#include <libgen.h>
-	
-    /*#include <sys/wait.h>
-#include <unistd.h> */
+#if defined( __windows__ )
+#ifndef __BYTE_ORDER
+#define __BYTE_ORDER __BYTE_ORDER__
+#endif
+#ifndef __BIG_ENDIAN
+#define __BIG_ENDIAN __ORDER_BIG_ENDIAN__
+#endif
+#ifndef __LITTLE_ENDIAN
+#define __LITTLE_ENDIAN __ORDER_LITTLE_ENDIAN__
+#endif
+#endif
+
     /*! FORCE_INLINE portable macro */
 #if defined( _MSC_VER )
 #define FORCE_INLINE    __forceinline
-#elif defined( __linux__ ) || defined( LINUX ) || defined ( __MINGW32__ )
+#elif defined( __linux__ ) || defined( __linux__ ) || defined ( __MINGW32__ )
 #define FORCE_INLINE inline __attribute__((always_inline))
-#elif defined(SOLARIS)
+#elif defined(__sun__)
 #define FORCE_INLINE __attribute__((always_inline))
-#endif
-
-    /* cross compability */
-#if defined( LINUX ) || defined( SOLARIS ) || defined( AIX )
-
-#include <sys/time.h>
-#ifndef NOALLEGRO
-#ifndef  ALLEGRO_ALREADY_INCLUDED
-    /*! guard for mutliple allegro inclusion. Not that allegro's header would fail, but there would be multiple FONT declaration.*/
-#define ALLEGRO_ALREADY_INLUDED 
-#include <allegro.h>
-
-    /*! default font for our usage */
-    FONT *allegro_font;
-#endif
-#endif   
-#ifdef LINUX
-#include <linux/limits.h>
-#include <pthread.h>
-#endif
-
-#elif defined(WINDOWS) /* WINDOWS */  
-
-#include <windows.h>
-
-#include <time.h>
-#ifndef NOALLEGRO
-#ifndef  ALLEGRO_ALREADY_INCLUDED
-    /*! guard for mutliple allegro inclusion. Not that allegro's header would fail, but there would be multiple FONT declaration.*/
-#define ALLEGRO_ALREADY_INLUDED 
-#include <allegro.h>
-#include <winalleg.h>
-    /*! default font for our usage */
-    FONT *allegro_font;
-#endif
-#endif
-
-    /*#define opendir __mingw_opendir*/
-
-#else
-#error NO TARGET DEFINED ! (WINDOWS,LINUX)
 #endif
 
     /*! define true */
@@ -267,7 +212,7 @@ extern "C"
     pthread_rwlock_destroy( &(__rwlock_mutex) )
 
 
-#if !defined( LINUX ) && !defined( SOLARIS )
+#if !defined( __linux__ ) && !defined( __sun__ )
     /* typedefine for unsigned category for basic native types */
     /*! shortcut for unsigned int*/
     typedef unsigned int uint;
@@ -278,7 +223,6 @@ extern "C"
     /*! shortcut for unsigned char*/
     typedef unsigned char uchar;
 #endif
-
 
     /*! Flag for SET something , passing as a function parameter */
 #define SET        1234
@@ -307,19 +251,12 @@ extern "C"
 #define MAX(a,b) (((a)>(b))?(a):(b))
 #endif
 
-#ifndef WINDOWS
+#ifndef __windows__
 	int n_daemonize( void );
 #endif
 
     /* get running program current directory */
     char *get_prog_dir( void );
-
-
-#ifndef NOALLEGRO
-    /* Fill a keyboard buffer */
-    void get_keyboard( char *keybuf , int *cur , int min , int max );
-#include "lexmenu.h"	
-#endif
 
     int file_exist( const char *filename );
 

@@ -14,10 +14,14 @@
 #include "nilorea/n_log.h"
 #include "nilorea/n_str.h"
 
+#include <errno.h>
 #include <pthread.h>
 #include <math.h>
-
-
+#include <ctype.h>
+#include <stdio.h>
+#include <limits.h>
+#include <stdlib.h>
+#include <dirent.h>
 
 /*!\fn void free_nstr_ptr( void *ptr )
  *\brief Free a N_STR pointer structure
@@ -299,7 +303,7 @@ N_STR *file_to_nstr( char *filename )
 
 	if( stat( filename , &filestat ) != 0 )
 	{  
-#ifdef LINUX
+#ifdef __linux__
 		if( errno == EOVERFLOW )
 		{
 			n_log( LOG_ERR , "%s size is too big (>4GB,EOVERFLOW)" , filename );
@@ -308,7 +312,7 @@ N_STR *file_to_nstr( char *filename )
 		{ 
 #endif
 			n_log( LOG_ERR , "Couldn't stat %s. Errno: %s" , filename , strerror( errno ) );
-#ifdef LINUX
+#ifdef __linux__
 		}
 #endif
 		return NULL ;
@@ -361,7 +365,7 @@ N_STR *file_to_nstr( char *filename )
 	/* Write a whole N_STR into a file */
 	int nstr_to_fd( N_STR *str , FILE *out , int lock )
 {
-#ifdef LINUX
+#ifdef __linux__
 	struct flock out_lock ;
 #endif
 	__n_assert( out , return FALSE );
@@ -371,7 +375,7 @@ N_STR *file_to_nstr( char *filename )
 
 	if( lock == 1 )
 	{
-		#ifdef LINUX
+		#ifdef __linux__
 		memset( &out_lock , 0 , sizeof( out_lock ) );
 		out_lock.l_type = F_WRLCK ;
 		/* Place a write lock on the file. */
@@ -394,7 +398,7 @@ N_STR *file_to_nstr( char *filename )
 
 	if( lock == 1 )
 	{
-		#ifdef LINUX
+		#ifdef __linux__
 		memset( &out_lock , 0 , sizeof( out_lock ) );
 		out_lock.l_type = F_WRLCK ;
 		/* Place a write lock on the file. */

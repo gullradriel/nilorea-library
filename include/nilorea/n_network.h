@@ -27,7 +27,7 @@ extern "C"
 #define NETWORK_IPV4  1
 #define NETWORK_IPV6  2
 
-#if defined( LINUX ) || defined( SOLARIS ) || defined( AIX )
+#if defined( __linux__ ) || defined( __sun__ ) || defined( _AIX )
 #include <sys/types.h>
 #include <unistd.h>
 #include <fcntl.h>
@@ -41,7 +41,7 @@ extern "C"
 #include <sys/ioctl.h>
 
 	
-#ifdef LINUX
+#ifdef __linux__
 #include <linux/sockios.h>
 #endif
 
@@ -63,7 +63,7 @@ extern "C"
    /*! missing flag */
 #define INVALID_SOCKET -1
 
-#elif defined WINDOWS   /* Else it should be WINDOWS */
+#elif defined __windows__   /* Else it should be __windows__ */
 
 #define SHUT_WR SD_SEND
 #define SHUT_RD SD_RECEIVE
@@ -132,7 +132,7 @@ extern "C"
 #define NETFLAGS 0           /* no flags needed for microsoft */
 
 #else
-#error NO VALID OS DEFINED. PLEASE DEFINE ONE OF THE FOLLOWING: LINUX,WIN,AIX,SOLARIS
+#error NO VALID OS DEFINED. PLEASE DEFINE ONE OF THE FOLLOWING: __linux__,WIN,_AIX,__sun__
 #endif
 
    /*! NETWORK -> mode value for a CLIENT (meaning connecting) */

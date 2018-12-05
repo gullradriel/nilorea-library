@@ -7,12 +7,16 @@
 
 
 #include "nilorea/n_network.h"
-#include <pthread.h>
 #include "nilorea/n_log.h"
+
+#include <errno.h>
+#include <limits.h>
+#include <pthread.h>
 #include <unistd.h>
 #include <sys/types.h>
 
-#ifdef WINDOWS
+
+#ifdef __windows__
 
 /*--------------------------------------------------------------------------------------
 
@@ -480,7 +484,7 @@ static int inet_pton6(const char *src, u_char *dst)
 	return (1);
 }
 
-#endif /* ifdef WINDOWS */
+#endif /* ifdef __windows__ */
 
 
 
@@ -608,7 +612,7 @@ void *get_in_addr(struct sockaddr *sa)
 int handle_wsa( int mode , int v1 , int v2 )
 {
 	int compiler_warning_suppressor = 0 ;
-#if !defined( LINUX ) && !defined( SOLARIS ) && !defined( AIX )
+#if !defined( __linux__ ) && !defined( __sun__ ) && !defined( _AIX )
 	static WSADATA WSAdata; /*WSA world*/
 	static int WSA_IS_INITIALIZED = 0; /*status checking*/
 
@@ -645,7 +649,7 @@ int handle_wsa( int mode , int v1 , int v2 )
 			}
 			break;
 	} /*switch(...)*/
-#endif /*#ifndef LINUX SOLARIS AIX */
+#endif /*#ifndef __linux__ __sun__ _AIX */
 	compiler_warning_suppressor = mode + v1 + v2 ;
 	compiler_warning_suppressor = TRUE ;
 	return compiler_warning_suppressor ;
@@ -703,7 +707,7 @@ int netw_setsockopt( SOCKET sock , int disable_naggle , int sock_send_buf , int 
 
 	int tmp = 1 ;
 	/* lose the pesky "Address already in use" error message*/
-#ifndef WINDOWS
+#ifndef __windows__
 	if ( setsockopt( sock , SOL_SOCKET, (SO_REUSEPORT | SO_REUSEADDR) , (char *)&tmp , sizeof( tmp ) ) == -1 )
 	{
 		int error=errno ;
@@ -741,7 +745,7 @@ int netw_setsockopt( SOCKET sock , int disable_naggle , int sock_send_buf , int 
 		n_log( LOG_ERR , "Error from setsockopt(SO_REUSEADDR) on socket %d. errno: %s" , sock , strerror( error ) );
 		return FALSE ;
 	}
-	// WINDOWS
+	// __windows__
 	DWORD timeout = 30000;
 	if( setsockopt(sock, SOL_SOCKET, SO_RCVTIMEO, (const char*)&timeout, sizeof timeout) == -1 )
 	{
@@ -1107,7 +1111,7 @@ int netw_wait_close( NETWORK **netw )
 	/* wait for close fix */
 	if( (*netw) -> link . sock != INVALID_SOCKET )
 	{
-#ifdef LINUX
+#ifdef __linux__
 		/* deplete send buffer */
 		while( TRUE )
 		{
@@ -1270,7 +1274,7 @@ NETWORK *netw_accept_from_ex( NETWORK *from , int disable_naggle , int sock_send
 
 	FD_ZERO( &accept_set );
 
-#if defined( LINUX ) || defined( SOLARIS ) || defined( AIX )
+#if defined( __linux__ ) || defined( __sun__ ) || defined( _AIX )
 	socklen_t sin_size = 0 ;
 #else
 	int sin_size = 0 ;
@@ -1336,7 +1340,7 @@ NETWORK *netw_accept_from_ex( NETWORK *from , int disable_naggle , int sock_send
 	}
 	else if( non_blocking == -1 )
 	{
-#if defined(LINUX) || defined(SOLARIS)
+#if defined(__linux__) || defined(__sun__)
 		int flags = fcntl( from -> link . sock , F_GETFL , 0 );
 		if( !(flags&O_NONBLOCK) )
 			fcntl( from -> link . sock , F_SETFL , flags|O_NONBLOCK );
@@ -1361,7 +1365,7 @@ NETWORK *netw_accept_from_ex( NETWORK *from , int disable_naggle , int sock_send
 			return NULL;
 		}
 		/* make the obtained socket blocking if ever it was not */
-#if defined(LINUX) || defined(SOLARIS)
+#if defined(__linux__) || defined(__sun__)
 		flags = fcntl( tmp , F_GETFL , 0 );
 		flags = flags&(~O_NONBLOCK) ;
 		fcntl( tmp , F_SETFL , flags );
@@ -1701,7 +1705,7 @@ void *netw_send_func( void *NET )
 	pthread_exit( 0 );
 
 	/* suppress compiler warning */
-#if !defined( LINUX ) && !defined( SOLARIS )
+#if !defined( __linux__ ) && !defined( __sun__ )
 	return NULL ;
 #endif
 } /* netw_send_func(...) */
@@ -1836,7 +1840,7 @@ void *netw_recv_func( void *NET )
 	pthread_exit( 0 );
 
 	/* suppress compiler warning */
-#if !defined( LINUX ) && !defined( SOLARIS )
+#if !defined( __linux__ ) && !defined( __sun__ )
 	return NULL ;
 #endif
 } /* netw_recv_func(...) */

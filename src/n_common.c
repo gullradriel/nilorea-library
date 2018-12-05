@@ -8,9 +8,14 @@
 #include "nilorea/n_common.h"
 #include "nilorea/n_log.h"
 
-#if defined(LINUX) || defined(SOLARIS)
-#include <sys/types.h>
-#include <unistd.h>
+
+#include <limits.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <libgen.h>
+
+#ifdef __windows__
+#include <windows.h>
 #endif
 
 /*! int file_exist( const char *filename )
@@ -40,7 +45,7 @@ char *get_prog_dir( void )
 	char strbuf[ PATH_MAX ] = "" ;
 
 	int error = 0 ;
-#ifdef WINDOWS
+#ifdef __windows__
 	int bytes = GetModuleFileName( NULL , strbuf , PATH_MAX );
 	error = errno ;
 	if(bytes != 0)
@@ -49,9 +54,9 @@ char *get_prog_dir( void )
 	}
 #else
 	char procbuf[ PATH_MAX ] = "" ;
-#ifdef LINUX
+#ifdef __linux__
 	sprintf( procbuf , "/proc/%d/exe", (int)getpid() );
-#elif defined SOLARIS
+#elif defined __sun__
 	sprintf( procbuf , "/proc/%d/path/a.out", (int)getpid() );
 #endif
 	int bytes = MIN( readlink( procbuf , strbuf , PATH_MAX ) , PATH_MAX - 1 );
@@ -75,7 +80,7 @@ char *get_prog_name( void )
 {
 	char strbuf[ PATH_MAX ] = "" ;
 	int error = 0 ;
-#ifdef WINDOWS
+#ifdef __windows__
 	int bytes = GetModuleFileName( NULL , strbuf , PATH_MAX );
 	error = errno ;
 	if(bytes != 0)
@@ -84,9 +89,9 @@ char *get_prog_name( void )
 	}
 #else
 	char procbuf[ PATH_MAX ] = "" ;
-#ifdef LINUX
+#ifdef __linux__
 	sprintf( procbuf , "/proc/%d/exe", (int)getpid() );
-#elif defined SOLARIS
+#elif defined __sun__
 	sprintf( procbuf , "/proc/%d/path/a.out", (int)getpid() );
 #endif
 	int bytes = MIN( readlink( procbuf , strbuf , PATH_MAX ) , PATH_MAX - 1 );
@@ -102,43 +107,7 @@ char *get_prog_name( void )
 } /* get_prog_dir */
 
 
-
-#ifndef NOALLEGRO
-/*!\fn void get_keyboard( char *keybuf , int *cur , int min , int max )
- *\brief Function for getting a keyboard input, unicode
- *\param keybuf a valid char buffer
- *\param cur a pointer to the current_cursor_position
- *\param min the minimum carret position in byte
- *\param max the maximim carret position in byte
- */
-void get_keyboard( char *keybuf , int *cur , int min , int max )
-{
-	int k = 0;
-
-	if ( keypressed() ) 
-	{
-		k = ureadkey( NULL );
-
-		if ( k != 0x1b && k != 0x09 && k != 0x00 && k != 0x0d && k != 0x08 && ( *cur ) < max ) 
-		{
-			usprintf( keybuf + ustrsize( keybuf ) , "%c" , k );
-			( *cur ) ++;
-		} 
-
-		if ( k == 0x08 && (*cur) > min )  /* backspace */
-		{
-			( *cur ) --;
-			uremove( keybuf , ( *cur ) );
-		}
-	} /* if( keypressed( ... ) ) */
-} /* get_keyboard(...) */
-
-/* #ifndef NOALLEGRO */
-#endif 
-
-
-
-#ifndef WINDOWS
+#ifndef __windows__
 /*!\fn n_daemonize( void )
  *\brief Daemonize program
  *\return TRUE or FALSE

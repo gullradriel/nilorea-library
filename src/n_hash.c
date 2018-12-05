@@ -5,13 +5,19 @@
  *\date 16/03/2015
  */
 
-#include <pthread.h>
 #include "nilorea/n_common.h"
 #include "nilorea/n_log.h"
 #include "nilorea/n_hash.h"
 
-#ifndef MSVC
+#include <pthread.h>
+#include <string.h>
+#ifdef __windows__
+#include <winsock.h>
+#else
+#include <arpa/inet.h>
+#endif
 
+#ifndef MSVC
 /*!\fn static inline uint32_t rotl32 ( uint32_t x, int8_t r )
  *\brief rotate byte 32bit version (from murmur's author)
  *\param x value

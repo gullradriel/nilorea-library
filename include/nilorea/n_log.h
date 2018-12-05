@@ -31,12 +31,12 @@ extern "C"
 	/*! to sysjrnl */
 #define LOG_SYSJRNL  100       
 
-#if defined( LINUX ) || defined( SOLARIS )
+#if defined( __linux__ ) || defined( __sun__ )
 
 #include <syslog.h> 
 #include <pthread.h>
 
-#ifdef SOLARIS
+#ifdef __sun__
 #include <sys/varargs.h>
 #else
 #include <stdarg.h>

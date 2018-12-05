@@ -9,10 +9,10 @@ VPATH=src/
 LIBNAME= libnilorea.a
 LIBNAME_D= libnilorea_d.a
 
-CFLAGS= -DNOALLEGRO -D_GNU_SOURCE
+CFLAGS=
 
 ifeq ($(OS),Windows_NT)
-	CFLAGS+=-DWINDOWS -DNOSYSJRNL -I.\include \
+	CFLAGS+=-DNOSYSJRNL -I.\include \
 -g -W -Wall -std=gnu99 -ggdb3 -O0 \
 -Wno-missing-braces \
 -Wextra \

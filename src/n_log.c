@@ -5,15 +5,17 @@
  */
 
 /* for vasprintf */
-#ifdef LINUX
+#ifdef __linux__
 #ifndef _GNU_SOURCE
 #define _GNU_SOURCE
 #endif
 #endif
 
-#include <pthread.h>
 #include "nilorea/n_common.h"
 #include "nilorea/n_log.h"
+
+#include <pthread.h>
+#include <string.h>
 
 
 

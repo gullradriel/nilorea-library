@@ -16,7 +16,7 @@ extern "C"
   @{
 */
 
-#ifdef LINUX
+#ifdef __linux__
    #define _GNU_SOURCE
 #endif 
 #include "n_common.h"
@@ -24,7 +24,7 @@ extern "C"
 #include "n_str.h"
 #include "n_list.h"
 #include "n_hash.h"
-#ifdef LINUX
+#ifdef __linux__
    #undef _GNU_SOURCE
 #endif
 /* init the nodup log internal hash_table */

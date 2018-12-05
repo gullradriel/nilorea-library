@@ -18,7 +18,7 @@ extern "C" {
 */
 
 
-#if defined( LINUX ) || defined( AIX ) || defined( SOLARIS )
+#if defined( __linux__ ) || defined( _AIX ) || defined( __sun__ )
 #include <arpa/inet.h>
 #ifndef _XOPEN_SOURCE
 #define _XOPEN_SOURCE 500

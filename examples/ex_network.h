@@ -9,7 +9,9 @@
 #include <getopt.h>
 #include <sys/time.h>
 #include <sys/types.h>
-#ifndef WINDOWS
+
+#include "nilorea/n_common.h"
+#ifndef __windows__
 	#include <sys/wait.h>
 #endif
 

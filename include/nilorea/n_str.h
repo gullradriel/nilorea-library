@@ -21,7 +21,7 @@ extern "C"
      @{
      */
 
-#ifdef LINUX
+#ifdef __linux__
 #ifndef _XOPEN_SOURCE
 #define _XOPEN_SOURCE 500
 #endif
@@ -138,7 +138,7 @@ extern "C"
     } )
 
 
-#if defined(LINUX) || defined(SOLARIS)
+#if defined(__linux__) || defined(__sun__)
 #include <inttypes.h>
    /*! N_STR base unit */
    typedef int32_t NSTRBYTE;

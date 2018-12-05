@@ -2,12 +2,11 @@ RM=
 CC=
 EXT=
 VPATH=../src/
+APIOBJ=../obj/*.o
 CC=gcc
 
-CFLAGS=-DNOALLEGRO
-
 ifeq ($(OS),Windows_NT)
-	CFLAGS+= -DWIN32 -DWINDOWS -DNOSYSJRNL -I../include \
+	CFLAGS+= -DNOSYSJRNL -I../include \
 -g -W -Wall -std=gnu99 -ggdb3 -O0 \
 -Wno-missing-braces \
 -Wextra \
@@ -31,10 +30,11 @@ ifeq ($(OS),Windows_NT)
 -Werror \
 -fno-omit-frame-pointer \
 -ffloat-store #	   	   -Wshadow 
-	CLIBS= -Wl,-Bstatic -lpthread -Wl,-Bdynamic -lws2_32  -L../. 
+	CLIBS= -Wl,-Bstatic -lpthread -Wl,-Bdynamic -lws2_32  -L../../. 
 	RM=del /Q
 	EXT=.exe
 	TARGET=ex_list$(EXT) ex_nstr$(EXT) ex_exceptions$(EXT) ex_hash$(EXT) ex_network$(EXT) ex_monolith$(EXT) ex_configfile$(EXT)
+	APIOBJ=..\obj\*.o
 else
 	UNAME_S := $(shell uname -s)
 	RM=rm -f
@@ -108,5 +108,5 @@ ex_signals$(EXT): n_log.o n_list.o n_str.o n_hash.o n_signals.o ex_signals.o
 	
 clean:
 	$(RM) *.o
-	$(RM) ../src/*.o
+	$(RM) $(APIOBJ)
 	$(RM) $(TARGET)

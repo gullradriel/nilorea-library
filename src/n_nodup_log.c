@@ -4,7 +4,7 @@
  *\date 2015-09-21
  */
 
-#ifdef LINUX
+#ifdef __linux__
 /*! Feature test macro */
 #define _GNU_SOURCE
 #endif 
@@ -15,7 +15,7 @@
 #include "nilorea/n_list.h"
 #include "nilorea/n_hash.h"
 
-#ifdef LINUX
+#ifdef __linux__
 #undef _GNU_SOURCE
 #endif
 #include "nilorea/n_nodup_log.h"

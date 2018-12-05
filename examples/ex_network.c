@@ -187,7 +187,7 @@ int main(int argc, char **argv) {
 		mode = SERVER ;
 	}
 
-	#ifdef LINUX
+	#ifndef __windows__
 	struct sigaction sa;
 	sa.sa_handler = sigchld_handler; // reap all dead processes
 	sigemptyset(&sa.sa_mask);

@@ -5,12 +5,14 @@
  *\date 24/03/05
  */
 
-#include <unistd.h>
 #include "nilorea/n_time.h"
 
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
 
-#if defined(WINDOWS)
+#if defined(__windows__)
 /*!\fn void u_sleep( __int64 usec) 
  *\brief u_sleep for windows
  *\param used Number of usec to sleep
@@ -68,7 +70,7 @@ int start_HiTimer( N_TIME *timer )
 	/* set delta to 0 */
 	timer -> delta = 0;
 
-#if !defined( LINUX ) && !defined( SOLARIS ) && !defined( AIX )
+#if defined( __windows__ )
 	if( QueryPerformanceFrequency( ( LARGE_INTEGER * ) & timer -> freq ) == 0 )
 		return FALSE ;
 	if( QueryPerformanceCounter( &timer -> startTime ) == 0 )
@@ -90,7 +92,7 @@ int start_HiTimer( N_TIME *timer )
  */
 time_t get_usec( N_TIME *timer )
 {
-#ifdef WINDOWS
+#ifdef __windows__
 	QueryPerformanceCounter( ( LARGE_INTEGER * ) & timer -> currentTime );
 	timer -> delta = 1000000 * ( timer -> currentTime . QuadPart - timer -> startTime . QuadPart ) / timer -> freq . QuadPart ;
 	timer -> startTime = timer -> currentTime ;
@@ -113,7 +115,7 @@ time_t get_usec( N_TIME *timer )
  */
 time_t get_msec( N_TIME *timer )
 {
-#ifdef WINDOWS
+#ifdef __windows__
 	QueryPerformanceCounter( ( LARGE_INTEGER * ) & timer -> currentTime );
 	timer -> delta = 1000 * ( timer -> currentTime . QuadPart - timer -> startTime . QuadPart ) / timer -> freq . QuadPart ;
 	timer -> startTime = timer -> currentTime ;
@@ -135,7 +137,7 @@ time_t get_msec( N_TIME *timer )
  *\return The elapsed number of sec for the given N_TIME *timer
  */
 time_t get_sec( N_TIME *timer ){
-#ifdef WINDOWS
+#ifdef __windows__
 	QueryPerformanceCounter( ( LARGE_INTEGER * ) & timer -> currentTime );
 	timer -> delta = ( timer -> currentTime . QuadPart - timer -> startTime . QuadPart ) / timer -> freq . QuadPart ;
 	timer -> startTime = timer -> currentTime ;
