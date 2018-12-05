@@ -65,7 +65,7 @@ char *proc_name = NULL ;
 char *open_sysjrnl( char *identity )
 {
 	__n_assert( identity , return NULL );
-#ifndef NOSYSJRNL
+#ifndef __windows__
 	/* LOG_CONS: log to console if no syslog available 
 	 * LOG_PID: add pid of calling process to log
 	 * Local use 7 : compat with older logging systems
@@ -83,7 +83,7 @@ char *open_sysjrnl( char *identity )
  */
 void close_sysjrnl( void )
 {
-#ifndef NOSYSJRNL
+#ifndef __windows__
 	closelog();
 #endif
 	FreeNoLog( proc_name );
@@ -238,10 +238,9 @@ void _n_log( int level , const char *file , const char *func , int line , const 
 				va_start (args, format);
 				vasprintf( &syslogbuffer , format , args ); 
 				va_end( args );
-#ifndef NOSYSJRNL				
+#ifndef __windows__				
 				syslog( level , "%s->%s:%d %s" , file , func , line , syslogbuffer ); 
-#endif
-#ifndef NOEVENTLOG
+#else
 				needed = snprintf( NULL , 0, "start /B EventCreate /t %s /id 666 /l APPLICATION /so %s /d \"%s\" > NUL 2>&1", prioritynames[ level ] . w_name , name , syslogbuffer );
 				Malloc( eventbuffer , char , needed + 4 );
 				sprintf( eventbuffer , "start /B EventCreate /t %s /id 666 /l APPLICATION /so %s /d \"%s\" > NUL 2>&1", prioritynames[ level ] . w_name , name , syslogbuffer );

@@ -6,7 +6,7 @@ APIOBJ=../obj/*.o
 CC=gcc
 
 ifeq ($(OS),Windows_NT)
-	CFLAGS+= -DNOSYSJRNL -I../include \
+	CFLAGS+= -I../include \
 -g -W -Wall -std=gnu99 -ggdb3 -O0 \
 -Wno-missing-braces \
 -Wextra \
