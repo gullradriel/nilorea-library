@@ -13,7 +13,14 @@
 
 #include "nilorea/n_zlib.h"
 #include "nilorea/n_log.h"
+#include "limits.h"
+
+#ifndef __windows__
 #include <arpa/inet.h>
+#else
+	#include <stdint.h>
+	#include <winsock2.h>
+#endif
 
 
 /*!\fn int GetMaxCompressedLen( int nLenSrc ) 
