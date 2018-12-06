@@ -38,13 +38,10 @@ extern "C"
 #include <arpa/inet.h>
 #include <netdb.h>
 #include <sys/ioctl.h>
-
 	
 #ifdef __linux__
 #include <linux/sockios.h>
 #endif
-
-
 
 #ifndef MSG_NOSIGNAL
 #define MSG_NOSIGNAL 0
@@ -69,13 +66,14 @@ extern "C"
 #define SHUT_RDWR SD_BOTH
 #define ECONNRESET 104
 
-#include <winsock2.h>
+#include <windows.h>
 
 #if (_WIN32_WINNT < 0x0501)
 #undef _WIN32_WINNT
 #define _WIN32_WINNT 0x0501
 #endif
 
+#include <winsock2.h>
 #include <ws2tcpip.h>
 
 #ifndef MSG_EOR
