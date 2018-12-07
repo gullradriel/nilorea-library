@@ -27,6 +27,7 @@ ifeq ($(OS),Windows_NT)
 -Wstrict-aliasing=2 \
 -Wredundant-decls \
 -Wold-style-definition \
+-Wimplicit-fallthrough=0 \
 -Werror \
 -fno-omit-frame-pointer \
 -ffloat-store #	   	   -Wshadow 

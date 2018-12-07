@@ -33,6 +33,7 @@ ifeq ($(OS),Windows_NT)
 -Wstrict-aliasing=2 \
 -Wredundant-decls \
 -Wold-style-definition \
+-Wimplicit-fallthrough=0 \
 -Werror \
 -fno-omit-frame-pointer \
 -ffloat-store #                 -Wshadow
@@ -40,7 +41,7 @@ ifeq ($(OS),Windows_NT)
 	RM=del /Q
 	CC=gcc
 	EXT=.exe
-	SRC= n_common.c n_log.c n_exceptions.c n_str.c n_list.c n_hash.c n_time.c n_thread_pool.c n_network.c n_network_msg.c
+	SRC= n_common.c n_log.c n_exceptions.c n_str.c n_list.c n_network.c n_hash.c n_time.c n_thread_pool.c  n_network_msg.c
 	HDR=$(SRC:%.c=%.h) nilorea.h
 	OBJECTS=$(SRC:%.c=obj\\%.o)
 obj\\%.o: src\\%.c
