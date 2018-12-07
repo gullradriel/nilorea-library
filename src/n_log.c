@@ -9,6 +9,8 @@
 
 #include <pthread.h>
 #include <string.h>
+#include <time.h>
+#include <limits.h>
 
 #ifndef __windows__
 #include <syslog.h>
@@ -244,7 +246,7 @@ void _n_log( int level , const char *file , const char *func , int line , const 
 				FreeNoLog( eventbuffer );
 				break ;
 			default:
-				fprintf( out , "%s:%ld %s->%s:%d " , prioritynames[ level ] . c_name , time( NULL ) , file , func , line  ); 
+				fprintf( out , "%s:%lld %s->%s:%d " , prioritynames[ level ] . c_name , time( NULL ) , file , func , line  ); 
 				va_start (args, format);
 				vfprintf( out, format , args ); 
 				va_end( args );

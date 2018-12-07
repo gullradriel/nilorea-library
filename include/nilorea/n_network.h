@@ -17,12 +17,6 @@ extern "C"
   @{
 */
 
-#include "n_common.h"
-#include "n_str.h"
-#include "n_list.h"
-#include "n_time.h"
-#include "n_log.h"
-
 #define NETWORK_IPALL 0
 #define NETWORK_IPV4  1
 #define NETWORK_IPV6  2
@@ -59,22 +53,23 @@ extern "C"
    /*! missing flag */
 #define INVALID_SOCKET -1
 
-#elif defined __windows__
+#elif defined(_WIN32 ) || defined( _WIN64 )
 
 #define SHUT_WR SD_SEND
 #define SHUT_RD SD_RECEIVE
 #define SHUT_RDWR SD_BOTH
-#define ECONNRESET 104
+/*#define ECONNRESET 104*/
 
-#include <windows.h>
-
-#if (_WIN32_WINNT < 0x0501)
+#if defined( _WIN32_WINNT) && (_WIN32_WINNT < 0x0501)
 #undef _WIN32_WINNT
+#define _WIN32_WINNT 0x0501
+#elsif !defined( _WIN32_WINNT )
 #define _WIN32_WINNT 0x0501
 #endif
 
 #include <winsock2.h>
 #include <ws2tcpip.h>
+
 
 #ifndef MSG_EOR
 #define MSG_EOR 0
@@ -163,6 +158,11 @@ extern "C"
    /*! PHP send and receive header size */
 #define HEAD_CODE 3   
 
+#include "n_common.h"
+#include "n_str.h"
+#include "n_list.h"
+#include "n_time.h"
+#include "n_log.h"
 
    /*! Structure of a N_SOCKET */
    typedef struct N_SOCKET
