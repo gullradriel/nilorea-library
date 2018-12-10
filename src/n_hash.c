@@ -13,7 +13,7 @@
 #include <string.h>
 
 #ifdef __windows__
-#include <winsock2.h>
+#include <winsock.h>
 #else
 #include <arpa/inet.h>
 #endif
