@@ -149,10 +149,15 @@ extern "C"
       /*! size of the written data inside the string */
       NSTRBYTE written ;          
    } N_STR;
+   
+   #ifdef __windows__
+   const char *strcasestr(const char *s1, const char *s2);
+   #endif
 
+   /* trim and put a \0 at the end, return new begin pointer */
    char *trim_nocopy(char *s);
+   /* N_STR wrapper around fgets */
    char *nfgets( char *buffer , int size , FILE *stream );
-
    /* create a new string */
    N_STR *new_nstr( NSTRBYTE size );   
    /* reinitialize a nstr */
@@ -194,8 +199,7 @@ extern "C"
          n_log( LOG_DEBUG , "%s is already NULL" , #__ptr ); \
       } \
    }
-   
-   
+      
    /* free NSTR and set it to NULL */
    int _free_nstr( N_STR **ptr );
    /* just free NSTR */ 
@@ -204,19 +208,16 @@ extern "C"
    int free_nstr_nolog( N_STR **ptr );
    /* Do not warn and just Free */
    void free_nstr_ptr_nolog( void *ptr );
-   
    /* String to long integer, with error checking */
    int str_to_long_ex( const char *s , NSTRBYTE start , NSTRBYTE end , long int *i, const int base );
    /* String to long integer, shorter version */ 
    int str_to_long(  const char *s , long int *i,  const int base);
-
    /* String to integer, with error checking */
    int str_to_int_ex( const char *s , NSTRBYTE start , NSTRBYTE end , int *i, const int base );
    /* String to integer, with error checking */
    int str_to_int_nolog( const char *s , NSTRBYTE start , NSTRBYTE end , int *i, const int base , N_STR **infos );
    /* String to integer, shorter version */ 
    int str_to_int(  const char *s , int *i,  const int base);
-
    /* Skip character from string while string[iterator] == toskip step inc */
    int skipw( char *string , char toskip , NSTRBYTE *iterator , int inc );
    /* Skip character from string until string[iterator] == toskip step inc */
@@ -228,7 +229,7 @@ extern "C"
    /* Copy from string to dest until from[ iterator ] == split */
    int strcpy_u( char *from , char *to , NSTRBYTE to_size , char split , NSTRBYTE *it );
    /* Return an array of char pointer to the splitted section */
-   char **split( char* chaine , const char* delim , int vide );
+   char **split( const char* chaine , const char* delim , int vide );
    /* Count split elements */
    int split_count( char **split_result );
    /* Free a char **tab and set it to NULL */
@@ -243,12 +244,10 @@ extern "C"
    int wildmat( register const char *text, register const char *p );
    /* pattern matching case insensitive */
    int wildmatcase( register const char *text, register const char *p );
-
    /* return a replaced string */
    char *str_replace ( const char *string, const char *substr, const char *replacement );
-   
+   /* sanitize string */
    int str_sanitize_ex( char *string, const unsigned int string_len, const char *mask, const unsigned int masklen, const char replacement );
-
    /* in-place substitution of a set of chars by a single one */
    int str_sanitize( char *string, const char *mask, const char replacement );
 

@@ -19,9 +19,27 @@
 #include <math.h>
 #include <ctype.h>
 #include <stdio.h>
+#include <string.h>
 #include <limits.h>
 #include <stdlib.h>
 #include <dirent.h>
+
+
+#ifdef __windows__
+const char *strcasestr(const char *s1, const char *s2)
+{
+	__n_assert( s1 , return NULL );
+	__n_assert( s2 , return NULL );
+	
+	size_t n = strlen(s2);
+	while( *s1 )
+	{
+		if( !strnicmp( s1++ , s2 ,n ) )
+			return ( s1-1 );
+	}
+ return NULL ;
+}
+#endif
 
 /*!\fn void free_nstr_ptr( void *ptr )
  *\brief Free a N_STR pointer structure
@@ -875,13 +893,13 @@ int strcpy_u( char *from , char *to , NSTRBYTE to_size , char split , NSTRBYTE *
  *\param empty Empty flag. If 1, then empty delimited areas will be added as NULL entries, else they will be skipped.
  *\return An array of char *, ended by a NULL entry.
  */
-char** split( char* str , const char* delim , int empty ){
+char** split( const char* str , const char* delim , int empty ){
 
 	char** tab=NULL; /* result array */ 
 	char *ptr = NULL ; /* tmp pointer */ 
 	int sizeStr; 
 	int sizeTab=0; /* array size */
-	char* largestring = NULL; /* pointer to start of string */
+	const char* largestring = NULL; /* pointer to start of string */
 
 	int sizeDelim=strlen(delim);
 
