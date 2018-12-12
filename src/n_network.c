@@ -21,6 +21,8 @@
 
 #ifdef __windows__
 
+#if __GNUC__ <= 4 && __GNUC_MINOR__ <= 5
+
 /*--------------------------------------------------------------------------------------
 
   By Marco Ladino - mladinox.. jan/2016
@@ -258,7 +260,7 @@ static char *inet_ntop6(const unsigned char *src, char *dst, socklen_t size)
 		tp += sprintf(tp, "%x", words[i]);
 	}
 	/* Was it a trailing run of 0x00's? */
-	if (best.base != -1 && (best.base + best.len) == 
+	if (best.base != -1 && (best.base + best.len) ==
 			(NS_IN6ADDRSZ / NS_INT16SZ))
 		*tp++ = ':';
 	*tp++ = '\0';
@@ -487,6 +489,8 @@ static int inet_pton6(const char *src, u_char *dst)
 	return (1);
 }
 
+#endif /* if GCC_VERSION <= 4.5 */
+
 #endif /* ifdef __windows__ */
 
 
@@ -520,14 +524,14 @@ NETWORK *netw_new( int send_list_limit , int recv_list_limit )
 	/*initiliaze mutexs*/
 	if ( pthread_mutex_init( &netw -> sendbolt , NULL ) != 0 )
 	{
-		n_log( LOG_ERR , "Error initializing netw -> sendbolt" ); 
+		n_log( LOG_ERR , "Error initializing netw -> sendbolt" );
 		Free( netw );
 		return NULL ;
 	}
 	/*initiliaze mutexs*/
 	if ( pthread_mutex_init( &netw -> recvbolt , NULL ) != 0 )
 	{
-		n_log( LOG_ERR , "Error initializing netw -> recvbolt" ); 
+		n_log( LOG_ERR , "Error initializing netw -> recvbolt" );
 		pthread_mutex_destroy( &netw -> sendbolt );
 		Free( netw );
 		return NULL ;
@@ -535,7 +539,7 @@ NETWORK *netw_new( int send_list_limit , int recv_list_limit )
 	/*initiliaze mutexs*/
 	if ( pthread_mutex_init( &netw -> eventbolt , NULL ) != 0 )
 	{
-		n_log( LOG_ERR , "Error initializing netw -> eventbolt" ); 
+		n_log( LOG_ERR , "Error initializing netw -> eventbolt" );
 		pthread_mutex_destroy( &netw -> sendbolt );
 		pthread_mutex_destroy( &netw -> recvbolt );
 		Free( netw );
@@ -591,12 +595,12 @@ int netw_set_timers( NETWORK *netw , int send_queue_wait , int send_queue_consec
 
 
 /*!\fn void *get_in_addr(struct sockaddr *sa)
- *\brief get sockaddr, IPv4 or IPv6 
+ *\brief get sockaddr, IPv4 or IPv6
  *\param sa socket_address
  */
 void *get_in_addr(struct sockaddr *sa)
 {
-	if (sa->sa_family == AF_INET) 
+	if (sa->sa_family == AF_INET)
 	{
 		return &(((struct sockaddr_in*)sa)->sin_addr);
 	}
@@ -661,7 +665,7 @@ int handle_wsa( int mode , int v1 , int v2 )
 
 
 /*!\fn int netw_setsockopt( SOCKET sock , int disable_naggle , int sock_send_buf , int sock_recv_buf )
- *\brief Modify common socket options. Enable SO_REUSEADDR.  
+ *\brief Modify common socket options. Enable SO_REUSEADDR.
  *\param sock The socket to configure
  *\param disable_naggle Set to positive to enable. Set to negative to force disable, 0 untouched
  *\param sock_send_buf If >0, then try to set the socket send buffer size in octet
@@ -828,9 +832,9 @@ int netw_connect_ex( NETWORK **netw , char *host , char *port, int disable_naggl
 		(*netw) -> link . hints . ai_family   = AF_UNSPEC;     /* Allow IPv4 or IPv6 */
 	}
 
-	(*netw) -> link . hints . ai_socktype = SOCK_STREAM;   
-	(*netw) -> link . hints . ai_protocol = IPPROTO_TCP;   
-	(*netw) -> link . hints . ai_flags    = AI_PASSIVE;    
+	(*netw) -> link . hints . ai_socktype = SOCK_STREAM;
+	(*netw) -> link . hints . ai_protocol = IPPROTO_TCP;
+	(*netw) -> link . hints . ai_flags    = AI_PASSIVE;
 	(*netw) -> link . hints . ai_canonname = NULL;
 	(*netw) -> link . hints . ai_next = NULL;
 
@@ -855,19 +859,19 @@ int netw_connect_ex( NETWORK **netw , char *host , char *port, int disable_naggl
 		int sock = socket( rp -> ai_family , rp -> ai_socktype , rp->ai_protocol );
 		error = errno ;
 		if( sock == -1 )
-		{  
+		{
 			n_log( LOG_ERR , "Error while trying to make a socket: %s"  ,strerror( error ) );
 			continue ;
 		}
 		if( netw_setsockopt( sock , disable_naggle , sock_send_buf , sock_recv_buf ) != TRUE )
 		{
-			n_log( LOG_ERR , "Some socket options could not be set on %d" , (*netw) -> link . sock );   
+			n_log( LOG_ERR , "Some socket options could not be set on %d" , (*netw) -> link . sock );
 		}
-		net_status = connect( sock , rp -> ai_addr , rp -> ai_addrlen ); 
+		net_status = connect( sock , rp -> ai_addr , rp -> ai_addrlen );
 		/*storing connected port and ip adress*/
 		if( !inet_ntop( rp->ai_family , get_in_addr( (struct sockaddr *)rp -> ai_addr ) , (*netw) -> link . ip , INET6_ADDRSTRLEN ) )
 		{
-			n_log( LOG_ERR , "inet_ntop: %p , %s" , rp , strerror( errno ) );  
+			n_log( LOG_ERR , "inet_ntop: %p , %s" , rp , strerror( errno ) );
 		}
 		error = errno ;
 		if( net_status == -1 )
@@ -895,7 +899,7 @@ int netw_connect_ex( NETWORK **netw , char *host , char *port, int disable_naggl
 	__n_assert( (*netw) -> link . ip , netw_close( &(*netw ) ); return FALSE );
 	if( !inet_ntop( rp->ai_family , get_in_addr( (struct sockaddr *)rp -> ai_addr ) , (*netw) -> link . ip , INET6_ADDRSTRLEN ) )
 	{
-		n_log( LOG_ERR , "inet_ntop: %p , %s" , rp , strerror( errno ) );  
+		n_log( LOG_ERR , "inet_ntop: %p , %s" , rp , strerror( errno ) );
 	}
 
 
@@ -995,7 +999,7 @@ int netw_set( NETWORK *netw , int flag )
 	if( flag & NETW_CLIENT )
 	{
 		netw -> mode = NETW_CLIENT ;
-	}  
+	}
 	if( flag & NETW_SERVER )
 	{
 		netw -> mode = NETW_SERVER ;
@@ -1003,7 +1007,7 @@ int netw_set( NETWORK *netw , int flag )
 	if( flag & NETW_RUN )
 	{
 		netw -> state = NETW_RUN ;
-	}  
+	}
 	if( flag & NETW_PAUSE )
 	{
 		netw -> state = NETW_PAUSE ;
@@ -1019,7 +1023,7 @@ int netw_set( NETWORK *netw , int flag )
 	if( flag & NETW_EXIT_ASKED )
 	{
 		netw -> state = NETW_EXIT_ASKED ;
-	} 
+	}
 	if( flag & NETW_THR_ENGINE_STARTED )
 	{
 		netw -> threaded_engine_status = NETW_THR_ENGINE_STARTED ;
@@ -1047,7 +1051,7 @@ int netw_close( NETWORK **netw )
 	netw_get_state( (*netw) , &state , &thr_engine_status );
 	if( thr_engine_status == NETW_THR_ENGINE_STARTED )
 	{
-		netw_stop_thr_engine( (*netw ) ); 
+		netw_stop_thr_engine( (*netw ) );
 	}
 
 	/*closing connection*/
@@ -1079,13 +1083,13 @@ int netw_close( NETWORK **netw )
 
 
 #ifdef __linux__
-void depleteSendBuffer(int fd) 
+void depleteSendBuffer(int fd)
 {
 	int lastOutstanding=-1;
 	for(;;) {
 		int outstanding;
 		ioctl(fd, SIOCOUTQ, &outstanding);
-		if(outstanding != lastOutstanding) 
+		if(outstanding != lastOutstanding)
 			printf("Outstanding: %d\n", outstanding);
 		lastOutstanding = outstanding;
 		if(!outstanding)
@@ -1108,7 +1112,7 @@ int netw_wait_close( NETWORK **netw )
 	netw_get_state( (*netw) , &state , &thr_engine_status );
 	if( thr_engine_status == NETW_THR_ENGINE_STARTED )
 	{
-		netw_stop_thr_engine( (*netw ) ); 
+		netw_stop_thr_engine( (*netw ) );
 	}
 
 	/* wait for close fix */
@@ -1169,9 +1173,9 @@ int netw_make_listening( NETWORK **netw , char *addr , char *port , int nbpendin
 	if( *netw )
 	{
 		n_log( LOG_ERR , "Cannot use an allocated network. Please pass a NULL network to modify" );
-		return FALSE; 
+		return FALSE;
 	}
-	(*netw) = netw_new( -1 , -1 ); 
+	(*netw) = netw_new( -1 , -1 );
 	(*netw) -> link . port = strdup( port );
 	/*creating array*/
 	if( ip_version == NETWORK_IPV4 )
@@ -1191,8 +1195,8 @@ int netw_make_listening( NETWORK **netw , char *addr , char *port , int nbpendin
 	{
 		(*netw) -> link . hints . ai_flags    = AI_PASSIVE;    /* For wildcard IP address */
 	}
-	(*netw) -> link . hints . ai_socktype = SOCK_STREAM;   
-	(*netw) -> link . hints . ai_protocol = IPPROTO_TCP;   
+	(*netw) -> link . hints . ai_socktype = SOCK_STREAM;
+	(*netw) -> link . hints . ai_protocol = IPPROTO_TCP;
 	(*netw) -> link . hints . ai_canonname = NULL;
 	(*netw) -> link . hints . ai_next = NULL;
 
@@ -1215,13 +1219,13 @@ int netw_make_listening( NETWORK **netw , char *addr , char *port , int nbpendin
 	{
 		(*netw) -> link . sock = socket( rp -> ai_family , rp -> ai_socktype , rp->ai_protocol );
 		if( (*netw) -> link . sock == INVALID_SOCKET )
-		{  
+		{
 			n_log( LOG_ERR , "Error while trying to make a socket: %s"  ,strerror( errno ) );
 			continue ;
 		}
 		if( netw_setsockopt( (*netw) -> link . sock , 0 , 0 , 0 ) != TRUE )
 		{
-			n_log( LOG_ERR , "Some socket options could not be set on %d" , (*netw) -> link . sock );   
+			n_log( LOG_ERR , "Some socket options could not be set on %d" , (*netw) -> link . sock );
 		}
 		if( bind( (*netw) -> link . sock , rp -> ai_addr , rp -> ai_addrlen ) == 0 )
 		{
@@ -1229,7 +1233,7 @@ int netw_make_listening( NETWORK **netw , char *addr , char *port , int nbpendin
 			Malloc( ip , char , INET6_ADDRSTRLEN + 1 );
 			if( !inet_ntop( rp -> ai_family , get_in_addr( rp-> ai_addr ) , ip , INET6_ADDRSTRLEN ) )
 			{
-				n_log( LOG_ERR , "inet_ntop: %p , %s" , (*netw) -> link . raddr , strerror( errno ) );  
+				n_log( LOG_ERR , "inet_ntop: %p , %s" , (*netw) -> link . raddr , strerror( errno ) );
 			}
 			n_log( LOG_DEBUG , "Socket %d successfully binded to %s %s" ,  (*netw) -> link . sock , ip , port );
 			(*netw) -> link . ip = ip ;
@@ -1318,12 +1322,12 @@ NETWORK *netw_accept_from_ex( NETWORK *from , int disable_naggle , int sock_send
 		else if( ret == 0 )
 		{
 			/* that one produce waaaay too much logs under a lot of cases */
-			/* n_log( LOG_DEBUG , "No connection waiting on %d" , from -> link . sock ); */    
+			/* n_log( LOG_DEBUG , "No connection waiting on %d" , from -> link . sock ); */
 			netw_close( &netw );
 			return NULL;
 		}
-		if( FD_ISSET(  from -> link . sock , &accept_set ) ) 
-		{          
+		if( FD_ISSET(  from -> link . sock , &accept_set ) )
+		{
 			tmp = accept( from -> link . sock, (struct sockaddr * )&netw -> link . raddr , &sin_size );
 			int error = errno ;
 			if ( tmp < 0 )
@@ -1380,7 +1384,7 @@ NETWORK *netw_accept_from_ex( NETWORK *from , int disable_naggle , int sock_send
 			netw_close( &netw );
 			return NULL ;
 		}
-#endif	
+#endif
 	}
 	else
 	{
@@ -1399,12 +1403,12 @@ NETWORK *netw_accept_from_ex( NETWORK *from , int disable_naggle , int sock_send
 	Malloc( netw -> link . ip , char , INET6_ADDRSTRLEN + 1 );
 	if( !inet_ntop( netw -> link . raddr .ss_family , get_in_addr( (struct sockaddr*)&netw -> link . raddr) , netw -> link . ip , INET6_ADDRSTRLEN ) )
 	{
-		n_log( LOG_ERR , "inet_ntop: %p , %s" , netw -> link . raddr , strerror( errno ) );  
+		n_log( LOG_ERR , "inet_ntop: %p , %s" , netw -> link . raddr , strerror( errno ) );
 	}
 
 	if( netw_setsockopt( netw -> link . sock , disable_naggle , sock_send_buf , sock_recv_buf ) != TRUE )
 	{
-		n_log( LOG_ERR , "Some socket options could not be set on %d" , netw-> link . sock );   
+		n_log( LOG_ERR , "Some socket options could not be set on %d" , netw-> link . sock );
 	}
 
 	netw_set( netw , NETW_SERVER|NETW_RUN|NETW_THR_ENGINE_STOPPED );
@@ -1419,7 +1423,7 @@ NETWORK *netw_accept_from_ex( NETWORK *from , int disable_naggle , int sock_send
 /*!\fn NETWORK *netw_accept_from( NETWORK *from )
  *\brief make a normal blocking 'accept' . Network 'from' must be allocated with netw_make_listening.
  *\param from The network from which to obtaion the connection
- *\return NULL 
+ *\return NULL
  */
 NETWORK *netw_accept_from( NETWORK *from )
 {
@@ -1432,7 +1436,7 @@ NETWORK *netw_accept_from( NETWORK *from )
  *\brief make a normal blocking 'accept' . Network 'from' must be allocated with netw_make_listening.
  *\param from The network from which to obtaion the connection
  *\param blocking set to -1 to make it non blocking, to 0 for blocking, else it's the select timeout value in mseconds.
- *\return NULL 
+ *\return NULL
  */
 NETWORK *netw_accept_nonblock_from( NETWORK *from , int blocking )
 {
@@ -1500,7 +1504,7 @@ N_STR *netw_get_msg( NETWORK *netw )
  *\param netw The link on which we wait a message
  *\param refresh The time in usec between each check until there is a message
  *\param timeout in usecs , maximum amount of time to wait before return. Pass a value <= 0 to disable.
- *\return NULL or a filled N_STR 
+ *\return NULL or a filled N_STR
  */
 N_STR *netw_wait_msg( NETWORK *netw , long refresh , long timeout )
 {
@@ -1703,7 +1707,7 @@ void *netw_send_func( void *NET )
 	{
 		n_log( LOG_ERR , "Closing send thread for socket %d\nReason unknown\nDONE = %d" , netw -> link . sock , DONE );
 		netw_set( netw , NETW_ERROR );
-	}   
+	}
 
 	pthread_exit( 0 );
 
@@ -1751,8 +1755,8 @@ void *netw_recv_func( void *NET )
 		else
 		{
 			/*if( !DONE && !(state&NETW_EXIT_ASKED) && !(state&NETW_EXITED) ) */
-			if( !DONE ) 
-			{   
+			if( !DONE )
+			{
 				if( !(state&NETW_PAUSE) )
 				{
 					/* receiving state */
@@ -2037,7 +2041,7 @@ int send_php( SOCKET s, int _code , char *buf, int n )
 		}
 	}
 
-	/* sending buf */ 
+	/* sending buf */
 	bcount = 0;
 	br = 0;
 	while ( bcount < n )                 /* loop until full buffer */
@@ -2120,7 +2124,7 @@ int recv_php( SOCKET s, int *_code , char **buf )
 			ptr += br;                       /* move buffer ptr for next read */
 		}
 		else
-		{  
+		{
 			if( br == 0 && bcount == ( HEAD_CODE - bcount ) )
 				break ;
 			/* signal an error to the caller */

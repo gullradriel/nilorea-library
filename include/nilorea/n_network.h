@@ -13,14 +13,13 @@ extern "C"
 #endif
 
 /**\defgroup NETWORKING NETWORK: connect, accept, send and recv wrappers. Network Queue, thread-safe add/get message
-   \addtogroup NETWORKING 
+   \addtogroup NETWORKING
   @{
 */
 
 #include "n_common.h"
 #include "n_str.h"
 #include "n_list.h"
-#include "n_time.h"
 #include "n_log.h"
 
 #define NETWORK_IPALL 0
@@ -38,7 +37,7 @@ extern "C"
 #include <arpa/inet.h>
 #include <netdb.h>
 #include <sys/ioctl.h>
-	
+
 #ifdef __linux__
 #include <linux/sockios.h>
 #endif
@@ -59,14 +58,19 @@ extern "C"
    /*! missing flag */
 #define INVALID_SOCKET -1
 
+#include "n_time.h"
+
 #elif defined __windows__
 
 #define SHUT_WR SD_SEND
 #define SHUT_RD SD_RECEIVE
 #define SHUT_RDWR SD_BOTH
-#define ECONNRESET 104
 
-#include <windows.h>
+#ifndef ECONNRESET
+#define ECONNRESET 104
+#endif
+
+
 
 #if (_WIN32_WINNT < 0x0501)
 #undef _WIN32_WINNT
@@ -74,7 +78,9 @@ extern "C"
 #endif
 
 #include <winsock2.h>
+#include <windows.h>
 #include <ws2tcpip.h>
+#include "n_time.h"
 
 #ifndef MSG_EOR
 #define MSG_EOR 0
@@ -155,13 +161,13 @@ extern "C"
    /*! State for a stopped threaded network engine */
 #define NETW_THR_ENGINE_STOPPED 4096
    /*! Flag: empty send buffer */
-#define NETW_DESTROY_SENDBUF 8192 
+#define NETW_DESTROY_SENDBUF 8192
    /*! Flag: empty recv buffer */
 #define NETW_DESTROY_RECVBUF  16384
    /*! PHP send and receive header size */
-#define HEAD_SIZE 10   
+#define HEAD_SIZE 10
    /*! PHP send and receive header size */
-#define HEAD_CODE 3   
+#define HEAD_CODE 3
 
 
    /*! Structure of a N_SOCKET */
@@ -196,7 +202,7 @@ extern "C"
           /*! Internal flag to know if we have to free addr infos */
           addr_infos_loaded ,
 	  	  /*! send queue pool interval, used when there is no item in queue, in usec */
-	  	  send_queue_wait , 
+	  	  send_queue_wait ,
 	  	  /*! send queue consecutive pool interval, used when there are still items to send, in usec */
 	  	  send_queue_consecutive_wait,
 		  /*! interval between state checks in pause mode */
@@ -283,8 +289,8 @@ extern "C"
    /* get queue status */
    int netw_get_queue_status( NETWORK *netw , int *nb_to_send , int *nb_to_read );
 
-/*@}*/   
-   
+/*@}*/
+
 #ifdef __cplusplus
 }
 #endif

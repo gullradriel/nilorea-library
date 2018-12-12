@@ -12,6 +12,8 @@
 
 #ifndef __windows__
 #include <syslog.h>
+#else
+#include <time.h>
 #endif
 
 /*! internal struct to handle log types */
@@ -61,7 +63,7 @@ char *open_sysjrnl( char *identity )
 {
 	__n_assert( identity , return NULL );
 #ifndef __windows__
-	/* LOG_CONS: log to console if no syslog available 
+	/* LOG_CONS: log to console if no syslog available
 	 * LOG_PID: add pid of calling process to log
 	 * Local use 7 : compat with older logging systems
 	 */
@@ -83,7 +85,7 @@ void close_sysjrnl( void )
 #endif
 	FreeNoLog( proc_name );
 } /* close_sysjrnl */
- 
+
 
 
 /*!\fn void set_log_level( int log_level )
@@ -108,7 +110,7 @@ void set_log_level( const int log_level )
 		return ;
 	}
 	LOG_LEVEL = log_level ;
-} /* set_log_level() */ 
+} /* set_log_level() */
 
 
 
@@ -129,7 +131,7 @@ int get_log_level( void )
  *\return TRUE or FALSE
  */
 int set_log_file( char *file )
-{	
+{
 	__n_assert( file , return FALSE );
 
 	if( !log_file )
@@ -151,7 +153,7 @@ int set_log_file( char *file )
 
 /*!\fn FILE *get_log_file()
  *\brief return the current log_file
- *\return a valid FILE handle or NULL 
+ *\return a valid FILE handle or NULL
  */
 FILE *get_log_file( void )
 {
@@ -168,7 +170,7 @@ int _vscprintf_so(const char * format, va_list pargs) {
 	retval = vsnprintf(NULL, 0, format, argcopy);
 	va_end(argcopy);
 	return retval;}
-#endif 
+#endif
 
 #ifndef vasprintf
 	int vasprintf(char **strp, const char *fmt, va_list ap) {
@@ -180,7 +182,7 @@ int _vscprintf_so(const char * format, va_list pargs) {
 		if (r == -1) return free(str), -1;
 		*strp = str;
 		return r;}
-#endif 
+#endif
 
 #ifndef asprintf
 		int asprintf(char *strp[], const char *fmt, ...) {
@@ -191,15 +193,15 @@ int _vscprintf_so(const char * format, va_list pargs) {
 			return r;}
 #endif
 
-			/*!\fn void _n_log( int level , const char *file , const char *func , int line , const char *format , ... ) 
+			/*!\fn void _n_log( int level , const char *file , const char *func , int line , const char *format , ... )
 			 *\brief Logging function. log( level , const char *format , ... ) is a macro around _log
-			 *\param level Logging level 
+			 *\param level Logging level
 			 *\param file File containing the emmited log
 			 *\param func Function emmiting the log
 			 *\param line Line of the log
 			 *\param format Format and string of the log, printf style
 			 */
-void _n_log( int level , const char *file , const char *func , int line , const char *format , ... ) 
+void _n_log( int level , const char *file , const char *func , int line , const char *format , ... )
 {
 	va_list args ;
 
@@ -230,10 +232,10 @@ void _n_log( int level , const char *file , const char *func , int line , const 
 		{
 			case LOG_SYSJRNL :
 				va_start (args, format);
-				vasprintf( &syslogbuffer , format , args ); 
+				vasprintf( &syslogbuffer , format , args );
 				va_end( args );
-#ifndef __windows__				
-				syslog( level , "%s->%s:%d %s" , file , func , line , syslogbuffer ); 
+#ifndef __windows__
+				syslog( level , "%s->%s:%d %s" , file , func , line , syslogbuffer );
 #else
 				needed = snprintf( NULL , 0, "start /B EventCreate /t %s /id 666 /l APPLICATION /so %s /d \"%s\" > NUL 2>&1", prioritynames[ level ] . w_name , name , syslogbuffer );
 				Malloc( eventbuffer , char , needed + 4 );
@@ -244,11 +246,15 @@ void _n_log( int level , const char *file , const char *func , int line , const 
 				FreeNoLog( eventbuffer );
 				break ;
 			default:
-				fprintf( out , "%s:%ld %s->%s:%d " , prioritynames[ level ] . c_name , time( NULL ) , file , func , line  ); 
+				#ifndef __windows__
+				fprintf( out , "%s:%ld %s->%s:%d " , prioritynames[ level ] . c_name , time( NULL ) , file , func , line  );
+				#else
+				fprintf( out , "%s:%lld %s->%s:%d " , prioritynames[ level ] . c_name , time( NULL ) , file , func , line  );
+				#endif
 				va_start (args, format);
-				vfprintf( out, format , args ); 
+				vfprintf( out, format , args );
 				va_end( args );
-				fprintf( out, "\n" ); 
+				fprintf( out, "\n" );
 				break ;
 		}
 	}
@@ -263,7 +269,7 @@ void _n_log( int level , const char *file , const char *func , int line , const 
  *\param opt Options for opening (please never forget to use "w")
  *\return TRUE on success , FALSE on error , -1000 if already open
  */
-int open_safe_logging( TS_LOG **log , char *pathname , char *opt ) 
+int open_safe_logging( TS_LOG **log , char *pathname , char *opt )
 {
 
 	if( (*log) ){
@@ -300,7 +306,7 @@ int open_safe_logging( TS_LOG **log , char *pathname , char *opt )
  *\param pat Pattern for writting (i.e "%d %d %s")
  *\return TRUE on success, FALSE on error
  */
-int write_safe_log( TS_LOG *log , char *pat , ... ) 
+int write_safe_log( TS_LOG *log , char *pat , ... )
 {
 	/* argument list */
 	va_list arg;

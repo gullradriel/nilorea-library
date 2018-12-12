@@ -34,6 +34,7 @@ ifeq ($(OS),Windows_NT)
 -Wredundant-decls \
 -Wold-style-definition \
 -Werror \
+-Werror=implicit-fallthrough=0\
 -fno-omit-frame-pointer \
 -ffloat-store #                 -Wshadow
 	CLIBS= -Wl,-Bstatic -lpthread -Wl,-Bdynamic -lws2_32 -L../.

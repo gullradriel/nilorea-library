@@ -7,29 +7,31 @@ CC=gcc
 
 ifeq ($(OS),Windows_NT)
 	CFLAGS+= -I../include \
--g -W -Wall -D_XOPEN_SOURCE=600 -D_XOPEN_SOURCE_EXTENTED -std=gnu99 -ggdb3 -O0 \
--Wno-missing-braces \
--Wextra \
--Wno-missing-field-initializers \
--Wswitch-default \
--Wswitch-enum \
--Wcast-align \
--Wpointer-arith \
--Wbad-function-cast \
--Wstrict-overflow=5 \
--Wstrict-prototypes \
--Winline \
--Wundef \
--Wnested-externs \
--Wcast-qual \
--Wunreachable-code \
--Wlogical-op \
--Wstrict-aliasing=2 \
--Wredundant-decls \
--Wold-style-definition \
--Werror \
--fno-omit-frame-pointer \
--ffloat-store #	   	   -Wshadow 
+	-g -W -Wall -D_XOPEN_SOURCE=600 -D_XOPEN_SOURCE_EXTENTED -std=gnu99 -ggdb3 -O0 \
+	-Wno-missing-braces \
+	-Wextra \
+	-Wno-missing-field-initializers \
+	-Wswitch-default \
+	-Wswitch-enum \
+	-Wcast-align \
+	-Wpointer-arith \
+	-Wbad-function-cast \
+	-Wstrict-overflow=5 \
+	-Wstrict-prototypes \
+	-Winline \
+	-Wundef \
+	-Wnested-externs \
+	-Wcast-qual \
+	-Wunreachable-code \
+	-Wlogical-op \
+	-Wstrict-aliasing=2 \
+	-Wredundant-decls \
+	-Wold-style-definition \
+	-Werror \
+	-Werror=implicit-fallthrough=0 \
+	-fno-omit-frame-pointer \
+	-ffloat-store 
+	#	   	   -Wshadow 
 	CLIBS= -Wl,-Bstatic -lpthread -Wl,-Bdynamic -lws2_32  -L../../. 
 	RM=del /Q
 	EXT=.exe
