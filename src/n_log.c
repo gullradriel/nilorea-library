@@ -249,7 +249,11 @@ void _n_log( int level , const char *file , const char *func , int line , const 
 				#ifndef __windows__
 				fprintf( out , "%s:%ld %s->%s:%d " , prioritynames[ level ] . c_name , time( NULL ) , file , func , line  );
 				#else
-				fprintf( out , "%s:%lld %s->%s:%d " , prioritynames[ level ] . c_name , time( NULL ) , file , func , line  );
+				#if defined( __x86_64__ )
+                    fprintf( out , "%s:%lld %s->%s:%d " , prioritynames[ level ] . c_name , time( NULL ) , file , func , line  );
+                #else
+                    fprintf( out , "%s:%ld %s->%s:%d " , prioritynames[ level ] . c_name , time( NULL ) , file , func , line  );
+				#endif
 				#endif
 				va_start (args, format);
 				vfprintf( out, format , args );

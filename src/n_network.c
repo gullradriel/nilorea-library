@@ -21,7 +21,7 @@
 
 #ifdef __windows__
 
-#if __GNUC__ <= 4 && __GNUC_MINOR__ <= 5
+#if __GNUC__ <= 6 && __GNUC_MINOR__ <= 3
 
 /*--------------------------------------------------------------------------------------
 
@@ -1354,7 +1354,7 @@ NETWORK *netw_accept_from_ex( NETWORK *from , int disable_naggle , int sock_send
 #else
 		unsigned long int iMode = 0 ; /* 0 non blocking , 1 blockinh */
 		int iResult = ioctlsocket( from -> link . sock , FIONBIO, &iMode );
-		if( iResult != NO_ERROR )
+		if( iResult != 0 )
 		{
 			n_log( LOG_ERR , "ioctlsocket failed with error: %ld", iResult );
 			netw_close( &netw );
@@ -1378,7 +1378,7 @@ NETWORK *netw_accept_from_ex( NETWORK *from , int disable_naggle , int sock_send
 		fcntl( tmp , F_SETFL , flags );
 #else
 		iResult = ioctlsocket( tmp , FIONBIO, &iMode );
-		if( iResult != NO_ERROR )
+		if( iResult != 0 )
 		{
 			n_log( LOG_ERR , "ioctlsocket failed with error: %ld", iResult);
 			netw_close( &netw );
