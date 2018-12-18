@@ -5,7 +5,7 @@
  *\date 20/11/09
  *
  */
- 
+
 #include <pthread.h>
 #include "nilorea/n_common.h"
 #include "nilorea/n_log.h"
@@ -13,7 +13,7 @@
 
 
 ExceptionContextList* __Exceptions = NULL;
-				
+
 
 
 /*!\fn void push_exception()
@@ -21,17 +21,17 @@ ExceptionContextList* __Exceptions = NULL;
  */
 void push_exception(void)
 {
-   ExceptionContextList *_new = ( ExceptionContextList * )malloc( sizeof( ExceptionContextList ) );
+    ExceptionContextList *_new = ( ExceptionContextList * )malloc( sizeof( ExceptionContextList ) );
 
-   if( _new )
-   {
-      _new->head = __Exceptions;
-      __Exceptions = _new;
-   }
-   else
-   {
-      n_log( LOG_ERR , "Cannot even add a new exception context !!" );
-   }
+    if( _new )
+    {
+        _new->head = __Exceptions;
+        __Exceptions = _new;
+    }
+    else
+    {
+        n_log( LOG_ERR, "Cannot even add a new exception context !!" );
+    }
 } /* push_exception() */
 
 
@@ -42,17 +42,17 @@ void push_exception(void)
  */
 void pop_exception( int ex )
 {
-   ExceptionContextList *head = NULL ;
-   head = __Exceptions -> head;
-   Free( __Exceptions );
-   __Exceptions = head;
+    ExceptionContextList *head = NULL ;
+    head = __Exceptions -> head;
+    Free( __Exceptions );
+    __Exceptions = head;
 
-   if( ex != NO_EXCEPTION ) 
-   {
-      if( __Exceptions )
-      {
-         longjmp( __Exceptions -> context , ex );
-      }
-   }
+    if( ex != NO_EXCEPTION )
+    {
+        if( __Exceptions )
+        {
+            longjmp( __Exceptions -> context, ex );
+        }
+    }
 } /* pop_exception */
 

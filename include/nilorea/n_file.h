@@ -16,7 +16,7 @@ extern "C"
 #endif
 
 /**\defgroup FILE FILE: generic type FILE
-   \addtogroup FILE 
+   \addtogroup FILE
   @{
 */
 
@@ -27,26 +27,26 @@ extern "C"
 #include "n_list.h"
 #include "n_hash.h"
 
-	/*! File state monitoring element */
-	typedef struct FILE_MONITOR
-	{
-		struct stat last_filestat ;
-		struct stat filestat ;
-		time_t filetime , filetime_nsec , 
-			   last_filetime , last_filetime_nsec ,
-			   last_check ;
-		time_t check_interval ;
+/*! File state monitoring element */
+typedef struct FILE_MONITOR
+{
+    struct stat last_filestat ;
+    struct stat filestat ;
+    time_t filetime, filetime_nsec,
+           last_filetime, last_filetime_nsec,
+           last_check ;
+    time_t check_interval ;
 
-	} FILE_MONITOR ;
+} FILE_MONITOR ;
 
 
-	int file_monitor_refresh( HASH_TABLE *filepool );
-	int file_monitor_set( HASH_TABLE *filepool , char *name , time_t check_interval );
-	int file_monitor_get( HASH_TABLE *filepool , char *name );
-	int file_monitor_del( HASH_TABLE *filepool , char *name );
+int file_monitor_refresh( HASH_TABLE *filepool );
+int file_monitor_set( HASH_TABLE *filepool, char *name, time_t check_interval );
+int file_monitor_get( HASH_TABLE *filepool, char *name );
+int file_monitor_del( HASH_TABLE *filepool, char *name );
 
-/*@}*/   
-   
+/*@}*/
+
 #ifdef __cplusplus
 }
 #endif

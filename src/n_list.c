@@ -19,20 +19,20 @@
  */
 LIST *new_generic_list( int max_items )
 {
-   LIST *list = NULL ;
+    LIST *list = NULL ;
 
-   Malloc( list , LIST , 1 ); 
-   __n_assert( list , return NULL );
+    Malloc( list, LIST, 1 );
+    __n_assert( list, return NULL );
 
-   if( max_items <= 0 )
-      list -> nb_max_items = 0 ;
-   else
-      list -> nb_max_items = max_items ;
+    if( max_items <= 0 )
+        list -> nb_max_items = 0 ;
+    else
+        list -> nb_max_items = max_items ;
 
-   list -> nb_items = 0 ; 
-   list -> start = list -> end = NULL ;
+    list -> nb_items = 0 ;
+    list -> start = list -> end = NULL ;
 
-   return list ;
+    return list ;
 } /* new_generic_list */
 
 
@@ -43,19 +43,19 @@ LIST *new_generic_list( int max_items )
  *\param destructor Pointer to the ptr type destructor function. Leave to NULL if there isn't.
  *\return A new node or NULL on error. Check error messages in DEBUG mode.
  */
-LIST_NODE *new_list_node( void *ptr , void (*destructor)( void *ptr ) )
+LIST_NODE *new_list_node( void *ptr, void (*destructor)( void *ptr ) )
 {
-   LIST_NODE *node = NULL ;
+    LIST_NODE *node = NULL ;
 
-   Malloc( node , LIST_NODE , 1 ); 
-   __n_assert( node ,  n_log( LOG_ERR , "Error allocating node for ptr %p" , ptr ); return NULL );
+    Malloc( node, LIST_NODE, 1 );
+    __n_assert( node,  n_log( LOG_ERR, "Error allocating node for ptr %p", ptr ); return NULL );
 
-   node -> ptr = ptr ;
-   node -> destroy_func = destructor ;
-   node -> next = node -> prev = NULL ;
+    node -> ptr = ptr ;
+    node -> destroy_func = destructor ;
+    node -> next = node -> prev = NULL ;
 
-   return node ;
-} /* new_list_node(...) */ 
+    return node ;
+} /* new_list_node(...) */
 
 
 
@@ -65,88 +65,88 @@ LIST_NODE *new_list_node( void *ptr , void (*destructor)( void *ptr ) )
  *\param node The node to remove in the list
  *\return The node or NULL
  */
-void *remove_list_node_f( LIST *list , LIST_NODE *node )
+void *remove_list_node_f( LIST *list, LIST_NODE *node )
 {
-   void *ptr = NULL ;
+    void *ptr = NULL ;
 
-   __n_assert( list        , n_log( LOG_ERR , "can't remove from NULL list" );        return NULL );
-   __n_assert( list->start , n_log( LOG_ERR , "can't remove from NULL list->start" ); return NULL );
-   __n_assert( list->end   , n_log( LOG_ERR , "can't remove from NULL list->end" );   return NULL );
-   __n_assert( node        , n_log( LOG_ERR , "can't remove from NULL node" );        return NULL );
+    __n_assert( list, n_log( LOG_ERR, "can't remove from NULL list" );        return NULL );
+    __n_assert( list->start, n_log( LOG_ERR, "can't remove from NULL list->start" ); return NULL );
+    __n_assert( list->end, n_log( LOG_ERR, "can't remove from NULL list->end" );   return NULL );
+    __n_assert( node, n_log( LOG_ERR, "can't remove from NULL node" );        return NULL );
 
-   ptr = node -> ptr ;
-   if( node -> prev && node -> next )
-   {
-      node -> prev -> next = node -> next ;
-      node -> next -> prev = node -> prev ;
-   }
-   else
-   {
-      if( node -> prev == NULL && node -> next )
-      {
-         node -> next -> prev = NULL ;
-         list -> start = node -> next ;
-      }
-      else
-      {
-         if( node -> prev && node -> next == NULL )
-         {
-            node -> prev -> next = NULL ;
-            list -> end = node -> prev ;
-         }
-         else
-         {
-            if( node -> prev == NULL && node -> next == NULL )
+    ptr = node -> ptr ;
+    if( node -> prev && node -> next )
+    {
+        node -> prev -> next = node -> next ;
+        node -> next -> prev = node -> prev ;
+    }
+    else
+    {
+        if( node -> prev == NULL && node -> next )
+        {
+            node -> next -> prev = NULL ;
+            list -> start = node -> next ;
+        }
+        else
+        {
+            if( node -> prev && node -> next == NULL )
             {
-               /* removing last item */
-               list -> start = list -> end = NULL ;
+                node -> prev -> next = NULL ;
+                list -> end = node -> prev ;
             }
-         }
-      }
-   }
-   Free( node );
-   list -> nb_items -- ;
-   return ptr ;
+            else
+            {
+                if( node -> prev == NULL && node -> next == NULL )
+                {
+                    /* removing last item */
+                    list -> start = list -> end = NULL ;
+                }
+            }
+        }
+    }
+    Free( node );
+    list -> nb_items -- ;
+    return ptr ;
 } /* remove_list_node_f(...) */
 
 
 
 /*!\fn int list_push( LIST *list , void *ptr , void (*destructor)( void *ptr ) )
- *\brief Add a pointer to the end of the list. 
+ *\brief Add a pointer to the end of the list.
  *\param list An initilized list container. A null value will cause an error and a _log message.
  *\param ptr The pointer you wan to put in the list. A null value will cause an error and a _log message.
  *\param destructor Pointer to the ptr type destructor function. Leave to NULL if there isn't.
  *\return TRUE or FALSE. Check error messages in DEBUG mode.
  */
-int list_push( LIST *list , void *ptr , void (*destructor)( void *ptr ) ) 
+int list_push( LIST *list, void *ptr, void (*destructor)( void *ptr ) )
 {
-   LIST_NODE *node = NULL ;
+    LIST_NODE *node = NULL ;
 
-   __n_assert( list , n_log( LOG_ERR , "invalid list: NULL" ); return FALSE );
-   __n_assert( ptr  , n_log( LOG_ERR , "invalid ptr: NULL" );  return FALSE );
+    __n_assert( list, n_log( LOG_ERR, "invalid list: NULL" ); return FALSE );
+    __n_assert( ptr, n_log( LOG_ERR, "invalid ptr: NULL" );  return FALSE );
 
-   if( list -> nb_max_items > 0 && ( list -> nb_items >= list -> nb_max_items ) )
-   {
-      n_log( LOG_ERR , "list is full" );
-      return FALSE ;
-   }
+    if( list -> nb_max_items > 0 && ( list -> nb_items >= list -> nb_max_items ) )
+    {
+        n_log( LOG_ERR, "list is full" );
+        return FALSE ;
+    }
 
-   node = new_list_node( ptr , destructor );
-   __n_assert( node , n_log( LOG_ERR , "Couldn't allocate new node" ); return FALSE );
+    node = new_list_node( ptr, destructor );
+    __n_assert( node, n_log( LOG_ERR, "Couldn't allocate new node" ); return FALSE );
 
-   list -> nb_items ++ ;
+    list -> nb_items ++ ;
 
-   if( list -> end )
-   {
-      list -> end -> next = node ;
-      node -> prev = list -> end ;
-      list -> end = node ;               
-   }
-   else
-   {
-      list -> start = list -> end = node ;      
-   }   
-   return TRUE ;
+    if( list -> end )
+    {
+        list -> end -> next = node ;
+        node -> prev = list -> end ;
+        list -> end = node ;
+    }
+    else
+    {
+        list -> start = list -> end = node ;
+    }
+    return TRUE ;
 } /* list_push( ... ) */
 
 
@@ -159,52 +159,52 @@ int list_push( LIST *list , void *ptr , void (*destructor)( void *ptr ) )
  *\param destructor Pointer to the ptr type destructor function. Leave to NULL if there isn't.
  *\return TRUE or FALSE. Check error messages in DEBUG mode.
  */
-int list_push_sorted( LIST *list , void *ptr , int (*comparator)( const void *a , const void *b ) , void (*destructor)( void *ptr ) )
+int list_push_sorted( LIST *list, void *ptr, int (*comparator)( const void *a, const void *b ), void (*destructor)( void *ptr ) )
 {
-   LIST_NODE *nodeptr = NULL ;
+    LIST_NODE *nodeptr = NULL ;
 
-   __n_assert( list , n_log( LOG_ERR , "invalid list: NULL" ); return FALSE );
-   __n_assert( ptr  , n_log( LOG_ERR , "invalid ptr: NULL" );  return FALSE ); 
+    __n_assert( list, n_log( LOG_ERR, "invalid list: NULL" ); return FALSE );
+    __n_assert( ptr, n_log( LOG_ERR, "invalid ptr: NULL" );  return FALSE );
 
-   if( list -> nb_max_items > 0 && ( list -> nb_items >= list -> nb_max_items ) )
-   {
-      n_log( LOG_ERR , "list is full" );
-      return FALSE ;
-   }
+    if( list -> nb_max_items > 0 && ( list -> nb_items >= list -> nb_max_items ) )
+    {
+        n_log( LOG_ERR, "list is full" );
+        return FALSE ;
+    }
 
-   if( list -> end )
-   {
-      nodeptr = list -> end ;
-      while( nodeptr && ( comparator( ptr , nodeptr -> ptr ) < 0 ) )
-         nodeptr = nodeptr -> prev ;
+    if( list -> end )
+    {
+        nodeptr = list -> end ;
+        while( nodeptr && ( comparator( ptr, nodeptr -> ptr ) < 0 ) )
+            nodeptr = nodeptr -> prev ;
 
-      if( !nodeptr )
-      {
-         /* It's the lower ranked element in the sort */
-         list_unshift( list , ptr , destructor );
-      }   
-      else
-      {
-         /* we have a match inside the list. let's insert the datas */
-         LIST_NODE *node_next = nodeptr -> next  ;
-         LIST_NODE *newnode = new_list_node( ptr , destructor );
-         __n_assert( newnode , n_log( LOG_ERR , "Couldn't allocate new node" ); return FALSE );
+        if( !nodeptr )
+        {
+            /* It's the lower ranked element in the sort */
+            list_unshift( list, ptr, destructor );
+        }
+        else
+        {
+            /* we have a match inside the list. let's insert the datas */
+            LIST_NODE *node_next = nodeptr -> next  ;
+            LIST_NODE *newnode = new_list_node( ptr, destructor );
+            __n_assert( newnode, n_log( LOG_ERR, "Couldn't allocate new node" ); return FALSE );
 
-         if( node_next )
-         {
-            link_node( newnode , node_next );
-         }   
-         else 
-            list -> end = newnode ;
+            if( node_next )
+            {
+                link_node( newnode, node_next );
+            }
+            else
+                list -> end = newnode ;
 
-         link_node( nodeptr , newnode );
-         list -> nb_items ++ ;
-      }
-   }
-   else
-      list_push( list , ptr , destructor );
+            link_node( nodeptr, newnode );
+            list -> nb_items ++ ;
+        }
+    }
+    else
+        list_push( list, ptr, destructor );
 
-   return TRUE ;
+    return TRUE ;
 } /* list_push_sorted( ... ) */
 
 
@@ -216,34 +216,34 @@ int list_push_sorted( LIST *list , void *ptr , int (*comparator)( const void *a 
  *\param destructor Pointer to the ptr type destructor function. Leave to NULL if there isn't.
  *\return A void *ptr or NULL. Check error messages in DEBUG mode.
  */
-int list_unshift( LIST *list , void *ptr , void (*destructor)( void *ptr ) )
+int list_unshift( LIST *list, void *ptr, void (*destructor)( void *ptr ) )
 {
-   LIST_NODE *node = NULL ;
+    LIST_NODE *node = NULL ;
 
-   __n_assert( list , n_log( LOG_ERR , "invalid list: NULL" ); return FALSE );
-   __n_assert( ptr  , n_log( LOG_ERR , "invalid ptr: NULL" );  return FALSE );
+    __n_assert( list, n_log( LOG_ERR, "invalid list: NULL" ); return FALSE );
+    __n_assert( ptr, n_log( LOG_ERR, "invalid ptr: NULL" );  return FALSE );
 
-   if( list -> nb_max_items > 0 && ( list -> nb_items >= list -> nb_max_items ) )
-   {
-      n_log( LOG_ERR , "list is full" );
-      return FALSE ;
-   }
-   node = new_list_node( ptr , destructor );
-   __n_assert( node , n_log( LOG_ERR , "Couldn't allocate new node" ); return FALSE );
+    if( list -> nb_max_items > 0 && ( list -> nb_items >= list -> nb_max_items ) )
+    {
+        n_log( LOG_ERR, "list is full" );
+        return FALSE ;
+    }
+    node = new_list_node( ptr, destructor );
+    __n_assert( node, n_log( LOG_ERR, "Couldn't allocate new node" ); return FALSE );
 
-   list -> nb_items ++ ;
+    list -> nb_items ++ ;
 
-   if( list -> start )
-   {
-      link_node( node , list -> start );
-      list -> start = node ;               
-   }
-   else
-   {
-      list -> start = list -> end = node ;      
-   }
+    if( list -> start )
+    {
+        link_node( node, list -> start );
+        list -> start = node ;
+    }
+    else
+    {
+        list -> start = list -> end = node ;
+    }
 
-   return TRUE ;
+    return TRUE ;
 } /* list_unshift_f(...) */
 
 
@@ -256,87 +256,87 @@ int list_unshift( LIST *list , void *ptr , void (*destructor)( void *ptr ) )
  *\param destructor Pointer to the ptr type destructor function. Leave to NULL if there isn't.
  *\return TRUE or FALSE. Check error messages in DEBUG mode.
  */
-int list_unshift_sorted( LIST *list , void *ptr , int (*comparator)( const void *a , const void *b ) , void (*destructor)( void *ptr ) )
+int list_unshift_sorted( LIST *list, void *ptr, int (*comparator)( const void *a, const void *b ), void (*destructor)( void *ptr ) )
 {
-   LIST_NODE *nodeptr = NULL ;
+    LIST_NODE *nodeptr = NULL ;
 
-   __n_assert( list , n_log( LOG_ERR , "invalid list: NULL" ); return FALSE ); 
-   __n_assert( ptr  , n_log( LOG_ERR , "invalid ptr: NULL" );  return FALSE ); 
+    __n_assert( list, n_log( LOG_ERR, "invalid list: NULL" ); return FALSE );
+    __n_assert( ptr, n_log( LOG_ERR, "invalid ptr: NULL" );  return FALSE );
 
-   if( list -> nb_max_items > 0 && ( list -> nb_items >= list -> nb_max_items ) )
-   {
-      n_log( LOG_ERR , "list is full" );
-      return FALSE ;
-   }
+    if( list -> nb_max_items > 0 && ( list -> nb_items >= list -> nb_max_items ) )
+    {
+        n_log( LOG_ERR, "list is full" );
+        return FALSE ;
+    }
 
-   if( list -> start )
-   {
-      nodeptr = list -> start ;
-      while( nodeptr && ( comparator( ptr , nodeptr -> ptr ) > 0 ) )
-         nodeptr = nodeptr -> next ;
+    if( list -> start )
+    {
+        nodeptr = list -> start ;
+        while( nodeptr && ( comparator( ptr, nodeptr -> ptr ) > 0 ) )
+            nodeptr = nodeptr -> next ;
 
-      if( !nodeptr )
-      {
-         /* It's the higher ranked element in the sort */
-         list_push( list , ptr , destructor );
-      }   
-      else
-      {
-         /* we have a match inside the list. let's insert the datas */
-         LIST_NODE *node_prev = nodeptr -> prev  ;
-         LIST_NODE *newnode = new_list_node( ptr , destructor );
-         __n_assert( newnode , n_log( LOG_ERR , "Couldn't allocate new node" ); return FALSE );
+        if( !nodeptr )
+        {
+            /* It's the higher ranked element in the sort */
+            list_push( list, ptr, destructor );
+        }
+        else
+        {
+            /* we have a match inside the list. let's insert the datas */
+            LIST_NODE *node_prev = nodeptr -> prev  ;
+            LIST_NODE *newnode = new_list_node( ptr, destructor );
+            __n_assert( newnode, n_log( LOG_ERR, "Couldn't allocate new node" ); return FALSE );
 
-         if( node_prev )
-         {   
-            link_node( node_prev , newnode );
-         }   
-         else 
-            list -> start = newnode ;
+            if( node_prev )
+            {
+                link_node( node_prev, newnode );
+            }
+            else
+                list -> start = newnode ;
 
-         link_node( newnode , nodeptr );
-         list -> nb_items ++ ;
-      }
-   }
-   else
-      list_unshift( list , ptr , destructor );
+            link_node( newnode, nodeptr );
+            list -> nb_items ++ ;
+        }
+    }
+    else
+        list_unshift( list, ptr, destructor );
 
-   return TRUE ;
+    return TRUE ;
 } /* list_unshift_sorted(...) */
 
 
 
-/*!\fn void *list_pop_f( LIST *list ) 
+/*!\fn void *list_pop_f( LIST *list )
  *\brief Get a pointer from the end of the list
  *\param list An initilized list container. A null value will cause an error and a _log message.
  *\return A void *ptr or NULL. Check error messages in DEBUG mode.
  */
-void *list_pop_f( LIST *list ) 
-{   
-   LIST_NODE *nodeptr = NULL ;
-   void *ptr = NULL ;
+void *list_pop_f( LIST *list )
+{
+    LIST_NODE *nodeptr = NULL ;
+    void *ptr = NULL ;
 
-   __n_assert( list , n_log( LOG_ERR , "invalid list: NULL" ); return NULL );
+    __n_assert( list, n_log( LOG_ERR, "invalid list: NULL" ); return NULL );
 
-   if( list -> nb_items == 0 || list -> end == NULL )
-      return NULL ;
+    if( list -> nb_items == 0 || list -> end == NULL )
+        return NULL ;
 
-   nodeptr = list -> end ;
-   ptr = nodeptr -> ptr ;
+    nodeptr = list -> end ;
+    ptr = nodeptr -> ptr ;
 
-   if( list -> end -> prev )
-   {
-      list -> end = list -> end -> prev ;
-      list -> end -> next = NULL ;
-   }      
+    if( list -> end -> prev )
+    {
+        list -> end = list -> end -> prev ;
+        list -> end -> next = NULL ;
+    }
 
-   list -> nb_items -- ;
-   if( list -> nb_items == 0 )
-      list -> start = list -> end = NULL ;
+    list -> nb_items -- ;
+    if( list -> nb_items == 0 )
+        list -> start = list -> end = NULL ;
 
-   Free( nodeptr );
+    Free( nodeptr );
 
-   return ptr ;
+    return ptr ;
 } /* list_pop_f( ... ) */
 
 
@@ -348,31 +348,31 @@ void *list_pop_f( LIST *list )
  */
 void *list_shift_f( LIST *list )
 {
-   LIST_NODE *nodeptr = NULL ;
-   void *ptr = NULL ;
+    LIST_NODE *nodeptr = NULL ;
+    void *ptr = NULL ;
 
-   __n_assert( list , n_log( LOG_ERR , "invalid list: NULL" ); return NULL );
+    __n_assert( list, n_log( LOG_ERR, "invalid list: NULL" ); return NULL );
 
-   if( list -> nb_items == 0 || list -> start == NULL )
-      return NULL ;
+    if( list -> nb_items == 0 || list -> start == NULL )
+        return NULL ;
 
-   nodeptr = list -> start ;
-   ptr = nodeptr -> ptr ;
+    nodeptr = list -> start ;
+    ptr = nodeptr -> ptr ;
 
-   if( list -> start -> next )
-   {
-      list -> start = list -> start -> next ;
-      list -> start -> prev = NULL ;
-   }      
+    if( list -> start -> next )
+    {
+        list -> start = list -> start -> next ;
+        list -> start -> prev = NULL ;
+    }
 
-   list -> nb_items -- ;
+    list -> nb_items -- ;
 
-   if( list -> nb_items == 0 )
-      list -> start = list -> end = NULL ;
+    if( list -> nb_items == 0 )
+        list -> start = list -> end = NULL ;
 
-   Free( nodeptr );
+    Free( nodeptr );
 
-   return ptr ;
+    return ptr ;
 } /* list_shift_f(...)*/
 
 
@@ -384,24 +384,24 @@ void *list_shift_f( LIST *list )
  */
 int list_empty( LIST *list )
 {
-   LIST_NODE *node = NULL , *node_ptr = NULL ;
+    LIST_NODE *node = NULL, *node_ptr = NULL ;
 
-   __n_assert( list , n_log( LOG_ERR , "list is NULL" ); return FALSE );
+    __n_assert( list, n_log( LOG_ERR, "list is NULL" ); return FALSE );
 
-   node = list -> start ;
-   while( node )
-   {
-      node_ptr = node ;
-      node = node -> next ;
-      if( node_ptr -> destroy_func != NULL )
-      {
-         node_ptr -> destroy_func( node_ptr -> ptr );
-      }
-      Free( node_ptr );
-   }
-   list -> start = list -> end = NULL ;
-   list -> nb_items = 0 ;
-   return TRUE ;
+    node = list -> start ;
+    while( node )
+    {
+        node_ptr = node ;
+        node = node -> next ;
+        if( node_ptr -> destroy_func != NULL )
+        {
+            node_ptr -> destroy_func( node_ptr -> ptr );
+        }
+        Free( node_ptr );
+    }
+    list -> start = list -> end = NULL ;
+    list -> nb_items = 0 ;
+    return TRUE ;
 } /* list_empty( ... ) */
 
 
@@ -412,23 +412,23 @@ int list_empty( LIST *list )
  *\param free_fnct a function ptr to a void func( void *ptr )
  *\return TRUE or FALSE. Check error messages in DEBUG mode.
  */
-int list_empty_with_f( LIST *list ,  void (*free_fnct)( void *ptr )  )
+int list_empty_with_f( LIST *list,  void (*free_fnct)( void *ptr )  )
 {
-   LIST_NODE *node = NULL , *node_ptr = NULL ;
-   
-   __n_assert( list , n_log( LOG_ERR , "list is NULL" ); return FALSE  );
-  	
-   node = list -> start ;
-   while( node )
-   {
-      node_ptr = node ;
-      node = node -> next ;
-	  free_fnct( node_ptr -> ptr );
-	  Free( node_ptr );
-   }
-   list -> start = list -> end = NULL ;
-   list -> nb_items = 0 ;
-   return TRUE ;
+    LIST_NODE *node = NULL, *node_ptr = NULL ;
+
+    __n_assert( list, n_log( LOG_ERR, "list is NULL" ); return FALSE  );
+
+    node = list -> start ;
+    while( node )
+    {
+        node_ptr = node ;
+        node = node -> next ;
+        free_fnct( node_ptr -> ptr );
+        Free( node_ptr );
+    }
+    list -> start = list -> end = NULL ;
+    list -> nb_items = 0 ;
+    return TRUE ;
 } /* list_empty_with_f */
 
 
@@ -440,8 +440,8 @@ int list_empty_with_f( LIST *list ,  void (*free_fnct)( void *ptr )  )
  */
 int list_destroy( LIST **list )
 {
-   __n_assert( (*list) , n_log( LOG_ERR , "list already destroyed" ); return FALSE );
-   list_empty( (*list) );
-   Free( (*list ) );
-   return TRUE ;
+    __n_assert( (*list), n_log( LOG_ERR, "list already destroyed" ); return FALSE );
+    list_empty( (*list) );
+    Free( (*list ) );
+    return TRUE ;
 } /* free_list( ... ) */

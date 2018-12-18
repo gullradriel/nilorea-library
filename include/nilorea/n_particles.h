@@ -26,38 +26,38 @@ extern "C" {
 #define TRANS_PART 2
 
 
-	typedef struct PARTICLE
-	{
-		double x , y , z ,
-		       ax , ay , az ,
-		       vx , vy , vz ;
+typedef struct PARTICLE
+{
+    double x, y, z,
+           ax, ay, az,
+           vx, vy, vz ;
 
-		BITMAP *sprite ;
+    BITMAP *sprite ;
 
-		int mode ,
-		    off_x , off_y ,
-		    lifetime ,
-		    color;
+    int mode,
+        off_x, off_y,
+        lifetime,
+        color;
 
-		struct PARTICLE *next ,
-				*prev ;
+    struct PARTICLE *next,
+               *prev ;
 
-	} PARTICLE ;
+} PARTICLE ;
 
-	typedef struct PARTICLE_SYSTEM
-	{
-		PARTICLE *list_start , *list_end ;
+typedef struct PARTICLE_SYSTEM
+{
+    PARTICLE *list_start, *list_end ;
 
-		double x , y , z ;
+    double x, y, z ;
 
-		N_TIME timer ;
+    N_TIME timer ;
 
-		int max_particles,
-		    nb_particles ;
+    int max_particles,
+        nb_particles ;
 
-	}PARTICLE_SYSTEM ;
+} PARTICLE_SYSTEM ;
 
-	/*! ForEach macro helper */
+/*! ForEach macro helper */
 #define particle_foreach( __ITEM_ , __PARTICLE_SYSTEM_  ) \
 	if( !__PARTICLE_SYSTEM_ ) \
 	{ \
@@ -67,19 +67,19 @@ extern "C" {
 	for( PARTICLE *__ITEM_ = __PARTICLE_SYSTEM_ -> list_start ; __ITEM_ != NULL; __ITEM_ = __ITEM_ -> next ) \
 
 
-	int init_particle_system( PARTICLE_SYSTEM **psys , int max , double x , double y , double z );
+int init_particle_system( PARTICLE_SYSTEM **psys, int max, double x, double y, double z );
 
-	int add_particle( PARTICLE_SYSTEM *psys , BITMAP *spr , int mode , int off_x , int off_y , int lifetime , int color ,
-			double vx , double vy , double vz ,
-			double ax , double ay , double az );
+int add_particle( PARTICLE_SYSTEM *psys, BITMAP *spr, int mode, int off_x, int off_y, int lifetime, int color,
+                  double vx, double vy, double vz,
+                  double ax, double ay, double az );
 
-	int manage_particle( PARTICLE_SYSTEM *psys);
+int manage_particle( PARTICLE_SYSTEM *psys);
 
-	int draw_particle( BITMAP *bmp , PARTICLE_SYSTEM *psys );
+int draw_particle( BITMAP *bmp, PARTICLE_SYSTEM *psys );
 
-	int free_particle( PARTICLE_SYSTEM *psys , PARTICLE **ptr );
+int free_particle( PARTICLE_SYSTEM *psys, PARTICLE **ptr );
 
-	int free_particle_system( PARTICLE_SYSTEM **psys);
+int free_particle_system( PARTICLE_SYSTEM **psys);
 
 #ifdef __cplusplus
 }

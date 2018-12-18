@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Nilorealibrary" />
+		<Option makefile_is_custom="1" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<MakeCommands>
+			<Build command="$make -f $makefile" />
+			<CompileFile command="$make -f $makefile $file" />
+			<Clean command="$make -f $makefile clean" />
+			<DistClean command="$make -f $makefile distclean$target" />
+			<AskRebuildNeeded command="$make -q -f $makefile " />
+			<SilentBuild command="$make -f $makefile &gt; $(CMD_NULL)" />
+		</MakeCommands>
+		<Build>
+			<Target title="all">
+				<Option output="nilorea32" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="D:/DATA/PROG/LIB/obj" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-Wall" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+				<Environment>
+					<Variable name="MSYSTEM" value="MINGW32" />
+				</Environment>
+				<MakeCommands>
+					<Build command="$make -f $makefile MSYSTEM=MINGW32 " />
+					<CompileFile command="$make -f $makefile $file" />
+					<Clean command="$make -f $makefile clean" />
+					<DistClean command="$make -f $makefile distclean$target" />
+					<AskRebuildNeeded command="$make -q -f $makefile " />
+					<SilentBuild command="$make -f $makefile MSYSTEM=MINGW32  &gt; $(CMD_NULL)" />
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename=".gitignore" />
+		<Unit filename="Doxyfile" />
+		<Unit filename="Makefile" />
+		<Unit filename="README.md" />
+		<Unit filename="examples/ex_configfile.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="examples/ex_exceptions.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="examples/ex_hash.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="examples/ex_list.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="examples/ex_monolith.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="examples/ex_network.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="examples/ex_network.h" />
+		<Unit filename="examples/ex_nstr.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="examples/ex_signals.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="exclude-list.txt" />
+		<Unit filename="include/nilorea.h" />
+		<Unit filename="include/nilorea/lexmenu.h" />
+		<Unit filename="include/nilorea/n_3d.h" />
+		<Unit filename="include/nilorea/n_anim.h" />
+		<Unit filename="include/nilorea/n_common.h" />
+		<Unit filename="include/nilorea/n_config_file.h" />
+		<Unit filename="include/nilorea/n_debug_mem.h" />
+		<Unit filename="include/nilorea/n_debug_mem_h.h" />
+		<Unit filename="include/nilorea/n_exceptions.h" />
+		<Unit filename="include/nilorea/n_file.h" />
+		<Unit filename="include/nilorea/n_games.h" />
+		<Unit filename="include/nilorea/n_gfx.h" />
+		<Unit filename="include/nilorea/n_hash.h" />
+		<Unit filename="include/nilorea/n_iso_engine.h" />
+		<Unit filename="include/nilorea/n_list.h" />
+		<Unit filename="include/nilorea/n_log.h" />
+		<Unit filename="include/nilorea/n_network.h" />
+		<Unit filename="include/nilorea/n_network_msg.h" />
+		<Unit filename="include/nilorea/n_neural_networks.h" />
+		<Unit filename="include/nilorea/n_nodup_log.h" />
+		<Unit filename="include/nilorea/n_particles.h" />
+		<Unit filename="include/nilorea/n_signals.h" />
+		<Unit filename="include/nilorea/n_str.h" />
+		<Unit filename="include/nilorea/n_thread_pool.h" />
+		<Unit filename="include/nilorea/n_time.h" />
+		<Unit filename="include/nilorea/n_zlib.h" />
+		<Unit filename="include/nilorea/particle.h" />
+		<Unit filename="mainpage.dox" />
+		<Unit filename="make_linux.sh" />
+		<Unit filename="src/lexmenu.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/n_3d.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/n_anim.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/n_common.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/n_config_file.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/n_debug_mem.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/n_exceptions.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/n_file.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/n_games.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/n_gfx.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/n_hash.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/n_iso_engine.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/n_list.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/n_log.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/n_network.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/n_network_msg.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/n_neural_networks.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/n_nodup_log.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/n_particles.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/n_signals.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/n_str.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/n_thread_pool.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/n_time.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/n_zlib.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/particle.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+			<DoxyBlocks>
+				<comment_style block="3" line="0" />
+				<doxyfile_project />
+				<doxyfile_build extract_all="1" extract_private="1" extract_static="1" />
+				<doxyfile_warnings warn_if_undocumented="1" />
+				<doxyfile_output />
+				<doxyfile_dot class_diagrams="1" have_dot="1" />
+				<general />
+			</DoxyBlocks>
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
