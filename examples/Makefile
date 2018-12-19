@@ -39,13 +39,13 @@ ifeq ($(OS),Windows_NT)
     CC= gcc
 
 #ifeq ($(filter $(${MSYSTEM},MINGW32) $($(MSYSTEM),MINGW32),yes),)
-ifeq (${MSYSTEM},MINGW32)
+ifeq ($(MSYSTEM),MINGW32)
 RM=rm -f
 CFLAGS+= -m32 -DARCH32BITS
 LIBNILOREA=-lnilorea32
 EXT=32.exe
 endif
-ifeq ($(MSYSTEM),MINGW32)
+ifeq ($(MSYSTEM),MINGW32CB)
 RM=del /Q
 CFLAGS+= -m32 -DARCH32BITS
 LIBNILOREA=-lnilorea32
@@ -53,13 +53,13 @@ EXT=32.exe
 endif
 
 #ifeq ($(filter $(${MSYSTEM},MINGW64) $($(MSYSTEM),MINGW64),yes),)
-ifeq (${MSYSTEM},MINGW64)
+ifeq ($(MSYSTEM),MINGW64)
 RM=rm -f
 CFLAGS+= -DARCH64BITS
 LIBNILOREA=-lnilorea64
 EXT=64.exe
 endif
-ifeq ($(MSYSTEM),MINGW64)
+ifeq ($(MSYSTEM),MINGW64CB)
 RM=del /Q
 CFLAGS+= -DARCH64BITS
 LIBNILOREA=-lnilorea64

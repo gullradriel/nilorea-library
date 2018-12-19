@@ -7,12 +7,12 @@
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<MakeCommands>
-			<Build command="$make -f $makefile" />
-			<CompileFile command="$make -f $makefile $file" />
-			<Clean command="$make -f $makefile clean" />
+			<Build command="$make -f $makefile MSYSTEM=MINGW64CB" />
+			<CompileFile command="$make -f $makefile $file MSYSTEM=MINGW64CB" />
+			<Clean command="$make -f $makefile clean MSYSTEM=MINGW64CB" />
 			<DistClean command="$make -f $makefile distclean$target" />
-			<AskRebuildNeeded command="$make -q -f $makefile " />
-			<SilentBuild command="$make -f $makefile &gt; $(CMD_NULL)" />
+			<AskRebuildNeeded command="$make -q -f $makefile MSYSTEM=MINGW64CB" />
+			<SilentBuild command="$make -f $makefile MSYSTEM=MINGW64CB &gt; $(CMD_NULL)" />
 		</MakeCommands>
 		<Build>
 			<Target title="all">
@@ -29,16 +29,13 @@
 				<Linker>
 					<Add option="-s" />
 				</Linker>
-				<Environment>
-					<Variable name="MSYSTEM" value="MINGW32" />
-				</Environment>
 				<MakeCommands>
-					<Build command="$make -f $makefile MSYSTEM=MINGW32 " />
-					<CompileFile command="$make -f $makefile $file" />
-					<Clean command="$make -f $makefile clean" />
+					<Build command="$make -f $makefile MSYSTEM=MINGW64" />
+					<CompileFile command="$make -f $makefile $file MSYSTEM=MINGW64" />
+					<Clean command="$make -f $makefile clean MSYSTEM=MINGW64" />
 					<DistClean command="$make -f $makefile distclean$target" />
-					<AskRebuildNeeded command="$make -q -f $makefile " />
-					<SilentBuild command="$make -f $makefile MSYSTEM=MINGW32  &gt; $(CMD_NULL)" />
+					<AskRebuildNeeded command="$make -q -f $makefile MSYSTEM=MINGW64" />
+					<SilentBuild command="$make -f $makefile MSYSTEM=MINGW64 &gt; $(CMD_NULL)" />
 				</MakeCommands>
 			</Target>
 		</Build>
