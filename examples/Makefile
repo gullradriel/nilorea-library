@@ -4,8 +4,8 @@ CC=gcc
 VPATH=../src/
 APIOBJ=../obj/*.o
 CC=gcc
-LIBNILOREA=-lnilorea64
-EXT=64.exe
+LIBNILOREA=-lnilorea
+EXT=
 
 ifeq ($(OS),Windows_NT)
 	CFLAGS+= -I../include \
@@ -42,11 +42,13 @@ ifeq ($(OS),Windows_NT)
 ifeq (${MSYSTEM},MINGW32)
 RM=rm -f
 CFLAGS+= -m32 -DARCH32BITS
+LIBNILOREA=-lnilorea32
 EXT=32.exe
 endif
 ifeq ($(MSYSTEM),MINGW32)
 RM=del /Q
 CFLAGS+= -m32 -DARCH32BITS
+LIBNILOREA=-lnilorea32
 EXT=32.exe
 endif
 
@@ -54,11 +56,13 @@ endif
 ifeq (${MSYSTEM},MINGW64)
 RM=rm -f
 CFLAGS+= -DARCH64BITS
+LIBNILOREA=-lnilorea64
 EXT=64.exe
 endif
 ifeq ($(MSYSTEM),MINGW64)
 RM=del /Q
 CFLAGS+= -DARCH64BITS
+LIBNILOREA=-lnilorea64
 EXT=64.exe
 endif
 
@@ -101,6 +105,8 @@ else
         CC=cc
         CFLAGS+= -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -g -v -xc99 -I ../include/ -mt
         CLIBS=-lm -lsocket -lnsl -lpthread -lrt -L..
+	LIBNILOREA=-lnilorea
+	EXT=
     endif
 
 TARGET=ex_list$(EXT) ex_nstr$(EXT) ex_exceptions$(EXT) ex_hash$(EXT) ex_network$(EXT) ex_monolith$(EXT) ex_configfile$(EXT) ex_signals$(EXT)
