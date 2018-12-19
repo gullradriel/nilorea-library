@@ -8,8 +8,7 @@ LIBNILOREA=-lnilorea64
 EXT=64.exe
 
 ifeq ($(OS),Windows_NT)
-
-    CFLAGS+= -I../include \
+	CFLAGS+= -I../include \
 	    -g -W -Wall -D_XOPEN_SOURCE=600 -D_XOPEN_SOURCE_EXTENTED -std=gnu99 -ggdb3 -O0 \
 	    -Wno-missing-braces \
 	    -Wextra \

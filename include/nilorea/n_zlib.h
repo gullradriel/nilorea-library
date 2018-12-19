@@ -1,5 +1,4 @@
-/**
- *\file n_zlib.h
+/*!\file n_zlib.h
  *
  *  ZLIB compression handler
  *

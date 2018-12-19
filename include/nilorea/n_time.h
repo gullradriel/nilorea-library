@@ -21,57 +21,57 @@ extern "C"
 #ifdef __windows__
 #include <windows.h>
 #else
-	#include <sys/time.h>
+#include <sys/time.h>
 #endif
 
-	/**\defgroup N_TIME N_TIME: generally used headers, defines, timers, allocators,...
-	  \addtogroup N_TIME
-	  @{
-	  */
+/**\defgroup N_TIME N_TIME: generally used headers, defines, timers, allocators,...
+  \addtogroup N_TIME
+  @{
+  */
 
 
-	/*! Timing Structure */
-	typedef struct N_TIME
-	{
-		/*! time since last poll */
-		time_t delta;
+/*! Timing Structure */
+typedef struct N_TIME
+{
+    /*! time since last poll */
+    time_t delta;
 #ifdef __windows__
-		/*! queryperformancefrequency storage */
-		LARGE_INTEGER freq;
-		/*! start time W32*/
-		LARGE_INTEGER startTime;
-		/*! current time W32*/
-		LARGE_INTEGER currentTime;
+    /*! queryperformancefrequency storage */
+    LARGE_INTEGER freq;
+    /*! start time W32*/
+    LARGE_INTEGER startTime;
+    /*! current time W32*/
+    LARGE_INTEGER currentTime;
 #else
-		/*! start time */
-		struct timeval startTime;
-		/*! start time */
-		struct timeval currentTime;
+    /*! start time */
+    struct timeval startTime;
+    /*! start time */
+    struct timeval currentTime;
 #endif
-	} N_TIME;
+} N_TIME;
 
 #if defined __windows__
-	void u_sleep( __int64 usec);
+void u_sleep( __int64 usec);
 #else
-	void u_sleep( unsigned int usec );
+void u_sleep( unsigned int usec );
 #endif
 
-	/* for the 'press a key to continue' */
-	void PAUSE( void );
+/* for the 'press a key to continue' */
+void PAUSE( void );
 
-	/* Init or restart from zero any N_TIME HiTimer */
-	int start_HiTimer( N_TIME *timer );
+/* Init or restart from zero any N_TIME HiTimer */
+int start_HiTimer( N_TIME *timer );
 
-	/* Poll any N_TIME HiTimer, returning usec */
-	time_t get_usec( N_TIME *timer );
+/* Poll any N_TIME HiTimer, returning usec */
+time_t get_usec( N_TIME *timer );
 
-	/* Poll any N_TIME HiTimer, returning msec */
-	time_t get_msec( N_TIME *timer );
+/* Poll any N_TIME HiTimer, returning msec */
+time_t get_msec( N_TIME *timer );
 
-	/* Poll any N_TIME HiTimer, returning sec */
-	time_t get_sec( N_TIME *timer );
+/* Poll any N_TIME HiTimer, returning sec */
+time_t get_sec( N_TIME *timer );
 
-	/*@}*/
+/*@}*/
 
 #ifdef __cplusplus
 }

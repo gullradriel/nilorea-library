@@ -24,86 +24,88 @@
  *\param nbanims the maximum number of animations in the map
  *\return TRUE on success FALSE on failure
  */
-int create_empty_map( MAP **map , char *name , int XSIZE , int YSIZE , int TILEW , int TILEH , int nbmaxobjects , int nbmaxgroup , int nbmaxanims , int nbtiles , int nbanims )
+int create_empty_map( MAP **map, char *name, int XSIZE, int YSIZE, int TILEW, int TILEH, int nbmaxobjects, int nbmaxgroup, int nbmaxanims, int nbtiles, int nbanims )
 {
-   int x, y;
+    int x, y;
 
-   /* only here for warning:unused... avoiding, will be removed further */
-   nbmaxobjects = nbmaxgroup = nbmaxanims = nbtiles = nbanims = 1 ;
-   nbmaxgroup = nbmaxobjects ;
+    /* only here for warning:unused... avoiding, will be removed further */
+    nbmaxobjects = nbmaxgroup = nbmaxanims = nbtiles = nbanims = 1 ;
+    nbmaxgroup = nbmaxobjects ;
 
-   /* allocating map */
-   Malloc( ( *map ) , MAP , 1 );
+    /* allocating map */
+    Malloc( ( *map ), MAP, 1 );
 
-   if ( !( *map ) )
-      return FALSE;
+    if ( !( *map ) )
+        return FALSE;
 
-   /* allocating grid */
-   Malloc( ( *map ) -> grid , CELL , XSIZE * YSIZE );
+    /* allocating grid */
+    Malloc( ( *map ) -> grid, CELL, XSIZE * YSIZE );
 
-   /* allocating name */
-   Malloc( ( *map ) -> name , char , ustrsizez( name ) );
+    /* allocating name */
+    Malloc( ( *map ) -> name, char, ustrsizez( name ) );
 
-   ustrcpy( ( *map ) -> name , name );
+    ustrcpy( ( *map ) -> name, name );
 
-   if ( !( *map ) -> grid || !( *map ) -> name )
-      return FALSE;
+    if ( !( *map ) -> grid || !( *map ) -> name )
+        return FALSE;
 
-   ( *map ) -> XSIZE = XSIZE ;
-   ( *map ) -> YSIZE = YSIZE ;
+    ( *map ) -> XSIZE = XSIZE ;
+    ( *map ) -> YSIZE = YSIZE ;
 
-   for ( x = 0 ; x < XSIZE ; x++ ) {
-      for ( y = 0 ; y < YSIZE ; y++ ) {
-         set_value( ( *map ) , N_TILE , x , y , FALSE );
-         set_value( ( *map ) , N_ABILITY , x , y , FALSE );
-         set_value( ( *map ) , N_MUSIC , x , y , FALSE );
-         set_value( ( *map ) , N_OBJECT , x , y , FALSE );
-      }
-   }
+    for ( x = 0 ; x < XSIZE ; x++ )
+    {
+        for ( y = 0 ; y < YSIZE ; y++ )
+        {
+            set_value( ( *map ), N_TILE, x, y, FALSE );
+            set_value( ( *map ), N_ABILITY, x, y, FALSE );
+            set_value( ( *map ), N_MUSIC, x, y, FALSE );
+            set_value( ( *map ), N_OBJECT, x, y, FALSE );
+        }
+    }
 
-   ( *map ) -> TILEW = TILEW;
-   ( *map ) -> TILEH = TILEH;
-   ( *map ) -> bgcolor = makeacol( 0 , 0 , 0 , 255 );
-   ( *map ) -> wirecolor = makeacol( 255 , 255 , 255 , 255 );
+    ( *map ) -> TILEW = TILEW;
+    ( *map ) -> TILEH = TILEH;
+    ( *map ) -> bgcolor = makeacol( 0, 0, 0, 255 );
+    ( *map ) -> wirecolor = makeacol( 255, 255, 255, 255 );
 
-   /* Drawing the mousemap */
+    /* Drawing the mousemap */
 
-   ( *map ) -> mousemap = create_bitmap( ( *map ) -> TILEW , ( *map ) -> TILEH );
-   ( *map ) -> colortile = create_bitmap( ( *map ) -> TILEW , ( *map ) -> TILEH );
+    ( *map ) -> mousemap = create_bitmap( ( *map ) -> TILEW, ( *map ) -> TILEH );
+    ( *map ) -> colortile = create_bitmap( ( *map ) -> TILEW, ( *map ) -> TILEH );
 
-   clear_to_color( ( *map ) -> mousemap , makecol( 255 , 255 , 255 ) );
-   clear_to_color( ( *map ) -> colortile , ( *map ) -> bgcolor );
+    clear_to_color( ( *map ) -> mousemap, makecol( 255, 255, 255 ) );
+    clear_to_color( ( *map ) -> colortile, ( *map ) -> bgcolor );
 
-   /* drawing mousemap */
-   line( ( *map ) -> mousemap , 0 , ( TILEH >> 1 ) - 2 , ( TILEW >> 1 ) - 3 , 0 , makecol( 255, 0, 0 ) );
-   floodfill( ( *map ) -> mousemap , 1 , 1 , makecol( 255, 0, 0 ) );
+    /* drawing mousemap */
+    line( ( *map ) -> mousemap, 0, ( TILEH >> 1 ) - 2, ( TILEW >> 1 ) - 3, 0, makecol( 255, 0, 0 ) );
+    floodfill( ( *map ) -> mousemap, 1, 1, makecol( 255, 0, 0 ) );
 
-   line( ( *map ) -> mousemap , ( TILEW >> 1 ) - 3 , TILEH - 1 , 0 , ( TILEH >> 1 ) + 1 , makecol( 0 , 255 , 0 ) );
-   floodfill( ( *map ) -> mousemap , 1 , TILEH - 2 , makecol( 0, 255, 0 ) );
+    line( ( *map ) -> mousemap, ( TILEW >> 1 ) - 3, TILEH - 1, 0, ( TILEH >> 1 ) + 1, makecol( 0, 255, 0 ) );
+    floodfill( ( *map ) -> mousemap, 1, TILEH - 2, makecol( 0, 255, 0 ) );
 
-   line( ( *map ) -> mousemap , ( TILEW >> 1 ) + 2 , TILEH - 1 , TILEW - 1 , ( TILEH >> 1 ) + 1 , makecol( 0, 0, 255 ) );
-   floodfill( ( *map ) -> mousemap , TILEW - 2 , TILEH - 1 , makecol( 0, 0, 255 ) );
+    line( ( *map ) -> mousemap, ( TILEW >> 1 ) + 2, TILEH - 1, TILEW - 1, ( TILEH >> 1 ) + 1, makecol( 0, 0, 255 ) );
+    floodfill( ( *map ) -> mousemap, TILEW - 2, TILEH - 1, makecol( 0, 0, 255 ) );
 
-   line( ( *map ) -> mousemap , ( TILEW >> 1 ) + 2 , 0 , TILEW - 1 , ( TILEH >> 1 ) - 2 , makecol( 255, 255 , 0 ) );
-   floodfill( ( *map ) -> mousemap , TILEW - 1 , 0 , makecol( 255, 255, 0 ) );
+    line( ( *map ) -> mousemap, ( TILEW >> 1 ) + 2, 0, TILEW - 1, ( TILEH >> 1 ) - 2, makecol( 255, 255, 0 ) );
+    floodfill( ( *map ) -> mousemap, TILEW - 1, 0, makecol( 255, 255, 0 ) );
 
-   /* drawing colortile */
-   line( ( *map ) -> colortile , 0 , ( TILEH >> 1 ) - 2 , ( TILEW >> 1 ) - 3 , 0 , makecol( 255 , 0 , 255 ) );
-   floodfill( ( *map ) -> colortile , 1 , 1 , makecol( 255 , 0 , 255 ) );
+    /* drawing colortile */
+    line( ( *map ) -> colortile, 0, ( TILEH >> 1 ) - 2, ( TILEW >> 1 ) - 3, 0, makecol( 255, 0, 255 ) );
+    floodfill( ( *map ) -> colortile, 1, 1, makecol( 255, 0, 255 ) );
 
-   line( ( *map ) -> colortile , ( TILEW >> 1 ) - 3, TILEH - 1 , 0 , ( TILEH >> 1 ) + 1 , makecol( 255 , 0 , 255 ) );
-   floodfill( ( *map ) -> colortile , 1 , TILEH - 2 , makecol( 255 , 0 , 255 ) );
+    line( ( *map ) -> colortile, ( TILEW >> 1 ) - 3, TILEH - 1, 0, ( TILEH >> 1 ) + 1, makecol( 255, 0, 255 ) );
+    floodfill( ( *map ) -> colortile, 1, TILEH - 2, makecol( 255, 0, 255 ) );
 
-   line( ( *map ) -> colortile , ( TILEW >> 1 ) + 2 , TILEH - 1 , TILEW - 1 , ( TILEH >> 1 ) + 1 , makecol( 255 , 0 , 255 ) );
-   floodfill( ( *map ) -> colortile , TILEW - 2 , TILEH - 1 , makecol( 255 , 0 , 255 ) );
+    line( ( *map ) -> colortile, ( TILEW >> 1 ) + 2, TILEH - 1, TILEW - 1, ( TILEH >> 1 ) + 1, makecol( 255, 0, 255 ) );
+    floodfill( ( *map ) -> colortile, TILEW - 2, TILEH - 1, makecol( 255, 0, 255 ) );
 
-   line( ( *map ) -> colortile , ( TILEW >> 1 ) + 2 , 0 , TILEW - 1 , ( TILEH >> 1 ) - 2 , makecol( 255 , 0 , 255 ) );
-   floodfill( ( *map ) -> colortile , TILEW - 1 , 0 , makecol( 255 , 0 , 255 ) );
+    line( ( *map ) -> colortile, ( TILEW >> 1 ) + 2, 0, TILEW - 1, ( TILEH >> 1 ) - 2, makecol( 255, 0, 255 ) );
+    floodfill( ( *map ) -> colortile, TILEW - 1, 0, makecol( 255, 0, 255 ) );
 
-   ( *map ) -> ptanchorX = ( *map ) -> X = 0 ;
-   ( *map ) -> ptanchorY = ( *map ) -> Y = 0 ;
+    ( *map ) -> ptanchorX = ( *map ) -> X = 0 ;
+    ( *map ) -> ptanchorY = ( *map ) -> Y = 0 ;
 
-   return TRUE;
+    return TRUE;
 } /* create_empty_map( ... ) */
 
 
@@ -117,41 +119,45 @@ int create_empty_map( MAP **map , char *name , int XSIZE , int YSIZE , int TILEW
  *\param value Value to give to the cell
  *\return TRUE or FALSE
  */
-int set_value( MAP *map , int type , int x , int y , int value )
+int set_value( MAP *map, int type, int x, int y, int value )
 {
-   if ( !map || x >= map -> XSIZE || y >= map -> YSIZE )
-      return FALSE;
+    if ( !map || x >= map -> XSIZE || y >= map -> YSIZE )
+        return FALSE;
 
-   if ( type == N_TILE ) {
+    if ( type == N_TILE )
+    {
 
-      map -> grid[ x + y * map -> XSIZE ] . tilenumber = value ;
+        map -> grid[ x + y * map -> XSIZE ] . tilenumber = value ;
 
-      return TRUE;
-   }
+        return TRUE;
+    }
 
-   if ( type == N_ABILITY ) {
+    if ( type == N_ABILITY )
+    {
 
-      map -> grid[ x + y * map -> XSIZE ] . ability = value ;
+        map -> grid[ x + y * map -> XSIZE ] . ability = value ;
 
-      return TRUE;
-   }
+        return TRUE;
+    }
 
-   if ( type == N_MUSIC ) {
+    if ( type == N_MUSIC )
+    {
 
-      map -> grid[ x + y * map -> XSIZE ] . music = value ;
+        map -> grid[ x + y * map -> XSIZE ] . music = value ;
 
-      return TRUE;
-   }
+        return TRUE;
+    }
 
-   if ( type == N_OBJECT ) {
+    if ( type == N_OBJECT )
+    {
 
-      map -> grid[ x + y * map -> XSIZE ] . objectnumber = value ;
+        map -> grid[ x + y * map -> XSIZE ] . objectnumber = value ;
 
-      return TRUE;
-   }
+        return TRUE;
+    }
 
 
-   return FALSE;
+    return FALSE;
 } /* set_value( ... ) */
 
 
@@ -164,26 +170,26 @@ int set_value( MAP *map , int type , int x , int y , int value )
  *\param y Y coordinate of the cell
  *\return The specified type value of the cell, or FALSE if unavailable
  */
-int get_value( MAP *map , int type , int x , int y )
+int get_value( MAP *map, int type, int x, int y )
 {
 
-   if ( !map || x >= map -> XSIZE || y >= map -> YSIZE )
-      return FALSE;
+    if ( !map || x >= map -> XSIZE || y >= map -> YSIZE )
+        return FALSE;
 
 
-   if ( type == N_TILE )
-      return map -> grid[ x + y * map -> XSIZE ] . tilenumber ;
+    if ( type == N_TILE )
+        return map -> grid[ x + y * map -> XSIZE ] . tilenumber ;
 
-   if ( type == N_OBJECT )
-      return map -> grid[ x + y * map -> XSIZE ] . objectnumber ;
+    if ( type == N_OBJECT )
+        return map -> grid[ x + y * map -> XSIZE ] . objectnumber ;
 
-   if ( type == N_MUSIC )
-      return map -> grid[ x + y * map -> XSIZE ] . music ;
+    if ( type == N_MUSIC )
+        return map -> grid[ x + y * map -> XSIZE ] . music ;
 
-   if ( type == N_ABILITY )
-      return map -> grid[ x + y * map -> XSIZE ] . ability ;
+    if ( type == N_ABILITY )
+        return map -> grid[ x + y * map -> XSIZE ] . ability ;
 
-   return FALSE;
+    return FALSE;
 
 } /* get_value( ... ) */
 
@@ -201,58 +207,63 @@ int get_value( MAP *map , int type , int x , int y )
 int ScreenToMap( int mx, int my, int *Tilex, int *Tiley, BITMAP *mousemap )
 {
 
-   /* SCREEN TO MAP VARIABLES */
-   int RegionX, RegionY,
-       RegionDX = 0, RegionDY = 0,
-       MouseMapX, MouseMapY,
-       MouseMapWidth, MouseMapHeight, c;
+    /* SCREEN TO MAP VARIABLES */
+    int RegionX, RegionY,
+        RegionDX = 0, RegionDY = 0,
+        MouseMapX, MouseMapY,
+        MouseMapWidth, MouseMapHeight, c;
 
-   MouseMapWidth = mousemap -> w;
-   MouseMapHeight = mousemap -> h;
+    MouseMapWidth = mousemap -> w;
+    MouseMapHeight = mousemap -> h;
 
-   /* First step find out where we are on the mousemap */
-   RegionX = ( mx / MouseMapWidth );
-   RegionY = ( my / MouseMapHeight ) << 1; /* The multiplying by two is very important */
-
-
-   /* Second Step: Find out WHERE in the mousemap our mouse is, by finding MouseMapX and MouseMapY. */
-
-   MouseMapX = mx % MouseMapWidth;
-   MouseMapY = my % MouseMapHeight;
-
-   /* third step: Find the color in the mouse map */
-   c = getpixel( mousemap, MouseMapX, MouseMapY );
-
-   if ( c == makecol( 255, 0, 0 ) ) {
-      RegionDX = -1;
-      RegionDY = -1;
-   }
-
-   if ( c == makecol( 255, 255, 0 ) ) {
-      RegionDX = 0;
-      RegionDY = -1;
-   }
-
-   if ( c == makecol( 255, 255, 255 ) ) {
-      RegionDX = 0;
-      RegionDY = 0;
-   }
-
-   if ( c == makecol( 0, 255, 0 ) ) {
-      RegionDX = -1;
-      RegionDY = 1;
-   }
-
-   if ( c == makecol( 0, 0, 255 ) ) {
-      RegionDX = 0;
-      RegionDY = 1;
-   }
-
-   *Tilex = ( RegionDX + RegionX );
-   *Tiley = ( RegionDY + RegionY );
+    /* First step find out where we are on the mousemap */
+    RegionX = ( mx / MouseMapWidth );
+    RegionY = ( my / MouseMapHeight ) << 1; /* The multiplying by two is very important */
 
 
-   return TRUE;
+    /* Second Step: Find out WHERE in the mousemap our mouse is, by finding MouseMapX and MouseMapY. */
+
+    MouseMapX = mx % MouseMapWidth;
+    MouseMapY = my % MouseMapHeight;
+
+    /* third step: Find the color in the mouse map */
+    c = getpixel( mousemap, MouseMapX, MouseMapY );
+
+    if ( c == makecol( 255, 0, 0 ) )
+    {
+        RegionDX = -1;
+        RegionDY = -1;
+    }
+
+    if ( c == makecol( 255, 255, 0 ) )
+    {
+        RegionDX = 0;
+        RegionDY = -1;
+    }
+
+    if ( c == makecol( 255, 255, 255 ) )
+    {
+        RegionDX = 0;
+        RegionDY = 0;
+    }
+
+    if ( c == makecol( 0, 255, 0 ) )
+    {
+        RegionDX = -1;
+        RegionDY = 1;
+    }
+
+    if ( c == makecol( 0, 0, 255 ) )
+    {
+        RegionDX = 0;
+        RegionDY = 1;
+    }
+
+    *Tilex = ( RegionDX + RegionX );
+    *Tiley = ( RegionDY + RegionY );
+
+
+    return TRUE;
 } /* ScreenToMap( ... ) */
 
 
@@ -264,22 +275,22 @@ int ScreenToMap( int mx, int my, int *Tilex, int *Tiley, BITMAP *mousemap )
  *\param y the Y coordintae (in pixel) to center on;
  *\return TRUE
  */
-int camera_to_scr( MAP **map , int x , int y )
+int camera_to_scr( MAP **map, int x, int y )
 {
-   if ( x < 0 )
-      x = 0;
+    if ( x < 0 )
+        x = 0;
 
-   if ( y < 0 )
-      y = 0;
+    if ( y < 0 )
+        y = 0;
 
-   ( *map ) -> X = x % ( *map ) ->TILEW;
-   ( *map ) -> Y = y % ( *map ) ->TILEH;
-   ( *map ) -> ptanchorY = y / ( ( *map ) ->TILEH >> 1 );
-   ( *map ) -> ptanchorY = ( *map ) -> ptanchorY >> 1;
-   ( *map ) -> ptanchorY = ( *map ) -> ptanchorY << 1;
-   ( *map ) -> ptanchorX = ( x + ( ( *map ) -> ptanchorY & 1 ) * ( ( *map ) ->TILEW >> 1 ) ) / ( *map ) ->TILEW;
+    ( *map ) -> X = x % ( *map ) ->TILEW;
+    ( *map ) -> Y = y % ( *map ) ->TILEH;
+    ( *map ) -> ptanchorY = y / ( ( *map ) ->TILEH >> 1 );
+    ( *map ) -> ptanchorY = ( *map ) -> ptanchorY >> 1;
+    ( *map ) -> ptanchorY = ( *map ) -> ptanchorY << 1;
+    ( *map ) -> ptanchorX = ( x + ( ( *map ) -> ptanchorY & 1 ) * ( ( *map ) ->TILEW >> 1 ) ) / ( *map ) ->TILEW;
 
-   return TRUE;
+    return TRUE;
 } /* camera_to_scr( ... )*/
 
 
@@ -293,15 +304,15 @@ int camera_to_scr( MAP **map , int x , int y )
  *\param y Y Offset in pixel
  *\return TRUE
  */
-int camera_to_map( MAP **map , int tx , int ty , int x , int y )
+int camera_to_map( MAP **map, int tx, int ty, int x, int y )
 {
 
-   ( *map ) -> ptanchorX = tx;
-   ( *map ) -> ptanchorY = ty;
-   ( *map ) -> X = x;
-   ( *map ) -> Y = y;
+    ( *map ) -> ptanchorX = tx;
+    ( *map ) -> ptanchorY = ty;
+    ( *map ) -> X = x;
+    ( *map ) -> Y = y;
 
-   return TRUE;
+    return TRUE;
 } /* camera_to_map(...) */
 
 
@@ -315,75 +326,81 @@ int camera_to_map( MAP **map , int tx , int ty , int x , int y )
  *\param mode Drawing mode
  *\return TRUE
  */
-int draw_map( MAP *map , BITMAP *bmp , int destx , int desty , int mode )
+int draw_map( MAP *map, BITMAP *bmp, int destx, int desty, int mode )
 {
-   int a , b ,           /* iterators */
-       x , y ,           /* temp store of coordinate      */
-       mvx,mvy ,           /* precomputed offset */
-       tw , th,          /* number of tile for one screen */
-       TW2,TH2;          /* size of TILE_W /2 and TILE_H/2 */
+    int a, b,             /* iterators */
+        x, y,             /* temp store of coordinate      */
+        mvx,mvy,            /* precomputed offset */
+        tw, th,           /* number of tile for one screen */
+        TW2,TH2;          /* size of TILE_W /2 and TILE_H/2 */
 
-   /* computing tw&th */
-   tw = 1 + ( ( bmp -> w - destx ) / map -> TILEW ) ;
-   th = 3 + ( ( bmp -> h - desty ) / ( map -> TILEH >> 1 ) ) ;
+    /* computing tw&th */
+    tw = 1 + ( ( bmp -> w - destx ) / map -> TILEW ) ;
+    th = 3 + ( ( bmp -> h - desty ) / ( map -> TILEH >> 1 ) ) ;
 
-   TW2 = map -> TILEW>>1 ;
-   TH2 = map -> TILEH>>1 ;
+    TW2 = map -> TILEW>>1 ;
+    TH2 = map -> TILEH>>1 ;
 
-   mvx = destx - TW2 - map -> X;
-   mvy = desty - TH2 - map -> Y;
+    mvx = destx - TW2 - map -> X;
+    mvy = desty - TH2 - map -> Y;
 
-   for ( a = 0 ; a <= tw ; a++ ) {
-      for ( b = 0 ; b <= th ; b++ ) {
-
-
-         x = ( a * map -> TILEW + ( ( b & 1 ) * TW2 ) ) - ( map -> TILEW >> 1 ) + mvx;
-         y = ( b * TH2 ) + mvy;
-
-         if ( ( a + map -> ptanchorX ) < map->XSIZE && ( b + map -> ptanchorY ) < map->YSIZE ) {
-
-            if ( map -> grid [ a + map -> ptanchorX + ( b + map -> ptanchorY ) * map->XSIZE ] . tilenumber == FALSE ) {
-
-               masked_blit( map -> colortile , bmp , 0 , 0 , x , y , map -> colortile -> w , map -> colortile -> h );
-
-            }
-
-            else {
-
-               /* TODO HERE : add sprite blit */
-               triangle( bmp , x , y + ( map -> TILEH >> 1 ), x + map-> TILEW , y + ( map->TILEH >> 1 ), x + ( map -> TILEW >> 1 ) , y , makecol( 255, 255, 0 ) );
-               triangle( bmp , x , y + ( map -> TILEH >> 1 ), x + map-> TILEW , y + ( map->TILEH >> 1 ), x + ( map -> TILEW >> 1 ) , y + map -> TILEH, makecol( 255, 0, 255 ) );
-
-            } /* if( map -> grid... ) ) */
-
-            if ( mode == 1 ) {
-
-               line( bmp , x + ( map -> TILEW >> 1 ) - 2 , y , x , y + ( map -> TILEH >> 1 ) - 1 , map -> wirecolor );
-               line( bmp , x + ( map -> TILEW >> 1 ) - 2 , y + map -> TILEH - 1 , x , y + ( map -> TILEH >> 1 ) , map -> wirecolor );
-               line( bmp , x + ( map -> TILEW >> 1 ) + 1 , y + map -> TILEH - 1 , x + map -> TILEW - 1 , y + ( map -> TILEH >> 1 ) , map -> wirecolor );
-               line( bmp , x + ( map -> TILEW >> 1 ) + 1 , y , x + map -> TILEW - 1 , y + ( map -> TILEH >> 1 ) - 1 , map -> wirecolor );
-
-            }
-
-            /* TODO HERE : check if object,
-               check if it is already in the library
-               if yes refresh its ttl
-               if no add it with the defaut ttl
-               */
+    for ( a = 0 ; a <= tw ; a++ )
+    {
+        for ( b = 0 ; b <= th ; b++ )
+        {
 
 
-         } /* if( (a + ...) ) */
+            x = ( a * map -> TILEW + ( ( b & 1 ) * TW2 ) ) - ( map -> TILEW >> 1 ) + mvx;
+            y = ( b * TH2 ) + mvy;
 
-      } /* for( a... ) */
-   } /* for( b... ) */
+            if ( ( a + map -> ptanchorX ) < map->XSIZE && ( b + map -> ptanchorY ) < map->YSIZE )
+            {
 
-   /* TODO HERE:
+                if ( map -> grid [ a + map -> ptanchorX + ( b + map -> ptanchorY ) * map->XSIZE ] . tilenumber == FALSE )
+                {
 
-      sort the object list by X and by Y
-      blit all the sprites of the active list
-      */
+                    masked_blit( map -> colortile, bmp, 0, 0, x, y, map -> colortile -> w, map -> colortile -> h );
 
-   return TRUE;
+                }
+
+                else
+                {
+
+                    /* TODO HERE : add sprite blit */
+                    triangle( bmp, x, y + ( map -> TILEH >> 1 ), x + map-> TILEW, y + ( map->TILEH >> 1 ), x + ( map -> TILEW >> 1 ), y, makecol( 255, 255, 0 ) );
+                    triangle( bmp, x, y + ( map -> TILEH >> 1 ), x + map-> TILEW, y + ( map->TILEH >> 1 ), x + ( map -> TILEW >> 1 ), y + map -> TILEH, makecol( 255, 0, 255 ) );
+
+                } /* if( map -> grid... ) ) */
+
+                if ( mode == 1 )
+                {
+
+                    line( bmp, x + ( map -> TILEW >> 1 ) - 2, y, x, y + ( map -> TILEH >> 1 ) - 1, map -> wirecolor );
+                    line( bmp, x + ( map -> TILEW >> 1 ) - 2, y + map -> TILEH - 1, x, y + ( map -> TILEH >> 1 ), map -> wirecolor );
+                    line( bmp, x + ( map -> TILEW >> 1 ) + 1, y + map -> TILEH - 1, x + map -> TILEW - 1, y + ( map -> TILEH >> 1 ), map -> wirecolor );
+                    line( bmp, x + ( map -> TILEW >> 1 ) + 1, y, x + map -> TILEW - 1, y + ( map -> TILEH >> 1 ) - 1, map -> wirecolor );
+
+                }
+
+                /* TODO HERE : check if object,
+                   check if it is already in the library
+                   if yes refresh its ttl
+                   if no add it with the defaut ttl
+                   */
+
+
+            } /* if( (a + ...) ) */
+
+        } /* for( a... ) */
+    } /* for( b... ) */
+
+    /* TODO HERE:
+
+       sort the object list by X and by Y
+       blit all the sprites of the active list
+       */
+
+    return TRUE;
 
 } /* draw_map( ... ) */
 
@@ -395,73 +412,75 @@ int draw_map( MAP *map , BITMAP *bmp , int destx , int desty , int mode )
  *\param filename The filename of the map to load
  *\return TRUE or FALSE
  */
-int load_map( MAP **map , char *filename )
+int load_map( MAP **map, char *filename )
 {
-   PACKFILE *loaded;
+    PACKFILE *loaded;
 
-   char temp_name[1024];
-   MAP temp_map;
-
-
-   int it = 0 , it1 = 0 ;
-
-   loaded = pack_fopen( filename , "rb" );
-
-   if( map )
-      free_map( &(*map) );
-   if( !(*map) )
-      Malloc( (*map) , MAP , 1 );
-
-   /* writting name */
-   it = pack_igetl( loaded );
-
-   pack_fread( temp_name , it , loaded );
-
-   /* writting states */
-   temp_map . XSIZE  = pack_igetl( loaded );
-   temp_map . YSIZE  = pack_igetl( loaded );
-   temp_map . TILEW  = pack_igetl( loaded );
-   temp_map . TILEH = pack_igetl( loaded );
-   temp_map . ptanchorX = pack_igetl( loaded );
-   temp_map . ptanchorY = pack_igetl( loaded );
-   temp_map . X = pack_igetl( loaded );
-   temp_map . Y = pack_igetl( loaded );
-   temp_map . bgcolor = pack_igetl( loaded );
-   temp_map . wirecolor = pack_igetl( loaded );
-
-   create_empty_map( &( *map ) , temp_name ,
-         temp_map . XSIZE , temp_map . YSIZE ,
-         temp_map . TILEW , temp_map . TILEH ,
-         2000 , 2000 , 2000 , 2000 ,2000 );
-   (*map ) -> XSIZE = temp_map . XSIZE ;
-   (*map ) -> YSIZE = temp_map . YSIZE ;
-   (*map ) -> TILEW = temp_map . TILEW ;
-   (*map ) -> TILEH = temp_map . TILEH ;
-   (*map ) -> ptanchorX = temp_map . ptanchorX ;
-   (*map ) -> ptanchorY = temp_map . ptanchorY ;
-   (*map ) -> X  = temp_map .  X ;
-   (*map ) -> Y  = temp_map . Y   ;
-   (*map ) ->bgcolor  = temp_map . bgcolor ;
-   (*map ) ->wirecolor = temp_map . wirecolor ;
+    char temp_name[1024];
+    MAP temp_map;
 
 
-   /* saving the grid */
-   for( it = 0 ; it < (*map ) -> XSIZE ; it ++ ) {
-      for( it1 = 0 ; it1 < (*map ) -> YSIZE ; it1 ++ ){
-         (*map ) -> grid[ it + it1 * (*map ) -> XSIZE ] . tilenumber  = pack_igetl( loaded );
-         (*map ) -> grid[ it + it1 * (*map ) -> XSIZE ] . ability  = pack_igetl( loaded );
-         (*map ) -> grid[ it + it1 * (*map ) -> XSIZE ] . objectnumber  = pack_igetl( loaded );
-         (*map ) -> grid[ it + it1 * (*map ) -> XSIZE ] . music  = pack_igetl( loaded );
-      }
-   }
+    int it = 0, it1 = 0 ;
 
-   /*load_animlib( loaded , & (*map ) -> libtiles );*/
-   /*load_animlib( loaded , & (*map ) -> libanims );*/
+    loaded = pack_fopen( filename, "rb" );
 
-   pack_fclose( loaded );
+    if( map )
+        free_map( &(*map) );
+    if( !(*map) )
+        Malloc( (*map), MAP, 1 );
+
+    /* writting name */
+    it = pack_igetl( loaded );
+
+    pack_fread( temp_name, it, loaded );
+
+    /* writting states */
+    temp_map . XSIZE  = pack_igetl( loaded );
+    temp_map . YSIZE  = pack_igetl( loaded );
+    temp_map . TILEW  = pack_igetl( loaded );
+    temp_map . TILEH = pack_igetl( loaded );
+    temp_map . ptanchorX = pack_igetl( loaded );
+    temp_map . ptanchorY = pack_igetl( loaded );
+    temp_map . X = pack_igetl( loaded );
+    temp_map . Y = pack_igetl( loaded );
+    temp_map . bgcolor = pack_igetl( loaded );
+    temp_map . wirecolor = pack_igetl( loaded );
+
+    create_empty_map( &( *map ), temp_name,
+                      temp_map . XSIZE, temp_map . YSIZE,
+                      temp_map . TILEW, temp_map . TILEH,
+                      2000, 2000, 2000, 2000,2000 );
+    (*map ) -> XSIZE = temp_map . XSIZE ;
+    (*map ) -> YSIZE = temp_map . YSIZE ;
+    (*map ) -> TILEW = temp_map . TILEW ;
+    (*map ) -> TILEH = temp_map . TILEH ;
+    (*map ) -> ptanchorX = temp_map . ptanchorX ;
+    (*map ) -> ptanchorY = temp_map . ptanchorY ;
+    (*map ) -> X  = temp_map .  X ;
+    (*map ) -> Y  = temp_map . Y   ;
+    (*map ) ->bgcolor  = temp_map . bgcolor ;
+    (*map ) ->wirecolor = temp_map . wirecolor ;
 
 
-   return TRUE;
+    /* saving the grid */
+    for( it = 0 ; it < (*map ) -> XSIZE ; it ++ )
+    {
+        for( it1 = 0 ; it1 < (*map ) -> YSIZE ; it1 ++ )
+        {
+            (*map ) -> grid[ it + it1 * (*map ) -> XSIZE ] . tilenumber  = pack_igetl( loaded );
+            (*map ) -> grid[ it + it1 * (*map ) -> XSIZE ] . ability  = pack_igetl( loaded );
+            (*map ) -> grid[ it + it1 * (*map ) -> XSIZE ] . objectnumber  = pack_igetl( loaded );
+            (*map ) -> grid[ it + it1 * (*map ) -> XSIZE ] . music  = pack_igetl( loaded );
+        }
+    }
+
+    /*load_animlib( loaded , & (*map ) -> libtiles );*/
+    /*load_animlib( loaded , & (*map ) -> libanims );*/
+
+    pack_fclose( loaded );
+
+
+    return TRUE;
 } /* load_map( ... ) */
 
 
@@ -472,48 +491,50 @@ int load_map( MAP **map , char *filename )
  *\param filename The filename of the file where to save the map
  *\return TRUE or FALSE
  */
-int save_map( MAP *map , char *filename )
+int save_map( MAP *map, char *filename )
 {
 
-   PACKFILE *saved;
+    PACKFILE *saved;
 
-   int it = 0 , it1 = 0 ;
+    int it = 0, it1 = 0 ;
 
-   saved = pack_fopen( filename , "wb" );
+    saved = pack_fopen( filename, "wb" );
 
-   /* writting name */
-   pack_iputl( ustrsizez( map -> name ) , saved );
-   pack_fwrite( map -> name , ustrsizez( map -> name ) , saved );
+    /* writting name */
+    pack_iputl( ustrsizez( map -> name ), saved );
+    pack_fwrite( map -> name, ustrsizez( map -> name ), saved );
 
-   /* writting states */
-   pack_iputl( map -> XSIZE , saved );
-   pack_iputl( map -> YSIZE , saved );
-   pack_iputl( map -> TILEW , saved );
-   pack_iputl( map -> TILEH , saved );
-   pack_iputl( map -> ptanchorX , saved );
-   pack_iputl( map -> ptanchorY , saved );
-   pack_iputl( map -> X , saved );
-   pack_iputl( map -> Y , saved );
-   pack_iputl( map -> bgcolor , saved );
-   pack_iputl( map -> wirecolor , saved );
+    /* writting states */
+    pack_iputl( map -> XSIZE, saved );
+    pack_iputl( map -> YSIZE, saved );
+    pack_iputl( map -> TILEW, saved );
+    pack_iputl( map -> TILEH, saved );
+    pack_iputl( map -> ptanchorX, saved );
+    pack_iputl( map -> ptanchorY, saved );
+    pack_iputl( map -> X, saved );
+    pack_iputl( map -> Y, saved );
+    pack_iputl( map -> bgcolor, saved );
+    pack_iputl( map -> wirecolor, saved );
 
-   /* saving the grid */
-   for( it = 0 ; it < map -> XSIZE ; it ++ ) {
-      for( it1 = 0 ; it1 < map -> YSIZE ; it1 ++ ){
-         pack_iputl( map -> grid[ it + it1 * map -> XSIZE ] . tilenumber , saved );
-         pack_iputl( map -> grid[ it + it1 * map -> XSIZE ] . ability , saved );
-         pack_iputl( map -> grid[ it + it1 * map -> XSIZE ] . objectnumber , saved );
-         pack_iputl( map -> grid[ it + it1 * map -> XSIZE ] . music , saved );
-      }
-   }
+    /* saving the grid */
+    for( it = 0 ; it < map -> XSIZE ; it ++ )
+    {
+        for( it1 = 0 ; it1 < map -> YSIZE ; it1 ++ )
+        {
+            pack_iputl( map -> grid[ it + it1 * map -> XSIZE ] . tilenumber, saved );
+            pack_iputl( map -> grid[ it + it1 * map -> XSIZE ] . ability, saved );
+            pack_iputl( map -> grid[ it + it1 * map -> XSIZE ] . objectnumber, saved );
+            pack_iputl( map -> grid[ it + it1 * map -> XSIZE ] . music, saved );
+        }
+    }
 
-   /*save_animlib( saved , map -> libtiles );*/
-   /*save_animlib( saved , map -> libanims );*/
+    /*save_animlib( saved , map -> libtiles );*/
+    /*save_animlib( saved , map -> libanims );*/
 
-   pack_fclose( saved );
+    pack_fclose( saved );
 
 
-   return TRUE;
+    return TRUE;
 } /* save_map( ... ) */
 
 
@@ -521,29 +542,29 @@ int save_map( MAP *map , char *filename )
 /*!\fn free_map( MAP **map )
  *\brief Free the map
  *\param map The map to free. The pointer will be set to NULL
- *\return TRUE or FALSE 
+ *\return TRUE or FALSE
  */
 int free_map( MAP **map )
 {
 
-   if( !(*map) )
-      return TRUE;
-   if( (*map) -> grid )
-   {
-      Free( ( *map ) -> grid );
-   }
-   if( (*map) -> name )
-   {
-      Free( ( *map ) -> name );
-   }
-   if( (*map) -> colortile )
-      destroy_bitmap( ( *map ) -> colortile );
-   if( (*map) -> mousemap )
-      destroy_bitmap( ( *map ) -> mousemap );
+    if( !(*map) )
+        return TRUE;
+    if( (*map) -> grid )
+    {
+        Free( ( *map ) -> grid );
+    }
+    if( (*map) -> name )
+    {
+        Free( ( *map ) -> name );
+    }
+    if( (*map) -> colortile )
+        destroy_bitmap( ( *map ) -> colortile );
+    if( (*map) -> mousemap )
+        destroy_bitmap( ( *map ) -> mousemap );
 
-   Free( ( *map ) );
+    Free( ( *map ) );
 
-   return TRUE;
+    return TRUE;
 } /* free_map( ... ) */
 
 #endif /* #ifndef NOISOENGINE */

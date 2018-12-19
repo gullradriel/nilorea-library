@@ -1,6 +1,5 @@
 /**\file lexmenu.h
 *  common headers and low-level hugly functions & define
- *\author Castagnier Mickael
 *\version 1.0
 *\date 24/03/05
 *
@@ -14,11 +13,11 @@
 #include <allegro.h>
 
 #ifdef __cplusplus
-   extern "C" {
+extern "C" {
 #endif
 
 /**\defgroup GUI LEXMENU: quick GUI functions (by spellcaster)
-   \addtogroup GUI 
+   \addtogroup GUI
   @{
 */
 
@@ -139,13 +138,15 @@ typedef struct LexMenuEventStruct    LexMenuEvent;
 /* The event callback functipn */
 typedef void (*LexMenuCallback)(LexMenuEvent *);
 
-struct LexMenuItemItorStruct {
+struct LexMenuItemItorStruct
+{
     LexMenuItem*     data;
     LexMenuItemItor* next;
     LexMenuItemItor* prev;
 };
 
-struct LexMenuEventStruct {
+struct LexMenuEventStruct
+{
     int          type;
     LexMenu     *menu;
     LexMenuItem *source;
@@ -154,7 +155,8 @@ struct LexMenuEventStruct {
 };
 
 
-struct LexMenuItemStruct {
+struct LexMenuItemStruct
+{
     BITMAP          *img[LEX_MENU_IMG_COUNT];
     SAMPLE          *snd[LEX_MENU_SND_COUNT];
     LexMenuCallback  cbf[LEX_MENU_CBF_COUNT];
@@ -167,7 +169,8 @@ struct LexMenuItemStruct {
 };
 
 
-struct LexMenuStruct {
+struct LexMenuStruct
+{
     LexMenuItemItor *begin, *end;
     BITMAP *bg;
 
@@ -217,11 +220,11 @@ LexMenu* lexLoadMenuFromFile(const char* filename, const char* screenname);
 
 /* Return a pointer to the bitmap of the item or NULL */
 
-BITMAP *lexMenuGetBitmap( LexMenu* menu , int item , int whichone );
+BITMAP *lexMenuGetBitmap( LexMenu* menu, int item, int whichone );
 
 /*@}*/
 
 #ifdef __cplusplus
-   }
+}
 #endif
 #endif

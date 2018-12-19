@@ -17,27 +17,27 @@ extern "C"
 
 
 #ifndef MIN
-	#define MIN(x,y)      ((x)<(y) ? (x) : (y))
+#define MIN(x,y)      ((x)<(y) ? (x) : (y))
 #endif
 
 #ifndef MAX
-	#define MAX(x,y)      ((x)>(y) ? (x) : (y))
+#define MAX(x,y)      ((x)>(y) ? (x) : (y))
 #endif
 
 #ifndef sqr
-	#define sqr(x)        ((x)*(x))
+#define sqr(x)        ((x)*(x))
 #endif
 
 
 /* randome value between int a and int b */
-int rand_between_ints( int a , int b );    
+int rand_between_ints( int a, int b );
 
 /* randome value between double a and double b */
-double rand_between_doubles( double a , double b );
+double rand_between_doubles( double a, double b );
 
-double rand_equal_double( double a , double b );
+double rand_equal_double( double a, double b );
 
-int rand_equal_int( int a , int b );
+int rand_equal_int( int a, int b );
 
 
 /*! basic neural network activation function: sigmoid */
@@ -47,40 +47,40 @@ double n_neural_sigmoid ( double x ) ;
 /*! Structure of a perceptron */
 typedef struct N_PERCEPTRON
 {
-	/*! list of N_PERCEPTRON inputs for normal layer computing */
-	LIST *intput_links,
-	/*! list of N_PERCEPTRON inputs for signal generated layer computing */
-	     *outputs_links ;
-		
-		/*! perceptron's bias */
-		double bias_weights ,
-		/*! perceptron activation value */ 
-		treshold ,
-		/*! computed output */
-		output ,
-		/*!  learning rate */
-		delta ,
-		/*! momentum */
-		alpha ,
-		/*! perceptron error */
-		error  ;
-		   
-	/*! pointer to activation function */	   
-	double(*a_func)(double val );
-	
-}N_PERCEPTRON ;
+    /*! list of N_PERCEPTRON inputs for normal layer computing */
+    LIST *intput_links,
+         /*! list of N_PERCEPTRON inputs for signal generated layer computing */
+         *outputs_links ;
+
+    /*! perceptron's bias */
+    double bias_weights,
+           /*! perceptron activation value */
+           treshold,
+           /*! computed output */
+           output,
+           /*!  learning rate */
+           delta,
+           /*! momentum */
+           alpha,
+           /*! perceptron error */
+           error  ;
+
+    /*! pointer to activation function */
+    double(*a_func)(double val );
+
+} N_PERCEPTRON ;
 
 
 /*! One layer of percetron, size_x by size_y, some can be NULL ones */
 typedef struct N_NEURAL_LAYER
 {
-	/*! Width of the layer */
-	int size_x ,
-	/*!	Height of the layer */
-	size_y ;
-	/*! Dynamically allocated array of perceptron. Some can be NULL. */
-	N_PERCEPTRON **array ;
-	
+    /*! Width of the layer */
+    int size_x,
+        /*!	Height of the layer */
+        size_y ;
+    /*! Dynamically allocated array of perceptron. Some can be NULL. */
+    N_PERCEPTRON **array ;
+
 } N_NEURAL_LAYER ;
 
 
@@ -88,58 +88,58 @@ typedef struct N_NEURAL_LAYER
 /*! structure of a Neural Network, a group of perceptron */
 typedef struct NEURAL_NETWORK
 {
-	/*! name of the neural network */
-	char *name ;
+    /*! name of the neural network */
+    char *name ;
 
-	/*! list of list of N_NEURAL_LAYER */
-	LIST *network ;
-	
-	/*! pointer to input data */
-	double **input ;
-	
-	/*! Width of input data, used to create first (input) layer */
-	int input_x ,
-	/*! Height of input data, used to create first (input) layer */
-		input_y ,
-	/*! current number of layers */
-		nb_layers ,
-	/*! Total number of active perceptrons */
-		nb_total ;
+    /*! list of list of N_NEURAL_LAYER */
+    LIST *network ;
 
-	/*! computed output */
-	double output ,
-			/*! momentum */
-			alpha ,
-			/*! learning_rate */
-			learning_rate ,
-			/*! activation_func gain */
-			gain ,
-			/*! total of network errors */
-			error ,
-			/*! Ouput mid value (not sure) */
-			Mean ,
-			/*! Error level after training */
-			TrainError ,
-			/*! Mean Error level after training */
-			TrainErrorPredictingMean ,
-			/*! Error level after testing */			
-			TestError ,
-			/*! Mean Error level after testing */
-			TestErrorPredictingMean;		
-}NEURAL_NETWORK ;
+    /*! pointer to input data */
+    double **input ;
 
-N_PERCEPTRON *new_perceptron( double bias_weights , double treshold , double output , double delta , double momentum , double(*a_func)(double val ) );
-		
+    /*! Width of input data, used to create first (input) layer */
+    int input_x,
+        /*! Height of input data, used to create first (input) layer */
+        input_y,
+        /*! current number of layers */
+        nb_layers,
+        /*! Total number of active perceptrons */
+        nb_total ;
+
+    /*! computed output */
+    double output,
+           /*! momentum */
+           alpha,
+           /*! learning_rate */
+           learning_rate,
+           /*! activation_func gain */
+           gain,
+           /*! total of network errors */
+           error,
+           /*! Ouput mid value (not sure) */
+           Mean,
+           /*! Error level after training */
+           TrainError,
+           /*! Mean Error level after training */
+           TrainErrorPredictingMean,
+           /*! Error level after testing */
+           TestError,
+           /*! Mean Error level after testing */
+           TestErrorPredictingMean;
+} NEURAL_NETWORK ;
+
+N_PERCEPTRON *new_perceptron( double bias_weights, double treshold, double output, double delta, double momentum, double(*a_func)(double val ) );
+
 /* at first call it will also create and set to NULL neural_net -> ptr , input_x , input_y  */
-NEURAL_NETWORK *new_neural_network( int input_x , int input_y );
+NEURAL_NETWORK *new_neural_network( int input_x, int input_y );
 
 /* add a new layer */
-int add_neural_net_layer( NEURAL_NETWORK *neural_net , int x , int y );
-int set_perceptron( NEURAL_NETWORK *neural_net , int layer , int x , int y , int a_func , double bias , double treshold , double output );
-int unset_perceptron( NEURAL_NETWORK *neural_net , int layer , int x , int y );
-int add_perceptron_input( N_PERCEPTRON *n_perceptron , N_PERCEPTRON *input );
-int neural_net_set_input( NEURAK_NETWORK *neural_net , double **input );
-int neural_net_compute( NEURAL_NETWORK *neural_net , double *output );
+int add_neural_net_layer( NEURAL_NETWORK *neural_net, int x, int y );
+int set_perceptron( NEURAL_NETWORK *neural_net, int layer, int x, int y, int a_func, double bias, double treshold, double output );
+int unset_perceptron( NEURAL_NETWORK *neural_net, int layer, int x, int y );
+int add_perceptron_input( N_PERCEPTRON *n_perceptron, N_PERCEPTRON *input );
+int neural_net_set_input( NEURAK_NETWORK *neural_net, double **input );
+int neural_net_compute( NEURAL_NETWORK *neural_net, double *output );
 
 
 
@@ -156,26 +156,29 @@ int neural_net_compute( NEURAL_NETWORK *neural_net , double *output );
 
 void PropagateLayer(NET* Net, LAYER* Lower, LAYER* Upper)
 {
-  INT  i,j;
-  REAL Sum;
+    INT  i,j;
+    REAL Sum;
 
-  for (i=1; i<=Upper->Units; i++) {
-    Sum = 0;
-    for (j=0; j<=Lower->Units; j++) {
-      Sum += Upper->Weight[i][j] * Lower->Output[j];
+    for (i=1; i<=Upper->Units; i++)
+    {
+        Sum = 0;
+        for (j=0; j<=Lower->Units; j++)
+        {
+            Sum += Upper->Weight[i][j] * Lower->Output[j];
+        }
+        Upper->Output[i] = 1 / (1 + exp(-Net->Gain * Sum));
     }
-    Upper->Output[i] = 1 / (1 + exp(-Net->Gain * Sum));
-  }
 }
 
 
 void neural_net_compute(NET* Net)
 {
-  INT l;
-   
-  for (l=0; l<NUM_LAYERS-1; l++) {
-    PropagateLayer(Net, Net->Layer[l], Net->Layer[l+1]);
-  }
+    INT l;
+
+    for (l=0; l<NUM_LAYERS-1; l++)
+    {
+        PropagateLayer(Net, Net->Layer[l], Net->Layer[l+1]);
+    }
 }
 
 /******************************************************************************
@@ -185,60 +188,67 @@ void neural_net_compute(NET* Net)
 
 void ComputeOutputError(NET* Net, REAL* Target)
 {
-  INT  i;
-  REAL Out, Err;
-   
-  Net->Error = 0;
-  for (i=1; i<=Net->OutputLayer->Units; i++) {
-    Out = Net->OutputLayer->Output[i];
-    Err = Target[i-1]-Out;
-    Net->OutputLayer->Error[i] = Net->Gain * Out * (1-Out) * Err;
-    Net->Error += 0.5 * sqr(Err);
-  }
+    INT  i;
+    REAL Out, Err;
+
+    Net->Error = 0;
+    for (i=1; i<=Net->OutputLayer->Units; i++)
+    {
+        Out = Net->OutputLayer->Output[i];
+        Err = Target[i-1]-Out;
+        Net->OutputLayer->Error[i] = Net->Gain * Out * (1-Out) * Err;
+        Net->Error += 0.5 * sqr(Err);
+    }
 }
 
 
 void BackpropagateLayer(NET* Net, LAYER* Upper, LAYER* Lower)
 {
-  INT  i,j;
-  REAL Out, Err;
-   
-  for (i=1; i<=Lower->Units; i++) {
-    Out = Lower->Output[i];
-    Err = 0;
-    for (j=1; j<=Upper->Units; j++) {
-      Err += Upper->Weight[j][i] * Upper->Error[j];
+    INT  i,j;
+    REAL Out, Err;
+
+    for (i=1; i<=Lower->Units; i++)
+    {
+        Out = Lower->Output[i];
+        Err = 0;
+        for (j=1; j<=Upper->Units; j++)
+        {
+            Err += Upper->Weight[j][i] * Upper->Error[j];
+        }
+        Lower->Error[i] = Net->Gain * Out * (1-Out) * Err;
     }
-    Lower->Error[i] = Net->Gain * Out * (1-Out) * Err;
-  }
 }
 
 
 void BackpropagateNet(NET* Net)
 {
-  INT l;
-   
-  for (l=NUM_LAYERS-1; l>1; l--) {
-    BackpropagateLayer(Net, Net->Layer[l], Net->Layer[l-1]);
-  }
+    INT l;
+
+    for (l=NUM_LAYERS-1; l>1; l--)
+    {
+        BackpropagateLayer(Net, Net->Layer[l], Net->Layer[l-1]);
+    }
 }
 
 void AdjustWeights(NET* Net)
 {
-  INT  l,i,j;
-  REAL Out, Err, dWeight;
-   
-  for (l=1; l<NUM_LAYERS; l++) {
-    for (i=1; i<=Net->Layer[l]->Units; i++) {
-      for (j=0; j<=Net->Layer[l-1]->Units; j++) {
-        Out = Net->Layer[l-1]->Output[j];
-        Err = Net->Layer[l]->Error[i];
-        dWeight = Net->Layer[l]->dWeight[i][j];
-        Net->Layer[l]->Weight[i][j] += Net->Eta * Err * Out + Net->Alpha * dWeight;
-        Net->Layer[l]->dWeight[i][j] = Net->Eta * Err * Out;
-      }
+    INT  l,i,j;
+    REAL Out, Err, dWeight;
+
+    for (l=1; l<NUM_LAYERS; l++)
+    {
+        for (i=1; i<=Net->Layer[l]->Units; i++)
+        {
+            for (j=0; j<=Net->Layer[l-1]->Units; j++)
+            {
+                Out = Net->Layer[l-1]->Output[j];
+                Err = Net->Layer[l]->Error[i];
+                dWeight = Net->Layer[l]->dWeight[i][j];
+                Net->Layer[l]->Weight[i][j] += Net->Eta * Err * Out + Net->Alpha * dWeight;
+                Net->Layer[l]->dWeight[i][j] = Net->Eta * Err * Out;
+            }
+        }
     }
-  }
 }
 
 
@@ -249,70 +259,75 @@ void AdjustWeights(NET* Net)
 
 void SimulateNet(NET* Net, REAL* Input, REAL* Output, REAL* Target, BOOL Training)
 {
-  SetInput(Net, Input);
-  neural_net_compute(Net);
-  GetOutput(Net, Output);
-   
-  ComputeOutputError(Net, Target);
-  if (Training) {
-    BackpropagateNet(Net);
-    AdjustWeights(Net);
-  }
+    SetInput(Net, Input);
+    neural_net_compute(Net);
+    GetOutput(Net, Output);
+
+    ComputeOutputError(Net, Target);
+    if (Training)
+    {
+        BackpropagateNet(Net);
+        AdjustWeights(Net);
+    }
 }
 
 
 void TrainNet(NET* Net, INT Epochs)
 {
-  INT  Year, n;
-  REAL Output[M];
+    INT  Year, n;
+    REAL Output[M];
 
-  for (n=0; n<Epochs*TRAIN_YEARS; n++) {
-    Year = RandomEqualINT(TRAIN_LWB, TRAIN_UPB);
-    SimulateNet(Net, &(Sunspots[Year-N]), Output, &(Sunspots[Year]), TRUE);
-  }
+    for (n=0; n<Epochs*TRAIN_YEARS; n++)
+    {
+        Year = RandomEqualINT(TRAIN_LWB, TRAIN_UPB);
+        SimulateNet(Net, &(Sunspots[Year-N]), Output, &(Sunspots[Year]), TRUE);
+    }
 }
 
 
 void TestNet(NET* Net)
 {
-  INT  Year;
-  REAL Output[M];
+    INT  Year;
+    REAL Output[M];
 
-  TrainError = 0;
-  for (Year=TRAIN_LWB; Year<=TRAIN_UPB; Year++) {
-    SimulateNet(Net, &(Sunspots[Year-N]), Output, &(Sunspots[Year]), FALSE);
-    TrainError += Net->Error;
-  }
-  TestError = 0;
-  for (Year=TEST_LWB; Year<=TEST_UPB; Year++) {
-    SimulateNet(Net, &(Sunspots[Year-N]), Output, &(Sunspots[Year]), FALSE);
-    TestError += Net->Error;
-  }
-  fprintf(f, "\nNMSE is %0.3f on Training Set and %0.3f on Test Set",
-             TrainError / TrainErrorPredictingMean,
-             TestError / TestErrorPredictingMean);
+    TrainError = 0;
+    for (Year=TRAIN_LWB; Year<=TRAIN_UPB; Year++)
+    {
+        SimulateNet(Net, &(Sunspots[Year-N]), Output, &(Sunspots[Year]), FALSE);
+        TrainError += Net->Error;
+    }
+    TestError = 0;
+    for (Year=TEST_LWB; Year<=TEST_UPB; Year++)
+    {
+        SimulateNet(Net, &(Sunspots[Year-N]), Output, &(Sunspots[Year]), FALSE);
+        TestError += Net->Error;
+    }
+    fprintf(f, "\nNMSE is %0.3f on Training Set and %0.3f on Test Set",
+            TrainError / TrainErrorPredictingMean,
+            TestError / TestErrorPredictingMean);
 }
 
 
 void EvaluateNet(NET* Net)
 {
-  INT  Year;
-  REAL Output [M];
-  REAL Output_[M];
+    INT  Year;
+    REAL Output [M];
+    REAL Output_[M];
 
-  fprintf(f, "\n\n\n");
-  fprintf(f, "Year    Sunspots    Open-Loop Prediction    Closed-Loop Prediction\n");
-  fprintf(f, "\n");
-  for (Year=EVAL_LWB; Year<=EVAL_UPB; Year++) {
-    SimulateNet(Net, &(Sunspots [Year-N]), Output,  &(Sunspots [Year]), FALSE);
-    SimulateNet(Net, &(Sunspots_[Year-N]), Output_, &(Sunspots_[Year]), FALSE);
-    Sunspots_[Year] = Output_[0];
-    fprintf(f, "%d       %0.3f                   %0.3f                     %0.3f\n",
-               FIRST_YEAR + Year,
-               Sunspots[Year],
-               Output [0],
-               Output_[0]);
-  }
+    fprintf(f, "\n\n\n");
+    fprintf(f, "Year    Sunspots    Open-Loop Prediction    Closed-Loop Prediction\n");
+    fprintf(f, "\n");
+    for (Year=EVAL_LWB; Year<=EVAL_UPB; Year++)
+    {
+        SimulateNet(Net, &(Sunspots [Year-N]), Output,  &(Sunspots [Year]), FALSE);
+        SimulateNet(Net, &(Sunspots_[Year-N]), Output_, &(Sunspots_[Year]), FALSE);
+        Sunspots_[Year] = Output_[0];
+        fprintf(f, "%d       %0.3f                   %0.3f                     %0.3f\n",
+                FIRST_YEAR + Year,
+                Sunspots[Year],
+                Output [0],
+                Output_[0]);
+    }
 }
 
 
@@ -323,36 +338,40 @@ void EvaluateNet(NET* Net)
 
 void main()
 {
-  NET  Net;
-  BOOL Stop;
-  REAL MinTestError;
+    NET  Net;
+    BOOL Stop;
+    REAL MinTestError;
 
-  InitializeRandoms();
-  GenerateNetwork(&Net);
-  RandomWeights(&Net);
-  InitializeApplication(&Net);
+    InitializeRandoms();
+    GenerateNetwork(&Net);
+    RandomWeights(&Net);
+    InitializeApplication(&Net);
 
-  Stop = FALSE;
-  MinTestError = DBL_MAX;
-  do {
-    TrainNet(&Net, 10);
+    Stop = FALSE;
+    MinTestError = DBL_MAX;
+    do
+    {
+        TrainNet(&Net, 10);
+        TestNet(&Net);
+        if (TestError < MinTestError)
+        {
+            fprintf(f, " - saving Weights ...");
+            MinTestError = TestError;
+            SaveWeights(&Net);
+        }
+        else if (TestError > 1.2 * MinTestError)
+        {
+            fprintf(f, " - stopping Training and restoring Weights ...");
+            Stop = TRUE;
+            RestoreWeights(&Net);
+        }
+    }
+    while (NOT Stop);
+
     TestNet(&Net);
-    if (TestError < MinTestError) {
-      fprintf(f, " - saving Weights ...");
-      MinTestError = TestError;
-      SaveWeights(&Net);
-    }
-    else if (TestError > 1.2 * MinTestError) {
-      fprintf(f, " - stopping Training and restoring Weights ...");
-      Stop = TRUE;
-      RestoreWeights(&Net);
-    }
-  } while (NOT Stop);
+    EvaluateNet(&Net);
 
-  TestNet(&Net);
-  EvaluateNet(&Net);
-   
-  FinalizeApplication(&Net);
+    FinalizeApplication(&Net);
 }
 
 /*

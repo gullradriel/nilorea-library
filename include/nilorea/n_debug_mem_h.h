@@ -15,9 +15,9 @@ extern C
 #include "n_debug_mem.h"
 
 #ifdef DEBUG_MEM
-/*! macro substitution for debug malloc */
+    /*! macro substitution for debug malloc */
 #define malloc( size ) db_mem_alloc( (size) , __LINE__, __FILE__, __func__ )
-   /*! macro substitution for debug free */
+    /*! macro substitution for debug free */
 #define free( ptr ) db_mem_free( (ptr) )
 #endif
 

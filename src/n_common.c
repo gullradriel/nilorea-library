@@ -30,20 +30,40 @@
 #endif
 #endif
 
+
+
+/*! void n_abort( char const *format , ... )
+ *\brief abort and exit, printing error to stderr
+ *\param error in printf format
+ */
+void n_abort( char const *format, ... )
+{
+    char str[1024] = "" ;
+    va_list args;
+
+    va_start(args, format);
+    vsnprintf(str, sizeof str, format, args);
+    va_end(args);
+    fprintf(stderr, "%s", str);
+    exit(1);
+}
+
+
+
 /*! int file_exist( const char *filename )
  *\brief test if file exist and if it's readable
- *\param filename Path/name of the file 
- *\return TRUE or FALSE 
+ *\param filename Path/name of the file
+ *\return TRUE or FALSE
  */
 int file_exist( const char *filename )
 {
-	FILE *file = NULL ;
-	if( ( file = fopen( filename , "r" ) ) != NULL )
-	{
-		fclose(file);
-		return 1 ;
-	}
-	return 0;
+    FILE *file = NULL ;
+    if( ( file = fopen( filename, "r" ) ) != NULL )
+    {
+        fclose(file);
+        return 1 ;
+    }
+    return 0;
 } /* file_exist */
 
 
@@ -54,33 +74,33 @@ int file_exist( const char *filename )
  */
 char *get_prog_dir( void )
 {
-	char strbuf[ PATH_MAX ] = "" ;
+    char strbuf[ PATH_MAX ] = "" ;
 
-	int error = 0 ;
+    int error = 0 ;
 #ifdef __windows__
-	int bytes = GetModuleFileName( NULL , strbuf , PATH_MAX );
-	error = errno ;
-	if(bytes != 0)
-	{
-		return strdup( dirname(strbuf ) );
-	}
+    int bytes = GetModuleFileName( NULL, strbuf, PATH_MAX );
+    error = errno ;
+    if(bytes != 0)
+    {
+        return strdup( dirname(strbuf ) );
+    }
 #else
-	char procbuf[ PATH_MAX ] = "" ;
+    char procbuf[ PATH_MAX ] = "" ;
 #ifdef __linux__
-	sprintf( procbuf , "/proc/%d/exe", (int)getpid() );
+    sprintf( procbuf, "/proc/%d/exe", (int)getpid() );
 #elif defined __sun
-	sprintf( procbuf , "/proc/%d/path/a.out", (int)getpid() );
+    sprintf( procbuf, "/proc/%d/path/a.out", (int)getpid() );
 #endif
-	int bytes = MIN( readlink( procbuf , strbuf , PATH_MAX ) , PATH_MAX - 1 );
-	error = errno ;
-	if( bytes >= 0 )
-	{
-		strbuf[ bytes ] = '\0';
-		return strdup( dirname( strbuf ) );
-	}
+    int bytes = MIN( readlink( procbuf, strbuf, PATH_MAX ), PATH_MAX - 1 );
+    error = errno ;
+    if( bytes >= 0 )
+    {
+        strbuf[ bytes ] = '\0';
+        return strdup( dirname( strbuf ) );
+    }
 #endif
-	fprintf( stderr , "%s" , strerror( error ) );
-	return NULL ;
+    fprintf( stderr, "%s", strerror( error ) );
+    return NULL ;
 } /* get_prog_dir */
 
 
@@ -90,32 +110,32 @@ char *get_prog_dir( void )
  */
 char *get_prog_name( void )
 {
-	char strbuf[ PATH_MAX ] = "" ;
-	int error = 0 ;
+    char strbuf[ PATH_MAX ] = "" ;
+    int error = 0 ;
 #ifdef __windows__
-	int bytes = GetModuleFileName( NULL , strbuf , PATH_MAX );
-	error = errno ;
-	if(bytes != 0)
-	{
-		return strdup( basename(strbuf ) );
-	}
+    int bytes = GetModuleFileName( NULL, strbuf, PATH_MAX );
+    error = errno ;
+    if(bytes != 0)
+    {
+        return strdup( basename(strbuf ) );
+    }
 #else
-	char procbuf[ PATH_MAX ] = "" ;
+    char procbuf[ PATH_MAX ] = "" ;
 #ifdef __linux__
-	sprintf( procbuf , "/proc/%d/exe", (int)getpid() );
+    sprintf( procbuf, "/proc/%d/exe", (int)getpid() );
 #elif defined __sun
-	sprintf( procbuf , "/proc/%d/path/a.out", (int)getpid() );
+    sprintf( procbuf, "/proc/%d/path/a.out", (int)getpid() );
 #endif
-	int bytes = MIN( readlink( procbuf , strbuf , PATH_MAX ) , PATH_MAX - 1 );
-	error = errno ;
-	if( bytes >= 0 )
-	{
-		strbuf[ bytes ] = '\0';
-		return strdup( basename( strbuf ) );
-	}
+    int bytes = MIN( readlink( procbuf, strbuf, PATH_MAX ), PATH_MAX - 1 );
+    error = errno ;
+    if( bytes >= 0 )
+    {
+        strbuf[ bytes ] = '\0';
+        return strdup( basename( strbuf ) );
+    }
 #endif
-	fprintf( stderr , "%s" , strerror( error ) );
-	return NULL ;
+    fprintf( stderr, "%s", strerror( error ) );
+    return NULL ;
 } /* get_prog_dir */
 
 
@@ -126,51 +146,51 @@ char *get_prog_name( void )
  */
 int n_daemonize( void )
 {
-	/* Fork off the parent process */
-	pid_t pid = fork();
-	if( pid < 0 )
-	{
-		n_log( LOG_ERR , "Error: unable to fork child: %s" , strerror( errno ) );
-		exit( 1 );
-	}
-	if( pid > 0 )
-	{
-		n_log( LOG_NOTICE , "Child started successfuly !" );
-		exit( 0 );
-	}
-	/* Close all open file descriptors */
-	int x = 0 ;
-	for(x = sysconf( _SC_OPEN_MAX ) ; x >= 0 ; x-- )
-	{
-		close(x);
-	}
-	int fd = open("/dev/null",O_RDWR, 0);
-	if (fd != -1)
-	{
-		dup2 (fd, STDIN_FILENO);
-		dup2 (fd, STDOUT_FILENO);
-		dup2 (fd, STDERR_FILENO);
-		if (fd > 2)
-		{
-			close (fd);
-		}
-	}
-	else
-	{
-		n_log( LOG_ERR , "Failed to open /dev/null" );
-	}
+    /* Fork off the parent process */
+    pid_t pid = fork();
+    if( pid < 0 )
+    {
+        n_log( LOG_ERR, "Error: unable to fork child: %s", strerror( errno ) );
+        exit( 1 );
+    }
+    if( pid > 0 )
+    {
+        n_log( LOG_NOTICE, "Child started successfuly !" );
+        exit( 0 );
+    }
+    /* Close all open file descriptors */
+    int x = 0 ;
+    for(x = sysconf( _SC_OPEN_MAX ) ; x >= 0 ; x-- )
+    {
+        close(x);
+    }
+    int fd = open("/dev/null",O_RDWR, 0);
+    if (fd != -1)
+    {
+        dup2 (fd, STDIN_FILENO);
+        dup2 (fd, STDOUT_FILENO);
+        dup2 (fd, STDERR_FILENO);
+        if (fd > 2)
+        {
+            close (fd);
+        }
+    }
+    else
+    {
+        n_log( LOG_ERR, "Failed to open /dev/null" );
+    }
 
-	/* On success: The child process becomes session leader */
-	if( setsid() < 0 )
-	{
-		n_log( LOG_ERR , "Error: unable to set session leader with setsid(): %s" , strerror( errno ) );
-		exit( 1 );
-	}
-	else
-	{
-		n_log( LOG_NOTICE , "Session leader set !" );
-	}
+    /* On success: The child process becomes session leader */
+    if( setsid() < 0 )
+    {
+        n_log( LOG_ERR, "Error: unable to set session leader with setsid(): %s", strerror( errno ) );
+        exit( 1 );
+    }
+    else
+    {
+        n_log( LOG_NOTICE, "Session leader set !" );
+    }
 
-	return TRUE ;
+    return TRUE ;
 } /* n_daemonize(...) */
 #endif

@@ -28,16 +28,16 @@
 #ifdef __windows__
 const char *strcasestr(const char *s1, const char *s2)
 {
-	__n_assert( s1 , return NULL );
-	__n_assert( s2 , return NULL );
-	
-	size_t n = strlen(s2);
-	while( *s1 )
-	{
-		if( !strnicmp( s1++ , s2 ,n ) )
-			return ( s1-1 );
-	}
- return NULL ;
+    __n_assert( s1, return NULL );
+    __n_assert( s2, return NULL );
+
+    size_t n = strlen(s2);
+    while( *s1 )
+    {
+        if( !strnicmp( s1++, s2,n ) )
+            return ( s1-1 );
+    }
+    return NULL ;
 }
 #endif
 
@@ -47,12 +47,12 @@ const char *strcasestr(const char *s1, const char *s2)
  */
 void free_nstr_ptr( void *ptr )
 {
-	N_STR *strptr = (N_STR *)ptr ;
-	if( strptr )
-	{
-		FreeNoLog( strptr -> data );
-		FreeNoLog( strptr );
-	}
+    N_STR *strptr = (N_STR *)ptr ;
+    if( strptr )
+    {
+        FreeNoLog( strptr -> data );
+        FreeNoLog( strptr );
+    }
 } /* free_nstr_ptr( ... ) */
 
 
@@ -64,12 +64,12 @@ void free_nstr_ptr( void *ptr )
  */
 int _free_nstr( N_STR **ptr )
 {
-	__n_assert( (*ptr) , return FALSE );
+    __n_assert( (*ptr), return FALSE );
 
-	FreeNoLog( (*ptr) -> data );
-	FreeNoLog( (*ptr) );
+    FreeNoLog( (*ptr) -> data );
+    FreeNoLog( (*ptr) );
 
-	return TRUE ;
+    return TRUE ;
 } /* free_nstr( ... ) */
 
 
@@ -82,13 +82,13 @@ int _free_nstr( N_STR **ptr )
 int free_nstr_nolog( N_STR **ptr )
 {
 
-	if( (*ptr) ) 
-	{
-		FreeNoLog( (*ptr) -> data );
-		FreeNoLog( (*ptr) );
-	}
+    if( (*ptr) )
+    {
+        FreeNoLog( (*ptr) -> data );
+        FreeNoLog( (*ptr) );
+    }
 
-	return TRUE ;
+    return TRUE ;
 } /* free_nstr( ... ) */
 
 
@@ -99,45 +99,45 @@ int free_nstr_nolog( N_STR **ptr )
  */
 void free_nstr_ptr_nolog( void *ptr )
 {
-	N_STR *strptr = (N_STR *)ptr ;
-	if( strptr )
-	{
-		FreeNoLog( strptr -> data );
-		FreeNoLog( strptr );
-	}
+    N_STR *strptr = (N_STR *)ptr ;
+    if( strptr )
+    {
+        FreeNoLog( strptr -> data );
+        FreeNoLog( strptr );
+    }
 } /* free_nstr_ptr_nolog( ... ) */
 
 
 
 /*!\fn char *trim_nocopy(char *s)
- *\brief trim and zero end the string, WARNING: keep and original pointer to delete the string correctly  
+ *\brief trim and zero end the string, WARNING: keep and original pointer to delete the string correctly
  *\param s The string to trim
  *\return the trimmed string or NULL
  */
 char *trim_nocopy(char *s)
 {
-	__n_assert( s , return NULL );
+    __n_assert( s, return NULL );
 
-	if( strlen( s ) == 0 )
-		return s ;
+    if( strlen( s ) == 0 )
+        return s ;
 
-	char *start = s;
+    char *start = s;
 
-	/* skip spaces at start */
-	while(*start && isspace(*start))
-		start++;
+    /* skip spaces at start */
+    while(*start && isspace(*start))
+        start++;
 
-	char *end = s + strlen( s ) - 1 ;
-	/* iterate over the rest remebering last non-whitespace */
-	while( *end && isspace( *end) && end > s )
-	{
-		end --;
-	}
-	end ++ ;
-	/* write the terminating zero after last non-whitespace */
-	*end = 0;
+    char *end = s + strlen( s ) - 1 ;
+    /* iterate over the rest remebering last non-whitespace */
+    while( *end && isspace( *end) && end > s )
+    {
+        end --;
+    }
+    end ++ ;
+    /* write the terminating zero after last non-whitespace */
+    *end = 0;
 
-	return start;
+    return start;
 } /* trim_nocopy */
 
 
@@ -149,113 +149,113 @@ char *trim_nocopy(char *s)
  *\param stream The file to read
  *\return NULL or the captured string
  */
-char *nfgets( char *buffer , int size , FILE *stream )
+char *nfgets( char *buffer, int size, FILE *stream )
 {
-	int it = 0  ;
-	char fillerbuf[ size ];
+    int it = 0  ;
+    char fillerbuf[ size ];
 
-	if( !fgets( buffer , size , stream ) )
-	{
-		return NULL ;
-	}
+    if( !fgets( buffer, size, stream ) )
+    {
+        return NULL ;
+    }
 
-	/* search for a new line, return the buffer directly if there is one */
-	/* no more check on it < size because if fgets do not fail it always put
-	 * a zero at the end */
-	it = 0 ;
-	while( buffer[ it ] != '\0' )
-	{
-		if( buffer[ it ] == '\n' )
-		{
-			return buffer ;
-		}
-		it ++ ;
-	}
+    /* search for a new line, return the buffer directly if there is one */
+    /* no more check on it < size because if fgets do not fail it always put
+     * a zero at the end */
+    it = 0 ;
+    while( buffer[ it ] != '\0' )
+    {
+        if( buffer[ it ] == '\n' )
+        {
+            return buffer ;
+        }
+        it ++ ;
+    }
 
-	n_log( LOG_INFO , "Capturing long output !");
+    n_log( LOG_INFO, "Capturing long output !");
 
-	/* If we are here there are two case: 1) we only had one line in the file
-	   (which was not took in account before) 2) we have a long output */
+    /* If we are here there are two case: 1) we only had one line in the file
+       (which was not took in account before) 2) we have a long output */
 
-	int done = 0 ;
-	it = 0 ;
-	while( done == 0 )
-	{
-		/* if no new line and it == 0, it was a one line file to read without
-		 * a new line */
-		if( !fgets( fillerbuf , size , stream ) )
-		{
-			if( it == 0 )
-			{
-				return buffer ;
-			}
-			else
-			{
-				/* it was a real problem */
-				return NULL ;  
-			}
-		}
-		else
-		{
-			/* we had more to read */
-			int f_it = 0 ;
-			while( fillerbuf[ f_it ] != '\0' )
-			{
-				/* we finally have a end of line */
-				if( fillerbuf[ f_it ] == '\n' )
-					return buffer ;
-				f_it ++ ;
-			}
-			/* if nothing matched , let's continue until EOF or a '\n' */
-		}
-	}
-	return buffer ;
+    int done = 0 ;
+    it = 0 ;
+    while( done == 0 )
+    {
+        /* if no new line and it == 0, it was a one line file to read without
+         * a new line */
+        if( !fgets( fillerbuf, size, stream ) )
+        {
+            if( it == 0 )
+            {
+                return buffer ;
+            }
+            else
+            {
+                /* it was a real problem */
+                return NULL ;
+            }
+        }
+        else
+        {
+            /* we had more to read */
+            int f_it = 0 ;
+            while( fillerbuf[ f_it ] != '\0' )
+            {
+                /* we finally have a end of line */
+                if( fillerbuf[ f_it ] == '\n' )
+                    return buffer ;
+                f_it ++ ;
+            }
+            /* if nothing matched , let's continue until EOF or a '\n' */
+        }
+    }
+    return buffer ;
 } /* nfgets(...) */
 
 
 
 /*!\fn int empty_nstr( N_STR *nstr )
- *\brief empty a N_STR string 
+ *\brief empty a N_STR string
  *\param nstr the N_STR *str string to empty
  *\return TRUE or FALSE
  */
 int empty_nstr( N_STR *nstr )
 {
-	__n_assert( nstr , return FALSE );
-	__n_assert( nstr -> data , return FALSE );
+    __n_assert( nstr, return FALSE );
+    __n_assert( nstr -> data, return FALSE );
 
-	nstr -> written = 0 ;
-	memset( nstr -> data , 0 , nstr -> length );
+    nstr -> written = 0 ;
+    memset( nstr -> data, 0, nstr -> length );
 
-	return TRUE ;
+    return TRUE ;
 }
 
-/*!\fn N_STR *new_nstr( NSTRBYTE size ) 
- *\brief create a new N_STR string 
+/*!\fn N_STR *new_nstr( NSTRBYTE size )
+ *\brief create a new N_STR string
  *\param size Size of the new string. 0 for no allocation.
  *\return A new allocated N_STR or NULL
  */
 N_STR *new_nstr( NSTRBYTE size )
 {
-	N_STR *str = NULL ;
+    N_STR *str = NULL ;
 
-	Malloc( str , N_STR , 1 );
-	__n_assert( str , return NULL );
+    Malloc( str, N_STR, 1 );
+    __n_assert( str, return NULL );
 
-	str -> written = 0 ;
+    str -> written = 0 ;
 
-	if( size == 0 )
-	{
-		str -> data = NULL ;
-		str -> length = 0 ;
-	}
-	else
-	{
-		Malloc( str -> data , char , size + 1 );
-		__n_assert( str -> data , Free(str) ; return NULL );
-		str -> length = size ;
-	}
-	return str ;
+    if( size == 0 )
+    {
+        str -> data = NULL ;
+        str -> length = 0 ;
+    }
+    else
+    {
+        Malloc( str -> data, char, size + 1 );
+        __n_assert( str -> data, Free(str) ; return NULL );
+        str -> length = size ;
+    }
+    return str ;
 } /* new_nstr(...) */
 
 
@@ -267,26 +267,26 @@ N_STR *new_nstr( NSTRBYTE size )
  *\param to A N_STR pointer who will be Malloced
  *\return True on success, FALSE on failure ( to will be set to NULL )
  */
-int char_to_nstr_ex( char *from , NSTRBYTE nboct , N_STR **to )
+int char_to_nstr_ex( char *from, NSTRBYTE nboct, N_STR **to )
 {
-	if( (*to) )
-	{
-		n_log( LOG_ERR , "destination N_STR **str is not NULL (%p), it contain (%s). You must provide an empty destination." , (*to) , ((*to)&&(*to)->data)?(*to)->data:"DATA_IS_NULL" ); 
-		n_log( LOG_ERR , "Data to copy: %s" , _str( from ) ); 
-		return FALSE ;
-	};
+    if( (*to) )
+    {
+        n_log( LOG_ERR, "destination N_STR **str is not NULL (%p), it contain (%s). You must provide an empty destination.", (*to), ((*to)&&(*to)->data)?(*to)->data:"DATA_IS_NULL" );
+        n_log( LOG_ERR, "Data to copy: %s", _str( from ) );
+        return FALSE ;
+    };
 
-	Malloc( (*to) , N_STR , 1 );
-	__n_assert( (*to) , return FALSE );
+    Malloc( (*to), N_STR, 1 );
+    __n_assert( (*to), return FALSE );
 
-	Malloc( (*to) -> data , char , nboct + 2 );
-	__n_assert( (*to) -> data , Free( (*to) );return FALSE );
+    Malloc( (*to) -> data, char, nboct + 2 );
+    __n_assert( (*to) -> data, Free( (*to) ); return FALSE );
 
-	memcpy( (*to) -> data , from , nboct );
-	(*to) -> length = nboct + 1 ;
-	(*to) -> written = nboct ;
+    memcpy( (*to) -> data, from, nboct );
+    (*to) -> length = nboct + 1 ;
+    (*to) -> written = nboct ;
 
-	return TRUE;
+    return TRUE;
 } /* char_to_nstr(...) */
 
 
@@ -298,10 +298,10 @@ int char_to_nstr_ex( char *from , NSTRBYTE nboct , N_STR **to )
  */
 N_STR *char_to_nstr( char *src )
 {
-	N_STR *strptr = NULL ;
-	char_to_nstr_ex( src , strlen( src ) , &strptr ) ;
-	return strptr ;
-} /* char_to_str(...) */ 
+    N_STR *strptr = NULL ;
+    char_to_nstr_ex( src, strlen( src ), &strptr ) ;
+    return strptr ;
+} /* char_to_str(...) */
 
 
 
@@ -313,120 +313,120 @@ N_STR *char_to_nstr( char *src )
  */
 N_STR *file_to_nstr( char *filename )
 {
-	N_STR *tmpstr = NULL ;
-	struct stat filestat ;
-	FILE *in = NULL ;
+    N_STR *tmpstr = NULL ;
+    struct stat filestat ;
+    FILE *in = NULL ;
 
-	__n_assert( filename , n_log( LOG_ERR , "Unable to make a string from NULL filename") ; return NULL );
+    __n_assert( filename, n_log( LOG_ERR, "Unable to make a string from NULL filename") ; return NULL );
 
-	if( stat( filename , &filestat ) != 0 )
-	{  
+    if( stat( filename, &filestat ) != 0 )
+    {
 #ifdef __linux__
-		if( errno == EOVERFLOW )
-		{
-			n_log( LOG_ERR , "%s size is too big (>4GB,EOVERFLOW)" , filename );
-		}
-		else
-		{ 
+        if( errno == EOVERFLOW )
+        {
+            n_log( LOG_ERR, "%s size is too big (>4GB,EOVERFLOW)", filename );
+        }
+        else
+        {
 #endif
-			n_log( LOG_ERR , "Couldn't stat %s. Errno: %s" , filename , strerror( errno ) );
+            n_log( LOG_ERR, "Couldn't stat %s. Errno: %s", filename, strerror( errno ) );
 #ifdef __linux__
-		}
+        }
 #endif
-		return NULL ;
-	}
-	if( ( filestat . st_size + 1 ) >= ( pow( 2 , 32 ) - 1 ) )
-	{
-		n_log( LOG_ERR , "file size >= 2GB is not possible yet. %s is %lld oct" , filename , filestat . st_size );
-		return NULL ;
-	}
+        return NULL ;
+    }
+    if( ( filestat . st_size + 1 ) >= ( pow( 2, 32 ) - 1 ) )
+    {
+        n_log( LOG_ERR, "file size >= 2GB is not possible yet. %s is %lld oct", filename, filestat . st_size );
+        return NULL ;
+    }
 
-	n_log( LOG_DEBUG , "%s file size is: %lld", filename , filestat . st_size );
+    n_log( LOG_DEBUG, "%s file size is: %lld", filename, filestat . st_size );
 
-	in = fopen( filename , "rb" );
-	__n_assert( in , n_log( LOG_ERR , "Unable to open %s" , filename ); return NULL );
+    in = fopen( filename, "rb" );
+    __n_assert( in, n_log( LOG_ERR, "Unable to open %s", filename ); return NULL );
 
-	tmpstr = new_nstr( filestat . st_size + 1 );
-	__n_assert( tmpstr , fclose( in ); n_log( LOG_ERR , "Unable to get a new nstr of %ld octets" , filestat . st_size + 1 ); return NULL );
+    tmpstr = new_nstr( filestat . st_size + 1 );
+    __n_assert( tmpstr, fclose( in ); n_log( LOG_ERR, "Unable to get a new nstr of %ld octets", filestat . st_size + 1 ); return NULL );
 
-	tmpstr -> written = filestat . st_size ;
+    tmpstr -> written = filestat . st_size ;
 
-	if( fread( tmpstr -> data , sizeof( char ) , tmpstr -> written , in ) == 0 )
-	{
-		n_log( LOG_ERR , "Couldn't read %s, fread return 0" , filename );
-		free_nstr( &tmpstr );
-		fclose( in );
-		return NULL ;
-	}
-	if( ferror( in ) )
-	{
-		n_log( LOG_ERR , "There were some errors when reading %s" , filename );
-		free_nstr( &tmpstr );
-		fclose( in );
-		return NULL ;
-	}
+    if( fread( tmpstr -> data, sizeof( char ), tmpstr -> written, in ) == 0 )
+    {
+        n_log( LOG_ERR, "Couldn't read %s, fread return 0", filename );
+        free_nstr( &tmpstr );
+        fclose( in );
+        return NULL ;
+    }
+    if( ferror( in ) )
+    {
+        n_log( LOG_ERR, "There were some errors when reading %s", filename );
+        free_nstr( &tmpstr );
+        fclose( in );
+        return NULL ;
+    }
 
-	fclose( in );
+    fclose( in );
 
-	return tmpstr ;
+    return tmpstr ;
 } /*file_to_nstr */
 
 
 /*!\fn int nstr_to_fd( N_STR *str , FILE *out , int lock )
  *\brief Write a N_STR content into a file
  *\param str The N_STR *content to write down
- *\param out An opened FILE *handler 
+ *\param out An opened FILE *handler
  *\param lock a write lock will be put if lock = 1
  *\return TRUE or FALSE
  */
 
-	/* Write a whole N_STR into a file */
-	int nstr_to_fd( N_STR *str , FILE *out , int lock )
+/* Write a whole N_STR into a file */
+int nstr_to_fd( N_STR *str, FILE *out, int lock )
 {
 #ifdef __linux__
-	struct flock out_lock ;
+    struct flock out_lock ;
 #endif
-	__n_assert( out , return FALSE );
-	__n_assert( str , return FALSE );
+    __n_assert( out, return FALSE );
+    __n_assert( str, return FALSE );
 
-	int ret = TRUE ;
+    int ret = TRUE ;
 
-	if( lock == 1 )
-	{
-		#ifdef __linux__
-		memset( &out_lock , 0 , sizeof( out_lock ) );
-		out_lock.l_type = F_WRLCK ;
-		/* Place a write lock on the file. */
-		fcntl( fileno( out ) , F_SETLKW, &out_lock );
-		#else
-			lock = 1 ;
-		#endif
-	}
+    if( lock == 1 )
+    {
+#ifdef __linux__
+        memset( &out_lock, 0, sizeof( out_lock ) );
+        out_lock.l_type = F_WRLCK ;
+        /* Place a write lock on the file. */
+        fcntl( fileno( out ), F_SETLKW, &out_lock );
+#else
+        lock = 1 ;
+#endif
+    }
 
-	if( fwrite( str -> data , sizeof( char ) , str -> written , out ) !=  (size_t)str -> written )
-	{
-		n_log( LOG_ERR , "Couldn't write file, fwrite return 0" );
-		ret = FALSE ;
-	}
-	if( ferror( out ) )
-	{
-		n_log( LOG_ERR , "There were some errors when writing to %d" , fileno( out ) );
-		ret = FALSE ;
-	}
+    if( fwrite( str -> data, sizeof( char ), str -> written, out ) !=  (size_t)str -> written )
+    {
+        n_log( LOG_ERR, "Couldn't write file, fwrite return 0" );
+        ret = FALSE ;
+    }
+    if( ferror( out ) )
+    {
+        n_log( LOG_ERR, "There were some errors when writing to %d", fileno( out ) );
+        ret = FALSE ;
+    }
 
-	if( lock == 1 )
-	{
-		#ifdef __linux__
-		memset( &out_lock , 0 , sizeof( out_lock ) );
-		out_lock.l_type = F_WRLCK ;
-		/* Place a write lock on the file. */
-		fcntl( fileno( out ) , F_SETLKW, &out_lock );
-		#else
-			lock = 1 ;
-		#endif
-	}
+    if( lock == 1 )
+    {
+#ifdef __linux__
+        memset( &out_lock, 0, sizeof( out_lock ) );
+        out_lock.l_type = F_WRLCK ;
+        /* Place a write lock on the file. */
+        fcntl( fileno( out ), F_SETLKW, &out_lock );
+#else
+        lock = 1 ;
+#endif
+    }
 
-	return ret ;
+    return ret ;
 } /* nstr_to_fd( ... ) */
 
 
@@ -437,22 +437,22 @@ N_STR *file_to_nstr( char *filename )
  *\param filename The destination filename
  *\return TRUE or FALSE
  */
-int nstr_to_file( N_STR *str , char *filename )
+int nstr_to_file( N_STR *str, char *filename )
 {
-	FILE *out = NULL ;
+    FILE *out = NULL ;
 
-	__n_assert( str , return FALSE );
-	__n_assert( filename , return FALSE );
+    __n_assert( str, return FALSE );
+    __n_assert( filename, return FALSE );
 
-	out = fopen( filename , "wb" );
+    out = fopen( filename, "wb" );
 
-	__n_assert( out , n_log( LOG_DEBUG , "Couldn't open %s" , _str( filename ) ) ; return FALSE );
+    __n_assert( out, n_log( LOG_DEBUG, "Couldn't open %s", _str( filename ) ) ; return FALSE );
 
-	nstr_to_fd( str , out , 1 );
+    nstr_to_fd( str, out, 1 );
 
-	fclose( out );
+    fclose( out );
 
-	return TRUE ;
+    return TRUE ;
 } /* nstr_to_file( ... ) */
 
 
@@ -465,45 +465,45 @@ int nstr_to_file( N_STR *str , char *filename )
  * \param start Start position of the chunk
  * \param end End position of the chunk
  * \param i A pointer to an integer variable which will receieve the value.
- * \param base Base for converting values 
+ * \param base Base for converting values
  * \return TRUE or FALSE
  */
-int str_to_int_ex( const char *s , NSTRBYTE start , NSTRBYTE end , int *i, const int base )
+int str_to_int_ex( const char *s, NSTRBYTE start, NSTRBYTE end, int *i, const int base )
 {
-	char *tmpstr = NULL ;
-	char *endstr = NULL ;
-	long  l = 0;
+    char *tmpstr = NULL ;
+    char *endstr = NULL ;
+    long  l = 0;
 
-	__n_assert( s , return FALSE );
+    __n_assert( s, return FALSE );
 
-	Malloc( tmpstr , char ,  4 + end - start );
-	__n_assert( tmpstr , n_log( LOG_ERR , "Unable to Malloc( tmpstr , char ,  4 + %d - %d )" , end , start ); return FALSE );
+    Malloc( tmpstr, char,  4 + end - start );
+    __n_assert( tmpstr, n_log( LOG_ERR, "Unable to Malloc( tmpstr , char ,  4 + %d - %d )", end, start ); return FALSE );
 
-	memcpy( tmpstr , s + start , end - start );   
+    memcpy( tmpstr, s + start, end - start );
 
-	errno = 0;
-	l = strtol(tmpstr, &endstr, base);
-	if( ( errno == ERANGE && l == LONG_MAX) || l > INT_MAX ) 
-	{
-		n_log( LOG_ERR , "OVERFLOW reached when converting %s to int" , tmpstr );
-		Free( tmpstr );
-		return FALSE;
-	}
-	if( ( errno == ERANGE && l == LONG_MIN) || l < INT_MIN ) 
-	{
-		n_log( LOG_ERR , "UNDERFLOW reached when converting %s to int" , tmpstr );
-		Free( tmpstr );
-		return FALSE;
-	}
-	if( *endstr != '\0' && *endstr != '\n' )
-	{
-		n_log( LOG_ERR , "Impossible conversion for %s" , tmpstr );
-		Free( tmpstr );
-		return FALSE;
-	}
-	Free( tmpstr );
-	*i = l;
-	return TRUE;
+    errno = 0;
+    l = strtol(tmpstr, &endstr, base);
+    if( ( errno == ERANGE && l == LONG_MAX) || l > INT_MAX )
+    {
+        n_log( LOG_ERR, "OVERFLOW reached when converting %s to int", tmpstr );
+        Free( tmpstr );
+        return FALSE;
+    }
+    if( ( errno == ERANGE && l == LONG_MIN) || l < INT_MIN )
+    {
+        n_log( LOG_ERR, "UNDERFLOW reached when converting %s to int", tmpstr );
+        Free( tmpstr );
+        return FALSE;
+    }
+    if( *endstr != '\0' && *endstr != '\n' )
+    {
+        n_log( LOG_ERR, "Impossible conversion for %s", tmpstr );
+        Free( tmpstr );
+        return FALSE;
+    }
+    Free( tmpstr );
+    *i = l;
+    return TRUE;
 }/* str_to_int_ex( ... ) */
 
 
@@ -518,45 +518,45 @@ int str_to_int_ex( const char *s , NSTRBYTE start , NSTRBYTE end , int *i, const
  * \param end End position of the chunk
  * \param i A pointer to an integer variable which will receieve the value.
  * \param base Base for converting values
- * \param infos If not NULL , contain the errors. remember to free the pointer if returned !! 
+ * \param infos If not NULL , contain the errors. remember to free the pointer if returned !!
  * \return TRUE or FALSE
  */
-int str_to_int_nolog( const char *s , NSTRBYTE start , NSTRBYTE end , int *i, const int base , N_STR **infos )
+int str_to_int_nolog( const char *s, NSTRBYTE start, NSTRBYTE end, int *i, const int base, N_STR **infos )
 {
-	char *tmpstr = NULL ;
-	char *endstr = NULL ;
-	long  l = 0;
+    char *tmpstr = NULL ;
+    char *endstr = NULL ;
+    long  l = 0;
 
-	__n_assert( s , return FALSE );
+    __n_assert( s, return FALSE );
 
-	Malloc( tmpstr , char ,  4 + end - start );
-	__n_assert( tmpstr , n_log( LOG_ERR , "Unable to Malloc( tmpstr , char ,  4 + %d - %d )" , end , start ); return FALSE );
+    Malloc( tmpstr, char,  4 + end - start );
+    __n_assert( tmpstr, n_log( LOG_ERR, "Unable to Malloc( tmpstr , char ,  4 + %d - %d )", end, start ); return FALSE );
 
-	memcpy( tmpstr , s + start , end - start );
+    memcpy( tmpstr, s + start, end - start );
 
-	errno = 0;
-	l = strtol(tmpstr, &endstr, base);
-	if( ( errno == ERANGE && l == LONG_MAX) || l > INT_MAX )
-	{
-		nstrprintf( (*infos) , "OVERFLOW reached when converting %s to int" , tmpstr );
-		Free( tmpstr );
-		return FALSE;
-	}
-	if( ( errno == ERANGE && l == LONG_MIN) || l < INT_MIN )
-	{
-		nstrprintf( (*infos) , "UNDERFLOW reached when converting %s to int" , tmpstr );
-		Free( tmpstr );
-		return FALSE;
-	}
-	if( *endstr != '\0' && *endstr != '\n' )
-	{
-		nstrprintf( (*infos) , "Impossible conversion for %s" , tmpstr );
-		Free( tmpstr );
-		return FALSE;
-	}
-	Free( tmpstr );
-	*i = l;
-	return TRUE;
+    errno = 0;
+    l = strtol(tmpstr, &endstr, base);
+    if( ( errno == ERANGE && l == LONG_MAX) || l > INT_MAX )
+    {
+        nstrprintf( (*infos), "OVERFLOW reached when converting %s to int", tmpstr );
+        Free( tmpstr );
+        return FALSE;
+    }
+    if( ( errno == ERANGE && l == LONG_MIN) || l < INT_MIN )
+    {
+        nstrprintf( (*infos), "UNDERFLOW reached when converting %s to int", tmpstr );
+        Free( tmpstr );
+        return FALSE;
+    }
+    if( *endstr != '\0' && *endstr != '\n' )
+    {
+        nstrprintf( (*infos), "Impossible conversion for %s", tmpstr );
+        Free( tmpstr );
+        return FALSE;
+    }
+    Free( tmpstr );
+    *i = l;
+    return TRUE;
 }/* str_to_int_nolog( ... ) */
 
 
@@ -565,17 +565,17 @@ int str_to_int_nolog( const char *s , NSTRBYTE start , NSTRBYTE end , int *i, co
  * \brief Helper for string to integer
  * \param s String to convert
  * \param i A pointer to an integer variable which will receieve the value.
- * \param base Base for converting values 
+ * \param base Base for converting values
  * \return TRUE or FALSE
  */
-int str_to_int( const char *s , int *i, const int base )
+int str_to_int( const char *s, int *i, const int base )
 {
-	int ret = FALSE ;
-	if( s )
-	{
-		ret = str_to_int_ex( s , 0 , strlen( s ) , i , base );
-	}
-	return ret ;
+    int ret = FALSE ;
+    if( s )
+    {
+        ret = str_to_int_ex( s, 0, strlen( s ), i, base );
+    }
+    return ret ;
 } /* str_to_int(...) */
 
 
@@ -588,45 +588,45 @@ int str_to_int( const char *s , int *i, const int base )
  * \param start Start position of the chunk
  * \param end End position of the chunk
  * \param i A pointer to an integer variable which will receieve the value.
- * \param base Base for converting values 
+ * \param base Base for converting values
  * \return TRUE or FALSE
  */
-int str_to_long_ex( const char *s , NSTRBYTE start , NSTRBYTE end , long int *i, const int base )
+int str_to_long_ex( const char *s, NSTRBYTE start, NSTRBYTE end, long int *i, const int base )
 {
-	char *tmpstr = NULL ;
-	char *endstr = NULL ;
-	long  l = 0;
+    char *tmpstr = NULL ;
+    char *endstr = NULL ;
+    long  l = 0;
 
-	__n_assert( s , return FALSE );
+    __n_assert( s, return FALSE );
 
-	Malloc( tmpstr , char ,  4 + end - start );
-	__n_assert( tmpstr , n_log( LOG_ERR , "Unable to Malloc( tmpstr , char ,  4 + %d - %d )" , end , start ); return FALSE );
+    Malloc( tmpstr, char,  4 + end - start );
+    __n_assert( tmpstr, n_log( LOG_ERR, "Unable to Malloc( tmpstr , char ,  4 + %d - %d )", end, start ); return FALSE );
 
-	memcpy( tmpstr , s + start , end - start );   
+    memcpy( tmpstr, s + start, end - start );
 
-	errno = 0;
-	l = strtol(tmpstr, &endstr, base);
-	if( ( errno == ERANGE && l == LONG_MAX) ) 
-	{
-		n_log( LOG_ERR , "OVERFLOW for %s" , tmpstr );
-		Free( tmpstr );
-		return FALSE;
-	}
-	if( ( errno == ERANGE && l == LONG_MIN) || l < INT_MIN ) 
-	{
-		n_log( LOG_ERR , "UNDERFLOW reached for %s" , tmpstr );
-		Free( tmpstr );
-		return FALSE;
-	}
-	if( *endstr != '\0' && *endstr != '\n' )
-	{
-		n_log( LOG_ERR , "Impossible conversion for %s" , tmpstr );
-		Free( tmpstr );
-		return FALSE;
-	}
-	Free( tmpstr );
-	*i = l;
-	return TRUE;
+    errno = 0;
+    l = strtol(tmpstr, &endstr, base);
+    if( ( errno == ERANGE && l == LONG_MAX) )
+    {
+        n_log( LOG_ERR, "OVERFLOW for %s", tmpstr );
+        Free( tmpstr );
+        return FALSE;
+    }
+    if( ( errno == ERANGE && l == LONG_MIN) || l < INT_MIN )
+    {
+        n_log( LOG_ERR, "UNDERFLOW reached for %s", tmpstr );
+        Free( tmpstr );
+        return FALSE;
+    }
+    if( *endstr != '\0' && *endstr != '\n' )
+    {
+        n_log( LOG_ERR, "Impossible conversion for %s", tmpstr );
+        Free( tmpstr );
+        return FALSE;
+    }
+    Free( tmpstr );
+    *i = l;
+    return TRUE;
 }/* str_to_long_ex( ... ) */
 
 
@@ -636,17 +636,17 @@ int str_to_long_ex( const char *s , NSTRBYTE start , NSTRBYTE end , long int *i,
  * \brief Helper for string to integer
  * \param s String to convert
  * \param i A pointer to an integer variable which will receieve the value.
- * \param base Base for converting values 
+ * \param base Base for converting values
  * \return TRUE or FALSE
  */
-int str_to_long( const char *s , long int *i, const int base )
+int str_to_long( const char *s, long int *i, const int base )
 {
-	int ret = FALSE ;
-	if( s )
-	{
-		ret = str_to_long_ex( s , 0 , strlen( s ) , i , base );
-	}
-	return ret ;
+    int ret = FALSE ;
+    if( s )
+    {
+        ret = str_to_long_ex( s, 0, strlen( s ), i, base );
+    }
+    return ret ;
 } /* str_to_long(...) */
 
 
@@ -658,32 +658,32 @@ int str_to_long( const char *s , long int *i, const int base )
  */
 N_STR *nstrdup( N_STR *str )
 {
-	N_STR *new_str = NULL ;
+    N_STR *new_str = NULL ;
 
-	__n_assert( str , return NULL );
-	__n_assert( str -> data , return NULL );
+    __n_assert( str, return NULL );
+    __n_assert( str -> data, return NULL );
 
-	Malloc( new_str , N_STR , 1 );
-	if( new_str )
-	{
-		Malloc( new_str -> data , char , str -> length + 1 );
-		if( new_str -> data )
-		{
-			memcpy(  new_str -> data , str -> data , str -> written );  
-			new_str -> length = str -> length ;
-			new_str -> written = str -> written ;
-		}
-		else
-		{
-			Free( new_str );
-			n_log( LOG_ERR , "Error duplicating N_STR %p -> data" , str );
-		}
-	}
-	else
-	{
-		n_log( LOG_ERR , "Error duplicating N_STR %p" , str );
-	}
-	return new_str ;
+    Malloc( new_str, N_STR, 1 );
+    if( new_str )
+    {
+        Malloc( new_str -> data, char, str -> length + 1 );
+        if( new_str -> data )
+        {
+            memcpy(  new_str -> data, str -> data, str -> written );
+            new_str -> length = str -> length ;
+            new_str -> written = str -> written ;
+        }
+        else
+        {
+            Free( new_str );
+            n_log( LOG_ERR, "Error duplicating N_STR %p -> data", str );
+        }
+    }
+    else
+    {
+        n_log( LOG_ERR, "Error duplicating N_STR %p", str );
+    }
+    return new_str ;
 } /* nstrdup(...) */
 
 
@@ -697,47 +697,47 @@ N_STR *nstrdup( N_STR *str )
  *\param inc an int to specify the step of skipping
  *\return TRUE if success FALSE or ABORT if not
  */
-int skipw( char *string , char toskip , NSTRBYTE *iterator , int inc )
+int skipw( char *string, char toskip, NSTRBYTE *iterator, int inc )
 {
-	int error_flag = 0 ;
-	NSTRBYTE previous = 0 ;
+    int error_flag = 0 ;
+    NSTRBYTE previous = 0 ;
 
-	__n_assert( string , return FALSE );
+    __n_assert( string, return FALSE );
 
-	previous = *iterator;
-	if( toskip == ' ' ) 
-	{
-		while( *iterator <= (NSTRBYTE)strlen ( string ) && isspace( string[ *iterator ] ) )
-		{
-			if( inc < 0 && *iterator == 0 )
-			{
-				error_flag = 1 ;
-				break ;
-			}
-			else
-				*iterator = *iterator + inc;
-		}
-	}
-	else
-	{
-		while( *iterator <= (NSTRBYTE)strlen( string ) && string[ *iterator ] == toskip )
-		{
-			if( inc < 0 && *iterator == 0 )
-			{
-				error_flag = 1 ;
-				break ;
-			}
-			else
-				*iterator = *iterator + inc;
-		}
-	}
-	if( error_flag == 1 || *iterator > (NSTRBYTE)strlen ( string ) ) 
-	{
-		*iterator = previous ;
-		return FALSE;
-	}
+    previous = *iterator;
+    if( toskip == ' ' )
+    {
+        while( *iterator <= (NSTRBYTE)strlen ( string ) && isspace( string[ *iterator ] ) )
+        {
+            if( inc < 0 && *iterator == 0 )
+            {
+                error_flag = 1 ;
+                break ;
+            }
+            else
+                *iterator = *iterator + inc;
+        }
+    }
+    else
+    {
+        while( *iterator <= (NSTRBYTE)strlen( string ) && string[ *iterator ] == toskip )
+        {
+            if( inc < 0 && *iterator == 0 )
+            {
+                error_flag = 1 ;
+                break ;
+            }
+            else
+                *iterator = *iterator + inc;
+        }
+    }
+    if( error_flag == 1 || *iterator > (NSTRBYTE)strlen ( string ) )
+    {
+        *iterator = previous ;
+        return FALSE;
+    }
 
-	return TRUE;
+    return TRUE;
 } /*skipw(...)*/
 
 
@@ -751,48 +751,48 @@ int skipw( char *string , char toskip , NSTRBYTE *iterator , int inc )
  *\param inc an int to specify the step of skipping
  *\return TRUE if success FALSE or ABORT if not
  */
-int skipu( char *string , char toskip , NSTRBYTE *iterator , int inc )
+int skipu( char *string, char toskip, NSTRBYTE *iterator, int inc )
 {
-	int error_flag = 0 ;
-	NSTRBYTE previous = 0 ;
+    int error_flag = 0 ;
+    NSTRBYTE previous = 0 ;
 
-	__n_assert( string , return FALSE );
+    __n_assert( string, return FALSE );
 
-	previous = *iterator;
-	if( toskip == ' ' ) 
-	{
-		while( *iterator <= (NSTRBYTE)strlen ( string ) && !isspace( string[ *iterator ] ) )
-		{
-			if( inc < 0 && *iterator == 0 )
-			{
-				error_flag = 1 ;
-				break ;
-			}
-			else
-				*iterator = *iterator + inc;
-		}
-	}
-	else
-	{
-		while( *iterator <= (NSTRBYTE)strlen( string ) && string[ *iterator ] != toskip )
-		{
-			if( inc < 0 && *iterator == 0 )
-			{
-				error_flag = 1 ;
-				break ;
-			}
-			else
-				*iterator = *iterator + inc;
-		}
-	}
+    previous = *iterator;
+    if( toskip == ' ' )
+    {
+        while( *iterator <= (NSTRBYTE)strlen ( string ) && !isspace( string[ *iterator ] ) )
+        {
+            if( inc < 0 && *iterator == 0 )
+            {
+                error_flag = 1 ;
+                break ;
+            }
+            else
+                *iterator = *iterator + inc;
+        }
+    }
+    else
+    {
+        while( *iterator <= (NSTRBYTE)strlen( string ) && string[ *iterator ] != toskip )
+        {
+            if( inc < 0 && *iterator == 0 )
+            {
+                error_flag = 1 ;
+                break ;
+            }
+            else
+                *iterator = *iterator + inc;
+        }
+    }
 
-	if( error_flag == 1 || *iterator > (NSTRBYTE)strlen ( string ) ) 
-	{
-		*iterator = previous ;
-		return FALSE;
-	}
+    if( error_flag == 1 || *iterator > (NSTRBYTE)strlen ( string ) )
+    {
+        *iterator = previous ;
+        return FALSE;
+    }
 
-	return TRUE;
+    return TRUE;
 } /*Skipu(...)*/
 
 
@@ -804,18 +804,18 @@ int skipu( char *string , char toskip , NSTRBYTE *iterator , int inc )
  *\warning string must be same size as dest
  *\return TRUE or FALSE
  */
-int strup( char *string , char *dest )
+int strup( char *string, char *dest )
 {
 
-	NSTRBYTE it = 0 ;
+    NSTRBYTE it = 0 ;
 
-	__n_assert( string , return FALSE );
-	__n_assert( dest , return FALSE );
+    __n_assert( string, return FALSE );
+    __n_assert( dest, return FALSE );
 
-	for( it = 0 ; it < (NSTRBYTE)strlen( string ) ; it++ )
-		dest[ it ] = toupper ( string[ it ] );
+    for( it = 0 ; it < (NSTRBYTE)strlen( string ) ; it++ )
+        dest[ it ] = toupper ( string[ it ] );
 
-	return TRUE;
+    return TRUE;
 } /*strup(...)*/
 
 
@@ -827,61 +827,61 @@ int strup( char *string , char *dest )
  *\warning string must be same size as dest
  *\return TRUE or FALSE
  */
-int strlo( char *string , char *dest )
+int strlo( char *string, char *dest )
 {
 
-	NSTRBYTE it = 0 ;
+    NSTRBYTE it = 0 ;
 
-	__n_assert( string , return FALSE );
-	__n_assert( dest , return FALSE );
+    __n_assert( string, return FALSE );
+    __n_assert( dest, return FALSE );
 
-	for( it = 0 ; it < (NSTRBYTE)strlen( string ) ; it++ )
-		dest[ it ] = tolower ( string[ it ] );
+    for( it = 0 ; it < (NSTRBYTE)strlen( string ) ; it++ )
+        dest[ it ] = tolower ( string[ it ] );
 
-	return TRUE;
+    return TRUE;
 } /*strlo(...)*/
 
 
 
 /*!\fn int strcpy_u( char *from , char *to , NSTRBYTE to_size , char split , NSTRBYTE *it )
  *\brief Copy from start to dest until from[ iterator ] == split
- *\param from Source string	
+ *\param from Source string
  *\param to Dest string
  *\param to_size the maximum size to write
  *\param split stopping character
  *\param it Save of iterator
- *\return TRUE or FALSE 
+ *\return TRUE or FALSE
  */
-int strcpy_u( char *from , char *to , NSTRBYTE to_size , char split , NSTRBYTE *it )
+int strcpy_u( char *from, char *to, NSTRBYTE to_size, char split, NSTRBYTE *it )
 {
-	NSTRBYTE _it = 0;
+    NSTRBYTE _it = 0;
 
-	__n_assert( from , return FALSE );
-	__n_assert( to , return FALSE );
-	__n_assert( (*it) , return FALSE );
+    __n_assert( from, return FALSE );
+    __n_assert( to, return FALSE );
+    __n_assert( (*it), return FALSE );
 
-	while( _it < to_size && from[ (*it) ] != '\0' && from[ (*it) ] != split  )
-	{
-		to[ _it ] = from[ (*it) ] ;
-		(*it) = (*it) + 1 ;
-		_it = _it +1 ;
-	}
+    while( _it < to_size && from[ (*it) ] != '\0' && from[ (*it) ] != split  )
+    {
+        to[ _it ] = from[ (*it) ] ;
+        (*it) = (*it) + 1 ;
+        _it = _it +1 ;
+    }
 
-	if( _it >= to_size )
-	{
-		n_log(  LOG_ERR ,
-				"strcpy_u: not enough space to write %d octet to dest (%d max) , %s: %d \n" , _it , to_size ,
-				__FILE__ , __LINE__ );
-		to[ to_size - 1 ] = '\0' ;
-		return FALSE;
-	} 
+    if( _it >= to_size )
+    {
+        n_log(  LOG_ERR,
+                "strcpy_u: not enough space to write %d octet to dest (%d max) , %s: %d \n", _it, to_size,
+                __FILE__, __LINE__ );
+        to[ to_size - 1 ] = '\0' ;
+        return FALSE;
+    }
 
-	to[ _it ] = '\0' ;
+    to[ _it ] = '\0' ;
 
-	if( _it == 0 )
-		_it = FALSE ;
+    if( _it == 0 )
+        _it = FALSE ;
 
-	return TRUE ;
+    return TRUE ;
 } /* strcpy_u(...) */
 
 
@@ -889,101 +889,102 @@ int strcpy_u( char *from , char *to , NSTRBYTE to_size , char split , NSTRBYTE *
 /*!\fn char **split( char* str , const char* delim , int empty )
  *\brief Split the strings into a an array of char *pointer	, ended by a NULL one. Max 256 splitted elements per call.
  *\param str The char *str to split
- *\param delim The delimiter, one or more characters 
+ *\param delim The delimiter, one or more characters
  *\param empty Empty flag. If 1, then empty delimited areas will be added as NULL entries, else they will be skipped.
  *\return An array of char *, ended by a NULL entry.
  */
-char** split( const char* str , const char* delim , int empty ){
+char** split( const char* str, const char* delim, int empty )
+{
 
-	char** tab=NULL; /* result array */ 
-	char *ptr = NULL ; /* tmp pointer */ 
-	int sizeStr; 
-	int sizeTab=0; /* array size */
-	const char* largestring = NULL; /* pointer to start of string */
+    char** tab=NULL; /* result array */
+    char *ptr = NULL ; /* tmp pointer */
+    int sizeStr;
+    int sizeTab=0; /* array size */
+    const char* largestring = NULL; /* pointer to start of string */
 
-	int sizeDelim=strlen(delim);
+    int sizeDelim=strlen(delim);
 
-	__n_assert( str , return NULL );
-	__n_assert( delim , return NULL );
+    __n_assert( str, return NULL );
+    __n_assert( delim, return NULL );
 
-	largestring = str;
+    largestring = str;
 
-	while( ( ptr = strstr( largestring , delim ) ) != NULL )
-	{
-		sizeStr=ptr-largestring;
-		if( empty == 1 || sizeStr != 0 )
-		{
-			sizeTab++;
-			tab= (char**) realloc(tab,sizeof(char*)*sizeTab);
+    while( ( ptr = strstr( largestring, delim ) ) != NULL )
+    {
+        sizeStr=ptr-largestring;
+        if( empty == 1 || sizeStr != 0 )
+        {
+            sizeTab++;
+            tab= (char**) realloc(tab,sizeof(char*)*sizeTab);
 
-			Malloc( tab[sizeTab -1] , char , (int)(sizeof(char)*(sizeStr+1)) );
-			__n_assert( tab[ sizeTab - 1 ] , goto error );
+            Malloc( tab[sizeTab -1], char, (int)(sizeof(char)*(sizeStr+1)) );
+            __n_assert( tab[ sizeTab - 1 ], goto error );
 
-			memcpy(tab[sizeTab-1],largestring,sizeStr);
-			tab[sizeTab-1][sizeStr]='\0';
-		}
-		ptr=ptr+sizeDelim;
-		largestring=ptr;
-	}
+            memcpy(tab[sizeTab-1],largestring,sizeStr);
+            tab[sizeTab-1][sizeStr]='\0';
+        }
+        ptr=ptr+sizeDelim;
+        largestring=ptr;
+    }
 
-	/* adding last part if any */
-	if( strlen(largestring) !=0 )
-	{
-		sizeStr=strlen(largestring);
-		sizeTab++;
+    /* adding last part if any */
+    if( strlen(largestring) !=0 )
+    {
+        sizeStr=strlen(largestring);
+        sizeTab++;
 
-		tab= (char**) realloc(tab,sizeof(char*)*sizeTab);
+        tab= (char**) realloc(tab,sizeof(char*)*sizeTab);
 
-		Malloc( tab[sizeTab-1] , char ,(int)(  sizeof(char)*(sizeStr+1) ) );
-		__n_assert( tab[ sizeTab - 1 ] , goto error );
+        Malloc( tab[sizeTab-1], char,(int)(  sizeof(char)*(sizeStr+1) ) );
+        __n_assert( tab[ sizeTab - 1 ], goto error );
 
-		memcpy(tab[sizeTab-1],largestring,sizeStr);
-		tab[sizeTab-1][sizeStr]='\0';
-	}
-	else 
-	{
-		if( empty == 1 )
-		{ 
-			sizeTab++;
-			tab= (char**) realloc(tab,sizeof(char*)*sizeTab);
+        memcpy(tab[sizeTab-1],largestring,sizeStr);
+        tab[sizeTab-1][sizeStr]='\0';
+    }
+    else
+    {
+        if( empty == 1 )
+        {
+            sizeTab++;
+            tab= (char**) realloc(tab,sizeof(char*)*sizeTab);
 
-			Malloc( tab[sizeTab-1] , char , (int)(sizeof(char)*1) );
-			__n_assert( tab[ sizeTab - 1 ] , goto error );
+            Malloc( tab[sizeTab-1], char, (int)(sizeof(char)*1) );
+            __n_assert( tab[ sizeTab - 1 ], goto error );
 
-			tab[sizeTab-1][0]='\0';
-		}
-	}
+            tab[sizeTab-1][0]='\0';
+        }
+    }
 
-	/* on ajoute une case a null pour finir le tableau */
-	sizeTab++;
-	tab= (char**) realloc(tab,sizeof(char*)*sizeTab);
-	tab[sizeTab-1]=NULL;
+    /* on ajoute une case a null pour finir le tableau */
+    sizeTab++;
+    tab= (char**) realloc(tab,sizeof(char*)*sizeTab);
+    tab[sizeTab-1]=NULL;
 
-	return tab;
+    return tab;
 
 error:
-	free_split_result( &tab );
-	return NULL;
+    free_split_result( &tab );
+    return NULL;
 } /* split( ... ) */
 
 
 
 /*!\fn int split_count( char **split_result )
- *\brief Count split elements 
+ *\brief Count split elements
  *\param split_result A char **result from a split call
  *\return The number of elements or -1 if errors
  */
 int split_count( char **split_result )
 {
-	__n_assert( split_result , return -1 );
-	__n_assert( split_result[ 0 ] , return -1 );
+    __n_assert( split_result, return -1 );
+    __n_assert( split_result[ 0 ], return -1 );
 
-	int it = 0 ;
-	while( split_result[ it ] )
-	{   
-		it ++ ;
-	}
-	return it ;
+    int it = 0 ;
+    while( split_result[ it ] )
+    {
+        it ++ ;
+    }
+    return it ;
 } /* split_count(...) */
 
 
@@ -991,22 +992,22 @@ int split_count( char **split_result )
 /*!\fn int free_split_result( char ***tab )
  *\brief Free a split result allocated array
  *\param tab A pointer to a split result to free
- *\return TRUE 
+ *\return TRUE
  */
 int free_split_result( char ***tab )
 {
-	if( !(*tab) )
-		return FALSE ;
+    if( !(*tab) )
+        return FALSE ;
 
-	int it = 0 ;
-	while( (*tab)[ it ] )
-	{
-		Free( (*tab)[ it ] );
-		it++;
-	}
-	Free( (*tab) );
+    int it = 0 ;
+    while( (*tab)[ it ] )
+    {
+        Free( (*tab)[ it ] );
+        it++;
+    }
+    Free( (*tab) );
 
-	return TRUE ;
+    return TRUE ;
 }/* free_split_result(...)*/
 
 
@@ -1020,47 +1021,47 @@ int free_split_result( char ***tab )
  *\param resize_flag Set it to a positive non zero value to allow resizing, or to zero or negative to forbid resizing
  *\return TRUE or FALSE
  */
-int nstrcat_ex( N_STR *dest , void *src , NSTRBYTE size , NSTRBYTE blk_size , int resize_flag )
+int nstrcat_ex( N_STR *dest, void *src, NSTRBYTE size, NSTRBYTE blk_size, int resize_flag )
 {
-	char *ptr = NULL ;
-	int realloc_flag = 0 ;
-	
-	if( !src )
-	{
-		n_log( LOG_ERR , "src is NULL" );
-		return FALSE ;
-	}
+    char *ptr = NULL ;
+    int realloc_flag = 0 ;
 
-	if( dest )
-	{
-		if( ( dest -> written + size >= dest -> length ) && resize_flag == 0 )
-		{
-			n_log( LOG_ERR , "%p to %p: not enough space. Resize forbidden. %lld needed, %lld available" , dest , src ,  dest -> written + size , dest -> length );
-			return FALSE ;
-		}
-	}
-	else
-	{
-		n_log( LOG_ERR , "dest is NULL" );
-		return FALSE ;
-	}
-		
-	while( ( dest -> written + size ) >= ( dest -> length )  )
-	{
-		dest -> length += blk_size ;
-		realloc_flag = 1 ;
-	}
-	if( realloc_flag == 1 && resize_flag != 0 )
-	{
-		Reallocz( dest -> data , char , dest -> written , dest -> length );
-		__n_assert( dest -> data , Free( dest ); return FALSE );
-	}
+    if( !src )
+    {
+        n_log( LOG_ERR, "src is NULL" );
+        return FALSE ;
+    }
 
-	ptr = dest -> data + dest -> written ;
-	memcpy( ptr , src , size );
-	dest -> written += size ;	
+    if( dest )
+    {
+        if( ( dest -> written + size >= dest -> length ) && resize_flag == 0 )
+        {
+            n_log( LOG_ERR, "%p to %p: not enough space. Resize forbidden. %lld needed, %lld available", dest, src,  dest -> written + size, dest -> length );
+            return FALSE ;
+        }
+    }
+    else
+    {
+        n_log( LOG_ERR, "dest is NULL" );
+        return FALSE ;
+    }
 
-	return TRUE ;
+    while( ( dest -> written + size ) >= ( dest -> length )  )
+    {
+        dest -> length += blk_size ;
+        realloc_flag = 1 ;
+    }
+    if( realloc_flag == 1 && resize_flag != 0 )
+    {
+        Reallocz( dest -> data, char, dest -> written, dest -> length );
+        __n_assert( dest -> data, Free( dest ); return FALSE );
+    }
+
+    ptr = dest -> data + dest -> written ;
+    memcpy( ptr, src, size );
+    dest -> written += size ;
+
+    return TRUE ;
 } /* nstrcat_ex( ... ) */
 
 
@@ -1071,9 +1072,9 @@ int nstrcat_ex( N_STR *dest , void *src , NSTRBYTE size , NSTRBYTE blk_size , in
  *\param src The N_STR *source to concatenate into dst
  *\return TRUE or FALSE
  */
-int nstrcat( N_STR *dst , N_STR *src )
+int nstrcat( N_STR *dst, N_STR *src )
 {
-	return nstrcat_ex( dst , src -> data , src -> written , src -> written + 1 , 1 ); 
+    return nstrcat_ex( dst, src -> data, src -> written, src -> written + 1, 1 );
 } /* nstrcat( ... ) */
 
 
@@ -1085,18 +1086,18 @@ int nstrcat( N_STR *dst , N_STR *src )
  *\param size The number of octet of data we want to append in dest
  *\return TRUE or FALSE
  */
-int nstrcat_bytes_ex( N_STR *dest , void *data , NSTRBYTE size )
+int nstrcat_bytes_ex( N_STR *dest, void *data, NSTRBYTE size )
 {
-	__n_assert( dest , return FALSE );
-	__n_assert( data , return FALSE );
+    __n_assert( dest, return FALSE );
+    __n_assert( data, return FALSE );
 
-	if( size <= 0 )
-	{
-		n_log( LOG_ERR , "Could not copy 0 or less (%ld) octet!" , size );
-		return FALSE ;
-	}
+    if( size <= 0 )
+    {
+        n_log( LOG_ERR, "Could not copy 0 or less (%ld) octet!", size );
+        return FALSE ;
+    }
 
-	return nstrcat_ex( dest , data , size , size + 1 , 1 );
+    return nstrcat_ex( dest, data, size, size + 1, 1 );
 } /* nstrcat_bytes_ex( ... )*/
 
 
@@ -1106,56 +1107,56 @@ int nstrcat_bytes_ex( N_STR *dest , void *data , NSTRBYTE size )
  *\param data The data to append
  *\return TRUE or FALSE
  */
-int nstrcat_bytes( N_STR *dest , void *data )
+int nstrcat_bytes( N_STR *dest, void *data )
 {
-	__n_assert( dest , return FALSE );
-	__n_assert( data , return FALSE );
+    __n_assert( dest, return FALSE );
+    __n_assert( data, return FALSE );
 
-	NSTRBYTE size = strlen( (char *)data );
-	if( size <= 0 )
-	{
-		n_log( LOG_ERR , "Could not copy 0 or less (%ld) octet!" , size );
-		return FALSE ;
-	}
-	return nstrcat_bytes_ex( dest , data , size );
+    NSTRBYTE size = strlen( (char *)data );
+    if( size <= 0 )
+    {
+        n_log( LOG_ERR, "Could not copy 0 or less (%ld) octet!", size );
+        return FALSE ;
+    }
+    return nstrcat_bytes_ex( dest, data, size );
 } /* nstrcat_bytes( ... )*/
 
 
 
 /*!\fn int write_and_fit( char **dest , NSTRBYTE *size , NSTRBYTE *written , char *src )
  *\param dest The dest string
- *\param size The current size, will be updated if written + strlen( dest) > size	
+ *\param size The current size, will be updated if written + strlen( dest) > size
  *\param written the number of octet added
  *\param src The source string to add
  *\return TRUE on success or FALSE on a realloc error
  */
-int write_and_fit( char **dest , NSTRBYTE *size , NSTRBYTE *written , char *src )
+int write_and_fit( char **dest, NSTRBYTE *size, NSTRBYTE *written, char *src )
 {
-	char *ptr = NULL ;
-	NSTRBYTE src_size = 0 ;
-	int realloc_flag = 0 ;
+    char *ptr = NULL ;
+    NSTRBYTE src_size = 0 ;
+    int realloc_flag = 0 ;
 
-	src_size = strlen( src ) ;		
-	while( ( (*written) + src_size ) >= (*size)  )
-	{
-		(*size) = (*size) + 1024 ;
-		realloc_flag = 1 ;
-	}
+    src_size = strlen( src ) ;
+    while( ( (*written) + src_size ) >= (*size)  )
+    {
+        (*size) = (*size) + 1024 ;
+        realloc_flag = 1 ;
+    }
 
-	if( realloc_flag == 1 )
-	{
-		(*dest) =(char *)realloc( (*dest) , (*size) * sizeof( char ) );
-		if( !(*dest) )
-		{
-			n_log(  LOG_ERR , "reallocation error !!!!" );
-			return FALSE ;
-		}
-	}
-	ptr = (*dest) + (*written) ;
-	snprintf( ptr , (*size) - (*written) , "%s" , src );
-	(*written) += src_size ;	
+    if( realloc_flag == 1 )
+    {
+        (*dest) =(char *)realloc( (*dest), (*size) * sizeof( char ) );
+        if( !(*dest) )
+        {
+            n_log(  LOG_ERR, "reallocation error !!!!" );
+            return FALSE ;
+        }
+    }
+    ptr = (*dest) + (*written) ;
+    snprintf( ptr, (*size) - (*written), "%s", src );
+    (*written) += src_size ;
 
-	return TRUE ;
+    return TRUE ;
 } /* write_and_fit( ...) */
 
 
@@ -1168,9 +1169,9 @@ int write_and_fit( char **dest , NSTRBYTE *size , NSTRBYTE *written , char *src 
  *\param recurse Recursive search if TRUE, directory only if FALSE
  *\return TRUE or FALSE
  */
-int scan_dir( const char *dir, LIST *result , const int recurse )
+int scan_dir( const char *dir, LIST *result, const int recurse )
 {
-	return scan_dir_ex( dir , "*" , result , recurse , 0 );
+    return scan_dir_ex( dir, "*", result, recurse, 0 );
 }
 
 
@@ -1184,75 +1185,76 @@ int scan_dir( const char *dir, LIST *result , const int recurse )
  *\param mode 0 for a list of char* , 1 for a list of N_STR *
  *\return TRUE or FALSE
  */
-int scan_dir_ex( const char *dir, const char *pattern , LIST *result , const int recurse , const int mode )
+int scan_dir_ex( const char *dir, const char *pattern, LIST *result, const int recurse, const int mode )
 {
-	DIR *dp = NULL ;
-	struct dirent *entry = NULL;
-	struct stat statbuf;
+    DIR *dp = NULL ;
+    struct dirent *entry = NULL;
+    struct stat statbuf;
 
-	if( !result )
-		return FALSE ;
+    if( !result )
+        return FALSE ;
 
-	if( ( dp = opendir( dir ) ) == NULL)
-	{
-		n_log( LOG_ERR , "cannot open directory: %s" , dir );
-		return FALSE ;
-	}
+    if( ( dp = opendir( dir ) ) == NULL)
+    {
+        n_log( LOG_ERR, "cannot open directory: %s", dir );
+        return FALSE ;
+    }
 
-	N_STR *newname = NULL ;
-	while( ( entry = readdir( dp ) ) != NULL )
-	{
-		nstrprintf( newname , "%s/%s" , dir , entry -> d_name );
+    N_STR *newname = NULL ;
+    while( ( entry = readdir( dp ) ) != NULL )
+    {
+        nstrprintf( newname, "%s/%s", dir, entry -> d_name );
 
-		if( stat( newname -> data , &statbuf ) >= 0 )
-		{
-			if( S_ISDIR( statbuf . st_mode ) != 0 )
-			{
-				if( strcmp( "." , entry -> d_name ) == 0 || strcmp( ".." , entry -> d_name ) == 0 )
-				{
-					free_nstr( &newname );
-					continue;
-				}
+        if( stat( newname -> data, &statbuf ) >= 0 )
+        {
+            if( S_ISDIR( statbuf . st_mode ) != 0 )
+            {
+                if( strcmp( ".", entry -> d_name ) == 0 || strcmp( "..", entry -> d_name ) == 0 )
+                {
+                    free_nstr( &newname );
+                    continue;
+                }
 
-				/* Recurse */
-				if( recurse != FALSE )
-				{
-					if( scan_dir_ex( newname -> data , pattern , result , recurse , mode ) != TRUE )
-					{
-						n_log( LOG_ERR , "scan_dir_ex( %s , %s , %p , %d , %d ) returned FALSE !" , newname -> data , pattern , result , recurse , mode );
-					}
-				}
-				free_nstr( &newname );
-				continue ;
-			}else if( S_ISREG( statbuf . st_mode ) != 0 )
-			{
-				if( wildmatcase( newname -> data , pattern ) == TRUE )
-				{
-					if( mode == 0 )
-					{
-						char *file = strdup( newname -> data );
-						if( file )
-						{
-							list_push( result , file , &free );
-						}
-						else
-						{
-							n_log( LOG_ERR , "Error adding %s/%s to list" , dir , entry -> d_name  );
-						}
-					}
-					else if( mode == 1 )
-					{
-						list_push( result , newname , &free_nstr_ptr );
-						newname = NULL ;
-					}
-				}
-			}
-		}
-		if( newname )
-			free_nstr( &newname );
-	}
-	closedir( dp );
-	return TRUE ;
+                /* Recurse */
+                if( recurse != FALSE )
+                {
+                    if( scan_dir_ex( newname -> data, pattern, result, recurse, mode ) != TRUE )
+                    {
+                        n_log( LOG_ERR, "scan_dir_ex( %s , %s , %p , %d , %d ) returned FALSE !", newname -> data, pattern, result, recurse, mode );
+                    }
+                }
+                free_nstr( &newname );
+                continue ;
+            }
+            else if( S_ISREG( statbuf . st_mode ) != 0 )
+            {
+                if( wildmatcase( newname -> data, pattern ) == TRUE )
+                {
+                    if( mode == 0 )
+                    {
+                        char *file = strdup( newname -> data );
+                        if( file )
+                        {
+                            list_push( result, file, &free );
+                        }
+                        else
+                        {
+                            n_log( LOG_ERR, "Error adding %s/%s to list", dir, entry -> d_name  );
+                        }
+                    }
+                    else if( mode == 1 )
+                    {
+                        list_push( result, newname, &free_nstr_ptr );
+                        newname = NULL ;
+                    }
+                }
+            }
+        }
+        if( newname )
+            free_nstr( &newname );
+    }
+    closedir( dp );
+    return TRUE ;
 } /*scan_dir(...) */
 
 
@@ -1260,66 +1262,67 @@ int scan_dir_ex( const char *dir, const char *pattern , LIST *result , const int
 /*!\fn int wildmat(register const char *text, register const char *p)
  *\brief Written by Rich Salz rsalz at osf.org, refurbished by me. Wildcard pattern matching .
  *\param text The source text to search
- *\param p The text to search, with wildcards 
+ *\param p The text to search, with wildcards
  *\return return TRUE, FALSE, or WILDMAT_ABORT.
  */
 int wildmat(register const char *text, register const char *p)
 {
-	register int last = 0 ;
-	register int matched = 0;
-	register int reverse = 0;
+    register int last = 0 ;
+    register int matched = 0;
+    register int reverse = 0;
 
-	for ( ; *p; text++, p++)
-	{
-		if (*text == '\0' && *p != '*')
-			return WILDMAT_ABORT;
-		switch (*p) {
-			case '\\':
-				/* Literal match with following character. */
-				p++;
-				/* FALLTHROUGH */
-			default:
-				if (*text != *p)
-					return FALSE;
-				continue;
-			case '?':
-				/* Match anything. */
-				continue;
-			case '*':
-				while (*++p == '*')
-					/* Consecutive stars act just like one. */
-					continue;
-				if (*p == '\0')
-					/* Trailing star matches everything. */
-					return TRUE;
-				while (*text)
-					if ((matched = wildmat(text++, p)) != FALSE)
-						return matched;
-				return WILDMAT_ABORT;
-			case '[':
-				reverse = p[1] == WILDMAT_NEGATE_CLASS ? TRUE : FALSE;
-				if (reverse)
-					/* Inverted character class. */
-					p++;
-				matched = FALSE;
-				if (p[1] == ']' || p[1] == '-')
-					if (*++p == *text)
-						matched = TRUE;
-				for (last = *p; *++p && *p != ']'; last = *p)
-					/* This next line requires a good C compiler. */
-					if (*p == '-' && p[1] != ']'
-							? *text <= *++p && *text >= last : *text == *p)
-						matched = TRUE;
-				if (matched == reverse)
-					return FALSE;
-				continue;
-		}
-	}
+    for ( ; *p; text++, p++)
+    {
+        if (*text == '\0' && *p != '*')
+            return WILDMAT_ABORT;
+        switch (*p)
+        {
+        case '\\':
+            /* Literal match with following character. */
+            p++;
+        /* FALLTHROUGH */
+        default:
+            if (*text != *p)
+                return FALSE;
+            continue;
+        case '?':
+            /* Match anything. */
+            continue;
+        case '*':
+            while (*++p == '*')
+                /* Consecutive stars act just like one. */
+                continue;
+            if (*p == '\0')
+                /* Trailing star matches everything. */
+                return TRUE;
+            while (*text)
+                if ((matched = wildmat(text++, p)) != FALSE)
+                    return matched;
+            return WILDMAT_ABORT;
+        case '[':
+            reverse = p[1] == WILDMAT_NEGATE_CLASS ? TRUE : FALSE;
+            if (reverse)
+                /* Inverted character class. */
+                p++;
+            matched = FALSE;
+            if (p[1] == ']' || p[1] == '-')
+                if (*++p == *text)
+                    matched = TRUE;
+            for (last = *p; *++p && *p != ']'; last = *p)
+                /* This next line requires a good C compiler. */
+                if (*p == '-' && p[1] != ']'
+                        ? *text <= *++p && *text >= last : *text == *p)
+                    matched = TRUE;
+            if (matched == reverse)
+                return FALSE;
+            continue;
+        }
+    }
 #ifdef WILDMAT_MATCH_TAR_PATTERN
-	if (*text == '/')
-		return TRUE;
+    if (*text == '/')
+        return TRUE;
 #endif /* MATCH_TAR_ATTERN */
-	return *text == '\0';
+    return *text == '\0';
 } /* wildmatch(...) */
 
 
@@ -1327,64 +1330,66 @@ int wildmat(register const char *text, register const char *p)
 /*!\fn int wildmatcase( register const char *text , register const char *p )
  *\brief Written by Rich Salz rsalz at osf.org, refurbished by me. Wildcard pattern matching case insensitive.
  *\param text The source text to search
- *\param p The text to search, with wildcards 
+ *\param p The text to search, with wildcards
  *\return return TRUE, FALSE, or WILDMAT_ABORT.
  */
 int wildmatcase(register const char *text, register const char *p)
 {
-	register int last;
-	register int matched;
-	register int reverse;
+    register int last;
+    register int matched;
+    register int reverse;
 
-	for ( ; *p; text++, p++) {
-		if (*text == '\0' && *p != '*')
-			return WILDMAT_ABORT;
-		switch (*p) {
-			case '\\':
-				/* Literal match with following character. */
-				p++;
-				/* FALLTHROUGH */
-			default:
-				if (toupper(*text) != toupper(*p))
-					return FALSE;
-				continue;
-			case '?':
-				/* Match anything. */
-				continue;
-			case '*':
-				while (*++p == '*')
-					/* Consecutive stars act just like one. */
-					continue;
-				if (*p == '\0')
-					/* Trailing star matches everything. */
-					return TRUE;
-				while (*text)
-					if ((matched = wildmatcase(text++, p)) != FALSE)
-						return matched;
-				return WILDMAT_ABORT;
-			case '[':
-				reverse = p[1] == WILDMAT_NEGATE_CLASS ? TRUE : FALSE;
-				if (reverse)
-					/* Inverted character class. */
-					p++;
-				matched = FALSE;
-				if (p[1] == ']' || p[1] == '-')
-					if (toupper(*++p) == toupper(*text))
-						matched = TRUE;
-				for (last = toupper(*p); *++p && *p != ']'; last = toupper(*p))
-					if (*p == '-' && p[1] != ']'
-							? toupper(*text) <= toupper(*++p) && toupper(*text) >= last : toupper(*text) == toupper(*p))
-						matched = TRUE;
-				if (matched == reverse)
-					return FALSE;
-				continue;
-		}
-	}
+    for ( ; *p; text++, p++)
+    {
+        if (*text == '\0' && *p != '*')
+            return WILDMAT_ABORT;
+        switch (*p)
+        {
+        case '\\':
+            /* Literal match with following character. */
+            p++;
+        /* FALLTHROUGH */
+        default:
+            if (toupper(*text) != toupper(*p))
+                return FALSE;
+            continue;
+        case '?':
+            /* Match anything. */
+            continue;
+        case '*':
+            while (*++p == '*')
+                /* Consecutive stars act just like one. */
+                continue;
+            if (*p == '\0')
+                /* Trailing star matches everything. */
+                return TRUE;
+            while (*text)
+                if ((matched = wildmatcase(text++, p)) != FALSE)
+                    return matched;
+            return WILDMAT_ABORT;
+        case '[':
+            reverse = p[1] == WILDMAT_NEGATE_CLASS ? TRUE : FALSE;
+            if (reverse)
+                /* Inverted character class. */
+                p++;
+            matched = FALSE;
+            if (p[1] == ']' || p[1] == '-')
+                if (toupper(*++p) == toupper(*text))
+                    matched = TRUE;
+            for (last = toupper(*p); *++p && *p != ']'; last = toupper(*p))
+                if (*p == '-' && p[1] != ']'
+                        ? toupper(*text) <= toupper(*++p) && toupper(*text) >= last : toupper(*text) == toupper(*p))
+                    matched = TRUE;
+            if (matched == reverse)
+                return FALSE;
+            continue;
+        }
+    }
 #ifdef WILDMAT_MATCH_TAR_PATTERN
-	if (*text == '/')
-		return TRUE;
+    if (*text == '/')
+        return TRUE;
 #endif /* MATCH_TAR_ATTERN */
-	return *text == '\0';
+    return *text == '\0';
 } /* wildmatcase(...) */
 
 
@@ -1401,73 +1406,76 @@ int wildmatcase(register const char *text, register const char *p)
  */
 char *str_replace ( const char *string, const char *substr, const char *replacement )
 {
-	char *tok = NULL;
-	char *newstr = NULL;
-	char *oldstr = NULL;
-	char *head = NULL;
+    char *tok = NULL;
+    char *newstr = NULL;
+    char *oldstr = NULL;
+    char *head = NULL;
 
-	/* if either substr or replacement is NULL, duplicate string a let caller handle it */
-	if ( substr == NULL || replacement == NULL ) return strdup (string);
-	newstr = strdup (string);
-	head = newstr;
-	while ( (tok = strstr ( head, substr ))){
-		oldstr = newstr;
-		newstr = malloc ( strlen ( oldstr ) - strlen ( substr ) + strlen ( replacement ) + 1 );
-		/*failed to alloc mem, free old string and return NULL */
-		if ( newstr == NULL ){
-			free (oldstr);
-			return NULL;
-		}
-		memcpy ( newstr, oldstr, tok - oldstr );
-		memcpy ( newstr + (tok - oldstr), replacement, strlen ( replacement ) );
-		memcpy ( newstr + (tok - oldstr) + strlen( replacement ), tok + strlen ( substr ), strlen ( oldstr ) - strlen ( substr ) - ( tok - oldstr ) );
-		memset ( newstr + strlen ( oldstr ) - strlen ( substr ) + strlen ( replacement ) , 0, 1 );
-		/* move back head right after the last replacement */
-		head = newstr + (tok - oldstr) + strlen( replacement );
-		free (oldstr);
-	}
-	return newstr;
+    /* if either substr or replacement is NULL, duplicate string a let caller handle it */
+    if ( substr == NULL || replacement == NULL )
+        return strdup (string);
+    newstr = strdup (string);
+    head = newstr;
+    while ( (tok = strstr ( head, substr )))
+    {
+        oldstr = newstr;
+        newstr = malloc ( strlen ( oldstr ) - strlen ( substr ) + strlen ( replacement ) + 1 );
+        /*failed to alloc mem, free old string and return NULL */
+        if ( newstr == NULL )
+        {
+            free (oldstr);
+            return NULL;
+        }
+        memcpy ( newstr, oldstr, tok - oldstr );
+        memcpy ( newstr + (tok - oldstr), replacement, strlen ( replacement ) );
+        memcpy ( newstr + (tok - oldstr) + strlen( replacement ), tok + strlen ( substr ), strlen ( oldstr ) - strlen ( substr ) - ( tok - oldstr ) );
+        memset ( newstr + strlen ( oldstr ) - strlen ( substr ) + strlen ( replacement ), 0, 1 );
+        /* move back head right after the last replacement */
+        head = newstr + (tok - oldstr) + strlen( replacement );
+        free (oldstr);
+    }
+    return newstr;
 }
 
 /*!\fn int str_sanitize_ex( char *string, const unsigned int string_len, const char *mask, const unsigned int masklen, const char replacement )
- * \brief clean a string by replacing evil characteres 
+ * \brief clean a string by replacing evil characteres
  * \param string The string to change
  * \param string_len Size of the data to treat
  * \param mask The caracters to kill
  * \param masklen size of mask
  * \param replacement replacement for mask
- * \return TRUE or FALSE 
+ * \return TRUE or FALSE
  */
 int str_sanitize_ex( char *string, const unsigned int string_len, const char *mask, const unsigned int masklen, const char replacement )
 {
-	__n_assert( string , return FALSE );
-	__n_assert( mask , return FALSE );
+    __n_assert( string, return FALSE );
+    __n_assert( mask, return FALSE );
 
-	unsigned int it = 0 ;
-	for( it = 0 ; it < string_len ; it ++ )
-	{
-		unsigned int mask_it = 0 ;
-		while(mask[mask_it]!='\0'&&mask_it<masklen)
-		{
-			if( string[ it ] == mask[ mask_it ] )
-				string[ it ] = replacement ;
-			mask_it ++ ;
-		}
-	}
-	return TRUE ;
+    unsigned int it = 0 ;
+    for( it = 0 ; it < string_len ; it ++ )
+    {
+        unsigned int mask_it = 0 ;
+        while(mask[mask_it]!='\0'&&mask_it<masklen)
+        {
+            if( string[ it ] == mask[ mask_it ] )
+                string[ it ] = replacement ;
+            mask_it ++ ;
+        }
+    }
+    return TRUE ;
 }
 
 
 /*!\fn int str_sanitize( char *string, const char *mask, const char replacement )
- * \brief clean a string by replacing evil characteres 
+ * \brief clean a string by replacing evil characteres
  * \param string The string to change
  * \param mask The caracters to kill
  * \param replacement replacement for mask
- * \return TRUE or FALSE 
+ * \return TRUE or FALSE
  */
 int str_sanitize( char *string, const char *mask, const char replacement )
 {
-	return str_sanitize_ex( string , strlen( string ) , mask , strlen( mask ) , replacement );
+    return str_sanitize_ex( string, strlen( string ), mask, strlen( mask ), replacement );
 }
 
 

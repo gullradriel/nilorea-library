@@ -13,18 +13,18 @@ extern "C"
 {
 #endif
 
-	
-	/**\defgroup SIGNALS SIGNALS: signals handling and stack printing 
-	  \addtogroup SIGNALS
-	  @{
-	  */
+
+/**\defgroup SIGNALS SIGNALS: signals handling and stack printing
+  \addtogroup SIGNALS
+  @{
+  */
 
 /*! maximum line of stack printed */
 #define MAX_STACK_FRAMES 64
 
 void set_signal_handler( void );
 
-	/*@}*/
+/*@}*/
 
 #ifdef __cplusplus
 }
