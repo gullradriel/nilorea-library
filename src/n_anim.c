@@ -11,7 +11,11 @@
 */
 
 #include "nilorea/n_anim.h"
+<<<<<<< HEAD
 #include "math.h"
+=======
+
+>>>>>>> b79c5d1c69a9d35eb840a50108f834da51f589f3
 
 ANIM_LIB *create_anim_library( char *name, unsigned int size )
 {
