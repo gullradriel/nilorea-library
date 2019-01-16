@@ -1,4 +1,4 @@
-/**\file anim.c
+/**\file n_anim.c
 *
 *  anim functions
 *

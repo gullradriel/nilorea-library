@@ -17,7 +17,7 @@
 #endif
 
 /*! internal struct to handle log types */
-typedef struct _code
+typedef struct LOG_LEVELS
 {
     /*! string of log type */
     char *c_name;
@@ -26,10 +26,10 @@ typedef struct _code
     /*! event log value */
     char *w_name;
 
-} CODE;
+} LOG_LEVELS;
 
 /*! array of log levels */
-static CODE prioritynames[] =
+static LOG_LEVELS prioritynames[] =
 {
     {	"EMERG",	LOG_EMERG,		"ERROR" },
     {	"ALERT",	LOG_ALERT,		"ERROR" },

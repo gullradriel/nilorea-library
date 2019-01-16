@@ -35,6 +35,7 @@ int update_physics_position_nb( PHYSICS *object, int it, double delta_t )
 
     object -> speed[ it ] = object -> speed[ it ] + ( object -> acceleration[ it ] * delta_t )/ 1000000.0 ;
     object -> position[ it ] = object -> position[ it ] + ( object -> speed[ it ] * delta_t ) / 1000000.0  + ( object -> acceleration[ it ] * (delta_t / 1000000.0 ) * ( delta_t / 1000000.0 ) ) / 2.0 ;
+    object -> angular_speed[ it ] = object -> angular_speed[ it ] + ( object -> angular_acceleration[ it ] * delta_t ) / 1000000.0 ;
 
     return TRUE ;
 } /* update_physics_position_nb(...) */
@@ -72,11 +73,13 @@ int update_physics_position_reverse( PHYSICS *object, double delta_t )
     {
         object -> speed[ it ] = -object -> speed[ it ] ;
         object -> acceleration[ it ] = -object -> acceleration[ it ] ;
+        object -> angular_speed[ it ] = -object -> angular_speed[ it ];
 
         update_physics_position_nb( object, it, delta_t );
 
         object -> speed[ it ] = -object -> speed[ it ] ;
         object -> acceleration[ it ] = -object -> acceleration[ it ] ;
+        object -> angular_speed[ it ] = -object -> angular_speed[ it ] ;
     }
     return TRUE ;
 } /* update_physics_position_reverse(...) */

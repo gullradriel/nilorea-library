@@ -1,4 +1,4 @@
-/**\file anim.h
+/**\file n_anim.h
 *
 *  anim header
 *

@@ -1,66 +1,67 @@
 /**
 \mainpage Index
 
-This file only contains the information useful for the main page of the
-documentation - There is no code here
 
 \section contents Table Of Contents:
+
 <ul>  <li> \ref aboutlib </li>
 	<li> \ref require </li>
 	<li> \ref install </li>
-	<li> \ref FLAGS </li>
-	<li> \ref WARNINGS </li>
+	<li> \ref flags </li>
 	<li> \ref end </li>
 </ul>
 
 \section aboutlib About Nilorea Library
 
-This library should bring you (and if it is already coded) some usefull C tools
-(Typedefs, structs, linked lists, network engine, 2dIso engine and more)
 
-DO NOT take care of the name, i was having no ideas so i decide to give a simply name.
+Nilorea Library is a C library, which brings you:
 
-For better using of the library, some documentations&examples will be written, but there is still 
-nothing written ;)
+-various helping macros, typedefs, logging facilities
+
+-strings, hash tables, linked lists, 
+
+-network engine
+
+-simple 2D/3D physics, little generic game managing system
+
+Some more If used with the Allegro 5 library:
+
+-particle system, 2D isometric engine, 2D animation system
+
+-dialogs and ressources manager
+
+Usable as a monolith library or a collection of files
 
 
-\section require Requirements
+\section require Nilorea Library requirements
 
-
- Allegro   5.0.0 or better http://alleg.sf.net/
+ Gcc and make 
 
  The socket libs (winsock or socket)
 
  Pthread lib (posix pthread for windows or linux)
+ 
+ Optional: allegro 5.0.0 or better http://alleg.sf.net/
+
 
 \section install Installation
-Just type make and use the library or put the right files in your LIB and INCLUDE directory, link them with your code and let's go ! \n
-Don't forget to define FLAGS for parts you don't need, it can save you memory and compilation time.
+
+Just type make and use the library or put the right files in your LIB and INCLUDE directory, link them with your code and let's go ! 
 
 
-\section FLAGS FLAGS when using Nilorea
+\section flags Flags when using Nilorea Library
 
-Define platform if needed:
+make ALLEGRO=1 to build the monolith with allegro 5 support
 
-LINUX | WIN
-
-You should use one of the folowing if you don't need it: 
-
- NOALLEGRO |  NOPTHREAD | NONETWORK | NOSTR | NOISOENGINE | NOSOUND
-
-\section WARNINGS Be carefull
-
-Sometimes when i talk about a function i use the 'low-level' words to aim your attention.\n
-It's because we talk about functions who returns nothing and who won't test if they are\n
-going to write inside or outside the memory. It's your responsability to use them correctly.\n
 
 \section end Closing Words
 
-Nilorea is a 'make life easier' library, you're welcome using it.\n
-Everything inside is free or under GPL license, read it at http://www.gnu.org/license/gpl.html\n
+Nilorea is a 'make life easier' library, you're welcome using it.
 
-Have nice brain storm, and don't forget to submit me bugs !
+Everything inside is free or under GPL license, read it at http://www.gnu.org/license/gpl.html
 
--- Gull ( gullradriel @ gmail.com )
+If something was not made by me you should find the informations about the authors and licenses in the concerned source files
+
+Have nice day and don't forget to submit me bugs !
 
 */

@@ -13,7 +13,6 @@
 extern "C"
 {
 #endif
-
 /**\defgroup GAMES GAMES: game utilities
    \addtogroup GAMES
   @{

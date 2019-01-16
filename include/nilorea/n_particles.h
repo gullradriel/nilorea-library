@@ -1,88 +1,108 @@
 /**\file n_particles.h
- *
- *  Particle management
- *
- *\author Castagnier Mickael
- *
- *\version 1.0
- *
- *\date 15/12/2007
- */
+*
+*  particle header file for SPEEDHACK 2014
+*
+*\author Castagnier Mickaël aka Gull Ra Driel
+*
+*\version 1.0
+*
+*\date 20/12/2012
+*
+*/
 
-#ifndef NILOREA_PARTICLE_HEADER_
-#define NILOREA_PARTICLE_HEADER_
+
+
+#ifndef __N_PARTICLE_HEADER
+#define __N_PARTICLE_HEADER
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
+/**\defgroup PARTICLES GAMES: PARTICLES utilities
+   \addtogroup GAMES
+  @{
+*/
+
+#include <allegro5/allegro.h>
+#include <allegro5/allegro_audio.h>
+#include <allegro5/allegro_acodec.h>
+#include <allegro5/allegro_font.h>
+#include <allegro5/allegro_image.h>
+#include <allegro5/allegro_primitives.h>
+
+
 #include "n_common.h"
 #include "n_log.h"
-#include "n_common.h"
+#include "n_list.h"
+#include "n_3d.h"
+#include "n_time.h"
 
-
+/*! classic moving particle */
 #define NORMAL_PART 0
-#define SINUS_PART 1
-#define TRANS_PART 2
+/*! sinus based moving particle */
+#define SINUS_PART  1
+/*! transparent particle */
+#define TRANS_PART  2
+/*! snow particle */
+#define SNOW_PART   3
+/*! fire particle */
+#define FIRE_PART   4
+/*! star particle */
+#define STAR_PART   5
+/*! circle particle */
+#define CIRCLE_PART 6
+/*! pixel particle */
+#define PIXEL_PART  7
 
 
 typedef struct PARTICLE
 {
-    double x, y, z,
-           ax, ay, az,
-           vx, vy, vz ;
-
-    BITMAP *sprite ;
-
     int mode,
-        off_x, off_y,
         lifetime,
-        color;
+        spr_id,
+        size;
+    ALLEGRO_COLOR color ;
 
-    struct PARTICLE *next,
-               *prev ;
+    PHYSICS object ;
 
 } PARTICLE ;
 
 typedef struct PARTICLE_SYSTEM
 {
-    PARTICLE *list_start, *list_end ;
+    LIST *list ;
 
-    double x, y, z ;
+    VECTOR3D source ;
 
     N_TIME timer ;
 
-    int max_particles,
-        nb_particles ;
+    ALLEGRO_BITMAP **sprites ;
+    int max_sprites ;
 
 } PARTICLE_SYSTEM ;
 
-/*! ForEach macro helper */
-#define particle_foreach( __ITEM_ , __PARTICLE_SYSTEM_  ) \
-	if( !__PARTICLE_SYSTEM_ ) \
-	{ \
-		n_log( LOG_ERR , "Error in particle_foreach, %s is NULL" , #__PARTICLE_SYSTEM_ ); \
-	} \
-	else \
-	for( PARTICLE *__ITEM_ = __PARTICLE_SYSTEM_ -> list_start ; __ITEM_ != NULL; __ITEM_ = __ITEM_ -> next ) \
+int init_particle_system( PARTICLE_SYSTEM **psys, int max, double x, double y, double z, int max_sprites );
 
-
-int init_particle_system( PARTICLE_SYSTEM **psys, int max, double x, double y, double z );
-
-int add_particle( PARTICLE_SYSTEM *psys, BITMAP *spr, int mode, int off_x, int off_y, int lifetime, int color,
-                  double vx, double vy, double vz,
-                  double ax, double ay, double az );
+int add_particle( PARTICLE_SYSTEM *psys, int spr, int mode, int lifetime, int size, ALLEGRO_COLOR color, PHYSICS object );
+int add_particle_ex( PARTICLE_SYSTEM *psys, int spr, int mode, int off_x, int off_y, int lifetime, int size, ALLEGRO_COLOR color,
+                     double vx, double vy, double vz,
+                     double ax, double ay, double az );
 
 int manage_particle( PARTICLE_SYSTEM *psys);
 
-int draw_particle( BITMAP *bmp, PARTICLE_SYSTEM *psys );
-
-int free_particle( PARTICLE_SYSTEM *psys, PARTICLE **ptr );
+int draw_particle( PARTICLE_SYSTEM *psys, double xpos, double ypos, int w, int h, double range );
 
 int free_particle_system( PARTICLE_SYSTEM **psys);
+
+int move_particles( PARTICLE_SYSTEM *psys, double vx, double vy, double vz );
+
+/*@}*/
 
 #ifdef __cplusplus
 }
 #endif
-#endif /* NILOREA_PARTICLE_HEADER_ */
+
+
+
+#endif /* PARTICLE_HEADER_FOR_CHRISTMASHACK */
 

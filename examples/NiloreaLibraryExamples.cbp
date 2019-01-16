@@ -7,12 +7,12 @@
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<MakeCommands>
-			<Build command="$make -f $makefile MSYSTEM=MINGW64" />
-			<CompileFile command="$make -f $makefile $file MSYSTEM=MINGW64" />
-			<Clean command="$make -f $makefile clean MSYSTEM=MINGW64" />
+			<Build command="$make -f $makefile MSYSTEM=MINGW64CB" />
+			<CompileFile command="$make -f $makefile $file MSYSTEM=MINGW64CB" />
+			<Clean command="$make -f $makefile clean MSYSTEM=MINGW64CB" />
 			<DistClean command="$make -f $makefile distclean$target" />
-			<AskRebuildNeeded command="$make -q -f $makefile MSYSTEM=MINGW64" />
-			<SilentBuild command="$make -f $makefile MSYSTEM=MINGW64 &gt; $(CMD_NULL)" />
+			<AskRebuildNeeded command="$make -q -f $makefile MSYSTEM=MINGW64CB" />
+			<SilentBuild command="$make -f $makefile MSYSTEM=MINGW64CB &gt; $(CMD_NULL)" />
 		</MakeCommands>
 		<Build>
 			<Target title="all">
@@ -27,12 +27,12 @@
 					<Add option="-s" />
 				</Linker>
 				<MakeCommands>
-					<Build command="$make -f $makefile" />
-					<CompileFile command="$make -f $makefile $file" />
-					<Clean command="$make -f $makefile clean" />
+					<Build command="$make -f $makefile MSYSTEM=MINGW64CB" />
+					<CompileFile command="$make -f $makefile $file MSYSTEM=MINGW64CB" />
+					<Clean command="$make -f $makefile clean MSYSTEM=MINGW64CB" />
 					<DistClean command="$make -f $makefile distclean$target" />
-					<AskRebuildNeeded command="$make -q -f $makefile " />
-					<SilentBuild command="$make -f $makefile &gt; $(CMD_NULL)" />
+					<AskRebuildNeeded command="$make -q -f $makefile  MSYSTEM=MINGW64CB" />
+					<SilentBuild command="$make -f $makefile MSYSTEM=MINGW64CB &gt; $(CMD_NULL)" />
 				</MakeCommands>
 			</Target>
 		</Build>
@@ -45,6 +45,10 @@
 		</Unit>
 		<Unit filename="ex_configfile.cfg" />
 		<Unit filename="ex_exceptions.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="ex_gui.cfg" />
+		<Unit filename="ex_gui_particles.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="ex_hash.c">

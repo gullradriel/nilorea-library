@@ -1,345 +1,235 @@
 /**\file n_particles.c
 *
-*  Particle functions
+*  particle function file for SantaHack 2012
 *
- *\author Castagnier Mickael
+*\author Castagnier Mickaël aka Gull Ra Driel
 *
 *\version 1.0
 *
-*\date 15/12/2007
+*\date 20/12/2012
 *
 */
 
 
+
 #include "nilorea/n_particles.h"
+#include "math.h"
 
 
-/*!\fn int init_particle_system( PARTICLE_SYSTEM **psys , int max , double x , double y , double z )
-*\brief Initialize a particle system
-*\param psys a pointer to a NULL initialized particle system
-*\param max maximum number of particles in the system
-*\param x position of particles emitter
-*\param y position of particles emitter
-*\param z position of particles emitter
-*\return TRUE or FALSE
-*/
-int init_particle_system( PARTICLE_SYSTEM **psys, int max, double x, double y, double z )
+int init_particle_system( PARTICLE_SYSTEM **psys, int max, double x, double y, double z, int max_sprites )
 {
     Malloc( (*psys), PARTICLE_SYSTEM, 1 );
-    if( !(*psys) )
-        return FALSE ;
-
-    (*psys) -> list_start = (*psys) -> list_end = NULL ;
 
     start_HiTimer( &(*psys) -> timer );
 
-    (*psys) -> max_particles = max ;
-    (*psys) -> nb_particles  = 0 ;
-    (*psys) -> x = x ;
-    (*psys) -> y = y ;
-    (*psys) -> z = z ;
+    (*psys) -> list = new_generic_list( max );
+
+    (*psys) -> source[ 0 ] = x ;
+    (*psys) -> source[ 1 ] = y ;
+    (*psys) -> source[ 2 ] = z ;
+    (*psys) -> source[ 3 ] = 0 ;
+
+    (*psys) -> sprites = (ALLEGRO_BITMAP **)calloc( max_sprites, sizeof( ALLEGRO_BITMAP *) );
 
     return TRUE ;
-} /* init_particle_system */
+}
 
 
 
-/*!\fn int add_particle( PARTICLE_SYSTEM *psys , BITMAP *spr , int mode , int off_x , int off_y , int off_z , int lifetime , int color , double vx , double vy , double vz , double ax , double ay , double az )
-*\brief Add a particle to a particle system
-*\param psys Aimed particle system
-*\param spr Sprite of the particle, if any
-*\param mode Type of particle, NORMAL_PART or SINUS_PART, coupled eventually with TRANS_PART|RECYLCING_PART
-*\param off_x ofsset X from particle system X source
-*\param off_y ofsset Y from particle system Y source
-*\param off_z ofsset Z from particle system Z source
-*\param lifetime Lifetime of the particle
-*\param color color of the particle
-*\param vx X speed of the particle
-*\param vy Y speed of the particle
-*\param vz Z speed of the particle
-*\param ax X acceleration of the particle
-*\param ay Y acceleration of the particle
-*\param az Z acceleration of the particle
-*\return TRUE or FALSE
-*/
-int add_particle( PARTICLE_SYSTEM *psys, BITMAP *spr, int mode, int off_x, int off_y, int off_z,
-                  , int lifetime, int color,
-                  double vx, double vy, double vz,
-                  double ax, double ay, double az )
+int add_particle( PARTICLE_SYSTEM *psys, int spr, int mode, int lifetime, int size, ALLEGRO_COLOR color, PHYSICS object )
 {
-    if( psys -> nb_particles >= psys -> max_particles )
+    int it = 0 ;
+
+    PARTICLE *new_p = NULL ;
+
+
+    if( psys -> list -> nb_items == psys -> list -> nb_max_items )
         return FALSE ;
 
-    if( !psys -> list_start ) /* no particles */
+    for( it = 0 ; it < 3 ; it ++ )
     {
-        Malloc( psys -> list_start, PARTICLE, 1 );
-
-        psys -> list_start -> prev = psys -> list_start -> next = NULL ;
-        psys -> list_end = psys -> list_start ;
-
-        psys -> list_start -> sprite = spr ;
-        psys -> list_start -> mode = mode ;
-        psys -> list_start -> off_x = off_x ;
-        psys -> list_start -> off_y = off_y ;
-        psys -> list_start -> off_z = off_z ;
-        psys -> list_start -> lifetime = lifetime ;
-        psys -> list_start -> x = psys -> x + off_x ;
-        psys -> list_start -> y = psys -> y + off_y ;
-        psys -> list_start -> z = psys -> z + off_z ;
-        psys -> list_start -> ax = ax ;
-        psys -> list_start -> ay = ay ;
-        psys -> list_start -> az = az ;
-        psys -> list_start -> vx = vx ;
-        psys -> list_start -> vy = vy ;
-        psys -> list_start -> vz = vz ;
-        psys -> list_start -> color = color ;
-
-        psys -> nb_particles ++ ;
-
-        return TRUE;
+        object . position[ it ] += psys -> source[ it ] ;
     }
 
-    Malloc( psys -> list_end -> next, PARTICLE, 1 );
-    psys -> list_end -> next -> prev = psys -> list_end ;
-    psys -> list_end -> next -> next = NULL ;
-    psys -> list_end = psys -> list_end -> next ;
-    psys -> list_end -> sprite = spr ;
-    psys -> list_end -> mode = mode ;
-    psys -> list_end -> off_x = off_x ;
-    psys -> list_end -> off_y = off_y ;
-    psys -> list_end -> lifetime = lifetime ;
-    psys -> list_end -> x = psys -> x + off_x ;
-    psys -> list_end -> y = psys -> y + off_y ;
-    psys -> list_end -> z = psys -> z + off_z ;
-    psys -> list_end -> ax = ax ;
-    psys -> list_end -> ay = ay ;
-    psys -> list_end -> az = az ;
-    psys -> list_end -> vx = vx ;
-    psys -> list_end -> vy = vy ;
-    psys -> list_end -> vz = vz ;
-    psys -> list_end -> color = color ;
+    Malloc( new_p, PARTICLE, 1 );
+    __n_assert( new_p, return FALSE );
 
-    psys -> nb_particles ++ ;
+    new_p -> spr_id   = spr ;
+    new_p -> mode     = mode ;
+    new_p -> lifetime = lifetime ;
+    new_p -> color    = color ;
+    new_p -> size    = size ;
 
-    return TRUE ;
+    memcpy( new_p -> object . position, object . position, sizeof( VECTOR3D ) );
+    memcpy( new_p -> object . speed, object . speed, sizeof( VECTOR3D ) );
+    memcpy( new_p -> object . acceleration, object . acceleration, sizeof( VECTOR3D ) );
+    memcpy( new_p -> object . angular_speed, object . angular_speed, sizeof( VECTOR3D ) );
+    memcpy( new_p -> object . angular_acceleration, object . angular_acceleration, sizeof( VECTOR3D ) );
+    memcpy( new_p -> object . orientation, object . orientation, sizeof( VECTOR3D ) );
 
-} /* add_particle */
+    return list_push( psys -> list, new_p, &free );
+}
 
 
 
-/*!\fn int manage_particle( PARTICLE_SYSTEM *psys)
-*\brief Compute particles movements and cycle
-*\param psys The particle system
-*\return TRUE of FALSE
-*/
+int add_particle_ex( PARTICLE_SYSTEM *psys, int spr, int mode, int off_x, int off_y, int lifetime, int size, ALLEGRO_COLOR color,
+                     double vx, double vy, double vz,
+                     double ax, double ay, double az )
+{
+    PHYSICS object ;
+    VECTOR3D_SET( object . position, off_x, off_y, 0.0 );
+    VECTOR3D_SET( object . speed,  vx, vy, vz );
+    VECTOR3D_SET( object . acceleration, ax, ay, az );
+    VECTOR3D_SET( object . orientation, 0.0, 0.0, 0.0 );
+    VECTOR3D_SET( object . angular_speed, 0.0, 0.0, 0.0 );
+    VECTOR3D_SET( object . angular_acceleration, 0.0, 0.0, 0.0 );
+
+    return add_particle( psys, spr, mode, lifetime, size,color, object );
+}
+
+
+
 int manage_particle( PARTICLE_SYSTEM *psys)
 {
-    PARTICLE *ptr = NULL, *next = NULL, *prev = NULL ;
+    LIST_NODE *node = NULL ;
+    PARTICLE *ptr = NULL ;
 
-    double tmp_v = 0 ;
-
-    ptr = psys -> list_start ;
+    node = psys -> list -> start ;
 
     double delta = 0 ;
 
-    delta = get_msec( &psys -> timer ) ;
+    delta = get_usec( &psys -> timer ) ;
 
-    while( ptr )
+    while( node )
     {
-        ptr -> lifetime -= delta ;
-
-        if( ptr -> lifetime > 0 )
+        ptr = (PARTICLE *)node -> ptr ;
+        if( ptr -> lifetime != -1 )
         {
-            tmp_v = ptr -> vx + ( ptr -> ax * ((delta * delta)/1000) ) / 2 ;
-            ptr -> x = ptr -> x + delta * ( ptr -> vx + tmp_v ) / 2000 ;
-            ptr -> vx = tmp_v ;
+            ptr -> lifetime -= delta/1000.0 ;
+            if( ptr -> lifetime == -1 )
+                ptr -> lifetime = 0 ;
+        }
 
-            tmp_v = ptr -> vy + ( ptr -> ay * ((delta * delta)/1000) ) / 2 ;
-            ptr -> y = ptr -> y + delta * ( ptr -> vy + tmp_v ) / 2000 ;
-            ptr -> vy = tmp_v ;
-
-            tmp_v = ptr -> vz + ( ptr -> az * ((delta * delta)/1000) ) / 2 ;
-            ptr -> z = ptr -> z + delta * ( ptr -> vz + tmp_v ) / 2000 ;
-            ptr -> vz = tmp_v ;
-
-            ptr = ptr -> next ;
+        if( ptr -> lifetime > 0 || ptr -> lifetime == -1 )
+        {
+            update_physics_position( &ptr -> object, delta );
+            node = node -> next ;
         }
         else
         {
-            next = ptr -> next ;
-            prev = ptr -> prev ;
-
-            if( next )
-            {
-                if( prev )
-                    next -> prev = prev ;
-                else
-                {
-                    next -> prev = NULL ;
-                    psys -> list_start = next ;
-                }
-            }
-
-            if( prev )
-            {
-                if( next )
-                    prev -> next = next ;
-                else
-                {
-                    prev -> next = NULL ;
-                    psys -> list_end = prev ;
-                }
-            }
-
+            LIST_NODE *node_to_kill = node ;
+            node = node -> next ;
+            ptr = remove_list_node( psys -> list, node_to_kill, PARTICLE );
             Free( ptr );
-            psys -> nb_particles -- ;
-            if( psys -> nb_particles <= 0 )
-                psys -> list_start = psys -> list_end = NULL ;
-
-            ptr = next ;
         }
     }
-
-    return TRUE;
-} /* manage_particle */
-
-
-
-/*!\fn int draw_particle( BITMAP *bmp , PARTICLE_SYSTEM *psys )
- *\brief Draw a particle system onto a bitmap
- *\param bmp the aimed particle system
- *\param psys the partciel system to draw
- *\return TRUE or FALSE
- */
-int draw_particle( BITMAP *bmp, PARTICLE_SYSTEM *psys )
-{
-    PARTICLE *ptr = NULL ;
-
-    double x = 0, y = 0 ;
-
-    ptr = psys -> list_start ;
-
-    while( ptr )
-    {
-        x = ptr -> x ;
-        y = ptr -> y ;
-
-        if( ptr -> mode & SINUS_PART )
-        {
-            if( ptr -> vx != 0 )
-                x = x + ptr -> vx * sin( (ptr -> x/ptr -> vx) ) ;
-            else
-                x = x + ptr -> vx * sin( ptr -> x );
-
-            if( ptr -> vy != 0 )
-                y = y + ptr -> vy * cos( (ptr -> y/ptr -> vy) ) ;
-            else
-                y = y + ptr -> vy * sin( ptr -> y ) ;
-
-            if( ptr -> vz != 0 )
-                z = z + ptr -> vz * cos( (ptr -> z/ptr -> vz) ) ;
-            else
-                z = z + ptr -> vz * sin( ptr -> z ) ;
-        }
-
-        if( ptr -> mode & TRANS_PART )
-        {
-            drawing_mode(DRAW_MODE_TRANS, NULL, 0, 0);
-            set_alpha_blender( );
-            draw_trans_sprite( bmp, ptr -> sprite, x - ptr -> sprite -> w / 2, y - ptr -> sprite -> h /2 );
-            drawing_mode(DRAW_MODE_SOLID, NULL, 0, 0);
-
-        }
-        else
-        {
-            if( ptr -> sprite )
-            {
-#ifdef DEBUGMODE
-                circle( bmp, x - ptr -> sprite -> w / 2, y - ptr -> sprite -> h / 2, 3,  makecol( 255, 255, 0 ) );
-#endif
-                masked_blit( ptr -> sprite, bmp, 0, 0, x - ptr -> sprite -> w / 2, y - ptr -> sprite -> h /2, ptr -> sprite -> w, ptr -> sprite -> h );
-            }
-            else
-                circle( bmp, x, y, 2, ptr -> color );
-        }
-
-        ptr = ptr -> next ;
-    }
-
-    return TRUE;
-} /* drax_particle */
-
-
-
-/*!\fn int free_particle( PARTICLE_SYSTEM *psys , PARTICLE **ptr )
-*\brief Free a particle from a particle system
-*\param psys The aimed particle system
-*\param ptr A pointer to a particle to delete
-*\return TRUE or FALSE
-*/
-int free_particle( PARTICLE_SYSTEM *psys, PARTICLE **ptr )
-{
-    PARTICLE *next = NULL, *prev = NULL ;
-
-    next = (*ptr) -> next ;
-    prev = (*ptr) -> prev ;
-
-    if( next )
-    {
-        if( prev )
-            next -> prev = prev ;
-        else
-        {
-            next -> prev = NULL ;
-            psys -> list_start = next ;
-        }
-    }
-
-    if( prev )
-    {
-        if( next )
-            prev -> next = next ;
-        else
-        {
-            prev -> next = NULL ;
-            psys -> list_end = prev ;
-        }
-    }
-
-    Free( (*ptr) );
-
-    psys -> nb_particles -- ;
-
-    if( psys -> nb_particles <= 0 )
-        psys -> list_start = psys -> list_end = NULL ;
-
-    (*ptr) = next ;
-
-    return TRUE ;
-} /* free_particle(...) */
-
-
-
-/*!\fn int free_particle_system( PARTICLE_SYSTEM **psys)
-*\brief free a particle system
-*\param psys a pointer to a particle system to delete
-*\return TRUE or FALSE
-*/
-int free_particle_system( PARTICLE_SYSTEM **psys)
-{
-    PARTICLE *ptr = NULL, *ptr_next = NULL ;
-
-    ptr = (*psys) -> list_start ;
-
-    while( ptr )
-    {
-        ptr_next = ptr -> next ;
-        Free( ptr ) ;
-        ptr = ptr_next ;
-    }
-
-    Free( (*psys) );
 
     return TRUE;
 }
 
+
+
+int draw_particle( PARTICLE_SYSTEM *psys, double xpos, double ypos, int w, int h, double range )
+{
+    LIST_NODE *node = NULL ;
+    PARTICLE *ptr = NULL ;
+
+    double x = 0, y = 0 ;
+
+    node  = psys -> list -> start ;
+
+    while( node )
+    {
+        ptr = (PARTICLE *)node -> ptr ;
+        x = ptr -> object . position[ 0 ] - xpos ;
+        y = ptr -> object . position[ 1 ] - ypos ;
+
+        if( ( x < -range ) || ( x > ( w + range ) ) || ( y< -range ) || ( y > ( h + range ) ) )
+        {
+            node = node -> next ;
+            continue ;
+        }
+
+        while( ptr -> object . orientation[ 2 ] > 255 )
+            ptr -> object . orientation[ 2 ] -= 256 ;
+
+        while( ptr -> object . orientation[ 2 ] < 0 )
+            ptr -> object . orientation[ 2 ] += 256 ;
+
+        if( ptr -> mode == SINUS_PART )
+        {
+            if( ptr -> object . speed[ 0 ] != 0 )
+                x = x + ptr -> object . speed[ 0 ] * sin( (ptr -> object . position[ 0 ]/ptr -> object . speed[ 0 ]) ) ;
+            else
+                x = x + ptr -> object . speed[ 0 ] * sin( ptr -> object . position[ 0 ] );
+            if( ptr -> object . speed[ 1 ] != 0 )
+                y = y + ptr -> object . speed[ 0 ] * cos( (ptr -> object . speed[ 1 ]/ptr -> object . speed[ 1 ]) ) ;
+            else
+                y = y + ptr -> object . speed[ 1 ] * sin( ptr -> object . position[ 1 ] ) ;
+
+            if( ptr -> spr_id >= 0 && ptr -> spr_id < psys -> max_sprites && psys -> sprites[ ptr -> spr_id ] )
+            {
+                int w = al_get_bitmap_width( psys -> sprites[ ptr -> spr_id ] );
+                int h = al_get_bitmap_height( psys -> sprites[ ptr -> spr_id ] );
+
+                al_draw_rotated_bitmap( psys -> sprites[ ptr -> spr_id ], w/2, h/2, x - w / 2, y - h /2, al_ftofix( ptr -> object . orientation[ 2 ]), 0 );
+            }
+            else
+                al_draw_circle( x, y, 2, ptr -> color, 1 );
+        }
+
+        if( ptr -> mode & NORMAL_PART )
+        {
+            if( ptr -> spr_id >= 0 && ptr -> spr_id < psys -> max_sprites && psys -> sprites[ ptr -> spr_id ] )
+            {
+                int w = al_get_bitmap_width( psys -> sprites[ ptr -> spr_id ] );
+                int h = al_get_bitmap_height( psys -> sprites[ ptr -> spr_id ] );
+
+                al_draw_rotated_bitmap( psys -> sprites[ ptr -> spr_id ], w/2, h/2, x - w / 2, y - h /2, al_ftofix( ptr -> object . orientation[ 2 ]), 0 );
+            }
+        }
+        else if( ptr -> mode & PIXEL_PART )
+        {
+            al_draw_filled_rectangle( x - ptr -> size, y - ptr -> size, x + ptr -> size, y + ptr -> size, ptr -> color );
+        }
+        else
+            al_draw_circle( x, y, ptr -> size, ptr -> color, 1 );
+        node  = node -> next ;
+    }
+
+    return TRUE;
+}
+
+
+
+int free_particle_system( PARTICLE_SYSTEM **psys)
+{
+    PARTICLE *particle = NULL ;
+    while( (*psys) -> list -> start )
+    {
+        particle = remove_list_node( (*psys) -> list, (*psys) -> list -> start, PARTICLE );
+        Free( particle );
+    }
+    Free( (*psys) );
+    return TRUE;
+}
+
+
+
+int move_particles( PARTICLE_SYSTEM *psys, double vx, double vy, double vz )
+{
+    LIST_NODE *node = NULL ;
+    PARTICLE *ptr = NULL ;
+
+    node  = psys -> list -> start ;
+
+    while( node )
+    {
+        ptr = (PARTICLE *)node -> ptr ;
+        ptr -> object . position[ 0 ] = ptr -> object . position[ 0 ] + vx ;
+        ptr -> object . position[ 1 ] = ptr -> object . position[ 1 ] + vy ;
+        ptr -> object . position[ 2 ] = ptr -> object . position[ 2 ] + vz ;
+        node = node -> next ;
+    }
+    return TRUE ;
+}

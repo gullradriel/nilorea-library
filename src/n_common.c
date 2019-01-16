@@ -33,8 +33,8 @@
 
 
 /*! void n_abort( char const *format , ... )
- *\brief abort and exit, printing error to stderr
- *\param error in printf format
+ *\brief abort program with a text
+ *\param format printf style format and args
  */
 void n_abort( char const *format, ... )
 {

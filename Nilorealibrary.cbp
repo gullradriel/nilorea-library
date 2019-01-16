@@ -30,12 +30,12 @@
 					<Add option="-s" />
 				</Linker>
 				<MakeCommands>
-					<Build command="$make -f $makefile MSYSTEM=MINGW64" />
-					<CompileFile command="$make -f $makefile $file MSYSTEM=MINGW64" />
-					<Clean command="$make -f $makefile clean MSYSTEM=MINGW64" />
+					<Build command="$make -f $makefile MSYSTEM=MINGW64CB" />
+					<CompileFile command="$make -f $makefile $file MSYSTEM=MINGW64CB" />
+					<Clean command="$make -f $makefile clean MSYSTEM=MINGW64CB" />
 					<DistClean command="$make -f $makefile distclean$target" />
-					<AskRebuildNeeded command="$make -q -f $makefile MSYSTEM=MINGW64" />
-					<SilentBuild command="$make -f $makefile MSYSTEM=MINGW64 &gt; $(CMD_NULL)" />
+					<AskRebuildNeeded command="$make -q -f $makefile MSYSTEM=MINGW64CB" />
+					<SilentBuild command="$make -f $makefile MSYSTEM=MINGW64CB &gt; $(CMD_NULL)" />
 				</MakeCommands>
 			</Target>
 		</Build>
@@ -43,10 +43,14 @@
 		<Unit filename="Doxyfile" />
 		<Unit filename="Makefile" />
 		<Unit filename="README.md" />
+		<Unit filename="examples/Makefile" />
 		<Unit filename="examples/ex_configfile.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="examples/ex_exceptions.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="examples/ex_gui_particles.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="examples/ex_hash.c">
@@ -81,6 +85,7 @@
 		<Unit filename="include/nilorea/n_file.h" />
 		<Unit filename="include/nilorea/n_games.h" />
 		<Unit filename="include/nilorea/n_gfx.h" />
+		<Unit filename="include/nilorea/n_gui.h" />
 		<Unit filename="include/nilorea/n_hash.h" />
 		<Unit filename="include/nilorea/n_iso_engine.h" />
 		<Unit filename="include/nilorea/n_list.h" />
@@ -90,12 +95,14 @@
 		<Unit filename="include/nilorea/n_neural_networks.h" />
 		<Unit filename="include/nilorea/n_nodup_log.h" />
 		<Unit filename="include/nilorea/n_particles.h" />
+		<Unit filename="include/nilorea/n_particles_A4.h" />
+		<Unit filename="include/nilorea/n_resources.h" />
 		<Unit filename="include/nilorea/n_signals.h" />
+		<Unit filename="include/nilorea/n_stack.h" />
 		<Unit filename="include/nilorea/n_str.h" />
 		<Unit filename="include/nilorea/n_thread_pool.h" />
 		<Unit filename="include/nilorea/n_time.h" />
 		<Unit filename="include/nilorea/n_zlib.h" />
-		<Unit filename="include/nilorea/particle.h" />
 		<Unit filename="mainpage.dox" />
 		<Unit filename="make_linux.sh" />
 		<Unit filename="src/lexmenu.c">
@@ -128,6 +135,9 @@
 		<Unit filename="src/n_gfx.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="src/n_gui.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="src/n_hash.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -155,7 +165,16 @@
 		<Unit filename="src/n_particles.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="src/n_particles_A4.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/n_resources.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="src/n_signals.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/n_stack.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/n_str.c">
@@ -168,9 +187,6 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/n_zlib.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="src/particle.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Extensions>

@@ -16,7 +16,7 @@
 extern "C" {
 #endif
 
-/**\defgroup GUI LEXMENU: quick GUI functions (by spellcaster)
+/**\defgroup LEXMENU LEXMENU : quick GUI functions (by spellcaster)
    \addtogroup GUI
   @{
 */
@@ -52,7 +52,20 @@ extern "C" {
 #define LEX_MENU_ACTIVE   1
 #define LEX_MENU_PRESSED  2
 #define LEX_MENU_DISABLED 3
-
+#define LEX_MENU_ALIGN_LEFT   0
+#define LEX_MENU_ALIGN_TOP    0
+#define LEX_MENU_ALIGN_CENTER 1
+#define LEX_MENU_ALIGN_RIGHT  2
+#define LEX_MENU_ALIGN_BOTTOM 2
+#define LEX_MENU_ON_ENTER     0
+#define LEX_MENU_ON_LEAVE     1
+#define LEX_MENU_ON_PRESS     2
+#define LEX_MENU_ON_RELEASE   3
+#define LEX_MENU_ON_FIRE      4
+#define LEX_MENU_ON_MOVE      5
+#define LEX_MENU_ON_DRAG      6
+#define LEX_MENU_ON_DRAW      7
+#define LEX_MENU_ON_DRAW_DONE 8
 /* There're a couple of "events" thrown by the items.
    You register to an event on a per item base.
 
