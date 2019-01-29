@@ -359,7 +359,7 @@ int main( int argc, char *argv[] )
                     VECTOR3D_SET( tmp_part . acceleration, 0.0, 0.0, 0.0 );
                     VECTOR3D_SET( tmp_part . orientation, 0.0, 0.0, 0.0 );
                     add_particle( particle_system_effects, -1, PIXEL_PART, 1000 + rand()%10000, 1+rand()%3,
-                    al_map_rgba(   55 + rand()%200,  55 + rand()%200, 55 + rand()%200, 10 + rand()%245 ), tmp_part );
+                                  al_map_rgba(   55 + rand()%200,  55 + rand()%200, 55 + rand()%200, 10 + rand()%245 ), tmp_part );
 
                 }
             }

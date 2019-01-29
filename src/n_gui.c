@@ -16,7 +16,7 @@
 #include "nilorea/n_config_file.h"
 
 
-int ngui_cmp_item( void *a , void *b )
+int ngui_cmp_item( void *a, void *b )
 {
     NGUI_ITEM *item_a = (NGUI_ITEM *)a;
     NGUI_ITEM *item_b = (NGUI_ITEM *)b;
@@ -51,10 +51,10 @@ NGUI_ITEM *ngui_new_item( NGUI_DIALOG *dialog, char *id )
     __n_assert( dialog, return NULL );
     __n_assert( id, return NULL );
     void *ptr = NULL ;
-    list_foreach( node , dialog -> item_list )
+    list_foreach( node, dialog -> item_list )
     {
         NGUI_ITEM *item = node -> ptr ;
-        if( item ->id && strstr( item ->id , id ) )
+        if( item ->id && strstr( item ->id, id ) )
         {
             n_log( LOG_DEBUG, "dialog: %s item %s already exist !", dialog -> name, id );
             return NULL ;
@@ -67,7 +67,7 @@ NGUI_ITEM *ngui_new_item( NGUI_DIALOG *dialog, char *id )
     item -> id = strdup( id );
     item -> dialog = dialog ;
 
-    if( list_push_sorted( dialog -> item_list , item , &ngui_cmp_item , &ngui_delete_item ) == FALSE )
+    if( list_push_sorted( dialog -> item_list, item, &ngui_cmp_item, &ngui_delete_item ) == FALSE )
     {
         n_log( LOG_ERR, "dialog: %s impossible to add item %s", dialog -> name, item -> id );
         ngui_delete_item( item );
@@ -283,7 +283,7 @@ int ngui_set_item_text_alignement( NGUI_ITEM *item, int text_alignment )
  *\param h size of dialog
  *\return A new allocated dialog
  */
-NGUI_DIALOG *ngui_new_dialog( char *name, int x, int y, int z ,int w, int h )
+NGUI_DIALOG *ngui_new_dialog( char *name, int x, int y, int z,int w, int h )
 {
     __n_assert( name, return NULL );
     if( w < 1 || h < 1 )
@@ -344,10 +344,10 @@ void ngui_delete_dialog( void *dialog )
  */
 NGUI_DIALOG *ngui_load_from_file( char *file )
 {
-    __n_assert( file , return NULL );
+    __n_assert( file, return NULL );
     int errors = 0 ;
 
-    CONFIG_FILE *config = load_config_file( file , &errors );
+    CONFIG_FILE *config = load_config_file( file, &errors );
     if( !config )
     {
         n_log( LOG_ERR, "Unable to load config file from %s", file );
@@ -357,7 +357,7 @@ NGUI_DIALOG *ngui_load_from_file( char *file )
         n_log( LOG_ERR, "There were %d errors in %s. Check the logs !", errors, file );
 
     }
-   /* get a loaded config value */
+    /* get a loaded config value */
     int nb = get_nb_config_file_sections( config, "DIALOG" );
     n_log( LOG_DEBUG, "%d DIALOG sections", nb );
     for( int it = 0 ; it < nb ; it++ )
@@ -378,7 +378,7 @@ NGUI_DIALOG *ngui_load_from_file( char *file )
         n_log( LOG_INFO, "cache_refresh_interval:%s", (value!=NULL)?value:"NULL" );
         value = get_config_section_value( config, "DIALOG", it, "hide", 0 );
         n_log( LOG_INFO, "cache_refresh_interval:%s", (value!=NULL)?value:"NULL" );
-          int nb_cmd = get_nb_config_file_sections_entries( config, "SECTION_FILE_MULTICMD", it, "command" );
+        int nb_cmd = get_nb_config_file_sections_entries( config, "SECTION_FILE_MULTICMD", it, "command" );
         for( int it1 = 0 ; it1 < nb_cmd ; it1 ++ )
         {
             value = get_config_section_value( config, "SECTION_FILE_MULTICMD", it, "command", it1 );
