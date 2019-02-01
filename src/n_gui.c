@@ -16,7 +16,7 @@
 #include "nilorea/n_config_file.h"
 
 
-int ngui_cmp_item( void *a , void *b )
+int ngui_cmp_item( const void *a , const void *b )
 {
     NGUI_ITEM *item_a = (NGUI_ITEM *)a;
     NGUI_ITEM *item_b = (NGUI_ITEM *)b;
@@ -50,7 +50,7 @@ NGUI_ITEM *ngui_new_item( NGUI_DIALOG *dialog, char *id )
     NGUI_ITEM *item = NULL ;
     __n_assert( dialog, return NULL );
     __n_assert( id, return NULL );
-    void *ptr = NULL ;
+
     list_foreach( node , dialog -> item_list )
     {
         NGUI_ITEM *item = node -> ptr ;
@@ -106,13 +106,15 @@ NGUI_ITEM *ngui_get_item( NGUI_DIALOG *dialog, char *id )
     __n_assert( dialog, return NULL );
     __n_assert( id, return NULL );
 
-    NGUI_ITEM *item = NULL ;
-    if( ht_get_ptr( dialog -> item_list, id, (void **)&item ) == FALSE )
+    list_foreach( node , dialog -> item_list )
     {
-        n_log( LOG_DEBUG, "dialog: %s item %s does not exist !", dialog -> name, id );
-        return NULL ;
+        NGUI_ITEM *item = node -> ptr ;
+        if( item ->id && strstr( item ->id , id ) )
+        {
+            return item ;
+        }
     }
-    return item ;
+    return NULL ;
 } /* ngui_get_item */
 
 
