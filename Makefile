@@ -101,24 +101,26 @@ buildnumber:
 	@cat build-number.txt >> version.h
 	@echo "#endif" >> version.h
 	git tag "$(shell $(majorversion)).$(shell $(minorversion)).$(shell $(buildnum))"
+	
 minor:
 	@echo "    #define BUILD_NUMBER 0" > build-number.new
 	@echo -n "    #define MINOR_VERSION " >> build-number.new
 	@echo `expr $(shell $(minorversion)) + 1` >> build-number.new
 	@echo "    #define MAJOR_VERSION $(shell $(majorversion))" >> build-number.new
 	@mv build-number.new build-number.txt
+	
 major:
 	@echo "    #define BUILD_NUMBER 0" > build-number.new
 	@echo "    #define MINOR_VERSION $(shell $(minorversion))" >> build-number.new
 	@echo -n "    #define MAJOR_VERSION " >> build-number.new
 	@echo `expr $(shell $(majorversion)) + 1` >> build-number.new
 	@mv build-number.new build-number.txt
+	
 displayversion:
-	@build=$(shell $(buildnum))
-	@minor=$(shell $(minorversion))
-	@major=$(shell $(majorversion))
-	@echo Version:$(major).$(minor).$(build)
+	@echo Version:$(shell $(majorversion)).$(shell $(minorversion)).$(shell $(buildnum))
+	
 incmajor: major displayversion
+
 incminor: minor displayversion
 
 all: buildnumber main displayversion
