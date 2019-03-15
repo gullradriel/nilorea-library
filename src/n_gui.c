@@ -35,6 +35,9 @@ int ngui_cmp_item( const void *a , const void *b )
  */
 int ngui_sort_dialog( NGUI_DIALOG *dialog )
 {
+    __n_assert( dialog , return FALSE );
+
+    return TRUE;
     /*list_foreach( )*/
 } /* ngui_sort_dialog */
 
@@ -298,11 +301,12 @@ NGUI_DIALOG *ngui_new_dialog( char *name, int x, int y, int z,int w, int h )
     Malloc( dialog, NGUI_DIALOG, 1 );
     __n_assert( dialog, return NULL );
 
-    dialog -> item_list = new_ht( NGUI_DIALOG_ITEM_HASH_SIZE );
-    dialog -> dialog_list = new_ht( NGUI_DIALOG_LIST_HASH_SIZE );
+    dialog -> item_list = new_generic_list( NGUI_DIALOG_ITEM_HASH_SIZE );
+    dialog -> dialog_list = new_generic_list( NGUI_DIALOG_LIST_HASH_SIZE );
 
     dialog -> x = x ;
     dialog -> y = y ;
+    dialog -> z = z ;
     dialog -> w = w ;
     dialog -> h = h ;
     dialog -> decorations = 0 ;
@@ -330,9 +334,9 @@ void ngui_delete_dialog( void *dialog )
     __n_assert( dialog, return );
     NGUI_DIALOG *ngui_dialog = (NGUI_DIALOG *)dialog ;
     if( ngui_dialog -> item_list )
-        destroy_ht( &ngui_dialog -> item_list );
+        list_destroy( &ngui_dialog -> item_list );
     if( ngui_dialog -> dialog_list )
-        destroy_ht( &ngui_dialog -> dialog_list );
+        list_destroy( &ngui_dialog -> dialog_list );
     FreeNoLog( ngui_dialog -> name );
     /* free resources here */
     FreeNoLog( ngui_dialog );
@@ -389,6 +393,7 @@ NGUI_DIALOG *ngui_load_from_file( char *file )
         }
 
     }
+    return NULL ;
 }
 
 /*!\fn NGUI_DIALOG *ngui_load_from_file( char *file )
