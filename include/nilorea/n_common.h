@@ -257,8 +257,9 @@ void n_abort( char const *format, ... );
 #ifndef __windows__
 int n_daemonize( void );
 #endif
-
-/* get running program current directory */
+/* get running program name */
+char *get_prog_name( void );
+/* get running program directory */
 char *get_prog_dir( void );
 
 int file_exist( const char *filename );
