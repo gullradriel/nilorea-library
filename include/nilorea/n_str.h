@@ -212,6 +212,10 @@ void free_nstr_ptr_nolog( void *ptr );
 int str_to_long_ex( const char *s, NSTRBYTE start, NSTRBYTE end, long int *i, const int base );
 /* String to long integer, shorter version */
 int str_to_long(  const char *s, long int *i,  const int base);
+/* String to long long integer */
+int str_to_long_long_ex(   const char *s, NSTRBYTE start, NSTRBYTE end, long long int *i, const int base );
+/* String to long long integer, shorter version */
+int str_to_long_long(  const char *s, long long int *i,  const int base);
 /* String to integer, with error checking */
 int str_to_int_ex( const char *s, NSTRBYTE start, NSTRBYTE end, int *i, const int base );
 /* String to integer, with error checking */
