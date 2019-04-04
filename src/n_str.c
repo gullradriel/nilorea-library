@@ -41,6 +41,7 @@ const char *strcasestr(const char *s1, const char *s2)
 }
 #endif
 
+
 /*!\fn void free_nstr_ptr( void *ptr )
  *\brief Free a N_STR pointer structure
  *\param ptr A N_STR *object to free
@@ -581,7 +582,7 @@ int str_to_int( const char *s, int *i, const int base )
 
 
 /*!\fn int str_to_long_ex( const char *s , NSTRBYTE start , NSTRBYTE end , long int *i, const int base )
- * \brief Helper for string[start to end] to integer. Automatically add /0 for
+ * \brief Helper for string[start to end] to long integer. Automatically add /0 for
  conversion. Leave values untouched if any error occur. Work on a copy of the
  chunk.
  * \param s String to convert
@@ -606,29 +607,127 @@ int str_to_long_ex( const char *s, NSTRBYTE start, NSTRBYTE end, long int *i, co
 
     errno = 0;
     l = strtol(tmpstr, &endstr, base);
-    if( ( errno == ERANGE && l == LONG_MAX) )
+    int error = errno ;
+
+    /* test return to number and errno values */
+    if (tmpstr == endstr)
     {
-        n_log( LOG_ERR, "OVERFLOW for %s", tmpstr );
+        n_log( LOG_ERR , " number : %lu  invalid  (no digits found, 0 returned)" , l );
         Free( tmpstr );
         return FALSE;
     }
-    if( ( errno == ERANGE && l == LONG_MIN) || l < INT_MIN )
+    else if (error == ERANGE && l == LONG_MIN)
     {
-        n_log( LOG_ERR, "UNDERFLOW reached for %s", tmpstr );
+        n_log( LOG_ERR, " number : %lu  invalid  (underflow occurred)", l );
         Free( tmpstr );
         return FALSE;
     }
-    if( *endstr != '\0' && *endstr != '\n' )
+    else if (error == ERANGE && l == LONG_MAX)
     {
-        n_log( LOG_ERR, "Impossible conversion for %s", tmpstr );
+        n_log( LOG_ERR, " number : %lu  invalid  (overflow occurred)", l );
         Free( tmpstr );
         return FALSE;
+    }
+    else if (error == EINVAL)  /* not in all c99 implementations - gcc OK */
+    {
+        n_log( LOG_ERR, " number : %lu  invalid  (base contains unsupported value)", l );
+        Free( tmpstr );
+        return FALSE;
+    }
+    else if (error != 0 && l == 0)
+    {
+
+        n_log( LOG_ERR, " number : %lu  invalid  (unspecified error occurred)" , l );
+        Free( tmpstr );
+        return FALSE;
+    }
+    else if (error == 0 && tmpstr && !*endstr)
+    {
+        n_log( LOG_DEBUG , " number : %lu    valid  (and represents all characters read)" , l );
+    }
+    else if (error == 0 && tmpstr && *endstr != 0)
+    {
+        n_log( LOG_DEBUG ," number : %lu    valid  (but additional characters remain" , l );
     }
     Free( tmpstr );
     *i = l;
     return TRUE;
 }/* str_to_long_ex( ... ) */
 
+
+
+/*!\fn int str_to_long_long_ex( const char *s , NSTRBYTE start , NSTRBYTE end , long long int *i, const int base )
+ * \brief Helper for string[start to end] to long long integer. Automatically add /0 for
+ conversion. Leave values untouched if any error occur. Work on a copy of the
+ chunk.
+ * \param s String to convert
+ * \param start Start position of the chunk
+ * \param end End position of the chunk
+ * \param i A pointer to an integer variable which will receieve the value.
+ * \param base Base for converting values
+ * \return TRUE or FALSE
+ */
+int str_to_long_long_ex( const char *s, NSTRBYTE start, NSTRBYTE end, long long int *i, const int base )
+{
+    char *tmpstr = NULL ;
+    char *endstr = NULL ;
+    long long  l = 0;
+
+    __n_assert( s, return FALSE );
+
+    Malloc( tmpstr, char,  4 + end - start );
+    __n_assert( tmpstr, n_log( LOG_ERR, "Unable to Malloc( tmpstr , char ,  4 + %d - %d )", end, start ); return FALSE );
+
+    memcpy( tmpstr, s + start, end - start );
+
+    errno = 0;
+    l = strtoll(tmpstr, &endstr, base);
+    int error = errno ;
+
+    /* test return to number and errno values */
+    if (tmpstr == endstr)
+    {
+        n_log( LOG_ERR , " number : %llu  invalid  (no digits found, 0 returned)" , l );
+        Free( tmpstr );
+        return FALSE;
+    }
+    else if (error == ERANGE && l == LLONG_MIN)
+    {
+        n_log( LOG_ERR, " number : %llu  invalid  (underflow occurred)", l );
+        Free( tmpstr );
+        return FALSE;
+    }
+    else if (error == ERANGE && l == LLONG_MAX)
+    {
+        n_log( LOG_ERR, " number : %llu  invalid  (overflow occurred)", l );
+        Free( tmpstr );
+        return FALSE;
+    }
+    else if (error == EINVAL)  /* not in all c99 implementations - gcc OK */
+    {
+        n_log( LOG_ERR, " number : %llu  invalid  (base contains unsupported value)", l );
+        Free( tmpstr );
+        return FALSE;
+    }
+    else if (error != 0 && l == 0)
+    {
+
+        n_log( LOG_ERR, " number : %llu  invalid  (unspecified error occurred)" , l );
+        Free( tmpstr );
+        return FALSE;
+    }
+    else if (error == 0 && tmpstr && !*endstr)
+    {
+        n_log( LOG_DEBUG , " number : %llu    valid  (and represents all characters read)" , l );
+    }
+    else if (error == 0 && tmpstr && *endstr != 0)
+    {
+        n_log( LOG_DEBUG ," number : %llu    valid  (but additional characters remain" , l );
+    }
+    Free( tmpstr );
+    *i = l;
+    return TRUE;
+}/* str_to_long_long_ex( ... ) */
 
 
 
@@ -645,6 +744,25 @@ int str_to_long( const char *s, long int *i, const int base )
     if( s )
     {
         ret = str_to_long_ex( s, 0, strlen( s ), i, base );
+    }
+    return ret ;
+} /* str_to_long(...) */
+
+
+
+/*!\fn int str_to_long_long( const char *s , long int *i, const int base )
+ * \brief Helper for string to integer
+ * \param s String to convert
+ * \param i A pointer to an integer variable which will receieve the value.
+ * \param base Base for converting values
+ * \return TRUE or FALSE
+ */
+int str_to_long_long( const char *s, long long int *i, const int base )
+{
+    int ret = FALSE ;
+    if( s )
+    {
+        ret = str_to_long_long_ex( s, 0, strlen( s ), i, base );
     }
     return ret ;
 } /* str_to_long(...) */
@@ -697,7 +815,7 @@ N_STR *nstrdup( N_STR *str )
  *\param inc an int to specify the step of skipping
  *\return TRUE if success FALSE or ABORT if not
  */
-int skipw( char *string, char toskip, NSTRBYTE *iterator, int inc )
+int skipw( char *string, char toskip, NSTRBYTE *iterator, NSTRBYTE inc )
 {
     int error_flag = 0 ;
     NSTRBYTE previous = 0 ;
