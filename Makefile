@@ -1,11 +1,13 @@
 #
 #       Makefile pour la librairie Nilorea
 #
+
+
+
 ALLEGRO=1
-OPT=-W -Wall -D_XOPEN_SOURCE=600 -D_XOPEN_SOURCE_EXTENTED -std=gnu99 -ggdb3
-#OPT+=-O0
-OPT+=-Og
-#OPT+=-O3
+
+#OPT=-std=c17 -Og -D_XOPEN_SOURCE=600 -D_XOPEN_SOURCE_EXTENTED -g -ggdb3 -pedantic -W -Wall -Wextra -Wcast-align -Wcast-qual -Wdisabled-optimization -Wformat=2 -Winit-self -Wlogical-op -Wmissing-declarations -Wmissing-include-dirs -Wredundant-decls -Wshadow -Wsign-conversion -Wstrict-overflow=5 -Wswitch-default -Wundef -Wno-unused
+OPT=-std=c17 -Og -D_XOPEN_SOURCE=600 -D_XOPEN_SOURCE_EXTENTED -g -ggdb3 -W -Wall -Wextra -Wcast-align -Wcast-qual -Wdisabled-optimization -Wformat=1 -Winit-self -Wlogical-op -Wmissing-include-dirs -Wredundant-decls -Wstrict-overflow=5 -Wswitch-default -Wundef -Wno-unused
 
 RM=rm -f
 CC=gcc
@@ -82,51 +84,50 @@ obj/%.o: src/%.c
 
 endif
 
-buildnum=shell grep BUILD_NUMBER  build-number.txt | awk '{print $$3}'
-minorversion=shell grep MINOR_VERSION build-number.txt | awk '{print $$3}'
-majorversion=shell grep MAJOR_VERSION build-number.txt | awk '{print $$3}'
+#buildnum=(shell grep BUILD_NUMBER  build-number.txt | awk '{print $$3}')
+#minorversion=(shell grep MINOR_VERSION build-number.txt | awk '{print $$3}')
+#majorversion=(shell grep MAJOR_VERSION build-number.txt | awk '{print $$3}')
 
 default: all
 release: all
 debug: all
+all: main
 
-buildnumber:
-	@echo -n "    #define BUILD_NUMBER  " > build-number.new
-	@echo `expr $(shell $(buildnum)) + 1` >> build-number.new
-	@echo "    #define MINOR_VERSION $(shell $(minorversion))" >> build-number.new
-	@echo "    #define MAJOR_VERSION $(shell $(majorversion))" >> build-number.new
-	@mv build-number.new build-number.txt
-	@echo "#ifndef $(PROJECT_NAME)_VERSION" > version.h
-	@echo "    #define $(PROJECT_NAME)_VERSION" >> version.h
-	@cat build-number.txt >> version.h
-	@echo "#endif" >> version.h
-	git tag "$(shell $(majorversion)).$(shell $(minorversion)).$(shell $(buildnum))"
-	
-minor:
-	@echo "    #define BUILD_NUMBER 0" > build-number.new
-	@echo -n "    #define MINOR_VERSION " >> build-number.new
-	@echo `expr $(shell $(minorversion)) + 1` >> build-number.new
-	@echo "    #define MAJOR_VERSION $(shell $(majorversion))" >> build-number.new
-	@mv build-number.new build-number.txt
-	
-major:
-	@echo "    #define BUILD_NUMBER 0" > build-number.new
-	@echo "    #define MINOR_VERSION $(shell $(minorversion))" >> build-number.new
-	@echo -n "    #define MAJOR_VERSION " >> build-number.new
-	@echo `expr $(shell $(majorversion)) + 1` >> build-number.new
-	@mv build-number.new build-number.txt
-	
-displayversion:
-	@echo Version:$(shell $(majorversion)).$(shell $(minorversion)).$(shell $(buildnum))
-	
-incmajor: major displayversion
+#buildnumber:
+#	@echo -n "    #define BUILD_NUMBER  " > build-number.new
+#	@echo `expr $(shell $(buildnum)) + 1` >> build-number.new
+#	@echo "    #define MINOR_VERSION $(shell $(minorversion))" >> build-number.new
+#	@echo "    #define MAJOR_VERSION $(shell $(majorversion))" >> build-number.new
+#	@mv build-number.new build-number.txt
+#	@echo "#ifndef $(PROJECT_NAME)_VERSION" > version.h
+#	@echo "    #define $(PROJECT_NAME)_VERSION" >> version.h
+#	@cat build-number.txt >> version.h
+#	@echo "#endif" >> version.h
+#	git tag "$(shell $(majorversion)).$(shell $(minorversion)).$(shell $(buildnum))"
 
-incminor: minor displayversion
+#minor:
+#	@echo "    #define BUILD_NUMBER 0" > build-number.new
+#	@echo -n "    #define MINOR_VERSION " >> build-number.new
+#	@echo `expr $(shell $(minorversion)) + 1` >> build-number.new
+#	@echo "    #define MAJOR_VERSION $(shell $(majorversion))" >> build-number.new
+#	@mv build-number.new build-number.txt
 
-all: buildnumber main displayversion
+#major:
+#	@echo "    #define BUILD_NUMBER 0" > build-number.new
+#	@echo "    #define MINOR_VERSION $(shell $(minorversion))" >> build-number.new
+#	@echo -n "    #define MAJOR_VERSION " >> build-number.new
+#	@echo `expr $(shell $(majorversion)) + 1` >> build-number.new
+#	@mv build-number.new build-number.txt
+
+#incmajor: major
+
+#incminor: minor
+
+#all: buildnumber main
 
 main: $(OBJECTS)
 	$(AR) -r $(OUTPUT)$(EXT) $(OBJECTS)
+#@echo Version:$(shell $(majorversion)).$(shell $(minorversion)).$(shell $(buildnum))
 
 clean:
 	$(RM) $(OBJECTS)
