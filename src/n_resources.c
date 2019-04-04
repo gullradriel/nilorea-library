@@ -44,19 +44,49 @@ void resource_entry_delete( RESOURCE_ENTRY *resource_entry )
         if( resource_entry -> ptr )
             al_destroy_font( resource_entry -> ptr );
         break;
+    default:
+        break;
     }
     Free( resource_entry );
     return ;
 }
-RESOURCES *resource_new( void );
-void resource_delete( RESOURCES *resource );
+RESOURCES *resource_new( void )
+{
+    return NULL ;
+}
 
-int add_item_to_resource( RESOURCES *resource, int type, char *id, void *ptr, size_t size );
-RESOURCE_ENTRY *get_item_from_resource( RESOURCES *resource, int type, char *id );
 
-int resource_load_data( RESOURCES *resource, char *filename, char *id );
+void resource_delete( RESOURCES *resource )
+{
+    return ;
+}
 
-/* ALLEGRO5 */
-int resource_load_bitmap( RESOURCES *resource, char *bitmap, char *id );
-int resource_load_sample( RESOURCES *resource, char *sample, char *id );
-int resource_load_font( RESOURCES *resource, char *font, char *id );
+int add_item_to_resource( RESOURCES *resource, int type, char *id, void *ptr, size_t size )
+{
+    return FALSE ;
+}
+
+RESOURCE_ENTRY *get_item_from_resource( RESOURCES *resource, int type, char *id )
+{
+    return NULL ;
+}
+
+int resource_load_data( RESOURCES *resource, char *filename, char *id )
+{
+    return FALSE ;
+}
+
+int resource_load_bitmap( RESOURCES *resource, char *bitmap, char *id )
+{
+    return FALSE ;
+}
+
+int resource_load_sample( RESOURCES *resource, char *sample, char *id )
+{
+    return FALSE ;
+}
+
+int resource_load_font( RESOURCES *resource, char *font, char *id )
+{
+    return FALSE ;
+}

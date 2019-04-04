@@ -19,8 +19,8 @@
 
 int ngui_cmp_item( const void *a , const void *b )
 {
-    NGUI_ITEM *item_a = (NGUI_ITEM *)a;
-    NGUI_ITEM *item_b = (NGUI_ITEM *)b;
+    const NGUI_ITEM *item_a = a;
+    const NGUI_ITEM *item_b = b;
     if( item_a -> z > item_b -> z )
         return -1 ;
     if( item_a -> z < item_b -> z )
@@ -396,20 +396,16 @@ NGUI_DIALOG *ngui_load_from_file( char *file )
     return NULL ;
 }
 
-/*!\fn NGUI_DIALOG *ngui_load_from_file( char *file )
- *\brief load a dialog from a file
- *\param file The filename containing the dialog scheme
- *\return NULL or a loaded dialog scheme
- */
-NGUI_DIALOG *ngui_load_from_file( char *file );
-
 
 /*!\fn int ngui_manage( NGUI_DIALOG *dialog );
  *\brief process dialog logic
  *\param dialog the dialog to process
  *\return TRUE or FALSE
  */
-int ngui_manage( NGUI_DIALOG *dialog );
+int ngui_manage( NGUI_DIALOG *dialog )
+{
+    return FALSE ;
+}
 
 
 /*!\fn int ngui_draw( NGUI_DIALOG *dialog );
@@ -417,7 +413,10 @@ int ngui_manage( NGUI_DIALOG *dialog );
  *\param dialog the dialog to draw
  *\return TRUE or FALSE
  */
-int ngui_draw( NGUI_DIALOG *dialog );
+int ngui_draw( NGUI_DIALOG *dialog )
+{
+    return FALSE ;
+}
 
 
 /*!\fn int ngui_destroy( NGUI_DIALOG **dialog );
@@ -425,6 +424,9 @@ int ngui_draw( NGUI_DIALOG *dialog );
  *\param dialog pointer to the dialog to destroy
  *\return TRUE or FALSE
  */
-int ngui_destroy( NGUI_DIALOG **dialog );
+int ngui_destroy( NGUI_DIALOG **dialog )
+{
+    return FALSE ;
+}
 
 
