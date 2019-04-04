@@ -1,6 +1,11 @@
 RM=rm -f
 CC=gcc
 
+OPT= -I../include -std=c17 -pedantic -W -Wall -D_XOPEN_SOURCE=600 -D_XOPEN_SOURCE_EXTENTED -ggdb3
+#OPT+=-O0
+OPT+=-Og
+#OPT+=-O3
+
 VPATH=../src/
 CC=gcc
 LIBNILOREA=-lnilorea
@@ -10,7 +15,7 @@ HAVE_ALLEGRO=1
 
 ifeq ($(OS),Windows_NT)
 
-	CFLAGS+= -I../include -g -W -Wall -D_XOPEN_SOURCE=600 -D_XOPEN_SOURCE_EXTENTED -std=gnu99 -ggdb3 -O0
+	CFLAGS+= $(OPT)
     CLIBS= -Wl,-Bstatic -lpthread -Wl,-Bdynamic -lws2_32  -L../.
 	RM= del /Q
 	CC= gcc
@@ -46,7 +51,7 @@ else
 	CC=gcc
 	EXT=
     ifeq ($(UNAME_S),Linux)
-        CFLAGS+= -I../include -g -W -Wall -D_XOPEN_SOURCE=600 -D_XOPEN_SOURCE_EXTENTED -std=gnu99 -ggdb3 -O0
+        CFLAGS+= $(OPT)
         CLIBS=-L../. -lpthread
     endif
     ifeq ($(UNAME_S),SunOS)
