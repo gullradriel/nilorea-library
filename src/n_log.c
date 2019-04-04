@@ -179,13 +179,13 @@ int _vscprintf_so(const char * format, va_list pargs)
 #ifndef vasprintf
 int vasprintf(char **strp, const char *fmt, va_list ap)
 {
-    int len = _vscprintf_so(fmt, ap);
+    long long int len = _vscprintf_so(fmt, ap);
     if (len == -1)
         return -1;
     char *str = malloc((size_t) len + 1);
     if (!str)
         return -1;
-    int r = vsnprintf(str, len + 1, fmt, ap); /* "secure" version of vsprintf */
+    int r = vsnprintf(str, (size_t)(len+1) , fmt, ap); /* "secure" version of vsprintf */
     if (r == -1)
         return free(str), -1;
     *strp = str;
@@ -248,7 +248,7 @@ void _n_log( int level, const char *file, const char *func, int line, const char
 #ifndef __windows__
             syslog( level, "%s->%s:%d %s", file, func, line, syslogbuffer );
 #else
-            needed = snprintf( NULL, 0, "start /B EventCreate /t %s /id 666 /l APPLICATION /so %s /d \"%s\" > NUL 2>&1", prioritynames[ level ] . w_name, name, syslogbuffer );
+            needed = (unsigned long long)snprintf( NULL, 0, "start /B EventCreate /t %s /id 666 /l APPLICATION /so %s /d \"%s\" > NUL 2>&1", prioritynames[ level ] . w_name, name, syslogbuffer );
             Malloc( eventbuffer, char, needed + 4 );
             sprintf( eventbuffer, "start /B EventCreate /t %s /id 666 /l APPLICATION /so %s /d \"%s\" > NUL 2>&1", prioritynames[ level ] . w_name, name, syslogbuffer );
             system( eventbuffer );
