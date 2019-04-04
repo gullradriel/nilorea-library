@@ -1,10 +1,7 @@
 RM=rm -f
 CC=gcc
-
-OPT= -I../include -std=c17 -pedantic -W -Wall -D_XOPEN_SOURCE=600 -D_XOPEN_SOURCE_EXTENTED -ggdb3
-#OPT+=-O0
-OPT+=-Og
-#OPT+=-O3
+OPT=-D_XOPEN_SOURCE=600 -D_XOPEN_SOURCE_EXTENTED -Og -g -ggdb3 -W -Wall -Wextra -Wcast-align -Wcast-qual -Wdisabled-optimization -Wformat=1 -Winit-self -Wlogical-op -Wmissing-include-dirs -Wredundant-decls -Wstrict-overflow=5 -Wswitch-default -Wundef -Wno-unused
+OPT+= -I../include
 
 VPATH=../src/
 CC=gcc
