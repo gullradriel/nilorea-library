@@ -78,7 +78,7 @@ char *get_prog_dir( void )
 
     int error = 0 ;
 #ifdef __windows__
-    int bytes = GetModuleFileName( NULL, strbuf, PATH_MAX );
+    unsigned long int bytes = GetModuleFileName( NULL, strbuf, PATH_MAX );
     error = errno ;
     if(bytes != 0)
     {
@@ -113,7 +113,7 @@ char *get_prog_name( void )
     char strbuf[ PATH_MAX ] = "" ;
     int error = 0 ;
 #ifdef __windows__
-    int bytes = GetModuleFileName( NULL, strbuf, PATH_MAX );
+    unsigned long int bytes = GetModuleFileName( NULL, strbuf, PATH_MAX );
     error = errno ;
     if(bytes != 0)
     {
