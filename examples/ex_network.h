@@ -32,13 +32,16 @@ void sigchld_handler( int sig )
 }
 #endif
 
+
+
 int send_net_datas( NETWORK *netw, N_STR *data )
 {
+    __n_assert( netw , return FALSE );
+    __n_assert( data , return FALSE );
+
     NETW_MSG *msg = NULL ;
     N_STR *tmpstr = NULL ;
     N_STR *hostname = NULL ;
-
-    __n_assert( netw, return FALSE );
 
     create_msg( &msg );
     __n_assert( msg, return FALSE );

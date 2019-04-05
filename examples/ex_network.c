@@ -4,6 +4,7 @@
  *\version 1.0
  *\date 26/05/2015
  */
+
 #include <stdio.h>
 #include <errno.h>
 
@@ -24,9 +25,9 @@ static pthread_t netw_thr ;
 void usage(void)
 {
     fprintf( stderr, "     -v version\n"
-             "     -V log level: NOLOG, LOG_INFO, LOG_NOTICE, LOG_ERR, LOG_DEBUG\n"
+             "     -V log level: LOG_INFO, LOG_NOTICE, LOG_ERR, LOG_DEBUG\n"
              "     -h help\n"
-             "     -a serveur address name/ip to bind (server mode)\n"
+             "     -a serveur address name/ip to bind (server mode) (optionnal)\n"
              "     -s serveur address name/ip to connect (client mode)\n"
              "     -p port\n"
              "     -i [v4,v6] ip version (default support both ipv4 and ipv6 )\n" );
