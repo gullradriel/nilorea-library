@@ -12,7 +12,7 @@ HAVE_ALLEGRO=1
 
 ifeq ($(OS),Windows_NT)
 
-	CFLAGS+= $(OPT)
+	CFLAGS+= -std=c11 -D__USE_MINGW_ANSI_STDIO $(OPT)
     CLIBS= -Wl,-Bstatic -lpthread -Wl,-Bdynamic -lws2_32  -L../.
 	RM= del /Q
 	CC= gcc

@@ -11,6 +11,20 @@
 #include "nilorea/n_config_file.h"
 
 
+/*!\fn void free_no_null( void *ptr )
+ *\brief local free for config entries
+ *\param ptr the ptr to free
+ */
+void free_no_null( void *ptr )
+{
+    char *strptr = ptr ;
+    if( strptr )
+    {
+        free( strptr );
+    }
+    return ;
+}
+
 /*!\fn void destroy_config_file_section( void *ptr )
  *\brief Destroy a config file section
  *\param ptr A pointer to a config file section
@@ -202,52 +216,87 @@ CONFIG_FILE *load_config_file( char *filename, int *errors )
                 (*errors)++;
                 continue ;
             }
-            if( strlen( trim_nocopy( split_result[ 1 ] ) ) == 0 )
-            {
-                free_split_result( &split_result );
-                n_log( LOG_ERR, "couldn't find value for entry at line %d of %s (string:%s)", line_number, filename, buffer[ start ] );
-                (*errors)++;
-                continue ;
-            }
-            int it = strlen( trim_nocopy( split_result[ 1 ] ) ) ;
+
+            /* value pointer */
+            char *valptr = NULL ;
+            /* flags */
+            int closing_delimiter_found = 0 ;
+            int opening_delimiter_found = 0 ;
+            /* initialize with empty delimiter */
             char delimiter = '\0' ;
-            while( it >= 0 )
-            {
-                if( split_result[ 1 ][ it ] == ';' || split_result[ 1 ][ it ] == '#' )
-                {
-                    split_result[ 1 ][ it ] = '\0' ;
-                    it -- ;
-                    continue ;
-                }
-                if( split_result[ 1 ][ it ] == '"'  || split_result[ 1 ][ it ] == '\'' )
-                {
-                    delimiter = split_result[ 1 ][ it ] ;
-                    split_result[ 1 ][ it ] = '\0' ;
-                    break ;
-                }
-                it-- ;
-            }
-            it = 0 ;
-            while( split_result[ 1 ][ it ] != '\0' )
-            {
-                if( split_result[ 1 ][ it ] == ';' || split_result[ 1 ][ it ] == '#' )
-                {
-                    split_result[ 1 ][ it ] = '\0' ;
-                    it ++ ;
-                    continue ;
-                }
-                if( delimiter != '\0' && split_result[ 1 ][ it ] == delimiter )
-                {
-                    split_result[ 1 ][ it ] = ' ' ;
-                    break ;
-                }
-                it ++ ;
-            }
-            /* New test if key is empty */
+
+            /* If the trimmed value have a zero length it means we only had spaces or tabs
+               In that particular case we set the val to NULL */
             if( strlen( trim_nocopy( split_result[ 1 ] ) ) == 0 )
             {
+                Free( split_result[ 1 ] );
+                valptr = NULL ;
+                delimiter = '\0' ;
+            }
+            else  /* we have a value, or something between delimiters */
+            {
+                valptr = trim_nocopy( split_result[ 1 ] );
+                int it = strlen( valptr );
+
+                /* get value right boundary */
+                while( it >= 0 )
+                {
+                    /* if comments tags replace them with end of string */
+                    if( split_result[ 1 ][ it ] == ';' || split_result[ 1 ][ it ] == '#' )
+                    {
+                        split_result[ 1 ][ it ] = '\0' ;
+                    }
+                    else
+                    {   /* we found a delimiter on the right */
+                        if( split_result[ 1 ][ it ] == '"'  || split_result[ 1 ][ it ] == '\'' )
+                        {
+                            delimiter = split_result[ 1 ][ it ] ;
+                            split_result[ 1 ][ it ] = '\0' ;
+                            closing_delimiter_found = 1 ;
+                            break ;
+                        }
+                    }
+                    it-- ;
+                }
+
+                if( strlen( trim_nocopy( split_result[ 1 ] ) ) == 0 )
+                {
+                    Free( split_result[ 1 ] );
+                    valptr = NULL ;
+                    delimiter = '\0' ;
+                }
+
+                /* get value left boundary */
+                it = 0 ;
+                while( split_result[ 1 ][ it ] != '\0' )
+                {
+                    if( split_result[ 1 ][ it ] == ';' || split_result[ 1 ][ it ] == '#' )
+                    {
+                        split_result[ 1 ][ it ] = '\0' ;
+                    }
+                    else
+                    {
+                        if( delimiter != '\0' && split_result[ 1 ][ it ] == delimiter )
+                        {
+                            opening_delimiter_found = 1 ;
+                            it ++ ;
+                            valptr = split_result[ 1 ]+ it ;
+                            break ;
+                        }
+                        it ++ ;
+                    }
+                }
+                if( strlen( trim_nocopy( split_result[ 1 ] ) ) == 0 )
+                {
+                    Free( split_result[ 1 ] );
+                    valptr = NULL ;
+                    delimiter = '\0' ;
+                }
+            }
+            if( delimiter != '\0' && ( ( opening_delimiter_found && !closing_delimiter_found ) || ( !opening_delimiter_found && closing_delimiter_found ) ) )
+            {
                 free_split_result( &split_result );
-                n_log( LOG_ERR, "Value is empty at line %d of %s (string:%s)", line_number, filename,  buffer );
+                n_log( LOG_ERR, "Only one delimiter found at line %d of %s (string:%s)", line_number, filename, buffer );
                 (*errors)++;
                 continue ;
             }
@@ -265,7 +314,12 @@ CONFIG_FILE *load_config_file( char *filename, int *errors )
                 nb_entry_in_sections ++ ;
                 free_nstr( &entry_key );
             }
-            ht_put_ptr( section -> entries, _nstr( entry_key ), strdup( trim_nocopy( split_result[ 1 ] ) ), free );
+            char *strptr = NULL ;
+            if( valptr )
+            {
+                strptr = strdup( valptr );
+            }
+            ht_put_ptr( section -> entries, _nstr( entry_key ), strptr, &free_no_null );
             free_nstr( &entry_key );
             free_split_result( &split_result );
             continue ;
