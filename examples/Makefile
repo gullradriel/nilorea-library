@@ -48,7 +48,7 @@ else
 	CC=gcc
 	EXT=
     ifeq ($(UNAME_S),Linux)
-        CFLAGS+= $(OPT)
+        CFLAGS+= $(OPT) -std=gnu99
         CLIBS=-L../. -lpthread
     endif
     ifeq ($(UNAME_S),SunOS)
