@@ -8,7 +8,7 @@ CC=gcc
 LIBNILOREA=-lnilorea
 EXT=
 ALLEGRO_CLIBS=
-HAVE_ALLEGRO=1
+HAVE_ALLEGRO=0
 
 ifeq ($(OS),Windows_NT)
 
@@ -48,7 +48,7 @@ else
 	CC=gcc
 	EXT=
     ifeq ($(UNAME_S),Linux)
-        CFLAGS+= $(OPT)
+        CFLAGS+= $(OPT) -std=gnu99
         CLIBS=-L../. -lpthread
     endif
     ifeq ($(UNAME_S),SunOS)
