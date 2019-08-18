@@ -138,7 +138,7 @@ int add_neural_net_layer( NEURAL_NETWORK *neural_net, int x, int y );
 int set_perceptron( NEURAL_NETWORK *neural_net, int layer, int x, int y, int a_func, double bias, double treshold, double output );
 int unset_perceptron( NEURAL_NETWORK *neural_net, int layer, int x, int y );
 int add_perceptron_input( N_PERCEPTRON *n_perceptron, N_PERCEPTRON *input );
-int neural_net_set_input( NEURAK_NETWORK *neural_net, double **input );
+int neural_net_set_input( NEURAL_NETWORK *neural_net, double **input );
 int neural_net_compute( NEURAL_NETWORK *neural_net, double *output );
 
 

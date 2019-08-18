@@ -4,22 +4,19 @@
  *\date 2015-09-21
  */
 
-#ifdef __linux__
 /*! Feature test macro */
 #define _GNU_SOURCE
-#endif
 
+#include <stdio.h>
 #include "nilorea/n_common.h"
 #include "nilorea/n_log.h"
 #include "nilorea/n_str.h"
 #include "nilorea/n_list.h"
 #include "nilorea/n_hash.h"
 
-#ifdef __linux__
 #undef _GNU_SOURCE
-#endif
-#include "nilorea/n_nodup_log.h"
 
+#include "nilorea/n_nodup_log.h"
 
 /*! internal: no dup hash_table log save */
 static HASH_TABLE *_n_nodup_table = NULL ;
