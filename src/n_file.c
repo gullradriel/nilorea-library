@@ -13,7 +13,7 @@ int file_monitor_refresh( HASH_TABLE *filepool )
 {
     ht_foreach( node, filepool )
     {
-        FILE_MONITOR *fmon = hash_value( node, FILE_MONITOR );
+        FILE_MONITOR *fmon = hash_val( node, FILE_MONITOR );
         if( node && node -> ptr && fmon )
         {
 
