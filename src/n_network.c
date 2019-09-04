@@ -21,6 +21,7 @@
 
 #ifdef __windows__
 
+/* if __GNUC__ > 4 || (__GNUC__ == 4 && __GNUC_MINOR__ > 5) */
 #if __GNUC__ <= 6 && __GNUC_MINOR__ <= 3
 
 /*--------------------------------------------------------------------------------------
@@ -904,7 +905,7 @@ int netw_connect_ex( NETWORK **netw, char *host, char *port, int disable_naggle,
         }
         net_status = connect( sock, rp -> ai_addr, rp -> ai_addrlen );
         /*storing connected port and ip adress*/
-        if( !inet_ntop( rp->ai_family, get_in_addr( (struct sockaddr *)rp -> ai_addr ), (*netw) -> link . ip, INET6_ADDRSTRLEN ) )
+        if(!inet_ntop( rp->ai_family, get_in_addr( (struct sockaddr *)rp -> ai_addr ), (*netw) -> link . ip , INET6_ADDRSTRLEN ))
         {
             n_log( LOG_ERR, "inet_ntop: %p , %s", rp, strerror( errno ) );
         }

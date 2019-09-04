@@ -5,6 +5,10 @@
  */
 
 #include "nilorea/n_debug_mem.h"
+#include "nilorea/n_log.h"
+#include "nilorea/n_hash.h"
+
+
 
 /*! global table of allocation */
 static DEBUG_MEM_TABLE __debug_mem_table ;

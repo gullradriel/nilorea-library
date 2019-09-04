@@ -127,6 +127,7 @@ all: main
 
 main: $(OBJECTS)
 	$(AR) -r $(OUTPUT)$(EXT) $(OBJECTS)
+#gcc --enable-runtime-pseudo-reloc -shared -o $(OUTPUT)$(EXT).dll $(OBJECTS) -Wl,--out-implib,$(OUTPUT)$(EXT)
 #@echo Version:$(shell $(majorversion)).$(shell $(minorversion)).$(shell $(buildnum))
 
 clean:

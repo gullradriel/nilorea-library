@@ -32,7 +32,7 @@ static uint32_t rotl32 ( uint32_t x, int8_t r )
 
 #endif
 
-/*!\fn FORCE_INLINE uint32_t getblock( const uint32_t *p , int i )
+/*!\fn FORCE_INLINE uint32_t getblock( const uint32_t *p, int i )
  *\brief Block read - (from murmur's author)
  if your platform needs to do endian-swapping or can only
  handle aligned reads, do the conversion here
