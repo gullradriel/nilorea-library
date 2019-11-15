@@ -606,6 +606,9 @@ NETWORK *netw_new( int send_list_limit, int recv_list_limit )
     netw -> crypto_mode = NETW_CRYPTO_NONE ;
     netw -> crypto_algo = NETW_ENCRYPT_NONE ;
 
+    netw -> send_data = &send_data;
+    netw -> send_data = &recv_data;
+
     return netw ;
 
 } /* netw_new() */
@@ -846,64 +849,30 @@ int netw_setsockopt( SOCKET sock, int disable_naggle, int sock_send_buf, int soc
 
 
 #ifdef HAVE_OPENSSL
+int netw_set_crypto( NETWORK *netw , char *key , char *certificat , char *vigenere )
+{
+    __n_assert( netw , return FALSE );
 
-    /* Protocol negociation */
-    int crypt_type_count = 0 ;
-    if( (ssl&NETW_ENCRYPT_NONE) ){ n_log( LOG_DEBUG , "%d: NETW_ENCRYPT_NONE asked" , netw -> link . sock ); crypt_type_count ++ ; }
-    if( (ssl&NETW_ENCRYPT_VIGENERE) ){ n_log( LOG_DEBUG , "%d: NETW_ENCRYPT_VIGENERE asked" , netw -> link . sock ); crypt_type_count ++ ; }
-    if( (ssl&NETW_ENCRYPT_OPENSSL) ){ n_log( LOG_DEBUG , "%d: NETW_ENCRYPT_OPENSSL asked" , netw -> link . sock ); crypt_type_count ++ ; }
-    if( crypt_type_count > 1 )
+    if( key && strlen( key ) > 0 )
     {
-        n_log( LOG_ERR , "%d: more than one NETW_ENCRYPT_ mode in ssl flags, interrupting" , netw -> link . sock );
-        netw_close( &(*netw) );
-        return FALSE ;
+        netw -> key = strdup( key );
     }
-    int crypt_mode_count = 0 ;
-    if( (ssl&NETW_CRYPTO_MANDATORY) ){ n_log( LOG_DEBUG , "%d: NETW_CRYPTO_MANDATORY asked" , netw -> link . sock ); crypt_mode_count ++ ; }
-    if( (ssl&NETW_CRYPTO_NEGOCIATE) ){ n_log( LOG_DEBUG , "%d: NETW_CRYPTO_NEGOCIATE asked" , netw -> link . sock ); crypt_mode_count ++ ; }
-    if( (ssl&NETW_CRYPTO_NONE) ){ n_log( LOG_DEBUG , "%d: NETW_CRYPTO_NONE asked" , netw -> link . sock ); crypt_mode_count ++ ; }
-    if( crypt_mode_count > 1 )
+    if( certificat && strlen( certificat ) > 0 )
     {
-        n_log( LOG_ERR , "%d: more than one NETW_CRYPTO_ mode in ssl flags, interrupting" , netw -> link . sock );
-        netw_close( &(*netw) );
-        return FALSE ;
+        netw -> certificat = strdup( certificat );
+    }
+    if( vigenere && strlen( vigenere ) > 0 )
+    {
+        netw -> vigenere = strdup( vigenere );
     }
 
-    /* negociating crypto mode */
-    int sslflag = htonl( ssl );
-    char negociation_pkt[ NSTRBYTE ];
-    memcpy( negociation_pkt , &sslflag, sizeof( NSTRBYTE ) );
-    n_log( LOG_DEBUG, "%d: sending crypto mode", netw -> link . sock );
-    int net_status = send_data( netw -> link . sock , negociation_pkt , sizeof( NSTRBYTE ) );
-    if( net_status < 0 )
-    {
-        n_log( LOG_ERR , "%d: error while sending crypto mode request" , netw -> link . sock );
-        netw_close( &(*netw) );
-        return FALSE ;
-    }
-    /* answer from server / check disconnect */
-    int net_status = recv_data( netw -> link . sock , negociation_pkt , sizeof( NSTRBYTE ) );
-    if( net_status < 0 )
-    {
-        n_log( LOG_ERR , "%d: error while receiving crypto mode request" , netw -> link . sock );
-        netw_close( &(*netw) );
-        return FALSE ;
-    }
-    memcpy( &sslflag , negociation_pkt , sizeof( NSTRBYTE ) );
-    int srv_ssl = htonl( sslflag );
-
-    if( (ssl&NETW_CRYPTO_NONE) && ( !(srv_ssl&NETW_CRYPTO_NONE)  )
-    {
-        n_log( LOG_ERR , "%d: server refused NETW_CRYPTO_NONE" , netw -> link . sock )
-    }
-    if( (ssl&NETW_CRYPTO_NEGOCIATE) && !(srv_ssl&NETW_CRYPTO_NEGOCIATE) )
-    {
-        n_log( LOG_ERR , "%d: server refused NETW_CRYPTO_NEGOCIATE" , netw -> link . sock )
-    }
-
-*\param ssl one of NETW_ENCRYPT_NONE , NETW_ENCRYPT_VIGENERE , NETW_ENCRYPT_OPENSSL combined with one of NETW_CRYPTO_NONE , NETW_CRYPTO_NEGOCIATE , NETW_CRYPTO_MANDATORY
+    netw_init_openssl();
 
 
+
+
+
+} /* netw_set_crypto */
 
 
 #endif // HAVE_OPENSSL
@@ -1197,6 +1166,9 @@ int netw_close( NETWORK **netw )
 
     FreeNoLog( (*netw) -> link . ip );
     FreeNoLog( (*netw) -> link . port );
+    FreeNoLog( (*netw) -> key );
+    FreeNoLog( (*netw) -> certificat );
+    FreeNoLog( (*netw) -> vigenere_key );
 
     if( (*netw) -> addr_infos_loaded == 1 )
         freeaddrinfo( (*netw) -> link . rhost );
@@ -1763,7 +1735,7 @@ void *netw_send_func( void *NET )
             nboctet = htonl( NETW_EXIT_ASKED );
             memcpy( nboct, &nboctet, sizeof( NSTRBYTE ) );
             n_log( LOG_DEBUG, "%d Sending Quit !", netw -> link . sock );
-            net_status = send_data( netw -> link . sock, nboct, sizeof( NSTRBYTE ) );
+            net_status = netw->send_data( netw -> link . sock, nboct, sizeof( NSTRBYTE ) );
             if( net_status < 0 )
                 DONE = 4 ;
             n_log( LOG_DEBUG, "%d Quit sent!", netw -> link . sock );
@@ -1785,7 +1757,7 @@ void *netw_send_func( void *NET )
                     /* sending state */
                     if ( !DONE )
                     {
-                        net_status = send_data( netw -> link . sock, nboct, sizeof( NSTRBYTE ) );
+                        net_status = netw->send_data( netw -> link . sock, nboct, sizeof( NSTRBYTE ) );
                         if( net_status < 0 )
                             DONE = 1 ;
                     }
@@ -1795,14 +1767,14 @@ void *netw_send_func( void *NET )
                         nboctet = htonl( ptr -> written );
                         memcpy( nboct, &nboctet, sizeof( NSTRBYTE ) );
                         /* sending the number of octet to receive on next message */
-                        net_status = send_data( netw -> link . sock, nboct, sizeof( NSTRBYTE ) );
+                        net_status = netw->send_data( netw -> link . sock, nboct, sizeof( NSTRBYTE ) );
                         if( net_status < 0 )
                             DONE = 2 ;
                     }
                     /* sending the data itself */
                     if ( !DONE )
                     {
-                        net_status = send_data( netw -> link . sock, ptr -> data, ptr -> written );
+                        net_status = netw->send_data( netw -> link . sock, ptr -> data, ptr -> written );
                         if( net_status < 0 )
                             DONE = 3 ;
                     }
@@ -1896,7 +1868,7 @@ void *netw_recv_func( void *NET )
                 if( !(state&NETW_PAUSE) )
                 {
                     /* receiving state */
-                    net_status = recv_data( netw -> link . sock, nboct, sizeof( NSTRBYTE ) );
+                    net_status = netw->recv_data( netw -> link . sock, nboct, sizeof( NSTRBYTE ) );
                     if( net_status < 0 )
                     {
                         DONE = 1 ;
@@ -1916,7 +1888,7 @@ void *netw_recv_func( void *NET )
                         else
                         {
                             /* receiving nboctet */
-                            net_status = recv_data( netw -> link . sock, nboct, sizeof( NSTRBYTE ) );
+                            net_status = netw->recv_data( netw -> link . sock, nboct, sizeof( NSTRBYTE ) );
                             if( net_status < 0 )
                             {
                                 DONE = 2 ;
@@ -1934,7 +1906,7 @@ void *netw_recv_func( void *NET )
                                 recvdmsg -> written = nboctet ;
 
                                 /* receiving the data itself */
-                                net_status = recv_data( netw -> link . sock, recvdmsg -> data, nboctet );
+                                net_status = netw->recv_data( netw -> link . sock, recvdmsg -> data, nboctet );
                                 if( net_status < 0 )
                                 {
                                     DONE = 3 ;

@@ -200,6 +200,9 @@ typedef int SOCKET ;
 /*! PHP send and receive header size */
 #define HEAD_CODE 3
 
+/*! send/recv func ptr type */
+typedef int (*netw_func)( SOCKET , char * , NSTRBYTE );
+
 /*! Structure of a N_SOCKET */
 typedef struct N_SOCKET
 {
@@ -255,6 +258,11 @@ typedef struct NETWORK
 
     /*! vigenere key */
     char *vigenere_key ;
+
+    /*! send func ptr */
+    netw_func send_data ,
+        /*! receive func ptr */
+        recv_data ;
 
     #ifdef HAVE_OPENSSL
     SSL_CTX *ctx ;
