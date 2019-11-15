@@ -603,6 +603,8 @@ NETWORK *netw_new( int send_list_limit, int recv_list_limit )
     netw -> so_sndbuf = 0 ;
     netw -> so_rcvbuf = 0 ;
     netw -> tcpnodelay = 0 ;
+    netw -> crypto_mode = NETW_CRYPTO_NONE ;
+    netw -> crypto_algo = NETW_ENCRYPT_NONE ;
 
     return netw ;
 
@@ -645,14 +647,14 @@ void *get_in_addr(struct sockaddr *sa)
 
 
 
-/*!\fn int handle_wsa( int mode , int v1 , int v2 )
- *\brief Do not directly use, internal api.
+/*!\fn int netw_init_wsa( int mode , int v1 , int v2 )
+ *\brief Do not directly use, internal api. Initialize winsock dll loading on windows if needed.
  *\param mode 1 for opening 0 for close 2 for status
  *\param v1 First digit of version requested
  *\param v2 Second digit of version requested
  *\return TRUE on success FALSE on error
  */
-int handle_wsa( int mode, int v1, int v2 )
+int netw_init_wsa( int mode, int v1, int v2 )
 {
     int compiler_warning_suppressor = 0 ;
 #if !defined( __linux__ ) && !defined( __sun ) && !defined( _AIX )
@@ -696,7 +698,32 @@ int handle_wsa( int mode, int v1, int v2 )
     compiler_warning_suppressor = mode + v1 + v2 ;
     compiler_warning_suppressor = TRUE ;
     return compiler_warning_suppressor ;
-} /*handle_wsa(...)*/
+} /*netw_init_wsa(...)*/
+
+
+/*!\fn int netw_init_openssl( void )
+ *\brief Do not directly use, internal api. Initialize openssl
+ *\return TRUE
+ */
+int netw_init_openssl( void )
+{
+    static int OPENSSL_IS_INITIALIZED = 0; /*status checking*/
+
+    if ( OPENSSL_IS_INITIALIZED == 1 )
+        return TRUE; /*already loaded*/
+
+    #ifdef HAVE_OPENSSL
+    SSL_load_error_strings();
+    SSL_library_init();
+    ERR_load_BIO_strings();
+    OpenSSL_add_all_algorithms();
+    OpenSSL_add_all_algorithms();
+    #endif
+
+    OPENSSL_IS_INITIALIZED = 1 ;
+
+    return TRUE ;
+} /*netw_init_openssl(...)*/
 
 
 
@@ -818,6 +845,71 @@ int netw_setsockopt( SOCKET sock, int disable_naggle, int sock_send_buf, int soc
 
 
 
+#ifdef HAVE_OPENSSL
+
+    /* Protocol negociation */
+    int crypt_type_count = 0 ;
+    if( (ssl&NETW_ENCRYPT_NONE) ){ n_log( LOG_DEBUG , "%d: NETW_ENCRYPT_NONE asked" , netw -> link . sock ); crypt_type_count ++ ; }
+    if( (ssl&NETW_ENCRYPT_VIGENERE) ){ n_log( LOG_DEBUG , "%d: NETW_ENCRYPT_VIGENERE asked" , netw -> link . sock ); crypt_type_count ++ ; }
+    if( (ssl&NETW_ENCRYPT_OPENSSL) ){ n_log( LOG_DEBUG , "%d: NETW_ENCRYPT_OPENSSL asked" , netw -> link . sock ); crypt_type_count ++ ; }
+    if( crypt_type_count > 1 )
+    {
+        n_log( LOG_ERR , "%d: more than one NETW_ENCRYPT_ mode in ssl flags, interrupting" , netw -> link . sock );
+        netw_close( &(*netw) );
+        return FALSE ;
+    }
+    int crypt_mode_count = 0 ;
+    if( (ssl&NETW_CRYPTO_MANDATORY) ){ n_log( LOG_DEBUG , "%d: NETW_CRYPTO_MANDATORY asked" , netw -> link . sock ); crypt_mode_count ++ ; }
+    if( (ssl&NETW_CRYPTO_NEGOCIATE) ){ n_log( LOG_DEBUG , "%d: NETW_CRYPTO_NEGOCIATE asked" , netw -> link . sock ); crypt_mode_count ++ ; }
+    if( (ssl&NETW_CRYPTO_NONE) ){ n_log( LOG_DEBUG , "%d: NETW_CRYPTO_NONE asked" , netw -> link . sock ); crypt_mode_count ++ ; }
+    if( crypt_mode_count > 1 )
+    {
+        n_log( LOG_ERR , "%d: more than one NETW_CRYPTO_ mode in ssl flags, interrupting" , netw -> link . sock );
+        netw_close( &(*netw) );
+        return FALSE ;
+    }
+
+    /* negociating crypto mode */
+    int sslflag = htonl( ssl );
+    char negociation_pkt[ NSTRBYTE ];
+    memcpy( negociation_pkt , &sslflag, sizeof( NSTRBYTE ) );
+    n_log( LOG_DEBUG, "%d: sending crypto mode", netw -> link . sock );
+    int net_status = send_data( netw -> link . sock , negociation_pkt , sizeof( NSTRBYTE ) );
+    if( net_status < 0 )
+    {
+        n_log( LOG_ERR , "%d: error while sending crypto mode request" , netw -> link . sock );
+        netw_close( &(*netw) );
+        return FALSE ;
+    }
+    /* answer from server / check disconnect */
+    int net_status = recv_data( netw -> link . sock , negociation_pkt , sizeof( NSTRBYTE ) );
+    if( net_status < 0 )
+    {
+        n_log( LOG_ERR , "%d: error while receiving crypto mode request" , netw -> link . sock );
+        netw_close( &(*netw) );
+        return FALSE ;
+    }
+    memcpy( &sslflag , negociation_pkt , sizeof( NSTRBYTE ) );
+    int srv_ssl = htonl( sslflag );
+
+    if( (ssl&NETW_CRYPTO_NONE) && ( !(srv_ssl&NETW_CRYPTO_NONE)  )
+    {
+        n_log( LOG_ERR , "%d: server refused NETW_CRYPTO_NONE" , netw -> link . sock )
+    }
+    if( (ssl&NETW_CRYPTO_NEGOCIATE) && !(srv_ssl&NETW_CRYPTO_NEGOCIATE) )
+    {
+        n_log( LOG_ERR , "%d: server refused NETW_CRYPTO_NEGOCIATE" , netw -> link . sock )
+    }
+
+*\param ssl one of NETW_ENCRYPT_NONE , NETW_ENCRYPT_VIGENERE , NETW_ENCRYPT_OPENSSL combined with one of NETW_CRYPTO_NONE , NETW_CRYPTO_NEGOCIATE , NETW_CRYPTO_MANDATORY
+
+
+
+
+#endif // HAVE_OPENSSL
+
+
+
 /*!\fn int netw_connect_ex(NETWORK **netw , char *host , char *port, int disable_naggle , int sock_send_buf , int sock_recv_buf , int send_list_limit , int recv_list_limit , int ip_version )
  *\brief Use this to connect a NETWORK to any listening one
  *\param netw a NETWORK *object
@@ -831,7 +923,7 @@ int netw_setsockopt( SOCKET sock, int disable_naggle, int sock_send_buf, int soc
  *\param ip_version NETWORK_IPALL for both ipv4 and ipv6 , NETWORK_IPV4 or NETWORK_IPV6
  *\return TRUE or FALSE
  */
-int netw_connect_ex( NETWORK **netw, char *host, char *port, int disable_naggle, int sock_send_buf, int sock_recv_buf, int send_list_limit, int recv_list_limit, int ip_version  )
+int netw_connect_ex( NETWORK **netw, char *host, char *port, int disable_naggle, int sock_send_buf, int sock_recv_buf, int send_list_limit, int recv_list_limit, int ip_version )
 {
     int error = 0,net_status = 0;
 
@@ -847,12 +939,13 @@ int netw_connect_ex( NETWORK **netw, char *host, char *port, int disable_naggle,
     __n_assert( (*netw), return FALSE );
 
     /*checking WSA when under windows*/
-    if ( handle_wsa( 1, 2, 2 ) == FALSE )
+    if ( netw_init_wsa( 1, 2, 2 ) == FALSE )
     {
         n_log( LOG_ERR, "Unable to load WSA dll's" );
         Free( (*netw) );
         return FALSE ;
     }
+
     /*creating array*/
     if( ip_version == NETWORK_IPV4 )
     {
@@ -938,9 +1031,13 @@ int netw_connect_ex( NETWORK **netw, char *host, char *port, int disable_naggle,
         n_log( LOG_ERR, "inet_ntop: %p , %s", rp, strerror( errno ) );
     }
 
-
     (*netw)->link . port = strdup( port );
     __n_assert( (*netw) -> link . port, netw_close( &(*netw ) ); return FALSE );
+
+    (*netw) -> key = NULL ;
+    (*netw) -> certificat = NULL ;
+    (*netw) -> vigenere_key = NULL ;
+
 
     n_log( LOG_DEBUG, "Connected to %s:%s", (*netw) -> link . ip, (*netw) -> link . port );
 
@@ -1201,7 +1298,7 @@ int netw_wait_close( NETWORK **netw )
 int netw_make_listening( NETWORK **netw, char *addr, char *port, int nbpending, int ip_version )
 {
     /*checking WSA when under windows*/
-    if ( handle_wsa( 1, 2, 2 ) == FALSE )
+    if ( netw_init_wsa( 1, 2, 2 ) == FALSE )
     {
         n_log( LOG_ERR, "Unable to load WSA dll's" );
         return FALSE ;
@@ -1327,7 +1424,7 @@ NETWORK *netw_accept_from_ex( NETWORK *from, int disable_naggle, int sock_send_b
     NETWORK *netw = NULL ;
 
     /*checking WSA when under windows*/
-    if( handle_wsa( 1, 2, 2 ) == FALSE )
+    if( netw_init_wsa( 1, 2, 2 ) == FALSE )
     {
         n_log( LOG_ERR, "Unable to load WSA dll's" );
         return NULL ;
@@ -1972,8 +2069,6 @@ int send_data( SOCKET s, char *buf, NSTRBYTE n )
 
     return bcount;
 } /*send_data(...)*/
-
-
 
 /*!\fn recv_data( SOCKET s , char *buf, NSTRBYTE n )
  *\brief recv data from the socket
