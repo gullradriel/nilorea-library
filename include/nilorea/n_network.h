@@ -265,6 +265,9 @@ typedef struct NETWORK
         recv_data ;
 
     #ifdef HAVE_OPENSSL
+    /*! SSL method container */
+    SSL_METHOD *method ;
+    /*! SSL context holder */
     SSL_CTX *ctx ;
     #endif
 

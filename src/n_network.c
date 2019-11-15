@@ -704,31 +704,6 @@ int netw_init_wsa( int mode, int v1, int v2 )
 } /*netw_init_wsa(...)*/
 
 
-/*!\fn int netw_init_openssl( void )
- *\brief Do not directly use, internal api. Initialize openssl
- *\return TRUE
- */
-int netw_init_openssl( void )
-{
-    static int OPENSSL_IS_INITIALIZED = 0; /*status checking*/
-
-    if ( OPENSSL_IS_INITIALIZED == 1 )
-        return TRUE; /*already loaded*/
-
-    #ifdef HAVE_OPENSSL
-    SSL_load_error_strings();
-    SSL_library_init();
-    ERR_load_BIO_strings();
-    OpenSSL_add_all_algorithms();
-    OpenSSL_add_all_algorithms();
-    #endif
-
-    OPENSSL_IS_INITIALIZED = 1 ;
-
-    return TRUE ;
-} /*netw_init_openssl(...)*/
-
-
 
 /*!\fn int netw_setsockopt( SOCKET sock , int disable_naggle , int sock_send_buf , int sock_recv_buf )
  *\brief Modify common socket options. Enable SO_REUSEADDR.
@@ -849,6 +824,141 @@ int netw_setsockopt( SOCKET sock, int disable_naggle, int sock_send_buf, int soc
 
 
 #ifdef HAVE_OPENSSL
+/***************************************************************************
+ *                                  _   _ ____  _
+ *  Project                     ___| | | |  _ \| |
+ *                             / __| | | | |_) | |
+ *                            | (__| |_| |  _ <| |___
+ *                             \___|\___/|_| \_\_____|
+ *
+ * Copyright (C) 1998 - 2019, Daniel Stenberg, <daniel@haxx.se>, et al.
+ *
+ * This software is licensed as described in the file COPYING, which
+ * you should have received as part of this distribution. The terms
+ * are also available at https://curl.haxx.se/docs/copyright.html.
+ *
+ * You may opt to use, copy, modify, merge, publish, distribute and/or sell
+ * copies of the Software, and permit persons to whom the Software is
+ * furnished to do so, under the terms of the COPYING file.
+ *
+ * This software is distributed on an "AS IS" basis, WITHOUT WARRANTY OF ANY
+ * KIND, either express or implied.
+ *
+ ***************************************************************************/
+/* <DESC>
+ * Show the required mutex callback setups for GnuTLS and OpenSSL when using
+ * libcurl multi-threaded.
+ * </DESC>
+ */
+/* A multi-threaded example that uses pthreads and fetches 4 remote files at
+ * once over HTTPS. The lock callbacks and stuff assume OpenSSL <1.1 or GnuTLS
+ * (libgcrypt) so far.
+ *
+ * OpenSSL docs for this:
+ *   https://www.openssl.org/docs/man1.0.2/man3/CRYPTO_num_locks.html
+ * gcrypt docs for this:
+ *   https://gnupg.org/documentation/manuals/gcrypt/Multi_002dThreading.html
+ */
+
+/* we have this global to let the callback get easy access to it */
+static pthread_mutex_t *lockarray;
+
+static void lock_callback(int mode, int type, char *file, int line)
+{
+  (void)file;
+  (void)line;
+  if(mode & CRYPTO_LOCK) {
+    pthread_mutex_lock(&(lockarray[type]));
+  }
+  else {
+    pthread_mutex_unlock(&(lockarray[type]));
+  }
+}
+
+static unsigned long thread_id(void)
+{
+  unsigned long ret;
+
+  ret = (unsigned long)pthread_self();
+  return ret;
+}
+
+static void init_locks(void)
+{
+  int i;
+
+  lockarray = (pthread_mutex_t *)OPENSSL_malloc(CRYPTO_num_locks() *
+                                                sizeof(pthread_mutex_t));
+  for(i = 0; i<CRYPTO_num_locks(); i++) {
+    pthread_mutex_init(&(lockarray[i]), NULL);
+  }
+
+  CRYPTO_set_id_callback((unsigned long (*)())thread_id);
+  CRYPTO_set_locking_callback((void (*)())lock_callback);
+}
+
+static void kill_locks(void)
+{
+  int i;
+
+  CRYPTO_set_locking_callback(NULL);
+  for(i = 0; i<CRYPTO_num_locks(); i++)
+    pthread_mutex_destroy(&(lockarray[i]));
+
+  OPENSSL_free(lockarray);
+}
+
+
+/*!\fn int netw_init_openssl( void )
+ *\brief Do not directly use, internal api. Initialize openssl
+ *\return TRUE
+ */
+int netw_init_openssl( void )
+{
+    static int OPENSSL_IS_INITIALIZED = 0; /*status checking*/
+
+    if ( OPENSSL_IS_INITIALIZED == 1 )
+        return TRUE; /*already loaded*/
+
+    #ifdef HAVE_OPENSSL
+    SSL_library_init();
+    SSL_load_error_strings();
+    ERR_load_BIO_strings();
+    OpenSSL_add_all_algorithms();
+    OpenSSL_add_all_algorithms();
+    init_locks();
+    #endif
+
+    OPENSSL_IS_INITIALIZED = 1 ;
+
+    return TRUE ;
+} /*netw_init_openssl(...)*/
+
+/*!\fn int netw_unload_openssl( void )
+ *\brief Do not directly use, internal api. Initialize openssl
+ *\return TRUE
+ */
+int netw_init_openssl( void )
+{
+    static int OPENSSL_IS_INITIALIZED = 0; /*status checking*/
+
+    if ( OPENSSL_IS_INITIALIZED == 1 )
+        return TRUE; /*already loaded*/
+
+    #ifdef HAVE_OPENSSL
+    SSL_load_error_strings();
+    SSL_library_init();
+    ERR_load_BIO_strings();
+    OpenSSL_add_all_algorithms();
+    OpenSSL_add_all_algorithms();
+    init_locks();
+    #endif
+
+    OPENSSL_IS_INITIALIZED = 1 ;
+
+    return TRUE ;
+} /*netw_init_openssl(...)*/
+
 int netw_set_crypto( NETWORK *netw , char *key , char *certificat , char *vigenere )
 {
     __n_assert( netw , return FALSE );
@@ -867,6 +977,20 @@ int netw_set_crypto( NETWORK *netw , char *key , char *certificat , char *vigene
     }
 
     netw_init_openssl();
+
+    netw -> method = TLSv1_2_method();         /* create new server-method instance */
+    netw -> ctx    = SSL_CTX_new(method);      /* create new context from method */
+    if ( ctx == NULL )
+    {
+        unsigned long error = 0 ;
+        while( error = ERR_get_error() )
+        {
+            n_log( LOG_ERR , "%s on socket %d" , ERR_reason_error_string( ERR_get_error() , NULL ) );
+        }
+
+        EVP_CIPHER_CTX_free( netw -> ctx  );
+        return FALSE ;
+    }
 
 
 
