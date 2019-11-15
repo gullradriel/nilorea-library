@@ -9,6 +9,7 @@
 
 #include <pthread.h>
 #include <string.h>
+#include <inttypes.h>
 
 #ifndef __windows__
 #include <syslog.h>
@@ -257,11 +258,7 @@ void _n_log( int level, const char *file, const char *func, int line, const char
             FreeNoLog( eventbuffer );
             break ;
         default:
-#if defined( __x86_64__ )
-            fprintf( out, "%s:%lld %s->%s:%d ", prioritynames[ level ] . c_name, time( NULL ), file, func, line  );
-#else
-            fprintf( out, "%s:%ld %s->%s:%d ", prioritynames[ level ] . c_name, time( NULL ), file, func, line  );
-#endif
+            fprintf( out, "%s:%" PRId64 " %s->%s:%d ", prioritynames[ level ] . c_name, time( NULL ), file, func, line  );
             va_start (args, format);
             vfprintf( out, format, args );
             va_end( args );
