@@ -18,6 +18,9 @@ extern "C"
   @{
   */
 
+#include <sys/types.h>
+#include <unistd.h>
+
 /*! feature test macro */
 #define __EXTENSIONS__
 
@@ -261,8 +264,10 @@ int n_daemonize( void );
 char *get_prog_name( void );
 /* get running program directory */
 char *get_prog_dir( void );
-
+/* test file presence*/
 int file_exist( const char *filename );
+/* non blocking system call */
+pid_t system_nb(const char * command, int * infp, int * outfp);
 
 /*@}*/
 
