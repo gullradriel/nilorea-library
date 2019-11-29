@@ -36,8 +36,8 @@ void sigchld_handler( int sig )
 
 int send_net_datas( NETWORK *netw, N_STR *data )
 {
-    __n_assert( netw , return FALSE );
-    __n_assert( data , return FALSE );
+    __n_assert( netw, return FALSE );
+    __n_assert( data, return FALSE );
 
     NETW_MSG *msg = NULL ;
     N_STR *tmpstr = NULL ;

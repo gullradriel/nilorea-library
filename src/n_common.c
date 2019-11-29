@@ -203,21 +203,22 @@ int n_daemonize( void )
  */
 pid_t system_nb(const char * command, int * infp, int * outfp)
 {
-    __n_assert( command , return -1 );
+    __n_assert( command, return -1 );
 
-    int p_stdin[2] = { -1 , -1 };
-    int p_stdout[2] = { -1 , -1 };
+    int p_stdin[2] = { -1, -1 };
+    int p_stdout[2] = { -1, -1 };
     pid_t pid = -1 ;
 
     if( pipe( p_stdin ) == -1 )
     {
-        n_log( LOG_ERR , "Couldn't pipe stdin for command %s" , command );
+        n_log( LOG_ERR, "Couldn't pipe stdin for command %s", command );
         return -1;
     }
-    if (pipe(p_stdout) == -1) {
+    if (pipe(p_stdout) == -1)
+    {
         close(p_stdin[0]);
         close(p_stdin[1]);
-        n_log( LOG_ERR , "Couldn't pipe stdout for command %s" , command );
+        n_log( LOG_ERR, "Couldn't pipe stdout for command %s", command );
         return -1;
     }
 
@@ -228,7 +229,7 @@ pid_t system_nb(const char * command, int * infp, int * outfp)
         close(p_stdin[1]);
         close(p_stdout[0]);
         close(p_stdout[1]);
-        n_log( LOG_ERR , "Couldn't fork command %s" , command );
+        n_log( LOG_ERR, "Couldn't fork command %s", command );
         return pid;
     }
     else if (pid == 0)

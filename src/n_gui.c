@@ -17,7 +17,7 @@
 
 
 
-int ngui_cmp_item( const void *a , const void *b )
+int ngui_cmp_item( const void *a, const void *b )
 {
     const NGUI_ITEM *item_a = a;
     const NGUI_ITEM *item_b = b;
@@ -35,7 +35,7 @@ int ngui_cmp_item( const void *a , const void *b )
  */
 int ngui_sort_dialog( NGUI_DIALOG *dialog )
 {
-    __n_assert( dialog , return FALSE );
+    __n_assert( dialog, return FALSE );
 
     return TRUE;
     /*list_foreach( )*/
@@ -55,7 +55,7 @@ NGUI_ITEM *ngui_new_item( NGUI_DIALOG *dialog, char *id )
     __n_assert( dialog, return NULL );
     __n_assert( id, return NULL );
 
-    list_foreach( node , dialog -> item_list )
+    list_foreach( node, dialog -> item_list )
     {
         NGUI_ITEM *item = node -> ptr ;
         if( item ->id && strstr( item ->id, id ) )
@@ -110,10 +110,10 @@ NGUI_ITEM *ngui_get_item( NGUI_DIALOG *dialog, char *id )
     __n_assert( dialog, return NULL );
     __n_assert( id, return NULL );
 
-    list_foreach( node , dialog -> item_list )
+    list_foreach( node, dialog -> item_list )
     {
         NGUI_ITEM *item = node -> ptr ;
-        if( item ->id && strstr( item ->id , id ) )
+        if( item ->id && strstr( item ->id, id ) )
         {
             return item ;
         }

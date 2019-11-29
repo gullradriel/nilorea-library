@@ -201,7 +201,7 @@ typedef int SOCKET ;
 #define HEAD_CODE 3
 
 /*! send/recv func ptr type */
-typedef int (*netw_func)( SOCKET , char * , NSTRBYTE );
+typedef int (*netw_func)( SOCKET, char *, NSTRBYTE );
 
 /*! Structure of a N_SOCKET */
 typedef struct N_SOCKET
@@ -245,31 +245,31 @@ typedef struct NETWORK
         /*! size of the socket send buffer, 0 untouched, else size in bytes */
         so_sndbuf,
         /*! size of the socket recv buffer, 0 untouched, else size in bytes */
-        so_rcvbuf ,
+        so_rcvbuf,
         /*! tell if the socket have to be encrypted (flags NETW_CRYPTO_*) */
-        crypto_mode ,
+        crypto_mode,
         /*! if encryption is on, which one (flags NETW_ENCRYPT_*) */
         crypto_algo ;
 
     /*! openssl certificat file */
     char *certificat,
-        /*! openssl key file */
-        *key ;
+         /*! openssl key file */
+         *key ;
 
     /*! vigenere key */
     char *vigenere_key ;
 
     /*! send func ptr */
-    netw_func send_data ,
-        /*! receive func ptr */
-        recv_data ;
+    netw_func send_data,
+              /*! receive func ptr */
+              recv_data ;
 
-    #ifdef HAVE_OPENSSL
+#ifdef HAVE_OPENSSL
     /*! SSL method container */
     SSL_METHOD *method ;
     /*! SSL context holder */
     SSL_CTX *ctx ;
-    #endif
+#endif
 
     /*!networking socket*/
     N_SOCKET link;
@@ -295,9 +295,9 @@ typedef struct NETWORK
 
 #ifdef HAVE_OPENSSL
 /* set the certificat and private key file to use */
-int netw_set_sll_files( NETWORK *netw , char *cert , char *key );
+int netw_set_sll_files( NETWORK *netw, char *cert, char *key );
 /* set a vigenere key to use */
-int netw_set_vigenere_key( NETWORK *netw , char *vigenere_key );
+int netw_set_vigenere_key( NETWORK *netw, char *vigenere_key );
 /* negociate and initialize encryptions if any */
 int netw_do_crypto_handshake( NETWORK *netw );
 /* init ssl helper */

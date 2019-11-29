@@ -247,7 +247,8 @@ CONFIG_FILE *load_config_file( char *filename, int *errors )
                         split_result[ 1 ][ it ] = '\0' ;
                     }
                     else
-                    {   /* we found a delimiter on the right */
+                    {
+                        /* we found a delimiter on the right */
                         if( split_result[ 1 ][ it ] == '"'  || split_result[ 1 ][ it ] == '\'' )
                         {
                             delimiter = split_result[ 1 ][ it ] ;

@@ -865,47 +865,50 @@ static pthread_mutex_t *lockarray;
 
 static void lock_callback(int mode, int type, char *file, int line)
 {
-  (void)file;
-  (void)line;
-  if(mode & CRYPTO_LOCK) {
-    pthread_mutex_lock(&(lockarray[type]));
-  }
-  else {
-    pthread_mutex_unlock(&(lockarray[type]));
-  }
+    (void)file;
+    (void)line;
+    if(mode & CRYPTO_LOCK)
+    {
+        pthread_mutex_lock(&(lockarray[type]));
+    }
+    else
+    {
+        pthread_mutex_unlock(&(lockarray[type]));
+    }
 }
 
 static unsigned long thread_id(void)
 {
-  unsigned long ret;
+    unsigned long ret;
 
-  ret = (unsigned long)pthread_self();
-  return ret;
+    ret = (unsigned long)pthread_self();
+    return ret;
 }
 
 static void init_locks(void)
 {
-  int i;
+    int i;
 
-  lockarray = (pthread_mutex_t *)OPENSSL_malloc(CRYPTO_num_locks() *
-                                                sizeof(pthread_mutex_t));
-  for(i = 0; i<CRYPTO_num_locks(); i++) {
-    pthread_mutex_init(&(lockarray[i]), NULL);
-  }
+    lockarray = (pthread_mutex_t *)OPENSSL_malloc(CRYPTO_num_locks() *
+                sizeof(pthread_mutex_t));
+    for(i = 0; i<CRYPTO_num_locks(); i++)
+    {
+        pthread_mutex_init(&(lockarray[i]), NULL);
+    }
 
-  CRYPTO_set_id_callback((unsigned long (*)())thread_id);
-  CRYPTO_set_locking_callback((void (*)())lock_callback);
+    CRYPTO_set_id_callback((unsigned long (*)())thread_id);
+    CRYPTO_set_locking_callback((void (*)())lock_callback);
 }
 
 static void kill_locks(void)
 {
-  int i;
+    int i;
 
-  CRYPTO_set_locking_callback(NULL);
-  for(i = 0; i<CRYPTO_num_locks(); i++)
-    pthread_mutex_destroy(&(lockarray[i]));
+    CRYPTO_set_locking_callback(NULL);
+    for(i = 0; i<CRYPTO_num_locks(); i++)
+        pthread_mutex_destroy(&(lockarray[i]));
 
-  OPENSSL_free(lockarray);
+    OPENSSL_free(lockarray);
 }
 
 
@@ -920,14 +923,14 @@ int netw_init_openssl( void )
     if ( OPENSSL_IS_INITIALIZED == 1 )
         return TRUE; /*already loaded*/
 
-    #ifdef HAVE_OPENSSL
+#ifdef HAVE_OPENSSL
     SSL_library_init();
     SSL_load_error_strings();
     ERR_load_BIO_strings();
     OpenSSL_add_all_algorithms();
     OpenSSL_add_all_algorithms();
     init_locks();
-    #endif
+#endif
 
     OPENSSL_IS_INITIALIZED = 1 ;
 
@@ -945,23 +948,23 @@ int netw_init_openssl( void )
     if ( OPENSSL_IS_INITIALIZED == 1 )
         return TRUE; /*already loaded*/
 
-    #ifdef HAVE_OPENSSL
+#ifdef HAVE_OPENSSL
     SSL_load_error_strings();
     SSL_library_init();
     ERR_load_BIO_strings();
     OpenSSL_add_all_algorithms();
     OpenSSL_add_all_algorithms();
     init_locks();
-    #endif
+#endif
 
     OPENSSL_IS_INITIALIZED = 1 ;
 
     return TRUE ;
 } /*netw_init_openssl(...)*/
 
-int netw_set_crypto( NETWORK *netw , char *key , char *certificat , char *vigenere )
+int netw_set_crypto( NETWORK *netw, char *key, char *certificat, char *vigenere )
 {
-    __n_assert( netw , return FALSE );
+    __n_assert( netw, return FALSE );
 
     if( key && strlen( key ) > 0 )
     {
@@ -985,7 +988,7 @@ int netw_set_crypto( NETWORK *netw , char *key , char *certificat , char *vigene
         unsigned long error = 0 ;
         while( error = ERR_get_error() )
         {
-            n_log( LOG_ERR , "%s on socket %d" , ERR_reason_error_string( ERR_get_error() , NULL ) );
+            n_log( LOG_ERR, "%s on socket %d", ERR_reason_error_string( ERR_get_error(), NULL ) );
         }
 
         EVP_CIPHER_CTX_free( netw -> ctx  );
@@ -1091,7 +1094,7 @@ int netw_connect_ex( NETWORK **netw, char *host, char *port, int disable_naggle,
         }
         net_status = connect( sock, rp -> ai_addr, rp -> ai_addrlen );
         /*storing connected port and ip adress*/
-        if(!inet_ntop( rp->ai_family, get_in_addr( (struct sockaddr *)rp -> ai_addr ), (*netw) -> link . ip , INET6_ADDRSTRLEN ))
+        if(!inet_ntop( rp->ai_family, get_in_addr( (struct sockaddr *)rp -> ai_addr ), (*netw) -> link . ip, INET6_ADDRSTRLEN ))
         {
             n_log( LOG_ERR, "inet_ntop: %p , %s", rp, strerror( errno ) );
         }
