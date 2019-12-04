@@ -603,6 +603,11 @@ NETWORK *netw_new( int send_list_limit, int recv_list_limit )
     netw -> so_sndbuf = 0 ;
     netw -> so_rcvbuf = 0 ;
     netw -> tcpnodelay = 0 ;
+    netw -> crypto_mode = NETW_CRYPTO_NONE ;
+    netw -> crypto_algo = NETW_ENCRYPT_NONE ;
+
+    netw -> send_data = &send_data;
+    netw -> send_data = &recv_data;
 
     return netw ;
 
@@ -645,14 +650,14 @@ void *get_in_addr(struct sockaddr *sa)
 
 
 
-/*!\fn int handle_wsa( int mode , int v1 , int v2 )
- *\brief Do not directly use, internal api.
+/*!\fn int netw_init_wsa( int mode , int v1 , int v2 )
+ *\brief Do not directly use, internal api. Initialize winsock dll loading on windows if needed.
  *\param mode 1 for opening 0 for close 2 for status
  *\param v1 First digit of version requested
  *\param v2 Second digit of version requested
  *\return TRUE on success FALSE on error
  */
-int handle_wsa( int mode, int v1, int v2 )
+int netw_init_wsa( int mode, int v1, int v2 )
 {
     int compiler_warning_suppressor = 0 ;
 #if !defined( __linux__ ) && !defined( __sun ) && !defined( _AIX )
@@ -696,7 +701,7 @@ int handle_wsa( int mode, int v1, int v2 )
     compiler_warning_suppressor = mode + v1 + v2 ;
     compiler_warning_suppressor = TRUE ;
     return compiler_warning_suppressor ;
-} /*handle_wsa(...)*/
+} /*netw_init_wsa(...)*/
 
 
 
@@ -818,6 +823,189 @@ int netw_setsockopt( SOCKET sock, int disable_naggle, int sock_send_buf, int soc
 
 
 
+#ifdef HAVE_OPENSSL
+/***************************************************************************
+ *                                  _   _ ____  _
+ *  Project                     ___| | | |  _ \| |
+ *                             / __| | | | |_) | |
+ *                            | (__| |_| |  _ <| |___
+ *                             \___|\___/|_| \_\_____|
+ *
+ * Copyright (C) 1998 - 2019, Daniel Stenberg, <daniel@haxx.se>, et al.
+ *
+ * This software is licensed as described in the file COPYING, which
+ * you should have received as part of this distribution. The terms
+ * are also available at https://curl.haxx.se/docs/copyright.html.
+ *
+ * You may opt to use, copy, modify, merge, publish, distribute and/or sell
+ * copies of the Software, and permit persons to whom the Software is
+ * furnished to do so, under the terms of the COPYING file.
+ *
+ * This software is distributed on an "AS IS" basis, WITHOUT WARRANTY OF ANY
+ * KIND, either express or implied.
+ *
+ ***************************************************************************/
+/* <DESC>
+ * Show the required mutex callback setups for GnuTLS and OpenSSL when using
+ * libcurl multi-threaded.
+ * </DESC>
+ */
+/* A multi-threaded example that uses pthreads and fetches 4 remote files at
+ * once over HTTPS. The lock callbacks and stuff assume OpenSSL <1.1 or GnuTLS
+ * (libgcrypt) so far.
+ *
+ * OpenSSL docs for this:
+ *   https://www.openssl.org/docs/man1.0.2/man3/CRYPTO_num_locks.html
+ * gcrypt docs for this:
+ *   https://gnupg.org/documentation/manuals/gcrypt/Multi_002dThreading.html
+ */
+
+/* we have this global to let the callback get easy access to it */
+static pthread_mutex_t *lockarray;
+
+static void lock_callback(int mode, int type, char *file, int line)
+{
+    (void)file;
+    (void)line;
+    if(mode & CRYPTO_LOCK)
+    {
+        pthread_mutex_lock(&(lockarray[type]));
+    }
+    else
+    {
+        pthread_mutex_unlock(&(lockarray[type]));
+    }
+}
+
+static unsigned long thread_id(void)
+{
+    unsigned long ret;
+
+    ret = (unsigned long)pthread_self();
+    return ret;
+}
+
+static void init_locks(void)
+{
+    int i;
+
+    lockarray = (pthread_mutex_t *)OPENSSL_malloc(CRYPTO_num_locks() *
+                sizeof(pthread_mutex_t));
+    for(i = 0; i<CRYPTO_num_locks(); i++)
+    {
+        pthread_mutex_init(&(lockarray[i]), NULL);
+    }
+
+    CRYPTO_set_id_callback((unsigned long (*)())thread_id);
+    CRYPTO_set_locking_callback((void (*)())lock_callback);
+}
+
+static void kill_locks(void)
+{
+    int i;
+
+    CRYPTO_set_locking_callback(NULL);
+    for(i = 0; i<CRYPTO_num_locks(); i++)
+        pthread_mutex_destroy(&(lockarray[i]));
+
+    OPENSSL_free(lockarray);
+}
+
+
+/*!\fn int netw_init_openssl( void )
+ *\brief Do not directly use, internal api. Initialize openssl
+ *\return TRUE
+ */
+int netw_init_openssl( void )
+{
+    static int OPENSSL_IS_INITIALIZED = 0; /*status checking*/
+
+    if ( OPENSSL_IS_INITIALIZED == 1 )
+        return TRUE; /*already loaded*/
+
+#ifdef HAVE_OPENSSL
+    SSL_library_init();
+    SSL_load_error_strings();
+    ERR_load_BIO_strings();
+    OpenSSL_add_all_algorithms();
+    OpenSSL_add_all_algorithms();
+    init_locks();
+#endif
+
+    OPENSSL_IS_INITIALIZED = 1 ;
+
+    return TRUE ;
+} /*netw_init_openssl(...)*/
+
+/*!\fn int netw_unload_openssl( void )
+ *\brief Do not directly use, internal api. Initialize openssl
+ *\return TRUE
+ */
+int netw_init_openssl( void )
+{
+    static int OPENSSL_IS_INITIALIZED = 0; /*status checking*/
+
+    if ( OPENSSL_IS_INITIALIZED == 1 )
+        return TRUE; /*already loaded*/
+
+#ifdef HAVE_OPENSSL
+    SSL_load_error_strings();
+    SSL_library_init();
+    ERR_load_BIO_strings();
+    OpenSSL_add_all_algorithms();
+    OpenSSL_add_all_algorithms();
+    init_locks();
+#endif
+
+    OPENSSL_IS_INITIALIZED = 1 ;
+
+    return TRUE ;
+} /*netw_init_openssl(...)*/
+
+int netw_set_crypto( NETWORK *netw, char *key, char *certificat, char *vigenere )
+{
+    __n_assert( netw, return FALSE );
+
+    if( key && strlen( key ) > 0 )
+    {
+        netw -> key = strdup( key );
+    }
+    if( certificat && strlen( certificat ) > 0 )
+    {
+        netw -> certificat = strdup( certificat );
+    }
+    if( vigenere && strlen( vigenere ) > 0 )
+    {
+        netw -> vigenere = strdup( vigenere );
+    }
+
+    netw_init_openssl();
+
+    netw -> method = TLSv1_2_method();         /* create new server-method instance */
+    netw -> ctx    = SSL_CTX_new(method);      /* create new context from method */
+    if ( ctx == NULL )
+    {
+        unsigned long error = 0 ;
+        while( error = ERR_get_error() )
+        {
+            n_log( LOG_ERR, "%s on socket %d", ERR_reason_error_string( ERR_get_error(), NULL ) );
+        }
+
+        EVP_CIPHER_CTX_free( netw -> ctx  );
+        return FALSE ;
+    }
+
+
+
+
+
+} /* netw_set_crypto */
+
+
+#endif // HAVE_OPENSSL
+
+
+
 /*!\fn int netw_connect_ex(NETWORK **netw , char *host , char *port, int disable_naggle , int sock_send_buf , int sock_recv_buf , int send_list_limit , int recv_list_limit , int ip_version )
  *\brief Use this to connect a NETWORK to any listening one
  *\param netw a NETWORK *object
@@ -831,7 +1019,7 @@ int netw_setsockopt( SOCKET sock, int disable_naggle, int sock_send_buf, int soc
  *\param ip_version NETWORK_IPALL for both ipv4 and ipv6 , NETWORK_IPV4 or NETWORK_IPV6
  *\return TRUE or FALSE
  */
-int netw_connect_ex( NETWORK **netw, char *host, char *port, int disable_naggle, int sock_send_buf, int sock_recv_buf, int send_list_limit, int recv_list_limit, int ip_version  )
+int netw_connect_ex( NETWORK **netw, char *host, char *port, int disable_naggle, int sock_send_buf, int sock_recv_buf, int send_list_limit, int recv_list_limit, int ip_version )
 {
     int error = 0,net_status = 0;
 
@@ -847,12 +1035,13 @@ int netw_connect_ex( NETWORK **netw, char *host, char *port, int disable_naggle,
     __n_assert( (*netw), return FALSE );
 
     /*checking WSA when under windows*/
-    if ( handle_wsa( 1, 2, 2 ) == FALSE )
+    if ( netw_init_wsa( 1, 2, 2 ) == FALSE )
     {
         n_log( LOG_ERR, "Unable to load WSA dll's" );
         Free( (*netw) );
         return FALSE ;
     }
+
     /*creating array*/
     if( ip_version == NETWORK_IPV4 )
     {
@@ -905,7 +1094,7 @@ int netw_connect_ex( NETWORK **netw, char *host, char *port, int disable_naggle,
         }
         net_status = connect( sock, rp -> ai_addr, rp -> ai_addrlen );
         /*storing connected port and ip adress*/
-        if(!inet_ntop( rp->ai_family, get_in_addr( (struct sockaddr *)rp -> ai_addr ), (*netw) -> link . ip , INET6_ADDRSTRLEN ))
+        if(!inet_ntop( rp->ai_family, get_in_addr( (struct sockaddr *)rp -> ai_addr ), (*netw) -> link . ip, INET6_ADDRSTRLEN ))
         {
             n_log( LOG_ERR, "inet_ntop: %p , %s", rp, strerror( errno ) );
         }
@@ -938,9 +1127,13 @@ int netw_connect_ex( NETWORK **netw, char *host, char *port, int disable_naggle,
         n_log( LOG_ERR, "inet_ntop: %p , %s", rp, strerror( errno ) );
     }
 
-
     (*netw)->link . port = strdup( port );
     __n_assert( (*netw) -> link . port, netw_close( &(*netw ) ); return FALSE );
+
+    (*netw) -> key = NULL ;
+    (*netw) -> certificat = NULL ;
+    (*netw) -> vigenere_key = NULL ;
+
 
     n_log( LOG_DEBUG, "Connected to %s:%s", (*netw) -> link . ip, (*netw) -> link . port );
 
@@ -1100,6 +1293,9 @@ int netw_close( NETWORK **netw )
 
     FreeNoLog( (*netw) -> link . ip );
     FreeNoLog( (*netw) -> link . port );
+    FreeNoLog( (*netw) -> key );
+    FreeNoLog( (*netw) -> certificat );
+    FreeNoLog( (*netw) -> vigenere_key );
 
     if( (*netw) -> addr_infos_loaded == 1 )
         freeaddrinfo( (*netw) -> link . rhost );
@@ -1201,7 +1397,7 @@ int netw_wait_close( NETWORK **netw )
 int netw_make_listening( NETWORK **netw, char *addr, char *port, int nbpending, int ip_version )
 {
     /*checking WSA when under windows*/
-    if ( handle_wsa( 1, 2, 2 ) == FALSE )
+    if ( netw_init_wsa( 1, 2, 2 ) == FALSE )
     {
         n_log( LOG_ERR, "Unable to load WSA dll's" );
         return FALSE ;
@@ -1327,7 +1523,7 @@ NETWORK *netw_accept_from_ex( NETWORK *from, int disable_naggle, int sock_send_b
     NETWORK *netw = NULL ;
 
     /*checking WSA when under windows*/
-    if( handle_wsa( 1, 2, 2 ) == FALSE )
+    if( netw_init_wsa( 1, 2, 2 ) == FALSE )
     {
         n_log( LOG_ERR, "Unable to load WSA dll's" );
         return NULL ;
@@ -1666,7 +1862,7 @@ void *netw_send_func( void *NET )
             nboctet = htonl( NETW_EXIT_ASKED );
             memcpy( nboct, &nboctet, sizeof( NSTRBYTE ) );
             n_log( LOG_DEBUG, "%d Sending Quit !", netw -> link . sock );
-            net_status = send_data( netw -> link . sock, nboct, sizeof( NSTRBYTE ) );
+            net_status = netw->send_data( netw -> link . sock, nboct, sizeof( NSTRBYTE ) );
             if( net_status < 0 )
                 DONE = 4 ;
             n_log( LOG_DEBUG, "%d Quit sent!", netw -> link . sock );
@@ -1688,7 +1884,7 @@ void *netw_send_func( void *NET )
                     /* sending state */
                     if ( !DONE )
                     {
-                        net_status = send_data( netw -> link . sock, nboct, sizeof( NSTRBYTE ) );
+                        net_status = netw->send_data( netw -> link . sock, nboct, sizeof( NSTRBYTE ) );
                         if( net_status < 0 )
                             DONE = 1 ;
                     }
@@ -1698,14 +1894,14 @@ void *netw_send_func( void *NET )
                         nboctet = htonl( ptr -> written );
                         memcpy( nboct, &nboctet, sizeof( NSTRBYTE ) );
                         /* sending the number of octet to receive on next message */
-                        net_status = send_data( netw -> link . sock, nboct, sizeof( NSTRBYTE ) );
+                        net_status = netw->send_data( netw -> link . sock, nboct, sizeof( NSTRBYTE ) );
                         if( net_status < 0 )
                             DONE = 2 ;
                     }
                     /* sending the data itself */
                     if ( !DONE )
                     {
-                        net_status = send_data( netw -> link . sock, ptr -> data, ptr -> written );
+                        net_status = netw->send_data( netw -> link . sock, ptr -> data, ptr -> written );
                         if( net_status < 0 )
                             DONE = 3 ;
                     }
@@ -1799,7 +1995,7 @@ void *netw_recv_func( void *NET )
                 if( !(state&NETW_PAUSE) )
                 {
                     /* receiving state */
-                    net_status = recv_data( netw -> link . sock, nboct, sizeof( NSTRBYTE ) );
+                    net_status = netw->recv_data( netw -> link . sock, nboct, sizeof( NSTRBYTE ) );
                     if( net_status < 0 )
                     {
                         DONE = 1 ;
@@ -1819,7 +2015,7 @@ void *netw_recv_func( void *NET )
                         else
                         {
                             /* receiving nboctet */
-                            net_status = recv_data( netw -> link . sock, nboct, sizeof( NSTRBYTE ) );
+                            net_status = netw->recv_data( netw -> link . sock, nboct, sizeof( NSTRBYTE ) );
                             if( net_status < 0 )
                             {
                                 DONE = 2 ;
@@ -1837,7 +2033,7 @@ void *netw_recv_func( void *NET )
                                 recvdmsg -> written = nboctet ;
 
                                 /* receiving the data itself */
-                                net_status = recv_data( netw -> link . sock, recvdmsg -> data, nboctet );
+                                net_status = netw->recv_data( netw -> link . sock, recvdmsg -> data, nboctet );
                                 if( net_status < 0 )
                                 {
                                     DONE = 3 ;
@@ -1972,8 +2168,6 @@ int send_data( SOCKET s, char *buf, NSTRBYTE n )
 
     return bcount;
 } /*send_data(...)*/
-
-
 
 /*!\fn recv_data( SOCKET s , char *buf, NSTRBYTE n )
  *\brief recv data from the socket

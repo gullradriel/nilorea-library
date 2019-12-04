@@ -186,7 +186,7 @@ int vasprintf(char **strp, const char *fmt, va_list ap)
     char *str = malloc((size_t) len + 1);
     if (!str)
         return -1;
-    int r = vsnprintf(str, (size_t)(len+1) , fmt, ap); /* "secure" version of vsprintf */
+    int r = vsnprintf(str, (size_t)(len+1), fmt, ap);  /* "secure" version of vsprintf */
     if (r == -1)
         return free(str), -1;
     *strp = str;

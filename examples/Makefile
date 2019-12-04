@@ -1,6 +1,6 @@
 RM=rm -f
 CC=gcc
-OPT=-D_XOPEN_SOURCE=600 -D_XOPEN_SOURCE_EXTENTED -Og -g -ggdb3 -W -Wall -Wextra -Wcast-align -Wcast-qual -Wdisabled-optimization -Wformat=1 -Winit-self -Wlogical-op -Wmissing-include-dirs -Wredundant-decls -Wstrict-overflow=5 -Wswitch-default -Wundef -Wno-unused
+OPT=-D_XOPEN_SOURCE=600 -D_XOPEN_SOURCE_EXTENTED -Og -g -W -Wall -Wextra -Wcast-align -Wcast-qual -Wdisabled-optimization -Wformat=1 -Winit-self -Wlogical-op -Wmissing-include-dirs -Wredundant-decls -Wstrict-overflow=5 -Wswitch-default -Wundef -Wno-unused
 OPT+= -I../include
 
 VPATH=../src/
@@ -9,11 +9,12 @@ LIBNILOREA=-lnilorea
 EXT=
 ALLEGRO_CLIBS=
 HAVE_ALLEGRO=0
+HAVE_OPENSSL=0
 
 ifeq ($(OS),Windows_NT)
 
 	CFLAGS+= -std=c11 -D__USE_MINGW_ANSI_STDIO $(OPT)
-    CLIBS= -Wl,-Bstatic -lpthread -Wl,-Bdynamic -lws2_32  -L../.
+    CLIBS= -Wl,-Bstatic -lpthread -Wl,-Bdynamic -lws2_32 -L../.
 	RM= del /Q
 	CC= gcc
 
@@ -54,13 +55,13 @@ else
     ifeq ($(UNAME_S),SunOS)
         CC=cc
         CFLAGS+= -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -g -v -xc99 -I ../include/ -mt
-        CLIBS=-lm -lsocket -lnsl -lpthread -lrt -L..
+        CLIBS=-lm -lsocket -lnsl -lpthread -lpcre -lrt -L..
 	LIBNILOREA=-lnilorea
 	EXT=
     endif
 endif
 
-TARGET=ex_list$(EXT) ex_nstr$(EXT) ex_exceptions$(EXT) ex_hash$(EXT) ex_network$(EXT) ex_monolith$(EXT) ex_configfile$(EXT)
+TARGET=ex_list$(EXT) ex_nstr$(EXT) ex_exceptions$(EXT) ex_hash$(EXT) ex_network$(EXT) ex_monolith$(EXT) ex_configfile$(EXT) ex_pcre$(EXT)
 
 ifeq ($(HAVE_ALLEGRO),1)
 	#CLIBS=`pkg-config --cflags --libs allegro-5 allegro_acodec-5 allegro_audio-5 allegro_color-5 allegro_dialog-5 allegro_font-5 allegro_image-5 allegro_main-5 allegro_memfile-5 allegro_physfs-5 allegro_primitives-5 allegro_ttf-5`
@@ -99,6 +100,9 @@ ex_signals$(EXT): n_log.o n_list.o n_str.o n_hash.o n_signals.o ex_signals.o
 
 ex_gui_particles$(EXT): ex_gui_particles.o
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ -L.. -Bstatic $(LIBNILOREA) -Bdynamic $(CLIBS) $(ALLEGRO_CLIBS)
+
+ex_pcre$(EXT): n_log.o n_pcre.o ex_pcre.o
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(CLIBS) -lpcre
 
 clean:
 	$(RM) *.o

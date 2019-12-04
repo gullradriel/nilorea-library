@@ -612,7 +612,7 @@ int str_to_long_ex( const char *s, NSTRBYTE start, NSTRBYTE end, long int *i, co
     /* test return to number and errno values */
     if (tmpstr == endstr)
     {
-        n_log( LOG_ERR , " number : %lu  invalid  (no digits found, 0 returned)" , l );
+        n_log( LOG_ERR, " number : %lu  invalid  (no digits found, 0 returned)", l );
         Free( tmpstr );
         return FALSE;
     }
@@ -637,17 +637,17 @@ int str_to_long_ex( const char *s, NSTRBYTE start, NSTRBYTE end, long int *i, co
     else if (error != 0 && l == 0)
     {
 
-        n_log( LOG_ERR, " number : %lu  invalid  (unspecified error occurred)" , l );
+        n_log( LOG_ERR, " number : %lu  invalid  (unspecified error occurred)", l );
         Free( tmpstr );
         return FALSE;
     }
     else if (error == 0 && tmpstr && !*endstr)
     {
-        n_log( LOG_DEBUG , " number : %lu    valid  (and represents all characters read)" , l );
+        n_log( LOG_DEBUG, " number : %lu    valid  (and represents all characters read)", l );
     }
     else if (error == 0 && tmpstr && *endstr != 0)
     {
-        n_log( LOG_DEBUG ," number : %lu    valid  (but additional characters remain" , l );
+        n_log( LOG_DEBUG," number : %lu    valid  (but additional characters remain", l );
     }
     Free( tmpstr );
     *i = l;
@@ -687,7 +687,7 @@ int str_to_long_long_ex( const char *s, NSTRBYTE start, NSTRBYTE end, long long 
     /* test return to number and errno values */
     if (tmpstr == endstr)
     {
-        n_log( LOG_ERR , " number : %llu  invalid  (no digits found, 0 returned)" , l );
+        n_log( LOG_ERR, " number : %llu  invalid  (no digits found, 0 returned)", l );
         Free( tmpstr );
         return FALSE;
     }
@@ -712,17 +712,17 @@ int str_to_long_long_ex( const char *s, NSTRBYTE start, NSTRBYTE end, long long 
     else if (error != 0 && l == 0)
     {
 
-        n_log( LOG_ERR, " number : %llu  invalid  (unspecified error occurred)" , l );
+        n_log( LOG_ERR, " number : %llu  invalid  (unspecified error occurred)", l );
         Free( tmpstr );
         return FALSE;
     }
     else if (error == 0 && tmpstr && !*endstr)
     {
-        n_log( LOG_DEBUG , " number : %llu    valid  (and represents all characters read)" , l );
+        n_log( LOG_DEBUG, " number : %llu    valid  (and represents all characters read)", l );
     }
     else if (error == 0 && tmpstr && *endstr != 0)
     {
-        n_log( LOG_DEBUG ," number : %llu    valid  (but additional characters remain" , l );
+        n_log( LOG_DEBUG," number : %llu    valid  (but additional characters remain", l );
     }
     Free( tmpstr );
     *i = l;
@@ -1013,18 +1013,16 @@ int strcpy_u( char *from, char *to, NSTRBYTE to_size, char split, NSTRBYTE *it )
  */
 char** split( const char* str, const char* delim, int empty )
 {
-
     char** tab=NULL; /* result array */
     char *ptr = NULL ; /* tmp pointer */
-    int sizeStr;
+    int sizeStr=0; /* string token size */
     int sizeTab=0; /* array size */
     const char* largestring = NULL; /* pointer to start of string */
-
-    int sizeDelim=strlen(delim);
 
     __n_assert( str, return NULL );
     __n_assert( delim, return NULL );
 
+    int sizeDelim=strlen(delim);
     largestring = str;
 
     while( ( ptr = strstr( largestring, delim ) ) != NULL )

@@ -12,7 +12,7 @@ extern "C"
 {
 #endif
 
-/**\defgroup NETWORKING NETWORK: connect, accept, send and recv wrappers. Network Queue, thread-safe add/get message
+/**\defgroup NETWORKING NETWORK: connect, accept, send and recv wrappers. Network Queue, thread-safe add/get message, ssl/tls secured communications
    \addtogroup NETWORKING
   @{
 */
@@ -30,6 +30,13 @@ extern "C"
 #include <sys/types.h>
 #include <fcntl.h>
 #include <signal.h>
+#include <stdio.h>
+#include <errno.h>
+#include <unistd.h>
+#include <malloc.h>
+#include <string.h>
+
+#ifdef HAVE_OPENSSL
 #define _OPEN_SYS_SOCK_IPV6 1
 #include <netinet/in.h>
 #include <netinet/tcp.h>
@@ -37,6 +44,10 @@ extern "C"
 #include <arpa/inet.h>
 #include <netdb.h>
 #include <sys/ioctl.h>
+#include <resolv.h>
+#include <openssl/ssl.h>
+#include <openssl/err.h>
+#endif
 
 #ifdef __linux__
 #include <linux/sockios.h>
@@ -77,10 +88,17 @@ typedef int SOCKET ;
 #define _WIN32_WINNT 0x0501
 #endif
 
+#include <errno.h>
+#include <unistd.h>
+#include <malloc.h>
+#include <string.h>
 #include <winsock2.h>
 #include <windows.h>
 #include <ws2tcpip.h>
 #include "n_time.h"
+
+#include <openssl/ssl.h>
+#include <openssl/err.h>
 
 #ifndef MSG_EOR
 #define MSG_EOR 0
@@ -156,6 +174,19 @@ typedef int SOCKET ;
 #define NETW_EXITED    512
 /*! State to signal errors in the network !!THESE HAVE TO BE NEGATIVE AS THEY ARE USED To DETECT END OF CONNECTION IN NBBYTE SEND/RECV */
 #define NETW_ERROR   1024
+/*! Flag : no encryption on connection (default) */
+#define NETW_CRYPTO_NONE 2048
+/*! Flag : encryption is based on the peers possibilities, selecting the most secure starting from the higher to the lower level */
+#define NETW_CRYPTO_NEGOCIATE 4096
+/*! Flag : encryption is mandatory */
+#define NETW_CRYPTO_MANDATORY 8192
+/*! Flag : set vigenere crypto */
+#define NETW_ENCRYPT_NONE 16384
+/*! Flag : set vigenere crypto */
+#define NETW_ENCRYPT_VIGENERE 32768
+/*! Flag : set openssl crypto */
+#define NETW_ENCRYPT_OPENSSL 65536
+
 /*! State for a started threaded network engine */
 #define NETW_THR_ENGINE_STARTED 2048
 /*! State for a stopped threaded network engine */
@@ -169,6 +200,8 @@ typedef int SOCKET ;
 /*! PHP send and receive header size */
 #define HEAD_CODE 3
 
+/*! send/recv func ptr type */
+typedef int (*netw_func)( SOCKET, char *, NSTRBYTE );
 
 /*! Structure of a N_SOCKET */
 typedef struct N_SOCKET
@@ -212,8 +245,31 @@ typedef struct NETWORK
         /*! size of the socket send buffer, 0 untouched, else size in bytes */
         so_sndbuf,
         /*! size of the socket recv buffer, 0 untouched, else size in bytes */
-        so_rcvbuf ;
+        so_rcvbuf,
+        /*! tell if the socket have to be encrypted (flags NETW_CRYPTO_*) */
+        crypto_mode,
+        /*! if encryption is on, which one (flags NETW_ENCRYPT_*) */
+        crypto_algo ;
 
+    /*! openssl certificat file */
+    char *certificat,
+         /*! openssl key file */
+         *key ;
+
+    /*! vigenere key */
+    char *vigenere_key ;
+
+    /*! send func ptr */
+    netw_func send_data,
+              /*! receive func ptr */
+              recv_data ;
+
+#ifdef HAVE_OPENSSL
+    /*! SSL method container */
+    SSL_METHOD *method ;
+    /*! SSL context holder */
+    SSL_CTX *ctx ;
+#endif
 
     /*!networking socket*/
     N_SOCKET link;
@@ -237,8 +293,18 @@ typedef struct NETWORK
 
 } NETWORK;
 
+#ifdef HAVE_OPENSSL
+/* set the certificat and private key file to use */
+int netw_set_sll_files( NETWORK *netw, char *cert, char *key );
+/* set a vigenere key to use */
+int netw_set_vigenere_key( NETWORK *netw, char *vigenere_key );
+/* negociate and initialize encryptions if any */
+int netw_do_crypto_handshake( NETWORK *netw );
+/* init ssl helper */
+int netw_init_openssl( void );
+#endif
 /* Used by Init & Close network */
-int handle_wsa( int mode, int v1, int v2 );
+int netw_init_wsa( int mode, int v1, int v2 );
 /* Set flags on network */
 int netw_set( NETWORK *netw, int flag );
 /* Set threaded network timers */

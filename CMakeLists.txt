@@ -14,36 +14,36 @@ set(NILOREA_INCLUDE_DIRS "include" "$CACHE{A5_DEP_SEARCH_PATH}/include/allegro5"
 
 if ("${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
    find_library(A5_MONOLITH NAMES liballegro_monolith-debug-static.a PATHS ${ALLEGRO5_LIB_DIR})
-   find_library(A5_ADDONS NAMES 
-         liballegro_color-debug.a 
-         liballegro_image-debug.a 
-         liballegro_memfile-debug.a 
-         liballegro_ttf-debug.a 
-         liballegro_font-debug.a 
-         liballegro_physfs-debug.a 
-         liballegro_dialog-debug.a 
-         liballegro_video-debug.a 
-         liballegro_acodec-debug.a 
-         liballegro_main-debug.a 
-         liballegro_primitives-debug.a 
-         liballegro_audio-debug.a 
+   find_library(A5_ADDONS NAMES
+         liballegro_color-debug.a
+         liballegro_image-debug.a
+         liballegro_memfile-debug.a
+         liballegro_ttf-debug.a
+         liballegro_font-debug.a
+         liballegro_physfs-debug.a
+         liballegro_dialog-debug.a
+         liballegro_video-debug.a
+         liballegro_acodec-debug.a
+         liballegro_main-debug.a
+         liballegro_primitives-debug.a
+         liballegro_audio-debug.a
          liballegro-debug.a
          PATHS ${ALLEGRO5_LIB_DIR})
 else()
    find_library(A5_MONOLITH NAMES liballegro_monolith-static.a PATHS ${ALLEGRO5_LIB_DIR})
-   find_library(A5_ADDONS NAMES 
-         liballegro_color.a 
-         liballegro_image.a 
-         liballegro_memfile.a 
-         liballegro_ttf.a 
-         liballegro_font.a 
-         liballegro_physfs.a 
-         liballegro_dialog.a 
-         liballegro_video.a 
-         liballegro_acodec.a 
-         liballegro_main.a 
-         liballegro_primitives.a 
-         liballegro_audio.a 
+   find_library(A5_ADDONS NAMES
+         liballegro_color.a
+         liballegro_image.a
+         liballegro_memfile.a
+         liballegro_ttf.a
+         liballegro_font.a
+         liballegro_physfs.a
+         liballegro_dialog.a
+         liballegro_video.a
+         liballegro_acodec.a
+         liballegro_main.a
+         liballegro_primitives.a
+         liballegro_audio.a
          liballegro.a
          PATHS ${ALLEGRO5_LIB_DIR})
 endif("${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
@@ -59,7 +59,7 @@ else()
    set(ALLEGRO_FOUND 0)
 endif(${A5_MONOLITH} STRGREATER "")
 
-set (NILOREASRCS1 
+set (NILOREASRCS1
          n_3d.c
          n_anim.c
          n_common.c
@@ -107,7 +107,6 @@ endif(CMAKE_BUILD_TYPE STREQUAL "Debug")
 
 target_compile_options(NiloreaObjects PRIVATE "-std=c11")
 
-         
 add_library(Nilorea STATIC $<TARGET_OBJECTS:NiloreaObjects>)
 
 target_link_libraries(Nilorea ${ALLEGRO_LINK_LIBS})

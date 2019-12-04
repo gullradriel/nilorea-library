@@ -233,7 +233,7 @@ int strlo( char *string, char *dest );
 /* Copy from string to dest until from[ iterator ] == split */
 int strcpy_u( char *from, char *to, NSTRBYTE to_size, char split, NSTRBYTE *it );
 /* Return an array of char pointer to the splitted section */
-char **split( const char* chaine, const char* delim, int vide );
+char **split( const char* str, const char* delim, int empty );
 /* Count split elements */
 int split_count( char **split_result );
 /* Free a char **tab and set it to NULL */
