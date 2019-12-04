@@ -5,8 +5,8 @@
  *\date 24/03/05
  */
 
-#ifndef __COMMON_FOR_C_IMPLEMENTATION__
-#define __COMMON_FOR_C_IMPLEMENTATION__
+#ifndef __NILOREA_COMMONS__
+#define __NILOREA_COMMONS__
 
 #ifdef __cplusplus
 extern "C"
@@ -260,12 +260,16 @@ void n_abort( char const *format, ... );
 #ifndef __windows__
 int n_daemonize( void );
 #endif
+
 /* get running program name */
 char *get_prog_name( void );
+
 /* get running program directory */
 char *get_prog_dir( void );
+
 /* test file presence*/
 int file_exist( const char *filename );
+
 /* non blocking system call */
 pid_t system_nb(const char * command, int * infp, int * outfp);
 

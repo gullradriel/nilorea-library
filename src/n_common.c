@@ -194,6 +194,8 @@ int n_daemonize( void )
     return TRUE ;
 } /* n_daemonize(...) */
 
+
+
 /*!\fn pid_t system_nb(const char * command, int * infp, int * outfp)
  *\brief Non blocking system call
  *\param command to call
@@ -270,6 +272,6 @@ pid_t system_nb(const char * command, int * infp, int * outfp)
     }
 
     return pid;
-}
+} /* system_nb */
 
 #endif

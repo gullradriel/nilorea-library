@@ -14,7 +14,7 @@ CC=gcc
 EXT=
 VPATH=src
 CFLAGS=
-SRC= n_common.c n_log.c n_exceptions.c n_str.c n_list.c n_hash.c n_time.c n_config_file.c n_thread_pool.c n_network.c n_network_msg.c n_3d.c
+SRC= n_common.c n_pcre.c n_log.c n_exceptions.c n_str.c n_list.c n_hash.c n_time.c n_config_file.c n_thread_pool.c n_network.c n_network_msg.c n_3d.c
 ifeq ($(ALLEGRO),1)
 SRC+= n_resources.c n_particles.c n_gui.c
 endif
