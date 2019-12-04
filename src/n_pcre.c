@@ -22,12 +22,11 @@ N_PCRE *npcre_new( char *str, int max_cap, int flags )
 {
     N_PCRE *pcre = NULL ;
     __n_assert( str, return NULL );
-    __n_assert( ( max_cap > 0 ), return NULL );
 
     Malloc( pcre, N_PCRE, 1 );
     __n_assert( pcre, return NULL );
 
-    pcre -> capture_done = 0 ;
+    pcre -> captured = 0 ;
 
     if( max_cap <= 0 )
     {
@@ -37,34 +36,29 @@ N_PCRE *npcre_new( char *str, int max_cap, int flags )
     else
     {
         Malloc( pcre -> match_list,  const char *, max_cap );
-        __n_assert( pcre -> match_list , delete_pcre( &pcre ); return NULL );
+        __n_assert( pcre -> match_list , npcre_delete( &pcre ); return NULL );
     }
 
     pcre -> regexp_str = strdup( str );
-    __n_assert( str, delete_pcre( &pcre ); return NULL );
+    __n_assert( str, npcre_delete( &pcre ); return NULL );
 
     pcre -> ovecount = max_cap ;
     Malloc( pcre -> ovector, int, 3 * max_cap );
-    __n_assert( pcre -> ovector, delete_pcre( &pcre ); return NULL );
+    __n_assert( pcre -> ovector, npcre_delete( &pcre ); return NULL );
 
     const char *error = NULL ;
     int erroroffset = 0 ;
 
     pcre -> regexp = pcre_compile( str, flags,  &error, &erroroffset, NULL  ) ;
-    if(  pcre -> regexp )
+    if( !pcre -> regexp )
     {
         n_log( LOG_ERR, " pcre compilation of %s failed at offset %d : %s", str, erroroffset, error );
-        delete_pcre( &pcre );
+        npcre_delete( &pcre );
         return FALSE ;
     }
     /* no flags for study = no JIT compilation */
     pcre -> extra = pcre_study( pcre -> regexp , 0 , &error );
-    if( !pcre -> extra )
-    {
-        n_log( LOG_DEBUG, " pcre optimisation of %s (study) returned NULL: %s", str, error );
-        delete_pcre( &pcre );
-        return FALSE ;
-    }
+
     return pcre ;
 }/* npcre_new(...) */
 
@@ -80,6 +74,7 @@ N_PCRE *npcre_new( char *str, int max_cap, int flags )
 int npcre_match( char *str, N_PCRE *pcre )
 {
     __n_assert( str, return FALSE );
+    __n_assert( pcre , return FALSE );
     __n_assert( pcre -> regexp_str, return FALSE );
     __n_assert( pcre -> regexp, return FALSE );
 
@@ -92,25 +87,25 @@ int npcre_match( char *str, N_PCRE *pcre )
         switch( rc )
         {
         case PCRE_ERROR_NOMATCH      :
-            n_log( LOG_ERR, "String did not match the pattern");
+            n_log( LOG_DEBUG , "String did not match the pattern");
             break;
         case PCRE_ERROR_NULL         :
-            n_log( LOG_ERR, "Something was null");
+            n_log( LOG_DEBUG , "Something was null");
             break;
         case PCRE_ERROR_BADOPTION    :
-            n_log( LOG_ERR, "A bad option was passed");
+            n_log( LOG_DEBUG , "A bad option was passed");
             break;
         case PCRE_ERROR_BADMAGIC     :
-            n_log( LOG_ERR, "Magic number bad (compiled re corrupt?)");
+            n_log( LOG_DEBUG , "Magic number bad (compiled re corrupt?)");
             break;
         case PCRE_ERROR_UNKNOWN_NODE :
-            n_log( LOG_ERR, "Something kooky in the compiled regexp");
+            n_log( LOG_DEBUG , "Something kooky in the compiled regexp");
             break;
         case PCRE_ERROR_NOMEMORY     :
-            n_log( LOG_ERR, "Ran out of memory");
+            n_log( LOG_DEBUG , "Ran out of memory");
             break;
         default                      :
-            n_log( LOG_ERR, "Unknown error");
+            n_log( LOG_DEBUG , "Unknown error");
             break;
         }
         return FALSE ;
@@ -122,14 +117,11 @@ int npcre_match( char *str, N_PCRE *pcre )
 
     if( rc > 0 && pcre -> match_list != NULL )
     {
-        if( pcre -> capture_done == 1 )
+        if( pcre -> captured > 0 )
         {
             pcre_free_substring_list( pcre -> match_list );
         }
-        else
-        {
-            pcre -> capture_done = 1 ;
-        }
+        pcre -> captured = rc ;
         pcre_get_substring_list( str , pcre -> ovector , rc , &pcre -> match_list );
 
     }
