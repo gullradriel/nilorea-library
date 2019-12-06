@@ -73,7 +73,7 @@ extern "C"
 
 
 
-/*! Macro to quickly allocate and sprintf to a new n_str */
+/*! Macro to quickly allocate and sprintf to a char * */
 #define strprintf( __n_var , ... ) \
    ({ \
     if( !__n_var ) \
@@ -93,6 +93,7 @@ extern "C"
     __n_var ; \
     })
 
+/*! Macro to quickly allocate and sprintf to N_STR * */
 #define nstrprintf( __nstr_var , ... ) \
    ({ \
     if( __nstr_var ) \
@@ -110,7 +111,7 @@ extern "C"
     __nstr_var ; \
     })
 
-
+/*! Macro to quickly allocate and sprintf and cat to a N_STR * */
 #define nstrprintf_cat( __nstr_var , ... ) \
    ({ \
     if( __nstr_var ) \
@@ -156,6 +157,8 @@ const char *strcasestr(const char *s1, const char *s2);
 
 /* trim and put a \0 at the end, return new begin pointer */
 char *trim_nocopy(char *s);
+/* trim and put a \0 at the end, return new char * */
+char *trim(char *s);
 /* N_STR wrapper around fgets */
 char *nfgets( char *buffer, int size, FILE *stream );
 /* create a new string */
