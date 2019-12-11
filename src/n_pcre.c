@@ -36,7 +36,7 @@ N_PCRE *npcre_new( char *str, int max_cap, int flags )
     else
     {
         Malloc( pcre -> match_list,  const char *, max_cap );
-        __n_assert( pcre -> match_list , npcre_delete( &pcre ); return NULL );
+        __n_assert( pcre -> match_list, npcre_delete( &pcre ); return NULL );
     }
 
     pcre -> regexp_str = strdup( str );
@@ -57,7 +57,7 @@ N_PCRE *npcre_new( char *str, int max_cap, int flags )
         return FALSE ;
     }
     /* no flags for study = no JIT compilation */
-    pcre -> extra = pcre_study( pcre -> regexp , 0 , &error );
+    pcre -> extra = pcre_study( pcre -> regexp, 0, &error );
 
     return pcre ;
 }/* npcre_new(...) */
@@ -74,38 +74,38 @@ N_PCRE *npcre_new( char *str, int max_cap, int flags )
 int npcre_match( char *str, N_PCRE *pcre )
 {
     __n_assert( str, return FALSE );
-    __n_assert( pcre , return FALSE );
+    __n_assert( pcre, return FALSE );
     __n_assert( pcre -> regexp_str, return FALSE );
     __n_assert( pcre -> regexp, return FALSE );
 
     int rc, len = 0;
     len = ( int )strlen( str ) ;
 
-    rc = pcre_exec( pcre -> regexp , pcre -> extra , str , len , 0 , 0 , pcre -> ovector , pcre -> ovecount );
+    rc = pcre_exec( pcre -> regexp, pcre -> extra, str, len, 0, 0, pcre -> ovector, pcre -> ovecount );
     if ( rc < 0 )
     {
         switch( rc )
         {
         case PCRE_ERROR_NOMATCH      :
-            n_log( LOG_DEBUG , "String did not match the pattern");
+            n_log( LOG_DEBUG, "String did not match the pattern");
             break;
         case PCRE_ERROR_NULL         :
-            n_log( LOG_DEBUG , "Something was null");
+            n_log( LOG_DEBUG, "Something was null");
             break;
         case PCRE_ERROR_BADOPTION    :
-            n_log( LOG_DEBUG , "A bad option was passed");
+            n_log( LOG_DEBUG, "A bad option was passed");
             break;
         case PCRE_ERROR_BADMAGIC     :
-            n_log( LOG_DEBUG , "Magic number bad (compiled re corrupt?)");
+            n_log( LOG_DEBUG, "Magic number bad (compiled re corrupt?)");
             break;
         case PCRE_ERROR_UNKNOWN_NODE :
-            n_log( LOG_DEBUG , "Something kooky in the compiled regexp");
+            n_log( LOG_DEBUG, "Something kooky in the compiled regexp");
             break;
         case PCRE_ERROR_NOMEMORY     :
-            n_log( LOG_DEBUG , "Ran out of memory");
+            n_log( LOG_DEBUG, "Ran out of memory");
             break;
         default                      :
-            n_log( LOG_DEBUG , "Unknown error");
+            n_log( LOG_DEBUG, "Unknown error");
             break;
         }
         return FALSE ;
@@ -122,8 +122,7 @@ int npcre_match( char *str, N_PCRE *pcre )
             pcre_free_substring_list( pcre -> match_list );
         }
         pcre -> captured = rc ;
-        pcre_get_substring_list( str , pcre -> ovector , rc , &pcre -> match_list );
-
+        pcre_get_substring_list( str, pcre -> ovector, rc, &pcre -> match_list );
     }
     return TRUE ;
 }/* npcre_match(...) */

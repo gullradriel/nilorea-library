@@ -97,6 +97,7 @@
 		<Unit filename="include/nilorea/n_nodup_log.h" />
 		<Unit filename="include/nilorea/n_particles.h" />
 		<Unit filename="include/nilorea/n_particles_A4.h" />
+		<Unit filename="include/nilorea/n_pcre.h" />
 		<Unit filename="include/nilorea/n_resources.h" />
 		<Unit filename="include/nilorea/n_signals.h" />
 		<Unit filename="include/nilorea/n_stack.h" />
@@ -169,6 +170,9 @@
 		<Unit filename="src/n_particles_A4.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="src/n_pcre.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="src/n_resources.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -188,6 +192,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/n_zlib.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="sslexample.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="version.h" />

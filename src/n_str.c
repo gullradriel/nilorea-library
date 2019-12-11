@@ -142,6 +142,19 @@ char *trim_nocopy(char *s)
 } /* trim_nocopy */
 
 
+/*!\fn char *trim(char *s)
+ *\brief trim and put a \0 at the end, return new char *
+ *\param s The string to trim
+ *\return the trimmed string or NULL
+ */
+char *trim(char *s)
+{
+    __n_assert( s, return NULL );
+
+    return strdup( trim_nocopy( s ) );
+} /* trim_nocopy */
+
+
 
 /*!\fn char *nfgets( char *buffer , int size , FILE *stream )
  *\brief try to fgets until new line

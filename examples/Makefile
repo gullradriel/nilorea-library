@@ -92,8 +92,8 @@ ex_network$(EXT): n_log.o n_list.o n_str.o n_network_msg.o n_time.o n_thread_poo
 ex_monolith$(EXT): ex_monolith.o
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ -L.. -Bstatic $(LIBNILOREA) -Bdynamic $(CLIBS) $(ALLEGRO_CLIBS)
 
-ex_configfile$(EXT): n_log.o n_list.o n_str.o n_hash.o n_config_file.o ex_configfile.o
-	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(CLIBS)
+ex_configfile$(EXT): n_log.o n_list.o n_str.o n_hash.o n_pcre.o n_config_file.o ex_configfile.o
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(CLIBS) -lpcre
 
 ex_signals$(EXT): n_log.o n_list.o n_str.o n_hash.o n_signals.o ex_signals.o
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(CLIBS)

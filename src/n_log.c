@@ -35,14 +35,13 @@ static LOG_LEVELS prioritynames[] =
     {	"EMERG",	LOG_EMERG,		"ERROR" },
     {	"ALERT",	LOG_ALERT,		"ERROR" },
     {	"CRITICAL",	LOG_CRIT,		"ERROR" },
-    {	"ERROR",	LOG_ERR,		"ERROR" },
+    {	"ERR",	    LOG_ERR,		"ERROR" },
     {	"WARNING",	LOG_WARNING,	"WARNING" },
     {	"NOTICE",	LOG_NOTICE,		"SUCCESS" },
     {	"INFO",		LOG_INFO,		"INFORMATION" },
     {	"DEBUG",	LOG_DEBUG,		"INFORMATION" },
     {	NULL,		-1,			 NULL }
 };
-
 
 /*! static global maximum wanted log level value */
 static int LOG_LEVEL = LOG_NULL ;
