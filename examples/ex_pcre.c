@@ -39,6 +39,7 @@ int main( int argc, char **argv )
     {
         n_log( LOG_INFO, "NO MATCH !" );
     }
+
     npcre_delete( &pcre );
 
     return TRUE ;

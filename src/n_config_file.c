@@ -9,6 +9,7 @@
 
 #include "nilorea/n_common.h"
 #include "nilorea/n_config_file.h"
+#include "nilorea/n_pcre.h"
 
 
 /*!\fn void free_no_null( void *ptr )
@@ -55,6 +56,7 @@ CONFIG_FILE *load_config_file( char *filename, int *errors )
     CONFIG_FILE_SECTION *section = NULL ;
     char buffer[ MAX_CONFIG_LINE_LEN ] = "" ;
     char **split_result = NULL ;
+    N_PCRE *npcre = npcre_new( "(.*?=)(.*)", 99, 0 );
     int error = 0 ;
     FILE *in = NULL ;
 
@@ -195,7 +197,19 @@ CONFIG_FILE *load_config_file( char *filename, int *errors )
                 n_log( LOG_DEBUG, "No section, setting __DEFAULT__ starting line %d of %s (string:%s)", line_number, filename, bufptr );
             }
 
-            split_result = split( bufptr, "=", 0 );
+            if( npcre_match( bufptr, npcre ) == TRUE )
+            {
+                Malloc( split_result, char *, 3 );
+
+                split_result[ 2 ] = NULL ;
+                split_result[ 0 ] = str_replace( npcre -> match_list[ 1 ], "=", " " );
+                split_result[ 1 ] = strdup( npcre -> match_list[ 2 ] );
+            }
+            else
+            {
+                split_result = NULL ;
+            }
+
             if( !split_result )
             {
                 n_log( LOG_ERR, "couldn't find entry separator '=' at line %d of %s (string:%s)", line_number, filename, bufptr );
@@ -326,6 +340,7 @@ CONFIG_FILE *load_config_file( char *filename, int *errors )
             continue ;
         }
     }
+    npcre_delete( &npcre );
     if( !feof( in ) )
     {
         n_log( LOG_ERR, "couldn't read EOF for %s", filename );
