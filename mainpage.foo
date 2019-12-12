@@ -1,0 +1,75 @@
+/** \file mainpage.foo
+ * This file only contains the information useful for the main page of the
+ * documentation - There is no code here.
+ */
+
+
+/** \mainpage Nilorea Library
+
+\section contents Table Of Contents:
+<ul>  <li> \ref aboutlib </li>
+	<li> \ref require </li>
+	<li> \ref install </li>
+	<li> \ref FLAGS </li>
+	<li> \ref WARNINGS </li>
+	<li> \ref end </li>
+</ul>
+  
+
+\section aboutlib About Nilorea Library
+
+This library should bring you (and if it is already coded) some usefull C tools
+(Typedefs, structs, linked lists, network engine, 2dIso engine and more)
+
+DO NOT take care of the name, i was having no ideas so i decide to give a simply name.
+
+For better using of the library, some documentations&examples will be written, but there is still 
+nothing written ;)
+
+
+\section require Requirements
+
+
+ Allegro   4.0.0 or better http://alleg.sf.net/ , \n
+ The socket libs (winsock or socket) ,\n
+ Pthread lib (posix pthread for windows or linux)\n
+ AllegroGL 1.0.25 CVS or better\n
+
+\section install Installation
+Compil,Debug if errors,
+Put the right files in your LIB and INCLUDE directory, link them with your code and let's go ! \n
+Don't forget to define FLAGS for parts you don't need, it can save you memory and compilation time.\n
+
+\section FLAGS FLAGS when using Nilorea
+\n
+Define it if needed:\n
+LINUX\n
+\n
+You should use one of the folowing if you don't need it: \n
+\n
+ NOALLEGRO\n
+ NOPTHREAD\n
+ NONETWORK\n
+ NOSTR\n
+ NOISOENGINE\n
+ NOSOUND\n
+\n
+\section WARNINGS Be carefull
+
+Sometimes when i talk about a function i use the 'low-level' words to aim your attention.\n
+It's because we talk about functions who returns nothing and who won't test if they are\n
+going to write inside or outside the memory. It's your responsability to use them correctly.\n
+
+\section end Closing Words
+
+Nilorea is a 'make life easier' library, you're welcome using it.\n
+Everything inside is free or under GPL license, read it at http://www.gnu.org/license/gpl.html\n
+I'm not pretty shure that everything inside the lib will be usefull for you,\n
+but you can take only what is intersting for you.
+
+Have nice brain storm with these files ;-)\n
+
+
+-- Gull
+ */
+
