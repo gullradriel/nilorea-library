@@ -45,34 +45,6 @@
 		<Unit filename="Makefile" />
 		<Unit filename="README.md" />
 		<Unit filename="build-number.txt" />
-		<Unit filename="examples/ex_configfile.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="examples/ex_exceptions.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="examples/ex_gui_particles.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="examples/ex_hash.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="examples/ex_list.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="examples/ex_monolith.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="examples/ex_network.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="examples/ex_network.h" />
-		<Unit filename="examples/ex_nstr.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="examples/ex_signals.c">
-			<Option compilerVar="CC" />
-		</Unit>
 		<Unit filename="exclude-list.txt" />
 		<Unit filename="include/nilorea.h" />
 		<Unit filename="include/nilorea/lexmenu.h" />
@@ -105,6 +77,7 @@
 		<Unit filename="include/nilorea/n_thread_pool.h" />
 		<Unit filename="include/nilorea/n_time.h" />
 		<Unit filename="include/nilorea/n_zlib.h" />
+		<Unit filename="include/nilorea/particle.h" />
 		<Unit filename="mainpage.dox" />
 		<Unit filename="make_linux.sh" />
 		<Unit filename="src/lexmenu.c">
@@ -194,9 +167,10 @@
 		<Unit filename="src/n_zlib.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="sslexample.c">
+		<Unit filename="src/particle.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="version-number.txt" />
 		<Unit filename="version.h" />
 		<Extensions>
 			<code_completion />

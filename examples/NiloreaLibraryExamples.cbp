@@ -40,6 +40,8 @@
 			<Add option="-Wall" />
 		</Compiler>
 		<Unit filename="Makefile" />
+		<Unit filename="TESTFILE.TXT" />
+		<Unit filename="client.cfg" />
 		<Unit filename="ex_configfile.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -71,6 +73,11 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="ex_signals.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="nilorea.h" />
+		<Unit filename="serveur.cfg" />
+		<Unit filename="sslexample.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Extensions>

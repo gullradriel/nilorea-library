@@ -23,7 +23,7 @@ extern "C"
 #include "n_log.h"
 
 #ifndef NOALLEGRO
-#include <alleggl.h>
+//#include <alleggl.h>
 
 /*! OpenGL mode flag for grafic_status */
 #define MODE_OGL 1
@@ -40,7 +40,7 @@ int Force32BitBmpToAlpha( BITMAP *bmp );
 /* Change all the bmp pixel of the same color src to color dst */
 void force_color_to_be( BITMAP *bmp, int oldcolor, int newcolor );
 /* ogl helper drawer */
-void ogl_blit( GLuint mytexture, int x, int y, int r, int g, int b, int alpha, int w, int h, int mode );
+//void ogl_blit( GLuint mytexture, int x, int y, int r, int g, int b, int alpha, int w, int h, int mode );
 
 /*@}*/
 
