@@ -6,7 +6,9 @@
  */
 
 #include "nilorea/n_neural_networks.h"
-
+#include <math.h>
+#include <float.h>
+#include "nilorea/n_common.h"
 
 int rand_between_ints( int a, int b )
 {
@@ -15,7 +17,7 @@ int rand_between_ints( int a, int b )
 
 double rand_between_doubles( double a, double b )
 {
-    return rand()%( a - b + 1 ) + b;
+    return rand()%( (int)( a - b + 1 ) ) + b;
 }
 
 double rand_equal_double( double a, double b )
@@ -38,7 +40,6 @@ double n_neural_sigmoid ( double x )
 /*! allocate a new layer */
 N_NEURAL_LAYER *new_neural_net_layer( int size_x, int size_y )
 {
-    s
     N_NEURAL_LAYER *layer = NULL ;
 
     if( size_x < 0 || size_y < 0 )
@@ -47,10 +48,10 @@ N_NEURAL_LAYER *new_neural_net_layer( int size_x, int size_y )
     Malloc( layer, N_NEURAL_LAYER, 1 );
     __n_assert( layer, return NULL );
 
-    layer -> array = calloc( sizeof( N_PERCEPTRON *), size_x );
+    layer -> array = calloc( sizeof( N_PERCEPTRON ), size_x );
     for( int itx = 0; itx < size_x ; itx++ )
     {
-        Malloc( layer -> array[ itx ],  N_PERCEPTRON *, size_y );
+        Malloc( layer -> array[ itx ],  N_PERCEPTRON , size_y );
         for( int ity = 0 ; ity < size_y ; ity ++ );
     }
 

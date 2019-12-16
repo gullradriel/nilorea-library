@@ -12,9 +12,11 @@ CC=gcc
 EXT=
 VPATH=src
 CFLAGS=
-SRC= n_common.c n_pcre.c n_log.c n_exceptions.c n_str.c n_list.c n_hash.c n_time.c n_config_file.c n_thread_pool.c n_network.c n_network_msg.c n_3d.c
+SRC= n_common.c n_config_file.c n_debug_mem.c n_exceptions.c n_file.c  n_hash.c n_list.c n_log.c n_network.c n_network_msg.c  n_nodup_log.c n_pcre.c n_stack.c n_str.c n_thread_pool.c n_time.c n_zlib.c
+EXP= n_neural_networks.c
 ifeq ($(HAVE_ALLEGRO),1)
-SRC+= n_resources.c n_particles.c n_gui.c
+SRC+= n_3d.c n_anim.c n_gui.c n_particles.c n_resources.c
+
 endif
 OUTPUT=libnilorea
 LIB=-lnilorea
@@ -82,46 +84,46 @@ obj/%.o: src/%.c
 
 endif
 
-#buildnum=(shell grep BUILD_NUMBER  build-number.txt | awk '{print $$3}')
-#minorversion=(shell grep MINOR_VERSION build-number.txt | awk '{print $$3}')
-#majorversion=(shell grep MAJOR_VERSION build-number.txt | awk '{print $$3}')
+buildnum=(shell grep BUILD_NUMBER  build-number.txt | awk '{print $$3}')
+minorversion=(shell grep MINOR_VERSION build-number.txt | awk '{print $$3}')
+majorversion=(shell grep MAJOR_VERSION build-number.txt | awk '{print $$3}')
 
 default: all
 release: all
 debug: all
 all: main
 
-#buildnumber:
-#	@echo -n "    #define BUILD_NUMBER  " > build-number.new
-#	@echo `expr $(shell $(buildnum)) + 1` >> build-number.new
-#	@echo "    #define MINOR_VERSION $(shell $(minorversion))" >> build-number.new
-#	@echo "    #define MAJOR_VERSION $(shell $(majorversion))" >> build-number.new
-#	@mv build-number.new build-number.txt
-#	@echo "#ifndef $(PROJECT_NAME)_VERSION" > version.h
-#	@echo "    #define $(PROJECT_NAME)_VERSION" >> version.h
-#	@cat build-number.txt >> version.h
-#	@echo "#endif" >> version.h
-#	git tag "$(shell $(majorversion)).$(shell $(minorversion)).$(shell $(buildnum))"
+buildnumber:
+	@echo -n "    #define BUILD_NUMBER  " > build-number.new
+	@echo `expr $(shell $(buildnum)) + 1` >> build-number.new
+	@echo "    #define MINOR_VERSION $(shell $(minorversion))" >> build-number.new
+	@echo "    #define MAJOR_VERSION $(shell $(majorversion))" >> build-number.new
+	@mv build-number.new build-number.txt
+	@echo "#ifndef $(PROJECT_NAME)_VERSION" > version.h
+	@echo "    #define $(PROJECT_NAME)_VERSION" >> version.h
+	@cat build-number.txt >> version.h
+	@echo "#endif" >> version.h
+	git tag "$(shell $(majorversion)).$(shell $(minorversion)).$(shell $(buildnum))"
 
-#minor:
-#	@echo "    #define BUILD_NUMBER 0" > build-number.new
-#	@echo -n "    #define MINOR_VERSION " >> build-number.new
-#	@echo `expr $(shell $(minorversion)) + 1` >> build-number.new
-#	@echo "    #define MAJOR_VERSION $(shell $(majorversion))" >> build-number.new
-#	@mv build-number.new build-number.txt
+minor:
+	@echo "    #define BUILD_NUMBER 0" > build-number.new
+	@echo -n "    #define MINOR_VERSION " >> build-number.new
+	@echo `expr $(shell $(minorversion)) + 1` >> build-number.new
+	@echo "    #define MAJOR_VERSION $(shell $(majorversion))" >> build-number.new
+	@mv build-number.new build-number.txt
 
-#major:
-#	@echo "    #define BUILD_NUMBER 0" > build-number.new
-#	@echo "    #define MINOR_VERSION $(shell $(minorversion))" >> build-number.new
-#	@echo -n "    #define MAJOR_VERSION " >> build-number.new
-#	@echo `expr $(shell $(majorversion)) + 1` >> build-number.new
-#	@mv build-number.new build-number.txt
+major:
+	@echo "    #define BUILD_NUMBER 0" > build-number.new
+	@echo "    #define MINOR_VERSION $(shell $(minorversion))" >> build-number.new
+	@echo -n "    #define MAJOR_VERSION " >> build-number.new
+	@echo `expr $(shell $(majorversion)) + 1` >> build-number.new
+	@mv build-number.new build-number.txt
 
-#incmajor: major
+incmajor: major
 
-#incminor: minor
+incminor: minor
 
-#all: buildnumber main
+all: main
 
 main: $(OBJECTS)
 	$(AR) -r $(OUTPUT)$(EXT) $(OBJECTS)

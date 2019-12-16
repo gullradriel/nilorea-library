@@ -232,7 +232,7 @@ void _n_log( int level, const char *file, const char *func, int line, const char
     {
         char *syslogbuffer = NULL ;
         char *eventbuffer = NULL ;
-#ifdef __windows__
+#ifdef __MINGW32__
         size_t needed = 0 ;
         char *name = "NULL" ;
         if( proc_name )

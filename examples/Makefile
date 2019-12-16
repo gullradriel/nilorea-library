@@ -1,27 +1,26 @@
-RM=rm -f
-CC=gcc
-OPT=-D_XOPEN_SOURCE=600 -D_XOPEN_SOURCE_EXTENTED -Og -g -W -Wall -Wextra -Wcast-align -Wcast-qual -Wdisabled-optimization -Wformat=1 -Winit-self -Wlogical-op -Wmissing-include-dirs -Wredundant-decls -Wstrict-overflow=5 -Wswitch-default -Wundef -Wno-unused
-OPT+= -I../include
-
-VPATH=../src/
-CC=gcc
-LIBNILOREA=-lnilorea
-EXT=
-ALLEGRO_CLIBS=
 HAVE_ALLEGRO=1
 HAVE_OPENSSL=0
 
-ifeq ($(OS),Windows_NT)
+RM=rm -f
+OPT=-D_XOPEN_SOURCE=600 -D_XOPEN_SOURCE_EXTENTED -Og -g -W -Wall -Wextra -Wcast-align -Wcast-qual -Wdisabled-optimization -Wformat=1 -Winit-self -Wlogical-op -Wmissing-include-dirs -Wredundant-decls -Wstrict-overflow=5 -Wswitch-default -Wundef -Wno-unused
+OPT+= -I../include
+VPATH=../src/
+CC=gcc
+LIBNILOREA=nilorea
+EXT=
+ALLEGRO_CLIBS=
 
-	CFLAGS+= -std=c11 -D__USE_MINGW_ANSI_STDIO $(OPT)
-    CLIBS= -Wl,-Bstatic -lpthread -Wl,-Bdynamic -lws2_32 -L../.
+
+ifeq ($(OS),Windows_NT)
+CFLAGS+= -std=c11 -D__USE_MINGW_ANSI_STDIO $(OPT)
+    CLIBS= -lpthread -lws2_32
 	RM= del /Q
 	CC= gcc
 
 	ifeq ($(MSYSTEM),MINGW32)
 		RM=rm -f
 		CFLAGS+= -m32 -DARCH32BITS
-		LIBNILOREA=-lnilorea32
+		LIBNILOREA=-lnilorea32.a
 		EXT=32.exe
 		endif
 		ifeq ($(MSYSTEM),MINGW32CB)
@@ -50,13 +49,13 @@ else
 	EXT=
     ifeq ($(UNAME_S),Linux)
         CFLAGS+= $(OPT) -std=gnu99
-        CLIBS=-L../. -lpthread
+        CLIBS=-lpthread
     endif
     ifeq ($(UNAME_S),SunOS)
         CC=cc
         CFLAGS+= -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -g -v -xc99 -I ../include/ -mt
-        CLIBS=-lm -lsocket -lnsl -lpthread -lpcre -lrt -L..
-	LIBNILOREA=-lnilorea
+        CLIBS=-lm -lsocket -lnsl -lpthread -lpcre -lrt
+	LIBNILOREA=nilorea
 	EXT=
     endif
 endif
@@ -90,7 +89,7 @@ ex_network$(EXT): n_log.o n_list.o n_str.o n_network_msg.o n_time.o n_thread_poo
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(CLIBS)
 
 ex_monolith$(EXT): ex_monolith.o
-	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ -L.. -Bstatic $(LIBNILOREA) -Bdynamic $(CLIBS) $(ALLEGRO_CLIBS)
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ -L.. $(LIBNILOREA) $(CLIBS) $(ALLEGRO_CLIBS)
 
 ex_configfile$(EXT): n_log.o n_list.o n_str.o n_hash.o n_pcre.o n_config_file.o ex_configfile.o
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(CLIBS) -lpcre
@@ -99,7 +98,7 @@ ex_signals$(EXT): n_log.o n_list.o n_str.o n_hash.o n_signals.o ex_signals.o
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(CLIBS)
 
 ex_gui_particles$(EXT): ex_gui_particles.o
-	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ -L.. -Bstatic $(LIBNILOREA) -Bdynamic $(CLIBS) $(ALLEGRO_CLIBS)
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ -L.. $(LIBNILOREA) $(CLIBS) $(ALLEGRO_CLIBS)
 
 ex_pcre$(EXT): n_log.o n_pcre.o ex_pcre.o
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(CLIBS) -lpcre

@@ -246,6 +246,7 @@ void _n_nodup_log( int LEVEL, const char *file, const char *func, int line, cons
         break ;
     /* no nodup session started, normal loggin */
     case 3 :
+    default:
         _n_log( LEVEL, file, func, line, "%s", syslogbuffer );
         break ;
     }
@@ -305,6 +306,7 @@ void _n_nodup_log_indexed( int LEVEL, const char *prefix, const char *file, cons
         break ;
     /* no nodup session started, normal loggin */
     case 3 :
+    default:
         _n_log( LEVEL, file, func, line, "%s", syslogbuffer );
         break ;
 
