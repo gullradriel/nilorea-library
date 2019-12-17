@@ -16,7 +16,6 @@ SRC= n_common.c n_config_file.c n_debug_mem.c n_exceptions.c n_file.c  n_hash.c 
 EXP= n_neural_networks.c
 ifeq ($(HAVE_ALLEGRO),1)
 SRC+= n_3d.c n_anim.c n_gui.c n_particles.c n_resources.c
-
 endif
 OUTPUT=libnilorea
 LIB=-lnilorea
@@ -126,7 +125,7 @@ incminor: minor
 all: main
 
 main: $(OBJECTS)
-	$(AR) -r $(OUTPUT)$(EXT) $(OBJECTS)
+	$(AR) rcs $(OUTPUT)$(EXT) $(OBJECTS)
 #gcc --enable-runtime-pseudo-reloc -shared -o $(OUTPUT)$(EXT).dll $(OBJECTS) -Wl,--out-implib,$(OUTPUT)$(EXT)
 #@echo Version:$(shell $(majorversion)).$(shell $(minorversion)).$(shell $(buildnum))
 
