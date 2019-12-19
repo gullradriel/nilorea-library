@@ -1967,7 +1967,7 @@ void *netw_recv_func( void *NET )
 
     NSTRBYTE nboctet = 0 ;
 
-    char nboct[ 4 ];
+    char nboct[ 4 ]="";
 
     N_STR *recvdmsg = NULL ;
 
@@ -2055,7 +2055,6 @@ void *netw_recv_func( void *NET )
                 }
             } /* if( !done) */
         } /* if !exit */
-
     }
     while( !DONE );
 

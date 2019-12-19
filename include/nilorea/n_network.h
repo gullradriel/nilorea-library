@@ -37,11 +37,11 @@ extern "C"
 #include <string.h>
 #include <netinet/in.h>
 #include <netinet/tcp.h>
-#include <sys/socket.h>
 #include <arpa/inet.h>
 #include <netdb.h>
 #include <sys/ioctl.h>
 #include <resolv.h>
+#include <sys/socket.h>
 
 #ifdef __linux__ 
 	#include <linux/sockios.h>
