@@ -7,6 +7,7 @@
 
 #include "nilorea/n_pcre.h"
 #include "nilorea/n_log.h"
+#include "strings.h"
 
 
 /*!\fn N_PCRE *npcre_new( char *str , int max_cap , int flags )
