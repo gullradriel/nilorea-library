@@ -35,9 +35,6 @@ extern "C"
 #include <unistd.h>
 #include <malloc.h>
 #include <string.h>
-
-#ifdef HAVE_OPENSSL
-#define _OPEN_SYS_SOCK_IPV6 1
 #include <netinet/in.h>
 #include <netinet/tcp.h>
 #include <sys/socket.h>
@@ -45,12 +42,15 @@ extern "C"
 #include <netdb.h>
 #include <sys/ioctl.h>
 #include <resolv.h>
-#include <openssl/ssl.h>
-#include <openssl/err.h>
+
+#ifdef __linux__ 
+	#include <linux/sockios.h>
 #endif
 
-#ifdef __linux__
-#include <linux/sockios.h>
+#ifdef HAVE_OPENSSL
+#define _OPEN_SYS_SOCK_IPV6 1
+#include <openssl/ssl.h>
+#include <openssl/err.h>
 #endif
 
 #ifndef MSG_NOSIGNAL
