@@ -607,7 +607,7 @@ NETWORK *netw_new( int send_list_limit, int recv_list_limit )
     netw -> crypto_algo = NETW_ENCRYPT_NONE ;
 
     netw -> send_data = &send_data;
-    netw -> send_data = &recv_data;
+    netw -> recv_data = &recv_data;
 
     return netw ;
 
@@ -1130,8 +1130,11 @@ int netw_connect_ex( NETWORK **netw, char *host, char *port, int disable_naggle,
     (*netw)->link . port = strdup( port );
     __n_assert( (*netw) -> link . port, netw_close( &(*netw ) ); return FALSE );
 
-    (*netw) -> key = NULL ;
+#ifdef HAVE_OPENSSL
+	(*netw) -> key = NULL ;
     (*netw) -> certificat = NULL ;
+#endif
+
     (*netw) -> vigenere_key = NULL ;
 
 
@@ -1293,8 +1296,10 @@ int netw_close( NETWORK **netw )
 
     FreeNoLog( (*netw) -> link . ip );
     FreeNoLog( (*netw) -> link . port );
-    FreeNoLog( (*netw) -> key );
+#ifdef HAVE_OPENSSL
+	FreeNoLog( (*netw) -> key );
     FreeNoLog( (*netw) -> certificat );
+#endif
     FreeNoLog( (*netw) -> vigenere_key );
 
     if( (*netw) -> addr_infos_loaded == 1 )
@@ -1836,7 +1841,7 @@ void *netw_send_func( void *NET )
 
     NSTRBYTE nboctet = 0 ;
 
-    char nboct[ 4 ];
+    char nboct[ 4 ] = "" ;
 
     N_STR *ptr = NULL ;
 
@@ -1876,7 +1881,7 @@ void *netw_send_func( void *NET )
                 pthread_mutex_unlock( &netw -> sendbolt );
                 if( ptr && ptr -> length > 0 && ptr -> data )
                 {
-                    n_log( LOG_DEBUG, "Sending ptr size %ld written %ld", ptr -> length, ptr -> written );
+                    n_log( LOG_DEBUG , "Sending ptr size %d written %d", ptr -> length, ptr -> written );
 
                     /* sending state */
                     nboctet = htonl( state );
@@ -1967,7 +1972,7 @@ void *netw_recv_func( void *NET )
 
     NSTRBYTE nboctet = 0 ;
 
-    char nboct[ 4 ]="";
+    char nboct[ 4 ]= "" ;
 
     N_STR *recvdmsg = NULL ;
 

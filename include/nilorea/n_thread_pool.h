@@ -106,13 +106,15 @@ typedef struct THREAD_WAITING_PROC
 
 /* allocate a new thread pool */
 THREAD_POOL *new_thread_pool( int nbmaxthr, int nb_max_waiting );
+/* set a thread pool status */
+int set_threaded_pool_status( THREAD_POOL *thread_pool , int status );
 /* add a function to run in an available thread inside a pool */
 int add_threaded_process( THREAD_POOL *thread_pool, void *(*func_ptr)(void *param), void *param, int mode );
 /* tell all the waiting threads to start their associated process */
 int start_threaded_pool( THREAD_POOL *thread_pool );
-/* wait for all running thread to finish */
+/* wait for all running threads to finish */
 int wait_for_threaded_pool( THREAD_POOL *thread_pool, int delay );
-/* delete for all running thread to finish */
+/* destroy all running threads */
 int destroy_threaded_pool( THREAD_POOL **thread_pool, int delay );
 /* try to add some waiting process on some free thread slots, else do nothing */
 int refresh_thread_pool( THREAD_POOL *thread_pool );

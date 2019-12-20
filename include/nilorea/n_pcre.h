@@ -47,9 +47,11 @@ typedef struct N_PCRE
 /* pcre helper, compile and optimize regexp */
 N_PCRE *npcre_new( char *str, int max_cap, int flags );
 /* pcre helper, match a regexp against a string */
-int npcre_match( char *str, N_PCRE *pcre );
-/* pcre helper, match a regexp against a string */
 int npcre_delete( N_PCRE ** pcre );
+/* pcre helper, match a regexp against a string */
+int npcre_clean_match( N_PCRE * pcre );
+/* pcre helper, match a regexp against a string */
+int npcre_match( char *str, N_PCRE *pcre );
 
 
 /*@}*/
