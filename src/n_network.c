@@ -711,7 +711,7 @@ int netw_init_wsa( int mode, int v1, int v2 )
  *\param mode 0 NON BLOCk , 1 BLOCK
  *\return TRUE or FALSE
  */
-int netw_set_blocking( NETWORK *netw , unsigned long int mode )
+int netw_set_blocking( NETWORK *netw , unsigned long int is_blocking )
 {
     __n_assert( netw , return FALSE );
 
@@ -719,7 +719,7 @@ int netw_set_blocking( NETWORK *netw , unsigned long int mode )
         int flags = fcntl( netw -> link . sock, F_GETFL, 0 );
         if ( (flags &O_NONBLOCK) && !is_blocking ){ n_log( LOG_INFO , "socket %d was already in non-blocking mode" , netw -> link . sock ); return TRUE; }
         if (!(flags &O_NONBLOCK) &&  is_blocking ){ n_log( LOG_INFO , "set_blocking_mode(): socket was already in blocking mode"); return TRUE; }
-        fcntl(socket, F_SETFL, is_blocking ? flags ^ O_NONBLOCK : flags | O_NONBLOCK) );
+        fcntl(netw -> link . sock, F_SETFL, is_blocking ? flags ^ O_NONBLOCK : flags | O_NONBLOCK);
     #else
         int res = ioctlsocket( netw -> link . sock, FIONBIO, &mode );
         if( res != 0 )

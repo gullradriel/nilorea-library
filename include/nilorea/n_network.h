@@ -311,6 +311,8 @@ int netw_get_state( NETWORK *netw, int *state, int *thr_engine_status );
 int netw_setsockopt( NETWORK *netw, int disable_naggle, int sock_send_buf, int sock_recv_buf );
 /* new tcp socket with error checking */
 int netw_tcp_socket( SOCKET *sock );
+/* set blocking mode */
+int netw_set_blocking( NETWORK *netw , unsigned long int is_blocking );
 /* Connecting, extended */
 int netw_connect_ex( NETWORK **netw, char *host, char *port, int disable_naggle, int sock_send_buf, int sock_recv_buf, int send_list_limit, int recv_list_limit, int ip_version );
 /* Connecting */
