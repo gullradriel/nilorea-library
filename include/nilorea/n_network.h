@@ -308,7 +308,7 @@ int netw_set_timers( NETWORK *netw, int send_queue_wait, int send_queue_consecut
 /* Get flags from network */
 int netw_get_state( NETWORK *netw, int *state, int *thr_engine_status );
 /* Set common socket options (disable naggle, send/recv buf, reuse addr) */
-int netw_setsockopt( SOCKET sock, int disable_naggle, int sock_send_buf, int sock_recv_buf );
+int netw_setsockopt( NETWORK *netw, int disable_naggle, int sock_send_buf, int sock_recv_buf );
 /* new tcp socket with error checking */
 int netw_tcp_socket( SOCKET *sock );
 /* Connecting, extended */
