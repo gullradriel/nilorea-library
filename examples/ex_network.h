@@ -11,6 +11,7 @@
 #include <sys/types.h>
 
 #include "nilorea/n_common.h"
+#include "nilorea/n_log.h"
 #ifndef __windows__
 #include <sys/wait.h>
 #endif

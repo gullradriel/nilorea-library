@@ -20,7 +20,6 @@ extern "C"
 #include "n_common.h"
 #include "n_str.h"
 #include "n_list.h"
-#include "n_log.h"
 
 #define NETWORK_IPALL 0
 #define NETWORK_IPV4  1
@@ -35,23 +34,17 @@ extern "C"
 #include <unistd.h>
 #include <malloc.h>
 #include <string.h>
-
-#ifdef HAVE_OPENSSL
-#define _OPEN_SYS_SOCK_IPV6 1
 #include <netinet/in.h>
 #include <netinet/tcp.h>
-#include <sys/socket.h>
 #include <arpa/inet.h>
 #include <netdb.h>
 #include <sys/ioctl.h>
-#include <resolv.h>
-#include <openssl/ssl.h>
-#include <openssl/err.h>
+#include <sys/socket.h>
+
+#ifdef __linux__ 
+	#include <linux/sockios.h>
 #endif
 
-#ifdef __linux__
-#include <linux/sockios.h>
-#endif
 
 #ifndef MSG_NOSIGNAL
 #define MSG_NOSIGNAL 0
@@ -96,9 +89,6 @@ typedef int SOCKET ;
 #include <windows.h>
 #include <ws2tcpip.h>
 #include "n_time.h"
-
-#include <openssl/ssl.h>
-#include <openssl/err.h>
 
 #ifndef MSG_EOR
 #define MSG_EOR 0
@@ -152,6 +142,13 @@ typedef int SOCKET ;
 /*! Netflag for sigpipe */
 #define NETFLAGS 0           /* no flags needed for microsoft */
 
+#endif
+
+#ifdef HAVE_OPENSSL
+#define _OPEN_SYS_SOCK_IPV6 1
+#include <resolv.h>
+#include <openssl/ssl.h>
+#include <openssl/err.h>
 #endif
 
 /*! NETWORK -> mode value for a CLIENT (meaning connecting) */
@@ -251,15 +248,10 @@ typedef struct NETWORK
         /*! if encryption is on, which one (flags NETW_ENCRYPT_*) */
         crypto_algo ;
 
-    /*! openssl certificat file */
-    char *certificat,
-         /*! openssl key file */
-         *key ;
-
     /*! vigenere key */
     char *vigenere_key ;
 
-    /*! send func ptr */
+	/*! send func ptr */
     netw_func send_data,
               /*! receive func ptr */
               recv_data ;
@@ -269,6 +261,10 @@ typedef struct NETWORK
     SSL_METHOD *method ;
     /*! SSL context holder */
     SSL_CTX *ctx ;
+    /*! openssl certificat file */
+    char *certificat,
+         /*! openssl key file */
+         *key ;
 #endif
 
     /*!networking socket*/
@@ -312,9 +308,11 @@ int netw_set_timers( NETWORK *netw, int send_queue_wait, int send_queue_consecut
 /* Get flags from network */
 int netw_get_state( NETWORK *netw, int *state, int *thr_engine_status );
 /* Set common socket options (disable naggle, send/recv buf, reuse addr) */
-int netw_setsockopt( SOCKET sock, int disable_naggle, int sock_send_buf, int sock_recv_buf );
+int netw_setsockopt( NETWORK *netw, int disable_naggle, int sock_send_buf, int sock_recv_buf );
 /* new tcp socket with error checking */
 int netw_tcp_socket( SOCKET *sock );
+/* set blocking mode */
+int netw_set_blocking( NETWORK *netw , unsigned long int is_blocking );
 /* Connecting, extended */
 int netw_connect_ex( NETWORK **netw, char *host, char *port, int disable_naggle, int sock_send_buf, int sock_recv_buf, int send_list_limit, int recv_list_limit, int ip_version );
 /* Connecting */

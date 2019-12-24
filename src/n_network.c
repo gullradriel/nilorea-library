@@ -607,7 +607,7 @@ NETWORK *netw_new( int send_list_limit, int recv_list_limit )
     netw -> crypto_algo = NETW_ENCRYPT_NONE ;
 
     netw -> send_data = &send_data;
-    netw -> send_data = &recv_data;
+    netw -> recv_data = &recv_data;
 
     return netw ;
 
@@ -705,30 +705,62 @@ int netw_init_wsa( int mode, int v1, int v2 )
 
 
 
-/*!\fn int netw_setsockopt( SOCKET sock , int disable_naggle , int sock_send_buf , int sock_recv_buf )
- *\brief Modify common socket options. Enable SO_REUSEADDR.
+/*!\fn int netw_set_blocking( NETWORK *netw , unsigned long int mode )
+ *\brief Modify blocking socket mode
+ *\param netw The network to configure
+ *\param mode 0 NON BLOCk , 1 BLOCK
+ *\return TRUE or FALSE
+ */
+int netw_set_blocking( NETWORK *netw , unsigned long int is_blocking )
+{
+    __n_assert( netw , return FALSE );
+
+    #if defined(__linux__) || defined(__sun)
+        int flags = fcntl( netw -> link . sock, F_GETFL, 0 );
+        if ( (flags &O_NONBLOCK) && !is_blocking ){ n_log( LOG_INFO , "socket %d was already in non-blocking mode" , netw -> link . sock ); return TRUE; }
+        if (!(flags &O_NONBLOCK) &&  is_blocking ){ n_log( LOG_INFO , "set_blocking_mode(): socket was already in blocking mode"); return TRUE; }
+        fcntl(netw -> link . sock, F_SETFL, is_blocking ? flags ^ O_NONBLOCK : flags | O_NONBLOCK);
+    #else
+        int res = ioctlsocket( netw -> link . sock, FIONBIO, &mode );
+        if( res != 0 )
+        {
+            n_log( LOG_ERR, "ioctlsocket failed with error: %ld", res );
+            netw_close( &netw );
+            return FALSE ;
+        }
+    #endif
+    return TRUE ;
+}
+
+
+
+/*!\fn int netw_setsockopt( NETWORK *netw  , int disable_naggle , int sock_send_buf , int sock_recv_buf )
+ *\brief Modify common socket options on the given netw. Enable SO_REUSEADDR.
  *\param sock The socket to configure
  *\param disable_naggle Set to positive to enable. Set to negative to force disable, 0 untouched
  *\param sock_send_buf If >0, then try to set the socket send buffer size in octet
  *\param sock_recv_buf If >0, then try to set the socket recv buffer size in octet
  *\return TRUE or FALSE
  */
-int netw_setsockopt( SOCKET sock, int disable_naggle, int sock_send_buf, int sock_recv_buf )
+int netw_setsockopt( NETWORK *netw , int disable_naggle, int sock_send_buf, int sock_recv_buf )
 {
+    __n_assert( netw , return FALSE );
+    __n_assert( ( netw -> link . sock == 0 )  , return FALSE )
+
     /* disable naggle algorithm */
     if( disable_naggle > 0 )
     {
-        if ( setsockopt( sock, IPPROTO_TCP, TCP_NODELAY, ( const char * ) &disable_naggle, sizeof( disable_naggle ) ) == -1 )
+        if ( setsockopt( netw -> link . sock, IPPROTO_TCP, TCP_NODELAY, ( const char * ) &disable_naggle, sizeof( disable_naggle ) ) == -1 )
         {
-            n_log( LOG_ERR, "Error from setsockopt(TCP_NODELAY) on socket %d. errno: %s", sock, strerror( errno ) );
+            n_log( LOG_ERR, "Error from setsockopt(TCP_NODELAY) on socket %d. errno: %s", netw -> link . sock, strerror( errno ) );
             return FALSE ;
         }
     }
     if( disable_naggle < 0 )
     {
-        if ( setsockopt( sock, IPPROTO_TCP, TCP_NODELAY, ( const char * ) &disable_naggle, sizeof( disable_naggle ) ) == -1 )
+        if ( setsockopt( netw -> link . sock, IPPROTO_TCP, TCP_NODELAY, ( const char * ) &disable_naggle, sizeof( disable_naggle ) ) == -1 )
         {
-            n_log( LOG_ERR, "Error from setsockopt(TCP_NODELAY) on socket %d. errno: %s", sock, strerror( errno ) );
+            n_log( LOG_ERR, "Error from setsockopt(TCP_NODELAY) on socket %d. errno: %s", netw -> link . sock, strerror( errno ) );
             return FALSE ;
         }
     }
@@ -736,9 +768,9 @@ int netw_setsockopt( SOCKET sock, int disable_naggle, int sock_send_buf, int soc
     /* socket sending buffer size */
     if( sock_send_buf > 0 )
     {
-        if ( setsockopt ( sock, SOL_SOCKET, SO_SNDBUF, ( const char * ) &sock_send_buf, sizeof( sock_send_buf ) ) == -1 )
+        if ( setsockopt ( netw -> link . sock, SOL_SOCKET, SO_SNDBUF, ( const char * ) &sock_send_buf, sizeof( sock_send_buf ) ) == -1 )
         {
-            n_log( LOG_ERR, "Error from setsockopt(SO_SNDBUF) on socket %d. errno: %s", sock, strerror( errno ) );
+            n_log( LOG_ERR, "Error from setsockopt(SO_SNDBUF) on socket %d. errno: %s", netw -> link . sock, strerror( errno ) );
             return FALSE ;
         }
     }
@@ -746,9 +778,9 @@ int netw_setsockopt( SOCKET sock, int disable_naggle, int sock_send_buf, int soc
     /* socket receiving buffer */
     if( sock_recv_buf > 0 )
     {
-        if ( setsockopt ( sock, SOL_SOCKET, SO_RCVBUF, ( const char * ) &sock_recv_buf, sizeof( sock_recv_buf ) ) == -1 )
+        if ( setsockopt ( netw -> link . sock, SOL_SOCKET, SO_RCVBUF, ( const char * ) &sock_recv_buf, sizeof( sock_recv_buf ) ) == -1 )
         {
-            n_log( LOG_ERR, "Error from setsockopt(SO_RCVBUF) on socket %d. errno: %s", sock, strerror( errno ) );
+            n_log( LOG_ERR, "Error from setsockopt(SO_RCVBUF) on socket %d. errno: %s", netw -> link . sock, strerror( errno ) );
             return FALSE ;
         }
     }
@@ -756,64 +788,64 @@ int netw_setsockopt( SOCKET sock, int disable_naggle, int sock_send_buf, int soc
     int tmp = 1 ;
     /* lose the pesky "Address already in use" error message*/
 #ifndef __windows__
-    if ( setsockopt( sock, SOL_SOCKET, (SO_REUSEPORT | SO_REUSEADDR), (char *)&tmp, sizeof( tmp ) ) == -1 )
+    if ( setsockopt( netw -> link . sock, SOL_SOCKET, (SO_REUSEPORT | SO_REUSEADDR), (char *)&tmp, sizeof( tmp ) ) == -1 )
     {
         int error=errno ;
-        n_log( LOG_ERR, "Error from setsockopt(SO_REUSEADDR) on socket %d. errno: %s", sock, strerror( error ) );
+        n_log( LOG_ERR, "Error from setsockopt(SO_REUSEADDR) on socket %d. errno: %s", netw -> link . sock, strerror( error ) );
         return FALSE ;
     }
     struct timeval tv;
     tv.tv_sec = 30 ;
     tv.tv_usec = 0;
-    if( setsockopt(sock, SOL_SOCKET, SO_RCVTIMEO, (const char*)&tv, sizeof tv) == -1 )
+    if( setsockopt(netw -> link . sock, SOL_SOCKET, SO_RCVTIMEO, (const char*)&tv, sizeof tv) == -1 )
     {
         int error=errno ;
-        n_log( LOG_ERR, "Error from setsockopt(SO_RCVTIMEO) on socket %d. errno: %s", sock, strerror( error ) );
+        n_log( LOG_ERR, "Error from setsockopt(SO_RCVTIMEO) on socket %d. errno: %s", netw -> link . sock, strerror( error ) );
         return FALSE ;
     }
-    if( setsockopt(sock, SOL_SOCKET, SO_SNDTIMEO, (const char*)&tv, sizeof tv) == -1 )
+    if( setsockopt(netw -> link . sock, SOL_SOCKET, SO_SNDTIMEO, (const char*)&tv, sizeof tv) == -1 )
     {
         int error=errno ;
-        n_log( LOG_ERR, "Error from setsockopt(SO_SNDTIMEO) on socket %d. errno: %s", sock, strerror( error ) );
+        n_log( LOG_ERR, "Error from setsockopt(SO_SNDTIMEO) on socket %d. errno: %s", netw -> link . sock, strerror( error ) );
         return FALSE ;
     }
     struct linger ling;
     ling.l_onoff=1;
     ling.l_linger=30;
-    if( setsockopt(sock, SOL_SOCKET, SO_LINGER, &ling, sizeof( ling ) ) == -1 )
+    if( setsockopt(netw -> link . sock, SOL_SOCKET, SO_LINGER, &ling, sizeof( ling ) ) == -1 )
     {
         int error=errno ;
-        n_log( LOG_ERR, "Error from setsockopt(SO_LINGER) on socket %d. errno: %s", sock,strerror( error ) );
+        n_log( LOG_ERR, "Error from setsockopt(SO_LINGER) on socket %d. errno: %s", netw -> link . sock,strerror( error ) );
         return FALSE ;
     }
 #else
-    if ( setsockopt( sock, SOL_SOCKET, SO_REUSEADDR, (char *)&tmp, sizeof( tmp ) ) == -1 )
+    if ( setsockopt( netw -> link . sock, SOL_SOCKET, SO_REUSEADDR, (char *)&tmp, sizeof( tmp ) ) == -1 )
     {
         int error=errno ;
-        n_log( LOG_ERR, "Error from setsockopt(SO_REUSEADDR) on socket %d. errno: %s", sock, strerror( error ) );
+        n_log( LOG_ERR, "Error from setsockopt(SO_REUSEADDR) on socket %d. errno: %s", netw -> link . sock, strerror( error ) );
         return FALSE ;
     }
     // __windows__
     DWORD timeout = 30000;
-    if( setsockopt(sock, SOL_SOCKET, SO_RCVTIMEO, (const char*)&timeout, sizeof timeout) == -1 )
+    if( setsockopt(netw -> link . sock, SOL_SOCKET, SO_RCVTIMEO, (const char*)&timeout, sizeof timeout) == -1 )
     {
         int error=errno ;
-        n_log( LOG_ERR, "Error from setsockopt(SO_RCVTIMEO) on socket %d. errno: %s", sock, strerror( error ) );
+        n_log( LOG_ERR, "Error from setsockopt(SO_RCVTIMEO) on socket %d. errno: %s", netw -> link . sock, strerror( error ) );
         return FALSE ;
     }
-    if( setsockopt(sock, SOL_SOCKET, SO_SNDTIMEO, (const char*)&timeout, sizeof timeout) == -1 )
+    if( setsockopt(netw -> link . sock, SOL_SOCKET, SO_SNDTIMEO, (const char*)&timeout, sizeof timeout) == -1 )
     {
         int error=errno ;
-        n_log( LOG_ERR, "Error from setsockopt(SO_SNDTIMEO) on socket %d. errno: %s", sock, strerror( error ) );
+        n_log( LOG_ERR, "Error from setsockopt(SO_SNDTIMEO) on socket %d. errno: %s", netw -> link . sock, strerror( error ) );
         return FALSE ;
     }
     struct linger ling;
     ling.l_onoff=1;
     ling.l_linger=30;
-    if( setsockopt(sock, SOL_SOCKET, SO_LINGER, (const char*)&ling, sizeof( ling ) ) == -1 )
+    if( setsockopt(netw -> link . sock, SOL_SOCKET, SO_LINGER, (const char*)&ling, sizeof( ling ) ) == -1 )
     {
         int error=errno ;
-        n_log( LOG_ERR, "Error from setsockopt(SO_LINGER) on socket %d. errno: %s", sock,strerror( error ) );
+        n_log( LOG_ERR, "Error from setsockopt(SO_LINGER) on socket %d. errno: %s", netw -> link . sock ,strerror( error ) );
         return FALSE ;
     }
 #endif
@@ -1088,7 +1120,7 @@ int netw_connect_ex( NETWORK **netw, char *host, char *port, int disable_naggle,
             n_log( LOG_ERR, "Error while trying to make a socket: %s",strerror( error ) );
             continue ;
         }
-        if( netw_setsockopt( sock, disable_naggle, sock_send_buf, sock_recv_buf ) != TRUE )
+        if( netw_setsockopt( (*netw) , disable_naggle, sock_send_buf, sock_recv_buf ) != TRUE )
         {
             n_log( LOG_ERR, "Some socket options could not be set on %d", (*netw) -> link . sock );
         }
@@ -1130,8 +1162,11 @@ int netw_connect_ex( NETWORK **netw, char *host, char *port, int disable_naggle,
     (*netw)->link . port = strdup( port );
     __n_assert( (*netw) -> link . port, netw_close( &(*netw ) ); return FALSE );
 
-    (*netw) -> key = NULL ;
+#ifdef HAVE_OPENSSL
+	(*netw) -> key = NULL ;
     (*netw) -> certificat = NULL ;
+#endif
+
     (*netw) -> vigenere_key = NULL ;
 
 
@@ -1293,8 +1328,10 @@ int netw_close( NETWORK **netw )
 
     FreeNoLog( (*netw) -> link . ip );
     FreeNoLog( (*netw) -> link . port );
-    FreeNoLog( (*netw) -> key );
+#ifdef HAVE_OPENSSL
+	FreeNoLog( (*netw) -> key );
     FreeNoLog( (*netw) -> certificat );
+#endif
     FreeNoLog( (*netw) -> vigenere_key );
 
     if( (*netw) -> addr_infos_loaded == 1 )
@@ -1456,7 +1493,7 @@ int netw_make_listening( NETWORK **netw, char *addr, char *port, int nbpending, 
             n_log( LOG_ERR, "Error while trying to make a socket: %s",strerror( errno ) );
             continue ;
         }
-        if( netw_setsockopt( (*netw) -> link . sock, 0, 0, 0 ) != TRUE )
+        if( netw_setsockopt( (*netw) , 0, 0, 0 ) != TRUE )
         {
             n_log( LOG_ERR, "Some socket options could not be set on %d", (*netw) -> link . sock );
         }
@@ -1639,7 +1676,7 @@ NETWORK *netw_accept_from_ex( NETWORK *from, int disable_naggle, int sock_send_b
         n_log( LOG_ERR, "inet_ntop: %p , %s", netw -> link . raddr, strerror( errno ) );
     }
 
-    if( netw_setsockopt( netw -> link . sock, disable_naggle, sock_send_buf, sock_recv_buf ) != TRUE )
+    if( netw_setsockopt( netw , disable_naggle, sock_send_buf, sock_recv_buf ) != TRUE )
     {
         n_log( LOG_ERR, "Some socket options could not be set on %d", netw-> link . sock );
     }
@@ -1836,7 +1873,7 @@ void *netw_send_func( void *NET )
 
     NSTRBYTE nboctet = 0 ;
 
-    char nboct[ 4 ];
+    char nboct[ 4 ] = "" ;
 
     N_STR *ptr = NULL ;
 
@@ -1876,7 +1913,7 @@ void *netw_send_func( void *NET )
                 pthread_mutex_unlock( &netw -> sendbolt );
                 if( ptr && ptr -> length > 0 && ptr -> data )
                 {
-                    n_log( LOG_DEBUG, "Sending ptr size %ld written %ld", ptr -> length, ptr -> written );
+                    n_log( LOG_DEBUG , "Sending ptr size %d written %d", ptr -> length, ptr -> written );
 
                     /* sending state */
                     nboctet = htonl( state );
@@ -1967,7 +2004,7 @@ void *netw_recv_func( void *NET )
 
     NSTRBYTE nboctet = 0 ;
 
-    char nboct[ 4 ];
+    char nboct[ 4 ]= "" ;
 
     N_STR *recvdmsg = NULL ;
 
@@ -2055,7 +2092,6 @@ void *netw_recv_func( void *NET )
                 }
             } /* if( !done) */
         } /* if !exit */
-
     }
     while( !DONE );
 
@@ -2206,7 +2242,7 @@ int recv_data( SOCKET s, char *buf, NSTRBYTE n )
                 return -2 ;
             }
             /* signal an error to the caller */
-            n_log( LOG_ERR,  "socket %d receive Error: %s", s, strerror( errno ) );
+            n_log( LOG_ERR,  "socket %d recv returned %d, error: %s", s, strerror( errno ) );
             return -1 ;
         }
     }
