@@ -721,7 +721,7 @@ int netw_set_blocking( NETWORK *netw , unsigned long int is_blocking )
         if (!(flags &O_NONBLOCK) &&  is_blocking ){ n_log( LOG_INFO , "set_blocking_mode(): socket was already in blocking mode"); return TRUE; }
         fcntl(netw -> link . sock, F_SETFL, is_blocking ? flags ^ O_NONBLOCK : flags | O_NONBLOCK);
     #else
-        int res = ioctlsocket( netw -> link . sock, FIONBIO, &mode );
+        int res = ioctlsocket( netw -> link . sock, FIONBIO, &is_blocking );
         if( res != 0 )
         {
             n_log( LOG_ERR, "ioctlsocket failed with error: %ld", res );
