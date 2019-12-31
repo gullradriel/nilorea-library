@@ -7,6 +7,7 @@
 
 #include <stdio.h>
 #include <errno.h>
+#include <string.h>
 
 #include "nilorea/n_log.h"
 #include "nilorea/n_thread_pool.h"
