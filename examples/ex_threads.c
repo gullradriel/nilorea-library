@@ -116,14 +116,18 @@ int main(int argc, char **argv)
     int error = 0 ;
     THREAD_POOL *thread_pool = new_thread_pool( 2, 128 );
 
-    int sleep_value = 5+rand()%10 ;
-    if( add_threaded_process( thread_pool, &occupy_thread, (void *)(intptr_t)sleep_value, DIRECT_PROC) == FALSE )
-    {
-        n_log( LOG_ERR, "Error ading client management to thread pool" );
-    }
-    refresh_thread_pool( thread_pool );
-
-
+    for( int it = 0 ; it < 10 ; it ++ )
+	{
+		int sleep_value = 5+rand()%10 ;
+    	if( add_threaded_process( thread_pool, &occupy_thread, (void *)(intptr_t)sleep_value, DIRECT_PROC) == FALSE )
+   		{
+        	n_log( LOG_ERR, "Error ading client management to thread pool" );
+    	}
+    	refresh_thread_pool( thread_pool );
+	}
+    
+	refresh_thread_pool( thread_pool );
+	set_threaded_pool_status( thread_pool , PAUSED_THREAD );
     n_log( LOG_NOTICE, "Waiting thread_pool..." );
     wait_for_threaded_pool( thread_pool, 50000 );
     n_log( LOG_NOTICE, "Destroying thread_pool..." );

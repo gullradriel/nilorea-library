@@ -34,12 +34,14 @@ extern "C"
 #define WAITING_PROC 16
 /*! status of a thread which proc is currently running */
 #define RUNNING_PROC 32
-/*! status of a thread which proc is currently running */
+/*! indicate that the pool is running and ready to use */
 #define RUNNING_THREAD 64
-/*! status of an exiting thread */
-#define EXITING_THREAD 128
-/*! status of an exiting thread */
-#define EXITED_THREAD 256
+/*! indicate that the pool is paused, unfinished jobs will finish and their threads will also enter the PAUSE state */
+#define PAUSED_THREAD 128
+/*! indicate that the pool is exiting, unfinished jobs will finish and the pool will exit the threads and enter the EXITED state*/
+#define EXITING_THREAD 256
+/*! indicate that the pool is off, all jobs have been consumed */
+#define EXITED_THREAD 512
 
 /*! A thread pool node */
 typedef struct THREAD_POOL_NODE

@@ -24,9 +24,12 @@
 int set_threaded_pool_status( THREAD_POOL *thread_pool , int status )
 {
 	__n_assert( thread_pool , return FALSE );
-	__n_assert( (status != RUNNING_THREAD) , return FALSE );
-	__n_assert( (status != EXITING_THREAD) , return FALSE );
-	__n_assert( (status != EXITED_THREAD)  , return FALSE );
+	
+	if( status != RUNNING_THREAD && status != PAUSED_THREAD && status != EXITING_THREAD )
+	{
+		n_log( LOG_ERR , "Bad status (%d) for thread_pool %p" , status , thread_pool );
+		return FALSE ;
+	}
 	
 	int it = 0 ;
     while( it < thread_pool -> max_threads )
@@ -64,10 +67,8 @@ void *thread_pool_processing_function( void *param )
         thread_state = node -> thread_state ;
         pthread_mutex_unlock( &node -> lock );
 
-        n_log( LOG_DEBUG, "Thread pool process started with state %d", thread_state );
-
-        if( thread_state == RUNNING_THREAD )
-        {
+		if( thread_state == RUNNING_THREAD )
+		{
             n_log( LOG_DEBUG, "Thread pool running proc %p", node -> func );
 
             pthread_mutex_lock( &node -> lock );
@@ -96,8 +97,7 @@ void *thread_pool_processing_function( void *param )
             /* DIRECT_PROC do not need to post th_end */
             if( type&SYNCED_PROC )
                 sem_post( &node -> th_end );
-        }
-
+		}
     }
     while( thread_state != EXITING_THREAD );
 
@@ -337,8 +337,8 @@ int wait_for_threaded_pool(  THREAD_POOL *thread_pool, int delay )
 	/* waiting for all active procs to have terminated */
     while( !DONE )
     {
-        refresh_thread_pool( thread_pool );
         DONE = 1 ;
+        refresh_thread_pool( thread_pool );
         for( int it = 0 ; it < thread_pool -> max_threads ; it ++ )
         {
             int state = 0 ;
@@ -393,10 +393,7 @@ int destroy_threaded_pool( THREAD_POOL **pool, int delay )
             {
                 n_log( LOG_DEBUG, "thr %ld proc state %d thr state %d", (*pool) -> thread_list[ it ] -> thr,  (*pool) -> thread_list[ it ] -> state,(*pool) -> thread_list[ it ] -> thread_state  );
             }
-
-            pthread_mutex_lock(   &(*pool) -> thread_list[ it ] -> global_lock );
             pthread_mutex_unlock( &(*pool) -> thread_list[ it ] -> global_lock );
-
         }
         u_sleep( delay );
     }
