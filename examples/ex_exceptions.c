@@ -71,6 +71,9 @@ int all_exception( int boolean )
 
 int main( void )
 {
+	set_log_level( LOG_STDERR );
+	set_log_level( LOG_DEBUG );
+
     puts( "ArrayNoCatch" );
     Try
     {
@@ -203,8 +206,6 @@ int main( void )
     }
     EndTry ;
 
-    return 1 ;
-
+    exit( 0 );
 }
-
 

@@ -42,7 +42,7 @@ int main( int argc, char **argv )
 
     npcre_delete( &pcre );
 
-    return TRUE ;
+    exit( 0 );
 }
 
 

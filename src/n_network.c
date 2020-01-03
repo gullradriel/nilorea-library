@@ -735,7 +735,7 @@ int netw_set_blocking( NETWORK *netw , unsigned long int is_blocking )
 
 
 /*!\fn int netw_setsockopt( NETWORK *netw  , int disable_naggle , int sock_send_buf , int sock_recv_buf )
- *\brief Modify common socket options on the given netw. Enable SO_REUSEADDR.
+ *\brief Modify common socket options on the given netw. Enable SO_REUSEADDR, and sets 30secs timeouts for send,recv,LINGER
  *\param sock The socket to configure
  *\param disable_naggle Set to positive to enable. Set to negative to force disable, 0 untouched
  *\param sock_send_buf If >0, then try to set the socket send buffer size in octet
@@ -745,7 +745,7 @@ int netw_set_blocking( NETWORK *netw , unsigned long int is_blocking )
 int netw_setsockopt( NETWORK *netw , int disable_naggle, int sock_send_buf, int sock_recv_buf )
 {
     __n_assert( netw , return FALSE );
-    __n_assert( ( netw -> link . sock == 0 )  , return FALSE )
+    __n_assert( ( netw -> link . sock >=0 )  , return FALSE )
 
     /* disable naggle algorithm */
     if( disable_naggle > 0 )
@@ -819,13 +819,13 @@ int netw_setsockopt( NETWORK *netw , int disable_naggle, int sock_send_buf, int 
         return FALSE ;
     }
 #else
+    // __windows__
     if ( setsockopt( netw -> link . sock, SOL_SOCKET, SO_REUSEADDR, (char *)&tmp, sizeof( tmp ) ) == -1 )
     {
         int error=errno ;
         n_log( LOG_ERR, "Error from setsockopt(SO_REUSEADDR) on socket %d. errno: %s", netw -> link . sock, strerror( error ) );
         return FALSE ;
     }
-    // __windows__
     DWORD timeout = 30000;
     if( setsockopt(netw -> link . sock, SOL_SOCKET, SO_RCVTIMEO, (const char*)&timeout, sizeof timeout) == -1 )
     {
@@ -1433,18 +1433,21 @@ int netw_wait_close( NETWORK **netw )
  */
 int netw_make_listening( NETWORK **netw, char *addr, char *port, int nbpending, int ip_version )
 {
-    /*checking WSA when under windows*/
-    if ( netw_init_wsa( 1, 2, 2 ) == FALSE )
-    {
-        n_log( LOG_ERR, "Unable to load WSA dll's" );
-        return FALSE ;
-    }
+	__n_assert( port , return FALSE );
 
     if( *netw )
     {
         n_log( LOG_ERR, "Cannot use an allocated network. Please pass a NULL network to modify" );
         return FALSE;
     }
+		
+	/*checking WSA when under windows*/
+    if ( netw_init_wsa( 1, 2, 2 ) == FALSE )
+    {
+        n_log( LOG_ERR, "Unable to load WSA dll's" );
+        return FALSE ;
+    }
+
     (*netw) = netw_new( -1, -1 );
     (*netw) -> link . port = strdup( port );
     /*creating array*/
@@ -1473,11 +1476,10 @@ int netw_make_listening( NETWORK **netw, char *addr, char *port, int nbpending, 
     int error = getaddrinfo( addr, port, &(*netw) -> link . hints, &(*netw) -> link . rhost );
     if( error != 0)
     {
-        n_log( LOG_ERR, "Error when creating listening socket on port %s", port, gai_strerror( error ) );
+        n_log( LOG_ERR, "Error when resolving %s:%s getaddrinfo: %s", _str( addr ) ,  port , gai_strerror( error ) );
         netw_close( &(*netw) );
         return FALSE ;
     }
-
     (*netw) -> addr_infos_loaded = 1 ;
 
     /* getaddrinfo() returns a list of address structures.

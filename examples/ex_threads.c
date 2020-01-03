@@ -1,8 +1,8 @@
-/**\file ex_network.c
- *  Nilorea Library n_network api test
+/**\file ex_threads.c
+ *  Nilorea Library thread pool api test
  *\author Castagnier Mickael
  *\version 1.0
- *\date 26/05/2015
+ *\date 03/01/2019
  */
 
 #include <stdio.h>

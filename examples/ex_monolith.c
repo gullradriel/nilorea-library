@@ -61,6 +61,6 @@ int main(void)
     free_nstr( &nstr2 );
     free_nstr( &nstr3 );
 
-    return TRUE ;
+    exit( 0 );
 }
 
