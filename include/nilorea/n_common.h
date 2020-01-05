@@ -20,6 +20,8 @@ extern "C"
 
 #include <sys/types.h>
 #include <unistd.h>
+#include <stdlib.h>
+#include <alloca.h>
 
 /*! feature test macro */
 #define __EXTENSIONS__
@@ -75,6 +77,8 @@ extern "C"
 #ifndef EMPTY
 #define EMPTY 2
 #endif
+
+
 
 /*! String or "NULL" string for logging purposes */
 #define _str( __PTR ) ((__PTR)?(__PTR):"NULL")
@@ -156,9 +160,6 @@ extern "C"
 
 /*! next odd helper */
 #define next_even( __val ) ( (__val)%2 == 0 ) ? (__val + 1) : ( __val )
-
-/*! shortener for if( a cond b ) a = b  */
-#define equal_if( __var_a , __cond , __var_b ) if( (__var_a) __cond (__var_b) ) __var_a = (__var_b)
 
 
 /*! init error checking in a function */

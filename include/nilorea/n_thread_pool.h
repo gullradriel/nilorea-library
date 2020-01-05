@@ -34,11 +34,11 @@ extern "C"
 #define WAITING_PROC 16
 /*! status of a thread which proc is currently running */
 #define RUNNING_PROC 32
-/*! status of a thread which proc is currently running */
+/*! indicate that the pool is running and ready to use */
 #define RUNNING_THREAD 64
-/*! status of an exiting thread */
-#define EXITING_THREAD 128
-/*! status of an exiting thread */
+/*! indicate that the pool is exiting, unfinished jobs will finish and the pool will exit the threads and enter the EXITED state*/
+#define EXITING_THREAD 128	
+/*! indicate that the pool is off, all jobs have been consumed */
 #define EXITED_THREAD 256
 
 /*! A thread pool node */
@@ -106,8 +106,6 @@ typedef struct THREAD_WAITING_PROC
 
 /* allocate a new thread pool */
 THREAD_POOL *new_thread_pool( int nbmaxthr, int nb_max_waiting );
-/* set a thread pool status */
-int set_threaded_pool_status( THREAD_POOL *thread_pool , int status );
 /* add a function to run in an available thread inside a pool */
 int add_threaded_process( THREAD_POOL *thread_pool, void *(*func_ptr)(void *param), void *param, int mode );
 /* tell all the waiting threads to start their associated process */

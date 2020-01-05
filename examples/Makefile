@@ -60,7 +60,7 @@ else
     endif
 endif
 
-TARGET=ex_list$(EXT) ex_nstr$(EXT) ex_exceptions$(EXT) ex_hash$(EXT) ex_network$(EXT) ex_monolith$(EXT) ex_configfile$(EXT) ex_pcre$(EXT)
+TARGET=ex_list$(EXT) ex_nstr$(EXT) ex_exceptions$(EXT) ex_hash$(EXT) ex_network$(EXT) ex_monolith$(EXT) ex_configfile$(EXT) ex_pcre$(EXT) ex_threads$(EXT) ex_log$(EXT) ex_common
 
 ifeq ($(HAVE_ALLEGRO),1)
 	#CLIBS=`pkg-config --cflags --libs allegro-5 allegro_acodec-5 allegro_audio-5 allegro_color-5 allegro_dialog-5 allegro_font-5 allegro_image-5 allegro_main-5 allegro_memfile-5 allegro_physfs-5 allegro_primitives-5 allegro_ttf-5`
@@ -72,6 +72,9 @@ endif
 	$(CC) $(CFLAGS) -o $@ -c $<
 
 all: $(TARGET)
+
+ex_common$(EXT): n_common.c n_log.o n_list.o n_str.o ex_common.o
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(CLIBS)
 
 ex_nstr$(EXT): n_log.o n_list.o n_str.o ex_nstr.o
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(CLIBS)
@@ -102,6 +105,12 @@ ex_gui_particles$(EXT): ex_gui_particles.o
 
 ex_pcre$(EXT): n_log.o n_pcre.o ex_pcre.o
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(CLIBS) -lpcre
+
+ex_threads$(EXT): n_log.o n_list.o n_time.o n_thread_pool.c ex_threads.o
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(CLIBS)
+
+ex_log$(EXT): n_log.o n_list.o n_time.o ex_log.o
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(CLIBS)
 
 clean:
 	$(RM) *.o

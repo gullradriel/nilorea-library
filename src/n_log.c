@@ -216,9 +216,7 @@ void _n_log( int level, const char *file, const char *func, int line, const char
 {
     va_list args ;
 
-	memset( args , 0 , sizeof( va_list ) );
-
-    FILE *out = NULL ;
+	FILE *out = NULL ;
 
     if( level == LOG_NULL )
         return ;

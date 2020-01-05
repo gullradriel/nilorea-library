@@ -67,12 +67,14 @@ CONFIG_FILE *load_config_file( char *filename, int *errors )
     {
         n_log( LOG_ERR, "Unable to open %s: %s", _str( filename ), strerror( error ) );
         (*errors)++;
+		npcre_delete( &npcre );
         return NULL ;
     }
     Malloc( cfg_file, CONFIG_FILE, 1 );
     if( !cfg_file )
     {
         fclose( in );
+		npcre_delete( &npcre );
         return NULL ;
     }
     cfg_file -> sections = new_generic_list( 0 );
@@ -80,6 +82,7 @@ CONFIG_FILE *load_config_file( char *filename, int *errors )
     {
         Free( cfg_file );
         fclose( in );
+		npcre_delete( &npcre );
         return NULL ;
     }
     cfg_file -> filename = strdup( filename );
@@ -89,6 +92,7 @@ CONFIG_FILE *load_config_file( char *filename, int *errors )
         (*errors)++;
         Free( cfg_file );
         fclose( in );
+		npcre_delete( &npcre );
         return NULL ;
     }
     /* adding default section */
@@ -100,6 +104,7 @@ CONFIG_FILE *load_config_file( char *filename, int *errors )
         (*errors)++;
         Free( cfg_file );
         fclose( in );
+		npcre_delete( &npcre );
         return NULL ;
     }
 
@@ -111,6 +116,7 @@ CONFIG_FILE *load_config_file( char *filename, int *errors )
         Free( cfg_file );
         Free( default_section );
         fclose( in );
+		npcre_delete( &npcre );
         return NULL ;
     }
 
@@ -123,6 +129,7 @@ CONFIG_FILE *load_config_file( char *filename, int *errors )
         Free( default_section );
         Free( cfg_file );
         fclose( in );
+		npcre_delete( &npcre );
         return NULL ;
     }
     list_push( cfg_file -> sections, default_section, &destroy_config_file_section );

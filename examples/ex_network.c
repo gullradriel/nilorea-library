@@ -240,7 +240,7 @@ int main(int argc, char **argv)
             pthread_join( netw_thr, NULL );
 
         }
-        /* testing with thread pool */
+        /* testing with thread pool  && non blocking */
         int error = 0 ;
         THREAD_POOL *thread_pool = new_thread_pool( 2, 128 );
         while( it < NB_ATTEMPTS )

@@ -127,6 +127,5 @@ int main(void)
     }
     list_destroy( &list );
 
-    return TRUE ;
-
+    exit( 0 );
 } /* END_OF_MAIN */
