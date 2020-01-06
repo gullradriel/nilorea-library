@@ -6,7 +6,8 @@ cmake_minimum_required(VERSION 3.0)
 
 project(Nilorea)
 
-set(A5_DEP_SEARCH_PATH "../Allegro525" CACHE PATH "Where to find allegro 5")
+#set(A5_DEP_SEARCH_PATH "../Allegro525" CACHE PATH "Where to find allegro 5")
+set(A5_DEP_SEARCH_PATH "/mingw64" CACHE PATH "Where to find allegro 5")
 
 set(ALLEGRO5_LIB_DIR "$CACHE{A5_DEP_SEARCH_PATH}/lib")
 
@@ -48,16 +49,27 @@ else()
          PATHS ${ALLEGRO5_LIB_DIR})
 endif("${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
 
+set(ALLEGRO_FOUND 0)
 
-set(ALLEGRO_FOUND 1)
-
-if (${A5_MONOLITH} STRGREATER "")
+if( NOT ${A5_MONOLITH} STREQUAL  "A5_MONOLITH-NOTFOUND" )
    set(A5_LINK_LIBS ${A5_MONOLITH} CACHE STRING "Allegro 5 Link libraries")
-elseif(${A5_ADDONS} STRGREATER "")
+   message( "A5_MONOLITH found !" )
+   message( ${A5_MONOLITH} )
+   set(ALLEGRO_FOUND 1)
+elseif( NOT ${A5_ADDONS} STREQUAL  "A5_ADDONS-NOTFOUND" )
    set(A5_LINK_LIBS ${A5_ADDONS} CACHE STRING "Allegro 5 Link libraries")
+   message( "A5_ADDONS found !" )
+   message( ${A5_ADDONS} )
+   set(ALLEGRO_FOUND 1)
 else()
-   set(ALLEGRO_FOUND 0)
-endif(${A5_MONOLITH} STRGREATER "")
+       message( "Searching A5_SHARED..." )
+       # the `pkg_check_modules` function is created with this call
+       find_package(PkgConfig REQUIRED) 
+       # these calls create special `PkgConfig::<MODULE>` variables
+       pkg_check_modules( PKG_A5_SHARED REQUIRED IMPORTED_TARGET allegro-5 allegro_acodec-5 allegro_audio-5 allegro_color-5 allegro_dialog-5 allegro_font-5 allegro_image-5 allegro_main-5 allegro_memfile-5 allegro_physfs-5 allegro_primitives-5 allegro_ttf-5 )
+	   set( A5_LINK_LIBS ${PKG_A5_SHARED_LIBRARIES} CACHE STRING "Allegro 5 Link libraries")
+	   set(ALLEGRO_FOUND 1)
+endif( NOT ${A5_MONOLITH} STREQUAL  "A5_MONOLITH-NOTFOUND" )
 
 set (NILOREASRCS1
          n_3d.c
@@ -73,6 +85,7 @@ set (NILOREASRCS1
          n_network.c
          n_network_msg.c
          n_nodup_log.c
+		 n_pcre.c
          n_stack.c
          n_str.c
          n_thread_pool.c
@@ -85,6 +98,7 @@ set(NILOREASRCS2
 
 set(NILOREASRCS ${NILOREASRCS1})
 if (ALLEGRO_FOUND)
+   message( "Allegro 5 Nilorea addons !" )
    list(APPEND NILOREASRCS ${NILOREASRCS2})
 endif (ALLEGRO_FOUND)
 
@@ -107,8 +121,9 @@ endif(CMAKE_BUILD_TYPE STREQUAL "Debug")
 
 target_compile_options(NiloreaObjects PRIVATE "-std=c11")
 
-add_library(Nilorea STATIC $<TARGET_OBJECTS:NiloreaObjects>)
+#add_library(Nilorea STATIC $<TARGET_OBJECTS:NiloreaObjects>)
+add_library(Nilorea SHARED $<TARGET_OBJECTS:NiloreaObjects>)
 
-target_link_libraries(Nilorea ${ALLEGRO_LINK_LIBS})
+target_link_libraries(Nilorea ${A5_LINK_LIBS} "wsock32" "ws2_32" "pcre" "z" )
 
 

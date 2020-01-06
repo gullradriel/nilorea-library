@@ -21,7 +21,13 @@ extern "C"
 #include <sys/types.h>
 #include <unistd.h>
 #include <stdlib.h>
-#include <alloca.h>
+#include <nilorea/n_log.h>
+
+#if defined(_MSC_VER) || defined(__MINGW32__)
+#include <malloc.h>     // alloca
+#else
+#include <alloca.h>     // alloca
+#endif
 
 /*! feature test macro */
 #define __EXTENSIONS__

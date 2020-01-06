@@ -94,7 +94,6 @@ void process_args( int argc, char **argv )
             usage();
             exit( 1 );
         }
-
         case 'h' :
         {
             usage();
@@ -109,7 +108,7 @@ void process_args( int argc, char **argv )
 
 FORCE_INLINE void inlined_func( void )
 {
-	n_log( LOG_DEBUG , "Inlined func" );
+    n_log( LOG_DEBUG, "Inlined func" );
 }
 
 
@@ -119,47 +118,47 @@ int main(int argc, char **argv)
     /* processing args and set log_level */
     process_args( argc, argv );
 
-	inlined_func();
+    inlined_func();
 
-	n_log( LOG_INFO , "TRUE,true values: %d,%d / FALSE,false value: %d,%d" , TRUE , true , FALSE , false );	
+    n_log( LOG_INFO, "TRUE,true values: %d,%d / FALSE,false value: %d,%d", TRUE, true, FALSE, false );
 
 
-	n_log( LOG_INFO , "_str(\"TEST\")=\"%s\" , _str(NULL)=\"%s\"" , _str( "TEST" ) , _str( NULL ) );
-	n_log( LOG_INFO , "_strw(\"TEST\")=\"%s\" , _strw(NULL)=\"%s\"" , _str( "TEST" ) , _str( NULL ) );
-	N_STR *nstr = char_to_nstr( "TEST" );
-	n_log( LOG_INFO , "_nstr(nstrpointer)=\"%s\"" , _nstr( nstr ) );
-	n_log( LOG_INFO , "_nstrp(nstrpointer)=\"%s\"" , _nstrp( nstr ) );
-	free_nstr( &nstr );
-	n_log( LOG_INFO , "_nstr(nstrpointer_freed)=\"%s\"" , _nstr( nstr ) );
-	n_log( LOG_INFO , "_nstrp(nstrpointer_freed)=\"%s\"" , _nstrp( nstr ) );
+    n_log( LOG_INFO, "_str(\"TEST\")=\"%s\" , _str(NULL)=\"%s\"", _str( "TEST" ), _str( NULL ) );
+    n_log( LOG_INFO, "_strw(\"TEST\")=\"%s\" , _strw(NULL)=\"%s\"", _str( "TEST" ), _str( NULL ) );
+    N_STR *nstr = char_to_nstr( "TEST" );
+    n_log( LOG_INFO, "_nstr(nstrpointer)=\"%s\"", _nstr( nstr ) );
+    n_log( LOG_INFO, "_nstrp(nstrpointer)=\"%s\"", _nstrp( nstr ) );
+    free_nstr( &nstr );
+    n_log( LOG_INFO, "_nstr(nstrpointer_freed)=\"%s\"", _nstr( nstr ) );
+    n_log( LOG_INFO, "_nstrp(nstrpointer_freed)=\"%s\"", _nstrp( nstr ) );
 
-	char *data = NULL ;
-	__n_assert( data , n_log( LOG_INFO , "data is NULL" ) );
-	Malloc( data , char , 1024 );
-	__n_assert( data , n_log( LOG_INFO , "data is NULL" ) );
-	Free( data );
-	Malloc( data , char , 1024 );
-	Realloc( data , char , 2048 );
-	Free( data );
-	Malloc( data , char , 1024 );
-	Reallocz( data , char , 1024 , 2048 );
-	FreeNoLog( data );
-	Alloca( data , 2048 );
-	//Free( data ); alloca should not be free else it's double freeing on exit
+    char *data = NULL ;
+    __n_assert( data, n_log( LOG_INFO, "data is NULL" ) );
+    Malloc( data, char, 1024 );
+    __n_assert( data, n_log( LOG_INFO, "data is NULL" ) );
+    Free( data );
+    Malloc( data, char, 1024 );
+    Realloc( data, char, 2048 );
+    Free( data );
+    Malloc( data, char, 1024 );
+    Reallocz( data, char, 1024, 2048 );
+    FreeNoLog( data );
+    Alloca( data, 2048 );
+    //Free( data ); alloca should not be free else it's double freeing on exit
 
-	n_log( LOG_INFO , "next_odd(10):%d  , next_odd(11):%d" , next_odd( 10 ) , next_odd( 11 ) );
-	n_log( LOG_INFO , "next_even(10):%d  , next_even(11):%d" , next_even( 10 ) , next_even( 11 ) );
+    n_log( LOG_INFO, "next_odd(10):%d  , next_odd(11):%d", next_odd( 10 ), next_odd( 11 ) );
+    n_log( LOG_INFO, "next_even(10):%d  , next_even(11):%d", next_even( 10 ), next_even( 11 ) );
 
-/*
-	init_error_check();
-	ifzero a endif ;
-	ifzero b endif ;
-	ifnull data endif ;
-	ifnull NULL endif ;
-	iffalse FALSE endif ;
-	iftrue TRUE endif ;
-	checkerror();
-	geterror();
-*/
-	exit( 0 );
-} 
+    /*
+    	init_error_check();
+    	ifzero a endif ;
+    	ifzero b endif ;
+    	ifnull data endif ;
+    	ifnull NULL endif ;
+    	iffalse FALSE endif ;
+    	iftrue TRUE endif ;
+    	checkerror();
+    	geterror();
+    */
+    exit( 0 );
+}

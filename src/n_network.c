@@ -745,7 +745,6 @@ int netw_set_blocking( NETWORK *netw , unsigned long int is_blocking )
 int netw_setsockopt( NETWORK *netw , int disable_naggle, int sock_send_buf, int sock_recv_buf )
 {
     __n_assert( netw , return FALSE );
-    __n_assert( ( netw -> link . sock >=0 )  , return FALSE )
 
     /* disable naggle algorithm */
     if( disable_naggle > 0 )
@@ -1440,7 +1439,7 @@ int netw_make_listening( NETWORK **netw, char *addr, char *port, int nbpending, 
         n_log( LOG_ERR, "Cannot use an allocated network. Please pass a NULL network to modify" );
         return FALSE;
     }
-		
+
 	/*checking WSA when under windows*/
     if ( netw_init_wsa( 1, 2, 2 ) == FALSE )
     {

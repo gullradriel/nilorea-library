@@ -42,6 +42,9 @@
 		<Unit filename="Makefile" />
 		<Unit filename="TESTFILE.TXT" />
 		<Unit filename="client.cfg" />
+		<Unit filename="ex_common.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="ex_configfile.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -57,6 +60,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="ex_list.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="ex_log.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="ex_monolith.c">
@@ -75,11 +81,15 @@
 		<Unit filename="ex_signals.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="ex_threads.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="nilorea.h" />
 		<Unit filename="serveur.cfg" />
 		<Unit filename="sslexample.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="valgrind-suppressions.cfg" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

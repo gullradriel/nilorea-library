@@ -71,8 +71,8 @@ int all_exception( int boolean )
 
 int main( void )
 {
-	set_log_level( LOG_STDERR );
-	set_log_level( LOG_DEBUG );
+    set_log_level( LOG_STDERR );
+    set_log_level( LOG_DEBUG );
 
     puts( "ArrayNoCatch" );
     Try

@@ -94,7 +94,7 @@ void process_args( int argc, char **argv )
 
 void *occupy_thread( void *rest )
 {
-    __n_assert( rest , return NULL );
+    __n_assert( rest, return NULL );
 
     intptr_t sleep_value = (intptr_t)(rest) ;
 
@@ -117,14 +117,14 @@ int main(int argc, char **argv)
     THREAD_POOL *thread_pool = new_thread_pool( 2, 128 );
 
     for( int it = 0 ; it < 10 ; it ++ )
-	{
-		int sleep_value = 1+rand()%5 ;
-    	if( add_threaded_process( thread_pool, &occupy_thread, (void *)(intptr_t)sleep_value, DIRECT_PROC) == FALSE )
-   		{
-        	n_log( LOG_ERR, "Error ading client management to thread pool" );
-    	}
-    	refresh_thread_pool( thread_pool );
-	}
+    {
+        int sleep_value = 1+rand()%5 ;
+        if( add_threaded_process( thread_pool, &occupy_thread, (void *)(intptr_t)sleep_value, DIRECT_PROC) == FALSE )
+        {
+            n_log( LOG_ERR, "Error ading client management to thread pool" );
+        }
+        refresh_thread_pool( thread_pool );
+    }
 
     wait_for_threaded_pool( thread_pool, 50000 );
     destroy_threaded_pool( &thread_pool, 50000 );

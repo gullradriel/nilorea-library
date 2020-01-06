@@ -92,6 +92,15 @@ int main( void )
     n_log( LOG_NOTICE, "NOTICE" );
     n_log( LOG_INFO, "INFO" );
     n_log( LOG_DEBUG, "DEBUG" );
+    set_log_file( "ex_log.log" );
+    n_log( LOG_EMERG, "EMERG" );
+    n_log( LOG_ALERT, "ALERT" );
+    n_log( LOG_CRIT, "CRIT" );
+    n_log( LOG_ERR, "ERR" );
+    n_log( LOG_WARNING, "WARNING" );
+    n_log( LOG_NOTICE, "NOTICE" );
+    n_log( LOG_INFO, "INFO" );
+    n_log( LOG_DEBUG, "DEBUG" );
 
-	exit( 0 );
+    exit( 0 );
 }
