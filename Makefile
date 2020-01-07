@@ -126,7 +126,6 @@ all: main
 
 main: $(OBJECTS)
 	$(AR) rcs $(OUTPUT)$(EXT) $(OBJECTS)
-	gcc -o $(OUTPUT)$(EXT).dll -s -shared -I./include src/n_common.c
 
 #@echo Version:$(shell $(majorversion)).$(shell $(minorversion)).$(shell $(buildnum))
 
