@@ -1,4 +1,4 @@
-HAVE_ALLEGRO=1
+HAVE_ALLEGRO=0
 HAVE_OPENSSL=0
 
 RM=rm -f
@@ -6,7 +6,7 @@ OPT=-D_XOPEN_SOURCE=600 -D_XOPEN_SOURCE_EXTENTED -Og -g -W -Wall -Wextra -Wcast-
 OPT+= -I../include -static-libgcc -static-libstdc++
 VPATH=../src/
 CC=gcc
-LIBNILOREA=nilorea
+LIBNILOREA=-lnilorea
 EXT=
 ALLEGRO_CLIBS=
 
@@ -55,7 +55,7 @@ else
         CC=cc
         CFLAGS+= -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -g -v -xc99 -I ../include/ -mt
         CLIBS=-lm -lsocket -lnsl -lpthread -lpcre -lrt
-	LIBNILOREA=nilorea
+	LIBNILOREA=-lnilorea
 	EXT=
     endif
 endif

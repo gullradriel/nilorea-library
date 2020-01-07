@@ -181,6 +181,9 @@ extern "C"
 /*! error checker type if( toto == FALSE )  */
 #define iffalse if( FALSE ==
 
+/*! error checker type if( toto == FALSE )  */
+#define iftrue if( TRUE ==
+
 /*! check for errors */
 #define checkerror() if( ___error__check_flag == TRUE ) \
     { n_log( LOG_ERR , "checkerror return false at line %d of %s" , __LINE__ , __FILE__ ); \
