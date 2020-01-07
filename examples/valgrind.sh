@@ -69,6 +69,7 @@ function valgrind_test {
 valgrind_test "ex_list"  
 valgrind_test "ex_nstr"  
 valgrind_test "ex_common"  
+valgrind_test "ex_log"  
 valgrind_test "ex_exceptions"  
 valgrind_test "ex_hash"  
 valgrind_test "ex_pcre" '"TEST(.*)TEST" "TESTazerty1234TEST"'  

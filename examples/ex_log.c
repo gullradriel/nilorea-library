@@ -1,4 +1,5 @@
 #include "nilorea/n_log.h"
+#include "nilorea/n_nodup_log.h"
 
 int main( void )
 {
@@ -101,6 +102,33 @@ int main( void )
     n_log( LOG_NOTICE, "NOTICE" );
     n_log( LOG_INFO, "INFO" );
     n_log( LOG_DEBUG, "DEBUG" );
+
+	init_nodup_log( 0 );
+
+	n_nodup_log( LOG_INFO , "Duplicated test" );
+	n_nodup_log( LOG_INFO , "Duplicated test" );
+	n_nodup_log( LOG_INFO , "Duplicated test" );
+	n_nodup_log_indexed( LOG_INFO , "NODUPINDEX1" , "Duplicated test 2" );
+	n_nodup_log_indexed( LOG_INFO , "NODUPINDEX1" , "Duplicated test 2" );
+	n_nodup_log_indexed( LOG_INFO , "NODUPINDEX2" , "Duplicated test 3" );
+	n_nodup_log_indexed( LOG_INFO , "NODUPINDEX2" , "Duplicated test 3" );
+
+	dump_nodup_log( "log_nodup.log" );
+
+	close_nodup_log();
+	
+	TS_LOG *SAFELOG = NULL ;
+	open_safe_logging( &SAFELOG , "ex_log_safe.log" , "w" );
+	write_safe_log( SAFELOG , "%s(%d): %s" , __FILE__ , __LINE__ , __func__   );
+	write_safe_log( SAFELOG , "%s(%d): %s" , __FILE__ , __LINE__ , __func__   );
+	write_safe_log( SAFELOG , "%s(%d): %s" , __FILE__ , __LINE__ , __func__   );
+	write_safe_log( SAFELOG , "%s(%d): %s" , __FILE__ , __LINE__ , __func__   );
+	write_safe_log( SAFELOG , "%s(%d): %s" , __FILE__ , __LINE__ , __func__   );
+	
+	close_safe_logging( SAFELOG );
+	Free( SAFELOG );
+
+	sleep( 3 );
 
     exit( 0 );
 }

@@ -109,7 +109,7 @@ ex_pcre$(EXT): n_log.o n_pcre.o ex_pcre.o
 ex_threads$(EXT): n_log.o n_list.o n_time.o n_thread_pool.c ex_threads.o
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(CLIBS)
 
-ex_log$(EXT): n_log.o n_list.o n_time.o ex_log.o
+ex_log$(EXT): n_str.o n_hash.o n_log.o n_nodup_log.o n_list.o n_time.o ex_log.o
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(CLIBS)
 
 clean:

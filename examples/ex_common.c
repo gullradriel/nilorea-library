@@ -8,6 +8,8 @@
 #include <stdio.h>
 #include <errno.h>
 #include <string.h>
+#include <sys/types.h> 
+#include <sys/wait.h>
 
 #include "nilorea/n_common.h"
 #include "nilorea/n_log.h"
@@ -172,8 +174,15 @@ error:
 	Free( dir );
 	Free( name );
 
+#ifndef __windows__
+	n_log( LOG_INFO , "before system_nb( sleep 3 )" );
+	pid_t pid=system_nb( "sleep 3" , NULL , NULL );
+	n_log( LOG_INFO , "after system_nb( sleep 3 )" );
+	n_log( LOG_INFO , "wait for nb sys call" );
+	wait( &pid );
+	n_log( LOG_INFO , "done" );
 	n_daemonize();
-
+#endif
 	n_abort( "Testing abort before exit" );
 
 	exit( 0 );
