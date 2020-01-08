@@ -21,24 +21,29 @@ extern "C"
 #include <sys/types.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <malloc.h>     
 #include <nilorea/n_log.h>
 
-#if defined(_MSC_VER) || defined(__MINGW32__)
-#include <malloc.h>     // alloca
-#else
-#include <alloca.h>     // alloca
-#endif
 
 /*! feature test macro */
 #define __EXTENSIONS__
 
+/* set __windows__ if true */
 #if defined( _WIN32 ) || defined( _WIN64 )
 #ifndef __windows__
 #define __windows__
 #endif
 #endif
 
+#if defined(__GNUC__) && __GNUC__ >= 7
+ #define FALL_THROUGH __attribute__ ((fallthrough))
+#else
+ #define FALL_THROUGH /* fall through */ \
+((void)0)
+#endif /* __GNUC__ >= 7 */	
+
 #if defined( __windows__ )
+#include <alloca.h>     // alloca
 #ifndef __BYTE_ORDER
 #define __BYTE_ORDER __BYTE_ORDER__
 #endif
@@ -48,6 +53,15 @@ extern "C"
 #ifndef __LITTLE_ENDIAN
 #define __LITTLE_ENDIAN __ORDER_LITTLE_ENDIAN__
 #endif
+/* typedefine for unsigned category for basic native types */
+/*! shortcut for unsigned int*/
+typedef unsigned int uint;
+/*! shortcut for unsigned long*/
+typedef unsigned long ulong;
+/*! shortcut for unsigned short*/
+typedef unsigned short ushort;
+/*! shortcut for unsigned char*/
+typedef unsigned char uchar;
 #endif
 
 /*! FORCE_INLINE portable macro */
@@ -223,19 +237,6 @@ extern "C"
 #define rw_lock_destroy( __rwlock_mutex ) \
     n_log( RWLOCK_LOGLEVEL , "destroy lock %s" , #__rwlock_mutex ); \
     pthread_rwlock_destroy( &(__rwlock_mutex) )
-
-
-#ifdef __windows__
-/* typedefine for unsigned category for basic native types */
-/*! shortcut for unsigned int*/
-typedef unsigned int uint;
-/*! shortcut for unsigned long*/
-typedef unsigned long ulong;
-/*! shortcut for unsigned short*/
-typedef unsigned short ushort;
-/*! shortcut for unsigned char*/
-typedef unsigned char uchar;
-#endif
 
 /*! Flag for SET something , passing as a function parameter */
 #define SET        1234

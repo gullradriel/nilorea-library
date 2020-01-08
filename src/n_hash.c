@@ -134,10 +134,10 @@ void MurmurHash3_x86_32 ( const void * key, int len, uint32_t seed, void * out )
     {
     case 3:
         k1 ^= tail[2] << 16;
-        __attribute__ ((fallthrough));
+        FALL_THROUGH ;
     case 2:
         k1 ^= tail[1] << 8;
-        __attribute__ ((fallthrough));
+        FALL_THROUGH ;
     case 1:
         k1 ^= tail[0];
         k1 *= c1;
@@ -239,58 +239,58 @@ void MurmurHash3_x86_128 ( const void * key, const int len, uint32_t seed, void 
     {
     case 15:
         k4 ^= tail[14] << 16;
-        __attribute__ ((fallthrough));
+        FALL_THROUGH ;
     case 14:
         k4 ^= tail[13] << 8;
-        __attribute__ ((fallthrough));
+        FALL_THROUGH ;
     case 13:
         k4 ^= tail[12] << 0;
         k4 *= c4;
         k4  = ROTL32(k4,18);
         k4 *= c1;
         h4 ^= k4;
-        __attribute__ ((fallthrough));
+        FALL_THROUGH ;
     case 12:
         k3 ^= tail[11] << 24;
-        __attribute__ ((fallthrough));
+        FALL_THROUGH ;
     case 11:
         k3 ^= tail[10] << 16;
-        __attribute__ ((fallthrough));
+        FALL_THROUGH ;
     case 10:
         k3 ^= tail[ 9] << 8;
-        __attribute__ ((fallthrough));
+        FALL_THROUGH ;
     case  9:
         k3 ^= tail[ 8] << 0;
         k3 *= c3;
         k3  = ROTL32(k3,17);
         k3 *= c4;
         h3 ^= k3;
-        __attribute__ ((fallthrough));
+        FALL_THROUGH ;
     case  8:
         k2 ^= tail[ 7] << 24;
-        __attribute__ ((fallthrough));
+        FALL_THROUGH ;
     case  7:
         k2 ^= tail[ 6] << 16;
-        __attribute__ ((fallthrough));
+        FALL_THROUGH ;
     case  6:
         k2 ^= tail[ 5] << 8;
-        __attribute__ ((fallthrough));
+        FALL_THROUGH ;
     case  5:
         k2 ^= tail[ 4] << 0;
         k2 *= c2;
         k2  = ROTL32(k2,16);
         k2 *= c3;
         h2 ^= k2;
-        __attribute__ ((fallthrough));
+        FALL_THROUGH ;
     case  4:
         k1 ^= tail[ 3] << 24;
-        __attribute__ ((fallthrough));
+        FALL_THROUGH ;
     case  3:
         k1 ^= tail[ 2] << 16;
-        __attribute__ ((fallthrough));
+        FALL_THROUGH ;
     case  2:
         k1 ^= tail[ 1] << 8;
-        __attribute__ ((fallthrough));
+        FALL_THROUGH ;
     case  1:
         k1 ^= tail[ 0] << 0;
         k1 *= c1;
