@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <stdint.h>
+#include <string.h>
 #include <stdbool.h>
 #include <errno.h>
 #include <signal.h>
@@ -19,14 +20,14 @@ void cause_calamity(void);
 
 int main( int argc, char * argv[])
 {
+    //set_log_file( "ex_signals.log" );
     set_log_level( LOG_DEBUG );
     set_log_level( LOG_STDERR );
-
+    //set_log_level( LOG_FILE );
+	n_log( LOG_DEBUG , "get_log_level:%d" , get_log_level() );
     (void)argc;
-    (void)argv[0];
 
-    set_signal_handler();
-
+	set_signal_handler( argv[ 0 ] );
     cause_calamity();
 
     return 0;
@@ -37,7 +38,7 @@ void cause_calamity(void)
     /* uncomment one of the following error conditions to cause a calamity of
        your choosing! */
     //stack_overflow();
-    //(void)divide_by_zero();
+    (void)divide_by_zero();
     cause_segfault();
     assert(false);
     infinite_loop();

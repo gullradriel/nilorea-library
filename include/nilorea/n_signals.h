@@ -1,6 +1,6 @@
 /**\file n_signals.h
  *  signals general handling with stack printing, from https://gist.github.com/jvranish/4441299
- *\author Castagnier Mickael
+ \author Castagnier Mickael
  *\version 1.0
  *\date 08/11/2018
  */
@@ -19,10 +19,9 @@ extern "C"
   @{
   */
 
-/*! maximum line of stack printed */
-#define MAX_STACK_FRAMES 64
+#include "nilorea/n_log.h"
 
-void set_signal_handler( void );
+void set_signal_handler( const char *progname );
 
 /*@}*/
 

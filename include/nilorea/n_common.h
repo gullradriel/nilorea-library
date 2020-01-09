@@ -22,6 +22,7 @@ extern "C"
 #include <unistd.h>
 #include <stdlib.h>
 #include <malloc.h>     
+#include <alloca.h> 
 #include <nilorea/n_log.h>
 
 
@@ -43,7 +44,6 @@ extern "C"
 #endif /* __GNUC__ >= 7 */	
 
 #if defined( __windows__ )
-#include <alloca.h>     // alloca
 #ifndef __BYTE_ORDER
 #define __BYTE_ORDER __BYTE_ORDER__
 #endif
