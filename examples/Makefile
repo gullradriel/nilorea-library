@@ -14,7 +14,7 @@ TARGET=ex_list$(EXT) ex_nstr$(EXT) ex_exceptions$(EXT) ex_hash$(EXT) ex_network$
 
 ifeq ($(OS),Windows_NT)
 CFLAGS+= -std=c11 -D__USE_MINGW_ANSI_STDIO $(OPT)
-    CLIBS= -lpthread -lws2_32
+    CLIBS= -lpthread -lws2_32 -limagehlp 
 	RM= del /Q
 	CC= gcc
 
