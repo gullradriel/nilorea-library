@@ -14,7 +14,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <libgen.h>
-#include <sys/wait.h>
 
 #ifdef __windows__
 #include <windows.h>
@@ -25,6 +24,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+#include <sys/wait.h>
 #ifdef __linux__
 #include <string.h>
 #include <linux/limits.h>

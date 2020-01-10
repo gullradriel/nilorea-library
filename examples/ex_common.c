@@ -9,11 +9,14 @@
 #include <errno.h>
 #include <string.h>
 #include <sys/types.h> 
-#include <sys/wait.h>
 
 #include "nilorea/n_common.h"
 #include "nilorea/n_log.h"
 #include "nilorea/n_str.h"
+
+#ifndef __windows__
+#include <sys/wait.h>
+#endif 
 
 void usage(void)
 {
@@ -192,13 +195,10 @@ error:
 	n_log( LOG_INFO , "after system_nb( sleep 3 )" );
 	n_log( LOG_INFO , "wait for nb sys call" );
 	wait( &pid );
-
-
-
 	n_log( LOG_INFO , "done" );
 	n_daemonize();
 #endif
 	n_abort( "Testing abort before exit" );
-
+	n_log( LOG_INFO , "abort done" );
 	exit( 0 );
 }
