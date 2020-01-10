@@ -3,7 +3,7 @@ HAVE_OPENSSL=0
 
 RM=rm -f
 OPT=-D_XOPEN_SOURCE=600 -D_XOPEN_SOURCE_EXTENTED -O0 -g -W -Wall -Wextra -Wcast-align -Wcast-qual -Wdisabled-optimization -Wformat=1 -Winit-self -Wlogical-op -Wmissing-include-dirs -Wredundant-decls -Wstrict-overflow=5 -Wswitch-default -Wundef -Wno-unused
-OPT+= -I../include -static-libgcc -static-libstdc++ 
+OPT+= -I../include -static-libgcc -static-libstdc++
 VPATH=../src/
 CC=gcc
 LIBNILOREA=-lnilorea
@@ -13,8 +13,8 @@ ALLEGRO_CLIBS=
 TARGET=ex_list$(EXT) ex_nstr$(EXT) ex_exceptions$(EXT) ex_hash$(EXT) ex_network$(EXT) ex_monolith$(EXT) ex_configfile$(EXT) ex_pcre$(EXT) ex_threads$(EXT) ex_log$(EXT) ex_common$(EXT) ex_signals$(EXT)
 
 ifeq ($(OS),Windows_NT)
-CFLAGS+= -std=c11 -D__USE_MINGW_ANSI_STDIO $(OPT)
-    CLIBS= -lpthread -lws2_32 -limagehlp 
+CFLAGS+= -std=c11 $(OPT)
+    CLIBS= -lpthread -lws2_32
 	RM= del /Q
 	CC= gcc
 
@@ -100,7 +100,7 @@ ex_configfile$(EXT): n_log.o n_list.o n_str.o n_hash.o n_pcre.o n_config_file.o 
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(CLIBS) -lpcre
 
 ex_signals$(EXT): n_log.o n_list.o n_str.o n_common.o n_hash.o n_signals.o ex_signals.o
-	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(CLIBS)
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(CLIBS) -limagehlp
 
 ex_gui_particles$(EXT): ex_gui_particles.o
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ -L.. $(LIBNILOREA) $(CLIBS) $(ALLEGRO_CLIBS)

@@ -16,10 +16,11 @@
 #include <errno.h>
 #include <string.h>
 
+#include "nilorea/n_log.h"
 #include "nilorea/n_signals.h"
 
 #define LOGFPRT( ... ) fprintf( stderr , "Error: " __VA_ARGS__ )
-#define LOGNLOG( ... ) n_log( LOG_ERR , __VA_ARGS__ ) 
+#define LOGNLOG( ... ) n_log( LOG_ERR , __VA_ARGS__ )
 
 #define LOGSIG LOGNLOG
 
@@ -38,23 +39,23 @@ static const char *icky_global_program_name ;
 //   switch(sig)
 //   {
 //     case SIGABRT:
-//       LOGSIG("Caught SIGABRT: usually caused by an abort() or assert()", stderr);
+//       LOGSIG("Caught SIGABRT: usually caused by an abort() or assert()" );
 //       break;
 //     case SIGFPE:
-//       LOGSIG("Caught SIGFPE: arithmetic exception, such as divide by zero", stderr);
+//       LOGSIG("Caught SIGFPE: arithmetic exception, such as divide by zero" );
 //       break;
 //     case SIGILL:
-//       LOGSIG("Caught SIGILL: illegal instruction", stderr);
+//       LOGSIG("Caught SIGILL: illegal instruction" );
 //       break;
 //     case SIGINT:
-//       LOGSIG("Caught SIGINT: interactive attention signal, probably a ctrl+c", stderr);
+//       LOGSIG("Caught SIGINT: interactive attention signal, probably a ctrl+c" );
 //       break;
 //     case SIGSEGV:
-//       LOGSIG("Caught SIGSEGV: segfault", stderr);
+//       LOGSIG("Caught SIGSEGV: segfault" );
 //       break;
 //     case SIGTERM:
 //     default:
-//       LOGSIG("Caught SIGTERM: a termination request was sent to the program", stderr);
+//       LOGSIG("Caught SIGTERM: a termination request was sent to the program" );
 //       break;
 //   }
 //   _Exit(1);
@@ -72,26 +73,25 @@ static const char *icky_global_program_name ;
 
 
 
-/* Resolve symbol name and source location given the path to the executable 
+/* Resolve symbol name and source location given the path to the executable
    and an address */
 int addr2line(char const * const program_name, void const * const addr)
 {
-	char addr2line_cmd[512] = {0};
-
-	set_log_level( LOG_DEBUG );
-
+	char addr2line_cmd[4093] = "" ;
+    LOGSIG( "%s %p" , program_name , addr );
 	/* have addr2line map the address to the relent line in the code */
 #ifdef __APPLE__
 	/* apple does things differently... */
-	sprintf(addr2line_cmd,"atos -o %.256s ./%p", program_name, addr); 
-#elif defined __WIN32
-	sprintf(addr2line_cmd,"addr2line -f -p -e ./%s %p", program_name, addr); 
+	sprintf(addr2line_cmd,"atos -o %.256s ./%p", program_name, addr);
 #else
-	sprintf(addr2line_cmd,"addr2line -f -p -e %.256s %p", program_name, addr); 
+#ifdef __windows__
+	sprintf(addr2line_cmd,"addr2line -f -p -e ./%s %p", program_name, addr);
+    LOGSIG( "%s" , addr2line_cmd );
+    return 0 ;
+#else
+	sprintf(addr2line_cmd,"addr2line -f -p -e %.256s %p", program_name, addr);
 #endif
-	n_log( LOG_DEBUG , "cmd: %s" , addr2line_cmd );
-	return 0 ;
-
+#endif
 	return system(addr2line_cmd);
 }
 
@@ -104,7 +104,7 @@ void windows_print_stacktrace(CONTEXT* context)
 	STACKFRAME frame = { 0 };
 
 	/* setup initial stack frame */
-	/* Wrong values for W10 ? 
+	/* Wrong values for W10 ?
 	frame.AddrPC.Offset         = context->Eip;
 	frame.AddrPC.Mode           = AddrModeFlat;
 	frame.AddrStack.Offset      = context->Esp;
@@ -142,87 +142,88 @@ LONG WINAPI windows_exception_handler(EXCEPTION_POINTERS * ExceptionInfo)
 	switch(ExceptionInfo->ExceptionRecord->ExceptionCode)
 	{
 		case EXCEPTION_ACCESS_VIOLATION:
-			LOGSIG("Error: EXCEPTION_ACCESS_VIOLATION", stderr);
+			LOGSIG("Error: EXCEPTION_ACCESS_VIOLATION" );
 			break;
 		case EXCEPTION_ARRAY_BOUNDS_EXCEEDED:
-			LOGSIG("Error: EXCEPTION_ARRAY_BOUNDS_EXCEEDED", stderr);
+			LOGSIG("Error: EXCEPTION_ARRAY_BOUNDS_EXCEEDED" );
 			break;
 		case EXCEPTION_BREAKPOINT:
-			LOGSIG("Error: EXCEPTION_BREAKPOINT", stderr);
+			LOGSIG("Error: EXCEPTION_BREAKPOINT" );
 			break;
 		case EXCEPTION_DATATYPE_MISALIGNMENT:
-			LOGSIG("Error: EXCEPTION_DATATYPE_MISALIGNMENT", stderr);
+			LOGSIG("Error: EXCEPTION_DATATYPE_MISALIGNMENT" );
 			break;
 		case EXCEPTION_FLT_DENORMAL_OPERAND:
-			LOGSIG("Error: EXCEPTION_FLT_DENORMAL_OPERAND", stderr);
+			LOGSIG("Error: EXCEPTION_FLT_DENORMAL_OPERAND" );
 			break;
 		case EXCEPTION_FLT_DIVIDE_BY_ZERO:
-			LOGSIG("Error: EXCEPTION_FLT_DIVIDE_BY_ZERO", stderr);
+			LOGSIG("Error: EXCEPTION_FLT_DIVIDE_BY_ZERO" );
 			break;
 		case EXCEPTION_FLT_INEXACT_RESULT:
-			LOGSIG("Error: EXCEPTION_FLT_INEXACT_RESULT", stderr);
+			LOGSIG("Error: EXCEPTION_FLT_INEXACT_RESULT" );
 			break;
 		case EXCEPTION_FLT_INVALID_OPERATION:
-			LOGSIG("Error: EXCEPTION_FLT_INVALID_OPERATION", stderr);
+			LOGSIG("Error: EXCEPTION_FLT_INVALID_OPERATION" );
 			break;
 		case EXCEPTION_FLT_OVERFLOW:
-			LOGSIG("Error: EXCEPTION_FLT_OVERFLOW", stderr);
+			LOGSIG("Error: EXCEPTION_FLT_OVERFLOW" );
 			break;
 		case EXCEPTION_FLT_STACK_CHECK:
-			LOGSIG("Error: EXCEPTION_FLT_STACK_CHECK", stderr);
+			LOGSIG("Error: EXCEPTION_FLT_STACK_CHECK" );
 			break;
 		case EXCEPTION_FLT_UNDERFLOW:
-			LOGSIG("Error: EXCEPTION_FLT_UNDERFLOW", stderr);
+			LOGSIG("Error: EXCEPTION_FLT_UNDERFLOW" );
 			break;
 		case EXCEPTION_ILLEGAL_INSTRUCTION:
-			LOGSIG("Error: EXCEPTION_ILLEGAL_INSTRUCTION", stderr);
+			LOGSIG("Error: EXCEPTION_ILLEGAL_INSTRUCTION" );
 			break;
 		case EXCEPTION_IN_PAGE_ERROR:
-			LOGSIG("Error: EXCEPTION_IN_PAGE_ERROR", stderr);
+			LOGSIG("Error: EXCEPTION_IN_PAGE_ERROR" );
 			break;
 		case EXCEPTION_INT_DIVIDE_BY_ZERO:
-			LOGSIG("Error: EXCEPTION_INT_DIVIDE_BY_ZERO", stderr);
+			LOGSIG( "Error: EXCEPTION_INT_DIVIDE_BY_ZERO" );
 			break;
 		case EXCEPTION_INT_OVERFLOW:
-			LOGSIG("Error: EXCEPTION_INT_OVERFLOW", stderr);
+			LOGSIG( "Error: EXCEPTION_INT_OVERFLOW" );
 			break;
 		case EXCEPTION_INVALID_DISPOSITION:
-			LOGSIG("Error: EXCEPTION_INVALID_DISPOSITION", stderr);
+			LOGSIG( "Error: EXCEPTION_INVALID_DISPOSITION" );
 			break;
 		case EXCEPTION_NONCONTINUABLE_EXCEPTION:
-			LOGSIG("Error: EXCEPTION_NONCONTINUABLE_EXCEPTION", stderr);
+			LOGSIG( "Error: EXCEPTION_NONCONTINUABLE_EXCEPTION" );
 			break;
 		case EXCEPTION_PRIV_INSTRUCTION:
-			LOGSIG("Error: EXCEPTION_PRIV_INSTRUCTION", stderr);
+			LOGSIG( "Error: EXCEPTION_PRIV_INSTRUCTION" );
 			break;
 		case EXCEPTION_SINGLE_STEP:
-			LOGSIG("Error: EXCEPTION_SINGLE_STEP", stderr);
+			LOGSIG( "Error: EXCEPTION_SINGLE_STEP" );
 			break;
 		case EXCEPTION_STACK_OVERFLOW:
-			LOGSIG("Error: EXCEPTION_STACK_OVERFLOW", stderr);
+			LOGSIG( "Error: EXCEPTION_STACK_OVERFLOW" );
 			break;
 		default:
-			LOGSIG("Error: Unrecognized Exception", stderr);
+			LOGSIG( "Error: Unrecognized Exception" );
 			break;
 	}
-	fflush(stderr);
+
 	/* If this is a stack overflow then we can't walk the stack, so just show
 	   where the error happened */
 	if (EXCEPTION_STACK_OVERFLOW != ExceptionInfo->ExceptionRecord->ExceptionCode)
 	{
-		windows_print_stacktrace(ExceptionInfo->ContextRecord);
+	 	windows_print_stacktrace(ExceptionInfo->ContextRecord);
 	}
 	else
 	{
-		addr2line(icky_global_program_name, (void*)ExceptionInfo->ContextRecord->Rip);
+     	addr2line(icky_global_program_name, (void*)ExceptionInfo->ContextRecord->Rip);
 	}
-
+	fflush(stdout);
+	fflush(stderr);
 	return EXCEPTION_EXECUTE_HANDLER;
 }
 
 void set_signal_handler( const char *progname )
 {
-	(void)progname ;
+	icky_global_program_name = progname ;
 	SetUnhandledExceptionFilter(windows_exception_handler);
 }
 #else
@@ -243,10 +244,10 @@ void posix_print_stack_trace()
 	{
 		if (addr2line(icky_global_program_name, stack_traces[i]) != 0)
 		{
-			LOGSIG("  error determining line # for: %s", messages[i]);
+			LOGSIG("  error determining line # for: %s", messages[i] );
 		}
 	}
-	if (messages) { free(messages); } 
+	if (messages) { free(messages); }
 }
 
 void posix_signal_handler(int sig, siginfo_t *siginfo, void *context)
@@ -255,40 +256,40 @@ void posix_signal_handler(int sig, siginfo_t *siginfo, void *context)
 	switch(sig)
 	{
 		case SIGSEGV:
-			LOGSIG("Caught SIGSEGV: Segmentation Fault", stderr);
+			LOGSIG("Caught SIGSEGV: Segmentation Fault" );
 			break;
 		case SIGINT:
-			LOGSIG("Caught SIGINT: Interactive attention signal, (usually ctrl+c)", stderr);
+			LOGSIG("Caught SIGINT: Interactive attention signal, (usually ctrl+c)" );
 			break;
 		case SIGFPE:
 			switch(siginfo->si_code)
 			{
 				case FPE_INTDIV:
-					LOGSIG("Caught SIGFPE: (integer divide by zero)", stderr);
+					LOGSIG("Caught SIGFPE: (integer divide by zero)" );
 					break;
 				case FPE_INTOVF:
-					LOGSIG("Caught SIGFPE: (integer overflow)", stderr);
+					LOGSIG("Caught SIGFPE: (integer overflow)" );
 					break;
 				case FPE_FLTDIV:
-					LOGSIG("Caught SIGFPE: (floating-point divide by zero)", stderr);
+					LOGSIG("Caught SIGFPE: (floating-point divide by zero)" );
 					break;
 				case FPE_FLTOVF:
-					LOGSIG("Caught SIGFPE: (floating-point overflow)", stderr);
+					LOGSIG("Caught SIGFPE: (floating-point overflow)" );
 					break;
 				case FPE_FLTUND:
-					LOGSIG("Caught SIGFPE: (floating-point underflow)", stderr);
+					LOGSIG("Caught SIGFPE: (floating-point underflow)" );
 					break;
 				case FPE_FLTRES:
-					LOGSIG("Caught SIGFPE: (floating-point inexact result)", stderr);
+					LOGSIG("Caught SIGFPE: (floating-point inexact result)" );
 					break;
 				case FPE_FLTINV:
-					LOGSIG("Caught SIGFPE: (floating-point invalid operation)", stderr);
+					LOGSIG("Caught SIGFPE: (floating-point invalid operation)" );
 					break;
 				case FPE_FLTSUB:
-					LOGSIG("Caught SIGFPE: (subscript out of range)", stderr);
+					LOGSIG("Caught SIGFPE: (subscript out of range)" );
 					break;
 				default:
-					LOGSIG("Caught SIGFPE: Arithmetic Exception", stderr);
+					LOGSIG("Caught SIGFPE: Arithmetic Exception" );
 					break;
 			}
 			break;
@@ -296,45 +297,45 @@ void posix_signal_handler(int sig, siginfo_t *siginfo, void *context)
 			switch(siginfo->si_code)
 			{
 				case ILL_ILLOPC:
-					LOGSIG("Caught SIGILL: (illegal opcode)", stderr);
+					LOGSIG("Caught SIGILL: (illegal opcode)" );
 					break;
 				case ILL_ILLOPN:
-					LOGSIG("Caught SIGILL: (illegal operand)", stderr);
+					LOGSIG("Caught SIGILL: (illegal operand)" );
 					break;
 				case ILL_ILLADR:
-					LOGSIG("Caught SIGILL: (illegal addressing mode)", stderr);
+					LOGSIG("Caught SIGILL: (illegal addressing mode)" );
 					break;
 				case ILL_ILLTRP:
-					LOGSIG("Caught SIGILL: (illegal trap)", stderr);
+					LOGSIG("Caught SIGILL: (illegal trap)" );
 					break;
 				case ILL_PRVOPC:
-					LOGSIG("Caught SIGILL: (privileged opcode)", stderr);
+					LOGSIG("Caught SIGILL: (privileged opcode)" );
 					break;
 				case ILL_PRVREG:
-					LOGSIG("Caught SIGILL: (privileged register)", stderr);
+					LOGSIG("Caught SIGILL: (privileged register)" );
 					break;
 				case ILL_COPROC:
-					LOGSIG("Caught SIGILL: (coprocessor error)", stderr);
+					LOGSIG("Caught SIGILL: (coprocessor error)" );
 					break;
 				case ILL_BADSTK:
-					LOGSIG("Caught SIGILL: (internal stack error)", stderr);
+					LOGSIG("Caught SIGILL: (internal stack error)" );
 					break;
 				default:
-					LOGSIG("Caught SIGILL: Illegal Instruction", stderr);
+					LOGSIG("Caught SIGILL: Illegal Instruction" );
 					break;
 			}
 			break;
 		case SIGTERM:
-			LOGSIG("Caught SIGTERM: a termination request was sent to the program", stderr);
+			LOGSIG("Caught SIGTERM: a termination request was sent to the program" );
 			break;
 		case SIGABRT:
-			LOGSIG("Caught SIGABRT: usually caused by an abort() or assert()", stderr);
+			LOGSIG("Caught SIGABRT: usually caused by an abort() or assert()" );
 			break;
 		default:
 			break;
 	}
 	posix_print_stack_trace();
-	_Exit(1);
+    _Exit(1);
 }
 
 static uint8_t alternate_stack[SIGALTSTACK_SIZE];
