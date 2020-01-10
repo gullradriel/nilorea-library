@@ -125,7 +125,7 @@ void windows_print_stacktrace(CONTEXT* context)
 				SymGetModuleBase,
 				0 ) )
 	{
-		addr2line(icky_global_program_name, (void*)frame.AddrPC.Offset);
+		addr2line( icky_global_program_name, (void*)frame.AddrPC.Offset);
 	}
 
 	SymCleanup( GetCurrentProcess() );
