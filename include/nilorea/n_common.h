@@ -33,6 +33,12 @@ extern "C"
 #ifndef __windows__
 #define __windows__
 #endif
+#ifndef WEXITSTATUS
+	#define WEXITSTATUS(w)    (((w) >> 8) & 0xff)
+#endif
+#ifndef WIFEXITED
+	#define WIFEXITED(w)      (((w) & 0xff) == 0)	
+#endif
 #else
 	#include <alloca.h> 
 #endif
