@@ -3,7 +3,7 @@ HAVE_OPENSSL=0
 
 RM=rm -f
 OPT=-D_XOPEN_SOURCE=600 -D_XOPEN_SOURCE_EXTENTED -O0 -g -W -Wall -Wextra -Wcast-align -Wcast-qual -Wdisabled-optimization -Wformat=1 -Winit-self -Wlogical-op -Wmissing-include-dirs -Wredundant-decls -Wstrict-overflow=5 -Wswitch-default -Wundef -Wno-unused
-OPT+= -I../include -static-libgcc -static-libstdc++ -rdynamic
+OPT+= -I../include -static-libgcc -static-libstdc++ 
 VPATH=../src/
 CC=gcc
 LIBNILOREA=-lnilorea
@@ -50,7 +50,7 @@ else
 	CC=gcc
 	EXT=
     ifeq ($(UNAME_S),Linux)
-        CFLAGS+= $(OPT) -std=gnu99
+        CFLAGS+= $(OPT) -std=gnu99 -rdynamic
         CLIBS=-lpthread
     endif
     ifeq ($(UNAME_S),SunOS)
