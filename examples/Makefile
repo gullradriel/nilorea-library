@@ -10,7 +10,7 @@ LIBNILOREA=-lnilorea
 EXT=
 ALLEGRO_CLIBS=
 
-TARGET=ex_list$(EXT) ex_nstr$(EXT) ex_exceptions$(EXT) ex_hash$(EXT) ex_network$(EXT) ex_monolith$(EXT) ex_configfile$(EXT) ex_pcre$(EXT) ex_threads$(EXT) ex_log$(EXT) ex_common$(EXT)
+TARGET=ex_list$(EXT) ex_nstr$(EXT) ex_exceptions$(EXT) ex_hash$(EXT) ex_network$(EXT) ex_monolith$(EXT) ex_configfile$(EXT) ex_pcre$(EXT) ex_threads$(EXT) ex_log$(EXT) ex_common$(EXT) ex_signals$(EXT)
 
 ifeq ($(OS),Windows_NT)
 CFLAGS+= -std=c11 -D__USE_MINGW_ANSI_STDIO $(OPT)
@@ -44,7 +44,6 @@ CFLAGS+= -std=c11 -D__USE_MINGW_ANSI_STDIO $(OPT)
 		EXT=64.exe
 	endif
 else
-	TARGET+= ex_signals$(EXT)
 	UNAME_S= $(shell uname -s)
 	RM=rm -f
 	CC=gcc
