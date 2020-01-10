@@ -26,10 +26,12 @@ int main( int argc, char * argv[])
     //set_log_level( LOG_FILE );
 	
 	char *progname = get_prog_name();
-	n_log( LOG_DEBUG , "%s get_log_level:%d" , progname , get_log_level() );
+	n_log( LOG_DEBUG , "ARGV0: %s" , argv[ 0 ] );
+	n_log( LOG_DEBUG , "GETPROGNAME: %s" , progname );
+	n_log( LOG_DEBUG , "get_log_level:%d" , get_log_level() );
     (void)argc;
 
-	set_signal_handler( progname );
+	set_signal_handler( argv[ 0 ] );
 	free( progname );
     cause_calamity();
 
@@ -40,8 +42,8 @@ void cause_calamity(void)
 {
     /* uncomment one of the following error conditions to cause a calamity of
        your choosing! */
-    //stack_overflow();
-    (void)divide_by_zero();
+    /*stack_overflow();
+    (void)divide_by_zero();*/
     cause_segfault();
     assert(false);
     infinite_loop();
