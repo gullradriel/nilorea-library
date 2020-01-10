@@ -173,6 +173,18 @@ error:
 	n_log( LOG_INFO , "From %s/%s" , dir , name );
 	Free( dir );
 	Free( name );
+	
+	N_STR *out = NULL ;
+	int ret = -1 ;
+	if( n_popen( "ls -ltr" , 2048 , (void *)&out , &ret ) == TRUE )
+	{
+		n_log( LOG_INFO , "ls returned %d : %s" , ret , _nstr( out ) );
+	}
+	else
+	{
+		n_log( LOG_ERR , "popen s returned an error" );
+	}
+	free_nstr( &out );
 
 #ifndef __windows__
 	n_log( LOG_INFO , "before system_nb( sleep 3 )" );
@@ -180,6 +192,9 @@ error:
 	n_log( LOG_INFO , "after system_nb( sleep 3 )" );
 	n_log( LOG_INFO , "wait for nb sys call" );
 	wait( &pid );
+
+
+
 	n_log( LOG_INFO , "done" );
 	n_daemonize();
 #endif

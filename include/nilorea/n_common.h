@@ -281,6 +281,9 @@ char *get_prog_dir( void );
 /* test file presence*/
 int file_exist( const char *filename );
 
+/* shortcut for popen usage */
+int n_popen( char *cmd , int read_buf_size , void **nstr_output , int *ret );
+
 /* non blocking system call */
 pid_t system_nb(const char * command, int * infp, int * outfp);
 
