@@ -208,7 +208,7 @@ LONG WINAPI windows_exception_handler(EXCEPTION_POINTERS * ExceptionInfo)
 	}
 	else
 	{
-		addr2line(icky_global_program_name, (void*)ExceptionInfo->ContextRecord->Eip);
+		addr2line(icky_global_program_name, (void*)ExceptionInfo->ContextRecord->Rip);
 	}
 
 	return EXCEPTION_EXECUTE_HANDLER;
@@ -216,7 +216,7 @@ LONG WINAPI windows_exception_handler(EXCEPTION_POINTERS * ExceptionInfo)
 
 void set_signal_handler( const char *progname )
 {
-	(void *)progname ;
+	(void)progname ;
 	SetUnhandledExceptionFilter(windows_exception_handler);
 }
 #else
