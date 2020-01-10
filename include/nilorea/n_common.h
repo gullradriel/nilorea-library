@@ -22,7 +22,6 @@ extern "C"
 #include <unistd.h>
 #include <stdlib.h>
 #include <malloc.h>     
-#include <alloca.h> 
 #include <nilorea/n_log.h>
 
 
@@ -34,6 +33,8 @@ extern "C"
 #ifndef __windows__
 #define __windows__
 #endif
+#else
+	#include <alloca.h> 
 #endif
 
 #if defined(__GNUC__) && __GNUC__ >= 7
