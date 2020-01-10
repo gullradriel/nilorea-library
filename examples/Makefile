@@ -99,7 +99,7 @@ ex_monolith$(EXT): ex_monolith.o
 ex_configfile$(EXT): n_log.o n_list.o n_str.o n_hash.o n_pcre.o n_config_file.o ex_configfile.o
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(CLIBS) -lpcre
 
-ex_signals$(EXT): n_log.o n_list.o n_str.o n_hash.o n_signals.o ex_signals.o
+ex_signals$(EXT): n_log.o n_list.o n_str.o n_common.o n_hash.o n_signals.o ex_signals.o
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(CLIBS)
 
 ex_gui_particles$(EXT): ex_gui_particles.o
