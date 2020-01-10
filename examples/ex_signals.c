@@ -24,10 +24,13 @@ int main( int argc, char * argv[])
     set_log_level( LOG_DEBUG );
     set_log_level( LOG_STDERR );
     //set_log_level( LOG_FILE );
-	n_log( LOG_DEBUG , "get_log_level:%d" , get_log_level() );
+	
+	char *progname = get_prog_name();
+	n_log( LOG_DEBUG , "%s get_log_level:%d" , progname , get_log_level() );
     (void)argc;
 
-	set_signal_handler( argv[ 0 ] );
+	set_signal_handler( progname );
+	free( progname );
     cause_calamity();
 
     return 0;
