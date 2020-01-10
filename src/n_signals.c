@@ -82,6 +82,8 @@ int addr2line(char const * const program_name, void const * const addr)
 #ifdef __APPLE__
 	/* apple does things differently... */
 	sprintf(addr2line_cmd,"atos -o %.256s %p", program_name, addr); 
+#elif defined __windows__
+	sprintf(addr2line_cmd,"addr2line -f -p -e %s %p", program_name, addr); 
 #else
 	sprintf(addr2line_cmd,"addr2line -f -p -e %.256s %p", program_name, addr); 
 #endif
