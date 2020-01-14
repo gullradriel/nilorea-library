@@ -45,7 +45,9 @@ int file_monitor_set( HASH_TABLE *filepool, char *name, time_t check_interval );
 int file_monitor_get( HASH_TABLE *filepool, char *name );
 int file_monitor_del( HASH_TABLE *filepool, char *name );
 
-/*@}*/
+/**
+@}
+*/
 
 #ifdef __cplusplus
 }

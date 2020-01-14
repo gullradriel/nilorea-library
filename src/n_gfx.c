@@ -193,7 +193,6 @@ void force_color_to_be( BITMAP *bmp, int oldcolor, int newcolor )
  *\param w Width of the blit
  *\param h Height of the blit
  *\param mode 0 normal , 1 trans
- *\return NOTHING it's void
  */
 void ogl_blit( GLuint mytexture, int x, int y, int r, int g, int b, int alpha, int w, int h, int mode )
 {

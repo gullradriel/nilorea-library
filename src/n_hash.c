@@ -19,17 +19,16 @@
 #endif
 
 #ifndef MSVC
-/*!\fn static inline uint32_t rotl32 ( uint32_t x, int8_t r )
+/*!\fn FORCE_INLINE uint32_t rotl32 ( uint32_t x, int8_t r )
  *\brief rotate byte 32bit version (from murmur's author)
  *\param x value
  *\param r rotation value
  *\return rotated value
  */
-static uint32_t rotl32 ( uint32_t x, int8_t r )
+FORCE_INLINE uint32_t rotl32 ( uint32_t x, int8_t r )
 {
     return (x << r) | (x >> (32 - r));
 } /* rotl32(...) */
-
 #endif
 
 /*!\fn FORCE_INLINE uint32_t getblock( const uint32_t *p, int i )
@@ -335,7 +334,6 @@ void MurmurHash3_x86_128 ( const void * key, const int len, uint32_t seed, void 
 /*!\fn void ht_node_destroy( void *node )
  *\brief destroy a HASH_NODE by first calling the HASH_NODE destructor
  *\param node The node to kill
- *\return NULL
  */
 void ht_node_destroy( void *node )
 {

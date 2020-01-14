@@ -37,7 +37,7 @@ extern "C"
 /*! indicate that the pool is running and ready to use */
 #define RUNNING_THREAD 64
 /*! indicate that the pool is exiting, unfinished jobs will finish and the pool will exit the threads and enter the EXITED state*/
-#define EXITING_THREAD 128	
+#define EXITING_THREAD 128
 /*! indicate that the pool is off, all jobs have been consumed */
 #define EXITED_THREAD 256
 
@@ -117,7 +117,9 @@ int destroy_threaded_pool( THREAD_POOL **thread_pool, int delay );
 /* try to add some waiting process on some free thread slots, else do nothing */
 int refresh_thread_pool( THREAD_POOL *thread_pool );
 
-/*@}*/
+/**
+@}
+*/
 
 #ifdef __cplusplus
 }

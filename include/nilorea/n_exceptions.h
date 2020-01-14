@@ -89,8 +89,9 @@ void pop_exception(int);
    n_log( LOG_ERR , "Exception thrown type:%d" , X ); \
    longjmp( __Exceptions -> context , (X) )
 
-
-/*@}*/
+/**
+@}
+*/
 
 #ifdef __cplusplus
 }

@@ -42,7 +42,9 @@ void force_color_to_be( BITMAP *bmp, int oldcolor, int newcolor );
 /* ogl helper drawer */
 //void ogl_blit( GLuint mytexture, int x, int y, int r, int g, int b, int alpha, int w, int h, int mode );
 
-/*@}*/
+/**
+@}
+*/
 
 #endif /* NOALLEGRO */
 

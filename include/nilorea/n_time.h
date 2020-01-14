@@ -29,7 +29,6 @@ extern "C"
   @{
   */
 
-
 /*! Timing Structure */
 typedef struct N_TIME
 {
@@ -71,7 +70,9 @@ time_t get_msec( N_TIME *timer );
 /* Poll any N_TIME HiTimer, returning sec */
 time_t get_sec( N_TIME *timer );
 
-/*@}*/
+/**
+@}
+*/
 
 #ifdef __cplusplus
 }

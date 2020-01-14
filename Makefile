@@ -92,6 +92,9 @@ release: all
 debug: all
 all: main
 
+doc:
+	doxygen Doxyfile
+
 buildnumber:
 	@echo -n "    #define BUILD_NUMBER  " > build-number.new
 	@echo `expr $(shell $(buildnum)) + 1` >> build-number.new

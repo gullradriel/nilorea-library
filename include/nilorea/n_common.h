@@ -21,7 +21,7 @@ extern "C"
 #include <sys/types.h>
 #include <unistd.h>
 #include <stdlib.h>
-#include <malloc.h>     
+#include <malloc.h>
 #include <nilorea/n_log.h>
 
 
@@ -37,10 +37,10 @@ extern "C"
 	#define WEXITSTATUS(w)    (((w) >> 8) & 0xff)
 #endif
 #ifndef WIFEXITED
-	#define WIFEXITED(w)      (((w) & 0xff) == 0)	
+	#define WIFEXITED(w)      (((w) & 0xff) == 0)
 #endif
 #else
-	#include <alloca.h> 
+	#include <alloca.h>
 #endif
 
 #if defined(__GNUC__) && __GNUC__ >= 7
@@ -48,7 +48,7 @@ extern "C"
 #else
  #define FALL_THROUGH /* fall through */ \
 ((void)0)
-#endif /* __GNUC__ >= 7 */	
+#endif /* __GNUC__ >= 7 */
 
 #if defined( __windows__ )
 #ifndef __BYTE_ORDER
@@ -294,7 +294,9 @@ int n_popen( char *cmd , int read_buf_size , void **nstr_output , int *ret );
 /* non blocking system call */
 pid_t system_nb(const char * command, int * infp, int * outfp);
 
-/*@}*/
+/**
+@}
+*/
 
 #ifdef __cplusplus
 }

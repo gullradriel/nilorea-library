@@ -41,7 +41,7 @@ extern "C"
 #include <sys/ioctl.h>
 #include <sys/socket.h>
 
-#ifdef __linux__ 
+#ifdef __linux__
 	#include <linux/sockios.h>
 #endif
 
@@ -52,7 +52,7 @@ extern "C"
 
 #ifndef SOCKET
 /*! default socket declaration */
-typedef int SOCKET ;
+typedef long long int SOCKET ;
 #endif
 
 /*! socket wrapper */
@@ -353,7 +353,9 @@ int recv_php( SOCKET s, int *_code, char **buf );
 /* get queue status */
 int netw_get_queue_status( NETWORK *netw, int *nb_to_send, int *nb_to_read );
 
-/*@}*/
+/**
+@}
+*/
 
 #ifdef __cplusplus
 }

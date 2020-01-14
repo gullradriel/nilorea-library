@@ -82,10 +82,9 @@ int destroy_config_file( CONFIG_FILE **cfg_file );
 		} \
 	} \
 
-
-
-
-/*@}*/
+/**
+@}
+*/
 
 #ifdef __cplusplus
 }

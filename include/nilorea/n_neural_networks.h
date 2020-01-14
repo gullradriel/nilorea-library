@@ -15,6 +15,10 @@ extern "C"
 
 #include "n_list.h"
 
+/**\defgroup NEURAL_NETWORK NEURAL_NETWORK: creation, export, training, test
+  \addtogroup NEURAL_NETWORK
+  @{
+  */
 
 #ifndef MIN
 #define MIN(x,y)      ((x)<(y) ? (x) : (y))
@@ -141,7 +145,9 @@ int add_perceptron_input( N_PERCEPTRON *n_perceptron, N_PERCEPTRON *input );
 int neural_net_set_input( NEURAL_NETWORK *neural_net, double **input );
 int neural_net_compute( NEURAL_NETWORK *neural_net, double *output );
 
-
+/**
+@}
+*/
 
 #ifdef __cplusplus
 }

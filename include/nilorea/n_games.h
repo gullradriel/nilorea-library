@@ -100,7 +100,9 @@ void destroy_game_env( GAME_ENV **game );
 /* load a config from file */
 GAME_ENV *load_game_config( char *config_name );
 
-/*@}*/
+/**
+@}
+*/
 
 #ifdef __cplusplus
 }

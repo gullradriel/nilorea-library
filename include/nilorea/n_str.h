@@ -258,7 +258,10 @@ int str_sanitize_ex( char *string, const unsigned int string_len, const char *ma
 /* in-place substitution of a set of chars by a single one */
 int str_sanitize( char *string, const char *mask, const char replacement );
 
-/*@}*/
+/**
+@}
+*/
+
 #ifdef __cplusplus
 }
 #endif

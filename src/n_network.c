@@ -705,10 +705,10 @@ int netw_init_wsa( int mode, int v1, int v2 )
 
 
 
-/*!\fn int netw_set_blocking( NETWORK *netw , unsigned long int mode )
+/*!\fn int netw_set_blocking( NETWORK *netw , unsigned long int is_blocking )
  *\brief Modify blocking socket mode
  *\param netw The network to configure
- *\param mode 0 NON BLOCk , 1 BLOCK
+ *\param is_blocking 0 NON BLOCk , 1 BLOCK
  *\return TRUE or FALSE
  */
 int netw_set_blocking( NETWORK *netw , unsigned long int is_blocking )
@@ -736,7 +736,7 @@ int netw_set_blocking( NETWORK *netw , unsigned long int is_blocking )
 
 /*!\fn int netw_setsockopt( NETWORK *netw  , int disable_naggle , int sock_send_buf , int sock_recv_buf )
  *\brief Modify common socket options on the given netw. Enable SO_REUSEADDR, and sets 30secs timeouts for send,recv,LINGER
- *\param sock The socket to configure
+ *\param netw The socket to configure
  *\param disable_naggle Set to positive to enable. Set to negative to force disable, 0 untouched
  *\param sock_send_buf If >0, then try to set the socket send buffer size in octet
  *\param sock_recv_buf If >0, then try to set the socket recv buffer size in octet
@@ -1541,7 +1541,7 @@ int netw_make_listening( NETWORK **netw, char *addr, char *port, int nbpending, 
  *\param sock_recv_buf NETW_SOCKET_RECV_BUF socket parameter , 0 or negative to leave defaults
  *\param send_list_limit Internal sending list maximum number of item. 0 or negative for unrestricted
  *\param recv_list_limit Internal receiving list maximum number of item. 0 or negative for unrestricted
- *\param non_blocking set to -1 to make it non blocking, to 0 for blocking, else it's the select timeout value in mseconds.
+ *\param non_blocking set to -1 to make it non blocking, to 0 for blocking, else it's the select timeout value in msecs.
  *\param retval EAGAIN ou EWOULDBLOCK or errno
  *\return NULL on failure, if not a pointer to the connected network
  */
@@ -1575,9 +1575,12 @@ NETWORK *netw_accept_from_ex( NETWORK *from, int disable_naggle, int sock_send_b
 
     if( non_blocking > 0 )
     {
+        int secs = (non_blocking%1000000) ;
+        int usecs = non_blocking - (secs * 1000000);
         struct timeval select_timeout ;
-        select_timeout . tv_sec = non_blocking ;
-        select_timeout . tv_usec = 0;
+
+        select_timeout . tv_sec = secs ;
+        select_timeout . tv_usec = usecs ;
 
         FD_SET( from -> link . sock, &accept_set );
 

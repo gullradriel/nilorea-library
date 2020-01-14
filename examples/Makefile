@@ -9,7 +9,7 @@ CC=gcc
 LIBNILOREA=-lnilorea
 EXT=
 ALLEGRO_CLIBS=
-DEBUG_LIB=
+DEBUGLIB=
 
 TARGET=ex_list$(EXT) ex_nstr$(EXT) ex_exceptions$(EXT) ex_hash$(EXT) ex_network$(EXT) ex_monolith$(EXT) ex_configfile$(EXT) ex_pcre$(EXT) ex_threads$(EXT) ex_log$(EXT) ex_common$(EXT) ex_signals$(EXT)
 
@@ -18,7 +18,7 @@ ifeq ($(OS),Windows_NT)
 	CLIBS= -lpthread -lws2_32
 	RM= del /Q
 	CC= gcc
-	DEBUG_LIB=-limagehlp
+	DEBUGLIB=-limagehlp
 
 ifeq ($(MSYSTEM),MINGW32)
 	RM=rm -f

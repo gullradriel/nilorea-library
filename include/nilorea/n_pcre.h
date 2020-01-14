@@ -16,7 +16,7 @@ extern "C"
 
 #include <pcre.h>
 
-/**\defgroup PCRE: regex matching helpers
+/**\defgroup PCRE PCRE: regex matching helpers
   \addtogroup PCRE
   @{
   */
@@ -53,8 +53,10 @@ int npcre_clean_match( N_PCRE * pcre );
 /* pcre helper, match a regexp against a string */
 int npcre_match( char *str, N_PCRE *pcre );
 
+/**
+@}
+*/
 
-/*@}*/
 #ifdef __cplusplus
 }
 #endif

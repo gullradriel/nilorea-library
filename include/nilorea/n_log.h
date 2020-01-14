@@ -109,7 +109,9 @@ int write_safe_log( TS_LOG *log, char *pat, ... );
 /* close a thread-safe logging file */
 int close_safe_logging( TS_LOG *log );
 
-/*@}*/
+/**
+@}
+*/
 
 #ifdef __cplusplus
 }

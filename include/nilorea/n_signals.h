@@ -26,7 +26,9 @@ extern "C"
 
 void set_signal_handler( const char *progname );
 
-/*@}*/
+/**
+@}
+*/
 
 #ifdef __cplusplus
 }
