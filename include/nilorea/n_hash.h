@@ -27,6 +27,7 @@ extern "C" {
 
 #include <stdint.h>
 
+#include "n_common.h"
 #include "n_list.h"
 
 #if defined(_MSC_VER)
@@ -124,14 +125,6 @@ typedef struct HASH_TABLE
 void MurmurHash3_x86_32  ( const void * key, int len, uint32_t seed, void * out );
 /* murmur hash func 128bit */
 void MurmurHash3_x86_128 ( const void * key, int len, uint32_t seed, void * out );
-
-#ifndef MSVC
-FORCE_INLINE uint32_t rotl32 ( uint32_t x, int8_t r );
-#endif
-
-uint32_t getblock( const uint32_t *p, int i );
-uint32_t fmix32 ( uint32_t h );
-uint64_t fmix64 ( uint64_t k );
 
 /* get the type of the node */
 char *ht_node_type( HASH_NODE *node );

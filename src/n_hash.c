@@ -18,20 +18,20 @@
 #include <arpa/inet.h>
 #endif
 
-#ifndef MSVC
-/*!\fn FORCE_INLINE uint32_t rotl32 ( uint32_t x, int8_t r )
+#ifndef _MSC_VER
+/*!\fn static FORCE_INLINE uint32_t rotl32 ( uint32_t x, int8_t r )
  *\brief rotate byte 32bit version (from murmur's author)
  *\param x value
  *\param r rotation value
  *\return rotated value
  */
-FORCE_INLINE uint32_t rotl32 ( uint32_t x, int8_t r )
+static FORCE_INLINE uint32_t rotl32( uint32_t x, int8_t r )
 {
     return (x << r) | (x >> (32 - r));
 } /* rotl32(...) */
 #endif
 
-/*!\fn FORCE_INLINE uint32_t getblock( const uint32_t *p, int i )
+/*!\fn static FORCE_INLINE uint32_t getblock( const uint32_t *p, int i )
  *\brief Block read - (from murmur's author)
  if your platform needs to do endian-swapping or can only
  handle aligned reads, do the conversion here
@@ -39,7 +39,7 @@ FORCE_INLINE uint32_t rotl32 ( uint32_t x, int8_t r )
  *\param i position
  *\return value at position inside block
  */
-FORCE_INLINE uint32_t getblock( const uint32_t *p, int i )
+static FORCE_INLINE uint32_t getblock( const uint32_t *p, int i )
 {
     uint32_t var ;
     memcpy( &var, p+i, sizeof( uint32_t ) );
@@ -51,12 +51,12 @@ FORCE_INLINE uint32_t getblock( const uint32_t *p, int i )
 
 
 
-/*!\fn FORCE_INLINE uint32_t fmix32 ( uint32_t h )
+/*!\fn static FORCE_INLINE uint32_t fmix32 ( uint32_t h )
  *\brief Finalization mix - force all bits of a hash block to avalanche (from murmur's author)
  *\param h value
  *\return mixed value
  */
-FORCE_INLINE uint32_t fmix32 ( uint32_t h )
+static FORCE_INLINE uint32_t fmix32 ( uint32_t h )
 {
     h ^= h >> 16;
     h *= 0x85ebca6b;

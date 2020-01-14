@@ -24,6 +24,12 @@ extern "C"
 #include <malloc.h>
 #include <nilorea/n_log.h>
 
+#define DECL_TYPE
+#define PREFIX n_
+#define FUNC( name ) ##PREFIX##
+
+#define MAKE_FUNC_NAME( __name ) void  Callback_ ## __name (void)
+#define N_FUNC(signal)MAKE_FN_NAME(signal)
 
 /*! feature test macro */
 #define __EXTENSIONS__
