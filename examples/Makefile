@@ -9,56 +9,58 @@ CC=gcc
 LIBNILOREA=-lnilorea
 EXT=
 ALLEGRO_CLIBS=
+DEBUG_LIB=
 
 TARGET=ex_list$(EXT) ex_nstr$(EXT) ex_exceptions$(EXT) ex_hash$(EXT) ex_network$(EXT) ex_monolith$(EXT) ex_configfile$(EXT) ex_pcre$(EXT) ex_threads$(EXT) ex_log$(EXT) ex_common$(EXT) ex_signals$(EXT)
 
 ifeq ($(OS),Windows_NT)
-CFLAGS+= -std=c11 $(OPT)
-    CLIBS= -lpthread -lws2_32
+	CFLAGS+= -std=c11 $(OPT)
+	CLIBS= -lpthread -lws2_32
 	RM= del /Q
 	CC= gcc
+	DEBUG_LIB=-limagehlp
 
-	ifeq ($(MSYSTEM),MINGW32)
-		RM=rm -f
-		CFLAGS+= -m32 -DARCH32BITS
-		LIBNILOREA=-lnilorea32.a
-		EXT=32.exe
-		endif
-		ifeq ($(MSYSTEM),MINGW32CB)
-		RM=del /Q
-		CFLAGS+= -m32 -DARCH32BITS
-		LIBNILOREA=-lnilorea32
-		EXT=32.exe
-	endif
+ifeq ($(MSYSTEM),MINGW32)
+	RM=rm -f
+	CFLAGS+= -m32 -DARCH32BITS
+	LIBNILOREA=-lnilorea32.a
+	EXT=32.exe
+endif
+ifeq ($(MSYSTEM),MINGW32CB)
+	RM=del /Q
+	CFLAGS+= -m32 -DARCH32BITS
+	LIBNILOREA=-lnilorea32
+	EXT=32.exe
+endif
 
-	ifeq ($(MSYSTEM),MINGW64)
-		RM=rm -f
-		CFLAGS+= -DARCH64BITS
-		LIBNILOREA=-lnilorea64
-		EXT=64.exe
-		endif
-		ifeq ($(MSYSTEM),MINGW64CB)
-		RM=del /Q
-		CFLAGS+= -DARCH64BITS
-		LIBNILOREA=-lnilorea64
-		EXT=64.exe
-	endif
+ifeq ($(MSYSTEM),MINGW64)
+	RM=rm -f
+	CFLAGS+= -DARCH64BITS
+	LIBNILOREA=-lnilorea64
+	EXT=64.exe
+endif
+ifeq ($(MSYSTEM),MINGW64CB)
+	RM=del /Q
+	CFLAGS+= -DARCH64BITS
+	LIBNILOREA=-lnilorea64
+	EXT=64.exe
+endif
 else
 	UNAME_S= $(shell uname -s)
 	RM=rm -f
 	CC=gcc
 	EXT=
-    ifeq ($(UNAME_S),Linux)
-        CFLAGS+= $(OPT) -std=gnu99 -rdynamic
-        CLIBS=-lpthread
-    endif
-    ifeq ($(UNAME_S),SunOS)
-        CC=cc
-        CFLAGS+= -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -g -v -xc99 -I ../include/ -mt
-        CLIBS=-lm -lsocket -lnsl -lpthread -lpcre -lrt
+	ifeq ($(UNAME_S),Linux)
+	CFLAGS+= $(OPT) -std=gnu99 -rdynamic
+	CLIBS=-lpthread
+endif
+ifeq ($(UNAME_S),SunOS)
+	CC=cc
+	CFLAGS+= -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -g -v -xc99 -I ../include/ -mt
+	CLIBS=-lm -lsocket -lnsl -lpthread -lpcre -lrt
 	LIBNILOREA=-lnilorea
 	EXT=
-    endif
+endif
 endif
 
 
@@ -100,7 +102,7 @@ ex_configfile$(EXT): n_log.o n_list.o n_str.o n_hash.o n_pcre.o n_config_file.o 
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(CLIBS) -lpcre
 
 ex_signals$(EXT): n_log.o n_list.o n_str.o n_common.o n_hash.o n_signals.o ex_signals.o
-	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(CLIBS) -limagehlp
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(CLIBS) $(DEBUGLIB)
 
 ex_gui_particles$(EXT): ex_gui_particles.o
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ -L.. $(LIBNILOREA) $(CLIBS) $(ALLEGRO_CLIBS)

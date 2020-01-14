@@ -11,6 +11,9 @@
 #include "nilorea/n_signals.h"
 #include "nilorea/n_log.h"
 
+#include <libgen.h>
+
+
 int  divide_by_zero(void);
 void cause_segfault(void);
 void stack_overflow(void);
@@ -18,10 +21,11 @@ void infinite_loop(void);
 void illegal_instruction(void);
 void cause_calamity(void);
 
-static const char *progname ;
+char *progname = NULL ;
 
 int main( int argc, char * argv[])
 {
+	(void)argc;
     progname = argv[ 0 ];
 
     //set_log_file( "ex_signals.log" );
