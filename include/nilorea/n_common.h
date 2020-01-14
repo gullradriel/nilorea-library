@@ -24,13 +24,6 @@ extern "C"
 #include <malloc.h>
 #include <nilorea/n_log.h>
 
-#define DECL_TYPE
-#define PREFIX n_
-#define FUNC( name ) DECL_TYPE PREFIX##name
-
-#define MAKE_FUNC_NAME( __name ) void  Callback_ ## __name (void)
-#define N_FUNC(signal)MAKE_FN_NAME(signal)
-
 /*! feature test macro */
 #define __EXTENSIONS__
 
@@ -278,12 +271,12 @@ typedef unsigned char uchar;
 #define MAX(a,b) (((a)>(b))?(a):(b))
 #endif
 
-
-void n_abort( char const *format, ... );
-
 #ifndef __windows__
 int n_daemonize( void );
 #endif
+
+/* exit and print log to stderr */
+void n_abort( char const *format, ... );
 
 /* get running program name */
 char *get_prog_name( void );

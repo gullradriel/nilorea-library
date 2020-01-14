@@ -67,12 +67,12 @@ static FORCE_INLINE uint32_t fmix32 ( uint32_t h )
     return h;
 } /* fmix32(...) */
 
-/*!\fn FORCE_INLINE uint64_t fmix64 ( uint64_t k )
+/*!\fn static FORCE_INLINE uint64_t fmix64 ( uint64_t k )
  *\brief Finalization mix - force all bits of a hash block to avalanche, 64bit version (from murmur's author)
  *\param k value
  *\return mixed value
  */
-FORCE_INLINE uint64_t fmix64 ( uint64_t k )
+static FORCE_INLINE uint64_t fmix64 ( uint64_t k )
 {
     k ^= k >> 33;
     k *= BIG_CONSTANT(0xff51afd7ed558ccd);

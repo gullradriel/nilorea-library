@@ -42,8 +42,8 @@ void n_abort( char const *format, ... )
 {
 	char str[1024] = "" ;
 	va_list args;
-
 	va_start(args, format);
+
 	vsnprintf(str, sizeof str, format, args);
 	va_end(args);
 	fprintf(stderr, "%s", str);
@@ -141,7 +141,7 @@ char *get_prog_name( void )
 } /* get_prog_dir */
 
 /*!\fn int n_popen( char *cmd , int read_buf_size , void *nstr_output , int *ret )
- * \brief launch a command abd return output and status 
+ * \brief launch a command abd return output and status
  * \param cmd The command to launch
  * \param read_buf_size popen read buf. Also serves as a minimum size for the dynamically allocated returned output if not already allocaded
  * \param output Pointer to a valid N_STR or NULL (see read_buf_size)

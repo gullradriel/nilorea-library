@@ -84,14 +84,13 @@
 		<Unit filename="ex_threads.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="nilorea.h" />
 		<Unit filename="serveur.cfg" />
-		<Unit filename="sslexample.c">
-			<Option compilerVar="CC" />
-		</Unit>
 		<Unit filename="valgrind-suppressions.cfg" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
+			<code_completion />
+			<envvars />
+			<debugger />
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>
