@@ -78,7 +78,7 @@ static const char *icky_global_program_name ;
 int addr2line(char const * const program_name, void const * const addr)
 {
 	char addr2line_cmd[4093] = "" ;
-    LOGSIG( "%s %p" , program_name , addr );
+
 	/* have addr2line map the address to the relent line in the code */
 #ifdef __APPLE__
 	/* apple does things differently... */
