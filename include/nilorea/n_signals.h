@@ -22,8 +22,11 @@ extern "C"
 /*! Size of the signal handler alternate stack */
 #define SIGALTSTACK_SIZE 65536
 /*! Number of backtrace log lines */
-#define MAX_STACK_FRAMES 512
+#define MAX_STACK_FRAMES 32
 
+
+
+/* install the backtrace handler */
 void set_signal_handler( const char *progname );
 
 /**
