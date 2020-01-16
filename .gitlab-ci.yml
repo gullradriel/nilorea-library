@@ -18,4 +18,4 @@ job 3:
 
 job 5:
   stage: .post
-  script: cd .. : ./valgrind.sh
+  script: cd .. ; ./valgrind.sh
