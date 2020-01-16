@@ -309,8 +309,6 @@ int netw_set_timers( NETWORK *netw, int send_queue_wait, int send_queue_consecut
 int netw_get_state( NETWORK *netw, int *state, int *thr_engine_status );
 /* Set common socket options (disable naggle, send/recv buf, reuse addr) */
 int netw_setsockopt( NETWORK *netw, int disable_naggle, int sock_send_buf, int sock_recv_buf );
-/* new tcp socket with error checking */
-int netw_tcp_socket( SOCKET *sock );
 /* set blocking mode */
 int netw_set_blocking( NETWORK *netw , unsigned long int is_blocking );
 /* Connecting, extended */
@@ -319,6 +317,7 @@ int netw_connect_ex( NETWORK **netw, char *host, char *port, int disable_naggle,
 int netw_connect( NETWORK **netw, char *host, char *port, int ip_version );
 /* Closing */
 int netw_close( NETWORK **netw );
+/* Closing for peer */
 int netw_wait_close( NETWORK **netw );
 /* Stop a NETWORK connection sending and receing thread */
 int netw_stop_thr_engine( NETWORK *netw );
@@ -332,6 +331,8 @@ NETWORK *netw_accept_from( NETWORK *from );
 NETWORK *netw_accept_nonblock_from( NETWORK *from, int blocking );
 /* Add a message to send in aimed NETWORK */
 int netw_add_msg( NETWORK *netw, N_STR *msg );
+/* Add a char message to send in the aimed NETWORK */
+int netw_add_msg_ex( NETWORK *netw , char *str , unsigned int length );
 /* Get a message from aimed NETWORK. Instant return to NULL if no MSG */
 N_STR *netw_get_msg( NETWORK *netw );
 /* Wait a message from aimed NETWORK. Recheck each 'refresh' usec until 'timeout' usec */
