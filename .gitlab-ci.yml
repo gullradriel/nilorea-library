@@ -1,17 +1,21 @@
-name: C/C++ CI
+stages:
+  - build_lib
+  - build_exmaples
+  - test
+  
 
-on: [push]
+job 0:
+  stage: .pre
+  script: make clean
 
-jobs:
-  build:
+job 1:
+  stage: build_lib
+  script: make 
 
-    runs-on: ubuntu-latest
-    
-    steps:
-    - uses: actions/checkout@v1
-    - name: make
-      run: make
-    - name: make examples
-      run: |
-        cd examples 
-        make
+job 3:
+  stage: build_examples
+  script: cd examples ; make clean ; make
+
+job 5:
+  stage: .post
+  script: cd .. : ./valgrind.sh
