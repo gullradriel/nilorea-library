@@ -12,10 +12,10 @@ job 1:
   stage: build_lib
   script: make 
 
-job 3:
+job 2:
   stage: build_examples
   script: cd examples ; make clean ; make
 
-job 5:
+job 3:
   stage: .post
   script: cd .. ; ./valgrind.sh
