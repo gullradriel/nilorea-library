@@ -55,8 +55,9 @@ void _n_nodup_log_indexed( int LEVEL, const char *prefix, const char *file, cons
  * readable */
 int dump_nodup_log( char *file );
 
-
-/*@}*/
+/**
+@}
+*/
 
 #ifdef __cplusplus
 }

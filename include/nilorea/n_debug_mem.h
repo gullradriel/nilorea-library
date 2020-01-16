@@ -81,7 +81,9 @@ FORCE_INLINE void db_mem_free( void *ptr );
 int db_mem_dump_leaked( char *file );
 #endif
 
-/*@}*/
+/**
+@}
+*/
 
 #ifdef __cplusplus
 }

@@ -222,8 +222,9 @@ int ngui_draw( NGUI_DIALOG *dialog );
 /*destroy dialog */
 int ngui_destroy( NGUI_DIALOG **dialog );
 
-
-/*@}*/
+/**
+@}
+*/
 
 #ifdef __cplusplus
 }

@@ -21,22 +21,33 @@ extern "C"
 #include <sys/types.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <malloc.h>
 #include <nilorea/n_log.h>
-
-#if defined(_MSC_VER) || defined(__MINGW32__)
-#include <malloc.h>     // alloca
-#else
-#include <alloca.h>     // alloca
-#endif
 
 /*! feature test macro */
 #define __EXTENSIONS__
 
+/* set __windows__ if true */
 #if defined( _WIN32 ) || defined( _WIN64 )
 #ifndef __windows__
 #define __windows__
 #endif
+#ifndef WEXITSTATUS
+	#define WEXITSTATUS(w)    (((w) >> 8) & 0xff)
 #endif
+#ifndef WIFEXITED
+	#define WIFEXITED(w)      (((w) & 0xff) == 0)
+#endif
+#else
+	#include <alloca.h>
+#endif
+
+#if defined(__GNUC__) && __GNUC__ >= 7
+ #define FALL_THROUGH __attribute__ ((fallthrough))
+#else
+ #define FALL_THROUGH /* fall through */ \
+((void)0)
+#endif /* __GNUC__ >= 7 */
 
 #if defined( __windows__ )
 #ifndef __BYTE_ORDER
@@ -48,6 +59,15 @@ extern "C"
 #ifndef __LITTLE_ENDIAN
 #define __LITTLE_ENDIAN __ORDER_LITTLE_ENDIAN__
 #endif
+/* typedefine for unsigned category for basic native types */
+/*! shortcut for unsigned int*/
+typedef unsigned int uint;
+/*! shortcut for unsigned long*/
+typedef unsigned long ulong;
+/*! shortcut for unsigned short*/
+typedef unsigned short ushort;
+/*! shortcut for unsigned char*/
+typedef unsigned char uchar;
 #endif
 
 /*! FORCE_INLINE portable macro */
@@ -181,6 +201,9 @@ extern "C"
 /*! error checker type if( toto == FALSE )  */
 #define iffalse if( FALSE ==
 
+/*! error checker type if( toto == FALSE )  */
+#define iftrue if( TRUE ==
+
 /*! check for errors */
 #define checkerror() if( ___error__check_flag == TRUE ) \
     { n_log( LOG_ERR , "checkerror return false at line %d of %s" , __LINE__ , __FILE__ ); \
@@ -221,19 +244,6 @@ extern "C"
     n_log( RWLOCK_LOGLEVEL , "destroy lock %s" , #__rwlock_mutex ); \
     pthread_rwlock_destroy( &(__rwlock_mutex) )
 
-
-#ifdef __windows__
-/* typedefine for unsigned category for basic native types */
-/*! shortcut for unsigned int*/
-typedef unsigned int uint;
-/*! shortcut for unsigned long*/
-typedef unsigned long ulong;
-/*! shortcut for unsigned short*/
-typedef unsigned short ushort;
-/*! shortcut for unsigned char*/
-typedef unsigned char uchar;
-#endif
-
 /*! Flag for SET something , passing as a function parameter */
 #define SET        1234
 /*! Flag for GET something , passing as a function parameter */
@@ -261,12 +271,12 @@ typedef unsigned char uchar;
 #define MAX(a,b) (((a)>(b))?(a):(b))
 #endif
 
-
-void n_abort( char const *format, ... );
-
 #ifndef __windows__
 int n_daemonize( void );
 #endif
+
+/* exit and print log to stderr */
+void n_abort( char const *format, ... );
 
 /* get running program name */
 char *get_prog_name( void );
@@ -277,10 +287,15 @@ char *get_prog_dir( void );
 /* test file presence*/
 int file_exist( const char *filename );
 
+/* shortcut for popen usage */
+int n_popen( char *cmd , int read_buf_size , void **nstr_output , int *ret );
+
 /* non blocking system call */
 pid_t system_nb(const char * command, int * infp, int * outfp);
 
-/*@}*/
+/**
+@}
+*/
 
 #ifdef __cplusplus
 }

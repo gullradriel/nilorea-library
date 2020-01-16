@@ -59,7 +59,9 @@ int resource_load_bitmap( RESOURCES *resource, char *bitmap, char *id );
 int resource_load_sample( RESOURCES *resource, char *sample, char *id );
 int resource_load_font( RESOURCES *resource, char *font, char *id );
 
-/*@}*/
+/**
+@}
+*/
 
 #ifdef __cplusplus
 }

@@ -96,13 +96,13 @@ int free_particle_system( PARTICLE_SYSTEM **psys);
 
 int move_particles( PARTICLE_SYSTEM *psys, double vx, double vy, double vz );
 
-/*@}*/
+/**
+@}
+*/
 
 #ifdef __cplusplus
 }
 #endif
-
-
 
 #endif /* PARTICLE_HEADER_FOR_CHRISTMASHACK */
 

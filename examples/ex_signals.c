@@ -2,13 +2,17 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <stdint.h>
+#include <string.h>
 #include <stdbool.h>
 #include <errno.h>
 #include <signal.h>
 #include <assert.h>
 
-#include "nilorea/n_log.h"
 #include "nilorea/n_signals.h"
+#include "nilorea/n_log.h"
+
+#include <libgen.h>
+
 
 int  divide_by_zero(void);
 void cause_segfault(void);
@@ -17,16 +21,22 @@ void infinite_loop(void);
 void illegal_instruction(void);
 void cause_calamity(void);
 
+char *progname = NULL ;
+
 int main( int argc, char * argv[])
 {
+	(void)argc;
+    progname = argv[ 0 ];
+
+    //set_log_file( "ex_signals.log" );
     set_log_level( LOG_DEBUG );
     set_log_level( LOG_STDERR );
+    //set_log_level( LOG_FILE );
 
-    (void)argc;
-    (void)argv[0];
+    n_log( LOG_DEBUG , "set_signal_handler" );
+	set_signal_handler( basename( progname ) );
 
-    set_signal_handler();
-
+    n_log( LOG_DEBUG , "cause_calamity" );
     cause_calamity();
 
     return 0;
@@ -36,8 +46,8 @@ void cause_calamity(void)
 {
     /* uncomment one of the following error conditions to cause a calamity of
        your choosing! */
-    //stack_overflow();
-    //(void)divide_by_zero();
+    stack_overflow();
+    (void)divide_by_zero();
     cause_segfault();
     assert(false);
     infinite_loop();

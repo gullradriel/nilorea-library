@@ -41,7 +41,7 @@ extern "C"
 #include <sys/ioctl.h>
 #include <sys/socket.h>
 
-#ifdef __linux__ 
+#ifdef __linux__
 	#include <linux/sockios.h>
 #endif
 
@@ -52,7 +52,7 @@ extern "C"
 
 #ifndef SOCKET
 /*! default socket declaration */
-typedef int SOCKET ;
+typedef long long int SOCKET ;
 #endif
 
 /*! socket wrapper */
@@ -165,11 +165,11 @@ typedef int SOCKET ;
 #define NETW_RUN     64
 /*! State for a NETWORK who want to pause processing of network queues */
 #define NETW_PAUSE   128
-/*! State for a NETWORK who want to end/exit connection !!THESE HAVE TO BE NEGATIVE AS THEY ARE USED To DETECT END OF CONNECTION IN NBBYTE SEND/RECV */
+/*! State for a NETWORK who want to end/exit connection */
 #define NETW_EXIT_ASKED    256
-/*! State for a NETWORK that was first asked to exit, then is exited !!THESE HAVE TO BE NEGATIVE AS THEY ARE USED To DETECT END OF CONNECTION IN NBBYTE SEND/RECV */
+/*! State for a NETWORK that was first asked to exit, then is exited */
 #define NETW_EXITED    512
-/*! State to signal errors in the network !!THESE HAVE TO BE NEGATIVE AS THEY ARE USED To DETECT END OF CONNECTION IN NBBYTE SEND/RECV */
+/*! State to signal errors in the network */
 #define NETW_ERROR   1024
 /*! Flag : no encryption on connection (default) */
 #define NETW_CRYPTO_NONE 2048
@@ -353,7 +353,9 @@ int recv_php( SOCKET s, int *_code, char **buf );
 /* get queue status */
 int netw_get_queue_status( NETWORK *netw, int *nb_to_send, int *nb_to_read );
 
-/*@}*/
+/**
+@}
+*/
 
 #ifdef __cplusplus
 }

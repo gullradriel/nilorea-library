@@ -14,7 +14,7 @@ extern "C" {
 #endif
 
 /**\defgroup GLOBALHEADER HEADER: a global header to include all the modules
-   \addtogroup GLOBALHEADER 
+   \addtogroup GLOBALHEADER
   @{
 */
 
@@ -25,17 +25,18 @@ extern "C" {
 #include <nilorea/n_hash.h>
 #include <nilorea/n_network.h>
 #include <nilorea/n_network_msg.h>
-/* 
-	#ifndef NOALLEGRO
+
+#ifdef HAVE_ALLEGRO
 	#include <nilorea/n_gfx.h>
 	#include <nilorea/n_3d.h>
 	#include <nilorea/n_iso_engine.h>
 	#include <nilorea/n_games.h>
 	#include <nilorea/n_particles.h>
 #endif
-*/
 
-/*@}*/
+/**
+@}
+*/
 
 #ifdef __cplusplus
 }

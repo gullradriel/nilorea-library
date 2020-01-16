@@ -18,21 +18,20 @@
 #include <arpa/inet.h>
 #endif
 
-#ifndef MSVC
-/*!\fn static inline uint32_t rotl32 ( uint32_t x, int8_t r )
+#ifndef _MSC_VER
+/*!\fn static FORCE_INLINE uint32_t rotl32 ( uint32_t x, int8_t r )
  *\brief rotate byte 32bit version (from murmur's author)
  *\param x value
  *\param r rotation value
  *\return rotated value
  */
-static uint32_t rotl32 ( uint32_t x, int8_t r )
+static FORCE_INLINE uint32_t rotl32( uint32_t x, int8_t r )
 {
     return (x << r) | (x >> (32 - r));
 } /* rotl32(...) */
-
 #endif
 
-/*!\fn FORCE_INLINE uint32_t getblock( const uint32_t *p, int i )
+/*!\fn static FORCE_INLINE uint32_t getblock( const uint32_t *p, int i )
  *\brief Block read - (from murmur's author)
  if your platform needs to do endian-swapping or can only
  handle aligned reads, do the conversion here
@@ -40,7 +39,7 @@ static uint32_t rotl32 ( uint32_t x, int8_t r )
  *\param i position
  *\return value at position inside block
  */
-FORCE_INLINE uint32_t getblock( const uint32_t *p, int i )
+static FORCE_INLINE uint32_t getblock( const uint32_t *p, int i )
 {
     uint32_t var ;
     memcpy( &var, p+i, sizeof( uint32_t ) );
@@ -52,12 +51,12 @@ FORCE_INLINE uint32_t getblock( const uint32_t *p, int i )
 
 
 
-/*!\fn FORCE_INLINE uint32_t fmix32 ( uint32_t h )
+/*!\fn static FORCE_INLINE uint32_t fmix32 ( uint32_t h )
  *\brief Finalization mix - force all bits of a hash block to avalanche (from murmur's author)
  *\param h value
  *\return mixed value
  */
-FORCE_INLINE uint32_t fmix32 ( uint32_t h )
+static FORCE_INLINE uint32_t fmix32 ( uint32_t h )
 {
     h ^= h >> 16;
     h *= 0x85ebca6b;
@@ -68,12 +67,12 @@ FORCE_INLINE uint32_t fmix32 ( uint32_t h )
     return h;
 } /* fmix32(...) */
 
-/*!\fn FORCE_INLINE uint64_t fmix64 ( uint64_t k )
+/*!\fn static FORCE_INLINE uint64_t fmix64 ( uint64_t k )
  *\brief Finalization mix - force all bits of a hash block to avalanche, 64bit version (from murmur's author)
  *\param k value
  *\return mixed value
  */
-FORCE_INLINE uint64_t fmix64 ( uint64_t k )
+static FORCE_INLINE uint64_t fmix64 ( uint64_t k )
 {
     k ^= k >> 33;
     k *= BIG_CONSTANT(0xff51afd7ed558ccd);
@@ -134,10 +133,10 @@ void MurmurHash3_x86_32 ( const void * key, int len, uint32_t seed, void * out )
     {
     case 3:
         k1 ^= tail[2] << 16;
-        __attribute__ ((fallthrough));
+        FALL_THROUGH ;
     case 2:
         k1 ^= tail[1] << 8;
-        __attribute__ ((fallthrough));
+        FALL_THROUGH ;
     case 1:
         k1 ^= tail[0];
         k1 *= c1;
@@ -239,58 +238,58 @@ void MurmurHash3_x86_128 ( const void * key, const int len, uint32_t seed, void 
     {
     case 15:
         k4 ^= tail[14] << 16;
-        __attribute__ ((fallthrough));
+        FALL_THROUGH ;
     case 14:
         k4 ^= tail[13] << 8;
-        __attribute__ ((fallthrough));
+        FALL_THROUGH ;
     case 13:
         k4 ^= tail[12] << 0;
         k4 *= c4;
         k4  = ROTL32(k4,18);
         k4 *= c1;
         h4 ^= k4;
-        __attribute__ ((fallthrough));
+        FALL_THROUGH ;
     case 12:
         k3 ^= tail[11] << 24;
-        __attribute__ ((fallthrough));
+        FALL_THROUGH ;
     case 11:
         k3 ^= tail[10] << 16;
-        __attribute__ ((fallthrough));
+        FALL_THROUGH ;
     case 10:
         k3 ^= tail[ 9] << 8;
-        __attribute__ ((fallthrough));
+        FALL_THROUGH ;
     case  9:
         k3 ^= tail[ 8] << 0;
         k3 *= c3;
         k3  = ROTL32(k3,17);
         k3 *= c4;
         h3 ^= k3;
-        __attribute__ ((fallthrough));
+        FALL_THROUGH ;
     case  8:
         k2 ^= tail[ 7] << 24;
-        __attribute__ ((fallthrough));
+        FALL_THROUGH ;
     case  7:
         k2 ^= tail[ 6] << 16;
-        __attribute__ ((fallthrough));
+        FALL_THROUGH ;
     case  6:
         k2 ^= tail[ 5] << 8;
-        __attribute__ ((fallthrough));
+        FALL_THROUGH ;
     case  5:
         k2 ^= tail[ 4] << 0;
         k2 *= c2;
         k2  = ROTL32(k2,16);
         k2 *= c3;
         h2 ^= k2;
-        __attribute__ ((fallthrough));
+        FALL_THROUGH ;
     case  4:
         k1 ^= tail[ 3] << 24;
-        __attribute__ ((fallthrough));
+        FALL_THROUGH ;
     case  3:
         k1 ^= tail[ 2] << 16;
-        __attribute__ ((fallthrough));
+        FALL_THROUGH ;
     case  2:
         k1 ^= tail[ 1] << 8;
-        __attribute__ ((fallthrough));
+        FALL_THROUGH ;
     case  1:
         k1 ^= tail[ 0] << 0;
         k1 *= c1;
@@ -335,7 +334,6 @@ void MurmurHash3_x86_128 ( const void * key, const int len, uint32_t seed, void 
 /*!\fn void ht_node_destroy( void *node )
  *\brief destroy a HASH_NODE by first calling the HASH_NODE destructor
  *\param node The node to kill
- *\return NULL
  */
 void ht_node_destroy( void *node )
 {

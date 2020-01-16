@@ -14,12 +14,13 @@ extern "C"
 #endif
 
 /**\defgroup STACK STACK: generic type stack
-   \addtogroup DATA
+   \addtogroup STACK
   @{
 */
 
-
-/*@}*/
+/**
+@}
+*/
 
 #ifdef __cplusplus
 }

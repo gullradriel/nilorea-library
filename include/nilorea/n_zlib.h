@@ -20,12 +20,21 @@ extern "C"
 #include <zlib.h>
 #include "n_str.h"
 
+/**\defgroup N_TIME N_TIME: generally used headers, defines, timers, allocators,...
+  \addtogroup N_TIME
+  @{
+  */
+
 int GetMaxCompressedLen( int nLenSrc );
 int CompressData(   unsigned char *abSrc, int nLenSrc, unsigned char *abDst, int nLenDst );
 int UncompressData( unsigned char *abSrc, int nLenSrc, unsigned char *abDst, int nLenDst );
-  
+
 N_STR *zip_nstr( N_STR *src );
 N_STR *unzip_nstr( N_STR *src );
+
+/**
+@}
+*/
 
 #ifdef __cplusplus
 }

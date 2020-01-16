@@ -109,7 +109,9 @@ int list_empty_with_f( LIST *list, void (*free_fnct)( void *ptr ) );
 /* free the list */
 int list_destroy( LIST **list );
 
-/*@}*/
+/**
+@}
+*/
 
 #ifdef __cplusplus
 }

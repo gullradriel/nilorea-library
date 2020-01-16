@@ -29,7 +29,6 @@ void free_no_null( void *ptr )
 /*!\fn void destroy_config_file_section( void *ptr )
  *\brief Destroy a config file section
  *\param ptr A pointer to a config file section
- *\return void
  */
 void destroy_config_file_section( void *ptr )
 {
@@ -39,8 +38,7 @@ void destroy_config_file_section( void *ptr )
     Free( section -> section_name );
     destroy_ht( &section -> entries );
     Free( section );
-    return ;
-} /* destroy_config_file_section(...) */
+ } /* destroy_config_file_section(...) */
 
 
 

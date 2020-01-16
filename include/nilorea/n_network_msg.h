@@ -91,7 +91,9 @@ N_STR *make_str_from_msg( NETW_MSG *msg );
 /* Make a message from a single string */
 NETW_MSG *make_msg_from_str( N_STR *str );
 
-/*@}*/
+/**
+@}
+*/
 
 #ifdef __cplusplus
 }

@@ -27,6 +27,7 @@ extern "C" {
 
 #include <stdint.h>
 
+#include "n_common.h"
 #include "n_list.h"
 
 #if defined(_MSC_VER)
@@ -158,7 +159,9 @@ int empty_ht( HASH_TABLE *table );
 /* destroy a hash table*/
 int destroy_ht( HASH_TABLE **table );
 
-/*@}*/
+/**
+@}
+*/
 
 #ifdef __cplusplus
 }

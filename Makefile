@@ -92,6 +92,9 @@ release: all
 debug: all
 all: main
 
+doc:
+	doxygen Doxyfile
+
 buildnumber:
 	@echo -n "    #define BUILD_NUMBER  " > build-number.new
 	@echo `expr $(shell $(buildnum)) + 1` >> build-number.new
@@ -126,7 +129,6 @@ all: main
 
 main: $(OBJECTS)
 	$(AR) rcs $(OUTPUT)$(EXT) $(OBJECTS)
-	gcc -o $(OUTPUT)$(EXT).dll -s -shared -I./include src/n_common.c
 
 #@echo Version:$(shell $(majorversion)).$(shell $(minorversion)).$(shell $(buildnum))
 

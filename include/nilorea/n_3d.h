@@ -85,7 +85,9 @@ int vector_intersect( VECTOR3D p0, VECTOR3D p1, VECTOR3D p2, VECTOR3D p3, VECTOR
 #define copy_point( __src_ , __dst_ ) \
    memcpy( __dst_ , __src_ , sizeof( VECTOR3D ) );
 
-/*@}*/
+/**
+@}
+*/
 
 #ifdef __cplusplus
 }

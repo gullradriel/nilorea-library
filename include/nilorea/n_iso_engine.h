@@ -128,7 +128,9 @@ int save_map( MAP *map, char *filename );
 /* Free the map */
 int free_map( MAP **map );
 
-/*@}*/
+/**
+@}
+*/
 
 #endif /* NOALLEGRO */
 
