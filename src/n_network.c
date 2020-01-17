@@ -1751,6 +1751,46 @@ int netw_add_msg( NETWORK *netw, N_STR *msg )
 
 
 
+/*!\fn int netw_add_msg_ex( NETWORK *netw , char *str , unsigned int length )
+ *\brief Add a message to send in aimed NETWORK
+ *\param netw NETWORK where add the message
+ *\param str  the message to add
+ *\param length  the size of the message to add
+ *\return TRUE if success FALSE on error
+ */
+int netw_add_msg_ex( NETWORK *netw, char *str , unsigned int length )
+{
+    __n_assert( netw, return FALSE );
+    __n_assert( str, return FALSE );
+    __n_assert( length <= 0, return FALSE );
+
+    N_STR *nstr = NULL ;
+    Malloc( nstr , N_STR , 1 );
+    __n_assert( nstr , return FALSE );
+
+    if( length <= 0 )
+    {
+        n_log( LOG_ERR, "Empty messages are not supported. msg(%p)->lenght=%d", str, length );
+        return FALSE;
+    }
+
+    nstr -> data = str ;
+    nstr -> written = nstr -> length = length ;
+
+    pthread_mutex_lock( &netw -> sendbolt );
+    if( list_push( netw -> send_buf, nstr , free_nstr_ptr ) == FALSE )
+    {
+        pthread_mutex_unlock( &netw -> sendbolt );
+        return FALSE;
+    }
+    pthread_mutex_unlock( &netw -> sendbolt );
+
+    return TRUE;
+} /* netw_add_msg_ex(...) */
+
+
+
+
 /*!\fn N_STR *netw_get_msg( NETWORK *netw )
  *\brief Get a message from aimed NETWORK
  *\param netw NETWORK where get the msg
@@ -1784,11 +1824,17 @@ N_STR *netw_wait_msg( NETWORK *netw, long refresh, long timeout )
 {
     N_STR *nstrptr = NULL ;
     int timed = 0 ;
+    long secs = 0 ;
+    long usecs = 0 ;
 
     __n_assert( netw, return NULL );
 
+    usecs = refresh ;
     if( refresh > 999999 )
-        refresh = 999999 ;
+    {
+        secs = refresh / 1000000 ;
+        usecs = refresh % 1000000 ;
+    }
 
     if( timeout > 0 )
         timed = 1 ;
@@ -1801,7 +1847,8 @@ N_STR *netw_wait_msg( NETWORK *netw, long refresh, long timeout )
         return nstrptr ;
     do
     {
-        u_sleep( refresh );
+        if(secs > 0)sleep( secs );
+        if( usecs >0 )u_sleep( usecs );
 
         nstrptr = netw_get_msg( netw );
         if( nstrptr )

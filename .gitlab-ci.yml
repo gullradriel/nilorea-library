@@ -1,21 +1,6 @@
-stages:
-  - build_lib
-  - build_examples
-  - test
-  
+image: gcc
 
-job 0:
-  stage: .pre
-  script: make clean
-
-job 1:
-  stage: build_lib
-  script: make 
-
-job 2:
-  stage: build_examples
-  script: cd examples ; make clean ; make
-
-job 3:
-  stage: .post
-  script: cd .. ; ./valgrind.sh
+build:
+  stage: build
+  script:
+    - make clean ; make ; cd examples ; make clean ; make
