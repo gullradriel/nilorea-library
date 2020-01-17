@@ -1768,9 +1768,9 @@ int netw_add_msg_ex( NETWORK *netw, char *str , unsigned int length )
     Malloc( nstr , N_STR , 1 );
     __n_assert( nstr , return FALSE );
 
-    if( msg -> length <= 0 )
+    if( length <= 0 )
     {
-        n_log( LOG_ERR, "Empty messages are not supported. msg(%p)->lenght=%d", msg, msg -> length );
+        n_log( LOG_ERR, "Empty messages are not supported. msg(%p)->lenght=%d", str, length );
         return FALSE;
     }
 
@@ -1778,7 +1778,7 @@ int netw_add_msg_ex( NETWORK *netw, char *str , unsigned int length )
     nstr -> written = nstr -> length = length ;
 
     pthread_mutex_lock( &netw -> sendbolt );
-    if( list_push( netw -> send_buf, msg, free_nstr_ptr ) == FALSE )
+    if( list_push( netw -> send_buf, nstr , free_nstr_ptr ) == FALSE )
     {
         pthread_mutex_unlock( &netw -> sendbolt );
         return FALSE;
