@@ -1,6 +1,11 @@
 image: gcc
 
-build:
-  stage: build
+build_lib:
+  stage: build 
   script:
-    - make clean ; make ; cd examples ; make clean ; make
+    - make clean ; make
+    
+build_examples:  
+  stage: build 
+  script:
+    - cd examples ; make clean ; make 
