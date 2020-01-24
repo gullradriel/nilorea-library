@@ -384,8 +384,8 @@ void set_signal_handler( const char *progname )
 		if (sigaction(SIGFPE,  &sig_action, NULL) != 0) { err(1, "sigaction"); }
 		if (sigaction(SIGINT,  &sig_action, NULL) != 0) { err(1, "sigaction"); }
 		if (sigaction(SIGILL,  &sig_action, NULL) != 0) { err(1, "sigaction"); }
-		/* No TERM catch */
-		if (sigaction(SIGTERM, &sig_action, NULL) != 0) { err(1, "sigaction"); }
+		/* No TERM catch 
+		if (sigaction(SIGTERM, &sig_action, NULL) != 0) { err(1, "sigaction"); } */
 		if (sigaction(SIGABRT, &sig_action, NULL) != 0) { err(1, "sigaction"); }
 	}
 }
