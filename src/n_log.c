@@ -214,9 +214,7 @@ int asprintf(char *strp[], const char *fmt, ...)
  */
 void _n_log( int level, const char *file, const char *func, int line, const char *format, ... )
 {
-    va_list args ;
-
-	FILE *out = NULL ;
+    FILE *out = NULL ;
 
     if( level == LOG_NULL )
         return ;
@@ -230,6 +228,7 @@ void _n_log( int level, const char *file, const char *func, int line, const char
 
     if( level <= log_level )
     {
+        va_list args ;
         char *syslogbuffer = NULL ;
         char *eventbuffer = NULL ;
 #ifdef __MINGW32__

@@ -101,7 +101,6 @@ void delete_db_mem_item( void *ptr )
 void *db_mem_alloc( size_t size, int line, char *file, const char *func )
 {
     DEBUG_MEM_ITEM *item = NULL ;
-    char key[ 512 ] = "";
     void *ptr = NULL ;
 
     __debug_mem_table . nb_malloc ++ ;
@@ -109,6 +108,7 @@ void *db_mem_alloc( size_t size, int line, char *file, const char *func )
     ptr = calloc( 1, size );
     if( ptr )
     {
+        char key[ 512 ] = "";
         item = new_db_mem_item( ptr, size, line, strdup( file ), strdup( func ) );
         sprintf( key, "%p", ptr );
         ht_put_ptr( __debug_mem_table . table, key, item, delete_db_mem_item );

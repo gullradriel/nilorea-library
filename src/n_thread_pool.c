@@ -40,8 +40,8 @@ void *thread_pool_processing_function( void *param )
         thread_state = node -> thread_state ;
         pthread_mutex_unlock( &node -> lock );
 
-		if( thread_state == RUNNING_THREAD )
-		{
+        if( thread_state == RUNNING_THREAD )
+        {
             n_log( LOG_DEBUG, "Thread pool running proc %p", node -> func );
 
             pthread_mutex_lock( &node -> lock );
@@ -70,7 +70,7 @@ void *thread_pool_processing_function( void *param )
             /* DIRECT_PROC do not need to post th_end */
             if( type&SYNCED_PROC )
                 sem_post( &node -> th_end );
-		}
+        }
     }
     while( thread_state != EXITING_THREAD );
 
@@ -300,16 +300,16 @@ int wait_for_threaded_pool(  THREAD_POOL *thread_pool, int delay )
 
     int DONE = 0 ;
 
-	n_log( LOG_DEBUG , "Waiting for the waitlist of %p to be consumed" , thread_pool );
-	/* waiting to consume all the waiting list */
+    n_log( LOG_DEBUG, "Waiting for the waitlist of %p to be consumed", thread_pool );
+    /* waiting to consume all the waiting list */
     while( thread_pool -> waiting_list -> nb_items > 0 )
     {
         refresh_thread_pool( thread_pool );
         u_sleep( delay );
     }
 
-	n_log( LOG_DEBUG , "Waiting for active process of %p to be terminated" , thread_pool );
-	/* waiting for all active procs to have terminated */
+    n_log( LOG_DEBUG, "Waiting for active process of %p to be terminated", thread_pool );
+    /* waiting for all active procs to have terminated */
     while( !DONE )
     {
         DONE = 1 ;
@@ -375,7 +375,7 @@ int destroy_threaded_pool( THREAD_POOL **pool, int delay )
 
     for( int it = 0 ; it < (*pool) -> max_threads ; it ++ )
     {
-		pthread_join( (*pool) -> thread_list[ it ] -> thr , NULL );
+        pthread_join( (*pool) -> thread_list[ it ] -> thr, NULL );
         pthread_mutex_destroy( &(*pool) -> thread_list[ it ] -> lock );
         pthread_mutex_destroy( &(*pool) -> thread_list[ it ] -> global_lock );
         sem_destroy(  &(*pool) -> thread_list[ it ] -> th_start );
@@ -431,7 +431,7 @@ int refresh_thread_pool( THREAD_POOL *thread_pool )
                     THREAD_WAITING_PROC *procptr = NULL ;
                     next_node = node -> next ;
                     procptr = remove_list_node( thread_pool -> waiting_list, node, THREAD_WAITING_PROC );
-                    n_log( LOG_DEBUG, "waitlist: adding %p,%p to %p", procptr -> func, procptr -> param , thread_pool );
+                    n_log( LOG_DEBUG, "waitlist: adding %p,%p to %p", procptr -> func, procptr -> param, thread_pool );
                     Free( proc );
                     node = next_node ;
                 }

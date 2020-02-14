@@ -25,7 +25,7 @@ char *progname = NULL ;
 
 int main( int argc, char * argv[])
 {
-	(void)argc;
+    (void)argc;
     progname = argv[ 0 ];
 
     //set_log_file( "ex_signals.log" );
@@ -33,10 +33,10 @@ int main( int argc, char * argv[])
     set_log_level( LOG_STDERR );
     //set_log_level( LOG_FILE );
 
-    n_log( LOG_DEBUG , "set_signal_handler" );
-	set_signal_handler( basename( progname ) );
+    n_log( LOG_DEBUG, "set_signal_handler" );
+    set_signal_handler( basename( progname ) );
 
-    n_log( LOG_DEBUG , "cause_calamity" );
+    n_log( LOG_DEBUG, "cause_calamity" );
     cause_calamity();
 
     return 0;

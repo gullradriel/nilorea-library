@@ -99,8 +99,8 @@ int get_net_datas( N_STR *str, N_STR **hostname, N_STR **data )
         delete_msg( &netmsg );
         return FALSE;
     }
-    get_nstr_from_msg( netmsg, &(*hostname) );
-    get_nstr_from_msg( netmsg, &(*data) );
+    get_nstr_from_msg( netmsg, (*hostname) );
+    get_nstr_from_msg( netmsg, (*data) );
     n_log( LOG_DEBUG, "getting string %s", (*data) -> data );
 
     for( int i = 0 ; i < 10 ; i ++ )
@@ -446,8 +446,8 @@ int netw_get_ident( N_STR *msg, int *type,int *ident, N_STR **name, N_STR **pass
 
     __n_assert( netmsg, return FALSE);
 
-    get_int_from_msg( netmsg, &(*type) );
-    get_int_from_msg( netmsg, &(*ident) );
+    get_int_from_msg( netmsg, (*type) );
+    get_int_from_msg( netmsg, (*ident) );
 
     if( (*type) != NETMSG_IDENT_REQUEST && (*type) != NETMSG_IDENT_REPLY_OK && (*type) != NETMSG_IDENT_REPLY_NOK )
     {
@@ -456,8 +456,8 @@ int netw_get_ident( N_STR *msg, int *type,int *ident, N_STR **name, N_STR **pass
         return FALSE;
     }
 
-    get_nstr_from_msg( netmsg, &(*name) );
-    get_nstr_from_msg( netmsg, &(*passwd) );
+    get_nstr_from_msg( netmsg, (*name) );
+    get_nstr_from_msg( netmsg, (*passwd) );
 
     delete_msg( &netmsg );
 
@@ -499,14 +499,14 @@ int netw_get_position( N_STR *msg, int *id, double *X, double *Y, double *vx, do
         return FALSE;
     }
 
-    get_int_from_msg( netmsg, &(*id) );
-    get_nb_from_msg( netmsg,  &(*X) );
-    get_nb_from_msg( netmsg,  &(*Y) );
-    get_nb_from_msg( netmsg,  &(*vx) );
-    get_nb_from_msg( netmsg,  &(*vy) );
-    get_nb_from_msg( netmsg,  &(*acc_x) );
-    get_nb_from_msg( netmsg,  &(*acc_y) );
-    get_int_from_msg( netmsg, &(*time_stamp) );
+    get_int_from_msg( netmsg, (*id) );
+    get_nb_from_msg( netmsg,  (*X) );
+    get_nb_from_msg( netmsg,  (*Y) );
+    get_nb_from_msg( netmsg,  (*vx) );
+    get_nb_from_msg( netmsg,  (*vy) );
+    get_nb_from_msg( netmsg,  (*acc_x) );
+    get_nb_from_msg( netmsg,  (*acc_y) );
+    get_int_from_msg( netmsg, (*time_stamp) );
 
     delete_msg( &netmsg );
 
@@ -549,9 +549,9 @@ int netw_get_string( N_STR *msg, int *id, N_STR **name, N_STR **chan, N_STR **tx
     get_int_from_msg( netmsg, id );
     get_int_from_msg( netmsg, color );
 
-    get_nstr_from_msg( netmsg, &(*name) );
-    get_nstr_from_msg( netmsg, &(*chan) );
-    get_nstr_from_msg( netmsg, &(*txt) );
+    get_nstr_from_msg( netmsg, (*name) );
+    get_nstr_from_msg( netmsg, (*chan) );
+    get_nstr_from_msg( netmsg, (*txt) );
 
     delete_msg( &netmsg );
 
@@ -582,7 +582,7 @@ int netw_get_ping( N_STR *msg, int *type, int *from, int *to, int *time )
 
     __n_assert( netmsg, return FALSE );
 
-    get_int_from_msg( netmsg, &(*type) );
+    get_int_from_msg( netmsg, (*type) );
 
     if( (*type) != NETMSG_PING_REQUEST && (*type) != NETMSG_PING_REPLY )
     {
@@ -590,9 +590,9 @@ int netw_get_ping( N_STR *msg, int *type, int *from, int *to, int *time )
         return FALSE;
     }
 
-    get_int_from_msg( netmsg, &(*from) );
-    get_int_from_msg( netmsg, &(*to) );
-    get_int_from_msg( netmsg, &(*time) );
+    get_int_from_msg( netmsg, (*from) );
+    get_int_from_msg( netmsg, (*to) );
+    get_int_from_msg( netmsg, (*time) );
 
 
     delete_msg( &netmsg );

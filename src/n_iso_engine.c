@@ -425,7 +425,7 @@ int load_map( MAP **map, char *filename )
     loaded = pack_fopen( filename, "rb" );
 
     if( map )
-        free_map( &(*map) );
+        free_map( (*map) );
     if( !(*map) )
         Malloc( (*map), MAP, 1 );
 
@@ -446,7 +446,7 @@ int load_map( MAP **map, char *filename )
     temp_map . bgcolor = pack_igetl( loaded );
     temp_map . wirecolor = pack_igetl( loaded );
 
-    create_empty_map( &( *map ), temp_name,
+    create_empty_map( ( *map ), temp_name,
                       temp_map . XSIZE, temp_map . YSIZE,
                       temp_map . TILEW, temp_map . TILEH,
                       2000, 2000, 2000, 2000,2000 );
