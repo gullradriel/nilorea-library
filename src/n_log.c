@@ -256,8 +256,12 @@ void _n_log( int level, const char *file, const char *func, int line, const char
             FreeNoLog( eventbuffer );
             break ;
         default:
-            fprintf( out, "%s:%" PRId64 " %s->%s:%d ", prioritynames[ level ] . c_name, time( NULL ), file, func, line  );
-            va_start (args, format);
+#ifndef __windows__
+	    fprintf( out, "%s:%" PRId64 " %s->%s:%d ", prioritynames[ level ] . c_name, time( NULL ), file, func, line  );
+#else
+	    fprintf( out, "%s:%lld %s->%s:%d ", prioritynames[ level ] . c_name, time( NULL ), file, func, line  );
+#endif
+	    va_start (args, format);
             vfprintf( out, format, args );
             va_end( args );
             fprintf( out, "\n" );

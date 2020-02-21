@@ -65,20 +65,24 @@ typedef struct DEBUG_MEM_TABLE
 extern DEBUG_MEM_TABLE *debug_mem_table ;
 
 #ifdef DEBUG_MEM
+
 /* initialize debug tables */
 int init_debug_mem();
+
 /* new debug item */
 DEBUG_MEM_ITEM *new_db_mem_item( void *ptr, size_t size, int line, char *file, char *func );
 /* delete debug item */
 void delete_db_mem_item( void *ptr );
-/* debug malloc full  */
-FORCE_INLINE void *db_mem_alloc( size_t size, int line, char *file, const char *func );
+
 /* debug malloc */
-FORCE_INLINE void *db_malloc( size_t size );
+void *db_mem_alloc( size_t size, int line, char *file, const char *func );
+
 /* debug free */
-FORCE_INLINE void db_mem_free( void *ptr );
+void *db_mem_free( void *ptr , int line, char *file, const char *func );
+
 /* debug dump ! */
 int db_mem_dump_leaked( char *file );
+
 #endif
 
 /**

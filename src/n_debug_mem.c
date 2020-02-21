@@ -123,23 +123,14 @@ void *db_mem_alloc( size_t size, int line, char *file, const char *func )
 
 
 
-/*!\fn void *db_malloc( size_t size )
- *\brief return a new allocated element
- *\param size the size of the element
- *\return Allocated delement or NULL
- */
-void *db_malloc( size_t size )
-{
-    return db_mem_alloc( size, __LINE__, __FILE__, __func__ );
-} /* db_malloc */
-
-
-
 /*!\fn void *db_mem_free( void *ptr )
  *\brief Free a pointer and also remove it from debug table
  *\param ptr Pointer to free
+ *\param line line of the free call
+ *\param file file of the free call
+ *\param func function where the free call was made
  */
-void db_mem_free( void *ptr )
+void db_mem_free( void *ptr , int line, char *file, const char *func )
 {
     void *hashptr = NULL ;
     char key[ 512 ] = "";
@@ -149,7 +140,7 @@ void db_mem_free( void *ptr )
     if( hashptr )
     {
         DEBUG_MEM_ITEM *item = hashptr ;
-        n_log( LOG_DEBUG, "Removed %p size %zu file %s func %s line %d", item -> ptr, item -> size, item -> file, item -> func, item -> line );
+        n_log( LOG_DEBUG, "Removed %p size %zu file %s func %s line %d\nCall from %s,%s:%d", item -> ptr, item -> size, item -> file, item -> func, item -> line , file , func , line );
         delete_db_mem_item( item );
         item = NULL ;
         ht_remove( __debug_mem_table . table, key );

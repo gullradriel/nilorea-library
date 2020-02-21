@@ -5,14 +5,14 @@
 HAVE_ALLEGRO=1
 
 #OPT=-std=c17 -Og -D_XOPEN_SOURCE=600 -D_XOPEN_SOURCE_EXTENTED -g -ggdb3 -pedantic -W -Wall -Wextra -Wcast-align -Wcast-qual -Wdisabled-optimization -Wformat=2 -Winit-self -Wlogical-op -Wmissing-declarations -Wmissing-include-dirs -Wredundant-decls -Wshadow -Wsign-conversion -Wstrict-overflow=5 -Wswitch-default -Wundef -Wno-unused
-OPT=-D_XOPEN_SOURCE=600 -D_XOPEN_SOURCE_EXTENTED -Og -g -ggdb3 -W -Wall -Wextra -Wcast-align -Wcast-qual -Wdisabled-optimization -Wformat=1 -Winit-self -Wlogical-op -Wmissing-include-dirs -Wredundant-decls -Wstrict-overflow=5 -Wswitch-default -Wundef -Wno-unused -std=c11 -Wl,-dead_strip
+OPT=-D_XOPEN_SOURCE=600 -D_XOPEN_SOURCE_EXTENTED -Og -g -ggdb3 -W -Wall -Wextra -Wcast-align -Wcast-qual -Wdisabled-optimization -Wformat=1 -Winit-self -Wlogical-op -Wmissing-include-dirs -Wredundant-decls -Wstrict-overflow=5 -Wswitch-default -Wundef -std=c11 -Wl,-dead_strip
 
 RM=rm -f
 CC=gcc
 EXT=
 VPATH=src
 CFLAGS=
-SRC= n_common.c n_config_file.c n_debug_mem.c n_exceptions.c n_file.c  n_hash.c n_list.c n_log.c n_network.c n_network_msg.c  n_nodup_log.c n_pcre.c n_stack.c n_str.c n_thread_pool.c n_time.c n_zlib.c
+SRC= n_common.c n_config_file.c n_debug_mem.c n_exceptions.c n_file.c n_debug_mem.c n_hash.c n_list.c n_log.c n_network.c n_network_msg.c  n_nodup_log.c n_pcre.c n_stack.c n_str.c n_thread_pool.c n_time.c n_zlib.c
 EXP= n_neural_networks.c
 ifeq ($(HAVE_ALLEGRO),1)
 SRC+= n_3d.c n_anim.c n_gui.c n_particles.c n_resources.c

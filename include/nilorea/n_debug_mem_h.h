@@ -18,7 +18,7 @@ extern C
     /*! macro substitution for debug malloc */
 #define malloc( size ) db_mem_alloc( (size) , __LINE__, __FILE__, __func__ )
     /*! macro substitution for debug free */
-#define free( ptr ) db_mem_free( (ptr) )
+#define free( ptr ) db_mem_free( (ptr) , __LINE__, __FILE__, __func__ )
 #endif
 
 #ifdef __cplusplus

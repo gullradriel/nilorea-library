@@ -288,7 +288,7 @@ N_STR *file_to_nstr( char *filename )
 #ifdef __linux__
         if( errno == EOVERFLOW )
         {
-            n_log( LOG_ERR, "%s size is too big (>4GB,EOVERFLOW)", filename );
+            n_log( LOG_ERR, "%s size is too big ,EOVERFLOW)", filename );
         }
         else
         {
@@ -440,8 +440,8 @@ int str_to_int_ex( const char *s, NSTRBYTE start, NSTRBYTE end, int *i, const in
 
     __n_assert( s, return FALSE );
 
-    Malloc( tmpstr, char,  4 + end - start );
-    __n_assert( tmpstr, n_log( LOG_ERR, "Unable to Malloc( tmpstr , char ,  4 + %d - %d )", end, start ); return FALSE );
+    Malloc( tmpstr, char,  sizeof( int ) + end - start );
+    __n_assert( tmpstr, n_log( LOG_ERR, "Unable to Malloc( tmpstr , char ,  sizeof( int ) + %d - %d )", end, start ); return FALSE );
 
     memcpy( tmpstr, s + start, end - start );
 
@@ -493,8 +493,8 @@ int str_to_int_nolog( const char *s, NSTRBYTE start, NSTRBYTE end, int *i, const
 
     __n_assert( s, return FALSE );
 
-    Malloc( tmpstr, char,  4 + end - start );
-    __n_assert( tmpstr, n_log( LOG_ERR, "Unable to Malloc( tmpstr , char ,  4 + %d - %d )", end, start ); return FALSE );
+    Malloc( tmpstr, char,  sizeof( int ) + end - start );
+    __n_assert( tmpstr, n_log( LOG_ERR, "Unable to Malloc( tmpstr , char ,  sizeof( int ) + %d - %d )", end, start ); return FALSE );
 
     memcpy( tmpstr, s + start, end - start );
 
@@ -563,8 +563,8 @@ int str_to_long_ex( const char *s, NSTRBYTE start, NSTRBYTE end, long int *i, co
 
     __n_assert( s, return FALSE );
 
-    Malloc( tmpstr, char,  4 + end - start );
-    __n_assert( tmpstr, n_log( LOG_ERR, "Unable to Malloc( tmpstr , char ,  4 + %d - %d )", end, start ); return FALSE );
+    Malloc( tmpstr, char,  sizeof( int ) + end - start );
+    __n_assert( tmpstr, n_log( LOG_ERR, "Unable to Malloc( tmpstr , char ,  sizeof( int ) + %d - %d )", end, start ); return FALSE );
 
     memcpy( tmpstr, s + start, end - start );
 
@@ -638,8 +638,8 @@ int str_to_long_long_ex( const char *s, NSTRBYTE start, NSTRBYTE end, long long 
 
     __n_assert( s, return FALSE );
 
-    Malloc( tmpstr, char,  4 + end - start );
-    __n_assert( tmpstr, n_log( LOG_ERR, "Unable to Malloc( tmpstr , char ,  4 + %d - %d )", end, start ); return FALSE );
+    Malloc( tmpstr, char,  sizeof( int ) + end - start );
+    __n_assert( tmpstr, n_log( LOG_ERR, "Unable to Malloc( tmpstr , char ,  sizeof( int ) + %d - %d )", end, start ); return FALSE );
 
     memcpy( tmpstr, s + start, end - start );
 
