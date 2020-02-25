@@ -1128,7 +1128,8 @@ int netw_connect_ex( NETWORK **netw, char *host, char *port, int disable_naggle,
             n_log( LOG_ERR, "Error while trying to make a socket: %s",strerror( error ) );
             continue ;
         }
-        if( netw_setsockopt( (*netw), disable_naggle, sock_send_buf, sock_recv_buf ) != TRUE )
+		(*netw) -> link . sock = sock ;
+        if( netw_setsockopt( (*netw) , disable_naggle, sock_send_buf, sock_recv_buf ) != TRUE )
         {
             n_log( LOG_ERR, "Some socket options could not be set on %d", (*netw) -> link . sock );
         }
@@ -1143,11 +1144,11 @@ int netw_connect_ex( NETWORK **netw, char *host, char *port, int disable_naggle,
         {
             n_log( LOG_ERR, "Error while trying to connect to %s : %s , resolved addr %s , %s", host, port,  (*netw) -> link . ip, strerror( error ) );
             closesocket( sock );
+			(*netw) -> link . sock = -1 ;
             continue ;
         }
         else
         {
-            (*netw) -> link . sock = sock ;
             break;                  /* Success */
         }
     }

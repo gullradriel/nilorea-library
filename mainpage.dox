@@ -42,17 +42,13 @@ Don't forget to define FLAGS for parts you don't need, it can save you memory an
 
 \section FLAGS FLAGS when using Nilorea
 
-Define platform if needed:
-
-LINUX | WIN
-
 You should use one of the folowing if you need it:
 
  HAVE_ALLEGRO | HAVE_OPENSSL
 
 \section WARNINGS Be carefull
 
-Sometimes when i talk about a function I use the 'low-level' words to catch your attention.
+Sometimes when I talk about a function I use the 'low-level' words to catch your attention.
 
 It's because we talk about functions who returns nothing and who won't test if they are
 
@@ -65,6 +61,18 @@ Everything inside is free or under GPL license, read it at http://www.gnu.org/li
 
 Have nice brain storm, and don't forget to submit me bugs !
 
--- Gull ( gullradriel @ gmail.com )
+You can join me at mickael dot castagnier at gmail.com , gullradriel at gmail.com 
+
+On freenode:
+Gull_Code on #allegro, #postmarketos #postmarketos-mainline 
+
+LinkedIn:
+https://www.linkedin.com/in/mickael-castagnier
+
+Twitter:
+https://twitter.com/gullradriel
+
+Website:
+https://www.nilorea.net
 
 */
