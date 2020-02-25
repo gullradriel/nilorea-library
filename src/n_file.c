@@ -1,7 +1,5 @@
 /**\file n_file.c
- *
  * File utilities
- *
  *\author Castagnier Mickael
  *\version 1.0
  *\date 02/11/16

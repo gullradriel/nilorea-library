@@ -55,30 +55,42 @@ extern "C" {
 /*! pixel particle */
 #define PIXEL_PART  7
 
-
+/*! Structure of a single particle */
 typedef struct PARTICLE
 {
+    /*! particle mode: NORMAL_PART,SINUS_PART,TRANS_PART,SNOW_PART,FIRE_PART,STAR_PART,CIRCLE_PART,PIXEL_PART */
     int mode,
+    /*! lifetime */
         lifetime,
+    /*! sprite id in library */
         spr_id,
+    /*! size of particle */
         size;
+
+    /*! color of the particle */
     ALLEGRO_COLOR color ;
 
+    /*! particle physical properties */
     PHYSICS object ;
 
 } PARTICLE ;
 
+/*! Structure of a particle system */
 typedef struct PARTICLE_SYSTEM
 {
+    /*! list of PARTICLE pointers */
     LIST *list ;
 
+    /*! Coordinate of emitting point */
     VECTOR3D source ;
 
+    /*! Internal: particle system timer */
     N_TIME timer ;
 
+    /*! Library of picture for the particles */
     ALLEGRO_BITMAP **sprites ;
+    /*! size of the picture library */
     int max_sprites ;
-
 } PARTICLE_SYSTEM ;
 
 int init_particle_system( PARTICLE_SYSTEM **psys, int max, double x, double y, double z, int max_sprites );

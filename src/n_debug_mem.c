@@ -73,9 +73,9 @@ DEBUG_MEM_ITEM *new_db_mem_item( void *ptr, size_t size, int line, char *file, c
 
 
 
-/*!\fn void delete_db_mem_item( void *item )
- *\brief delete a debug meme item
- *\param item the item to destroy
+/*!\fn void delete_db_mem_item( void *ptr )
+ *\brief delete a debug mem item
+ *\param ptr the item to destroy
  */
 void delete_db_mem_item( void *ptr )
 {

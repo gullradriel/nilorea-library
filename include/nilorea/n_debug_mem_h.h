@@ -1,4 +1,4 @@
-/*!\file n_debug_mem_h.h
+/**\file n_debug_mem_h.h
  * Helpers for debugging memory
  *\author Castagnier Mickael
  *\date 2014-09-10
@@ -14,12 +14,20 @@ extern C
 
 #include "n_debug_mem.h"
 
+/**
+   \addtogroup DEBUGMEMCORE
+  @{
+*/
 #ifdef DEBUG_MEM
     /*! macro substitution for debug malloc */
 #define malloc( size ) db_mem_alloc( (size) , __LINE__, __FILE__, __func__ )
     /*! macro substitution for debug free */
 #define free( ptr ) db_mem_free( (ptr) , __LINE__, __FILE__, __func__ )
 #endif
+
+/**
+@}
+*/
 
 #ifdef __cplusplus
 }

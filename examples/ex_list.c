@@ -1,5 +1,4 @@
-/**\file ex_list.c
- *  Nilorea Library n_network api test
+/**\example ex_list.c Nilorea Library list api test
  *\author Castagnier Mickael
  *\version 1.0
  *\date 26/05/2015

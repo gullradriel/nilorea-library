@@ -1,9 +1,10 @@
-/**\file ex_common.c
- *  Nilorea Library common api test
+/**\example ex_common.c Nilorea Library common api test
  *\author Castagnier Mickael
  *\version 1.0
  *\date 03/01/2019
  */
+
+
 
 #include <stdio.h>
 #include <errno.h>

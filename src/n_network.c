@@ -2507,7 +2507,14 @@ int recv_php( SOCKET s, int *_code, char **buf )
 } /*recv_php(...)*/
 
 
-/* get queue states */
+/*!\fn int netw_get_queue_status( NETWORK *netw, int *nb_to_send, int *nb_to_read )
+ *
+ *\brief retrieve network send queue status
+ *\param netw NETWORK object
+ *\param nb_to_send Number of messages still in send buffer (not yet submitted to kernel)
+ *\param nb_to_read Number of message already read by the kernel, waiting in the local message list
+ *\return TRUE or FALSE
+ */
 int netw_get_queue_status( NETWORK *netw, int *nb_to_send, int *nb_to_read )
 {
     __n_assert( netw, return FALSE );
@@ -2521,5 +2528,5 @@ int netw_get_queue_status( NETWORK *netw, int *nb_to_send, int *nb_to_read )
     pthread_mutex_unlock( &netw -> recvbolt );
 
     return TRUE ;
-}
+} /* get queue states */
 

@@ -3,7 +3,6 @@
  *\author Castagnier Mickael
  *\version 1.0
  *\date 20/11/09
- *
  */
 
 #include <pthread.h>

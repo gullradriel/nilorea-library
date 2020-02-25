@@ -1,5 +1,4 @@
-/**\file ex_threads.c
- *  Nilorea Library thread pool api test
+/**\example ex_threads.c Nilorea Library thread pool api example
  *\author Castagnier Mickael
  *\version 1.0
  *\date 03/01/2019

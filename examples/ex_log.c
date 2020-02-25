@@ -1,3 +1,9 @@
+/**\example ex_log.c Nilorea Library log api test
+ *\author Castagnier Mickael
+ *\version 1.0
+ *\date 24/10/2018
+ */
+
 #include "nilorea/n_log.h"
 #include "nilorea/n_nodup_log.h"
 

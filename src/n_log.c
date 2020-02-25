@@ -1,4 +1,4 @@
-/*\file n_log.c
+/**\file n_log.c
  * generic logging system
  *\author Castagnier Mickael
  *\date 2013-03-12

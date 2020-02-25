@@ -1,13 +1,8 @@
 /**\file n_anim.c
-*
-*  anim functions
-*
+* anim functions
 *\author Castagnier Mickaël aka Gull Ra Driel
-*
 *\version 1.0
-*
 *\date 30/12/2016
-*
 */
 
 #include "nilorea/n_anim.h"

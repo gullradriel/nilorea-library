@@ -1,9 +1,6 @@
-/*\file ex_configfile.c
- *
- *	Config file loading exemple
- *
+/**\example ex_configfile.c Nilorea Library config api test
  *\author Mickaël Castagnier
- *
+ *\version 1.0
  *\date 2018-26-10
  */
 

@@ -111,7 +111,7 @@ void windows_print_stacktrace(CONTEXT* context)
     frame.AddrStack.Offset      = context->Esp;
     frame.AddrStack.Mode        = AddrModeFlat;
     frame.AddrFrame.Offset      = context->Ebp;
-    frame.AddrFrame.Mode        = AddrModeFlat; 
+    frame.AddrFrame.Mode        = AddrModeFlat;
 #else
     frame.AddrPC.Offset         = context->Rip;
     frame.AddrPC.Mode           = AddrModeFlat;
