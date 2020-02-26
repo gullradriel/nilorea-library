@@ -1,4 +1,4 @@
-/*\file n_log.c
+/**\file n_log.c
  * generic logging system
  *\author Castagnier Mickael
  *\date 2013-03-12
@@ -214,9 +214,7 @@ int asprintf(char *strp[], const char *fmt, ...)
  */
 void _n_log( int level, const char *file, const char *func, int line, const char *format, ... )
 {
-    va_list args ;
-
-	FILE *out = NULL ;
+    FILE *out = NULL ;
 
     if( level == LOG_NULL )
         return ;
@@ -230,6 +228,7 @@ void _n_log( int level, const char *file, const char *func, int line, const char
 
     if( level <= log_level )
     {
+        va_list args ;
         char *syslogbuffer = NULL ;
         char *eventbuffer = NULL ;
 #ifdef __MINGW32__
@@ -257,8 +256,12 @@ void _n_log( int level, const char *file, const char *func, int line, const char
             FreeNoLog( eventbuffer );
             break ;
         default:
-            fprintf( out, "%s:%" PRId64 " %s->%s:%d ", prioritynames[ level ] . c_name, time( NULL ), file, func, line  );
-            va_start (args, format);
+#ifndef __windows__
+	    fprintf( out, "%s:%" PRId64 " %s->%s:%d ", prioritynames[ level ] . c_name, time( NULL ), file, func, line  );
+#else
+	    fprintf( out, "%s:%lld %s->%s:%d ", prioritynames[ level ] . c_name, time( NULL ), file, func, line  );
+#endif
+	    va_start (args, format);
             vfprintf( out, format, args );
             va_end( args );
             fprintf( out, "\n" );

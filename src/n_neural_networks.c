@@ -51,7 +51,7 @@ N_NEURAL_LAYER *new_neural_net_layer( int size_x, int size_y )
     layer -> array = calloc( sizeof( N_PERCEPTRON ), size_x );
     for( int itx = 0; itx < size_x ; itx++ )
     {
-        Malloc( layer -> array[ itx ],  N_PERCEPTRON , size_y );
+        Malloc( layer -> array[ itx ],  N_PERCEPTRON, size_y );
         for( int ity = 0 ; ity < size_y ; ity ++ );
     }
 

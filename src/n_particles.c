@@ -1,13 +1,8 @@
 /**\file n_particles.c
-*
 *  particle function file for SantaHack 2012
-*
 *\author Castagnier Mickaël aka Gull Ra Driel
-*
 *\version 1.0
-*
 *\date 20/12/2012
-*
 */
 
 
@@ -134,12 +129,13 @@ int draw_particle( PARTICLE_SYSTEM *psys, double xpos, double ypos, int w, int h
     LIST_NODE *node = NULL ;
     PARTICLE *ptr = NULL ;
 
-    double x = 0, y = 0 ;
 
     node  = psys -> list -> start ;
 
     while( node )
     {
+          double x = 0, y = 0 ;
+
         ptr = (PARTICLE *)node -> ptr ;
         x = ptr -> object . position[ 0 ] - xpos ;
         y = ptr -> object . position[ 1 ] - ypos ;
@@ -162,17 +158,18 @@ int draw_particle( PARTICLE_SYSTEM *psys, double xpos, double ypos, int w, int h
                 x = x + ptr -> object . speed[ 0 ] * sin( (ptr -> object . position[ 0 ]/ptr -> object . speed[ 0 ]) ) ;
             else
                 x = x + ptr -> object . speed[ 0 ] * sin( ptr -> object . position[ 0 ] );
+
             if( ptr -> object . speed[ 1 ] != 0 )
-                y = y + ptr -> object . speed[ 0 ] * cos( (ptr -> object . speed[ 1 ]/ptr -> object . speed[ 1 ]) ) ;
+                y = y + ptr -> object . speed[ 1 ] * cos( (ptr -> object . speed[ 1 ]/ptr -> object . speed[ 1 ]) ) ;
             else
                 y = y + ptr -> object . speed[ 1 ] * sin( ptr -> object . position[ 1 ] ) ;
 
             if( ptr -> spr_id >= 0 && ptr -> spr_id < psys -> max_sprites && psys -> sprites[ ptr -> spr_id ] )
             {
-                int w = al_get_bitmap_width( psys -> sprites[ ptr -> spr_id ] );
-                int h = al_get_bitmap_height( psys -> sprites[ ptr -> spr_id ] );
+                int spr_w = al_get_bitmap_width( psys -> sprites[ ptr -> spr_id ] );
+                int spr_h = al_get_bitmap_height( psys -> sprites[ ptr -> spr_id ] );
 
-                al_draw_rotated_bitmap( psys -> sprites[ ptr -> spr_id ], w/2, h/2, x - w / 2, y - h /2, al_ftofix( ptr -> object . orientation[ 2 ]), 0 );
+                al_draw_rotated_bitmap( psys -> sprites[ ptr -> spr_id ], spr_w/2, spr_h/2, x - spr_w / 2, y - spr_h /2, al_ftofix( ptr -> object . orientation[ 2 ]), 0 );
             }
             else
                 al_draw_circle( x, y, 2, ptr -> color, 1 );

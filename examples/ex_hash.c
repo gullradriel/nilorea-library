@@ -1,5 +1,4 @@
-/**\file ex_hash.c
- *  Nilorea Library n_network api test
+/**\example ex_hash.c Nilorea Library hash table api test
  *\author Castagnier Mickael
  *\version 1.0
  *\date 26/05/2015
@@ -13,14 +12,20 @@
 
 #define NB_ELEMENTS 16
 
-
+/*! string and int holder */
 typedef struct DATA
 {
+    /*! string holder */
     N_STR *rnd_str ;
+    /*! int value */
     int value ;
 } DATA ;
 
-void destroy_data( void *ptr )
+/*!\fn void destroy_data( void *ptr )
+ *\brief destroy a DATA struct
+ *\param ptr A pointer to a DATA struct
+ */
+ void destroy_data( void *ptr )
 {
     DATA *data = (DATA *)ptr ;
     free_nstr( &data -> rnd_str );

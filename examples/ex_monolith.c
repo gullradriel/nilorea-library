@@ -1,5 +1,5 @@
-/**\file ex_monolith.c
- *  Nilorea Library n_network api test
+/**\example ex_monolith.c
+ *  Nilorea Library monolith api test
  *\author Castagnier Mickael
  *\version 1.0
  *\date 26/05/2015

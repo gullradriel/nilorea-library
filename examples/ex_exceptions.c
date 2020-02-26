@@ -1,5 +1,4 @@
-/**\file ex_exceptions.c
- *  Nilorea Library n_network api test
+/**\example ex_exceptions.c Nilorea Library exception api test
  *\author Castagnier Mickael
  *\version 1.0
  *\date 24/10/2018

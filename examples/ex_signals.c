@@ -1,4 +1,10 @@
-#include <stdio.h>
+/**\example ex_signals.c Nilorea Library signals api test
+ *\author Castagnier Mickael
+ *\version 1.0
+ *\date 04/12/2019
+ */
+
+ #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
 #include <stdint.h>
@@ -25,7 +31,7 @@ char *progname = NULL ;
 
 int main( int argc, char * argv[])
 {
-	(void)argc;
+    (void)argc;
     progname = argv[ 0 ];
 
     //set_log_file( "ex_signals.log" );
@@ -33,10 +39,10 @@ int main( int argc, char * argv[])
     set_log_level( LOG_STDERR );
     //set_log_level( LOG_FILE );
 
-    n_log( LOG_DEBUG , "set_signal_handler" );
-	set_signal_handler( basename( progname ) );
+    n_log( LOG_DEBUG, "set_signal_handler" );
+    set_signal_handler( basename( progname ) );
 
-    n_log( LOG_DEBUG , "cause_calamity" );
+    n_log( LOG_DEBUG, "cause_calamity" );
     cause_calamity();
 
     return 0;

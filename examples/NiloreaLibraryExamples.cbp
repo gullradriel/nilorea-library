@@ -49,6 +49,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="ex_configfile.cfg" />
+		<Unit filename="ex_debug_mem.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="ex_exceptions.c">
 			<Option compilerVar="CC" />
 		</Unit>

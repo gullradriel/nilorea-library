@@ -42,7 +42,7 @@ extern "C"
 #include <sys/socket.h>
 
 #ifdef __linux__
-	#include <linux/sockios.h>
+#include <linux/sockios.h>
 #endif
 
 
@@ -251,7 +251,7 @@ typedef struct NETWORK
     /*! vigenere key */
     char *vigenere_key ;
 
-	/*! send func ptr */
+    /*! send func ptr */
     netw_func send_data,
               /*! receive func ptr */
               recv_data ;
@@ -310,7 +310,7 @@ int netw_get_state( NETWORK *netw, int *state, int *thr_engine_status );
 /* Set common socket options (disable naggle, send/recv buf, reuse addr) */
 int netw_setsockopt( NETWORK *netw, int disable_naggle, int sock_send_buf, int sock_recv_buf );
 /* set blocking mode */
-int netw_set_blocking( NETWORK *netw , unsigned long int is_blocking );
+int netw_set_blocking( NETWORK *netw, unsigned long int is_blocking );
 /* Connecting, extended */
 int netw_connect_ex( NETWORK **netw, char *host, char *port, int disable_naggle, int sock_send_buf, int sock_recv_buf, int send_list_limit, int recv_list_limit, int ip_version );
 /* Connecting */
@@ -332,7 +332,7 @@ NETWORK *netw_accept_nonblock_from( NETWORK *from, int blocking );
 /* Add a message to send in aimed NETWORK */
 int netw_add_msg( NETWORK *netw, N_STR *msg );
 /* Add a char message to send in the aimed NETWORK */
-int netw_add_msg_ex( NETWORK *netw , char *str , unsigned int length );
+int netw_add_msg_ex( NETWORK *netw, char *str, unsigned int length );
 /* Get a message from aimed NETWORK. Instant return to NULL if no MSG */
 N_STR *netw_get_msg( NETWORK *netw );
 /* Wait a message from aimed NETWORK. Recheck each 'refresh' usec until 'timeout' usec */

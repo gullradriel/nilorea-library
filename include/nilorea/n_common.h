@@ -33,19 +33,19 @@ extern "C"
 #define __windows__
 #endif
 #ifndef WEXITSTATUS
-	#define WEXITSTATUS(w)    (((w) >> 8) & 0xff)
+#define WEXITSTATUS(w)    (((w) >> 8) & 0xff)
 #endif
 #ifndef WIFEXITED
-	#define WIFEXITED(w)      (((w) & 0xff) == 0)
+#define WIFEXITED(w)      (((w) & 0xff) == 0)
 #endif
 #else
-	#include <alloca.h>
+#include <alloca.h>
 #endif
 
 #if defined(__GNUC__) && __GNUC__ >= 7
- #define FALL_THROUGH __attribute__ ((fallthrough))
+#define FALL_THROUGH __attribute__ ((fallthrough))
 #else
- #define FALL_THROUGH /* fall through */ \
+#define FALL_THROUGH /* fall through */ \
 ((void)0)
 #endif /* __GNUC__ >= 7 */
 
@@ -288,7 +288,7 @@ char *get_prog_dir( void );
 int file_exist( const char *filename );
 
 /* shortcut for popen usage */
-int n_popen( char *cmd , int read_buf_size , void **nstr_output , int *ret );
+int n_popen( char *cmd, int read_buf_size, void **nstr_output, int *ret );
 
 /* non blocking system call */
 pid_t system_nb(const char * command, int * infp, int * outfp);

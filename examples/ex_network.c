@@ -1,5 +1,4 @@
-/**\file ex_network.c
- *  Nilorea Library n_network api test
+/**\example ex_network.c Network module example
  *\author Castagnier Mickael
  *\version 1.0
  *\date 26/05/2015

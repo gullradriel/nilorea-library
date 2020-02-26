@@ -27,11 +27,11 @@ extern "C" {
 #include <nilorea/n_network_msg.h>
 
 #ifdef HAVE_ALLEGRO
-	#include <nilorea/n_gfx.h>
-	#include <nilorea/n_3d.h>
-	#include <nilorea/n_iso_engine.h>
-	#include <nilorea/n_games.h>
-	#include <nilorea/n_particles.h>
+#include <nilorea/n_gfx.h>
+#include <nilorea/n_3d.h>
+#include <nilorea/n_iso_engine.h>
+#include <nilorea/n_games.h>
+#include <nilorea/n_particles.h>
 #endif
 
 /**

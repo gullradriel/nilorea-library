@@ -1,3 +1,9 @@
+/**\example ex_gui_particles.c Nilorea Library gui particle api test
+ *\author Castagnier Mickael
+ *\version 1.0
+ *\date 24/10/2018
+ */
+
 #define WIDTH 1280
 #define HEIGHT 800
 

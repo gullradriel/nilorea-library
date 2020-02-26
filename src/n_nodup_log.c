@@ -1,4 +1,4 @@
-/*\file n_nodup_log.c
+/**\file n_nodup_log.c
  * generic no duplicate logging system
  *\author Castagnier Mickael
  *\date 2015-09-21

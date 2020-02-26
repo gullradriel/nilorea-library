@@ -106,7 +106,7 @@ GAME_ENV *load_game_config( char *config_name )
         goto error ;
     }
     int it = 0 ;
-    while( strbuf[ it ] != '\0' && it < 1024 )
+    while(  it < 1024 && strbuf[ it ] != '\0' )
     {
         if( strbuf[ it ] == '\n' )
             strbuf[ it ] = '\0' ;

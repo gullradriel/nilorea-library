@@ -169,9 +169,9 @@ int Force32BitBmpToAlpha( BITMAP *bmp )
  */
 void force_color_to_be( BITMAP *bmp, int oldcolor, int newcolor )
 {
-    int x, y ;
     if ( bmp )
     {
+        int x, y ;
         for ( x = 0 ; x < bmp -> w ; x ++ )
             for ( y = 0 ; y < bmp -> h ; y ++ )
                 if ( getpixel( bmp, x, y ) == oldcolor )

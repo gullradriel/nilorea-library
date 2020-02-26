@@ -1,13 +1,8 @@
 /**\file n_gui.c
-*
 *  GUI source for Nilorea/Allegro5
-*
 *\author Castagnier Mickaël aka Gull Ra Driel
-*
 *\version 1.0
-*
 *\date 03/01/2019
-*
 */
 
 #include "nilorea/n_gui.h"

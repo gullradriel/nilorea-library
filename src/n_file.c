@@ -1,7 +1,5 @@
 /**\file n_file.c
- *
  * File utilities
- *
  *\author Castagnier Mickael
  *\version 1.0
  *\date 02/11/16
@@ -20,7 +18,7 @@ int file_monitor_refresh( HASH_TABLE *filepool )
 
         }
     }
-     return TRUE ;
+    return TRUE ;
 
 }
 
@@ -34,7 +32,7 @@ int file_monitor_set( HASH_TABLE *filepool, char *name, time_t check_interval )
 
 int file_monitor_get( HASH_TABLE *filepool, char *name )
 {
- return TRUE ;
+    return TRUE ;
 }
 
 

@@ -435,7 +435,7 @@ static int inet_pton6(const char *src, u_char *dst)
 #define NS_IN6ADDRSZ	16
 #define NS_INT16SZ	2
     u_char tmp[NS_IN6ADDRSZ], *tp, *endp, *colonp;
-    const char *xdigits, *curtok;
+    const char *curtok;
     int ch, seen_xdigits;
     u_int val;
 
@@ -451,7 +451,8 @@ static int inet_pton6(const char *src, u_char *dst)
     val = 0;
     while ((ch = *src++) != '\0')
     {
-        const char *pch;
+        const char *xdigits :
+        const char *pch ;
 
         if ((pch = strchr((xdigits = xdigits_l), ch)) == NULL)
             pch = strchr((xdigits = xdigits_u), ch);
@@ -711,24 +712,32 @@ int netw_init_wsa( int mode, int v1, int v2 )
  *\param is_blocking 0 NON BLOCk , 1 BLOCK
  *\return TRUE or FALSE
  */
-int netw_set_blocking( NETWORK *netw , unsigned long int is_blocking )
+int netw_set_blocking( NETWORK *netw, unsigned long int is_blocking )
 {
-    __n_assert( netw , return FALSE );
+    __n_assert( netw, return FALSE );
 
-    #if defined(__linux__) || defined(__sun)
-        int flags = fcntl( netw -> link . sock, F_GETFL, 0 );
-        if ( (flags &O_NONBLOCK) && !is_blocking ){ n_log( LOG_INFO , "socket %d was already in non-blocking mode" , netw -> link . sock ); return TRUE; }
-        if (!(flags &O_NONBLOCK) &&  is_blocking ){ n_log( LOG_INFO , "set_blocking_mode(): socket was already in blocking mode"); return TRUE; }
-        fcntl(netw -> link . sock, F_SETFL, is_blocking ? flags ^ O_NONBLOCK : flags | O_NONBLOCK);
-    #else
-        int res = ioctlsocket( netw -> link . sock, FIONBIO, &is_blocking );
-        if( res != 0 )
-        {
-            n_log( LOG_ERR, "ioctlsocket failed with error: %ld", res );
-            netw_close( &netw );
-            return FALSE ;
-        }
-    #endif
+#if defined(__linux__) || defined(__sun)
+    int flags = fcntl( netw -> link . sock, F_GETFL, 0 );
+    if ( (flags &O_NONBLOCK) && !is_blocking )
+    {
+        n_log( LOG_INFO, "socket %d was already in non-blocking mode", netw -> link . sock );
+        return TRUE;
+    }
+    if (!(flags &O_NONBLOCK) &&  is_blocking )
+    {
+        n_log( LOG_INFO, "set_blocking_mode(): socket was already in blocking mode");
+        return TRUE;
+    }
+    fcntl(netw -> link . sock, F_SETFL, is_blocking ? flags ^ O_NONBLOCK : flags | O_NONBLOCK);
+#else
+    int res = ioctlsocket( netw -> link . sock, FIONBIO, &is_blocking );
+    if( res != 0 )
+    {
+        n_log( LOG_ERR, "ioctlsocket failed with error: %ld", res );
+        netw_close( &netw );
+        return FALSE ;
+    }
+#endif
     return TRUE ;
 }
 
@@ -742,9 +751,9 @@ int netw_set_blocking( NETWORK *netw , unsigned long int is_blocking )
  *\param sock_recv_buf If >0, then try to set the socket recv buffer size in octet
  *\return TRUE or FALSE
  */
-int netw_setsockopt( NETWORK *netw , int disable_naggle, int sock_send_buf, int sock_recv_buf )
+int netw_setsockopt( NETWORK *netw, int disable_naggle, int sock_send_buf, int sock_recv_buf )
 {
-    __n_assert( netw , return FALSE );
+    __n_assert( netw, return FALSE );
 
     /* disable naggle algorithm */
     if( disable_naggle > 0 )
@@ -844,7 +853,7 @@ int netw_setsockopt( NETWORK *netw , int disable_naggle, int sock_send_buf, int 
     if( setsockopt(netw -> link . sock, SOL_SOCKET, SO_LINGER, (const char*)&ling, sizeof( ling ) ) == -1 )
     {
         int error=errno ;
-        n_log( LOG_ERR, "Error from setsockopt(SO_LINGER) on socket %d. errno: %s", netw -> link . sock ,strerror( error ) );
+        n_log( LOG_ERR, "Error from setsockopt(SO_LINGER) on socket %d. errno: %s", netw -> link . sock,strerror( error ) );
         return FALSE ;
     }
 #endif
@@ -1073,12 +1082,12 @@ int netw_connect_ex( NETWORK **netw, char *host, char *port, int disable_naggle,
         return FALSE ;
     }
 
-    /*creating array*/
+    /* choose ip version */
     if( ip_version == NETWORK_IPV4 )
     {
         (*netw) -> link . hints . ai_family   = AF_INET ;     /* Allow IPv4 */
     }
-    else if( ip_version == NETWORK_IPV4 )
+    else if( ip_version == NETWORK_IPV6 )
     {
         (*netw) -> link . hints . ai_family   = AF_INET6 ;     /* Allow IPv6 */
     }
@@ -1119,6 +1128,7 @@ int netw_connect_ex( NETWORK **netw, char *host, char *port, int disable_naggle,
             n_log( LOG_ERR, "Error while trying to make a socket: %s",strerror( error ) );
             continue ;
         }
+		(*netw) -> link . sock = sock ;
         if( netw_setsockopt( (*netw) , disable_naggle, sock_send_buf, sock_recv_buf ) != TRUE )
         {
             n_log( LOG_ERR, "Some socket options could not be set on %d", (*netw) -> link . sock );
@@ -1134,11 +1144,11 @@ int netw_connect_ex( NETWORK **netw, char *host, char *port, int disable_naggle,
         {
             n_log( LOG_ERR, "Error while trying to connect to %s : %s , resolved addr %s , %s", host, port,  (*netw) -> link . ip, strerror( error ) );
             closesocket( sock );
+			(*netw) -> link . sock = -1 ;
             continue ;
         }
         else
         {
-            (*netw) -> link . sock = sock ;
             break;                  /* Success */
         }
     }
@@ -1162,7 +1172,7 @@ int netw_connect_ex( NETWORK **netw, char *host, char *port, int disable_naggle,
     __n_assert( (*netw) -> link . port, netw_close( &(*netw ) ); return FALSE );
 
 #ifdef HAVE_OPENSSL
-	(*netw) -> key = NULL ;
+    (*netw) -> key = NULL ;
     (*netw) -> certificat = NULL ;
 #endif
 
@@ -1328,7 +1338,7 @@ int netw_close( NETWORK **netw )
     FreeNoLog( (*netw) -> link . ip );
     FreeNoLog( (*netw) -> link . port );
 #ifdef HAVE_OPENSSL
-	FreeNoLog( (*netw) -> key );
+    FreeNoLog( (*netw) -> key );
     FreeNoLog( (*netw) -> certificat );
 #endif
     FreeNoLog( (*netw) -> vigenere_key );
@@ -1401,10 +1411,10 @@ int netw_wait_close( NETWORK **netw )
 
         shutdown( (*netw) -> link . sock, SHUT_WR );
 
-        int res = 0 ;
         char buffer[ 4096 ] = "" ;
         for( ;; )
         {
+            int res = 0 ;
             res = recv( (*netw) -> link . sock, buffer, 4096, NETFLAGS );
             if( !res )
                 break;
@@ -1432,7 +1442,7 @@ int netw_wait_close( NETWORK **netw )
  */
 int netw_make_listening( NETWORK **netw, char *addr, char *port, int nbpending, int ip_version )
 {
-	__n_assert( port , return FALSE );
+    __n_assert( port, return FALSE );
 
     if( *netw )
     {
@@ -1440,7 +1450,7 @@ int netw_make_listening( NETWORK **netw, char *addr, char *port, int nbpending, 
         return FALSE;
     }
 
-	/*checking WSA when under windows*/
+    /*checking WSA when under windows*/
     if ( netw_init_wsa( 1, 2, 2 ) == FALSE )
     {
         n_log( LOG_ERR, "Unable to load WSA dll's" );
@@ -1454,7 +1464,7 @@ int netw_make_listening( NETWORK **netw, char *addr, char *port, int nbpending, 
     {
         (*netw) -> link . hints . ai_family   = AF_INET ;     /* Allow IPv4 */
     }
-    else if( ip_version == NETWORK_IPV4 )
+    else if( ip_version == NETWORK_IPV6 )
     {
         (*netw) -> link . hints . ai_family   = AF_INET6 ;     /* Allow IPv6 */
     }
@@ -1475,7 +1485,7 @@ int netw_make_listening( NETWORK **netw, char *addr, char *port, int nbpending, 
     int error = getaddrinfo( addr, port, &(*netw) -> link . hints, &(*netw) -> link . rhost );
     if( error != 0)
     {
-        n_log( LOG_ERR, "Error when resolving %s:%s getaddrinfo: %s", _str( addr ) ,  port , gai_strerror( error ) );
+        n_log( LOG_ERR, "Error when resolving %s:%s getaddrinfo: %s", _str( addr ),  port, gai_strerror( error ) );
         netw_close( &(*netw) );
         return FALSE ;
     }
@@ -1494,7 +1504,7 @@ int netw_make_listening( NETWORK **netw, char *addr, char *port, int nbpending, 
             n_log( LOG_ERR, "Error while trying to make a socket: %s",strerror( errno ) );
             continue ;
         }
-        if( netw_setsockopt( (*netw) , 0, 0, 0 ) != TRUE )
+        if( netw_setsockopt( (*netw), 0, 0, 0 ) != TRUE )
         {
             n_log( LOG_ERR, "Some socket options could not be set on %d", (*netw) -> link . sock );
         }
@@ -1680,7 +1690,7 @@ NETWORK *netw_accept_from_ex( NETWORK *from, int disable_naggle, int sock_send_b
         n_log( LOG_ERR, "inet_ntop: %p , %s", netw -> link . raddr, strerror( errno ) );
     }
 
-    if( netw_setsockopt( netw , disable_naggle, sock_send_buf, sock_recv_buf ) != TRUE )
+    if( netw_setsockopt( netw, disable_naggle, sock_send_buf, sock_recv_buf ) != TRUE )
     {
         n_log( LOG_ERR, "Some socket options could not be set on %d", netw-> link . sock );
     }
@@ -1758,17 +1768,17 @@ int netw_add_msg( NETWORK *netw, N_STR *msg )
  *\param length  the size of the message to add
  *\return TRUE if success FALSE on error
  */
-int netw_add_msg_ex( NETWORK *netw, char *str , unsigned int length )
+int netw_add_msg_ex( NETWORK *netw, char *str, unsigned int length )
 {
     __n_assert( netw, return FALSE );
     __n_assert( str, return FALSE );
-    __n_assert( length <= 0, return FALSE );
+    __n_assert( length == 0, return FALSE );
 
     N_STR *nstr = NULL ;
-    Malloc( nstr , N_STR , 1 );
-    __n_assert( nstr , return FALSE );
+    Malloc( nstr, N_STR, 1 );
+    __n_assert( nstr, return FALSE );
 
-    if( length <= 0 )
+    if( length == 0 )
     {
         n_log( LOG_ERR, "Empty messages are not supported. msg(%p)->lenght=%d", str, length );
         return FALSE;
@@ -1778,7 +1788,7 @@ int netw_add_msg_ex( NETWORK *netw, char *str , unsigned int length )
     nstr -> written = nstr -> length = length ;
 
     pthread_mutex_lock( &netw -> sendbolt );
-    if( list_push( netw -> send_buf, nstr , free_nstr_ptr ) == FALSE )
+    if( list_push( netw -> send_buf, nstr, free_nstr_ptr ) == FALSE )
     {
         pthread_mutex_unlock( &netw -> sendbolt );
         return FALSE;
@@ -1847,8 +1857,10 @@ N_STR *netw_wait_msg( NETWORK *netw, long refresh, long timeout )
         return nstrptr ;
     do
     {
-        if(secs > 0)sleep( secs );
-        if( usecs >0 )u_sleep( usecs );
+        if(secs > 0)
+            sleep( secs );
+        if( usecs >0 )
+            u_sleep( usecs );
 
         nstrptr = netw_get_msg( netw );
         if( nstrptr )
@@ -1964,7 +1976,7 @@ void *netw_send_func( void *NET )
                 pthread_mutex_unlock( &netw -> sendbolt );
                 if( ptr && ptr -> length > 0 && ptr -> data )
                 {
-                    n_log( LOG_DEBUG , "Sending ptr size %d written %d", ptr -> length, ptr -> written );
+                    n_log( LOG_DEBUG, "Sending ptr size %d written %d", ptr -> length, ptr -> written );
 
                     /* sending state */
                     nboctet = htonl( state );
@@ -2222,10 +2234,9 @@ int netw_stop_thr_engine( NETWORK *netw )
  */
 int send_data( SOCKET s, char *buf, NSTRBYTE n )
 {
-    int bcount = 0 ; /* counts bytes read */
-    int br = 0 ;     /* bytes read this pass */
+     __n_assert( buf, return -1 );
 
-    __n_assert( buf, return -1 );
+    int bcount = 0 ; /* counts bytes read */
 
     if( n == 0 )
     {
@@ -2235,6 +2246,7 @@ int send_data( SOCKET s, char *buf, NSTRBYTE n )
 
     while( (NSTRBYTE)bcount < n )                 /* loop until full buffer */
     {
+        int br = 0 ;     /* bytes read this pass */
         if ( ( br = send( s, buf, n - bcount, NETFLAGS ) ) > 0 )
         {
             bcount += br;                /* increment byte counter */
@@ -2265,10 +2277,8 @@ int send_data( SOCKET s, char *buf, NSTRBYTE n )
  */
 int recv_data( SOCKET s, char *buf, NSTRBYTE n )
 {
-    int bcount = 0 ; /* counts bytes read */
-    int br = 0 ;     /* bytes read this pass */
-
     __n_assert( buf, return -1 );
+    int bcount = 0 ; /* counts bytes read */
 
     if( n == 0 )
     {
@@ -2278,8 +2288,8 @@ int recv_data( SOCKET s, char *buf, NSTRBYTE n )
 
     while( (NSTRBYTE)bcount < n )
     {
+        int br = 0 ;     /* bytes read this pass */
         /* loop until full buffer */
-
         if ( ( br = recv( s, buf, n - bcount, NETFLAGS ) ) > 0 )
         {
             bcount += br;                    /* increment byte counter */
@@ -2498,7 +2508,14 @@ int recv_php( SOCKET s, int *_code, char **buf )
 } /*recv_php(...)*/
 
 
-/* get queue states */
+/*!\fn int netw_get_queue_status( NETWORK *netw, int *nb_to_send, int *nb_to_read )
+ *
+ *\brief retrieve network send queue status
+ *\param netw NETWORK object
+ *\param nb_to_send Number of messages still in send buffer (not yet submitted to kernel)
+ *\param nb_to_read Number of message already read by the kernel, waiting in the local message list
+ *\return TRUE or FALSE
+ */
 int netw_get_queue_status( NETWORK *netw, int *nb_to_send, int *nb_to_read )
 {
     __n_assert( netw, return FALSE );
@@ -2512,6 +2529,5 @@ int netw_get_queue_status( NETWORK *netw, int *nb_to_send, int *nb_to_read )
     pthread_mutex_unlock( &netw -> recvbolt );
 
     return TRUE ;
-}
-
+} /* get queue states */
 

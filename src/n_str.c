@@ -163,67 +163,67 @@ char *trim(char *s)
  *\param stream The file to read
  *\return NULL or the captured string
  */
-char *nfgets( char *buffer, int size, FILE *stream )
+char *nfgets( char *buffer , int size , FILE *stream )
 {
-    int it = 0  ;
-    char fillerbuf[ size ];
+	int it = 0  ;
+	char fillerbuf[ size ] ;
 
-    if( !fgets( buffer, size, stream ) )
-    {
-        return NULL ;
-    }
+	if( !fgets( buffer , size , stream ) )
+	{
+		return NULL ;
+	}
 
-    /* search for a new line, return the buffer directly if there is one */
-    /* no more check on it < size because if fgets do not fail it always put
-     * a zero at the end */
-    it = 0 ;
-    while( buffer[ it ] != '\0' )
-    {
-        if( buffer[ it ] == '\n' )
-        {
-            return buffer ;
-        }
-        it ++ ;
-    }
+	/* search for a new line, return the buffer directly if there is one */
+	/* no more check on it < size because if fgets do not fail it always put
+	 * a zero at the end */
+	it = 0 ;
+	while( buffer[ it ] != '\0' )
+	{
+		if( buffer[ it ] == '\n' )
+		{
+			return buffer ;
+		}
+		it ++ ;
+	}
 
-    n_log( LOG_INFO, "Capturing long output !");
+	n_log( LOG_INFO , "Capturing long output !");
 
-    /* If we are here there are two case: 1) we only had one line in the file
-       (which was not took in account before) 2) we have a long output */
+	/* If we are here there are two case: 1) we only had one line in the file
+	   (which was not took in account before) 2) we have a long output */
 
-    int done = 0 ;
-    it = 0 ;
-    while( done == 0 )
-    {
-        /* if no new line and it == 0, it was a one line file to read without
-         * a new line */
-        if( !fgets( fillerbuf, size, stream ) )
-        {
-            if( it == 0 )
-            {
-                return buffer ;
-            }
-            else
-            {
-                /* it was a real problem */
-                return NULL ;
-            }
-        }
-        else
-        {
-            /* we had more to read */
-            int f_it = 0 ;
-            while( fillerbuf[ f_it ] != '\0' )
-            {
-                /* we finally have a end of line */
-                if( fillerbuf[ f_it ] == '\n' )
-                    return buffer ;
-                f_it ++ ;
-            }
-            /* if nothing matched , let's continue until EOF or a '\n' */
-        }
-    }
-    return buffer ;
+	int done = 0 ;
+	it = 0 ;
+	while( done == 0 )
+	{
+		/* if no new line and it == 0, it was a one line file to read without
+		 * a new line */
+		if( !fgets( fillerbuf , size , stream ) )
+		{
+			if( it == 0 )
+			{
+				return buffer ;
+			}
+			else
+			{
+				/* it was a real problem */
+				return NULL ;  
+			}
+		}
+		else
+		{
+			/* we had more to read */
+			int f_it = 0 ;
+			while( fillerbuf[ f_it ] != '\0' )
+			{
+				/* we finally have a end of line */
+				if( fillerbuf[ f_it ] == '\n' )
+					return buffer ;
+				f_it ++ ;
+			}
+			/* if nothing matched , let's continue until EOF or a '\n' */
+		}
+	}
+	return buffer ;
 } /* nfgets(...) */
 
 
@@ -338,7 +338,7 @@ N_STR *file_to_nstr( char *filename )
 #ifdef __linux__
         if( errno == EOVERFLOW )
         {
-            n_log( LOG_ERR, "%s size is too big (>4GB,EOVERFLOW)", filename );
+            n_log( LOG_ERR, "%s size is too big ,EOVERFLOW)", filename );
         }
         else
         {
@@ -413,7 +413,7 @@ int nstr_to_fd( N_STR *str, FILE *out, int lock )
         /* Place a write lock on the file. */
         fcntl( fileno( out ), F_SETLKW, &out_lock );
 #else
-        lock = 1 ;
+        lock = 2 ; /* compiler warning suppressor */
 #endif
     }
 
@@ -436,7 +436,7 @@ int nstr_to_fd( N_STR *str, FILE *out, int lock )
         /* Place a write lock on the file. */
         fcntl( fileno( out ), F_SETLKW, &out_lock );
 #else
-        lock = 1 ;
+        lock = 2 ; /* compiler warning suppressor */
 #endif
     }
 
@@ -490,8 +490,8 @@ int str_to_int_ex( const char *s, NSTRBYTE start, NSTRBYTE end, int *i, const in
 
     __n_assert( s, return FALSE );
 
-    Malloc( tmpstr, char,  4 + end - start );
-    __n_assert( tmpstr, n_log( LOG_ERR, "Unable to Malloc( tmpstr , char ,  4 + %d - %d )", end, start ); return FALSE );
+    Malloc( tmpstr, char,  sizeof( int ) + end - start );
+    __n_assert( tmpstr, n_log( LOG_ERR, "Unable to Malloc( tmpstr , char ,  sizeof( int ) + %d - %d )", end, start ); return FALSE );
 
     memcpy( tmpstr, s + start, end - start );
 
@@ -543,8 +543,8 @@ int str_to_int_nolog( const char *s, NSTRBYTE start, NSTRBYTE end, int *i, const
 
     __n_assert( s, return FALSE );
 
-    Malloc( tmpstr, char,  4 + end - start );
-    __n_assert( tmpstr, n_log( LOG_ERR, "Unable to Malloc( tmpstr , char ,  4 + %d - %d )", end, start ); return FALSE );
+    Malloc( tmpstr, char,  sizeof( int ) + end - start );
+    __n_assert( tmpstr, n_log( LOG_ERR, "Unable to Malloc( tmpstr , char ,  sizeof( int ) + %d - %d )", end, start ); return FALSE );
 
     memcpy( tmpstr, s + start, end - start );
 
@@ -613,8 +613,8 @@ int str_to_long_ex( const char *s, NSTRBYTE start, NSTRBYTE end, long int *i, co
 
     __n_assert( s, return FALSE );
 
-    Malloc( tmpstr, char,  4 + end - start );
-    __n_assert( tmpstr, n_log( LOG_ERR, "Unable to Malloc( tmpstr , char ,  4 + %d - %d )", end, start ); return FALSE );
+    Malloc( tmpstr, char,  sizeof( int ) + end - start );
+    __n_assert( tmpstr, n_log( LOG_ERR, "Unable to Malloc( tmpstr , char ,  sizeof( int ) + %d - %d )", end, start ); return FALSE );
 
     memcpy( tmpstr, s + start, end - start );
 
@@ -688,8 +688,8 @@ int str_to_long_long_ex( const char *s, NSTRBYTE start, NSTRBYTE end, long long 
 
     __n_assert( s, return FALSE );
 
-    Malloc( tmpstr, char,  4 + end - start );
-    __n_assert( tmpstr, n_log( LOG_ERR, "Unable to Malloc( tmpstr , char ,  4 + %d - %d )", end, start ); return FALSE );
+    Malloc( tmpstr, char,  sizeof( int ) + end - start );
+    __n_assert( tmpstr, n_log( LOG_ERR, "Unable to Malloc( tmpstr , char ,  sizeof( int ) + %d - %d )", end, start ); return FALSE );
 
     memcpy( tmpstr, s + start, end - start );
 
@@ -1584,7 +1584,7 @@ int str_sanitize_ex( char *string, const unsigned int string_len, const char *ma
     for( it = 0 ; it < string_len ; it ++ )
     {
         unsigned int mask_it = 0 ;
-        while(mask[mask_it]!='\0'&&mask_it<masklen)
+        while( mask_it<masklen && mask[mask_it]!='\0')
         {
             if( string[ it ] == mask[ mask_it ] )
                 string[ it ] = replacement ;

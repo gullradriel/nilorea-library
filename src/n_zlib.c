@@ -1,12 +1,7 @@
-/**
- *\file n_zlib.c
- *
+/**\file n_zlib.c
  *  ZLIB compression handler
- *
  *\author Castagnier Mickael
- *
  *\version 1.0
- *
  *\date 27/06/2017
  */
 

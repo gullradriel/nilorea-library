@@ -1,5 +1,4 @@
-/**\file ex_pcre.c
- *  N_PCRE wrapper test
+/**\example ex_pcre.c Nilorea Library pcre api test
  *\author Castagnier Mickael
  *\version 1.0
  *\date 04/12/2019

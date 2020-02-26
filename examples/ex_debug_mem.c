@@ -1,10 +1,10 @@
-/**\example ex_common.c Nilorea Library common api test
+/**\file ex_debug_mem.c
+ *  Nilorea Library debug mem api test
  *\author Castagnier Mickael
  *\version 1.0
  *\date 03/01/2019
+ *\example ex_debug_mem.c Debug mem module example
  */
-
-
 
 #include <stdio.h>
 #include <errno.h>
@@ -18,6 +18,8 @@
 #ifndef __windows__
 #include <sys/wait.h>
 #endif
+
+#include "nilorea/n_debug_mem_h.h"
 
 void usage(void)
 {
@@ -111,7 +113,10 @@ void process_args( int argc, char **argv )
 } /* void process_args( ... ) */
 
 
-
+/*!\fn inlined_func( void )
+ *\brief inlined test
+ *\param inlined_func
+ */
 FORCE_INLINE void inlined_func( void )
 {
     n_log( LOG_DEBUG, "Inlined func" );
@@ -120,6 +125,9 @@ FORCE_INLINE void inlined_func( void )
 
 int main(int argc, char **argv)
 {
+    #ifdef DEBUG_MEM
+    init_debug_mem();
+    #endif // DEBUG_MEM
 
     /* processing args and set log_level */
     process_args( argc, argv );
