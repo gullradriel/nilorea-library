@@ -10,8 +10,8 @@ LIBNILOREA=-lnilorea
 EXT=
 ALLEGRO_CLIBS=
 DEBUGLIB=
-
-TARGET=ex_list$(EXT) ex_nstr$(EXT) ex_exceptions$(EXT) ex_hash$(EXT) ex_network$(EXT) ex_monolith$(EXT) ex_configfile$(EXT) ex_pcre$(EXT) ex_threads$(EXT) ex_log$(EXT) ex_common$(EXT) ex_signals$(EXT)
+DISABLED_TARGET=ex_monolith$(EXT)
+TARGET=ex_list$(EXT) ex_nstr$(EXT) ex_exceptions$(EXT) ex_hash$(EXT) ex_network$(EXT) ex_configfile$(EXT) ex_pcre$(EXT) ex_threads$(EXT) ex_log$(EXT) ex_common$(EXT) ex_signals$(EXT)
 
 ifeq ($(OS),Windows_NT)
 	CFLAGS+= -std=c11 $(OPT) -D__USE_MINGW_ANSI_STDIO
@@ -96,7 +96,7 @@ ex_network$(EXT): n_log.o n_list.o n_str.o n_network_msg.o n_time.o n_thread_poo
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(CLIBS)
 
 ex_monolith$(EXT): ex_monolith.o
-	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ -L.. $(LIBNILOREA) $(CLIBS) $(ALLEGRO_CLIBS)
+#	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ -L.. $(LIBNILOREA) $(CLIBS) $(ALLEGRO_CLIBS)
 
 ex_configfile$(EXT): n_log.o n_list.o n_str.o n_hash.o n_pcre.o n_config_file.o ex_configfile.o
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(CLIBS) -lpcre
