@@ -14,7 +14,7 @@ DEBUGLIB=
 TARGET=ex_list$(EXT) ex_nstr$(EXT) ex_exceptions$(EXT) ex_hash$(EXT) ex_network$(EXT) ex_monolith$(EXT) ex_configfile$(EXT) ex_pcre$(EXT) ex_threads$(EXT) ex_log$(EXT) ex_common$(EXT) ex_signals$(EXT)
 
 ifeq ($(OS),Windows_NT)
-	CFLAGS+= -std=c11 $(OPT)
+	CFLAGS+= -std=c11 $(OPT) -D__USE_MINGW_ANSI_STDIO
 	CLIBS= -lpthread -lws2_32
 	RM= del /Q
 	CC= gcc
