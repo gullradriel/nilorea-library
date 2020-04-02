@@ -581,7 +581,7 @@ const char *xdigits :
 #define neterrno errno
 /*! BSD style errno string */
 #define netstrerror( code )({ \
-    size_t errmsglen = strerrorlen_s( code ) + 1 ; \
+    size_t errmsglen = 512 ; /* strerrorlen_s( code ) + 1 */ ; \
     char *errmsg = NULL ; \
     Malloc( errmsg , char , errmsglen ); \
     if( errmsg ) \
