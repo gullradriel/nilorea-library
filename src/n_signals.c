@@ -18,6 +18,7 @@
 
 #include "nilorea/n_log.h"
 #include "nilorea/n_signals.h"
+#include "nilorea/n_str.h"
 
 #define LOGFPRT( ... ) fprintf( stderr , "Error: " __VA_ARGS__ )
 #define LOGNLOG( ... ) n_log( LOG_ERR , __VA_ARGS__ )
@@ -92,7 +93,12 @@ int addr2line(char const * const program_name, void const * const addr)
     sprintf(addr2line_cmd,"addr2line -f -p -e %.256s %p", program_name, addr);
 #endif
 #endif
-    return system(addr2line_cmd);
+    N_STR *output = NULL ;
+    int ret = -1 ;
+    n_popen( addr2line_cmd, 1024, (void **)&output, &ret );
+    LOGSIG( "%s", output -> data );
+    free_nstr( &output );
+    return ret ;
 }
 
 

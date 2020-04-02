@@ -134,7 +134,7 @@ int draw_particle( PARTICLE_SYSTEM *psys, double xpos, double ypos, int w, int h
 
     while( node )
     {
-          double x = 0, y = 0 ;
+        double x = 0, y = 0 ;
 
         ptr = (PARTICLE *)node -> ptr ;
         x = ptr -> object . position[ 0 ] - xpos ;

@@ -40,7 +40,6 @@
 			<Add option="-Wall" />
 		</Compiler>
 		<Unit filename="Makefile" />
-		<Unit filename="TESTFILE.TXT" />
 		<Unit filename="client.cfg" />
 		<Unit filename="ex_common.c">
 			<Option compilerVar="CC" />
@@ -91,9 +90,6 @@
 		<Unit filename="valgrind-suppressions.cfg" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
-			<code_completion />
-			<envvars />
-			<debugger />
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>

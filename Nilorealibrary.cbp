@@ -198,9 +198,6 @@
 		<Unit filename="src/n_zlib.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="sslexample.c">
-			<Option compilerVar="CC" />
-		</Unit>
 		<Unit filename="version-number.txt" />
 		<Unit filename="version.h" />
 		<Extensions>
@@ -214,9 +211,6 @@
 				<general />
 			</DoxyBlocks>
 			<lib_finder disable_auto="1" />
-			<code_completion />
-			<envvars />
-			<debugger />
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>

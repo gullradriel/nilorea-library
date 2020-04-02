@@ -210,6 +210,9 @@ typedef struct N_SOCKET
     /*!ip of the connected socket*/
     char *ip;
 
+    /*! flag to quickly check socket mode */
+    int is_blocking ;
+
     /*!address of local machine*/
     struct addrinfo hints ;
     /*! getaddrinfo results */

@@ -140,6 +140,8 @@ char *get_prog_name( void )
     return NULL ;
 } /* get_prog_dir */
 
+
+
 /*!\fn int n_popen( char *cmd , int read_buf_size , void *nstr_output , int *ret )
  * \brief launch a command abd return output and status
  * \param cmd The command to launch
@@ -158,6 +160,11 @@ int n_popen( char *cmd, int read_buf_size, void **nstr_output, int *ret )
     int status = 0 ;
     char read_buf[ read_buf_size ] ;
 
+    if( !(*output_pointer) )
+    {
+        (*output_pointer) = new_nstr( read_buf_size );
+    }
+
     fp = popen( cmd, "r" );
     int err = errno ;
     if (fp == NULL)
@@ -166,9 +173,14 @@ int n_popen( char *cmd, int read_buf_size, void **nstr_output, int *ret )
         return FALSE ;
     }
 
+    int length  = 0 ;
     while( fgets( read_buf, read_buf_size, fp ) != NULL )
     {
-        n_log( LOG_DEBUG, "%s", read_buf );
+        length = strlen( read_buf );
+        if( read_buf[ length - 1 ] == '\n' )
+        {
+            read_buf[ length - 1 ] = '\0' ;
+        }
         nstrprintf_cat( (*output_pointer), "%s", read_buf );
     }
     status = pclose( fp );

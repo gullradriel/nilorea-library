@@ -25,7 +25,7 @@ typedef struct DATA
  *\brief destroy a DATA struct
  *\param ptr A pointer to a DATA struct
  */
- void destroy_data( void *ptr )
+void destroy_data( void *ptr )
 {
     DATA *data = (DATA *)ptr ;
     free_nstr( &data -> rnd_str );
