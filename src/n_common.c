@@ -160,10 +160,10 @@ int n_popen( char *cmd, int read_buf_size, void **nstr_output, int *ret )
     int status = 0 ;
     char read_buf[ read_buf_size ] ;
 
-	if( !(*output_pointer) )
-	{
-		(*output_pointer) = new_nstr( read_buf_size );
-	}
+    if( !(*output_pointer) )
+    {
+        (*output_pointer) = new_nstr( read_buf_size );
+    }
 
     fp = popen( cmd, "r" );
     int err = errno ;
@@ -172,15 +172,15 @@ int n_popen( char *cmd, int read_buf_size, void **nstr_output, int *ret )
         n_log( LOG_ERR, "popen( %s ) returned NULL , %s (%d)", cmd, strerror( err ), err );
         return FALSE ;
     }
-	
-	int length  = 0 ;
+
+    int length  = 0 ;
     while( fgets( read_buf, read_buf_size, fp ) != NULL )
     {
-		length = strlen( read_buf );
-		if( read_buf[ length - 1 ] == '\n' )
-		{
-			read_buf[ length - 1 ] = '\0' ;
-		}
+        length = strlen( read_buf );
+        if( read_buf[ length - 1 ] == '\n' )
+        {
+            read_buf[ length - 1 ] = '\0' ;
+        }
         nstrprintf_cat( (*output_pointer), "%s", read_buf );
     }
     status = pclose( fp );

@@ -60,11 +60,11 @@ typedef struct PARTICLE
 {
     /*! particle mode: NORMAL_PART,SINUS_PART,TRANS_PART,SNOW_PART,FIRE_PART,STAR_PART,CIRCLE_PART,PIXEL_PART */
     int mode,
-    /*! lifetime */
+        /*! lifetime */
         lifetime,
-    /*! sprite id in library */
+        /*! sprite id in library */
         spr_id,
-    /*! size of particle */
+        /*! size of particle */
         size;
 
     /*! color of the particle */

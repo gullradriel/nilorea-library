@@ -163,67 +163,67 @@ char *trim(char *s)
  *\param stream The file to read
  *\return NULL or the captured string
  */
-char *nfgets( char *buffer , int size , FILE *stream )
+char *nfgets( char *buffer, int size, FILE *stream )
 {
-	int it = 0  ;
-	char fillerbuf[ size ] ;
+    int it = 0  ;
+    char fillerbuf[ size ] ;
 
-	if( !fgets( buffer , size , stream ) )
-	{
-		return NULL ;
-	}
+    if( !fgets( buffer, size, stream ) )
+    {
+        return NULL ;
+    }
 
-	/* search for a new line, return the buffer directly if there is one */
-	/* no more check on it < size because if fgets do not fail it always put
-	 * a zero at the end */
-	it = 0 ;
-	while( buffer[ it ] != '\0' )
-	{
-		if( buffer[ it ] == '\n' )
-		{
-			return buffer ;
-		}
-		it ++ ;
-	}
+    /* search for a new line, return the buffer directly if there is one */
+    /* no more check on it < size because if fgets do not fail it always put
+     * a zero at the end */
+    it = 0 ;
+    while( buffer[ it ] != '\0' )
+    {
+        if( buffer[ it ] == '\n' )
+        {
+            return buffer ;
+        }
+        it ++ ;
+    }
 
-	n_log( LOG_INFO , "Capturing long output !");
+    n_log( LOG_INFO, "Capturing long output !");
 
-	/* If we are here there are two case: 1) we only had one line in the file
-	   (which was not took in account before) 2) we have a long output */
+    /* If we are here there are two case: 1) we only had one line in the file
+       (which was not took in account before) 2) we have a long output */
 
-	int done = 0 ;
-	it = 0 ;
-	while( done == 0 )
-	{
-		/* if no new line and it == 0, it was a one line file to read without
-		 * a new line */
-		if( !fgets( fillerbuf , size , stream ) )
-		{
-			if( it == 0 )
-			{
-				return buffer ;
-			}
-			else
-			{
-				/* it was a real problem */
-				return NULL ;  
-			}
-		}
-		else
-		{
-			/* we had more to read */
-			int f_it = 0 ;
-			while( fillerbuf[ f_it ] != '\0' )
-			{
-				/* we finally have a end of line */
-				if( fillerbuf[ f_it ] == '\n' )
-					return buffer ;
-				f_it ++ ;
-			}
-			/* if nothing matched , let's continue until EOF or a '\n' */
-		}
-	}
-	return buffer ;
+    int done = 0 ;
+    it = 0 ;
+    while( done == 0 )
+    {
+        /* if no new line and it == 0, it was a one line file to read without
+         * a new line */
+        if( !fgets( fillerbuf, size, stream ) )
+        {
+            if( it == 0 )
+            {
+                return buffer ;
+            }
+            else
+            {
+                /* it was a real problem */
+                return NULL ;
+            }
+        }
+        else
+        {
+            /* we had more to read */
+            int f_it = 0 ;
+            while( fillerbuf[ f_it ] != '\0' )
+            {
+                /* we finally have a end of line */
+                if( fillerbuf[ f_it ] == '\n' )
+                    return buffer ;
+                f_it ++ ;
+            }
+            /* if nothing matched , let's continue until EOF or a '\n' */
+        }
+    }
+    return buffer ;
 } /* nfgets(...) */
 
 
