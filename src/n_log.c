@@ -257,16 +257,17 @@ void _n_log( int level, const char *file, const char *func, int line, const char
             break ;
         default:
 #ifndef __windows__
-	    fprintf( out, "%s:%" PRId64 " %s->%s:%d ", prioritynames[ level ] . c_name, time( NULL ), file, func, line  );
+            fprintf( out, "%s:%" PRId64 " %s->%s:%d ", prioritynames[ level ] . c_name, time( NULL ), file, func, line  );
 #else
-	    fprintf( out, "%s:%lld %s->%s:%d ", prioritynames[ level ] . c_name, time( NULL ), file, func, line  );
+            fprintf( out, "%s:%lld %s->%s:%d ", prioritynames[ level ] . c_name, time( NULL ), file, func, line  );
 #endif
-	    va_start (args, format);
+            va_start (args, format);
             vfprintf( out, format, args );
             va_end( args );
             fprintf( out, "\n" );
             break ;
         }
+        fflush( out );
     }
 }  /* _n_log( ... ) */
 
@@ -334,9 +335,8 @@ int write_safe_log( TS_LOG *log, char *pat, ... )
     va_end( arg );
 
     pthread_mutex_lock( &log -> LOG_MUTEX );
-
     fprintf( log -> file, "%s", str );
-
+    fflush( log -> file );
     pthread_mutex_unlock( &log -> LOG_MUTEX );
 
     return TRUE;
@@ -354,6 +354,10 @@ int close_safe_logging( TS_LOG *log )
 {
     if( !log )
         return FALSE;
+
+    pthread_mutex_lock( &log -> LOG_MUTEX );
+    fflush( log -> file );
+    pthread_mutex_unlock( &log -> LOG_MUTEX );
 
     pthread_mutex_destroy( &log -> LOG_MUTEX );
 
