@@ -15,7 +15,7 @@
 #ifdef LINUX
 #define _GNU_SOURCE
 #include <unistd.h>
-#include <strings.h>
+#include <string.h>
 #endif
 #include <sys/types.h>
 
