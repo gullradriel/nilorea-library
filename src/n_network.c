@@ -18,8 +18,6 @@
 #endif
 #include <sys/types.h>
 
-#define __windows__
-
 #ifdef __windows__
 char* wchar_to_char(const wchar_t* pwchar)
 {
