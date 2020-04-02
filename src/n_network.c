@@ -579,9 +579,9 @@ const char *xdigits :
 
 /*! Keep it compatible with bsd like */
 #define neterrno errno
-/*! BSD style errno string */
-#define netstrerror( code )({ \
-    size_t errmsglen = 512 ; /* strerrorlen_s( code ) + 1 */ ; \
+/*! BSD style errno string NO WORKING ON REDHAT */
+/* #define netstrerror( code )({ \
+    size_t errmsglen = 512 ; // strerrorlen_s( code ) + 1  ; \
     char *errmsg = NULL ; \
     Malloc( errmsg , char , errmsglen ); \
     if( errmsg ) \
@@ -589,8 +589,13 @@ const char *xdigits :
         strerror_s( errmsg , errmsglen , code ); \
     } \
     errmsg ; \
-    })
+    }) */
 
+#define netstrerror( code )({ \
+    char *errmsg = NULL ; \
+    errmsg = strerror( code ); \
+    errmsg ; \
+    })
 
 #endif /* ifndef windows */
 
@@ -804,7 +809,8 @@ int netw_set_blocking( NETWORK *netw, unsigned long int is_blocking )
     {
         error = neterrno ;
         errmsg = netstrerror( error );
-        n_log( LOG_ERR, "couldn't set blocking mode %d on %d: %s",   );
+        n_log( LOG_ERR, "couldn't set blocking mode %d on %d: %s", is_blocking , netw -> link . sock , _str( errmsg ) );
+	FreeNoLog( errmsg );
         return FALSE ;
     }
 #else
