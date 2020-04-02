@@ -167,8 +167,6 @@ void* manage_client( void *ptr )
                 if( hostname && hostname -> data && data && data -> data )
                 {
                     n_log( LOG_NOTICE, "RECV: %s: %s , %s", netw -> link . ip, hostname -> data, data -> data );
-                    n_log( LOG_NOTICE, "Sending data back to emitter after sleeping 1 sec" );
-                    u_sleep( 1000000 );
                     send_net_datas( netw, data );
                 }
                 else
