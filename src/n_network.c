@@ -593,7 +593,7 @@ const char *xdigits :
 
 #define netstrerror( code )({ \
     char *errmsg = NULL ; \
-    errmsg = strerror( code ); \
+    errmsg = strdup( strerror( code ) ); \
     errmsg ; \
     })
 
