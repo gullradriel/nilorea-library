@@ -211,6 +211,7 @@ int main(int argc, char **argv)
         if( netw_make_listening( &server, addr, port, 10, ip_version ) == FALSE )
         {
             n_log( LOG_ERR, "Fatal error with network initialization" );
+            netw_unload();
             exit( -1 );
         }
         int it = 0 ;
@@ -232,6 +233,7 @@ int main(int argc, char **argv)
                 if( pthread_error != 0 )
                 {
                     n_log( LOG_ERR, "Error creating client management pthread:%d , error: %s", pthread_error, strerror( error ) );
+                    netw_unload();
                     exit( -1 );
                 }
             }
@@ -256,7 +258,8 @@ int main(int argc, char **argv)
             }
             else
             {
-                u_sleep( 100000 );
+                n_log( LOG_DEBUG , "Waiting connections..." );
+                u_sleep( 1000000 );
             }
             refresh_thread_pool( thread_pool );
         }
@@ -276,6 +279,7 @@ int main(int argc, char **argv)
             {
                 /* there were some error when trying to connect */
                 n_log( LOG_ERR, "Unable to connect to %s:%s", srv, port );
+                netw_unload();
                 exit( 1 );
             }
             n_log( LOG_NOTICE, "Attempt %d: Connected to %s:%s", it, srv, port );
@@ -317,6 +321,8 @@ int main(int argc, char **argv)
     FreeNoLog( srv );
     FreeNoLog( addr );
     FreeNoLog( port )
+
+    netw_unload();
 
     exit( 0 );
 } /* END_OF_MAIN() */
