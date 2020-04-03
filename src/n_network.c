@@ -788,6 +788,9 @@ int netw_set_blocking( NETWORK *netw, unsigned long int is_blocking )
     int error = 0 ;
     char *errmsg = NULL ;
 
+    if( netw -> link . is_blocking == is_blocking )
+        return TRUE ;
+
 #if defined(__linux__) || defined(__sun)
     int flags = fcntl( netw -> link . sock, F_GETFL, 0 );
     if ( (flags &O_NONBLOCK) && !is_blocking )
@@ -1194,7 +1197,7 @@ int netw_connect_ex( NETWORK **netw, char *host, char *port, int disable_naggle,
     __n_assert( (*netw), return FALSE );
 
     /*checking WSA when under windows*/
-    if ( netw_init_wsa( 1, 2, 2 ) == FALSE )
+    if ( netw_init_wsa( 1 , 2, 2 ) == FALSE )
     {
         n_log( LOG_ERR, "Unable to load WSA dll's" );
         Free( (*netw) );
@@ -1698,7 +1701,7 @@ int netw_make_listening( NETWORK **netw, char *addr, char *port, int nbpending, 
  *\param send_list_limit Internal sending list maximum number of item. 0 or negative for unrestricted
  *\param recv_list_limit Internal receiving list maximum number of item. 0 or negative for unrestricted
  *\param non_blocking set to -1 to make it non blocking, to 0 for blocking, else it's the select timeout value in msecs.
- *\param retval EAGAIN ou EWOULDBLOCK or neterrno
+ *\param retval EAGAIN ou EWOULDBLOCK or neterrno (use netstrerr( retval) to obtain a string describing the code )
  *\return NULL on failure, if not a pointer to the connected network
  */
 NETWORK *netw_accept_from_ex( NETWORK *from, int disable_naggle, int sock_send_buf, int sock_recv_buf, int send_list_limit, int recv_list_limit, int non_blocking, int *retval )
@@ -1783,21 +1786,11 @@ NETWORK *netw_accept_from_ex( NETWORK *from, int disable_naggle, int sock_send_b
     }
     else if( non_blocking == -1 )
     {
-#if defined(__linux__) || defined(__sun)
-        int flags = fcntl( from -> link . sock, F_GETFL, 0 );
-        if( !(flags&O_NONBLOCK) )
-            fcntl( from -> link . sock, F_SETFL, flags|O_NONBLOCK );
-#else
-        unsigned long int iMode = 0 ; /* 0 non blocking , 1 blockinh */
-        int iResult = ioctlsocket( from -> link . sock, FIONBIO, &iMode );
-        if( iResult != 0 )
-        {
-            n_log( LOG_ERR, "ioctlsocket failed with error: %ld", iResult );
-            netw_close( &netw );
-            return NULL ;
-        }
-#endif
+        if( from -> link . is_blocking  == 1 )
+            netw_set_blocking( from , 0 );
+
         tmp = accept( from -> link . sock, (struct sockaddr *)&netw -> link . raddr, &sin_size );
+
         error = neterrno ;
         if( retval != NULL )
             (*retval) = error ;
@@ -1807,20 +1800,6 @@ NETWORK *netw_accept_from_ex( NETWORK *from, int disable_naggle, int sock_send_b
             netw_close( &netw );
             return NULL;
         }
-        /* make the obtained socket blocking if ever it was not */
-#if defined(__linux__) || defined(__sun)
-        flags = fcntl( tmp, F_GETFL, 0 );
-        flags = flags&(~O_NONBLOCK) ;
-        fcntl( tmp, F_SETFL, flags );
-#else
-        iResult = ioctlsocket( tmp, FIONBIO, &iMode );
-        if( iResult != 0 )
-        {
-            n_log( LOG_ERR, "ioctlsocket failed with error: %ld", iResult);
-            netw_close( &netw );
-            return NULL ;
-        }
-#endif
     }
     else
     {
@@ -1837,6 +1816,8 @@ NETWORK *netw_accept_from_ex( NETWORK *from, int disable_naggle, int sock_send_b
     }
 
     netw -> link . sock = tmp ;
+    netw_set_blocking( netw , 1 );
+
     netw -> link . port = strdup( from -> link . port );
     Malloc( netw -> link . ip, char, INET6_ADDRSTRLEN + 1 );
     if( !inet_ntop( netw -> link . raddr .ss_family, get_in_addr( (struct sockaddr*)&netw -> link . raddr), netw -> link . ip, INET6_ADDRSTRLEN ) )
@@ -2468,14 +2449,15 @@ int recv_data( SOCKET s, char *buf, NSTRBYTE n )
         }
         else
         {
-            if( br == 0 )
+            if( error == ECONNRESET )
             {
-                n_log( LOG_DEBUG,  "socket %d disconnected !", s );
+                n_log( LOG_DEBUG, "socket %d disconnected !", s );
                 return -2 ;
             }
+
             /* signal an error to the caller */
             errmsg = netstrerror( error );
-            n_log( LOG_ERR,  "socket %d recv returned %d, error: %s", s, _str( errmsg ) );
+            n_log( LOG_ERR,  "socket %d recv returned %d, error: %s", s , br , _str( errmsg ) );
             FreeNoLog( errmsg );
             return -1 ;
         }
