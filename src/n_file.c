@@ -25,6 +25,8 @@ int file_monitor_refresh( HASH_TABLE *filepool )
 
 int file_monitor_set( HASH_TABLE *filepool, char *name, time_t check_interval )
 {
+    __n_assert( filepool, return FALSE );
+
     return TRUE ;
 }
 
@@ -32,6 +34,8 @@ int file_monitor_set( HASH_TABLE *filepool, char *name, time_t check_interval )
 
 int file_monitor_get( HASH_TABLE *filepool, char *name )
 {
+    __n_assert( filepool, return FALSE );
+
     return TRUE ;
 }
 

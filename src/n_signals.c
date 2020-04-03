@@ -93,11 +93,11 @@ int addr2line(char const * const program_name, void const * const addr)
     sprintf(addr2line_cmd,"addr2line -f -p -e %.256s %p", program_name, addr);
 #endif
 #endif
-	N_STR *output = NULL ;
-	int ret = -1 ;
-	n_popen( addr2line_cmd , 1024 , (void **)&output , &ret );
-	LOGSIG( "%s" , output -> data );
-	free_nstr( &output );
+    N_STR *output = NULL ;
+    int ret = -1 ;
+    n_popen( addr2line_cmd, 1024, (void **)&output, &ret );
+    LOGSIG( "%s", output -> data );
+    free_nstr( &output );
     return ret ;
 }
 

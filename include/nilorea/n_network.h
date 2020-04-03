@@ -25,6 +25,9 @@ extern "C"
 #define NETWORK_IPV4  1
 #define NETWORK_IPV6  2
 
+/*! WINDOWS ONLY call at program exit. Unload WSA DLL and call cleanups, no efect on other os */
+#define netw_unload() netw_init_wsa( 0 , 2 , 2 )
+
 #if defined( __linux__ ) || defined( __sun ) || defined( _AIX )
 #include <sys/types.h>
 #include <fcntl.h>
@@ -209,6 +212,9 @@ typedef struct N_SOCKET
     SOCKET sock;
     /*!ip of the connected socket*/
     char *ip;
+
+    /*! flag to quickly check socket mode */
+    unsigned long int is_blocking ;
 
     /*!address of local machine*/
     struct addrinfo hints ;

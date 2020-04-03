@@ -14,10 +14,10 @@ extern C
 
 #include "n_debug_mem.h"
 
-/**
-   \addtogroup DEBUGMEMCORE
-  @{
-*/
+    /**
+       \addtogroup DEBUGMEMCORE
+      @{
+    */
 #ifdef DEBUG_MEM
     /*! macro substitution for debug malloc */
 #define malloc( size ) db_mem_alloc( (size) , __LINE__, __FILE__, __func__ )
@@ -25,9 +25,9 @@ extern C
 #define free( ptr ) db_mem_free( (ptr) , __LINE__, __FILE__, __func__ )
 #endif
 
-/**
-@}
-*/
+    /**
+    @}
+    */
 
 #ifdef __cplusplus
 }

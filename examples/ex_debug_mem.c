@@ -125,9 +125,9 @@ FORCE_INLINE void inlined_func( void )
 
 int main(int argc, char **argv)
 {
-    #ifdef DEBUG_MEM
+#ifdef DEBUG_MEM
     init_debug_mem();
-    #endif // DEBUG_MEM
+#endif // DEBUG_MEM
 
     /* processing args and set log_level */
     process_args( argc, argv );

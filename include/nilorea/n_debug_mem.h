@@ -78,7 +78,7 @@ void delete_db_mem_item( void *ptr );
 void *db_mem_alloc( size_t size, int line, char *file, const char *func );
 
 /* debug free */
-void *db_mem_free( void *ptr , int line, char *file, const char *func );
+void *db_mem_free( void *ptr, int line, char *file, const char *func );
 
 /* debug dump ! */
 int db_mem_dump_leaked( char *file );

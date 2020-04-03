@@ -12,7 +12,7 @@
 #define SERVER 0
 #define CLIENT 1
 
-int NB_ATTEMPTS=  2 ;
+int NB_ATTEMPTS=  1 ;
 
 NETWORK *server = NULL,  /*! Network for server mode, accepting incomming */
          *netw = NULL   ; /*! Network for managing conenctions */
@@ -77,31 +77,31 @@ void process_args( int argc, char **argv, char **address, char **server, char **
             fprintf( stderr, "Date de compilation : %s a %s.\n", __DATE__, __TIME__ );
             exit( 1 );
         case 'V' :
-            if( !strncmp( "LOG_NULL", optarg, 5 ) )
+            if( !strncmp( "LOG_NULL", optarg, 8 ) )
             {
                 log_level = LOG_NULL ;
             }
             else
             {
-                if( !strncmp( "LOG_NOTICE", optarg, 6 ) )
+                if( !strncmp( "LOG_NOTICE", optarg, 10 ) )
                 {
                     log_level = LOG_NOTICE;
                 }
                 else
                 {
-                    if( !strncmp( "LOG_INFO", optarg, 7 ) )
+                    if( !strncmp( "LOG_INFO", optarg, 8 ) )
                     {
                         log_level = LOG_INFO;
                     }
                     else
                     {
-                        if( !strncmp( "LOG_ERR", optarg, 5 ) )
+                        if( !strncmp( "LOG_ERR", optarg, 7 ) )
                         {
                             log_level = LOG_ERR;
                         }
                         else
                         {
-                            if( !strncmp( "LOG_DEBUG", optarg, 5 ) )
+                            if( !strncmp( "LOG_DEBUG", optarg, 9 ) )
                             {
                                 log_level = LOG_DEBUG;
                             }
@@ -211,6 +211,7 @@ int main(int argc, char **argv)
         if( netw_make_listening( &server, addr, port, 10, ip_version ) == FALSE )
         {
             n_log( LOG_ERR, "Fatal error with network initialization" );
+            netw_unload();
             exit( -1 );
         }
         int it = 0 ;
@@ -232,6 +233,7 @@ int main(int argc, char **argv)
                 if( pthread_error != 0 )
                 {
                     n_log( LOG_ERR, "Error creating client management pthread:%d , error: %s", pthread_error, strerror( error ) );
+                    netw_unload();
                     exit( -1 );
                 }
             }
@@ -256,7 +258,8 @@ int main(int argc, char **argv)
             }
             else
             {
-                u_sleep( 100000 );
+                n_log( LOG_DEBUG , "Waiting connections..." );
+                u_sleep( 1000000 );
             }
             refresh_thread_pool( thread_pool );
         }
@@ -276,6 +279,7 @@ int main(int argc, char **argv)
             {
                 /* there were some error when trying to connect */
                 n_log( LOG_ERR, "Unable to connect to %s:%s", srv, port );
+                netw_unload();
                 exit( 1 );
             }
             n_log( LOG_NOTICE, "Attempt %d: Connected to %s:%s", it, srv, port );
@@ -285,19 +289,20 @@ int main(int argc, char **argv)
 
             N_STR *sended_data = NULL, *recved_data = NULL, *hostname = NULL, *tmpstr = NULL ;
 
-            sended_data = char_to_nstr( "TEST ENVOI DE DONNEES" );
+            sended_data = char_to_nstr( "SENDING DATAS..." );
             send_net_datas( netw, sended_data );
 
             free_nstr( &sended_data );
 
             /* let's check for an answer: test each 250000 usec, with
              * a limit of 1000000 usec */
+            n_log( LOG_INFO, "waiting for datas back from server..." );
             tmpstr = netw_wait_msg( netw, 25000, 10000000 );
 
             if( tmpstr )
             {
                 get_net_datas( tmpstr, &hostname, &recved_data );
-                n_log( LOG_NOTICE, "DATAS: %s - %s", recved_data ->data, hostname ->data );
+                n_log( LOG_NOTICE, "RECEIVED DATAS: %s - %s", recved_data ->data, hostname ->data );
                 free_nstr( &tmpstr );
                 free_nstr( &recved_data );
                 free_nstr( &hostname );
@@ -309,7 +314,6 @@ int main(int argc, char **argv)
 
             netw_stop_thr_engine( netw );
             n_log( LOG_NOTICE, "Closing client" );
-            u_sleep( 1000000 );
             netw_close( &netw );
         }
     }
@@ -317,6 +321,8 @@ int main(int argc, char **argv)
     FreeNoLog( srv );
     FreeNoLog( addr );
     FreeNoLog( port )
+
+    netw_unload();
 
     exit( 0 );
 } /* END_OF_MAIN() */
