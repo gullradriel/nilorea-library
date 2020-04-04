@@ -1,5 +1,8 @@
 image: gcc
 
+before_script:
+  - apt-get update -qq && apt-get install -y -qq allegro-dev
+  
 cache:
     paths:
       - "*.o"
