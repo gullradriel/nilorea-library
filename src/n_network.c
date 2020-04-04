@@ -20,6 +20,10 @@
 #include <sys/types.h>
 
 #ifdef __windows__
+
+/*
+ * From https://stackoverflow.com/questions/3019977/convert-wchar-t-to-char/55715607#55715607 by Richard Bamford
+ */
 char* wchar_to_char(const wchar_t* pwchar)
 {
     // get the number of characters in the string.
@@ -62,7 +66,7 @@ char* wchar_to_char(const wchar_t* pwchar)
                    NULL, code , \
                    MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), \
                    (LPWSTR)&s, 0, NULL); \
-    char *netstr = wchar_to_char( s );  /* mem leak here */ \
+    char *netstr = wchar_to_char( s ); \
     LocalFree( s ); \
     netstr ; \
 })
