@@ -33,3 +33,4 @@ tests:
     - build_examples
     script:
     - pwd ; ls -l ; ls -l examples ; cd examples ; chmod +Xx ./ex_common ; ./ex_common
+
