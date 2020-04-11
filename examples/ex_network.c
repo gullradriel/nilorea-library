@@ -271,7 +271,7 @@ int main(int argc, char **argv)
         n_log( LOG_NOTICE, "Destroying thread_pool..." );
         destroy_threaded_pool( &thread_pool, 50000 );
         n_log( LOG_NOTICE, "Close waiting server" );
-        netw_close( &server );
+        netw_wait_close( &server );
     }
     else if( mode == CLIENT )
     {
