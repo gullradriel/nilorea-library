@@ -15,7 +15,7 @@
 int NB_ATTEMPTS=  1 ;
 
 NETWORK *server = NULL,  /*! Network for server mode, accepting incomming */
-         *netw = NULL   ; /*! Network for managing conenctions */
+         *netw   = NULL   ; /*! Network for managing conenctions */
 
 int mode = -1, ip_version = NETWORK_IPALL ;
 
@@ -206,7 +206,7 @@ int main(int argc, char **argv)
 #endif
     if( mode == SERVER )
     {
-
+        n_log( LOG_INFO, "Creating listening network" );
         /* create listening network */
         if( netw_make_listening( &server, addr, port, 10, ip_version ) == FALSE )
         {
@@ -217,6 +217,8 @@ int main(int argc, char **argv)
         int it = 0 ;
         for( it = 0 ; it < NB_ATTEMPTS/2 ; it ++ )
         {
+
+            n_log( LOG_INFO, "Blocking on accept..." );
             /* get any accepted client on a network */
             if ( !( netw = netw_accept_from( server ) ) )
             {
@@ -258,7 +260,7 @@ int main(int argc, char **argv)
             }
             else
             {
-                n_log( LOG_DEBUG , "Waiting connections..." );
+                n_log( LOG_DEBUG, "Waiting connections..." );
                 u_sleep( 1000000 );
             }
             refresh_thread_pool( thread_pool );
@@ -323,6 +325,8 @@ int main(int argc, char **argv)
     FreeNoLog( port )
 
     netw_unload();
+
+    n_log( LOG_INFO, "Exiting network example" );
 
     exit( 0 );
 } /* END_OF_MAIN() */
