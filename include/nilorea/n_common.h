@@ -217,6 +217,9 @@ typedef unsigned char uchar;
 #define get_error() \
     (___error__check_flag == TRUE)
 
+/*! if( a , condition, b ) then a = b */
+#define equal_if( __a , __cond , __b ) if( (__a) __cond (__b) ){ __a = __b ; }
+
 #ifdef RWLOCK_DEBUG
 #define RWLOCK_LOGLEVEL LOG_DEBUG
 #else
