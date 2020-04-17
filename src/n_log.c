@@ -162,6 +162,7 @@ FILE *get_log_file( void )
     return log_file ;
 } /*get_log_level() */
 
+#ifndef _GNU_SOURCE
 #ifndef _vscprintf
 /* For some reason, MSVC fails to honour this #ifndef. */
 /* Hence function renamed to _vscprintf_so(). */
@@ -203,6 +204,7 @@ int asprintf(char *strp[], const char *fmt, ...)
     return r;
 }
 #endif
+#endif // _GNU_SOURCE
 
 /*!\fn void _n_log( int level , const char *file , const char *func , int line , const char *format , ... )
  *\brief Logging function. log( level , const char *format , ... ) is a macro around _log
