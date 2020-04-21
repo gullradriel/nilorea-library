@@ -502,12 +502,12 @@ static int inet_pton6(const char *src, u_char *dst)
     val = 0;
     while ((ch = *src++) != '\0')
     {
-        const char *xdigits :
-            const char *pch ;
+const char *xdigits :
+        const char *pch ;
 
-            if ((pch = strchr((xdigits = xdigits_l), ch)) == NULL)
-                pch = strchr((xdigits = xdigits_u), ch);
-            if (pch != NULL)
+        if ((pch = strchr((xdigits = xdigits_l), ch)) == NULL)
+            pch = strchr((xdigits = xdigits_u), ch);
+        if (pch != NULL)
         {
             val <<= 4;
             val |= (pch - xdigits);
@@ -648,6 +648,16 @@ NETWORK *netw_new( int send_list_limit, int recv_list_limit )
     if ( pthread_mutex_init( &netw -> eventbolt, NULL ) != 0 )
     {
         n_log( LOG_ERR, "Error initializing netw -> eventbolt" );
+        pthread_mutex_destroy( &netw -> sendbolt );
+        pthread_mutex_destroy( &netw -> recvbolt );
+        Free( netw );
+        return NULL ;
+    }
+    /* initialize send sem bolt */
+    if( sem_init(&netw -> send_blocker, 0, 0 ) != 0 )
+    {
+        n_log( LOG_ERR, "Error initializing netw -> eventbolt" );
+        pthread_mutex_destroy( &netw -> eventbolt );
         pthread_mutex_destroy( &netw -> sendbolt );
         pthread_mutex_destroy( &netw -> recvbolt );
         Free( netw );
@@ -912,6 +922,7 @@ int netw_setsockopt( NETWORK *netw, int optname, int value )
         else
             ling.l_onoff=0;
         ling.l_linger=value;
+#ifndef __windows__
         if( setsockopt(netw -> link . sock, SOL_SOCKET, SO_LINGER, &ling, sizeof( ling ) ) == -1 )
         {
             error=neterrno ;
@@ -920,6 +931,16 @@ int netw_setsockopt( NETWORK *netw, int optname, int value )
             FreeNoLog( errmsg );
             return FALSE ;
         }
+#else
+        if( setsockopt(netw -> link . sock, SOL_SOCKET, SO_LINGER, (const char *)&ling, sizeof( ling ) ) == -1 )
+        {
+            error=neterrno ;
+            errmsg = netstrerror( error );
+            n_log( LOG_ERR, "Error from setsockopt(SO_LINGER) on socket %d. neterrno: %s", netw -> link . sock,_str( errmsg ) );
+            FreeNoLog( errmsg );
+            return FALSE ;
+        }
+#endif // __windows__
     }
     break ;
     case SO_RCVTIMEO :
@@ -1444,6 +1465,9 @@ int netw_set( NETWORK *netw, int flag )
         netw -> threaded_engine_status = NETW_THR_ENGINE_STOPPED ;
     }
     pthread_mutex_unlock( &netw -> eventbolt );
+
+    sem_post( &netw -> send_blocker );
+
     return TRUE;
 } /* netw_set(...) */
 
@@ -1490,6 +1514,7 @@ int netw_close( NETWORK **netw )
     pthread_mutex_destroy( &(*netw) -> recvbolt );
     pthread_mutex_destroy( &(*netw) -> sendbolt );
     pthread_mutex_destroy( &(*netw) -> eventbolt );
+    sem_destroy( &(*netw) -> send_blocker );
 
     Free( (*netw) );
 
@@ -1518,6 +1543,7 @@ void depleteSendBuffer(int fd)
 
 /*!\fn netw_wait_close( NETWORK **netw )
  *\brief Wait for peer closing a specified Network, destroy queues, free the structure
+ *\warning Do not use on the accept socket itself (the server socket) as it will display false errors
  *\param netw A NETWORK *network to close
  *\return TRUE on success , FALSE on failure
  */
@@ -1563,8 +1589,12 @@ int netw_wait_close( NETWORK **netw )
             {
                 error = neterrno ;
                 errmsg = netstrerror( error );
-                n_log( LOG_ERR, "read returned an error when closing socket %d: %s", (*netw) -> link . sock, _str( errmsg ) );
+                n_log( LOG_ERR, "read returned error %d when closing socket %d: %s", error , (*netw) -> link . sock, _str( errmsg ) );
                 FreeNoLog( errmsg );
+                if( error != ENOTCONN && error != 10057 )
+                {
+                    n_log( LOG_ERR, "The socket was not connected anymore. Maybe a netw_close_wait misuses ?" );
+                }
                 break ;
             }
         }
@@ -1654,7 +1684,7 @@ int netw_make_listening( NETWORK **netw, char *addr, char *port, int nbpending, 
             FreeNoLog( errmsg );
             continue ;
         }
-        netw_setsockopt( (*netw) , SO_REUSEADDR , 1 );
+        netw_setsockopt( (*netw), SO_REUSEADDR, 1 );
         if( bind( (*netw) -> link . sock, rp -> ai_addr, rp -> ai_addrlen ) == 0 )
         {
             char *ip = NULL ;
@@ -1900,6 +1930,8 @@ int netw_add_msg( NETWORK *netw, N_STR *msg )
 
     pthread_mutex_unlock( &netw -> sendbolt );
 
+    sem_post( &netw -> send_blocker );
+
     return TRUE;
 } /* netw_add_msg(...) */
 
@@ -1938,6 +1970,8 @@ int netw_add_msg_ex( NETWORK *netw, char *str, unsigned int length )
         return FALSE;
     }
     pthread_mutex_unlock( &netw -> sendbolt );
+
+    sem_post( &netw -> send_blocker );
 
     return TRUE;
 } /* netw_add_msg_ex(...) */
@@ -2090,6 +2124,10 @@ void *netw_send_func( void *NET )
 
     do
     {
+
+        /* do not consume cpu for nothing, reduce delay */
+        sem_wait( &netw -> send_blocker );
+
         netw_get_state( netw, &state, NULL );
         if( state&NETW_ERROR )
         {
@@ -2152,15 +2190,17 @@ void *netw_send_func( void *NET )
                     free_nstr( &ptr );
                     u_sleep(  netw -> send_queue_consecutive_wait );
                 }
+                /*
                 else
                 {
                     u_sleep( netw -> send_queue_wait );
                 }
+                */
             }
-            else /* Network PAUSED */
-            {
+           /* Network PAUSED */
+            /*{
                 u_sleep( netw -> pause_wait );
-            }
+            }*/
         }
     }
     while( !DONE );

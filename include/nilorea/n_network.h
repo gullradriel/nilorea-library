@@ -141,6 +141,7 @@ typedef long long int SOCKET ;
 #endif
 
 #include <pthread.h>
+#include <semaphore.h>
 
 /*! Netflag for sigpipe */
 #define NETFLAGS 0           /* no flags needed for microsoft */
@@ -292,6 +293,9 @@ typedef struct NETWORK
     pthread_mutex_t recvbolt;
     /*!mutex for threaded access of state event */
     pthread_mutex_t eventbolt;
+    /*! block sending func */
+    sem_t send_blocker ;
+
 
 } NETWORK;
 
