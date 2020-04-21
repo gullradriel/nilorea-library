@@ -2,7 +2,7 @@ HAVE_ALLEGRO=0
 HAVE_OPENSSL=0
 
 RM=rm -f
-OPT=-D_XOPEN_SOURCE=600 -D_XOPEN_SOURCE_EXTENTED -O0 -g -W -Wall -Wextra -Wcast-align -Wcast-qual -Wdisabled-optimization -Wformat=1 -Winit-self -Wlogical-op -Wmissing-include-dirs -Wredundant-decls -Wstrict-overflow=5 -Wswitch-default -Wundef -Wno-unused
+OPT=-D_XOPEN_SOURCE=600 -D_XOPEN_SOURCE_EXTENTED -fPIC -O0 -g -W -Wall -Wextra -Wcast-align -Wcast-qual -Wdisabled-optimization -Wformat=1 -Winit-self -Wlogical-op -Wmissing-include-dirs -Wredundant-decls -Wstrict-overflow=5 -Wswitch-default -Wundef -Wno-unused
 OPT+= -I../include -static-libgcc -static-libstdc++
 VPATH=../src/
 CC=gcc
@@ -104,7 +104,7 @@ ex_configfile$(EXT): n_log.o n_list.o n_str.o n_hash.o n_pcre.o n_config_file.o 
 ex_signals$(EXT): n_log.o n_list.o n_str.o n_common.o n_hash.o n_signals.o ex_signals.o
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(CLIBS) $(DEBUGLIB)
 
-ex_gui_particles$(EXT): n_log.o n_list.o n_str.o n_common.o n_hash.o n_time.c n_particles.o n_3d.o ex_gui_particles.o 
+ex_gui_particles$(EXT): n_log.o n_list.o n_str.o n_common.o n_hash.o n_time.c n_particles.o n_3d.o ex_gui_particles.o
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ -L.. $(CLIBS) $(ALLEGRO_CLIBS) -lm
 
 ex_pcre$(EXT): n_log.o n_pcre.o ex_pcre.o
