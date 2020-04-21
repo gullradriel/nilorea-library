@@ -376,6 +376,45 @@ void *list_shift_f( LIST *list )
 } /* list_shift_f(...)*/
 
 
+/*!\fn LIST_NODE *list_search( LIST *list , void *ptr )
+ *\brief search ptr in list
+ *\param list The target list
+ *\param ptr Searched pointer
+ *\return The LIST_NODE *node or NULL
+ */
+LIST_NODE *list_search( LIST *list , void *ptr )
+{
+    __n_assert( list , return NULL );
+
+    list_foreach( node , list )
+    {
+        if( node -> ptr == ptr )
+            return node ;
+    }
+    return NULL ;
+} /* list_search */
+
+
+
+/*!\fn LIST_NODE list_search_with_f( LIST *list , int (*checkfunk)( void *ptr ) );
+ *\brief search ptr in list
+ *\param list The target list
+ *\param checkfunk Function pointer who should return 1 if it matches or 0 if it's not
+ *\return The LIST_NODE *node or NULL
+ */
+LIST_NODE *list_search_with_f( LIST *list , int (*checkfunk)( void *ptr ) )
+{
+    __n_assert( list , return NULL );
+
+    list_foreach( node , list )
+    {
+        if( checkfunk( node -> ptr ) )
+            return node ;
+    }
+    return NULL ;
+} /* list_search */
+
+
 
 /*!\fn int list_empty( LIST *list )
  *\brief Empty a LIST list of pointers.

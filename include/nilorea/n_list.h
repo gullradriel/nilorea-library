@@ -103,9 +103,16 @@ void *list_pop_f( LIST *list ) ;
 /* get first ptr from list */
 void *list_shift_f( LIST *list );
 
+/* search ptr in list */
+LIST_NODE *list_search( LIST *list , void *ptr );
+
+/* search for data in list */
+LIST_NODE *list_search_with_f( LIST *list , int (*checkfunk)( void *ptr ) );
+
 /* empty the list */
 int list_empty( LIST *list );
 int list_empty_with_f( LIST *list, void (*free_fnct)( void *ptr ) );
+
 /* free the list */
 int list_destroy( LIST **list );
 
