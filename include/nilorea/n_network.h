@@ -43,6 +43,7 @@ extern "C"
 #include <netdb.h>
 #include <sys/ioctl.h>
 #include <sys/socket.h>
+#include <semaphore.h>
 
 #ifdef __linux__
 #include <linux/sockios.h>
