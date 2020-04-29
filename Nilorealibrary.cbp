@@ -51,6 +51,9 @@
 		<Unit filename="examples/ex_configfile.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="examples/ex_debug_mem.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="examples/ex_exceptions.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -127,6 +130,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/n_config_file.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/n_debug_locks.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/n_debug_mem.c">

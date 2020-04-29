@@ -206,7 +206,7 @@ int main(int argc, char **argv)
 #endif
     if( mode == SERVER )
     {
-        n_log( LOG_INFO, "Creating listening network" );
+        n_log( LOG_INFO, "Creating listening network for %s:%s %d" , _str( addr ) , _str( port ) , ip_version );
         /* create listening network */
         if( netw_make_listening( &server, addr, port, 10, ip_version ) == FALSE )
         {
@@ -261,7 +261,7 @@ int main(int argc, char **argv)
             else
             {
                 n_log( LOG_DEBUG, "Waiting connections..." );
-                u_sleep( 1000000 );
+                u_sleep( 250000 );
             }
             refresh_thread_pool( thread_pool );
         }
@@ -271,7 +271,7 @@ int main(int argc, char **argv)
         n_log( LOG_NOTICE, "Destroying thread_pool..." );
         destroy_threaded_pool( &thread_pool, 50000 );
         n_log( LOG_NOTICE, "Close waiting server" );
-        netw_wait_close( &server );
+        netw_close( &server );
     }
     else if( mode == CLIENT )
     {
@@ -313,9 +313,8 @@ int main(int argc, char **argv)
             {
                 n_log( LOG_ERR, "Error getting back answer from server" );
             }
-
-            netw_stop_thr_engine( netw );
-            n_log( LOG_NOTICE, "Closing client" );
+            n_log( LOG_NOTICE, "Closing client in 3 seconds. See synchronisation on server side..." );
+            sleep( 3 );
             netw_close( &netw );
         }
     }

@@ -46,19 +46,10 @@ typedef struct THREAD_POOL_NODE
 {
     /*! function to call in the thread */
     void *(*func)(void *param);
-    /*! function to call in the thread */
-    void *(*destroy)(void *param);
 
     /*! if not NULL , passed as argument */
     void *param ;
-    /*! starting semaphore */
-    sem_t th_start,
-          /*! ending semaphore */
-          th_end ;
-    /*! mutex to prevent mutual access of node parameters */
-    pthread_mutex_t lock ;
-    /*! mutex for waiting without using CPU on DIRECT_PROC  */
-    pthread_mutex_t global_lock ;
+
     /*! SYNCED or DIRECT process start */
     int type ;
     /*! state of the proc , RUNNING_PROC when it is busy processing func( param) , IDLE_PROC when it waits for some func and param to process , WAITING_PROC when it has things waiting to be processed */
@@ -67,6 +58,13 @@ typedef struct THREAD_POOL_NODE
     int thread_state ;
     /*! thread id */
     pthread_t thr ;
+
+    /*! starting semaphore */
+    sem_t th_start,
+          /*! ending semaphore */
+          th_end ;
+    /*! mutex to prevent mutual access of node parameters */
+    pthread_mutex_t lock ;
 
 } THREAD_POOL_NODE ;
 

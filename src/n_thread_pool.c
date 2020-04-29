@@ -28,8 +28,6 @@ void *thread_pool_processing_function( void *param )
 
     int thread_state = 0 ;
 
-    pthread_mutex_lock( &node -> global_lock );
-
     do
     {
         n_log( LOG_DEBUG, "Thread pool processing func waiting" );
@@ -60,9 +58,7 @@ void *thread_pool_processing_function( void *param )
             pthread_mutex_lock( &node -> lock );
             node -> func = NULL ;
             node -> param = NULL ;
-
             node -> state = IDLE_PROC ;
-
             int type = node -> type ;
             node -> type = -1 ;
             pthread_mutex_unlock( &node -> lock );
@@ -81,8 +77,6 @@ void *thread_pool_processing_function( void *param )
     pthread_mutex_unlock( &node -> lock );
 
     n_log( LOG_NOTICE, "Thread %ld exited", node -> thr );
-
-    pthread_mutex_unlock( &node -> global_lock );
 
     pthread_exit( NULL );
 
@@ -150,7 +144,6 @@ THREAD_POOL *new_thread_pool( int nbmaxthr, int nb_max_waiting )
         thread_pool -> thread_list[ it ] -> param = NULL ;
 
         pthread_mutex_init( &thread_pool -> thread_list[ it ] -> lock, NULL );
-        pthread_mutex_init( &thread_pool -> thread_list[ it ] -> global_lock, NULL );
 
         if( pthread_create( &thread_pool -> thread_list[ it ] -> thr, NULL, thread_pool_processing_function, (void *)thread_pool -> thread_list[ it ] ) != 0 )
         {
@@ -159,8 +152,7 @@ THREAD_POOL *new_thread_pool( int nbmaxthr, int nb_max_waiting )
         }
     }
     return thread_pool ;
-}
-
+} /* new_thread_pool */
 
 
 
@@ -182,22 +174,24 @@ int add_threaded_process( THREAD_POOL *thread_pool, void *(*func_ptr)(void *para
         return FALSE ;
 
     int it = 0 ;
+
     while( it < thread_pool -> max_threads )
     {
         pthread_mutex_lock( &thread_pool -> thread_list[ it ] -> lock );
         if( thread_pool -> thread_list[ it ] -> thread_state == RUNNING_THREAD && thread_pool -> thread_list[ it ] -> state == IDLE_PROC )
         {
-            pthread_mutex_unlock( &thread_pool -> thread_list[ it ] -> lock );
-            break ;
+           break ;
         }
         pthread_mutex_unlock( &thread_pool -> thread_list[ it ] -> lock );
         it ++ ;
     }
+    /* all thread are occupied -> test waiting lists. not holding node lock  because it > max_threads !!! */
     if( it >= thread_pool -> max_threads )
     {
         /* if already coming from queue, or if it should be part of a synced start, do not re-add && return FALSE  */
         if( mode&NOQUEUE || mode&SYNCED_PROC )
         {
+            pthread_mutex_unlock( &thread_pool -> lock );
             return FALSE ;
         }
         if( thread_pool -> waiting_list -> nb_items < thread_pool -> nb_max_waiting )
@@ -206,20 +200,19 @@ int add_threaded_process( THREAD_POOL *thread_pool, void *(*func_ptr)(void *para
             Malloc( proc, THREAD_WAITING_PROC, 1 );
             proc -> func = func_ptr ;
             proc -> param = param ;
-            pthread_mutex_lock( &thread_pool -> lock );
             list_push( thread_pool -> waiting_list, proc, free );
             n_log( LOG_DEBUG, "Adding %p %p to waitlist", proc -> func, proc -> param );
+
             pthread_mutex_unlock( &thread_pool -> lock );
             return TRUE ;
         }
         else
         {
             n_log( LOG_DEBUG, "Proc %p %p was dropped from waitlist because waitlist is full", func_ptr, param );
+            pthread_mutex_unlock( &thread_pool -> lock );
             return FALSE ;
         }
     }
-
-    pthread_mutex_lock( &thread_pool -> thread_list[ it ] -> lock );
     if( mode&DIRECT_PROC )
     {
         thread_pool -> thread_list[ it ] -> func = func_ptr ;
@@ -243,7 +236,7 @@ int add_threaded_process( THREAD_POOL *thread_pool, void *(*func_ptr)(void *para
     }
     pthread_mutex_unlock( &thread_pool -> thread_list[ it ] -> lock );
     return TRUE ;
-}
+} /* add_threaded_process */
 
 
 
@@ -262,6 +255,7 @@ int start_threaded_pool( THREAD_POOL *thread_pool )
 
     int retval = TRUE ;
 
+    pthread_mutex_lock( &thread_pool -> lock );
     for( int it = 0 ; it < thread_pool -> max_threads ; it ++ )
     {
         int to_run = 0 ;
@@ -279,8 +273,10 @@ int start_threaded_pool( THREAD_POOL *thread_pool )
             }   retval = FALSE ;
         }
     }
+    pthread_mutex_unlock( &thread_pool -> lock );
+
     return retval ;
-}
+} /* start_threaded_pool */
 
 
 
@@ -301,6 +297,7 @@ int wait_for_threaded_pool(  THREAD_POOL *thread_pool, int delay )
     int DONE = 0 ;
 
     n_log( LOG_DEBUG, "Waiting for the waitlist of %p to be consumed", thread_pool );
+
     /* waiting to consume all the waiting list */
     while( thread_pool -> waiting_list -> nb_items > 0 )
     {
@@ -329,6 +326,7 @@ int wait_for_threaded_pool(  THREAD_POOL *thread_pool, int delay )
         }
         u_sleep( delay );
     }
+
     return TRUE ;
 }
 
@@ -349,6 +347,7 @@ int destroy_threaded_pool( THREAD_POOL **pool, int delay )
     while( !DONE )
     {
         DONE = 0 ;
+        pthread_mutex_lock( &(*pool) -> lock );
         for( int it = 0 ; it < (*pool) -> max_threads ; it ++ )
         {
             pthread_mutex_lock( &(*pool) -> thread_list[ it ] -> lock );
@@ -368,27 +367,25 @@ int destroy_threaded_pool( THREAD_POOL **pool, int delay )
             {
                 n_log( LOG_DEBUG, "thr %ld proc state %d thr state %d", (*pool) -> thread_list[ it ] -> thr,  (*pool) -> thread_list[ it ] -> state,(*pool) -> thread_list[ it ] -> thread_state  );
             }
-            pthread_mutex_unlock( &(*pool) -> thread_list[ it ] -> global_lock );
         }
+        pthread_mutex_unlock( &(*pool) -> lock );
+
         u_sleep( delay );
     }
 
+    pthread_mutex_lock( &(*pool) -> lock );
     for( int it = 0 ; it < (*pool) -> max_threads ; it ++ )
     {
         pthread_join( (*pool) -> thread_list[ it ] -> thr, NULL );
         pthread_mutex_destroy( &(*pool) -> thread_list[ it ] -> lock );
-        pthread_mutex_destroy( &(*pool) -> thread_list[ it ] -> global_lock );
         sem_destroy(  &(*pool) -> thread_list[ it ] -> th_start );
         sem_destroy(  &(*pool) -> thread_list[ it ] -> th_end );
         Free( (*pool) -> thread_list[ it ] );
     }
     Free( (*pool) -> thread_list );
-
-
-    pthread_mutex_lock( &(*pool) -> lock );
     list_destroy(  &(*pool) -> waiting_list );
-    pthread_mutex_unlock( &(*pool) -> lock );
 
+    pthread_mutex_unlock( &(*pool) -> lock );
     pthread_mutex_destroy( &(*pool) -> lock );
 
     Free( (*pool) );
@@ -446,7 +443,6 @@ int refresh_thread_pool( THREAD_POOL *thread_pool )
             push_status = 0 ;
         }
     } /* while( push_status == 1 ) */
-    pthread_mutex_unlock( &thread_pool -> lock );
 
     /* update statictics */
     thread_pool -> nb_actives = 0 ;
@@ -457,6 +453,8 @@ int refresh_thread_pool( THREAD_POOL *thread_pool )
             thread_pool -> nb_actives ++ ;
         pthread_mutex_unlock( &thread_pool -> thread_list[ it ] -> lock );
     }
+    pthread_mutex_unlock( &thread_pool -> lock );
+
 
 
     return TRUE ;

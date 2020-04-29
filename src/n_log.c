@@ -162,6 +162,7 @@ FILE *get_log_file( void )
     return log_file ;
 } /*get_log_level() */
 
+#ifndef _GNU_SOURCE
 #ifndef _vscprintf
 /* For some reason, MSVC fails to honour this #ifndef. */
 /* Hence function renamed to _vscprintf_so(). */
@@ -203,6 +204,7 @@ int asprintf(char *strp[], const char *fmt, ...)
     return r;
 }
 #endif
+#endif // _GNU_SOURCE
 
 /*!\fn void _n_log( int level , const char *file , const char *func , int line , const char *format , ... )
  *\brief Logging function. log( level , const char *format , ... ) is a macro around _log
@@ -231,7 +233,7 @@ void _n_log( int level, const char *file, const char *func, int line, const char
         va_list args ;
         char *syslogbuffer = NULL ;
         char *eventbuffer = NULL ;
-#ifdef __MINGW32__
+#ifdef __windows__
         size_t needed = 0 ;
         char *name = "NULL" ;
         if( proc_name )
@@ -244,22 +246,22 @@ void _n_log( int level, const char *file, const char *func, int line, const char
             va_start (args, format);
             vasprintf( &syslogbuffer, format, args );
             va_end( args );
-#ifndef __windows__
-            syslog( level, "%s->%s:%d %s", file, func, line, syslogbuffer );
-#else
+#ifdef __windows__
             needed = (unsigned long long)snprintf( NULL, 0, "start /B EventCreate /t %s /id 666 /l APPLICATION /so %s /d \"%s\" > NUL 2>&1", prioritynames[ level ] . w_name, name, syslogbuffer );
             Malloc( eventbuffer, char, needed + 4 );
             sprintf( eventbuffer, "start /B EventCreate /t %s /id 666 /l APPLICATION /so %s /d \"%s\" > NUL 2>&1", prioritynames[ level ] . w_name, name, syslogbuffer );
             system( eventbuffer );
+#else
+            syslog( level, "%s->%s:%d %s", file, func, line, syslogbuffer );
 #endif
             FreeNoLog( syslogbuffer );
             FreeNoLog( eventbuffer );
             break ;
         default:
-#ifndef __windows__
-            fprintf( out, "%s:%" PRId64 " %s->%s:%d ", prioritynames[ level ] . c_name, time( NULL ), file, func, line  );
+#ifdef ENV_32BITS
+		    fprintf( out, "%s:%ld:%s->%s:%d ", prioritynames[ level ] . c_name, time( NULL ), file, func, line  );
 #else
-            fprintf( out, "%s:%lld %s->%s:%d ", prioritynames[ level ] . c_name, time( NULL ), file, func, line  );
+		    fprintf( out, "%s:%" PRId64 " %s->%s:%d ", prioritynames[ level ] . c_name, time( NULL ), file, func, line  );
 #endif
             va_start (args, format);
             vfprintf( out, format, args );

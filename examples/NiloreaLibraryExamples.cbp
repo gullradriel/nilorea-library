@@ -48,9 +48,6 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="ex_configfile.cfg" />
-		<Unit filename="ex_debug_mem.c">
-			<Option compilerVar="CC" />
-		</Unit>
 		<Unit filename="ex_exceptions.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -84,6 +81,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="ex_threads.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="n_debug_locks.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="serveur.cfg" />

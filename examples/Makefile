@@ -3,7 +3,7 @@ HAVE_OPENSSL=0
 
 RM=rm -f
 OPT=-D_XOPEN_SOURCE=600 -D_XOPEN_SOURCE_EXTENTED -O0 -g -W -Wall -Wextra -Wcast-align -Wcast-qual -Wdisabled-optimization -Wformat=1 -Winit-self -Wlogical-op -Wmissing-include-dirs -Wredundant-decls -Wstrict-overflow=5 -Wswitch-default -Wundef -Wno-unused
-OPT+= -I../include -static-libgcc -static-libstdc++
+OPT+= -I../include 
 VPATH=../src/
 CC=gcc
 LIBNILOREA=-lnilorea
@@ -66,7 +66,8 @@ endif
 
 ifeq ($(HAVE_ALLEGRO),1)
 	#CLIBS=`pkg-config --cflags --libs allegro-5 allegro_acodec-5 allegro_audio-5 allegro_color-5 allegro_dialog-5 allegro_font-5 allegro_image-5 allegro_main-5 allegro_memfile-5 allegro_physfs-5 allegro_primitives-5 allegro_ttf-5`
-	ALLEGRO_CLIBS=-lallegro_acodec -lallegro_audio -lallegro_color -lallegro_dialog -lallegro_image -lallegro_main -lallegro_memfile -lallegro_physfs -lallegro_primitives -lallegro_ttf -lallegro_font -lallegro
+	#ALLEGRO_CLIBS=-lallegro_acodec -lallegro_audio -lallegro_color -lallegro_dialog -lallegro_image -lallegro_main -lallegro_memfile -lallegro_physfs -lallegro_primitives -lallegro_ttf -lallegro_font -lallegro
+	ALLEGRO_CLIBS=-lallegro_acodec -lallegro_audio -lallegro_color -lallegro_image -lallegro_main -lallegro_memfile -lallegro_primitives -lallegro_ttf -lallegro_font -lallegro
 	TARGET+=ex_gui_particles$(EXT)
 endif
 
@@ -104,7 +105,7 @@ ex_configfile$(EXT): n_log.o n_list.o n_str.o n_hash.o n_pcre.o n_config_file.o 
 ex_signals$(EXT): n_log.o n_list.o n_str.o n_common.o n_hash.o n_signals.o ex_signals.o
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(CLIBS) $(DEBUGLIB)
 
-ex_gui_particles$(EXT): n_log.o n_list.o n_str.o n_common.o n_hash.o n_time.c n_particles.o n_3d.o ex_gui_particles.o 
+ex_gui_particles$(EXT): n_log.o n_list.o n_str.o n_common.o n_hash.o n_time.c n_particles.o n_3d.o ex_gui_particles.o
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ -L.. $(CLIBS) $(ALLEGRO_CLIBS) -lm
 
 ex_pcre$(EXT): n_log.o n_pcre.o ex_pcre.o

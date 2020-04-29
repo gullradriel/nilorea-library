@@ -4,14 +4,14 @@
  *\date 24/10/2018
  */
 
-#define WIDTH 1280
-#define HEIGHT 800
+#define WIDTH 640	
+#define HEIGHT 480
 
 #include "nilorea/n_common.h"
 #include "nilorea/n_particles.h"
 #include "nilorea/n_anim.h"
 #include "nilorea/n_resources.h"
-#include <allegro5/allegro_native_dialog.h>
+//#include <allegro5/allegro_native_dialog.h>
 #include <allegro5/allegro_ttf.h>
 
 ALLEGRO_DISPLAY *display  = NULL ;
@@ -196,7 +196,7 @@ int main( int argc, char *argv[] )
 
     al_hide_mouse_cursor(display);
 
-    init_particle_system( &particle_system_effects, 100000, 0, 0, 0, 100 );
+    init_particle_system( &particle_system_effects, 10000, 0, 0, 0, 100 );
 
     int mx = 0, my = 0, mouse_b1 = 0, mouse_b2 = 0 ;
     int do_draw = 0, do_logic = 0 ;

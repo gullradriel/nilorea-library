@@ -134,7 +134,5 @@ int main( void )
     close_safe_logging( SAFELOG );
     Free( SAFELOG );
 
-    sleep( 3 );
-
     exit( 0 );
 }

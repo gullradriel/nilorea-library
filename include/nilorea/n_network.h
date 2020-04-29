@@ -43,6 +43,7 @@ extern "C"
 #include <netdb.h>
 #include <sys/ioctl.h>
 #include <sys/socket.h>
+#include <semaphore.h>
 
 #ifdef __linux__
 #include <linux/sockios.h>
@@ -141,6 +142,7 @@ typedef long long int SOCKET ;
 #endif
 
 #include <pthread.h>
+#include <semaphore.h>
 
 /*! Netflag for sigpipe */
 #define NETFLAGS 0           /* no flags needed for microsoft */
@@ -292,6 +294,9 @@ typedef struct NETWORK
     pthread_mutex_t recvbolt;
     /*!mutex for threaded access of state event */
     pthread_mutex_t eventbolt;
+    /*! block sending func */
+    sem_t send_blocker ;
+
 
 } NETWORK;
 
