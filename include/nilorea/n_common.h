@@ -50,43 +50,54 @@ extern "C"
 #endif /* __GNUC__ >= 7 */
 
 #if defined( _WIN32 ) || defined( _WIN64 )
-#if defined( _WIN32 )
-#define ENV_32BITS
-#else
+#if defined( _WIN64 )
 #define ENV_64BITS
+#else
+#define ENV_32BITS
 #endif
 #endif
 
+#if !defined( ENV_32BITS ) || !defined( ENV_64BITS )
 #if defined( __GNUC__ )
 #if defined( __x86_64__ ) || defined( __ppc64__ )
-#define ENV_64BITS
+#define __ENVBITS __ENV_64BITS
 #else
-#define ENV_32BITS
+#define  __ENVBITS __ENV_32BITS
+#endif
 #endif
 #endif
 
 	/*! cross platform endianess detection */
-
 #if defined(__BYTE_ORDER) && __BYTE_ORDER == __BIG_ENDIAN || \
-    defined(__BIG_ENDIAN__) || \
-    defined(__ARMEB__) || \
-    defined(__THUMBEB__) || \
-    defined(__AARCH64EB__) || \
-    defined(_MIBSEB) || defined(__MIBSEB) || defined(__MIBSEB__)
+	defined(__BIG_ENDIAN__) || \
+	defined(__ARMEB__) || \
+	defined(__THUMBEB__) || \
+	defined(__AARCH64EB__) || \
+	defined(_MIBSEB) || defined(__MIBSEB) || defined(__MIBSEB__)
 #define __ENV_BIG_ENDIAN
 #elif defined(__BYTE_ORDER) && __BYTE_ORDER == __LITTLE_ENDIAN || \
-    defined(__LITTLE_ENDIAN__) || \
-    defined(__ARMEL__) || \
-    defined(__THUMBEL__) || \
-    defined(__AARCH64EL__) || \
-    defined(_MIPSEL) || defined(__MIPSEL) || defined(__MIPSEL__)
+	defined(__LITTLE_ENDIAN__) || \
+	defined(__ARMEL__) || \
+	defined(__THUMBEL__) || \
+	defined(__AARCH64EL__) || \
+	defined(_MIPSEL) || defined(__MIPSEL) || defined(__MIPSEL__)
 #define __ENV_LITTLE_ENDIAN
+#elif defined( __windows__ )
+#ifndef __BYTE_ORDER
+#define __BYTE_ORDER __BYTE_ORDER__
+#endif
+#ifndef __BIG_ENDIAN
+#define __BIG_ENDIAN __ORDER_BIG_ENDIAN__
+#endif
+#ifndef __LITTLE_ENDIAN
+#define __LITTLE_ENDIAN __ORDER_LITTLE_ENDIAN__
+#endif
 #else
 #error "Can not tell Environnement byte order"
 #endif
 
 #if defined( __windows__ )
-/*#ifndef __BYTE_ORDER
+	/*#ifndef __BYTE_ORDER
 #define __BYTE_ORDER __BYTE_ORDER__
 #endif
 #ifndef __BIG_ENDIAN
