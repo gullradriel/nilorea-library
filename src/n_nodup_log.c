@@ -145,6 +145,8 @@ int check_n_log_dup( const char *log, const char *file, const char *func, int li
 
     node = ht_get_node( _n_nodup_table, key );
 
+    Free( key );
+
     if( node )
     {
         if( strcmp( log, node -> data . string ) == 0 )
@@ -184,6 +186,8 @@ int check_n_log_dup_indexed( const char *log, const char *file, const char *func
     __n_assert( key, return FALSE );
 
     node = ht_get_node( _n_nodup_table, key );
+
+    Free( key )
 
     if( node )
     {
