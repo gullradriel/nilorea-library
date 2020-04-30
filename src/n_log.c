@@ -259,9 +259,9 @@ void _n_log( int level, const char *file, const char *func, int line, const char
             break ;
         default:
 #ifdef ENV_32BITS
-		    fprintf( out, "%s:%ld:%s->%s:%d ", prioritynames[ level ] . c_name, time( NULL ), file, func, line  );
+            fprintf( out, "%s:%zd:%s->%s:%d ", prioritynames[ level ] . c_name, time( NULL ), file, func, line  );
 #else
-		    fprintf( out, "%s:%" PRId64 " %s->%s:%d ", prioritynames[ level ] . c_name, time( NULL ), file, func, line  );
+            fprintf( out, "%s:%" PRId64 " %s->%s:%d ", prioritynames[ level ] . c_name, time( NULL ), file, func, line  );
 #endif
             va_start (args, format);
             vfprintf( out, format, args );
