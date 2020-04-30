@@ -12,7 +12,7 @@
 #define SERVER 0
 #define CLIENT 1
 
-int NB_ATTEMPTS=  1 ;
+int NB_ATTEMPTS=  2 ;
 
 NETWORK *server = NULL,  /*! Network for server mode, accepting incomming */
          *netw   = NULL   ; /*! Network for managing conenctions */
@@ -252,7 +252,7 @@ int main(int argc, char **argv)
             if ( ( netw = netw_accept_from_ex( server, 0, 0, 0, 0, 0, -1, &error ) ) )
             {
                 /* someone is connected. starting some dialog */
-                if( add_threaded_process( thread_pool, &manage_client, (void *)netw, DIRECT_PROC) == FALSE )
+                if( add_threaded_process( thread_pool, &manage_client, (void *)netw, DIRECT_PROC ) == FALSE )
                 {
                     n_log( LOG_ERR, "Error ading client management to thread pool" );
                 }
@@ -266,10 +266,11 @@ int main(int argc, char **argv)
             refresh_thread_pool( thread_pool );
         }
 
+	sleep( 3 ) ;
         n_log( LOG_NOTICE, "Waiting thread_pool..." );
-        wait_for_threaded_pool( thread_pool, 50000 );
+        wait_for_threaded_pool( thread_pool, 500000 );
         n_log( LOG_NOTICE, "Destroying thread_pool..." );
-        destroy_threaded_pool( &thread_pool, 50000 );
+        destroy_threaded_pool( &thread_pool, 500000 );
         n_log( LOG_NOTICE, "Close waiting server" );
         netw_close( &server );
     }
@@ -315,6 +316,7 @@ int main(int argc, char **argv)
             }
             n_log( LOG_NOTICE, "Closing client in 3 seconds. See synchronisation on server side..." );
             sleep( 3 );
+
             netw_close( &netw );
         }
     }

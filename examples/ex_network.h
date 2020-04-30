@@ -195,13 +195,12 @@ void* manage_client( void *ptr )
             DONE = 1 ;
     }/* while( !DONE ) */
 
-    netw_stop_thr_engine( netw );
-    n_log( LOG_NOTICE, "manage_client stopped for netw %d", netw -> link . sock );
+    SOCKET sockid = netw -> link . sock ;
+    n_log( LOG_NOTICE, "manage_client stopping for netw %d...", sockid );
     netw_wait_close( &netw );
-    n_log( LOG_NOTICE, "network close" );
-
-    return NULL;
-
+    n_log( LOG_NOTICE, "network closed for netw %d !" , sockid );
+   
+    return NULL ;
 } /* manage_client(...) */
 
 

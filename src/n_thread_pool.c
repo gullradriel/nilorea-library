@@ -310,7 +310,6 @@ int wait_for_threaded_pool(  THREAD_POOL *thread_pool, int delay )
     while( !DONE )
     {
         DONE = 1 ;
-        refresh_thread_pool( thread_pool );
         for( int it = 0 ; it < thread_pool -> max_threads ; it ++ )
         {
             int state = 0 ;
@@ -321,10 +320,11 @@ int wait_for_threaded_pool(  THREAD_POOL *thread_pool, int delay )
             if( !(state&IDLE_PROC) )
             {
                 DONE = 0 ;
-                /* n_log( LOG_DEBUG , "Thread id %d status is not IDLE: %d" , it , state ); */
+                n_log( LOG_DEBUG , "Thread id %d status is not IDLE: %d" , it , state );
             }
         }
         u_sleep( delay );
+        refresh_thread_pool( thread_pool );
     }
 
     return TRUE ;

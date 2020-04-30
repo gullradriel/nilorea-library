@@ -1313,17 +1313,6 @@ int netw_connect_ex( NETWORK **netw, char *host, char *port, int disable_naggle,
         return FALSE ;
     }
 
-    /*storing connected port and ip adress*/
-    Malloc( (*netw) -> link . ip, char, 64 );
-    __n_assert( (*netw) -> link . ip, netw_close( &(*netw ) ); return FALSE );
-    if( !inet_ntop( rp->ai_family, get_in_addr( rp -> ai_addr ), (*netw) -> link . ip, 64 ) )
-    {
-        error = neterrno ;
-        errmsg = netstrerror( error );
-        n_log( LOG_ERR, "inet_ntop: %p , %s", rp, _str( errmsg ) );
-        FreeNoLog( errmsg );
-    }
-
     (*netw)->link . port = strdup( port );
     __n_assert( (*netw) -> link . port, netw_close( &(*netw ) ); return FALSE );
 
@@ -1502,8 +1491,10 @@ int netw_close( NETWORK **netw )
 #endif
     FreeNoLog( (*netw) -> vigenere_key );
 
-    if( (*netw) -> addr_infos_loaded == 1 )
+    if( (*netw) -> link . rhost )
+    {
         freeaddrinfo( (*netw) -> link . rhost );
+    }
 
     /*list freeing*/
     netw_set( (*netw), NETW_DESTROY_SENDBUF|NETW_DESTROY_RECVBUF );
