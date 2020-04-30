@@ -114,7 +114,7 @@ int main(int argc, char **argv)
     /* testing with thread pool */
     int error = 0 ;
 
-    n_log( LOG_INFO , "Creating a new thread pool of 2 active and 128 waiting threads" );
+    n_log( LOG_INFO, "Creating a new thread pool of 2 active and 128 waiting threads" );
     THREAD_POOL *thread_pool = new_thread_pool( 2, 128 );
 
     for( int it = 0 ; it < 10 ; it ++ )
@@ -126,13 +126,13 @@ int main(int argc, char **argv)
         }
         else
         {
-            n_log( LOG_INFO , "Added new process" );
+            n_log( LOG_INFO, "Added new process" );
         }
         refresh_thread_pool( thread_pool );
     }
-    n_log( LOG_INFO , "Waiting pool..." );
+    n_log( LOG_INFO, "Waiting pool..." );
     wait_for_threaded_pool( thread_pool, 50000 );
-    n_log( LOG_INFO , "Destroying pool..." );
+    n_log( LOG_INFO, "Destroying pool..." );
     destroy_threaded_pool( &thread_pool, 50000 );
 
     exit( 0 );

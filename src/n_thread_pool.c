@@ -180,7 +180,7 @@ int add_threaded_process( THREAD_POOL *thread_pool, void *(*func_ptr)(void *para
         pthread_mutex_lock( &thread_pool -> thread_list[ it ] -> lock );
         if( thread_pool -> thread_list[ it ] -> thread_state == RUNNING_THREAD && thread_pool -> thread_list[ it ] -> state == IDLE_PROC )
         {
-           break ;
+            break ;
         }
         pthread_mutex_unlock( &thread_pool -> thread_list[ it ] -> lock );
         it ++ ;
