@@ -2377,7 +2377,7 @@ void *netw_recv_func( void *NET )
  */
 int netw_stop_thr_engine( NETWORK *netw )
 {
-    __n_assert( netw,  return FALSE );
+    __n_assert( netw ,  return FALSE );
     int state = 0, thr_engine_status = 0 ;
 
     n_log( LOG_DEBUG,  "Network %d stop threads event", netw -> link . sock );
