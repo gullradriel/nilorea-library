@@ -206,7 +206,7 @@ int main(int argc, char **argv)
 #endif
     if( mode == SERVER )
     {
-        n_log( LOG_INFO, "Creating listening network for %s:%s %d" , _str( addr ) , _str( port ) , ip_version );
+        n_log( LOG_INFO, "Creating listening network for %s:%s %d", _str( addr ), _str( port ), ip_version );
         /* create listening network */
         if( netw_make_listening( &server, addr, port, 10, ip_version ) == FALSE )
         {

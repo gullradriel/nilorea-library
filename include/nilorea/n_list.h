@@ -104,10 +104,10 @@ void *list_pop_f( LIST *list ) ;
 void *list_shift_f( LIST *list );
 
 /* search ptr in list */
-LIST_NODE *list_search( LIST *list , void *ptr );
+LIST_NODE *list_search( LIST *list, void *ptr );
 
 /* search for data in list */
-LIST_NODE *list_search_with_f( LIST *list , int (*checkfunk)( void *ptr ) );
+LIST_NODE *list_search_with_f( LIST *list, int (*checkfunk)( void *ptr ) );
 
 /* empty the list */
 int list_empty( LIST *list );

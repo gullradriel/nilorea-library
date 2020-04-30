@@ -382,11 +382,11 @@ void *list_shift_f( LIST *list )
  *\param ptr Searched pointer
  *\return The LIST_NODE *node or NULL
  */
-LIST_NODE *list_search( LIST *list , void *ptr )
+LIST_NODE *list_search( LIST *list, void *ptr )
 {
-    __n_assert( list , return NULL );
+    __n_assert( list, return NULL );
 
-    list_foreach( node , list )
+    list_foreach( node, list )
     {
         if( node -> ptr == ptr )
             return node ;
@@ -402,11 +402,11 @@ LIST_NODE *list_search( LIST *list , void *ptr )
  *\param checkfunk Function pointer who should return 1 if it matches or 0 if it's not
  *\return The LIST_NODE *node or NULL
  */
-LIST_NODE *list_search_with_f( LIST *list , int (*checkfunk)( void *ptr ) )
+LIST_NODE *list_search_with_f( LIST *list, int (*checkfunk)( void *ptr ) )
 {
-    __n_assert( list , return NULL );
+    __n_assert( list, return NULL );
 
-    list_foreach( node , list )
+    list_foreach( node, list )
     {
         if( checkfunk( node -> ptr ) )
             return node ;
