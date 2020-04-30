@@ -192,25 +192,9 @@ char *nfgets( char *buffer, int size, FILE *stream )
        (which was not took in account before) 2) we have a long output */
 
     int done = 0 ;
-    it = 0 ;
     while( done == 0 )
     {
-        /* if no new line and it == 0, it was a one line file to read without
-         * a new line */
-        if( !fgets( fillerbuf, size, stream ) )
-        {
-            if( it == 0 )
-            {
-                return buffer ;
-            }
-            else
-            {
-                /* it was a real problem */
-                return NULL ;
-            }
-        }
-        else
-        {
+       
             /* we had more to read */
             int f_it = 0 ;
             while( fillerbuf[ f_it ] != '\0' )
@@ -221,7 +205,7 @@ char *nfgets( char *buffer, int size, FILE *stream )
                 f_it ++ ;
             }
             /* if nothing matched , let's continue until EOF or a '\n' */
-        }
+        
     }
     return buffer ;
 } /* nfgets(...) */

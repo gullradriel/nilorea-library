@@ -111,9 +111,6 @@ int main(int argc, char **argv)
     /* processing args and set log_level */
     process_args( argc, argv );
 
-    /* testing with thread pool */
-    int error = 0 ;
-
     n_log( LOG_INFO, "Creating a new thread pool of 2 active and 128 waiting threads" );
     THREAD_POOL *thread_pool = new_thread_pool( 2, 128 );
 
