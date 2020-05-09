@@ -320,7 +320,7 @@ int wait_for_threaded_pool(  THREAD_POOL *thread_pool, int delay )
             if( !(state&IDLE_PROC) )
             {
                 DONE = 0 ;
-                n_log( LOG_DEBUG , "Thread id %d status is not IDLE: %d" , it , state );
+                n_log( LOG_DEBUG, "Thread id %d status is not IDLE: %d", it, state );
             }
         }
         u_sleep( delay );

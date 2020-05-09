@@ -3,7 +3,7 @@ HAVE_OPENSSL=0
 
 RM=rm -f
 OPT=-D_XOPEN_SOURCE=600 -D_XOPEN_SOURCE_EXTENTED -O0 -g -W -Wall -Wextra -Wcast-align -Wcast-qual -Wdisabled-optimization -Wformat=1 -Winit-self -Wlogical-op -Wmissing-include-dirs -Wredundant-decls -Wstrict-overflow=5 -Wswitch-default -Wundef -Wno-unused
-OPT+= -I../include 
+OPT+= -I../include
 VPATH=../src/
 CC=gcc
 LIBNILOREA=-lnilorea
@@ -68,7 +68,7 @@ ifeq ($(HAVE_ALLEGRO),1)
 	#CLIBS=`pkg-config --cflags --libs allegro-5 allegro_acodec-5 allegro_audio-5 allegro_color-5 allegro_dialog-5 allegro_font-5 allegro_image-5 allegro_main-5 allegro_memfile-5 allegro_physfs-5 allegro_primitives-5 allegro_ttf-5`
 	#ALLEGRO_CLIBS=-lallegro_acodec -lallegro_audio -lallegro_color -lallegro_dialog -lallegro_image -lallegro_main -lallegro_memfile -lallegro_physfs -lallegro_primitives -lallegro_ttf -lallegro_font -lallegro
 	ALLEGRO_CLIBS=-lallegro_acodec -lallegro_audio -lallegro_color -lallegro_image -lallegro_main -lallegro_memfile -lallegro_primitives -lallegro_ttf -lallegro_font -lallegro
-	TARGET+=ex_gui_particles$(EXT)
+	TARGET+=ex_gui_particles$(EXT) ex_gui_netclient$(EXT) ex_gui_netserver$(EXT)
 endif
 
 CFLAGS+= -ffunction-sections -fdata-sections -Wl,--gc-sections
@@ -93,7 +93,7 @@ ex_list$(EXT): n_log.o n_list.o n_str.o ex_list.o
 ex_hash$(EXT): n_log.o n_list.o n_str.o n_hash.o ex_hash.o
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(CLIBS)
 
-ex_network$(EXT): n_log.o n_list.o n_str.o n_network_msg.o n_time.o n_thread_pool.c n_network.o ex_network.o
+ex_network$(EXT): n_log.o n_list.o n_str.o n_network_msg.o n_time.o n_thread_pool.o n_hash.o n_network.o ex_network.o
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(CLIBS)
 
 ex_monolith$(EXT): ex_monolith.o
@@ -105,13 +105,19 @@ ex_configfile$(EXT): n_log.o n_list.o n_str.o n_hash.o n_pcre.o n_config_file.o 
 ex_signals$(EXT): n_log.o n_list.o n_str.o n_common.o n_hash.o n_signals.o ex_signals.o
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(CLIBS) $(DEBUGLIB)
 
-ex_gui_particles$(EXT): n_log.o n_list.o n_str.o n_common.o n_hash.o n_time.c n_particles.o n_3d.o ex_gui_particles.o
+ex_gui_particles$(EXT): n_log.o n_list.o n_str.o n_common.o n_hash.o n_time.o n_particles.o n_3d.o ex_gui_particles.o
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ -L.. $(CLIBS) $(ALLEGRO_CLIBS) -lm
+
+ex_gui_netclient$(EXT): n_log.o n_list.o n_str.o n_common.o n_hash.o n_time.o n_network.o n_network_msg.o ex_gui_netclient.o
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ -L.. $(CLIBS) $(ALLEGRO_CLIBS) -lm
+
+ex_gui_netserver$(EXT): n_log.o n_list.o n_str.o n_common.o n_hash.o n_time.o n_thread_pool.o n_network.o n_network_msg.o ex_gui_netserver.o
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ -L.. $(CLIBS) $(ALLEGRO_CLIBS) -lm
 
 ex_pcre$(EXT): n_log.o n_pcre.o ex_pcre.o
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(CLIBS) -lpcre
 
-ex_threads$(EXT): n_log.o n_list.o n_time.o n_thread_pool.c ex_threads.o
+ex_threads$(EXT): n_log.o n_list.o n_time.o n_thread_pool.o ex_threads.o
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(CLIBS)
 
 ex_log$(EXT): n_str.o n_hash.o n_log.o n_nodup_log.o n_list.o n_time.o ex_log.o

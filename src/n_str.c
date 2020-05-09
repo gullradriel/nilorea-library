@@ -194,18 +194,18 @@ char *nfgets( char *buffer, int size, FILE *stream )
     int done = 0 ;
     while( done == 0 )
     {
-       
-            /* we had more to read */
-            int f_it = 0 ;
-            while( fillerbuf[ f_it ] != '\0' )
-            {
-                /* we finally have a end of line */
-                if( fillerbuf[ f_it ] == '\n' )
-                    return buffer ;
-                f_it ++ ;
-            }
-            /* if nothing matched , let's continue until EOF or a '\n' */
-        
+
+        /* we had more to read */
+        int f_it = 0 ;
+        while( fillerbuf[ f_it ] != '\0' )
+        {
+            /* we finally have a end of line */
+            if( fillerbuf[ f_it ] == '\n' )
+                return buffer ;
+            f_it ++ ;
+        }
+        /* if nothing matched , let's continue until EOF or a '\n' */
+
     }
     return buffer ;
 } /* nfgets(...) */

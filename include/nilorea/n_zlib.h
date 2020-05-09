@@ -20,8 +20,8 @@ extern "C"
 #include <zlib.h>
 #include "n_str.h"
 
-/**\defgroup N_TIME N_TIME: generally used headers, defines, timers, allocators,...
-  \addtogroup N_TIME
+/**\defgroup ZLIB: shortcuts to easy compress/decompress data
+  \addtogroup ZLIB
   @{
   */
 

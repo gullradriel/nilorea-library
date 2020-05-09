@@ -5,10 +5,6 @@
  *\date 10/05/2005
  */
 
-
-#include "nilorea/n_network.h"
-#include "nilorea/n_log.h"
-
 #include <errno.h>
 #include <limits.h>
 #include <pthread.h>
@@ -18,6 +14,11 @@
 #include <string.h>
 #endif
 #include <sys/types.h>
+
+#include "nilorea/n_network.h"
+#include "nilorea/n_network_msg.h"
+#include "nilorea/n_log.h"
+#include "nilorea/n_hash.h"
 
 #ifdef __windows__
 
@@ -601,6 +602,15 @@ const char *xdigits :
 		errmsg ; \
 		})
 
+void netw_sigchld_handler( int sig )
+{
+    // waitpid() might overwrite errno, so we save and restore it:
+    int saved_errno = errno;
+    while(waitpid(-1, NULL, WNOHANG) > 0);
+    errno = saved_errno;
+    n_log( LOG_DEBUG, "Signal %d", sig );
+}
+
 #endif /* ifndef windows */
 
 /*!\fn NETWORK *netw_new( int send_list_limit , int recv_list_limit )
@@ -675,6 +685,13 @@ NETWORK *netw_new( int send_list_limit, int recv_list_limit )
     if( !netw -> send_buf )
     {
         n_log( LOG_ERR, "Error when creating send list with %d item limit", send_list_limit );
+        netw_close( &netw );
+        return NULL ;
+    }
+    netw -> pools = new_generic_list( -1 );
+    if( !netw -> pools )
+    {
+        n_log( LOG_ERR, "Error when creating pools list" );
         netw_close( &netw );
         return NULL ;
     }
@@ -827,7 +844,8 @@ int netw_set_blocking( NETWORK *netw, unsigned long int is_blocking )
         return FALSE ;
     }
 #else
-    int res = ioctlsocket( netw -> link . sock, FIONBIO, &is_blocking );
+    unsigned long int blocking = 1 - is_blocking ;
+    int res = ioctlsocket( netw -> link . sock, FIONBIO, &blocking );
     error = neterrno ;
     if( res != 0 )
     {
@@ -837,7 +855,6 @@ int netw_set_blocking( NETWORK *netw, unsigned long int is_blocking )
         netw_close( &netw );
         return FALSE ;
     }
-    netw -> link. is_blocking = is_blocking ;
 #endif
     netw -> link. is_blocking = is_blocking ;
     return TRUE ;
@@ -1469,6 +1486,17 @@ int netw_close( NETWORK **netw )
     int state = 0, thr_engine_status = 0 ;
     __n_assert( (*netw), return FALSE );
 
+    list_foreach( node, (*netw) -> pools )
+    {
+        NETWORK_POOL *pool = (NETWORK_POOL *)node -> ptr ;
+        if( pool )
+        {
+            netw_pool_remove( pool, (*netw) );
+        }
+    }
+
+    list_destroy( &(*netw) -> pools );
+
     netw_get_state( (*netw), &state, &thr_engine_status );
     if( thr_engine_status == NETW_THR_ENGINE_STARTED )
     {
@@ -1785,7 +1813,7 @@ NETWORK *netw_accept_from_ex( NETWORK *from, int disable_naggle, int sock_send_b
         }
         if( FD_ISSET(  from -> link . sock, &accept_set ) )
         {
-            /* n_log( LOG_DEBUG, "select accept call on %d", from -> link . sock ); */
+            //n_log( LOG_DEBUG, "select accept call on %d", from -> link . sock );
             tmp = accept( from -> link . sock, (struct sockaddr * )&netw -> link . raddr, &sin_size );
             if ( tmp < 0 )
             {
@@ -1804,10 +1832,11 @@ NETWORK *netw_accept_from_ex( NETWORK *from, int disable_naggle, int sock_send_b
             netw_close( &netw );
             return NULL;
         }
+        netw -> link . is_blocking = 1 ;
     }
     else if( non_blocking == -1 )
     {
-        /* n_log( LOG_DEBUG, "non blocking accept call on %d", from -> link . sock ); */
+        //n_log( LOG_DEBUG, "non blocking accept call on %d", from -> link . sock );
 
         if( from -> link . is_blocking  == 1 )
             netw_set_blocking( from, 0 );
@@ -1823,11 +1852,13 @@ NETWORK *netw_accept_from_ex( NETWORK *from, int disable_naggle, int sock_send_b
             netw_close( &netw );
             return NULL;
         }
+        netw -> link . is_blocking = 0 ;
     }
     else
     {
-        /* n_log( LOG_DEBUG, "blocking accept call on %d", from -> link . sock ); */
-        netw_set_blocking( from, 1 );
+        if( from -> link . is_blocking  == 0 )
+            netw_set_blocking( from, 1 );
+        //n_log( LOG_DEBUG, "blocking accept call on %d", from -> link . sock );
         tmp = accept( from -> link . sock, (struct sockaddr *)&netw -> link . raddr, &sin_size );
         if ( tmp < 0 )
         {
@@ -1838,7 +1869,9 @@ NETWORK *netw_accept_from_ex( NETWORK *from, int disable_naggle, int sock_send_b
             netw_close( &netw );
             return NULL;
         }
+        netw -> link . is_blocking = 1 ;
     }
+
     netw -> link . sock = tmp ;
 
     netw -> link . port = strdup( from -> link . port );
@@ -1859,7 +1892,7 @@ NETWORK *netw_accept_from_ex( NETWORK *from, int disable_naggle, int sock_send_b
         netw_setsockopt( netw, SO_RCVBUF, sock_recv_buf );
 
     netw_set( netw, NETW_SERVER|NETW_RUN|NETW_THR_ENGINE_STOPPED );
-
+    netw_set_blocking( netw, 1 );
     n_log( LOG_DEBUG, "Connection accepted from %s:%s", netw-> link . ip, netw -> link . port );
 
     return netw;
@@ -2116,80 +2149,86 @@ void *netw_send_func( void *NET )
 
         /* do not consume cpu for nothing, reduce delay */
         sem_wait( &netw -> send_blocker );
-
-        netw_get_state( netw, &state, NULL );
-        if( state&NETW_ERROR )
+        int message_sent = 0 ;
+        while( message_sent == 0 && !DONE )
         {
-            DONE = 666 ;
-        }
-        else if( state&NETW_EXITED )
-        {
-            DONE = 100 ;
-        }
-        else if( state&NETW_EXIT_ASKED )
-        {
-            DONE = 100 ;
-            /* sending state */
-            nboctet = htonl( NETW_EXIT_ASKED );
-            memcpy( nboct, &nboctet, sizeof( NSTRBYTE ) );
-            n_log( LOG_DEBUG, "%d Sending Quit !", netw -> link . sock );
-            net_status = netw->send_data( netw -> link . sock, nboct, sizeof( NSTRBYTE ) );
-            if( net_status < 0 )
-                DONE = 4 ;
-            n_log( LOG_DEBUG, "%d Quit sent!", netw -> link . sock );
-        }
-        else
-        {
-            if( !(state&NETW_PAUSE) )
+            netw_get_state( netw, &state, NULL );
+            if( state&NETW_ERROR )
             {
-                pthread_mutex_lock( &netw -> sendbolt );
-                ptr = list_shift( netw -> send_buf, N_STR ) ;
-                pthread_mutex_unlock( &netw -> sendbolt );
-                if( ptr && ptr -> length > 0 && ptr -> data )
-                {
-                    n_log( LOG_DEBUG, "Sending ptr size %d written %d", ptr -> length, ptr -> written );
-
-                    /* sending state */
-                    nboctet = htonl( state );
-                    memcpy( nboct, &nboctet, sizeof( NSTRBYTE ) );
-                    /* sending state */
-                    if ( !DONE )
-                    {
-                        net_status = netw->send_data( netw -> link . sock, nboct, sizeof( NSTRBYTE ) );
-                        if( net_status < 0 )
-                            DONE = 1 ;
-                    }
-                    if( !DONE )
-                    {
-                        /* sending number of octet */
-                        nboctet = htonl( ptr -> written );
-                        memcpy( nboct, &nboctet, sizeof( NSTRBYTE ) );
-                        /* sending the number of octet to receive on next message */
-                        net_status = netw->send_data( netw -> link . sock, nboct, sizeof( NSTRBYTE ) );
-                        if( net_status < 0 )
-                            DONE = 2 ;
-                    }
-                    /* sending the data itself */
-                    if ( !DONE )
-                    {
-                        net_status = netw->send_data( netw -> link . sock, ptr -> data, ptr -> written );
-                        if( net_status < 0 )
-                            DONE = 3 ;
-                    }
-                    free_nstr( &ptr );
-                    u_sleep(  netw -> send_queue_consecutive_wait );
-                }
-                /*
-                   else
-                   {
-                   u_sleep( netw -> send_queue_wait );
-                   }
-                   */
+                DONE = 666 ;
             }
-            /* Network PAUSED */
-            /*{
-              u_sleep( netw -> pause_wait );
-              }*/
+            else if( state&NETW_EXITED )
+            {
+                DONE = 100 ;
+            }
+            else if( state&NETW_EXIT_ASKED )
+            {
+                DONE = 100 ;
+                /* sending state */
+                nboctet = htonl( NETW_EXIT_ASKED );
+                memcpy( nboct, &nboctet, sizeof( NSTRBYTE ) );
+                n_log( LOG_DEBUG, "%d Sending Quit !", netw -> link . sock );
+                net_status = netw->send_data( netw -> link . sock, nboct, sizeof( NSTRBYTE ) );
+                if( net_status < 0 )
+                    DONE = 4 ;
+                n_log( LOG_DEBUG, "%d Quit sent!", netw -> link . sock );
+            }
+            else
+            {
+                if( !(state&NETW_PAUSE) )
+                {
+                    pthread_mutex_lock( &netw -> sendbolt );
+                    ptr = list_shift( netw -> send_buf, N_STR ) ;
+                    pthread_mutex_unlock( &netw -> sendbolt );
+                    if( ptr && ptr -> length > 0 && ptr -> data )
+                    {
+                        n_log( LOG_DEBUG, "Sending ptr size %d written %d", ptr -> length, ptr -> written );
+
+                        /* sending state */
+                        nboctet = htonl( state );
+                        memcpy( nboct, &nboctet, sizeof( NSTRBYTE ) );
+                        /* sending state */
+                        if ( !DONE )
+                        {
+                            net_status = netw->send_data( netw -> link . sock, nboct, sizeof( NSTRBYTE ) );
+                            if( net_status < 0 )
+                                DONE = 1 ;
+                        }
+                        if( !DONE )
+                        {
+                            /* sending number of octet */
+                            nboctet = htonl( ptr -> written );
+                            memcpy( nboct, &nboctet, sizeof( NSTRBYTE ) );
+                            /* sending the number of octet to receive on next message */
+                            net_status = netw->send_data( netw -> link . sock, nboct, sizeof( NSTRBYTE ) );
+                            if( net_status < 0 )
+                                DONE = 2 ;
+                        }
+                        /* sending the data itself */
+                        if ( !DONE )
+                        {
+                            net_status = netw->send_data( netw -> link . sock, ptr -> data, ptr -> written );
+                            if( net_status < 0 )
+                                DONE = 3 ;
+                        }
+                        free_nstr( &ptr );
+                        //u_sleep(  netw -> send_queue_consecutive_wait );
+                        message_sent = 1 ;
+                    }
+                    /*
+                       else
+                       {
+                       u_sleep( netw -> send_queue_wait );
+                       }
+                       */
+                }
+                /* Network PAUSED */
+                /*{
+                  u_sleep( netw -> pause_wait );
+                  }*/
+            }
+            if( message_sent == 0 )
+                usleep( 1000 );
         }
     }
     while( !DONE );
@@ -2316,6 +2355,7 @@ void *netw_recv_func( void *NET )
                                     if( !DONE && list_push( netw -> recv_buf, recvdmsg, free_nstr_ptr ) == FALSE )
                                         DONE = 4 ;
                                     pthread_mutex_unlock( &netw -> recvbolt );
+                                    n_log( LOG_DEBUG,  "%d octets received !", nboctet );
                                 } /* recv data */
                             } /* recv nb octet*/
                         } /* exit asked */
@@ -2368,7 +2408,7 @@ void *netw_recv_func( void *NET )
  */
 int netw_stop_thr_engine( NETWORK *netw )
 {
-    __n_assert( netw ,  return FALSE );
+    __n_assert( netw,  return FALSE );
     int state = 0, thr_engine_status = 0 ;
 
     n_log( LOG_DEBUG,  "Network %d stop threads event", netw -> link . sock );
@@ -2726,6 +2766,7 @@ int recv_php( SOCKET s, int *_code, char **buf )
 } /*recv_php(...)*/
 
 
+
 /*!\fn int netw_get_queue_status( NETWORK *netw, int *nb_to_send, int *nb_to_read )
  *
  *\brief retrieve network send queue status
@@ -2748,4 +2789,565 @@ int netw_get_queue_status( NETWORK *netw, int *nb_to_send, int *nb_to_read )
 
     return TRUE ;
 } /* get queue states */
+
+
+
+/*!\fn NETWORK_POOL *netw_new_pool( int nb_min_element )
+ *
+ *\brief return a new network pool of nb_min_element
+ *\return a new NETWORK_POOL or NULL
+ */
+NETWORK_POOL *netw_new_pool( int nb_min_element )
+{
+    NETWORK_POOL *netw_pool = NULL ;
+
+    Malloc( netw_pool, NETWORK_POOL, 1 );
+    __n_assert( netw_pool, return NULL );
+
+    netw_pool -> pool = new_ht( nb_min_element );
+    __n_assert( netw_pool -> pool, Free( netw_pool ) ; return NULL );
+
+    init_lock( netw_pool -> rwlock );
+
+    return netw_pool ;
+} /* netw_new_pool() */
+
+
+
+/*!\fn int netw_destroy_pool( NETWORK_POOL **netw_pool )
+ *\brief free a network pool
+ *\param the address of a pointer to free
+ *\return TRUE or FALSE
+ */
+int netw_destroy_pool(  NETWORK_POOL **netw_pool )
+{
+    __n_assert( (*netw_pool), return FALSE );
+
+    write_lock( (*netw_pool) -> rwlock );
+    if( (*netw_pool) -> pool )
+        destroy_ht( &(*netw_pool) -> pool );
+    unlock( (*netw_pool) -> rwlock );
+
+    rw_lock_destroy( (*netw_pool) -> rwlock );
+
+    Free( (*netw_pool) );
+
+    return TRUE ;
+} /* netw_destroy_pool() */
+
+
+
+void netw_pool_netw_close( void *netw_ptr )
+{
+    NETWORK *netw = (NETWORK *)netw_ptr ;
+    __n_assert( netw, return );
+    n_log( LOG_DEBUG, "Network pool %p: id %d still active when closing", netw, (long long int)netw -> link . sock );
+    return ;
+}
+
+
+
+/* add network to pool */
+int netw_pool_add( NETWORK_POOL *netw_pool, NETWORK *netw )
+{
+    __n_assert( netw_pool, return FALSE );
+    __n_assert( netw, return FALSE );
+
+    /* write lock the pool */
+    write_lock( netw_pool -> rwlock );
+    /* test if not already added */
+    N_STR *key = NULL ;
+    nstrprintf( key, "%lld", (long long int)netw -> link . sock );
+    HASH_NODE *node = NULL ;
+    if( ht_get_ptr( netw_pool -> pool, _nstr( key ), (void *)&node ) == TRUE )
+    {
+        n_log( LOG_ERR, "Network id %lld already added !", (long long int)netw -> link . sock );
+        free_nstr( &key );
+        unlock( netw_pool -> rwlock );
+        return FALSE ;
+    }
+    /* add it */
+    int retval = ht_put_ptr( netw_pool -> pool, _nstr( key ), netw, &netw_pool_netw_close );
+    list_push( netw -> pools, netw_pool, NULL );
+    /* unlock the pool */
+    unlock( netw_pool -> rwlock );
+    return retval ;
+} /* netw_pool_add */
+
+
+
+
+/* add network to pool */
+int netw_pool_remove( NETWORK_POOL *netw_pool, NETWORK *netw )
+{
+    __n_assert( netw_pool, return FALSE );
+    __n_assert( netw, return FALSE );
+
+    /* write lock the pool */
+    write_lock( netw_pool -> rwlock );
+    /* test if present */
+    N_STR *key = NULL ;
+    nstrprintf( key, "%lld", (long long int)netw -> link . sock );
+    if( ht_remove( netw_pool -> pool, _nstr( key ) ) == TRUE )
+    {
+        LIST_NODE *node = list_search( netw -> pools, netw_pool );
+        if( node )
+        {
+            remove_list_node( netw -> pools, node, NETWORK_POOL );
+        }
+        unlock( netw_pool -> rwlock );
+        return TRUE ;
+    }
+    free_nstr( &key );
+    n_log( LOG_ERR, "Network id %lld already removed !", (long long int)netw -> link . sock );
+    /* unlock the pool */
+    unlock( netw_pool -> rwlock );
+    return FALSE ;
+} /* netw_pool_remove */
+
+
+
+/* add message to pool */
+int netw_pool_broadcast( NETWORK_POOL *netw_pool, NETWORK *from, N_STR *net_msg )
+{
+    __n_assert( netw_pool, return FALSE );
+    __n_assert( net_msg, return FALSE );
+
+    /* write lock the pool */
+    read_lock( netw_pool -> rwlock );
+    ht_foreach( node, netw_pool -> pool )
+    {
+        NETWORK *netw = hash_val( node, NETWORK );
+        if( from )
+        {
+            if( netw -> link . sock != from -> link . sock )
+                netw_add_msg( netw, nstrdup( net_msg ) );
+        }
+        else
+        {
+            netw_add_msg( netw, nstrdup( net_msg ) );
+        }
+    }
+    unlock( netw_pool -> rwlock );
+    return TRUE ;
+} /* netw_pool_broadcast */
+
+
+
+/*!\fn netw_msg_get_type( N_STR *msg )
+ *\param msg A char *msg_object you want to have type
+ *\brief Get the type of message without killing the first number. Use with netw_get_XXX
+ *\return The value corresponding to the type or FALSE
+ */
+int netw_msg_get_type( N_STR *msg )
+{
+    NSTRBYTE tmpnb = 0 ;
+    char *charptr = NULL ;
+
+    __n_assert( msg, return FALSE );
+
+    charptr = msg -> data ;
+
+    /* here we bypass the number of int, numebr of flt, number of str, (4+4+4) to get the
+     * first number which should be type */
+    charptr += 3 * sizeof( NSTRBYTE );
+    memcpy( &tmpnb, charptr, sizeof( NSTRBYTE ) ) ;
+    tmpnb = ntohl( tmpnb );
+
+    return tmpnb;
+} /* netw_msg_get_type(...) */
+
+
+
+/*!\fn int netw_send_ident( NETWORK *netw , int type , int id , N_STR *name , N_STR *passwd  )
+ *\brief Add a formatted NETWMSG_IDENT message to the specified network
+ *\param netw The aimed NETWORK where we want to add something to send
+ *\param type type of identification ( NETW_IDENT_REQUEST , NETW_IDENT_NEW )
+ *\param id The ID of the sending client
+ *\param name Username
+ *\param passwd Password
+ *\return TRUE or FALSE
+ */
+int netw_send_ident( NETWORK *netw, int type, int id, N_STR *name, N_STR *passwd  )
+{
+    NETW_MSG *msg = NULL ;
+    N_STR *tmpstr = NULL ;
+
+    __n_assert( netw, return FALSE );
+
+    create_msg( &msg );
+
+    __n_assert( msg, return FALSE );
+
+    add_int_to_msg( msg, type );
+    add_int_to_msg( msg, id );
+
+    add_nstrdup_to_msg( msg, name );
+    add_nstrdup_to_msg( msg, passwd );
+
+    tmpstr = make_str_from_msg( msg );
+    delete_msg( &msg );
+    __n_assert( tmpstr, return FALSE );
+
+    return netw_add_msg( netw, tmpstr );
+} /* netw_send_ident( ... ) */
+
+
+
+/*!\fn netw_send_position( NETWORK *netw , int id , double X , double Y , double vx , double vy , double acc_x , double acc_y , int time_stamp )
+ *\brief Add a formatted NETWMSG_IDENT message to the specified network
+ *\param netw The aimed NETWORK where we want to add something to send
+ *\param id The ID of the sending client
+ *\param X X position inside a big grid
+ *\param Y Y position inside a big grid
+ *\param vx X speed
+ *\param vy Y speed
+ *\param acc_x Y acceleration
+ *\param acc_y X acceleration
+ *\param time_stamp Current Time when sending (for some delta we would want to compute )
+ *\return TRUE or FALSE
+ */
+int netw_send_position( NETWORK *netw, int id, double X, double Y, double vx, double vy, double acc_x, double acc_y, int time_stamp )
+{
+    NETW_MSG *msg = NULL ;
+    N_STR *tmpstr = NULL ;
+
+    __n_assert( netw, return FALSE );
+
+    create_msg( &msg );
+
+    __n_assert( msg, return FALSE );
+
+    add_int_to_msg( msg, NETMSG_POSITION );
+    add_int_to_msg( msg, id );
+    add_nb_to_msg( msg, X );
+    add_nb_to_msg( msg, Y );
+    add_nb_to_msg( msg, vx );
+    add_nb_to_msg( msg, vy );
+    add_nb_to_msg( msg, acc_x );
+    add_nb_to_msg( msg, acc_y );
+    add_int_to_msg( msg, time_stamp );
+
+    tmpstr = make_str_from_msg( msg );
+    delete_msg( &msg );
+    __n_assert( tmpstr, return FALSE );
+
+    return netw_add_msg( netw, tmpstr );
+} /* netw_send_position( ... ) */
+
+
+
+/*!\fn netw_send_string_to_all( NETWORK *netw , int id , char *name , char *chan , char *txt , int color )
+ *\brief Add a string to the network, aiming all server-side users
+ *\param netw The aimed NETWORK where we want to add something to send
+ *\param id The ID of the sending client
+ *\param name Name of user
+ *\param chan Target Channel, if any. Pass "ALL" to target the default channel
+ *\param txt The text to send
+ *\param color The color of the text
+ *\return TRUE or FALSE;
+ */
+
+int netw_send_string_to_all( NETWORK *netw, int id, char *name, char *chan, char *txt, int color )
+{
+    NETW_MSG *msg = NULL ;
+
+    N_STR *namestr  = NULL,
+           *chanstr  = NULL,
+            *txtstr   = NULL,
+             *tmpstr   = NULL ;
+
+    __n_assert( netw, return FALSE );
+
+    create_msg( &msg );
+    __n_assert( msg, return FALSE );
+
+    namestr = char_to_nstr( name );
+    __n_assert( namestr, delete_msg( &msg ); return FALSE );
+
+    chanstr = char_to_nstr( chan );
+    __n_assert( chanstr, delete_msg( &msg ); free_nstr( &namestr ); return FALSE );
+
+    txtstr = char_to_nstr( txt );
+    __n_assert( txtstr, delete_msg( &msg ); free_nstr( &namestr ); free_nstr( &chanstr ); return FALSE );
+
+    n_log( LOG_DEBUG, "send_string_to_all( %d:%d:%d , %s , %s , %s )",NETMSG_STRING,id,color, namestr -> data, chanstr -> data, txtstr -> data );
+
+    add_int_to_msg( msg, NETMSG_STRING );
+    add_int_to_msg( msg, id );
+    add_int_to_msg( msg, color );
+
+    add_nstrptr_to_msg( msg, namestr );
+    add_nstrptr_to_msg( msg, chanstr );
+    add_nstrptr_to_msg( msg, txtstr );
+
+    tmpstr = make_str_from_msg( msg );
+
+    delete_msg( &msg );
+
+    __n_assert( tmpstr, return FALSE );
+
+    return netw_add_msg( netw, tmpstr );
+} /* netw_send_string_to_all( ... ) */
+
+
+
+/*!\fn netw_send_string_to( NETWORK *netw , int id_from , int id_to , char *name , char *txt , int color )
+ *\brief Add a string to the network, aiming a specific user
+ *\param netw The aimed NETWORK where we want to add something to send
+ *\param id_from The ID of the sending client
+ *\param id_to The ID of the targetted client
+ *\param name Sender Name
+ *\param txt Sender text
+ *\param color Sender text color
+ *\return TRUE or FALSE
+ */
+int netw_send_string_to( NETWORK *netw, int id_from, int id_to, char *name, char *txt, int color )
+{
+    NETW_MSG *msg = NULL ;
+
+    N_STR *namestr = NULL,
+           *txtstr  = NULL,
+            *tmpstr  = NULL ;
+
+    __n_assert( netw, return FALSE );
+
+    create_msg( &msg );
+
+    __n_assert( msg, return FALSE );
+
+    namestr = char_to_nstr( name );
+    __n_assert( namestr, delete_msg( &msg ); return FALSE );
+
+    txtstr = char_to_nstr( txt );
+    __n_assert( txtstr, delete_msg( &msg ); free_nstr( &namestr ); return FALSE );
+
+    add_int_to_msg( msg, NETMSG_STRING );
+    add_int_to_msg( msg, id_from );
+    add_int_to_msg( msg, id_to );
+    add_int_to_msg( msg, color );
+
+
+    add_nstrptr_to_msg( msg, namestr );
+    add_nstrptr_to_msg( msg, txtstr );
+
+    tmpstr = make_str_from_msg( msg );
+
+    delete_msg( &msg );
+
+    __n_assert( tmpstr, return FALSE );
+
+    return netw_add_msg( netw, tmpstr );
+} /* netw_send_string_to( ... ) */
+
+
+
+/*!\fn netw_send_ping( NETWORK *netw , int id_from , int id_to , int time , int type )
+ *\brief Add a ping reply to the network
+ *\param netw The aimed NETWORK where we want to add something to send
+ *\param id_from Identifiant of the sender
+ *\param id_to Identifiant of the destination, -1 if the serveur itslef is targetted
+ *\param time The time it was when the ping was sended
+ *\param type NETW_PING_REQUEST or NETW_PING_REPLY
+ *\return TRUE or FALSE
+ */
+int netw_send_ping( NETWORK *netw, int type, int id_from, int id_to, int time )
+{
+    NETW_MSG *msg = NULL ;
+
+    N_STR *tmpstr = NULL ;
+
+    __n_assert( netw, return FALSE );
+
+    create_msg( &msg );
+
+    __n_assert( msg, return FALSE );
+
+    add_int_to_msg( msg, type );
+    add_int_to_msg( msg, id_from );
+    add_int_to_msg( msg, id_to );
+    add_int_to_msg( msg, time );
+
+    tmpstr = make_str_from_msg( msg );
+
+    delete_msg( &msg );
+
+    __n_assert( tmpstr, return FALSE );
+
+    return netw_add_msg( netw, tmpstr );
+} /* netw_send_ping( ... ) */
+
+
+/*!\fn  int netw_get_ident( N_STR *msg , int *type ,int *ident , N_STR **name , N_STR **passwd  )
+ *\brief Retrieves identification from netwmsg
+ *\param msg The source string from which we are going to extract the data
+ *\param type NETMSG_IDENT_NEW , NETMSG_IDENT_REPLY_OK , NETMSG_IDENT_REPLY_NOK , NETMSG_IDENT_REQUEST
+ *\param ident ID for the user
+ *\param name Name of the user
+ *\param passwd Password of the user
+ *\return TRUE or FALSE
+ */
+int netw_get_ident( N_STR *msg, int *type,int *ident, N_STR **name, N_STR **passwd  )
+{
+    NETW_MSG *netmsg = NULL ;
+
+    __n_assert( msg, return FALSE);
+
+    netmsg = make_msg_from_str( msg );
+
+    __n_assert( netmsg, return FALSE);
+
+    get_int_from_msg( netmsg, &(*type) );
+    get_int_from_msg( netmsg, &(*ident) );
+
+    if( (*type) != NETMSG_IDENT_REQUEST && (*type) != NETMSG_IDENT_REPLY_OK && (*type) != NETMSG_IDENT_REPLY_NOK )
+    {
+        n_log( LOG_ERR, "unknow (*type) %d", (*type) );
+        delete_msg( &netmsg );
+        return FALSE;
+    }
+
+    get_nstr_from_msg( netmsg, &(*name) );
+    get_nstr_from_msg( netmsg, &(*passwd) );
+
+    delete_msg( &netmsg );
+
+    return TRUE;
+} /* netw_get_ident( ... ) */
+
+
+
+/*!\fn int netw_get_position( N_STR *msg , int *id , double *X , double *Y , double *vx , double *vy , double *acc_x , double *acc_y , int *time_stamp )
+ *\brief Retrieves position from netwmsg
+ *\param msg The source string from which we are going to extract the data
+ *\param id
+ *\param X X position inside a big grid
+ *\param Y Y position inside a big grid
+ *\param vx X speed
+ *\param vy Y speed
+ *\param acc_x X acceleration
+ *\param acc_y Y acceleration
+ *\param time_stamp Current Time when it was sended (for some delta we would want to compute )
+ *\return TRUE or FALSE
+ */
+int netw_get_position( N_STR *msg, int *id, double *X, double *Y, double *vx, double *vy, double *acc_x, double *acc_y, int *time_stamp )
+{
+    NETW_MSG *netmsg = NULL ;
+
+    int type = 0 ;
+
+    __n_assert( msg, return FALSE );
+
+    netmsg = make_msg_from_str( msg );
+
+    __n_assert( netmsg, return FALSE );
+
+    get_int_from_msg( netmsg, &type );
+
+    if( type != NETMSG_POSITION )
+    {
+        delete_msg( &netmsg );
+        return FALSE;
+    }
+
+    get_int_from_msg( netmsg, &(*id) );
+    get_nb_from_msg( netmsg,  &(*X) );
+    get_nb_from_msg( netmsg,  &(*Y) );
+    get_nb_from_msg( netmsg,  &(*vx) );
+    get_nb_from_msg( netmsg,  &(*vy) );
+    get_nb_from_msg( netmsg,  &(*acc_x) );
+    get_nb_from_msg( netmsg,  &(*acc_y) );
+    get_int_from_msg( netmsg, &(*time_stamp) );
+
+    delete_msg( &netmsg );
+
+    return TRUE;
+} /* netw_get_position( ... ) */
+
+
+
+/*!\fn netw_get_string( N_STR *msg , int *id , N_STR **name , N_STR **chan , N_STR **txt , int *color )
+ *\brief Retrieves string from netwmsg
+ *\param msg The source string from which we are going to extract the data
+ *\param id The ID of the sending client
+ *\param name Name of user
+ *\param chan Target Channel, if any. Pass "ALL" to target the default channel
+ *\param txt The text to send
+ *\param color The color of the text
+ *
+ *\return TRUE or FALSE
+ */
+int netw_get_string( N_STR *msg, int *id, N_STR **name, N_STR **chan, N_STR **txt, int *color )
+{
+    NETW_MSG *netmsg = NULL;
+
+    int type = 0 ;
+
+    __n_assert( msg, return FALSE );
+
+    netmsg = make_msg_from_str( msg );
+
+    __n_assert( netmsg, return FALSE );
+
+    get_int_from_msg( netmsg, &type );
+
+    if( type != NETMSG_STRING )
+    {
+        delete_msg( &netmsg );
+        return FALSE;
+    }
+
+    get_int_from_msg( netmsg, id );
+    get_int_from_msg( netmsg, color );
+
+    get_nstr_from_msg( netmsg, &(*name) );
+    get_nstr_from_msg( netmsg, &(*chan) );
+    get_nstr_from_msg( netmsg, &(*txt) );
+
+    delete_msg( &netmsg );
+
+    return TRUE;
+
+} /* netw_get_string( ... ) */
+
+
+
+/*!\fn netw_get_ping( N_STR *msg , int *type , int *from , int *to , int *time )
+ *\brief Retrieves a ping travel elapsed time
+ *\param msg The source string from which we are going to extract the data
+ *\param type NETW_PING_REQUEST or NETW_PING_REPLY
+ *\param from Identifiant of the sender
+ *\param to Targetted Identifiant, -1 for server ping
+ *\param time The time it was when the ping was sended
+ *
+ *\return TRUE or FALSE
+ */
+
+int netw_get_ping( N_STR *msg, int *type, int *from, int *to, int *time )
+{
+    NETW_MSG *netmsg;
+
+    __n_assert( msg, return FALSE );
+
+    netmsg = make_msg_from_str( msg );
+
+    __n_assert( netmsg, return FALSE );
+
+    get_int_from_msg( netmsg, &(*type) );
+
+    if( (*type) != NETMSG_PING_REQUEST && (*type) != NETMSG_PING_REPLY )
+    {
+        delete_msg( &netmsg );
+        return FALSE;
+    }
+
+    get_int_from_msg( netmsg, &(*from) );
+    get_int_from_msg( netmsg, &(*to) );
+    get_int_from_msg( netmsg, &(*time) );
+
+
+    delete_msg( &netmsg );
+
+    return TRUE;
+} /* netw_get_ping( ... ) */
 
