@@ -300,7 +300,7 @@ int main( int argc, char *argv[] )
     }
 #ifdef __linux__
     struct sigaction sa;
-    sa.sa_handler = sigchld_handler; // reap all dead processes
+    sa.sa_handler = netw_sigchld_handler; // reap all dead processes
     sigemptyset(&sa.sa_mask);
     sa.sa_flags = SA_RESTART;
     if (sigaction(SIGCHLD, &sa, NULL) == -1)
