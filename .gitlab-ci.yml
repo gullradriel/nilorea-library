@@ -1,7 +1,7 @@
 image: gcc
 
 before_script:
-  - apt-get update -qq && apt-get install -y -qq liballegro5-dev 
+  - apt-get update -qq && apt-get install -y -qq liballegro5-dev valgrind
       
 stages:
     - clean
@@ -22,9 +22,6 @@ build_examples:
   stage: build
   script:
     - cd examples ; make
-  artifacts:
-    paths:
-    - examples/ex_common
     
 tests:
     stage: tests
@@ -32,5 +29,5 @@ tests:
     - build_lib
     - build_examples
     script:
-    - pwd ; ls -l ; ls -l examples ; cd examples ; chmod +Xx ./ex_common ; ./ex_common
+    - cd examples ; ./valgrind.sh
 
