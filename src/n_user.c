@@ -14,7 +14,7 @@
 
 
 
-#include "nilorea.h"
+#include "nilorea/n_user.h"
 
 
 int create_list_of_user( N_USER *list, int max )
@@ -83,7 +83,7 @@ int rem_user( N_USER *list,int id )
         return FALSE;
 
     if( list -> list[ id ] . netw )
-        Close_Network( &list -> list[ id ] . netw );
+        netw_close( &list -> list[ id ] . netw );
 
     list -> list[ id ] . state = 0;
 
@@ -97,7 +97,7 @@ int rem_user( N_USER *list,int id )
 
 
 
-int add_msg_to_all( N_USER *list, char *msg, int size )
+int add_msg_to_all( N_USER *list, N_STR *msg )
 {
 
     int it;
@@ -108,7 +108,7 @@ int add_msg_to_all( N_USER *list, char *msg, int size )
     {
 
         if( list -> list[ it ] . state != 0 )
-            Add_Msg( list -> list[ it ] . netw, msg, size );
+            netw_add_msg( list -> list[ it ] . netw, msg );
     }
 
     pthread_mutex_unlock( &list -> user_bolt );
@@ -119,13 +119,13 @@ int add_msg_to_all( N_USER *list, char *msg, int size )
 
 
 
-int add_msg_to_user( N_USER *list, int id, char *msg, int size )
+int add_msg_to_user( N_USER *list, int id, N_STR *msg )
 {
 
     pthread_mutex_lock( &list -> user_bolt );
 
     if( list -> list[ id ] . state != 0 )
-        Add_Msg( list -> list[ id ] . netw, msg, size );
+        netw_add_msg( list -> list[ id ] . netw, msg );
 
     pthread_mutex_unlock( &list -> user_bolt );
 

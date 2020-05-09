@@ -20,6 +20,11 @@ extern "C"
 {
 #endif
 
+#include "nilorea/n_common.h"
+#include "nilorea/n_log.h"
+#include "nilorea/n_str.h"
+#include "nilorea/n_network.h"
+
 
 
 /*! USER management cell */
@@ -105,7 +110,7 @@ int add_msg_to_all( N_USER *list, N_STR *msg );
  * Add a message to a specific user
  */
 
-int add_msg_to_user( N_USER *list, int id, char *msg, int size );
+int add_msg_to_user( N_USER *list, int id , N_STR *msg );
 
 
 
