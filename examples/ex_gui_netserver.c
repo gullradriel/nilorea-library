@@ -13,7 +13,6 @@
 #include "nilorea/n_hash.h"
 #include "nilorea/n_network.h"
 #include "nilorea/n_network_msg.h"
-#include "nilorea/n_thread_pool.h"
 
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_audio.h>
@@ -155,6 +154,10 @@ int process_clients( NETWORK_POOL *netw_pool )
 {
     __n_assert( netw_pool, return FALSE );
 
+    LIST *netw_to_close = NULL ;
+
+    netw_to_close = new_generic_list( -1 );
+
     /* write lock the pool */
     read_lock( netw_pool -> rwlock );
     ht_foreach( node, netw_pool -> pool )
@@ -169,6 +172,7 @@ int process_clients( NETWORK_POOL *netw_pool )
             {
             case( NETMSG_POSITION ):
                 // add/update object with id at position
+                netw_pool_broadcast( netw_pool, NULL, netw_exchange );
                 break;
             case( NETMSG_STRING ):
                 // add text to chat
@@ -190,6 +194,11 @@ int process_clients( NETWORK_POOL *netw_pool )
                 n_log( LOG_NOTICE, "Answer sent", netw -> link . sock );
             }
             break ;
+            case( NETMSG_QUIT ):
+                n_log( LOG_INFO, "Client is asking us to quit" );
+                netw_send_quit( netw );
+                list_push( netw_to_close, netw, NULL );
+                break ;
             default:
                 n_log( LOG_ERR, "Unknow message type %d", type );
                 break ;
@@ -198,75 +207,27 @@ int process_clients( NETWORK_POOL *netw_pool )
         }
     }
     unlock( netw_pool -> rwlock );
-    return TRUE ;
-} /* process clients datas */
 
-
-void* manage_client( void *ptr )
-{
-    NETWORK *netw  = (NETWORK *)ptr ;
-    N_STR *netw_exchange = NULL ;
-    int state = 0, thr_engine_state = 0 ;
-
-    n_log( LOG_NOTICE, "manage_client started for netw %d", netw -> link . sock );
-
-    netw_start_thr_engine( netw );
-
-    int DONE = 0 ;
-    while( !DONE )
+    NETWORK *netw = NULL ;
+    LIST_NODE *node =  netw_to_close -> start ;
+    while( node && node -> ptr )
     {
-        if( ( netw_exchange = netw_get_msg( netw ) ) )
+        NETWORK *netw = (NETWORK *)node -> ptr ;
+        if( netw )
         {
-            list_foreach( node, netw -> pools )
-            {
-                NETWORK_POOL *pool = (NETWORK_POOL *)node -> ptr ;
-                netw_pool_broadcast( pool, NULL, netw_exchange );
-            }
-
-            /*N_STR *hostname = NULL, *data = NULL ;
-            int type =  netw_msg_get_type( netw_exchange ) ;
-            switch( type )
-            {
-            case( NETMSG_POSITION ):
-                // add/update object with id at position
-                break;
-            case( NETMSG_STRING ):
-                // add text to chat
-                break;
-            case( NETMSG_PING_REQUEST ):
-                // compare to sent pings and add string to chat with times
-                break;
-            case( NETMSG_GET_BOX ):
-                // a world object at position X,Y,Z with associated datas, add/update local world cache
-                break;
-            default:
-                n_log( LOG_ERR, "Unknow message type %d", type );
-                DONE = 1 ;
-                break ;
-            }
-            if( data )
-                free_nstr( &data );
-            if( hostname )
-                free_nstr( &hostname ); */
-            if( netw_exchange )
-                free_nstr( &netw_exchange );
+            n_log( LOG_DEBUG, "Closing %d", netw -> link . sock );
+            netw_wait_close( &netw );
         }
         else
         {
-            u_sleep( 1000 );
+            n_log( LOG_DEBUG, "Already closed: duplicated quit message" );
         }
-        netw_get_state( netw, &state, &thr_engine_state );
-        if( (state&NETW_EXITED) || (state&NETW_ERROR ) || (state&NETW_EXIT_ASKED) )
-            DONE = 1 ;
-    }/* while( !DONE ) */
+        node = node -> next ;
+    };
+    list_destroy( &netw_to_close );
 
-    SOCKET sockid = netw -> link . sock ;
-    n_log( LOG_NOTICE, "manage_client stopping for netw %d...", sockid );
-    netw_wait_close( &netw );
-    n_log( LOG_NOTICE, "network closed for netw %d !", sockid );
-
-    return NULL ;
-} /* manage_client(...) */
+    return TRUE ;
+} /* process clients datas */
 
 
 
@@ -408,8 +369,6 @@ int main( int argc, char *argv[] )
 
     int mx = 0, my = 0, mouse_b1 = 0, mouse_b2 = 0 ;
     int do_draw = 0, do_logic = 0 ;
-
-    THREAD_POOL *thread_pool = new_thread_pool( 8, 0 );
 
     do
     {
@@ -571,13 +530,8 @@ int main( int argc, char *argv[] )
             int error = 0 ;
             if ( ( netw = netw_accept_from_ex(  server, 0, 0, 0, 0, 0, -1, &error ) ) )
             {
-                netw_start_thr_engine( netw );
                 netw_pool_add( netw_pool, netw );
-                /*if( add_threaded_process( thread_pool, &manage_client, (void *)&netw, DIRECT_PROC ) == FALSE )
-                {
-                    n_log( LOG_ERR, "Error adding client management to thread pool" );
-                    netw_pool_remove( netw_pool , netw );
-                }*/
+                netw_start_thr_engine( netw );
             }
             process_clients( netw_pool );
             do_logic = 0 ;

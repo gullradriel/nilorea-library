@@ -7,22 +7,88 @@
 #define WIDTH 640
 #define HEIGHT 480
 
+#define HAVE_ALLEGRO 1
+
 #include "nilorea/n_common.h"
 #include "nilorea/n_str.h"
 #include "nilorea/n_list.h"
 #include "nilorea/n_hash.h"
 #include "nilorea/n_network.h"
 #include "nilorea/n_network_msg.h"
+#include "nilorea/n_allegro5.h"
 
-#include <allegro5/allegro.h>
-#include <allegro5/allegro_audio.h>
-#include <allegro5/allegro_acodec.h>
-#include <allegro5/allegro_font.h>
-#include <allegro5/allegro_image.h>
-#include <allegro5/allegro_primitives.h>
-#include <allegro5/allegro_image.h>
-#include <allegro5/allegro_native_dialog.h>
-#include <allegro5/allegro_ttf.h>
+
+/*! a simple structure to hold objects positions / timeouts */
+typedef struct PEER_OBJECT
+{
+    /*! last received object position */
+    double position[ 3 ];
+    /*! remote object id */
+    int id ;
+    /*! current life time, updated when receiving a position from a peer. Object is removed if it reach 0 */
+    long int life_time ;
+} PEER_OBJECT ;
+
+
+
+int update_peer( HASH_TABLE *peer_table, int id, double position[ 3 ] )
+{
+    __n_assert( peer_table, return FALSE );
+
+    PEER_OBJECT *peer = NULL ;
+
+    if( ht_get_ptr_ex( peer_table, id, (void *)&peer ) == TRUE )
+    {
+        memcpy( peer -> position, position, 3 * sizeof( double ) );
+        peer -> life_time = 10000000 ; /* 10s in usec */
+    }
+    else
+    {
+
+        Malloc( peer, PEER_OBJECT, 1 );
+        __n_assert( peer, return FALSE );
+
+        memcpy( peer -> position, position, 3 * sizeof( double ) );
+        peer -> id = id ;
+        peer -> life_time = 10000000 ; /* 10s in usec */
+
+        ht_put_ptr_ex( peer_table, id, peer, &free );
+    }
+    return TRUE ;
+}
+
+int manage_peers( HASH_TABLE *peer_table, int delta_t )
+{
+    LIST *to_kill = new_generic_list( -1 );
+    ht_foreach( node, peer_table )
+    {
+        PEER_OBJECT *peer = hash_val( node, PEER_OBJECT );
+        peer -> life_time -= delta_t ;
+        if( peer -> life_time < 0 )
+            list_push( to_kill, peer, NULL );
+    }
+    list_foreach( node, to_kill )
+    {
+        if( node && node -> ptr )
+        {
+            PEER_OBJECT *peer = (PEER_OBJECT *)node -> ptr ;
+            ht_remove_ex( peer_table, peer -> id );
+        }
+    }
+    return TRUE ;
+}
+
+int draw_peers( HASH_TABLE *peer_table )
+{
+    ht_foreach( node, peer_table )
+    {
+        PEER_OBJECT *peer = hash_val( node, PEER_OBJECT );
+        /* mouse pointers */
+        al_draw_line( peer -> position[ 0 ] - 5, peer -> position[ 1 ], peer -> position[ 0 ] + 5, peer -> position[ 1 ], al_map_rgb( 255, 0, 0 ), 1 );
+        al_draw_line( peer -> position[ 0 ], peer -> position[ 1 ] + 5, peer -> position[ 0 ], peer -> position[ 1 ] - 5, al_map_rgb( 255, 0, 0 ), 1 );
+    }
+    return TRUE ;
+}
 
 void usage(void)
 {
@@ -141,17 +207,24 @@ void process_args( int argc, char **argv, char **server, char **port, int *ip_ve
             usage();
             exit( 1 );
         }
-
+        break ;
         case 'h' :
         {
             usage();
             exit( 1 );
         }
+        break ;
         }
     }
     set_log_level( log_level );
 } /* void process_args( ... ) */
 
+
+enum APP_KEYS
+{
+    KEY_UP, KEY_DOWN, KEY_LEFT, KEY_RIGHT, KEY_ESC, KEY_SPACE, KEY_CTRL
+};
+int key[ 7 ] = {false,false,false,false,false,false,false};
 
 
 /* start */
@@ -160,6 +233,7 @@ int main( int argc, char *argv[] )
     int		DONE = 0,                    /* Flag to check if we are always running */
             getoptret = 0,				  /* launch parameter check */
             log_level = LOG_ERR ;			 /* default LOG_LEVEL */
+
     ALLEGRO_DISPLAY *display  = NULL ;
     ALLEGRO_BITMAP *scr_buf       = NULL ;
     ALLEGRO_TIMER *fps_timer = NULL ;
@@ -168,17 +242,27 @@ int main( int argc, char *argv[] )
 
     char *server = NULL ;
     char *port = NULL ;
+    LIST *chatbuf = NULL;
+    HASH_TABLE *peer_table = NULL ;
+    ALLEGRO_USTR *chat_line = NULL;
 
-    int client_id = -1 ;
-    N_STR *name = NULL, *password = NULL ;
+    N_STR *name = NULL,
+           *password = NULL ;
 
     NETWORK  *netw   = NULL   ; /*! Network for managing conenctions */
     int ip_version = NETWORK_IPALL ;
     unsigned long ping_time = 0 ;
 
-    LIST *active_object = NULL ;                      /* list of active objects */
+    int mx = 0, my = 0, mouse_b1 = 0, mouse_b2 = 0 ;
+    int do_draw = 0, do_logic = 0, do_network_update = 0;
+    N_STR *netw_exchange = NULL ;
+    int it = -1, ident = -1 ;
 
     static pthread_t netw_thr ;
+
+    ALLEGRO_COLOR white_color = al_map_rgba_f(1, 1, 1, 1);
+    ALLEGRO_FONT *font = NULL ;
+
 
     set_log_level( LOG_ERR );
 
@@ -270,15 +354,15 @@ int main( int argc, char *argv[] )
 
     al_set_new_bitmap_flags( ALLEGRO_VIDEO_BITMAP );
 
-    DONE = 0 ;
-
-    active_object = new_generic_list( -1 );
-    enum APP_KEYS
+    peer_table = new_ht( 1024 );
+    chatbuf = new_generic_list( 1000 );
+    chat_line = al_ustr_new( "" );
+    font = al_load_font( "2Dumb.ttf", 18, 0 );
+    if (! font )
     {
-        KEY_UP, KEY_DOWN, KEY_LEFT, KEY_RIGHT, KEY_ESC, KEY_SPACE, KEY_CTRL
-    };
-    int key[ 7 ] = {false,false,false,false,false,false,false};
-
+        n_log( LOG_ERR, "Unable to load 2Dumb.ttf" );
+        exit( 1 );
+    }
     al_register_event_source(event_queue, al_get_display_event_source(display));
 
     al_start_timer( fps_timer );
@@ -296,48 +380,56 @@ int main( int argc, char *argv[] )
 
     al_hide_mouse_cursor(display);
 
-    int mx = 0, my = 0, mouse_b1 = 0, mouse_b2 = 0 ;
-    int do_draw = 0, do_logic = 0, do_network_update = 0;
-
     if( netw_connect( &netw, server, port, ip_version ) != TRUE )
     {
         n_log( LOG_ERR, "Could not connect to %s:%s", _str( server ), _str( port ) );
     }
-
     netw_start_thr_engine( netw );
 
     name = char_to_nstr( "ClientName" );
     password = char_to_nstr( "ClientPassword" );
 
-    if( netw_send_ident( netw, NETMSG_IDENT_REQUEST, 0 , name, password ) == FALSE )
+    if( netw_send_ident( netw, NETMSG_IDENT_REQUEST, 0, name, password ) == FALSE )
     {
         n_log( LOG_ERR, "Sending ident request failed" );
         goto exit_client;
     }
-    n_log( LOG_INFO ,"Ident request sended");
+    n_log( LOG_INFO,"Ident request sended");
 
-    N_STR *netw_exchange = NULL ;
-
-    netw_exchange = netw_wait_msg( netw , 10000 , 5000000 );
-
-    /* quitting if no right answer */
-	if( !netw_exchange || ( netw_exchange && netw_exchange -> data == NULL ) )
-		goto exit_client;
-
-    int it = -1 , ident = -1 ;
-
-	netw_get_ident( netw_exchange , &it , &ident , &name , &password );
-	n_log( LOG_INFO ,"Id Message received, pointer:%p size %d id %g" , netw_exchange -> data, netw_exchange -> length , ident );
+    unsigned long int ident_timeout = 10000000 ;
+    do
+    {
+        netw_exchange = netw_get_msg( netw );
+        if( netw_exchange )
+        {
+            int type = netw_msg_get_type( netw_exchange );
+            if( type == NETMSG_IDENT_REPLY_OK )
+            {
+                break ;
+            }
+            if( type == NETMSG_IDENT_REPLY_NOK )
+            {
+                n_log( LOG_ERR , "Login refused !!!" );
+                goto exit_client ;
+            }
+        }
+        ident_timeout -= 1000 ;
+        usleep( 1000 );
+    }
+    while( ident_timeout > 0 );
+    free_nstr( &name );
+    free_nstr( &password );
+    netw_get_ident( netw_exchange, &it, &ident, &name, &password );
+    n_log( LOG_INFO,"Id Message received, pointer:%p size %d id %g", netw_exchange -> data, netw_exchange -> length, ident );
 
     if( ident == -1 )
     {
-        n_log( LOG_ERR ,"No ident received");
+        n_log( LOG_ERR,"No ident received");
         goto exit_client;
     }
-
     /* We got our id ! */
-    n_log( LOG_NOTICE , "Id is:%g" , ident );
-
+    n_log( LOG_NOTICE, "Id is:%g", ident );
+    DONE = 0 ;
     do
     {
         ALLEGRO_EVENT ev ;
@@ -436,9 +528,13 @@ int main( int argc, char *argv[] )
             if( ev.mouse.button == 2 )
                 mouse_b2 = 0 ;
         }
-
+        else if( ev.type == ALLEGRO_EVENT_DISPLAY_CLOSE )
+        {
+            DONE = 1 ;
+        }
 
         /* Processing inputs */
+        get_keyboard( chat_line, ev );
 
         /* dev mod: right click to temporary delete a block
            left click to temporary add a block */
@@ -506,9 +602,17 @@ int main( int argc, char *argv[] )
                     /* a world object at position X,Y,Z with associated datas, add/update local world cache */
                     break ;
                 case( NETMSG_POSITION ):
-                    /* add/update object with id at position */
+                {
 
-                    break;
+                    /* add/update object with id at position */
+                    double pos[ 3 ];
+                    double spe[ 3 ];
+                    int id = -1, timestamp = -1 ;
+                    netw_get_position( netmsg, &id, &pos[ 0 ],&pos[ 1 ],&pos[ 2 ], &spe[ 0 ], &spe[ 1 ], &spe[ 2 ], &timestamp );
+                    n_log( LOG_INFO, "Received position from %d: %g %g", id, pos[ 0 ], pos[ 1 ] );
+                    update_peer( peer_table, id, pos );
+                }
+                break;
                 case( NETMSG_STRING ):
                 {
                     /* add text to chat */
@@ -524,6 +628,9 @@ int main( int argc, char *argv[] )
                 case( NETMSG_PING_REPLY ):
                     /* compare to sent pings and add string to chat with times */
                     break;
+                case( NETMSG_QUIT ):
+                    DONE = 1 ;
+                    break ;
                 default:
                     n_log( LOG_ERR, "Unknow message type %d", type );
                     DONE = 1 ;
@@ -535,6 +642,13 @@ int main( int argc, char *argv[] )
 
             }
             ping_time += 1.0 / 60.0 ;
+
+            if( key[KEY_ESC] )
+            {
+                netw_send_quit( netw );
+                DONE=1;
+            }
+            manage_peers( peer_table, 1000000 / 60.0 );
             do_logic = 0 ;
         }
 
@@ -553,8 +667,12 @@ int main( int argc, char *argv[] )
             al_draw_bitmap( scrbuf, 0, 0, 0 );
 
             /* mouse pointer */
-            al_draw_line( mx - 5, my, mx + 5, my, al_map_rgb( 255, 0, 0 ), 1 );
-            al_draw_line( mx, my + 5, mx, my - 5, al_map_rgb( 255, 0, 0 ), 1 );
+            /*al_draw_line( mx - 5, my, mx + 5, my, al_map_rgb( 255, 0, 0 ), 1 );
+            al_draw_line( mx, my + 5, mx, my - 5, al_map_rgb( 255, 0, 0 ), 1 );*/
+
+            draw_peers( peer_table );
+
+            al_draw_ustr( font, white_color, 0, HEIGHT - 20, ALLEGRO_ALIGN_LEFT, chat_line );
 
             al_flip_display();
             do_draw = 0 ;
@@ -563,15 +681,15 @@ int main( int argc, char *argv[] )
         if( do_network_update == 1 )
         {
             /* send position here */
-            netw_send_position( netw, client_id, mx, my, 0, 0, 0, 0, 0 );
+            netw_send_position( netw, ident, mx, my, 0, 0, 0, 0, 0 );
             do_network_update = 0 ;
         }
 
     }
-    while( !key[KEY_ESC] && !DONE );
+    while( !DONE );
 
 exit_client:
-    list_destroy( &active_object );
+    netw_close( &netw );
 
     return 0;
 
