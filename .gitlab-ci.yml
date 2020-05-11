@@ -4,14 +4,8 @@ before_script:
   - apt-get update -qq && apt-get install -y -qq liballegro5-dev valgrind
       
 stages:
-    - clean
     - build
     - tests
-    
-clean:
-    stage: clean
-    script:
-    - make clean ; cd examples ; make clean
     
 build_lib:
   stage: build 
@@ -21,13 +15,4 @@ build_lib:
 build_examples:  
   stage: build
   script:
-    - cd examples ; make
-    
-tests:
-    stage: tests
-    dependencies: 
-    - build_lib
-    - build_examples
-    script:
-    - cd examples ; ./valgrind.sh
-
+    - cd examples ; make ; ./valgrind.sh

@@ -48,6 +48,10 @@
 		<Unit filename="README.md" />
 		<Unit filename="build-number.txt" />
 		<Unit filename="cmake_build/CMakeCache.txt" />
+		<Unit filename="cmake_build/CMakeFiles/3.15.6/CompilerIdCXX/CMakeCXXCompilerId.cpp" />
+		<Unit filename="cmake_build/CMakeFiles/3.15.6/CompilerIdC/CMakeCCompilerId.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="cmake_build/CMakeFiles/TargetDirectories.txt" />
 		<Unit filename="examples/client.cfg" />
 		<Unit filename="examples/ex_common.c">
@@ -122,6 +126,7 @@
 		<Unit filename="exclude-list.txt" />
 		<Unit filename="include/nilorea.h" />
 		<Unit filename="include/nilorea/n_3d.h" />
+		<Unit filename="include/nilorea/n_allegro5.h" />
 		<Unit filename="include/nilorea/n_anim.h" />
 		<Unit filename="include/nilorea/n_common.h" />
 		<Unit filename="include/nilorea/n_config_file.h" />
@@ -153,6 +158,9 @@
 		<Unit filename="mainpage.dox" />
 		<Unit filename="make_linux.sh" />
 		<Unit filename="src/n_3d.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/n_allegro5.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/n_anim.c">
