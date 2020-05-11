@@ -22,15 +22,10 @@ extern "C"
 #include "n_list.h"
 #include "n_hash.h"
 
-
-#ifndef NO_NETMSG_API
-#include "n_3d.h"
-#endif // NO_NETMSG_API
-
-
 #define NETWORK_IPALL 0
 #define NETWORK_IPV4  1
 #define NETWORK_IPV6  2
+
 
 /*! WINDOWS ONLY call at program exit. Unload WSA DLL and call cleanups, no effect on other OS */
 #define netw_unload() netw_init_wsa( 0 , 2 , 2 )
@@ -303,7 +298,7 @@ typedef struct NETWORK
     /*!mutex for threaded access of state event */
     pthread_mutex_t eventbolt;
     /*! block sending func */
-        sem_t send_blocker ;
+    sem_t send_blocker ;
 
     /*! pointers to network pools if members of any */
     LIST *pools ;
@@ -395,22 +390,13 @@ NETWORK_POOL *netw_new_pool( int nb_min_element );
 /* destroy pool */
 int netw_destroy_pool( NETWORK_POOL **netw_pool );
 /* add network to pool */
-int netw_pool_add( NETWORK_POOL *netw_pool , NETWORK *netw );
+int netw_pool_add( NETWORK_POOL *netw_pool, NETWORK *netw );
 /* add network to pool */
-int netw_pool_remove( NETWORK_POOL *netw_pool , NETWORK *netw );
+int netw_pool_remove( NETWORK_POOL *netw_pool, NETWORK *netw );
 /* add message to pool */
-int netw_pool_broadcast( NETWORK_POOL *netw_pool , NETWORK *from , N_STR *net_msg );
-/* get type of message without unpacking it */
-int netw_msg_get_type( N_STR *msg );
-int netw_get_ident( N_STR *msg, int *type , int *ident , N_STR **name , N_STR **passwd );
-int netw_get_position( N_STR *msg , int *id , double *X, double *Y, double *vx, double *vy, double *acc_x, double *acc_y, int *time_stamp );
-int netw_get_string( N_STR *msg, int *id, N_STR **name, N_STR **chan, N_STR **txt, int *color );
-int netw_get_ping( N_STR *msg, int *type, int *from, int *to, int *time );
-int netw_send_ident( NETWORK *netw, int type, int id, N_STR *name, N_STR *passwd  );
-int netw_send_position( NETWORK *netw, int id, double X, double Y, double vx, double vy, double acc_x, double acc_y, int time_stamp );
-int netw_send_string_to_all( NETWORK *netw, int id, char *name, char *chan, char *txt, int color );
-int netw_send_string_to( NETWORK *netw, int id_from, int id_to, char *name, char *txt, int color );
-int netw_send_ping( NETWORK *netw, int type, int id_from, int id_to, int time );
+int netw_pool_broadcast( NETWORK_POOL *netw_pool, NETWORK *from, N_STR *net_msg );
+/* close pool */
+void netw_pool_netw_close( void *netw_ptr );
 
 /**
 @}

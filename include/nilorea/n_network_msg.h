@@ -6,7 +6,6 @@
  *\date 10/05/2005
  */
 #ifndef N_NETWORK_MESSAGES
-
 #define N_NETWORK_MESSAGES
 
 #ifdef __cplusplus
@@ -24,26 +23,6 @@ extern "C"
 #include "n_str.h"
 #include "n_list.h"
 
-/*! Network Message is identification request: (int)type , (int)id , (N_STR *)name , (N_STR *)password */
-#define NETMSG_IDENT_REQUEST 0
-/*! Network Message is identification reply OK : (int)type , (int)id , (N_STR *)name , (N_STR *)password */
-#define NETMSG_IDENT_REPLY_OK 1
-/*! Network Message is identification reply NON OK: (int)type , (int)id , (N_STR *)name , (N_STR *)password */
-#define NETMSG_IDENT_REPLY_NOK 2
-/*! Network Message is string: (int)type , (int)id , (N_STR *)name , (N_STR *)chan , (N_STR *)text , (int)color */
-#define NETMSG_STRING 3
-/*! Network Message position: (int)type , (int)id , (int)X , (int)Y , (int)x_shift , (int)y_shift ,(int)vx ,(int)vy , (int)speed , (int)acceleration , (int)time_stamp */
-#define NETMSG_POSITION 4
-/*! Network Message is ping request: (int)type , (int)id_from , (int)id_to */
-#define NETMSG_PING_REQUEST 5
-/*! Network Message is ping reply: (int)type , (int)id_from , (int)id_to */
-#define NETMSG_PING_REPLY 6
-/*! Network Message is box retrieve: int x , int y , int z */
-#define NETMSG_GET_BOX 7
-/*! Network Message is box retrieving reply: (int x , int y , int z , N_STR *data ) */
-#define NETMSG_BOX 8
-
-
 /*!network message, array of char and int*/
 typedef struct NETW_MSG
 {
@@ -53,7 +32,7 @@ typedef struct NETW_MSG
     LIST *tabstr;
     /*! array of casted double value */
     LIST *tabflt ;
-} NETW_MSG;
+} NETW_MSG ;
 
 /* swap bytes */
 double double_swap( double value );
@@ -90,6 +69,47 @@ int get_str_from_msg( NETW_MSG *msg, char **str );
 N_STR *make_str_from_msg( NETW_MSG *msg );
 /* Make a message from a single string */
 NETW_MSG *make_msg_from_str( N_STR *str );
+
+#ifndef NO_NETMSG_API
+
+#include "n_3d.h"
+
+/*! Network Message is identification request: (int)type , (int)id , (N_STR *)name , (N_STR *)password */
+#define NETMSG_IDENT_REQUEST 0
+/*! Network Message is identification reply OK : (int)type , (int)id , (N_STR *)name , (N_STR *)password */
+#define NETMSG_IDENT_REPLY_OK 1
+/*! Network Message is identification reply NON OK: (int)type , (int)id , (N_STR *)name , (N_STR *)password */
+#define NETMSG_IDENT_REPLY_NOK 2
+/*! Network Message is string: (int)type , (int)id , (N_STR *)name , (N_STR *)chan , (N_STR *)text , (int)color */
+#define NETMSG_STRING 3
+/*! Network Message position: (int)type , (int)id , (int)X , (int)Y , (int)x_shift , (int)y_shift ,(int)vx ,(int)vy , (int)speed , (int)acceleration , (int)time_stamp */
+#define NETMSG_POSITION 4
+/*! Network Message is ping request: (int)type , (int)id_from , (int)id_to */
+#define NETMSG_PING_REQUEST 5
+/*! Network Message is ping reply: (int)type , (int)id_from , (int)id_to */
+#define NETMSG_PING_REPLY 6
+/*! Network Message is box retrieve: int x , int y , int z */
+#define NETMSG_GET_BOX 7
+/*! Network Message is box retrieving reply: (int x , int y , int z , N_STR *data ) */
+#define NETMSG_BOX 8
+/*! Network asking for exit */
+#define NETMSG_QUIT 9
+
+/* get type of message without unpacking it */
+int netw_msg_get_type( N_STR *msg );
+int netw_get_ident( N_STR *msg, int *type, int *ident, N_STR **name, N_STR **passwd );
+int netw_get_position( N_STR *msg, int *id, double *X, double *Y, double *vx, double *vy, double *acc_x, double *acc_y, int *time_stamp );
+int netw_get_string( N_STR *msg, int *id, N_STR **name, N_STR **chan, N_STR **txt, int *color );
+int netw_get_ping( N_STR *msg, int *type, int *from, int *to, int *time );
+int netw_get_quit( N_STR *msg );
+int netw_send_ident( NETWORK *netw, int type, int id, N_STR *name, N_STR *passwd  );
+int netw_send_position( NETWORK *netw, int id, double X, double Y, double vx, double vy, double acc_x, double acc_y, int time_stamp );
+int netw_send_string_to_all( NETWORK *netw, int id, char *name, char *chan, char *txt, int color );
+int netw_send_string_to( NETWORK *netw, int id_from, int id_to, char *name, char *txt, int color );
+int netw_send_ping( NETWORK *netw, int type, int id_from, int id_to, int time );
+int netw_send_quit( NETWORK *netw );
+
+#endif
 
 /**
 @}
