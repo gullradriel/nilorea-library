@@ -20,13 +20,7 @@ extern "C"
 
 #include "n_common.h"
 #include "n_log.h"
-
-#ifndef GFX_DIRECTX
-#define GFX_DIRECTX GFX_AUTODETECT
-#endif
-#ifndef GFX_DIRECTX_WIN
-#define GFX_DIRECTX_WIN GFX_AUTODETECT_WINDOWED
-#endif
+#include "n_time.h"
 
 /*! full use of CPU */
 #define CPU_USE_FULL -1
@@ -85,8 +79,6 @@ typedef struct GAME_ENV
         /*! left attack trigger */
         right_attack_pos ;
 
-    /*! screen buffer */
-    BITMAP *scrbuf ;
     /*! TIMER */
     N_TIME game_timer;
 

@@ -13,7 +13,7 @@ CC=gcc
 EXT=
 VPATH=src
 CFLAGS=
-SRC= n_common.c n_config_file.c n_debug_mem.c n_exceptions.c n_file.c n_debug_mem.c n_hash.c n_list.c n_log.c n_network.c n_network_msg.c  n_nodup_log.c n_pcre.c n_stack.c n_str.c n_thread_pool.c n_time.c n_zlib.c
+SRC= n_common.c n_config_file.c n_debug_mem.c n_exceptions.c n_file.c n_debug_mem.c n_hash.c n_list.c n_log.c n_network.c n_network_msg.c  n_nodup_log.c n_pcre.c n_stack.c n_str.c n_thread_pool.c n_time.c n_zlib.c n_user.c
 EXP= n_neural_networks.c
 ifeq ($(HAVE_ALLEGRO),1)
 SRC+= n_3d.c n_anim.c n_gui.c n_particles.c n_resources.c
@@ -66,7 +66,7 @@ else
 	RM=rm -f
 	CC=gcc
 	EXT=.a
-	SRC= n_common.c n_log.c n_exceptions.c n_str.c n_list.c n_hash.c n_time.c n_thread_pool.c n_network.c n_network_msg.c n_signals.c
+	#SRC= n_common.c n_log.c n_exceptions.c n_str.c n_list.c n_hash.c n_time.c n_thread_pool.c n_network.c n_network_msg.c n_signals.c
 	HDR=$(SRC:%.c=%.h) nilorea.h
 	OBJECTS=$(SRC:%.c=obj/%.o)
 

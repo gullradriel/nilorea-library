@@ -73,7 +73,7 @@ typedef struct LIST
       n_log( LOG_ERR , "Error in list_foreach, %s is NULL" , #__LIST_ ); \
    } \
    else \
-   for( LIST_NODE *__ITEM_ = __LIST_ -> start ; __ITEM_ != NULL; __ITEM_ = __ITEM_ -> next )
+   for( LIST_NODE *__ITEM_ = __LIST_ -> start ; __ITEM_ ; __ITEM_ = __ITEM_ -> next )
 
 /*! Pop macro helper for void pointer casting */
 #define list_pop( __LIST_ , __TYPE_ ) ( __TYPE_ *)list_pop_f( __LIST_ )

@@ -43,6 +43,9 @@ extern "C" {
 #define BIG_CONSTANT(x) (x##LLU)
 #endif /* if defined MSVC ... */
 
+
+
+
 /*! value of integral type inside the hash node */
 #define HASH_INT       0
 /*! value of double type inside the hash node */
@@ -53,6 +56,10 @@ extern "C" {
 #define HASH_PTR       3
 /*! value of unknow type inside the hash node */
 #define HASH_UNKNOWN    4
+/*! value of string key type inside the hash node */
+#define HASH_KEY_NUM 5
+/*! value of string key type inside the hash node */
+#define HASH_KEY_STRING 6
 
 
 /*! union of the value of a node */
@@ -72,8 +79,12 @@ union HASH_VALUE
 /*! structure of a hash table node */
 typedef struct HASH_NODE
 {
-    /*! key of the node */
+    /*! string key of the node if any, else NULL */
     char *key ;
+    /*! numeric key of the node if any, else < 0 */
+    unsigned long int hash_value ;
+    /*! type of the key */
+    int key_type ;
     /*! type of the node */
     int type ;
     /*! data inside the node */
@@ -138,6 +149,8 @@ int ht_put_int( HASH_TABLE *table, char * key, int    val );
 int ht_put_double( HASH_TABLE *table, char * key, double val );
 /* put a a pointer */
 int ht_put_ptr( HASH_TABLE *table, char * key, void  *val, void (*destructor)( void *ptr ) );
+/* put a a pointer, provided numerical hashed value */
+int ht_put_ptr_ex( HASH_TABLE *table, unsigned long int hash_value, void  *val, void (*destructor)( void *ptr ) );
 /* put an char *string */
 int ht_put_string( HASH_TABLE *table, char * key, char  *val );
 
@@ -149,11 +162,15 @@ int ht_get_int( HASH_TABLE *table, char * key, int *val );
 int ht_get_double( HASH_TABLE *table, char * key, double *val );
 /* get a pointer from a key's node */
 int ht_get_ptr( HASH_TABLE *table, char * key, void  **val );
+/* get a pointer from a key's node, provided numerical hashed value */
+int ht_get_ptr_ex( HASH_TABLE *table, unsigned long int hash_value, void  **val );
 /* get a char *string from a key's node */
 int ht_get_string( HASH_TABLE *table, char * key, char  **val );
 
 /* remove given's key node from the table */
 int ht_remove( HASH_TABLE *table, char *key );
+/* remove given's hash_value from the table */
+int ht_remove_ex( HASH_TABLE *table, unsigned long int hash_value );
 /* empty a hash table. char *strings are also freed */
 int empty_ht( HASH_TABLE *table );
 /* destroy a hash table*/

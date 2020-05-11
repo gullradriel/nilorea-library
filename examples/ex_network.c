@@ -230,7 +230,7 @@ int main(int argc, char **argv)
                 int error = 0 ;
                 int pthread_error = 0 ;
                 errno = 0 ;
-                pthread_error = pthread_create ( &netw_thr, NULL, manage_client, (void *)netw );
+                pthread_error = pthread_create ( &netw_thr, NULL, &manage_client, (void *)netw );
                 error = errno ;
                 if( pthread_error != 0 )
                 {
@@ -266,7 +266,7 @@ int main(int argc, char **argv)
             refresh_thread_pool( thread_pool );
         }
 
-	sleep( 3 ) ;
+        sleep( 3 ) ;
         n_log( LOG_NOTICE, "Waiting thread_pool..." );
         wait_for_threaded_pool( thread_pool, 500000 );
         n_log( LOG_NOTICE, "Destroying thread_pool..." );

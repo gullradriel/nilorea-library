@@ -20,12 +20,14 @@ extern "C"
 #include "n_common.h"
 #include "n_str.h"
 #include "n_list.h"
+#include "n_hash.h"
 
 #define NETWORK_IPALL 0
 #define NETWORK_IPV4  1
 #define NETWORK_IPV6  2
 
-/*! WINDOWS ONLY call at program exit. Unload WSA DLL and call cleanups, no efect on other os */
+
+/*! WINDOWS ONLY call at program exit. Unload WSA DLL and call cleanups, no effect on other OS */
 #define netw_unload() netw_init_wsa( 0 , 2 , 2 )
 
 #if defined( __linux__ ) || defined( __sun ) || defined( _AIX )
@@ -49,6 +51,7 @@ extern "C"
 #include <linux/sockios.h>
 #endif
 
+void netw_sigchld_handler( int sig );
 
 #ifndef MSG_NOSIGNAL
 #define MSG_NOSIGNAL 0
@@ -297,8 +300,26 @@ typedef struct NETWORK
     /*! block sending func */
     sem_t send_blocker ;
 
+    /*! pointers to network pools if members of any */
+    LIST *pools ;
+
 
 } NETWORK;
+
+
+
+/*! structure of a network pool */
+typedef struct NETWORK_POOL
+{
+    /*! table of clients */
+    HASH_TABLE *pool ;
+
+    /*! thread safety */
+    pthread_rwlock_t rwlock ;
+
+} NETWORK_POOL ;
+
+
 
 #ifdef HAVE_OPENSSL
 /* set the certificat and private key file to use */
@@ -364,6 +385,18 @@ int send_php( SOCKET s, int _code, char *buf, int n );
 int recv_php( SOCKET s, int *_code, char **buf );
 /* get queue status */
 int netw_get_queue_status( NETWORK *netw, int *nb_to_send, int *nb_to_read );
+/* init pools */
+NETWORK_POOL *netw_new_pool( int nb_min_element );
+/* destroy pool */
+int netw_destroy_pool( NETWORK_POOL **netw_pool );
+/* add network to pool */
+int netw_pool_add( NETWORK_POOL *netw_pool, NETWORK *netw );
+/* add network to pool */
+int netw_pool_remove( NETWORK_POOL *netw_pool, NETWORK *netw );
+/* add message to pool */
+int netw_pool_broadcast( NETWORK_POOL *netw_pool, NETWORK *from, N_STR *net_msg );
+/* close pool */
+void netw_pool_netw_close( void *netw_ptr );
 
 /**
 @}

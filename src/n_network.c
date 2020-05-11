@@ -5,10 +5,6 @@
  *\date 10/05/2005
  */
 
-
-#include "nilorea/n_network.h"
-#include "nilorea/n_log.h"
-
 #include <errno.h>
 #include <limits.h>
 #include <pthread.h>
@@ -18,6 +14,11 @@
 #include <string.h>
 #endif
 #include <sys/types.h>
+
+#include "nilorea/n_network.h"
+#include "nilorea/n_network_msg.h"
+#include "nilorea/n_log.h"
+#include "nilorea/n_hash.h"
 
 #ifdef __windows__
 
@@ -581,6 +582,9 @@ const char *xdigits :
 
 #else /* ifdef __windows__ */
 
+#include <sys/types.h>
+#include <sys/wait.h>
+
 /*! Keep it compatible with bsd like */
 #define neterrno errno
 /*! BSD style errno string NO WORKING ON REDHAT */
@@ -600,6 +604,15 @@ const char *xdigits :
 		errmsg = strdup( strerror( code ) ); \
 		errmsg ; \
 		})
+
+void netw_sigchld_handler( int sig )
+{
+    // waitpid() might overwrite errno, so we save and restore it:
+    int saved_errno = errno;
+    while(waitpid(-1, NULL, WNOHANG) > 0);
+    errno = saved_errno;
+    n_log( LOG_DEBUG, "Signal %d", sig );
+}
 
 #endif /* ifndef windows */
 
@@ -675,6 +688,13 @@ NETWORK *netw_new( int send_list_limit, int recv_list_limit )
     if( !netw -> send_buf )
     {
         n_log( LOG_ERR, "Error when creating send list with %d item limit", send_list_limit );
+        netw_close( &netw );
+        return NULL ;
+    }
+    netw -> pools = new_generic_list( -1 );
+    if( !netw -> pools )
+    {
+        n_log( LOG_ERR, "Error when creating pools list" );
         netw_close( &netw );
         return NULL ;
     }
@@ -827,7 +847,8 @@ int netw_set_blocking( NETWORK *netw, unsigned long int is_blocking )
         return FALSE ;
     }
 #else
-    int res = ioctlsocket( netw -> link . sock, FIONBIO, &is_blocking );
+    unsigned long int blocking = 1 - is_blocking ;
+    int res = ioctlsocket( netw -> link . sock, FIONBIO, &blocking );
     error = neterrno ;
     if( res != 0 )
     {
@@ -837,7 +858,6 @@ int netw_set_blocking( NETWORK *netw, unsigned long int is_blocking )
         netw_close( &netw );
         return FALSE ;
     }
-    netw -> link. is_blocking = is_blocking ;
 #endif
     netw -> link. is_blocking = is_blocking ;
     return TRUE ;
@@ -1469,6 +1489,14 @@ int netw_close( NETWORK **netw )
     int state = 0, thr_engine_status = 0 ;
     __n_assert( (*netw), return FALSE );
 
+    list_foreach( node, (*netw) -> pools )
+    {
+        NETWORK_POOL *pool = (NETWORK_POOL *)node -> ptr ;
+        netw_pool_remove( pool, (*netw) );
+    }
+
+    list_destroy( &(*netw) -> pools );
+
     netw_get_state( (*netw), &state, &thr_engine_status );
     if( thr_engine_status == NETW_THR_ENGINE_STARTED )
     {
@@ -1785,7 +1813,7 @@ NETWORK *netw_accept_from_ex( NETWORK *from, int disable_naggle, int sock_send_b
         }
         if( FD_ISSET(  from -> link . sock, &accept_set ) )
         {
-            /* n_log( LOG_DEBUG, "select accept call on %d", from -> link . sock ); */
+            //n_log( LOG_DEBUG, "select accept call on %d", from -> link . sock );
             tmp = accept( from -> link . sock, (struct sockaddr * )&netw -> link . raddr, &sin_size );
             if ( tmp < 0 )
             {
@@ -1804,10 +1832,11 @@ NETWORK *netw_accept_from_ex( NETWORK *from, int disable_naggle, int sock_send_b
             netw_close( &netw );
             return NULL;
         }
+        netw -> link . is_blocking = 1 ;
     }
     else if( non_blocking == -1 )
     {
-        /* n_log( LOG_DEBUG, "non blocking accept call on %d", from -> link . sock ); */
+        //n_log( LOG_DEBUG, "non blocking accept call on %d", from -> link . sock );
 
         if( from -> link . is_blocking  == 1 )
             netw_set_blocking( from, 0 );
@@ -1823,11 +1852,13 @@ NETWORK *netw_accept_from_ex( NETWORK *from, int disable_naggle, int sock_send_b
             netw_close( &netw );
             return NULL;
         }
+        netw -> link . is_blocking = 0 ;
     }
     else
     {
-        /* n_log( LOG_DEBUG, "blocking accept call on %d", from -> link . sock ); */
-        netw_set_blocking( from, 1 );
+        if( from -> link . is_blocking  == 0 )
+            netw_set_blocking( from, 1 );
+        //n_log( LOG_DEBUG, "blocking accept call on %d", from -> link . sock );
         tmp = accept( from -> link . sock, (struct sockaddr *)&netw -> link . raddr, &sin_size );
         if ( tmp < 0 )
         {
@@ -1838,7 +1869,9 @@ NETWORK *netw_accept_from_ex( NETWORK *from, int disable_naggle, int sock_send_b
             netw_close( &netw );
             return NULL;
         }
+        netw -> link . is_blocking = 1 ;
     }
+
     netw -> link . sock = tmp ;
 
     netw -> link . port = strdup( from -> link . port );
@@ -1859,7 +1892,7 @@ NETWORK *netw_accept_from_ex( NETWORK *from, int disable_naggle, int sock_send_b
         netw_setsockopt( netw, SO_RCVBUF, sock_recv_buf );
 
     netw_set( netw, NETW_SERVER|NETW_RUN|NETW_THR_ENGINE_STOPPED );
-
+    netw_set_blocking( netw, 1 );
     n_log( LOG_DEBUG, "Connection accepted from %s:%s", netw-> link . ip, netw -> link . port );
 
     return netw;
@@ -2116,80 +2149,86 @@ void *netw_send_func( void *NET )
 
         /* do not consume cpu for nothing, reduce delay */
         sem_wait( &netw -> send_blocker );
-
-        netw_get_state( netw, &state, NULL );
-        if( state&NETW_ERROR )
+        int message_sent = 0 ;
+        while( message_sent == 0 && !DONE )
         {
-            DONE = 666 ;
-        }
-        else if( state&NETW_EXITED )
-        {
-            DONE = 100 ;
-        }
-        else if( state&NETW_EXIT_ASKED )
-        {
-            DONE = 100 ;
-            /* sending state */
-            nboctet = htonl( NETW_EXIT_ASKED );
-            memcpy( nboct, &nboctet, sizeof( NSTRBYTE ) );
-            n_log( LOG_DEBUG, "%d Sending Quit !", netw -> link . sock );
-            net_status = netw->send_data( netw -> link . sock, nboct, sizeof( NSTRBYTE ) );
-            if( net_status < 0 )
-                DONE = 4 ;
-            n_log( LOG_DEBUG, "%d Quit sent!", netw -> link . sock );
-        }
-        else
-        {
-            if( !(state&NETW_PAUSE) )
+            netw_get_state( netw, &state, NULL );
+            if( state&NETW_ERROR )
             {
-                pthread_mutex_lock( &netw -> sendbolt );
-                ptr = list_shift( netw -> send_buf, N_STR ) ;
-                pthread_mutex_unlock( &netw -> sendbolt );
-                if( ptr && ptr -> length > 0 && ptr -> data )
-                {
-                    n_log( LOG_DEBUG, "Sending ptr size %d written %d", ptr -> length, ptr -> written );
-
-                    /* sending state */
-                    nboctet = htonl( state );
-                    memcpy( nboct, &nboctet, sizeof( NSTRBYTE ) );
-                    /* sending state */
-                    if ( !DONE )
-                    {
-                        net_status = netw->send_data( netw -> link . sock, nboct, sizeof( NSTRBYTE ) );
-                        if( net_status < 0 )
-                            DONE = 1 ;
-                    }
-                    if( !DONE )
-                    {
-                        /* sending number of octet */
-                        nboctet = htonl( ptr -> written );
-                        memcpy( nboct, &nboctet, sizeof( NSTRBYTE ) );
-                        /* sending the number of octet to receive on next message */
-                        net_status = netw->send_data( netw -> link . sock, nboct, sizeof( NSTRBYTE ) );
-                        if( net_status < 0 )
-                            DONE = 2 ;
-                    }
-                    /* sending the data itself */
-                    if ( !DONE )
-                    {
-                        net_status = netw->send_data( netw -> link . sock, ptr -> data, ptr -> written );
-                        if( net_status < 0 )
-                            DONE = 3 ;
-                    }
-                    free_nstr( &ptr );
-                    u_sleep(  netw -> send_queue_consecutive_wait );
-                }
-                /*
-                   else
-                   {
-                   u_sleep( netw -> send_queue_wait );
-                   }
-                   */
+                DONE = 666 ;
             }
-            /* Network PAUSED */
-            /*{
-              u_sleep( netw -> pause_wait );
-              }*/
+            else if( state&NETW_EXITED )
+            {
+                DONE = 100 ;
+            }
+            else if( state&NETW_EXIT_ASKED )
+            {
+                DONE = 100 ;
+                /* sending state */
+                nboctet = htonl( NETW_EXIT_ASKED );
+                memcpy( nboct, &nboctet, sizeof( NSTRBYTE ) );
+                n_log( LOG_DEBUG, "%d Sending Quit !", netw -> link . sock );
+                net_status = netw->send_data( netw -> link . sock, nboct, sizeof( NSTRBYTE ) );
+                if( net_status < 0 )
+                    DONE = 4 ;
+                n_log( LOG_DEBUG, "%d Quit sent!", netw -> link . sock );
+            }
+            else
+            {
+                if( !(state&NETW_PAUSE) )
+                {
+                    pthread_mutex_lock( &netw -> sendbolt );
+                    ptr = list_shift( netw -> send_buf, N_STR ) ;
+                    pthread_mutex_unlock( &netw -> sendbolt );
+                    if( ptr && ptr -> length > 0 && ptr -> data )
+                    {
+                        n_log( LOG_DEBUG, "Sending ptr size %d written %d", ptr -> length, ptr -> written );
+
+                        /* sending state */
+                        nboctet = htonl( state );
+                        memcpy( nboct, &nboctet, sizeof( NSTRBYTE ) );
+                        /* sending state */
+                        if ( !DONE )
+                        {
+                            net_status = netw->send_data( netw -> link . sock, nboct, sizeof( NSTRBYTE ) );
+                            if( net_status < 0 )
+                                DONE = 1 ;
+                        }
+                        if( !DONE )
+                        {
+                            /* sending number of octet */
+                            nboctet = htonl( ptr -> written );
+                            memcpy( nboct, &nboctet, sizeof( NSTRBYTE ) );
+                            /* sending the number of octet to receive on next message */
+                            net_status = netw->send_data( netw -> link . sock, nboct, sizeof( NSTRBYTE ) );
+                            if( net_status < 0 )
+                                DONE = 2 ;
+                        }
+                        /* sending the data itself */
+                        if ( !DONE )
+                        {
+                            net_status = netw->send_data( netw -> link . sock, ptr -> data, ptr -> written );
+                            if( net_status < 0 )
+                                DONE = 3 ;
+                        }
+                        free_nstr( &ptr );
+                        //u_sleep(  netw -> send_queue_consecutive_wait );
+                        message_sent = 1 ;
+                    }
+                    /*
+                       else
+                       {
+                       u_sleep( netw -> send_queue_wait );
+                       }
+                       */
+                }
+                /* Network PAUSED */
+                /*{
+                  u_sleep( netw -> pause_wait );
+                  }*/
+            }
+            if( message_sent == 0 )
+                usleep( 1000 );
         }
     }
     while( !DONE );
@@ -2316,6 +2355,7 @@ void *netw_recv_func( void *NET )
                                     if( !DONE && list_push( netw -> recv_buf, recvdmsg, free_nstr_ptr ) == FALSE )
                                         DONE = 4 ;
                                     pthread_mutex_unlock( &netw -> recvbolt );
+                                    n_log( LOG_DEBUG,  "%d octets received !", nboctet );
                                 } /* recv data */
                             } /* recv nb octet*/
                         } /* exit asked */
@@ -2368,7 +2408,7 @@ void *netw_recv_func( void *NET )
  */
 int netw_stop_thr_engine( NETWORK *netw )
 {
-    __n_assert( netw ,  return FALSE );
+    __n_assert( netw,  return FALSE );
     int state = 0, thr_engine_status = 0 ;
 
     n_log( LOG_DEBUG,  "Network %d stop threads event", netw -> link . sock );
@@ -2726,6 +2766,7 @@ int recv_php( SOCKET s, int *_code, char **buf )
 } /*recv_php(...)*/
 
 
+
 /*!\fn int netw_get_queue_status( NETWORK *netw, int *nb_to_send, int *nb_to_read )
  *
  *\brief retrieve network send queue status
@@ -2749,3 +2790,150 @@ int netw_get_queue_status( NETWORK *netw, int *nb_to_send, int *nb_to_read )
     return TRUE ;
 } /* get queue states */
 
+
+
+/*!\fn NETWORK_POOL *netw_new_pool( int nb_min_element )
+ *
+ *\brief return a new network pool of nb_min_element
+ *\return a new NETWORK_POOL or NULL
+ */
+NETWORK_POOL *netw_new_pool( int nb_min_element )
+{
+    NETWORK_POOL *netw_pool = NULL ;
+
+    Malloc( netw_pool, NETWORK_POOL, 1 );
+    __n_assert( netw_pool, return NULL );
+
+    netw_pool -> pool = new_ht( nb_min_element );
+    __n_assert( netw_pool -> pool, Free( netw_pool ) ; return NULL );
+
+    init_lock( netw_pool -> rwlock );
+
+    return netw_pool ;
+} /* netw_new_pool() */
+
+
+
+/*!\fn int netw_destroy_pool( NETWORK_POOL **netw_pool )
+ *\brief free a network pool
+ *\param the address of a pointer to free
+ *\return TRUE or FALSE
+ */
+int netw_destroy_pool(  NETWORK_POOL **netw_pool )
+{
+    __n_assert( (*netw_pool), return FALSE );
+
+    write_lock( (*netw_pool) -> rwlock );
+    if( (*netw_pool) -> pool )
+        destroy_ht( &(*netw_pool) -> pool );
+    unlock( (*netw_pool) -> rwlock );
+
+    rw_lock_destroy( (*netw_pool) -> rwlock );
+
+    Free( (*netw_pool) );
+
+    return TRUE ;
+} /* netw_destroy_pool() */
+
+
+
+void netw_pool_netw_close( void *netw_ptr )
+{
+    NETWORK *netw = (NETWORK *)netw_ptr ;
+    __n_assert( netw, return );
+    n_log( LOG_DEBUG, "Network pool %p: network id %d still active !!", netw, (long long int)netw -> link . sock );
+    return ;
+}
+
+
+
+/* add network to pool */
+int netw_pool_add( NETWORK_POOL *netw_pool, NETWORK *netw )
+{
+    __n_assert( netw_pool, return FALSE );
+    __n_assert( netw, return FALSE );
+
+    n_log( LOG_DEBUG, "Trying to add %lld to %p", netw_pool, (long long int)netw -> link . sock );
+
+    /* write lock the pool */
+    write_lock( netw_pool -> rwlock );
+    /* test if not already added */
+    N_STR *key = NULL ;
+    nstrprintf( key, "%lld", (long long int)netw -> link . sock );
+    HASH_NODE *node = NULL ;
+    if( ht_get_ptr( netw_pool -> pool, _nstr( key ), (void *)&node ) == TRUE )
+    {
+        n_log( LOG_ERR, "Network id %lld already added !", (long long int)netw -> link . sock );
+        free_nstr( &key );
+        unlock( netw_pool -> rwlock );
+        return FALSE ;
+    }
+    /* add it */
+    int retval = ht_put_ptr( netw_pool -> pool, _nstr( key ), netw, &netw_pool_netw_close );
+    free_nstr( &key );
+    list_push( netw -> pools, netw_pool, NULL );
+
+    /* unlock the pool */
+    unlock( netw_pool -> rwlock );
+
+    return retval ;
+} /* netw_pool_add */
+
+
+
+/* add network to pool */
+int netw_pool_remove( NETWORK_POOL *netw_pool, NETWORK *netw )
+{
+    __n_assert( netw_pool, return FALSE );
+    __n_assert( netw, return FALSE );
+
+    /* write lock the pool */
+    write_lock( netw_pool -> rwlock );
+    /* test if present */
+    N_STR *key = NULL ;
+    nstrprintf( key, "%lld", (long long int)netw -> link . sock );
+    if( ht_remove( netw_pool -> pool, _nstr( key ) ) == TRUE )
+    {
+        LIST_NODE *node = list_search( netw -> pools, netw_pool );
+        if( node )
+        {
+            remove_list_node( netw -> pools, node, NETWORK_POOL );
+        }
+        unlock( netw_pool -> rwlock );
+        n_log( LOG_ERR, "Network id %lld removed !", (long long int)netw -> link . sock );
+
+        return TRUE ;
+    }
+    free_nstr( &key );
+    n_log( LOG_ERR, "Network id %lld already removed !", (long long int)netw -> link . sock );
+    /* unlock the pool */
+    unlock( netw_pool -> rwlock );
+    return FALSE ;
+} /* netw_pool_remove */
+
+
+
+/* add message to pool */
+int netw_pool_broadcast( NETWORK_POOL *netw_pool, NETWORK *from, N_STR *net_msg )
+{
+    __n_assert( netw_pool, return FALSE );
+    __n_assert( net_msg, return FALSE );
+
+    /* write lock the pool */
+    read_lock( netw_pool -> rwlock );
+    ht_foreach( node, netw_pool -> pool )
+    {
+        NETWORK *netw = hash_val( node, NETWORK );
+        if( from )
+        {
+            if( netw -> link . sock != from -> link . sock )
+                netw_add_msg( netw, nstrdup( net_msg ) );
+        }
+        else
+        {
+            netw_add_msg( netw, nstrdup( net_msg ) );
+        }
+    }
+    unlock( netw_pool -> rwlock );
+    return TRUE ;
+} /* netw_pool_broadcast */
