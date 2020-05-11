@@ -582,6 +582,9 @@ const char *xdigits :
 
 #else /* ifdef __windows__ */
 
+#include <sys/types.h>
+#include <sys/wait.h>
+
 /*! Keep it compatible with bsd like */
 #define neterrno errno
 /*! BSD style errno string NO WORKING ON REDHAT */
