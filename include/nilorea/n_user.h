@@ -110,7 +110,7 @@ int add_msg_to_all( N_USER *list, N_STR *msg );
  * Add a message to a specific user
  */
 
-int add_msg_to_user( N_USER *list, int id , N_STR *msg );
+int add_msg_to_user( N_USER *list, int id, N_STR *msg );
 
 
 

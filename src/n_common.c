@@ -335,4 +335,4 @@ pid_t system_nb(const char * command, int * infp, int * outfp)
     return pid;
 } /* system_nb */
 
-#endif
+#endif /* ifndef __windows__ */
