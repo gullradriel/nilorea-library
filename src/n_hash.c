@@ -349,14 +349,14 @@ void ht_node_destroy( void *node )
         {
             node_ptr -> destroy_func( node_ptr  -> data . ptr );
         }
-        /* No action if no free given
+        /* No free by default. must be passed as a destroy_func
            else
            {
            Free( node_ptr  -> data . ptr );
            }
            */
     }
-    Free( node_ptr -> key );
+    FreeNoLog( node_ptr -> key );
     Free( node_ptr )
 } /* ht_node_destroy */
 
@@ -439,7 +439,7 @@ int ht_put_int( HASH_TABLE *table, char * key, int val )
     {
         node_ptr = (HASH_NODE *)list_node -> ptr ;
         /* if we found the same key we just replace the value and return */
-        if( !strcmp( key, node_ptr -> key ) )
+        if( node_ptr -> key_type == HASH_KEY_STRING && !strcmp( key, node_ptr -> key ) )
         {
             /* let's check the key isn't already assigned with another data type */
             if( node_ptr -> type == HASH_INT )
@@ -451,11 +451,12 @@ int ht_put_int( HASH_TABLE *table, char * key, int val )
             return FALSE ; /* key registered with another data type */
         }
     }
-
     Malloc( new_hash_node, HASH_NODE, 1 );
     __n_assert( new_hash_node, n_log( LOG_ERR, "Could not allocate new_hash_node" ); return FALSE );
 
     new_hash_node -> key = strdup( key );
+    new_hash_node -> key_type = HASH_KEY_STRING ;
+    new_hash_node -> hash_value = 0 ;
     new_hash_node -> data. ival = val ;
     new_hash_node -> type = HASH_INT ;
     new_hash_node -> destroy_func = NULL ;
@@ -493,7 +494,7 @@ int ht_put_double( HASH_TABLE *table, char * key, double val )
     {
         node_ptr = (HASH_NODE *)list_node -> ptr ;
         /* if we found the same key we just replace the value and return */
-        if( !strcmp( key, node_ptr -> key ) )
+        if( node_ptr -> key_type == HASH_KEY_STRING && !strcmp( key, node_ptr -> key ) )
         {
             /* let's check the key isn't already assigned with another data type */
             if( node_ptr -> type == HASH_DOUBLE )
@@ -510,6 +511,8 @@ int ht_put_double( HASH_TABLE *table, char * key, double val )
     __n_assert( new_hash_node, n_log( LOG_ERR, "Could not allocate new_hash_node" ); return FALSE );
 
     new_hash_node -> key = strdup( key );
+    new_hash_node -> key_type = HASH_KEY_STRING ;
+    new_hash_node -> hash_value = 0 ;
     new_hash_node -> data. fval = val ;
     new_hash_node -> type = HASH_DOUBLE ;
     new_hash_node -> destroy_func = NULL ;
@@ -524,7 +527,7 @@ int ht_put_double( HASH_TABLE *table, char * key, double val )
 /*!\fn int ht_put_ptr( HASH_TABLE *table , char *key , void  *val , void (*destructor)(void *ptr ) )
  *\brief put a pointer value with given key in the targeted hash table
  *\param table Targeted hash table
- *\param key Size Associated value's key
+ *\param key Associated value's key
  *\param val pointer value to put
  *\param destructor Pointer to the ptr type destructor function. Leave to NULL if there isn't
  *\return TRUE or FALSE
@@ -532,7 +535,7 @@ int ht_put_double( HASH_TABLE *table, char * key, double val )
 int ht_put_ptr( HASH_TABLE *table, char *key, void  *val, void (*destructor)(void *ptr ) )
 {
     uint32_t hash_value = 0 ;
-    unsigned int index = 0;
+    unsigned long int index = 0;
 
     HASH_NODE *new_hash_node = NULL ;
     HASH_NODE *node_ptr = NULL ;
@@ -548,7 +551,7 @@ int ht_put_ptr( HASH_TABLE *table, char *key, void  *val, void (*destructor)(voi
     {
         node_ptr = (HASH_NODE *)list_node -> ptr ;
         /* if we found the same key we just replace the value and return */
-        if( !strcmp( key, node_ptr -> key ) )
+        if( node_ptr -> key_type == HASH_KEY_STRING && !strcmp( key, node_ptr -> key ) )
         {
             /* let's check the key isn't already assigned with another data type */
             if( node_ptr -> type == HASH_PTR )
@@ -570,6 +573,66 @@ int ht_put_ptr( HASH_TABLE *table, char *key, void  *val, void (*destructor)(voi
     __n_assert( new_hash_node, n_log( LOG_ERR, "Could not allocate new_hash_node" ); return FALSE );
 
     new_hash_node -> key = strdup( key );
+    new_hash_node -> key_type = HASH_KEY_STRING ;
+    new_hash_node -> hash_value = 0 ;
+    new_hash_node -> data . ptr = val ;
+    new_hash_node -> type = HASH_PTR ;
+    new_hash_node -> destroy_func = destructor ;
+
+    table -> nb_keys ++ ;
+
+    return list_push( table -> hash_table[ index ], new_hash_node, &ht_node_destroy );
+}/* ht_put_ptr() */
+
+
+/*!\fn int ht_put_ptr_ex( HASH_TABLE *table, unsigned long int hash_value , void  *val, void (*destructor)( void *ptr ) )
+ *\brief put a pointer value with given key in the targeted hash table
+ *\param table Targeted hash table
+ *\param hash_value numerical hash key
+ *\param val pointer value to put
+ *\param destructor Pointer to the ptr type destructor function. Leave to NULL if there isn't
+ *\return TRUE or FALSE
+ */
+int ht_put_ptr_ex( HASH_TABLE *table, unsigned long int hash_value, void  *val, void (*destructor)( void *ptr ) )
+{
+    unsigned long int index = 0;
+
+    HASH_NODE *new_hash_node = NULL ;
+    HASH_NODE *node_ptr = NULL ;
+
+    __n_assert( table, return FALSE );
+
+    index = (hash_value)%(table->size) ;
+
+    /* we have some nodes here. Let's check if the key already exists */
+    list_foreach( list_node, table -> hash_table[ index ] )
+    {
+        node_ptr = (HASH_NODE *)list_node -> ptr ;
+        /* if we found the same key we just replace the value and return */
+        if( node_ptr -> key_type == HASH_KEY_NUM && hash_value == node_ptr -> hash_value )
+        {
+            /* let's check the key isn't already assigned with another data type */
+            if( node_ptr -> type == HASH_PTR )
+            {
+                if( list_node -> destroy_func )
+                {
+                    list_node -> destroy_func( node_ptr -> data . ptr );
+                    node_ptr -> data . ptr = val ;
+                    list_node -> destroy_func = destructor ;
+                }
+                return TRUE ;
+            }
+            n_log( LOG_ERR, "Can't add key[\"%s\"] with type HASH_PTR , key already exist with type %s", node_ptr -> key, ht_node_type( node_ptr ) );
+            return FALSE ; /* key registered with another data type */
+        }
+    }
+
+    Malloc( new_hash_node, HASH_NODE, 1 );
+    __n_assert( new_hash_node, n_log( LOG_ERR, "Could not allocate new_hash_node" ); return FALSE );
+
+    new_hash_node -> key = NULL ;
+    new_hash_node -> hash_value = hash_value ;
+    new_hash_node -> key_type = HASH_KEY_NUM ;
     new_hash_node -> data . ptr = val ;
     new_hash_node -> type = HASH_PTR ;
     new_hash_node -> destroy_func = destructor ;
@@ -591,7 +654,7 @@ int ht_put_ptr( HASH_TABLE *table, char *key, void  *val, void (*destructor)(voi
 int ht_put_string( HASH_TABLE *table, char *key, char  *val )
 {
     uint32_t hash_value = 0 ;
-    unsigned int index = 0;
+    unsigned long int index = 0;
 
     HASH_NODE *new_hash_node = NULL ;
     HASH_NODE *node_ptr = NULL ;
@@ -607,7 +670,7 @@ int ht_put_string( HASH_TABLE *table, char *key, char  *val )
     {
         node_ptr = (HASH_NODE *)list_node -> ptr ;
         /* if we found the same key we just replace the value and return */
-        if( !strcmp( key, node_ptr -> key ) )
+        if( node_ptr -> key_type == HASH_KEY_STRING && !strcmp( key, node_ptr -> key ) )
         {
             /* let's check the key isn't already assigned with another data type */
             if( node_ptr -> type == HASH_STRING )
@@ -625,6 +688,8 @@ int ht_put_string( HASH_TABLE *table, char *key, char  *val )
     __n_assert( new_hash_node, n_log( LOG_ERR, "Could not allocate new_hash_node" ); return FALSE );
 
     new_hash_node -> key = strdup( key );
+    new_hash_node -> key_type = HASH_KEY_STRING ;
+    new_hash_node -> hash_value = 0 ;
     new_hash_node -> data . string = strdup( val );
     new_hash_node -> type = HASH_STRING ;
     new_hash_node -> destroy_func = NULL ;
@@ -645,7 +710,7 @@ int ht_put_string( HASH_TABLE *table, char *key, char  *val )
 HASH_NODE *ht_get_node( HASH_TABLE *table, char *key )
 {
     uint32_t hash_value = 0 ;
-    unsigned int index = 0;
+    unsigned long int index = 0;
 
     HASH_NODE *node_ptr = NULL ;
 
@@ -663,7 +728,40 @@ HASH_NODE *ht_get_node( HASH_TABLE *table, char *key )
     list_foreach( list_node, table -> hash_table[ index ] )
     {
         node_ptr = (HASH_NODE *)list_node -> ptr ;
-        if( !strcmp( key, node_ptr -> key ) )
+        if( node_ptr -> key_type == HASH_KEY_STRING && !strcmp( key, node_ptr -> key ) )
+        {
+            return node_ptr ;
+        }
+    }
+    return NULL ;
+} /* ht_get_node() */
+
+
+
+/*!\fn HASH_NODE *ht_get_node_ex( HASH_TABLE *table , unsigned long int hash_value )
+ *\brief return the associated key's node inside the hash_table
+ *\param table Targeted hash table
+ *\param hash_value Associated hash_value
+ *\return The found node, or NULL
+ */
+HASH_NODE *ht_get_node_ex( HASH_TABLE *table, unsigned long int hash_value )
+{
+    unsigned long int index = 0;
+
+    HASH_NODE *node_ptr = NULL ;
+
+    __n_assert( table, return NULL );
+
+    index= (hash_value)%(table->size) ;
+    if( !table -> hash_table[ index ] -> start )
+    {
+        return NULL ;
+    }
+
+    list_foreach( list_node, table -> hash_table[ index ] )
+    {
+        node_ptr = (HASH_NODE *)list_node -> ptr ;
+        if( node_ptr -> key_type == HASH_KEY_NUM && hash_value == node_ptr -> hash_value )
         {
             return node_ptr ;
         }
@@ -761,6 +859,34 @@ int ht_get_ptr( HASH_TABLE *table, char * key, void  **val )
 } /* ht_get_ptr() */
 
 
+
+/*!\fn int ht_get_ptr_ex( HASH_TABLE *table, unsigned long int hash_value , void  **val )
+ *\brief Retrieve a pointer value in the hash table, at the given key. Leave val untouched if key is not found.
+ *\param table Targeted hash table
+ *\param key Size Associated value's key
+ *\param val A pointer to an empty pointer store
+ *\return TRUE or FALSE.
+ */
+int ht_get_ptr_ex( HASH_TABLE *table, unsigned long int hash_value, void  **val )
+{
+    __n_assert( table, return FALSE );
+
+    HASH_NODE *node = ht_get_node_ex( table, hash_value );
+    if( !node )
+        return FALSE ;
+
+    if( node -> type != HASH_PTR )
+    {
+        n_log( LOG_ERR, "Can't get key[\"%lld\"] of type HASH_PTR, key is type %s", hash_value, ht_node_type( node ) );
+        return FALSE ;
+    }
+
+    (*val) = node -> data . ptr ;
+
+    return TRUE ;
+} /* ht_get_ptr_ex() */
+
+
 /*!\fn int ht_get_string( HASH_TABLE *table , char *key , char **val )
  *\brief Retrieve a char *string value in the hash table, at the given key. Leave val untouched if key is not found.
  *\param table Targeted hash table
@@ -799,7 +925,7 @@ int ht_get_string( HASH_TABLE *table, char * key, char  **val )
 int ht_remove( HASH_TABLE *table, char *key )
 {
     uint32_t hash_value = 0 ;
-    unsigned int index = 0;
+    unsigned long int index = 0;
 
     HASH_NODE *node_ptr = NULL ;
     LIST_NODE *node_to_kill = NULL ;
@@ -820,7 +946,7 @@ int ht_remove( HASH_TABLE *table, char *key )
     {
         node_ptr = (HASH_NODE *)list_node -> ptr ;
         /* if we found the same */
-        if( !strcmp( key, node_ptr -> key ) )
+        if( node_ptr -> key_type == HASH_KEY_STRING && !strcmp( key, node_ptr -> key ) )
         {
             node_to_kill = list_node ;
             break ;
@@ -838,6 +964,54 @@ int ht_remove( HASH_TABLE *table, char *key )
     n_log( LOG_ERR, "Can't delete key[\"%s\"]: inexisting key", key );
     return FALSE ;
 }/* ht_remove() */
+
+
+
+/*!\fn int ht_remove_ex( HASH_TABLE *table , unsigned long int hash_value )
+ *\brief Remove a key from a hash table
+ *\param table Targeted hash table
+ *\param key Key to remove
+ *\return TRUE or FALSE.
+ */
+int ht_remove_ex( HASH_TABLE *table, unsigned long int hash_value )
+{
+    unsigned long int index = 0;
+
+    HASH_NODE *node_ptr = NULL ;
+    LIST_NODE *node_to_kill = NULL ;
+
+    __n_assert( table, return FALSE );
+
+    index= (hash_value)%(table->size) ;
+    if( !table -> hash_table[ index ] -> start )
+    {
+        n_log( LOG_ERR, "Can't remove key[\"%d\"], table is empty", hash_value );
+        return FALSE ;
+    }
+
+    list_foreach( list_node, table -> hash_table[ index ] )
+    {
+        node_ptr = (HASH_NODE *)list_node -> ptr ;
+        /* if we found the same */
+        if( node_ptr -> key_type == HASH_KEY_NUM && hash_value == node_ptr -> hash_value )
+        {
+            node_to_kill = list_node ;
+            break ;
+        }
+    }
+    if( node_to_kill )
+    {
+        node_ptr = remove_list_node( table -> hash_table[ index ], node_to_kill, HASH_NODE );
+        ht_node_destroy( node_ptr );
+
+        table -> nb_keys -- ;
+
+        return TRUE ;
+    }
+    n_log( LOG_ERR, "Can't delete key[\"%d\"]: inexisting key", hash_value );
+    return FALSE ;
+}/* ht_remove_ex() */
+
 
 
 /*!\fn int empty_ht( HASH_TABLE *table )
