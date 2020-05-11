@@ -77,7 +77,7 @@ echo "#### NETWORK TESTING ####"
 sleep 1
 valgrind_test "ex_network" "-s localhost -p 6666"
 #valgrind_test "ex_gui_particles"  
-valgrind_test "ex_monolith"  
+#valgrind_test "ex_monolith"  
 
 rm $LOCKFILE
 
