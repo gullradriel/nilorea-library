@@ -244,6 +244,7 @@ int main( int argc, char *argv[] )
 
     ALLEGRO_TIMER *fps_timer = NULL ;
     ALLEGRO_TIMER *logic_timer = NULL ;
+    ALLEGRO_TIMER *network_heartbeat_timer = NULL ;
 
     NETWORK *server = NULL ;
     NETWORK_POOL *netw_pool = NULL ;
@@ -330,8 +331,9 @@ int main( int argc, char *argv[] )
         return -1;
     }
 
-    fps_timer = al_create_timer( 1.0/30.0 );
-    logic_timer = al_create_timer( 1.0/50.0 );
+    fps_timer = al_create_timer( 1.0/30.0 );     /* low fps on the server */
+    logic_timer = al_create_timer( 1.0/100.0 );  /* 100 hz == higher logic processing */
+    network_heartbeat_timer = al_create_timer( 1.0/10.0 ); /* frequency of the clients answers */
 
     al_set_new_display_flags( ALLEGRO_OPENGL|ALLEGRO_WINDOWED );
     display = al_create_display( WIDTH, HEIGHT );
@@ -354,21 +356,21 @@ int main( int argc, char *argv[] )
     int key[ 7 ] = {false,false,false,false,false,false,false};
 
     al_register_event_source(event_queue, al_get_display_event_source(display));
-
-    al_start_timer( fps_timer );
-    al_start_timer( logic_timer );
-    al_register_event_source(event_queue, al_get_timer_event_source(fps_timer));
-    al_register_event_source(event_queue, al_get_timer_event_source(logic_timer));
-
     al_register_event_source(event_queue, al_get_keyboard_event_source());
     al_register_event_source(event_queue, al_get_mouse_event_source());
 
-    ALLEGRO_BITMAP *scrbuf = al_create_bitmap( WIDTH, HEIGHT );
+    al_start_timer( fps_timer );
+    al_start_timer( logic_timer );
+    al_start_timer( logic_timer );
+    al_register_event_source(event_queue, al_get_timer_event_source(fps_timer));
+    al_register_event_source(event_queue, al_get_timer_event_source(logic_timer));
+    al_register_event_source(event_queue, al_get_timer_event_source(logic_timer));
 
+    ALLEGRO_BITMAP *scrbuf = al_create_bitmap( WIDTH, HEIGHT );
     al_hide_mouse_cursor(display);
 
     int mx = 0, my = 0, mouse_b1 = 0, mouse_b2 = 0 ;
-    int do_draw = 0, do_logic = 0 ;
+    int do_draw = 0, do_logic = 0, do_network = 0 ;
 
     do
     {
@@ -445,6 +447,10 @@ int main( int argc, char *argv[] )
             {
                 do_logic = 1;
             }
+            else if( al_get_timer_event_source( network_heartbeat_timer ) == ev.any.source )
+            {
+                do_network = 1;
+            }
         }
         else if( ev.type == ALLEGRO_EVENT_MOUSE_AXES )
         {
@@ -467,63 +473,31 @@ int main( int argc, char *argv[] )
         }
 
 
-        /* Processing inputs */
-
-        /* dev mod: right click to temporary delete a block
-           left click to temporary add a block */
-        int mouse_button = -1 ;
-        if( mouse_b1==1 )
-            mouse_button = 1 ;
-        if( mouse_b2==1 )
-            mouse_button = 2 ;
-
-
-        if( key[ KEY_UP ] )
-        {
-        }
-        else
-        {
-        }
-
-
-        if( key[ KEY_DOWN ] )
-        {
-        }
-        else
-        {
-        }
-
-        if( key[ KEY_LEFT ] )
-        {
-        }
-        else
-        {
-        }
-
-
-        if( key[ KEY_RIGHT ] )
-        {
-        }
-        else
-        {
-        }
-
-
-        if( key[KEY_CTRL ] || mouse_button == 1 )
-        {
-
-        }
-        else
-        {
-
-        }
-
         if( do_logic == 1 )
         {
-            if( mouse_button == 1 )
+            if( key[ KEY_UP ] )
             {
-                /* do something with mouse button */
-
+            }
+            else
+            {
+            }
+            if( key[ KEY_DOWN ] )
+            {
+            }
+            else
+            {
+            }
+            if( key[ KEY_LEFT ] )
+            {
+            }
+            else
+            {
+            }
+            if( key[ KEY_RIGHT ] )
+            {
+            }
+            else
+            {
             }
             /* accept new connections */
             NETWORK *netw = NULL ;
@@ -535,6 +509,12 @@ int main( int argc, char *argv[] )
             }
             process_clients( netw_pool );
             do_logic = 0 ;
+        }
+        if( do_network == 1 )
+        {
+            /* process queues and send datas back to clients */
+
+            do_network == 0 ;
         }
 
         if( do_draw == 1 )
