@@ -95,19 +95,26 @@ NETW_MSG *make_msg_from_str( N_STR *str );
 /*! Network asking for exit */
 #define NETMSG_QUIT 9
 
-/* get type of message without unpacking it */
+N_STR *netmsg_make_ping( int type, int id_from, int id_to, int time );
+N_STR *netmsg_make_ident( int type, int id, N_STR *name, N_STR *passwd );
+N_STR *netmsg_make_position_msg( int id , double X , double Y , double vx , double vy , double acc_x , double acc_y , int time_stamp );
+N_STR *netmsg_make_string_msg( int id_from, int id_to, N_STR *name, N_STR *chan, N_STR *txt, int color );
+N_STR *netmsg_make_quit_msg( void );
+
+int netw_send_ping( NETWORK *netw, int type, int id_from, int id_to, int time );
+int netw_send_ident( NETWORK *netw, int type, int id, N_STR *name, N_STR *passwd  );
+int netw_send_position( NETWORK *netw , int id, double X, double Y, double vx, double vy, double acc_x, double acc_y, int time_stamp );
+int netw_send_string_to( NETWORK *netw , int id_to , N_STR *name , N_STR *chan , N_STR *txt , int color );
+int netw_send_string_all( NETWORK *netw , char *name, N_STR *chan , N_STR *N_STR, int color );
+int netw_send_quit( NETWORK *netw );
+
 int netw_msg_get_type( N_STR *msg );
+
 int netw_get_ident( N_STR *msg, int *type, int *ident, N_STR **name, N_STR **passwd );
 int netw_get_position( N_STR *msg, int *id, double *X, double *Y, double *vx, double *vy, double *acc_x, double *acc_y, int *time_stamp );
 int netw_get_string( N_STR *msg, int *id, N_STR **name, N_STR **chan, N_STR **txt, int *color );
 int netw_get_ping( N_STR *msg, int *type, int *from, int *to, int *time );
 int netw_get_quit( N_STR *msg );
-int netw_send_ident( NETWORK *netw, int type, int id, N_STR *name, N_STR *passwd  );
-int netw_send_position( NETWORK *netw, int id, double X, double Y, double vx, double vy, double acc_x, double acc_y, int time_stamp );
-int netw_send_string_to_all( NETWORK *netw, int id, char *name, char *chan, char *txt, int color );
-int netw_send_string_to( NETWORK *netw, int id_from, int id_to, char *name, char *txt, int color );
-int netw_send_ping( NETWORK *netw, int type, int id_from, int id_to, int time );
-int netw_send_quit( NETWORK *netw );
 
 #endif
 

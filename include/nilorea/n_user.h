@@ -80,14 +80,16 @@ typedef struct N_USERLIST
 
 N_USERLIST *userlist_new( int max );
 int userlist_set_position_behavior( N_USERLIST *ulist , int id , int nb_rec_pos , int only_last_pos );
-int userlist_add( N_USERLIST *ulist );
-int userlist_rem( N_USERLIST *ulist , int id );
+int userlist_add_user( N_USERLIST *ulist , NETWORK *netw );
+int userlist_del_user( N_USERLIST *ulist , int id );
 int userlist_add_msg_to_ex( N_USERLIST *ulist , N_STR *msg , int mode , int id );
 int userlist_add_msg_to( N_USERLIST *ulist , N_STR *msg , int id );
 int userlist_add_msg_to_all( N_USERLIST *ulist , N_STR *msg );
 int userlist_add_msg_to_all_except( N_USERLIST *ulist , N_STR *msg , int id );
 int userlist_destroy( N_USERLIST **ulist );
-
+int userlist_user_add_waiting_msg( N_USERLIST *ulist , int id , N_STR *netmsg );
+int userlist_user_send_waiting_msgs( N_USERLIST *ulist , int id );
+int userlist_send_waiting_msgs( N_USERLIST *ulist );
 
 
 #ifdef __cplusplus

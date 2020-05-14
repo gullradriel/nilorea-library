@@ -13,6 +13,7 @@
 #include "nilorea/n_hash.h"
 #include "nilorea/n_network.h"
 #include "nilorea/n_network_msg.h"
+#include "nilorea/n_user.h"
 
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_audio.h>
@@ -150,7 +151,7 @@ void process_args( int argc, char **argv, char **bind_addr, char **port, int *ip
 
 
 
-int process_clients( NETWORK_POOL *netw_pool )
+int process_clients( NETWORK_POOL *netw_pool , N_USERLIST *userlist )
 {
     __n_assert( netw_pool, return FALSE );
 
@@ -172,15 +173,29 @@ int process_clients( NETWORK_POOL *netw_pool )
             {
             case( NETMSG_POSITION ):
                 // add/update object with id at position
-                netw_pool_broadcast( netw_pool, NULL, netw_exchange );
+                userlist_add_msg_to_all( userlist , netw_exchange );
                 break;
             case( NETMSG_STRING ):
-                // add text to chat
+                // directly add text to chat
                 netw_pool_broadcast( netw_pool, NULL, netw_exchange );
                 break;
             case( NETMSG_PING_REQUEST ):
-                // compare to sent pings and add string to chat with times
-                break;
+              {
+                // directly send back reply
+                 int id_from = -1 , id_to = -1 , time = -1 , type = -1 ;
+                 netw_get_ping( netw_exchange , &id_from , &id_to , &time , &type );
+                 if( id_to == -1 )
+                 {
+                     netw_send_ping( netw , NETMSG_PING_REPLY , id_to , id_from , time );
+                 }
+                 else
+                 {
+                    N_STR *pingmsg = netmsg_make_ping( NETMSG_PING_REQUEST , id_from , id_to , time );
+                    userlist_add_msg_to( userlist , pingmsg , id_to );
+                 }
+              }
+                //netw_get_ping( )
+                break ;
             case( NETMSG_GET_BOX ):
                 // a world object at position X,Y,Z with associated datas, add/update local world cache
                 break;
@@ -248,6 +263,7 @@ int main( int argc, char *argv[] )
 
     NETWORK *server = NULL ;
     NETWORK_POOL *netw_pool = NULL ;
+    N_USERLIST *userlist = NULL ;
     char *bind_addr = NULL,
           *port = NULL ;
 
@@ -273,14 +289,17 @@ int main( int argc, char *argv[] )
 #endif
 
     netw_pool = netw_new_pool( 1024 );
+    __n_assert( netw_pool , goto exit_server );
+
+    userlist = userlist_new( 256 );
+    __n_assert( userlist , goto exit_server );
 
     n_log( LOG_INFO, "Creating listening network for %s:%s %d", _str( bind_addr ), _str( port ), ip_version );
     /* create listening network */
     if( netw_make_listening( &server, bind_addr, port, 128, ip_version ) == FALSE )
     {
         n_log( LOG_ERR, "Fatal error with network initialization" );
-        netw_unload();
-        exit( -1 );
+        goto exit_server ;
     }
 
     n_log( LOG_NOTICE, "%s is starting ...", argv[ 0 ] );
@@ -504,16 +523,22 @@ int main( int argc, char *argv[] )
             int error = 0 ;
             if ( ( netw = netw_accept_from_ex(  server, 0, 0, 0, 0, 0, -1, &error ) ) )
             {
-                netw_pool_add( netw_pool, netw );
+                int id = userlist_add_user( userlist , netw );
+                if( id >= 0 )
+                {
+                    netw_set_user_id( netw , id );
+
+                }
                 netw_start_thr_engine( netw );
+                netw_pool_add( netw_pool, netw );
             }
-            process_clients( netw_pool );
+            process_clients( netw_pool , userlist );
             do_logic = 0 ;
         }
         if( do_network == 1 )
         {
             /* process queues and send datas back to clients */
-
+            userlist_send_waiting_msgs( userlist );
             do_network == 0 ;
         }
 
@@ -542,6 +567,7 @@ int main( int argc, char *argv[] )
     }
     while( !key[KEY_ESC] && !DONE );
 
+exit_server:
     list_destroy( &active_object );
 
     return 0;

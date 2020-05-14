@@ -72,7 +72,7 @@ int userlist_set_position_behavior( N_USERLIST *ulist , int id , int nb_rec_pos 
 
 
 
-int userlist_add( N_USERLIST *ulist )
+int userlist_add_user( N_USERLIST *ulist , NETWORK *netw )
 {
 
     int it = -1;
@@ -83,6 +83,8 @@ int userlist_add( N_USERLIST *ulist )
     }
     while( ulist -> list[ it ] . state != 0);
     ulist -> list[ it ] . state = 1;
+    ulist -> list[ it ] . netw = netw ;
+
     if( it > ulist -> highter ) ulist -> highter = it;
     unlock( ulist -> user_rwbolt );
 
@@ -91,7 +93,7 @@ int userlist_add( N_USERLIST *ulist )
 
 
 
-int userlist_rem( N_USERLIST *ulist , int id )
+int userlist_del_user( N_USERLIST *ulist , int id )
 {
     write_lock( ulist -> user_rwbolt );
     if( ulist -> list[ id ] . state == 0 )
@@ -138,21 +140,21 @@ int userlist_add_msg_to_ex( N_USERLIST *ulist , N_STR *msg , int mode , int id )
     {
         case( USERLIST_ALL ):
         read_lock( ulist -> user_rwbolt );
-        for( int it = 0 ; it < ulist -> highter ; it ++ )
+        for( int it = 0 ; it <= ulist -> highter ; it ++ )
         {
-            if( ulist -> list[ it ] . state != 0 )
-                netw_add_msg( ulist -> list[ it ] . netw, msg );
+            if( ulist -> list[ it ] . state == 1 )
+                netw_add_msg( ulist -> list[ it ] . netw, nstrdup( msg ) );
         }
         unlock( ulist -> user_rwbolt );
         break;
         case( USERLIST_ALL_EXCEPT ):
         read_lock( ulist -> user_rwbolt );
-        for( int it = 0 ; it < ulist -> highter ; it ++ )
+        for( int it = 0 ; it <= ulist -> highter ; it ++ )
         {
             if( it == id )
                 continue ;
-            if( ulist -> list[ it ] . state != 0 )
-                netw_add_msg( ulist -> list[ it ] . netw, msg );
+            if( ulist -> list[ it ] . state == 1 )
+                netw_add_msg( ulist -> list[ it ] . netw, nstrdup( msg ) );
         }
         unlock( ulist -> user_rwbolt );
         break;
@@ -191,5 +193,80 @@ int userlist_add_msg_to_all_except( N_USERLIST *ulist , N_STR *msg , int id )
 int userlist_destroy( N_USERLIST **ulist )
 {
     __n_assert( (*ulist) , return FALSE );
+
+    write_lock( (*ulist) -> user_rwbolt );
+    for( int it = 0 ; it < (*ulist)  -> max ; it ++ )
+    {
+        Free( (*ulist) -> list[it ] . last_positions );
+        list_destroy( &(*ulist) -> list[it ] . netw_waitlist );
+    }
+    Free( (*ulist) -> list );
+    unlock( (*ulist) -> user_rwbolt );
+
+    pthread_rwlock_destroy( &(*ulist) -> user_rwbolt );
+    Free( (*ulist) );
+
     return FALSE ;
+}
+
+
+int userlist_user_add_waiting_msg( N_USERLIST *ulist , int id , N_STR *netmsg )
+{
+    __n_assert( ulist , return FALSE );
+
+    int ret = FALSE ;
+
+    read_lock( ulist -> user_rwbolt );
+    if( id <= ulist -> highter )
+    {
+        if( ulist -> list[ id ] . state == 1 )
+        {
+            ret = list_push( ulist -> list[ id ] . netw_waitlist , netmsg , NULL );
+        }
+    }
+    unlock( ulist -> user_rwbolt );
+    return ret ;
+}
+
+int userlist_user_send_waiting_msgs( N_USERLIST *ulist , int id )
+{
+    read_lock( ulist -> user_rwbolt );
+    if( id <= ulist -> highter )
+    {
+        if( ulist -> list[ id ] . state == 1 )
+        {
+            list_foreach( node , ulist -> list[ id ] . netw_waitlist )
+            {
+                N_STR *netmsg = (N_STR *)node -> ptr ;
+                netw_add_msg( ulist -> list[ id ] . netw , netmsg );
+            }
+            list_empty( ulist -> list[ id ] . netw_waitlist );
+        }
+    }
+    unlock( ulist -> user_rwbolt );
+    return TRUE ;
+}
+
+
+
+int userlist_send_waiting_msgs( N_USERLIST *ulist )
+{
+    read_lock( ulist -> user_rwbolt );
+    for( int id = 0 ; id <= ulist -> highter ; id ++ )
+    {
+        if( id <= ulist -> highter )
+        {
+        if( ulist -> list[ id ] . state == 1 )
+        {
+            list_foreach( node , ulist -> list[ id ] . netw_waitlist )
+            {
+                N_STR *netmsg = (N_STR *)node -> ptr ;
+                netw_add_msg( ulist -> list[ id ] . netw , netmsg );
+            }
+            list_empty( ulist -> list[ id ] . netw_waitlist );
+        }
+    }
+    }
+    unlock( ulist -> user_rwbolt );
+    return TRUE ;
 }

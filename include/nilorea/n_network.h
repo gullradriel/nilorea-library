@@ -257,7 +257,9 @@ typedef struct NETWORK
         /*! tell if the socket have to be encrypted (flags NETW_CRYPTO_*) */
         crypto_mode,
         /*! if encryption is on, which one (flags NETW_ENCRYPT_*) */
-        crypto_algo ;
+        crypto_algo ,
+        /*! if part of a user property, id of the user */
+        user_id ;
 
     /*! vigenere key */
     char *vigenere_key ;
@@ -397,6 +399,8 @@ int netw_pool_remove( NETWORK_POOL *netw_pool, NETWORK *netw );
 int netw_pool_broadcast( NETWORK_POOL *netw_pool, NETWORK *from, N_STR *net_msg );
 /* close pool */
 void netw_pool_netw_close( void *netw_ptr );
+/* set user id on a netw */
+int netw_set_user_id( NETWORK *netw , int id );
 
 /**
 @}

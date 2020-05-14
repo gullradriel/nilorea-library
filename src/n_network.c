@@ -632,6 +632,7 @@ NETWORK *netw_new( int send_list_limit, int recv_list_limit )
     /* netw itself */
     netw -> nb_pending = -1 ;
     netw -> mode = -1 ;
+    netw -> user_id = -1 ;
     netw -> state = NETW_EXITED ;
     netw -> threaded_engine_status = NETW_THR_ENGINE_STOPPED ;
 
@@ -2937,3 +2938,13 @@ int netw_pool_broadcast( NETWORK_POOL *netw_pool, NETWORK *from, N_STR *net_msg 
     unlock( netw_pool -> rwlock );
     return TRUE ;
 } /* netw_pool_broadcast */
+
+
+
+/* set user id on a netw */
+int netw_set_user_id( NETWORK *netw , int id )
+{
+    __n_assert( netw , return FALSE );
+    netw -> user_id = id ;
+    return TRUE ;
+}
