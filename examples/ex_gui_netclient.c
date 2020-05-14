@@ -342,7 +342,7 @@ int main( int argc, char *argv[] )
 
     fps_timer = al_create_timer( 1.0/60.0 );
     logic_timer = al_create_timer( 1.0/60.0 );
-    network_heartbeat_timer = al_create_timer( 1.0/5.0 );
+    network_heartbeat_timer = al_create_timer( 1.0/10.0 );
 
     al_set_new_display_flags( ALLEGRO_OPENGL|ALLEGRO_WINDOWED );
     display = al_create_display( WIDTH, HEIGHT );
@@ -493,6 +493,17 @@ int main( int argc, char *argv[] )
             default:
                 break;
             }
+        }
+        else if( ev.keyboard.keycode == ALLEGRO_KEY_ENTER )
+        {
+            N_STR *txtmsg = new_nstr( 1024 );
+			al_ustr_trim_ws( chat_line ) ;
+			al_ustr_to_buffer(  chat_line , txtmsg -> data , txtmsg -> length );
+
+            N_STR *netmsg = netmsg_make_string_msg( netw -> link . sock , -1 , name , txtmsg , txtmsg , 1 );
+            netw_add_msg( netw , netmsg );
+            free_nstr( &txtmsg );
+
         }
         else if( ev.type == ALLEGRO_EVENT_TIMER )
         {

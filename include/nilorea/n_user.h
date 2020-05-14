@@ -24,43 +24,47 @@ extern "C"
 #include "nilorea/n_log.h"
 #include "nilorea/n_str.h"
 #include "nilorea/n_network.h"
+#include "nilorea/n_3d.h"
 
-
+#define USERLIST_ALL 0
+#define USERLIST_ALL_EXCEPT 1
+#define USERLIST_ONE 2
 
 /*! USER management cell */
-typedef struct N_USER_BOX
+typedef struct N_USER
 {
+    /*! User Name */
+    char name[ 1024 ];
 
     /*! Associated NETWORK */
     NETWORK *netw;
 
-    /*! User Name */
-    char name[ 1024 ];
-
     /*! State of the current user */
-    int state;
+    int state,
+    /*! Number of saved positions , default: 10 */
+    nb_rec_pos ,
+    /*! 1 => keep only_last_position in waitlist , 0 => send all the positions, default: 1 */
+    only_last_pos ,
+    /*! Unique world ident */
+    id;
 
-    /*! X Position in array */
-    double anchor_x,
-           /*! Y position in array */
-           anchor_y,
-           /*! X shifting inside the cell of the array */
-           shift_x,
-           /*! Y shifting inside the cell of the array */
-           shift_y,
-           /*! Unique ident */
-           id;
+    /*! Last nb_rec_pos position messages, for a better dead reckoning / lag simulation */
+    VECTOR3D *last_positions;
+    /*! actual position */
+    VECTOR3D position;
 
-} N_USER_BOX;
+    /*! N_STR *messages waiting to be sent */
+    LIST *netw_waitlist;
+
+} N_USER ;
 
 
 
 /*! USER list */
-typedef struct N_USER
+typedef struct N_USERLIST
 {
-
     /*! Pointer to the allocated list of user */
-    N_USER_BOX *list;
+    N_USER *list;
 
     /*! Maximum of user inside the list */
     int max,
@@ -68,50 +72,24 @@ typedef struct N_USER
         highter;
 
     /*! Mutex for thread safe user management */
-    pthread_mutex_t user_bolt;
+    pthread_rwlock_t user_rwbolt;
 
-} N_USER;
-
-
-
-/*
- * Create a list of user
- */
-
-int create_list_of_user( N_USER *list, int max );
+} N_USERLIST ;
 
 
 
-/*
- * Add an user to the list
- */
-
-int add_user( N_USER *list );
-
-
-
-/*
- * Delete an user from the list
- */
-
-int rem_user( N_USER *list,int id );
-
-
-
-/*
- * Add a message to all user inside the list
- */
-
-int add_msg_to_all( N_USER *list, N_STR *msg );
-
-
-
-/*
- * Add a message to a specific user
- */
-
-int add_msg_to_user( N_USER *list, int id, N_STR *msg );
-
+N_USERLIST *userlist_new( int max );
+int userlist_set_position_behavior( N_USERLIST *ulist , int id , int nb_rec_pos , int only_last_pos );
+int userlist_add_user( N_USERLIST *ulist , NETWORK *netw );
+int userlist_del_user( N_USERLIST *ulist , int id );
+int userlist_add_msg_to_ex( N_USERLIST *ulist , N_STR *msg , int mode , int id );
+int userlist_add_msg_to( N_USERLIST *ulist , N_STR *msg , int id );
+int userlist_add_msg_to_all( N_USERLIST *ulist , N_STR *msg );
+int userlist_add_msg_to_all_except( N_USERLIST *ulist , N_STR *msg , int id );
+int userlist_destroy( N_USERLIST **ulist );
+int userlist_user_add_waiting_msg( N_USERLIST *ulist , int id , N_STR *netmsg );
+int userlist_user_send_waiting_msgs( N_USERLIST *ulist , int id );
+int userlist_send_waiting_msgs( N_USERLIST *ulist );
 
 
 #ifdef __cplusplus

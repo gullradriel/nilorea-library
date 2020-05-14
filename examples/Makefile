@@ -112,7 +112,7 @@ ex_gui_particles$(EXT): n_log.o n_list.o n_str.o n_common.o n_hash.o n_time.o n_
 ex_gui_netclient$(EXT): n_log.o n_list.o n_str.o n_common.o n_hash.o n_time.o n_network.o n_network_msg.o n_allegro5.o ex_gui_netclient.o
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ -L.. $(CLIBS) $(ALLEGRO_CLIBS) -lm
 
-ex_gui_netserver$(EXT): n_log.o n_list.o n_str.o n_common.o n_hash.o n_time.o n_thread_pool.o n_network.o n_network_msg.o n_allegro5.o ex_gui_netserver.o
+ex_gui_netserver$(EXT): n_log.o n_list.o n_str.o n_common.o n_hash.o n_time.o n_thread_pool.o n_network.o n_network_msg.o n_allegro5.o n_user.o ex_gui_netserver.o
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ -L.. $(CLIBS) $(ALLEGRO_CLIBS) -lm
 
 ex_pcre$(EXT): n_log.o n_pcre.o ex_pcre.o
