@@ -391,14 +391,21 @@ int netw_get_queue_status( NETWORK *netw, int *nb_to_send, int *nb_to_read );
 NETWORK_POOL *netw_new_pool( int nb_min_element );
 /* destroy pool */
 int netw_destroy_pool( NETWORK_POOL **netw_pool );
+/* close pool */
+void netw_pool_netw_close( void *netw_ptr );
 /* add network to pool */
 int netw_pool_add( NETWORK_POOL *netw_pool, NETWORK *netw );
 /* add network to pool */
 int netw_pool_remove( NETWORK_POOL *netw_pool, NETWORK *netw );
 /* add message to pool */
 int netw_pool_broadcast( NETWORK_POOL *netw_pool, NETWORK *from, N_STR *net_msg );
-/* close pool */
-void netw_pool_netw_close( void *netw_ptr );
+
+/* get nb clients */
+int netw_pool_nbclients( NETWORK_POOL *netw_pool );
+
+
+
+
 /* set user id on a netw */
 int netw_set_user_id( NETWORK *netw , int id );
 

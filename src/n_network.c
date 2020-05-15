@@ -2882,7 +2882,7 @@ int netw_pool_add( NETWORK_POOL *netw_pool, NETWORK *netw )
 
 
 
-/* add network to pool */
+/* remove network to pool */
 int netw_pool_remove( NETWORK_POOL *netw_pool, NETWORK *netw )
 {
     __n_assert( netw_pool, return FALSE );
@@ -2895,13 +2895,13 @@ int netw_pool_remove( NETWORK_POOL *netw_pool, NETWORK *netw )
     nstrprintf( key, "%lld", (long long int)netw -> link . sock );
     if( ht_remove( netw_pool -> pool, _nstr( key ) ) == TRUE )
     {
-        LIST_NODE *node = list_search( netw -> pools, netw_pool );
+        LIST_NODE *node = list_search( netw -> pools , netw );
         if( node )
         {
             remove_list_node( netw -> pools, node, NETWORK_POOL );
         }
         unlock( netw_pool -> rwlock );
-        n_log( LOG_ERR, "Network id %lld removed !", (long long int)netw -> link . sock );
+        n_log( LOG_DEBUG, "Network id %lld removed !", (long long int)netw -> link . sock );
 
         return TRUE ;
     }
@@ -2939,6 +2939,19 @@ int netw_pool_broadcast( NETWORK_POOL *netw_pool, NETWORK *from, N_STR *net_msg 
     return TRUE ;
 } /* netw_pool_broadcast */
 
+
+/* get nb clients */
+int netw_pool_nbclients( NETWORK_POOL *netw_pool )
+{
+    __n_assert( netw_pool , return -1 );
+
+    int nb = -1 ;
+    read_lock( netw_pool -> rwlock );
+    nb = netw_pool -> pool -> nb_keys ;
+    unlock( netw_pool -> rwlock );
+
+    return nb ;
+}
 
 
 /* set user id on a netw */

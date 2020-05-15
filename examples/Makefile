@@ -12,10 +12,12 @@ ALLEGRO_CLIBS=
 DEBUGLIB=
 DISABLED_TARGET=ex_monolith$(EXT)
 TARGET=ex_list$(EXT) ex_nstr$(EXT) ex_exceptions$(EXT) ex_hash$(EXT) ex_network$(EXT) ex_configfile$(EXT) ex_pcre$(EXT) ex_threads$(EXT) ex_log$(EXT) ex_common$(EXT) ex_signals$(EXT)
+CLIBS=
+
 
 ifeq ($(OS),Windows_NT)
 	CFLAGS+= -std=c11 $(OPT) -D__USE_MINGW_ANSI_STDIO
-	CLIBS= -lpthread -lws2_32
+	CLIBS= -lpthread -lws2_32 -lm
 	RM= del /Q
 	CC= gcc
 	DEBUGLIB=-limagehlp
@@ -52,12 +54,12 @@ else
 	EXT=
 	ifeq ($(UNAME_S),Linux)
 	CFLAGS+= $(OPT) -std=gnu99 -rdynamic
-	CLIBS=-lpthread
+	CLIBS=-lpthread -lm
 endif
 ifeq ($(UNAME_S),SunOS)
 	CC=cc
 	CFLAGS+= -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -g -v -xc99 -I ../include/ -mt
-	CLIBS=-lm -lsocket -lnsl -lpthread -lpcre -lrt
+	CLIBS=-lm -lsocket -lnsl -lpthread -lpcre -lrt -lm
 	LIBNILOREA=-lnilorea
 	EXT=
 endif
@@ -68,7 +70,7 @@ ifeq ($(HAVE_ALLEGRO),1)
 	#CLIBS=`pkg-config --cflags --libs allegro-5 allegro_acodec-5 allegro_audio-5 allegro_color-5 allegro_dialog-5 allegro_font-5 allegro_image-5 allegro_main-5 allegro_memfile-5 allegro_physfs-5 allegro_primitives-5 allegro_ttf-5`
 	#ALLEGRO_CLIBS=`pkg-config --cflags --libs allegro-5 allegro_acodec-5 allegro_audio-5 allegro_color-5 allegro_dialog-5 allegro_font-5 allegro_image-5 allegro_main-5 allegro_memfile-5 allegro_physfs-5 allegro_primitives-5 allegro_ttf-5` -lGL
 	#ALLEGRO_CLIBS=-lallegro_acodec -lallegro_audio -lallegro_color -lallegro_dialog -lallegro_image -lallegro_main -lallegro_memfile -lallegro_physfs -lallegro_primitives -lallegro_ttf -lallegro_font -lallegro
-	ALLEGRO_CLIBS=-lallegro_acodec -lallegro_audio -lallegro_color -lallegro_image -lallegro_main -lallegro_memfile -lallegro_primitives -lallegro_ttf -lallegro_font -lallegro
+	ALLEGRO_CLIBS=-lallegro_acodec -lallegro_audio -lallegro_color -lallegro_image -lallegro_main -lallegro_primitives -lallegro_ttf -lallegro_font -lallegro
 	TARGET+=ex_gui_particles$(EXT) ex_gui_netclient$(EXT) ex_gui_netserver$(EXT)
 endif
 
@@ -107,14 +109,13 @@ ex_signals$(EXT): n_log.o n_list.o n_str.o n_common.o n_hash.o n_signals.o ex_si
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(CLIBS) $(DEBUGLIB)
 
 ex_gui_particles$(EXT): n_log.o n_list.o n_str.o n_common.o n_hash.o n_time.o n_particles.o n_3d.o ex_gui_particles.o
-	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ -L.. $(CLIBS) $(ALLEGRO_CLIBS) -lm
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ -L.. $(CLIBS) $(ALLEGRO_CLIBS)
 
 ex_gui_netclient$(EXT): n_log.o n_list.o n_str.o n_common.o n_hash.o n_time.o n_network.o n_network_msg.o n_allegro5.o ex_gui_netclient.o
-	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ -L.. $(CLIBS) $(ALLEGRO_CLIBS) -lm
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ -L.. $(CLIBS) $(ALLEGRO_CLIBS)
 
 ex_gui_netserver$(EXT): n_log.o n_list.o n_str.o n_common.o n_hash.o n_time.o n_thread_pool.o n_network.o n_network_msg.o n_allegro5.o n_user.o ex_gui_netserver.o
-	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ -L.. $(CLIBS) $(ALLEGRO_CLIBS) -lm
-
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ -L.. $(CLIBS) $(ALLEGRO_CLIBS)
 ex_pcre$(EXT): n_log.o n_pcre.o ex_pcre.o
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(CLIBS) -lpcre
 

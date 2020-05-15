@@ -165,6 +165,12 @@ int process_clients( NETWORK_POOL *netw_pool , N_USERLIST *userlist )
     {
         N_STR *netw_exchange = NULL ;
         NETWORK *netw = hash_val( node, NETWORK );
+        int state = -1 ;
+        int thr_engine_status = -1 ;
+        netw_get_state( netw , &state , &thr_engine_status );
+        if( state != NETW_RUN || thr_engine_status != NETW_THR_ENGINE_STARTED )
+            list_push( netw_to_close ,  netw , NULL );
+
         /* process all data sent by the client */
         while( ( netw_exchange = netw_get_msg( netw ) ) )
         {
@@ -212,7 +218,6 @@ int process_clients( NETWORK_POOL *netw_pool , N_USERLIST *userlist )
             case( NETMSG_QUIT ):
                 n_log( LOG_INFO, "Client is asking us to quit" );
                 netw_send_quit( netw );
-                list_push( netw_to_close, netw, NULL );
                 break ;
             default:
                 n_log( LOG_ERR, "Unknow message type %d", type );
@@ -231,7 +236,8 @@ int process_clients( NETWORK_POOL *netw_pool , N_USERLIST *userlist )
         if( netw )
         {
             n_log( LOG_DEBUG, "Closing %d", netw -> link . sock );
-            netw_wait_close( &netw );
+            userlist_del_user( userlist , netw -> user_id );
+            netw_close( &netw );
         }
         else
         {
@@ -386,6 +392,15 @@ int main( int argc, char *argv[] )
     al_register_event_source(event_queue, al_get_timer_event_source(logic_timer));
 
     ALLEGRO_BITMAP *scrbuf = al_create_bitmap( WIDTH, HEIGHT );
+    ALLEGRO_COLOR white_color = al_map_rgba_f(1, 1, 1, 1);
+    ALLEGRO_FONT *font = NULL ;
+    font = al_load_font( "2Dumb.ttf", 18, 0 );
+    if (! font )
+    {
+        n_log( LOG_ERR, "Unable to load 2Dumb.ttf" );
+        exit( 1 );
+    }
+
     al_hide_mouse_cursor(display);
 
     int mx = 0, my = 0, mouse_b1 = 0, mouse_b2 = 0 ;
@@ -559,6 +574,12 @@ int main( int argc, char *argv[] )
             /* mouse pointer */
             al_draw_line( mx - 5, my, mx + 5, my, al_map_rgb( 255, 0, 0 ), 1 );
             al_draw_line( mx, my + 5, mx, my - 5, al_map_rgb( 255, 0, 0 ), 1 );
+
+            /* informations */
+            N_STR *textout = NULL ;
+            nstrprintf( textout , "Nb client: %d" , netw_pool_nbclients( netw_pool) );
+            al_draw_text( font , white_color , 5 , 5 , ALLEGRO_ALIGN_LEFT , _nstr( textout ) );
+            free_nstr( &textout );
 
             al_flip_display();
             do_draw = 0 ;

@@ -110,22 +110,18 @@ int userlist_del_user( N_USERLIST *ulist , int id )
     memset( ulist -> list[ id ] . position , 0 , 3 * sizeof( double ) );
     ulist -> list[ id ] . netw  = NULL ;
     memset( ulist -> list[ id ] . name , 0 , 1024 );
-    if( id == ulist -> highter && id != 0 )
+    if( id >=  ulist -> highter )
     {
-        int it = id - 1 ;
+        int it =  ulist -> highter ;
         while( it >= 0 )
         {
-            if( ulist -> list[ id ] . state == 1 )
+            if( ulist -> list[ it ] . state == 1 )
             {
                 ulist -> highter  = it ;
                 break ;
             }
             it -- ;
         }
-    }
-    else
-    {
-        ulist -> highter = 0 ;
     }
     unlock( ulist -> user_rwbolt );
     return TRUE;
