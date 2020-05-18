@@ -866,7 +866,7 @@ int netw_set_blocking( NETWORK *netw, unsigned long int is_blocking )
 
 
 
-/*!\fn int netw_set_sock_opt( NETWORK *netw  , int optname , int value )
+/*!\fn int netw_setsockopt( NETWORK *netw  , int optname , int value )
  *\brief Modify common socket options on the given netw
  *\param netw The socket to configure
  *\param optname SO_REUSEADDR,TCP_NODELAY,SO_SNDBUF,SO_RCVBUF,SO_LINGER,SO_RCVTIMEO,SO_SNDTIMEO. Please refer to man setsockopt for details
