@@ -21,10 +21,7 @@ extern "C" {
 
 #include <nilorea/n_common.h>
 #include <nilorea/n_config_file.h>
-/*#include <nilorea/n_debug_mem.h>
-#include <nilorea/n_debug_mem_h.h>*/
 #include <nilorea/n_exceptions.h>
-#include <nilorea/n_file.h>
 #include <nilorea/n_games.h>
 #include <nilorea/n_hash.h>
 #include <nilorea/n_iso_engine.h>
@@ -32,7 +29,6 @@ extern "C" {
 #include <nilorea/n_log.h>
 #include <nilorea/n_network.h>
 #include <nilorea/n_network_msg.h>
-/*#include <nilorea/n_neural_networks.h>*/
 #include <nilorea/n_nodup_log.h>
 #include <nilorea/n_pcre.h>
 #include <nilorea/n_signals.h>
@@ -43,13 +39,23 @@ extern "C" {
 #include <nilorea/n_user.h>
 #include <nilorea/n_zlib.h>
 
+/* wip_unstable #include <nilorea/n_neural_networks.h> */
+/* wip_unstable #include <nilorea/n_file.h> */
+
+/* Must revamp this
+#include <nilorea/n_debug_mem.h>
+#include <nilorea/n_debug_mem_h.h>
+*/
+
 #ifdef HAVE_ALLEGRO
 #include <nilorea/n_gfx.h>
 #include <nilorea/n_anim.h>
 #include <nilorea/n_gui.h>
 #include <nilorea/n_particles.h>
-#include <nilorea/n_resources.h>
+/* wip_unstable #include <nilorea/n_resources.h> */
 #endif
+
+
 
 /**
 @}

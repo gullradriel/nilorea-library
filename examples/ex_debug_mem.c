@@ -112,17 +112,6 @@ void process_args( int argc, char **argv )
     set_log_level( log_level );
 } /* void process_args( ... ) */
 
-
-/*!\fn inlined_func( void )
- *\brief inlined test
- *\param inlined_func
- */
-FORCE_INLINE void inlined_func( void )
-{
-    n_log( LOG_DEBUG, "Inlined func" );
-}
-
-
 int main(int argc, char **argv)
 {
 #ifdef DEBUG_MEM

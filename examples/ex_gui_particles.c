@@ -4,13 +4,13 @@
  *\date 24/10/2018
  */
 
-#define WIDTH 640	
+#define WIDTH 640
 #define HEIGHT 480
 
 #include "nilorea/n_common.h"
 #include "nilorea/n_particles.h"
 #include "nilorea/n_anim.h"
-#include "nilorea/n_resources.h"
+//#include "nilorea/n_resources.h"
 //#include <allegro5/allegro_native_dialog.h>
 #include <allegro5/allegro_ttf.h>
 
@@ -27,7 +27,7 @@ ALLEGRO_TIMER *logic_timer = NULL ;
 LIST *active_object = NULL ;                      /* list of active objects */
 PARTICLE_SYSTEM *particle_system_effects=NULL ;
 
-RESOURCES *resources = NULL ;
+//RESOURCES *resources = NULL ;
 
 int main( int argc, char *argv[] )
 {

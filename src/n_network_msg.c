@@ -655,10 +655,7 @@ N_STR *netmsg_make_string_msg( int id_from, int id_to, N_STR *name, N_STR *chan,
 {
     NETW_MSG *msg = NULL ;
 
-    N_STR *namestr = NULL,
-           *chanstr  = NULL,
-           *txtstr  = NULL,
-            *tmpstr  = NULL ;
+    N_STR *tmpstr  = NULL ;
 
     create_msg( &msg );
 
@@ -670,9 +667,9 @@ N_STR *netmsg_make_string_msg( int id_from, int id_to, N_STR *name, N_STR *chan,
     add_int_to_msg( msg, color );
 
 
-    add_nstrdup_to_msg( msg, namestr );
-    add_nstrdup_to_msg( msg, chanstr );
-    add_nstrdup_to_msg( msg, txtstr );
+    add_nstrdup_to_msg( msg, nstrdup( name ) );
+    add_nstrdup_to_msg( msg, nstrdup( chan ) );
+    add_nstrdup_to_msg( msg, nstrdup( txt ) );
 
     tmpstr = make_str_from_msg( msg );
     delete_msg( &msg );

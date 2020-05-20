@@ -78,7 +78,7 @@ int manage_peers( HASH_TABLE *peer_table, int delta_t )
     return TRUE ;
 }
 
-int draw_peers( HASH_TABLE *peer_table )
+int draw_peers( HASH_TABLE *peer_table , ALLEGRO_FONT *font , ALLEGRO_COLOR color )
 {
     ht_foreach( node, peer_table )
     {
@@ -86,6 +86,10 @@ int draw_peers( HASH_TABLE *peer_table )
         /* mouse pointers */
         al_draw_line( peer -> position[ 0 ] - 5, peer -> position[ 1 ], peer -> position[ 0 ] + 5, peer -> position[ 1 ], al_map_rgb( 255, 0, 0 ), 1 );
         al_draw_line( peer -> position[ 0 ], peer -> position[ 1 ] + 5, peer -> position[ 0 ], peer -> position[ 1 ] - 5, al_map_rgb( 255, 0, 0 ), 1 );
+        N_STR *textout = NULL ;
+        nstrprintf( textout , "id: %d" , peer -> id );
+        al_draw_text( font , color , peer -> position[ 0 ] + 10 , peer -> position[ 1 ] , ALLEGRO_ALIGN_LEFT , _nstr( textout) );
+        free_nstr( &textout );
     }
     return TRUE ;
 }
@@ -230,7 +234,7 @@ int key[ 7 ] = {false,false,false,false,false,false,false};
 /* start */
 int main( int argc, char *argv[] )
 {
-    int		DONE = 0,                    /* Flag to check if we are always running */
+    int		DONE = 0, QUIT_ASKED = 0 ,                     /* Flag to check if we are always running */
             getoptret = 0,				  /* launch parameter check */
             log_level = LOG_ERR ;			 /* default LOG_LEVEL */
 
@@ -420,7 +424,7 @@ int main( int argc, char *argv[] )
     free_nstr( &name );
     free_nstr( &password );
     netw_get_ident( netw_exchange, &it, &ident, &name, &password );
-    n_log( LOG_INFO,"Id Message received, pointer:%p size %d id %g", netw_exchange -> data, netw_exchange -> length, ident );
+    n_log( LOG_INFO,"Id Message received, pointer:%p size %d id %d", netw_exchange -> data, netw_exchange -> length, ident );
 
     if( ident == -1 )
     {
@@ -428,8 +432,9 @@ int main( int argc, char *argv[] )
         goto exit_client;
     }
     /* We got our id ! */
-    n_log( LOG_NOTICE, "Id is:%g", ident );
+    n_log( LOG_NOTICE, "Id is:%d", ident );
     DONE = 0 ;
+    QUIT_ASKED = 0 ;
     do
     {
         ALLEGRO_EVENT ev ;
@@ -620,7 +625,7 @@ int main( int argc, char *argv[] )
                     double spe[ 3 ];
                     int id = -1, timestamp = -1 ;
                     netw_get_position( netmsg, &id, &pos[ 0 ],&pos[ 1 ],&pos[ 2 ], &spe[ 0 ], &spe[ 1 ], &spe[ 2 ], &timestamp );
-                    n_log( LOG_INFO, "Received position from %d: %g %g", id, pos[ 0 ], pos[ 1 ] );
+                    // too much log n_log( LOG_INFO, "Received position from %d: %g %g", id, pos[ 0 ], pos[ 1 ] );
                     update_peer( peer_table, id, pos );
                 }
                 break;
@@ -630,7 +635,7 @@ int main( int argc, char *argv[] )
                     int id = -1, color = -1 ;
                     N_STR *name = NULL, *txt = NULL, *chan = NULL ;
                     netw_get_string( netmsg, &id, &name, &chan, &txt, &color );
-                    n_log( LOG_INFO, "Received chat from %s:%s:%s (id: %d , color:%d)", name, chan, txt );
+                    n_log( LOG_INFO, "Received chat from %s:%s:%s (id: %d , color:%d)", name, chan, txt, id , color );
                 }
                 break;
                 case( NETMSG_PING_REQUEST ):
@@ -640,6 +645,7 @@ int main( int argc, char *argv[] )
                     /* compare to sent pings and add string to chat with times */
                     break;
                 case( NETMSG_QUIT ):
+                    n_log( LOG_INFO, "Quit received !" );
                     DONE = 1 ;
                     break ;
                 default:
@@ -656,8 +662,12 @@ int main( int argc, char *argv[] )
 
             if( key[KEY_ESC] )
             {
-                netw_send_quit( netw );
-                DONE=1;
+                if( QUIT_ASKED != 1 )
+                {
+                    QUIT_ASKED = 1 ;
+                    n_log( LOG_INFO , "Asking server to quit..." );
+                    netw_send_quit( netw );
+                }
             }
             manage_peers( peer_table, 1000000 / 60.0 );
             do_logic = 0 ;
@@ -681,7 +691,7 @@ int main( int argc, char *argv[] )
             /*al_draw_line( mx - 5, my, mx + 5, my, al_map_rgb( 255, 0, 0 ), 1 );
             al_draw_line( mx, my + 5, mx, my - 5, al_map_rgb( 255, 0, 0 ), 1 );*/
 
-            draw_peers( peer_table );
+            draw_peers( peer_table , font , white_color );
 
             al_draw_ustr( font, white_color, 0, HEIGHT - 20, ALLEGRO_ALIGN_LEFT, chat_line );
 
@@ -700,7 +710,7 @@ int main( int argc, char *argv[] )
     while( !DONE );
 
 exit_client:
-    netw_close( &netw );
+    netw_wait_close( &netw );
 
     return 0;
 
