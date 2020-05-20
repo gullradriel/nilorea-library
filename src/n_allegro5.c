@@ -9,6 +9,13 @@
 #include "nilorea/n_common.h"
 #include "nilorea/n_allegro5.h"
 
+
+/*!\fn int get_keyboard( ALLEGRO_USTR *str, ALLEGRO_EVENT event )
+ *\brief update a keyboard buffer from an event
+ *\param str A string to hold the inputs
+ *\param event The event in which we'll try to read an input
+ *\return TRUE or FALSE
+ */
 int get_keyboard( ALLEGRO_USTR *str, ALLEGRO_EVENT event )
 {
     __n_assert( str, return FALSE );

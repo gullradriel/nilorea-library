@@ -9,6 +9,13 @@
 
 #include "math.h"
 
+
+/*!\fn ANIM_LIB *create_anim_library( char *name, unsigned int size )
+ *\brief Allocate an animation stream
+ *\param name Name for the stream or NULL (in which case 'generic_name' will be assigned)
+ *\param size Number of frames
+ *\return An allocated ANIM_LIB *object or NULL
+ */
 ANIM_LIB *create_anim_library( char *name, unsigned int size )
 {
     if( size < 1 )
@@ -41,7 +48,12 @@ ANIM_LIB *create_anim_library( char *name, unsigned int size )
 
 
 
-
+/*!\fn int delete_bmp_from_lib( ANIM_LIB *lib, unsigned int id )
+ *\brief Delete the frame at 'id' from 'lib'
+ *\param lib Target animation stream
+ *\param id Id of the frame to delete
+ *\return TRUE or FALSE
+ */
 int delete_bmp_from_lib( ANIM_LIB *lib, unsigned int id )
 {
     __n_assert( lib, return FALSE );
@@ -53,7 +65,11 @@ int delete_bmp_from_lib( ANIM_LIB *lib, unsigned int id )
 
 
 
-
+/*!\fn int add_bmp_to_lib( ANIM_LIB *lib, unsigned int pos, char *file, char *resfile )
+ *\brief
+ *\param
+ *\return
+ */
 int add_bmp_to_lib( ANIM_LIB *lib, unsigned int pos, char *file, char *resfile )
 {
     __n_assert( lib, return FALSE );
@@ -106,7 +122,11 @@ int add_bmp_to_lib( ANIM_LIB *lib, unsigned int pos, char *file, char *resfile )
 }
 
 
-
+/*!\fn int delete_bmp_from_lib( ANIM_LIB *lib, unsigned int id )
+ *\brief
+ *\param
+ *\return
+ */
 int update_anim( ANIM_DATA *data, unsigned int delta_t )
 {
     __n_assert( data, return FALSE );
@@ -122,6 +142,12 @@ int update_anim( ANIM_DATA *data, unsigned int delta_t )
     return TRUE ;
 }
 
+
+/*!\fn int delete_bmp_from_lib( ANIM_LIB *lib, unsigned int id )
+ *\brief
+ *\param
+ *\return
+ */
 int draw_anim( ANIM_DATA *data, int x,  int y )
 {
     ALLEGRO_BITMAP *bmp = data -> lib -> gfxs[ data -> id ] -> bmp ;

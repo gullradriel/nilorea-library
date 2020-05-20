@@ -7,7 +7,7 @@ Nilorea Library is a C library, which brings you:<br />
 <a href='https://nilorea.net/html/index.html'>Online API documentation</a><br />
 <br />
 Some more If used with the Allegro 5 library:<br />
--particle system, 2D isometric engine, 2D animation system<br />
--dialogs and ressources manager<br />
+-particle system, basic 2D isometric engine, basic 2D animation system<br />
+-WIP dialogs and ressources manager<br />
 <br />
 Usable as a monolith library or a collection of files
