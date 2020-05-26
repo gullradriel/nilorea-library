@@ -20,13 +20,7 @@ extern "C"
 #include <stdlib.h>
 #include <pthread.h>
 
-#ifdef DEBUG_MEM
-#undef DEBUG_MEM
 #include "n_hash.h"
-#define DEBUG_MEM
-#else
-#include "n_hash.h"
-#endif
 
 /*! max memory dumped by leaked unit */
 #define DEBUG_MEM_DUMP_MAX_LEN 256
@@ -64,8 +58,6 @@ typedef struct DEBUG_MEM_TABLE
 /*! external table for tracking by file usage */
 extern DEBUG_MEM_TABLE *debug_mem_table ;
 
-#ifdef DEBUG_MEM
-
 /* initialize debug tables */
 int init_debug_mem();
 
@@ -78,12 +70,10 @@ void delete_db_mem_item( void *ptr );
 void *db_mem_alloc( size_t size, int line, char *file, const char *func );
 
 /* debug free */
-void *db_mem_free( void *ptr, int line, char *file, const char *func );
+void db_mem_free( void *ptr, int line, char *file, const char *func );
 
 /* debug dump ! */
 int db_mem_dump_leaked( char *file );
-
-#endif
 
 /**
 @}
