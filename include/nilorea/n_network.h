@@ -387,6 +387,7 @@ int send_php( SOCKET s, int _code, char *buf, int n );
 int recv_php( SOCKET s, int *_code, char **buf );
 /* get queue status */
 int netw_get_queue_status( NETWORK *netw, int *nb_to_send, int *nb_to_read );
+
 /* init pools */
 NETWORK_POOL *netw_new_pool( int nb_min_element );
 /* destroy pool */
@@ -399,15 +400,20 @@ int netw_pool_add( NETWORK_POOL *netw_pool, NETWORK *netw );
 int netw_pool_remove( NETWORK_POOL *netw_pool, NETWORK *netw );
 /* add message to pool */
 int netw_pool_broadcast( NETWORK_POOL *netw_pool, NETWORK *from, N_STR *net_msg );
-
 /* get nb clients */
 int netw_pool_nbclients( NETWORK_POOL *netw_pool );
 
-
-
-
 /* set user id on a netw */
 int netw_set_user_id( NETWORK *netw , int id );
+
+/* homemade tcp ip protocol helpers */
+int netw_send_ping( NETWORK *netw, int type, int id_from, int id_to, int time );
+int netw_send_ident( NETWORK *netw, int type, int id, N_STR *name, N_STR *passwd  );
+int netw_send_position( NETWORK *netw , int id, double X, double Y, double vx, double vy, double acc_x, double acc_y, int time_stamp );
+int netw_send_string_to( NETWORK *netw , int id_to , N_STR *name , N_STR *chan , N_STR *txt , int color );
+int netw_send_string_all( NETWORK *netw , char *name, N_STR *chan , N_STR *N_STR, int color );
+int netw_send_quit( NETWORK *netw );
+
 
 /**
 @}

@@ -2961,3 +2961,146 @@ int netw_set_user_id( NETWORK *netw , int id )
     netw -> user_id = id ;
     return TRUE ;
 }
+
+
+
+/*!\fn netw_send_ping( NETWORK *netw , int id_from , int id_to , int time , int type )
+ *\brief Add a ping reply to the network
+ *\param netw The aimed NETWORK where we want to add something to send
+ *\param id_from Identifiant of the sender
+ *\param id_to Identifiant of the destination, -1 if the serveur itslef is targetted
+ *\param time The time it was when the ping was sended
+ *\param type NETW_PING_REQUEST or NETW_PING_REPLY
+ *\return TRUE or FALSE
+ */
+int netw_send_ping( NETWORK *netw, int type, int id_from, int id_to, int time )
+{
+    N_STR *tmpstr = NULL ;
+    __n_assert( netw, return FALSE );
+
+    tmpstr = netmsg_make_ping( type, id_from, id_to, time );
+    __n_assert( tmpstr, return FALSE );
+
+    return netw_add_msg( netw, tmpstr );
+} /* netw_send_ping( ... ) */
+
+
+
+/*!\fn int netw_send_ident( NETWORK *netw , int type , int id , N_STR *name , N_STR *passwd  )
+ *\brief Add a formatted NETWMSG_IDENT message to the specified network
+ *\param netw The aimed NETWORK where we want to add something to send
+ *\param type type of identification ( NETW_IDENT_REQUEST , NETW_IDENT_NEW )
+ *\param id The ID of the sending client
+ *\param name Username
+ *\param passwd Password
+ *\return TRUE or FALSE
+ */
+int netw_send_ident( NETWORK *netw, int type, int id, N_STR *name, N_STR *passwd  )
+{
+    N_STR *tmpstr = NULL ;
+
+    __n_assert( netw, return FALSE );
+
+    tmpstr = netmsg_make_ident( type , id , name, passwd  );
+    __n_assert( tmpstr, return FALSE );
+
+    return netw_add_msg( netw, tmpstr );
+} /* netw_send_ident( ... ) */
+
+
+
+/*!\fn netw_send_position( NETWORK *netw , int id , double X , double Y , double vx , double vy , double acc_x , double acc_y , int time_stamp )
+ *\brief Add a formatted NETWMSG_IDENT message to the specified network
+ *\param netw The aimed NETWORK where we want to add something to send
+ *\param id The ID of the sending client
+ *\param X X position inside a big grid
+ *\param Y Y position inside a big grid
+ *\param vx X speed
+ *\param vy Y speed
+ *\param acc_x Y acceleration
+ *\param acc_y X acceleration
+ *\param time_stamp Current Time when sending (for some delta we would want to compute )
+ *\return TRUE or FALSE
+ */
+int netw_send_position( NETWORK *netw, int id, double X, double Y, double vx, double vy, double acc_x, double acc_y, int time_stamp )
+{
+    N_STR *tmpstr = NULL ;
+
+    __n_assert( netw, return FALSE );
+
+    tmpstr = netmsg_make_position_msg(  id , X , Y , vx , vy , acc_x , acc_y , time_stamp );
+
+    __n_assert( tmpstr, return FALSE );
+
+    return netw_add_msg( netw, tmpstr );
+} /* netw_send_position( ... ) */
+
+
+
+/*!\fn int netw_send_string_to( NETWORK *netw , int id_to , N_STR *name , N_STR *txt , int color )
+ *\brief Add a string to the network, aiming a specific user
+ *\param netw The aimed NETWORK where we want to add something to send
+ *\param id_from The ID of the sending client
+ *\param id_to The ID of the targetted client
+ *\param name Sender Name
+ *\param txt Sender text
+ *\param color Sender text color
+ *\return TRUE or FALSE
+ */
+int netw_send_string_to( NETWORK *netw , int id_to , N_STR *name , N_STR *chan , N_STR *txt , int color )
+{
+    N_STR *tmpstr = NULL ;
+
+    __n_assert( netw, return FALSE );
+
+    tmpstr = netmsg_make_string_msg( netw -> user_id , id_to , name , chan , txt, color );
+    __n_assert( tmpstr, return FALSE );
+
+    return netw_add_msg( netw, tmpstr );
+} /* netw_send_string_to( ... ) */
+
+
+
+/*!\fn netw_send_string_to_all( NETWORK *netw , int id , char *name , char *chan , char *txt , int color )
+ *\brief Add a string to the network, aiming all server-side users
+ *\param netw The aimed NETWORK where we want to add something to send
+ *\param id The ID of the sending client
+ *\param name Name of user
+ *\param chan Target Channel, if any. Pass "ALL" to target the default channel
+ *\param txt The text to send
+ *\param color The color of the text
+ *\return TRUE or FALSE;
+ */
+
+int netw_send_string_to_all( NETWORK *netw, N_STR *name, N_STR *chan, N_STR *txt, int color )
+{
+    N_STR *tmpstr = NULL ;
+
+    __n_assert( netw, return FALSE );
+
+    tmpstr = netmsg_make_string_msg( netw -> user_id ,  -1 , name , chan , txt, color );
+    __n_assert( tmpstr, return FALSE );
+
+    return netw_add_msg( netw, tmpstr );
+} /* netw_send_string_to_all( ... ) */
+
+
+
+/*!\fn int netw_send_quit( NETWORK *netw )
+ *\brief Add a formatted NETMSG_QUIT message to the specified network
+ *\param netw The aimed NETWORK
+ *\return TRUE or FALSE
+ */
+int netw_send_quit( NETWORK *netw )
+{
+    __n_assert( netw, return FALSE );
+
+    N_STR *tmpstr = NULL ;
+
+    tmpstr = netmsg_make_quit_msg();
+    __n_assert( tmpstr, return FALSE );
+
+    return netw_add_msg( netw, tmpstr );
+} /* netw_send_quit( ... ) */
+
+
