@@ -1893,7 +1893,6 @@ NETWORK *netw_accept_from_ex( NETWORK *from, int disable_naggle, int sock_send_b
         netw_setsockopt( netw, SO_RCVBUF, sock_recv_buf );
 
     netw_set( netw, NETW_SERVER|NETW_RUN|NETW_THR_ENGINE_STOPPED );
-    netw_set_blocking( netw, 1 );
     n_log( LOG_DEBUG, "Connection accepted from %s:%s", netw-> link . ip, netw -> link . port );
 
     return netw;
