@@ -1838,9 +1838,8 @@ NETWORK *netw_accept_from_ex( NETWORK *from, int disable_naggle, int sock_send_b
     else if( non_blocking == -1 )
     {
         //n_log( LOG_DEBUG, "non blocking accept call on %d", from -> link . sock );
-
         if( from -> link . is_blocking  == 1 )
-            netw_set_blocking( from, 0 );
+            netw_set_blocking( from , 0 );
 
         tmp = accept( from -> link . sock, (struct sockaddr *)&netw -> link . raddr, &sin_size );
 
@@ -1853,7 +1852,7 @@ NETWORK *netw_accept_from_ex( NETWORK *from, int disable_naggle, int sock_send_b
             netw_close( &netw );
             return NULL;
         }
-        netw -> link . is_blocking = 0 ;
+        netw -> link . is_blocking = 1 ;
     }
     else
     {
@@ -2212,7 +2211,7 @@ void *netw_send_func( void *NET )
                                 DONE = 3 ;
                         }
                         free_nstr( &ptr );
-                        //u_sleep(  netw -> send_queue_consecutive_wait );
+                        u_sleep(  netw -> send_queue_consecutive_wait );
                         message_sent = 1 ;
                     }
                     /*
@@ -2227,8 +2226,6 @@ void *netw_send_func( void *NET )
                   u_sleep( netw -> pause_wait );
                   }*/
             }
-            if( message_sent == 0 )
-                usleep( 1000 );
         }
     }
     while( !DONE );
