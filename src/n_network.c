@@ -2421,6 +2421,11 @@ int netw_stop_thr_engine( NETWORK *netw )
     netw_set( netw, NETW_EXIT_ASKED );
 
     n_log( LOG_DEBUG,  "Network %d waits for send threads to stop", netw -> link . sock );
+    for( int it = 0 ; it < 10 ; it ++ )
+    {
+        sem_post( &netw -> send_blocker );
+        usleep( 1000 );
+    }
     pthread_join( netw -> send_thr, NULL );
     n_log( LOG_DEBUG,  "Network %d waits for recv threads to stop", netw -> link . sock );
     pthread_join( netw -> recv_thr, NULL );
