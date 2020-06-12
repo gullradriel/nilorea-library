@@ -160,7 +160,7 @@ char *trim_nocopy(char *s);
 /* trim and put a \0 at the end, return new char * */
 char *trim(char *s);
 /* N_STR wrapper around fgets */
-char *nfgets( char *buffer, int size, FILE *stream );
+char *nfgets( char *buffer, unsigned int size, FILE *stream );
 /* create a new string */
 N_STR *new_nstr( NSTRBYTE size );
 /* reinitialize a nstr */
