@@ -258,8 +258,8 @@ int char_to_nstr_ex( char *from, NSTRBYTE nboct, N_STR **to )
 
 	Malloc( (*to), N_STR, 1 );
 	__n_assert( (*to), return FALSE );
-
-	Malloc( (*to) -> data, char, nboct + 2 );
+    /* added a sizeof( void * ) to add a consistant and secure padding at the end */
+	Malloc( (*to) -> data, char, nboct + 2 * sizeof( void * ) );
 	__n_assert( (*to) -> data, Free( (*to) ); return FALSE );
 
 	memcpy( (*to) -> data, from, nboct );
