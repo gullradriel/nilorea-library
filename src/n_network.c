@@ -1605,12 +1605,11 @@ int netw_wait_close( NETWORK **netw )
             if( res < 0 )
             {
                 error = neterrno ;
-                errmsg = netstrerror( error );
-                n_log( LOG_ERR, "read returned error %d when closing socket %d: %s", error, (*netw) -> link . sock, _str( errmsg ) );
-                FreeNoLog( errmsg );
-                if( error != ENOTCONN && error != 10057 )
+                if( error != ENOTCONN && error != 10057 && error != EINTR )
                 {
-                    n_log( LOG_ERR, "The socket was not connected anymore. Maybe a netw_close_wait misuses ?" );
+                    errmsg = netstrerror( error );
+                    n_log( LOG_ERR, "read returned error %d when closing socket %d: %s", error, (*netw) -> link . sock, _str( errmsg ) );
+                    FreeNoLog( errmsg );
                 }
                 break ;
             }
