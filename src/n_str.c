@@ -224,14 +224,14 @@ N_STR *new_nstr( NSTRBYTE size )
 
 	str -> written = 0 ;
 
-	if( size == 0 )
+	if( size <= 0 )
 	{
 		str -> data = NULL ;
 		str -> length = 0 ;
 	}
 	else
 	{
-		Malloc( str -> data, char, size + 1 );
+		Malloc( str -> data, char, size + 8 );
 		__n_assert( str -> data, Free(str) ; return NULL );
 		str -> length = size ;
 	}
@@ -259,7 +259,7 @@ int char_to_nstr_ex( char *from, NSTRBYTE nboct, N_STR **to )
 	Malloc( (*to), N_STR, 1 );
 	__n_assert( (*to), return FALSE );
     /* added a sizeof( void * ) to add a consistant and secure padding at the end */
-	Malloc( (*to) -> data, char, nboct + 2 * sizeof( void * ) );
+	Malloc( (*to) -> data, char, nboct + 8 );
 	__n_assert( (*to) -> data, Free( (*to) ); return FALSE );
 
 	memcpy( (*to) -> data, from, nboct );
@@ -456,7 +456,7 @@ int str_to_int_ex( const char *s, NSTRBYTE start, NSTRBYTE end, int *i, const in
 
 	__n_assert( s, return FALSE );
 
-	Malloc( tmpstr, char,  sizeof( int ) + end - start );
+	Malloc( tmpstr, char,  sizeof( int ) + end - start + 8 );
 	__n_assert( tmpstr, n_log( LOG_ERR, "Unable to Malloc( tmpstr , char ,  sizeof( int ) + %d - %d )", end, start ); return FALSE );
 
 	memcpy( tmpstr, s + start, end - start );
@@ -509,7 +509,7 @@ int str_to_int_nolog( const char *s, NSTRBYTE start, NSTRBYTE end, int *i, const
 
 	__n_assert( s, return FALSE );
 
-	Malloc( tmpstr, char,  sizeof( int ) + end - start );
+	Malloc( tmpstr, char,  sizeof( int ) + end - start + 8 );
 	__n_assert( tmpstr, n_log( LOG_ERR, "Unable to Malloc( tmpstr , char ,  sizeof( int ) + %d - %d )", end, start ); return FALSE );
 
 	memcpy( tmpstr, s + start, end - start );
@@ -579,7 +579,7 @@ int str_to_long_ex( const char *s, NSTRBYTE start, NSTRBYTE end, long int *i, co
 
 	__n_assert( s, return FALSE );
 
-	Malloc( tmpstr, char,  sizeof( int ) + end - start );
+	Malloc( tmpstr, char,  sizeof( int ) + end - start  + 8 );
 	__n_assert( tmpstr, n_log( LOG_ERR, "Unable to Malloc( tmpstr , char ,  sizeof( int ) + %d - %d )", end, start ); return FALSE );
 
 	memcpy( tmpstr, s + start, end - start );
@@ -654,7 +654,7 @@ int str_to_long_long_ex( const char *s, NSTRBYTE start, NSTRBYTE end, long long 
 
 	__n_assert( s, return FALSE );
 
-	Malloc( tmpstr, char,  sizeof( int ) + end - start );
+	Malloc( tmpstr, char,  sizeof( int ) + end - start + 8 );
 	__n_assert( tmpstr, n_log( LOG_ERR, "Unable to Malloc( tmpstr , char ,  sizeof( int ) + %d - %d )", end, start ); return FALSE );
 
 	memcpy( tmpstr, s + start, end - start );
@@ -763,7 +763,7 @@ N_STR *nstrdup( N_STR *str )
 	Malloc( new_str, N_STR, 1 );
 	if( new_str )
 	{
-		Malloc( new_str -> data, char, str -> length + 1 );
+		Malloc( new_str -> data, char, str -> length + 8 );
 		if( new_str -> data )
 		{
 			memcpy(  new_str -> data, str -> data, str -> written );
@@ -1514,7 +1514,7 @@ char *str_replace ( const char *string, const char *substr, const char *replacem
 	while ( (tok = strstr ( head, substr )))
 	{
 		oldstr = newstr;
-		newstr = malloc ( strlen ( oldstr ) - strlen ( substr ) + strlen ( replacement ) + 1 );
+		newstr = malloc ( strlen ( oldstr ) - strlen ( substr ) + strlen ( replacement ) + 8 );
 		/*failed to alloc mem, free old string and return NULL */
 		if ( newstr == NULL )
 		{

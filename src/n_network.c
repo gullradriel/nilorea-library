@@ -2134,7 +2134,7 @@ void *netw_send_func( void *NET )
 
     NSTRBYTE nboctet = 0 ;
 
-    char nboct[ 4 ] = "" ;
+    char nboct[ 5 ] = "" ;
 
     N_STR *ptr = NULL ;
 
@@ -2242,12 +2242,12 @@ void *netw_send_func( void *NET )
 
     if( DONE == 100 )
     {
-        n_log( LOG_DEBUG, "Socket %d: Sending thread exited !", netw -> link . sock );
+        n_log( LOG_DEBUG, "Socket %d: Sending thread exiting correctly", netw -> link . sock );
         netw_set( netw, NETW_EXIT_ASKED );
     }
     else
     {
-        n_log( LOG_ERR, "Closing send thread for socket %d\nReason unknown\nDONE = %d", netw -> link . sock, DONE );
+        n_log( LOG_ERR, "Socket %d: Sending thread exiting !", netw -> link . sock );
         netw_set( netw, NETW_ERROR );
     }
 
@@ -2274,7 +2274,7 @@ void *netw_recv_func( void *NET )
 
     NSTRBYTE nboctet = 0 ;
 
-    char nboct[ 4 ]= "" ;
+    char nboct[ 5 ]= "" ;
 
     N_STR *recvdmsg = NULL ;
 
@@ -2378,12 +2378,12 @@ void *netw_recv_func( void *NET )
 
     if( DONE == 100 )
     {
-        n_log( LOG_DEBUG, "Socket %d: Receive thread exiting !", netw -> link . sock );
+        n_log( LOG_DEBUG, "Socket %d: Receive thread exiting correctly", netw -> link . sock );
         netw_set( netw, NETW_EXIT_ASKED );
     }
     else
     {
-        n_log( LOG_ERR, "Closing recv thread for socket %d\nReason unknown\nDONE = %d", netw -> link . sock, DONE );
+        n_log( LOG_ERR, "Socket %d: Receive thread exiting !", netw -> link . sock );
         netw_set( netw, NETW_ERROR );
     }
 
@@ -2472,7 +2472,7 @@ int send_data( SOCKET s, char *buf, NSTRBYTE n )
         }
         else
         {
-            if( error == ECONNRESET )
+            if( error == ECONNRESET || error == ENOTCONN )
             {
                 n_log( LOG_DEBUG, "socket %d disconnected !", s );
                 return -2 ;
@@ -2522,7 +2522,7 @@ int recv_data( SOCKET s, char *buf, NSTRBYTE n )
         }
         else
         {
-            if( error == ECONNRESET )
+            if( br == 0 )
             {
                 n_log( LOG_DEBUG, "socket %d disconnected !", s );
                 return -2 ;
