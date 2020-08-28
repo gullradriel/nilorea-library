@@ -45,7 +45,7 @@ double htond( double value )
 {
     double ret = value ;
     /* if byte order is little like x86, PC, ... we swap to network notation */
-#if __BYTE_ORDER == __LITTLE_ENDIAN
+#if( BYTEORDER_ENDIAN == BYTEORDER_LITTLE_ENDIAN )
     ret = double_swap( value );
 #endif
     return ret ;
@@ -62,7 +62,7 @@ double ntohd( double value )
 {
     double ret = value ;
     /* if byte order is little like x86, PC, ... we swap to network notation */
-#if __BYTE_ORDER == __LITTLE_ENDIAN
+#if( BYTEORDER_ENDIAN == BYTEORDER_LITTLE_ENDIAN )
     ret = double_swap( value );
 #endif
     return ret ;

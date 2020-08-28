@@ -71,12 +71,12 @@ else
 	OBJECTS=$(SRC:%.c=obj/%.o)
 
 ifeq ($(UNAME_S),Linux)
-	CFLAGS+= -I./include/ $(OPT)
+	CFLAGS+= -DLINUX -I./include/ $(OPT)
 endif
 
 ifeq ($(UNAME_S),SunOS)
 	CC=cc
-	CFLAGS+= -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -g -v -xc99 -I ./include/ -mt
+	CFLAGS+= -DSOLARIS -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -g -v -xc99 -I ./include/ -I/Home/open_source/include -mt -L/Home/open_source/lib -lpcre
 endif
 
 obj/%.o: src/%.c
@@ -84,9 +84,9 @@ obj/%.o: src/%.c
 
 endif
 
-buildnum=(shell grep BUILD_NUMBER  build-number.txt | awk '{print $$3}')
-minorversion=(shell grep MINOR_VERSION build-number.txt | awk '{print $$3}')
-majorversion=(shell grep MAJOR_VERSION build-number.txt | awk '{print $$3}')
+#buildnum=(shell grep BUILD_NUMBER  build-number.txt | awk '{print $$3}')
+#minorversion=(shell grep MINOR_VERSION build-number.txt | awk '{print $$3}')
+#majorversion=(shell grep MAJOR_VERSION build-number.txt | awk '{print $$3}')
 
 default: all
 release: all
@@ -130,7 +130,6 @@ all: main
 
 main: $(OBJECTS)
 	$(AR) rcs $(OUTPUT)$(EXT) $(OBJECTS)
-
 #@echo Version:$(shell $(majorversion)).$(shell $(minorversion)).$(shell $(buildnum))
 
 clean:

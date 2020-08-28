@@ -1018,7 +1018,6 @@ int netw_setsockopt( NETWORK *netw, int optname, int value )
     default:
         n_log( LOG_ERR, "%d is not a supported setsockopt", optname );
         return FALSE ;
-        break ;
     }
     return TRUE ;
 } /* netw_set_sock_opt */
@@ -1125,7 +1124,7 @@ int netw_init_openssl( void )
     if ( OPENSSL_IS_INITIALIZED == 1 )
         return TRUE; /*already loaded*/
 
-#ifdef HAVE_OPENSSL WIP
+#ifdef HAVE_OPENSSL
     SSL_library_init();
     SSL_load_error_strings();
     ERR_load_BIO_strings();

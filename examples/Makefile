@@ -53,12 +53,12 @@ else
 	CC=gcc
 	EXT=
 	ifeq ($(UNAME_S),Linux)
-	CFLAGS+= $(OPT) -std=gnu99 -rdynamic
+	CFLAGS+= -DLINUX $(OPT) -std=gnu99 -rdynamic
 	CLIBS=-lpthread -lm
 endif
 ifeq ($(UNAME_S),SunOS)
 	CC=cc
-	CFLAGS+= -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -g -v -xc99 -I ../include/ -mt
+	CFLAGS+= -DSOLARIS -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -g -v -xc99 -I ../include/ -I/Home/open_source/include -mt -L/Home/open_source/lib 
 	CLIBS=-lm -lsocket -lnsl -lpthread -lpcre -lrt -lm
 	LIBNILOREA=-lnilorea
 	EXT=
@@ -74,7 +74,8 @@ ifeq ($(HAVE_ALLEGRO),1)
 	TARGET+=ex_gui_particles$(EXT) ex_gui_netclient$(EXT) ex_gui_netserver$(EXT)
 endif
 
-CFLAGS+= -ffunction-sections -fdata-sections -Wl,--gc-sections
+
+#CFLAGS+= -ffunction-sections -fdata-sections -Wl,--gc-sections
 
 %.o : %.c
 	$(CC) $(CFLAGS) -o $@ -c $<

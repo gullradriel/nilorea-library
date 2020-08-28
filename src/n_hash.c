@@ -43,7 +43,7 @@ static FORCE_INLINE uint32_t getblock( const uint32_t *p, int i )
 {
     uint32_t var ;
     memcpy( &var, p+i, sizeof( uint32_t ) );
-#ifdef __ENV_LITTLE_ENDIAN
+#if( BYTEORDER_ENDIAN == BYTEORDER_LITTLE_ENDIAN )
     var = htonl( var );
 #endif
     return var ;

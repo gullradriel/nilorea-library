@@ -82,7 +82,7 @@ int npcre_delete( N_PCRE ** pcre )
         pcre_free( (*pcre) -> regexp );
         (*pcre) -> regexp = NULL ;
     }
-#ifndef __windows__
+#ifdef LINUX
     pcre_free_study(  (*pcre) -> extra );
     (*pcre) -> extra = NULL ;
 #else
