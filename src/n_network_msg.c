@@ -84,7 +84,7 @@ int create_msg( NETW_MSG **msg )
     }
 
     Malloc( (*msg), NETW_MSG, 1 );
-    __n_assert( (*msg), return FALSE );
+    __n_assert( msg&&(*msg), return FALSE );
 
     (*msg) -> tabstr = new_generic_list( -1 );
     __n_assert( (*msg) -> tabstr, return FALSE );
@@ -138,7 +138,7 @@ int delete_msg( NETW_MSG **msg )
  */
 int empty_msg( NETW_MSG **msg )
 {
-    __n_assert( (*msg), return FALSE );
+    __n_assert( msg&&(*msg), return FALSE );
 
     list_empty( (*msg) -> tabint );
     list_empty( (*msg) -> tabflt );

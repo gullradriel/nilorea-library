@@ -1234,7 +1234,7 @@ int netw_connect_ex( NETWORK **netw, char *host, char *port, int disable_naggle,
 
     /*creating array*/
     (*netw) = netw_new( send_list_limit, recv_list_limit );
-    __n_assert( (*netw), return FALSE );
+    __n_assert( netw&&(*netw), return FALSE );
 
     /*checking WSA when under windows*/
     if ( netw_init_wsa( 1, 2, 2 ) == FALSE )
@@ -1487,7 +1487,7 @@ int netw_set( NETWORK *netw, int flag )
 int netw_close( NETWORK **netw )
 {
     int state = 0, thr_engine_status = 0 ;
-    __n_assert( (*netw), return FALSE );
+    __n_assert( netw&&(*netw), return FALSE );
 
     list_foreach( node, (*netw) -> pools )
     {
@@ -1566,7 +1566,7 @@ void depleteSendBuffer(int fd)
 int netw_wait_close( NETWORK **netw )
 {
     int state = 0, thr_engine_status = 0 ;
-    __n_assert( (*netw), return FALSE );
+    __n_assert( netw&&(*netw), return FALSE );
 
     int error = 0 ;
     char *errmsg = NULL ;
@@ -1967,7 +1967,10 @@ int netw_add_msg_ex( NETWORK *netw, char *str, unsigned int length )
 {
     __n_assert( netw, return FALSE );
     __n_assert( str, return FALSE );
-    __n_assert( length == 0, return FALSE );
+    if( length == 0 )
+    {
+        return FALSE ;
+    }
 
     N_STR *nstr = NULL ;
     Malloc( nstr, N_STR, 1 );
@@ -2821,7 +2824,7 @@ NETWORK_POOL *netw_new_pool( int nb_min_element )
  */
 int netw_destroy_pool(  NETWORK_POOL **netw_pool )
 {
-    __n_assert( (*netw_pool), return FALSE );
+    __n_assert( netw_pool&&(*netw_pool) , return FALSE );
 
     write_lock( (*netw_pool) -> rwlock );
     if( (*netw_pool) -> pool )

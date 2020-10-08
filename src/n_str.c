@@ -65,7 +65,7 @@ void free_nstr_ptr( void *ptr )
  */
 int _free_nstr( N_STR **ptr )
 {
-	__n_assert( (*ptr), return FALSE );
+	__n_assert( ptr&&(*ptr), return FALSE );
 
 	FreeNoLog( (*ptr) -> data );
 	FreeNoLog( (*ptr) );
@@ -240,14 +240,14 @@ N_STR *new_nstr( NSTRBYTE size )
 
 
 
-/*!\fn char_to_nstr_ex( char *from , NSTRBYTE nboct , N_STR **to )
+/*!\fn char_to_nstr_ex( const char *from , NSTRBYTE nboct , N_STR **to )
  *\brief Convert a char into a N_STR, extended version
  *\param from A char *string to convert
  *\param nboct  The size to copy, from 1 octet to nboctet (ustrsizez( from ) )
  *\param to A N_STR pointer who will be Malloced
  *\return True on success, FALSE on failure ( to will be set to NULL )
  */
-int char_to_nstr_ex( char *from, NSTRBYTE nboct, N_STR **to )
+int char_to_nstr_ex( const char *from, NSTRBYTE nboct, N_STR **to )
 {
 	if( (*to) )
 	{
@@ -257,7 +257,7 @@ int char_to_nstr_ex( char *from, NSTRBYTE nboct, N_STR **to )
 	};
 
 	Malloc( (*to), N_STR, 1 );
-	__n_assert( (*to), return FALSE );
+	__n_assert( to&&(*to), return FALSE );
     /* added a sizeof( void * ) to add a consistant and secure padding at the end */
 	Malloc( (*to) -> data, char, nboct + 8 );
 	__n_assert( (*to) -> data, Free( (*to) ); return FALSE );
@@ -271,12 +271,12 @@ int char_to_nstr_ex( char *from, NSTRBYTE nboct, N_STR **to )
 
 
 
-/*!\fn N_STR *char_to_nstr( char *src )
+/*!\fn N_STR *char_to_nstr( const char *src )
  *\brief Convert a char into a N_STR, short version
  *\param src A char *string to convert
  *\return A N_STR copy of src or NULL
  */
-N_STR *char_to_nstr( char *src )
+N_STR *char_to_nstr( const char *src )
 {
 	N_STR *strptr = NULL ;
 	char_to_nstr_ex( src, strlen( src ), &strptr ) ;
@@ -955,7 +955,7 @@ int strcpy_u( char *from, char *to, NSTRBYTE to_size, char split, NSTRBYTE *it )
 
 	__n_assert( from, return FALSE );
 	__n_assert( to, return FALSE );
-	__n_assert( (*it), return FALSE );
+	__n_assert( it&&(*it), return FALSE );
 
 	while( _it < to_size && from[ (*it) ] != '\0' && from[ (*it) ] != split  )
 	{

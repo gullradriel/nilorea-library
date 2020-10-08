@@ -1047,7 +1047,7 @@ int empty_ht( HASH_TABLE *table )
  */
 int destroy_ht( HASH_TABLE **table )
 {
-    __n_assert( (*table), n_log( LOG_ERR, "Can't destroy table: already NULL" ); return FALSE );
+    __n_assert( table&&(*table) , n_log( LOG_ERR, "Can't destroy table: already NULL" ); return FALSE );
 
     if( (*table )-> hash_table )
     {
