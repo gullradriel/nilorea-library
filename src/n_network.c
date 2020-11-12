@@ -1580,18 +1580,6 @@ int netw_wait_close( NETWORK **netw )
     /* wait for close fix */
     if( (*netw) -> link . sock != INVALID_SOCKET )
     {
-#ifdef __linux__
-        /* deplete send buffer */
-        while( TRUE )
-        {
-            int outstanding;
-            ioctl((*netw) -> link . sock, SIOCOUTQ, &outstanding);
-            if(!outstanding)
-                break;
-            usleep(1000);
-        }
-#endif
-
         shutdown( (*netw) -> link . sock, SHUT_WR );
 
         char buffer[ 4096 ] = "" ;
@@ -2515,7 +2503,7 @@ int recv_data( SOCKET s, char *buf, NSTRBYTE n )
     {
         int br = 0 ;     /* bytes read this pass */
         /* loop until full buffer */
-        br = recv( s, buf, n - bcount, NETFLAGS );
+        CALL_RETRY( br , recv( s, buf, n - bcount, NETFLAGS ) );
         error = neterrno ;
         if( br > 0 )
         {
@@ -2578,7 +2566,7 @@ int send_php( SOCKET s, int _code, char *buf, int n )
     ptr = head ;
     while ( bcount < HEAD_SIZE )                 /* loop until full buffer */
     {
-        br = send( s, head, HEAD_SIZE - bcount, NETFLAGS );
+        CALL_RETRY( br , send( s, head, HEAD_SIZE - bcount, NETFLAGS ) );
         error = neterrno ;
         if( br > 0 )
         {
