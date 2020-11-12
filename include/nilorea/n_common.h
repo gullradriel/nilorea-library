@@ -239,6 +239,11 @@ extern "C"
 		__ret ; \
 	}
 
+    /*! TEMP_FAILURE gnu macro portable version */
+#define CALL_RETRY(retvar, expression) do { \
+    retvar = (expression); \
+} while (retvar == -1 && errno == EINTR);
+
 	/*! next odd helper */
 #define next_odd( __val ) ( (__val)%2 == 0 ) ? (__val) : ( __val + 1 )
 
