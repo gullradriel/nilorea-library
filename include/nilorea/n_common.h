@@ -314,8 +314,7 @@ extern "C"
 	({ \
 	 pthread_rwlockattr_t __attr ; \
 	 pthread_rwlockattr_init( &__attr ); \
-	 pthread_rwlockattr_setkind_np( &__attr , PTHREAD_RWLOCK_PREFER_WRITER_NONRECURSIVE_NP ); \
-	 int __ret = 0 ; \
+     int __ret = 0 ; \
 	 do \
 	 { \
 	 n_log( RWLOCK_LOGLEVEL , "init_lock %s" , #__rwlock_mutex ); \
