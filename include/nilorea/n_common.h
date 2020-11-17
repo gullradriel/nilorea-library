@@ -303,7 +303,7 @@ extern "C"
 	 __ret = pthread_rwlock_init( &(__rwlock_mutex) , &__attr ); \
 	 if( __ret != 0 ) \
 	 { \
-	 n_log( LOG_ERR , "Error %s while initializing %s at %s:%d" , strerror( __ret ) , #__rwlock_mutex , __FILE__ , __func__ , __LINE__ ); \
+	 n_log( LOG_ERR , "Error %s while initializing %s at %s:%s:%d" , strerror( __ret ) , #__rwlock_mutex , __FILE__ , __func__ , __LINE__ ); \
 	 } \
 	 pthread_rwlockattr_destroy( &__attr ); \
 	 } while( 0 ); \
@@ -322,7 +322,7 @@ extern "C"
 	 __ret = pthread_rwlock_init( &(__rwlock_mutex) , &__attr ); \
 	 if( __ret != 0 ) \
 	 { \
-	 n_log( LOG_ERR , "Error %s while initializing %s at %s:%d" , strerror( __ret ) , #__rwlock_mutex , __FILE__ , __func__ , __LINE__ ); \
+	 n_log( LOG_ERR , "Error %s while initializing %s at %s:%s:%d" , strerror( __ret ) , #__rwlock_mutex , __FILE__ , __func__ , __LINE__ ); \
 	 } \
 	 pthread_rwlockattr_destroy( &__attr ); \
 	 } while( 0 ); \
@@ -340,7 +340,7 @@ extern "C"
 	 __ret = pthread_rwlock_rdlock( &(__rwlock_mutex) ); \
 	 if( __ret != 0 ) \
 	 { \
-	 n_log( LOG_ERR , "Error %s while read locking %s at %s:%d" , strerror( __ret ) , #__rwlock_mutex , __FILE__ , __func__ , __LINE__ ); \
+	 n_log( LOG_ERR , "Error %s while read locking %s at %s:%s:%d" , strerror( __ret ) , #__rwlock_mutex , __FILE__ , __func__ , __LINE__ ); \
 	 } \
 	 } while( 0 ); \
 	 __ret ; \
@@ -356,7 +356,7 @@ extern "C"
 	 __ret = pthread_rwlock_wrlock( &(__rwlock_mutex) ); \
 	 if( __ret != 0 ) \
 	 { \
-	 n_log( LOG_ERR , "Error %s while write locking %s at %s:%d" , strerror( __ret ) , #__rwlock_mutex , __FILE__ , __func__ , __LINE__ ); \
+	 n_log( LOG_ERR , "Error %s while write locking %s at %s:%s:%d" , strerror( __ret ) , #__rwlock_mutex , __FILE__ , __func__ , __LINE__ ); \
 	 } \
 	 } while( 0 ); \
 	 __ret ; \
@@ -372,7 +372,7 @@ extern "C"
 	 __ret = pthread_rwlock_unlock( &(__rwlock_mutex) ); \
 	 if( __ret != 0 ) \
 	 { \
-	 n_log( LOG_ERR , "Error %s while unlocking %s at %s:%d" , strerror( __ret ) , #__rwlock_mutex , __FILE__ , __func__ , __LINE__ ); \
+	 n_log( LOG_ERR , "Error %s while unlocking %s at %s:%s:%d" , strerror( __ret ) , #__rwlock_mutex , __FILE__ , __func__ , __LINE__ ); \
 	 } \
 	 } while( 0 ); \
 	 __ret ; \
@@ -387,7 +387,7 @@ extern "C"
 	 __ret = pthread_rwlock_destroy( &(__rwlock_mutex) ); \
 	 if( __ret != 0 ) \
 	 { \
-	 n_log( LOG_ERR , "Error %s while destroying %s at %s:%d" , strerror( __ret ) , #__rwlock_mutex , __FILE__ , __func__ , __LINE__ ); \
+	 n_log( LOG_ERR , "Error %s while destroying %s at %s:%s:%d" , strerror( __ret ) , #__rwlock_mutex , __FILE__ , __func__ , __LINE__ ); \
 	 } \
 	 } while( 0 ); \
 	 __ret ; \
