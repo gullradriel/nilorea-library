@@ -1550,7 +1550,6 @@ int deplete_send_buffer( int fd , long timeout )
 {
     int done = FALSE ;
     int lastOutstanding=-1;
-    timeout /= 50 ;
     for( int it = 0 ; it < timeout ; it += 50 )
     {
         int outstanding;
