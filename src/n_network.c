@@ -1539,34 +1539,29 @@ int netw_close( NETWORK **netw )
 
 
 
-#if defined( __linux__ ) || defined( __sun ) || defined( _AIX )
 /*!\fn int deplete_send_buffer( int fd , long timeout )
  *\brief wait until the socket is empty or timeout, checking each 50 msec
  *\param fd socket descriptor
  *\timeout timeout value in msec 
- *\return TRUE of FALSE 
+ *\return 0 or the amount of remaining datas in bytes 
  */
+#if defined( __linux__ ) || defined( __sun ) || defined( _AIX )
 int deplete_send_buffer( int fd , long timeout )
 {
-    int done = FALSE ;
-    int lastOutstanding=-1;
+    int outstanding = 0 ;
     for( int it = 0 ; it < timeout ; it += 50 )
     {
-        int outstanding;
+        outstanding = 0 ;
         ioctl(fd, SIOCOUTQ, &outstanding);
-        if(outstanding != lastOutstanding)
-            printf("Outstanding: %d\n", outstanding);
-        lastOutstanding = outstanding;
         if(!outstanding)
         {
-            done = TRUE ;
             break;
         }
         usleep( 50000 );
     }
-    return done ;
+    return outstanding ;
 }
-#endif
+#endif 
 
 
 
@@ -1596,12 +1591,13 @@ int netw_wait_close( NETWORK **netw )
         /* inform peer that we have finished */
         shutdown( (*netw) -> link . sock, SHUT_WR );
 #if defined( __linux__ ) || defined( __sun ) || defined( _AIX )
-        if( deplete_send_buffer( (*netw) -> link . sock , 5000 ) == FALSE )
+        int remaining = deplete_send_buffer( (*netw) -> link . sock , 3000 );
+        if( remaining > 0 )
         {
-            n_log( LOG_ERR , "socket %d took more than 5 seconds to send datas before closing => force close" , (*netw) -> link . sock );
+            n_log( LOG_DEBUG , "socket %d took more than 3 seconds to send %d octets before closing => force close" , (*netw) -> link . sock , remaining );
         }
 #endif
-
+        /* wait for fin ack */
         char buffer[ 4096 ] = "" ;
         for( ;; )
         {
@@ -1612,20 +1608,20 @@ int netw_wait_close( NETWORK **netw )
             if( res < 0 )
             {
                 error = neterrno ;
-                if( error != ENOTCONN && error != 10057 && error != EINTR )
+                if( error != ENOTCONN && error != 10057 && error != EINTR && error != ECONNRESET )
                 {
                     errmsg = netstrerror( error );
-                    n_log( LOG_ERR, "read returned error %d when closing socket %d: %s", error, (*netw) -> link . sock, _str( errmsg ) );
+                    n_log( LOG_ERR, "read returned error %d when closing socket %d (%s): %s", error, (*netw) -> link . sock, _str( (*netw) -> link . ip ) , _str( errmsg ) );
                     FreeNoLog( errmsg );
                 }
                 break ;
             }
         }
     }
-
     return netw_close( &(*netw) );
 
 } /* netw_wait_close(...)*/
+
 
 
 /*!\fn int netw_make_listening( NETWORK **netw , char *addr , char *port , int nbpending  , int ip_version )
@@ -2079,7 +2075,7 @@ N_STR *netw_wait_msg( NETWORK *netw, long refresh, long timeout )
             timeout -= refresh ;
             if( timeout < 0 )
             {
-                n_log( LOG_ERR, "timed out for netw %d", netw -> link . sock );
+                n_log( LOG_ERR, "timed out for netw %d (%s)", netw -> link . sock , _str( netw -> link . ip ) );
                 break ;
             }
         }
@@ -2105,20 +2101,20 @@ int netw_start_thr_engine( NETWORK *netw )
     pthread_mutex_lock( &netw -> eventbolt );
     if( netw -> threaded_engine_status == NETW_THR_ENGINE_STARTED )
     {
-        n_log( LOG_ERR, "THR Engine already started for network %p", netw );
+        n_log( LOG_ERR, "THR Engine already started for network %p (%s)", netw , _str( netw -> link . ip ) );
         pthread_mutex_unlock( &netw -> eventbolt );
         return FALSE ;
     }
 
     if( pthread_create(  &netw -> recv_thr,   NULL,  netw_recv_func,  (void *) netw ) != 0 )
     {
-        n_log( LOG_ERR, "Unable to create recv_thread for network %p", netw );
+        n_log( LOG_ERR, "Unable to create recv_thread for network %p (%s)", netw , _str( netw -> link . ip ) );
         pthread_mutex_unlock( &netw -> eventbolt );
         return FALSE ;
     }
     if( pthread_create(  &netw -> send_thr,   NULL,  netw_send_func,  (void *) netw ) != 0 )
     {
-        n_log( LOG_ERR, "Unable to create send_thread for network %p", netw );
+        n_log( LOG_ERR, "Unable to create send_thread for network %p (%s)", netw , _str( netw -> link . ip ) );
         pthread_mutex_unlock( &netw -> eventbolt );
         return FALSE ;
     }
@@ -2240,15 +2236,15 @@ void *netw_send_func( void *NET )
     while( !DONE );
 
     if( DONE == 1 )
-        n_log( LOG_ERR,  "Error when sending state %d on socket %d, network: %s", netw -> state, netw -> link . sock, (net_status==-2)?"disconnected":"socket error" );
+        n_log( LOG_ERR,  "Error when sending state %d on socket %d (%s), network: %s", netw -> state, netw -> link . sock, _str( netw -> link . ip ) , (net_status==-2)?"disconnected":"socket error" );
     else if( DONE == 2 )
-        n_log( LOG_ERR,  "Error when sending number of octet to socket %d, network: %s", netw -> link . sock, (net_status==-2)?"disconnected":"socket error" );
+        n_log( LOG_ERR,  "Error when sending number of octet to socket %d (%s), network: %s", netw -> link . sock, _str( netw -> link . ip ) , (net_status==-2)?"disconnected":"socket error" );
     else if( DONE == 3 )
-        n_log( LOG_DEBUG,  "Error when sending data on socket %d, network: %s", netw -> link . sock, (net_status==-2)?"disconnected":"socket error" );
+        n_log( LOG_DEBUG,  "Error when sending data on socket %d (%s), network: %s", netw -> link . sock, _str( netw -> link . ip ) , (net_status==-2)?"disconnected":"socket error" );
     else if( DONE == 4 )
-        n_log( LOG_ERR,  "Error when sending state QUIT on socket %d, network: %s", netw -> link . sock, (net_status==-2)?"disconnected":"socket error" );
+        n_log( LOG_ERR,  "Error when sending state QUIT on socket %d (%s), network: %s", netw -> link . sock, _str( netw -> link . ip ) , (net_status==-2)?"disconnected":"socket error" );
     else if( DONE == 5 )
-        n_log( LOG_ERR,  "Error when sending state QUIT number of octet (0) on socket %d, network: %s", netw -> link . sock, (net_status==-2)?"disconnected":"socket error" );
+        n_log( LOG_ERR,  "Error when sending state QUIT number of octet (0) on socket %d (%s), network: %s", netw -> link . sock, _str( netw -> link . ip ) , (net_status==-2)?"disconnected":"socket error" );
 
     if( DONE == 100 )
     {
@@ -2257,7 +2253,7 @@ void *netw_send_func( void *NET )
     }
     else
     {
-        n_log( LOG_ERR, "Socket %d: Sending thread exiting !", netw -> link . sock );
+        n_log( LOG_ERR, "Socket %d (%s): Sending thread exiting !", netw -> link . sock , _str( netw -> link . ip ) );
         netw_set( netw, NETW_ERROR );
     }
 
@@ -2377,23 +2373,23 @@ void *netw_recv_func( void *NET )
     while( !DONE );
 
     if( DONE == 1 )
-        n_log( LOG_ERR,  "Error when receiving state from socket %d, net_status: %s", netw -> link . sock, (net_status==-2)?"disconnected":"socket error" );
+        n_log( LOG_ERR,  "Error when receiving state from socket %d (%s), net_status: %s", netw -> link . sock, _str( netw -> link . ip ) , (net_status==-2)?"disconnected":"socket error" );
     else if( DONE == 2 )
-        n_log( LOG_ERR,  "Error when receiving nboctet from socket %d, net_status: %s", netw -> link . sock, (net_status==-2)?"disconnected":"socket error" );
+        n_log( LOG_ERR,  "Error when receiving nboctet from socket %d (%s), net_status: %s", netw -> link . sock, _str( netw -> link . ip ) , (net_status==-2)?"disconnected":"socket error" );
     else if( DONE == 3 )
-        n_log( LOG_ERR,  "Error when receiving data from socket %d, net_status: %s", netw -> link . sock, (net_status==-2)?"disconnected":"socket error" );
+        n_log( LOG_ERR,  "Error when receiving data from socket %d (%s), net_status: %s", netw -> link . sock, _str( netw -> link . ip ) , (net_status==-2)?"disconnected":"socket error" );
     else if( DONE == 4 )
-        n_log( LOG_ERR,  "Error adding receved message from socket %d, net_status: %s", netw -> link . sock, (net_status==-2)?"disconnected":"socket error" );
+        n_log( LOG_ERR,  "Error adding receved message from socket %d (%s), net_status: %s", netw -> link . sock, _str( netw -> link . ip ) , (net_status==-2)?"disconnected":"socket error" );
 
 
     if( DONE == 100 )
     {
-        n_log( LOG_DEBUG, "Socket %d: Receive thread exiting correctly", netw -> link . sock );
+        n_log( LOG_DEBUG, "Socket %d (%s): Receive thread exiting correctly", netw -> link . sock , _str( netw -> link . ip ) );
         netw_set( netw, NETW_EXIT_ASKED );
     }
     else
     {
-        n_log( LOG_ERR, "Socket %d: Receive thread exiting !", netw -> link . sock );
+        n_log( LOG_ERR, "Socket %d (%s): Receive thread exiting !", netw -> link . sock , _str( netw -> link . ip ) );
         netw_set( netw, NETW_ERROR );
     }
 
