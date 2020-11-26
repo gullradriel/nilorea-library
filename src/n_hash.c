@@ -345,7 +345,7 @@ void ht_node_destroy( void *node )
     }
     if( node_ptr -> type == HASH_PTR )
     {
-        if( node_ptr -> destroy_func )
+        if( node_ptr -> destroy_func && node_ptr -> data . ptr )
         {
             node_ptr -> destroy_func( node_ptr  -> data . ptr );
         }
