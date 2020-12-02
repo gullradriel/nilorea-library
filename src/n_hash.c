@@ -43,7 +43,7 @@ static FORCE_INLINE uint32_t getblock( const uint32_t *p, int i )
 {
     uint32_t var ;
     memcpy( &var, p+i, sizeof( uint32_t ) );
-#ifdef __ENV_LITTLE_ENDIAN
+#if( BYTEORDER_ENDIAN == BYTEORDER_LITTLE_ENDIAN )
     var = htonl( var );
 #endif
     return var ;
@@ -345,7 +345,7 @@ void ht_node_destroy( void *node )
     }
     if( node_ptr -> type == HASH_PTR )
     {
-        if( node_ptr -> destroy_func )
+        if( node_ptr -> destroy_func && node_ptr -> data . ptr )
         {
             node_ptr -> destroy_func( node_ptr  -> data . ptr );
         }
@@ -1047,7 +1047,7 @@ int empty_ht( HASH_TABLE *table )
  */
 int destroy_ht( HASH_TABLE **table )
 {
-    __n_assert( (*table), n_log( LOG_ERR, "Can't destroy table: already NULL" ); return FALSE );
+    __n_assert( table&&(*table) , n_log( LOG_ERR, "Can't destroy table: already NULL" ); return FALSE );
 
     if( (*table )-> hash_table )
     {

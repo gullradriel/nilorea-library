@@ -339,7 +339,7 @@ int wait_for_threaded_pool(  THREAD_POOL *thread_pool, int delay )
  */
 int destroy_threaded_pool( THREAD_POOL **pool, int delay )
 {
-    __n_assert( (*pool), return FALSE );
+    __n_assert( pool&&(*pool), return FALSE );
     __n_assert( (*pool) -> thread_list, return FALSE );
 
     int state= 0, DONE = 0 ;
@@ -383,7 +383,7 @@ int destroy_threaded_pool( THREAD_POOL **pool, int delay )
         Free( (*pool) -> thread_list[ it ] );
     }
     Free( (*pool) -> thread_list );
-    list_destroy(  &(*pool) -> waiting_list );
+    list_destroy( &(*pool) -> waiting_list );
 
     pthread_mutex_unlock( &(*pool) -> lock );
     pthread_mutex_destroy( &(*pool) -> lock );

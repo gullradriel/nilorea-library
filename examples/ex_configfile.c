@@ -1,5 +1,5 @@
 /**\example ex_configfile.c Nilorea Library config api test
- *\author Mickaël Castagnier
+ *\author Mickael Castagnier
  *\version 1.0
  *\date 2018-26-10
  */

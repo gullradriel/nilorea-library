@@ -160,7 +160,7 @@ char *trim_nocopy(char *s);
 /* trim and put a \0 at the end, return new char * */
 char *trim(char *s);
 /* N_STR wrapper around fgets */
-char *nfgets( char *buffer, int size, FILE *stream );
+char *nfgets( char *buffer, unsigned int size, FILE *stream );
 /* create a new string */
 N_STR *new_nstr( NSTRBYTE size );
 /* reinitialize a nstr */
@@ -168,9 +168,9 @@ int empty_nstr( N_STR *nstr );
 /* Make a copy of a N_STR */
 N_STR *nstrdup( N_STR *msg );
 /* Convert a char into a N_STR */
-int char_to_nstr_ex( char *from, NSTRBYTE nboct, N_STR **to );
+int char_to_nstr_ex( const char *from, NSTRBYTE nboct, N_STR **to );
 /* Convert a char into a N_STR, shorter version */
-N_STR *char_to_nstr( char *src );
+N_STR *char_to_nstr( const char *src );
 /* cat data inside a N8STR */
 int nstrcat_ex( N_STR *dest, void *src, NSTRBYTE size, NSTRBYTE blk_size,int resize_flag );
 /* Wrapper to nstrcat_ex to concatenate N_STR *datas */

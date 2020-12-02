@@ -1,6 +1,6 @@
 /**\file n_anim.c
 * anim functions
-*\author Castagnier Mickaël aka Gull Ra Driel
+*\author Castagnier Mickael aka Gull Ra Driel
 *\version 1.0
 *\date 30/12/2016
 */

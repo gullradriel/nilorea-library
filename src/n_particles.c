@@ -1,6 +1,6 @@
 /**\file n_particles.c
 *  particle function file for SantaHack 2012
-*\author Castagnier Mickaël aka Gull Ra Driel
+*\author Castagnier Mickael aka Gull Ra Driel
 *\version 1.0
 *\date 20/12/2012
 */

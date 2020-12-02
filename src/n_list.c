@@ -479,7 +479,7 @@ int list_empty_with_f( LIST *list,  void (*free_fnct)( void *ptr )  )
  */
 int list_destroy( LIST **list )
 {
-    __n_assert( (*list), n_log( LOG_ERR, "list already destroyed" ); return FALSE );
+    __n_assert( list&&(*list), n_log( LOG_ERR, "list already destroyed" ); return FALSE );
     list_empty( (*list) );
     Free( (*list ) );
     return TRUE ;

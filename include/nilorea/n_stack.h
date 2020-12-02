@@ -18,6 +18,12 @@ extern "C"
   @{
 */
 
+typedef struct STACK
+{
+	void **stack ;
+	unsigned int size ;
+} STACK ;
+
 /**
 @}
 */

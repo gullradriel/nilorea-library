@@ -183,7 +183,8 @@ int vasprintf(char **strp, const char *fmt, va_list ap)
     long long int len = _vscprintf_so(fmt, ap);
     if (len == -1)
         return -1;
-    char *str = malloc((size_t) len + 1);
+    char *str = NULL ;
+    Malloc( str , char , (size_t) len + 1 );
     if (!str)
         return -1;
     int r = vsnprintf(str, (size_t)(len+1), fmt, ap);  /* "secure" version of vsprintf */

@@ -188,7 +188,7 @@ int userlist_add_msg_to_all_except( N_USERLIST *ulist , N_STR *msg , int id )
 
 int userlist_destroy( N_USERLIST **ulist )
 {
-    __n_assert( (*ulist) , return FALSE );
+    __n_assert( ulist&&(*ulist) , return FALSE );
 
     write_lock( (*ulist) -> user_rwbolt );
     for( int it = 0 ; it < (*ulist)  -> max ; it ++ )

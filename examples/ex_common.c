@@ -192,7 +192,7 @@ error:
 
 #ifndef __windows__
     n_log( LOG_INFO, "before system_nb( sleep 3 )" );
-    pid_t pid=system_nb( "sleep 3", NULL, NULL );
+    int pid=system_nb( "sleep 3", NULL, NULL );
     n_log( LOG_INFO, "after system_nb( sleep 3 )" );
     n_log( LOG_INFO, "wait for nb sys call" );
     wait( &pid );

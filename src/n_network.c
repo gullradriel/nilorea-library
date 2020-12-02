@@ -62,15 +62,15 @@ char* wchar_to_char(const wchar_t* pwchar)
 #define neterrno WSAGetLastError()
 
 #define netstrerror( code )({ \
-		wchar_t *s = NULL; \
-		FormatMessageW(FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_IGNORE_INSERTS, \
-				NULL, code , \
-				MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), \
-				(LPWSTR)&s, 0, NULL); \
-				char *netstr = wchar_to_char( s ); \
-				LocalFree( s ); \
-				netstr ; \
-				})
+        wchar_t *s = NULL; \
+        FormatMessageW(FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_IGNORE_INSERTS, \
+                NULL, code , \
+                MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), \
+                (LPWSTR)&s, 0, NULL); \
+                char *netstr = wchar_to_char( s ); \
+                LocalFree( s ); \
+                netstr ; \
+                })
 
 
 /* if __GNUC__ > 4 || (__GNUC__ == 4 && __GNUC_MINOR__ > 5) */
@@ -200,12 +200,12 @@ char *inet_ntop(int af, const void *src, char *dst, socklen_t size)
 {
     switch (af)
     {
-    case AF_INET:
-        return (inet_ntop4((const unsigned char*)src, dst, size));
-    case AF_INET6:
-        return (inet_ntop6((const unsigned char*)src, dst, size));
-    default:
-        return (NULL);
+        case AF_INET:
+            return (inet_ntop4((const unsigned char*)src, dst, size));
+        case AF_INET6:
+            return (inet_ntop6((const unsigned char*)src, dst, size));
+        default:
+            return (NULL);
     }
     /* NOTREACHED */
 }
@@ -319,8 +319,8 @@ static char *inet_ntop6(const unsigned char *src, char *dst, socklen_t size)
             *tp++ = ':';
         /* Is this address an encapsulated IPv4? */
         if (i == 6 && best.base == 0 && (best.len == 6 ||
-                                         (best.len == 7 && words[7] != 0x0001) ||
-                                         (best.len == 5 && words[5] == 0xffff)))
+                    (best.len == 7 && words[7] != 0x0001) ||
+                    (best.len == 5 && words[5] == 0xffff)))
         {
             if (!inet_ntop4(src+12, tp, sizeof tmp - (tp - tmp)))
                 return (NULL);
@@ -401,12 +401,12 @@ int inet_pton(int af, const char *src, void *dst)
 {
     switch (af)
     {
-    case AF_INET:
-        return (inet_pton4(src, (unsigned char *)dst));
-    case AF_INET6:
-        return (inet_pton6(src, (unsigned char *)dst));
-    default:
-        return (-1);
+        case AF_INET:
+            return (inet_pton4(src, (unsigned char *)dst));
+        case AF_INET6:
+            return (inet_pton6(src, (unsigned char *)dst));
+        default:
+            return (-1);
     }
     /* NOTREACHED */
 }
@@ -483,7 +483,7 @@ static int inet_pton4(const char *src, u_char *dst)
 static int inet_pton6(const char *src, u_char *dst)
 {
     static const char xdigits_l[] = "0123456789abcdef",
-                                    xdigits_u[] = "0123456789ABCDEF";
+                 xdigits_u[] = "0123456789ABCDEF";
 #define NS_IN6ADDRSZ	16
 #define NS_INT16SZ	2
     u_char tmp[NS_IN6ADDRSZ], *tp, *endp, *colonp;
@@ -503,8 +503,8 @@ static int inet_pton6(const char *src, u_char *dst)
     val = 0;
     while ((ch = *src++) != '\0')
     {
-const char *xdigits :
-        const char *pch ;
+        const char *xdigits :
+            const char *pch ;
 
         if ((pch = strchr((xdigits = xdigits_l), ch)) == NULL)
             pch = strchr((xdigits = xdigits_u), ch);
@@ -600,10 +600,10 @@ const char *xdigits :
    }) */
 
 #define netstrerror( code )({ \
-		char *errmsg = NULL ; \
-		errmsg = strdup( strerror( code ) ); \
-		errmsg ; \
-		})
+        char *errmsg = NULL ; \
+        errmsg = strdup( strerror( code ) ); \
+        errmsg ; \
+        })
 
 void netw_sigchld_handler( int sig )
 {
@@ -747,8 +747,8 @@ int netw_set_timers( NETWORK *netw, int send_queue_wait, int send_queue_consecut
 void *get_in_addr(struct sockaddr *sa)
 {
     return sa->sa_family == AF_INET
-           ? (void *) &(((struct sockaddr_in*)sa)->sin_addr)
-           : (void *) &(((struct sockaddr_in6*)sa)->sin6_addr);
+        ? (void *) &(((struct sockaddr_in*)sa)->sin_addr)
+        : (void *) &(((struct sockaddr_in6*)sa)->sin6_addr);
 }
 
 
@@ -768,36 +768,36 @@ int netw_init_wsa( int mode, int v1, int v2 )
 
     switch ( mode )
     {
-    default:
-    /*returning WSA status*/
-    case 2 :
-        return WSA_IS_INITIALIZED;
-        break;
-    /*loading WSA dll*/
-    case 1 :
-        if ( WSA_IS_INITIALIZED == 1 )
-            return TRUE; /*already loaded*/
-        if ( ( WSAStartup( MAKEWORD( v1, v2 ), &WSAdata ) ) != 0 )
-        {
-            WSA_IS_INITIALIZED = 0;
-            return FALSE;
-        }
-        else
-        {
-            WSA_IS_INITIALIZED = 1 ;
-            return TRUE;
-        }
-        break;
-    /*unloading (closing) WSA */
-    case 0 :
-        if ( WSA_IS_INITIALIZED == 0 )
-            return TRUE; /*already CLEANED or not loaded */
-        if ( WSACleanup() == 0 )
-        {
-            WSA_IS_INITIALIZED = 0;
-            return TRUE;
-        }
-        break;
+        default:
+            /*returning WSA status*/
+        case 2 :
+            return WSA_IS_INITIALIZED;
+            break;
+            /*loading WSA dll*/
+        case 1 :
+            if ( WSA_IS_INITIALIZED == 1 )
+                return TRUE; /*already loaded*/
+            if ( ( WSAStartup( MAKEWORD( v1, v2 ), &WSAdata ) ) != 0 )
+            {
+                WSA_IS_INITIALIZED = 0;
+                return FALSE;
+            }
+            else
+            {
+                WSA_IS_INITIALIZED = 1 ;
+                return TRUE;
+            }
+            break;
+            /*unloading (closing) WSA */
+        case 0 :
+            if ( WSA_IS_INITIALIZED == 0 )
+                return TRUE; /*already CLEANED or not loaded */
+            if ( WSACleanup() == 0 )
+            {
+                WSA_IS_INITIALIZED = 0;
+                return TRUE;
+            }
+            break;
     } /*switch(...)*/
 #endif /*#ifndef __linux__ __sun _AIX */
     compiler_warning_suppressor = mode + v1 + v2 ;
@@ -882,143 +882,142 @@ int netw_setsockopt( NETWORK *netw, int optname, int value )
 
     switch( optname )
     {
-    case TCP_NODELAY :
-        /* disable naggle algorithm */
-        if ( setsockopt( netw -> link . sock, IPPROTO_TCP, TCP_NODELAY, ( const char * ) &value, sizeof( value ) ) == -1 )
-        {
-            error = neterrno ;
-            errmsg = netstrerror( error );
-            n_log( LOG_ERR, "Error from setsockopt(TCP_NODELAY) on socket %d. neterrno: %s", netw -> link . sock, _str( errmsg ) );
-            FreeNoLog( errmsg );
-            return FALSE ;
-        }
-        break ;
-    case SO_SNDBUF :
-        /* socket sending buffer size */
-        if( value > 0 )
-        {
-            if ( setsockopt ( netw -> link . sock, SOL_SOCKET, SO_SNDBUF, ( const char * ) &value, sizeof( value ) ) == -1 )
+        case TCP_NODELAY :
+            /* disable naggle algorithm */
+            if ( setsockopt( netw -> link . sock, IPPROTO_TCP, TCP_NODELAY, ( const char * ) &value, sizeof( value ) ) == -1 )
             {
                 error = neterrno ;
                 errmsg = netstrerror( error );
-                n_log( LOG_ERR, "Error from setsockopt(SO_SNDBUF) on socket %d. neterrno: %s", netw -> link . sock, _str( errmsg ) );
-                return FALSE ;
-            }
-        }
-        break ;
-    case SO_RCVBUF :
-        /* socket receiving buffer */
-        if( value > 0 )
-        {
-            if ( setsockopt ( netw -> link . sock, SOL_SOCKET, SO_RCVBUF, ( const char * ) &value, sizeof( value ) ) == -1 )
-            {
-                error = neterrno ;
-                errmsg = netstrerror( error );
-                n_log( LOG_ERR, "Error from setsockopt(SO_RCVBUF) on socket %d. neterrno: %s", netw -> link . sock, _str( errmsg ) );
+                n_log( LOG_ERR, "Error from setsockopt(TCP_NODELAY) on socket %d. neterrno: %s", netw -> link . sock, _str( errmsg ) );
                 FreeNoLog( errmsg );
                 return FALSE ;
             }
-        }
-        break ;
-    case SO_REUSEADDR :
-        /* lose the pesky "Address already in use" error message*/
-        /* Disabled SO_REUSEPORT because not widely supported */
-        if ( setsockopt( netw -> link . sock, SOL_SOCKET, SO_REUSEADDR, (char *)&value, sizeof( value  ) ) == -1 )
-        {
-            error=neterrno ;
-            errmsg = netstrerror( error );
-            n_log( LOG_ERR, "Error from setsockopt(SO_REUSEADDR) on socket %d. neterrno: %s", netw -> link . sock, _str( errmsg ) );
-            FreeNoLog( errmsg );
-            return FALSE ;
-        }
-        break ;
-    case SO_LINGER :
-    {
-        struct linger ling;
-        if( value > 0 )
-            ling.l_onoff=1;
-        else
-            ling.l_onoff=0;
-        ling.l_linger=value;
+            break ;
+        case SO_SNDBUF :
+            /* socket sending buffer size */
+            if( value > 0 )
+            {
+                if ( setsockopt ( netw -> link . sock, SOL_SOCKET, SO_SNDBUF, ( const char * ) &value, sizeof( value ) ) == -1 )
+                {
+                    error = neterrno ;
+                    errmsg = netstrerror( error );
+                    n_log( LOG_ERR, "Error from setsockopt(SO_SNDBUF) on socket %d. neterrno: %s", netw -> link . sock, _str( errmsg ) );
+                    return FALSE ;
+                }
+            }
+            break ;
+        case SO_RCVBUF :
+            /* socket receiving buffer */
+            if( value > 0 )
+            {
+                if ( setsockopt ( netw -> link . sock, SOL_SOCKET, SO_RCVBUF, ( const char * ) &value, sizeof( value ) ) == -1 )
+                {
+                    error = neterrno ;
+                    errmsg = netstrerror( error );
+                    n_log( LOG_ERR, "Error from setsockopt(SO_RCVBUF) on socket %d. neterrno: %s", netw -> link . sock, _str( errmsg ) );
+                    FreeNoLog( errmsg );
+                    return FALSE ;
+                }
+            }
+            break ;
+        case SO_REUSEADDR :
+            /* lose the pesky "Address already in use" error message*/
+            /* Disabled SO_REUSEPORT because not widely supported */
+            if ( setsockopt( netw -> link . sock, SOL_SOCKET, SO_REUSEADDR, (char *)&value, sizeof( value  ) ) == -1 )
+            {
+                error=neterrno ;
+                errmsg = netstrerror( error );
+                n_log( LOG_ERR, "Error from setsockopt(SO_REUSEADDR) on socket %d. neterrno: %s", netw -> link . sock, _str( errmsg ) );
+                FreeNoLog( errmsg );
+                return FALSE ;
+            }
+            break ;
+        case SO_LINGER :
+            {
+                struct linger ling;
+                if( value > 0 )
+                    ling.l_onoff=1;
+                else
+                    ling.l_onoff=0;
+                ling.l_linger=value;
 #ifndef __windows__
-        if( setsockopt(netw -> link . sock, SOL_SOCKET, SO_LINGER, &ling, sizeof( ling ) ) == -1 )
-        {
-            error=neterrno ;
-            errmsg = netstrerror( error );
-            n_log( LOG_ERR, "Error from setsockopt(SO_LINGER) on socket %d. neterrno: %s", netw -> link . sock,_str( errmsg ) );
-            FreeNoLog( errmsg );
-            return FALSE ;
-        }
+                if( setsockopt(netw -> link . sock, SOL_SOCKET, SO_LINGER, &ling, sizeof( ling ) ) == -1 )
+                {
+                    error=neterrno ;
+                    errmsg = netstrerror( error );
+                    n_log( LOG_ERR, "Error from setsockopt(SO_LINGER) on socket %d. neterrno: %s", netw -> link . sock,_str( errmsg ) );
+                    FreeNoLog( errmsg );
+                    return FALSE ;
+                }
 #else
-        if( setsockopt(netw -> link . sock, SOL_SOCKET, SO_LINGER, (const char *)&ling, sizeof( ling ) ) == -1 )
-        {
-            error=neterrno ;
-            errmsg = netstrerror( error );
-            n_log( LOG_ERR, "Error from setsockopt(SO_LINGER) on socket %d. neterrno: %s", netw -> link . sock,_str( errmsg ) );
-            FreeNoLog( errmsg );
-            return FALSE ;
-        }
+                if( setsockopt(netw -> link . sock, SOL_SOCKET, SO_LINGER, (const char *)&ling, sizeof( ling ) ) == -1 )
+                {
+                    error=neterrno ;
+                    errmsg = netstrerror( error );
+                    n_log( LOG_ERR, "Error from setsockopt(SO_LINGER) on socket %d. neterrno: %s", netw -> link . sock,_str( errmsg ) );
+                    FreeNoLog( errmsg );
+                    return FALSE ;
+                }
 #endif // __windows__
-    }
-    break ;
-    case SO_RCVTIMEO :
+            }
+            break ;
+        case SO_RCVTIMEO :
 #ifndef __windows__
-    {
-        struct timeval tv;
-        tv.tv_sec = value ;
-        tv.tv_usec = 0;
-        if( setsockopt(netw -> link . sock, SOL_SOCKET, SO_RCVTIMEO, (const char*)&tv, sizeof tv) == -1 )
-        {
-            error=neterrno ;
-            errmsg = netstrerror( error );
-            n_log( LOG_ERR, "Error from setsockopt(SO_RCVTIMEO) on socket %d. neterrno: %s", netw -> link . sock, _str( errmsg ) );
-            FreeNoLog( errmsg );
-            return FALSE ;
-        }
-    }
+            {
+                struct timeval tv;
+                tv.tv_sec = value ;
+                tv.tv_usec = 0;
+                if( setsockopt(netw -> link . sock, SOL_SOCKET, SO_RCVTIMEO, (const char*)&tv, sizeof tv) == -1 )
+                {
+                    error=neterrno ;
+                    errmsg = netstrerror( error );
+                    n_log( LOG_ERR, "Error from setsockopt(SO_RCVTIMEO) on socket %d. neterrno: %s", netw -> link . sock, _str( errmsg ) );
+                    FreeNoLog( errmsg );
+                    return FALSE ;
+                }
+            }
 #else
-    if( setsockopt(netw -> link . sock, SOL_SOCKET, SO_RCVTIMEO, (const char*)&value, sizeof value ) == -1 )
-    {
-        error=neterrno ;
-        errmsg = netstrerror( error );
-        n_log( LOG_ERR, "Error from setsockopt(SO_RCVTIMEO) on socket %d. neterrno: %s", netw -> link . sock, _str( errmsg ) );
-        FreeNoLog( errmsg );
-        return FALSE ;
-    }
+            if( setsockopt(netw -> link . sock, SOL_SOCKET, SO_RCVTIMEO, (const char*)&value, sizeof value ) == -1 )
+            {
+                error=neterrno ;
+                errmsg = netstrerror( error );
+                n_log( LOG_ERR, "Error from setsockopt(SO_RCVTIMEO) on socket %d. neterrno: %s", netw -> link . sock, _str( errmsg ) );
+                FreeNoLog( errmsg );
+                return FALSE ;
+            }
 #endif
-    break ;
-    case SO_SNDTIMEO :
+            break ;
+        case SO_SNDTIMEO :
 #ifndef __windows__
-    {
-        struct timeval tv;
-        tv.tv_sec = value ;
-        tv.tv_usec = 0;
+            {
+                struct timeval tv;
+                tv.tv_sec = value ;
+                tv.tv_usec = 0;
 
-        if( setsockopt(netw -> link . sock, SOL_SOCKET, SO_SNDTIMEO, (const char*)&tv, sizeof tv) == -1 )
-        {
-            error=neterrno ;
-            errmsg = netstrerror( error );
-            n_log( LOG_ERR, "Error from setsockopt(SO_SNDTIMEO) on socket %d. neterrno: %s", netw -> link . sock, _str( errmsg ) );
-            FreeNoLog( errmsg );
-            return FALSE ;
-        }
-    }
+                if( setsockopt(netw -> link . sock, SOL_SOCKET, SO_SNDTIMEO, (const char*)&tv, sizeof tv) == -1 )
+                {
+                    error=neterrno ;
+                    errmsg = netstrerror( error );
+                    n_log( LOG_ERR, "Error from setsockopt(SO_SNDTIMEO) on socket %d. neterrno: %s", netw -> link . sock, _str( errmsg ) );
+                    FreeNoLog( errmsg );
+                    return FALSE ;
+                }
+            }
 #else
-    if( setsockopt(netw -> link . sock, SOL_SOCKET, SO_SNDTIMEO, (const char*)&value, sizeof value ) == -1 )
-    {
-        error=neterrno ;
-        errmsg = netstrerror( error );
-        n_log( LOG_ERR, "Error from setsockopt(SO_SNDTIMEO) on socket %d. neterrno: %s", netw -> link . sock, _str( errmsg ) );
-        FreeNoLog( errmsg );
-        return FALSE ;
-    }
+            if( setsockopt(netw -> link . sock, SOL_SOCKET, SO_SNDTIMEO, (const char*)&value, sizeof value ) == -1 )
+            {
+                error=neterrno ;
+                errmsg = netstrerror( error );
+                n_log( LOG_ERR, "Error from setsockopt(SO_SNDTIMEO) on socket %d. neterrno: %s", netw -> link . sock, _str( errmsg ) );
+                FreeNoLog( errmsg );
+                return FALSE ;
+            }
 
 #endif
-    break ;
-    default:
-        n_log( LOG_ERR, "%d is not a supported setsockopt", optname );
-        return FALSE ;
-        break ;
+            break ;
+        default:
+            n_log( LOG_ERR, "%d is not a supported setsockopt", optname );
+            return FALSE ;
     }
     return TRUE ;
 } /* netw_set_sock_opt */
@@ -1092,7 +1091,7 @@ static void init_locks(void)
     int i;
 
     lockarray = (pthread_mutex_t *)OPENSSL_malloc(CRYPTO_num_locks() *
-                sizeof(pthread_mutex_t));
+            sizeof(pthread_mutex_t));
     for(i = 0; i<CRYPTO_num_locks(); i++)
     {
         pthread_mutex_init(&(lockarray[i]), NULL);
@@ -1125,7 +1124,7 @@ int netw_init_openssl( void )
     if ( OPENSSL_IS_INITIALIZED == 1 )
         return TRUE; /*already loaded*/
 
-#ifdef HAVE_OPENSSL WIP
+#ifdef HAVE_OPENSSL
     SSL_library_init();
     SSL_load_error_strings();
     ERR_load_BIO_strings();
@@ -1235,7 +1234,7 @@ int netw_connect_ex( NETWORK **netw, char *host, char *port, int disable_naggle,
 
     /*creating array*/
     (*netw) = netw_new( send_list_limit, recv_list_limit );
-    __n_assert( (*netw), return FALSE );
+    __n_assert( netw&&(*netw), return FALSE );
 
     /*checking WSA when under windows*/
     if ( netw_init_wsa( 1, 2, 2 ) == FALSE )
@@ -1488,7 +1487,7 @@ int netw_set( NETWORK *netw, int flag )
 int netw_close( NETWORK **netw )
 {
     int state = 0, thr_engine_status = 0 ;
-    __n_assert( (*netw), return FALSE );
+    __n_assert( netw&&(*netw), return FALSE );
 
     list_foreach( node, (*netw) -> pools )
     {
@@ -1540,23 +1539,31 @@ int netw_close( NETWORK **netw )
 
 
 
-#ifdef __linux__
-void depleteSendBuffer(int fd)
+/*!\fn int deplete_send_buffer( int fd , long timeout )
+ *\brief wait until the socket is empty or timeout, checking each 50 msec
+ *\param fd socket descriptor
+ *\timeout timeout value in msec 
+ *\return 0 or the amount of remaining datas in bytes 
+ */
+#if defined( __linux__ ) || defined( __sun ) || defined( _AIX )
+int deplete_send_buffer( int fd , long timeout )
 {
-    int lastOutstanding=-1;
-    for(;;)
+    int outstanding = 0 ;
+    for( int it = 0 ; it < timeout ; it += 50 )
     {
-        int outstanding;
+        outstanding = 0 ;
         ioctl(fd, SIOCOUTQ, &outstanding);
-        if(outstanding != lastOutstanding)
-            printf("Outstanding: %d\n", outstanding);
-        lastOutstanding = outstanding;
         if(!outstanding)
+        {
             break;
-        usleep(1000);
+        }
+        usleep( 50000 );
     }
+    return outstanding ;
 }
-#endif
+#endif 
+
+
 
 /*!\fn netw_wait_close( NETWORK **netw )
  *\brief Wait for peer closing a specified Network, destroy queues, free the structure
@@ -1567,7 +1574,7 @@ void depleteSendBuffer(int fd)
 int netw_wait_close( NETWORK **netw )
 {
     int state = 0, thr_engine_status = 0 ;
-    __n_assert( (*netw), return FALSE );
+    __n_assert( netw&&(*netw), return FALSE );
 
     int error = 0 ;
     char *errmsg = NULL ;
@@ -1581,20 +1588,16 @@ int netw_wait_close( NETWORK **netw )
     /* wait for close fix */
     if( (*netw) -> link . sock != INVALID_SOCKET )
     {
-#ifdef __linux__
-        /* deplete send buffer */
-        while( TRUE )
+        /* inform peer that we have finished */
+        shutdown( (*netw) -> link . sock, SHUT_WR );
+#if defined( __linux__ ) || defined( __sun ) || defined( _AIX )
+        int remaining = deplete_send_buffer( (*netw) -> link . sock , 3000 );
+        if( remaining > 0 )
         {
-            int outstanding;
-            ioctl((*netw) -> link . sock, SIOCOUTQ, &outstanding);
-            if(!outstanding)
-                break;
-            usleep(1000);
+            n_log( LOG_DEBUG , "socket %d took more than 3 seconds to send %d octets before closing => force close" , (*netw) -> link . sock , remaining );
         }
 #endif
-
-        shutdown( (*netw) -> link . sock, SHUT_WR );
-
+        /* wait for fin ack */
         char buffer[ 4096 ] = "" ;
         for( ;; )
         {
@@ -1605,21 +1608,20 @@ int netw_wait_close( NETWORK **netw )
             if( res < 0 )
             {
                 error = neterrno ;
-                errmsg = netstrerror( error );
-                n_log( LOG_ERR, "read returned error %d when closing socket %d: %s", error, (*netw) -> link . sock, _str( errmsg ) );
-                FreeNoLog( errmsg );
-                if( error != ENOTCONN && error != 10057 )
+                if( error != ENOTCONN && error != 10057 && error != EINTR && error != ECONNRESET )
                 {
-                    n_log( LOG_ERR, "The socket was not connected anymore. Maybe a netw_close_wait misuses ?" );
+                    errmsg = netstrerror( error );
+                    n_log( LOG_ERR, "read returned error %d when closing socket %d (%s): %s", error, (*netw) -> link . sock, _str( (*netw) -> link . ip ) , _str( errmsg ) );
+                    FreeNoLog( errmsg );
                 }
                 break ;
             }
         }
     }
-
     return netw_close( &(*netw) );
 
 } /* netw_wait_close(...)*/
+
 
 
 /*!\fn int netw_make_listening( NETWORK **netw , char *addr , char *port , int nbpending  , int ip_version )
@@ -1969,7 +1971,10 @@ int netw_add_msg_ex( NETWORK *netw, char *str, unsigned int length )
 {
     __n_assert( netw, return FALSE );
     __n_assert( str, return FALSE );
-    __n_assert( length == 0, return FALSE );
+    if( length == 0 )
+    {
+        return FALSE ;
+    }
 
     N_STR *nstr = NULL ;
     Malloc( nstr, N_STR, 1 );
@@ -2070,7 +2075,7 @@ N_STR *netw_wait_msg( NETWORK *netw, long refresh, long timeout )
             timeout -= refresh ;
             if( timeout < 0 )
             {
-                n_log( LOG_ERR, "timed out for netw %d", netw -> link . sock );
+                n_log( LOG_ERR, "timed out for netw %d (%s)", netw -> link . sock , _str( netw -> link . ip ) );
                 break ;
             }
         }
@@ -2096,20 +2101,20 @@ int netw_start_thr_engine( NETWORK *netw )
     pthread_mutex_lock( &netw -> eventbolt );
     if( netw -> threaded_engine_status == NETW_THR_ENGINE_STARTED )
     {
-        n_log( LOG_ERR, "THR Engine already started for network %p", netw );
+        n_log( LOG_ERR, "THR Engine already started for network %p (%s)", netw , _str( netw -> link . ip ) );
         pthread_mutex_unlock( &netw -> eventbolt );
         return FALSE ;
     }
 
     if( pthread_create(  &netw -> recv_thr,   NULL,  netw_recv_func,  (void *) netw ) != 0 )
     {
-        n_log( LOG_ERR, "Unable to create recv_thread for network %p", netw );
+        n_log( LOG_ERR, "Unable to create recv_thread for network %p (%s)", netw , _str( netw -> link . ip ) );
         pthread_mutex_unlock( &netw -> eventbolt );
         return FALSE ;
     }
     if( pthread_create(  &netw -> send_thr,   NULL,  netw_send_func,  (void *) netw ) != 0 )
     {
-        n_log( LOG_ERR, "Unable to create send_thread for network %p", netw );
+        n_log( LOG_ERR, "Unable to create send_thread for network %p (%s)", netw , _str( netw -> link . ip ) );
         pthread_mutex_unlock( &netw -> eventbolt );
         return FALSE ;
     }
@@ -2135,7 +2140,7 @@ void *netw_send_func( void *NET )
 
     NSTRBYTE nboctet = 0 ;
 
-    char nboct[ 4 ] = "" ;
+    char nboct[ 5 ] = "" ;
 
     N_STR *ptr = NULL ;
 
@@ -2231,24 +2236,24 @@ void *netw_send_func( void *NET )
     while( !DONE );
 
     if( DONE == 1 )
-        n_log( LOG_ERR,  "Error when sending state %d on socket %d, network: %s", netw -> state, netw -> link . sock, (net_status==-2)?"disconnected":"socket error" );
+        n_log( LOG_ERR,  "Error when sending state %d on socket %d (%s), network: %s", netw -> state, netw -> link . sock, _str( netw -> link . ip ) , (net_status==-2)?"disconnected":"socket error" );
     else if( DONE == 2 )
-        n_log( LOG_ERR,  "Error when sending number of octet to socket %d, network: %s", netw -> link . sock, (net_status==-2)?"disconnected":"socket error" );
+        n_log( LOG_ERR,  "Error when sending number of octet to socket %d (%s), network: %s", netw -> link . sock, _str( netw -> link . ip ) , (net_status==-2)?"disconnected":"socket error" );
     else if( DONE == 3 )
-        n_log( LOG_DEBUG,  "Error when sending data on socket %d, network: %s", netw -> link . sock, (net_status==-2)?"disconnected":"socket error" );
+        n_log( LOG_DEBUG,  "Error when sending data on socket %d (%s), network: %s", netw -> link . sock, _str( netw -> link . ip ) , (net_status==-2)?"disconnected":"socket error" );
     else if( DONE == 4 )
-        n_log( LOG_ERR,  "Error when sending state QUIT on socket %d, network: %s", netw -> link . sock, (net_status==-2)?"disconnected":"socket error" );
+        n_log( LOG_ERR,  "Error when sending state QUIT on socket %d (%s), network: %s", netw -> link . sock, _str( netw -> link . ip ) , (net_status==-2)?"disconnected":"socket error" );
     else if( DONE == 5 )
-        n_log( LOG_ERR,  "Error when sending state QUIT number of octet (0) on socket %d, network: %s", netw -> link . sock, (net_status==-2)?"disconnected":"socket error" );
+        n_log( LOG_ERR,  "Error when sending state QUIT number of octet (0) on socket %d (%s), network: %s", netw -> link . sock, _str( netw -> link . ip ) , (net_status==-2)?"disconnected":"socket error" );
 
     if( DONE == 100 )
     {
-        n_log( LOG_DEBUG, "Socket %d: Sending thread exited !", netw -> link . sock );
+        n_log( LOG_DEBUG, "Socket %d: Sending thread exiting correctly", netw -> link . sock );
         netw_set( netw, NETW_EXIT_ASKED );
     }
     else
     {
-        n_log( LOG_ERR, "Closing send thread for socket %d\nReason unknown\nDONE = %d", netw -> link . sock, DONE );
+        n_log( LOG_ERR, "Socket %d (%s): Sending thread exiting !", netw -> link . sock , _str( netw -> link . ip ) );
         netw_set( netw, NETW_ERROR );
     }
 
@@ -2275,7 +2280,7 @@ void *netw_recv_func( void *NET )
 
     NSTRBYTE nboctet = 0 ;
 
-    char nboct[ 4 ]= "" ;
+    char nboct[ 5 ]= "" ;
 
     N_STR *recvdmsg = NULL ;
 
@@ -2368,23 +2373,23 @@ void *netw_recv_func( void *NET )
     while( !DONE );
 
     if( DONE == 1 )
-        n_log( LOG_ERR,  "Error when receiving state from socket %d, net_status: %s", netw -> link . sock, (net_status==-2)?"disconnected":"socket error" );
+        n_log( LOG_ERR,  "Error when receiving state from socket %d (%s), net_status: %s", netw -> link . sock, _str( netw -> link . ip ) , (net_status==-2)?"disconnected":"socket error" );
     else if( DONE == 2 )
-        n_log( LOG_ERR,  "Error when receiving nboctet from socket %d, net_status: %s", netw -> link . sock, (net_status==-2)?"disconnected":"socket error" );
+        n_log( LOG_ERR,  "Error when receiving nboctet from socket %d (%s), net_status: %s", netw -> link . sock, _str( netw -> link . ip ) , (net_status==-2)?"disconnected":"socket error" );
     else if( DONE == 3 )
-        n_log( LOG_ERR,  "Error when receiving data from socket %d, net_status: %s", netw -> link . sock, (net_status==-2)?"disconnected":"socket error" );
+        n_log( LOG_ERR,  "Error when receiving data from socket %d (%s), net_status: %s", netw -> link . sock, _str( netw -> link . ip ) , (net_status==-2)?"disconnected":"socket error" );
     else if( DONE == 4 )
-        n_log( LOG_ERR,  "Error adding receved message from socket %d, net_status: %s", netw -> link . sock, (net_status==-2)?"disconnected":"socket error" );
+        n_log( LOG_ERR,  "Error adding receved message from socket %d (%s), net_status: %s", netw -> link . sock, _str( netw -> link . ip ) , (net_status==-2)?"disconnected":"socket error" );
 
 
     if( DONE == 100 )
     {
-        n_log( LOG_DEBUG, "Socket %d: Receive thread exiting !", netw -> link . sock );
+        n_log( LOG_DEBUG, "Socket %d (%s): Receive thread exiting correctly", netw -> link . sock , _str( netw -> link . ip ) );
         netw_set( netw, NETW_EXIT_ASKED );
     }
     else
     {
-        n_log( LOG_ERR, "Closing recv thread for socket %d\nReason unknown\nDONE = %d", netw -> link . sock, DONE );
+        n_log( LOG_ERR, "Socket %d (%s): Receive thread exiting !", netw -> link . sock , _str( netw -> link . ip ) );
         netw_set( netw, NETW_ERROR );
     }
 
@@ -2421,6 +2426,11 @@ int netw_stop_thr_engine( NETWORK *netw )
     netw_set( netw, NETW_EXIT_ASKED );
 
     n_log( LOG_DEBUG,  "Network %d waits for send threads to stop", netw -> link . sock );
+    for( int it = 0 ; it < 10 ; it ++ )
+    {
+        sem_post( &netw -> send_blocker );
+        usleep( 1000 );
+    }
     pthread_join( netw -> send_thr, NULL );
     n_log( LOG_DEBUG,  "Network %d waits for recv threads to stop", netw -> link . sock );
     pthread_join( netw -> recv_thr, NULL );
@@ -2468,7 +2478,7 @@ int send_data( SOCKET s, char *buf, NSTRBYTE n )
         }
         else
         {
-            if( error == ECONNRESET )
+            if( error == ECONNRESET || error == ENOTCONN )
             {
                 n_log( LOG_DEBUG, "socket %d disconnected !", s );
                 return -2 ;
@@ -2509,7 +2519,7 @@ int recv_data( SOCKET s, char *buf, NSTRBYTE n )
     {
         int br = 0 ;     /* bytes read this pass */
         /* loop until full buffer */
-        br = recv( s, buf, n - bcount, NETFLAGS );
+        CALL_RETRY( br , recv( s, buf, n - bcount, NETFLAGS ) );
         error = neterrno ;
         if( br > 0 )
         {
@@ -2518,7 +2528,7 @@ int recv_data( SOCKET s, char *buf, NSTRBYTE n )
         }
         else
         {
-            if( error == ECONNRESET )
+            if( br == 0 )
             {
                 n_log( LOG_DEBUG, "socket %d disconnected !", s );
                 return -2 ;
@@ -2572,7 +2582,7 @@ int send_php( SOCKET s, int _code, char *buf, int n )
     ptr = head ;
     while ( bcount < HEAD_SIZE )                 /* loop until full buffer */
     {
-        br = send( s, head, HEAD_SIZE - bcount, NETFLAGS );
+        CALL_RETRY( br , send( s, head, HEAD_SIZE - bcount, NETFLAGS ) );
         error = neterrno ;
         if( br > 0 )
         {
@@ -2818,7 +2828,7 @@ NETWORK_POOL *netw_new_pool( int nb_min_element )
  */
 int netw_destroy_pool(  NETWORK_POOL **netw_pool )
 {
-    __n_assert( (*netw_pool), return FALSE );
+    __n_assert( netw_pool&&(*netw_pool) , return FALSE );
 
     write_lock( (*netw_pool) -> rwlock );
     if( (*netw_pool) -> pool )

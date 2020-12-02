@@ -71,7 +71,7 @@ N_PCRE *npcre_new( char *str, int max_cap, int flags )
  */
 int npcre_delete( N_PCRE ** pcre )
 {
-    __n_assert( (*pcre), return FALSE );
+    __n_assert( pcre&&(*pcre), return FALSE );
 
     if( (*pcre) -> ovector )
     {
@@ -82,14 +82,14 @@ int npcre_delete( N_PCRE ** pcre )
         pcre_free( (*pcre) -> regexp );
         (*pcre) -> regexp = NULL ;
     }
-#ifndef __windows__
+#ifdef LINUX
     pcre_free_study(  (*pcre) -> extra );
     (*pcre) -> extra = NULL ;
 #else
     pcre_free( (*pcre) -> extra );
     (*pcre) -> extra = NULL ;
 #endif
-    if( (*pcre) -> match_list )
+    if( (*pcre) -> captured > 0 )
     {
         pcre_free_substring_list( (*pcre) -> match_list );
     }
@@ -111,8 +111,11 @@ int npcre_clean_match( N_PCRE *pcre )
     __n_assert( pcre, return FALSE );
     __n_assert( pcre -> match_list, return FALSE );
 
-    pcre -> captured = 0 ;
-    pcre_free_substring_list( pcre -> match_list );
+    if( pcre -> captured > 0 )
+    {
+        pcre -> captured = 0 ;
+        pcre_free_substring_list( pcre -> match_list );
+    }
 
     return TRUE ;
 } /* npcre_clean_match */
@@ -137,7 +140,7 @@ int npcre_match( char *str, N_PCRE *pcre )
     rc = pcre_exec( pcre -> regexp, pcre -> extra, str, len, 0, 0, pcre -> ovector, pcre -> ovecount );
     if ( rc < 0 )
     {
-        switch( rc )
+        /*switch( rc )
         {
         case PCRE_ERROR_NOMATCH      :
             n_log( LOG_DEBUG, "String did not match the pattern");
@@ -160,7 +163,7 @@ int npcre_match( char *str, N_PCRE *pcre )
         default                      :
             n_log( LOG_DEBUG, "Unknown error");
             break;
-        }
+        }*/
         return FALSE ;
     }
     else if( rc == 0 )
