@@ -175,20 +175,11 @@ char *nfgets( char *buffer, unsigned int size, FILE *stream )
         return NULL ;
     }
 
-    /* search for a new line, return the buffer directly if there is one */
-    it = 0 ;
-    while( buffer[ it ] != '\0' )
-    {
-        if( buffer[ it ] == '\n' )
-        {
-            return buffer ;
-        }
-        it ++ ;
-    }
     if( it == ( size - 1 ) )
     {
         n_log( LOG_DEBUG , "buffer %p size %d fully filled by fgets on stream %p" , buffer , size , stream );
     }
+
     return buffer ;
 } /* nfgets(...) */
 
@@ -955,7 +946,7 @@ int strcpy_u( char *from, char *to, NSTRBYTE to_size, char split, NSTRBYTE *it )
 
     __n_assert( from, return FALSE );
     __n_assert( to, return FALSE );
-    __n_assert( it&&(*it), return FALSE );
+    __n_assert( it , return FALSE );
 
     while( _it < to_size && from[ (*it) ] != '\0' && from[ (*it) ] != split  )
     {
@@ -964,20 +955,21 @@ int strcpy_u( char *from, char *to, NSTRBYTE to_size, char split, NSTRBYTE *it )
         _it = _it +1 ;
     }
 
-    if( _it >= to_size )
+    if( _it == to_size ) 
     {
-        n_log(  LOG_ERR,
-                "strcpy_u: not enough space to write %d octet to dest (%d max) , %s: %d \n", _it, to_size,
-                __FILE__, __LINE__ );
-        to[ to_size - 1 ] = '\0' ;
+        _it -- ;
+        to[ _it ] = '\0' ;
+        n_log(  LOG_DEBUG, "strcpy_u: not enough space to write %d octet to dest (%d max) , %s: %d \n", _it, to_size, __FILE__, __LINE__ );
         return FALSE;
     }
-
+    
     to[ _it ] = '\0' ;
 
-    if( _it == 0 )
-        _it = FALSE ;
-
+    if( from[ (*it) ] != split )
+    {
+        n_log(  LOG_DEBUG, "strcpy_u: split value not found, written %d octet to dest (%d max) , %s: %d \n", _it, to_size, __FILE__, __LINE__ );
+        return FALSE;
+    }
     return TRUE ;
 } /* strcpy_u(...) */
 
