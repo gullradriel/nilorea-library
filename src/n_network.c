@@ -1545,7 +1545,7 @@ int netw_close( NETWORK **netw )
  *\timeout timeout value in msec 
  *\return 0 or the amount of remaining datas in bytes 
  */
-#if defined( __linux__ ) || defined( __sun ) || defined( _AIX )
+#if defined( __linux__ ) 
 int deplete_send_buffer( int fd , long timeout )
 {
     int outstanding = 0 ;
@@ -1590,7 +1590,7 @@ int netw_wait_close( NETWORK **netw )
     {
         /* inform peer that we have finished */
         shutdown( (*netw) -> link . sock, SHUT_WR );
-#if defined( __linux__ ) || defined( __sun ) || defined( _AIX )
+#if defined( __linux__ ) 
         int remaining = deplete_send_buffer( (*netw) -> link . sock , 3000 );
         if( remaining > 0 )
         {
