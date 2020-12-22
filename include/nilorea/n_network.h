@@ -259,7 +259,9 @@ typedef struct NETWORK
         /*! if encryption is on, which one (flags NETW_ENCRYPT_*) */
         crypto_algo ,
         /*! if part of a user property, id of the user */
-        user_id ;
+        user_id ,
+        /*! nb running threads, if > 0 thread engine is still running */
+        nb_running_threads ;
 
     /*! vigenere key */
     char *vigenere_key ;
@@ -353,6 +355,8 @@ int netw_connect( NETWORK **netw, char *host, char *port, int ip_version );
 int netw_close( NETWORK **netw );
 /* Closing for peer */
 int netw_wait_close( NETWORK **netw );
+/* Closing for peer timeouted*/
+int netw_wait_close_timed( NETWORK **netw , int timeout );
 /* Stop a NETWORK connection sending and receing thread */
 int netw_stop_thr_engine( NETWORK *netw );
 /* Listening network */

@@ -639,6 +639,7 @@ NETWORK *netw_new( int send_list_limit, int recv_list_limit )
     netw -> nb_pending = -1 ;
     netw -> mode = -1 ;
     netw -> user_id = -1 ;
+    netw -> nb_running_threads = 0 ;
     netw -> state = NETW_EXITED ;
     netw -> threaded_engine_status = NETW_THR_ENGINE_STOPPED ;
 
@@ -1570,7 +1571,6 @@ int deplete_send_buffer( int fd , long timeout )
 #endif 
 
 
-
 /*!\fn netw_wait_close( NETWORK **netw )
  *\brief Wait for peer closing a specified Network, destroy queues, free the structure
  *\warning Do not use on the accept socket itself (the server socket) as it will display false errors
@@ -1578,6 +1578,21 @@ int deplete_send_buffer( int fd , long timeout )
  *\return TRUE on success , FALSE on failure
  */
 int netw_wait_close( NETWORK **netw )
+{
+    // default 30 secs timeout
+    return netw_wait_close_timed( netw , 30 );
+} /* netw_wait_close(...)*/
+
+
+
+/*!\fn netw_wait_close_timed( NETWORK **netw , int timeout )
+ *\brief Wait for peer closing a specified Network, destroy queues, free the structure
+ *\warning Do not use on the accept socket itself (the server socket) as it will display false errors
+ *\param netw A NETWORK *network to close
+ *\param timeout timeout in seconds before force close engine
+ *\return TRUE on success , FALSE on failure
+ */
+int netw_wait_close_timed( NETWORK **netw , int timeout )
 {
     int state = 0, thr_engine_status = 0 ;
     __n_assert( netw&&(*netw), return FALSE );
@@ -1588,7 +1603,20 @@ int netw_wait_close( NETWORK **netw )
     netw_get_state( (*netw), &state, &thr_engine_status );
     if( thr_engine_status == NETW_THR_ENGINE_STARTED )
     {
-        netw_stop_thr_engine( (*netw ) );
+        int nb_running = 0 ;
+        do
+        {
+            pthread_mutex_lock( &(*netw) -> eventbolt );
+            nb_running = (*netw) -> nb_running_threads ;
+            pthread_mutex_unlock( &(*netw) -> eventbolt );
+            sleep( 1 );
+            timeout -- ;
+        }while( nb_running > 0 && timeout > 0 );
+    }
+    if( timeout == 0 )
+    {
+        n_log( LOG_ERR , "netw %d waited too long (%ds) for peer to close => force close" , (*netw) -> link . sock , timeout ); 
+        netw_stop_thr_engine( (*netw) );
     }
 
     /* wait for close fix */
@@ -1626,7 +1654,7 @@ int netw_wait_close( NETWORK **netw )
     }
     return netw_close( &(*netw) );
 
-} /* netw_wait_close(...)*/
+} /* netw_wait_close_timed(...)*/
 
 
 
@@ -2099,7 +2127,6 @@ N_STR *netw_wait_msg( NETWORK *netw, long refresh, long timeout )
             }
         }
         netw_get_state( netw, &state, &thr_state );
-
     }
     while( state == NETW_RUN );
 
@@ -2131,12 +2158,14 @@ int netw_start_thr_engine( NETWORK *netw )
         pthread_mutex_unlock( &netw -> eventbolt );
         return FALSE ;
     }
+    netw -> nb_running_threads ++ ;
     if( pthread_create(  &netw -> send_thr,   NULL,  netw_send_func,  (void *) netw ) != 0 )
     {
         n_log( LOG_ERR, "Unable to create send_thread for network %p (%s)", netw , _str( netw -> link . ip ) );
         pthread_mutex_unlock( &netw -> eventbolt );
         return FALSE ;
     }
+    netw -> nb_running_threads ++ ;
 
     netw -> threaded_engine_status = NETW_THR_ENGINE_STARTED ;
 
@@ -2276,6 +2305,10 @@ void *netw_send_func( void *NET )
         netw_set( netw, NETW_ERROR );
     }
 
+    pthread_mutex_lock( &netw -> eventbolt );
+    netw -> nb_running_threads -- ;
+    pthread_mutex_unlock( &netw -> eventbolt );
+
     pthread_exit( 0 );
 
     /* suppress compiler warning */
@@ -2340,7 +2373,6 @@ void *netw_recv_func( void *NET )
                         if( tmpstate==NETW_EXIT_ASKED )
                         {
                             n_log( LOG_DEBUG,  "%d receiving order to QUIT, nboctet %d NETW_EXIT_ASKED %d !", netw -> link . sock, nboctet, NETW_EXIT_ASKED );
-
                             DONE = 100 ;
                             netw_set( netw, NETW_EXIT_ASKED );
                         }
@@ -2429,6 +2461,10 @@ void *netw_recv_func( void *NET )
         n_log( LOG_ERR, "Socket %d (%s): Receive thread exiting !", netw -> link . sock , _str( netw -> link . ip ) );
         netw_set( netw, NETW_ERROR );
     }
+
+    pthread_mutex_lock( &netw -> eventbolt );
+    netw -> nb_running_threads -- ;
+    pthread_mutex_unlock( &netw -> eventbolt );
 
     pthread_exit( 0 );
 
