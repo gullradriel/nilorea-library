@@ -788,11 +788,11 @@ N_STR *nstrdup( N_STR *str )
 int skipw( char *string, char toskip, NSTRBYTE *iterator, int inc )
 {
     int error_flag = 0 ;
-    NSTRBYTE previous = 0 ;
+    //NSTRBYTE previous = 0 ;
 
     __n_assert( string, return FALSE );
 
-    previous = *iterator;
+    //previous = *iterator;
     if( toskip == ' ' )
     {
         while( *iterator <= (NSTRBYTE)strlen ( string ) && isspace( string[ *iterator ] ) )
@@ -842,11 +842,11 @@ int skipw( char *string, char toskip, NSTRBYTE *iterator, int inc )
 int skipu( char *string, char toskip, NSTRBYTE *iterator, int inc )
 {
     int error_flag = 0 ;
-    NSTRBYTE previous = 0 ;
+    //NSTRBYTE previous = 0 ;
 
     __n_assert( string, return FALSE );
 
-    previous = *iterator;
+    //previous = *iterator;
     if( toskip == ' ' )
     {
         while( *iterator <= (NSTRBYTE)strlen ( string ) && !isspace( string[ *iterator ] ) )
