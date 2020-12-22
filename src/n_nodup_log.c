@@ -344,7 +344,7 @@ int dump_nodup_log( char *file )
 
     if( _n_nodup_table )
     {
-        for( int it = 0 ; it < _n_nodup_table -> size ; it ++ )
+        for( unsigned long int it = 0 ; it < _n_nodup_table -> size ; it ++ )
         {
             list_foreach( list_node, _n_nodup_table -> hash_table[ it ] )
             {

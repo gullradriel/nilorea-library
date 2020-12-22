@@ -40,7 +40,8 @@ char* wchar_to_char(const wchar_t* pwchar)
     const int charCount = currentCharIndex + 1;
 
     // allocate a new block of memory size char (1 byte) instead of wide char (2 bytes)
-    char* filePathC = (char*)malloc(sizeof(char) * charCount);
+    Malloc( filePathC , char , charCount );
+    __n_assert( filePathC , return NULL );
 
     for (int i = 0; i < charCount; i++)
     {
@@ -601,7 +602,12 @@ static int inet_pton6(const char *src, u_char *dst)
 
 #define netstrerror( code )({ \
         char *errmsg = NULL ; \
+        errno = 0 ; \
         errmsg = strdup( strerror( code ) ); \
+        if( errno == ENOMEM ) \
+        { \
+        errmsg = NULL ; \
+        } \
         errmsg ; \
         })
 
@@ -1708,6 +1714,12 @@ int netw_make_listening( NETWORK **netw, char *addr, char *port, int nbpending, 
         {
             char *ip = NULL ;
             Malloc( ip, char, 64 );
+            if( !ip )
+            {
+                n_log( LOG_ERR, "Error allocating 64 bytes for ip" );
+                netw_close( &(*netw) );
+                return FALSE ;
+            }
             if( !inet_ntop( rp -> ai_family, get_in_addr( rp -> ai_addr ), ip, 64 ) )
             {
                 error = neterrno ;
@@ -1878,6 +1890,13 @@ NETWORK *netw_accept_from_ex( NETWORK *from, int disable_naggle, int sock_send_b
 
     netw -> link . port = strdup( from -> link . port );
     Malloc( netw -> link . ip, char, 64 );
+    if( !netw -> link . ip )
+    {
+        n_log( LOG_ERR, "Error allocating 64 bytes for ip" );
+        netw_close( &netw );
+        return FALSE ;
+    }
+
     if( !inet_ntop( netw -> link . raddr . ss_family, get_in_addr( ((struct sockaddr *)&netw -> link . raddr) ), netw -> link . ip, 64 ) )
     {
         error = neterrno ;
@@ -2340,25 +2359,39 @@ void *netw_recv_func( void *NET )
                                 nboctet = tmpstate ;
 
                                 Malloc( recvdmsg, N_STR, 1 );
-                                n_log( LOG_DEBUG,  "%d octets to receive...", nboctet );
-                                Malloc( recvdmsg -> data, char, nboctet + 1 );
-                                recvdmsg -> length  = nboctet + 1 ;
-                                recvdmsg -> written = nboctet ;
-
-                                /* receiving the data itself */
-                                net_status = netw->recv_data( netw -> link . sock, recvdmsg -> data, nboctet );
-                                if( net_status < 0 )
+                                if( !recvdmsg )
                                 {
-                                    DONE = 3 ;
+                                    DONE = 3;
                                 }
                                 else
                                 {
-                                    pthread_mutex_lock( &netw -> recvbolt );
-                                    if( !DONE && list_push( netw -> recv_buf, recvdmsg, free_nstr_ptr ) == FALSE )
+                                    n_log( LOG_DEBUG,  "%d octets to receive...", nboctet );
+                                    Malloc( recvdmsg -> data, char, nboctet + 1 );
+                                    if( !recvdmsg -> data )
+                                    {
                                         DONE = 4 ;
-                                    pthread_mutex_unlock( &netw -> recvbolt );
-                                    n_log( LOG_DEBUG,  "%d octets received !", nboctet );
-                                } /* recv data */
+                                    }
+                                    else
+                                    {
+                                        recvdmsg -> length  = nboctet + 1 ;
+                                        recvdmsg -> written = nboctet ;
+
+                                        /* receiving the data itself */
+                                        net_status = netw->recv_data( netw -> link . sock, recvdmsg -> data, nboctet );
+                                        if( net_status < 0 )
+                                        {
+                                            DONE = 5 ;
+                                        }
+                                        else
+                                        {
+                                            pthread_mutex_lock( &netw -> recvbolt );
+                                            if( !DONE && list_push( netw -> recv_buf, recvdmsg, free_nstr_ptr ) == FALSE )
+                                                DONE = 6 ;
+                                            pthread_mutex_unlock( &netw -> recvbolt );
+                                            n_log( LOG_DEBUG,  "%d octets received !", nboctet );
+                                        } /* recv data */
+                                    } /* recv data allocation */
+                                } /* recv struct allocation */
                             } /* recv nb octet*/
                         } /* exit asked */
                     } /* recv state */
@@ -2379,6 +2412,10 @@ void *netw_recv_func( void *NET )
     else if( DONE == 3 )
         n_log( LOG_ERR,  "Error when receiving data from socket %d (%s), net_status: %s", netw -> link . sock, _str( netw -> link . ip ) , (net_status==-2)?"disconnected":"socket error" );
     else if( DONE == 4 )
+        n_log( LOG_ERR,  "Error allocating received message struct from socket %d (%s), net_status: %s", netw -> link . sock, _str( netw -> link . ip ) , (net_status==-2)?"disconnected":"socket error" );
+    else if( DONE == 5 )
+        n_log( LOG_ERR,  "Error allocating received messages data array from socket %d (%s), net_status: %s", netw -> link . sock, _str( netw -> link . ip ) , (net_status==-2)?"disconnected":"socket error" );
+    else if( DONE == 6 )
         n_log( LOG_ERR,  "Error adding receved message from socket %d (%s), net_status: %s", netw -> link . sock, _str( netw -> link . ip ) , (net_status==-2)?"disconnected":"socket error" );
 
 
@@ -2745,6 +2782,12 @@ int recv_php( SOCKET s, int *_code, char **buf )
         Free( (*buf ) );
     }
     Malloc( (*buf), char, (size+1) );
+    if( !(*buf ) )
+    {
+        n_log( LOG_ERR , "Could not allocate PHP receive buf" );
+        return FALSE ;
+    }
+
     bcount = 0;
     br = 0;
     ptr = (*buf);

@@ -386,7 +386,7 @@ char *ht_node_type( HASH_NODE *node )
  *\param size Size of the root hash node table
  *\return NULL or the new allocated hash table
  */
-HASH_TABLE *new_ht( int size )
+HASH_TABLE *new_ht( unsigned long int size )
 {
     HASH_TABLE *table = NULL ;
 
@@ -405,7 +405,7 @@ HASH_TABLE *new_ht( int size )
     // table -> hash_table = (LIST **)calloc( size, sizeof( LIST *) );
     __n_assert( table -> hash_table, n_log( LOG_ERR, "Can't allocate table -> hash_table with size %d !" , size ); Free( table ); return NULL );
 
-    int it = 0 ;
+    unsigned long int it = 0 ;
     for(  it = 0 ; it < size ; it ++ )
     {
         table -> hash_table[ it ] = new_generic_list( 0 );
@@ -413,7 +413,7 @@ HASH_TABLE *new_ht( int size )
         if( !table -> hash_table[ it ] )
         {
             n_log( LOG_ERR, "Can't allocate table -> hash_table[ %d ] !" , it );
-            int it_delete = 0 ;
+            unsigned long int it_delete = 0 ;
             for( it_delete = 0 ; it_delete < it ; it_delete ++ )
             {
                 list_destroy( &table -> hash_table[ it_delete ] );
@@ -438,7 +438,7 @@ HASH_TABLE *new_ht( int size )
 int ht_put_int( HASH_TABLE *table, char * key, int val )
 {
     uint32_t hash_value = 0 ;
-    unsigned int index = 0;
+    unsigned long int index = 0;
 
     HASH_NODE *new_hash_node = NULL ;
     HASH_NODE *node_ptr = NULL ;
@@ -493,7 +493,7 @@ int ht_put_int( HASH_TABLE *table, char * key, int val )
 int ht_put_double( HASH_TABLE *table, char * key, double val )
 {
     uint32_t hash_value = 0 ;
-    unsigned int index = 0;
+    unsigned long int index = 0;
 
     HASH_NODE *new_hash_node = NULL ;
     HASH_NODE *node_ptr = NULL ;
@@ -736,6 +736,7 @@ HASH_NODE *ht_get_node( HASH_TABLE *table, char *key )
 
     __n_assert( table, return NULL );
     __n_assert( key, return NULL );
+
     if( strlen( key ) == 0 )
         return FALSE ;
 
@@ -836,6 +837,7 @@ int ht_get_double( HASH_TABLE *table, char * key, double *val )
 {
     __n_assert( table, return FALSE );
     __n_assert( key, return FALSE );
+
     if( strlen( key ) == 0 )
         return FALSE ;
 
@@ -1057,10 +1059,10 @@ int empty_ht( HASH_TABLE *table )
 
     __n_assert( table, return FALSE );
 
-    int index = 0 ;
+    unsigned long int index = 0 ;
     for( index = 0 ; index < table -> size ; index ++ )
     {
-        while( table -> hash_table[ index ] -> start )
+        while( table -> hash_table[ index ] && table -> hash_table[ index ] -> start )
         {
             hash_node = remove_list_node( table -> hash_table[ index ], table -> hash_table[ index ] -> start, HASH_NODE );
             ht_node_destroy( hash_node );
@@ -1083,9 +1085,9 @@ int destroy_ht( HASH_TABLE **table )
 
     if( (*table )-> hash_table )
     {
-        empty_ht( (*table) );
+        //empty_ht( (*table) );
 
-        int it = 0 ;
+        unsigned long int it = 0 ;
         for( it = 0 ; it < (*table) -> size ; it ++ )
         {
             if( (*table) -> hash_table[ it ] )

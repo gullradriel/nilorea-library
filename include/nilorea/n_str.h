@@ -160,7 +160,7 @@ char *trim_nocopy(char *s);
 /* trim and put a \0 at the end, return new char * */
 char *trim(char *s);
 /* N_STR wrapper around fgets */
-char *nfgets( char *buffer, unsigned int size, FILE *stream );
+char *nfgets( char *buffer, NSTRBYTE size, FILE *stream );
 /* create a new string */
 N_STR *new_nstr( NSTRBYTE size );
 /* reinitialize a nstr */
@@ -254,7 +254,7 @@ int wildmatcase( register const char *text, register const char *p );
 /* return a replaced string */
 char *str_replace ( const char *string, const char *substr, const char *replacement );
 /* sanitize string */
-int str_sanitize_ex( char *string, const unsigned int string_len, const char *mask, const unsigned int masklen, const char replacement );
+int str_sanitize_ex( char *string, const NSTRBYTE string_len, const char *mask, const NSTRBYTE masklen, const char replacement );
 /* in-place substitution of a set of chars by a single one */
 int str_sanitize( char *string, const char *mask, const char replacement );
 

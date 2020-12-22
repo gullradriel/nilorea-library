@@ -99,7 +99,7 @@ typedef struct HASH_NODE
 typedef struct HASH_TABLE
 {
     /*! size of the hash table */
-    int size,
+    unsigned long int size,
         /*! total number of used keys in the table */
         nb_keys ;
     /*! preallocated table */
@@ -114,7 +114,7 @@ typedef struct HASH_TABLE
       n_log( LOG_ERR , "Error in ht_foreach, %s is NULL" , #__HASH_ ); \
    } \
    else \
-   for( int __hash_it = 0 ; __hash_it < __HASH_ -> size ; __hash_it ++ ) \
+   for( unsigned long int __hash_it = 0 ; __hash_it < __HASH_ -> size ; __hash_it ++ ) \
    for( LIST_NODE *__ITEM_ = __HASH_ -> hash_table[ __hash_it ] -> start ; __ITEM_ != NULL; __ITEM_ = __ITEM_ -> next )
 /*! ForEach macro helper */
 #define ht_foreach_r( __ITEM_ , __HASH_ , __ITERATOR_ ) \
@@ -123,7 +123,7 @@ typedef struct HASH_TABLE
       n_log( LOG_ERR , "Error in ht_foreach, %s is NULL" , #__HASH_ ); \
    } \
    else \
-   for( int __ITERATOR_ = 0 ; __ITERATOR_ < __HASH_ -> size ; __ITERATOR_ ++ ) \
+   for( unsigned long int __ITERATOR_ = 0 ; __ITERATOR_ < __HASH_ -> size ; __ITERATOR_ ++ ) \
    for( LIST_NODE *__ITEM_ = __HASH_ -> hash_table[ __ITERATOR_ ] -> start ; __ITEM_ != NULL; __ITEM_ = __ITEM_ -> next )
 
 
@@ -141,7 +141,7 @@ void MurmurHash3_x86_128 ( const void * key, int len, uint32_t seed, void * out 
 char *ht_node_type( HASH_NODE *node );
 
 /* new hash table allocator */
-HASH_TABLE *new_ht( int size );
+HASH_TABLE *new_ht( unsigned long int size );
 
 /* put an integer */
 int ht_put_int( HASH_TABLE *table, char * key, int    val );

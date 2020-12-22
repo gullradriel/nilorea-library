@@ -163,12 +163,12 @@ char *trim(char *s)
  *\param stream The file to read
  *\return NULL or the captured string
  */
-char *nfgets( char *buffer, unsigned int size, FILE *stream )
+char *nfgets( char *buffer, NSTRBYTE size, FILE *stream )
 {
     __n_assert( buffer , return NULL );
     __n_assert( stream , return NULL );
 
-    unsigned int it = 0  ;
+    NSTRBYTE it = 0  ;
 
     if( !fgets( buffer, size, stream ) )
     {
@@ -776,7 +776,7 @@ N_STR *nstrdup( N_STR *str )
 
 
 
-/*!\fn int skipw( char *string , char toskip , NSTRBYTE *iterator , int inc )
+/*!\fn int skipw( char *string , char toskip , NSTRBYTE *iterator , NSTRBYTE inc )
  *\brief skip while 'toskip' occurence is found from 'iterator' to the next non 'toskip' position.
  * The new iterator index is automatically stored, returning to it first value if an error append.
  *\param string a char *string to search in
@@ -785,7 +785,7 @@ N_STR *nstrdup( N_STR *str )
  *\param inc an int to specify the step of skipping
  *\return TRUE if success FALSE or ABORT if not
  */
-int skipw( char *string, char toskip, NSTRBYTE *iterator, NSTRBYTE inc )
+int skipw( char *string, char toskip, NSTRBYTE *iterator, int inc )
 {
     int error_flag = 0 ;
     NSTRBYTE previous = 0 ;
@@ -821,7 +821,7 @@ int skipw( char *string, char toskip, NSTRBYTE *iterator, NSTRBYTE inc )
     }
     if( error_flag == 1 || *iterator > (NSTRBYTE)strlen ( string ) )
     {
-        *iterator = previous ;
+        //*iterator = previous ;
         return FALSE;
     }
 
@@ -876,7 +876,7 @@ int skipu( char *string, char toskip, NSTRBYTE *iterator, int inc )
 
     if( error_flag == 1 || *iterator > (NSTRBYTE)strlen ( string ) )
     {
-        *iterator = previous ;
+        //*iterator = previous ;
         return FALSE;
     }
 
@@ -1524,7 +1524,7 @@ char *str_replace ( const char *string, const char *substr, const char *replacem
     return newstr;
 }
 
-/*!\fn int str_sanitize_ex( char *string, const unsigned int string_len, const char *mask, const unsigned int masklen, const char replacement )
+/*!\fn int str_sanitize_ex( char *string, const NSTRBYTE string_len, const char *mask, const NSTRBYTE masklen, const char replacement )
  * \brief clean a string by replacing evil characteres
  * \param string The string to change
  * \param string_len Size of the data to treat
@@ -1533,15 +1533,15 @@ char *str_replace ( const char *string, const char *substr, const char *replacem
  * \param replacement replacement for mask
  * \return TRUE or FALSE
  */
-int str_sanitize_ex( char *string, const unsigned int string_len, const char *mask, const unsigned int masklen, const char replacement )
+int str_sanitize_ex( char *string, const NSTRBYTE string_len, const char *mask, const NSTRBYTE masklen, const char replacement )
 {
     __n_assert( string, return FALSE );
     __n_assert( mask, return FALSE );
 
-    unsigned int it = 0 ;
+    NSTRBYTE it = 0 ;
     for( it = 0 ; it < string_len ; it ++ )
     {
-        unsigned int mask_it = 0 ;
+        NSTRBYTE mask_it = 0 ;
         while( mask_it<masklen && mask[mask_it]!='\0')
         {
             if( string[ it ] == mask[ mask_it ] )

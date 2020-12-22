@@ -179,7 +179,7 @@ extern "C"
     errno = 0 ; \
     if ( !(  __ptr  = (  __struct  *)calloc(  __size , sizeof(  __struct  ) ) ) || errno == ENOMEM )   \
     {                                                                                 \
-        n_log( LOG_ERR , "( %s *)malloc( %s * sizeof( %d ) ) Error at line %d of %s \n", #__ptr , #__struct , __size , __LINE__ , __FILE__); \
+        n_log( LOG_ERR , "( %s *)calloc( %ld , sizeof( %s ) ) %s at line %d of %s \n", #__ptr , __size , #__struct , (errno==ENOMEM)?"ENOMEM":"malloc error" , __LINE__ , __FILE__); \
         __ptr = NULL ; \
     }
 

@@ -173,7 +173,7 @@ int db_mem_dump_leaked( char *file )
 
     fprintf( out, "%d malloc / %d free\n", __debug_mem_table . nb_malloc, __debug_mem_table . nb_free );
 
-    for( int it = 0 ; it < __debug_mem_table . table -> size ; it ++ )
+    for( unsigned long int it = 0 ; it < __debug_mem_table . table -> size ; it ++ )
     {
         node =  __debug_mem_table . table -> hash_table[ it ] -> start ;
         while( node )
