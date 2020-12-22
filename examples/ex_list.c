@@ -42,7 +42,13 @@ int main(void)
 
     N_STR *nstr = NULL ;
 
+    n_log( LOG_NOTICE, "Testing empty list cleaning" );
+    
+    list_destroy( &list );
+
+
     n_log( LOG_NOTICE, "list list: adding %d element in list element (%d) list, empty the list at the end", NB_TEST_ELEM, LIST_LIMIT );
+    list = new_generic_list( LIST_LIMIT );
     for( int it = 0 ; it < NB_TEST_ELEM ; it ++ )
     {
         nstrprintf( nstr, "Nombre aleatoire : %d", rand()%1000 );
