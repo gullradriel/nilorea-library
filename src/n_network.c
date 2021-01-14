@@ -1572,7 +1572,7 @@ int deplete_send_buffer( int fd , long timeout )
 
 
 /*!\fn netw_wait_close( NETWORK **netw )
- *\brief Wait for peer closing a specified Network, destroy queues, free the structure
+ *\brief Wait for peer closing a specified Network, destroy queues, free the structure. Default 10 seconds timeout
  *\warning Do not use on the accept socket itself (the server socket) as it will display false errors
  *\param netw A NETWORK *network to close
  *\return TRUE on success , FALSE on failure
@@ -1580,7 +1580,7 @@ int deplete_send_buffer( int fd , long timeout )
 int netw_wait_close( NETWORK **netw )
 {
     // default 30 secs timeout
-    return netw_wait_close_timed( netw , 30 );
+    return netw_wait_close_timed( netw , 10 );
 } /* netw_wait_close(...)*/
 
 
@@ -1615,8 +1615,7 @@ int netw_wait_close_timed( NETWORK **netw , int timeout )
     }
     if( timeout == 0 )
     {
-        n_log( LOG_ERR , "netw %d waited too long (%ds) for peer to close => force close" , (*netw) -> link . sock , timeout ); 
-        netw_stop_thr_engine( (*netw) );
+        n_log( LOG_ERR , "netw %d waited too long (%ds) for peer to close" , (*netw) -> link . sock , timeout ); 
     }
 
     /* wait for close fix */
