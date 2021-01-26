@@ -4,7 +4,7 @@ Nilorea Library is a C library, which brings you:<br />
 -network engine<br />
 -simple 2D/3D physics, little generic game managing system<br />
 <br />
-<a href='https://nilorea.net/html/index.html'>Online API documentation</a><br />
+<a href='https://www.nilorea.net/html/index.html'>Online API documentation</a><br />
 <br />
 Some more If used with the Allegro 5 library:<br />
 -particle system, basic 2D isometric engine, basic 2D animation system<br />
