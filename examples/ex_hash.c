@@ -130,10 +130,10 @@ int main( void )
         }
     }
 
-    /* testing empty destroy */
     list_destroy( &keys_list );
     destroy_ht( &htable );
 
+    /* testing empty destroy */
     htable = new_ht( 1024 );
     empty_ht( htable );
     destroy_ht( &htable );

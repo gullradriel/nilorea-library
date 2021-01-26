@@ -265,8 +265,6 @@ int main(int argc, char **argv)
             }
             refresh_thread_pool( thread_pool );
         }
-
-        sleep( 3 ) ;
         n_log( LOG_NOTICE, "Waiting thread_pool..." );
         wait_for_threaded_pool( thread_pool, 500000 );
         n_log( LOG_NOTICE, "Destroying thread_pool..." );
@@ -314,8 +312,7 @@ int main(int argc, char **argv)
             {
                 n_log( LOG_ERR, "Error getting back answer from server" );
             }
-            n_log( LOG_NOTICE, "Closing client in 3 seconds. See synchronisation on server side..." );
-            sleep( 3 );
+            n_log( LOG_NOTICE, "Closing client. See synchronisation on server side..." );
 
             netw_close( &netw );
         }

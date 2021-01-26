@@ -25,9 +25,9 @@ extern "C"
   @{
   */
 
-int GetMaxCompressedLen( int nLenSrc );
-int CompressData(   unsigned char *abSrc, int nLenSrc, unsigned char *abDst, int nLenDst );
-int UncompressData( unsigned char *abSrc, int nLenSrc, unsigned char *abDst, int nLenDst );
+int GetMaxCompressedLen( unsigned int nLenSrc );
+int CompressData(   unsigned char *abSrc, unsigned int nLenSrc, unsigned char *abDst, unsigned int nLenDst );
+int UncompressData( unsigned char *abSrc, unsigned int nLenSrc, unsigned char *abDst, unsigned int nLenDst );
 
 N_STR *zip_nstr( N_STR *src );
 N_STR *unzip_nstr( N_STR *src );
