@@ -1624,11 +1624,11 @@ int netw_wait_close_timed( NETWORK **netw , int timeout )
         /* inform peer that we have finished */
         shutdown( (*netw) -> link . sock, SHUT_WR );
 #if defined( __linux__ ) 
-        int remaining = deplete_send_buffer( (*netw) -> link . sock , 3000 );
+/*        int remaining = deplete_send_buffer( (*netw) -> link . sock , 3000 );
         if( remaining > 0 )
         {
             n_log( LOG_DEBUG , "socket %d took more than 3 seconds to send %d octets before closing => force close" , (*netw) -> link . sock , remaining );
-        }
+        }*/
 #endif
         /* wait for fin ack */
         char buffer[ 4096 ] = "" ;
