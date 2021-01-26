@@ -18,20 +18,20 @@
 #endif
 
 
-/*!\fn int GetMaxCompressedLen( int nLenSrc )
+/*!\fn int GetMaxCompressedLen( unsigned int nLenSrc )
  *\brief Return the maximum compressed size
  *\param nLenSrc
  *\return The size in bytes
  */
-int GetMaxCompressedLen( int nLenSrc )
+int GetMaxCompressedLen( unsigned int nLenSrc )
 {
-    int n16kBlocks = (nLenSrc+16383) / 16384; // round up any fraction of a block
+    unsigned int n16kBlocks = (nLenSrc+16383) / 16384; // round up any fraction of a block
     return ( nLenSrc + 6 + (n16kBlocks*5) );
 } /* GetMaxCompressedLen */
 
 
 
-/*!\fn int CompressData( unsigned char *abSrc, int nLenSrc, unsigned char *abDst, int nLenDst )
+/*!\fn int CompressData( unsigned char *abSrc, unsigned int nLenSrc, unsigned char *abDst, unsigned int nLenDst )
  *\brief Compress a string to another
  *\param abSrc source string
  *\param nLenSrc size of source string
@@ -39,17 +39,17 @@ int GetMaxCompressedLen( int nLenSrc )
  *\param nLenDst destination length
  *\return -1 or lenght of output
  */
-int CompressData( unsigned char *abSrc, int nLenSrc, unsigned char *abDst, int nLenDst )
+int CompressData( unsigned char *abSrc, unsigned int nLenSrc, unsigned char *abDst, unsigned int nLenDst )
 {
     __n_assert( abSrc , return -1 );
     __n_assert( abDst , return -1 );
 
-    if( nLenSrc <= 0 )
+    if( nLenSrc == 0 )
     {
         n_log( LOG_ERR , "nLenSrc (%d) <= 0" , nLenSrc );
         return -1 ;
     }
-    if( nLenDst <= 0 )
+    if( nLenDst == 0 )
     {
         n_log( LOG_ERR , "nLenDst (%d) <= 0" , nLenDst );
         return -1 ;
@@ -88,7 +88,7 @@ int CompressData( unsigned char *abSrc, int nLenSrc, unsigned char *abDst, int n
 
 
 
-/*!\fn int UncompressData( unsigned char *abSrc, int nLenSrc, unsigned char *abDst, int nLenDst )
+/*!\fn int UncompressData( unsigned char *abSrc, unsigned int nLenSrc, unsigned char *abDst, unsigned int nLenDst )
  *\brief Uncompress a string to another
  *\param abSrc source string
  *\param nLenSrc size of source string
@@ -96,17 +96,17 @@ int CompressData( unsigned char *abSrc, int nLenSrc, unsigned char *abDst, int n
  *\param nLenDst destination length
  *\return -1 or lenght of output
  */
-int UncompressData( unsigned char *abSrc, int nLenSrc, unsigned char *abDst, int nLenDst )
+int UncompressData( unsigned char *abSrc, unsigned int nLenSrc, unsigned char *abDst, unsigned int nLenDst )
 {
     __n_assert( abSrc , return -1 );
     __n_assert( abDst , return -1 );
 
-    if( nLenSrc <= 0 )
+    if( nLenSrc == 0 )
     {
         n_log( LOG_ERR , "nLenSrc (%d) <= 0" , nLenSrc );
         return -1 ;
     }
-    if( nLenDst <= 0 )
+    if( nLenDst == 0 )
     {
         n_log( LOG_ERR , "nLenDst (%d) <= 0" , nLenDst );
         return -1 ;
@@ -166,7 +166,8 @@ N_STR *zip_nstr( N_STR *src )
     }
 
     /* storage for original string size + zipped string  + padding */
-    int zip_max_size = GetMaxCompressedLen( src -> length );
+    unsigned int zip_max_size = GetMaxCompressedLen( src -> length );
+
     N_STR *zipped = new_nstr( 4 + zip_max_size );
 
     __n_assert( zipped , return NULL );
