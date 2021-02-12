@@ -2285,7 +2285,7 @@ void *netw_send_func( void *NET )
     }
     else
     {
-        n_log( LOG_ERR, "Socket %d (%s): Sending thread exiting !", netw -> link . sock , _str( netw -> link . ip ) );
+        n_log( LOG_ERR, "Socket %d (%s): Sending thread exiting with error %d !", netw -> link . sock , _str( netw -> link . ip ) ,DONE );
         netw_set( netw, NETW_ERROR );
     }
 
@@ -2435,7 +2435,7 @@ void *netw_recv_func( void *NET )
     }
     else
     {
-        n_log( LOG_ERR, "Socket %d (%s): Receive thread exiting !", netw -> link . sock , _str( netw -> link . ip ) );
+        n_log( LOG_ERR, "Socket %d (%s): Receive thread exiting with code %d !", netw -> link . sock , _str( netw -> link . ip ) , DONE );
         netw_set( netw, NETW_ERROR );
     }
 
