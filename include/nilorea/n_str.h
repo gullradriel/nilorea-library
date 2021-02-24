@@ -241,6 +241,8 @@ char **split( const char* str, const char* delim, int empty );
 int split_count( char **split_result );
 /* Free a char **tab and set it to NULL */
 int free_split_result( char ***tab );
+/* Write and fit bytes */
+int write_and_fit_ex( char **dest, NSTRBYTE *size, NSTRBYTE *written, char *src , NSTRBYTE src_size , NSTRBYTE additional_padding );
 /* Write and fit into the char array */
 int write_and_fit( char **dest, NSTRBYTE *size, NSTRBYTE *written, char *src );
 /* get a list of the file in a directory */

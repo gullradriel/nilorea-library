@@ -1145,6 +1145,8 @@ int nstrcat_ex( N_STR *dest, void *src, NSTRBYTE size, NSTRBYTE blk_size, int re
     ptr = dest -> data + dest -> written ;
     memcpy( ptr, src, size );
     dest -> written += size ;
+    
+    dest -> data[ dest -> written ] = '\0' ;
 
     return TRUE ;
 } /* nstrcat_ex( ... ) */
@@ -1159,7 +1161,7 @@ int nstrcat_ex( N_STR *dest, void *src, NSTRBYTE size, NSTRBYTE blk_size, int re
  */
 int nstrcat( N_STR *dst, N_STR *src )
 {
-    return nstrcat_ex( dst, src -> data, src -> written, src -> written + 1 , 1 );
+    return nstrcat_ex( dst, src -> data, src -> written, src -> written + 64 , 1 );
 } /* nstrcat( ... ) */
 
 
@@ -1182,7 +1184,7 @@ int nstrcat_bytes_ex( N_STR *dest, void *data, NSTRBYTE size )
         return FALSE ;
     }
 
-    return nstrcat_ex( dest, data, size, size + 1, 1 );
+    return nstrcat_ex( dest, data, size, size + 64 , 1 );
 } /* nstrcat_bytes_ex( ... )*/
 
 
@@ -1208,7 +1210,51 @@ int nstrcat_bytes( N_STR *dest, void *data )
 
 
 
+
+
+
+/*!\fn int write_and_fit_ex( char **dest, NSTRBYTE *size, NSTRBYTE *written, char *src , NSTRBYTE src_size , NSTRBYTE additional_padding )
+ *\brief concatenate a copy of src of size src_size to dest, starting at dest[ written ], updating written and size variable, allocation of new blocks of (needed size + additional_padding ) if resize is needed. If dest is NULL it will be allocated.
+ *\param dest The dest string
+ *\param size The current size, will be updated if written + strlen( dest) > size
+ *\param written the number of octet added
+ *\param src The source string to add
+ *\param additional_padding In case the destination is reallocated, number of additional bytes that will be added (provisionning)
+ *\return TRUE on success or FALSE on a realloc error
+ */
+int write_and_fit_ex( char **dest, NSTRBYTE *size, NSTRBYTE *written, char *src , NSTRBYTE src_size , NSTRBYTE additional_padding )
+{
+    char *ptr = NULL ;
+    NSTRBYTE needed_size = (*written) + src_size + 1 ;
+
+    // realloc if needed , also if destination is not allocated
+    if( needed_size > (*size) || !(*dest) )
+    {
+        n_log( LOG_DEBUG , "dest will grow from %d to %d" , (*size) , needed_size + additional_padding );
+
+        // +1 for the \0 , + additional padding for eventual futur concatenation space
+        Reallocz( (*dest) , char , (*size) , needed_size + additional_padding ); 
+        (*size) = needed_size + additional_padding ;
+        if( !(*dest) )
+        {
+            n_log(  LOG_ERR, "reallocation error !!!!" );
+            return FALSE ;
+        }
+    }
+
+    ptr = (*dest) + (*written) ;
+    memcpy( ptr , src , src_size );
+    (*written) += src_size ;
+
+    (*dest)[ (*written) ] = '\0' ;
+
+    return TRUE ;
+} /* write_and_fit_ex( ...) */
+
+
+
 /*!\fn int write_and_fit( char **dest , NSTRBYTE *size , NSTRBYTE *written , char *src )
+ *\brief concatenate a copy of src of size strlen( src ) to dest, starting at dest[ written ], updating written and size variable, allocation of new blocks of (needed size + 512) if resize is needed. If dest is NULL it will be allocated.
  *\param dest The dest string
  *\param size The current size, will be updated if written + strlen( dest) > size
  *\param written the number of octet added
@@ -1217,33 +1263,8 @@ int nstrcat_bytes( N_STR *dest, void *data )
  */
 int write_and_fit( char **dest, NSTRBYTE *size, NSTRBYTE *written, char *src )
 {
-    char *ptr = NULL ;
-    NSTRBYTE src_size = 0 ;
-    int realloc_flag = 0 ;
-
-    src_size = strlen( src ) ;
-    while( ( (*written) + src_size + 1 ) > (*size)  )
-    {
-        (*size) = (*size) + 1024 ;
-        realloc_flag = 1 ;
-    }
-
-    if( realloc_flag == 1 )
-    {
-        (*dest) =(char *)realloc( (*dest), (*size) * sizeof( char ) );
-        if( !(*dest) )
-        {
-            n_log(  LOG_ERR, "reallocation error !!!!" );
-            return FALSE ;
-        }
-    }
-    ptr = (*dest) + (*written) ;
-    snprintf( ptr, (*size) - (*written), "%s", src );
-    (*written) += src_size ;
-
-    return TRUE ;
+    return write_and_fit_ex( dest , size , written , src , strlen( src ) , 512 );
 } /* write_and_fit( ...) */
-
 
 
 
