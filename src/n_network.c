@@ -1604,8 +1604,11 @@ int netw_wait_close_timed( NETWORK **netw , int timeout )
     int state = 0, thr_engine_status = 0 ;
     __n_assert( netw&&(*netw), return FALSE );
 
-    int error = 0 ;
+    int error = 0 ,
+        countdown = 0 ;
     char *errmsg = NULL ;
+
+    countdown = timeout ;
 
     netw_get_state( (*netw), &state, &thr_engine_status );
     if( thr_engine_status == NETW_THR_ENGINE_STARTED )
@@ -1617,10 +1620,10 @@ int netw_wait_close_timed( NETWORK **netw , int timeout )
             nb_running = (*netw) -> nb_running_threads ;
             pthread_mutex_unlock( &(*netw) -> eventbolt );
             sleep( 1 );
-            timeout -- ;
-        }while( nb_running > 0 && timeout > 0 );
+            countdown -- ;
+        }while( nb_running > 0 && countdown > 0 );
     }
-    if( timeout == 0 )
+    if( countdown == 0 )
     {
         n_log( LOG_ERR , "netw %d waited too long (%ds) for peer to close" , (*netw) -> link . sock , timeout ); 
     }
@@ -1634,7 +1637,7 @@ int netw_wait_close_timed( NETWORK **netw , int timeout )
         int remaining = deplete_send_buffer( (*netw) -> link . sock , (*netw) -> deplete_timeout );
         if( remaining > 0 )
         {
-            n_log( LOG_ERR , "socket %d took more than %d msecs to send %d octets before closing => force close" , (*netw) -> link . sock , (*netw) -> deplete_timeout , remaining );
+            n_log( LOG_ERR , "socket %d (%s:%s) took more than %d msecs to send %d octets before closing => force close" , (*netw) -> link . sock , (*netw) -> link . ip , (*netw) -> link . port , (int)(*netw) -> deplete_timeout , remaining );
         }
 #endif
         /* wait for fin ack */
@@ -1651,7 +1654,7 @@ int netw_wait_close_timed( NETWORK **netw , int timeout )
                 if( error != ENOTCONN && error != 10057 && error != EINTR && error != ECONNRESET ) // no an error if already closed
                 {
                     errmsg = netstrerror( error );
-                    n_log( LOG_ERR, "read returned error %d when closing socket %d (%s): %s", error, (*netw) -> link . sock, _str( (*netw) -> link . ip ) , _str( errmsg ) );
+                    n_log( LOG_ERR, "read returned error %d when closing socket %d (%s:%s): %s", error, (*netw) -> link . sock, _str( (*netw) -> link . ip ) , (*netw) -> link . port ,  _str( errmsg ) );
                     FreeNoLog( errmsg );
                 }
                 break ;
