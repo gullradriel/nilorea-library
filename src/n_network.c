@@ -1555,14 +1555,14 @@ int netw_close( NETWORK **netw )
  *\timeout timeout value in msec , 0 => disabled
  *\return 0 or the amount of remaining datas in bytes 
  */
-#if defined( __linux__ ) 
 int deplete_send_buffer( int fd , long timeout )
 {
+    int outstanding = 0 ;
+#if defined( __linux__ ) 
     if( timeout <= 0 )
     {
         return 0 ;
     }
-    int outstanding = 0 ;
     for( int it = 0 ; it < timeout ; it += 50 )
     {
         outstanding = 0 ;
@@ -1574,8 +1574,12 @@ int deplete_send_buffer( int fd , long timeout )
         usleep( 50000 );
     }
     return outstanding ;
-}
+#else
+    (void)fd;
+    (void)timeout;
+    return 0 ;
 #endif 
+}
 
 
 /*!\fn netw_wait_close( NETWORK **netw )
@@ -1633,13 +1637,11 @@ int netw_wait_close_timed( NETWORK **netw , int timeout )
     {
         /* inform peer that we have finished */
         shutdown( (*netw) -> link . sock, SHUT_WR );
-#if defined( __linux__ ) 
         int remaining = deplete_send_buffer( (*netw) -> link . sock , (*netw) -> deplete_timeout );
         if( remaining > 0 )
         {
             n_log( LOG_ERR , "socket %d (%s:%s) took more than %d msecs to send %d octets before closing => force close" , (*netw) -> link . sock , (*netw) -> link . ip , (*netw) -> link . port , (int)(*netw) -> deplete_timeout , remaining );
         }
-#endif
         /* wait for fin ack */
         char buffer[ 4096 ] = "" ;
         for( ;; )
