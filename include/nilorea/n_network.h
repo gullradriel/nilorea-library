@@ -354,6 +354,10 @@ int netw_set_blocking( NETWORK *netw, unsigned long int is_blocking );
 int netw_connect_ex( NETWORK **netw, char *host, char *port, int send_list_limit, int recv_list_limit, int ip_version );
 /* Connecting */
 int netw_connect( NETWORK **netw, char *host, char *port, int ip_version );
+/* wait for send buffer to be empty */
+#if defined( __linux__ ) 
+    int deplete_send_buffer( int fd , long timeout );
+#endif
 /* Closing */
 int netw_close( NETWORK **netw );
 /* Closing for peer */

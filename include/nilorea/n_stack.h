@@ -18,9 +18,12 @@ extern "C"
   @{
 */
 
+/*! STACK structure */
 typedef struct STACK
 {
+    /*! STACK array */
 	void **stack ;
+    /*! Size of array */
 	unsigned int size ;
 } STACK ;
 
