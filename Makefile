@@ -76,7 +76,7 @@ endif
 
 ifeq ($(UNAME_S),SunOS)
 	CC=cc
-	CFLAGS+= -DSOLARIS -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -g -v -xc99 -I ./include/ -I/Home/open_source/include -mt -L/Home/open_source/lib -lpcre
+	CFLAGS+= -DSOLARIS -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -g -v -xc99 -I ./include/ -mt -lpcre
 endif
 
 obj/%.o: src/%.c
