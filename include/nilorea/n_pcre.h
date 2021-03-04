@@ -14,13 +14,16 @@ extern "C"
 {
 #endif
 
+#ifdef SOLARIS
+#include <pcre/pcre.h>
+#else
 #include <pcre.h>
+#endif
 
 /**\defgroup PCRE PCRE: regex matching helpers
   \addtogroup PCRE
   @{
   */
-
 
 /*! N_PCRE structure */
 typedef struct N_PCRE
