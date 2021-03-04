@@ -2909,7 +2909,7 @@ void netw_pool_netw_close( void *netw_ptr )
 {
     NETWORK *netw = (NETWORK *)netw_ptr ;
     __n_assert( netw, return );
-    n_log( LOG_DEBUG, "Network pool %p: network id %d still active !!", netw, (long long int)netw -> link . sock );
+    n_log( LOG_DEBUG, "Network pool %p: network id %d still active !!", netw, netw -> link . sock );
     return ;
 }
 
@@ -2921,17 +2921,17 @@ int netw_pool_add( NETWORK_POOL *netw_pool, NETWORK *netw )
     __n_assert( netw_pool, return FALSE );
     __n_assert( netw, return FALSE );
 
-    n_log( LOG_DEBUG, "Trying to add %lld to %p", netw_pool, (long long int)netw -> link . sock );
+    n_log( LOG_DEBUG, "Trying to add %d to %p", netw -> link . sock , netw_pool -> pool );
 
     /* write lock the pool */
     write_lock( netw_pool -> rwlock );
     /* test if not already added */
     N_STR *key = NULL ;
-    nstrprintf( key, "%lld", (long long int)netw -> link . sock );
+    nstrprintf( key, "%d", netw -> link . sock );
     HASH_NODE *node = NULL ;
     if( ht_get_ptr( netw_pool -> pool, _nstr( key ), (void *)&node ) == TRUE )
     {
-        n_log( LOG_ERR, "Network id %lld already added !", (long long int)netw -> link . sock );
+        n_log( LOG_ERR, "Network id %d already added !", netw -> link . sock );
         free_nstr( &key );
         unlock( netw_pool -> rwlock );
         return FALSE ;
@@ -2959,7 +2959,7 @@ int netw_pool_remove( NETWORK_POOL *netw_pool, NETWORK *netw )
     write_lock( netw_pool -> rwlock );
     /* test if present */
     N_STR *key = NULL ;
-    nstrprintf( key, "%lld", (long long int)netw -> link . sock );
+    nstrprintf( key, "%d", netw -> link . sock );
     if( ht_remove( netw_pool -> pool, _nstr( key ) ) == TRUE )
     {
         LIST_NODE *node = list_search( netw -> pools , netw );
@@ -2968,12 +2968,12 @@ int netw_pool_remove( NETWORK_POOL *netw_pool, NETWORK *netw )
             remove_list_node( netw -> pools, node, NETWORK_POOL );
         }
         unlock( netw_pool -> rwlock );
-        n_log( LOG_DEBUG, "Network id %lld removed !", (long long int)netw -> link . sock );
+        n_log( LOG_DEBUG, "Network id %d removed !", netw -> link . sock );
 
         return TRUE ;
     }
     free_nstr( &key );
-    n_log( LOG_ERR, "Network id %lld already removed !", (long long int)netw -> link . sock );
+    n_log( LOG_ERR, "Network id %d already removed !", netw -> link . sock );
     /* unlock the pool */
     unlock( netw_pool -> rwlock );
     return FALSE ;
