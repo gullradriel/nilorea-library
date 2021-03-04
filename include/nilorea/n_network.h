@@ -61,7 +61,7 @@ void netw_sigchld_handler( int sig );
 
 #ifndef SOCKET
 /*! default socket declaration */
-typedef long long int SOCKET ;
+#define SOCKET int
 #endif
 
 /*! socket wrapper */
