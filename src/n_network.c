@@ -1583,7 +1583,7 @@ int deplete_send_buffer( int fd , long timeout )
 
 
 /*!\fn netw_wait_close( NETWORK **netw )
- *\brief Wait for peer closing a specified Network, destroy queues, free the structure. Default 10 seconds timeout
+ *\brief Wait for peer closing a specified Network, destroy queues, free the structure. Default 30 seconds timeout
  *\warning Do not use on the accept socket itself (the server socket) as it will display false errors
  *\param netw A NETWORK *network to close
  *\return TRUE on success , FALSE on failure
