@@ -66,8 +66,8 @@ extern "C"
    ({ \
     if( __nstr && __nstr -> data ) \
     { \
-    Reallocz( __nstr -> data , char , __nstr -> length , __nstr -> length + needed ); \
-    __nstr -> length += needed ; \
+    Reallocz( __nstr -> data , char , __nstr -> length , new_size ); \
+    __nstr -> length = new_size ; \
     } \
     })
 
@@ -102,7 +102,7 @@ extern "C"
     }\
     NSTRBYTE needed = 0 ; \
     needed = snprintf( NULL , 0 ,  __VA_ARGS__ ); \
-    __nstr_var = new_nstr( needed + 2 ); \
+    __nstr_var = new_nstr( needed + 1 ); \
     if( __nstr_var )\
     { \
     snprintf( __nstr_var -> data , needed + 1 , __VA_ARGS__ ); \
@@ -118,9 +118,9 @@ extern "C"
     { \
     NSTRBYTE needed = 0 ; \
     needed = snprintf( NULL , 0 ,  __VA_ARGS__ ); \
-    if( ( __nstr_var -> written + needed ) >= __nstr_var -> length ) \
+    if( ( __nstr_var -> written + needed + 1 ) > __nstr_var -> length ) \
     { \
-    resize_nstr( __nstr_var , __nstr_var -> length + needed + 2 ); \
+    resize_nstr( __nstr_var , __nstr_var -> length + needed + 1 ); \
     } \
     snprintf( __nstr_var -> data + __nstr_var -> written , needed + 1 , __VA_ARGS__ ); \
     __nstr_var -> written += needed ; \
@@ -241,6 +241,8 @@ char **split( const char* str, const char* delim, int empty );
 int split_count( char **split_result );
 /* Free a char **tab and set it to NULL */
 int free_split_result( char ***tab );
+/* Write and fit bytes */
+int write_and_fit_ex( char **dest, NSTRBYTE *size, NSTRBYTE *written, char *src , NSTRBYTE src_size , NSTRBYTE additional_padding );
 /* Write and fit into the char array */
 int write_and_fit( char **dest, NSTRBYTE *size, NSTRBYTE *written, char *src );
 /* get a list of the file in a directory */

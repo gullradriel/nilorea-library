@@ -71,7 +71,6 @@ int CompressData( unsigned char *abSrc, unsigned int nLenSrc, unsigned char *abD
         default:
             n_log( LOG_ERR , "%s on string %p size %d" , zError( nErr ) , abSrc , nLenSrc );
             return -1 ;
-            break;
     }
     nErr= deflate( &zInfo, Z_FINISH );              // zlib function
     if ( nErr == Z_STREAM_END )
@@ -128,7 +127,6 @@ int UncompressData( unsigned char *abSrc, unsigned int nLenSrc, unsigned char *a
         default:
             n_log( LOG_ERR , "%s on string %p size %d" , zError( nErr ) , abSrc , nLenSrc );
             return -1 ;
-            break;
     }
     nErr= inflate( &zInfo, Z_FINISH );     // zlib function
     if( nErr == Z_STREAM_END )

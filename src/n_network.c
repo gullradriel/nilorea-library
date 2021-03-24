@@ -707,12 +707,15 @@ NETWORK *netw_new( int send_list_limit, int recv_list_limit )
         return NULL ;
     }
     netw -> addr_infos_loaded = 0 ;
-    netw -> send_queue_wait = 25000 ;
-    netw -> send_queue_consecutive_wait = 1000 ;
-    netw -> pause_wait = 200000 ;
-    netw -> so_sndbuf = 0 ;
-    netw -> so_rcvbuf = 0 ;
-    netw -> tcpnodelay = 0 ;
+    netw -> send_queue_consecutive_wait = 0 ;
+    netw -> so_reuseaddr = -1 ;
+    netw -> tcpnodelay = -1 ;
+    netw -> so_sndbuf = -1 ;
+    netw -> so_rcvbuf = -1 ;
+    netw -> so_rcvtimeo = -1 ;
+    netw -> so_sndtimeo = -1 ;
+    netw -> so_linger = -1 ;
+    netw -> deplete_timeout = -1 ;
     netw -> crypto_mode = NETW_CRYPTO_NONE ;
     netw -> crypto_algo = NETW_ENCRYPT_NONE ;
 
@@ -724,26 +727,6 @@ NETWORK *netw_new( int send_list_limit, int recv_list_limit )
     return netw ;
 
 } /* netw_new() */
-
-
-/*!\fn int netw_set_timers( NETWORK *netw , int send_queue_wait , int send_queue_consecutive_wait , int pause_wait )
- * \brief set the timers used when activating threaded network
- * \param netw Network to tune
- * \param send_queue_wait Time between each send_queue check if last call wasn't sending anything
- * \param send_queue_consecutive_wait Time between each send_queue check if last call was a sending one
- * \param pause_wait Time between each state check when network is paused ( testing feature, slow down the checks)
- * \return TRUE or FALSE
- */
-int netw_set_timers( NETWORK *netw, int send_queue_wait, int send_queue_consecutive_wait, int pause_wait )
-{
-    __n_assert( netw, return FALSE );
-    pthread_mutex_lock( &netw -> eventbolt );
-    netw -> send_queue_wait = send_queue_wait ;
-    netw -> send_queue_consecutive_wait = send_queue_consecutive_wait ;
-    netw -> pause_wait = pause_wait ;
-    pthread_mutex_unlock( &netw -> eventbolt );
-    return TRUE ;
-}
 
 
 
@@ -876,7 +859,7 @@ int netw_set_blocking( NETWORK *netw, unsigned long int is_blocking )
 /*!\fn int netw_setsockopt( NETWORK *netw  , int optname , int value )
  *\brief Modify common socket options on the given netw
  *\param netw The socket to configure
- *\param optname SO_REUSEADDR,TCP_NODELAY,SO_SNDBUF,SO_RCVBUF,SO_LINGER,SO_RCVTIMEO,SO_SNDTIMEO. Please refer to man setsockopt for details
+ *\param optname NETWORK_DEPLETE_TIMEOUT,NETWORK_CONSECUTIVE_SEND_TIMEOUT ,SO_REUSEADDR,TCP_NODELAY,SO_SNDBUF,SO_RCVBUF,SO_LINGER,SO_RCVTIMEO,SO_SNDTIMEO. Please refer to man setsockopt for details
  *\value The value of the socket parameter
  *\return TRUE or FALSE
  */
@@ -890,19 +873,23 @@ int netw_setsockopt( NETWORK *netw, int optname, int value )
     switch( optname )
     {
         case TCP_NODELAY :
-            /* disable naggle algorithm */
-            if ( setsockopt( netw -> link . sock, IPPROTO_TCP, TCP_NODELAY, ( const char * ) &value, sizeof( value ) ) == -1 )
+            if( value >= 0 )
             {
-                error = neterrno ;
-                errmsg = netstrerror( error );
-                n_log( LOG_ERR, "Error from setsockopt(TCP_NODELAY) on socket %d. neterrno: %s", netw -> link . sock, _str( errmsg ) );
-                FreeNoLog( errmsg );
-                return FALSE ;
+                /* disable naggle algorithm */
+                if ( setsockopt( netw -> link . sock, IPPROTO_TCP, TCP_NODELAY, ( const char * ) &value, sizeof( value ) ) == -1 )
+                {
+                    error = neterrno ;
+                    errmsg = netstrerror( error );
+                    n_log( LOG_ERR, "Error from setsockopt(TCP_NODELAY) on socket %d. neterrno: %s", netw -> link . sock, _str( errmsg ) );
+                    FreeNoLog( errmsg );
+                    return FALSE ;
+                }
             }
+            netw -> tcpnodelay = value ;
             break ;
         case SO_SNDBUF :
             /* socket sending buffer size */
-            if( value > 0 )
+            if( value >= 0 )
             {
                 if ( setsockopt ( netw -> link . sock, SOL_SOCKET, SO_SNDBUF, ( const char * ) &value, sizeof( value ) ) == -1 )
                 {
@@ -912,10 +899,11 @@ int netw_setsockopt( NETWORK *netw, int optname, int value )
                     return FALSE ;
                 }
             }
+            netw -> so_sndbuf = value ;
             break ;
         case SO_RCVBUF :
             /* socket receiving buffer */
-            if( value > 0 )
+            if( value >= 0 )
             {
                 if ( setsockopt ( netw -> link . sock, SOL_SOCKET, SO_RCVBUF, ( const char * ) &value, sizeof( value ) ) == -1 )
                 {
@@ -926,6 +914,7 @@ int netw_setsockopt( NETWORK *netw, int optname, int value )
                     return FALSE ;
                 }
             }
+            netw -> so_rcvbuf = value ;
             break ;
         case SO_REUSEADDR :
             /* lose the pesky "Address already in use" error message*/
@@ -938,15 +927,26 @@ int netw_setsockopt( NETWORK *netw, int optname, int value )
                 FreeNoLog( errmsg );
                 return FALSE ;
             }
+            netw -> so_reuseaddr = value ;
             break ;
         case SO_LINGER :
             {
                 struct linger ling;
-                if( value > 0 )
-                    ling.l_onoff=1;
-                else
+                if( value < 0 )
+                {
                     ling.l_onoff=0;
-                ling.l_linger=value;
+                    ling.l_linger=0;
+                }
+                else if( value == 0 )
+                {
+                    ling.l_onoff=1;
+                    ling.l_linger=0;
+                }
+                else
+                {
+                    ling.l_onoff=1;
+                    ling.l_linger=value;
+                }
 #ifndef __windows__
                 if( setsockopt(netw -> link . sock, SOL_SOCKET, SO_LINGER, &ling, sizeof( ling ) ) == -1 )
                 {
@@ -966,15 +966,28 @@ int netw_setsockopt( NETWORK *netw, int optname, int value )
                     return FALSE ;
                 }
 #endif // __windows__
+                netw -> so_linger = value ;
             }
             break ;
         case SO_RCVTIMEO :
-#ifndef __windows__
+            if( value >= 0 )
             {
-                struct timeval tv;
-                tv.tv_sec = value ;
-                tv.tv_usec = 0;
-                if( setsockopt(netw -> link . sock, SOL_SOCKET, SO_RCVTIMEO, (const char*)&tv, sizeof tv) == -1 )
+#ifndef __windows__
+                {
+                    struct timeval tv;
+                    tv.tv_sec = value ;
+                    tv.tv_usec = 0;
+                    if( setsockopt(netw -> link . sock, SOL_SOCKET, SO_RCVTIMEO, (const char*)&tv, sizeof tv) == -1 )
+                    {
+                        error=neterrno ;
+                        errmsg = netstrerror( error );
+                        n_log( LOG_ERR, "Error from setsockopt(SO_RCVTIMEO) on socket %d. neterrno: %s", netw -> link . sock, _str( errmsg ) );
+                        FreeNoLog( errmsg );
+                        return FALSE ;
+                    }
+                }
+#else
+                if( setsockopt(netw -> link . sock, SOL_SOCKET, SO_RCVTIMEO, (const char*)&value, sizeof value ) == -1 )
                 {
                     error=neterrno ;
                     errmsg = netstrerror( error );
@@ -982,26 +995,30 @@ int netw_setsockopt( NETWORK *netw, int optname, int value )
                     FreeNoLog( errmsg );
                     return FALSE ;
                 }
-            }
-#else
-            if( setsockopt(netw -> link . sock, SOL_SOCKET, SO_RCVTIMEO, (const char*)&value, sizeof value ) == -1 )
-            {
-                error=neterrno ;
-                errmsg = netstrerror( error );
-                n_log( LOG_ERR, "Error from setsockopt(SO_RCVTIMEO) on socket %d. neterrno: %s", netw -> link . sock, _str( errmsg ) );
-                FreeNoLog( errmsg );
-                return FALSE ;
-            }
 #endif
+            }
+            netw -> so_rcvtimeo = value ;
             break ;
         case SO_SNDTIMEO :
-#ifndef __windows__
+            if( value >= 0 )
             {
-                struct timeval tv;
-                tv.tv_sec = value ;
-                tv.tv_usec = 0;
+#ifndef __windows__
+                {
+                    struct timeval tv;
+                    tv.tv_sec = value ;
+                    tv.tv_usec = 0;
 
-                if( setsockopt(netw -> link . sock, SOL_SOCKET, SO_SNDTIMEO, (const char*)&tv, sizeof tv) == -1 )
+                    if( setsockopt(netw -> link . sock, SOL_SOCKET, SO_SNDTIMEO, (const char*)&tv, sizeof tv) == -1 )
+                    {
+                        error=neterrno ;
+                        errmsg = netstrerror( error );
+                        n_log( LOG_ERR, "Error from setsockopt(SO_SNDTIMEO) on socket %d. neterrno: %s", netw -> link . sock, _str( errmsg ) );
+                        FreeNoLog( errmsg );
+                        return FALSE ;
+                    }
+                }
+#else
+                if( setsockopt(netw -> link . sock, SOL_SOCKET, SO_SNDTIMEO, (const char*)&value, sizeof value ) == -1 )
                 {
                     error=neterrno ;
                     errmsg = netstrerror( error );
@@ -1009,19 +1026,18 @@ int netw_setsockopt( NETWORK *netw, int optname, int value )
                     FreeNoLog( errmsg );
                     return FALSE ;
                 }
-            }
-#else
-            if( setsockopt(netw -> link . sock, SOL_SOCKET, SO_SNDTIMEO, (const char*)&value, sizeof value ) == -1 )
-            {
-                error=neterrno ;
-                errmsg = netstrerror( error );
-                n_log( LOG_ERR, "Error from setsockopt(SO_SNDTIMEO) on socket %d. neterrno: %s", netw -> link . sock, _str( errmsg ) );
-                FreeNoLog( errmsg );
-                return FALSE ;
-            }
 
 #endif
+            }
+            netw -> so_sndtimeo = value ;
             break ;
+        case NETWORK_DEPLETE_TIMEOUT:
+            netw -> deplete_timeout = value ;
+            break;
+        case NETWORK_CONSECUTIVE_SEND_TIMEOUT:
+            netw -> send_queue_consecutive_wait = value ;
+            break ;
+
         default:
             n_log( LOG_ERR, "%d is not a supported setsockopt", optname );
             return FALSE ;
@@ -1214,20 +1230,17 @@ int netw_set_crypto( NETWORK *netw, char *key, char *certificat, char *vigenere 
 
 
 
-/*!\fn int netw_connect_ex(NETWORK **netw , char *host , char *port, int disable_naggle , int sock_send_buf , int sock_recv_buf , int send_list_limit , int recv_list_limit , int ip_version )
+/*!\fn int netw_connect_ex(NETWORK **netw , char *host , char *port, int send_list_limit , int recv_list_limit , int ip_version )
  *\brief Use this to connect a NETWORK to any listening one
  *\param netw a NETWORK *object
  *\param host Host or IP to connect to
  *\param port Port to use to connect
- *\param disable_naggle Disable Naggle Algorithm. Set to 1 do activate, 0 or negative to leave defaults
- *\param sock_send_buf NETW_SOCKET_SEND_BUF socket parameter , 0 or negative to leave defaults
- *\param sock_recv_buf NETW_SOCKET_RECV_BUF socket parameter , 0 or negative to leave defaults
  *\param send_list_limit Internal sending list maximum number of item. 0 or negative for unrestricted
  *\param recv_list_limit Internal receiving list maximum number of item. 0 or negative for unrestricted
  *\param ip_version NETWORK_IPALL for both ipv4 and ipv6 , NETWORK_IPV4 or NETWORK_IPV6
  *\return TRUE or FALSE
  */
-int netw_connect_ex( NETWORK **netw, char *host, char *port, int disable_naggle, int sock_send_buf, int sock_recv_buf, int send_list_limit, int recv_list_limit, int ip_version )
+int netw_connect_ex( NETWORK **netw, char *host, char *port, int send_list_limit, int recv_list_limit, int ip_version )
 {
     int error = 0, net_status = 0;
     char *errmsg = NULL ;
@@ -1301,12 +1314,6 @@ int netw_connect_ex( NETWORK **netw, char *host, char *port, int disable_naggle,
         }
 
         (*netw) -> link . sock = sock ;
-        if( disable_naggle )
-            netw_setsockopt( (*netw), TCP_NODELAY, 1 );
-        if( sock_send_buf )
-            netw_setsockopt( (*netw), SO_SNDBUF, sock_send_buf );
-        if( sock_recv_buf )
-            netw_setsockopt( (*netw), SO_RCVBUF, sock_recv_buf );
 
         net_status = connect( sock, rp -> ai_addr, rp -> ai_addrlen );
         if( net_status == -1 )
@@ -1361,7 +1368,7 @@ int netw_connect_ex( NETWORK **netw, char *host, char *port, int disable_naggle,
 
 
 /*!\fn int netw_connect( NETWORK **netw , char *host , char *port , int ip_version )
- *\brief Use this to connect a NETWORK to any listening one, with following defaults: disable_naggle = 0 , untouched sockbufsendsize and sockbufrecvsize and unrestricted sned/recv lists
+ *\brief Use this to connect a NETWORK to any listening one, unrestricted send/recv lists
  *\param netw a NETWORK *object
  *\param host Host or IP to connect to
  *\param port Port to use to connect
@@ -1371,7 +1378,7 @@ int netw_connect_ex( NETWORK **netw, char *host, char *port, int disable_naggle,
 int netw_connect( NETWORK **netw, char *host, char *port, int ip_version )
 {
     n_log( LOG_INFO, "Trying to connect to %s : %s", _str( host ), _str( port ) );
-    return netw_connect_ex( &(*netw), host, port, 0, 0, 0, 0, 0, ip_version );
+    return netw_connect_ex( &(*netw) , host , port , -1 , -1 , ip_version );
 } /* netw_connect() */
 
 
@@ -1379,7 +1386,7 @@ int netw_connect( NETWORK **netw, char *host, char *port, int ip_version )
 /*!\fn int netw_get_state( NETWORK *netw , int *state , int *thr_engine_status )
  *\brief Get the state of a network
  *\param netw The NETWORK *connection to query
- *\param state pointer to network status storage , NETW_PAUSE , NETW_RUN , NETW_EXIT_ASKED , NETW_EXITED
+ *\param state pointer to network status storage , NETW_RUN , NETW_EXIT_ASKED , NETW_EXITED
  *\param thr_engine_status pointer to network thread engine status storage ,NETW_THR_ENGINE_STARTED , NETW_THR_ENGINE_STOPPED
  *\return TRUE or FALSE
  */
@@ -1407,7 +1414,7 @@ int netw_get_state( NETWORK *netw, int *state, int *thr_engine_status )
 /*!\fn int netw_set( NETWORK *netw , int flag )
  *\brief Restart or reset the specified network ability
  *\param netw The NETWORK *connection to modify
- *\param flag NETW_EMPTY_SENDBUF, NETW_EMPTY_RECVBUF, NETW_PAUSE , NETW_RUN , NETW_EXIT_ASKED , NETW_EXITED
+ *\param flag NETW_EMPTY_SENDBUF, NETW_EMPTY_RECVBUF, NETW_RUN , NETW_EXIT_ASKED , NETW_EXITED
  *\return TRUE or FALSE
  */
 int netw_set( NETWORK *netw, int flag )
@@ -1452,10 +1459,6 @@ int netw_set( NETWORK *netw, int flag )
     if( flag & NETW_RUN )
     {
         netw -> state = NETW_RUN ;
-    }
-    if( flag & NETW_PAUSE )
-    {
-        netw -> state = NETW_PAUSE ;
     }
     if( flag & NETW_EXITED )
     {
@@ -1549,13 +1552,17 @@ int netw_close( NETWORK **netw )
 /*!\fn int deplete_send_buffer( int fd , long timeout )
  *\brief wait until the socket is empty or timeout, checking each 50 msec
  *\param fd socket descriptor
- *\timeout timeout value in msec 
+ *\timeout timeout value in msec , 0 => disabled
  *\return 0 or the amount of remaining datas in bytes 
  */
-#if defined( __linux__ ) 
 int deplete_send_buffer( int fd , long timeout )
 {
     int outstanding = 0 ;
+#if defined( __linux__ ) 
+    if( timeout <= 0 )
+    {
+        return 0 ;
+    }
     for( int it = 0 ; it < timeout ; it += 50 )
     {
         outstanding = 0 ;
@@ -1567,12 +1574,16 @@ int deplete_send_buffer( int fd , long timeout )
         usleep( 50000 );
     }
     return outstanding ;
-}
+#else
+    (void)fd;
+    (void)timeout;
+    return 0 ;
 #endif 
+}
 
 
 /*!\fn netw_wait_close( NETWORK **netw )
- *\brief Wait for peer closing a specified Network, destroy queues, free the structure. Default 10 seconds timeout
+ *\brief Wait for peer closing a specified Network, destroy queues, free the structure. Default 30 seconds timeout
  *\warning Do not use on the accept socket itself (the server socket) as it will display false errors
  *\param netw A NETWORK *network to close
  *\return TRUE on success , FALSE on failure
@@ -1580,7 +1591,7 @@ int deplete_send_buffer( int fd , long timeout )
 int netw_wait_close( NETWORK **netw )
 {
     // default 30 secs timeout
-    return netw_wait_close_timed( netw , 10 );
+    return netw_wait_close_timed( netw , 30 );
 } /* netw_wait_close(...)*/
 
 
@@ -1597,8 +1608,11 @@ int netw_wait_close_timed( NETWORK **netw , int timeout )
     int state = 0, thr_engine_status = 0 ;
     __n_assert( netw&&(*netw), return FALSE );
 
-    int error = 0 ;
+    int error = 0 ,
+        countdown = 0 ;
     char *errmsg = NULL ;
+
+    countdown = timeout ;
 
     netw_get_state( (*netw), &state, &thr_engine_status );
     if( thr_engine_status == NETW_THR_ENGINE_STARTED )
@@ -1610,10 +1624,10 @@ int netw_wait_close_timed( NETWORK **netw , int timeout )
             nb_running = (*netw) -> nb_running_threads ;
             pthread_mutex_unlock( &(*netw) -> eventbolt );
             sleep( 1 );
-            timeout -- ;
-        }while( nb_running > 0 && timeout > 0 );
+            countdown -- ;
+        }while( nb_running > 0 && countdown > 0 );
     }
-    if( timeout == 0 )
+    if( countdown == 0 )
     {
         n_log( LOG_ERR , "netw %d waited too long (%ds) for peer to close" , (*netw) -> link . sock , timeout ); 
     }
@@ -1623,13 +1637,11 @@ int netw_wait_close_timed( NETWORK **netw , int timeout )
     {
         /* inform peer that we have finished */
         shutdown( (*netw) -> link . sock, SHUT_WR );
-#if defined( __linux__ ) 
-/*        int remaining = deplete_send_buffer( (*netw) -> link . sock , 3000 );
+        int remaining = deplete_send_buffer( (*netw) -> link . sock , (*netw) -> deplete_timeout );
         if( remaining > 0 )
         {
-            n_log( LOG_DEBUG , "socket %d took more than 3 seconds to send %d octets before closing => force close" , (*netw) -> link . sock , remaining );
-        }*/
-#endif
+            n_log( LOG_ERR , "socket %d (%s:%s) took more than %d msecs to send %d octets before closing => force close" , (*netw) -> link . sock , (*netw) -> link . ip , (*netw) -> link . port , (int)(*netw) -> deplete_timeout , remaining );
+        }
         /* wait for fin ack */
         char buffer[ 4096 ] = "" ;
         for( ;; )
@@ -1641,10 +1653,10 @@ int netw_wait_close_timed( NETWORK **netw , int timeout )
             if( res < 0 )
             {
                 error = neterrno ;
-                if( error != ENOTCONN && error != 10057 && error != EINTR && error != ECONNRESET )
+                if( error != ENOTCONN && error != 10057 && error != EINTR && error != ECONNRESET ) // no an error if already closed
                 {
                     errmsg = netstrerror( error );
-                    n_log( LOG_ERR, "read returned error %d when closing socket %d (%s): %s", error, (*netw) -> link . sock, _str( (*netw) -> link . ip ) , _str( errmsg ) );
+                    n_log( LOG_ERR, "read returned error %d when closing socket %d (%s:%s): %s", error, (*netw) -> link . sock, _str( (*netw) -> link . ip ) , (*netw) -> link . port ,  _str( errmsg ) );
                     FreeNoLog( errmsg );
                 }
                 break ;
@@ -1783,19 +1795,16 @@ int netw_make_listening( NETWORK **netw, char *addr, char *port, int nbpending, 
 
 
 
-/*!\fn NETWORK *netw_accept_from_ex( NETWORK *from , int disable_naggle , int sock_send_buf , int sock_recv_buf , int send_list_limit , int recv_list_limit , int non_blocking , int *retval )
+/*!\fn NETWORK *netw_accept_from_ex( NETWORK *from , int send_list_limit , int recv_list_limit , int non_blocking , int *retval )
  *\brief make a normal 'accept' . Network 'from' must be allocated with netw_make_listening.
  *\param from the network from where we accept
- *\param disable_naggle Disable Naggle Algorithm. Set to 1 do activate, 0 or negative to leave defaults
- *\param sock_send_buf NETW_SOCKET_SEND_BUF socket parameter , 0 or negative to leave defaults
- *\param sock_recv_buf NETW_SOCKET_RECV_BUF socket parameter , 0 or negative to leave defaults
  *\param send_list_limit Internal sending list maximum number of item. 0 or negative for unrestricted
  *\param recv_list_limit Internal receiving list maximum number of item. 0 or negative for unrestricted
  *\param non_blocking set to -1 to make it non blocking, to 0 for blocking, else it's the select timeout value in msecs.
  *\param retval EAGAIN ou EWOULDBLOCK or neterrno (use netstrerr( retval) to obtain a string describing the code )
  *\return NULL on failure, if not a pointer to the connected network
  */
-NETWORK *netw_accept_from_ex( NETWORK *from, int disable_naggle, int sock_send_buf, int sock_recv_buf, int send_list_limit, int recv_list_limit, int non_blocking, int *retval )
+NETWORK *netw_accept_from_ex( NETWORK *from, int send_list_limit, int recv_list_limit, int non_blocking, int *retval )
 {
     int tmp = 0, error = 0;
     char *errmsg = NULL ;
@@ -1932,12 +1941,6 @@ NETWORK *netw_accept_from_ex( NETWORK *from, int disable_naggle, int sock_send_b
         FreeNoLog( errmsg );
     }
     netw_setsockopt( netw, SO_REUSEADDR, 1 );
-    if( disable_naggle )
-        netw_setsockopt( netw, TCP_NODELAY, 1 );
-    if( sock_send_buf )
-        netw_setsockopt( netw, SO_SNDBUF, sock_send_buf );
-    if( sock_recv_buf )
-        netw_setsockopt( netw, SO_RCVBUF, sock_recv_buf );
 
     netw_set( netw, NETW_SERVER|NETW_RUN|NETW_THR_ENGINE_STOPPED );
     n_log( LOG_DEBUG, "Connection accepted from %s:%s", netw-> link . ip, netw -> link . port );
@@ -1954,7 +1957,7 @@ NETWORK *netw_accept_from_ex( NETWORK *from, int disable_naggle, int sock_send_b
  */
 NETWORK *netw_accept_from( NETWORK *from )
 {
-    return netw_accept_from_ex( from, 0, 0, 0, 0, 0, 0, NULL );
+    return netw_accept_from_ex( from , -1 , -1 , 0 , NULL );
 } /* network_accept_from( ... ) */
 
 
@@ -1967,7 +1970,7 @@ NETWORK *netw_accept_from( NETWORK *from )
  */
 NETWORK *netw_accept_nonblock_from( NETWORK *from, int blocking )
 {
-    return netw_accept_from_ex( from, 0, 0, 0, 0, 0, blocking, NULL );
+    return netw_accept_from_ex( from , -1 , -1 , blocking, NULL );
 } /* network_accept_from( ... ) */
 
 
@@ -2226,57 +2229,44 @@ void *netw_send_func( void *NET )
             }
             else
             {
-                if( !(state&NETW_PAUSE) )
+                pthread_mutex_lock( &netw -> sendbolt );
+                ptr = list_shift( netw -> send_buf, N_STR ) ;
+                pthread_mutex_unlock( &netw -> sendbolt );
+                if( ptr && ptr -> length > 0 && ptr -> data )
                 {
-                    pthread_mutex_lock( &netw -> sendbolt );
-                    ptr = list_shift( netw -> send_buf, N_STR ) ;
-                    pthread_mutex_unlock( &netw -> sendbolt );
-                    if( ptr && ptr -> length > 0 && ptr -> data )
-                    {
-                        n_log( LOG_DEBUG, "Sending ptr size %d written %d", ptr -> length, ptr -> written );
+                    n_log( LOG_DEBUG, "Sending ptr size %d written %d", ptr -> length, ptr -> written );
 
-                        /* sending state */
-                        nboctet = htonl( state );
-                        memcpy( nboct, &nboctet, sizeof( NSTRBYTE ) );
-                        /* sending state */
-                        if ( !DONE )
-                        {
-                            net_status = netw->send_data( netw -> link . sock, nboct, sizeof( NSTRBYTE ) );
-                            if( net_status < 0 )
-                                DONE = 1 ;
-                        }
-                        if( !DONE )
-                        {
-                            /* sending number of octet */
-                            nboctet = htonl( ptr -> written );
-                            memcpy( nboct, &nboctet, sizeof( NSTRBYTE ) );
-                            /* sending the number of octet to receive on next message */
-                            net_status = netw->send_data( netw -> link . sock, nboct, sizeof( NSTRBYTE ) );
-                            if( net_status < 0 )
-                                DONE = 2 ;
-                        }
-                        /* sending the data itself */
-                        if ( !DONE )
-                        {
-                            net_status = netw->send_data( netw -> link . sock, ptr -> data, ptr -> written );
-                            if( net_status < 0 )
-                                DONE = 3 ;
-                        }
-                        free_nstr( &ptr );
-                        u_sleep(  netw -> send_queue_consecutive_wait );
-                        message_sent = 1 ;
+                    /* sending state */
+                    nboctet = htonl( state );
+                    memcpy( nboct, &nboctet, sizeof( NSTRBYTE ) );
+                    /* sending state */
+                    if ( !DONE )
+                    {
+                        net_status = netw->send_data( netw -> link . sock, nboct, sizeof( NSTRBYTE ) );
+                        if( net_status < 0 )
+                            DONE = 1 ;
                     }
-                    /*
-                       else
-                       {
-                       u_sleep( netw -> send_queue_wait );
-                       }
-                       */
+                    if( !DONE )
+                    {
+                        /* sending number of octet */
+                        nboctet = htonl( ptr -> written );
+                        memcpy( nboct, &nboctet, sizeof( NSTRBYTE ) );
+                        /* sending the number of octet to receive on next message */
+                        net_status = netw->send_data( netw -> link . sock, nboct, sizeof( NSTRBYTE ) );
+                        if( net_status < 0 )
+                            DONE = 2 ;
+                    }
+                    /* sending the data itself */
+                    if ( !DONE )
+                    {
+                        net_status = netw->send_data( netw -> link . sock, ptr -> data, ptr -> written );
+                        if( net_status < 0 )
+                            DONE = 3 ;
+                    }
+                    free_nstr( &ptr );
+                    u_sleep(  netw -> send_queue_consecutive_wait );
+                    message_sent = 1 ;
                 }
-                /* Network PAUSED */
-                /*{
-                  u_sleep( netw -> pause_wait );
-                  }*/
             }
         }
     }
@@ -2300,7 +2290,7 @@ void *netw_send_func( void *NET )
     }
     else
     {
-        n_log( LOG_ERR, "Socket %d (%s): Sending thread exiting !", netw -> link . sock , _str( netw -> link . ip ) );
+        n_log( LOG_ERR, "Socket %d (%s): Sending thread exiting with error %d !", netw -> link . sock , _str( netw -> link . ip ) ,DONE );
         netw_set( netw, NETW_ERROR );
     }
 
@@ -2356,81 +2346,74 @@ void *netw_recv_func( void *NET )
             /*if( !DONE && !(state&NETW_EXIT_ASKED) && !(state&NETW_EXITED) ) */
             if( !DONE )
             {
-                if( !(state&NETW_PAUSE) )
+                /* receiving state */
+                net_status = netw->recv_data( netw -> link . sock, nboct, sizeof( NSTRBYTE ) );
+                if( net_status < 0 )
                 {
-                    /* receiving state */
-                    net_status = netw->recv_data( netw -> link . sock, nboct, sizeof( NSTRBYTE ) );
-                    if( net_status < 0 )
-                    {
-                        DONE = 1 ;
-                    }
-                    else
-                    {
-                        memcpy( &nboctet, nboct, sizeof( NSTRBYTE ) );
-                        tmpstate = ntohl( nboctet );
-                        nboctet = tmpstate ;
-                        if( tmpstate==NETW_EXIT_ASKED )
-                        {
-                            n_log( LOG_DEBUG,  "%d receiving order to QUIT, nboctet %d NETW_EXIT_ASKED %d !", netw -> link . sock, nboctet, NETW_EXIT_ASKED );
-                            DONE = 100 ;
-                            netw_set( netw, NETW_EXIT_ASKED );
-                        }
-                        else
-                        {
-                            /* receiving nboctet */
-                            net_status = netw->recv_data( netw -> link . sock, nboct, sizeof( NSTRBYTE ) );
-                            if( net_status < 0 )
-                            {
-                                DONE = 2 ;
-                            }
-                            else
-                            {
-                                memcpy( &nboctet, nboct, sizeof( NSTRBYTE ) );
-                                tmpstate = ntohl( nboctet );
-                                nboctet = tmpstate ;
-
-                                Malloc( recvdmsg, N_STR, 1 );
-                                if( !recvdmsg )
-                                {
-                                    DONE = 3;
-                                }
-                                else
-                                {
-                                    n_log( LOG_DEBUG,  "%d octets to receive...", nboctet );
-                                    Malloc( recvdmsg -> data, char, nboctet + 1 );
-                                    if( !recvdmsg -> data )
-                                    {
-                                        DONE = 4 ;
-                                    }
-                                    else
-                                    {
-                                        recvdmsg -> length  = nboctet + 1 ;
-                                        recvdmsg -> written = nboctet ;
-
-                                        /* receiving the data itself */
-                                        net_status = netw->recv_data( netw -> link . sock, recvdmsg -> data, nboctet );
-                                        if( net_status < 0 )
-                                        {
-                                            DONE = 5 ;
-                                        }
-                                        else
-                                        {
-                                            pthread_mutex_lock( &netw -> recvbolt );
-                                            if( !DONE && list_push( netw -> recv_buf, recvdmsg, free_nstr_ptr ) == FALSE )
-                                                DONE = 6 ;
-                                            pthread_mutex_unlock( &netw -> recvbolt );
-                                            n_log( LOG_DEBUG,  "%d octets received !", nboctet );
-                                        } /* recv data */
-                                    } /* recv data allocation */
-                                } /* recv struct allocation */
-                            } /* recv nb octet*/
-                        } /* exit asked */
-                    } /* recv state */
+                    DONE = 1 ;
                 }
                 else
                 {
-                    u_sleep( netw -> pause_wait );
-                }
+                    memcpy( &nboctet, nboct, sizeof( NSTRBYTE ) );
+                    tmpstate = ntohl( nboctet );
+                    nboctet = tmpstate ;
+                    if( tmpstate==NETW_EXIT_ASKED )
+                    {
+                        n_log( LOG_DEBUG,  "%d receiving order to QUIT, nboctet %d NETW_EXIT_ASKED %d !", netw -> link . sock, nboctet, NETW_EXIT_ASKED );
+                        DONE = 100 ;
+                        netw_set( netw, NETW_EXIT_ASKED );
+                    }
+                    else
+                    {
+                        /* receiving nboctet */
+                        net_status = netw->recv_data( netw -> link . sock, nboct, sizeof( NSTRBYTE ) );
+                        if( net_status < 0 )
+                        {
+                            DONE = 2 ;
+                        }
+                        else
+                        {
+                            memcpy( &nboctet, nboct, sizeof( NSTRBYTE ) );
+                            tmpstate = ntohl( nboctet );
+                            nboctet = tmpstate ;
+
+                            Malloc( recvdmsg, N_STR, 1 );
+                            if( !recvdmsg )
+                            {
+                                DONE = 3;
+                            }
+                            else
+                            {
+                                n_log( LOG_DEBUG,  "%d octets to receive...", nboctet );
+                                Malloc( recvdmsg -> data, char, nboctet + 1 );
+                                if( !recvdmsg -> data )
+                                {
+                                    DONE = 4 ;
+                                }
+                                else
+                                {
+                                    recvdmsg -> length  = nboctet + 1 ;
+                                    recvdmsg -> written = nboctet ;
+
+                                    /* receiving the data itself */
+                                    net_status = netw->recv_data( netw -> link . sock, recvdmsg -> data, nboctet );
+                                    if( net_status < 0 )
+                                    {
+                                        DONE = 5 ;
+                                    }
+                                    else
+                                    {
+                                        pthread_mutex_lock( &netw -> recvbolt );
+                                        if( !DONE && list_push( netw -> recv_buf, recvdmsg, free_nstr_ptr ) == FALSE )
+                                            DONE = 6 ;
+                                        pthread_mutex_unlock( &netw -> recvbolt );
+                                        n_log( LOG_DEBUG,  "%d octets received !", nboctet );
+                                    } /* recv data */
+                                } /* recv data allocation */
+                            } /* recv struct allocation */
+                        } /* recv nb octet*/
+                    } /* exit asked */
+                } /* recv state */
             } /* if( !done) */
         } /* if !exit */
     }
@@ -2457,7 +2440,7 @@ void *netw_recv_func( void *NET )
     }
     else
     {
-        n_log( LOG_ERR, "Socket %d (%s): Receive thread exiting !", netw -> link . sock , _str( netw -> link . ip ) );
+        n_log( LOG_ERR, "Socket %d (%s): Receive thread exiting with code %d !", netw -> link . sock , _str( netw -> link . ip ) , DONE );
         netw_set( netw, NETW_ERROR );
     }
 
@@ -2926,7 +2909,7 @@ void netw_pool_netw_close( void *netw_ptr )
 {
     NETWORK *netw = (NETWORK *)netw_ptr ;
     __n_assert( netw, return );
-    n_log( LOG_DEBUG, "Network pool %p: network id %d still active !!", netw, (long long int)netw -> link . sock );
+    n_log( LOG_DEBUG, "Network pool %p: network id %d still active !!", netw, netw -> link . sock );
     return ;
 }
 
@@ -2938,17 +2921,17 @@ int netw_pool_add( NETWORK_POOL *netw_pool, NETWORK *netw )
     __n_assert( netw_pool, return FALSE );
     __n_assert( netw, return FALSE );
 
-    n_log( LOG_DEBUG, "Trying to add %lld to %p", netw_pool, (long long int)netw -> link . sock );
+    n_log( LOG_DEBUG, "Trying to add %d to %p", netw -> link . sock , netw_pool -> pool );
 
     /* write lock the pool */
     write_lock( netw_pool -> rwlock );
     /* test if not already added */
     N_STR *key = NULL ;
-    nstrprintf( key, "%lld", (long long int)netw -> link . sock );
+    nstrprintf( key, "%d", netw -> link . sock );
     HASH_NODE *node = NULL ;
     if( ht_get_ptr( netw_pool -> pool, _nstr( key ), (void *)&node ) == TRUE )
     {
-        n_log( LOG_ERR, "Network id %lld already added !", (long long int)netw -> link . sock );
+        n_log( LOG_ERR, "Network id %d already added !", netw -> link . sock );
         free_nstr( &key );
         unlock( netw_pool -> rwlock );
         return FALSE ;
@@ -2976,7 +2959,7 @@ int netw_pool_remove( NETWORK_POOL *netw_pool, NETWORK *netw )
     write_lock( netw_pool -> rwlock );
     /* test if present */
     N_STR *key = NULL ;
-    nstrprintf( key, "%lld", (long long int)netw -> link . sock );
+    nstrprintf( key, "%d", netw -> link . sock );
     if( ht_remove( netw_pool -> pool, _nstr( key ) ) == TRUE )
     {
         LIST_NODE *node = list_search( netw -> pools , netw );
@@ -2985,12 +2968,12 @@ int netw_pool_remove( NETWORK_POOL *netw_pool, NETWORK *netw )
             remove_list_node( netw -> pools, node, NETWORK_POOL );
         }
         unlock( netw_pool -> rwlock );
-        n_log( LOG_DEBUG, "Network id %lld removed !", (long long int)netw -> link . sock );
+        n_log( LOG_DEBUG, "Network id %d removed !", netw -> link . sock );
 
         return TRUE ;
     }
     free_nstr( &key );
-    n_log( LOG_ERR, "Network id %lld already removed !", (long long int)netw -> link . sock );
+    n_log( LOG_ERR, "Network id %d already removed !", netw -> link . sock );
     /* unlock the pool */
     unlock( netw_pool -> rwlock );
     return FALSE ;

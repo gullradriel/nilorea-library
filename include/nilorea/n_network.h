@@ -25,6 +25,8 @@ extern "C"
 #define NETWORK_IPALL 0
 #define NETWORK_IPV4  1
 #define NETWORK_IPV6  2
+#define NETWORK_DEPLETE_TIMEOUT 4096
+#define NETWORK_CONSECUTIVE_SEND_TIMEOUT 8192
 
 
 /*! WINDOWS ONLY call at program exit. Unload WSA DLL and call cleanups, no effect on other OS */
@@ -59,7 +61,7 @@ void netw_sigchld_handler( int sig );
 
 #ifndef SOCKET
 /*! default socket declaration */
-typedef long long int SOCKET ;
+#define SOCKET int
 #endif
 
 /*! socket wrapper */
@@ -171,35 +173,32 @@ typedef long long int SOCKET ;
 #define NETW_EMPTY_RECVBUF    32
 /*! State for a running NETWORK */
 #define NETW_RUN     64
-/*! State for a NETWORK who want to pause processing of network queues */
-#define NETW_PAUSE   128
 /*! State for a NETWORK who want to end/exit connection */
-#define NETW_EXIT_ASKED    256
+#define NETW_EXIT_ASKED    128
 /*! State for a NETWORK that was first asked to exit, then is exited */
-#define NETW_EXITED    512
+#define NETW_EXITED    256
 /*! State to signal errors in the network */
-#define NETW_ERROR   1024
+#define NETW_ERROR   512
 /*! Flag : no encryption on connection (default) */
-#define NETW_CRYPTO_NONE 2048
+#define NETW_CRYPTO_NONE 1024
 /*! Flag : encryption is based on the peers possibilities, selecting the most secure starting from the higher to the lower level */
-#define NETW_CRYPTO_NEGOCIATE 4096
+#define NETW_CRYPTO_NEGOCIATE 2048
 /*! Flag : encryption is mandatory */
-#define NETW_CRYPTO_MANDATORY 8192
+#define NETW_CRYPTO_MANDATORY 4096
 /*! Flag : set vigenere crypto */
-#define NETW_ENCRYPT_NONE 16384
+#define NETW_ENCRYPT_NONE 8192
 /*! Flag : set vigenere crypto */
-#define NETW_ENCRYPT_VIGENERE 32768
+#define NETW_ENCRYPT_VIGENERE 16384
 /*! Flag : set openssl crypto */
-#define NETW_ENCRYPT_OPENSSL 65536
-
+#define NETW_ENCRYPT_OPENSSL 32768
 /*! State for a started threaded network engine */
-#define NETW_THR_ENGINE_STARTED 2048
+#define NETW_THR_ENGINE_STARTED 65536
 /*! State for a stopped threaded network engine */
-#define NETW_THR_ENGINE_STOPPED 4096
+#define NETW_THR_ENGINE_STOPPED 131072
 /*! Flag: empty send buffer */
-#define NETW_DESTROY_SENDBUF 8192
+#define NETW_DESTROY_SENDBUF 262144
 /*! Flag: empty recv buffer */
-#define NETW_DESTROY_RECVBUF  16384
+#define NETW_DESTROY_RECVBUF 524288
 /*! PHP send and receive header size */
 #define HEAD_SIZE 10
 /*! PHP send and receive header size */
@@ -236,24 +235,30 @@ typedef struct NETWORK
     int nb_pending,
         /*! NETWORK mode , 1 listening, 0 connecting */
         mode,
-        /*! state of the connection , NETW_RUN, NETW_PAUSE, NETW_QUIT, NETW_STOP , NETW_ERR */
+        /*! state of the connection , NETW_RUN, NETW_QUIT, NETW_STOP , NETW_ERR */
         state,
         /*! Threaded network engine state for this network. NETW_THR_ENGINE_STARTED or NETW_THR_ENGINE_STOPPED */
         threaded_engine_status,
         /*! Internal flag to know if we have to free addr infos */
         addr_infos_loaded,
-        /*! send queue pool interval, used when there is no item in queue, in usec */
-        send_queue_wait,
         /*! send queue consecutive pool interval, used when there are still items to send, in usec */
         send_queue_consecutive_wait,
-        /*! interval between state checks in pause mode */
-        pause_wait,
+        /*! so reuseaddr state */
+        so_reuseaddr,
         /*! state of naggle algorythm, 0 untouched, 1 forcibly disabled */
         tcpnodelay,
         /*! size of the socket send buffer, 0 untouched, else size in bytes */
         so_sndbuf,
         /*! size of the socket recv buffer, 0 untouched, else size in bytes */
         so_rcvbuf,
+        /*! send timeout value */
+        so_sndtimeo,
+        /*! send timeout value */
+        so_rcvtimeo,
+        /*! close lingering value (-1 disabled, 0 force close, >0 linger ) */
+        so_linger,
+        /*! deplete send buffer ( 0 disabled, > 0 wait for timeout and check unset/unack datas) */
+        deplete_timeout,
         /*! tell if the socket have to be encrypted (flags NETW_CRYPTO_*) */
         crypto_mode,
         /*! if encryption is on, which one (flags NETW_ENCRYPT_*) */
@@ -339,8 +344,6 @@ int netw_init_openssl( void );
 int netw_init_wsa( int mode, int v1, int v2 );
 /* Set flags on network */
 int netw_set( NETWORK *netw, int flag );
-/* Set threaded network timers */
-int netw_set_timers( NETWORK *netw, int send_queue_wait, int send_queue_consecutive_wait, int pause_wait );
 /* Get flags from network */
 int netw_get_state( NETWORK *netw, int *state, int *thr_engine_status );
 /* Set common socket options (disable naggle, send/recv buf, reuse addr) */
@@ -348,9 +351,13 @@ int netw_setsockopt( NETWORK *netw, int optname, int value );
 /* set blocking mode */
 int netw_set_blocking( NETWORK *netw, unsigned long int is_blocking );
 /* Connecting, extended */
-int netw_connect_ex( NETWORK **netw, char *host, char *port, int disable_naggle, int sock_send_buf, int sock_recv_buf, int send_list_limit, int recv_list_limit, int ip_version );
+int netw_connect_ex( NETWORK **netw, char *host, char *port, int send_list_limit, int recv_list_limit, int ip_version );
 /* Connecting */
 int netw_connect( NETWORK **netw, char *host, char *port, int ip_version );
+/* wait for send buffer to be empty */
+#if defined( __linux__ ) 
+    int deplete_send_buffer( int fd , long timeout );
+#endif
 /* Closing */
 int netw_close( NETWORK **netw );
 /* Closing for peer */
@@ -362,7 +369,7 @@ int netw_stop_thr_engine( NETWORK *netw );
 /* Listening network */
 int netw_make_listening( NETWORK **netw, char *addr, char *port, int nbpending, int ip_version );
 /* Accepting routine extended */
-NETWORK *netw_accept_from_ex( NETWORK *from,int disable_naggle, int sock_send_buf, int sock_recv_buf, int send_list_limit, int recv_list_limit, int non_blocking, int *retval  );
+NETWORK *netw_accept_from_ex( NETWORK *from, int send_list_limit, int recv_list_limit, int non_blocking, int *retval  );
 /* Accepting routine */
 NETWORK *netw_accept_from( NETWORK *from );
 /* Accepting routine */

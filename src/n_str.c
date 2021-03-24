@@ -214,7 +214,6 @@ N_STR *new_nstr( NSTRBYTE size )
     __n_assert( str, return NULL );
 
     str -> written = 0 ;
-
     if( size <= 0 )
     {
         str -> data = NULL ;
@@ -222,9 +221,9 @@ N_STR *new_nstr( NSTRBYTE size )
     }
     else
     {
-        Malloc( str -> data , char , size + 8 );
+        Malloc( str -> data , char , size );
         __n_assert( str -> data, Free(str) ; return NULL );
-        str -> length = size ;
+        str -> length = size  ;
     }
     return str ;
 } /* new_nstr(...) */
@@ -247,14 +246,12 @@ int char_to_nstr_ex( const char *from, NSTRBYTE nboct, N_STR **to )
         return FALSE ;
     };
 
-    Malloc( (*to), N_STR, 1 );
+    (*to) = new_nstr( nboct + 1 );
     __n_assert( to&&(*to), return FALSE );
     /* added a sizeof( void * ) to add a consistant and secure padding at the end */
-    Malloc( (*to) -> data, char, nboct + 8 );
     __n_assert( (*to) -> data, Free( (*to) ); return FALSE );
 
     memcpy( (*to) -> data, from, nboct );
-    (*to) -> length = nboct + 1 ;
     (*to) -> written = nboct ;
 
     return TRUE;
@@ -374,9 +371,10 @@ int nstr_to_fd( N_STR *str, FILE *out, int lock )
 #endif
     }
 
-    if( fwrite( str -> data, sizeof( char ), str -> written, out ) !=  (size_t)str -> written )
+    size_t written_to_file = 0 ;
+    if( (written_to_file = fwrite( str -> data, sizeof( char ), str -> written, out ) ) !=  (size_t)str -> written )
     {
-        n_log( LOG_ERR, "Couldn't write file, fwrite return 0" );
+        n_log( LOG_ERR, "Couldn't write file, fwrite %d of %d octets" , written_to_file , str -> written  );
         ret = FALSE ;
     }
     if( ferror( out ) )
@@ -751,10 +749,9 @@ N_STR *nstrdup( N_STR *str )
     __n_assert( str, return NULL );
     __n_assert( str -> data, return NULL );
 
-    Malloc( new_str, N_STR, 1 );
+    new_str = new_nstr( str -> length );
     if( new_str )
     {
-        Malloc( new_str -> data, char, str -> length + 8 );
         if( new_str -> data )
         {
             memcpy(  new_str -> data, str -> data, str -> written );
@@ -1105,7 +1102,7 @@ int free_split_result( char ***tab )
  *\param src The data to append
  *\param size The number of octet of data we want to append in dest
  *\param blk_size In case of resizing, this is the increment which will be used to reach ( dest -> written + size )
- *\param resize_flag Set it to a positive non zero value to allow resizing, or to zero or negative to forbid resizing
+ *\param resize_flag Set it to a positive non zero value to allow resizing, or to zero to forbid resizing
  *\return TRUE or FALSE
  */
 int nstrcat_ex( N_STR *dest, void *src, NSTRBYTE size, NSTRBYTE blk_size, int resize_flag )
@@ -1121,9 +1118,9 @@ int nstrcat_ex( N_STR *dest, void *src, NSTRBYTE size, NSTRBYTE blk_size, int re
 
     if( dest )
     {
-        if( ( dest -> written + size >= dest -> length ) && resize_flag == 0 )
+        if( ( dest -> written + size + 1 ) > dest -> length  && resize_flag == 0 )
         {
-            n_log( LOG_ERR, "%p to %p: not enough space. Resize forbidden. %lld needed, %lld available", dest, src,  dest -> written + size, dest -> length );
+            n_log( LOG_ERR, "%p to %p: not enough space. Resize forbidden. %lld needed, %lld available", dest, src,  dest -> written + size + 1, dest -> length );
             return FALSE ;
         }
     }
@@ -1133,20 +1130,23 @@ int nstrcat_ex( N_STR *dest, void *src, NSTRBYTE size, NSTRBYTE blk_size, int re
         return FALSE ;
     }
 
-    while( ( dest -> written + size ) >= ( dest -> length )  )
+    while( ( dest -> written + size + 1 ) > dest -> length )
     {
         dest -> length += blk_size ;
         realloc_flag = 1 ;
     }
-    if( realloc_flag == 1 && resize_flag != 0 )
+
+    if( realloc_flag == 1 )
     {
-        Reallocz( dest -> data, char, dest -> written, dest -> length );
+        Reallocz( dest -> data, char, dest -> written , dest -> length );
         __n_assert( dest -> data, Free( dest ); return FALSE );
     }
 
     ptr = dest -> data + dest -> written ;
     memcpy( ptr, src, size );
     dest -> written += size ;
+    
+    dest -> data[ dest -> written ] = '\0' ;
 
     return TRUE ;
 } /* nstrcat_ex( ... ) */
@@ -1161,7 +1161,7 @@ int nstrcat_ex( N_STR *dest, void *src, NSTRBYTE size, NSTRBYTE blk_size, int re
  */
 int nstrcat( N_STR *dst, N_STR *src )
 {
-    return nstrcat_ex( dst, src -> data, src -> written, src -> written + 1, 1 );
+    return nstrcat_ex( dst, src -> data, src -> written, src -> written + 64 , 1 );
 } /* nstrcat( ... ) */
 
 
@@ -1184,7 +1184,7 @@ int nstrcat_bytes_ex( N_STR *dest, void *data, NSTRBYTE size )
         return FALSE ;
     }
 
-    return nstrcat_ex( dest, data, size, size + 1, 1 );
+    return nstrcat_ex( dest, data, size, size + 64 , 1 );
 } /* nstrcat_bytes_ex( ... )*/
 
 
@@ -1210,7 +1210,51 @@ int nstrcat_bytes( N_STR *dest, void *data )
 
 
 
+
+
+
+/*!\fn int write_and_fit_ex( char **dest, NSTRBYTE *size, NSTRBYTE *written, char *src , NSTRBYTE src_size , NSTRBYTE additional_padding )
+ *\brief concatenate a copy of src of size src_size to dest, starting at dest[ written ], updating written and size variable, allocation of new blocks of (needed size + additional_padding ) if resize is needed. If dest is NULL it will be allocated.
+ *\param dest The dest string
+ *\param size The current size, will be updated if written + strlen( dest) > size
+ *\param written the number of octet added
+ *\param src The source string to add
+ *\param additional_padding In case the destination is reallocated, number of additional bytes that will be added (provisionning)
+ *\return TRUE on success or FALSE on a realloc error
+ */
+int write_and_fit_ex( char **dest, NSTRBYTE *size, NSTRBYTE *written, char *src , NSTRBYTE src_size , NSTRBYTE additional_padding )
+{
+    char *ptr = NULL ;
+    NSTRBYTE needed_size = (*written) + src_size + 1 ;
+
+    // realloc if needed , also if destination is not allocated
+    if( needed_size > (*size) || !(*dest) )
+    {
+        n_log( LOG_DEBUG , "dest will grow from %d to %d" , (*size) , needed_size + additional_padding );
+
+        // +1 for the \0 , + additional padding for eventual futur concatenation space
+        Reallocz( (*dest) , char , (*size) , needed_size + additional_padding ); 
+        (*size) = needed_size + additional_padding ;
+        if( !(*dest) )
+        {
+            n_log(  LOG_ERR, "reallocation error !!!!" );
+            return FALSE ;
+        }
+    }
+
+    ptr = (*dest) + (*written) ;
+    memcpy( ptr , src , src_size );
+    (*written) += src_size ;
+
+    (*dest)[ (*written) ] = '\0' ;
+
+    return TRUE ;
+} /* write_and_fit_ex( ...) */
+
+
+
 /*!\fn int write_and_fit( char **dest , NSTRBYTE *size , NSTRBYTE *written , char *src )
+ *\brief concatenate a copy of src of size strlen( src ) to dest, starting at dest[ written ], updating written and size variable, allocation of new blocks of (needed size + 512) if resize is needed. If dest is NULL it will be allocated.
  *\param dest The dest string
  *\param size The current size, will be updated if written + strlen( dest) > size
  *\param written the number of octet added
@@ -1219,33 +1263,8 @@ int nstrcat_bytes( N_STR *dest, void *data )
  */
 int write_and_fit( char **dest, NSTRBYTE *size, NSTRBYTE *written, char *src )
 {
-    char *ptr = NULL ;
-    NSTRBYTE src_size = 0 ;
-    int realloc_flag = 0 ;
-
-    src_size = strlen( src ) ;
-    while( ( (*written) + src_size ) >= (*size)  )
-    {
-        (*size) = (*size) + 1024 ;
-        realloc_flag = 1 ;
-    }
-
-    if( realloc_flag == 1 )
-    {
-        (*dest) =(char *)realloc( (*dest), (*size) * sizeof( char ) );
-        if( !(*dest) )
-        {
-            n_log(  LOG_ERR, "reallocation error !!!!" );
-            return FALSE ;
-        }
-    }
-    ptr = (*dest) + (*written) ;
-    snprintf( ptr, (*size) - (*written), "%s", src );
-    (*written) += src_size ;
-
-    return TRUE ;
+    return write_and_fit_ex( dest , size , written , src , strlen( src ) , 512 );
 } /* write_and_fit( ...) */
-
 
 
 
