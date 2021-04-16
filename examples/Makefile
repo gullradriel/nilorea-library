@@ -11,7 +11,7 @@ EXT=
 ALLEGRO_CLIBS=
 DEBUGLIB=
 DISABLED_TARGET=ex_monolith$(EXT)
-TARGET=ex_list$(EXT) ex_nstr$(EXT) ex_exceptions$(EXT) ex_hash$(EXT) ex_network$(EXT) ex_configfile$(EXT) ex_pcre$(EXT) ex_threads$(EXT) ex_log$(EXT) ex_common$(EXT) ex_signals$(EXT)
+TARGET=ex_list$(EXT) ex_nstr$(EXT) ex_exceptions$(EXT) ex_hash$(EXT) ex_network$(EXT) ex_configfile$(EXT) ex_pcre$(EXT) ex_threads$(EXT) ex_log$(EXT) ex_common$(EXT) ex_signals$(EXT) ex_debug_mem$(EXT)
 CLIBS=
 
 
@@ -124,6 +124,9 @@ ex_threads$(EXT): n_log.o n_list.o n_time.o n_thread_pool.o ex_threads.o
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(CLIBS)
 
 ex_log$(EXT): n_str.o n_hash.o n_log.o n_nodup_log.o n_list.o n_time.o ex_log.o
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(CLIBS)
+
+ex_debug_mem$(EXT): n_str.o n_hash.o n_log.o n_nodup_log.o n_list.o n_time.o n_common.o n_debug_mem.o ex_debug_mem.o
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(CLIBS)
 
 clean:
