@@ -16,8 +16,8 @@ static pthread_t netw_thr ;
 void usage(void)
 {
     fprintf( stderr, "     -v version\n"
-             "     -h help\n"
-             "     -V LOG_LEVEL (LOG_DEBUG,INFO,NOTICE,ERR)\n" );
+            "     -h help\n"
+            "     -V LOG_LEVEL (LOG_DEBUG,INFO,NOTICE,ERR)\n" );
 }
 
 void process_args( int argc, char **argv )
@@ -29,63 +29,63 @@ void process_args( int argc, char **argv )
     {
         switch( getoptret )
         {
-        case 'v' :
-            fprintf( stderr, "Date de compilation : %s a %s.\n", __DATE__, __TIME__ );
-            exit( 1 );
-        case 'V' :
-            if( !strncmp( "LOG_NULL", optarg, 5 ) )
-            {
-                log_level = LOG_NULL ;
-            }
-            else
-            {
-                if( !strncmp( "LOG_NOTICE", optarg, 6 ) )
+            case 'v' :
+                fprintf( stderr, "Date de compilation : %s a %s.\n", __DATE__, __TIME__ );
+                exit( 1 );
+            case 'V' :
+                if( !strncmp( "LOG_NULL", optarg, 5 ) )
                 {
-                    log_level = LOG_NOTICE;
+                    log_level = LOG_NULL ;
                 }
                 else
                 {
-                    if( !strncmp( "LOG_INFO", optarg, 7 ) )
+                    if( !strncmp( "LOG_NOTICE", optarg, 6 ) )
                     {
-                        log_level = LOG_INFO;
+                        log_level = LOG_NOTICE;
                     }
                     else
                     {
-                        if( !strncmp( "LOG_ERR", optarg, 5 ) )
+                        if( !strncmp( "LOG_INFO", optarg, 7 ) )
                         {
-                            log_level = LOG_ERR;
+                            log_level = LOG_INFO;
                         }
                         else
                         {
-                            if( !strncmp( "LOG_DEBUG", optarg, 5 ) )
+                            if( !strncmp( "LOG_ERR", optarg, 5 ) )
                             {
-                                log_level = LOG_DEBUG;
+                                log_level = LOG_ERR;
                             }
                             else
                             {
-                                fprintf( stderr, "%s n'est pas un niveau de log valide.\n", optarg );
-                                exit( -1 );
+                                if( !strncmp( "LOG_DEBUG", optarg, 5 ) )
+                                {
+                                    log_level = LOG_DEBUG;
+                                }
+                                else
+                                {
+                                    fprintf( stderr, "%s n'est pas un niveau de log valide.\n", optarg );
+                                    exit( -1 );
+                                }
                             }
                         }
                     }
                 }
-            }
-            break;
-        default :
-        case '?' :
-        {
-            if( optopt == 'V' )
-            {
-                fprintf( stderr, "\n      Missing log level\n" );
-            }
-            usage();
-            exit( 1 );
-        }
-        case 'h' :
-        {
-            usage();
-            exit( 1 );
-        }
+                break;
+            default :
+            case '?' :
+                {
+                    if( optopt == 'V' )
+                    {
+                        fprintf( stderr, "\n      Missing log level\n" );
+                    }
+                    usage();
+                    exit( 1 );
+                }
+            case 'h' :
+                {
+                    usage();
+                    exit( 1 );
+                }
         } /* switch */
         set_log_level( log_level );
     }
@@ -97,9 +97,15 @@ void *occupy_thread( void *rest )
 
     intptr_t sleep_value = (intptr_t)(rest) ;
 
-    n_log( LOG_INFO, "Starting to sleep on thread %d", pthread_self() );
+    n_log( LOG_INFO, "Starting to sleep %d secs on thread %lld", sleep_value/1000000 , pthread_self() );
 
-    sleep( sleep_value );
+    if( sleep_value < 1000000 )
+        usleep( sleep_value );
+    else
+    {
+        usleep( (sleep_value)%1000000 );
+        sleep( (sleep_value/1000000) );
+    }
 
     return NULL ;
 }
@@ -111,26 +117,30 @@ int main(int argc, char **argv)
     /* processing args and set log_level */
     process_args( argc, argv );
 
-    n_log( LOG_INFO, "Creating a new thread pool of 2 active and 128 waiting threads" );
-    THREAD_POOL *thread_pool = new_thread_pool( 2, 128 );
+    n_log( LOG_INFO, "Creating a new thread pool of 3 active and 10 waiting threads" );
+    THREAD_POOL *thread_pool = new_thread_pool( 8 , 50 );
 
-    for( int it = 0 ; it < 10 ; it ++ )
+    for( int it1 = 0 ; it1 < 15 ; it1 ++ )
     {
-        int sleep_value = 1+rand()%5 ;
-        if( add_threaded_process( thread_pool, &occupy_thread, (void *)(intptr_t)sleep_value, DIRECT_PROC) == FALSE )
+        for( int it2 = 0 ; it2 < 100 ; it2 ++ )
         {
-            n_log( LOG_ERR, "Error ading client management to thread pool" );
+            int sleep_value = 1+rand()%10000000 ;
+            if( add_threaded_process( thread_pool, &occupy_thread, (void *)(intptr_t)sleep_value, DIRECT_PROC) == FALSE )
+            {
+                n_log( LOG_ERR, "Error ading client management to thread pool" );
+            }
+            else
+            {
+                n_log( LOG_INFO, "Added new process" );
+            }
+            refresh_thread_pool( thread_pool );
         }
-        else
-        {
-            n_log( LOG_INFO, "Added new process" );
-        }
-        refresh_thread_pool( thread_pool );
+        sleep( 1 );
     }
     n_log( LOG_INFO, "Waiting pool..." );
-    wait_for_threaded_pool( thread_pool, 50000 );
+    wait_for_threaded_pool( thread_pool, 250000 );
     n_log( LOG_INFO, "Destroying pool..." );
-    destroy_threaded_pool( &thread_pool, 50000 );
+    destroy_threaded_pool( &thread_pool, 250000 );
 
     exit( 0 );
 } /* END_OF_MAIN() */
