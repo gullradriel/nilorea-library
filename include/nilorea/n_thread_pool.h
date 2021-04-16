@@ -40,6 +40,8 @@ extern "C"
 #define EXITING_THREAD 128
 /*! indicate that the pool is off, all jobs have been consumed */
 #define EXITED_THREAD 256
+/*! if passed to add_threaded_process, skip main table lock in case we are in a func which is already locking it */
+#define NO_LOCK 512
 
 /*! A thread pool node */
 typedef struct THREAD_POOL_NODE
