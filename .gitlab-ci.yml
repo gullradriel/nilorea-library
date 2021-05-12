@@ -32,7 +32,7 @@ build_lib:
 build_examples:  
   stage: build
   script:
-    - cd examples ; make 
+    - cd examples ; make ; rm *.*
   artifacts:
     paths:
     - examples/ex_*
