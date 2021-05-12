@@ -25,7 +25,7 @@ build_lib:
   script:
     - make
   artifacts:
-    path:
+    paths:
     - libnilorea.a
     expire_in: 1 week
     
