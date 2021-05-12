@@ -11,6 +11,7 @@ cache:
 before_script:
   - export APT_CACHE_DIR=`pwd`/apt-cache && mkdir -pv $APT_CACHE_DIR
   - echo 'Acquire::http::Proxy "http://nagios%40nagios.cnaf:nagios755@proxyinternet.si.dmz.info:8080";' > /etc/apt/apt.conf.d/proxy.conf
+  - echo 'Acquire::https::Proxy "http://nagios%40nagios.cnaf:nagios755@proxyinternet.si.dmz.info:8080";' > /etc/apt/apt.conf.d/proxy.conf
   - apt-get update -yq && sudo apt-get -o dir::cache::archives="$APT_CACHE_DIR" install -y liballegro5-dev valgrind
 
 stages:
