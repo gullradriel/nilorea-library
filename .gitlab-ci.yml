@@ -24,16 +24,18 @@ build_lib:
   stage: build 
   script:
     - make
-  artifact:
-    libnilorea.a
+  artifacts:
+    path:
+    - libnilorea.a
+    expire_in: 1 week
     
 build_examples:  
   stage: build
   script:
     - cd examples ; make 
-  artifact:
-    -paths:
-      - examples/*
+  artifacts:
+    paths:
+    - examples/*
     expire_in: 1 week
     
 tests:
