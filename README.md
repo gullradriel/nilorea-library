@@ -11,3 +11,4 @@ Some more If used with the Allegro 5 library:<br />
 -WIP dialogs and ressources manager<br />
 <br />
 Usable as a monolith library or a collection of files
+
