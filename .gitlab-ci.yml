@@ -11,7 +11,7 @@ build_lib:
   script:
     - make
     
-# build_examples:  
+build_examples:  
   stage: build
   script:
     - cd examples ; make ; ./valgrind.sh
