@@ -1,22 +1,32 @@
 image: gcc
 
-#before_script:
-#  - apt-get update -qq && apt-get install -y -qq liballegro5-dev valgrind
-      
+cache:
+  key: nilorea-libray
+
+cache:
+  key: apt-cache
+  paths:
+    - apt-cache/
+
+before_script:
+  - export APT_CACHE_DIR=`pwd`/apt-cache && mkdir -pv $APT_CACHE_DIR
+#  - sudo apt-get update -yq && sudo apt-get -o dir::cache::archives="$APT_CACHE_DIR" install -y liballegro5-dev valgrind
+
 stages:
     - build
-#    - tests
+    - tests
     
 build_lib:
   stage: build 
-  tags: 
-    - ares
   script:
     - make
     
-# build_examples:  
-#  stage: build
-#  tags: 
-#    - ares
-#  script:
-#    - cd examples ; make ; ./valgrind.sh
+build_examples:  
+  stage: build
+  script:
+    - cd examples ; make 
+    
+tests:
+  stage: tests
+  script:
+    - cd examples ; ./valgrind.sh
