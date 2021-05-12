@@ -2,7 +2,7 @@
 #       Makefile pour la librairie Nilorea
 #
 
-HAVE_ALLEGRO=0
+HAVE_ALLEGRO=1
 HAVE_OPENSSL=0
 
 #OPT=-std=c17 -Og -D_XOPEN_SOURCE=600 -D_XOPEN_SOURCE_EXTENTED -g -ggdb3 -pedantic -W -Wall -Wextra -Wcast-align -Wcast-qual -Wdisabled-optimization -Wformat=2 -Winit-self -Wlogical-op -Wmissing-declarations -Wmissing-include-dirs -Wredundant-decls -Wshadow -Wsign-conversion -Wstrict-overflow=5 -Wswitch-default -Wundef -Wno-unused
