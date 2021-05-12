@@ -1,4 +1,4 @@
-image: debian
+image: gcc
 
 #before_script:
 #  - apt-get update -qq && apt-get install -y -qq liballegro5-dev valgrind
