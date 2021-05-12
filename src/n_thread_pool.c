@@ -174,6 +174,8 @@ int add_threaded_process( THREAD_POOL *thread_pool, void *(*func_ptr)(void *para
         return FALSE ;
 
     int it = 0 ;
+            
+    if( !(mode&NO_LOCK) ) pthread_mutex_lock( &thread_pool -> lock );
 
     while( it < thread_pool -> max_threads )
     {
@@ -191,7 +193,7 @@ int add_threaded_process( THREAD_POOL *thread_pool, void *(*func_ptr)(void *para
         /* if already coming from queue, or if it should be part of a synced start, do not re-add && return FALSE  */
         if( mode&NOQUEUE || mode&SYNCED_PROC )
         {
-            pthread_mutex_unlock( &thread_pool -> lock );
+            if( !(mode&NO_LOCK) ) pthread_mutex_unlock( &thread_pool -> lock );
             return FALSE ;
         }
         if( thread_pool -> waiting_list -> nb_items < thread_pool -> nb_max_waiting )
@@ -202,14 +204,13 @@ int add_threaded_process( THREAD_POOL *thread_pool, void *(*func_ptr)(void *para
             proc -> param = param ;
             list_push( thread_pool -> waiting_list, proc, free );
             n_log( LOG_DEBUG, "Adding %p %p to waitlist", proc -> func, proc -> param );
-
-            pthread_mutex_unlock( &thread_pool -> lock );
+            if( !(mode&NO_LOCK) ) pthread_mutex_unlock( &thread_pool -> lock );
             return TRUE ;
         }
         else
         {
             n_log( LOG_DEBUG, "Proc %p %p was dropped from waitlist because waitlist is full", func_ptr, param );
-            pthread_mutex_unlock( &thread_pool -> lock );
+            if( !(mode&NO_LOCK) ) pthread_mutex_unlock( &thread_pool -> lock );
             return FALSE ;
         }
     }
@@ -232,9 +233,11 @@ int add_threaded_process( THREAD_POOL *thread_pool, void *(*func_ptr)(void *para
     {
         n_log( LOG_ERR, "Unknown mode %d for thread %d", mode, it );
         pthread_mutex_unlock( &thread_pool -> thread_list[ it ] -> lock );
+        if( !(mode&NO_LOCK) ) pthread_mutex_unlock( &thread_pool -> lock );
         return FALSE ;
     }
     pthread_mutex_unlock( &thread_pool -> thread_list[ it ] -> lock );
+    if( !(mode&NO_LOCK) ) pthread_mutex_unlock( &thread_pool -> lock );
     return TRUE ;
 } /* add_threaded_process */
 
@@ -423,13 +426,13 @@ int refresh_thread_pool( THREAD_POOL *thread_pool )
             THREAD_WAITING_PROC *proc = (THREAD_WAITING_PROC *)node -> ptr ;
             if( proc )
             {
-                if( add_threaded_process( thread_pool, proc -> func, proc -> param, DIRECT_PROC|NOQUEUE ) == TRUE )
+                if( add_threaded_process( thread_pool, proc -> func, proc -> param, DIRECT_PROC|NOQUEUE|NO_LOCK ) == TRUE )
                 {
                     THREAD_WAITING_PROC *procptr = NULL ;
                     next_node = node -> next ;
                     procptr = remove_list_node( thread_pool -> waiting_list, node, THREAD_WAITING_PROC );
                     n_log( LOG_DEBUG, "waitlist: adding %p,%p to %p", procptr -> func, procptr -> param, thread_pool );
-                    Free( proc );
+                    Free( procptr );
                     node = next_node ;
                 }
                 else

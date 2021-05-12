@@ -5,6 +5,7 @@
  *\date 03/01/2019
  *\example ex_debug_mem.c Debug mem module example
  */
+#define DEBUG_MEM
 
 #include <stdio.h>
 #include <errno.h>
@@ -120,8 +121,6 @@ int main(int argc, char **argv)
 
     /* processing args and set log_level */
     process_args( argc, argv );
-
-    inlined_func();
 
     n_log( LOG_INFO, "TRUE,true values: %d,%d / FALSE,false value: %d,%d", TRUE, true, FALSE, false );
 

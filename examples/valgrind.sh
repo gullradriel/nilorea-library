@@ -72,10 +72,13 @@ valgrind_test "ex_exceptions"
 valgrind_test "ex_hash"  
 valgrind_test "ex_pcre" '"TEST(.*)TEST" "TESTazerty1234TEST"'  
 valgrind_test "ex_configfile" "ex_configfile.cfg"
-echo "#### NETWORK TESTING ####" 
+valgrind_test "ex_threads"
+valgrind_test "ex_debug_mem"
+echo "#### NETWORK TESTING client ####" 
 ./ex_network -a localhost -p 6666 &
 sleep 1
 valgrind_test "ex_network" "-s localhost -p 6666"
+
 #valgrind_test "ex_gui_particles"  
 #valgrind_test "ex_monolith"  
 
