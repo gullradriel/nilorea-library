@@ -4,6 +4,15 @@
 
 most_critical=0
 
+OUT=`which valgrind &>/dev/null`
+RET=$?
+
+if [ $RET != 0 ]
+then
+    echo "valgrind binary not found => skipping tests"
+    exit 0
+fi
+
 LOCKFILE="`basename $0`.lock"
 LOCKTIMEOUT=60
 
