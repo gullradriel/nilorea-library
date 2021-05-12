@@ -1,22 +1,17 @@
 image: gcc
 
-#before_script:
+before_script:
 #  - apt-get update -qq && apt-get install -y -qq liballegro5-dev valgrind
       
 stages:
     - build
-#    - tests
     
 build_lib:
   stage: build 
-  tags: 
-    - ares
   script:
     - make
     
 # build_examples:  
-#  stage: build
-#  tags: 
-#    - ares
-#  script:
-#    - cd examples ; make ; ./valgrind.sh
+  stage: build
+  script:
+    - cd examples ; make ; ./valgrind.sh
