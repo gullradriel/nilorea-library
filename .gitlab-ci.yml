@@ -9,12 +9,14 @@ stages:
     
 build_lib:
   stage: build 
-  tags: ares
+  tags: 
+    - ares
   script:
     - make
     
 build_examples:  
   stage: build
-  tags: ares
+  tags: 
+    - ares
   script:
     - cd examples ; make ; ./valgrind.sh
