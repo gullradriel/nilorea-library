@@ -5,6 +5,7 @@ before_script:
       
 stages:
     - build
+    - tests
     
 build_lib:
   stage: build 
@@ -14,4 +15,9 @@ build_lib:
 build_examples:  
   stage: build
   script:
-    - cd examples ; make ; ./valgrind.sh
+    - cd examples ; make 
+    
+tests:
+  stage: tests
+  script:
+    - cd examples ; ./valgrind.sh
