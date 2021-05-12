@@ -1,7 +1,5 @@
 image: debian
 
-tags: ares
-  
 before_script:
   - apt-get update -qq && apt-get install -y -qq liballegro5-dev valgrind
       
@@ -11,10 +9,12 @@ stages:
     
 build_lib:
   stage: build 
+  tags: ares
   script:
     - make
     
 build_examples:  
   stage: build
+  tags: ares
   script:
     - cd examples ; make ; ./valgrind.sh
