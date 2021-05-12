@@ -35,7 +35,7 @@ build_examples:
     - cd examples ; make 
   artifacts:
     paths:
-    - examples/*
+    - examples/ex_*
     expire_in: 1 week
     
 tests:
