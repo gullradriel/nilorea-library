@@ -36,6 +36,7 @@ build_examples:
   artifacts:
     paths:
     - examples/ex_*
+    - libnilorea.a
     expire_in: 1 week
     
 tests:
