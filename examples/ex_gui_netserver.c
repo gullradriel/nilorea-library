@@ -536,7 +536,7 @@ int main( int argc, char *argv[] )
             /* accept new connections */
             NETWORK *netw = NULL ;
             int error = 0 ;
-            if ( ( netw = netw_accept_from_ex(  server, 0, 0, 0, 0, 0, -1, &error ) ) )
+            if ( ( netw = netw_accept_from_ex(  server, 0 , 0 , -1 , &error ) ) )
             {
                 int id = userlist_add_user( userlist , netw );
                 if( id >= 0 )
