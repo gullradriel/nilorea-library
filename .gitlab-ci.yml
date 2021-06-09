@@ -1,0 +1,42 @@
+image: gcc
+
+cache:
+  key: nilorea-libray
+
+cache:
+  key: apt-cache
+  paths:
+    - apt-cache/
+
+before_script:
+  - if [ "$USE_PROXY" == "1" ]; then echo "$APT_PROXY" > /etc/apt/apt.conf.d/proxy.conf ; export http_proxy="$http_proxy" ; export https_proxy="$https_proxy" ; export ftp_proxy="$ftp_proxy" ; git config --global http.proxy "$http_proxy" ; fi
+  - export APT_CACHE_DIR=`pwd`/apt-cache && mkdir -pv $APT_CACHE_DIR
+  - apt-get update -yq && apt-get -o dir::cache::archives="$APT_CACHE_DIR" install -y liballegro5-dev valgrind
+
+stages:
+    - build
+    - tests
+    
+build_lib:
+  stage: build 
+  script:
+    - make
+  artifacts:
+    paths:
+    - libnilorea.a
+    expire_in: 1 week
+    
+build_examples:  
+  stage: build
+  script:
+    - cd examples ; make ; rm *.*
+  artifacts:
+    paths:
+    - examples/ex_*
+    - libnilorea.a
+    expire_in: 1 week
+    
+tests:
+  stage: tests
+  script:
+    - cd examples ; ./valgrind.sh
