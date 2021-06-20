@@ -30,6 +30,7 @@ char* wchar_to_char(const wchar_t* pwchar)
     // get the number of characters in the string.
     int currentCharIndex = 0;
     char currentChar = pwchar[currentCharIndex];
+    char *filePathC = NULL ;
 
     while (currentChar != '\0')
     {
@@ -1553,12 +1554,12 @@ int netw_close( NETWORK **netw )
  *\brief wait until the socket is empty or timeout, checking each 50 msec
  *\param fd socket descriptor
  *\timeout timeout value in msec , 0 => disabled
- *\return 0 or the amount of remaining datas in bytes 
+ *\return 0 or the amount of remaining datas in bytes
  */
 int deplete_send_buffer( int fd , long timeout )
 {
     int outstanding = 0 ;
-#if defined( __linux__ ) 
+#if defined( __linux__ )
     if( timeout <= 0 )
     {
         return 0 ;
@@ -1578,7 +1579,7 @@ int deplete_send_buffer( int fd , long timeout )
     (void)fd;
     (void)timeout;
     return 0 ;
-#endif 
+#endif
 }
 
 
@@ -1629,7 +1630,7 @@ int netw_wait_close_timed( NETWORK **netw , int timeout )
     }
     if( countdown == 0 )
     {
-        n_log( LOG_ERR , "netw %d waited too long (%ds) for peer to close" , (*netw) -> link . sock , timeout ); 
+        n_log( LOG_ERR , "netw %d waited too long (%ds) for peer to close" , (*netw) -> link . sock , timeout );
     }
 
     /* wait for close fix */
