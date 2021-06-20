@@ -218,6 +218,7 @@ int process_clients( NETWORK_POOL *netw_pool , N_USERLIST *userlist )
             case( NETMSG_QUIT ):
                 n_log( LOG_INFO, "Client is asking us to quit" );
                 netw_send_quit( netw );
+                list_push( netw_to_close ,  netw , NULL );
                 break ;
             default:
                 n_log( LOG_ERR, "Unknow message type %d", type );
