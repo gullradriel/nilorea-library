@@ -842,7 +842,7 @@ int netw_set_blocking( NETWORK *netw, unsigned long int is_blocking )
     unsigned long int blocking = 1 - is_blocking ;
     int res = ioctlsocket( netw -> link . sock, FIONBIO, &blocking );
     error = neterrno ;
-    if( res != 0 )
+    if( res != NO_ERROR )
     {
         errmsg = netstrerror( error );
         n_log( LOG_ERR, "ioctlsocket failed with error: %ld , neterrno: %s", res, _str( errmsg ) );
@@ -1558,8 +1558,8 @@ int netw_close( NETWORK **netw )
  */
 int deplete_send_buffer( int fd , long timeout )
 {
-    int outstanding = 0 ;
 #if defined( __linux__ )
+    int outstanding = 0 ;
     if( timeout <= 0 )
     {
         return 0 ;
@@ -1888,12 +1888,12 @@ NETWORK *netw_accept_from_ex( NETWORK *from, int send_list_limit, int recv_list_
     }
     else if( non_blocking == -1 )
     {
-        //n_log( LOG_DEBUG, "non blocking accept call on %d", from -> link . sock );
         if( from -> link . is_blocking  == 1 )
+        {
             netw_set_blocking( from , 0 );
-
+            n_log( LOG_DEBUG, "non blocking accept call on %d", from -> link . sock );
+        }
         tmp = accept( from -> link . sock, (struct sockaddr *)&netw -> link . raddr, &sin_size );
-
         error = neterrno ;
         if( retval != NULL )
             (*retval) = error ;
@@ -1903,13 +1903,17 @@ NETWORK *netw_accept_from_ex( NETWORK *from, int send_list_limit, int recv_list_
             netw_close( &netw );
             return NULL;
         }
-        netw -> link . is_blocking = 1 ;
+        #ifdef __windows__
+            netw -> link . is_blocking = 0 ;
+        #endif // __windows__
     }
     else
     {
         if( from -> link . is_blocking  == 0 )
+        {
+            n_log( LOG_DEBUG, "blocking accept call on %d", from -> link . sock );
             netw_set_blocking( from, 1 );
-        //n_log( LOG_DEBUG, "blocking accept call on %d", from -> link . sock );
+        }
         tmp = accept( from -> link . sock, (struct sockaddr *)&netw -> link . raddr, &sin_size );
         if ( tmp < 0 )
         {
@@ -1941,7 +1945,12 @@ NETWORK *netw_accept_from_ex( NETWORK *from, int send_list_limit, int recv_list_
         n_log( LOG_ERR, "inet_ntop: %p , %s", netw -> link . raddr, _str( errmsg ) );
         FreeNoLog( errmsg );
     }
+
     netw_setsockopt( netw, SO_REUSEADDR, 1 );
+
+#ifdef __windows__
+    netw_set_blocking( netw , 1 );
+#endif // __windows__
 
     netw_set( netw, NETW_SERVER|NETW_RUN|NETW_THR_ENGINE_STOPPED );
     n_log( LOG_DEBUG, "Connection accepted from %s:%s", netw-> link . ip, netw -> link . port );
@@ -2922,13 +2931,13 @@ int netw_pool_add( NETWORK_POOL *netw_pool, NETWORK *netw )
     __n_assert( netw_pool, return FALSE );
     __n_assert( netw, return FALSE );
 
-    n_log( LOG_DEBUG, "Trying to add %d to %p", netw -> link . sock , netw_pool -> pool );
+    n_log( LOG_DEBUG, "Trying to add %lld to %p", (unsigned long long)netw -> link . sock , netw_pool -> pool );
 
     /* write lock the pool */
     write_lock( netw_pool -> rwlock );
     /* test if not already added */
     N_STR *key = NULL ;
-    nstrprintf( key, "%d", netw -> link . sock );
+    nstrprintf( key, "%lld", (unsigned long long)netw -> link . sock );
     HASH_NODE *node = NULL ;
     if( ht_get_ptr( netw_pool -> pool, _nstr( key ), (void *)&node ) == TRUE )
     {
@@ -2960,7 +2969,7 @@ int netw_pool_remove( NETWORK_POOL *netw_pool, NETWORK *netw )
     write_lock( netw_pool -> rwlock );
     /* test if present */
     N_STR *key = NULL ;
-    nstrprintf( key, "%d", netw -> link . sock );
+    nstrprintf( key, "%lld", (unsigned long long int)netw -> link . sock );
     if( ht_remove( netw_pool -> pool, _nstr( key ) ) == TRUE )
     {
         LIST_NODE *node = list_search( netw -> pools , netw );

@@ -111,17 +111,18 @@ extern "C"
     __nstr_var ; \
     })
 
+
+
 /*! Macro to quickly allocate and sprintf and cat to a N_STR * */
 #define nstrprintf_cat( __nstr_var , ... ) \
    ({ \
     if( __nstr_var ) \
     { \
-    NSTRBYTE needed = 0 ; \
+    int needed = 0 ; \
     needed = snprintf( NULL , 0 ,  __VA_ARGS__ ); \
-    if( ( __nstr_var -> written + needed + 1 ) > __nstr_var -> length ) \
+    if( ( __nstr_var -> written + needed ) >= __nstr_var -> length ) \
     { \
-    resize_nstr( __nstr_var , __nstr_var -> length + needed + 1 ); \
-    } \
+        } \
     snprintf( __nstr_var -> data + __nstr_var -> written , needed + 1 , __VA_ARGS__ ); \
     __nstr_var -> written += needed ; \
     } \

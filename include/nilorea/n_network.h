@@ -61,7 +61,7 @@ void netw_sigchld_handler( int sig );
 
 #ifndef SOCKET
 /*! default socket declaration */
-#define SOCKET int
+#define SOCKET long long unsigned int
 #endif
 
 /*! socket wrapper */
@@ -355,7 +355,7 @@ int netw_connect_ex( NETWORK **netw, char *host, char *port, int send_list_limit
 /* Connecting */
 int netw_connect( NETWORK **netw, char *host, char *port, int ip_version );
 /* wait for send buffer to be empty */
-#if defined( __linux__ ) 
+#if defined( __linux__ )
     int deplete_send_buffer( int fd , long timeout );
 #endif
 /* Closing */

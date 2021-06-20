@@ -151,7 +151,7 @@ N_STR *zip_nstr( N_STR *src )
 {
     __n_assert( src , return NULL );
     __n_assert( src -> data , return NULL );
-    
+
     if( src -> length <= 0 )
     {
         n_log( LOG_ERR , "length of src (%d) <= 0" , src -> length );

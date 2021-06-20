@@ -952,14 +952,14 @@ int strcpy_u( char *from, char *to, NSTRBYTE to_size, char split, NSTRBYTE *it )
         _it = _it +1 ;
     }
 
-    if( _it == to_size ) 
+    if( _it == to_size )
     {
         _it -- ;
         to[ _it ] = '\0' ;
         n_log(  LOG_DEBUG, "strcpy_u: not enough space to write %d octet to dest (%d max) , %s: %d \n", _it, to_size, __FILE__, __LINE__ );
         return FALSE;
     }
-    
+
     to[ _it ] = '\0' ;
 
     if( from[ (*it) ] != split )
@@ -1118,7 +1118,7 @@ int nstrcat_ex( N_STR *dest, void *src, NSTRBYTE size, NSTRBYTE blk_size, int re
 
     if( dest )
     {
-        if( ( dest -> written + size + 1 ) > dest -> length  && resize_flag == 0 )
+        if( ( dest -> written + size ) >= dest -> length  && resize_flag == 0 )
         {
             n_log( LOG_ERR, "%p to %p: not enough space. Resize forbidden. %lld needed, %lld available", dest, src,  dest -> written + size + 1, dest -> length );
             return FALSE ;
@@ -1130,7 +1130,7 @@ int nstrcat_ex( N_STR *dest, void *src, NSTRBYTE size, NSTRBYTE blk_size, int re
         return FALSE ;
     }
 
-    while( ( dest -> written + size + 1 ) > dest -> length )
+    while( ( dest -> written + size ) >= dest -> length )
     {
         dest -> length += blk_size ;
         realloc_flag = 1 ;
@@ -1145,7 +1145,7 @@ int nstrcat_ex( N_STR *dest, void *src, NSTRBYTE size, NSTRBYTE blk_size, int re
     ptr = dest -> data + dest -> written ;
     memcpy( ptr, src, size );
     dest -> written += size ;
-    
+
     dest -> data[ dest -> written ] = '\0' ;
 
     return TRUE ;
@@ -1233,7 +1233,7 @@ int write_and_fit_ex( char **dest, NSTRBYTE *size, NSTRBYTE *written, char *src 
         n_log( LOG_DEBUG , "dest will grow from %d to %d" , (*size) , needed_size + additional_padding );
 
         // +1 for the \0 , + additional padding for eventual futur concatenation space
-        Reallocz( (*dest) , char , (*size) , needed_size + additional_padding ); 
+        Reallocz( (*dest) , char , (*size) , needed_size + additional_padding );
         (*size) = needed_size + additional_padding ;
         if( !(*dest) )
         {
