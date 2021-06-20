@@ -262,9 +262,9 @@ typedef struct NETWORK
         /*! tell if the socket have to be encrypted (flags NETW_CRYPTO_*) */
         crypto_mode,
         /*! if encryption is on, which one (flags NETW_ENCRYPT_*) */
-        crypto_algo ,
+        crypto_algo,
         /*! if part of a user property, id of the user */
-        user_id ,
+        user_id,
         /*! nb running threads, if > 0 thread engine is still running */
         nb_running_threads ;
 
@@ -356,14 +356,14 @@ int netw_connect_ex( NETWORK **netw, char *host, char *port, int send_list_limit
 int netw_connect( NETWORK **netw, char *host, char *port, int ip_version );
 /* wait for send buffer to be empty */
 #if defined( __linux__ )
-    int deplete_send_buffer( int fd , long timeout );
+int deplete_send_buffer( int fd, long timeout );
 #endif
 /* Closing */
 int netw_close( NETWORK **netw );
 /* Closing for peer */
 int netw_wait_close( NETWORK **netw );
 /* Closing for peer timeouted*/
-int netw_wait_close_timed( NETWORK **netw , int timeout );
+int netw_wait_close_timed( NETWORK **netw, int timeout );
 /* Stop a NETWORK connection sending and receing thread */
 int netw_stop_thr_engine( NETWORK *netw );
 /* Listening network */
@@ -415,14 +415,14 @@ int netw_pool_broadcast( NETWORK_POOL *netw_pool, NETWORK *from, N_STR *net_msg 
 int netw_pool_nbclients( NETWORK_POOL *netw_pool );
 
 /* set user id on a netw */
-int netw_set_user_id( NETWORK *netw , int id );
+int netw_set_user_id( NETWORK *netw, int id );
 
 /* homemade tcp ip protocol helpers */
 int netw_send_ping( NETWORK *netw, int type, int id_from, int id_to, int time );
 int netw_send_ident( NETWORK *netw, int type, int id, N_STR *name, N_STR *passwd  );
-int netw_send_position( NETWORK *netw , int id, double X, double Y, double vx, double vy, double acc_x, double acc_y, int time_stamp );
-int netw_send_string_to( NETWORK *netw , int id_to , N_STR *name , N_STR *chan , N_STR *txt , int color );
-int netw_send_string_all( NETWORK *netw , char *name, N_STR *chan , N_STR *N_STR, int color );
+int netw_send_position( NETWORK *netw, int id, double X, double Y, double vx, double vy, double acc_x, double acc_y, int time_stamp );
+int netw_send_string_to( NETWORK *netw, int id_to, N_STR *name, N_STR *chan, N_STR *txt, int color );
+int netw_send_string_all( NETWORK *netw, char *name, N_STR *chan, N_STR *N_STR, int color );
 int netw_send_quit( NETWORK *netw );
 
 

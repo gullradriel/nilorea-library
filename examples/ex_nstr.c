@@ -12,37 +12,37 @@ int main( void )
     set_log_level( LOG_DEBUG );
 
     char *chardest = NULL ;
-    NSTRBYTE written = 0 ,
+    NSTRBYTE written = 0,
              length = 0 ;
 
-    write_and_fit( &chardest , &length , &written , "Hello" ); 
-    printf( "charstr (%d/%d): %s\n" , written , length , chardest );
-    write_and_fit( &chardest , &length , &written , " " ); 
-    printf( "charstr (%d/%d): %s\n" , written , length , chardest );
-    write_and_fit( &chardest , &length , &written , "world !" ); 
-    printf( "charstr (%d/%d): %s\n" , written , length , chardest );
-    write_and_fit( &chardest , &length , &written , "world ! " ); 
-    printf( "charstr (%d/%d): %s\n" , written , length , chardest );
-    write_and_fit( &chardest , &length , &written , "world ! " ); 
-    printf( "charstr (%d/%d): %s\n" , written , length , chardest );
-    write_and_fit( &chardest , &length , &written , "world ! " ); 
-    printf( "charstr (%d/%d): %s\n" , written , length , chardest );
-    
+    write_and_fit( &chardest, &length, &written, "Hello" );
+    printf( "charstr (%d/%d): %s\n", written, length, chardest );
+    write_and_fit( &chardest, &length, &written, " " );
+    printf( "charstr (%d/%d): %s\n", written, length, chardest );
+    write_and_fit( &chardest, &length, &written, "world !" );
+    printf( "charstr (%d/%d): %s\n", written, length, chardest );
+    write_and_fit( &chardest, &length, &written, "world ! " );
+    printf( "charstr (%d/%d): %s\n", written, length, chardest );
+    write_and_fit( &chardest, &length, &written, "world ! " );
+    printf( "charstr (%d/%d): %s\n", written, length, chardest );
+    write_and_fit( &chardest, &length, &written, "world ! " );
+    printf( "charstr (%d/%d): %s\n", written, length, chardest );
+
     Free( chardest );
     written = length = 0 ;
 
-    write_and_fit_ex( &chardest , &length , &written , "Hello" , 5 , 0 ); 
-    printf( "charstr (%d/%d): %s\n" , written , length , chardest );
-    write_and_fit_ex( &chardest , &length , &written , " " , 1 , 0 ); 
-    printf( "charstr (%d/%d): %s\n" , written , length , chardest );
-    write_and_fit_ex( &chardest , &length , &written , "world !" , 7 , 0 ); 
-    printf( "charstr (%d/%d): %s\n" , written , length , chardest );
-    write_and_fit_ex( &chardest , &length , &written , "Hello" , 5 , 0 ); 
-    printf( "charstr (%d/%d): %s\n" , written , length , chardest );
-    write_and_fit_ex( &chardest , &length , &written , " " , 1 , 10 ); // alocate 10 more byte if resize needed
-    printf( "charstr (%d/%d): %s\n" , written , length , chardest );
-    write_and_fit_ex( &chardest , &length , &written , "world !" , 7 , 0 ); 
-    printf( "charstr (%d/%d): %s\n" , written , length , chardest );
+    write_and_fit_ex( &chardest, &length, &written, "Hello", 5, 0 );
+    printf( "charstr (%d/%d): %s\n", written, length, chardest );
+    write_and_fit_ex( &chardest, &length, &written, " ", 1, 0 );
+    printf( "charstr (%d/%d): %s\n", written, length, chardest );
+    write_and_fit_ex( &chardest, &length, &written, "world !", 7, 0 );
+    printf( "charstr (%d/%d): %s\n", written, length, chardest );
+    write_and_fit_ex( &chardest, &length, &written, "Hello", 5, 0 );
+    printf( "charstr (%d/%d): %s\n", written, length, chardest );
+    write_and_fit_ex( &chardest, &length, &written, " ", 1, 10 );      // alocate 10 more byte if resize needed
+    printf( "charstr (%d/%d): %s\n", written, length, chardest );
+    write_and_fit_ex( &chardest, &length, &written, "world !", 7, 0 );
+    printf( "charstr (%d/%d): %s\n", written, length, chardest );
 
     Free( chardest );
 
