@@ -118,17 +118,22 @@ extern "C"
    ({ \
     if( __nstr_var ) \
     { \
-    int needed = 0 ; \
-    needed = snprintf( NULL , 0 ,  __VA_ARGS__ ); \
-    if( ( __nstr_var -> written + needed ) >= __nstr_var -> length ) \
+    int needed_size = 0 ; \
+    needed_size = snprintf( NULL , 0 ,  __VA_ARGS__ ); \
+    if( needed_size > 0 ) \
     { \
-        } \
-    snprintf( __nstr_var -> data + __nstr_var -> written , needed + 1 , __VA_ARGS__ ); \
-    __nstr_var -> written += needed ; \
+    NSTRBYTE needed = needed_size + 1 ; \
+    if( ( __nstr_var -> written + needed ) > __nstr_var -> length ) \
+    { \
+    	resize_nstr( __nstr_var , __nstr_var -> length + needed ); \
+    } \
+    snprintf( __nstr_var -> data + __nstr_var -> written , needed , __VA_ARGS__ ); \
+    __nstr_var -> written += needed_size ; \
     } \
     else \
     { \
     nstrprintf( __nstr_var , __VA_ARGS__ ); \
+    } \
     } \
     __nstr_var ; \
     } )
@@ -141,7 +146,7 @@ typedef int32_t NSTRBYTE;
 #else
 typedef __int32 NSTRBYTE;
 #endif
-/*! A double linked box including a string and his lenght */
+/*! A box including a string and his lenght */
 typedef struct N_STR
 {
     /*! the string */
