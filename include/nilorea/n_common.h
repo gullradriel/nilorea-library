@@ -183,7 +183,7 @@ typedef unsigned char uchar;
     __n_errno = errno ;\
     if( ! __ptr || __n_errno == ENOMEM ) \
     { \
-        n_log( LOG_ERR , "( %s *)calloc( %ld , sizeof( %s ) ) %s at line %d of %s \n", #__ptr , __size , #__struct , strerror( __n_errno ) , __LINE__ , __FILE__); \
+        n_log( LOG_ERR , "( %s *)calloc( %ld , sizeof( %s ) ) %s at line %d of %s \n", #__ptr , __size , #__struct , (__n_errno==0)?"malloc error":strerror( __n_errno ) , __LINE__ , __FILE__); \
         __ptr = NULL ; \
     } \
 }
@@ -196,7 +196,7 @@ typedef unsigned char uchar;
     __n_errno = errno ;\
     if( ! __ptr || __n_errno == ENOMEM ) \
     { \
-        n_log( LOG_ERR , "%s=alloca( %d ) %s at line %d of %s \n", #__ptr , __size , strerror( __n_errno ) , __LINE__ , __FILE__); \
+        n_log( LOG_ERR , "%s=alloca( %d ) %s at line %d of %s \n", #__ptr , __size , (__n_errno==0)?"alloca error":strerror( __n_errno ) , __LINE__ , __FILE__); \
         __ptr = NULL ; \
     } \
     else \
@@ -205,6 +205,35 @@ typedef unsigned char uchar;
     } \
 }
 
+/*! Realloc Handler to get errors */
+#define Realloc( __ptr, __struct , __size )  \
+{ \
+    int __n_errno = 0 ; \
+    __ptr  = (  __struct  *)realloc(  __ptr ,  __size  * sizeof(  __struct  ) ); \
+    __n_errno = errno ; \
+    if( !__ptr || __n_errno == ENOMEM ) \
+    { \
+        n_log( LOG_ERR , "( %s *)malloc( %s * sizeof( %d ) ) %s at line %d of %s \n", #__ptr , #__struct , __size , (__n_errno==0)?"realloc error":strerror( __n_errno ) , __LINE__ , __FILE__);\
+        __ptr = NULL;\
+    } \
+}
+
+/*! Realloc + zero new memory zone Handler to get errors */
+#define Reallocz( __ptr, __struct , __old_size , __size )  \
+{ \
+    int __n_errno = 0 ; \
+    __ptr  = (  __struct  *)realloc(  __ptr , __size  * sizeof(  __struct  ) ); \
+    __n_errno = errno ; \
+    if( !__ptr || __n_errno == ENOMEM )\
+    {\
+        n_log( LOG_ERR , "( %s *)malloc( %s * sizeof( %d ) ) Error at line %d of %s \n", #__ptr , #__struct , __size , (__n_errno==0)?"reallocz error":strerror( __n_errno ) , __LINE__ , __FILE__);\
+        __ptr = NULL;\
+    }\
+    else\
+    {\
+        if( __size > __old_size )memset( ( __ptr + __old_size ) , 0 , __size - __old_size );\
+    } \
+}
 
 /*! Free Handler to get errors */
 #define Free( __ptr ) \
@@ -225,37 +254,6 @@ typedef unsigned char uchar;
         free(  __ptr  );\
         __ptr  = NULL;\
     }
-
-
-/*! Realloc Handler to get errors */
-#define Realloc( __ptr, __struct , __size )  \
-{ \
-    int __n_errno = 0 ; \
-    __ptr  = (  __struct  *)realloc(  __ptr ,  __size  * sizeof(  __struct  ) ); \
-    __n_errno = errno ; \
-    if( !__ptr || __n_errno == ENOMEM ) \
-    { \
-        n_log( LOG_ERR , "( %s *)malloc( %s * sizeof( %d ) ) %s at line %d of %s \n", #__ptr , #__struct , __size , strerror( errno ) , __LINE__ , __FILE__);\
-        __ptr = NULL;\
-    } \
-}
-
-/*! Realloc + zero new memory zone Handler to get errors */
-#define Reallocz( __ptr, __struct , __old_size , __size )  \
-{ \
-    int __n_errno = 0 ; \
-    __ptr  = (  __struct  *)realloc(  __ptr , __size  * sizeof(  __struct  ) ); \
-    __n_errno = errno ; \
-    if( !__ptr || __n_errno == ENOMEM )\
-    {\
-        n_log( LOG_ERR , "( %s *)malloc( %s * sizeof( %d ) ) Error at line %d of %s \n", #__ptr , #__struct , __size , (__n_errno==0)?"realloc error":strerror( __n_errno ) , __LINE__ , __FILE__);\
-        __ptr = NULL;\
-    }\
-    else\
-    {\
-        if( __size > __old_size )memset( ( __ptr + __old_size ) , 0 , __size - __old_size );\
-    } \
-}
 
 /*! macro to assert things */
 #define __n_assert( __ptr , __ret ) \
