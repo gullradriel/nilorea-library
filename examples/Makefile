@@ -1,4 +1,4 @@
-HAVE_ALLEGRO=1
+HAVE_ALLEGRO=0
 HAVE_OPENSSL=0
 
 RM=rm -f
@@ -14,6 +14,10 @@ DISABLED_TARGET=ex_monolith$(EXT)
 TARGET=ex_list$(EXT) ex_nstr$(EXT) ex_exceptions$(EXT) ex_hash$(EXT) ex_network$(EXT) ex_configfile$(EXT) ex_pcre$(EXT) ex_threads$(EXT) ex_log$(EXT) ex_common$(EXT) ex_signals$(EXT) ex_debug_mem$(EXT)
 CLIBS=
 
+# TEST IF ALLEGRO IS PRESENT
+ifeq "$(shell echo '\#include <allegro5/allegro.h>\nint main(){return 0;}' | $(CC) -x c -Wall -O -o /dev/null > /dev/null 2> /dev/null - && echo $$? )" "0"
+  HAVE_ALLEGRO = 1
+endif
 
 ifeq ($(OS),Windows_NT)
 	CFLAGS+= -std=c11 $(OPT) -D__USE_MINGW_ANSI_STDIO
