@@ -23,6 +23,7 @@ extern "C"
 #include <stdlib.h>
 #include <malloc.h>
 #include <errno.h>
+#include <string.h>
 #include <nilorea/n_log.h>
 
 /*! feature test macro */
@@ -176,24 +177,33 @@ typedef unsigned char uchar;
 
 /*! Malloc Handler to get errors and set to 0 */
 #define Malloc( __ptr , __struct , __size ) \
-    errno = 0 ; \
-    if ( !(  __ptr  = (  __struct  *)calloc(  __size , sizeof(  __struct  ) ) ) || errno == ENOMEM )   \
-    {                                                                                 \
-        n_log( LOG_ERR , "( %s *)calloc( %ld , sizeof( %s ) ) %s at line %d of %s \n", #__ptr , __size , #__struct , (errno==ENOMEM)?"ENOMEM":"malloc error" , __LINE__ , __FILE__); \
+{ \
+    int __n_errno = 0 ; \
+    __ptr  = (  __struct  *)calloc(  __size , sizeof(  __struct  ) ); \
+    __n_errno = errno ;\
+    if( ! __ptr || __n_errno == ENOMEM ) \
+    { \
+        n_log( LOG_ERR , "( %s *)calloc( %ld , sizeof( %s ) ) %s at line %d of %s \n", #__ptr , __size , #__struct , strerror( __n_errno ) , __LINE__ , __FILE__); \
         __ptr = NULL ; \
-    }
+    } \
+}
 
 /*! Malloca Handler to get errors and set to 0 */
 #define Alloca( __ptr , __size ) \
-    errno = 0 ; \
+{ \
+    int __n_errno = 0 ; \
     __ptr = alloca( __size ); \
-    if( ! __ptr || errno == ENOMEM ) \
+    __n_errno = errno ;\
+    if( ! __ptr || __n_errno == ENOMEM ) \
     { \
-        n_log( LOG_ERR , "%s=alloca( %d ) Error at line %d of %s \n", #__ptr , __size , __LINE__ , __FILE__); \
+        n_log( LOG_ERR , "%s=alloca( %d ) %s at line %d of %s \n", #__ptr , __size , strerror( __n_errno ) , __LINE__ , __FILE__); \
         __ptr = NULL ; \
     } \
     else \
-    memset( __ptr , 0 , __size );
+    { \
+       memset( __ptr , 0 , __size ); \
+    } \
+}
 
 
 /*! Free Handler to get errors */
@@ -207,6 +217,7 @@ typedef unsigned char uchar;
     {\
         n_log( LOG_DEBUG , "Free( %s ) already done or NULL at line %d of %s \n", #__ptr , __LINE__ , __FILE__ );\
     }
+
 /*! Free Handler without log */
 #define FreeNoLog( __ptr )\
     if (  __ptr  )\
@@ -218,25 +229,33 @@ typedef unsigned char uchar;
 
 /*! Realloc Handler to get errors */
 #define Realloc( __ptr, __struct , __size )  \
-    errno = 0 ; \
-    if( !(  __ptr  = (  __struct  *)realloc(  __ptr ,  __size  * sizeof(  __struct  ) ) ) || errno == ENOMEM )\
+{ \
+    int __n_errno = 0 ; \
+    __ptr  = (  __struct  *)realloc(  __ptr ,  __size  * sizeof(  __struct  ) ); \
+    __n_errno = errno ; \
+    if( !__ptr || __n_errno == ENOMEM ) \
     { \
-        n_log( LOG_ERR , "( %s *)malloc( %s * sizeof( %d ) ) Error at line %d of %s \n", #__ptr , #__struct , __size , __LINE__ , __FILE__);\
+        n_log( LOG_ERR , "( %s *)malloc( %s * sizeof( %d ) ) %s at line %d of %s \n", #__ptr , #__struct , __size , strerror( errno ) , __LINE__ , __FILE__);\
         __ptr = NULL;\
-    }
+    } \
+}
 
 /*! Realloc + zero new memory zone Handler to get errors */
 #define Reallocz( __ptr, __struct , __old_size , __size )  \
-    errno = 0 ; \
-    if ( !(  __ptr  = (  __struct  *)realloc(  __ptr , __size  * sizeof(  __struct  ) ) ) || errno == ENOMEM )\
+{ \
+    int __n_errno = 0 ; \
+    __ptr  = (  __struct  *)realloc(  __ptr , __size  * sizeof(  __struct  ) ); \
+    __n_errno = errno ; \
+    if( !__ptr || __n_errno == ENOMEM )\
     {\
-        n_log( LOG_ERR , "( %s *)malloc( %s * sizeof( %d ) ) Error at line %d of %s \n", #__ptr , #__struct , __size , __LINE__ , __FILE__);\
+        n_log( LOG_ERR , "( %s *)malloc( %s * sizeof( %d ) ) Error at line %d of %s \n", #__ptr , #__struct , __size , (__n_errno==0)?"realloc error":strerror( __n_errno ) , __LINE__ , __FILE__);\
         __ptr = NULL;\
     }\
     else\
     {\
         if( __size > __old_size )memset( ( __ptr + __old_size ) , 0 , __size - __old_size );\
-    }
+    } \
+}
 
 /*! macro to assert things */
 #define __n_assert( __ptr , __ret ) \
