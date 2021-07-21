@@ -16,7 +16,7 @@ CLIBS=
 
 # TEST IF ALLEGRO IS PRESENT
 ifeq "$(shell echo '\#include <allegro5/allegro.h>\nint main(){return 0;}' | $(CC) -x c -Wall -O -o /dev/null > /dev/null 2> /dev/null - && echo $$? )" "0"
-  HAVE_ALLEGRO = 1
+  HAVE_ALLEGRO=1
 endif
 
 ifeq ($(OS),Windows_NT)
@@ -45,6 +45,7 @@ ifeq ($(MSYSTEM),MINGW64)
 	LIBNILOREA=-lnilorea64
 	EXT=64.exe
 endif
+
 ifeq ($(MSYSTEM),MINGW64CB)
 	RM=del /Q
 	CFLAGS+= -DARCH64BITS
