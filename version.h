@@ -1,6 +1,6 @@
 #ifndef NILOREA_LIBRARY_VERSION
 #define NILOREA_LIBRARY_VERSION
-    #define BUILD_NUMBER  20
-    #define MINOR_VERSION 4
-    #define MAJOR_VERSION 6
+    #define BUILD_NUMBER  1
+    #define MINOR_VERSION 
+    #define MAJOR_VERSION 
 #endif

@@ -15,7 +15,7 @@ SRC= n_common.c n_config_file.c n_debug_mem.c n_exceptions.c n_debug_mem.c n_has
 OPT=-D_XOPEN_SOURCE=600 -D_XOPEN_SOURCE_EXTENTED -fPIC -Og -g -ggdb3 -W -Wall -Wextra -Wcast-align -Wcast-qual -Wdisabled-optimization -Wformat=1 -Winit-self -Wlogical-op -Wmissing-include-dirs -Wredundant-decls -Wstrict-overflow=5 -Wswitch-default -Wundef -std=c11 -Wl,-dead_strip
 
 # TEST IF ALLEGRO IS PRESENT
-ifeq ($(shell printf "#include <allegro5/allegro.h>\nint main(){return 0;}" | $(CC) -x c -Wall -O -o test_deps_lib.test - && echo $$? ),0)
+ifeq "$(bash -c printf '\#include <readline/readline.h>\nint main(){return 0;}' | $(CC) -x c -Wall -O -o /dev/null > /dev/null 2> /dev/null - && echo $$? )" "0"
 HAVE_ALLEGRO=1
 else
 HAVE_ALLEGRO=0
@@ -87,17 +87,17 @@ obj/%.o: src/%.c
 
 endif
 
-buildnum=(shell grep BUILD_NUMBER  build-number.txt | awk '{print $$3}')
-minorversion=(shell grep MINOR_VERSION build-number.txt | awk '{print $$3}')
-majorversion=(shell grep MAJOR_VERSION build-number.txt | awk '{print $$3}')
+#buildnum=(shell grep BUILD_NUMBER  build-number.txt | awk '{print $$3}')
+#minorversion=(shell grep MINOR_VERSION build-number.txt | awk '{print $$3}')
+#majorversion=(shell grep MAJOR_VERSION build-number.txt | awk '{print $$3}')
 
 default: all
 release: all
 debug: all
-all: main buildnumber
+all: main
 
-show_version:
-	@echo "Version:`expr $(shell $(majorversion)) `.`expr $(shell $(minorversion)) `.`expr $(shell $(buildnum)) `"
+#show_version:
+#	@echo "Version:`expr $(shell $(majorversion)) `.`expr $(shell $(minorversion)) `.`expr $(shell $(buildnum)) `"
 
 doc:
 	doxygen Doxyfile
