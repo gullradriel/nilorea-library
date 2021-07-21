@@ -2,8 +2,8 @@
 #       Makefile pour la librairie Nilorea
 #
 
-HAVE_ALLEGRO=0
 HAVE_OPENSSL=0
+
 
 RM=rm -f
 CC=gcc
@@ -12,12 +12,13 @@ VPATH=src
 CFLAGS=
 SRC= n_common.c n_config_file.c n_debug_mem.c n_exceptions.c n_debug_mem.c n_hash.c n_list.c n_log.c n_network.c n_network_msg.c n_nodup_log.c n_pcre.c n_stack.c n_str.c n_thread_pool.c n_time.c n_zlib.c n_user.c
 
-#OPT=-std=c17 -Og -D_XOPEN_SOURCE=600 -D_XOPEN_SOURCE_EXTENTED -g -ggdb3 -pedantic -W -Wall -Wextra -Wcast-align -Wcast-qual -Wdisabled-optimization -Wformat=2 -Winit-self -Wlogical-op -Wmissing-declarations -Wmissing-include-dirs -Wredundant-decls -Wshadow -Wsign-conversion -Wstrict-overflow=5 -Wswitch-default -Wundef -Wno-unused
 OPT=-D_XOPEN_SOURCE=600 -D_XOPEN_SOURCE_EXTENTED -fPIC -Og -g -ggdb3 -W -Wall -Wextra -Wcast-align -Wcast-qual -Wdisabled-optimization -Wformat=1 -Winit-self -Wlogical-op -Wmissing-include-dirs -Wredundant-decls -Wstrict-overflow=5 -Wswitch-default -Wundef -std=c11 -Wl,-dead_strip
 
 # TEST IF ALLEGRO IS PRESENT
-ifeq "$(shell echo '\#include <allegro5/allegro.h>\nint main(){return 0;}' | $(CC) -x c -Wall -O -o /dev/null > /dev/null 2> /dev/null - && echo $$? )" "0"
-	HAVE_ALLEGRO=1
+ifeq ($(shell printf "#include <allegro5/allegro.h>\nint main(){return 0;}" | $(CC) -x c -Wall -O -o test_deps_lib.test - && echo $$? ),0)
+HAVE_ALLEGRO=1
+else
+HAVE_ALLEGRO=0
 endif
 
 ifeq ($(HAVE_ALLEGRO),1)
@@ -32,7 +33,6 @@ ifeq ($(OS),Windows_NT)
 	RM= del /Q
 	CC= gcc
 
-#ifeq ($(filter $(${MSYSTEM},MINGW32) $($(MSYSTEM),MINGW32),yes),)
 ifeq ($(MSYSTEM),MINGW32)
 RM=rm -f
 CFLAGS+= -m32 -DARCH32BITS
@@ -46,7 +46,6 @@ LIB=-lnilorea32
 EXT=32.a
 endif
 
-#ifeq ($(filter $(${MSYSTEM},MINGW64) $($(MSYSTEM),MINGW64),yes),)
 ifeq ($(MSYSTEM),MINGW64)
 RM=rm -f
 CFLAGS+= -DARCH64BITS
@@ -71,7 +70,6 @@ else
 	RM=rm -f
 	CC=gcc
 	EXT=.a
-	#SRC= n_common.c n_log.c n_exceptions.c n_str.c n_list.c n_hash.c n_time.c n_thread_pool.c n_network.c n_network_msg.c n_signals.c
 	HDR=$(SRC:%.c=%.h) nilorea.h
 	OBJECTS=$(SRC:%.c=obj/%.o)
 
@@ -89,14 +87,17 @@ obj/%.o: src/%.c
 
 endif
 
-#buildnum=(shell grep BUILD_NUMBER  build-number.txt | awk '{print $$3}')
-#minorversion=(shell grep MINOR_VERSION build-number.txt | awk '{print $$3}')
-#majorversion=(shell grep MAJOR_VERSION build-number.txt | awk '{print $$3}')
+buildnum=(shell grep BUILD_NUMBER  build-number.txt | awk '{print $$3}')
+minorversion=(shell grep MINOR_VERSION build-number.txt | awk '{print $$3}')
+majorversion=(shell grep MAJOR_VERSION build-number.txt | awk '{print $$3}')
 
 default: all
 release: all
 debug: all
-all: main
+all: main buildnumber
+
+show_version:
+	@echo "Version:`expr $(shell $(majorversion)) `.`expr $(shell $(minorversion)) `.`expr $(shell $(buildnum)) `"
 
 doc:
 	doxygen Doxyfile
@@ -108,39 +109,32 @@ buildnumber:
 	@echo "    #define MAJOR_VERSION $(shell $(majorversion))" >> build-number.new
 	@mv build-number.new build-number.txt
 	@echo "#ifndef $(PROJECT_NAME)_VERSION" > version.h
-	@echo "    #define $(PROJECT_NAME)_VERSION" >> version.h
+	@echo "#define $(PROJECT_NAME)_VERSION" >> version.h
 	@cat build-number.txt >> version.h
 	@echo "#endif" >> version.h
 	git tag "$(shell $(majorversion)).$(shell $(minorversion)).$(shell $(buildnum))"
 
-minor:
+incminor:
 	@echo "    #define BUILD_NUMBER 0" > build-number.new
 	@echo -n "    #define MINOR_VERSION " >> build-number.new
 	@echo `expr $(shell $(minorversion)) + 1` >> build-number.new
 	@echo "    #define MAJOR_VERSION $(shell $(majorversion))" >> build-number.new
 	@mv build-number.new build-number.txt
 
-major:
+incmajor:
 	@echo "    #define BUILD_NUMBER 0" > build-number.new
 	@echo "    #define MINOR_VERSION $(shell $(minorversion))" >> build-number.new
 	@echo -n "    #define MAJOR_VERSION " >> build-number.new
 	@echo `expr $(shell $(majorversion)) + 1` >> build-number.new
 	@mv build-number.new build-number.txt
 
-incmajor: major
-
-incminor: minor
-
-all: main
-
 main: $(OBJECTS)
+	@echo "Allegro: $(HAVE_ALLEGRO)"
+	@$(RM) test_deps_lib.test
 	$(AR) rcs $(OUTPUT)$(EXT) $(OBJECTS)
-#@echo Version:$(shell $(majorversion)).$(shell $(minorversion)).$(shell $(buildnum))
-
+		
 clean:
 	$(RM) $(OBJECTS)
 
 distclean: clean
 	$(RM) *.a
-
-

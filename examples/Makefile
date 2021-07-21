@@ -1,6 +1,4 @@
-HAVE_ALLEGRO=0
 HAVE_OPENSSL=0
-
 RM=rm -f
 OPT=-D_XOPEN_SOURCE=600 -D_XOPEN_SOURCE_EXTENTED -O0 -g -W -Wall -Wextra -Wcast-align -Wcast-qual -Wdisabled-optimization -Wformat=1 -Winit-self -Wlogical-op -Wmissing-include-dirs -Wredundant-decls -Wstrict-overflow=5 -Wswitch-default -Wundef -Wno-unused
 OPT+= -I../include
@@ -15,8 +13,10 @@ TARGET=ex_list$(EXT) ex_nstr$(EXT) ex_exceptions$(EXT) ex_hash$(EXT) ex_network$
 CLIBS=
 
 # TEST IF ALLEGRO IS PRESENT
-ifeq "$(shell echo '\#include <allegro5/allegro.h>\nint main(){return 0;}' | $(CC) -x c -Wall -O -o /dev/null > /dev/null 2> /dev/null - && echo $$? )" "0"
-  HAVE_ALLEGRO=1
+ifeq ($(shell printf "#include <allegro5/allegro.h>\nint main(){return 0;}" | $(CC) -x c -Wall -O -o test_deps_lib.test - && echo $$? ),0)
+HAVE_ALLEGRO=1
+else
+HAVE_ALLEGRO=0
 endif
 
 ifeq ($(OS),Windows_NT)
