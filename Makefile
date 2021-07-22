@@ -125,7 +125,8 @@ main: $(OBJECTS)
 	$(AR) rcs $(OUTPUT)$(EXT) $(OBJECTS)
 
 clean:
-	$(RM) $(OBJECTS) tmp_test_allegro5.obj
+	$(RM) $(OBJECTS)
+	$(RM) tmp_test_allegro5.obj
 
 distclean: clean
 	$(RM) *.a
