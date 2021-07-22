@@ -1,0 +1,14 @@
+<map id="netw_connect" name="netw_connect">
+<area shape="rect" id="node2" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga4cef67bc400323306a3d1c1ed5cec17b" title="Use this to connect a NETWORK to any listening one. " alt="" coords="166,157,301,184"/>
+<area shape="rect" id="node3" href="$n__network_8c.html#a9caee75e3a67942e37ccb4de2c889105" title="Return an empty allocated network ready to be netw_closed. " alt="" coords="363,81,451,108"/>
+<area shape="rect" id="node13" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga22bc4dd5d80c2229c3c43f6d6705dece" title="Do not directly use, internal api. " alt="" coords="349,132,464,159"/>
+<area shape="rect" id="node4" href="$group___n_e_t_w_o_r_k_i_n_g.html#gac345c1af1935cebb9ee33edd4c32267a" title="Closing a specified Network, destroy queues, free the structure. " alt="" coords="530,157,625,184"/>
+<area shape="rect" id="node9" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaa8e1fe7978995197f08aa0ef24a76c33" title="Restart or reset the specified network ability. " alt="" coords="925,196,1006,223"/>
+<area shape="rect" id="node10" href="$group___l_i_s_t.html#gaa82751b4d6a219771661843e61cefa2e" title="Initialiaze a generic list container to max_items pointers. " alt="" coords="512,5,643,32"/>
+<area shape="rect" id="node11" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga1fc319fa3b0eba19e163070a9fb3dae4" title="recv data from the socket " alt="" coords="534,56,621,83"/>
+<area shape="rect" id="node12" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaf3dc736265484a58e6678c250e38cef8" title="send data onto the socket " alt="" coords="533,107,622,133"/>
+<area shape="rect" id="node5" href="$group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755" title="Empty and Free a list container. " alt="" coords="1075,145,1173,172"/>
+<area shape="rect" id="node7" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaf25c0f462f174092815b0c5d019441db" title="Get the state of a network. " alt="" coords="904,132,1027,159"/>
+<area shape="rect" id="node8" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga29159184519b3129c0154b1a2c2a3e2f" title="Stop a NETWORK connection sending and receing thread. " alt="" coords="691,157,856,184"/>
+<area shape="rect" id="node6" href="$group___l_i_s_t.html#ga1dafe7a250ddad51fadd375f057287e7" title="Empty a LIST list of pointers. " alt="" coords="1221,171,1312,197"/>
+</map>
