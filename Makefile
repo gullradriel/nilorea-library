@@ -20,31 +20,31 @@ ifeq ($(OS),Windows_NT)
 	RM= del /Q
 	CC= gcc
 	ifeq ($(MSYSTEM),MINGW32)
-	RM=rm -f
-	CFLAGS+= -m32 -DARCH32BITS
-	LIB=-lnilorea32
-	EXT=32.a
-endif
-ifeq ($(MSYSTEM),MINGW32CB)
-	RM=del /Q
-	CFLAGS+= -m32 -DARCH32BITS
-	LIB=-lnilorea32
-	EXT=32.a
-endif
-ifeq ($(MSYSTEM),MINGW64)
-	RM=rm -f
-	CFLAGS+= -DARCH64BITS
-	LIB=-lnilorea64
-	EXT=64.a
-endif
-ifeq ($(MSYSTEM),MINGW64CB)
-	RM=del /Q
-	CFLAGS+= -DARCH64BITS
-	LIB=-lnilorea64
-	EXT=64.a
-endif
-HDR=$(SRC:%.c=%.h) nilorea.h
-OBJECTS=$(SRC:%.c=obj\\%.o)
+		RM=rm -f
+		CFLAGS+= -m32 -DARCH32BITS
+		LIB=-lnilorea32
+		EXT=32.a
+	endif
+	ifeq ($(MSYSTEM),MINGW32CB)
+		RM=del /Q
+		CFLAGS+= -m32 -DARCH32BITS
+		LIB=-lnilorea32
+		EXT=32.a
+	endif
+	ifeq ($(MSYSTEM),MINGW64)
+		RM=rm -f
+		CFLAGS+= -DARCH64BITS
+		LIB=-lnilorea64
+		EXT=64.a
+	endif
+	ifeq ($(MSYSTEM),MINGW64CB)
+		RM=del /Q
+		CFLAGS+= -DARCH64BITS
+		LIB=-lnilorea64
+		EXT=64.a
+	endif
+	HDR=$(SRC:%.c=%.h) nilorea.h
+	OBJECTS=$(SRC:%.c=obj\\%.o)
 obj\\%.o: src\%.c
 	$(CC) $(CFLAGS) -c $< -o $@
 else
@@ -55,17 +55,17 @@ else
 	HDR=$(SRC:%.c=%.h) nilorea.h
 	OBJECTS=$(SRC:%.c=obj/%.o)
 	ifeq ($(UNAME_S),Linux)
-	CFLAGS+= -DLINUX -I./include/ $(OPT)
-endif
-ifeq ($(UNAME_S),SunOS)
-	CC=cc
-	CFLAGS+= -DSOLARIS -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -g -v -xc99 -I ./include/ -mt -lpcre
-endif
+		CFLAGS+= -DLINUX -I./include/ $(OPT)
+	endif
+	ifeq ($(UNAME_S),SunOS)
+		CC=cc
+		CFLAGS+= -DSOLARIS -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -g -v -xc99 -I ./include/ -mt -lpcre
+	endif
 obj/%.o: src/%.c
 	$(CC) $(CFLAGS) $(BUILD_NUMBER_LDFLAGS) -c $< -o $@
 endif
 
-ifeq "$(shell printf '\#include <allegr5/allegro.h>\nint main(){return 0;}' | $(CC) -x c -Wall -O -o /dev/null > /dev/null 2> /dev/null - && echo $$? )" "0"
+ifeq "$(shell printf '#include <allegro5/allegro.h>\nint main(){return 0;}' | $(CC) -x c -Wall -O -o tmp_test_allegro5.obj - && echo $$? )" "0"
   HAVE_ALLEGRO=1
 else
   HAVE_ALLEGRO=0
@@ -121,7 +121,7 @@ main: $(OBJECTS)
 	$(AR) rcs $(OUTPUT)$(EXT) $(OBJECTS)
 
 clean:
-	$(RM) $(OBJECTS)
+	$(RM) $(OBJECTS) tmp_test_allegro5.obj
 
 distclean: clean
 	$(RM) *.a
