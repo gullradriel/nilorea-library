@@ -2142,6 +2142,8 @@ N_STR *netw_wait_msg( NETWORK *netw, long refresh, long timeout )
         netw_get_state( netw, &state, &thr_state );
     }
     while( state == NETW_RUN );
+	
+	n_log( LOG_ERR , "netw %d closed with state %d , timeout (%ld)" , netw -> link . sock , state , timeout );
 
     return NULL ;
 } /* netw_wait_msg(...) */
