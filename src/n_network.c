@@ -1551,9 +1551,9 @@ int netw_close( NETWORK **netw )
 
 
 /*!\fn int deplete_send_buffer( int fd , long timeout )
- *\brief wait until the socket is empty or timeout, checking each 50 msec
+ *\brief wait until the socket is empty or timeout, checking each 100 msec. Not as reliable as expected.
  *\param fd socket descriptor
- *\timeout timeout value in msec , 0 => disabled
+ *\timeout timeout value in msec , zero or negative value => disabled
  *\return 0 or the amount of remaining datas in bytes
  */
 int deplete_send_buffer( int fd, long timeout )
@@ -1564,7 +1564,7 @@ int deplete_send_buffer( int fd, long timeout )
     {
         return 0 ;
     }
-    for( int it = 0 ; it < timeout ; it += 50 )
+    for( int it = 0 ; it < timeout ; it += 100 )
     {
         outstanding = 0 ;
         ioctl(fd, SIOCOUTQ, &outstanding);
@@ -1572,7 +1572,7 @@ int deplete_send_buffer( int fd, long timeout )
         {
             break;
         }
-        usleep( 50000 );
+        usleep( 100000 );
     }
     return outstanding ;
 #else
@@ -1612,13 +1612,13 @@ int netw_wait_close_timed( NETWORK **netw, int timeout )
     int error = 0,
         countdown = 0 ;
     char *errmsg = NULL ;
+    int nb_running = 0 ;
 
     countdown = timeout ;
 
     netw_get_state( (*netw), &state, &thr_engine_status );
     if( thr_engine_status == NETW_THR_ENGINE_STARTED )
     {
-        int nb_running = 0 ;
         do
         {
             pthread_mutex_lock( &(*netw) -> eventbolt );
@@ -1629,9 +1629,9 @@ int netw_wait_close_timed( NETWORK **netw, int timeout )
         }
         while( nb_running > 0 && countdown > 0 );
     }
-    if( countdown == 0 )
+    if( countdown == 0 && nb_running > 0 )
     {
-        n_log( LOG_ERR, "netw %d waited too long (%ds) for peer to close", (*netw) -> link . sock, timeout );
+        n_log( LOG_ERR, "netw %d: %d threads are still running after %d seconds", (*netw) -> link . sock, nb_running , timeout );
     }
 
     /* wait for close fix */
@@ -1642,7 +1642,7 @@ int netw_wait_close_timed( NETWORK **netw, int timeout )
         int remaining = deplete_send_buffer( (*netw) -> link . sock, (*netw) -> deplete_timeout );
         if( remaining > 0 )
         {
-            n_log( LOG_ERR, "socket %d (%s:%s) took more than %d msecs to send %d octets before closing => force close", (*netw) -> link . sock, (*netw) -> link . ip, (*netw) -> link . port, (int)(*netw) -> deplete_timeout, remaining );
+            n_log( LOG_ERR, "socket %d (%s:%s) %d octets still in send buffer before closing after a wait of %d seconds", (*netw) -> link . sock, (*netw) -> link . ip, (*netw) -> link . port, remaining , (int)(*netw) -> deplete_timeout );
         }
         /* wait for fin ack */
         char buffer[ 4096 ] = "" ;
@@ -2115,17 +2115,8 @@ N_STR *netw_wait_msg( NETWORK *netw, long refresh, long timeout )
 
     int state = NETW_RUN, thr_state = 0 ;
 
-    /* first try without sleep in case there alreay is a message in queue */
-    nstrptr = netw_get_msg( netw );
-    if( nstrptr )
-        return nstrptr ;
     do
     {
-        if(secs > 0)
-            sleep( secs );
-        if( usecs >0 )
-            u_sleep( usecs );
-
         nstrptr = netw_get_msg( netw );
         if( nstrptr )
             return nstrptr ;
@@ -2139,6 +2130,11 @@ N_STR *netw_wait_msg( NETWORK *netw, long refresh, long timeout )
                 break ;
             }
         }
+		if(secs > 0)
+            sleep( secs );
+        if( usecs >0 )
+            u_sleep( usecs );
+
         netw_get_state( netw, &state, &thr_state );
     }
     while( state == NETW_RUN );
