@@ -137,11 +137,11 @@ int set_log_file( char *file )
     __n_assert( file, return FALSE );
 
     if( !log_file )
-        log_file = fopen( file, "w" );
+        log_file = fopen( file, "wa+" );
     else
     {
         fclose( log_file );
-        log_file = fopen( file, "w" );
+        log_file = fopen( file, "wa+" );
     }
 
     set_log_level( LOG_FILE );
