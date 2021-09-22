@@ -1646,8 +1646,8 @@ int netw_wait_close_timed( NETWORK **netw, int timeout )
         }
         /* wait for fin ack */
         char buffer[ 4096 ] = "" ;
-        for( ;; )
-        {
+        for( int it = 0 ; it < timeout ; it += 100 )
+    	{
             int res = 0 ;
             res = recv( (*netw) -> link . sock, buffer, 4096, NETFLAGS );
             if( !res )
@@ -1663,6 +1663,7 @@ int netw_wait_close_timed( NETWORK **netw, int timeout )
                 }
                 break ;
             }
+			usleep( 100000 );
         }
     }
     return netw_close( &(*netw) );
