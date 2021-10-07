@@ -5,8 +5,10 @@
  */
 
 /*! Feature test macro */
+#define _GNU_SOURCE
 #include <stdio.h>
 #include <stdarg.h>
+#undef _GNU_SOURCE
 
 #include "nilorea/n_common.h"
 #include "nilorea/n_log.h"
