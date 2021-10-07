@@ -8,11 +8,8 @@
 #include <errno.h>
 #include <limits.h>
 #include <pthread.h>
-#ifdef LINUX
-#define _GNU_SOURCE
 #include <unistd.h>
 #include <string.h>
-#endif
 #include <sys/types.h>
 
 #include "nilorea/n_network.h"

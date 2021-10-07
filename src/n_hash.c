@@ -72,7 +72,7 @@ static FORCE_INLINE uint32_t fmix32 ( uint32_t h )
  *\param k value
  *\return mixed value
  */
-static FORCE_INLINE uint64_t fmix64 ( uint64_t k )
+/*static FORCE_INLINE uint64_t fmix64 ( uint64_t k )
 {
     k ^= k >> 33;
     k *= BIG_CONSTANT(0xff51afd7ed558ccd);
@@ -81,7 +81,8 @@ static FORCE_INLINE uint64_t fmix64 ( uint64_t k )
     k ^= k >> 33;
 
     return k;
-} /* fmix64(...) */
+} */
+/* fmix64(...) */
 
 
 
