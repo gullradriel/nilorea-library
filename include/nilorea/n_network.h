@@ -35,7 +35,6 @@ extern "C"
 #if defined( __linux__ ) || defined( __sun ) || defined( _AIX )
 #include <sys/types.h>
 #include <fcntl.h>
-#include <signal.h>
 #include <stdio.h>
 #include <errno.h>
 #include <unistd.h>
@@ -51,6 +50,7 @@ extern "C"
 
 #ifdef __linux__
 #include <linux/sockios.h>
+#include <signal.h>
 #endif
 
 	void netw_sigchld_handler( int sig );

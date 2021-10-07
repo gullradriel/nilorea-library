@@ -12,7 +12,7 @@
 #define SERVER 0
 #define CLIENT 1
 
-int NB_ATTEMPTS=  2 ;
+int NB_ATTEMPTS=  3 ;
 
 NETWORK *server = NULL,  /*! Network for server mode, accepting incomming */
          *netw   = NULL   ; /*! Network for managing conenctions */
@@ -249,7 +249,7 @@ int main(int argc, char **argv)
         while( it < NB_ATTEMPTS )
         {
             /* get any accepted client on a network */
-            if ( ( netw = netw_accept_from_ex( server, -1, -1, -1, &error ) ) )
+            if ( ( netw = netw_accept_from_ex( server, 0 , 0 , 0 , &error ) ) )
             {
                 /* someone is connected. starting some dialog */
                 if( add_threaded_process( thread_pool, &manage_client, (void *)netw, DIRECT_PROC ) == FALSE )
@@ -274,7 +274,7 @@ int main(int argc, char **argv)
     }
     else if( mode == CLIENT )
     {
-        for( int it = 0 ; it < NB_ATTEMPTS ; it ++ )
+        for( int it = 1 ; it <= NB_ATTEMPTS ; it ++ )
         {
             if( netw_connect( &netw, srv, port, ip_version ) != TRUE )
             {

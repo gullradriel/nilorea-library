@@ -80,10 +80,7 @@ void *thread_pool_processing_function( void *param )
 
     pthread_exit( NULL );
 
-#ifndef __sun
     return NULL ;
-#endif
-
 } /* thread_pool_processing_function */
 
 

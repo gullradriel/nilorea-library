@@ -1,7 +1,7 @@
 HAVE_OPENSSL=0
 HAVE_ALLEGRO=0
 RM=rm -f
-OPT=-D_XOPEN_SOURCE=600 -D_XOPEN_SOURCE_EXTENTED -O0 -g -W -Wall -Wextra -Wcast-align -Wcast-qual -Wdisabled-optimization -Wformat=1 -Winit-self -Wlogical-op -Wmissing-include-dirs -Wredundant-decls -Wstrict-overflow=5 -Wswitch-default -Wundef -Wno-unused
+OPT=-D_XOPEN_SOURCE=600 -D_XOPEN_SOURCE_EXTENTED -g -W -Wall -Wextra -Wcast-align -Wcast-qual -Wdisabled-optimization -Wformat=1 -Winit-self -Wlogical-op -Wmissing-include-dirs -Wredundant-decls -Wstrict-overflow=5 -Wswitch-default -Wundef -Wno-unused
 OPT+= -I../include
 VPATH=../src/
 CC=gcc
@@ -58,8 +58,10 @@ else
 		CLIBS=-lpthread -lm
 	endif
 	ifeq ($(UNAME_S),SunOS)
-		CC=cc
-		CFLAGS+= -DSOLARIS -g -v -xc99 -I ../include/ -mt  
+		CFLAGS+= -DSOLARIS $(OPT) -std=gnu99 -rdynamic
+		#CLIBS=-lpthread -lm
+		#CC=cc
+		#CFLAGS+= -DSOLARIS -g -v -xc99 -I ../include/ -mt  
 		CLIBS=-lm -lsocket -lnsl -lpcre -lrt 
 		LIBNILOREA=-lnilorea
 		EXT=

@@ -10,7 +10,7 @@ EXT=
 VPATH=src
 CFLAGS=
 SRC= n_common.c n_config_file.c n_debug_mem.c n_exceptions.c n_debug_mem.c n_hash.c n_list.c n_log.c n_network.c n_network_msg.c n_nodup_log.c n_pcre.c n_stack.c n_str.c n_thread_pool.c n_time.c n_zlib.c n_user.c
-OPT=-D_XOPEN_SOURCE=600 -D_XOPEN_SOURCE_EXTENTED -fPIC -Og -g -ggdb3 -W -Wall -Wextra -Wcast-align -Wcast-qual -Wdisabled-optimization -Wformat=1 -Winit-self -Wlogical-op -Wmissing-include-dirs -Wredundant-decls -Wstrict-overflow=5 -Wswitch-default -Wundef -std=c11 -Wl,-dead_strip
+OPT=-D_XOPEN_SOURCE=600 -D_XOPEN_SOURCE_EXTENTED -fPIC -g -ggdb3 -W -Wall -Wextra -Wcast-align -Wcast-qual -Wdisabled-optimization -Wformat=1 -Winit-self -Wlogical-op -Wmissing-include-dirs -Wredundant-decls -Wstrict-overflow=5 -Wswitch-default -Wundef -std=c99 -Wl,-dead_strip
 OUTPUT=libnilorea
 LIB=-lnilorea
 PROJECT_NAME= NILOREA_LIBRARY
@@ -63,8 +63,10 @@ else
 		CFLAGS+= -DLINUX -I./include/ $(OPT)
 	endif
 	ifeq ($(UNAME_S),SunOS)
-		CC=cc
-		CFLAGS+= -DSOLARIS -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -g -v -xc99 -I ./include/ -mt -lpcre
+		#CC=cc
+		#CFLAGS+= -DSOLARIS -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -g -v -xc99 -I./include/ -mt -lpcre
+		CC=gcc
+		CFLAGS+= -DSOLARIS -I./include/ $(OPT)
 	endif
 	ifeq "$(shell printf '\#include <allegro5/allegro.h>\nint main(){return 0;}' | $(CC) -x c -Wall -O -o tmp_test_allegro5.obj - > /dev/null 2> /dev/null && echo $$? )" "0"
   		HAVE_ALLEGRO=1
@@ -73,7 +75,7 @@ else
 	endif
 
 obj/%.o: src/%.c
-	$(CC) $(CFLAGS) $(BUILD_NUMBER_LDFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 endif
 
 ifeq ($(HAVE_ALLEGRO),1)

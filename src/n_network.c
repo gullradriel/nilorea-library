@@ -737,11 +737,11 @@ NETWORK *netw_new( int send_list_limit, int recv_list_limit )
  *\brief get sockaddr, IPv4 or IPv6
  *\param sa addrinfo to get
  */
-void *get_in_addr(struct sockaddr *sa)
+char *get_in_addr(struct sockaddr *sa)
 {
 	return sa->sa_family == AF_INET
-		? (void *) &(((struct sockaddr_in*)sa)->sin_addr)
-		: (void *) &(((struct sockaddr_in6*)sa)->sin6_addr);
+		? (char *)&(((struct sockaddr_in *)sa)->sin_addr)
+		: (char *)&(((struct sockaddr_in6 *)sa)->sin6_addr);
 }
 
 
@@ -814,7 +814,10 @@ int netw_set_blocking( NETWORK *netw, unsigned long int is_blocking )
 	char *errmsg = NULL ;
 
 	if( netw -> link . is_blocking == is_blocking )
+    {
+		n_log( LOG_INFO, "socket %d was already in non-blocking mode", netw -> link . sock );
 		return TRUE ;
+    }
 
 #if defined(__linux__) || defined(__sun)
 	int flags = fcntl( netw -> link . sock, F_GETFL, 0 );
@@ -1896,7 +1899,7 @@ NETWORK *netw_accept_from_ex( NETWORK *from, int send_list_limit, int recv_list_
 		if( from -> link . is_blocking  == 1 )
 		{
 			netw_set_blocking( from, 0 );
-			n_log( LOG_DEBUG, "non blocking accept call on %d", from -> link . sock );
+			n_log( LOG_INFO, "changed to non blocking accept call on %d", from -> link . sock );
 		}
 		tmp = accept( from -> link . sock, (struct sockaddr *)&netw -> link . raddr, &sin_size );
 		error = neterrno ;
@@ -1908,7 +1911,7 @@ NETWORK *netw_accept_from_ex( NETWORK *from, int send_list_limit, int recv_list_
 			netw_close( &netw );
 			return NULL;
 		}
-#ifdef __windows__
+#ifdef __windows__ 
 		netw -> link . is_blocking = 0 ;
 #endif // __windows__
 	}
@@ -1972,7 +1975,7 @@ NETWORK *netw_accept_from_ex( NETWORK *from, int send_list_limit, int recv_list_
  */
 NETWORK *netw_accept_from( NETWORK *from )
 {
-	return netw_accept_from_ex( from, -1, -1, 0, NULL );
+	return netw_accept_from_ex( from, 0 , 0 , 0 , NULL );
 } /* network_accept_from( ... ) */
 
 
@@ -1985,7 +1988,7 @@ NETWORK *netw_accept_from( NETWORK *from )
  */
 NETWORK *netw_accept_nonblock_from( NETWORK *from, int blocking )
 {
-	return netw_accept_from_ex( from, -1, -1, blocking, NULL );
+	return netw_accept_from_ex( from, 0 , 0 , blocking , NULL );
 } /* network_accept_from( ... ) */
 
 
@@ -2321,7 +2324,7 @@ void *netw_send_func( void *NET )
 	pthread_exit( 0 );
 
 	/* suppress compiler warning */
-#if !defined( __linux__ ) && !defined( __sun )
+#if !defined( __linux__ ) 
 	return NULL ;
 #endif
 } /* netw_send_func(...) */
@@ -2471,7 +2474,7 @@ void *netw_recv_func( void *NET )
 	pthread_exit( 0 );
 
 	/* suppress compiler warning */
-#if !defined( __linux__ ) && !defined( __sun )
+#if !defined( __linux__ ) 
 	return NULL ;
 #endif
 } /* netw_recv_func(...) */
@@ -2985,7 +2988,10 @@ int netw_pool_remove( NETWORK_POOL *netw_pool, NETWORK *netw )
 		LIST_NODE *node = list_search( netw -> pools, netw );
 		if( node )
 		{
-			remove_list_node( netw -> pools, node, NETWORK_POOL );
+			if( !remove_list_node( netw -> pools, node, NETWORK_POOL ) )
+            {
+	            n_log( LOG_ERR, "Network id %d could not be removed !", netw -> link . sock );
+            }
 		}
 		unlock( netw_pool -> rwlock );
 		n_log( LOG_DEBUG, "Network id %d removed !", netw -> link . sock );

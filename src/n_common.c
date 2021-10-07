@@ -303,7 +303,7 @@ pid_t system_nb(const char * command, int * infp, int * outfp)
 			close(i);
 		}
 		setsid();
-		execl("/bin/sh", "sh", "-c", command, NULL);
+		execl("/bin/sh", "sh", "-c", command, (char *)NULL);
 		_exit(1);
 	}
 
