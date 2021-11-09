@@ -1908,9 +1908,7 @@ NETWORK *netw_accept_from_ex( NETWORK *from, int send_list_limit, int recv_list_
 			netw_close( &netw );
 			return NULL;
 		}
-#ifdef __windows__ 
 		netw -> link . is_blocking = 0 ;
-#endif // __windows__
 	}
 	else
 	{
@@ -1929,10 +1927,11 @@ NETWORK *netw_accept_from_ex( NETWORK *from, int send_list_limit, int recv_list_
 			netw_close( &netw );
 			return NULL;
 		}
-		netw -> link . is_blocking = 1 ;
+		netw -> link . is_blocking = 0 ;
 	}
 
 	netw -> link . sock = tmp ;
+	netw_set_blocking( netw, 1 );
 
 	netw -> link . port = strdup( from -> link . port );
 	Malloc( netw -> link . ip, char, 64 );
