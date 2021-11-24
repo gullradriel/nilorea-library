@@ -1633,7 +1633,7 @@ int netw_wait_close_timed( NETWORK **netw, int timeout )
 		netw_get_state( (*netw), &state, &thr_engine_status );
 		if( countdown == 0 && nb_running > 0 )
 		{
-			n_log( LOG_ERR, "netw %d: %d threads are still running after %d seconds, netw is in state %s (%d)", (*netw) -> link . sock, nb_running , timeout , $(__netw_code_type,toString)(state) , state );
+			n_log( LOG_ERR, "netw %d: %d threads are still running after %d seconds, netw is in state %s (%d)", (*netw) -> link . sock, nb_running , timeout , N_ENUM_ENTRY(__netw_code_type,toString)(state) , state );
 		}
 	}
 
@@ -2144,11 +2144,11 @@ N_STR *netw_wait_msg( NETWORK *netw, long refresh, long timeout )
 
 	if( timed > 0 && timeout <= 0 )
 	{
-		n_log( LOG_ERR , "netw %d state %s (%d): no message after waiting %ds" , netw -> link . sock , $(__netw_code_type,toString)(state) , state , timeout );
+		n_log( LOG_ERR , "netw %d state %s (%d): no message after waiting %ds" , netw -> link . sock , N_ENUM_ENTRY(__netw_code_type,toString)(state) , state , timeout );
 	}
 	else
 	{
-		n_log( LOG_ERR , "netw %d exited with state %s (%d)" , netw -> link . sock , $(__netw_code_type,toString)(state) , state , timeout );
+		n_log( LOG_ERR , "netw %d exited with state %s (%d)" , netw -> link . sock , N_ENUM_ENTRY(__netw_code_type,toString)(state) , state , timeout );
 	}
 
 	return NULL ;

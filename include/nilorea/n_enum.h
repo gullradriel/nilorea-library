@@ -8,7 +8,7 @@
 #include <string.h> // for strcmp
 #include <stdbool.h>
 
-#define $(class, method) class##_##method
+#define N_ENUM_ENTRY(class, method) class##_##method
 
 /* UTILS MACROS */
 #define __N_ENUM_MACRO_ENTRY_CASE(element_name) case element_name:
@@ -39,10 +39,10 @@ enum_name;
 #define __N_ENUM_DECLARE_FUNCTION(__N_ENUM_FUNCTION, enum_name) __N_ENUM_FUNCTION(enum_name); // MACRO for function declaration (just add ; after function)
 
 #define __N_ENUM_FUNCTION_ISVALID(enum_name)\
-	bool $(enum_name, isValid)(enum_name value)
+	bool N_ENUM_ENTRY(enum_name, isValid)(enum_name value)
 
 #define __N_ENUM_FUNCTION_TOSTRING(enum_name)\
-	const char* $(enum_name, toString)(enum_name value)
+	const char* N_ENUM_ENTRY(enum_name, toString)(enum_name value)
 /* MACRO FOR N_ENUMS FUNCTIONS (END) */
 
 /* MACRO FOR N_ENUMS FUNCTIONS DEFINITIONS * PREFIX : __N_ENUM_DEFINE_FUNCTION_ */
