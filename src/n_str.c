@@ -49,7 +49,7 @@ const char *strcasestr(const char *s1, const char *s2)
 void free_nstr_ptr( void *ptr )
 {
     N_STR *strptr = (N_STR *)ptr ;
-    if( strptr )
+    if( ptr && strptr )
     {
         FreeNoLog( strptr -> data );
         FreeNoLog( strptr );

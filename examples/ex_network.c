@@ -238,10 +238,8 @@ int main(int argc, char **argv)
                     netw_unload();
                     exit( -1 );
                 }
+            	pthread_join( netw_thr, NULL );
             }
-
-            pthread_join( netw_thr, NULL );
-
         }
         /* testing with thread pool  && non blocking */
         int error = 0 ;

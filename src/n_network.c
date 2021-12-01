@@ -810,17 +810,12 @@ int netw_set_blocking( NETWORK *netw, unsigned long int is_blocking )
 	int error = 0 ;
 	char *errmsg = NULL ;
 
-	if( netw -> link . is_blocking == is_blocking )
-    {
-		n_log( LOG_INFO, "socket %d was already in non-blocking mode", netw -> link . sock );
-		return TRUE ;
-    }
-
+	
 #if defined(__linux__) || defined(__sun)
 	int flags = fcntl( netw -> link . sock, F_GETFL, 0 );
 	if ( (flags &O_NONBLOCK) && !is_blocking )
 	{
-		n_log( LOG_INFO, "socket %d was already in non-blocking mode", netw -> link . sock );
+		n_log( LOG_DEBUG, "socket %d was already in non-blocking mode", netw -> link . sock );
 		/* in case we missed it, let's update the link mode */
 		netw -> link. is_blocking = 0 ;
 		return TRUE;
@@ -829,7 +824,7 @@ int netw_set_blocking( NETWORK *netw, unsigned long int is_blocking )
 	{
 		/* in case we missed it, let's update the link mode */
 		netw -> link. is_blocking = 1 ;
-		n_log( LOG_INFO, "socket %d was already in non-blocking mode", netw -> link . sock );
+		n_log( LOG_DEBUG, "socket %d was already in blocking mode", netw -> link . sock );
 		return TRUE;
 	}
 	if( fcntl(netw -> link . sock, F_SETFL, is_blocking ? flags ^ O_NONBLOCK : flags | O_NONBLOCK) == -1 )
@@ -840,7 +835,9 @@ int netw_set_blocking( NETWORK *netw, unsigned long int is_blocking )
 		FreeNoLog( errmsg );
 		return FALSE ;
 	}
-#else
+#endif
+
+#if !defined(__linux__) && !defined(__sun)
 	unsigned long int blocking = 1 - is_blocking ;
 	int res = ioctlsocket( netw -> link . sock, FIONBIO, &blocking );
 	error = neterrno ;
@@ -1838,17 +1835,14 @@ NETWORK *netw_accept_from_ex( NETWORK *from, int send_list_limit, int recv_list_
 
 	if( non_blocking > 0 )
 	{
+		int secs = non_blocking/1000 ;
+		int usecs = (non_blocking%1000)*1000;
+		struct timeval select_timeout = { secs , usecs };
+
 		fd_set accept_set ;
-		FD_ZERO( &accept_set );
-		int secs = (non_blocking%1000000) ;
-		int usecs = non_blocking - (secs * 1000000);
-		struct timeval select_timeout ;
-
-		select_timeout . tv_sec = secs ;
-		select_timeout . tv_usec = usecs ;
-
 		FD_SET( from -> link . sock, &accept_set );
-
+		FD_ZERO( &accept_set );
+		
 		int ret = select( from -> link . sock + 1, &accept_set, NULL, NULL, &select_timeout );
 		if( ret == -1 )
 		{
@@ -1856,7 +1850,7 @@ NETWORK *netw_accept_from_ex( NETWORK *from, int send_list_limit, int recv_list_
 			errmsg = netstrerror( error );
 			if( retval != NULL )
 				(*retval) = error ;
-			n_log( LOG_ERR, "Error on select with %d timeout , neterrno: %s", non_blocking, _str( errmsg ) );
+			n_log( LOG_ERR, "Error on select with timeout %ds (%d.%ds), neterrno: %s", non_blocking , secs , usecs , _str( errmsg ) );
 			FreeNoLog( errmsg );
 			netw_close( &netw );
 			return NULL;
@@ -1927,7 +1921,6 @@ NETWORK *netw_accept_from_ex( NETWORK *from, int send_list_limit, int recv_list_
 			netw_close( &netw );
 			return NULL;
 		}
-		netw -> link . is_blocking = 0 ;
 	}
 
 	netw -> link . sock = tmp ;
