@@ -310,8 +310,7 @@ int main(int argc, char **argv)
             {
                 n_log( LOG_ERR, "Error getting back answer from server" );
             }
-            n_log( LOG_NOTICE, "Closing client. See synchronisation on server side..." );
-
+            n_log( LOG_NOTICE, "Closing client in 5 seconds. See synchronisation on server side..." );
             netw_close( &netw );
         }
     }

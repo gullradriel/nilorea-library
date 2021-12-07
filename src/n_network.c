@@ -1908,8 +1908,8 @@ NETWORK *netw_accept_from_ex( NETWORK *from, int send_list_limit, int recv_list_
 	{
 		if( from -> link . is_blocking  == 0 )
 		{
-			n_log( LOG_DEBUG, "blocking accept call on %d", from -> link . sock );
 			netw_set_blocking( from, 1 );
+			n_log( LOG_DEBUG, "changed to blocking accept call on %d", from -> link . sock );
 		}
 		tmp = accept( from -> link . sock, (struct sockaddr *)&netw -> link . raddr, &sin_size );
 		if ( tmp < 0 )
@@ -1924,8 +1924,6 @@ NETWORK *netw_accept_from_ex( NETWORK *from, int send_list_limit, int recv_list_
 	}
 
 	netw -> link . sock = tmp ;
-	netw_set_blocking( netw, 1 );
-
 	netw -> link . port = strdup( from -> link . port );
 	Malloc( netw -> link . ip, char, 64 );
 	if( !netw -> link . ip )
@@ -1934,7 +1932,6 @@ NETWORK *netw_accept_from_ex( NETWORK *from, int send_list_limit, int recv_list_
 		netw_close( &netw );
 		return FALSE ;
 	}
-
 	if( !inet_ntop( netw -> link . raddr . ss_family, get_in_addr( ((struct sockaddr *)&netw -> link . raddr) ), netw -> link . ip, 64 ) )
 	{
 		error = neterrno ;
@@ -1942,12 +1939,7 @@ NETWORK *netw_accept_from_ex( NETWORK *from, int send_list_limit, int recv_list_
 		n_log( LOG_ERR, "inet_ntop: %p , %s", netw -> link . raddr, _str( errmsg ) );
 		FreeNoLog( errmsg );
 	}
-
 	netw_setsockopt( netw, SO_REUSEADDR, 1 );
-
-#ifdef __windows__
-	netw_set_blocking( netw, 1 );
-#endif // __windows__
 
 	netw_set( netw, NETW_SERVER|NETW_RUN|NETW_THR_ENGINE_STOPPED );
 	n_log( LOG_DEBUG, "Connection accepted from %s:%s", netw-> link . ip, netw -> link . port );
