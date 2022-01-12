@@ -1,0 +1,25 @@
+var modules =
+[
+    [ "3D PHYSICS: 3D movement simulations", "group___p_h_y_s_i_c_s.html", "group___p_h_y_s_i_c_s" ],
+    [ ": shortcuts to easy compress/decompress data", "group___z_l_i_b.html", "group___z_l_i_b" ],
+    [ "ALLEGRO5: helpers and api addons", "group___a_l_l_e_g_r_o5.html", "group___a_l_l_e_g_r_o5" ],
+    [ "COMMONS: generally used headers, defines, timers, allocators,...", "group___c_o_m_m_o_n_s.html", "group___c_o_m_m_o_n_s" ],
+    [ "CONFIGFILE: classic config file loading/saving", "group___c_o_n_f_i_g_f_i_l_e.html", "group___c_o_n_f_i_g_f_i_l_e" ],
+    [ "EXCEPTION: C++ style try,catch,endtry,throw", "group___e_x_c_e_p_t_i_o_n.html", "group___e_x_c_e_p_t_i_o_n" ],
+    [ "GAMES: PARTICLES utilities", "group___p_a_r_t_i_c_l_e_s.html", null ],
+    [ "GAMES: game utilities", "group___g_a_m_e_s.html", "group___g_a_m_e_s" ],
+    [ "GFX: graphic mode utilities", "group___g_f_x.html", "group___g_f_x" ],
+    [ "HASH_TABLE: hash table with multiples predefined type", "group___h_a_s_h___t_a_b_l_e.html", "group___h_a_s_h___t_a_b_l_e" ],
+    [ "HEADER: a global header to include all the modules", "group___g_l_o_b_a_l_h_e_a_d_e_r.html", null ],
+    [ "ISOMETRIC: isometric engine, maps, tiles,...", "group___i_s_o_m_e_t_r_i_c.html", "group___i_s_o_m_e_t_r_i_c" ],
+    [ "LIST: generic type list", "group___l_i_s_t.html", "group___l_i_s_t" ],
+    [ "LOGGING: logging to console, to file, to syslog underx", "group___l_o_g.html", "group___l_o_g" ],
+    [ "NETWORK MESSAGE: tools to serialize integers, double, N_STR from and back to a single N_STRmessage", "group___n_e_t_w_o_r_k___m_s_g.html", "group___n_e_t_w_o_r_k___m_s_g" ],
+    [ "NETWORK: connect, accept, send and recv wrappers. Network Queue, thread-safe add/get message, ssl/tls secured communications", "group___n_e_t_w_o_r_k_i_n_g.html", "group___n_e_t_w_o_r_k_i_n_g" ],
+    [ "N_STR: replacement to charstrings with dynamic resizing and boundary checking", "group___n___s_t_r.html", "group___n___s_t_r" ],
+    [ "N_TIME: generally used headers, defines, timers, allocators,...", "group___n___t_i_m_e.html", "group___n___t_i_m_e" ],
+    [ "PCRE: regex matching helpers", "group___p_c_r_e.html", "group___p_c_r_e" ],
+    [ "SIGNALS: signals handling and stack printing", "group___s_i_g_n_a_l_s.html", "group___s_i_g_n_a_l_s" ],
+    [ "STACK: generic type stack", "group___s_t_a_c_k.html", "group___s_t_a_c_k" ],
+    [ "THREADS: tools to create and manage a thread pool", "group___t_h_r_e_a_d_s.html", "group___t_h_r_e_a_d_s" ]
+];

@@ -1,6 +1,7 @@
 HAVE_OPENSSL=0
+HAVE_ALLEGRO=0
 RM=rm -f
-OPT=-D_XOPEN_SOURCE=600 -D_XOPEN_SOURCE_EXTENTED -O0 -g -W -Wall -Wextra -Wcast-align -Wcast-qual -Wdisabled-optimization -Wformat=1 -Winit-self -Wlogical-op -Wmissing-include-dirs -Wredundant-decls -Wstrict-overflow=5 -Wswitch-default -Wundef -Wno-unused
+OPT=-D_XOPEN_SOURCE=600 -D_XOPEN_SOURCE_EXTENTED -g -W -Wall -Wextra -Wcast-align -Wcast-qual -Wdisabled-optimization -Wformat=1 -Winit-self -Wlogical-op -Wmissing-include-dirs -Wredundant-decls -Wstrict-overflow=5 -Wswitch-default -Wundef -Wno-unused
 OPT+= -I../include
 VPATH=../src/
 CC=gcc
@@ -12,62 +13,64 @@ DISABLED_TARGET=ex_monolith$(EXT)
 TARGET=ex_list$(EXT) ex_nstr$(EXT) ex_exceptions$(EXT) ex_hash$(EXT) ex_network$(EXT) ex_configfile$(EXT) ex_pcre$(EXT) ex_threads$(EXT) ex_log$(EXT) ex_common$(EXT) ex_signals$(EXT) ex_debug_mem$(EXT)
 CLIBS=
 
-# TEST IF ALLEGRO IS PRESENT
-ifeq ($(shell printf "#include <allegro5/allegro.h>\nint main(){return 0;}" | $(CC) -x c -Wall -O -o test_deps_lib.test - && echo $$? ),0)
-HAVE_ALLEGRO=1
-else
-HAVE_ALLEGRO=0
-endif
-
 ifeq ($(OS),Windows_NT)
 	CFLAGS+= -std=c11 $(OPT) -D__USE_MINGW_ANSI_STDIO
 	CLIBS= -lpthread -lws2_32 -lm
 	RM= del /Q
 	CC= gcc
 	DEBUGLIB=-limagehlp
-
-ifeq ($(MSYSTEM),MINGW32)
-	RM=rm -f
-	CFLAGS+= -m32 -DARCH32BITS
-	LIBNILOREA=-lnilorea32.a
-	EXT=32.exe
-endif
-ifeq ($(MSYSTEM),MINGW32CB)
-	RM=del /Q
-	CFLAGS+= -m32 -DARCH32BITS
-	LIBNILOREA=-lnilorea32
-	EXT=32.exe
-endif
-
-ifeq ($(MSYSTEM),MINGW64)
-	RM=rm -f
-	CFLAGS+= -DARCH64BITS
-	LIBNILOREA=-lnilorea64
-	EXT=64.exe
-endif
-
-ifeq ($(MSYSTEM),MINGW64CB)
-	RM=del /Q
-	CFLAGS+= -DARCH64BITS
-	LIBNILOREA=-lnilorea64
-	EXT=64.exe
-endif
+	ifeq ($(MSYSTEM),MINGW32)
+		RM=rm -f
+		CFLAGS+= -m32 -DARCH32BITS
+		LIBNILOREA=-lnilorea32.a
+		EXT=32.exe
+	endif
+	ifeq ($(MSYSTEM),MINGW32CB)
+		RM=del /Q
+		CFLAGS+= -m32 -DARCH32BITS
+		LIBNILOREA=-lnilorea32
+		EXT=32.exe
+	endif
+	ifeq ($(MSYSTEM),MINGW64)
+		RM=rm -f
+		CFLAGS+= -DARCH64BITS
+		LIBNILOREA=-lnilorea64
+		EXT=64.exe
+	endif
+	ifeq ($(MSYSTEM),MINGW64CB)
+		RM=del /Q
+		CFLAGS+= -DARCH64BITS
+		LIBNILOREA=-lnilorea64
+		EXT=64.exe
+	endif
+	ifeq "$(shell printf '#include <allegro5/allegro.h>\nint main(){return 0;}' | $(CC) -x c -Wall -O -o tmp_test_allegro5.obj - > /dev/null 2> /dev/null && echo $$? )" "0"
+  		HAVE_ALLEGRO=1
+	else
+	  	HAVE_ALLEGRO=0
+	endif
 else
 	UNAME_S= $(shell uname -s)
 	RM=rm -f
 	CC=gcc
 	EXT=
 	ifeq ($(UNAME_S),Linux)
-	CFLAGS+= -DLINUX $(OPT) -std=gnu99 -rdynamic
-	CLIBS=-lpthread -lm
-endif
-ifeq ($(UNAME_S),SunOS)
-	CC=cc
-	CFLAGS+= -DSOLARIS -g -v -xc99 -I ../include/ -mt  
-	CLIBS=-lm -lsocket -lnsl -lpcre -lrt 
-	LIBNILOREA=-lnilorea
-	EXT=
-endif
+		CFLAGS+= -DLINUX $(OPT) -std=gnu99 -rdynamic
+		CLIBS=-lpthread -lm
+	endif
+	ifeq ($(UNAME_S),SunOS)
+		CFLAGS+= -DSOLARIS $(OPT) -std=gnu99 -rdynamic
+		#CLIBS=-lpthread -lm
+		#CC=cc
+		#CFLAGS+= -DSOLARIS -g -v -xc99 -I ../include/ -mt  
+		CLIBS=-lm -lsocket -lnsl -lpcre -lrt 
+		LIBNILOREA=-lnilorea
+		EXT=
+	endif
+	ifeq "$(shell printf '\#include <allegro5/allegro.h>\nint main(){return 0;}' | $(CC) -x c -Wall -O -o tmp_test_allegro5.obj - > /dev/null 2> /dev/null && echo $$? )" "0"
+  		HAVE_ALLEGRO=1
+	else
+	  	HAVE_ALLEGRO=0
+	endif
 endif
 
 
@@ -135,5 +138,6 @@ ex_debug_mem$(EXT): n_str.o n_hash.o n_log.o n_nodup_log.o n_list.o n_time.o n_c
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(CLIBS)
 
 clean:
-	$(RM) *.o
+	$(RM) *.o 
 	$(RM) $(TARGET)
+	$(RM) tmp_test_allegro5.obj

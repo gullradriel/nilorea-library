@@ -6,15 +6,16 @@
 
 /*! Feature test macro */
 #define _GNU_SOURCE
-
 #include <stdio.h>
+#include <stdarg.h>
+#undef _GNU_SOURCE
+
 #include "nilorea/n_common.h"
 #include "nilorea/n_log.h"
 #include "nilorea/n_str.h"
 #include "nilorea/n_list.h"
 #include "nilorea/n_hash.h"
 
-#undef _GNU_SOURCE
 
 #include "nilorea/n_nodup_log.h"
 
@@ -189,14 +190,14 @@ int check_n_log_dup_indexed( const char *log, const char *file, const char *func
 
     Free( key )
 
-    if( node )
-    {
-        if( strcmp( log, node -> data . string ) == 0 )
+        if( node )
         {
-            return 1 ;
+            if( strcmp( log, node -> data . string ) == 0 )
+            {
+                return 1 ;
+            }
+            return 2 ;
         }
-        return 2 ;
-    }
     return 0 ;
 } /* check_nolog_dup_indexed() */
 
@@ -226,33 +227,33 @@ void _n_nodup_log( int LEVEL, const char *file, const char *func, int line, cons
 
     switch( is_dup )
     {
-    /* new log entry for file,func,line */
-    case 0 :
-        if( _n_nodup_table )
-        {
-            ht_put_string( _n_nodup_table, key, syslogbuffer );
-        }
-        _n_log( LEVEL, file, func, line, "%s", syslogbuffer );
-        break ;
+        /* new log entry for file,func,line */
+        case 0 :
+            if( _n_nodup_table )
+            {
+                ht_put_string( _n_nodup_table, key, syslogbuffer );
+            }
+            _n_log( LEVEL, file, func, line, "%s", syslogbuffer );
+            break ;
 
-    /* exising and same log entry, do nothing (maybe latter we will add a timeout to repeat logging)  */
-    case 1 :
-        break ;
-    /* existing but different entry. We have to refresh and log it one time*/
-    case 2 :
-        node = ht_get_node( _n_nodup_table, key );
-        if( node && node -> data . string )
-        {
-            Free( node -> data . string );
-            node -> data . string = syslogbuffer ;
-        }
-        _n_log( LEVEL, file, func, line, "%s", syslogbuffer );
-        break ;
-    /* no nodup session started, normal loggin */
-    case 3 :
-    default:
-        _n_log( LEVEL, file, func, line, "%s", syslogbuffer );
-        break ;
+            /* exising and same log entry, do nothing (maybe latter we will add a timeout to repeat logging)  */
+        case 1 :
+            break ;
+            /* existing but different entry. We have to refresh and log it one time*/
+        case 2 :
+            node = ht_get_node( _n_nodup_table, key );
+            if( node && node -> data . string )
+            {
+                Free( node -> data . string );
+                node -> data . string = syslogbuffer ;
+            }
+            _n_log( LEVEL, file, func, line, "%s", syslogbuffer );
+            break ;
+            /* no nodup session started, normal loggin */
+        case 3 :
+        default:
+            _n_log( LEVEL, file, func, line, "%s", syslogbuffer );
+            break ;
     }
 
     Free( syslogbuffer );
@@ -286,33 +287,33 @@ void _n_nodup_log_indexed( int LEVEL, const char *prefix, const char *file, cons
 
     switch( is_dup )
     {
-    /* new log entry for file,func,line */
-    case 0 :
-        if( _n_nodup_table )
-        {
-            ht_put_string( _n_nodup_table, key, syslogbuffer );
-        }
-        _n_log( LEVEL, file, func, line, "%s", syslogbuffer );
-        break ;
+        /* new log entry for file,func,line */
+        case 0 :
+            if( _n_nodup_table )
+            {
+                ht_put_string( _n_nodup_table, key, syslogbuffer );
+            }
+            _n_log( LEVEL, file, func, line, "%s", syslogbuffer );
+            break ;
 
-    /* exising and same log entry, do nothing (maybe latter we will add a timeout to repeat logging)  */
-    case 1 :
-        break ;
-    /* existing but different entry. We have to refresh and log it one time*/
-    case 2 :
-        node = ht_get_node( _n_nodup_table, key );
-        if( node && node -> data . string )
-        {
-            Free( node -> data . string );
-            node -> data . string = syslogbuffer ;
-        }
-        _n_log( LEVEL, file, func, line, "%s", syslogbuffer );
-        break ;
-    /* no nodup session started, normal loggin */
-    case 3 :
-    default:
-        _n_log( LEVEL, file, func, line, "%s", syslogbuffer );
-        break ;
+            /* exising and same log entry, do nothing (maybe latter we will add a timeout to repeat logging)  */
+        case 1 :
+            break ;
+            /* existing but different entry. We have to refresh and log it one time*/
+        case 2 :
+            node = ht_get_node( _n_nodup_table, key );
+            if( node && node -> data . string )
+            {
+                Free( node -> data . string );
+                node -> data . string = syslogbuffer ;
+            }
+            _n_log( LEVEL, file, func, line, "%s", syslogbuffer );
+            break ;
+            /* no nodup session started, normal loggin */
+        case 3 :
+        default:
+            _n_log( LEVEL, file, func, line, "%s", syslogbuffer );
+            break ;
 
     }
 

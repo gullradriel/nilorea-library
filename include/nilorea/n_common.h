@@ -25,8 +25,9 @@ extern "C"
 #include <errno.h>
 #include <string.h>
 #include <nilorea/n_log.h>
+#include <nilorea/n_enum.h>
 
-/*! feature test macro */
+	/*! feature test macro */
 #define __EXTENSIONS__
 
 /*! set __windows__ if true */
