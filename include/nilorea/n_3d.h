@@ -62,14 +62,18 @@ typedef struct PHYSICS
     VECTOR3D angular_speed ;
     /*! rax,ray,raz actual angular acceleration */
     VECTOR3D angular_acceleration ;
+    /*! gx , gy , gz gravity */
+    VECTOR3D gravity ;
     /*! ability */
     int can_jump ;
-    /* */
+    /*! size */
     int sz ;
+    /*! optionnal type id */
+    int type ;
 } PHYSICS ;
 
 /* distance between two points */
-double distance( VECTOR3D p1, VECTOR3D p2 );
+double distance( VECTOR3D *p1, VECTOR3D *p2 );
 /* update componant[ it ] of a VECTOR3D */
 int update_physics_position_nb( PHYSICS *object, int it, double delta_t );
 /* update componant[ it ] of a VECTOR3D, reversed time */
@@ -79,7 +83,13 @@ int update_physics_position( PHYSICS *object, double delta_t );
 /* update the position of an object, using the delta time T to reverse update positions */
 int update_physics_position_reverse( PHYSICS *object, double delta_t );
 /* compute if two vector are colliding, storing the resulting point in px */
-int vector_intersect( VECTOR3D p0, VECTOR3D p1, VECTOR3D p2, VECTOR3D p3, VECTOR3D *px );
+int vector_intersect( VECTOR3D *p0, VECTOR3D *p1, VECTOR3D *p2, VECTOR3D *p3, VECTOR3D *px );
+/* dot product */
+double vector_dot_product( VECTOR3D *vec1, VECTOR3D *vec2 );
+/* vector normalize */
+double vector_normalize( VECTOR3D *vec );
+/* vector angle with other vector */
+double vector_angle_between( VECTOR3D *vec1 , VECTOR3D *vec2 );
 
 /*! VECTOR3D copy wrapper */
 #define copy_point( __src_ , __dst_ ) \

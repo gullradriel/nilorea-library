@@ -9,15 +9,17 @@
 #include "math.h"
 
 
-/*!\fn double distance( VECTOR3D p1 , VECTOR3D p2 )
+/*!\fn double distance( VECTOR3D *p1 , VECTOR3D *p2 )
  *\brief compute the distance between two VECTOR3D points
  *\param p1 The first point
  *\param p2 The second point
  *\return The computed distance
  */
-double distance( VECTOR3D p1, VECTOR3D p2 )
+double distance( VECTOR3D *p1, VECTOR3D *p2 )
 {
-    return sqrt( ( p1[ 0 ] - p2[ 0 ] )*( p1[ 0 ] - p2[ 0 ] ) + ( p1[ 1 ] - p2[ 1 ] )*( p1[ 1 ] - p2[ 1 ] ) + ( p1[ 2 ] - p2[ 2 ] )*( p1[ 2 ] - p2[ 2 ] ) );
+    return sqrt( ( (*p1)[ 0 ] - (*p2)[ 0 ] ) * ( (*p1)[ 0 ] - (*p2)[ 0 ] ) +
+		 ( (*p1)[ 1 ] - (*p2)[ 1 ] ) * ( (*p1)[ 1 ] - (*p2)[ 1 ] ) +
+		 ( (*p1)[ 2 ] - (*p2)[ 2 ] ) * ( (*p1)[ 2 ] - (*p2)[ 2 ] ) );
 } /* distance(...) */
 
 
@@ -36,6 +38,7 @@ int update_physics_position_nb( PHYSICS *object, int it, double delta_t )
     object -> speed[ it ] = object -> speed[ it ] + ( object -> acceleration[ it ] * delta_t )/ 1000000.0 ;
     object -> position[ it ] = object -> position[ it ] + ( object -> speed[ it ] * delta_t ) / 1000000.0  + ( object -> acceleration[ it ] * (delta_t / 1000000.0 ) * ( delta_t / 1000000.0 ) ) / 2.0 ;
     object -> angular_speed[ it ] = object -> angular_speed[ it ] + ( object -> angular_acceleration[ it ] * delta_t ) / 1000000.0 ;
+    object -> speed[ it ] = object -> speed[ it ] + ( object -> gravity[ it ] * delta_t ) / 1000000.0 ;
 
     return TRUE ;
 } /* update_physics_position_nb(...) */
@@ -117,7 +120,7 @@ static int same_sign( double a, double b )
 
 
 
-/*!\fn int vector_intersect( VECTOR3D p1 , VECTOR3D p2 , VECTOR3D p3 , VECTOR3D p4 , VECTOR3D *px )
+/*!\fn int vector_intersect( VECTOR3D *p1 , VECTOR3D *p2 , VECTOR3D *p3 , VECTOR3D *p4 , VECTOR3D *px )
  *\brief Compute if two vectors are intersecting or not
  *\param p1 First point of vector 1
  *\param p2 Second poinf of vector 1
@@ -126,7 +129,7 @@ static int same_sign( double a, double b )
  *\param px Storage for the eventual point
  *\return VECTOR3D_DONT_INTERSECT , VECTOR3D_COLLINEAR or VECTOR3D_DO_INTERSECT
  */
-int vector_intersect( VECTOR3D p1, VECTOR3D p2, VECTOR3D p3, VECTOR3D p4, VECTOR3D *px )
+int vector_intersect(  VECTOR3D *p1 , VECTOR3D *p2 , VECTOR3D *p3 , VECTOR3D *p4 , VECTOR3D *px )
 {
     double a1 = 0, a2 = 0, b1 = 0, b2 = 0, c1 = 0, c2 = 0,
            r1 = 0, r2 = 0, r3 = 0, r4 = 0,
@@ -134,13 +137,13 @@ int vector_intersect( VECTOR3D p1, VECTOR3D p2, VECTOR3D p3, VECTOR3D p4, VECTOR
 
     /* Compute a1, b1, c1, where line joining points 1 and 2 is
        "a1 x + b1 y + c1 = 0". */
-    a1 = p2[ 1 ] - p1[ 1 ];
-    b1 = p1[ 0 ] - p2[ 0 ];
-    c1 = (p2[ 0 ] * p1[ 1 ]) - (p1[ 0 ] * p2[ 1 ]);
+    a1 = (*p2)[ 1 ] - (*p1)[ 1 ];
+    b1 = (*p1)[ 0 ] - (*p2)[ 0 ];
+    c1 = ((*p2)[ 0 ] * (*p1)[ 1 ]) - ((*p1)[ 0 ] * (*p2)[ 1 ]);
 
     /* Compute r3 and r4. */
-    r3 = ((a1 * p3[ 0 ]) + (b1 * p3[ 1 ]) + c1);
-    r4 = ((a1 * p4[ 0 ]) + (b1 * p4[ 1 ]) + c1);
+    r3 = ((a1 * (*p3)[ 0 ]) + (b1 * (*p3)[ 1 ]) + c1);
+    r4 = ((a1 * (*p4)[ 0 ]) + (b1 * (*p4)[ 1 ]) + c1);
 
     /* Check signs of r3 and r4. If both point 3 and point 4 lie on
        same side of line 1, the line segments do not intersect. */
@@ -150,13 +153,13 @@ int vector_intersect( VECTOR3D p1, VECTOR3D p2, VECTOR3D p3, VECTOR3D p4, VECTOR
     }
 
     /* Compute a2, b2, c2 */
-    a2 = p4[ 1 ] - p3[ 1 ];
-    b2 = p3[ 0 ] - p4[ 0 ];
-    c2 = (p4[ 0 ] * p3[ 1 ]) - (p3[ 0 ] * p4[ 1 ]);
+    a2 = (*p4)[ 1 ] - (*p3)[ 1 ];
+    b2 = (*p3)[ 0 ] - (*p4)[ 0 ];
+    c2 = ((*p4)[ 0 ] * (*p3)[ 1 ]) - ((*p3)[ 0 ] * (*p4)[ 1 ]);
 
     /* Compute r1 and r2 */
-    r1 = (a2 * p1[ 0 ]) + (b2 * p1[ 1 ]) + c2;
-    r2 = (a2 * p2[ 0 ]) + (b2 * p2[ 1 ]) + c2;
+    r1 = (a2 * (*p1)[ 0 ]) + (b2 * (*p1)[ 1 ]) + c2;
+    r2 = (a2 * (*p2)[ 0 ]) + (b2 * (*p2)[ 1 ]) + c2;
 
     /* Check signs of r1 and r2. If both point 1 and point 2 lie
        on same side of second line segment, the line segments do
@@ -209,3 +212,27 @@ int vector_intersect( VECTOR3D p1, VECTOR3D p2, VECTOR3D p3, VECTOR3D p4, VECTOR
     /* lines_intersect */
     return VECTOR3D_DO_INTERSECT;
 } /* vector_intersect(...) */
+
+
+double vector_dot_prod( VECTOR3D *vec1, VECTOR3D *vec2 )
+{
+    return (*vec1)[ 0 ] * (*vec2)[ 0 ] + (*vec1)[ 1 ] * (*vec2)[ 1 ] + (*vec1)[ 2 ] * (*vec2)[ 2 ];
+}
+
+double vector_normalize( VECTOR3D *vec )
+{
+    double res = 0.0 ;
+    for( int i=0 ; i < 3 ; i++ )
+    {
+        res += pow( (*vec)[ i ] , 2 );
+    }
+    return sqrt( res );
+}
+
+/* RESULT * 180 / M_PI */
+double vector_angle_between( VECTOR3D *vec1 , VECTOR3D *vec2 )
+{
+    return acos( vector_dot_prod( &(*vec1) , &(*vec2) ) / ( vector_normalize( &(*vec1) ) * vector_normalize( &(*vec2) ) ) );
+}
+
+
