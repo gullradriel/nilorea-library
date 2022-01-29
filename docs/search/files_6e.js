@@ -11,6 +11,7 @@ var searchData=
   ['n_5fconfig_5ffile_2ec',['n_config_file.c',['../n__config__file_8c.html',1,'']]],
   ['n_5fconfig_5ffile_2eh',['n_config_file.h',['../n__config__file_8h.html',1,'']]],
   ['n_5fdebug_5flocks_2ec',['n_debug_locks.c',['../n__debug__locks_8c.html',1,'']]],
+  ['n_5fenum_2eh',['n_enum.h',['../n__enum_8h.html',1,'']]],
   ['n_5fexceptions_2ec',['n_exceptions.c',['../n__exceptions_8c.html',1,'']]],
   ['n_5fexceptions_2eh',['n_exceptions.h',['../n__exceptions_8h.html',1,'']]],
   ['n_5fgames_2ec',['n_games.c',['../n__games_8c.html',1,'']]],

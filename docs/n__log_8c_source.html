@@ -244,11 +244,11 @@ $(document).ready(function(){initNavTree('n__log_8c_source.html','');});
 <div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    <a class="code" href="group___c_o_m_m_o_n_s.html#ga4ecf5d80299a4ca1dc13c3a19610db11">__n_assert</a>( file, <span class="keywordflow">return</span> FALSE );</div>
 <div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;</div>
 <div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    <span class="keywordflow">if</span>( !log_file )</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        log_file = fopen( file, <span class="stringliteral">&quot;w&quot;</span> );</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        log_file = fopen( file, <span class="stringliteral">&quot;wa+&quot;</span> );</div>
 <div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    <span class="keywordflow">else</span></div>
 <div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    {</div>
 <div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        fclose( log_file );</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        log_file = fopen( file, <span class="stringliteral">&quot;w&quot;</span> );</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        log_file = fopen( file, <span class="stringliteral">&quot;wa+&quot;</span> );</div>
 <div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    }</div>
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;</div>
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    <a class="code" href="group___l_o_g.html#gacad9b2d55788f46ddde811c986ead9ae">set_log_level</a>( <a class="code" href="group___l_o_g.html#ga69d4676733f5e850f451942b6d901382">LOG_FILE</a> );</div>
@@ -269,238 +269,236 @@ $(document).ready(function(){initNavTree('n__log_8c_source.html','');});
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    <span class="keywordflow">return</span> log_file ;</div>
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;} <span class="comment">/*get_log_level() */</span></div>
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="preprocessor">#ifndef _GNU_SOURCE</span></div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#ifndef _vscprintf</span></div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;<span class="preprocessor"></span><span class="comment">/* For some reason, MSVC fails to honour this #ifndef. */</span></div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;<span class="comment">/* Hence function renamed to _vscprintf_so(). */</span></div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;<span class="keywordtype">int</span> _vscprintf_so(<span class="keyword">const</span> <span class="keywordtype">char</span> * format, va_list pargs)</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;{</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    <span class="keywordtype">int</span> retval;</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    va_list argcopy;</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    va_copy(argcopy, pargs);</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    retval = vsnprintf(NULL, 0, format, argcopy);</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    va_end(argcopy);</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    <span class="keywordflow">return</span> retval;</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;}</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;<span class="preprocessor">#ifndef vasprintf</span></div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;<span class="preprocessor"></span><span class="keywordtype">int</span> vasprintf(<span class="keywordtype">char</span> **strp, <span class="keyword">const</span> <span class="keywordtype">char</span> *fmt, va_list ap)</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;{</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    <span class="keywordtype">long</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> len = _vscprintf_so(fmt, ap);</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    <span class="keywordflow">if</span> (len == -1)</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    <span class="keywordtype">char</span> *str = NULL ;</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    <a class="code" href="group___c_o_m_m_o_n_s.html#ga46bf052fc99248347a1dcf89bc0757c6">Malloc</a>( str, <span class="keywordtype">char</span>, (<span class="keywordtype">size_t</span>) len + 1 );</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    <span class="keywordflow">if</span> (!str)</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    <span class="keywordtype">int</span> r = vsnprintf(str, (<span class="keywordtype">size_t</span>)(len+1), fmt, ap);  <span class="comment">/* &quot;secure&quot; version of vsprintf */</span></div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    <span class="keywordflow">if</span> (r == -1)</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;        <span class="keywordflow">return</span> free(str), -1;</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    *strp = str;</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    <span class="keywordflow">return</span> r;</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;}</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;<span class="preprocessor">#ifndef asprintf</span></div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;<span class="preprocessor"></span><span class="keywordtype">int</span> asprintf(<span class="keywordtype">char</span> *strp[], <span class="keyword">const</span> <span class="keywordtype">char</span> *fmt, ...)</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;{</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    va_list ap;</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    va_start(ap, fmt);</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    <span class="keywordtype">int</span> r = vasprintf(strp, fmt, ap);</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    va_end(ap);</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    <span class="keywordflow">return</span> r;</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;}</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif // _GNU_SOURCE</span></div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;<span class="preprocessor"></span><span class="comment"></span></div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;<span class="comment">/*!\fn void _n_log( int level , const char *file , const char *func , int line , const char *format , ... )</span></div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;<span class="comment"> *\brief Logging function. log( level , const char *format , ... ) is a macro around _log</span></div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;<span class="comment"> *\param level Logging level</span></div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;<span class="comment"> *\param file File containing the emmited log</span></div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;<span class="comment"> *\param func Function emmiting the log</span></div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;<span class="comment"> *\param line Line of the log</span></div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;<span class="comment"> *\param format Format and string of the log, printf style</span></div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00218"></a><span class="lineno"><a class="line" href="group___l_o_g.html#gafbbbfcb9063b9f1454a499dbf98f7a56">  218</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group___l_o_g.html#gafbbbfcb9063b9f1454a499dbf98f7a56">_n_log</a>( <span class="keywordtype">int</span> level, <span class="keyword">const</span> <span class="keywordtype">char</span> *file, <span class="keyword">const</span> <span class="keywordtype">char</span> *func, <span class="keywordtype">int</span> line, <span class="keyword">const</span> <span class="keywordtype">char</span> *format, ... )</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;{</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    FILE *out = NULL ;</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    <span class="keywordflow">if</span>( level == <a class="code" href="group___l_o_g.html#gae3b3638575ad43aa2dba40543dcec45c">LOG_NULL</a> )</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;        return ;</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    <span class="keywordflow">if</span>( !log_file )</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;        out = stderr ;</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;    <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;        out = log_file ;</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="preprocessor">#ifndef _vscprintf</span></div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="preprocessor"></span><span class="comment">/* For some reason, MSVC fails to honour this #ifndef. */</span></div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;<span class="comment">/* Hence function renamed to _vscprintf_so(). */</span></div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;<span class="keywordtype">int</span> _vscprintf_so(<span class="keyword">const</span> <span class="keywordtype">char</span> * format, va_list pargs)</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;{</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    <span class="keywordtype">int</span> retval;</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    va_list argcopy;</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    va_copy(argcopy, pargs);</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    retval = vsnprintf(NULL, 0, format, argcopy);</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    va_end(argcopy);</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    <span class="keywordflow">return</span> retval;</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;}</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;<span class="preprocessor">#ifndef vasprintf</span></div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;<span class="preprocessor"></span><span class="keywordtype">int</span> vasprintf(<span class="keywordtype">char</span> **strp, <span class="keyword">const</span> <span class="keywordtype">char</span> *fmt, va_list ap)</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;{</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    <span class="keywordtype">long</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> len = _vscprintf_so(fmt, ap);</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    <span class="keywordflow">if</span> (len == -1)</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    <span class="keywordtype">char</span> *str = NULL ;</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    <a class="code" href="group___c_o_m_m_o_n_s.html#ga46bf052fc99248347a1dcf89bc0757c6">Malloc</a>( str, <span class="keywordtype">char</span>, (<span class="keywordtype">size_t</span>) len + 1 + <span class="keyword">sizeof</span>( <span class="keywordtype">void</span> *) ); <span class="comment">// len + EndOfString + padding</span></div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    <span class="keywordflow">if</span> (!str)</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    <span class="keywordtype">int</span> r = vsnprintf(str, (<span class="keywordtype">size_t</span>)(len+1), fmt, ap);  <span class="comment">/* &quot;secure&quot; version of vsprintf */</span></div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    <span class="keywordflow">if</span> (r == -1)</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;        <span class="keywordflow">return</span> free(str), -1;</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    *strp = str;</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    <span class="keywordflow">return</span> r;</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;}</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;<span class="preprocessor">#ifndef asprintf</span></div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;<span class="preprocessor"></span><span class="keywordtype">int</span> asprintf(<span class="keywordtype">char</span> *strp[], <span class="keyword">const</span> <span class="keywordtype">char</span> *fmt, ...)</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;{</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    va_list ap;</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    va_start(ap, fmt);</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    <span class="keywordtype">int</span> r = vasprintf(strp, fmt, ap);</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    va_end(ap);</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    <span class="keywordflow">return</span> r;</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;}</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;<span class="preprocessor"></span><span class="comment"></span></div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;<span class="comment">/*!\fn void _n_log( int level , const char *file , const char *func , int line , const char *format , ... )</span></div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;<span class="comment"> *\brief Logging function. log( level , const char *format , ... ) is a macro around _log</span></div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;<span class="comment"> *\param level Logging level</span></div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;<span class="comment"> *\param file File containing the emmited log</span></div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;<span class="comment"> *\param func Function emmiting the log</span></div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;<span class="comment"> *\param line Line of the log</span></div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;<span class="comment"> *\param format Format and string of the log, printf style</span></div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00216"></a><span class="lineno"><a class="line" href="group___l_o_g.html#gafbbbfcb9063b9f1454a499dbf98f7a56">  216</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group___l_o_g.html#gafbbbfcb9063b9f1454a499dbf98f7a56">_n_log</a>( <span class="keywordtype">int</span> level, <span class="keyword">const</span> <span class="keywordtype">char</span> *file, <span class="keyword">const</span> <span class="keywordtype">char</span> *func, <span class="keywordtype">int</span> line, <span class="keyword">const</span> <span class="keywordtype">char</span> *format, ... )</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;{</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    FILE *out = NULL ;</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    <span class="keywordflow">if</span>( level == <a class="code" href="group___l_o_g.html#gae3b3638575ad43aa2dba40543dcec45c">LOG_NULL</a> )</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        return ;</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    <span class="keywordflow">if</span>( !log_file )</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;        out = stderr ;</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;        out = log_file ;</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;    <span class="keywordtype">int</span> log_level = <a class="code" href="group___l_o_g.html#gafeea44ab08778cbff68e91e831d44112">get_log_level</a>();</div>
 <div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;    <span class="keywordtype">int</span> log_level = <a class="code" href="group___l_o_g.html#gafeea44ab08778cbff68e91e831d44112">get_log_level</a>();</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    <span class="keywordflow">if</span>( level &lt;= log_level )</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    {</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;        va_list args ;</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;        <span class="keywordtype">char</span> *syslogbuffer = NULL ;</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;        <span class="keywordtype">char</span> *eventbuffer = NULL ;</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;<span class="preprocessor">#ifdef __windows__</span></div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;<span class="preprocessor"></span>        <span class="keywordtype">size_t</span> needed = 0 ;</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;        <span class="keywordtype">char</span> *name = <span class="stringliteral">&quot;NULL&quot;</span> ;</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;        <span class="keywordflow">if</span>( <a class="code" href="n__log_8c.html#a2935a9f42014b138d8e8cf7de161450c">proc_name</a> )</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;            name = <a class="code" href="n__log_8c.html#a2935a9f42014b138d8e8cf7de161450c">proc_name</a> ;</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;        <span class="keywordflow">switch</span>( LOG_TYPE )</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;        {</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="group___l_o_g.html#ga22d57c47fac1ff91517133741592cc01">LOG_SYSJRNL</a> :</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;            va_start (args, format);</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;            vasprintf( &amp;syslogbuffer, format, args );</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;            va_end( args );</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;<span class="preprocessor">#ifdef __windows__</span></div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;<span class="preprocessor"></span>            needed = (<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> long)snprintf( NULL, 0, <span class="stringliteral">&quot;start /B EventCreate /t %s /id 666 /l APPLICATION /so %s /d \&quot;%s\&quot; &gt; NUL 2&gt;&amp;1&quot;</span>, prioritynames[ level ] . w_name, name, syslogbuffer );</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;            <a class="code" href="group___c_o_m_m_o_n_s.html#ga46bf052fc99248347a1dcf89bc0757c6">Malloc</a>( eventbuffer, <span class="keywordtype">char</span>, needed + 4 );</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;            sprintf( eventbuffer, <span class="stringliteral">&quot;start /B EventCreate /t %s /id 666 /l APPLICATION /so %s /d \&quot;%s\&quot; &gt; NUL 2&gt;&amp;1&quot;</span>, prioritynames[ level ] . w_name, name, syslogbuffer );</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;            system( eventbuffer );</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;<span class="preprocessor"></span>            syslog( level, <span class="stringliteral">&quot;%s-&gt;%s:%d %s&quot;</span>, file, func, line, syslogbuffer );</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;<span class="preprocessor"></span>            <a class="code" href="group___c_o_m_m_o_n_s.html#ga079dc7a6a7e7c54bb714d8bb2afdd022">FreeNoLog</a>( syslogbuffer );</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;            <a class="code" href="group___c_o_m_m_o_n_s.html#ga079dc7a6a7e7c54bb714d8bb2afdd022">FreeNoLog</a>( eventbuffer );</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;            break ;</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;        <span class="keywordflow">default</span>:</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;            fprintf( out, <span class="stringliteral">&quot;%s:%jd:%s-&gt;%s:%d &quot;</span>, prioritynames[ level ] . c_name, (intmax_t)time( NULL ), file, func, line  );</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;            va_start (args, format);</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;            vfprintf( out, format, args );</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;            va_end( args );</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;            fprintf( out, <span class="stringliteral">&quot;\n&quot;</span> );</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;            break ;</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;        }</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;        fflush( out );</div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    }</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;}  <span class="comment">/* _n_log( ... ) */</span></div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;</div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;<span class="comment">/*!\fn open_safe_logging( TS_LOG **log , char *pathname , char *opt )</span></div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;<span class="comment"> *\brief Open a thread-safe logging file</span></div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;<span class="comment"> *\param log A TS_LOG handler</span></div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;<span class="comment"> *\param pathname The file path (if any) and name</span></div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;<span class="comment"> *\param opt Options for opening (please never forget to use &quot;w&quot;)</span></div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;<span class="comment"> *\return TRUE on success , FALSE on error , -1000 if already open</span></div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00282"></a><span class="lineno"><a class="line" href="group___l_o_g.html#ga51d76a6d03860ab048a2f09eabc27f9a">  282</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="group___l_o_g.html#ga51d76a6d03860ab048a2f09eabc27f9a">open_safe_logging</a>( <a class="code" href="struct_t_s___l_o_g.html">TS_LOG</a> **log, <span class="keywordtype">char</span> *pathname, <span class="keywordtype">char</span> *opt )</div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;{</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;    <span class="keywordflow">if</span>( (*log) )</div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;    {</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;</div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;        <span class="keywordflow">if</span>( (*log) -&gt; file )</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;            <span class="keywordflow">return</span> -1000; <span class="comment">/* already open */</span></div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;        <span class="keywordflow">return</span> FALSE;</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    }</div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;    <span class="keywordflow">if</span>( !pathname )</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;        <span class="keywordflow">return</span> FALSE; <span class="comment">/* no path/filename */</span></div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;    <span class="keywordflow">if</span>( level &lt;= log_level )</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;    {</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;        va_list args ;</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;        <span class="keywordtype">char</span> *syslogbuffer = NULL ;</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;        <span class="keywordtype">char</span> *eventbuffer = NULL ;</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;<span class="preprocessor">#ifdef __windows__</span></div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;<span class="preprocessor"></span>        <span class="keywordtype">size_t</span> needed = 0 ;</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;        <span class="keywordtype">char</span> *name = <span class="stringliteral">&quot;NULL&quot;</span> ;</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;        <span class="keywordflow">if</span>( <a class="code" href="n__log_8c.html#a2935a9f42014b138d8e8cf7de161450c">proc_name</a> )</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;            name = <a class="code" href="n__log_8c.html#a2935a9f42014b138d8e8cf7de161450c">proc_name</a> ;</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;        <span class="keywordflow">switch</span>( LOG_TYPE )</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;        {</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="group___l_o_g.html#ga22d57c47fac1ff91517133741592cc01">LOG_SYSJRNL</a> :</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;            va_start (args, format);</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;            vasprintf( &amp;syslogbuffer, format, args );</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;            va_end( args );</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;<span class="preprocessor">#ifdef __windows__</span></div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;<span class="preprocessor"></span>            needed = (<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> long)snprintf( NULL, 0, <span class="stringliteral">&quot;start /B EventCreate /t %s /id 666 /l APPLICATION /so %s /d \&quot;%s\&quot; &gt; NUL 2&gt;&amp;1&quot;</span>, prioritynames[ level ] . w_name, name, syslogbuffer );</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;            <a class="code" href="group___c_o_m_m_o_n_s.html#ga46bf052fc99248347a1dcf89bc0757c6">Malloc</a>( eventbuffer, <span class="keywordtype">char</span>, needed + 4 );</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;            sprintf( eventbuffer, <span class="stringliteral">&quot;start /B EventCreate /t %s /id 666 /l APPLICATION /so %s /d \&quot;%s\&quot; &gt; NUL 2&gt;&amp;1&quot;</span>, prioritynames[ level ] . w_name, name, syslogbuffer );</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;            system( eventbuffer );</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;<span class="preprocessor"></span>            syslog( level, <span class="stringliteral">&quot;%s-&gt;%s:%d %s&quot;</span>, file, func, line, syslogbuffer );</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;<span class="preprocessor"></span>            <a class="code" href="group___c_o_m_m_o_n_s.html#ga079dc7a6a7e7c54bb714d8bb2afdd022">FreeNoLog</a>( syslogbuffer );</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;            <a class="code" href="group___c_o_m_m_o_n_s.html#ga079dc7a6a7e7c54bb714d8bb2afdd022">FreeNoLog</a>( eventbuffer );</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;            break ;</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;        <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;            fprintf( out, <span class="stringliteral">&quot;%s:%jd:%s-&gt;%s:%d &quot;</span>, prioritynames[ level ] . c_name, (intmax_t)time( NULL ), file, func, line  );</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;            va_start (args, format);</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;            vfprintf( out, format, args );</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;            va_end( args );</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;            fprintf( out, <span class="stringliteral">&quot;\n&quot;</span> );</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;            break ;</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;        }</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;        fflush( out );</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    }</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;}  <span class="comment">/* _n_log( ... ) */</span></div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;<span class="comment">/*!\fn open_safe_logging( TS_LOG **log , char *pathname , char *opt )</span></div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;<span class="comment"> *\brief Open a thread-safe logging file</span></div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;<span class="comment"> *\param log A TS_LOG handler</span></div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;<span class="comment"> *\param pathname The file path (if any) and name</span></div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;<span class="comment"> *\param opt Options for opening (please never forget to use &quot;w&quot;)</span></div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;<span class="comment"> *\return TRUE on success , FALSE on error , -1000 if already open</span></div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00280"></a><span class="lineno"><a class="line" href="group___l_o_g.html#ga51d76a6d03860ab048a2f09eabc27f9a">  280</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="group___l_o_g.html#ga51d76a6d03860ab048a2f09eabc27f9a">open_safe_logging</a>( <a class="code" href="struct_t_s___l_o_g.html">TS_LOG</a> **log, <span class="keywordtype">char</span> *pathname, <span class="keywordtype">char</span> *opt )</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;{</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;    <span class="keywordflow">if</span>( (*log) )</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;    {</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;        <span class="keywordflow">if</span>( (*log) -&gt; file )</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;            <span class="keywordflow">return</span> -1000; <span class="comment">/* already open */</span></div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;        <span class="keywordflow">return</span> FALSE;</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;    }</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    <span class="keywordflow">if</span>( !pathname )</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;        <span class="keywordflow">return</span> FALSE; <span class="comment">/* no path/filename */</span></div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    <a class="code" href="group___c_o_m_m_o_n_s.html#ga46bf052fc99248347a1dcf89bc0757c6">Malloc</a>( (*log), <a class="code" href="struct_t_s___l_o_g.html">TS_LOG</a>, 1 );</div>
 <div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;    <a class="code" href="group___c_o_m_m_o_n_s.html#ga46bf052fc99248347a1dcf89bc0757c6">Malloc</a>( (*log), <a class="code" href="struct_t_s___l_o_g.html">TS_LOG</a>, 1 );</div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;    <span class="keywordflow">if</span>( !(*log) )</div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;        <span class="keywordflow">return</span> FALSE;</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;    <span class="keywordflow">if</span>( !(*log) )</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;        <span class="keywordflow">return</span> FALSE;</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    pthread_mutex_init( &amp;(*log) -&gt; LOG_MUTEX, NULL );</div>
 <div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;    pthread_mutex_init( &amp;(*log) -&gt; LOG_MUTEX, NULL );</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;    (*log) -&gt; file = fopen( pathname, opt );</div>
 <div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    (*log) -&gt; file = fopen( pathname, opt );</div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;</div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;    <span class="keywordflow">if</span>( !(*log) -&gt; file )</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;        <span class="keywordflow">return</span> FALSE;</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    <span class="keywordflow">if</span>( !(*log) -&gt; file )</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;        <span class="keywordflow">return</span> FALSE;</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;    <span class="keywordflow">return</span> TRUE;</div>
 <div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    <span class="keywordflow">return</span> TRUE;</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;}<span class="comment">/* open_safe_logging(...) */</span></div>
 <div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;}<span class="comment">/* open_safe_logging(...) */</span></div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;<span class="comment">/*!\fn write_safe_log( TS_LOG *log , char *pat , ... )</span></div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;<span class="comment"> *\brief write to a thread-safe logging file</span></div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;<span class="comment"> *\param log A TS_LOG handler</span></div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;<span class="comment"> *\param pat Pattern for writting (i.e &quot;%d %d %s&quot;)</span></div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;<span class="comment"> *\return TRUE on success, FALSE on error</span></div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00321"></a><span class="lineno"><a class="line" href="group___l_o_g.html#ga4351d7c5fb7f3464480aebb763b70d69">  321</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="group___l_o_g.html#ga4351d7c5fb7f3464480aebb763b70d69">write_safe_log</a>( <a class="code" href="struct_t_s___l_o_g.html">TS_LOG</a> *log, <span class="keywordtype">char</span> *pat, ... )</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;{</div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;    <span class="comment">/* argument list */</span></div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;    va_list arg;</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;    <span class="keywordtype">char</span> str[2048] = <span class="stringliteral">&quot;&quot;</span> ;</div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    <span class="keywordflow">if</span>( !log )</div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;        <span class="keywordflow">return</span> FALSE;</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;<span class="comment">/*!\fn write_safe_log( TS_LOG *log , char *pat , ... )</span></div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;<span class="comment"> *\brief write to a thread-safe logging file</span></div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;<span class="comment"> *\param log A TS_LOG handler</span></div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;<span class="comment"> *\param pat Pattern for writting (i.e &quot;%d %d %s&quot;)</span></div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;<span class="comment"> *\return TRUE on success, FALSE on error</span></div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00319"></a><span class="lineno"><a class="line" href="group___l_o_g.html#ga4351d7c5fb7f3464480aebb763b70d69">  319</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="group___l_o_g.html#ga4351d7c5fb7f3464480aebb763b70d69">write_safe_log</a>( <a class="code" href="struct_t_s___l_o_g.html">TS_LOG</a> *log, <span class="keywordtype">char</span> *pat, ... )</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;{</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    <span class="comment">/* argument list */</span></div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;    va_list arg;</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;    <span class="keywordtype">char</span> str[2048] = <span class="stringliteral">&quot;&quot;</span> ;</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;    <span class="keywordflow">if</span>( !log )</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;        <span class="keywordflow">return</span> FALSE;</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;    va_start( arg, pat );</div>
 <div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;</div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    va_start( arg, pat );</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    vsnprintf( str, <span class="keyword">sizeof</span>(str), pat, arg );</div>
 <div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;</div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;    vsnprintf( str, <span class="keyword">sizeof</span>(str), pat, arg );</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;    va_end( arg );</div>
 <div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;</div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;    va_end( arg );</div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;</div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;    pthread_mutex_lock( &amp;log -&gt; LOG_MUTEX );</div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;    fprintf( log -&gt; file, <span class="stringliteral">&quot;%s&quot;</span>, str );</div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;    fflush( log -&gt; file );</div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;    pthread_mutex_unlock( &amp;log -&gt; LOG_MUTEX );</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;    pthread_mutex_lock( &amp;log -&gt; LOG_MUTEX );</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;    fprintf( log -&gt; file, <span class="stringliteral">&quot;%s&quot;</span>, str );</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;    fflush( log -&gt; file );</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;    pthread_mutex_unlock( &amp;log -&gt; LOG_MUTEX );</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;    <span class="keywordflow">return</span> TRUE;</div>
 <div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;</div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;    <span class="keywordflow">return</span> TRUE;</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;} <span class="comment">/* write_safe_log( ... ) */</span></div>
 <div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;</div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;} <span class="comment">/* write_safe_log( ... ) */</span></div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;</div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;<span class="comment">/*!\fn close_safe_logging( TS_LOG *log )</span></div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;<span class="comment"> *\brief close a thread-safe logging file</span></div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;<span class="comment"> *\param log A TS_LOG handler</span></div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;<span class="comment"> *\return TRUE on success, FALSE on error</span></div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00352"></a><span class="lineno"><a class="line" href="group___l_o_g.html#gab0f29a8f3d807e2738376cd0bd657eb0">  352</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="group___l_o_g.html#gab0f29a8f3d807e2738376cd0bd657eb0">close_safe_logging</a>( <a class="code" href="struct_t_s___l_o_g.html">TS_LOG</a> *log )</div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;{</div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;    <span class="keywordflow">if</span>( !log )</div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;        <span class="keywordflow">return</span> FALSE;</div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;</div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;    pthread_mutex_lock( &amp;log -&gt; LOG_MUTEX );</div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;    fflush( log -&gt; file );</div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;    pthread_mutex_unlock( &amp;log -&gt; LOG_MUTEX );</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;<span class="comment">/*!\fn close_safe_logging( TS_LOG *log )</span></div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;<span class="comment"> *\brief close a thread-safe logging file</span></div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;<span class="comment"> *\param log A TS_LOG handler</span></div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;<span class="comment"> *\return TRUE on success, FALSE on error</span></div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00350"></a><span class="lineno"><a class="line" href="group___l_o_g.html#gab0f29a8f3d807e2738376cd0bd657eb0">  350</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="group___l_o_g.html#gab0f29a8f3d807e2738376cd0bd657eb0">close_safe_logging</a>( <a class="code" href="struct_t_s___l_o_g.html">TS_LOG</a> *log )</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;{</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;    <span class="keywordflow">if</span>( !log )</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;        <span class="keywordflow">return</span> FALSE;</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;    pthread_mutex_lock( &amp;log -&gt; LOG_MUTEX );</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;    fflush( log -&gt; file );</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;    pthread_mutex_unlock( &amp;log -&gt; LOG_MUTEX );</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;    pthread_mutex_destroy( &amp;log -&gt; LOG_MUTEX );</div>
 <div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;</div>
-<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;    pthread_mutex_destroy( &amp;log -&gt; LOG_MUTEX );</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;    fclose( log -&gt; file );</div>
 <div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;</div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;    fclose( log -&gt; file );</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;    <span class="keywordflow">return</span> TRUE;</div>
 <div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;</div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;    <span class="keywordflow">return</span> TRUE;</div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;</div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;}<span class="comment">/* close_safe_logging( ...) */</span></div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;}<span class="comment">/* close_safe_logging( ...) */</span></div>
 <div class="ttc" id="struct_l_o_g___l_e_v_e_l_s_html_ac609a011c82b9d6b7b8af900f5d602a8"><div class="ttname"><a href="struct_l_o_g___l_e_v_e_l_s.html#ac609a011c82b9d6b7b8af900f5d602a8">LOG_LEVELS::c_name</a></div><div class="ttdeci">char * c_name</div><div class="ttdoc">string of log type </div><div class="ttdef"><b>Definition:</b> <a href="n__log_8c_source.html#l00024">n_log.c:24</a></div></div>
-<div class="ttc" id="group___c_o_m_m_o_n_s_html_ga46bf052fc99248347a1dcf89bc0757c6"><div class="ttname"><a href="group___c_o_m_m_o_n_s.html#ga46bf052fc99248347a1dcf89bc0757c6">Malloc</a></div><div class="ttdeci">#define Malloc(__ptr, __struct, __size)</div><div class="ttdoc">Malloc Handler to get errors and set to 0. </div><div class="ttdef"><b>Definition:</b> <a href="n__common_8h_source.html#l00179">n_common.h:179</a></div></div>
+<div class="ttc" id="group___c_o_m_m_o_n_s_html_ga46bf052fc99248347a1dcf89bc0757c6"><div class="ttname"><a href="group___c_o_m_m_o_n_s.html#ga46bf052fc99248347a1dcf89bc0757c6">Malloc</a></div><div class="ttdeci">#define Malloc(__ptr, __struct, __size)</div><div class="ttdoc">Malloc Handler to get errors and set to 0. </div><div class="ttdef"><b>Definition:</b> <a href="n__common_8h_source.html#l00180">n_common.h:180</a></div></div>
 <div class="ttc" id="group___l_o_g_html_gae3b3638575ad43aa2dba40543dcec45c"><div class="ttname"><a href="group___l_o_g.html#gae3b3638575ad43aa2dba40543dcec45c">LOG_NULL</a></div><div class="ttdeci">#define LOG_NULL</div><div class="ttdoc">no log output </div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00026">n_log.h:26</a></div></div>
 <div class="ttc" id="group___l_o_g_html_ga69d4676733f5e850f451942b6d901382"><div class="ttname"><a href="group___l_o_g.html#ga69d4676733f5e850f451942b6d901382">LOG_FILE</a></div><div class="ttdeci">#define LOG_FILE</div><div class="ttdoc">internal, logging to file </div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00028">n_log.h:28</a></div></div>
 <div class="ttc" id="group___l_o_g_html_gaeb4f36db01bd128c7afeac5889dac311"><div class="ttname"><a href="group___l_o_g.html#gaeb4f36db01bd128c7afeac5889dac311">LOG_INFO</a></div><div class="ttdeci">#define LOG_INFO</div><div class="ttdoc">informational </div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00063">n_log.h:63</a></div></div>
 <div class="ttc" id="group___l_o_g_html_ga22d57c47fac1ff91517133741592cc01"><div class="ttname"><a href="group___l_o_g.html#ga22d57c47fac1ff91517133741592cc01">LOG_SYSJRNL</a></div><div class="ttdeci">#define LOG_SYSJRNL</div><div class="ttdoc">to sysjrnl </div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00032">n_log.h:32</a></div></div>
 <div class="ttc" id="group___l_o_g_html_gaa6e90002990bd6fe70bf367456dc7d08"><div class="ttname"><a href="group___l_o_g.html#gaa6e90002990bd6fe70bf367456dc7d08">LOG_STDERR</a></div><div class="ttdeci">#define LOG_STDERR</div><div class="ttdoc">internal, default LOG_TYPE </div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00030">n_log.h:30</a></div></div>
-<div class="ttc" id="group___l_o_g_html_ga51d76a6d03860ab048a2f09eabc27f9a"><div class="ttname"><a href="group___l_o_g.html#ga51d76a6d03860ab048a2f09eabc27f9a">open_safe_logging</a></div><div class="ttdeci">int open_safe_logging(TS_LOG **log, char *pathname, char *opt)</div><div class="ttdoc">Open a thread-safe logging file. </div><div class="ttdef"><b>Definition:</b> <a href="n__log_8c_source.html#l00282">n_log.c:282</a></div></div>
+<div class="ttc" id="group___l_o_g_html_ga51d76a6d03860ab048a2f09eabc27f9a"><div class="ttname"><a href="group___l_o_g.html#ga51d76a6d03860ab048a2f09eabc27f9a">open_safe_logging</a></div><div class="ttdeci">int open_safe_logging(TS_LOG **log, char *pathname, char *opt)</div><div class="ttdoc">Open a thread-safe logging file. </div><div class="ttdef"><b>Definition:</b> <a href="n__log_8c_source.html#l00280">n_log.c:280</a></div></div>
 <div class="ttc" id="struct_l_o_g___l_e_v_e_l_s_html_a3496162d689b6d0cc531b00dcafee2be"><div class="ttname"><a href="struct_l_o_g___l_e_v_e_l_s.html#a3496162d689b6d0cc531b00dcafee2be">LOG_LEVELS::c_val</a></div><div class="ttdeci">int c_val</div><div class="ttdoc">numeric value of log type </div><div class="ttdef"><b>Definition:</b> <a href="n__log_8c_source.html#l00026">n_log.c:26</a></div></div>
 <div class="ttc" id="n__log_8c_html_aafaa8b5e94a1838d3f4c4c5a9e98f1b9"><div class="ttname"><a href="n__log_8c.html#aafaa8b5e94a1838d3f4c4c5a9e98f1b9">LOG_LEVELS</a></div><div class="ttdeci">struct LOG_LEVELS LOG_LEVELS</div><div class="ttdoc">internal struct to handle log types </div></div>
 <div class="ttc" id="group___l_o_g_html_ga6b48448b4bb689cc55c6a7267daf77ca"><div class="ttname"><a href="group___l_o_g.html#ga6b48448b4bb689cc55c6a7267daf77ca">close_sysjrnl</a></div><div class="ttdeci">void close_sysjrnl(void)</div><div class="ttdoc">Close syslog connection or clean internals for event log. </div><div class="ttdef"><b>Definition:</b> <a href="n__log_8c_source.html#l00083">n_log.c:83</a></div></div>
-<div class="ttc" id="group___l_o_g_html_gafbbbfcb9063b9f1454a499dbf98f7a56"><div class="ttname"><a href="group___l_o_g.html#gafbbbfcb9063b9f1454a499dbf98f7a56">_n_log</a></div><div class="ttdeci">void _n_log(int level, const char *file, const char *func, int line, const char *format,...)</div><div class="ttdoc">Logging function. </div><div class="ttdef"><b>Definition:</b> <a href="n__log_8c_source.html#l00218">n_log.c:218</a></div></div>
+<div class="ttc" id="group___l_o_g_html_gafbbbfcb9063b9f1454a499dbf98f7a56"><div class="ttname"><a href="group___l_o_g.html#gafbbbfcb9063b9f1454a499dbf98f7a56">_n_log</a></div><div class="ttdeci">void _n_log(int level, const char *file, const char *func, int line, const char *format,...)</div><div class="ttdoc">Logging function. </div><div class="ttdef"><b>Definition:</b> <a href="n__log_8c_source.html#l00216">n_log.c:216</a></div></div>
 <div class="ttc" id="group___l_o_g_html_gacad9b2d55788f46ddde811c986ead9ae"><div class="ttname"><a href="group___l_o_g.html#gacad9b2d55788f46ddde811c986ead9ae">set_log_level</a></div><div class="ttdeci">void set_log_level(const int log_level)</div><div class="ttdoc">Set the global log level value ( static int LOG_LEVEL ) </div><div class="ttdef"><b>Definition:</b> <a href="n__log_8c_source.html#l00097">n_log.c:97</a></div></div>
 <div class="ttc" id="group___l_o_g_html_gac6b2ac31cb51857d1a8e16fccb9613a7"><div class="ttname"><a href="group___l_o_g.html#gac6b2ac31cb51857d1a8e16fccb9613a7">get_log_file</a></div><div class="ttdeci">FILE * get_log_file(void)</div><div class="ttdoc">return the current log_file </div><div class="ttdef"><b>Definition:</b> <a href="n__log_8c_source.html#l00160">n_log.c:160</a></div></div>
-<div class="ttc" id="group___l_o_g_html_ga4351d7c5fb7f3464480aebb763b70d69"><div class="ttname"><a href="group___l_o_g.html#ga4351d7c5fb7f3464480aebb763b70d69">write_safe_log</a></div><div class="ttdeci">int write_safe_log(TS_LOG *log, char *pat,...)</div><div class="ttdoc">write to a thread-safe logging file </div><div class="ttdef"><b>Definition:</b> <a href="n__log_8c_source.html#l00321">n_log.c:321</a></div></div>
+<div class="ttc" id="group___l_o_g_html_ga4351d7c5fb7f3464480aebb763b70d69"><div class="ttname"><a href="group___l_o_g.html#ga4351d7c5fb7f3464480aebb763b70d69">write_safe_log</a></div><div class="ttdeci">int write_safe_log(TS_LOG *log, char *pat,...)</div><div class="ttdoc">write to a thread-safe logging file </div><div class="ttdef"><b>Definition:</b> <a href="n__log_8c_source.html#l00319">n_log.c:319</a></div></div>
 <div class="ttc" id="group___l_o_g_html_gac83aa9829ddf0d169e2890ef63052b52"><div class="ttname"><a href="group___l_o_g.html#gac83aa9829ddf0d169e2890ef63052b52">set_log_file</a></div><div class="ttdeci">int set_log_file(char *file)</div><div class="ttdoc">Set the logging to a file instead of stderr. </div><div class="ttdef"><b>Definition:</b> <a href="n__log_8c_source.html#l00135">n_log.c:135</a></div></div>
 <div class="ttc" id="struct_l_o_g___l_e_v_e_l_s_html"><div class="ttname"><a href="struct_l_o_g___l_e_v_e_l_s.html">LOG_LEVELS</a></div><div class="ttdoc">internal struct to handle log types </div><div class="ttdef"><b>Definition:</b> <a href="n__log_8c_source.html#l00021">n_log.c:21</a></div></div>
 <div class="ttc" id="struct_t_s___l_o_g_html"><div class="ttname"><a href="struct_t_s___l_o_g.html">TS_LOG</a></div><div class="ttdoc">ThreadSafe LOGging structure. </div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00081">n_log.h:81</a></div></div>
 <div class="ttc" id="group___l_o_g_html_ga12b2a3bb9e3adfeb35b4e5514e7d9043"><div class="ttname"><a href="group___l_o_g.html#ga12b2a3bb9e3adfeb35b4e5514e7d9043">LOG_ALERT</a></div><div class="ttdeci">#define LOG_ALERT</div><div class="ttdoc">action must be taken immediately </div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00053">n_log.h:53</a></div></div>
 <div class="ttc" id="struct_l_o_g___l_e_v_e_l_s_html_abe396fe7169ae2341fdbfee87ecf389d"><div class="ttname"><a href="struct_l_o_g___l_e_v_e_l_s.html#abe396fe7169ae2341fdbfee87ecf389d">LOG_LEVELS::w_name</a></div><div class="ttdeci">char * w_name</div><div class="ttdoc">event log value </div><div class="ttdef"><b>Definition:</b> <a href="n__log_8c_source.html#l00028">n_log.c:28</a></div></div>
 <div class="ttc" id="n__log_8c_html_a2935a9f42014b138d8e8cf7de161450c"><div class="ttname"><a href="n__log_8c.html#a2935a9f42014b138d8e8cf7de161450c">proc_name</a></div><div class="ttdeci">char * proc_name</div><div class="ttdoc">static proc name, for windows event log </div><div class="ttdef"><b>Definition:</b> <a href="n__log_8c_source.html#l00056">n_log.c:56</a></div></div>
-<div class="ttc" id="group___c_o_m_m_o_n_s_html_ga4ecf5d80299a4ca1dc13c3a19610db11"><div class="ttname"><a href="group___c_o_m_m_o_n_s.html#ga4ecf5d80299a4ca1dc13c3a19610db11">__n_assert</a></div><div class="ttdeci">#define __n_assert(__ptr, __ret)</div><div class="ttdoc">macro to assert things </div><div class="ttdef"><b>Definition:</b> <a href="n__common_8h_source.html#l00259">n_common.h:259</a></div></div>
-<div class="ttc" id="group___c_o_m_m_o_n_s_html_ga079dc7a6a7e7c54bb714d8bb2afdd022"><div class="ttname"><a href="group___c_o_m_m_o_n_s.html#ga079dc7a6a7e7c54bb714d8bb2afdd022">FreeNoLog</a></div><div class="ttdeci">#define FreeNoLog(__ptr)</div><div class="ttdoc">Free Handler without log. </div><div class="ttdef"><b>Definition:</b> <a href="n__common_8h_source.html#l00251">n_common.h:251</a></div></div>
+<div class="ttc" id="group___c_o_m_m_o_n_s_html_ga4ecf5d80299a4ca1dc13c3a19610db11"><div class="ttname"><a href="group___c_o_m_m_o_n_s.html#ga4ecf5d80299a4ca1dc13c3a19610db11">__n_assert</a></div><div class="ttdeci">#define __n_assert(__ptr, __ret)</div><div class="ttdoc">macro to assert things </div><div class="ttdef"><b>Definition:</b> <a href="n__common_8h_source.html#l00260">n_common.h:260</a></div></div>
+<div class="ttc" id="group___c_o_m_m_o_n_s_html_ga079dc7a6a7e7c54bb714d8bb2afdd022"><div class="ttname"><a href="group___c_o_m_m_o_n_s.html#ga079dc7a6a7e7c54bb714d8bb2afdd022">FreeNoLog</a></div><div class="ttdeci">#define FreeNoLog(__ptr)</div><div class="ttdoc">Free Handler without log. </div><div class="ttdef"><b>Definition:</b> <a href="n__common_8h_source.html#l00252">n_common.h:252</a></div></div>
 <div class="ttc" id="n__common_8h_html"><div class="ttname"><a href="n__common_8h.html">n_common.h</a></div><div class="ttdoc">common headers and low-level hugly functions &amp;amp; define </div></div>
 <div class="ttc" id="group___l_o_g_html_gad89ee324d180cdcd7defcc709ff9ca42"><div class="ttname"><a href="group___l_o_g.html#gad89ee324d180cdcd7defcc709ff9ca42">LOG_NOTICE</a></div><div class="ttdeci">#define LOG_NOTICE</div><div class="ttdoc">normal but significant condition </div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00061">n_log.h:61</a></div></div>
 <div class="ttc" id="group___l_o_g_html_gaaa731313f5c63e855fefb5f6519c3283"><div class="ttname"><a href="group___l_o_g.html#gaaa731313f5c63e855fefb5f6519c3283">LOG_CRIT</a></div><div class="ttdeci">#define LOG_CRIT</div><div class="ttdoc">critical conditions </div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00055">n_log.h:55</a></div></div>
 <div class="ttc" id="group___l_o_g_html_ga96fad55b3f5adf08c39e4c877cf185e3"><div class="ttname"><a href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a></div><div class="ttdeci">#define LOG_ERR</div><div class="ttdoc">error conditions </div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00057">n_log.h:57</a></div></div>
 <div class="ttc" id="group___l_o_g_html_ga5c6e8b60c2512dfc0e0224d25a61cb2c"><div class="ttname"><a href="group___l_o_g.html#ga5c6e8b60c2512dfc0e0224d25a61cb2c">LOG_EMERG</a></div><div class="ttdeci">#define LOG_EMERG</div><div class="ttdoc">system is unusable </div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00051">n_log.h:51</a></div></div>
-<div class="ttc" id="group___l_o_g_html_gab0f29a8f3d807e2738376cd0bd657eb0"><div class="ttname"><a href="group___l_o_g.html#gab0f29a8f3d807e2738376cd0bd657eb0">close_safe_logging</a></div><div class="ttdeci">int close_safe_logging(TS_LOG *log)</div><div class="ttdoc">close a thread-safe logging file </div><div class="ttdef"><b>Definition:</b> <a href="n__log_8c_source.html#l00352">n_log.c:352</a></div></div>
+<div class="ttc" id="group___l_o_g_html_gab0f29a8f3d807e2738376cd0bd657eb0"><div class="ttname"><a href="group___l_o_g.html#gab0f29a8f3d807e2738376cd0bd657eb0">close_safe_logging</a></div><div class="ttdeci">int close_safe_logging(TS_LOG *log)</div><div class="ttdoc">close a thread-safe logging file </div><div class="ttdef"><b>Definition:</b> <a href="n__log_8c_source.html#l00350">n_log.c:350</a></div></div>
 <div class="ttc" id="group___l_o_g_html_gafeea44ab08778cbff68e91e831d44112"><div class="ttname"><a href="group___l_o_g.html#gafeea44ab08778cbff68e91e831d44112">get_log_level</a></div><div class="ttdeci">int get_log_level(void)</div><div class="ttdoc">Get the global log level value. </div><div class="ttdef"><b>Definition:</b> <a href="n__log_8c_source.html#l00123">n_log.c:123</a></div></div>
 <div class="ttc" id="group___l_o_g_html_ga6ff63e8955665c4a58b1598f2b07c51a"><div class="ttname"><a href="group___l_o_g.html#ga6ff63e8955665c4a58b1598f2b07c51a">LOG_DEBUG</a></div><div class="ttdeci">#define LOG_DEBUG</div><div class="ttdoc">debug-level messages </div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00065">n_log.h:65</a></div></div>
 <div class="ttc" id="group___l_o_g_html_ga3df528b157d8f429cd25113bb6a7e596"><div class="ttname"><a href="group___l_o_g.html#ga3df528b157d8f429cd25113bb6a7e596">open_sysjrnl</a></div><div class="ttdeci">char * open_sysjrnl(char *identity)</div><div class="ttdoc">Open connection to syslog or create internals for event log. </div><div class="ttdef"><b>Definition:</b> <a href="n__log_8c_source.html#l00064">n_log.c:64</a></div></div>
@@ -511,7 +509,7 @@ $(document).ready(function(){initNavTree('n__log_8c_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="n__log_8c.html">n_log.c</a></li>
-    <li class="footer">Generated on Thu Jul 22 2021 11:12:42 for Nilorea Library by
+    <li class="footer">Generated on Sat Jan 29 2022 18:47:32 for Nilorea Library by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.5 </li>
   </ul>

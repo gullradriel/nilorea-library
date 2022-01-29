@@ -11,6 +11,7 @@ var files =
     [ "n_config_file.c", "n__config__file_8c.html", "n__config__file_8c" ],
     [ "n_config_file.h", "n__config__file_8h.html", "n__config__file_8h" ],
     [ "n_debug_locks.c", "n__debug__locks_8c.html", "n__debug__locks_8c" ],
+    [ "n_enum.h", "n__enum_8h.html", "n__enum_8h" ],
     [ "n_exceptions.c", "n__exceptions_8c.html", "n__exceptions_8c" ],
     [ "n_exceptions.h", "n__exceptions_8h.html", "n__exceptions_8h" ],
     [ "n_games.c", "n__games_8c.html", "n__games_8c" ],

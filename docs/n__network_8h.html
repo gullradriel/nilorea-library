@@ -105,7 +105,8 @@ $(document).ready(function(){initNavTree('n__network_8h.html','');});
 <a href="#nested-classes">Data Structures</a> &#124;
 <a href="#define-members">Macros</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">n_network.h File Reference</div>  </div>
 </div><!--header-->
@@ -124,7 +125,7 @@ $(document).ready(function(){initNavTree('n__network_8h.html','');});
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="n__network_8h__incl.png" border="0" usemap="#n__network_8h" alt=""/></div>
 <map name="n__network_8h" id="n__network_8h">
-<area shape="rect" id="node2" href="n__common_8h.html" title="common headers and low&#45;level hugly functions &amp; define " alt="" coords="364,155,471,181"/><area shape="rect" id="node15" href="n__str_8h.html" title="N_STR and string function declaration. " alt="" coords="929,80,993,107"/><area shape="rect" id="node16" href="n__list_8h.html" title="Pointer list structures and definitions. " alt="" coords="641,155,711,181"/><area shape="rect" id="node21" href="n__hash_8h.html" title="Hash functions and table. " alt="" coords="559,80,639,107"/><area shape="rect" id="node9" href="n__log_8h_source.html" title="nilorea/n_log.h" alt="" coords="91,229,209,256"/></map>
+<area shape="rect" id="node2" href="n__common_8h.html" title="common headers and low&#45;level hugly functions &amp; define " alt="" coords="527,155,633,181"/><area shape="rect" id="node17" href="n__str_8h.html" title="N_STR and string function declaration. " alt="" coords="818,80,883,107"/><area shape="rect" id="node18" href="n__list_8h.html" title="Pointer list structures and definitions. " alt="" coords="224,155,293,181"/><area shape="rect" id="node23" href="n__hash_8h.html" title="Hash functions and table. " alt="" coords="463,80,543,107"/><area shape="rect" id="node9" href="n__log_8h_source.html" title="nilorea/n_log.h" alt="" coords="102,229,220,256"/><area shape="rect" id="node14" href="n__enum_8h.html" title="Macro to build enums and their tostring counterparts, a reduced version of https://github.com/FredBienvenu/N_ENUM. " alt="" coords="811,229,945,256"/></map>
 </div>
 </div><div class="textblock"><div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> This graph shows which files directly or indirectly include this file:</div>
@@ -152,90 +153,14 @@ Data Structures</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:ga72bfa45bed60463a02fe636da854ce9f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga72bfa45bed60463a02fe636da854ce9f"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___n_e_t_w_o_r_k_i_n_g.html#ga72bfa45bed60463a02fe636da854ce9f">HEAD_CODE</a>&#160;&#160;&#160;3</td></tr>
-<tr class="memdesc:ga72bfa45bed60463a02fe636da854ce9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">PHP send and receive header size. <br/></td></tr>
-<tr class="separator:ga72bfa45bed60463a02fe636da854ce9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga559af0e5a7ad6c1693c0387eefde89bf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga559af0e5a7ad6c1693c0387eefde89bf"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___n_e_t_w_o_r_k_i_n_g.html#ga559af0e5a7ad6c1693c0387eefde89bf">HEAD_SIZE</a>&#160;&#160;&#160;10</td></tr>
-<tr class="memdesc:ga559af0e5a7ad6c1693c0387eefde89bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">PHP send and receive header size. <br/></td></tr>
-<tr class="separator:ga559af0e5a7ad6c1693c0387eefde89bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7196412c2e0596f957b605048eabbefc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga7196412c2e0596f957b605048eabbefc"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___n_e_t_w_o_r_k_i_n_g.html#ga7196412c2e0596f957b605048eabbefc">NETW_CLIENT</a>&#160;&#160;&#160;2</td></tr>
-<tr class="memdesc:ga7196412c2e0596f957b605048eabbefc"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="struct_n_e_t_w_o_r_k.html" title="Structure of a NETWORK. ">NETWORK</a> -&gt; mode value for a CLIENT (meaning connecting) <br/></td></tr>
-<tr class="separator:ga7196412c2e0596f957b605048eabbefc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8ecff859d1f9d926c103fd5aa18af118"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga8ecff859d1f9d926c103fd5aa18af118"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___n_e_t_w_o_r_k_i_n_g.html#ga8ecff859d1f9d926c103fd5aa18af118">NETW_CRYPTO_MANDATORY</a>&#160;&#160;&#160;4096</td></tr>
-<tr class="memdesc:ga8ecff859d1f9d926c103fd5aa18af118"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flag : encryption is mandatory. <br/></td></tr>
-<tr class="separator:ga8ecff859d1f9d926c103fd5aa18af118"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gacae5a05ad6d9a504e5fe04ba9cd9a5de"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gacae5a05ad6d9a504e5fe04ba9cd9a5de"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___n_e_t_w_o_r_k_i_n_g.html#gacae5a05ad6d9a504e5fe04ba9cd9a5de">NETW_CRYPTO_NEGOCIATE</a>&#160;&#160;&#160;2048</td></tr>
-<tr class="memdesc:gacae5a05ad6d9a504e5fe04ba9cd9a5de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flag : encryption is based on the peers possibilities, selecting the most secure starting from the higher to the lower level. <br/></td></tr>
-<tr class="separator:gacae5a05ad6d9a504e5fe04ba9cd9a5de"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga1286b785923282d01f8005d9cc555ee8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga1286b785923282d01f8005d9cc555ee8"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___n_e_t_w_o_r_k_i_n_g.html#ga1286b785923282d01f8005d9cc555ee8">NETW_CRYPTO_NONE</a>&#160;&#160;&#160;1024</td></tr>
-<tr class="memdesc:ga1286b785923282d01f8005d9cc555ee8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flag : no encryption on connection (default) <br/></td></tr>
-<tr class="separator:ga1286b785923282d01f8005d9cc555ee8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8f3438cf60be70e2ffa7ad2632631d5c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga8f3438cf60be70e2ffa7ad2632631d5c"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___n_e_t_w_o_r_k_i_n_g.html#ga8f3438cf60be70e2ffa7ad2632631d5c">NETW_DESTROY_RECVBUF</a>&#160;&#160;&#160;524288</td></tr>
-<tr class="memdesc:ga8f3438cf60be70e2ffa7ad2632631d5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flag: empty recv buffer. <br/></td></tr>
-<tr class="separator:ga8f3438cf60be70e2ffa7ad2632631d5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga6699d88c0c25b63690e4981c965d500d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga6699d88c0c25b63690e4981c965d500d"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___n_e_t_w_o_r_k_i_n_g.html#ga6699d88c0c25b63690e4981c965d500d">NETW_DESTROY_SENDBUF</a>&#160;&#160;&#160;262144</td></tr>
-<tr class="memdesc:ga6699d88c0c25b63690e4981c965d500d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flag: empty send buffer. <br/></td></tr>
-<tr class="separator:ga6699d88c0c25b63690e4981c965d500d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga451ff225f0d22bcfcbd26963e38b85b5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga451ff225f0d22bcfcbd26963e38b85b5"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___n_e_t_w_o_r_k_i_n_g.html#ga451ff225f0d22bcfcbd26963e38b85b5">NETW_EMPTY_RECVBUF</a>&#160;&#160;&#160;32</td></tr>
-<tr class="memdesc:ga451ff225f0d22bcfcbd26963e38b85b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flag: empty recv buffer. <br/></td></tr>
-<tr class="separator:ga451ff225f0d22bcfcbd26963e38b85b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae90a62748d391e31b2b04a4e0189caf9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gae90a62748d391e31b2b04a4e0189caf9"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___n_e_t_w_o_r_k_i_n_g.html#gae90a62748d391e31b2b04a4e0189caf9">NETW_EMPTY_SENDBUF</a>&#160;&#160;&#160;16</td></tr>
-<tr class="memdesc:gae90a62748d391e31b2b04a4e0189caf9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flag: empty send buffer. <br/></td></tr>
-<tr class="separator:gae90a62748d391e31b2b04a4e0189caf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gadea050f20f571987743a7468654f9095"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gadea050f20f571987743a7468654f9095"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___n_e_t_w_o_r_k_i_n_g.html#gadea050f20f571987743a7468654f9095">NETW_ENCRYPT_NONE</a>&#160;&#160;&#160;8192</td></tr>
-<tr class="memdesc:gadea050f20f571987743a7468654f9095"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flag : set vigenere crypto. <br/></td></tr>
-<tr class="separator:gadea050f20f571987743a7468654f9095"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga1b474bf0f186b5bfdb6a8937c2888a1c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga1b474bf0f186b5bfdb6a8937c2888a1c"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___n_e_t_w_o_r_k_i_n_g.html#ga1b474bf0f186b5bfdb6a8937c2888a1c">NETW_ENCRYPT_OPENSSL</a>&#160;&#160;&#160;32768</td></tr>
-<tr class="memdesc:ga1b474bf0f186b5bfdb6a8937c2888a1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flag : set openssl crypto. <br/></td></tr>
-<tr class="separator:ga1b474bf0f186b5bfdb6a8937c2888a1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga68fa4f5dd47dbd7d57e95bd2f61a2244"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga68fa4f5dd47dbd7d57e95bd2f61a2244"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___n_e_t_w_o_r_k_i_n_g.html#ga68fa4f5dd47dbd7d57e95bd2f61a2244">NETW_ENCRYPT_VIGENERE</a>&#160;&#160;&#160;16384</td></tr>
-<tr class="memdesc:ga68fa4f5dd47dbd7d57e95bd2f61a2244"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flag : set vigenere crypto. <br/></td></tr>
-<tr class="separator:ga68fa4f5dd47dbd7d57e95bd2f61a2244"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaea7a07fc4939d1b292b9e0b8e2788b56"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaea7a07fc4939d1b292b9e0b8e2788b56"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___n_e_t_w_o_r_k_i_n_g.html#gaea7a07fc4939d1b292b9e0b8e2788b56">NETW_ERROR</a>&#160;&#160;&#160;512</td></tr>
-<tr class="memdesc:gaea7a07fc4939d1b292b9e0b8e2788b56"><td class="mdescLeft">&#160;</td><td class="mdescRight">State to signal errors in the network. <br/></td></tr>
-<tr class="separator:gaea7a07fc4939d1b292b9e0b8e2788b56"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga19444439d77323ea90bac356174aaf43"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga19444439d77323ea90bac356174aaf43"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___n_e_t_w_o_r_k_i_n_g.html#ga19444439d77323ea90bac356174aaf43">NETW_EXIT_ASKED</a>&#160;&#160;&#160;128</td></tr>
-<tr class="memdesc:ga19444439d77323ea90bac356174aaf43"><td class="mdescLeft">&#160;</td><td class="mdescRight">State for a <a class="el" href="struct_n_e_t_w_o_r_k.html" title="Structure of a NETWORK. ">NETWORK</a> who want to end/exit connection. <br/></td></tr>
-<tr class="separator:ga19444439d77323ea90bac356174aaf43"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gacf204536a4da222ae12e3751ce564666"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gacf204536a4da222ae12e3751ce564666"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___n_e_t_w_o_r_k_i_n_g.html#gacf204536a4da222ae12e3751ce564666">NETW_EXITED</a>&#160;&#160;&#160;256</td></tr>
-<tr class="memdesc:gacf204536a4da222ae12e3751ce564666"><td class="mdescLeft">&#160;</td><td class="mdescRight">State for a <a class="el" href="struct_n_e_t_w_o_r_k.html" title="Structure of a NETWORK. ">NETWORK</a> that was first asked to exit, then is exited. <br/></td></tr>
-<tr class="separator:gacf204536a4da222ae12e3751ce564666"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gabb9e6e3618fade2c238a72f1ae524fb2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gabb9e6e3618fade2c238a72f1ae524fb2"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___n_e_t_w_o_r_k_i_n_g.html#gabb9e6e3618fade2c238a72f1ae524fb2">NETW_RESTART_TIMER</a>&#160;&#160;&#160;8</td></tr>
-<tr class="memdesc:gabb9e6e3618fade2c238a72f1ae524fb2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flag: start or rester intertal network timing. <br/></td></tr>
-<tr class="separator:gabb9e6e3618fade2c238a72f1ae524fb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga1505df813821ed77893f86f9840817dc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga1505df813821ed77893f86f9840817dc"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___n_e_t_w_o_r_k_i_n_g.html#ga1505df813821ed77893f86f9840817dc">NETW_RUN</a>&#160;&#160;&#160;64</td></tr>
-<tr class="memdesc:ga1505df813821ed77893f86f9840817dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">State for a running <a class="el" href="struct_n_e_t_w_o_r_k.html" title="Structure of a NETWORK. ">NETWORK</a>. <br/></td></tr>
-<tr class="separator:ga1505df813821ed77893f86f9840817dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga6f92cea7e867ef5c336a63b83df99a13"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga6f92cea7e867ef5c336a63b83df99a13"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___n_e_t_w_o_r_k_i_n_g.html#ga6f92cea7e867ef5c336a63b83df99a13">NETW_SERVER</a>&#160;&#160;&#160;4</td></tr>
-<tr class="memdesc:ga6f92cea7e867ef5c336a63b83df99a13"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="struct_n_e_t_w_o_r_k.html" title="Structure of a NETWORK. ">NETWORK</a> -&gt; mode value for a SERVER (meaning listening) <br/></td></tr>
-<tr class="separator:ga6f92cea7e867ef5c336a63b83df99a13"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga53accecec76aca57ea9ad54f687b157d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga53accecec76aca57ea9ad54f687b157d"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___n_e_t_w_o_r_k_i_n_g.html#ga53accecec76aca57ea9ad54f687b157d">NETW_THR_ENGINE_STARTED</a>&#160;&#160;&#160;65536</td></tr>
-<tr class="memdesc:ga53accecec76aca57ea9ad54f687b157d"><td class="mdescLeft">&#160;</td><td class="mdescRight">State for a started threaded network engine. <br/></td></tr>
-<tr class="separator:ga53accecec76aca57ea9ad54f687b157d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga80362a1e0c08a90f4578bafa95f6ce72"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga80362a1e0c08a90f4578bafa95f6ce72"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___n_e_t_w_o_r_k_i_n_g.html#ga80362a1e0c08a90f4578bafa95f6ce72">NETW_THR_ENGINE_STOPPED</a>&#160;&#160;&#160;131072</td></tr>
-<tr class="memdesc:ga80362a1e0c08a90f4578bafa95f6ce72"><td class="mdescLeft">&#160;</td><td class="mdescRight">State for a stopped threaded network engine. <br/></td></tr>
-<tr class="separator:ga80362a1e0c08a90f4578bafa95f6ce72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72bfa45bed60463a02fe636da854ce9f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a72bfa45bed60463a02fe636da854ce9f"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>HEAD_CODE</b>&#160;&#160;&#160;3</td></tr>
+<tr class="separator:a72bfa45bed60463a02fe636da854ce9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a559af0e5a7ad6c1693c0387eefde89bf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a559af0e5a7ad6c1693c0387eefde89bf"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>HEAD_SIZE</b>&#160;&#160;&#160;10</td></tr>
+<tr class="separator:a559af0e5a7ad6c1693c0387eefde89bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3513b0e66667d67528aea6235e43386d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><b>N_ENUM_netw_code_type</b>(_)</td></tr>
+<tr class="separator:ga3513b0e66667d67528aea6235e43386d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gad16e60ea003570b10ba7d7d187a3561c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___n_e_t_w_o_r_k_i_n_g.html#gad16e60ea003570b10ba7d7d187a3561c">netw_unload</a>()&#160;&#160;&#160;<a class="el" href="group___n_e_t_w_o_r_k_i_n_g.html#ga22bc4dd5d80c2229c3c43f6d6705dece">netw_init_wsa</a>( 0 , 2 , 2 )</td></tr>
 <tr class="memdesc:gad16e60ea003570b10ba7d7d187a3561c"><td class="mdescLeft">&#160;</td><td class="mdescRight">WINDOWS ONLY call at program exit.  <a href="group___n_e_t_w_o_r_k_i_n_g.html#gad16e60ea003570b10ba7d7d187a3561c">More...</a><br/></td></tr>
 <tr class="separator:gad16e60ea003570b10ba7d7d187a3561c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -261,10 +186,6 @@ Typedefs</h2></td></tr>
 typedef struct <a class="el" href="struct_n___s_o_c_k_e_t.html">N_SOCKET</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___n_e_t_w_o_r_k_i_n_g.html#gaef02f3d0c62a210a21885e57960b7dd0">N_SOCKET</a></td></tr>
 <tr class="memdesc:gaef02f3d0c62a210a21885e57960b7dd0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure of a <a class="el" href="struct_n___s_o_c_k_e_t.html" title="Structure of a N_SOCKET. ">N_SOCKET</a>. <br/></td></tr>
 <tr class="separator:gaef02f3d0c62a210a21885e57960b7dd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2b9b0cf7eaf9d7e5fc6345fa5b48e2a5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga2b9b0cf7eaf9d7e5fc6345fa5b48e2a5"></a>
-typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___n_e_t_w_o_r_k_i_n_g.html#ga2b9b0cf7eaf9d7e5fc6345fa5b48e2a5">netw_func</a> )(SOCKET, char *, <a class="el" href="group___n___s_t_r.html#ga555af8dd48b4cd567551bf0e13f982c8">NSTRBYTE</a>)</td></tr>
-<tr class="memdesc:ga2b9b0cf7eaf9d7e5fc6345fa5b48e2a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">send/recv func ptr type <br/></td></tr>
-<tr class="separator:ga2b9b0cf7eaf9d7e5fc6345fa5b48e2a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gada93280d0c915237d92d84b1f199e492"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gada93280d0c915237d92d84b1f199e492"></a>
 typedef struct <a class="el" href="struct_n_e_t_w_o_r_k.html">NETWORK</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___n_e_t_w_o_r_k_i_n_g.html#gada93280d0c915237d92d84b1f199e492">NETWORK</a></td></tr>
 <tr class="memdesc:gada93280d0c915237d92d84b1f199e492"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure of a <a class="el" href="struct_n_e_t_w_o_r_k.html" title="Structure of a NETWORK. ">NETWORK</a>. <br/></td></tr>
@@ -276,6 +197,9 @@ typedef struct <a class="el" href="struct_n_e_t_w_o_r_k___p_o_o_l.html">NETWORK_
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:ga9089d5c5a2b1746d62fe1ed67414b14f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___n_e_t_w_o_r_k_i_n_g.html#ga9089d5c5a2b1746d62fe1ed67414b14f">N_ENUM_DECLARE</a> (N_ENUM_netw_code_type, __netw_code_type) typedef int(*netw_func)(SOCKET</td></tr>
+<tr class="memdesc:ga9089d5c5a2b1746d62fe1ed67414b14f"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="struct_n_e_t_w_o_r_k.html" title="Structure of a NETWORK. ">NETWORK</a> -&gt; mode value for a CLIENT (meaning connecting)  <a href="group___n_e_t_w_o_r_k_i_n_g.html#ga9089d5c5a2b1746d62fe1ed67414b14f">More...</a><br/></td></tr>
+<tr class="separator:ga9089d5c5a2b1746d62fe1ed67414b14f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf21b84460e80c7853bcb8321d7c53065"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_n_e_t_w_o_r_k.html">NETWORK</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___n_e_t_w_o_r_k_i_n_g.html#gaf21b84460e80c7853bcb8321d7c53065">netw_accept_from</a> (<a class="el" href="struct_n_e_t_w_o_r_k.html">NETWORK</a> *from)</td></tr>
 <tr class="memdesc:gaf21b84460e80c7853bcb8321d7c53065"><td class="mdescLeft">&#160;</td><td class="mdescRight">make a normal blocking 'accept' .  <a href="group___n_e_t_w_o_r_k_i_n_g.html#gaf21b84460e80c7853bcb8321d7c53065">More...</a><br/></td></tr>
 <tr class="separator:gaf21b84460e80c7853bcb8321d7c53065"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -399,6 +323,12 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>netw_set_user_id</b> (
 <tr class="memitem:ga0f3aa54a82aed45e85124acbd7af6a29"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___n_e_t_w_o_r_k_i_n_g.html#ga0f3aa54a82aed45e85124acbd7af6a29">send_php</a> (SOCKET s, int _code, char *buf, int n)</td></tr>
 <tr class="memdesc:ga0f3aa54a82aed45e85124acbd7af6a29"><td class="mdescLeft">&#160;</td><td class="mdescRight">send data onto the socket  <a href="group___n_e_t_w_o_r_k_i_n_g.html#ga0f3aa54a82aed45e85124acbd7af6a29">More...</a><br/></td></tr>
 <tr class="separator:ga0f3aa54a82aed45e85124acbd7af6a29"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:ga751f6683d1f598d46ce3f0ca6eff56b6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga751f6683d1f598d46ce3f0ca6eff56b6"></a>
+char&#160;</td><td class="memItemRight" valign="bottom"><b>NSTRBYTE</b></td></tr>
+<tr class="separator:ga751f6683d1f598d46ce3f0ca6eff56b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Network Engine. </p>
@@ -413,7 +343,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>netw_set_user_id</b> (
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_310dcdd4703e877a6b99d5dc3fc54d27.html">nilorea</a></li><li class="navelem"><a class="el" href="n__network_8h.html">n_network.h</a></li>
-    <li class="footer">Generated on Thu Jul 22 2021 11:12:43 for Nilorea Library by
+    <li class="footer">Generated on Sat Jan 29 2022 18:47:32 for Nilorea Library by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.5 </li>
   </ul>

@@ -21,9 +21,9 @@ N_ENUM_DEFINE( N_ENUM_netw_code_type , __netw_code_type )
 
 #ifdef __windows__
 
-/*
- * From https://stackoverflow.com/questions/3019977/convert-wchar-t-to-char/55715607#55715607 by Richard Bamford
- */
+	/*
+	 * From https://stackoverflow.com/questions/3019977/convert-wchar-t-to-char/55715607#55715607 by Richard Bamford
+	 */
 char* wchar_to_char(const wchar_t* pwchar)
 {
 	// get the number of characters in the string.
@@ -810,7 +810,7 @@ int netw_set_blocking( NETWORK *netw, unsigned long int is_blocking )
 	int error = 0 ;
 	char *errmsg = NULL ;
 
-	
+
 #if defined(__linux__) || defined(__sun)
 	int flags = fcntl( netw -> link . sock, F_GETFL, 0 );
 	if ( (flags &O_NONBLOCK) && !is_blocking )
@@ -1842,7 +1842,7 @@ NETWORK *netw_accept_from_ex( NETWORK *from, int send_list_limit, int recv_list_
 		fd_set accept_set ;
 		FD_SET( from -> link . sock, &accept_set );
 		FD_ZERO( &accept_set );
-		
+
 		int ret = select( from -> link . sock + 1, &accept_set, NULL, NULL, &select_timeout );
 		if( ret == -1 )
 		{
@@ -2970,9 +2970,9 @@ int netw_pool_remove( NETWORK_POOL *netw_pool, NETWORK *netw )
 		if( node )
 		{
 			if( !remove_list_node( netw -> pools, node, NETWORK_POOL ) )
-            {
-	            n_log( LOG_ERR, "Network id %d could not be removed !", netw -> link . sock );
-            }
+			{
+				n_log( LOG_ERR, "Network id %d could not be removed !", netw -> link . sock );
+			}
 		}
 		unlock( netw_pool -> rwlock );
 		n_log( LOG_DEBUG, "Network id %d removed !", netw -> link . sock );
@@ -2996,7 +2996,7 @@ int netw_pool_broadcast( NETWORK_POOL *netw_pool, NETWORK *from, N_STR *net_msg 
 
 	/* write lock the pool */
 	read_lock( netw_pool -> rwlock );
-	ht_foreach( node, netw_pool -> pool )
+	ht_foreach( node , netw_pool -> pool )
 	{
 		NETWORK *netw = hash_val( node, NETWORK );
 		if( from )

@@ -120,11 +120,19 @@ $(document).ready(function(){initNavTree('struct_h_a_s_h___n_o_d_e.html','');});
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="struct_h_a_s_h___n_o_d_e__coll__graph.png" border="0" usemap="#_h_a_s_h___n_o_d_e_coll__map" alt="Collaboration graph"/></div>
 <map name="_h_a_s_h___n_o_d_e_coll__map" id="_h_a_s_h___n_o_d_e_coll__map">
-<area shape="rect" id="node4" href="union_h_a_s_h___v_a_l_u_e.html" title="union of the value of a node " alt="" coords="155,147,261,224"/></map>
+<area shape="rect" id="node5" href="union_h_a_s_h___v_a_l_u_e.html" title="union of the value of a node " alt="" coords="349,147,455,224"/></map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
+<tr class="memitem:a06a89d17175949c04ad28897baf2a1be"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a06a89d17175949c04ad28897baf2a1be"></a>
+uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_h_a_s_h___n_o_d_e.html#a06a89d17175949c04ad28897baf2a1be">alphabet_length</a></td></tr>
+<tr class="memdesc:a06a89d17175949c04ad28897baf2a1be"><td class="mdescLeft">&#160;</td><td class="mdescRight">HASH_TRIE mode: size of alphabet and so size of children allocated array. <br/></td></tr>
+<tr class="separator:a06a89d17175949c04ad28897baf2a1be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac4fb9aa602717ff4e9c06b49ce648803"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac4fb9aa602717ff4e9c06b49ce648803"></a>
+struct <a class="el" href="struct_h_a_s_h___n_o_d_e.html">HASH_NODE</a> **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_h_a_s_h___n_o_d_e.html#ac4fb9aa602717ff4e9c06b49ce648803">children</a></td></tr>
+<tr class="memdesc:ac4fb9aa602717ff4e9c06b49ce648803"><td class="mdescLeft">&#160;</td><td class="mdescRight">HASH_TRIE mode: pointers to children. <br/></td></tr>
+<tr class="separator:ac4fb9aa602717ff4e9c06b49ce648803"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a64156acdfb776968152ebb5bd01901af"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a64156acdfb776968152ebb5bd01901af"></a>
 union <a class="el" href="union_h_a_s_h___v_a_l_u_e.html">HASH_VALUE</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_h_a_s_h___n_o_d_e.html#a64156acdfb776968152ebb5bd01901af">data</a></td></tr>
 <tr class="memdesc:a64156acdfb776968152ebb5bd01901af"><td class="mdescLeft">&#160;</td><td class="mdescRight">data inside the node <br/></td></tr>
@@ -137,10 +145,18 @@ void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 unsigned long int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_h_a_s_h___n_o_d_e.html#aa75a7b03514e6a939ef38d9c79845737">hash_value</a></td></tr>
 <tr class="memdesc:aa75a7b03514e6a939ef38d9c79845737"><td class="mdescLeft">&#160;</td><td class="mdescRight">numeric key of the node if any, else &lt; 0 <br/></td></tr>
 <tr class="separator:aa75a7b03514e6a939ef38d9c79845737"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a39060513f4af39aedef416fec38296"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3a39060513f4af39aedef416fec38296"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_h_a_s_h___n_o_d_e.html#a3a39060513f4af39aedef416fec38296">is_leaf</a></td></tr>
+<tr class="memdesc:a3a39060513f4af39aedef416fec38296"><td class="mdescLeft">&#160;</td><td class="mdescRight">HASH_TRIE mode: does it have a value. <br/></td></tr>
+<tr class="separator:a3a39060513f4af39aedef416fec38296"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2c219363728255e08c112ef10506fb68"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2c219363728255e08c112ef10506fb68"></a>
 char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_h_a_s_h___n_o_d_e.html#a2c219363728255e08c112ef10506fb68">key</a></td></tr>
 <tr class="memdesc:a2c219363728255e08c112ef10506fb68"><td class="mdescLeft">&#160;</td><td class="mdescRight">string key of the node if any, else NULL <br/></td></tr>
 <tr class="separator:a2c219363728255e08c112ef10506fb68"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a242a1f7255fc836bb1395079e1c0016b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a242a1f7255fc836bb1395079e1c0016b"></a>
+char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_h_a_s_h___n_o_d_e.html#a242a1f7255fc836bb1395079e1c0016b">key_id</a></td></tr>
+<tr class="memdesc:a242a1f7255fc836bb1395079e1c0016b"><td class="mdescLeft">&#160;</td><td class="mdescRight">key id of the node if any <br/></td></tr>
+<tr class="separator:a242a1f7255fc836bb1395079e1c0016b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1b488aad2fd7b94ebb4c09dc76cebcda"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1b488aad2fd7b94ebb4c09dc76cebcda"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_h_a_s_h___n_o_d_e.html#a1b488aad2fd7b94ebb4c09dc76cebcda">key_type</a></td></tr>
 <tr class="memdesc:a1b488aad2fd7b94ebb4c09dc76cebcda"><td class="mdescLeft">&#160;</td><td class="mdescRight">type of the key <br/></td></tr>
@@ -153,7 +169,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struc
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>structure of a hash table node </p>
 
-<p>Definition at line <a class="el" href="n__hash_8h_source.html#l00080">80</a> of file <a class="el" href="n__hash_8h_source.html">n_hash.h</a>.</p>
+<p>Definition at line <a class="el" href="n__hash_8h_source.html#l00083">83</a> of file <a class="el" href="n__hash_8h_source.html">n_hash.h</a>.</p>
 </div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li><a class="el" href="n__hash_8h_source.html">n_hash.h</a></li>
 </ul>
@@ -163,7 +179,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struc
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="struct_h_a_s_h___n_o_d_e.html">HASH_NODE</a></li>
-    <li class="footer">Generated on Thu Jul 22 2021 11:12:43 for Nilorea Library by
+    <li class="footer">Generated on Sat Jan 29 2022 18:47:33 for Nilorea Library by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.5 </li>
   </ul>

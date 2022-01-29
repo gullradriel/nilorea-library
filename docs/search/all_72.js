@@ -20,6 +20,7 @@ var searchData=
   ['rhost',['rhost',['../struct_n___s_o_c_k_e_t.html#a091a70428cc5ad4d98cab3bf50d3bd9b',1,'N_SOCKET']]],
   ['right_5fattack',['right_attack',['../struct_g_a_m_e___e_n_v.html#aacabb3a45734f030083fd043f61e95e9',1,'GAME_ENV']]],
   ['right_5fattack_5fpos',['right_attack_pos',['../struct_g_a_m_e___e_n_v.html#af2386c1538136333703226460d02fa4b',1,'GAME_ENV']]],
+  ['root',['root',['../struct_h_a_s_h___t_a_b_l_e.html#a4031706df3cb7933765e247a63ba461a',1,'HASH_TABLE']]],
   ['rotl32',['ROTL32',['../group___h_a_s_h___t_a_b_l_e.html#gab32bb365c62dcb0da675e248b7e814a9',1,'n_hash.h']]],
   ['running',['RUNNING',['../group___c_o_m_m_o_n_s.html#ga6fb7181d994ee98e735494be55809708',1,'n_common.h']]],
   ['running_5fproc',['RUNNING_PROC',['../group___t_h_r_e_a_d_s.html#ga928be77c90a9b28e1931431b5eac113b',1,'n_thread_pool.h']]],

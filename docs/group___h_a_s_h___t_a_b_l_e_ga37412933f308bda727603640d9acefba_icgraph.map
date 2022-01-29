@@ -1,19 +1,18 @@
 <map id="MurmurHash3_x86_32" name="MurmurHash3_x86_32">
-<area shape="rect" id="node2" href="$group___h_a_s_h___t_a_b_l_e.html#ga1be4f5c5c4296b9fa21a729eb01bb7c3" title="return the associated key&#39;s node inside the hash_table " alt="" coords="227,223,330,250"/>
-<area shape="rect" id="node14" href="$group___h_a_s_h___t_a_b_l_e.html#ga70893a1e40d3fd0f9e04f8112ac5beac" title="put a double value with given key in the targeted hash table " alt="" coords="221,324,336,351"/>
-<area shape="rect" id="node15" href="$group___h_a_s_h___t_a_b_l_e.html#ga99a6e2c71abc8ba946bedc4278aeef27" title="put an integral value with given key in the targeted hash table " alt="" coords="235,375,322,402"/>
-<area shape="rect" id="node16" href="$group___h_a_s_h___t_a_b_l_e.html#ga59a63e27a615643df1e58e7cbd5fc262" title="put a pointer value with given key in the targeted hash table " alt="" coords="235,274,323,300"/>
-<area shape="rect" id="node17" href="$group___h_a_s_h___t_a_b_l_e.html#ga7f307bb48bebaca6f5e563760ef40ecd" title="put a null terminated char *string with given key in the targeted hash table " alt="" coords="427,96,533,123"/>
-<area shape="rect" id="node18" href="$group___h_a_s_h___t_a_b_l_e.html#ga8d8873be47a634ad8a386e61f12a1f53" title="Remove a key from a hash table. " alt="" coords="233,426,325,452"/>
-<area shape="rect" id="node3" href="$group___l_o_g.html#ga650828539395216dd2f4f28da5131c42" title="Logging function. " alt="" coords="654,46,765,72"/>
-<area shape="rect" id="node4" href="$group___l_o_g.html#gacbf9e2a1400ab6f00a30186d9a5c4683" title="Logging function. " alt="" coords="624,147,795,174"/>
-<area shape="rect" id="node5" href="$n__nodup__log_8c.html#abd498f389d9af3ed61abe8a27d16c9ee" title="check if a log was already done or not at the given line, func, file " alt="" coords="413,46,547,72"/>
-<area shape="rect" id="node6" href="$n__nodup__log_8c.html#a43e324b2382fb23043d7383063fa150f" title="check if a log was already done or not at the given line, func, file " alt="" coords="384,198,576,224"/>
-<area shape="rect" id="node7" href="$group___h_a_s_h___t_a_b_l_e.html#gaaa35befb530f8299abf88af3ee42e6eb" title="Retrieve a double value in the hash table, at the given key. " alt="" coords="423,248,537,275"/>
-<area shape="rect" id="node8" href="$group___h_a_s_h___t_a_b_l_e.html#ga1dad8732deb44eada370325427824b0d" title="Retrieve an integral value in the hash table, at the given key. " alt="" coords="437,299,523,326"/>
-<area shape="rect" id="node9" href="$group___h_a_s_h___t_a_b_l_e.html#gae34a331ccbda86f7e5b2319f1852d6ca" title="Retrieve a pointer value in the hash table, at the given key. " alt="" coords="436,350,524,376"/>
-<area shape="rect" id="node13" href="$group___h_a_s_h___t_a_b_l_e.html#ga1044c61baf3c82c9783fa55bce28b4ae" title="Retrieve a char *string value in the hash table, at the given key. " alt="" coords="427,400,533,427"/>
-<area shape="rect" id="node10" href="$group___c_o_n_f_i_g_f_i_l_e.html#ga71eb7191114e38ce620f26d630cd788e" title="Function to parse sections and get entries values. " alt="" coords="638,298,781,340"/>
-<area shape="rect" id="node11" href="$group___c_o_n_f_i_g_f_i_l_e.html#gaf57bc2bde1a2e2493be7d9e37c3d7da7" title="Get the number of config file with section_name. " alt="" coords="640,364,779,405"/>
-<area shape="rect" id="node12" href="$group___c_o_n_f_i_g_f_i_l_e.html#ga8f4055f3439a5cb5a806f413b0d694bc" title="load a config file " alt="" coords="648,440,771,467"/>
+<area shape="rect" id="node2" href="$n__hash_8c.html#a364dffbf42be500d3266410895694bd8" title="return the associated key&#39;s node inside the hash_table " alt="" coords="221,233,331,260"/>
+<area shape="rect" id="node12" href="$n__hash_8c.html#aa0b7465426719eec2e02cd83e8ac290d" title="Remove a key from a hash table. " alt="" coords="227,385,325,412"/>
+<area shape="rect" id="node13" href="$group___h_a_s_h___t_a_b_l_e.html#ga1be4f5c5c4296b9fa21a729eb01bb7c3" title="return the associated key&#39;s node inside the hash_table " alt="" coords="225,512,327,539"/>
+<area shape="rect" id="node3" href="$n__hash_8c.html#a7ce57bb0fb64ca5ff513c6ade7c26852" title="Retrieve a double value in the hash table, at the given key. " alt="" coords="414,5,535,32"/>
+<area shape="rect" id="node4" href="$n__hash_8c.html#ae7c50bafbc80902f92c27e59d29ffd40" title="Retrieve an integral value in the hash table, at the given key. " alt="" coords="427,56,522,83"/>
+<area shape="rect" id="node5" href="$n__hash_8c.html#a0299747d5cd82effd51fdaec945e80ee" title="Retrieve a pointer value in the hash table, at the given key. " alt="" coords="427,107,522,133"/>
+<area shape="rect" id="node6" href="$n__hash_8c.html#a524a224940bc3ceea122824ca3d4842b" title="Retrieve a char *string value in the hash table, at the given key. " alt="" coords="417,157,532,184"/>
+<area shape="rect" id="node7" href="$n__hash_8c.html#a870d138d5408e20e8111c750cdc77d36" title="put a double value with given key in the targeted hash table " alt="" coords="414,208,535,235"/>
+<area shape="rect" id="node8" href="$n__hash_8c.html#a4713652203bc7965a2dda268ffa1e4d5" title="put an integral value with given key in the targeted hash table " alt="" coords="427,259,522,285"/>
+<area shape="rect" id="node9" href="$n__hash_8c.html#a853357465a1599d42ff6d095aa762424" title="put a pointer value with given key in the targeted hash table " alt="" coords="427,309,522,336"/>
+<area shape="rect" id="node10" href="$n__hash_8c.html#a35ed4b8f492e6265b7cdcc8f380b6130" title="put a null terminated char *string with given key in the targeted hash table (copy of string) ..." alt="" coords="417,360,532,387"/>
+<area shape="rect" id="node11" href="$n__hash_8c.html#a8bfbff53ffcafc65317e2b1041df314f" title="put a null terminated char *string with given key in the targeted hash table (pointer) ..." alt="" coords="405,411,544,437"/>
+<area shape="rect" id="node14" href="$group___l_o_g.html#ga650828539395216dd2f4f28da5131c42" title="Logging function. " alt="" coords="649,500,759,527"/>
+<area shape="rect" id="node15" href="$group___l_o_g.html#gacbf9e2a1400ab6f00a30186d9a5c4683" title="Logging function. " alt="" coords="619,576,789,603"/>
+<area shape="rect" id="node16" href="$n__nodup__log_8c.html#abd498f389d9af3ed61abe8a27d16c9ee" title="check if a log was already done or not at the given line, func, file " alt="" coords="408,512,541,539"/>
+<area shape="rect" id="node17" href="$n__nodup__log_8c.html#a43e324b2382fb23043d7383063fa150f" title="check if a log was already done or not at the given line, func, file " alt="" coords="379,613,571,640"/>
 </map>

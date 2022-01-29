@@ -1,36 +1,31 @@
 <map id="list_empty" name="list_empty">
-<area shape="rect" id="node2" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga425d9f110062f063dc2e9af0212b793d" title="Empty a NETW_MSG *object. " alt="" coords="144,368,243,395"/>
-<area shape="rect" id="node3" href="$group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755" title="Empty and Free a list container. " alt="" coords="144,419,243,445"/>
-<area shape="rect" id="node31" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaa8e1fe7978995197f08aa0ef24a76c33" title="Restart or reset the specified network ability. " alt="" coords="335,691,417,717"/>
-<area shape="rect" id="node4" href="$group___n_e_t_w_o_r_k___m_s_g.html#gadcc2854217553f3a4890973873bdf634" title="Delete a NETW_MSG *object. " alt="" coords="327,183,425,209"/>
-<area shape="rect" id="node13" href="$group___c_o_n_f_i_g_f_i_l_e.html#ga5c6e573bf39871c909dcd71c9bcc13b4" title="Destroy a loaded config file. " alt="" coords="304,419,448,445"/>
-<area shape="rect" id="node14" href="$group___h_a_s_h___t_a_b_l_e.html#ga22a943135dbcdb1611b40ce0547111ce" title="Free and set the table to NULL. " alt="" coords="331,364,421,391"/>
-<area shape="rect" id="node19" href="$group___t_h_r_e_a_d_s.html#ga12ce28c2aaa5a5a1a05abe11071dd83f" title="delete a thread_pool, exit the threads and free the structs " alt="" coords="291,132,461,159"/>
-<area shape="rect" id="node20" href="$group___n_e_t_w_o_r_k_i_n_g.html#gac345c1af1935cebb9ee33edd4c32267a" title="Closing a specified Network, destroy queues, free the structure. " alt="" coords="759,640,854,667"/>
-<area shape="rect" id="node5" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga7f3f5196c913ef29d775d3fbbcaeb476" title="Make a ping message to send to a network. " alt="" coords="517,259,667,285"/>
-<area shape="rect" id="node7" href="$group___n_e_t_w_o_r_k___m_s_g.html#gacbebab8f754ea1a2e225dee3a164e2d8" title="Add a formatted NETWMSG_IDENT message to the specified network. " alt="" coords="515,208,669,235"/>
-<area shape="rect" id="node9" href="$group___n_e_t_w_o_r_k___m_s_g.html#gaf2d84e34e50db7b3b7aca16c6bdb06f8" title="Retrieves identification from netwmsg. " alt="" coords="531,5,653,32"/>
-<area shape="rect" id="node10" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga241bf3b1ebc63dd986dfec1b0fe4998b" title="Retrieves position from netwmsg. " alt="" coords="521,56,663,83"/>
-<area shape="rect" id="node11" href="$group___n_e_t_w_o_r_k___m_s_g.html#gace220d6339bd8085269ecee2b35126fb" title="Retrieves string from netwmsg. " alt="" coords="529,107,655,133"/>
-<area shape="rect" id="node12" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga525ee81a12f526d55b2b380d9338424e" title="Retrieves a ping travel elapsed time. " alt="" coords="533,157,651,184"/>
-<area shape="rect" id="node6" href="$group___n_e_t_w_o_r_k_i_n_g.html#gad9588cf27263ecf40f57d3923ccf721a" title="Add a ping reply to the network. " alt="" coords="743,259,870,285"/>
-<area shape="rect" id="node8" href="$group___n_e_t_w_o_r_k_i_n_g.html#gae8345266fcf7a23c0e8ffe176b0e086f" title="Add a formatted NETWMSG_IDENT message to the specified network. " alt="" coords="741,208,873,235"/>
-<area shape="rect" id="node15" href="$group___l_o_g.html#ga46eca069bfff2be6809828df52d1031d" title="Empty nodup logtable and close the no duplicate logging session. " alt="" coords="527,360,657,387"/>
-<area shape="rect" id="node16" href="$n__config__file_8c.html#abd0a2133de663a5b572ffa99e5273ec2" title="Destroy a config file section. " alt="" coords="520,411,664,453"/>
-<area shape="rect" id="node18" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga5c0996a0b85b32d296c4e679a6eb86c2" title="free a network pool " alt="" coords="519,309,665,336"/>
-<area shape="rect" id="node17" href="$group___c_o_n_f_i_g_f_i_l_e.html#ga8f4055f3439a5cb5a806f413b0d694bc" title="load a config file " alt="" coords="745,419,868,445"/>
-<area shape="rect" id="node21" href="$n__network_8c.html#a9caee75e3a67942e37ccb4de2c889105" title="Return an empty allocated network ready to be netw_closed. " alt="" coords="983,665,1071,692"/>
-<area shape="rect" id="node28" href="$group___n_e_t_w_o_r_k_i_n_g.html#gad02f949dd057ae7dd382f03f9364cac0" title="Modify blocking socket mode. " alt="" coords="955,564,1098,591"/>
-<area shape="rect" id="node25" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga4cef67bc400323306a3d1c1ed5cec17b" title="Use this to connect a NETWORK to any listening one. " alt="" coords="1178,767,1313,793"/>
-<area shape="rect" id="node29" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga995d9aaabaca026d79f15a9823eaebaf" title="Wait for peer closing a specified Network, destroy queues, free the structure. " alt="" coords="939,513,1114,540"/>
-<area shape="rect" id="node27" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga52afd4f5662c9c8f334d224ae2cdbdf2" title="Make a NETWORK be a Listening network. " alt="" coords="1165,716,1326,743"/>
-<area shape="rect" id="node22" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaea0a4d9c8822d25ed88e6554a88cb996" title="make a normal &#39;accept&#39; . " alt="" coords="1163,589,1328,616"/>
-<area shape="rect" id="node23" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaf21b84460e80c7853bcb8321d7c53065" title="make a normal blocking &#39;accept&#39; . " alt="" coords="1409,564,1551,591"/>
-<area shape="rect" id="node24" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga45b053eef50f122d73a1c9b094b5a1d7" title="make a normal blocking &#39;accept&#39; . " alt="" coords="1376,615,1584,641"/>
-<area shape="rect" id="node26" href="$group___n_e_t_w_o_r_k_i_n_g.html#gae18d52a130063ba1fd0a4cf4b6a2da20" title="Use this to connect a NETWORK to any listening one, unrestricted send/recv lists. ..." alt="" coords="1424,767,1536,793"/>
-<area shape="rect" id="node30" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga60beb772aa298f36d1443a28e3ec5ec8" title="Wait for peer closing a specified Network, destroy queues, free the structure. " alt="" coords="1180,513,1311,540"/>
-<area shape="rect" id="node32" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaa3c12701bdb3cd2e1adaa00981ca3cc8" title="Thread send function. " alt="" coords="529,919,655,945"/>
-<area shape="rect" id="node34" href="$group___n_e_t_w_o_r_k_i_n_g.html#gad67570728a69ce2788b8bc9dcaa7c392" title="To Thread Receiving function. " alt="" coords="530,969,654,996"/>
-<area shape="rect" id="node35" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga29159184519b3129c0154b1a2c2a3e2f" title="Stop a NETWORK connection sending and receing thread. " alt="" coords="509,640,675,667"/>
-<area shape="rect" id="node33" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga5ba0555c5ccd261227c3c1216923d563" title="Start the NETWORK netw Threaded Engine. " alt="" coords="723,944,890,971"/>
+<area shape="rect" id="node2" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga425d9f110062f063dc2e9af0212b793d" title="Empty a NETW_MSG *object. " alt="" coords="144,369,243,396"/>
+<area shape="rect" id="node3" href="$group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755" title="Empty and Free a list container. " alt="" coords="144,420,243,447"/>
+<area shape="rect" id="node26" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaa8e1fe7978995197f08aa0ef24a76c33" title="Restart or reset the specified network ability. " alt="" coords="335,499,417,525"/>
+<area shape="rect" id="node4" href="$group___n_e_t_w_o_r_k___m_s_g.html#gadcc2854217553f3a4890973873bdf634" title="Delete a NETW_MSG *object. " alt="" coords="327,157,425,184"/>
+<area shape="rect" id="node13" href="$group___c_o_n_f_i_g_f_i_l_e.html#ga5c6e573bf39871c909dcd71c9bcc13b4" title="Destroy a loaded config file. " alt="" coords="304,369,448,396"/>
+<area shape="rect" id="node14" href="$group___t_h_r_e_a_d_s.html#ga12ce28c2aaa5a5a1a05abe11071dd83f" title="delete a thread_pool, exit the threads and free the structs " alt="" coords="291,420,461,447"/>
+<area shape="rect" id="node15" href="$group___n_e_t_w_o_r_k_i_n_g.html#gac345c1af1935cebb9ee33edd4c32267a" title="Closing a specified Network, destroy queues, free the structure. " alt="" coords="759,448,854,475"/>
+<area shape="rect" id="node5" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga7f3f5196c913ef29d775d3fbbcaeb476" title="Make a ping message to send to a network. " alt="" coords="517,5,667,32"/>
+<area shape="rect" id="node7" href="$group___n_e_t_w_o_r_k___m_s_g.html#gacbebab8f754ea1a2e225dee3a164e2d8" title="Add a formatted NETWMSG_IDENT message to the specified network. " alt="" coords="515,107,669,133"/>
+<area shape="rect" id="node9" href="$group___n_e_t_w_o_r_k___m_s_g.html#gaf2d84e34e50db7b3b7aca16c6bdb06f8" title="Retrieves identification from netwmsg. " alt="" coords="531,157,653,184"/>
+<area shape="rect" id="node10" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga241bf3b1ebc63dd986dfec1b0fe4998b" title="Retrieves position from netwmsg. " alt="" coords="521,208,663,235"/>
+<area shape="rect" id="node11" href="$group___n_e_t_w_o_r_k___m_s_g.html#gace220d6339bd8085269ecee2b35126fb" title="Retrieves string from netwmsg. " alt="" coords="529,259,655,285"/>
+<area shape="rect" id="node12" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga525ee81a12f526d55b2b380d9338424e" title="Retrieves a ping travel elapsed time. " alt="" coords="533,56,651,83"/>
+<area shape="rect" id="node6" href="$group___n_e_t_w_o_r_k_i_n_g.html#gad9588cf27263ecf40f57d3923ccf721a" title="Add a ping reply to the network. " alt="" coords="743,5,870,32"/>
+<area shape="rect" id="node8" href="$group___n_e_t_w_o_r_k_i_n_g.html#gae8345266fcf7a23c0e8ffe176b0e086f" title="Add a formatted NETWMSG_IDENT message to the specified network. " alt="" coords="741,107,873,133"/>
+<area shape="rect" id="node16" href="$n__network_8c.html#a9caee75e3a67942e37ccb4de2c889105" title="Return an empty allocated network ready to be netw_closed. " alt="" coords="983,467,1071,493"/>
+<area shape="rect" id="node23" href="$group___n_e_t_w_o_r_k_i_n_g.html#gad02f949dd057ae7dd382f03f9364cac0" title="Modify blocking socket mode. " alt="" coords="955,416,1098,443"/>
+<area shape="rect" id="node20" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga4cef67bc400323306a3d1c1ed5cec17b" title="Use this to connect a NETWORK to any listening one. " alt="" coords="1178,517,1313,544"/>
+<area shape="rect" id="node24" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga995d9aaabaca026d79f15a9823eaebaf" title="Wait for peer closing a specified Network, destroy queues, free the structure. " alt="" coords="939,315,1114,341"/>
+<area shape="rect" id="node22" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga52afd4f5662c9c8f334d224ae2cdbdf2" title="Make a NETWORK be a Listening network. " alt="" coords="1165,568,1326,595"/>
+<area shape="rect" id="node17" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaea0a4d9c8822d25ed88e6554a88cb996" title="make a normal &#39;accept&#39; . " alt="" coords="1163,391,1328,417"/>
+<area shape="rect" id="node18" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaf21b84460e80c7853bcb8321d7c53065" title="make a normal blocking &#39;accept&#39; . " alt="" coords="1409,416,1551,443"/>
+<area shape="rect" id="node19" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga45b053eef50f122d73a1c9b094b5a1d7" title="make a normal blocking &#39;accept&#39; . " alt="" coords="1376,365,1584,392"/>
+<area shape="rect" id="node21" href="$group___n_e_t_w_o_r_k_i_n_g.html#gae18d52a130063ba1fd0a4cf4b6a2da20" title="Use this to connect a NETWORK to any listening one, unrestricted send/recv lists. ..." alt="" coords="1424,517,1536,544"/>
+<area shape="rect" id="node25" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga60beb772aa298f36d1443a28e3ec5ec8" title="Wait for peer closing a specified Network, destroy queues, free the structure. " alt="" coords="1180,315,1311,341"/>
+<area shape="rect" id="node27" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaa3c12701bdb3cd2e1adaa00981ca3cc8" title="Thread send function. " alt="" coords="529,720,655,747"/>
+<area shape="rect" id="node29" href="$group___n_e_t_w_o_r_k_i_n_g.html#gad67570728a69ce2788b8bc9dcaa7c392" title="To Thread Receiving function. " alt="" coords="530,771,654,797"/>
+<area shape="rect" id="node30" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga29159184519b3129c0154b1a2c2a3e2f" title="Stop a NETWORK connection sending and receing thread. " alt="" coords="509,499,675,525"/>
+<area shape="rect" id="node28" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga5ba0555c5ccd261227c3c1216923d563" title="Start the NETWORK netw Threaded Engine. " alt="" coords="723,745,890,772"/>
 </map>

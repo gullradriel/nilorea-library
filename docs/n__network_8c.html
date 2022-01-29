@@ -114,6 +114,8 @@ $(document).ready(function(){initNavTree('n__network_8c.html','');});
 <div class="textblock"><code>#include &lt;errno.h&gt;</code><br/>
 <code>#include &lt;limits.h&gt;</code><br/>
 <code>#include &lt;pthread.h&gt;</code><br/>
+<code>#include &lt;unistd.h&gt;</code><br/>
+<code>#include &lt;string.h&gt;</code><br/>
 <code>#include &lt;sys/types.h&gt;</code><br/>
 <code>#include &quot;<a class="el" href="n__network_8h_source.html">nilorea/n_network.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="n__network__msg_8h_source.html">nilorea/n_network_msg.h</a>&quot;</code><br/>
@@ -127,7 +129,7 @@ $(document).ready(function(){initNavTree('n__network_8c.html','');});
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="n__network_8c__incl.png" border="0" usemap="#n__network_8c" alt=""/></div>
 <map name="n__network_8c" id="n__network_8c">
-<area shape="rect" id="node6" href="n__network_8h.html" title="Network Engine. " alt="" coords="341,80,491,107"/><area shape="rect" id="node25" href="n__network__msg_8h.html" title="network messages declaration Network Engine " alt="" coords="665,80,852,107"/><area shape="rect" id="node12" href="n__log_8h_source.html" title="nilorea/n_log.h" alt="" coords="1074,304,1192,331"/><area shape="rect" id="node23" href="n__hash_8h.html" title="Hash functions and table. " alt="" coords="248,155,328,181"/><area shape="rect" id="node7" href="n__common_8h.html" title="common headers and low&#45;level hugly functions &amp; define " alt="" coords="347,229,453,256"/><area shape="rect" id="node17" href="n__str_8h.html" title="N_STR and string function declaration. " alt="" coords="682,155,747,181"/><area shape="rect" id="node18" href="n__list_8h.html" title="Pointer list structures and definitions. " alt="" coords="253,229,323,256"/><area shape="rect" id="node27" href="n__3d_8h.html" title="3D helpers, vector and camera " alt="" coords="771,155,836,181"/></map>
+<area shape="rect" id="node8" href="n__network_8h.html" title="Network Engine. " alt="" coords="580,80,730,107"/><area shape="rect" id="node27" href="n__network__msg_8h.html" title="network messages declaration Network Engine " alt="" coords="761,80,948,107"/><area shape="rect" id="node12" href="n__log_8h_source.html" title="nilorea/n_log.h" alt="" coords="1310,304,1428,331"/><area shape="rect" id="node25" href="n__hash_8h.html" title="Hash functions and table. " alt="" coords="492,155,572,181"/><area shape="rect" id="node9" href="n__common_8h.html" title="common headers and low&#45;level hugly functions &amp; define " alt="" coords="486,229,593,256"/><area shape="rect" id="node19" href="n__str_8h.html" title="N_STR and string function declaration. " alt="" coords="822,155,886,181"/><area shape="rect" id="node20" href="n__list_8h.html" title="Pointer list structures and definitions. " alt="" coords="617,229,686,256"/><area shape="rect" id="node16" href="n__enum_8h.html" title="Macro to build enums and their tostring counterparts, a reduced version of https://github.com/FredBienvenu/N_ENUM. " alt="" coords="559,304,693,331"/><area shape="rect" id="node29" href="n__3d_8h.html" title="3D helpers, vector and camera " alt="" coords="1192,155,1257,181"/></map>
 </div>
 </div>
 <p><a href="n__network_8c_source.html">Go to the source code of this file.</a></p>
@@ -135,21 +137,22 @@ $(document).ready(function(){initNavTree('n__network_8c.html','');});
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:aa852852826e7fd48fa5791e9ac1e32ae"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa852852826e7fd48fa5791e9ac1e32ae"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="n__network_8c.html#aa852852826e7fd48fa5791e9ac1e32ae">neterrno</a>&#160;&#160;&#160;errno</td></tr>
-<tr class="memdesc:aa852852826e7fd48fa5791e9ac1e32ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Keep it compatible with bsd like. <br/></td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>neterrno</b>&#160;&#160;&#160;errno</td></tr>
 <tr class="separator:aa852852826e7fd48fa5791e9ac1e32ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9fe7353395b6abe8f260a2de5d3b3d96"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="n__network_8c.html#a9fe7353395b6abe8f260a2de5d3b3d96">netstrerror</a>(code)</td></tr>
-<tr class="memdesc:a9fe7353395b6abe8f260a2de5d3b3d96"><td class="mdescLeft">&#160;</td><td class="mdescRight">BSD style errno string NO WORKING ON REDHAT.  <a href="#a9fe7353395b6abe8f260a2de5d3b3d96">More...</a><br/></td></tr>
+<tr class="memitem:a9fe7353395b6abe8f260a2de5d3b3d96"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><b>netstrerror</b>(code)</td></tr>
 <tr class="separator:a9fe7353395b6abe8f260a2de5d3b3d96"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a47e28ca4745f27fc86baf2ce2848d295"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="n__network_8c.html#a47e28ca4745f27fc86baf2ce2848d295">deplete_send_buffer</a> (int fd, long timeout)</td></tr>
-<tr class="memdesc:a47e28ca4745f27fc86baf2ce2848d295"><td class="mdescLeft">&#160;</td><td class="mdescRight">wait until the socket is empty or timeout, checking each 50 msec  <a href="#a47e28ca4745f27fc86baf2ce2848d295">More...</a><br/></td></tr>
+<tr class="memdesc:a47e28ca4745f27fc86baf2ce2848d295"><td class="mdescLeft">&#160;</td><td class="mdescRight">wait until the socket is empty or timeout, checking each 100 msec.  <a href="#a47e28ca4745f27fc86baf2ce2848d295">More...</a><br/></td></tr>
 <tr class="separator:a47e28ca4745f27fc86baf2ce2848d295"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a294867ba9d7ff47e39d421134d8e12ab"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a294867ba9d7ff47e39d421134d8e12ab"></a>
-void *&#160;</td><td class="memItemRight" valign="bottom"><b>get_in_addr</b> (struct sockaddr *sa)</td></tr>
-<tr class="separator:a294867ba9d7ff47e39d421134d8e12ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ae5514d455bdad2b6cce2902c8d7552"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2ae5514d455bdad2b6cce2902c8d7552"></a>
+char *&#160;</td><td class="memItemRight" valign="bottom"><b>get_in_addr</b> (struct sockaddr *sa)</td></tr>
+<tr class="separator:a2ae5514d455bdad2b6cce2902c8d7552"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4647db7f861fc61c8449577ffe37fe26"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="n__network_8c.html#a4647db7f861fc61c8449577ffe37fe26">N_ENUM_DEFINE</a> (N_ENUM_netw_code_type, __netw_code_type)</td></tr>
+<tr class="memdesc:a4647db7f861fc61c8449577ffe37fe26"><td class="mdescLeft">&#160;</td><td class="mdescRight">Keep it compatible with bsd like.  <a href="#a4647db7f861fc61c8449577ffe37fe26">More...</a><br/></td></tr>
+<tr class="separator:a4647db7f861fc61c8449577ffe37fe26"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf21b84460e80c7853bcb8321d7c53065"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_n_e_t_w_o_r_k.html">NETWORK</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___n_e_t_w_o_r_k_i_n_g.html#gaf21b84460e80c7853bcb8321d7c53065">netw_accept_from</a> (<a class="el" href="struct_n_e_t_w_o_r_k.html">NETWORK</a> *from)</td></tr>
 <tr class="memdesc:gaf21b84460e80c7853bcb8321d7c53065"><td class="mdescLeft">&#160;</td><td class="mdescRight">make a normal blocking 'accept' .  <a href="group___n_e_t_w_o_r_k_i_n_g.html#gaf21b84460e80c7853bcb8321d7c53065">More...</a><br/></td></tr>
 <tr class="separator:gaf21b84460e80c7853bcb8321d7c53065"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -249,9 +252,6 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>netw_set_user_id</b> (
 <tr class="memitem:gaa5ed966d8c5844ded549eda41e38c0be"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___n_e_t_w_o_r_k_i_n_g.html#gaa5ed966d8c5844ded549eda41e38c0be">netw_setsockopt</a> (<a class="el" href="struct_n_e_t_w_o_r_k.html">NETWORK</a> *netw, int optname, int value)</td></tr>
 <tr class="memdesc:gaa5ed966d8c5844ded549eda41e38c0be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modify common socket options on the given netw.  <a href="group___n_e_t_w_o_r_k_i_n_g.html#gaa5ed966d8c5844ded549eda41e38c0be">More...</a><br/></td></tr>
 <tr class="separator:gaa5ed966d8c5844ded549eda41e38c0be"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6d493e1a8e3717c37b3186b2f63acbb2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6d493e1a8e3717c37b3186b2f63acbb2"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>netw_sigchld_handler</b> (int sig)</td></tr>
-<tr class="separator:a6d493e1a8e3717c37b3186b2f63acbb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga5ba0555c5ccd261227c3c1216923d563"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___n_e_t_w_o_r_k_i_n_g.html#ga5ba0555c5ccd261227c3c1216923d563">netw_start_thr_engine</a> (<a class="el" href="struct_n_e_t_w_o_r_k.html">NETWORK</a> *netw)</td></tr>
 <tr class="memdesc:ga5ba0555c5ccd261227c3c1216923d563"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start the <a class="el" href="struct_n_e_t_w_o_r_k.html" title="Structure of a NETWORK. ">NETWORK</a> netw Threaded Engine.  <a href="group___n_e_t_w_o_r_k_i_n_g.html#ga5ba0555c5ccd261227c3c1216923d563">More...</a><br/></td></tr>
 <tr class="separator:ga5ba0555c5ccd261227c3c1216923d563"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -302,22 +302,16 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>netw_sigchld_handler<
       </table>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">({ \</div>
-<div class="line">        char *errmsg = NULL ; \</div>
-<div class="line">        errno = 0 ; \</div>
-<div class="line">        errmsg = strdup( strerror( code ) ); \</div>
-<div class="line">        if( errno == ENOMEM ) \</div>
-<div class="line">        { \</div>
-<div class="line">        errmsg = NULL ; \</div>
-<div class="line">        } \</div>
-<div class="line">        errmsg ; \</div>
-<div class="line">        })</div>
+<div class="line">                                char *errmsg = NULL ; \</div>
+<div class="line">                                errno = 0 ; \</div>
+<div class="line">                                errmsg = strdup( strerror( code ) ); \</div>
+<div class="line">                                if( errno == ENOMEM ) \</div>
+<div class="line">                                { \</div>
+<div class="line">                                errmsg = NULL ; \</div>
+<div class="line">                                } \</div>
+<div class="line">                                errmsg ; \</div>
+<div class="line">                                })</div>
 </div><!-- fragment -->
-<p>BSD style errno string NO WORKING ON REDHAT. </p>
-
-<p>Definition at line <a class="el" href="n__network_8c_source.html#l00604">604</a> of file <a class="el" href="n__network_8c_source.html">n_network.c</a>.</p>
-
-<p>Referenced by <a class="el" href="n__network_8c_source.html#l01809">netw_accept_from_ex()</a>, <a class="el" href="n__network_8c_source.html#l01244">netw_connect_ex()</a>, <a class="el" href="n__network_8c_source.html#l01683">netw_make_listening()</a>, <a class="el" href="n__network_8c_source.html#l00807">netw_set_blocking()</a>, <a class="el" href="n__network_8c_source.html#l00867">netw_setsockopt()</a>, <a class="el" href="n__network_8c_source.html#l01607">netw_wait_close_timed()</a>, <a class="el" href="n__network_8c_source.html#l02570">recv_data()</a>, <a class="el" href="n__network_8c_source.html#l02727">recv_php()</a>, <a class="el" href="n__network_8c_source.html#l02520">send_data()</a>, and <a class="el" href="n__network_8c_source.html#l02628">send_php()</a>.</p>
-
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
@@ -345,18 +339,19 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>netw_sigchld_handler<
       </table>
 </div><div class="memdoc">
 
-<p>wait until the socket is empty or timeout, checking each 50 msec </p>
+<p>wait until the socket is empty or timeout, checking each 100 msec. </p>
+<p>Not as reliable as expected. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">fd</td><td>socket descriptor  timeout value in msec , 0 =&gt; disabled </td></tr>
+    <tr><td class="paramname">fd</td><td>socket descriptor  timeout value in msec , zero or negative value =&gt; disabled </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>0 or the amount of remaining datas in bytes </dd></dl>
 
-<p>Definition at line <a class="el" href="n__network_8c_source.html#l01559">1559</a> of file <a class="el" href="n__network_8c_source.html">n_network.c</a>.</p>
+<p>Definition at line <a class="el" href="n__network_8c_source.html#l01558">1558</a> of file <a class="el" href="n__network_8c_source.html">n_network.c</a>.</p>
 
-<p>Referenced by <a class="el" href="n__network_8c_source.html#l01607">netw_wait_close_timed()</a>.</p>
+<p>Referenced by <a class="el" href="n__network_8c_source.html#l01606">netw_wait_close_timed()</a>.</p>
 
 <p><div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
@@ -368,6 +363,39 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>netw_sigchld_handler<
 <area shape="rect" id="node2" href="group___n_e_t_w_o_r_k_i_n_g.html#ga995d9aaabaca026d79f15a9823eaebaf" title="Wait for peer closing a specified Network, destroy queues, free the structure. " alt="" coords="209,5,383,32"/><area shape="rect" id="node3" href="group___n_e_t_w_o_r_k_i_n_g.html#ga60beb772aa298f36d1443a28e3ec5ec8" title="Wait for peer closing a specified Network, destroy queues, free the structure. " alt="" coords="432,5,563,32"/></map>
 </div>
 </p>
+
+</div>
+</div>
+<a class="anchor" id="a4647db7f861fc61c8449577ffe37fe26"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">N_ENUM_DEFINE </td>
+          <td>(</td>
+          <td class="paramtype">N_ENUM_netw_code_type&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">__netw_code_type&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Keep it compatible with bsd like. </p>
+<p>BSD style errno string NO WORKING ON REDHAT </p>
+
+<p>Definition at line <a class="el" href="n__network_8c_source.html#l00020">20</a> of file <a class="el" href="n__network_8c_source.html">n_network.c</a>.</p>
+
+<p>References <a class="el" href="n__common_8h_source.html#l00260">__n_assert</a>, and <a class="el" href="n__common_8h_source.html#l00180">Malloc</a>.</p>
 
 </div>
 </div>
@@ -405,11 +433,11 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>netw_sigchld_handler<
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>NULL or a new empty network </dd></dl>
 
-<p>Definition at line <a class="el" href="n__network_8c_source.html#l00632">632</a> of file <a class="el" href="n__network_8c_source.html">n_network.c</a>.</p>
+<p>Definition at line <a class="el" href="n__network_8c_source.html#l00631">631</a> of file <a class="el" href="n__network_8c_source.html">n_network.c</a>.</p>
 
-<p>References <a class="el" href="n__common_8h_source.html#l00259">__n_assert</a>, <a class="el" href="n__common_8h_source.html#l00239">Free</a>, <a class="el" href="n__log_8h_source.html#l00057">LOG_ERR</a>, <a class="el" href="n__common_8h_source.html#l00179">Malloc</a>, <a class="el" href="n__log_8h_source.html#l00073">n_log</a>, <a class="el" href="n__network_8c_source.html#l01498">netw_close()</a>, <a class="el" href="n__network_8h_source.html#l00187">NETW_CRYPTO_NONE</a>, <a class="el" href="n__network_8h_source.html#l00193">NETW_ENCRYPT_NONE</a>, <a class="el" href="n__network_8h_source.html#l00183">NETW_EXITED</a>, <a class="el" href="n__network_8h_source.html#l00201">NETW_THR_ENGINE_STOPPED</a>, <a class="el" href="n__list_8c_source.html#l00020">new_generic_list()</a>, <a class="el" href="n__network_8c_source.html#l02570">recv_data()</a>, and <a class="el" href="n__network_8c_source.html#l02520">send_data()</a>.</p>
+<p>References <a class="el" href="n__common_8h_source.html#l00260">__n_assert</a>, <a class="el" href="n__common_8h_source.html#l00240">Free</a>, <a class="el" href="n__log_8h_source.html#l00057">LOG_ERR</a>, <a class="el" href="n__common_8h_source.html#l00180">Malloc</a>, <a class="el" href="n__log_8h_source.html#l00073">n_log</a>, <a class="el" href="n__network_8c_source.html#l01497">netw_close()</a>, <a class="el" href="n__list_8c_source.html#l00020">new_generic_list()</a>, <a class="el" href="n__network_8c_source.html#l02563">recv_data()</a>, and <a class="el" href="n__network_8c_source.html#l02513">send_data()</a>.</p>
 
-<p>Referenced by <a class="el" href="n__network_8c_source.html#l01809">netw_accept_from_ex()</a>, <a class="el" href="n__network_8c_source.html#l01244">netw_connect_ex()</a>, and <a class="el" href="n__network_8c_source.html#l01683">netw_make_listening()</a>.</p>
+<p>Referenced by <a class="el" href="n__network_8c_source.html#l01810">netw_accept_from_ex()</a>, <a class="el" href="n__network_8c_source.html#l01243">netw_connect_ex()</a>, and <a class="el" href="n__network_8c_source.html#l01684">netw_make_listening()</a>.</p>
 
 <p><div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
@@ -441,7 +469,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>netw_sigchld_handler<
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="n__network_8c.html">n_network.c</a></li>
-    <li class="footer">Generated on Thu Jul 22 2021 11:12:43 for Nilorea Library by
+    <li class="footer">Generated on Sat Jan 29 2022 18:47:32 for Nilorea Library by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.5 </li>
   </ul>

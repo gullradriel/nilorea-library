@@ -112,6 +112,7 @@ $(document).ready(function(){initNavTree('n__nodup__log_8c.html','');});
 <p>generic no duplicate logging system  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stdio.h&gt;</code><br/>
+<code>#include &lt;stdarg.h&gt;</code><br/>
 <code>#include &quot;<a class="el" href="n__common_8h_source.html">nilorea/n_common.h</a>&quot;</code><br/>
 <code>#include &quot;nilorea/n_log.h&quot;</code><br/>
 <code>#include &quot;<a class="el" href="n__str_8h_source.html">nilorea/n_str.h</a>&quot;</code><br/>
@@ -125,7 +126,7 @@ $(document).ready(function(){initNavTree('n__nodup__log_8c.html','');});
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="n__nodup__log_8c__incl.png" border="0" usemap="#n__nodup__log_8c" alt=""/></div>
 <map name="n__nodup__log_8c" id="n__nodup__log_8c">
-<area shape="rect" id="node3" href="n__common_8h.html" title="common headers and low&#45;level hugly functions &amp; define " alt="" coords="281,229,436,256"/><area shape="rect" id="node10" href="n__log_8h_source.html" title="nilorea/n_log.h" alt="" coords="98,304,216,331"/><area shape="rect" id="node15" href="n__str_8h.html" title="N_STR and string function declaration. " alt="" coords="769,155,884,181"/><area shape="rect" id="node16" href="n__list_8h.html" title="Pointer list structures and definitions. " alt="" coords="607,229,676,256"/><area shape="rect" id="node21" href="n__hash_8h.html" title="Hash functions and table. " alt="" coords="413,155,541,181"/><area shape="rect" id="node23" href="n__nodup__log_8h_source.html" title="nilorea/n_nodup_log.h" alt="" coords="388,80,553,107"/></map>
+<area shape="rect" id="node4" href="n__common_8h.html" title="common headers and low&#45;level hugly functions &amp; define " alt="" coords="884,229,1039,256"/><area shape="rect" id="node11" href="n__log_8h_source.html" title="nilorea/n_log.h" alt="" coords="495,304,613,331"/><area shape="rect" id="node17" href="n__str_8h.html" title="N_STR and string function declaration. " alt="" coords="547,155,661,181"/><area shape="rect" id="node18" href="n__list_8h.html" title="Pointer list structures and definitions. " alt="" coords="740,229,809,256"/><area shape="rect" id="node23" href="n__hash_8h.html" title="Hash functions and table. " alt="" coords="986,155,1115,181"/><area shape="rect" id="node25" href="n__nodup__log_8h_source.html" title="nilorea/n_nodup_log.h" alt="" coords="743,80,908,107"/><area shape="rect" id="node14" href="n__enum_8h.html" title="Macro to build enums and their tostring counterparts, a reduced version of https://github.com/FredBienvenu/N_ENUM. " alt="" coords="1355,304,1489,331"/></map>
 </div>
 </div>
 <p><a href="n__nodup__log_8c_source.html">Go to the source code of this file.</a></p>
@@ -219,11 +220,11 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>0 if not existing 1 if existing with the same value , 2 if key exist and value is different </dd></dl>
 
-<p>Definition at line <a class="el" href="n__nodup__log_8c_source.html#l00130">130</a> of file <a class="el" href="n__nodup__log_8c_source.html">n_nodup_log.c</a>.</p>
+<p>Definition at line <a class="el" href="n__nodup__log_8c_source.html#l00131">131</a> of file <a class="el" href="n__nodup__log_8c_source.html">n_nodup_log.c</a>.</p>
 
-<p>References <a class="el" href="n__common_8h_source.html#l00259">__n_assert</a>, <a class="el" href="n__common_8h_source.html#l00239">Free</a>, and <a class="el" href="n__hash_8c_source.html#l00730">ht_get_node()</a>.</p>
+<p>References <a class="el" href="n__common_8h_source.html#l00260">__n_assert</a>, <a class="el" href="n__common_8h_source.html#l00240">Free</a>, and <a class="el" href="n__hash_8c_source.html#l00627">ht_get_node()</a>.</p>
 
-<p>Referenced by <a class="el" href="n__nodup__log_8c_source.html#l00213">_n_nodup_log()</a>.</p>
+<p>Referenced by <a class="el" href="n__nodup__log_8c_source.html#l00214">_n_nodup_log()</a>.</p>
 
 <p><div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
@@ -304,11 +305,11 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>0 if not existing 1 if existing with the same value , 2 if key exist and value is different </dd></dl>
 
-<p>Definition at line <a class="el" href="n__nodup__log_8c_source.html#l00173">173</a> of file <a class="el" href="n__nodup__log_8c_source.html">n_nodup_log.c</a>.</p>
+<p>Definition at line <a class="el" href="n__nodup__log_8c_source.html#l00174">174</a> of file <a class="el" href="n__nodup__log_8c_source.html">n_nodup_log.c</a>.</p>
 
-<p>References <a class="el" href="n__common_8h_source.html#l00259">__n_assert</a>, <a class="el" href="n__common_8h_source.html#l00239">Free</a>, and <a class="el" href="n__hash_8c_source.html#l00730">ht_get_node()</a>.</p>
+<p>References <a class="el" href="n__common_8h_source.html#l00260">__n_assert</a>, <a class="el" href="n__common_8h_source.html#l00240">Free</a>, and <a class="el" href="n__hash_8c_source.html#l00627">ht_get_node()</a>.</p>
 
-<p>Referenced by <a class="el" href="n__nodup__log_8c_source.html#l00273">_n_nodup_log_indexed()</a>.</p>
+<p>Referenced by <a class="el" href="n__nodup__log_8c_source.html#l00274">_n_nodup_log_indexed()</a>.</p>
 
 <p><div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
@@ -340,7 +341,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="n__nodup__log_8c.html">n_nodup_log.c</a></li>
-    <li class="footer">Generated on Thu Jul 22 2021 11:12:43 for Nilorea Library by
+    <li class="footer">Generated on Sat Jan 29 2022 18:47:32 for Nilorea Library by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.5 </li>
   </ul>

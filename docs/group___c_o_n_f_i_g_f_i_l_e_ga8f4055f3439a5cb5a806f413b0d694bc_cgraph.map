@@ -1,25 +1,17 @@
 <map id="load_config_file" name="load_config_file">
 <area shape="rect" id="node2" href="$n__config__file_8c.html#abd0a2133de663a5b572ffa99e5273ec2" title="Destroy a config file section. " alt="" coords="176,5,320,46"/>
-<area shape="rect" id="node6" href="$n__config__file_8c.html#a8fb4312251d06de40484b38dd65c6021" title="local free for config entries " alt="" coords="197,71,299,97"/>
-<area shape="rect" id="node7" href="$group___n___s_t_r.html#gad53cff99261e509872a2a4128b1265cf" title="Free a split result allocated array. " alt="" coords="185,121,311,148"/>
-<area shape="rect" id="node8" href="$group___h_a_s_h___t_a_b_l_e.html#gae34a331ccbda86f7e5b2319f1852d6ca" title="Retrieve a pointer value in the hash table, at the given key. " alt="" coords="204,172,292,199"/>
-<area shape="rect" id="node12" href="$group___h_a_s_h___t_a_b_l_e.html#ga59a63e27a615643df1e58e7cbd5fc262" title="put a pointer value with given key in the targeted hash table " alt="" coords="204,223,292,249"/>
-<area shape="rect" id="node13" href="$group___l_i_s_t.html#ga4eab319289a83524639ee5e9f0441fdf" title="Add a pointer to the end of the list. " alt="" coords="403,324,483,351"/>
-<area shape="rect" id="node16" href="$group___l_i_s_t.html#gaa82751b4d6a219771661843e61cefa2e" title="Initialiaze a generic list container to max_items pointers. " alt="" coords="183,324,313,351"/>
-<area shape="rect" id="node17" href="$group___p_c_r_e.html#gaf198eb0bc8c55ac41cc92af8e538ce04" title="Free a N_PCRE pointer. " alt="" coords="389,400,496,427"/>
-<area shape="rect" id="node18" href="$group___p_c_r_e.html#ga605b60ef645cf217bd2b3dc548d1d6c2" title="Return TRUE if str matches regexp, and make captures up to max_cap. " alt="" coords="195,476,301,503"/>
-<area shape="rect" id="node20" href="$group___p_c_r_e.html#gabd3d86629f8aa1898e8553c58afd938e" title="create a compiled regex " alt="" coords="202,425,294,452"/>
-<area shape="rect" id="node21" href="$group___n___s_t_r.html#gae4317ddc09606fcca46265a53bfbfb8b" title="skip until &#39;toskip&#39; occurence is found from &#39;iterator&#39; to the next &#39;toskip&#39; value. " alt="" coords="219,527,277,553"/>
-<area shape="rect" id="node22" href="$group___n___s_t_r.html#ga194b81c0709d24aef9b6f7e8635d3966" title="Count split elements. " alt="" coords="201,577,295,604"/>
-<area shape="rect" id="node23" href="$group___n___s_t_r.html#ga092a90f5b304c37c75a3a2f1202c843e" title="Replace &quot;substr&quot; by &quot;replacement&quot; inside string taken from http://coding.debuntu.org/c&#45;implementing&#45;s..." alt="" coords="201,628,295,655"/>
-<area shape="rect" id="node24" href="$group___n___s_t_r.html#gaca10c15094ab4f8855b77ef097f34472" title="trim and zero end the string, WARNING: keep and original pointer to delete the string correctly ..." alt="" coords="197,679,299,705"/>
+<area shape="rect" id="node4" href="$n__config__file_8c.html#a8fb4312251d06de40484b38dd65c6021" title="local free for config entries " alt="" coords="197,71,299,97"/>
+<area shape="rect" id="node5" href="$group___n___s_t_r.html#gad53cff99261e509872a2a4128b1265cf" title="Free a split result allocated array. " alt="" coords="185,121,311,148"/>
+<area shape="rect" id="node6" href="$group___l_i_s_t.html#ga4eab319289a83524639ee5e9f0441fdf" title="Add a pointer to the end of the list. " alt="" coords="208,172,288,199"/>
+<area shape="rect" id="node8" href="$group___l_i_s_t.html#gaa82751b4d6a219771661843e61cefa2e" title="Initialiaze a generic list container to max_items pointers. " alt="" coords="183,223,313,249"/>
+<area shape="rect" id="node9" href="$group___p_c_r_e.html#gaf198eb0bc8c55ac41cc92af8e538ce04" title="Free a N_PCRE pointer. " alt="" coords="389,299,496,325"/>
+<area shape="rect" id="node10" href="$group___p_c_r_e.html#ga605b60ef645cf217bd2b3dc548d1d6c2" title="Return TRUE if str matches regexp, and make captures up to max_cap. " alt="" coords="195,375,301,401"/>
+<area shape="rect" id="node12" href="$group___p_c_r_e.html#gabd3d86629f8aa1898e8553c58afd938e" title="create a compiled regex " alt="" coords="202,324,294,351"/>
+<area shape="rect" id="node13" href="$group___n___s_t_r.html#gae4317ddc09606fcca46265a53bfbfb8b" title="skip until &#39;toskip&#39; occurence is found from &#39;iterator&#39; to the next &#39;toskip&#39; value. " alt="" coords="219,425,277,452"/>
+<area shape="rect" id="node14" href="$group___n___s_t_r.html#ga194b81c0709d24aef9b6f7e8635d3966" title="Count split elements. " alt="" coords="201,476,295,503"/>
+<area shape="rect" id="node15" href="$group___n___s_t_r.html#ga092a90f5b304c37c75a3a2f1202c843e" title="Replace &quot;substr&quot; by &quot;replacement&quot; inside string taken from http://coding.debuntu.org/c&#45;implementing&#45;s..." alt="" coords="201,527,295,553"/>
+<area shape="rect" id="node16" href="$group___n___s_t_r.html#gaca10c15094ab4f8855b77ef097f34472" title="trim and zero end the string, WARNING: keep and original pointer to delete the string correctly ..." alt="" coords="197,577,299,604"/>
 <area shape="rect" id="node3" href="$group___h_a_s_h___t_a_b_l_e.html#ga22a943135dbcdb1611b40ce0547111ce" title="Free and set the table to NULL. " alt="" coords="397,12,488,39"/>
-<area shape="rect" id="node4" href="$group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755" title="Empty and Free a list container. " alt="" coords="600,12,699,39"/>
-<area shape="rect" id="node5" href="$group___l_i_s_t.html#ga1dafe7a250ddad51fadd375f057287e7" title="Empty a LIST list of pointers. " alt="" coords="781,12,872,39"/>
-<area shape="rect" id="node9" href="$group___h_a_s_h___t_a_b_l_e.html#ga1be4f5c5c4296b9fa21a729eb01bb7c3" title="return the associated key&#39;s node inside the hash_table " alt="" coords="391,121,494,148"/>
-<area shape="rect" id="node11" href="$group___h_a_s_h___t_a_b_l_e.html#ga49f19e01daabe0bb71e41713b562755d" title="get the type of a node , text version " alt="" coords="387,172,498,199"/>
-<area shape="rect" id="node10" href="$group___h_a_s_h___t_a_b_l_e.html#ga37412933f308bda727603640d9acefba" title="brief MurmurHash3 was written by Austin Appleby, and is placed in the public domain. " alt="" coords="566,172,733,199"/>
-<area shape="rect" id="node15" href="$n__hash_8c.html#ab60bc812786444340c989c77b74a59ed" title="destroy a HASH_NODE by first calling the HASH_NODE destructor " alt="" coords="377,273,508,300"/>
-<area shape="rect" id="node14" href="$group___l_i_s_t.html#ga6f57b62b796c1248014bc14a9bb0fc6c" title="Allocate a new node to link in a list. " alt="" coords="592,324,707,351"/>
-<area shape="rect" id="node19" href="$group___p_c_r_e.html#ga89e67d2b218e2138a12aaecc2deab8fc" title="clean the match list of the last capture, if any " alt="" coords="369,476,517,503"/>
+<area shape="rect" id="node7" href="$group___l_i_s_t.html#ga6f57b62b796c1248014bc14a9bb0fc6c" title="Allocate a new node to link in a list. " alt="" coords="385,172,500,199"/>
+<area shape="rect" id="node11" href="$group___p_c_r_e.html#ga89e67d2b218e2138a12aaecc2deab8fc" title="clean the match list of the last capture, if any " alt="" coords="369,375,517,401"/>
 </map>

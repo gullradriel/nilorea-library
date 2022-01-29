@@ -187,391 +187,388 @@ $(document).ready(function(){initNavTree('n__thread__pool_8c_source.html','');})
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    pthread_exit( NULL );</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="preprocessor">#ifndef __sun</span></div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="preprocessor"></span>    <span class="keywordflow">return</span> NULL ;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;} <span class="comment">/* thread_pool_processing_function */</span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="comment">/*!\fn THREAD_POOL *new_thread_pool( int nbmaxthr , int nb_max_waiting )</span></div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="comment"> * \brief Create a new pool of nbmaxthr threads</span></div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="comment"> * \param nbmaxthr number of active threads in the pool</span></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="comment"> * \param nb_max_waiting max number of waiting procs in the pool</span></div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="comment"> * \return NULL or a new trhead pool object</span></div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00097"></a><span class="lineno"><a class="line" href="group___t_h_r_e_a_d_s.html#ga0e3dcfbda5e68e14399b18f994060c97">   97</a></span>&#160;<a class="code" href="struct_t_h_r_e_a_d___p_o_o_l.html">THREAD_POOL</a> *<a class="code" href="group___t_h_r_e_a_d_s.html#ga0e3dcfbda5e68e14399b18f994060c97">new_thread_pool</a>( <span class="keywordtype">int</span> nbmaxthr, <span class="keywordtype">int</span> nb_max_waiting )</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;{</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <a class="code" href="struct_t_h_r_e_a_d___p_o_o_l.html">THREAD_POOL</a> *thread_pool = NULL ;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <a class="code" href="group___c_o_m_m_o_n_s.html#ga46bf052fc99248347a1dcf89bc0757c6">Malloc</a>( thread_pool, <a class="code" href="struct_t_h_r_e_a_d___p_o_o_l.html">THREAD_POOL</a>, 1 );</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="keywordflow">if</span>( !thread_pool )</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <span class="keywordflow">return</span> NULL ;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    thread_pool -&gt; max_threads = nbmaxthr ;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    thread_pool -&gt; nb_max_waiting = nb_max_waiting ;</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    thread_pool -&gt; nb_actives = 0 ;</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    thread_pool -&gt; thread_list =  (<a class="code" href="struct_t_h_r_e_a_d___p_o_o_l___n_o_d_e.html">THREAD_POOL_NODE</a> **)malloc( nbmaxthr * <span class="keyword">sizeof</span>( <a class="code" href="struct_t_h_r_e_a_d___p_o_o_l___n_o_d_e.html">THREAD_POOL_NODE</a> * ) );</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="keywordflow">if</span>( !thread_pool -&gt; thread_list )</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    {</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <a class="code" href="group___c_o_m_m_o_n_s.html#gae62e40d702e99a7760ba1de7451dff51">Free</a>( thread_pool );</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        <span class="keywordflow">return</span> NULL ;</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    }</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    thread_pool -&gt; waiting_list = <a class="code" href="group___l_i_s_t.html#gaa82751b4d6a219771661843e61cefa2e">new_generic_list</a>( 0 );</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <span class="keywordflow">if</span>( !thread_pool -&gt; waiting_list )</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    {</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <a class="code" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a>, <span class="stringliteral">&quot;Unable to initialize wait list&quot;</span> );</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        <span class="keywordflow">return</span> NULL ;</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    }</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    pthread_mutex_init( &amp;thread_pool -&gt; lock, NULL );</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="keywordflow">for</span>( <span class="keywordtype">int</span> it = 0 ; it &lt; nbmaxthr ; it ++ )</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    {</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        <a class="code" href="group___c_o_m_m_o_n_s.html#ga46bf052fc99248347a1dcf89bc0757c6">Malloc</a>( thread_pool -&gt; thread_list[ it ], <a class="code" href="struct_t_h_r_e_a_d___p_o_o_l___n_o_d_e.html">THREAD_POOL_NODE</a>, 1 );</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        thread_pool -&gt; thread_list[ it ] -&gt; type = -1 ;</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        thread_pool -&gt; thread_list[ it ] -&gt; state = <a class="code" href="group___t_h_r_e_a_d_s.html#ga7131f70ca662b8211de3586a2a6a5a16">IDLE_PROC</a> ;</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        thread_pool -&gt; thread_list[ it ] -&gt; thread_state = <a class="code" href="group___t_h_r_e_a_d_s.html#gac3966893f43d72bd23c7c3f410df9a48">RUNNING_THREAD</a> ;</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        <span class="keywordflow">if</span>( sem_init( &amp;thread_pool -&gt; thread_list[ it ] -&gt; th_start, 0, 0 ) == -1 )</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        {</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;            <a class="code" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a>, <span class="stringliteral">&quot;sem_init failed : %s on &amp;thread_pool -&gt; thread_list[ %d ] -&gt; th_start\n&quot;</span>, strerror ( errno ), it );</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;            <span class="keywordflow">return</span> NULL;</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        }</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        <span class="keywordflow">if</span>( sem_init( &amp;thread_pool -&gt; thread_list[ it ] -&gt; th_end, 0, 0 ) == -1 )</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        {</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;            <a class="code" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a>, <span class="stringliteral">&quot;sem_init failed : %s on &amp;thread_pool -&gt; thread_list[ %d] -&gt; th_end\n&quot;</span>, strerror ( errno ), it );</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;            <span class="keywordflow">return</span> NULL;</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        }</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordflow">return</span> NULL ;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;} <span class="comment">/* thread_pool_processing_function */</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="comment">/*!\fn THREAD_POOL *new_thread_pool( int nbmaxthr , int nb_max_waiting )</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="comment"> * \brief Create a new pool of nbmaxthr threads</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment"> * \param nbmaxthr number of active threads in the pool</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="comment"> * \param nb_max_waiting max number of waiting procs in the pool</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="comment"> * \return NULL or a new trhead pool object</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno"><a class="line" href="group___t_h_r_e_a_d_s.html#ga0e3dcfbda5e68e14399b18f994060c97">   94</a></span>&#160;<a class="code" href="struct_t_h_r_e_a_d___p_o_o_l.html">THREAD_POOL</a> *<a class="code" href="group___t_h_r_e_a_d_s.html#ga0e3dcfbda5e68e14399b18f994060c97">new_thread_pool</a>( <span class="keywordtype">int</span> nbmaxthr, <span class="keywordtype">int</span> nb_max_waiting )</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;{</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <a class="code" href="struct_t_h_r_e_a_d___p_o_o_l.html">THREAD_POOL</a> *thread_pool = NULL ;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <a class="code" href="group___c_o_m_m_o_n_s.html#ga46bf052fc99248347a1dcf89bc0757c6">Malloc</a>( thread_pool, <a class="code" href="struct_t_h_r_e_a_d___p_o_o_l.html">THREAD_POOL</a>, 1 );</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keywordflow">if</span>( !thread_pool )</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <span class="keywordflow">return</span> NULL ;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    thread_pool -&gt; max_threads = nbmaxthr ;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    thread_pool -&gt; nb_max_waiting = nb_max_waiting ;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    thread_pool -&gt; nb_actives = 0 ;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    thread_pool -&gt; thread_list =  (<a class="code" href="struct_t_h_r_e_a_d___p_o_o_l___n_o_d_e.html">THREAD_POOL_NODE</a> **)malloc( nbmaxthr * <span class="keyword">sizeof</span>( <a class="code" href="struct_t_h_r_e_a_d___p_o_o_l___n_o_d_e.html">THREAD_POOL_NODE</a> * ) );</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keywordflow">if</span>( !thread_pool -&gt; thread_list )</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    {</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <a class="code" href="group___c_o_m_m_o_n_s.html#gae62e40d702e99a7760ba1de7451dff51">Free</a>( thread_pool );</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <span class="keywordflow">return</span> NULL ;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    }</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    thread_pool -&gt; waiting_list = <a class="code" href="group___l_i_s_t.html#gaa82751b4d6a219771661843e61cefa2e">new_generic_list</a>( 0 );</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="keywordflow">if</span>( !thread_pool -&gt; waiting_list )</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    {</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        <a class="code" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a>, <span class="stringliteral">&quot;Unable to initialize wait list&quot;</span> );</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        <span class="keywordflow">return</span> NULL ;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    }</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    pthread_mutex_init( &amp;thread_pool -&gt; lock, NULL );</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="keywordflow">for</span>( <span class="keywordtype">int</span> it = 0 ; it &lt; nbmaxthr ; it ++ )</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    {</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        <a class="code" href="group___c_o_m_m_o_n_s.html#ga46bf052fc99248347a1dcf89bc0757c6">Malloc</a>( thread_pool -&gt; thread_list[ it ], <a class="code" href="struct_t_h_r_e_a_d___p_o_o_l___n_o_d_e.html">THREAD_POOL_NODE</a>, 1 );</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        thread_pool -&gt; thread_list[ it ] -&gt; type = -1 ;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        thread_pool -&gt; thread_list[ it ] -&gt; state = <a class="code" href="group___t_h_r_e_a_d_s.html#ga7131f70ca662b8211de3586a2a6a5a16">IDLE_PROC</a> ;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        thread_pool -&gt; thread_list[ it ] -&gt; thread_state = <a class="code" href="group___t_h_r_e_a_d_s.html#gac3966893f43d72bd23c7c3f410df9a48">RUNNING_THREAD</a> ;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        <span class="keywordflow">if</span>( sem_init( &amp;thread_pool -&gt; thread_list[ it ] -&gt; th_start, 0, 0 ) == -1 )</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        {</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;            <a class="code" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a>, <span class="stringliteral">&quot;sem_init failed : %s on &amp;thread_pool -&gt; thread_list[ %d ] -&gt; th_start\n&quot;</span>, strerror ( errno ), it );</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;            <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        }</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        <span class="keywordflow">if</span>( sem_init( &amp;thread_pool -&gt; thread_list[ it ] -&gt; th_end, 0, 0 ) == -1 )</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        {</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;            <a class="code" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a>, <span class="stringliteral">&quot;sem_init failed : %s on &amp;thread_pool -&gt; thread_list[ %d] -&gt; th_end\n&quot;</span>, strerror ( errno ), it );</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;            <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        }</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        thread_pool -&gt; thread_list[ it ] -&gt; func = NULL ;</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        thread_pool -&gt; thread_list[ it ] -&gt; param = NULL ;</div>
 <div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        thread_pool -&gt; thread_list[ it ] -&gt; func = NULL ;</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        thread_pool -&gt; thread_list[ it ] -&gt; param = NULL ;</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        pthread_mutex_init( &amp;thread_pool -&gt; thread_list[ it ] -&gt; lock, NULL );</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        <span class="keywordflow">if</span>( pthread_create( &amp;thread_pool -&gt; thread_list[ it ] -&gt; thr, NULL, <a class="code" href="n__thread__pool_8c.html#abd0649708787bc15e1bc1ee59d64fd1f">thread_pool_processing_function</a>, (<span class="keywordtype">void</span> *)thread_pool -&gt; thread_list[ it ] ) != 0 )</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        {</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;            <a class="code" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a>, <span class="stringliteral">&quot;pthread_create failed : %s for it %d\n&quot;</span>,  strerror ( errno ), it );</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;            <span class="keywordflow">return</span> NULL;</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        }</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    }</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    <span class="keywordflow">return</span> thread_pool ;</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;} <span class="comment">/* new_thread_pool */</span></div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;<span class="comment">/*!\fn int add_threaded_process( THREAD_POOL *thread_pool , void *(*func_ptr)(void *param) , void *param , int mode )</span></div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;<span class="comment"> *\brief add a function and params to a thread pool</span></div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="comment"> *\param thread_pool The target thread pool</span></div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="comment"> *\param func_ptr The function pointer to launch</span></div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="comment"> *\param param Eventual parameter struct to pass to the function</span></div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="comment"> *\param mode SYNCED_PROC: added to pool, but wait for a start call with other waiting procs. DIRECT_PROC: the function actually starts as quick as possible</span></div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="comment"> *\return TRUE or FALSE</span></div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00167"></a><span class="lineno"><a class="line" href="group___t_h_r_e_a_d_s.html#ga46497eb81066d0df83dfd07ad0a9f561">  167</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="group___t_h_r_e_a_d_s.html#ga46497eb81066d0df83dfd07ad0a9f561">add_threaded_process</a>( <a class="code" href="struct_t_h_r_e_a_d___p_o_o_l.html">THREAD_POOL</a> *thread_pool, <span class="keywordtype">void</span> *(*func_ptr)(<span class="keywordtype">void</span> *param), <span class="keywordtype">void</span> *param,  <span class="keywordtype">int</span> mode )</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;{</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        pthread_mutex_init( &amp;thread_pool -&gt; thread_list[ it ] -&gt; lock, NULL );</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        <span class="keywordflow">if</span>( pthread_create( &amp;thread_pool -&gt; thread_list[ it ] -&gt; thr, NULL, <a class="code" href="n__thread__pool_8c.html#abd0649708787bc15e1bc1ee59d64fd1f">thread_pool_processing_function</a>, (<span class="keywordtype">void</span> *)thread_pool -&gt; thread_list[ it ] ) != 0 )</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        {</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;            <a class="code" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a>, <span class="stringliteral">&quot;pthread_create failed : %s for it %d\n&quot;</span>,  strerror ( errno ), it );</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;            <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        }</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    }</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    <span class="keywordflow">return</span> thread_pool ;</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;} <span class="comment">/* new_thread_pool */</span></div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;<span class="comment">/*!\fn int add_threaded_process( THREAD_POOL *thread_pool , void *(*func_ptr)(void *param) , void *param , int mode )</span></div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;<span class="comment"> *\brief add a function and params to a thread pool</span></div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="comment"> *\param thread_pool The target thread pool</span></div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;<span class="comment"> *\param func_ptr The function pointer to launch</span></div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;<span class="comment"> *\param param Eventual parameter struct to pass to the function</span></div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="comment"> *\param mode SYNCED_PROC: added to pool, but wait for a start call with other waiting procs. DIRECT_PROC: the function actually starts as quick as possible</span></div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="comment"> *\return TRUE or FALSE</span></div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00164"></a><span class="lineno"><a class="line" href="group___t_h_r_e_a_d_s.html#ga46497eb81066d0df83dfd07ad0a9f561">  164</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="group___t_h_r_e_a_d_s.html#ga46497eb81066d0df83dfd07ad0a9f561">add_threaded_process</a>( <a class="code" href="struct_t_h_r_e_a_d___p_o_o_l.html">THREAD_POOL</a> *thread_pool, <span class="keywordtype">void</span> *(*func_ptr)(<span class="keywordtype">void</span> *param), <span class="keywordtype">void</span> *param,  <span class="keywordtype">int</span> mode )</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;{</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    <span class="keywordflow">if</span>( !thread_pool )</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        <span class="keywordflow">return</span> FALSE ;</div>
 <div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    <span class="keywordflow">if</span>( !thread_pool )</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    <span class="keywordflow">if</span>( !thread_pool -&gt; thread_list )</div>
 <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;        <span class="keywordflow">return</span> FALSE ;</div>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    <span class="keywordflow">if</span>( !thread_pool -&gt; thread_list )</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        <span class="keywordflow">return</span> FALSE ;</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    <span class="keywordtype">int</span> it = 0 ;</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;            </div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    <span class="keywordflow">if</span>( !(mode&amp;<a class="code" href="group___t_h_r_e_a_d_s.html#ga993c05b6c403f10fb3627e9e4fc30c83">NO_LOCK</a>) ) pthread_mutex_lock( &amp;thread_pool -&gt; lock );</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    <span class="keywordflow">while</span>( it &lt; thread_pool -&gt; max_threads )</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    {</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        pthread_mutex_lock( &amp;thread_pool -&gt; thread_list[ it ] -&gt; lock );</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;        <span class="keywordflow">if</span>( thread_pool -&gt; thread_list[ it ] -&gt; thread_state == <a class="code" href="group___t_h_r_e_a_d_s.html#gac3966893f43d72bd23c7c3f410df9a48">RUNNING_THREAD</a> &amp;&amp; thread_pool -&gt; thread_list[ it ] -&gt; state == <a class="code" href="group___t_h_r_e_a_d_s.html#ga7131f70ca662b8211de3586a2a6a5a16">IDLE_PROC</a> )</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        {</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;            break ;</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        }</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;        pthread_mutex_unlock( &amp;thread_pool -&gt; thread_list[ it ] -&gt; lock );</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        it ++ ;</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    }</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    <span class="comment">/* all thread are occupied -&gt; test waiting lists. not holding node lock  because it &gt; max_threads !!! */</span></div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    <span class="keywordflow">if</span>( it &gt;= thread_pool -&gt; max_threads )</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    {</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;        <span class="comment">/* if already coming from queue, or if it should be part of a synced start, do not re-add &amp;&amp; return FALSE  */</span></div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;        <span class="keywordflow">if</span>( mode&amp;<a class="code" href="group___t_h_r_e_a_d_s.html#gaa558974d10eb2bf6f6915b6cc2bfea34">NOQUEUE</a> || mode&amp;<a class="code" href="group___t_h_r_e_a_d_s.html#ga2b400f548be5f43fa27d8f8b18892c08">SYNCED_PROC</a> )</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;        {</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;            <span class="keywordflow">if</span>( !(mode&amp;NO_LOCK) ) pthread_mutex_unlock( &amp;thread_pool -&gt; lock );</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;            <span class="keywordflow">return</span> FALSE ;</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        }</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;        <span class="keywordflow">if</span>( thread_pool -&gt; waiting_list -&gt; nb_items &lt; thread_pool -&gt; nb_max_waiting )</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        {</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;            <a class="code" href="struct_t_h_r_e_a_d___w_a_i_t_i_n_g___p_r_o_c.html">THREAD_WAITING_PROC</a> *proc = NULL ;</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;            <a class="code" href="group___c_o_m_m_o_n_s.html#ga46bf052fc99248347a1dcf89bc0757c6">Malloc</a>( proc, <a class="code" href="struct_t_h_r_e_a_d___w_a_i_t_i_n_g___p_r_o_c.html">THREAD_WAITING_PROC</a>, 1 );</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;            proc -&gt; func = func_ptr ;</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;            proc -&gt; param = param ;</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;            <a class="code" href="group___l_i_s_t.html#ga4eab319289a83524639ee5e9f0441fdf">list_push</a>( thread_pool -&gt; waiting_list, proc, free );</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;            <a class="code" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code" href="group___l_o_g.html#ga6ff63e8955665c4a58b1598f2b07c51a">LOG_DEBUG</a>, <span class="stringliteral">&quot;Adding %p %p to waitlist&quot;</span>, proc -&gt; func, proc -&gt; param );</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;            <span class="keywordflow">if</span>( !(mode&amp;NO_LOCK) ) pthread_mutex_unlock( &amp;thread_pool -&gt; lock );</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;            <span class="keywordflow">return</span> TRUE ;</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;        }</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;        <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;        {</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;            <a class="code" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code" href="group___l_o_g.html#ga6ff63e8955665c4a58b1598f2b07c51a">LOG_DEBUG</a>, <span class="stringliteral">&quot;Proc %p %p was dropped from waitlist because waitlist is full&quot;</span>, func_ptr, param );</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;            <span class="keywordflow">if</span>( !(mode&amp;NO_LOCK) ) pthread_mutex_unlock( &amp;thread_pool -&gt; lock );</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;            <span class="keywordflow">return</span> FALSE ;</div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;        }</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;    }</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    <span class="keywordflow">if</span>( mode&amp;<a class="code" href="group___t_h_r_e_a_d_s.html#ga8c7d9cf88f160af14b39be46a66f8189">DIRECT_PROC</a> )</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    {</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;        thread_pool -&gt; thread_list[ it ] -&gt; func = func_ptr ;</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;        thread_pool -&gt; thread_list[ it ] -&gt; param = param ;</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        thread_pool -&gt; thread_list[ it ] -&gt; state = <a class="code" href="group___t_h_r_e_a_d_s.html#gad1478c0e8f6772bb9673116dd0902e56">WAITING_PROC</a> ;</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;        thread_pool -&gt; thread_list[ it ] -&gt; type = mode ;</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;        sem_post( &amp;thread_pool -&gt; thread_list[ it ] -&gt; th_start );</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    }</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span>( mode&amp;<a class="code" href="group___t_h_r_e_a_d_s.html#ga2b400f548be5f43fa27d8f8b18892c08">SYNCED_PROC</a> )</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    {</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;        thread_pool -&gt; thread_list[ it ] -&gt; func = func_ptr ;</div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;        thread_pool -&gt; thread_list[ it ] -&gt; param = param ;</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;        thread_pool -&gt; thread_list[ it ] -&gt; state = <a class="code" href="group___t_h_r_e_a_d_s.html#gad1478c0e8f6772bb9673116dd0902e56">WAITING_PROC</a> ;</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;        thread_pool -&gt; thread_list[ it ] -&gt; type = mode ;</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;    }</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    {</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;        <a class="code" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a>, <span class="stringliteral">&quot;Unknown mode %d for thread %d&quot;</span>, mode, it );</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;        pthread_mutex_unlock( &amp;thread_pool -&gt; thread_list[ it ] -&gt; lock );</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;        <span class="keywordflow">if</span>( !(mode&amp;NO_LOCK) ) pthread_mutex_unlock( &amp;thread_pool -&gt; lock );</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;        <span class="keywordflow">return</span> FALSE ;</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    }</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    pthread_mutex_unlock( &amp;thread_pool -&gt; thread_list[ it ] -&gt; lock );</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    <span class="keywordflow">if</span>( !(mode&amp;NO_LOCK) ) pthread_mutex_unlock( &amp;thread_pool -&gt; lock );</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    <span class="keywordflow">return</span> TRUE ;</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;} <span class="comment">/* add_threaded_process */</span></div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;<span class="comment">/*!\fn int start_threaded_pool( THREAD_POOL *thread_pool )</span></div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;<span class="comment"> * \brief Launch the process waiting for exectution in the thread pool</span></div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;<span class="comment"> * \param thread_pool The thread pool to launche</span></div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;<span class="comment"> * \return TRUE or FALSE</span></div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00251"></a><span class="lineno"><a class="line" href="group___t_h_r_e_a_d_s.html#ga0563294cf52eb2b9e4f1d017390ff46c">  251</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="group___t_h_r_e_a_d_s.html#ga0563294cf52eb2b9e4f1d017390ff46c">start_threaded_pool</a>( <a class="code" href="struct_t_h_r_e_a_d___p_o_o_l.html">THREAD_POOL</a> *thread_pool )</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;{</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    <span class="keywordflow">if</span>( !thread_pool )</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    <span class="keywordtype">int</span> it = 0 ;</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;            </div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    <span class="keywordflow">if</span>( !(mode&amp;<a class="code" href="group___t_h_r_e_a_d_s.html#ga993c05b6c403f10fb3627e9e4fc30c83">NO_LOCK</a>) ) pthread_mutex_lock( &amp;thread_pool -&gt; lock );</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    <span class="keywordflow">while</span>( it &lt; thread_pool -&gt; max_threads )</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    {</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;        pthread_mutex_lock( &amp;thread_pool -&gt; thread_list[ it ] -&gt; lock );</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;        <span class="keywordflow">if</span>( thread_pool -&gt; thread_list[ it ] -&gt; thread_state == <a class="code" href="group___t_h_r_e_a_d_s.html#gac3966893f43d72bd23c7c3f410df9a48">RUNNING_THREAD</a> &amp;&amp; thread_pool -&gt; thread_list[ it ] -&gt; state == <a class="code" href="group___t_h_r_e_a_d_s.html#ga7131f70ca662b8211de3586a2a6a5a16">IDLE_PROC</a> )</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;        {</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;            break ;</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;        }</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        pthread_mutex_unlock( &amp;thread_pool -&gt; thread_list[ it ] -&gt; lock );</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        it ++ ;</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    }</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    <span class="comment">/* all thread are occupied -&gt; test waiting lists. not holding node lock  because it &gt; max_threads !!! */</span></div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    <span class="keywordflow">if</span>( it &gt;= thread_pool -&gt; max_threads )</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    {</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;        <span class="comment">/* if already coming from queue, or if it should be part of a synced start, do not re-add &amp;&amp; return FALSE  */</span></div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;        <span class="keywordflow">if</span>( mode&amp;<a class="code" href="group___t_h_r_e_a_d_s.html#gaa558974d10eb2bf6f6915b6cc2bfea34">NOQUEUE</a> || mode&amp;<a class="code" href="group___t_h_r_e_a_d_s.html#ga2b400f548be5f43fa27d8f8b18892c08">SYNCED_PROC</a> )</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;        {</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;            <span class="keywordflow">if</span>( !(mode&amp;NO_LOCK) ) pthread_mutex_unlock( &amp;thread_pool -&gt; lock );</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;            <span class="keywordflow">return</span> FALSE ;</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;        }</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        <span class="keywordflow">if</span>( thread_pool -&gt; waiting_list -&gt; nb_items &lt; thread_pool -&gt; nb_max_waiting )</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        {</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;            <a class="code" href="struct_t_h_r_e_a_d___w_a_i_t_i_n_g___p_r_o_c.html">THREAD_WAITING_PROC</a> *proc = NULL ;</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;            <a class="code" href="group___c_o_m_m_o_n_s.html#ga46bf052fc99248347a1dcf89bc0757c6">Malloc</a>( proc, <a class="code" href="struct_t_h_r_e_a_d___w_a_i_t_i_n_g___p_r_o_c.html">THREAD_WAITING_PROC</a>, 1 );</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;            proc -&gt; func = func_ptr ;</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;            proc -&gt; param = param ;</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;            <a class="code" href="group___l_i_s_t.html#ga4eab319289a83524639ee5e9f0441fdf">list_push</a>( thread_pool -&gt; waiting_list, proc, free );</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;            <a class="code" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code" href="group___l_o_g.html#ga6ff63e8955665c4a58b1598f2b07c51a">LOG_DEBUG</a>, <span class="stringliteral">&quot;Adding %p %p to waitlist&quot;</span>, proc -&gt; func, proc -&gt; param );</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;            <span class="keywordflow">if</span>( !(mode&amp;NO_LOCK) ) pthread_mutex_unlock( &amp;thread_pool -&gt; lock );</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;            <span class="keywordflow">return</span> TRUE ;</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;        }</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;        {</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;            <a class="code" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code" href="group___l_o_g.html#ga6ff63e8955665c4a58b1598f2b07c51a">LOG_DEBUG</a>, <span class="stringliteral">&quot;Proc %p %p was dropped from waitlist because waitlist is full&quot;</span>, func_ptr, param );</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;            <span class="keywordflow">if</span>( !(mode&amp;NO_LOCK) ) pthread_mutex_unlock( &amp;thread_pool -&gt; lock );</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;            <span class="keywordflow">return</span> FALSE ;</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;        }</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    }</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;    <span class="keywordflow">if</span>( mode&amp;<a class="code" href="group___t_h_r_e_a_d_s.html#ga8c7d9cf88f160af14b39be46a66f8189">DIRECT_PROC</a> )</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    {</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;        thread_pool -&gt; thread_list[ it ] -&gt; func = func_ptr ;</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;        thread_pool -&gt; thread_list[ it ] -&gt; param = param ;</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;        thread_pool -&gt; thread_list[ it ] -&gt; state = <a class="code" href="group___t_h_r_e_a_d_s.html#gad1478c0e8f6772bb9673116dd0902e56">WAITING_PROC</a> ;</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;        thread_pool -&gt; thread_list[ it ] -&gt; type = mode ;</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;        sem_post( &amp;thread_pool -&gt; thread_list[ it ] -&gt; th_start );</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    }</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span>( mode&amp;<a class="code" href="group___t_h_r_e_a_d_s.html#ga2b400f548be5f43fa27d8f8b18892c08">SYNCED_PROC</a> )</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    {</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;        thread_pool -&gt; thread_list[ it ] -&gt; func = func_ptr ;</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;        thread_pool -&gt; thread_list[ it ] -&gt; param = param ;</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;        thread_pool -&gt; thread_list[ it ] -&gt; state = <a class="code" href="group___t_h_r_e_a_d_s.html#gad1478c0e8f6772bb9673116dd0902e56">WAITING_PROC</a> ;</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;        thread_pool -&gt; thread_list[ it ] -&gt; type = mode ;</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;    }</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;    {</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;        <a class="code" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a>, <span class="stringliteral">&quot;Unknown mode %d for thread %d&quot;</span>, mode, it );</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;        pthread_mutex_unlock( &amp;thread_pool -&gt; thread_list[ it ] -&gt; lock );</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;        <span class="keywordflow">if</span>( !(mode&amp;NO_LOCK) ) pthread_mutex_unlock( &amp;thread_pool -&gt; lock );</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;        <span class="keywordflow">return</span> FALSE ;</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    }</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    pthread_mutex_unlock( &amp;thread_pool -&gt; thread_list[ it ] -&gt; lock );</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    <span class="keywordflow">if</span>( !(mode&amp;NO_LOCK) ) pthread_mutex_unlock( &amp;thread_pool -&gt; lock );</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    <span class="keywordflow">return</span> TRUE ;</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;} <span class="comment">/* add_threaded_process */</span></div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;<span class="comment">/*!\fn int start_threaded_pool( THREAD_POOL *thread_pool )</span></div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;<span class="comment"> * \brief Launch the process waiting for exectution in the thread pool</span></div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;<span class="comment"> * \param thread_pool The thread pool to launche</span></div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;<span class="comment"> * \return TRUE or FALSE</span></div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00248"></a><span class="lineno"><a class="line" href="group___t_h_r_e_a_d_s.html#ga0563294cf52eb2b9e4f1d017390ff46c">  248</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="group___t_h_r_e_a_d_s.html#ga0563294cf52eb2b9e4f1d017390ff46c">start_threaded_pool</a>( <a class="code" href="struct_t_h_r_e_a_d___p_o_o_l.html">THREAD_POOL</a> *thread_pool )</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;{</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    <span class="keywordflow">if</span>( !thread_pool )</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;        <span class="keywordflow">return</span> FALSE ;</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    <span class="keywordflow">if</span>( !thread_pool -&gt; thread_list )</div>
 <div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;        <span class="keywordflow">return</span> FALSE ;</div>
 <div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    <span class="keywordflow">if</span>( !thread_pool -&gt; thread_list )</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;        <span class="keywordflow">return</span> FALSE ;</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;    <span class="keywordtype">int</span> retval = TRUE ;</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    pthread_mutex_lock( &amp;thread_pool -&gt; lock );</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;    <span class="keywordflow">for</span>( <span class="keywordtype">int</span> it = 0 ; it &lt; thread_pool -&gt; max_threads ; it ++ )</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    {</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;        <span class="keywordtype">int</span> to_run = 0 ;</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;        pthread_mutex_lock( &amp;thread_pool -&gt; thread_list[ it ] -&gt; lock );</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;        <span class="keywordflow">if</span>( (thread_pool -&gt; thread_list[ it ] -&gt; type&amp;<a class="code" href="group___t_h_r_e_a_d_s.html#ga2b400f548be5f43fa27d8f8b18892c08">SYNCED_PROC</a>) &amp;&amp; thread_pool -&gt; thread_list[ it ] -&gt; state == <a class="code" href="group___t_h_r_e_a_d_s.html#gad1478c0e8f6772bb9673116dd0902e56">WAITING_PROC</a> )</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;        {</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;            to_run = 1 ;</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;        }</div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;        pthread_mutex_unlock( &amp;thread_pool -&gt; thread_list[ it ] -&gt; lock );</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;        <span class="keywordflow">if</span>( to_run == 1 )</div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;        {</div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;            <span class="keywordflow">if</span>( sem_post( &amp;thread_pool -&gt; thread_list[ it ] -&gt; th_start ) != 0 )</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;            {</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;            }   retval = FALSE ;</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;        }</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    }</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;    pthread_mutex_unlock( &amp;thread_pool -&gt; lock );</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    <span class="keywordtype">int</span> retval = TRUE ;</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    pthread_mutex_lock( &amp;thread_pool -&gt; lock );</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;    <span class="keywordflow">for</span>( <span class="keywordtype">int</span> it = 0 ; it &lt; thread_pool -&gt; max_threads ; it ++ )</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    {</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;        <span class="keywordtype">int</span> to_run = 0 ;</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;        pthread_mutex_lock( &amp;thread_pool -&gt; thread_list[ it ] -&gt; lock );</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;        <span class="keywordflow">if</span>( (thread_pool -&gt; thread_list[ it ] -&gt; type&amp;<a class="code" href="group___t_h_r_e_a_d_s.html#ga2b400f548be5f43fa27d8f8b18892c08">SYNCED_PROC</a>) &amp;&amp; thread_pool -&gt; thread_list[ it ] -&gt; state == <a class="code" href="group___t_h_r_e_a_d_s.html#gad1478c0e8f6772bb9673116dd0902e56">WAITING_PROC</a> )</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;        {</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;            to_run = 1 ;</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;        }</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;        pthread_mutex_unlock( &amp;thread_pool -&gt; thread_list[ it ] -&gt; lock );</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;        <span class="keywordflow">if</span>( to_run == 1 )</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;        {</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;            <span class="keywordflow">if</span>( sem_post( &amp;thread_pool -&gt; thread_list[ it ] -&gt; th_start ) != 0 )</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;            {</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;            }   retval = FALSE ;</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;        }</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;    }</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    pthread_mutex_unlock( &amp;thread_pool -&gt; lock );</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    <span class="keywordflow">return</span> retval ;</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;} <span class="comment">/* start_threaded_pool */</span></div>
 <div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;    <span class="keywordflow">return</span> retval ;</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;} <span class="comment">/* start_threaded_pool */</span></div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;<span class="comment">/*!\fn int wait_for_threaded_pool( THREAD_POOL *thread_pool , int delay )</span></div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;<span class="comment"> * \brief Wait for all the launched process in the thread pool to terminate</span></div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;<span class="comment"> * \param thread_pool The thread pool to wait</span></div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;<span class="comment"> * \param delay time between each check</span></div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;<span class="comment"> * \return TRUE or FALSE</span></div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00292"></a><span class="lineno"><a class="line" href="group___t_h_r_e_a_d_s.html#ga992fc2a67a2d66733ccd10f7d9e2ead3">  292</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="group___t_h_r_e_a_d_s.html#ga992fc2a67a2d66733ccd10f7d9e2ead3">wait_for_threaded_pool</a>(  <a class="code" href="struct_t_h_r_e_a_d___p_o_o_l.html">THREAD_POOL</a> *thread_pool, <span class="keywordtype">int</span> delay )</div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;{</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;    <span class="keywordflow">if</span>( !thread_pool )</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;<span class="comment">/*!\fn int wait_for_threaded_pool( THREAD_POOL *thread_pool , int delay )</span></div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;<span class="comment"> * \brief Wait for all the launched process in the thread pool to terminate</span></div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;<span class="comment"> * \param thread_pool The thread pool to wait</span></div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;<span class="comment"> * \param delay time between each check</span></div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;<span class="comment"> * \return TRUE or FALSE</span></div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00289"></a><span class="lineno"><a class="line" href="group___t_h_r_e_a_d_s.html#ga992fc2a67a2d66733ccd10f7d9e2ead3">  289</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="group___t_h_r_e_a_d_s.html#ga992fc2a67a2d66733ccd10f7d9e2ead3">wait_for_threaded_pool</a>(  <a class="code" href="struct_t_h_r_e_a_d___p_o_o_l.html">THREAD_POOL</a> *thread_pool, <span class="keywordtype">int</span> delay )</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;{</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    <span class="keywordflow">if</span>( !thread_pool )</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;        <span class="keywordflow">return</span> FALSE ;</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;    <span class="keywordflow">if</span>( !thread_pool -&gt; thread_list )</div>
 <div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;        <span class="keywordflow">return</span> FALSE ;</div>
 <div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;    <span class="keywordflow">if</span>( !thread_pool -&gt; thread_list )</div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;        <span class="keywordflow">return</span> FALSE ;</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;</div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    <span class="keywordtype">int</span> DONE = 0 ;</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;    <a class="code" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code" href="group___l_o_g.html#ga6ff63e8955665c4a58b1598f2b07c51a">LOG_DEBUG</a>, <span class="stringliteral">&quot;Waiting for the waitlist of %p to be consumed&quot;</span>, thread_pool );</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    <span class="comment">/* waiting to consume all the waiting list */</span></div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;    <span class="keywordflow">while</span>( thread_pool -&gt; waiting_list -&gt; nb_items &gt; 0 )</div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;    {</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;        <a class="code" href="group___t_h_r_e_a_d_s.html#ga5d9ce1747e4b7cb58ce3767f7e56cd8b">refresh_thread_pool</a>( thread_pool );</div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;        <a class="code" href="group___n___t_i_m_e.html#ga690f12dde1a446d47b8bf5f959493003">u_sleep</a>( delay );</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    }</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;    <a class="code" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code" href="group___l_o_g.html#ga6ff63e8955665c4a58b1598f2b07c51a">LOG_DEBUG</a>, <span class="stringliteral">&quot;Waiting for active process of %p to be terminated&quot;</span>, thread_pool );</div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;    <span class="comment">/* waiting for all active procs to have terminated */</span></div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    <span class="keywordflow">while</span>( !DONE )</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;    {</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;        DONE = 1 ;</div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;        <span class="keywordflow">for</span>( <span class="keywordtype">int</span> it = 0 ; it &lt; thread_pool -&gt; max_threads ; it ++ )</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;        {</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;            <span class="keywordtype">int</span> state = 0 ;</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;</div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;            pthread_mutex_lock( &amp;thread_pool -&gt; thread_list[ it ] -&gt; lock );</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;            state = thread_pool -&gt; thread_list[ it ] -&gt; state ;</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;            pthread_mutex_unlock( &amp;thread_pool -&gt; thread_list[ it ] -&gt; lock );</div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;            <span class="keywordflow">if</span>( !(state&amp;<a class="code" href="group___t_h_r_e_a_d_s.html#ga7131f70ca662b8211de3586a2a6a5a16">IDLE_PROC</a>) )</div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;            {</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;                DONE = 0 ;</div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;                <a class="code" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code" href="group___l_o_g.html#ga6ff63e8955665c4a58b1598f2b07c51a">LOG_DEBUG</a>, <span class="stringliteral">&quot;Thread id %d status is not IDLE: %d&quot;</span>, it, state );</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;            }</div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;        }</div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;        <a class="code" href="group___n___t_i_m_e.html#ga690f12dde1a446d47b8bf5f959493003">u_sleep</a>( delay );</div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;        <a class="code" href="group___t_h_r_e_a_d_s.html#ga5d9ce1747e4b7cb58ce3767f7e56cd8b">refresh_thread_pool</a>( thread_pool );</div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;    }</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;    <span class="keywordtype">int</span> DONE = 0 ;</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;    <a class="code" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code" href="group___l_o_g.html#ga6ff63e8955665c4a58b1598f2b07c51a">LOG_DEBUG</a>, <span class="stringliteral">&quot;Waiting for the waitlist of %p to be consumed&quot;</span>, thread_pool );</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;    <span class="comment">/* waiting to consume all the waiting list */</span></div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;    <span class="keywordflow">while</span>( thread_pool -&gt; waiting_list -&gt; nb_items &gt; 0 )</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;    {</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;        <a class="code" href="group___t_h_r_e_a_d_s.html#ga5d9ce1747e4b7cb58ce3767f7e56cd8b">refresh_thread_pool</a>( thread_pool );</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;        <a class="code" href="group___n___t_i_m_e.html#ga690f12dde1a446d47b8bf5f959493003">u_sleep</a>( delay );</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;    }</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    <a class="code" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code" href="group___l_o_g.html#ga6ff63e8955665c4a58b1598f2b07c51a">LOG_DEBUG</a>, <span class="stringliteral">&quot;Waiting for active process of %p to be terminated&quot;</span>, thread_pool );</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    <span class="comment">/* waiting for all active procs to have terminated */</span></div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    <span class="keywordflow">while</span>( !DONE )</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;    {</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;        DONE = 1 ;</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;        <span class="keywordflow">for</span>( <span class="keywordtype">int</span> it = 0 ; it &lt; thread_pool -&gt; max_threads ; it ++ )</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;        {</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;            <span class="keywordtype">int</span> state = 0 ;</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;            pthread_mutex_lock( &amp;thread_pool -&gt; thread_list[ it ] -&gt; lock );</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;            state = thread_pool -&gt; thread_list[ it ] -&gt; state ;</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;            pthread_mutex_unlock( &amp;thread_pool -&gt; thread_list[ it ] -&gt; lock );</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;            <span class="keywordflow">if</span>( !(state&amp;<a class="code" href="group___t_h_r_e_a_d_s.html#ga7131f70ca662b8211de3586a2a6a5a16">IDLE_PROC</a>) )</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;            {</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;                DONE = 0 ;</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;                <a class="code" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code" href="group___l_o_g.html#ga6ff63e8955665c4a58b1598f2b07c51a">LOG_DEBUG</a>, <span class="stringliteral">&quot;Thread id %d status is not IDLE: %d&quot;</span>, it, state );</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;            }</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;        }</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;        <a class="code" href="group___n___t_i_m_e.html#ga690f12dde1a446d47b8bf5f959493003">u_sleep</a>( delay );</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;        <a class="code" href="group___t_h_r_e_a_d_s.html#ga5d9ce1747e4b7cb58ce3767f7e56cd8b">refresh_thread_pool</a>( thread_pool );</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;    }</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    <span class="keywordflow">return</span> TRUE ;</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;}</div>
 <div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;</div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;    <span class="keywordflow">return</span> TRUE ;</div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;}</div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;</div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;<span class="comment">/*!\fn int destroy_threaded_pool( THREAD_POOL **pool  ,int delay )</span></div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;<span class="comment"> * \brief delete a thread_pool, exit the threads and free the structs</span></div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;<span class="comment"> * \param pool The THREAD_POOL *object to kill</span></div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;<span class="comment"> * \param delay The THREAD_POOL *object to kill</span></div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;<span class="comment"> * \return TRUE or FALSE</span></div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00343"></a><span class="lineno"><a class="line" href="group___t_h_r_e_a_d_s.html#ga12ce28c2aaa5a5a1a05abe11071dd83f">  343</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="group___t_h_r_e_a_d_s.html#ga12ce28c2aaa5a5a1a05abe11071dd83f">destroy_threaded_pool</a>( <a class="code" href="struct_t_h_r_e_a_d___p_o_o_l.html">THREAD_POOL</a> **pool, <span class="keywordtype">int</span> delay )</div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;{</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;    <a class="code" href="group___c_o_m_m_o_n_s.html#ga4ecf5d80299a4ca1dc13c3a19610db11">__n_assert</a>( pool&amp;&amp;(*pool), <span class="keywordflow">return</span> FALSE );</div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;    <a class="code" href="group___c_o_m_m_o_n_s.html#ga4ecf5d80299a4ca1dc13c3a19610db11">__n_assert</a>( (*pool) -&gt; thread_list, <span class="keywordflow">return</span> FALSE );</div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;</div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;    <span class="keywordtype">int</span> state= 0, DONE = 0 ;</div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;</div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;    <span class="keywordflow">while</span>( !DONE )</div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;    {</div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;        DONE = 0 ;</div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;        pthread_mutex_lock( &amp;(*pool) -&gt; lock );</div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;        <span class="keywordflow">for</span>( <span class="keywordtype">int</span> it = 0 ; it &lt; (*pool) -&gt; max_threads ; it ++ )</div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;        {</div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;            pthread_mutex_lock( &amp;(*pool) -&gt; thread_list[ it ] -&gt; lock );</div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;            state = (*pool) -&gt; thread_list[ it ] -&gt; state ;</div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;            pthread_mutex_unlock( &amp;(*pool) -&gt; thread_list[ it ] -&gt; lock );</div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;</div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;            <span class="keywordflow">if</span>( state == <a class="code" href="group___t_h_r_e_a_d_s.html#ga7131f70ca662b8211de3586a2a6a5a16">IDLE_PROC</a> )</div>
-<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;            {</div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;                <a class="code" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code" href="group___l_o_g.html#ga6ff63e8955665c4a58b1598f2b07c51a">LOG_DEBUG</a>, <span class="stringliteral">&quot;Posting EXITING to thread %ld&quot;</span>, (*pool) -&gt; thread_list[ it ] -&gt; thr  );</div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;                pthread_mutex_lock( &amp;(*pool) -&gt; thread_list[ it ] -&gt; lock );</div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;                (*pool) -&gt; thread_list[ it ] -&gt; thread_state = <a class="code" href="group___t_h_r_e_a_d_s.html#gaac52c55616f27d8f95c4435d4b2cf91d">EXITING_THREAD</a> ;</div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;                sem_post( &amp;(*pool) -&gt; thread_list[ it ] -&gt; th_start );</div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;                pthread_mutex_unlock( &amp;(*pool) -&gt; thread_list[ it ] -&gt; lock );</div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;                DONE = 1 ;</div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;            }</div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;            <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;            {</div>
-<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;                <a class="code" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code" href="group___l_o_g.html#ga6ff63e8955665c4a58b1598f2b07c51a">LOG_DEBUG</a>, <span class="stringliteral">&quot;thr %ld proc state %d thr state %d&quot;</span>, (*pool) -&gt; thread_list[ it ] -&gt; thr,  (*pool) -&gt; thread_list[ it ] -&gt; state,(*pool) -&gt; thread_list[ it ] -&gt; thread_state  );</div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;            }</div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;        }</div>
-<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;        pthread_mutex_unlock( &amp;(*pool) -&gt; lock );</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;<span class="comment">/*!\fn int destroy_threaded_pool( THREAD_POOL **pool  ,int delay )</span></div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;<span class="comment"> * \brief delete a thread_pool, exit the threads and free the structs</span></div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;<span class="comment"> * \param pool The THREAD_POOL *object to kill</span></div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;<span class="comment"> * \param delay The THREAD_POOL *object to kill</span></div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;<span class="comment"> * \return TRUE or FALSE</span></div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00340"></a><span class="lineno"><a class="line" href="group___t_h_r_e_a_d_s.html#ga12ce28c2aaa5a5a1a05abe11071dd83f">  340</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="group___t_h_r_e_a_d_s.html#ga12ce28c2aaa5a5a1a05abe11071dd83f">destroy_threaded_pool</a>( <a class="code" href="struct_t_h_r_e_a_d___p_o_o_l.html">THREAD_POOL</a> **pool, <span class="keywordtype">int</span> delay )</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;{</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;    <a class="code" href="group___c_o_m_m_o_n_s.html#ga4ecf5d80299a4ca1dc13c3a19610db11">__n_assert</a>( pool&amp;&amp;(*pool), <span class="keywordflow">return</span> FALSE );</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;    <a class="code" href="group___c_o_m_m_o_n_s.html#ga4ecf5d80299a4ca1dc13c3a19610db11">__n_assert</a>( (*pool) -&gt; thread_list, <span class="keywordflow">return</span> FALSE );</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;    <span class="keywordtype">int</span> state= 0, DONE = 0 ;</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;    <span class="keywordflow">while</span>( !DONE )</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;    {</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;        DONE = 0 ;</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;        pthread_mutex_lock( &amp;(*pool) -&gt; lock );</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;        <span class="keywordflow">for</span>( <span class="keywordtype">int</span> it = 0 ; it &lt; (*pool) -&gt; max_threads ; it ++ )</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;        {</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;            pthread_mutex_lock( &amp;(*pool) -&gt; thread_list[ it ] -&gt; lock );</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;            state = (*pool) -&gt; thread_list[ it ] -&gt; state ;</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;            pthread_mutex_unlock( &amp;(*pool) -&gt; thread_list[ it ] -&gt; lock );</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;            <span class="keywordflow">if</span>( state == <a class="code" href="group___t_h_r_e_a_d_s.html#ga7131f70ca662b8211de3586a2a6a5a16">IDLE_PROC</a> )</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;            {</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;                <a class="code" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code" href="group___l_o_g.html#ga6ff63e8955665c4a58b1598f2b07c51a">LOG_DEBUG</a>, <span class="stringliteral">&quot;Posting EXITING to thread %ld&quot;</span>, (*pool) -&gt; thread_list[ it ] -&gt; thr  );</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;                pthread_mutex_lock( &amp;(*pool) -&gt; thread_list[ it ] -&gt; lock );</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;                (*pool) -&gt; thread_list[ it ] -&gt; thread_state = <a class="code" href="group___t_h_r_e_a_d_s.html#gaac52c55616f27d8f95c4435d4b2cf91d">EXITING_THREAD</a> ;</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;                sem_post( &amp;(*pool) -&gt; thread_list[ it ] -&gt; th_start );</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;                pthread_mutex_unlock( &amp;(*pool) -&gt; thread_list[ it ] -&gt; lock );</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;                DONE = 1 ;</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;            }</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;            {</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;                <a class="code" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code" href="group___l_o_g.html#ga6ff63e8955665c4a58b1598f2b07c51a">LOG_DEBUG</a>, <span class="stringliteral">&quot;thr %ld proc state %d thr state %d&quot;</span>, (*pool) -&gt; thread_list[ it ] -&gt; thr,  (*pool) -&gt; thread_list[ it ] -&gt; state,(*pool) -&gt; thread_list[ it ] -&gt; thread_state  );</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;            }</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;        }</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;        pthread_mutex_unlock( &amp;(*pool) -&gt; lock );</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;        <a class="code" href="group___n___t_i_m_e.html#ga690f12dde1a446d47b8bf5f959493003">u_sleep</a>( delay );</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;    }</div>
 <div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;</div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;        <a class="code" href="group___n___t_i_m_e.html#ga690f12dde1a446d47b8bf5f959493003">u_sleep</a>( delay );</div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;    }</div>
-<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;</div>
-<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;    pthread_mutex_lock( &amp;(*pool) -&gt; lock );</div>
-<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;    <span class="keywordflow">for</span>( <span class="keywordtype">int</span> it = 0 ; it &lt; (*pool) -&gt; max_threads ; it ++ )</div>
-<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;    {</div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;        pthread_join( (*pool) -&gt; thread_list[ it ] -&gt; thr, NULL );</div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;        pthread_mutex_destroy( &amp;(*pool) -&gt; thread_list[ it ] -&gt; lock );</div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;        sem_destroy(  &amp;(*pool) -&gt; thread_list[ it ] -&gt; th_start );</div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;        sem_destroy(  &amp;(*pool) -&gt; thread_list[ it ] -&gt; th_end );</div>
-<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;        <a class="code" href="group___c_o_m_m_o_n_s.html#gae62e40d702e99a7760ba1de7451dff51">Free</a>( (*pool) -&gt; thread_list[ it ] );</div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;    }</div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;    <a class="code" href="group___c_o_m_m_o_n_s.html#gae62e40d702e99a7760ba1de7451dff51">Free</a>( (*pool) -&gt; thread_list );</div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;    <a class="code" href="group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755">list_destroy</a>( &amp;(*pool) -&gt; waiting_list );</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;    pthread_mutex_lock( &amp;(*pool) -&gt; lock );</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;    <span class="keywordflow">for</span>( <span class="keywordtype">int</span> it = 0 ; it &lt; (*pool) -&gt; max_threads ; it ++ )</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;    {</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;        pthread_join( (*pool) -&gt; thread_list[ it ] -&gt; thr, NULL );</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;        pthread_mutex_destroy( &amp;(*pool) -&gt; thread_list[ it ] -&gt; lock );</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;        sem_destroy(  &amp;(*pool) -&gt; thread_list[ it ] -&gt; th_start );</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;        sem_destroy(  &amp;(*pool) -&gt; thread_list[ it ] -&gt; th_end );</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;        <a class="code" href="group___c_o_m_m_o_n_s.html#gae62e40d702e99a7760ba1de7451dff51">Free</a>( (*pool) -&gt; thread_list[ it ] );</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;    }</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;    <a class="code" href="group___c_o_m_m_o_n_s.html#gae62e40d702e99a7760ba1de7451dff51">Free</a>( (*pool) -&gt; thread_list );</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;    <a class="code" href="group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755">list_destroy</a>( &amp;(*pool) -&gt; waiting_list );</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;    pthread_mutex_unlock( &amp;(*pool) -&gt; lock );</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;    pthread_mutex_destroy( &amp;(*pool) -&gt; lock );</div>
 <div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;</div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;    pthread_mutex_unlock( &amp;(*pool) -&gt; lock );</div>
-<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;    pthread_mutex_destroy( &amp;(*pool) -&gt; lock );</div>
-<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;</div>
-<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;    <a class="code" href="group___c_o_m_m_o_n_s.html#gae62e40d702e99a7760ba1de7451dff51">Free</a>( (*pool) );</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;    <a class="code" href="group___c_o_m_m_o_n_s.html#gae62e40d702e99a7760ba1de7451dff51">Free</a>( (*pool) );</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;    <span class="keywordflow">return</span> TRUE ;</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;} <span class="comment">/* destroy_threaded_pool */</span></div>
 <div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;</div>
-<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;    <span class="keywordflow">return</span> TRUE ;</div>
-<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;} <span class="comment">/* destroy_threaded_pool */</span></div>
-<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;</div>
-<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;</div>
-<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;</div>
-<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;<span class="comment">/*!\fn  int refresh_thread_pool( THREAD_POOL *thread_pool )</span></div>
-<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;<span class="comment"> * \brief try to add some waiting DIRECT_PROCs on some free thread slots, else do nothing</span></div>
-<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;<span class="comment"> * \param thread_pool The thread pool to refresh</span></div>
-<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;<span class="comment"> * \return TRUE or FALSE</span></div>
-<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00407"></a><span class="lineno"><a class="line" href="group___t_h_r_e_a_d_s.html#ga5d9ce1747e4b7cb58ce3767f7e56cd8b">  407</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="group___t_h_r_e_a_d_s.html#ga5d9ce1747e4b7cb58ce3767f7e56cd8b">refresh_thread_pool</a>( <a class="code" href="struct_t_h_r_e_a_d___p_o_o_l.html">THREAD_POOL</a> *thread_pool )</div>
-<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;{</div>
-<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;    <span class="comment">/* Trying to empty the wait list */</span></div>
-<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;    <span class="keywordtype">int</span> push_status = 0 ;</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;<span class="comment">/*!\fn  int refresh_thread_pool( THREAD_POOL *thread_pool )</span></div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;<span class="comment"> * \brief try to add some waiting DIRECT_PROCs on some free thread slots, else do nothing</span></div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;<span class="comment"> * \param thread_pool The thread pool to refresh</span></div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;<span class="comment"> * \return TRUE or FALSE</span></div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00404"></a><span class="lineno"><a class="line" href="group___t_h_r_e_a_d_s.html#ga5d9ce1747e4b7cb58ce3767f7e56cd8b">  404</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="group___t_h_r_e_a_d_s.html#ga5d9ce1747e4b7cb58ce3767f7e56cd8b">refresh_thread_pool</a>( <a class="code" href="struct_t_h_r_e_a_d___p_o_o_l.html">THREAD_POOL</a> *thread_pool )</div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;{</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;    <span class="comment">/* Trying to empty the wait list */</span></div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;    <span class="keywordtype">int</span> push_status = 0 ;</div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;    <a class="code" href="group___c_o_m_m_o_n_s.html#ga4ecf5d80299a4ca1dc13c3a19610db11">__n_assert</a>( thread_pool, <span class="keywordflow">return</span> FALSE );</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;    <a class="code" href="group___c_o_m_m_o_n_s.html#ga4ecf5d80299a4ca1dc13c3a19610db11">__n_assert</a>( thread_pool -&gt; waiting_list, <span class="keywordflow">return</span> FALSE );</div>
 <div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;</div>
-<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;    <a class="code" href="group___c_o_m_m_o_n_s.html#ga4ecf5d80299a4ca1dc13c3a19610db11">__n_assert</a>( thread_pool, <span class="keywordflow">return</span> FALSE );</div>
-<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;    <a class="code" href="group___c_o_m_m_o_n_s.html#ga4ecf5d80299a4ca1dc13c3a19610db11">__n_assert</a>( thread_pool -&gt; waiting_list, <span class="keywordflow">return</span> FALSE );</div>
-<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;</div>
-<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;    pthread_mutex_lock( &amp;thread_pool -&gt; lock );</div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;    pthread_mutex_lock( &amp;thread_pool -&gt; lock );</div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;</div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;    <span class="keywordflow">if</span>( thread_pool -&gt; waiting_list &amp;&amp; thread_pool -&gt; waiting_list -&gt; start )</div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;        push_status = 1 ;</div>
 <div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;</div>
-<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;    <span class="keywordflow">if</span>( thread_pool -&gt; waiting_list &amp;&amp; thread_pool -&gt; waiting_list -&gt; start )</div>
-<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;        push_status = 1 ;</div>
-<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;</div>
-<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;    <span class="keywordflow">while</span>( push_status == 1 )</div>
-<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;    {</div>
-<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;        <a class="code" href="struct_l_i_s_t___n_o_d_e.html">LIST_NODE</a> *node = thread_pool -&gt; waiting_list -&gt; start ;</div>
-<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;        <a class="code" href="struct_l_i_s_t___n_o_d_e.html">LIST_NODE</a> *next_node = NULL ;</div>
-<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;        <span class="keywordflow">if</span>( node &amp;&amp; node -&gt; ptr )</div>
-<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;        {</div>
-<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;            <a class="code" href="struct_t_h_r_e_a_d___w_a_i_t_i_n_g___p_r_o_c.html">THREAD_WAITING_PROC</a> *proc = (<a class="code" href="struct_t_h_r_e_a_d___w_a_i_t_i_n_g___p_r_o_c.html">THREAD_WAITING_PROC</a> *)node -&gt; ptr ;</div>
-<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;            <span class="keywordflow">if</span>( proc )</div>
-<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;            {</div>
-<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;                <span class="keywordflow">if</span>( <a class="code" href="group___t_h_r_e_a_d_s.html#ga46497eb81066d0df83dfd07ad0a9f561">add_threaded_process</a>( thread_pool, proc -&gt; func, proc -&gt; param, <a class="code" href="group___t_h_r_e_a_d_s.html#ga8c7d9cf88f160af14b39be46a66f8189">DIRECT_PROC</a>|<a class="code" href="group___t_h_r_e_a_d_s.html#gaa558974d10eb2bf6f6915b6cc2bfea34">NOQUEUE</a>|<a class="code" href="group___t_h_r_e_a_d_s.html#ga993c05b6c403f10fb3627e9e4fc30c83">NO_LOCK</a> ) == TRUE )</div>
-<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;                {</div>
-<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;                    <a class="code" href="struct_t_h_r_e_a_d___w_a_i_t_i_n_g___p_r_o_c.html">THREAD_WAITING_PROC</a> *procptr = NULL ;</div>
-<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;                    next_node = node -&gt; next ;</div>
-<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;                    procptr = <a class="code" href="group___l_i_s_t.html#ga366776cfa85e526b247ef1d348c34e0c">remove_list_node</a>( thread_pool -&gt; waiting_list, node, <a class="code" href="struct_t_h_r_e_a_d___w_a_i_t_i_n_g___p_r_o_c.html">THREAD_WAITING_PROC</a> );</div>
-<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;                    <a class="code" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code" href="group___l_o_g.html#ga6ff63e8955665c4a58b1598f2b07c51a">LOG_DEBUG</a>, <span class="stringliteral">&quot;waitlist: adding %p,%p to %p&quot;</span>, procptr -&gt; func, procptr -&gt; param, thread_pool );</div>
-<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;                    <a class="code" href="group___c_o_m_m_o_n_s.html#gae62e40d702e99a7760ba1de7451dff51">Free</a>( procptr );</div>
-<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;                    node = next_node ;</div>
-<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;                }</div>
-<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;                <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;                {</div>
-<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;                    push_status = 0 ;</div>
-<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;                }</div>
-<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;            }</div>
-<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;        }</div>
-<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;        <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;        {</div>
-<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;            push_status = 0 ;</div>
-<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;        }</div>
-<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;    } <span class="comment">/* while( push_status == 1 ) */</span></div>
-<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;</div>
-<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;    <span class="comment">/* update statictics */</span></div>
-<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;    thread_pool -&gt; nb_actives = 0 ;</div>
-<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;    <span class="keywordflow">for</span>( <span class="keywordtype">int</span> it = 0 ; it &lt; thread_pool -&gt; max_threads ; it ++ )</div>
-<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;    {</div>
-<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;        pthread_mutex_lock( &amp;thread_pool -&gt; thread_list[ it ] -&gt; lock );</div>
-<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;        <span class="keywordflow">if</span>( thread_pool -&gt; thread_list[ it ] -&gt; state == <a class="code" href="group___t_h_r_e_a_d_s.html#ga928be77c90a9b28e1931431b5eac113b">RUNNING_PROC</a> )</div>
-<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;            thread_pool -&gt; nb_actives ++ ;</div>
-<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;        pthread_mutex_unlock( &amp;thread_pool -&gt; thread_list[ it ] -&gt; lock );</div>
-<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;    }</div>
-<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;    pthread_mutex_unlock( &amp;thread_pool -&gt; lock );</div>
-<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;</div>
-<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;</div>
-<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;</div>
-<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;    <span class="keywordflow">return</span> TRUE ;</div>
-<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;} <span class="comment">/* refresh_thread_pool() */</span></div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;    <span class="keywordflow">while</span>( push_status == 1 )</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;    {</div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;        <a class="code" href="struct_l_i_s_t___n_o_d_e.html">LIST_NODE</a> *node = thread_pool -&gt; waiting_list -&gt; start ;</div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;        <a class="code" href="struct_l_i_s_t___n_o_d_e.html">LIST_NODE</a> *next_node = NULL ;</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;        <span class="keywordflow">if</span>( node &amp;&amp; node -&gt; ptr )</div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;        {</div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;            <a class="code" href="struct_t_h_r_e_a_d___w_a_i_t_i_n_g___p_r_o_c.html">THREAD_WAITING_PROC</a> *proc = (<a class="code" href="struct_t_h_r_e_a_d___w_a_i_t_i_n_g___p_r_o_c.html">THREAD_WAITING_PROC</a> *)node -&gt; ptr ;</div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;            <span class="keywordflow">if</span>( proc )</div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;            {</div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;                <span class="keywordflow">if</span>( <a class="code" href="group___t_h_r_e_a_d_s.html#ga46497eb81066d0df83dfd07ad0a9f561">add_threaded_process</a>( thread_pool, proc -&gt; func, proc -&gt; param, <a class="code" href="group___t_h_r_e_a_d_s.html#ga8c7d9cf88f160af14b39be46a66f8189">DIRECT_PROC</a>|<a class="code" href="group___t_h_r_e_a_d_s.html#gaa558974d10eb2bf6f6915b6cc2bfea34">NOQUEUE</a>|<a class="code" href="group___t_h_r_e_a_d_s.html#ga993c05b6c403f10fb3627e9e4fc30c83">NO_LOCK</a> ) == TRUE )</div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;                {</div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;                    <a class="code" href="struct_t_h_r_e_a_d___w_a_i_t_i_n_g___p_r_o_c.html">THREAD_WAITING_PROC</a> *procptr = NULL ;</div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;                    next_node = node -&gt; next ;</div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;                    procptr = <a class="code" href="group___l_i_s_t.html#ga366776cfa85e526b247ef1d348c34e0c">remove_list_node</a>( thread_pool -&gt; waiting_list, node, <a class="code" href="struct_t_h_r_e_a_d___w_a_i_t_i_n_g___p_r_o_c.html">THREAD_WAITING_PROC</a> );</div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;                    <a class="code" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code" href="group___l_o_g.html#ga6ff63e8955665c4a58b1598f2b07c51a">LOG_DEBUG</a>, <span class="stringliteral">&quot;waitlist: adding %p,%p to %p&quot;</span>, procptr -&gt; func, procptr -&gt; param, thread_pool );</div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;                    <a class="code" href="group___c_o_m_m_o_n_s.html#gae62e40d702e99a7760ba1de7451dff51">Free</a>( procptr );</div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;                    node = next_node ;</div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;                }</div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;                <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;                {</div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;                    push_status = 0 ;</div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;                }</div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;            }</div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;        }</div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;        {</div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;            push_status = 0 ;</div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;        }</div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;    } <span class="comment">/* while( push_status == 1 ) */</span></div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;</div>
+<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;    <span class="comment">/* update statictics */</span></div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;    thread_pool -&gt; nb_actives = 0 ;</div>
+<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;    <span class="keywordflow">for</span>( <span class="keywordtype">int</span> it = 0 ; it &lt; thread_pool -&gt; max_threads ; it ++ )</div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;    {</div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;        pthread_mutex_lock( &amp;thread_pool -&gt; thread_list[ it ] -&gt; lock );</div>
+<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;        <span class="keywordflow">if</span>( thread_pool -&gt; thread_list[ it ] -&gt; state == <a class="code" href="group___t_h_r_e_a_d_s.html#ga928be77c90a9b28e1931431b5eac113b">RUNNING_PROC</a> )</div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;            thread_pool -&gt; nb_actives ++ ;</div>
+<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;        pthread_mutex_unlock( &amp;thread_pool -&gt; thread_list[ it ] -&gt; lock );</div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;    }</div>
+<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;    pthread_mutex_unlock( &amp;thread_pool -&gt; lock );</div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;</div>
+<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;</div>
+<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;</div>
+<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;    <span class="keywordflow">return</span> TRUE ;</div>
+<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;} <span class="comment">/* refresh_thread_pool() */</span></div>
 <div class="ttc" id="struct_t_h_r_e_a_d___w_a_i_t_i_n_g___p_r_o_c_html"><div class="ttname"><a href="struct_t_h_r_e_a_d___w_a_i_t_i_n_g___p_r_o_c.html">THREAD_WAITING_PROC</a></div><div class="ttdoc">Structure of a waiting process item. </div><div class="ttdef"><b>Definition:</b> <a href="n__thread__pool_8h_source.html#l00097">n_thread_pool.h:97</a></div></div>
 <div class="ttc" id="group___l_i_s_t_html_gaa82751b4d6a219771661843e61cefa2e"><div class="ttname"><a href="group___l_i_s_t.html#gaa82751b4d6a219771661843e61cefa2e">new_generic_list</a></div><div class="ttdeci">LIST * new_generic_list(int max_items)</div><div class="ttdoc">Initialiaze a generic list container to max_items pointers. </div><div class="ttdef"><b>Definition:</b> <a href="n__list_8c_source.html#l00020">n_list.c:20</a></div></div>
-<div class="ttc" id="group___c_o_m_m_o_n_s_html_ga46bf052fc99248347a1dcf89bc0757c6"><div class="ttname"><a href="group___c_o_m_m_o_n_s.html#ga46bf052fc99248347a1dcf89bc0757c6">Malloc</a></div><div class="ttdeci">#define Malloc(__ptr, __struct, __size)</div><div class="ttdoc">Malloc Handler to get errors and set to 0. </div><div class="ttdef"><b>Definition:</b> <a href="n__common_8h_source.html#l00179">n_common.h:179</a></div></div>
+<div class="ttc" id="group___c_o_m_m_o_n_s_html_ga46bf052fc99248347a1dcf89bc0757c6"><div class="ttname"><a href="group___c_o_m_m_o_n_s.html#ga46bf052fc99248347a1dcf89bc0757c6">Malloc</a></div><div class="ttdeci">#define Malloc(__ptr, __struct, __size)</div><div class="ttdoc">Malloc Handler to get errors and set to 0. </div><div class="ttdef"><b>Definition:</b> <a href="n__common_8h_source.html#l00180">n_common.h:180</a></div></div>
 <div class="ttc" id="group___n___t_i_m_e_html_ga690f12dde1a446d47b8bf5f959493003"><div class="ttname"><a href="group___n___t_i_m_e.html#ga690f12dde1a446d47b8bf5f959493003">u_sleep</a></div><div class="ttdeci">void u_sleep(unsigned int usec)</div><div class="ttdoc">wrapper around usleep for API consistency </div><div class="ttdef"><b>Definition:</b> <a href="n__time_8c_source.html#l00038">n_time.c:38</a></div></div>
 <div class="ttc" id="group___l_i_s_t_html_ga4eab319289a83524639ee5e9f0441fdf"><div class="ttname"><a href="group___l_i_s_t.html#ga4eab319289a83524639ee5e9f0441fdf">list_push</a></div><div class="ttdeci">int list_push(LIST *list, void *ptr, void(*destructor)(void *ptr))</div><div class="ttdoc">Add a pointer to the end of the list. </div><div class="ttdef"><b>Definition:</b> <a href="n__list_8c_source.html#l00121">n_list.c:121</a></div></div>
 <div class="ttc" id="group___t_h_r_e_a_d_s_html_ga7131f70ca662b8211de3586a2a6a5a16"><div class="ttname"><a href="group___t_h_r_e_a_d_s.html#ga7131f70ca662b8211de3586a2a6a5a16">IDLE_PROC</a></div><div class="ttdeci">#define IDLE_PROC</div><div class="ttdoc">status of a thread which is waiting for some proc </div><div class="ttdef"><b>Definition:</b> <a href="n__thread__pool_8h_source.html#l00032">n_thread_pool.h:32</a></div></div>
@@ -582,25 +579,25 @@ $(document).ready(function(){initNavTree('n__thread__pool_8c_source.html','');})
 <div class="ttc" id="n__time_8h_html"><div class="ttname"><a href="n__time_8h.html">n_time.h</a></div><div class="ttdoc">common headers and low-level hugly functions &amp;amp; define </div></div>
 <div class="ttc" id="group___t_h_r_e_a_d_s_html_gad1478c0e8f6772bb9673116dd0902e56"><div class="ttname"><a href="group___t_h_r_e_a_d_s.html#gad1478c0e8f6772bb9673116dd0902e56">WAITING_PROC</a></div><div class="ttdeci">#define WAITING_PROC</div><div class="ttdoc">status of a thread who have proc waiting to be processed </div><div class="ttdef"><b>Definition:</b> <a href="n__thread__pool_8h_source.html#l00034">n_thread_pool.h:34</a></div></div>
 <div class="ttc" id="n__thread__pool_8h_html"><div class="ttname"><a href="n__thread__pool_8h.html">n_thread_pool.h</a></div><div class="ttdoc">Thread pool declaration. </div></div>
-<div class="ttc" id="group___t_h_r_e_a_d_s_html_ga992fc2a67a2d66733ccd10f7d9e2ead3"><div class="ttname"><a href="group___t_h_r_e_a_d_s.html#ga992fc2a67a2d66733ccd10f7d9e2ead3">wait_for_threaded_pool</a></div><div class="ttdeci">int wait_for_threaded_pool(THREAD_POOL *thread_pool, int delay)</div><div class="ttdoc">Wait for all the launched process in the thread pool to terminate. </div><div class="ttdef"><b>Definition:</b> <a href="n__thread__pool_8c_source.html#l00292">n_thread_pool.c:292</a></div></div>
+<div class="ttc" id="group___t_h_r_e_a_d_s_html_ga992fc2a67a2d66733ccd10f7d9e2ead3"><div class="ttname"><a href="group___t_h_r_e_a_d_s.html#ga992fc2a67a2d66733ccd10f7d9e2ead3">wait_for_threaded_pool</a></div><div class="ttdeci">int wait_for_threaded_pool(THREAD_POOL *thread_pool, int delay)</div><div class="ttdoc">Wait for all the launched process in the thread pool to terminate. </div><div class="ttdef"><b>Definition:</b> <a href="n__thread__pool_8c_source.html#l00289">n_thread_pool.c:289</a></div></div>
 <div class="ttc" id="group___l_i_s_t_html_ga90d32fef68ce6f3ec0a7b4085690c755"><div class="ttname"><a href="group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755">list_destroy</a></div><div class="ttdeci">int list_destroy(LIST **list)</div><div class="ttdoc">Empty and Free a list container. </div><div class="ttdef"><b>Definition:</b> <a href="n__list_8c_source.html#l00480">n_list.c:480</a></div></div>
 <div class="ttc" id="group___t_h_r_e_a_d_s_html_ga993c05b6c403f10fb3627e9e4fc30c83"><div class="ttname"><a href="group___t_h_r_e_a_d_s.html#ga993c05b6c403f10fb3627e9e4fc30c83">NO_LOCK</a></div><div class="ttdeci">#define NO_LOCK</div><div class="ttdoc">if passed to add_threaded_process, skip main table lock in case we are in a func which is already loc...</div><div class="ttdef"><b>Definition:</b> <a href="n__thread__pool_8h_source.html#l00044">n_thread_pool.h:44</a></div></div>
 <div class="ttc" id="group___t_h_r_e_a_d_s_html_gac3966893f43d72bd23c7c3f410df9a48"><div class="ttname"><a href="group___t_h_r_e_a_d_s.html#gac3966893f43d72bd23c7c3f410df9a48">RUNNING_THREAD</a></div><div class="ttdeci">#define RUNNING_THREAD</div><div class="ttdoc">indicate that the pool is running and ready to use </div><div class="ttdef"><b>Definition:</b> <a href="n__thread__pool_8h_source.html#l00038">n_thread_pool.h:38</a></div></div>
-<div class="ttc" id="group___t_h_r_e_a_d_s_html_ga5d9ce1747e4b7cb58ce3767f7e56cd8b"><div class="ttname"><a href="group___t_h_r_e_a_d_s.html#ga5d9ce1747e4b7cb58ce3767f7e56cd8b">refresh_thread_pool</a></div><div class="ttdeci">int refresh_thread_pool(THREAD_POOL *thread_pool)</div><div class="ttdoc">try to add some waiting DIRECT_PROCs on some free thread slots, else do nothing </div><div class="ttdef"><b>Definition:</b> <a href="n__thread__pool_8c_source.html#l00407">n_thread_pool.c:407</a></div></div>
+<div class="ttc" id="group___t_h_r_e_a_d_s_html_ga5d9ce1747e4b7cb58ce3767f7e56cd8b"><div class="ttname"><a href="group___t_h_r_e_a_d_s.html#ga5d9ce1747e4b7cb58ce3767f7e56cd8b">refresh_thread_pool</a></div><div class="ttdeci">int refresh_thread_pool(THREAD_POOL *thread_pool)</div><div class="ttdoc">try to add some waiting DIRECT_PROCs on some free thread slots, else do nothing </div><div class="ttdef"><b>Definition:</b> <a href="n__thread__pool_8c_source.html#l00404">n_thread_pool.c:404</a></div></div>
 <div class="ttc" id="group___t_h_r_e_a_d_s_html_gaa558974d10eb2bf6f6915b6cc2bfea34"><div class="ttname"><a href="group___t_h_r_e_a_d_s.html#gaa558974d10eb2bf6f6915b6cc2bfea34">NOQUEUE</a></div><div class="ttdeci">#define NOQUEUE</div><div class="ttdoc">processing mode for waiting_list: do not readd the work in queue </div><div class="ttdef"><b>Definition:</b> <a href="n__thread__pool_8h_source.html#l00030">n_thread_pool.h:30</a></div></div>
 <div class="ttc" id="group___t_h_r_e_a_d_s_html_gaac52c55616f27d8f95c4435d4b2cf91d"><div class="ttname"><a href="group___t_h_r_e_a_d_s.html#gaac52c55616f27d8f95c4435d4b2cf91d">EXITING_THREAD</a></div><div class="ttdeci">#define EXITING_THREAD</div><div class="ttdoc">indicate that the pool is exiting, unfinished jobs will finish and the pool will exit the threads and...</div><div class="ttdef"><b>Definition:</b> <a href="n__thread__pool_8h_source.html#l00040">n_thread_pool.h:40</a></div></div>
-<div class="ttc" id="group___c_o_m_m_o_n_s_html_ga4ecf5d80299a4ca1dc13c3a19610db11"><div class="ttname"><a href="group___c_o_m_m_o_n_s.html#ga4ecf5d80299a4ca1dc13c3a19610db11">__n_assert</a></div><div class="ttdeci">#define __n_assert(__ptr, __ret)</div><div class="ttdoc">macro to assert things </div><div class="ttdef"><b>Definition:</b> <a href="n__common_8h_source.html#l00259">n_common.h:259</a></div></div>
-<div class="ttc" id="group___c_o_m_m_o_n_s_html_gae62e40d702e99a7760ba1de7451dff51"><div class="ttname"><a href="group___c_o_m_m_o_n_s.html#gae62e40d702e99a7760ba1de7451dff51">Free</a></div><div class="ttdeci">#define Free(__ptr)</div><div class="ttdoc">Free Handler to get errors. </div><div class="ttdef"><b>Definition:</b> <a href="n__common_8h_source.html#l00239">n_common.h:239</a></div></div>
-<div class="ttc" id="group___t_h_r_e_a_d_s_html_ga46497eb81066d0df83dfd07ad0a9f561"><div class="ttname"><a href="group___t_h_r_e_a_d_s.html#ga46497eb81066d0df83dfd07ad0a9f561">add_threaded_process</a></div><div class="ttdeci">int add_threaded_process(THREAD_POOL *thread_pool, void *(*func_ptr)(void *param), void *param, int mode)</div><div class="ttdoc">add a function and params to a thread pool </div><div class="ttdef"><b>Definition:</b> <a href="n__thread__pool_8c_source.html#l00167">n_thread_pool.c:167</a></div></div>
+<div class="ttc" id="group___c_o_m_m_o_n_s_html_ga4ecf5d80299a4ca1dc13c3a19610db11"><div class="ttname"><a href="group___c_o_m_m_o_n_s.html#ga4ecf5d80299a4ca1dc13c3a19610db11">__n_assert</a></div><div class="ttdeci">#define __n_assert(__ptr, __ret)</div><div class="ttdoc">macro to assert things </div><div class="ttdef"><b>Definition:</b> <a href="n__common_8h_source.html#l00260">n_common.h:260</a></div></div>
+<div class="ttc" id="group___c_o_m_m_o_n_s_html_gae62e40d702e99a7760ba1de7451dff51"><div class="ttname"><a href="group___c_o_m_m_o_n_s.html#gae62e40d702e99a7760ba1de7451dff51">Free</a></div><div class="ttdeci">#define Free(__ptr)</div><div class="ttdoc">Free Handler to get errors. </div><div class="ttdef"><b>Definition:</b> <a href="n__common_8h_source.html#l00240">n_common.h:240</a></div></div>
+<div class="ttc" id="group___t_h_r_e_a_d_s_html_ga46497eb81066d0df83dfd07ad0a9f561"><div class="ttname"><a href="group___t_h_r_e_a_d_s.html#ga46497eb81066d0df83dfd07ad0a9f561">add_threaded_process</a></div><div class="ttdeci">int add_threaded_process(THREAD_POOL *thread_pool, void *(*func_ptr)(void *param), void *param, int mode)</div><div class="ttdoc">add a function and params to a thread pool </div><div class="ttdef"><b>Definition:</b> <a href="n__thread__pool_8c_source.html#l00164">n_thread_pool.c:164</a></div></div>
 <div class="ttc" id="n__common_8h_html"><div class="ttname"><a href="n__common_8h.html">n_common.h</a></div><div class="ttdoc">common headers and low-level hugly functions &amp;amp; define </div></div>
 <div class="ttc" id="group___l_o_g_html_gad89ee324d180cdcd7defcc709ff9ca42"><div class="ttname"><a href="group___l_o_g.html#gad89ee324d180cdcd7defcc709ff9ca42">LOG_NOTICE</a></div><div class="ttdeci">#define LOG_NOTICE</div><div class="ttdoc">normal but significant condition </div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00061">n_log.h:61</a></div></div>
 <div class="ttc" id="struct_l_i_s_t___n_o_d_e_html"><div class="ttname"><a href="struct_l_i_s_t___n_o_d_e.html">LIST_NODE</a></div><div class="ttdoc">Structure of a generic list node. </div><div class="ttdef"><b>Definition:</b> <a href="n__list_8h_source.html#l00026">n_list.h:26</a></div></div>
 <div class="ttc" id="group___l_i_s_t_html_ga366776cfa85e526b247ef1d348c34e0c"><div class="ttname"><a href="group___l_i_s_t.html#ga366776cfa85e526b247ef1d348c34e0c">remove_list_node</a></div><div class="ttdeci">#define remove_list_node(__LIST_,__NODE_, __TYPE_)</div><div class="ttdoc">Remove macro helper for void pointer casting. </div><div class="ttdef"><b>Definition:</b> <a href="n__list_8h_source.html#l00083">n_list.h:83</a></div></div>
-<div class="ttc" id="group___t_h_r_e_a_d_s_html_ga12ce28c2aaa5a5a1a05abe11071dd83f"><div class="ttname"><a href="group___t_h_r_e_a_d_s.html#ga12ce28c2aaa5a5a1a05abe11071dd83f">destroy_threaded_pool</a></div><div class="ttdeci">int destroy_threaded_pool(THREAD_POOL **pool, int delay)</div><div class="ttdoc">delete a thread_pool, exit the threads and free the structs </div><div class="ttdef"><b>Definition:</b> <a href="n__thread__pool_8c_source.html#l00343">n_thread_pool.c:343</a></div></div>
+<div class="ttc" id="group___t_h_r_e_a_d_s_html_ga12ce28c2aaa5a5a1a05abe11071dd83f"><div class="ttname"><a href="group___t_h_r_e_a_d_s.html#ga12ce28c2aaa5a5a1a05abe11071dd83f">destroy_threaded_pool</a></div><div class="ttdeci">int destroy_threaded_pool(THREAD_POOL **pool, int delay)</div><div class="ttdoc">delete a thread_pool, exit the threads and free the structs </div><div class="ttdef"><b>Definition:</b> <a href="n__thread__pool_8c_source.html#l00340">n_thread_pool.c:340</a></div></div>
 <div class="ttc" id="n__thread__pool_8c_html_abd0649708787bc15e1bc1ee59d64fd1f"><div class="ttname"><a href="n__thread__pool_8c.html#abd0649708787bc15e1bc1ee59d64fd1f">thread_pool_processing_function</a></div><div class="ttdeci">void * thread_pool_processing_function(void *param)</div><div class="ttdoc">Internal thread pool processing function. </div><div class="ttdef"><b>Definition:</b> <a href="n__thread__pool_8c_source.html#l00025">n_thread_pool.c:25</a></div></div>
-<div class="ttc" id="group___t_h_r_e_a_d_s_html_ga0563294cf52eb2b9e4f1d017390ff46c"><div class="ttname"><a href="group___t_h_r_e_a_d_s.html#ga0563294cf52eb2b9e4f1d017390ff46c">start_threaded_pool</a></div><div class="ttdeci">int start_threaded_pool(THREAD_POOL *thread_pool)</div><div class="ttdoc">Launch the process waiting for exectution in the thread pool. </div><div class="ttdef"><b>Definition:</b> <a href="n__thread__pool_8c_source.html#l00251">n_thread_pool.c:251</a></div></div>
+<div class="ttc" id="group___t_h_r_e_a_d_s_html_ga0563294cf52eb2b9e4f1d017390ff46c"><div class="ttname"><a href="group___t_h_r_e_a_d_s.html#ga0563294cf52eb2b9e4f1d017390ff46c">start_threaded_pool</a></div><div class="ttdeci">int start_threaded_pool(THREAD_POOL *thread_pool)</div><div class="ttdoc">Launch the process waiting for exectution in the thread pool. </div><div class="ttdef"><b>Definition:</b> <a href="n__thread__pool_8c_source.html#l00248">n_thread_pool.c:248</a></div></div>
 <div class="ttc" id="group___l_o_g_html_ga96fad55b3f5adf08c39e4c877cf185e3"><div class="ttname"><a href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a></div><div class="ttdeci">#define LOG_ERR</div><div class="ttdoc">error conditions </div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00057">n_log.h:57</a></div></div>
-<div class="ttc" id="group___t_h_r_e_a_d_s_html_ga0e3dcfbda5e68e14399b18f994060c97"><div class="ttname"><a href="group___t_h_r_e_a_d_s.html#ga0e3dcfbda5e68e14399b18f994060c97">new_thread_pool</a></div><div class="ttdeci">THREAD_POOL * new_thread_pool(int nbmaxthr, int nb_max_waiting)</div><div class="ttdoc">Create a new pool of nbmaxthr threads. </div><div class="ttdef"><b>Definition:</b> <a href="n__thread__pool_8c_source.html#l00097">n_thread_pool.c:97</a></div></div>
+<div class="ttc" id="group___t_h_r_e_a_d_s_html_ga0e3dcfbda5e68e14399b18f994060c97"><div class="ttname"><a href="group___t_h_r_e_a_d_s.html#ga0e3dcfbda5e68e14399b18f994060c97">new_thread_pool</a></div><div class="ttdeci">THREAD_POOL * new_thread_pool(int nbmaxthr, int nb_max_waiting)</div><div class="ttdoc">Create a new pool of nbmaxthr threads. </div><div class="ttdef"><b>Definition:</b> <a href="n__thread__pool_8c_source.html#l00094">n_thread_pool.c:94</a></div></div>
 <div class="ttc" id="group___l_o_g_html_ga6ff63e8955665c4a58b1598f2b07c51a"><div class="ttname"><a href="group___l_o_g.html#ga6ff63e8955665c4a58b1598f2b07c51a">LOG_DEBUG</a></div><div class="ttdeci">#define LOG_DEBUG</div><div class="ttdoc">debug-level messages </div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00065">n_log.h:65</a></div></div>
 <div class="ttc" id="group___t_h_r_e_a_d_s_html_ga1acdd58d4aee3c8453ea124bd862518d"><div class="ttname"><a href="group___t_h_r_e_a_d_s.html#ga1acdd58d4aee3c8453ea124bd862518d">EXITED_THREAD</a></div><div class="ttdeci">#define EXITED_THREAD</div><div class="ttdoc">indicate that the pool is off, all jobs have been consumed </div><div class="ttdef"><b>Definition:</b> <a href="n__thread__pool_8h_source.html#l00042">n_thread_pool.h:42</a></div></div>
 <div class="ttc" id="struct_t_h_r_e_a_d___p_o_o_l___n_o_d_e_html"><div class="ttname"><a href="struct_t_h_r_e_a_d___p_o_o_l___n_o_d_e.html">THREAD_POOL_NODE</a></div><div class="ttdoc">A thread pool node. </div><div class="ttdef"><b>Definition:</b> <a href="n__thread__pool_8h_source.html#l00047">n_thread_pool.h:47</a></div></div>
@@ -611,7 +608,7 @@ $(document).ready(function(){initNavTree('n__thread__pool_8c_source.html','');})
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="n__thread__pool_8c.html">n_thread_pool.c</a></li>
-    <li class="footer">Generated on Thu Jul 22 2021 11:12:43 for Nilorea Library by
+    <li class="footer">Generated on Sat Jan 29 2022 18:47:32 for Nilorea Library by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.5 </li>
   </ul>
