@@ -26,7 +26,7 @@ extern "C" {
 typedef struct ANIM_FRAME
 {
     int x,
-        y ;
+        y;
     unsigned int duration ;
 } ANIM_FRAME ;
 
@@ -72,8 +72,6 @@ typedef struct ANIM_DATA
              y,
              /*! id of the current frame */
              frame,
-             /*! internal id for tracking purposes */
-             list_id,
              /*! elapsed time since last frame change */
              elapsed ;
 

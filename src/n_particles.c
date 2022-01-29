@@ -22,7 +22,6 @@ int init_particle_system( PARTICLE_SYSTEM **psys, int max, double x, double y, d
     (*psys) -> source[ 0 ] = x ;
     (*psys) -> source[ 1 ] = y ;
     (*psys) -> source[ 2 ] = z ;
-    (*psys) -> source[ 3 ] = 0 ;
 
     (*psys) -> sprites = (ALLEGRO_BITMAP **)calloc( max_sprites, sizeof( ALLEGRO_BITMAP *) );
 
@@ -61,6 +60,8 @@ int add_particle( PARTICLE_SYSTEM *psys, int spr, int mode, int lifetime, int si
     memcpy( new_p -> object . angular_speed, object . angular_speed, sizeof( VECTOR3D ) );
     memcpy( new_p -> object . angular_acceleration, object . angular_acceleration, sizeof( VECTOR3D ) );
     memcpy( new_p -> object . orientation, object . orientation, sizeof( VECTOR3D ) );
+    new_p -> object . sz = object . sz ;
+    new_p -> object . type = object . type ;
 
     return list_push( psys -> list, new_p, &free );
 }

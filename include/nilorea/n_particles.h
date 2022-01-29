@@ -54,6 +54,11 @@ extern "C" {
 #define CIRCLE_PART 6
 /*! pixel particle */
 #define PIXEL_PART  7
+/*! bitmap particle */
+#define BITMAP_PART 8
+/*! bitmap particle */
+#define TEXT_PART 9
+
 
 /*! Structure of a single particle */
 typedef struct PARTICLE
