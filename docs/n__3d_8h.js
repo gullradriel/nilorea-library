@@ -10,10 +10,13 @@ var n__3d_8h =
     [ "VECTOR3D_SET", "n__3d_8h.html#ga0d342c376c3e3125c8fb97bcbe7f93c0", null ],
     [ "PHYSICS", "n__3d_8h.html#ga5aa1423d8e0849949122ffb6b0eeea33", null ],
     [ "VECTOR3D", "n__3d_8h.html#ga4cbdd7084ea2076595f397a969feba63", null ],
-    [ "distance", "n__3d_8h.html#gac1895ec6176dd09b5fa15c1fdce0a934", null ],
+    [ "distance", "n__3d_8h.html#ga436d6582b13cb4a7a52e5814236ae5f0", null ],
     [ "update_physics_position", "n__3d_8h.html#gadc7a001ab64c72a43243175e56a86264", null ],
     [ "update_physics_position_nb", "n__3d_8h.html#ga5a40d51963e17af619b6a3c36c687462", null ],
     [ "update_physics_position_reverse", "n__3d_8h.html#ga7644cdf589832471424103293b68f77b", null ],
     [ "update_physics_position_reverse_nb", "n__3d_8h.html#gaa8021a03baa26410f81f6fcdf77da564", null ],
-    [ "vector_intersect", "n__3d_8h.html#ga45b1106523a6c6b9ab155ee9e8b765d7", null ]
+    [ "vector_angle_between", "n__3d_8h.html#ga523b38d99b808d695819e5d42c91b182", null ],
+    [ "vector_dot_product", "n__3d_8h.html#ga08fa4eb6d167cc941fe6cfd5d21b255d", null ],
+    [ "vector_intersect", "n__3d_8h.html#gafc35e47713f26cce316cc85dd85354b7", null ],
+    [ "vector_normalize", "n__3d_8h.html#gab69467787b1b55290585366a20cf82cb", null ]
 ];

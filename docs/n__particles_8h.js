@@ -1,5 +1,6 @@
 var n__particles_8h =
 [
+    [ "BITMAP_PART", "n__particles_8h.html#ga3ff8114200b93147ade488aeb96f41a5", null ],
     [ "CIRCLE_PART", "n__particles_8h.html#ga01868fa6d6e4c79b56fdfe9b4dc80215", null ],
     [ "FIRE_PART", "n__particles_8h.html#ga2aa8d618d2d413883ade289da2e4941a", null ],
     [ "NORMAL_PART", "n__particles_8h.html#ga0f1bd6a28afe52df05802230fa440b99", null ],
@@ -7,6 +8,7 @@ var n__particles_8h =
     [ "SINUS_PART", "n__particles_8h.html#gaa0ac5e168a8b0aa14dbff01dd569a598", null ],
     [ "SNOW_PART", "n__particles_8h.html#gacbfe2274aa037b8e331b9485e95b1c73", null ],
     [ "STAR_PART", "n__particles_8h.html#gafc693964956e87207d950ee952fa2c98", null ],
+    [ "TEXT_PART", "n__particles_8h.html#ga7256f319a5807b336a5cd9f83fd03c96", null ],
     [ "TRANS_PART", "n__particles_8h.html#ga661ec824b54dfdf70f6a737ab8bdaef4", null ],
     [ "PARTICLE", "n__particles_8h.html#gabd4c9b5ba964d0c44f6fcce89d54b66d", null ],
     [ "PARTICLE_SYSTEM", "n__particles_8h.html#gad124f97659776835d5b5eaa01bb099c6", null ],

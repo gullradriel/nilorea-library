@@ -41,6 +41,7 @@ var group___g_a_m_e_s =
       [ "sprites", "struct_p_a_r_t_i_c_l_e___s_y_s_t_e_m.html#ab9d6d952c1de30377308476c7356f6cf", null ],
       [ "timer", "struct_p_a_r_t_i_c_l_e___s_y_s_t_e_m.html#a0eb5551a71d4412d76e970b19cc0078e", null ]
     ] ],
+    [ "BITMAP_PART", "group___g_a_m_e_s.html#ga3ff8114200b93147ade488aeb96f41a5", null ],
     [ "CIRCLE_PART", "group___g_a_m_e_s.html#ga01868fa6d6e4c79b56fdfe9b4dc80215", null ],
     [ "CPU_USE_FULL", "group___g_a_m_e_s.html#ga84d4d6cd71758c35c7aefbb8e3684c22", null ],
     [ "CPU_USE_LESS", "group___g_a_m_e_s.html#ga5bb1d90aeda09d9646e3c19f632251d1", null ],
@@ -51,6 +52,7 @@ var group___g_a_m_e_s =
     [ "SINUS_PART", "group___g_a_m_e_s.html#gaa0ac5e168a8b0aa14dbff01dd569a598", null ],
     [ "SNOW_PART", "group___g_a_m_e_s.html#gacbfe2274aa037b8e331b9485e95b1c73", null ],
     [ "STAR_PART", "group___g_a_m_e_s.html#gafc693964956e87207d950ee952fa2c98", null ],
+    [ "TEXT_PART", "group___g_a_m_e_s.html#ga7256f319a5807b336a5cd9f83fd03c96", null ],
     [ "TRANS_PART", "group___g_a_m_e_s.html#ga661ec824b54dfdf70f6a737ab8bdaef4", null ],
     [ "GAME_ENV", "group___g_a_m_e_s.html#ga9349821d315002d46106751d1bfbc923", null ],
     [ "PARTICLE", "group___g_a_m_e_s.html#gabd4c9b5ba964d0c44f6fcce89d54b66d", null ],

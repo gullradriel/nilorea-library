@@ -16,6 +16,7 @@ var n__hash_8h =
     [ "ROTL32", "n__hash_8h.html#gab32bb365c62dcb0da675e248b7e814a9", null ],
     [ "HASH_NODE", "n__hash_8h.html#gaad038bd155ccb65ec64d2d04d644a494", null ],
     [ "HASH_TABLE", "n__hash_8h.html#ga687b75c2f8f0aea5d5419bcaf17c0f43", null ],
+    [ "_ht_get_completion_list", "n__hash_8h.html#ga2832c03b0fa61e6af59d70724cbdf7ca", null ],
     [ "destroy_ht", "n__hash_8h.html#ga22a943135dbcdb1611b40ce0547111ce", null ],
     [ "empty_ht", "n__hash_8h.html#ga5d2235e91b2b6b70129246897442f8d5", null ],
     [ "ht_get_double", "n__hash_8h.html#gaaa35befb530f8299abf88af3ee42e6eb", null ],

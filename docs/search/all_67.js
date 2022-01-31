@@ -29,6 +29,7 @@ var searchData=
   ['gfx_5fstatus',['gfx_status',['../group___g_f_x.html#ga020a8ccd10d6b1e37847d4d5c9ec34a7',1,'gfx_status(int ACTION, int value):&#160;n_gfx.c'],['../group___g_f_x.html#ga020a8ccd10d6b1e37847d4d5c9ec34a7',1,'gfx_status(int ACTION, int value):&#160;n_gfx.c']]],
   ['gfx_5fupdate_5frate',['GFX_UPDATE_RATE',['../struct_g_a_m_e___e_n_v.html#a2ac7fb130a7a0055cca1b26d887d0cdb',1,'GAME_ENV']]],
   ['gfxs',['gfxs',['../struct_a_n_i_m___l_i_b.html#a66bbbae2d1b7cedfd09d2ed2108c8b1c',1,'ANIM_LIB']]],
+  ['gravity',['gravity',['../struct_p_h_y_s_i_c_s.html#a408717d7fc927cd37e24d5a67a26d331',1,'PHYSICS']]],
   ['grid',['grid',['../struct_m_a_p.html#aa358962e9063fc034f305040b4ccc0bb',1,'MAP']]],
   ['games_3a_20particles_20utilities',['GAMES: PARTICLES utilities',['../group___p_a_r_t_i_c_l_e_s.html',1,'']]]
 ];

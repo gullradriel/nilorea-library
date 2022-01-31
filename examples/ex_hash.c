@@ -104,9 +104,35 @@ int main( void )
 				break ;
 		}
 	}
-	//ht_print( htable );
+	/*ht_print( htable );
+	  char input_key[ 1024 ] = "" ;
+	  printf( "Enter key starting piece, q! to quit:\n");
+	  while( strcmp( input_key , "q!" ) != 0 )
+	  {
+	  printf( "key:" );
+	  scanf( "%s" , input_key );
+	  LIST *results = _ht_get_completion_list( htable , input_key , 10 );
+	  if( results )
+	  {
+	  list_foreach( node , results )
+	  {
+	  printf( "result: %s\n" , (char *)node -> ptr );
+	  }
+	  list_destroy( &results );
+	  }
+	  }*/
+	LIST *results = _ht_get_completion_list( htable , "key1" , 10 );
+	if( results )
+	{
+		list_foreach( node , results )
+		{
+			printf( "result: %s\n" , (char *)node -> ptr );
+		}
+		list_destroy( &results );
+	}
 
-	LIST *results = ht_search( htable , "key****" );
+
+	results = ht_search( htable , "key****" );
 	list_foreach( node , results )
 	{
 		printf( "Found key: %s\n" , (char *)node -> ptr );
@@ -135,6 +161,7 @@ int main( void )
 	printf( "Trie:%d %f %s\n" , ival , fval , string );
 	ht_print( htable );
 	destroy_ht( &htable );
+
 
 	exit( 0 );
 

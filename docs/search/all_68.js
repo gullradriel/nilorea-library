@@ -22,7 +22,7 @@ var searchData=
   ['ht_5fforeach_5fr',['ht_foreach_r',['../group___h_a_s_h___t_a_b_l_e.html#ga2d5dc4bd5bcf119740bd59199cae7a4c',1,'n_hash.h']]],
   ['ht_5fget_5fdouble',['ht_get_double',['../struct_h_a_s_h___t_a_b_l_e.html#a4abb4ddd5c6b208caa74b0eadd4c46a6',1,'HASH_TABLE']]],
   ['ht_5fget_5fint',['ht_get_int',['../struct_h_a_s_h___t_a_b_l_e.html#a743391b61cb862e5ab26fbf6e6d39092',1,'HASH_TABLE']]],
-  ['ht_5fget_5fnode',['ht_get_node',['../group___h_a_s_h___t_a_b_l_e.html#ga1be4f5c5c4296b9fa21a729eb01bb7c3',1,'ht_get_node(HASH_TABLE *table, char *key):&#160;n_hash.c'],['../group___h_a_s_h___t_a_b_l_e.html#ga1be4f5c5c4296b9fa21a729eb01bb7c3',1,'ht_get_node(HASH_TABLE *table, char *key):&#160;n_hash.c']]],
+  ['ht_5fget_5fnode',['ht_get_node',['../struct_h_a_s_h___t_a_b_l_e.html#aaf27565070ade5b53740ebf70a8496af',1,'HASH_TABLE']]],
   ['ht_5fget_5fptr',['ht_get_ptr',['../struct_h_a_s_h___t_a_b_l_e.html#a11be71e66385728a5fe93eb0fdb74bac',1,'HASH_TABLE']]],
   ['ht_5fget_5fstring',['ht_get_string',['../struct_h_a_s_h___t_a_b_l_e.html#a8d406a82c270f39d3eacd75f76ff26c9',1,'HASH_TABLE']]],
   ['ht_5fnode_5ftype',['ht_node_type',['../group___h_a_s_h___t_a_b_l_e.html#ga49f19e01daabe0bb71e41713b562755d',1,'ht_node_type(HASH_NODE *node):&#160;n_hash.c'],['../group___h_a_s_h___t_a_b_l_e.html#ga49f19e01daabe0bb71e41713b562755d',1,'ht_node_type(HASH_NODE *node):&#160;n_hash.c']]],

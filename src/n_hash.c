@@ -5,6 +5,8 @@
  *\date 16/03/2015
  */
 
+
+
 #include "nilorea/n_common.h"
 #include "nilorea/n_log.h"
 #include "nilorea/n_hash.h"
@@ -19,101 +21,20 @@
 #include <arpa/inet.h>
 #endif
 
-/* node creation, HASH_CLASSIC mode */
-HASH_NODE *_ht_new_node( HASH_TABLE *table , char *key )
-{
-	HASH_NODE *new_hash_node = NULL ;
-	uint32_t hash_value = 0 ;
 
-	__n_assert( table, return NULL );
-	__n_assert( key, return NULL );
 
-	if( strlen( key ) == 0 )
-		return NULL ;
-
-	MurmurHash3_x86_32( key, strlen( key ), table -> seed, &hash_value );
-
-	Malloc( new_hash_node, HASH_NODE, 1 );
-	__n_assert( new_hash_node, n_log( LOG_ERR, "Could not allocate new_hash_node" ); return NULL );
-	new_hash_node -> key = strdup( key );
-	new_hash_node -> key_id = '\0' ;
-	__n_assert( new_hash_node -> key , n_log( LOG_ERR, "Could not allocate new_hash_node->key" ); Free( new_hash_node ); return NULL );
-	new_hash_node -> hash_value = hash_value ;
-	new_hash_node -> data. ptr = NULL ;
-	new_hash_node -> destroy_func = NULL ;
-	new_hash_node -> children = NULL ;
-	new_hash_node -> is_leaf = 0 ;
-	new_hash_node -> alphabet_length = 0 ;
-
-	return new_hash_node ;
-}
-
-HASH_NODE *_ht_new_int_node( HASH_TABLE *table , char *key , int value )
-{
-	HASH_NODE *new_hash_node = NULL ;
-	__n_assert( table , return NULL );
-	__n_assert( key , return NULL );
-
-	new_hash_node = _ht_new_node( table , key );
-	new_hash_node -> data . ival = value ;
-	new_hash_node -> type = HASH_INT ;
-	return new_hash_node ;
-}
-
-HASH_NODE *_ht_new_double_node( HASH_TABLE *table , char *key , double value )
-{
-	HASH_NODE *new_hash_node = NULL ;
-	__n_assert( table , return NULL );
-	__n_assert( key , return NULL );
-
-	new_hash_node = _ht_new_node( table , key );
-	new_hash_node -> data . fval = value ;
-	new_hash_node -> type = HASH_DOUBLE ;
-	return new_hash_node ;
-}
-
-HASH_NODE *_ht_new_string_node( HASH_TABLE *table , char *key , char *value )
-{
-	HASH_NODE *new_hash_node = NULL ;
-	__n_assert( table , return NULL );
-	__n_assert( key , return NULL );
-
-	new_hash_node = _ht_new_node( table , key );
-	new_hash_node -> data . string = strdup( value );
-	new_hash_node -> type = HASH_STRING ;
-	return new_hash_node ;
-}
-
-HASH_NODE *_ht_new_string_ptr_node( HASH_TABLE *table , char *key , char *value )
-{
-	HASH_NODE *new_hash_node = NULL ;
-	__n_assert( table , return NULL );
-	__n_assert( key , return NULL );
-
-	new_hash_node = _ht_new_node( table , key );
-	new_hash_node -> data . string = value ;
-	new_hash_node -> type = HASH_STRING ;
-	return new_hash_node ;
-}
-
-HASH_NODE *_ht_new_ptr_node( HASH_TABLE *table , char *key , void *value , void (*destructor)(void *ptr ) )
-{
-	HASH_NODE *new_hash_node = NULL ;
-	__n_assert( table , return NULL );
-	__n_assert( key , return NULL );
-
-	new_hash_node = _ht_new_node( table , key );
-	new_hash_node -> data . ptr = value ;
-	new_hash_node -> destroy_func = destructor ;
-	new_hash_node -> type = HASH_PTR ;
-	return new_hash_node ;
-}
-
-/* node creation, HASH_TRIE mode */
+/*!\fn HASH_NODE *_ht_new_node_trie( HASH_TABLE *table , char key )
+ *\internal
+ *\brief node creation, HASH_CLASSIC mode
+ *\param table Target table
+ *\param key key of new node
+ *\return NULL or a new HASH_NODE *
+ */
 HASH_NODE *_ht_new_node_trie( HASH_TABLE *table , char key )
 {
-	HASH_NODE *new_hash_node = NULL ;
+	__n_assert( table , return NULL );
 
+	HASH_NODE *new_hash_node = NULL ;
 	Malloc( new_hash_node, HASH_NODE , 1 );
 	__n_assert( new_hash_node, n_log( LOG_ERR, "Could not allocate new_hash_node" ); return NULL );
 	new_hash_node -> key = NULL ;
@@ -240,7 +161,11 @@ int _ht_put_string_trie( HASH_TABLE *table , char *key , char *string )
 	/* Put the key */
 	node -> key = strdup( key );
 	/* Put the value */
-	node -> data . string = strdup( string );
+	if( string )
+			node -> data . string = strdup( string );
+	else
+			node -> data . string = NULL ;
+
 	node -> type = HASH_STRING ;
 
 	return TRUE;
@@ -336,11 +261,7 @@ HASH_NODE *_ht_get_node_trie( HASH_TABLE *table , char *key )
 		}
 		node = node -> children[ index ];
 	}
-
-	if( node && node->is_leaf )
-		return node ;
-
-	return NULL ;
+	return node ;
 }
 
 
@@ -361,7 +282,7 @@ int _ht_get_int_trie( HASH_TABLE *table, char *key, int *val )
 
 	HASH_NODE *node = _ht_get_node_trie( table, key );
 
-	if( !node )
+	if( !node || !node -> is_leaf )
 		return FALSE ;
 
 	if( node -> type != HASH_INT )
@@ -393,7 +314,7 @@ int _ht_get_double_trie( HASH_TABLE *table, char *key, double *val )
 
 	HASH_NODE *node = _ht_get_node_trie( table, key );
 
-	if( !node )
+	if( !node || !node -> is_leaf )
 		return FALSE ;
 
 	if( node -> type != HASH_DOUBLE )
@@ -425,7 +346,7 @@ int _ht_get_string_trie( HASH_TABLE *table, char *key, char **val )
 
 	HASH_NODE *node = _ht_get_node_trie( table, key );
 
-	if( !node )
+	if( !node || !node -> is_leaf )
 		return FALSE ;
 
 	if( node -> type != HASH_STRING )
@@ -438,6 +359,37 @@ int _ht_get_string_trie( HASH_TABLE *table, char *key, char **val )
 
 	return TRUE ;
 } /* _ht_get_string_trie() */
+
+
+/*!\fn int _ht_get_ptr_trie( HASH_TABLE *table , char *key , void **val )
+ *\brief Retrieve an integral value in the hash table, at the given key. Leave val untouched if key is not found.
+ *\param table Targeted hash table
+ *\param key Size Associated value's key
+ *\param val A pointer to a destination pointer
+ *\return TRUE or FALSE.
+ */
+int _ht_get_ptr_trie( HASH_TABLE *table, char *key , void **val )
+{
+	__n_assert( table, return FALSE );
+	__n_assert( key, return FALSE );
+	if( strlen( key ) == 0 )
+		return FALSE ;
+
+	HASH_NODE *node = _ht_get_node_trie( table, key );
+
+	if( !node || !node -> is_leaf )
+		return FALSE ;
+
+	if( node -> type != HASH_STRING )
+	{
+		n_log( LOG_ERR, "Can't get key[\"%s\"] of type HASH_INT, key is type %s", key, ht_node_type( node ) );
+		return FALSE ;
+	}
+
+	(*val) = node -> data . ptr ;
+
+	return TRUE ;
+} /* _ht_get_ptr_trie() */
 
 
 
@@ -618,48 +570,9 @@ int _ht_remove_trie( HASH_TABLE *table , char *key )
 }
 
 
-/*!\fn HASH_NODE *ht_get_node( HASH_TABLE *table , char *key )
- *\brief return the associated key's node inside the hash_table
- *\param table Targeted hash table
- *\param key Associated value's key
- *\return The found node, or NULL
- */
-HASH_NODE *ht_get_node( HASH_TABLE *table, char *key )
-{
-	uint32_t hash_value = 0 ;
-	unsigned long int index = 0;
 
-	HASH_NODE *node_ptr = NULL ;
-
-	__n_assert( table, return NULL );
-	__n_assert( key, return NULL );
-
-	if( strlen( key ) == 0 )
-		return FALSE ;
-
-	MurmurHash3_x86_32( key, strlen( key ), 42, &hash_value );
-	index= (hash_value)%(table->size) ;
-
-	if( !table -> hash_table[ index ] -> start )
-	{
-		return NULL ;
-	}
-
-	list_foreach( list_node, table -> hash_table[ index ] )
-	{
-		node_ptr = (HASH_NODE *)list_node -> ptr ;
-		if( node_ptr -> key_type == HASH_KEY_STRING && !strcmp( key, node_ptr -> key ) )
-		{
-			return node_ptr ;
-		}
-	}
-	return NULL ;
-} /* ht_get_node() */
-
-
-
-/*!\fn int empty_ht( HASH_TABLE *table )
- *\brief Empty a hash table
+/*!\fn int _empty_ht_trie( HASH_TABLE *table )
+ *\brief Empty a TRIE hash table
  *\param table Targeted hash table
  *\return TRUE or FALSE.
  */
@@ -673,7 +586,7 @@ int _empty_ht_trie( HASH_TABLE *table )
 
 	table -> nb_keys = 0 ;
 	return TRUE ;
-} /* empty_ht */
+} /* _empty_ht_trie */
 
 
 
@@ -744,6 +657,89 @@ void _ht_print_trie( HASH_TABLE *table )
 	_ht_print_trie_helper( table , node );
 
 	return ;
+}
+
+void _ht_search_trie_helper( LIST *results , HASH_NODE *node , char *exp )
+{
+	if( !node )
+		return ;
+
+	if( node -> is_leaf )
+	{
+		if( !fnmatch( exp , node -> key , FNM_NOESCAPE ) )
+		{
+			list_push( results , strdup( node -> key ) , &free );
+		}
+	}
+	for( uint32_t it = 0 ; it < node -> alphabet_length ; it++ )
+	{
+		_ht_search_trie_helper( results , node -> children[ it ] , exp );
+	}
+}
+
+LIST *_ht_search_trie( HASH_TABLE *table , char *exp )
+{
+	__n_assert( table , return NULL );
+	__n_assert( exp , return NULL );
+	LIST *results = new_generic_list( 0 );
+
+	_ht_search_trie_helper( results , table -> root , exp );
+	if( results -> nb_items < 1 )
+		list_destroy( &results );
+
+	return results ;
+}
+
+
+
+/* depth search of key */
+int _ht_depth_first_search( HASH_NODE *node , LIST *results ) 
+{
+	__n_assert( results , return FALSE );
+
+	if( !node )
+		return FALSE ;
+
+	for( uint32_t it = 0; it < node -> alphabet_length ; it++ )
+	{
+		_ht_depth_first_search( node -> children[ it ], results );
+	}
+	if( node -> is_leaf ) 
+	{
+		if( results -> nb_items < results -> nb_max_items )
+		{
+			return list_push( results , strdup( node -> key ) , &free );
+		}
+		return FALSE ;
+	}	
+	return TRUE ;
+}
+
+
+
+/* completion search keys */
+LIST *_ht_get_completion_list( HASH_TABLE *table , char *keybud , uint32_t max_results )
+{
+	__n_assert( table , return NULL );
+	__n_assert( table -> root , return NULL );
+	__n_assert( keybud , return NULL );
+
+	LIST *results = new_generic_list( max_results );
+	int found = FALSE ;
+
+	HASH_NODE* node = _ht_get_node_trie( table , keybud );
+	if( node )
+	{
+		if( list_push( results , strdup( keybud ) , &free ) == TRUE )
+		{
+			found = TRUE ;
+			_ht_depth_first_search( node , results );
+		}
+	}
+	if( found == FALSE )
+		list_destroy( &results );
+
+	return results ;
 }
 
 
@@ -1121,6 +1117,162 @@ HASH_NODE *_ht_get_node( HASH_TABLE *table, char *key )
 
 
 
+/*!\fn HASH_NODE *_ht_new_node( HASH_TABLE *table , char *key )
+ *\internal
+ *\brief node creation, HASH_CLASSIC mode
+ *\param table Target table
+ *\param key key of new node
+ *\return NULL or a new HASH_NODE *
+ */
+HASH_NODE *_ht_new_node( HASH_TABLE *table , char *key )
+{
+	__n_assert( table, return NULL );
+	__n_assert( key, return NULL );
+
+	HASH_NODE *new_hash_node = NULL ;
+	uint32_t hash_value = 0 ;
+
+	if( strlen( key ) == 0 )
+		return NULL ;
+
+	MurmurHash3_x86_32( key, strlen( key ), table -> seed, &hash_value );
+
+	Malloc( new_hash_node, HASH_NODE, 1 );
+	__n_assert( new_hash_node, n_log( LOG_ERR, "Could not allocate new_hash_node" ); return NULL );
+	new_hash_node -> key = strdup( key );
+	new_hash_node -> key_id = '\0' ;
+	__n_assert( new_hash_node -> key , n_log( LOG_ERR, "Could not allocate new_hash_node->key" ); Free( new_hash_node ); return NULL );
+	new_hash_node -> hash_value = hash_value ;
+	new_hash_node -> data. ptr = NULL ;
+	new_hash_node -> destroy_func = NULL ;
+	new_hash_node -> children = NULL ;
+	new_hash_node -> is_leaf = 0 ;
+	new_hash_node -> alphabet_length = 0 ;
+
+	return new_hash_node ;
+} /* _ht_new_node */
+
+
+
+/*!\fn HASH_NODE *_ht_new_int_node( HASH_TABLE *table , char *key , int value )
+ *\internal
+ *\brief node creation, HASH_CLASSIC mode
+ *\param table Target table
+ *\param key key of new node
+ *\param value int value of key
+ *\return NULL or a new HASH_NODE *
+ */
+HASH_NODE *_ht_new_int_node( HASH_TABLE *table , char *key , int value )
+{
+	__n_assert( table , return NULL );
+	__n_assert( key , return NULL );
+
+	HASH_NODE *new_hash_node = NULL ;
+	new_hash_node = _ht_new_node( table , key );
+	new_hash_node -> data . ival = value ;
+	new_hash_node -> type = HASH_INT ;
+	return new_hash_node ;
+} /* _ht_new_int_node */
+
+
+
+/*!\fn HASH_NODE *_ht_new_double_node( HASH_TABLE *table , char *key , double value )
+ *\internal
+ *\brief node creation, HASH_CLASSIC mode
+ *\param table Target table
+ *\param key key of new node
+ *\param value double value of key
+ *\return NULL or a new HASH_NODE *
+ */
+HASH_NODE *_ht_new_double_node( HASH_TABLE *table , char *key , double value )
+{
+	__n_assert( table , return NULL );
+	__n_assert( key , return NULL );
+
+	HASH_NODE *new_hash_node = NULL ;
+	new_hash_node = _ht_new_node( table , key );
+	new_hash_node -> data . fval = value ;
+	new_hash_node -> type = HASH_DOUBLE ;
+	return new_hash_node ;
+} /* _ht_new_double_node */
+
+
+
+/*!\fn HASH_NODE *_ht_new_string_node( HASH_TABLE *table , char *key , char *value )
+ *\internal
+ *\brief node creation, HASH_CLASSIC mode, strdup of value
+ *\param table Target table
+ *\param key key of new node
+ *\param value char *value of key
+ *\return NULL or a new HASH_NODE *
+ */
+HASH_NODE *_ht_new_string_node( HASH_TABLE *table , char *key , char *value )
+{
+	__n_assert( table , return NULL );
+	__n_assert( key , return NULL );
+
+	HASH_NODE *new_hash_node = NULL ;
+	new_hash_node = _ht_new_node( table , key );
+	if( value )
+		new_hash_node -> data . string = strdup( value );
+	else
+		new_hash_node -> data . string = NULL ;
+	new_hash_node -> type = HASH_STRING ;
+	return new_hash_node ;
+}
+
+
+
+/*!\fn HASH_NODE *_ht_new_string_ptr_node( HASH_TABLE *table , char *key , char *value )
+ *\internal
+ *\brief node creation, HASH_CLASSIC mode, pointer to string value
+ *\param table Target table
+ *\param key key of new node
+ *\param value char *value of key
+ *\return NULL or a new HASH_NODE *
+ */
+HASH_NODE *_ht_new_string_ptr_node( HASH_TABLE *table , char *key , char *value )
+{
+	__n_assert( table , return NULL );
+	__n_assert( key , return NULL );
+
+	HASH_NODE *new_hash_node = NULL ;
+	new_hash_node = _ht_new_node( table , key );
+	new_hash_node -> data . string = value ;
+	new_hash_node -> type = HASH_STRING ;
+	return new_hash_node ;
+}
+
+
+
+/*!\fn HASH_NODE *_ht_new_string_ptr_node( HASH_TABLE *table , void *value , void (*destructor)(void *ptr ) )
+ *\internal
+ *\brief node creation, HASH_CLASSIC mode, pointer to string value
+ *\param table Target table
+ *\param key key of new node
+ *\param value pointer data of key
+ *\param destructor function pointer to a destructor of value type
+ *\return NULL or a new HASH_NODE *
+ */
+HASH_NODE *_ht_new_ptr_node( HASH_TABLE *table , char *key , void *value , void (*destructor)(void *ptr ) )
+{
+	__n_assert( table , return NULL );
+	__n_assert( key , return NULL );
+
+	HASH_NODE *new_hash_node = NULL ;
+	new_hash_node = _ht_new_node( table , key );
+	new_hash_node -> data . ptr = value ;
+	new_hash_node -> destroy_func = destructor ;
+	new_hash_node -> type = HASH_PTR ;
+	return new_hash_node ;
+}
+
+
+
+
+
+
+
 
 /*!\fn int _ht_put_int( HASH_TABLE *table , char * key , int value )
  *\brief put an integral value with given key in the targeted hash table
@@ -1397,7 +1549,7 @@ int _ht_get_double( HASH_TABLE *table, char * key, double *val )
  *\param val A pointer to an empty pointer store
  *\return TRUE or FALSE.
  */
-int _ht_get_ptr( HASH_TABLE *table, char * key, void  **val )
+int _ht_get_ptr( HASH_TABLE *table, char *key, void  **val )
 {
 	__n_assert( table, return FALSE );
 	__n_assert( key, return FALSE );
@@ -1557,7 +1709,6 @@ int _destroy_ht( HASH_TABLE **table )
 } /* _destroy_ht */
 
 
-
 void _ht_print( HASH_TABLE *table )
 {
 	__n_assert( table , return );
@@ -1570,36 +1721,6 @@ void _ht_print( HASH_TABLE *table )
 	return ;
 }
 
-void _ht_search_trie_helper( LIST *results , HASH_NODE *node , char *exp )
-{
-	if( !node )
-		return ;
-
-	if( node -> is_leaf )
-	{
-		if( !fnmatch( exp , node -> key , FNM_NOESCAPE ) )
-		{
-			list_push( results , strdup( node -> key ) , &free );
-		}
-	}
-	for( uint32_t it = 0 ; it < node -> alphabet_length ; it++ )
-	{
-		_ht_search_trie_helper( results , node -> children[ it ] , exp );
-	}
-}
-
-LIST *_ht_search_trie( HASH_TABLE *table , char *exp )
-{
-	__n_assert( table , return NULL );
-	__n_assert( exp , return NULL );
-	LIST *results = new_generic_list( 0 );
-
-	_ht_search_trie_helper( results , table -> root , exp );
-	if( results -> nb_items < 1 )
-		list_destroy( &results );
-
-	return results ;
-}
 
 
 LIST *_ht_search( HASH_TABLE *table , char *exp )
@@ -1621,6 +1742,48 @@ LIST *_ht_search( HASH_TABLE *table , char *exp )
 }
 
 
+
+/*!\fn HASH_TABLE *new_ht_trie( unsigned int alphabet_size , unsigned int alphabet_offset )
+ *\brief Create a hash table with the given size
+ *\param size Size of the root hash node table
+ *\return NULL or the new allocated hash table
+ */
+HASH_TABLE *new_ht_trie( unsigned int alphabet_length , unsigned int alphabet_offset )
+{
+	HASH_TABLE *table = NULL ;
+
+	Malloc( table, HASH_TABLE, 1 );
+	__n_assert( table, n_log( LOG_ERR, "Error allocating HASH_TABLE *table" ); return NULL );
+
+	table -> size = 0 ;
+	table -> seed = 0 ;
+	table -> nb_keys = 0 ;
+	errno = 0 ;
+	table -> hash_table = NULL ;
+
+	table -> ht_put_int        = _ht_put_int_trie ;
+	table -> ht_put_double     = _ht_put_double_trie ;
+	table -> ht_put_ptr        = _ht_put_ptr_trie ;
+	table -> ht_put_string     = _ht_put_string_trie ;
+	table -> ht_put_string_ptr = _ht_put_string_ptr_trie ;
+	table -> ht_get_int        = _ht_get_int_trie ;
+	table -> ht_get_double     = _ht_get_double_trie ;
+	table -> ht_get_string     = _ht_get_string_trie ;
+	table -> ht_get_ptr        = _ht_get_ptr_trie ;
+	table -> ht_remove         = _ht_remove_trie ;
+	table -> ht_search         = _ht_search_trie ;
+	table -> empty_ht          = _empty_ht_trie ;
+	table -> destroy_ht        = _destroy_ht_trie ;
+	table -> ht_print          = _ht_print_trie ;
+
+	table -> alphabet_length = alphabet_length ;
+	table -> alphabet_offset = alphabet_offset ;
+
+	table -> root =	_ht_new_node_trie( table , '\0' );
+	table -> mode = HASH_TRIE ;
+
+	return table ;
+} /* new_ht_trie */
 
 /*!\fn HASH_TABLE *new_ht( int size )
  *\brief Create a hash table with the given size
@@ -1675,6 +1838,7 @@ HASH_TABLE *new_ht( unsigned long int size )
 	table -> ht_get_int        = _ht_get_int ;
 	table -> ht_get_double     = _ht_get_double ;
 	table -> ht_get_string     = _ht_get_string ;
+	table -> ht_get_ptr        = _ht_get_ptr ;
 	table -> ht_remove         = _ht_remove ;
 	table -> ht_search         = _ht_search ;
 	table -> empty_ht          = _empty_ht ;
@@ -1684,98 +1848,71 @@ HASH_TABLE *new_ht( unsigned long int size )
 	return table ;
 } /* new_ht */
 
-
-
-/*!\fn HASH_TABLE *new_ht_trie( unsigned int alphabet_size , unsigned int alphabet_offset )
- *\brief Create a hash table with the given size
- *\param size Size of the root hash node table
- *\return NULL or the new allocated hash table
- */
-HASH_TABLE *new_ht_trie( unsigned int alphabet_length , unsigned int alphabet_offset )
+HASH_NODE *ht_get_node( HASH_TABLE *table, char *key )
 {
-	HASH_TABLE *table = NULL ;
-
-	Malloc( table, HASH_TABLE, 1 );
-	__n_assert( table, n_log( LOG_ERR, "Error allocating HASH_TABLE *table" ); return NULL );
-
-	table -> size = 0 ;
-	table -> seed = 0 ;
-	table -> nb_keys = 0 ;
-	errno = 0 ;
-	table -> hash_table = NULL ;
-
-	table -> ht_put_int        = _ht_put_int_trie ;
-	table -> ht_put_double     = _ht_put_double_trie ;
-	table -> ht_put_ptr        = _ht_put_ptr_trie ;
-	table -> ht_put_string     = _ht_put_string_trie ;
-	table -> ht_put_string_ptr = _ht_put_string_ptr_trie ;
-	table -> ht_get_int        = _ht_get_int_trie ;
-	table -> ht_get_double     = _ht_get_double_trie ;
-	table -> ht_get_string     = _ht_get_string_trie ;
-	table -> ht_remove         = _ht_remove_trie ;
-	table -> ht_search         = _ht_search_trie ;
-	table -> empty_ht          = _empty_ht_trie ;
-	table -> destroy_ht        = _destroy_ht_trie ;
-	table -> ht_print          = _ht_print_trie ;
-
-	table -> alphabet_length = alphabet_length ;
-	table -> alphabet_offset = alphabet_offset ;
-
-	table -> root =	_ht_new_node_trie( table , '\0' );
-	table -> mode = HASH_TRIE ;
-
-	return table ;
-} /* new_ht_trie */
-
-
+	__n_assert( table , return FALSE );
+	__n_assert( key , return FALSE );
+	return table->ht_get_node( table , key );
+}
+ 
 int ht_get_double( HASH_TABLE *table, char * key, double *val )
 {
 	__n_assert( table , return FALSE );
+	__n_assert( key , return FALSE );
 	return table->ht_get_double( table , key , val );
 }
 int ht_get_int( HASH_TABLE *table, char *key, int *val )
 {
 	__n_assert( table , return FALSE );
+	__n_assert( key , return FALSE );
 	return table->ht_get_int( table , key , val );
 }
 int ht_get_ptr( HASH_TABLE *table, char * key, void  **val )
 {
 	__n_assert( table , return FALSE );
-	return table->ht_get_ptr( table , key , val );
+	__n_assert( key , return FALSE );
+	return table -> ht_get_ptr( table , key , &(*val) );
 }
 int ht_get_string( HASH_TABLE *table, char * key, char  **val )
 {
 	__n_assert( table , return FALSE );
+	__n_assert( key , return FALSE );
 	return table->ht_get_string( table , key , val );
 }
 int ht_put_double( HASH_TABLE *table, char *key, double value )
 {
 	__n_assert( table , return FALSE );
+	__n_assert( key , return FALSE );
 	return table->ht_put_double( table , key , value );
 }
 int ht_put_int( HASH_TABLE *table, char * key, int value )
 {
 	__n_assert( table , return FALSE );
+	__n_assert( key , return FALSE );
 	return table->ht_put_int( table , key , value );
 }
 int ht_put_ptr( HASH_TABLE *table, char *key, void  *ptr, void (*destructor)(void *ptr ) )
 {
 	__n_assert( table , return FALSE );
+	__n_assert( key , return FALSE );
 	return table->ht_put_ptr( table , key , ptr , destructor );
 }
 int ht_put_string( HASH_TABLE *table, char *key, char *string )
 {
 	__n_assert( table , return FALSE );
+	__n_assert( key , return FALSE );
 	return table->ht_put_string( table , key , string );
 }
 int ht_put_string_ptr( HASH_TABLE *table, char *key, char *string )
 {
 	__n_assert( table , return FALSE );
+	__n_assert( key , return FALSE );
 	return table->ht_put_string_ptr( table , key , string );
 }
 int ht_remove( HASH_TABLE *table, char *key )
 {
 	__n_assert( table , return FALSE );
+	__n_assert( key , return FALSE );
 	return table->ht_remove( table , key );
 }
 void ht_print( HASH_TABLE *table )
