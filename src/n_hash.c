@@ -1839,6 +1839,7 @@ HASH_TABLE *new_ht( unsigned long int size )
 	table -> ht_get_double     = _ht_get_double ;
 	table -> ht_get_string     = _ht_get_string ;
 	table -> ht_get_ptr        = _ht_get_ptr ;
+	table -> ht_get_node        = _ht_get_node;
 	table -> ht_remove         = _ht_remove ;
 	table -> ht_search         = _ht_search ;
 	table -> empty_ht          = _empty_ht ;
