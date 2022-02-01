@@ -20,8 +20,7 @@
 #include <arpa/inet.h>
 #endif
 
-#define _GNU_SOURCE
-#include <fnmatch.h>
+
 
 
 /*!\fn HASH_NODE *_ht_new_node_trie( HASH_TABLE *table , char key )

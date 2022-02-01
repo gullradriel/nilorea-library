@@ -1,6 +1,3 @@
-#ifndef HEADER_D9B3C19ACD3EE8E
-#define HEADER_D9B3C19ACD3EE8E
-
 /**\file n_hash.h
  * Hash functions and table
  *\author Castagnier Mickael
@@ -19,7 +16,6 @@ extern "C" {
   \addtogroup HASH_TABLE
   @{
   */
-
 
 #if defined( __linux__ ) || defined( _AIX ) || defined( __sun )
 #include <arpa/inet.h>
@@ -350,6 +346,5 @@ LIST *ht_get_completion_list( HASH_TABLE *table, char *keybud, uint32_t max_resu
 }
 #endif
 
-#endif
 #endif // header guard
 

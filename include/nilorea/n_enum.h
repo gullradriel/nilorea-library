@@ -101,10 +101,3 @@ enum_name;
 #endif
 
 #endif // header guard
-
-#endif // header guard
-
-#endif // header guard
-
-#endif // header guard
-

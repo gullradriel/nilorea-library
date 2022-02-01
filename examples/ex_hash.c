@@ -10,9 +10,6 @@
 #include "nilorea/n_list.h"
 #include "nilorea/n_hash.h"
 
-#define _GNU_SOURCE
-#include <fnmatch.h>
-
 #define NB_ELEMENTS 16
 
 /*! string and int holder */
