@@ -13,7 +13,7 @@ extern "C"
 {
 #endif
 
-/**\defgroup COMMONS COMMONS: generally used headers, defines, timers, allocators,...
+/**\defgroup COMMONS COMMONS AND MACROS: generally used headers, defines, timers, allocators,...
   \addtogroup COMMONS
   @{
   */
@@ -27,7 +27,7 @@ extern "C"
 #include <nilorea/n_log.h>
 #include <nilorea/n_enum.h>
 
-	/*! feature test macro */
+/*! feature test macro */
 #define __EXTENSIONS__
 
 /*! set __windows__ if true */
@@ -481,4 +481,5 @@ pid_t system_nb(const char * command, int * infp, int * outfp);
 }
 #endif
 
-#endif /* #ifndef __COMMON_FOR_C_IMPLEMENTATION__ */
+#endif // header guard
+

@@ -56,7 +56,7 @@ int CompressData( unsigned char *abSrc, unsigned int nLenSrc, unsigned char *abD
     }
 
     z_stream zInfo ;
-    memset( &zInfo , 0 , sizeof( zInfo ) );
+    memset( &zInfo, 0, sizeof( zInfo ) );
     zInfo.total_in=  zInfo.avail_in = nLenSrc;
     zInfo.total_out= zInfo.avail_out= nLenDst;
     zInfo.next_in= (unsigned char *)abSrc;
@@ -112,8 +112,8 @@ int UncompressData( unsigned char *abSrc, unsigned int nLenSrc, unsigned char *a
         return -1 ;
     }
 
-    z_stream zInfo ; 
-    memset( &zInfo , 0 , sizeof( zInfo ) );
+    z_stream zInfo ;
+    memset( &zInfo, 0, sizeof( zInfo ) );
     zInfo.total_in=  zInfo.avail_in=  nLenSrc;
     zInfo.total_out= zInfo.avail_out= nLenDst;
     zInfo.next_in= (unsigned char *)abSrc;

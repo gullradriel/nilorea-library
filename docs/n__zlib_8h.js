@@ -1,8 +1,8 @@
 var n__zlib_8h =
 [
-    [ "CompressData", "n__zlib_8h.html#ga3cee439f1a14ead00e2794db65bcc19b", null ],
-    [ "GetMaxCompressedLen", "n__zlib_8h.html#ga316f6b6d89d35de431b48b72afb3cf30", null ],
-    [ "UncompressData", "n__zlib_8h.html#gab30a9a826da4600a36458eb6bf563bb4", null ],
-    [ "unzip_nstr", "n__zlib_8h.html#gade5f987fddbd051929d191b45791280e", null ],
-    [ "zip_nstr", "n__zlib_8h.html#gacf79e26b2e1cd62387a1643203cd7a9c", null ]
+    [ "CompressData", "group___z_l_i_b.html#ga3cee439f1a14ead00e2794db65bcc19b", null ],
+    [ "GetMaxCompressedLen", "group___z_l_i_b.html#ga316f6b6d89d35de431b48b72afb3cf30", null ],
+    [ "UncompressData", "group___z_l_i_b.html#gab30a9a826da4600a36458eb6bf563bb4", null ],
+    [ "unzip_nstr", "group___z_l_i_b.html#gab434f8d8cbd741ecffd35be2125b66fe", null ],
+    [ "zip_nstr", "group___z_l_i_b.html#gae1e033816ab406b33b403c687c2d7dea", null ]
 ];

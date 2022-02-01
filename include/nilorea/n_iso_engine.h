@@ -13,8 +13,8 @@ extern "C"
 {
 #endif
 
-/**\defgroup ISOMETRIC ISOMETRIC: isometric engine, maps, tiles,...
-   \addtogroup ISOMETRIC
+/**\defgroup ISOMETRIC_ENGINE ISOMETRIC ENGINE: isometric engine, maps, tiles, ...
+   \addtogroup ISOMETRIC_ENGINE
   @{
 */
 

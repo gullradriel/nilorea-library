@@ -9,7 +9,7 @@ var group___t_h_r_e_a_d_s =
       [ "waiting_list", "struct_t_h_r_e_a_d___p_o_o_l.html#a86b5f24f3379eb4659ac2e6e06e8835d", null ]
     ] ],
     [ "THREAD_POOL_NODE", "struct_t_h_r_e_a_d___p_o_o_l___n_o_d_e.html", [
-      [ "func", "struct_t_h_r_e_a_d___p_o_o_l___n_o_d_e.html#a8d892efff891697817e8a249c213db0b", null ],
+      [ "func", "struct_t_h_r_e_a_d___p_o_o_l___n_o_d_e.html#a34366b14ed447b68b13afc113589c367", null ],
       [ "lock", "struct_t_h_r_e_a_d___p_o_o_l___n_o_d_e.html#a3ca2e0acbf915da7544ae0b3e25d91fe", null ],
       [ "param", "struct_t_h_r_e_a_d___p_o_o_l___n_o_d_e.html#af2c6175edf922b474d70a8e9ba45ff67", null ],
       [ "state", "struct_t_h_r_e_a_d___p_o_o_l___n_o_d_e.html#a065b2419124f6d3824a182e3147bab43", null ],
@@ -20,7 +20,7 @@ var group___t_h_r_e_a_d_s =
       [ "type", "struct_t_h_r_e_a_d___p_o_o_l___n_o_d_e.html#a1671454dbf63472ffa867ca84f0afb0f", null ]
     ] ],
     [ "THREAD_WAITING_PROC", "struct_t_h_r_e_a_d___w_a_i_t_i_n_g___p_r_o_c.html", [
-      [ "func", "struct_t_h_r_e_a_d___w_a_i_t_i_n_g___p_r_o_c.html#a62cb3eaacee7a3fde4aebb192b7fcc78", null ],
+      [ "func", "struct_t_h_r_e_a_d___w_a_i_t_i_n_g___p_r_o_c.html#ab96bd6795664db0829d2ebc3530ea6b8", null ],
       [ "param", "struct_t_h_r_e_a_d___w_a_i_t_i_n_g___p_r_o_c.html#a22f53a970daf642828333cdc303bae37", null ]
     ] ],
     [ "DIRECT_PROC", "group___t_h_r_e_a_d_s.html#ga8c7d9cf88f160af14b39be46a66f8189", null ],
@@ -33,12 +33,12 @@ var group___t_h_r_e_a_d_s =
     [ "RUNNING_THREAD", "group___t_h_r_e_a_d_s.html#gac3966893f43d72bd23c7c3f410df9a48", null ],
     [ "SYNCED_PROC", "group___t_h_r_e_a_d_s.html#ga2b400f548be5f43fa27d8f8b18892c08", null ],
     [ "WAITING_PROC", "group___t_h_r_e_a_d_s.html#gad1478c0e8f6772bb9673116dd0902e56", null ],
-    [ "THREAD_POOL", "group___t_h_r_e_a_d_s.html#ga832d8692896a8de0e57f020ed37a29e1", null ],
-    [ "THREAD_POOL_NODE", "group___t_h_r_e_a_d_s.html#ga741fd2e53487fb6303615130f9ef5b64", null ],
-    [ "THREAD_WAITING_PROC", "group___t_h_r_e_a_d_s.html#gaa6183983bb750b3b9ce550a0e055831e", null ],
+    [ "THREAD_POOL", "group___t_h_r_e_a_d_s.html#ga6e2f55fba396ce5cd21ace22f5f181e9", null ],
+    [ "THREAD_POOL_NODE", "group___t_h_r_e_a_d_s.html#ga859901f843c0f65ae2d128617eea65b4", null ],
+    [ "THREAD_WAITING_PROC", "group___t_h_r_e_a_d_s.html#gab45c465f5d8115c0fa68538900302f88", null ],
     [ "add_threaded_process", "group___t_h_r_e_a_d_s.html#ga46497eb81066d0df83dfd07ad0a9f561", null ],
     [ "destroy_threaded_pool", "group___t_h_r_e_a_d_s.html#ga12ce28c2aaa5a5a1a05abe11071dd83f", null ],
-    [ "new_thread_pool", "group___t_h_r_e_a_d_s.html#ga0e3dcfbda5e68e14399b18f994060c97", null ],
+    [ "new_thread_pool", "group___t_h_r_e_a_d_s.html#gadb3f2b85b758433e29e84b54992cfed4", null ],
     [ "refresh_thread_pool", "group___t_h_r_e_a_d_s.html#ga5d9ce1747e4b7cb58ce3767f7e56cd8b", null ],
     [ "start_threaded_pool", "group___t_h_r_e_a_d_s.html#ga0563294cf52eb2b9e4f1d017390ff46c", null ],
     [ "wait_for_threaded_pool", "group___t_h_r_e_a_d_s.html#ga992fc2a67a2d66733ccd10f7d9e2ead3", null ]

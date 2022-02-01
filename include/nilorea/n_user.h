@@ -26,6 +26,11 @@ extern "C"
 #include "nilorea/n_network.h"
 #include "nilorea/n_3d.h"
 
+/**\defgroup N_USER GAMES: User handling
+  \addtogroup N_USER
+  @{
+  */
+
 #define USERLIST_ALL 0
 #define USERLIST_ALL_EXCEPT 1
 #define USERLIST_ONE 2
@@ -91,9 +96,13 @@ int userlist_user_add_waiting_msg( N_USERLIST *ulist, int id, N_STR *netmsg );
 int userlist_user_send_waiting_msgs( N_USERLIST *ulist, int id );
 int userlist_send_waiting_msgs( N_USERLIST *ulist );
 
+/**
+@}
+*/
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif /* #ifndef N_USER_MANAGEMENT */
+#endif // header guard
+

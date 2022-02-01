@@ -13,7 +13,7 @@ extern "C"
 {
 #endif
 
-/**\defgroup LIST LIST: generic type list
+/**\defgroup LIST LISTS: generic type list
    \addtogroup LIST
   @{
 */

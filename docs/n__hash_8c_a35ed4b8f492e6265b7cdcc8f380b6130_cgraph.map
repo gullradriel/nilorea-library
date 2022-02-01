@@ -1,8 +1,11 @@
 <map id="_ht_put_string" name="_ht_put_string">
-<area shape="rect" id="node2" href="$n__hash_8c.html#a364dffbf42be500d3266410895694bd8" title="return the associated key&#39;s node inside the hash_table " alt="" coords="183,5,292,32"/>
-<area shape="rect" id="node4" href="$n__hash_8c.html#a013153fa30199bbcaf5f92890ae97ba8" title="destroy a HASH_NODE by first calling the HASH_NODE destructor " alt="" coords="169,56,306,83"/>
-<area shape="rect" id="node5" href="$group___h_a_s_h___t_a_b_l_e.html#ga49f19e01daabe0bb71e41713b562755d" title="get the type of a node , text version " alt="" coords="182,107,293,133"/>
-<area shape="rect" id="node6" href="$group___l_i_s_t.html#ga4eab319289a83524639ee5e9f0441fdf" title="Add a pointer to the end of the list. " alt="" coords="197,157,277,184"/>
-<area shape="rect" id="node3" href="$group___h_a_s_h___t_a_b_l_e.html#ga37412933f308bda727603640d9acefba" title="brief MurmurHash3 was written by Austin Appleby, and is placed in the public domain. " alt="" coords="355,5,522,32"/>
-<area shape="rect" id="node7" href="$group___l_i_s_t.html#ga6f57b62b796c1248014bc14a9bb0fc6c" title="Allocate a new node to link in a list. " alt="" coords="381,157,496,184"/>
+<area shape="rect" id="node1" title="put a null terminated char *string with given key in the targeted hash table (copy of string)" alt="" coords="5,131,109,157"/>
+<area shape="rect" id="node2" href="$n__hash_8c.html#a364dffbf42be500d3266410895694bd8" title="return the associated key&#39;s node inside the hash_table" alt="" coords="352,5,452,32"/>
+<area shape="rect" id="node4" href="$n__hash_8c.html#a3b482644f6bf5ac3cfec10961a9bfdbc" title="node creation, HASH_CLASSIC mode, strdup of value" alt="" coords="157,56,301,83"/>
+<area shape="rect" id="node6" href="$n__hash_8c.html#a013153fa30199bbcaf5f92890ae97ba8" title="destroy a HASH_NODE by first calling the HASH_NODE destructor" alt="" coords="167,131,292,157"/>
+<area shape="rect" id="node7" href="$group___h_a_s_h___t_a_b_l_e.html#ga1392981a507905d028136bc0b92aa48b" title="get the type of a node , text version" alt="" coords="179,181,279,208"/>
+<area shape="rect" id="node8" href="$group___l_i_s_t.html#ga4eab319289a83524639ee5e9f0441fdf" title="Add a pointer to the end of the list." alt="" coords="192,232,267,259"/>
+<area shape="rect" id="node3" href="$group___h_a_s_h___t_a_b_l_e.html#ga37412933f308bda727603640d9acefba" title="brief MurmurHash3 was written by Austin Appleby, and is placed in the public domain." alt="" coords="503,31,655,57"/>
+<area shape="rect" id="node5" href="$n__hash_8c.html#a9a7239b9d94b50486662ad11381fd3bf" title="node creation, HASH_CLASSIC mode" alt="" coords="349,56,455,83"/>
+<area shape="rect" id="node9" href="$group___l_i_s_t.html#ga678e828550efc8e64a836bb8c713c2f4" title="Allocate a new node to link in a list." alt="" coords="350,232,454,259"/>
 </map>

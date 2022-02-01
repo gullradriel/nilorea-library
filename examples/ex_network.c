@@ -238,7 +238,7 @@ int main(int argc, char **argv)
                     netw_unload();
                     exit( -1 );
                 }
-            	pthread_join( netw_thr, NULL );
+                pthread_join( netw_thr, NULL );
             }
         }
         /* testing with thread pool  && non blocking */
@@ -247,7 +247,7 @@ int main(int argc, char **argv)
         while( it < NB_ATTEMPTS )
         {
             /* get any accepted client on a network */
-            if ( ( netw = netw_accept_from_ex( server, 0 , 0 , 0 , &error ) ) )
+            if ( ( netw = netw_accept_from_ex( server, 0, 0, 0, &error ) ) )
             {
                 /* someone is connected. starting some dialog */
                 if( add_threaded_process( thread_pool, &manage_client, (void *)netw, DIRECT_PROC ) == FALSE )

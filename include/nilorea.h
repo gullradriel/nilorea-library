@@ -1,3 +1,6 @@
+#ifndef HEADER_48364550BE28290E
+#define HEADER_48364550BE28290E
+
 /**\file nilorea.h
  *  Header to include for use with libnilorea
  *\author Castagnier Mickael
@@ -13,10 +16,10 @@
 extern "C" {
 #endif
 
-	/**\defgroup GLOBALHEADER HEADER: a global header to include all the modules
-	  \addtogroup GLOBALHEADER
-	  @{
-	  */
+/**\defgroup GLOBALHEADER HEADER: just a global header to include all the modules
+  \addtogroup GLOBALHEADER
+  @{
+  */
 #include <nilorea/n_3d.h>
 
 #include <nilorea/n_common.h>
@@ -39,10 +42,10 @@ extern "C" {
 #include <nilorea/n_user.h>
 #include <nilorea/n_zlib.h>
 
-	/* wip_unstable #include <nilorea/n_neural_networks.h> */
-	/* wip_unstable #include <nilorea/n_file.h> */
+/* wip_unstable #include <nilorea/n_neural_networks.h> */
+/* wip_unstable #include <nilorea/n_file.h> */
 
-	/* Must revamp this
+/* Must revamp this
 #include <nilorea/n_debug_mem.h>
 #include <nilorea/n_debug_mem_h.h>
 */
@@ -52,17 +55,19 @@ extern "C" {
 #include <nilorea/n_anim.h>
 #include <nilorea/n_gui.h>
 #include <nilorea/n_particles.h>
-	/* wip_unstable #include <nilorea/n_resources.h> */
+/* wip_unstable #include <nilorea/n_resources.h> */
 #endif
 
 
 
-	/**
-	  @}
-	  */
+/**
+  @}
+  */
 
 #ifdef __cplusplus
 }
 #endif
 
 #endif /*#ifndef __NILOREA_Unified_Library__*/
+#endif // header guard
+

@@ -11,7 +11,7 @@ extern "C"
 {
 #endif
 
-/**\defgroup LOG LOGGING: logging to console, to file, to syslog under *x
+/**\defgroup LOG LOGGING: logging to console, to file, to syslog, to event log
   \addtogroup LOG
   @{
   */

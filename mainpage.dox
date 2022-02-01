@@ -5,8 +5,6 @@
 <ul>  <li> \ref aboutlib </li>
 	<li> \ref require </li>
 	<li> \ref install </li>
-	<li> \ref FLAGS </li>
-	<li> \ref WARNINGS </li>
 	<li> \ref end </li>
 </ul>
 
@@ -35,44 +33,21 @@ Mainly for thread and network module:
 
 - OpenSSL libs (if HAVE_OPENSSL is used)
 
+- PCRE library for pattern matching in various places
+
 \section install Installation
-Just type make and use the library or put the right files in your LIB and INCLUDE directory, link them with your code and let's go ! \n
+Just type make and use the library or put the right files in your LIB and INCLUDE directory, link them with your code and let's go ! 
 Don't forget to define FLAGS for parts you don't need, it can save you memory and compilation time.
 
 
-\section FLAGS FLAGS when using Nilorea
-
-You should use one of the folowing if you need it:
-
- HAVE_ALLEGRO | HAVE_OPENSSL
-
-\section WARNINGS Be carefull
-
-Sometimes when I talk about a function I use the 'low-level' words to catch your attention.
-
-It's because we talk about functions who returns nothing and who won't test if they are
-
-going to write inside or outside the memory. It's your responsability to use them correctly.
-
 \section end Closing Words
 
-Nilorea is a 'make life easier' library, you're welcome using it.\n
-Everything inside is free or under GPL license, read it at http://www.gnu.org/license/gpl.html\n
+Nilorea is a 'make life easier' library, you're welcome using it.
 
-Have nice brain storm, and don't forget to submit me bugs !
+Everything inside is free or under GPL license, read it at http://www.gnu.org/license/gpl.html
 
-You can join me at mickael dot castagnier at gmail.com , gullradriel at gmail.com 
+You can join me at coder at nilorea.net  
 
-On freenode:
-Gull_Code on #allegro, #postmarketos #postmarketos-mainline 
-
-LinkedIn:
-https://www.linkedin.com/in/mickael-castagnier
-
-Twitter:
-https://twitter.com/gullradriel
-
-Website:
-https://www.nilorea.net
+More informations on the website: https://www.nilorea.net
 
 */

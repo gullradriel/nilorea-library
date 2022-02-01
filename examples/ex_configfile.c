@@ -15,7 +15,7 @@ int main( int argc, char *argv[] )
         exit( 1 );
     }
     int errors = 0 ;
-    CONFIG_FILE *config = load_config_file( argv[ 1 ] , &errors );
+    CONFIG_FILE *config = load_config_file( argv[ 1 ], &errors );
     if( !config )
     {
         n_log( LOG_ERR, "Unable to load config file from %s", argv[ 1 ] );

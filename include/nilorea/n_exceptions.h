@@ -12,8 +12,8 @@ extern "C"
 {
 #endif
 
-/**\defgroup EXCEPTION EXCEPTION: C++ style try,catch,endtry,throw
-   \addtogroup EXCEPTION
+/**\defgroup EXCEPTIONS EXCEPTIONS: C++ style try,catch,endtry,throw
+   \addtogroup EXCEPTIONS
   @{
 */
 

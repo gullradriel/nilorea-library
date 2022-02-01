@@ -19,8 +19,8 @@
 extern "C" {
 #endif
 
-/**\defgroup PARTICLES GAMES: PARTICLES utilities
-   \addtogroup GAMES
+/**\defgroup PARTICLES GAMES: 3D PARTICLES utilities
+   \addtogroup PARTICLES
   @{
 */
 

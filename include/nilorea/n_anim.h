@@ -22,6 +22,11 @@ extern "C" {
 #include "n_str.h"
 #include "allegro5/allegro.h"
 
+/**\defgroup ANIM_LIB ANIM LIB: animation library, loading structures and blit funcs
+  \addtogroup ANIM_LIB
+  @{
+  */
+
 /*! struct of the properties of a frame in an animation */
 typedef struct ANIM_FRAME
 {
@@ -86,7 +91,14 @@ int update_anim( ANIM_DATA *data, unsigned int delta_t );
 int draw_anim( ANIM_DATA *data, int x, int y );
 int destroy_anim_lib( ANIM_LIB **lib );
 
+/**
+@}
+*/
+
+
 #ifdef __cplusplus
 }
 #endif
-#endif
+
+#endif // header guard
+

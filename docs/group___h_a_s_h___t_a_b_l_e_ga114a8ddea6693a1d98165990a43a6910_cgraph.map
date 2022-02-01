@@ -1,11 +1,45 @@
 <map id="new_ht_trie" name="new_ht_trie">
-<area shape="rect" id="node2" href="$n__hash_8c.html#abfa263c3762bcc52625fc3d33ba20014" title="Empty a TRIE hash table. " alt="" coords="168,5,288,32"/>
-<area shape="rect" id="node4" href="$n__hash_8c.html#a825546ece9c87894de351354131d9c9d" title="Retrieve an integral value in the hash table, at the given key. " alt="" coords="153,56,303,83"/>
-<area shape="rect" id="node6" href="$n__hash_8c.html#a256287de4bd12cc39e8eb885a0938cd0" title="Retrieve an integral value in the hash table, at the given key. " alt="" coords="167,107,289,133"/>
-<area shape="rect" id="node7" href="$n__hash_8c.html#a53e2b70cd04dd251387054c30f9fc4de" title="Retrieve an integral value in the hash table, at the given key. " alt="" coords="166,157,290,184"/>
-<area shape="rect" id="node8" href="$n__hash_8c.html#a3facd71bf74b9dae8f82a1bfb6dc9fc2" title="Retrieve an integral value in the hash table, at the given key. " alt="" coords="157,208,299,235"/>
-<area shape="rect" id="node9" href="$group___h_a_s_h___t_a_b_l_e.html#ga22a943135dbcdb1611b40ce0547111ce" title="Free and set the table to NULL. " alt="" coords="183,259,273,285"/>
-<area shape="rect" id="node10" href="$group___h_a_s_h___t_a_b_l_e.html#ga5d2235e91b2b6b70129246897442f8d5" title="Empty a hash table. " alt="" coords="186,333,270,360"/>
-<area shape="rect" id="node3" href="$n__hash_8c.html#a013153fa30199bbcaf5f92890ae97ba8" title="destroy a HASH_NODE by first calling the HASH_NODE destructor " alt="" coords="353,5,490,32"/>
-<area shape="rect" id="node5" href="$group___h_a_s_h___t_a_b_l_e.html#ga49f19e01daabe0bb71e41713b562755d" title="get the type of a node , text version " alt="" coords="366,132,477,159"/>
+<area shape="rect" id="node1" title="Create a hash table with the given size." alt="" coords="5,765,93,792"/>
+<area shape="rect" id="node2" href="$n__hash_8c.html#ab9d1b16f848c310836772818278a4014" title=" " alt="" coords="159,107,274,133"/>
+<area shape="rect" id="node4" href="$n__hash_8c.html#abfa263c3762bcc52625fc3d33ba20014" title="Empty a TRIE hash table." alt="" coords="163,157,271,184"/>
+<area shape="rect" id="node5" href="$n__hash_8c.html#a934900314d008a0557f1608d267ebb04" title="node creation, HASH_CLASSIC mode" alt="" coords="364,309,495,336"/>
+<area shape="rect" id="node6" href="$n__hash_8c.html#a825546ece9c87894de351354131d9c9d" title="Retrieve an integral value in the hash table, at the given key. Leave val untouched if key is not fou..." alt="" coords="149,563,284,589"/>
+<area shape="rect" id="node9" href="$n__hash_8c.html#a256287de4bd12cc39e8eb885a0938cd0" title="Retrieve an integral value in the hash table, at the given key. Leave val untouched if key is not fou..." alt="" coords="161,613,272,640"/>
+<area shape="rect" id="node10" href="$n__hash_8c.html#a53e2b70cd04dd251387054c30f9fc4de" title="Retrieve an integral value in the hash table, at the given key. Leave val untouched if key is not fou..." alt="" coords="161,664,273,691"/>
+<area shape="rect" id="node11" href="$n__hash_8c.html#a3facd71bf74b9dae8f82a1bfb6dc9fc2" title="Retrieve an integral value in the hash table, at the given key. Leave val untouched if key is not fou..." alt="" coords="152,512,281,539"/>
+<area shape="rect" id="node12" href="$n__hash_8c.html#a3ea3a506fda15848cf7c87b847851294" title=" " alt="" coords="168,715,265,741"/>
+<area shape="rect" id="node14" href="$n__hash_8c.html#a4a07758c1bc609934f5f4f5fff5c4c84" title=" " alt="" coords="149,411,284,437"/>
+<area shape="rect" id="node15" href="$n__hash_8c.html#a63e749663982d1fadd98abbedc39783e" title=" " alt="" coords="161,461,272,488"/>
+<area shape="rect" id="node16" href="$n__hash_8c.html#a0f3f56b2cc5073fe8edb01858071764d" title=" " alt="" coords="161,208,273,235"/>
+<area shape="rect" id="node17" href="$n__hash_8c.html#aed9dcb9decb12aee7f6839352eda4821" title=" " alt="" coords="141,259,292,285"/>
+<area shape="rect" id="node18" href="$n__hash_8c.html#a84bc6d76e1d60c33715ee8cd30261c1c" title=" " alt="" coords="152,309,281,336"/>
+<area shape="rect" id="node19" href="$n__hash_8c.html#ad27874c10926fdce03e06204404659f4" title=" " alt="" coords="160,56,273,83"/>
+<area shape="rect" id="node23" href="$n__hash_8c.html#a7fc702c9f353c169e3711e46c2616b28" title=" " alt="" coords="161,765,272,792"/>
+<area shape="rect" id="node30" href="$group___h_a_s_h___t_a_b_l_e.html#ga22a943135dbcdb1611b40ce0547111ce" title="Free and set the table to NULL." alt="" coords="175,816,258,843"/>
+<area shape="rect" id="node31" href="$group___h_a_s_h___t_a_b_l_e.html#ga5d2235e91b2b6b70129246897442f8d5" title="Empty a hash table." alt="" coords="179,891,255,917"/>
+<area shape="rect" id="node32" href="$group___h_a_s_h___t_a_b_l_e.html#gaaa35befb530f8299abf88af3ee42e6eb" title=" " alt="" coords="165,941,268,968"/>
+<area shape="rect" id="node33" href="$group___h_a_s_h___t_a_b_l_e.html#ga1dad8732deb44eada370325427824b0d" title=" " alt="" coords="177,992,256,1019"/>
+<area shape="rect" id="node34" href="$group___h_a_s_h___t_a_b_l_e.html#gae34a331ccbda86f7e5b2319f1852d6ca" title=" " alt="" coords="177,1067,257,1093"/>
+<area shape="rect" id="node35" href="$group___h_a_s_h___t_a_b_l_e.html#ga1044c61baf3c82c9783fa55bce28b4ae" title=" " alt="" coords="168,1117,265,1144"/>
+<area shape="rect" id="node36" href="$group___h_a_s_h___t_a_b_l_e.html#ga62ef2a517efcbc464f0103995f28c3e8" title=" " alt="" coords="184,1168,249,1195"/>
+<area shape="rect" id="node37" href="$group___h_a_s_h___t_a_b_l_e.html#ga2df4cb0772adec1c5155b4b254277d6c" title=" " alt="" coords="165,1219,268,1245"/>
+<area shape="rect" id="node38" href="$group___h_a_s_h___t_a_b_l_e.html#ga06cafdf266f9913c197a8e9e6a1fba5d" title=" " alt="" coords="177,1269,256,1296"/>
+<area shape="rect" id="node39" href="$group___h_a_s_h___t_a_b_l_e.html#ga2baa0497b21bdf86e3c64bb023124930" title=" " alt="" coords="177,1320,257,1347"/>
+<area shape="rect" id="node40" href="$group___h_a_s_h___t_a_b_l_e.html#gaa7dae105905e1751943ec3a4e4226480" title=" " alt="" coords="168,1371,265,1397"/>
+<area shape="rect" id="node41" href="$group___h_a_s_h___t_a_b_l_e.html#gaa1b9cd7ea20aa51fb4d4f4159c3ebad6" title=" " alt="" coords="157,1421,276,1448"/>
+<area shape="rect" id="node42" href="$group___h_a_s_h___t_a_b_l_e.html#ga8d8873be47a634ad8a386e61f12a1f53" title=" " alt="" coords="176,1472,257,1499"/>
+<area shape="rect" id="node43" href="$group___h_a_s_h___t_a_b_l_e.html#ga01cc08ddca42655d016da8d0eae5c89c" title=" " alt="" coords="177,1547,256,1573"/>
+<area shape="rect" id="node3" href="$n__hash_8c.html#a013153fa30199bbcaf5f92890ae97ba8" title="destroy a HASH_NODE by first calling the HASH_NODE destructor" alt="" coords="367,107,492,133"/>
+<area shape="rect" id="node7" href="$n__hash_8c.html#acb247f75f371ce972c82d2a5f4771f13" title=" " alt="" coords="367,563,492,589"/>
+<area shape="rect" id="node8" href="$group___h_a_s_h___t_a_b_l_e.html#ga49f19e01daabe0bb71e41713b562755d" title="get the type of a node , text version" alt="" coords="379,613,479,640"/>
+<area shape="rect" id="node13" href="$n__hash_8c.html#a4bd19fa8c4204b765b769c88bddfc0bc" title=" " alt="" coords="360,689,499,716"/>
+<area shape="rect" id="node20" href="$n__hash_8c.html#a4e79742325d74d708bc3c826fe22809a" title=" " alt="" coords="340,56,519,83"/>
+<area shape="rect" id="node22" href="$n__hash_8c.html#a1b6308d7ad4141a9ae95c1d8c1824004" title=" " alt="" coords="357,5,501,32"/>
+<area shape="rect" id="node21" href="$n__hash_8c.html#a4747b0ee5ab0c7f2b02397df6235bf8c" title=" " alt="" coords="567,56,741,83"/>
+<area shape="rect" id="node24" href="$n__hash_8c.html#af9f6e937f781df402b5ec4ac788f6f6e" title=" " alt="" coords="353,740,506,767"/>
+<area shape="rect" id="node27" href="$group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755" title="Empty and Free a list container. Call the destructor each time." alt="" coords="385,791,474,817"/>
+<area shape="rect" id="node29" href="$group___l_i_s_t.html#gaa82751b4d6a219771661843e61cefa2e" title="Initialiaze a generic list container to max_items pointers." alt="" coords="370,841,489,868"/>
+<area shape="rect" id="node25" href="$group___l_i_s_t.html#ga4eab319289a83524639ee5e9f0441fdf" title="Add a pointer to the end of the list." alt="" coords="617,740,691,767"/>
+<area shape="rect" id="node26" href="$group___l_i_s_t.html#ga6f57b62b796c1248014bc14a9bb0fc6c" title="Allocate a new node to link in a list." alt="" coords="789,740,893,767"/>
+<area shape="rect" id="node28" href="$group___l_i_s_t.html#ga1dafe7a250ddad51fadd375f057287e7" title="Empty a LIST list of pointers." alt="" coords="613,791,695,817"/>
 </map>

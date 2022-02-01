@@ -1,16 +1,22 @@
 <map id="ht_node_type" name="ht_node_type">
-<area shape="rect" id="node2" href="$n__hash_8c.html#a7ce57bb0fb64ca5ff513c6ade7c26852" title="Retrieve a double value in the hash table, at the given key. " alt="" coords="181,5,302,32"/>
-<area shape="rect" id="node3" href="$n__hash_8c.html#a825546ece9c87894de351354131d9c9d" title="Retrieve an integral value in the hash table, at the given key. " alt="" coords="166,56,317,83"/>
-<area shape="rect" id="node5" href="$n__hash_8c.html#ae7c50bafbc80902f92c27e59d29ffd40" title="Retrieve an integral value in the hash table, at the given key. " alt="" coords="194,107,289,133"/>
-<area shape="rect" id="node6" href="$n__hash_8c.html#a256287de4bd12cc39e8eb885a0938cd0" title="Retrieve an integral value in the hash table, at the given key. " alt="" coords="180,157,303,184"/>
-<area shape="rect" id="node7" href="$n__hash_8c.html#a0299747d5cd82effd51fdaec945e80ee" title="Retrieve a pointer value in the hash table, at the given key. " alt="" coords="194,208,289,235"/>
-<area shape="rect" id="node8" href="$n__hash_8c.html#a53e2b70cd04dd251387054c30f9fc4de" title="Retrieve an integral value in the hash table, at the given key. " alt="" coords="179,259,303,285"/>
-<area shape="rect" id="node9" href="$n__hash_8c.html#a524a224940bc3ceea122824ca3d4842b" title="Retrieve a char *string value in the hash table, at the given key. " alt="" coords="184,309,299,336"/>
-<area shape="rect" id="node10" href="$n__hash_8c.html#a3facd71bf74b9dae8f82a1bfb6dc9fc2" title="Retrieve an integral value in the hash table, at the given key. " alt="" coords="170,360,313,387"/>
-<area shape="rect" id="node11" href="$n__hash_8c.html#a870d138d5408e20e8111c750cdc77d36" title="put a double value with given key in the targeted hash table " alt="" coords="181,411,302,437"/>
-<area shape="rect" id="node12" href="$n__hash_8c.html#a4713652203bc7965a2dda268ffa1e4d5" title="put an integral value with given key in the targeted hash table " alt="" coords="194,461,289,488"/>
-<area shape="rect" id="node13" href="$n__hash_8c.html#a853357465a1599d42ff6d095aa762424" title="put a pointer value with given key in the targeted hash table " alt="" coords="194,512,289,539"/>
-<area shape="rect" id="node14" href="$n__hash_8c.html#a35ed4b8f492e6265b7cdcc8f380b6130" title="put a null terminated char *string with given key in the targeted hash table (copy of string) ..." alt="" coords="184,563,299,589"/>
-<area shape="rect" id="node15" href="$n__hash_8c.html#a8bfbff53ffcafc65317e2b1041df314f" title="put a null terminated char *string with given key in the targeted hash table (pointer) ..." alt="" coords="172,613,311,640"/>
-<area shape="rect" id="node4" href="$group___h_a_s_h___t_a_b_l_e.html#ga114a8ddea6693a1d98165990a43a6910" title="Create a hash table with the given size. " alt="" coords="365,208,464,235"/>
+<area shape="rect" id="node1" title="get the type of a node , text version" alt="" coords="489,309,589,336"/>
+<area shape="rect" id="node2" href="$n__hash_8c.html#a7ce57bb0fb64ca5ff513c6ade7c26852" title="Retrieve a double value in the hash table, at the given key. Leave val untouched if key is not found." alt="" coords="319,208,429,235"/>
+<area shape="rect" id="node8" href="$n__hash_8c.html#a825546ece9c87894de351354131d9c9d" title="Retrieve an integral value in the hash table, at the given key. Leave val untouched if key is not fou..." alt="" coords="307,5,441,32"/>
+<area shape="rect" id="node10" href="$n__hash_8c.html#ae7c50bafbc80902f92c27e59d29ffd40" title="Retrieve an integral value in the hash table, at the given key. Leave val untouched if key is not fou..." alt="" coords="331,259,417,285"/>
+<area shape="rect" id="node11" href="$n__hash_8c.html#a256287de4bd12cc39e8eb885a0938cd0" title="Retrieve an integral value in the hash table, at the given key. Leave val untouched if key is not fou..." alt="" coords="319,56,429,83"/>
+<area shape="rect" id="node12" href="$n__hash_8c.html#a0299747d5cd82effd51fdaec945e80ee" title="Retrieve a pointer value in the hash table, at the given key. Leave val untouched if key is not found..." alt="" coords="331,309,417,336"/>
+<area shape="rect" id="node13" href="$n__hash_8c.html#a53e2b70cd04dd251387054c30f9fc4de" title="Retrieve an integral value in the hash table, at the given key. Leave val untouched if key is not fou..." alt="" coords="318,107,430,133"/>
+<area shape="rect" id="node14" href="$n__hash_8c.html#a524a224940bc3ceea122824ca3d4842b" title="Retrieve a char *string value in the hash table, at the given key. Leave val untouched if key is not ..." alt="" coords="322,360,426,387"/>
+<area shape="rect" id="node15" href="$n__hash_8c.html#a3facd71bf74b9dae8f82a1bfb6dc9fc2" title="Retrieve an integral value in the hash table, at the given key. Leave val untouched if key is not fou..." alt="" coords="309,157,439,184"/>
+<area shape="rect" id="node16" href="$n__hash_8c.html#a870d138d5408e20e8111c750cdc77d36" title="put a double value with given key in the targeted hash table" alt="" coords="319,411,429,437"/>
+<area shape="rect" id="node17" href="$n__hash_8c.html#a4713652203bc7965a2dda268ffa1e4d5" title="put an integral value with given key in the targeted hash table" alt="" coords="331,461,417,488"/>
+<area shape="rect" id="node18" href="$n__hash_8c.html#a853357465a1599d42ff6d095aa762424" title="put a pointer value with given key in the targeted hash table" alt="" coords="331,512,417,539"/>
+<area shape="rect" id="node19" href="$n__hash_8c.html#a35ed4b8f492e6265b7cdcc8f380b6130" title="put a null terminated char *string with given key in the targeted hash table (copy of string)" alt="" coords="322,563,426,589"/>
+<area shape="rect" id="node20" href="$n__hash_8c.html#a8bfbff53ffcafc65317e2b1041df314f" title="put a null terminated char *string with given key in the targeted hash table (pointer)" alt="" coords="311,613,437,640"/>
+<area shape="rect" id="node3" href="$group___h_a_s_h___t_a_b_l_e.html#gafaaa918c0e0480c5ab0d383bbd1d93ef" title=" " alt="" coords="183,411,246,437"/>
+<area shape="rect" id="node4" href="$group___d_e_b_u_g_m_e_m_c_o_r_e.html#ga465b28122f5d12702a8a9289a978d255" title="initialize debug tables" alt="" coords="5,335,123,361"/>
+<area shape="rect" id="node5" href="$group___l_o_g.html#gaf9c9b8e129263da15345f428cd73f19e" title="initialize the no duplicate logging system" alt="" coords="11,385,117,412"/>
+<area shape="rect" id="node6" href="$group___c_o_n_f_i_g_f_i_l_e.html#ga8f4055f3439a5cb5a806f413b0d694bc" title="load a config file" alt="" coords="9,436,119,463"/>
+<area shape="rect" id="node7" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga817b624c75a82f4e1d0db734916bd921" title="return a new network pool of nb_min_element" alt="" coords="9,487,119,513"/>
+<area shape="rect" id="node9" href="$group___h_a_s_h___t_a_b_l_e.html#ga114a8ddea6693a1d98165990a43a6910" title="Create a hash table with the given size." alt="" coords="171,81,259,108"/>
 </map>

@@ -1,7 +1,12 @@
 <map id="destroy_ht" name="destroy_ht">
-<area shape="rect" id="node2" href="$group___l_o_g.html#ga46eca069bfff2be6809828df52d1031d" title="Empty nodup logtable and close the no duplicate logging session. " alt="" coords="152,5,283,32"/>
-<area shape="rect" id="node3" href="$n__config__file_8c.html#abd0a2133de663a5b572ffa99e5273ec2" title="Destroy a config file section. " alt="" coords="145,57,289,98"/>
-<area shape="rect" id="node5" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga5c0996a0b85b32d296c4e679a6eb86c2" title="free a network pool " alt="" coords="145,123,290,149"/>
-<area shape="rect" id="node6" href="$group___h_a_s_h___t_a_b_l_e.html#ga114a8ddea6693a1d98165990a43a6910" title="Create a hash table with the given size. " alt="" coords="168,173,267,200"/>
-<area shape="rect" id="node4" href="$group___c_o_n_f_i_g_f_i_l_e.html#ga8f4055f3439a5cb5a806f413b0d694bc" title="load a config file " alt="" coords="339,64,461,91"/>
+<area shape="rect" id="node1" title="Free and set the table to NULL." alt="" coords="349,123,432,149"/>
+<area shape="rect" id="node2" href="$group___l_o_g_n_o_d_u_p.html#ga46eca069bfff2be6809828df52d1031d" title="Empty nodup logtable and close the no duplicate logging session." alt="" coords="177,5,295,32"/>
+<area shape="rect" id="node3" href="$n__config__file_8c.html#abd0a2133de663a5b572ffa99e5273ec2" title="Destroy a config file section." alt="" coords="171,57,301,98"/>
+<area shape="rect" id="node5" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga5c0996a0b85b32d296c4e679a6eb86c2" title="free a network pool" alt="" coords="171,123,301,149"/>
+<area shape="rect" id="node6" href="$group___h_a_s_h___t_a_b_l_e.html#gaa2d879c1afd3c71a0917bbe2c0766664" title=" " alt="" coords="205,173,267,200"/>
+<area shape="rect" id="node10" href="$group___h_a_s_h___t_a_b_l_e.html#gab95fe0967850a3665d21837519ede6c8" title="Create a hash table with the given size." alt="" coords="192,224,280,251"/>
+<area shape="rect" id="node4" href="$group___c_o_n_f_i_g_f_i_l_e.html#ga0206fadb78039ac602fc0696b27b85a6" title="load a config file" alt="" coords="9,68,119,95"/>
+<area shape="rect" id="node7" href="$group___d_e_b_u_g_m_e_m_c_o_r_e.html#ga465b28122f5d12702a8a9289a978d255" title="initialize debug tables" alt="" coords="5,123,123,149"/>
+<area shape="rect" id="node8" href="$group___l_o_g_n_o_d_u_p.html#gaf9c9b8e129263da15345f428cd73f19e" title="initialize the no duplicate logging system" alt="" coords="11,173,117,200"/>
+<area shape="rect" id="node9" href="$group___n_e_t_w_o_r_k_i_n_g.html#gadb5284c7b187815cf3b286a5cd972876" title="return a new network pool of nb_min_element" alt="" coords="9,224,119,251"/>
 </map>

@@ -18,8 +18,8 @@
 double distance( VECTOR3D *p1, VECTOR3D *p2 )
 {
     return sqrt( ( (*p1)[ 0 ] - (*p2)[ 0 ] ) * ( (*p1)[ 0 ] - (*p2)[ 0 ] ) +
-		 ( (*p1)[ 1 ] - (*p2)[ 1 ] ) * ( (*p1)[ 1 ] - (*p2)[ 1 ] ) +
-		 ( (*p1)[ 2 ] - (*p2)[ 2 ] ) * ( (*p1)[ 2 ] - (*p2)[ 2 ] ) );
+                 ( (*p1)[ 1 ] - (*p2)[ 1 ] ) * ( (*p1)[ 1 ] - (*p2)[ 1 ] ) +
+                 ( (*p1)[ 2 ] - (*p2)[ 2 ] ) * ( (*p1)[ 2 ] - (*p2)[ 2 ] ) );
 } /* distance(...) */
 
 
@@ -129,7 +129,7 @@ static int same_sign( double a, double b )
  *\param px Storage for the eventual point
  *\return VECTOR3D_DONT_INTERSECT , VECTOR3D_COLLINEAR or VECTOR3D_DO_INTERSECT
  */
-int vector_intersect(  VECTOR3D *p1 , VECTOR3D *p2 , VECTOR3D *p3 , VECTOR3D *p4 , VECTOR3D *px )
+int vector_intersect(  VECTOR3D *p1, VECTOR3D *p2, VECTOR3D *p3, VECTOR3D *p4, VECTOR3D *px )
 {
     double a1 = 0, a2 = 0, b1 = 0, b2 = 0, c1 = 0, c2 = 0,
            r1 = 0, r2 = 0, r3 = 0, r4 = 0,
@@ -224,15 +224,15 @@ double vector_normalize( VECTOR3D *vec )
     double res = 0.0 ;
     for( int i=0 ; i < 3 ; i++ )
     {
-        res += pow( (*vec)[ i ] , 2 );
+        res += pow( (*vec)[ i ], 2 );
     }
     return sqrt( res );
 }
 
 /* RESULT * 180 / M_PI */
-double vector_angle_between( VECTOR3D *vec1 , VECTOR3D *vec2 )
+double vector_angle_between( VECTOR3D *vec1, VECTOR3D *vec2 )
 {
-    return acos( vector_dot_prod( &(*vec1) , &(*vec2) ) / ( vector_normalize( &(*vec1) ) * vector_normalize( &(*vec2) ) ) );
+    return acos( vector_dot_prod( &(*vec1), &(*vec2) ) / ( vector_normalize( &(*vec1) ) * vector_normalize( &(*vec2) ) ) );
 }
 
 

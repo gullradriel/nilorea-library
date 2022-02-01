@@ -11,8 +11,8 @@ extern "C"
 {
 #endif
 
-/**\defgroup LOG LOGGING: logging to console, to file, to syslog under *x
-   \addtogroup LOG
+/**\defgroup LOGNODUP LOGGING NODUP: no duplicate logging to console, to file, to syslog under *x
+   \addtogroup LOGNODUP
   @{
 */
 

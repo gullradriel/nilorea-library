@@ -20,7 +20,7 @@ extern "C"
 #include <zlib.h>
 #include "n_str.h"
 
-/**\defgroup ZLIB: shortcuts to easy compress/decompress data
+/**\defgroup ZLIB ZLIB: shortcuts to easy compress/decompress data
   \addtogroup ZLIB
   @{
   */
@@ -40,4 +40,4 @@ N_STR *unzip_nstr( N_STR *src );
 }
 #endif
 
-#endif
+#endif // header guard

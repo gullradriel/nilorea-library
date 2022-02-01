@@ -13,7 +13,7 @@ extern "C"
 {
 #endif
 
-/**\defgroup NETWORK_MSG NETWORK MESSAGE: tools to serialize integers, double, N_STR from and back to a single N_STR *message
+/**\defgroup NETWORK_MSG NETWORK MESSAGES: tools to serialize integers, double, N_STR from and back to a single N_STR *message
    \addtogroup NETWORK_MSG
   @{
 */

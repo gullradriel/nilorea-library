@@ -18,7 +18,7 @@ extern "C"
 #include "n_log.h"
 
 
-/**\defgroup CONFIGFILE CONFIGFILE: classic config file loading/saving
+/**\defgroup CONFIGFILE CONFIGURATION FILES: classic config file loading/saving
   \addtogroup CONFIGFILE
   @{
   */

@@ -1,16 +1,27 @@
 <map id="netw_accept_from" name="netw_accept_from">
-<area shape="rect" id="node2" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaea0a4d9c8822d25ed88e6554a88cb996" title="make a normal &#39;accept&#39; . " alt="" coords="197,132,363,159"/>
-<area shape="rect" id="node3" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga22bc4dd5d80c2229c3c43f6d6705dece" title="Do not directly use, internal api. " alt="" coords="425,5,540,32"/>
-<area shape="rect" id="node4" href="$n__network_8c.html#a9caee75e3a67942e37ccb4de2c889105" title="Return an empty allocated network ready to be netw_closed. " alt="" coords="439,157,527,184"/>
-<area shape="rect" id="node5" href="$group___n_e_t_w_o_r_k_i_n_g.html#gac345c1af1935cebb9ee33edd4c32267a" title="Closing a specified Network, destroy queues, free the structure. " alt="" coords="621,56,715,83"/>
-<area shape="rect" id="node14" href="$group___n_e_t_w_o_r_k_i_n_g.html#gad02f949dd057ae7dd382f03f9364cac0" title="Modify blocking socket mode. " alt="" coords="411,107,554,133"/>
-<area shape="rect" id="node15" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaa5ed966d8c5844ded549eda41e38c0be" title="Modify common socket options on the given netw. " alt="" coords="417,208,549,235"/>
-<area shape="rect" id="node10" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaa8e1fe7978995197f08aa0ef24a76c33" title="Restart or reset the specified network ability. " alt="" coords="1015,145,1097,172"/>
-<area shape="rect" id="node11" href="$group___l_i_s_t.html#gaa82751b4d6a219771661843e61cefa2e" title="Initialiaze a generic list container to max_items pointers. " alt="" coords="603,107,733,133"/>
-<area shape="rect" id="node12" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga1fc319fa3b0eba19e163070a9fb3dae4" title="recv data from the socket " alt="" coords="625,157,711,184"/>
-<area shape="rect" id="node13" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaf3dc736265484a58e6678c250e38cef8" title="send data onto the socket " alt="" coords="623,208,713,235"/>
-<area shape="rect" id="node6" href="$group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755" title="Empty and Free a list container. " alt="" coords="1165,95,1264,121"/>
-<area shape="rect" id="node8" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaf25c0f462f174092815b0c5d019441db" title="Get the state of a network. " alt="" coords="995,81,1117,108"/>
-<area shape="rect" id="node9" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga29159184519b3129c0154b1a2c2a3e2f" title="Stop a NETWORK connection sending and receing thread. " alt="" coords="781,107,947,133"/>
-<area shape="rect" id="node7" href="$group___l_i_s_t.html#ga1dafe7a250ddad51fadd375f057287e7" title="Empty a LIST list of pointers. " alt="" coords="1312,120,1403,147"/>
+<area shape="rect" id="node1" title="make a normal blocking &#39;accept&#39; . Network &#39;from&#39; must be allocated with netw_make_listening." alt="" coords="5,183,132,209"/>
+<area shape="rect" id="node2" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaea0a4d9c8822d25ed88e6554a88cb996" title="make a normal &#39;accept&#39; . Network &#39;from&#39; must be allocated with netw_make_listening." alt="" coords="180,183,328,209"/>
+<area shape="rect" id="node3" href="$n__network_8c.html#a2ae5514d455bdad2b6cce2902c8d7552" title=" " alt="" coords="396,5,485,32"/>
+<area shape="rect" id="node4" href="$n__network_8c.html#a596e95a1997b4311eab96b42baa608a5" title=" " alt="" coords="403,56,478,83"/>
+<area shape="rect" id="node8" href="$group___n_e_t_w_o_r_k_i_n_g.html#gac345c1af1935cebb9ee33edd4c32267a" title="Closing a specified Network, destroy queues, free the structure." alt="" coords="569,208,656,235"/>
+<area shape="rect" id="node16" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaa8e1fe7978995197f08aa0ef24a76c33" title="Restart or reset the specified network ability." alt="" coords="945,208,1019,235"/>
+<area shape="rect" id="node19" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga22bc4dd5d80c2229c3c43f6d6705dece" title="Do not directly use, internal api. Initialize winsock dll loading on windows if needed." alt="" coords="389,309,492,336"/>
+<area shape="rect" id="node20" href="$n__network_8c.html#a9caee75e3a67942e37ccb4de2c889105" title="Return an empty allocated network ready to be netw_closed." alt="" coords="401,259,480,285"/>
+<area shape="rect" id="node24" href="$group___n_e_t_w_o_r_k_i_n_g.html#gad02f949dd057ae7dd382f03f9364cac0" title="Modify blocking socket mode." alt="" coords="376,157,505,184"/>
+<area shape="rect" id="node25" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaa5ed966d8c5844ded549eda41e38c0be" title="Modify common socket options on the given netw." alt="" coords="381,360,501,387"/>
+<area shape="rect" id="node5" href="$n__network_8c.html#a77e4f6e0422267bbf283ef9354008220" title=" " alt="" coords="758,31,841,57"/>
+<area shape="rect" id="node7" href="$n__network_8c.html#afb587e171ee7801b98d558925cb84d09" title=" " alt="" coords="571,56,654,83"/>
+<area shape="rect" id="node6" href="$n__network_8c.html#aeb79f86261de904967d433c1b5e9a1de" title=" " alt="" coords="951,31,1013,57"/>
+<area shape="rect" id="node9" href="$group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755" title="Empty and Free a list container. Call the destructor each time." alt="" coords="1110,157,1199,184"/>
+<area shape="rect" id="node11" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaf25c0f462f174092815b0c5d019441db" title="Get the state of a network." alt="" coords="927,259,1037,285"/>
+<area shape="rect" id="node13" href="$group___n_e_t_w_o_r_k_i_n_g.html#gafc7a91b4be2a997710a2b54037c25168" title=" " alt="" coords="735,360,863,387"/>
+<area shape="rect" id="node17" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga29159184519b3129c0154b1a2c2a3e2f" title="Stop a NETWORK connection sending and receing thread." alt="" coords="725,259,873,285"/>
+<area shape="rect" id="node18" href="$n__debug__locks_8c.html#a3cf620ff3a40af11d79cf28901dc55e2" title=" " alt="" coords="720,411,879,437"/>
+<area shape="rect" id="node10" href="$group___l_i_s_t.html#ga1dafe7a250ddad51fadd375f057287e7" title="Empty a LIST list of pointers." alt="" coords="1272,183,1355,209"/>
+<area shape="rect" id="node12" href="$n__debug__locks_8c.html#a12809c44718c21544ceb280dc1a53573" title=" " alt="" coords="1085,259,1224,285"/>
+<area shape="rect" id="node14" href="$group___h_a_s_h___t_a_b_l_e.html#ga8d8873be47a634ad8a386e61f12a1f53" title=" " alt="" coords="941,335,1023,361"/>
+<area shape="rect" id="node15" href="$group___l_i_s_t.html#ga9be40eafc3444fd2443cc940634af163" title="search ptr in list" alt="" coords="939,385,1025,412"/>
+<area shape="rect" id="node21" href="$group___l_i_s_t.html#gaa82751b4d6a219771661843e61cefa2e" title="Initialiaze a generic list container to max_items pointers." alt="" coords="553,309,672,336"/>
+<area shape="rect" id="node22" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga1fc319fa3b0eba19e163070a9fb3dae4" title="recv data from the socket" alt="" coords="574,360,651,387"/>
+<area shape="rect" id="node23" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaf3dc736265484a58e6678c250e38cef8" title="send data onto the socket" alt="" coords="571,411,654,437"/>
 </map>

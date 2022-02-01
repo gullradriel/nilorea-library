@@ -12,8 +12,8 @@
 extern "C" {
 #endif
 
-/**\defgroup PHYSICS 3D PHYSICS: 3D movement simulations
-   \addtogroup PHYSICS
+/**\defgroup 3D 3D: physics, movement simulation
+   \addtogroup 3D
   @{
 */
 
@@ -89,7 +89,7 @@ double vector_dot_product( VECTOR3D *vec1, VECTOR3D *vec2 );
 /* vector normalize */
 double vector_normalize( VECTOR3D *vec );
 /* vector angle with other vector */
-double vector_angle_between( VECTOR3D *vec1 , VECTOR3D *vec2 );
+double vector_angle_between( VECTOR3D *vec1, VECTOR3D *vec2 );
 
 /*! VECTOR3D copy wrapper */
 #define copy_point( __src_ , __dst_ ) \
@@ -103,5 +103,5 @@ double vector_angle_between( VECTOR3D *vec1 , VECTOR3D *vec2 );
 }
 #endif
 
+#endif // header guard
 
-#endif

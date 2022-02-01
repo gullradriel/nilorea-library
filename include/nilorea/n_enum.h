@@ -5,8 +5,20 @@
  *\date 28/09/2021
  */
 
+#ifndef __N_ENUM_HEADER__
+#define __N_ENUM_HEADER__
+
 #include <string.h> // for strcmp
 #include <stdbool.h>
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+/**\defgroup ENUMS ENUMERATIONS: quick and clean enum macro set
+   \addtogroup ENUMS
+  @{
+*/
 
 #define N_ENUM_ENTRY(class, method) class##_##method
 
@@ -65,7 +77,7 @@ enum_name;
 		default: return 0;\
 	}\
 }
-/* MACRO FOR N_ENUMS FUNCTIONS DEFINITIONS (END) */ 
+/* MACRO FOR N_ENUMS FUNCTIONS DEFINITIONS (END) */
 
 /* N_ENUM DECLARATION */
 #define N_ENUM_DECLARE(MACRO_DEFINITION, enum_name)\
@@ -79,4 +91,20 @@ enum_name;
 	__N_ENUM_DEFINE_FUNCTION_ISVALID(MACRO_DEFINITION, enum_name)\
 	__N_ENUM_DEFINE_FUNCTION_TOSTRING(MACRO_DEFINITION, enum_name)
 /* N_ENUM DEFINITION (END) */
+
+/**
+@}
+*/
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // header guard
+
+#endif // header guard
+
+#endif // header guard
+
+#endif // header guard
 

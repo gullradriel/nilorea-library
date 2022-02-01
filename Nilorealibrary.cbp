@@ -40,6 +40,9 @@
 			</Target>
 		</Build>
 		<Unit filename=".gitignore" />
+		<Unit filename=".gitlab-ci.yml" />
+		<Unit filename=".jenkinsfile" />
+		<Unit filename="CHANGELOG" />
 		<Unit filename="Doxyfile" />
 		<Unit filename="Makefile" />
 		<Unit filename="README.md" />
@@ -105,6 +108,7 @@
 		<Unit filename="include/nilorea/n_config_file.h" />
 		<Unit filename="include/nilorea/n_debug_mem.h" />
 		<Unit filename="include/nilorea/n_debug_mem_h.h" />
+		<Unit filename="include/nilorea/n_enum.h" />
 		<Unit filename="include/nilorea/n_exceptions.h" />
 		<Unit filename="include/nilorea/n_games.h" />
 		<Unit filename="include/nilorea/n_gfx.h" />

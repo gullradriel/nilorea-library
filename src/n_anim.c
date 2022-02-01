@@ -111,14 +111,14 @@ int add_bmp_to_lib( ANIM_LIB *lib, unsigned int pos, char *file, char *resfile )
     gfx -> bmp = al_load_bitmap( file );
     if( !gfx -> bmp )
     {
-        n_log( LOG_ERR, "file %s: unable to load image" , file );
+        n_log( LOG_ERR, "file %s: unable to load image", file );
         fclose( data );
         return FALSE ;
     }
 
     for( unsigned int it = 0 ; it < gfx -> nb_frames ; it ++ )
     {
-        fscanf( data, "%d %d %d", &gfx -> frames[ it ].x, &gfx -> frames[ it ].y , &gfx -> frames[ it ] . duration );
+        fscanf( data, "%d %d %d", &gfx -> frames[ it ].x, &gfx -> frames[ it ].y, &gfx -> frames[ it ] . duration );
     }
     fclose( data );
 
@@ -167,7 +167,7 @@ int draw_anim( ANIM_DATA *data, int x,  int y )
 
     unsigned int framex = data -> frame * tilew ;
 
-    al_draw_bitmap_region( bmp, framex, 0, tilew, tileh, x - px, y - py , 0 );
+    al_draw_bitmap_region( bmp, framex, 0, tilew, tileh, x - px, y - py, 0 );
 
     return TRUE ;
 }

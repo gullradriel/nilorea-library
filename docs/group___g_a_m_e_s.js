@@ -26,38 +26,11 @@ var group___g_a_m_e_s =
       [ "y", "struct_g_a_m_e___e_n_v.html#af9ff135ff435015dfcd432253715b005", null ],
       [ "z", "struct_g_a_m_e___e_n_v.html#accaf5b8fdfa86b917dc11ab7342a3914", null ]
     ] ],
-    [ "PARTICLE", "struct_p_a_r_t_i_c_l_e.html", [
-      [ "color", "struct_p_a_r_t_i_c_l_e.html#a32c238feac26c4241fb069049c2b4c03", null ],
-      [ "lifetime", "struct_p_a_r_t_i_c_l_e.html#a548bd0f49b865829b184454ccb00135f", null ],
-      [ "mode", "struct_p_a_r_t_i_c_l_e.html#a92c335fa485b1cc860b7d0c7a799c3e3", null ],
-      [ "object", "struct_p_a_r_t_i_c_l_e.html#a48dfa06a47ccb1dab0e136d4256c5722", null ],
-      [ "size", "struct_p_a_r_t_i_c_l_e.html#a1ecb6448e1197f93019658cfff4ca6b4", null ],
-      [ "spr_id", "struct_p_a_r_t_i_c_l_e.html#a4de324e827e35ac50606e92c089dd378", null ]
-    ] ],
-    [ "PARTICLE_SYSTEM", "struct_p_a_r_t_i_c_l_e___s_y_s_t_e_m.html", [
-      [ "list", "struct_p_a_r_t_i_c_l_e___s_y_s_t_e_m.html#a7f6a60fa6c291c8a8e5118fd5b054e52", null ],
-      [ "max_sprites", "struct_p_a_r_t_i_c_l_e___s_y_s_t_e_m.html#a2743358c5741f348ba48525b7d2bc0f4", null ],
-      [ "source", "struct_p_a_r_t_i_c_l_e___s_y_s_t_e_m.html#a6acfd8c66e6ed89bf9661e816f3d94b3", null ],
-      [ "sprites", "struct_p_a_r_t_i_c_l_e___s_y_s_t_e_m.html#ab9d6d952c1de30377308476c7356f6cf", null ],
-      [ "timer", "struct_p_a_r_t_i_c_l_e___s_y_s_t_e_m.html#a0eb5551a71d4412d76e970b19cc0078e", null ]
-    ] ],
-    [ "BITMAP_PART", "group___g_a_m_e_s.html#ga3ff8114200b93147ade488aeb96f41a5", null ],
-    [ "CIRCLE_PART", "group___g_a_m_e_s.html#ga01868fa6d6e4c79b56fdfe9b4dc80215", null ],
     [ "CPU_USE_FULL", "group___g_a_m_e_s.html#ga84d4d6cd71758c35c7aefbb8e3684c22", null ],
     [ "CPU_USE_LESS", "group___g_a_m_e_s.html#ga5bb1d90aeda09d9646e3c19f632251d1", null ],
     [ "CPU_USE_NICE", "group___g_a_m_e_s.html#gaf442dcd3e6a11816794a1150ac94bbde", null ],
-    [ "FIRE_PART", "group___g_a_m_e_s.html#ga2aa8d618d2d413883ade289da2e4941a", null ],
-    [ "NORMAL_PART", "group___g_a_m_e_s.html#ga0f1bd6a28afe52df05802230fa440b99", null ],
-    [ "PIXEL_PART", "group___g_a_m_e_s.html#ga256f505114d27985957313a4a0b2d9f2", null ],
-    [ "SINUS_PART", "group___g_a_m_e_s.html#gaa0ac5e168a8b0aa14dbff01dd569a598", null ],
-    [ "SNOW_PART", "group___g_a_m_e_s.html#gacbfe2274aa037b8e331b9485e95b1c73", null ],
-    [ "STAR_PART", "group___g_a_m_e_s.html#gafc693964956e87207d950ee952fa2c98", null ],
-    [ "TEXT_PART", "group___g_a_m_e_s.html#ga7256f319a5807b336a5cd9f83fd03c96", null ],
-    [ "TRANS_PART", "group___g_a_m_e_s.html#ga661ec824b54dfdf70f6a737ab8bdaef4", null ],
-    [ "GAME_ENV", "group___g_a_m_e_s.html#ga9349821d315002d46106751d1bfbc923", null ],
-    [ "PARTICLE", "group___g_a_m_e_s.html#gabd4c9b5ba964d0c44f6fcce89d54b66d", null ],
-    [ "PARTICLE_SYSTEM", "group___g_a_m_e_s.html#gad124f97659776835d5b5eaa01bb099c6", null ],
+    [ "GAME_ENV", "group___g_a_m_e_s.html#ga34bb7bdbd422c21e950303278f53d183", null ],
     [ "destroy_game_env", "group___g_a_m_e_s.html#ga47fd0bb7f6db4234af06b5ebafb18837", null ],
     [ "init_game_env", "group___g_a_m_e_s.html#gab086402feba2e0fe1845453a8d899bf6", null ],
-    [ "load_game_config", "group___g_a_m_e_s.html#ga407808b660853d64fc9ee14d85ff972e", null ]
+    [ "load_game_config", "group___g_a_m_e_s.html#gaa343f04284422e7cfafa561b82c8f4f3", null ]
 ];

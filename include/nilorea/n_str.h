@@ -16,7 +16,7 @@ extern "C"
 {
 #endif
 
-/**\defgroup N_STR N_STR: replacement to char *strings with dynamic resizing and boundary checking
+/**\defgroup N_STR STRINGS: replacement to char *strings with dynamic resizing and boundary checking
   \addtogroup N_STR
   @{
   */
