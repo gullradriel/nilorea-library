@@ -10,6 +10,8 @@ var group___c_o_m_m_o_n_s =
     [ "Alloca", "group___c_o_m_m_o_n_s.html#ga9b5f7ec4665998fd701e37404b731239", null ],
     [ "CALL_RETRY", "group___c_o_m_m_o_n_s.html#gaf355f5fc76fc13a2bb894b92f7fb1ad9", null ],
     [ "checkerror", "group___c_o_m_m_o_n_s.html#gac1ba27872d9628ba6bd9b3f3637c7d91", null ],
+    [ "CONCAT", "group___c_o_m_m_o_n_s.html#ga88fa737059e67b4b17ec980e5877361e", null ],
+    [ "CONCAT_BUILDER", "group___c_o_m_m_o_n_s.html#gab5cf9772871f6212ae61eed9a8085e30", null ],
     [ "DEFAULT", "group___c_o_m_m_o_n_s.html#ga3da44afeba217135a680a7477b5e3ce3", null ],
     [ "endif", "group___c_o_m_m_o_n_s.html#gaa0c1167bb311135eecf24a0e7c885b7f", null ],
     [ "equal_if", "group___c_o_m_m_o_n_s.html#ga2507d4d96edcb14310f82085f71dbaaa", null ],

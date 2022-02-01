@@ -120,194 +120,229 @@ $(document).ready(function(){initNavTree('n__pcre_8c_source.html','');});
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">/*!\fn N_PCRE *npcre_new( char *str , int max_cap , int flags )</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> *\brief create a compiled regex</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment"> *\param str The string containing the regexp</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment"> *\param max_cap Maximum number of captures. str The string containing the regexp</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment"> *\param flags pcre_compile flags</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment"> *\return a filled N_PCRE struct or NULL</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="group___p_c_r_e.html#gabd3d86629f8aa1898e8553c58afd938e">   24</a></span>&#160;<a class="code" href="struct_n___p_c_r_e.html">N_PCRE</a> *<a class="code" href="group___p_c_r_e.html#gabd3d86629f8aa1898e8553c58afd938e">npcre_new</a>( <span class="keywordtype">char</span> *str, <span class="keywordtype">int</span> max_cap, <span class="keywordtype">int</span> flags )</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;{</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <a class="code" href="struct_n___p_c_r_e.html">N_PCRE</a> *pcre = NULL ;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="group___c_o_m_m_o_n_s.html#ga4ecf5d80299a4ca1dc13c3a19610db11">__n_assert</a>( str, <span class="keywordflow">return</span> NULL );</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <a class="code" href="group___c_o_m_m_o_n_s.html#ga46bf052fc99248347a1dcf89bc0757c6">Malloc</a>( pcre, <a class="code" href="struct_n___p_c_r_e.html">N_PCRE</a>, 1 );</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <a class="code" href="group___c_o_m_m_o_n_s.html#ga4ecf5d80299a4ca1dc13c3a19610db11">__n_assert</a>( pcre, <span class="keywordflow">return</span> NULL );</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    pcre -&gt; captured = 0 ;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordflow">if</span>( max_cap &lt;= 0 )</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    {</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        max_cap = 1 ;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    }</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    pcre -&gt; match_list = NULL ;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    pcre -&gt; regexp_str = strdup( str );</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <a class="code" href="group___c_o_m_m_o_n_s.html#ga4ecf5d80299a4ca1dc13c3a19610db11">__n_assert</a>( str, <a class="code" href="group___p_c_r_e.html#gaf198eb0bc8c55ac41cc92af8e538ce04">npcre_delete</a>( &amp;pcre ); <span class="keywordflow">return</span> NULL );</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    pcre -&gt; ovecount = max_cap ;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <a class="code" href="group___c_o_m_m_o_n_s.html#ga46bf052fc99248347a1dcf89bc0757c6">Malloc</a>( pcre -&gt; ovector, <span class="keywordtype">int</span>, 3 * max_cap );</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <a class="code" href="group___c_o_m_m_o_n_s.html#ga4ecf5d80299a4ca1dc13c3a19610db11">__n_assert</a>( pcre -&gt; ovector, <a class="code" href="group___p_c_r_e.html#gaf198eb0bc8c55ac41cc92af8e538ce04">npcre_delete</a>( &amp;pcre ); <span class="keywordflow">return</span> NULL );</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> *error = NULL ;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordtype">int</span> erroroffset = 0 ;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    pcre -&gt; regexp = pcre_compile( str, flags,  &amp;error, &amp;erroroffset, NULL  ) ;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordflow">if</span>( !pcre -&gt; regexp )</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    {</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <a class="code" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a>, <span class="stringliteral">&quot; pcre compilation of %s failed at offset %d : %s&quot;</span>, str, erroroffset, error );</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <a class="code" href="group___p_c_r_e.html#gaf198eb0bc8c55ac41cc92af8e538ce04">npcre_delete</a>( &amp;pcre );</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keywordflow">return</span> FALSE ;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    }</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="comment">/* no flags for study = no JIT compilation */</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    pcre -&gt; extra = pcre_study( pcre -&gt; regexp, 0, &amp;error );</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordflow">return</span> pcre ;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;}<span class="comment">/* npcre_new(...) */</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> *\brief create a compiled regex</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> *  From pcre doc, the flag bits are:</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment"> *        PCRE_ANCHORED           Force pattern anchoring</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment"> *        PCRE_AUTO_CALLOUT       Compile automatic callouts</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment"> *        PCRE_BSR_ANYCRLF        \\R matches only CR, LF, or CRLF</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment"> *        PCRE_BSR_UNICODE        \\R matches all Unicode line endings</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment"> *        PCRE_CASELESS           Do caseless matching</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment"> *        PCRE_DOLLAR_ENDONLY     $ not to match newline at end</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment"> *        PCRE_DOTALL             . matches anything including NL</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment"> *        PCRE_DUPNAMES           Allow duplicate names for subpatterns</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment"> *        PCRE_EXTENDED           Ignore white space and # comments</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment"> *        PCRE_EXTRA              PCRE extra features</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment"> *                                  (not much use currently)</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment"> *        PCRE_FIRSTLINE          Force matching to be before newline</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment"> *        PCRE_JAVASCRIPT_COMPAT  JavaScript compatibility</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment"> *        PCRE_MULTILINE          ^ and $ match newlines within data</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment"> *        PCRE_NEWLINE_ANY        Recognize any Unicode newline sequence</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment"> *        PCRE_NEWLINE_ANYCRLF    Recognize CR, LF, and CRLF as newline</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment"> *                                  sequences</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment"> *        PCRE_NEWLINE_CR         Set CR as the newline sequence</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment"> *        PCRE_NEWLINE_CRLF       Set CRLF as the newline sequence</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment"> *        PCRE_NEWLINE_LF         Set LF as the newline sequence</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment"> *        PCRE_NO_AUTO_CAPTURE    Disable numbered capturing paren-</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment"> *                                  theses (named ones available)</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment"> *        PCRE_NO_UTF16_CHECK     Do not check the pattern for UTF-16</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment"> *                                  validity (only relevant if</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment"> *                                  PCRE_UTF16 is set)</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment"> *        PCRE_NO_UTF32_CHECK     Do not check the pattern for UTF-32</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment"> *                                  validity (only relevant if</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment"> *                                  PCRE_UTF32 is set)</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment"> *        PCRE_NO_UTF8_CHECK      Do not check the pattern for UTF-8</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment"> *                                  validity (only relevant if</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment"> *                                  PCRE_UTF8 is set)</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment"> *        PCRE_UCP                Use Unicode properties for \d, \w, etc.</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment"> *        PCRE_UNGREEDY           Invert greediness of quantifiers</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment"> *        PCRE_UTF16              Run in pcre16_compile() UTF-16 mode</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment"> *        PCRE_UTF32              Run in pcre32_compile() UTF-32 mode</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment"> *        PCRE_UTF8               Run in pcre_compile() UTF-8 mode</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment"> *\param str The string containing the regexp</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment"> *\param max_cap Maximum number of captures. str The string containing the regexp</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment"> *\param flags pcre_compile flags</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment"> *\return a filled N_PCRE struct or NULL</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="group___p_c_r_e.html#gabd3d86629f8aa1898e8553c58afd938e">   59</a></span>&#160;<a class="code" href="struct_n___p_c_r_e.html">N_PCRE</a> *<a class="code" href="group___p_c_r_e.html#gabd3d86629f8aa1898e8553c58afd938e">npcre_new</a>( <span class="keywordtype">char</span> *str, <span class="keywordtype">int</span> max_cap, <span class="keywordtype">int</span> flags )</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;{</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <a class="code" href="struct_n___p_c_r_e.html">N_PCRE</a> *pcre = NULL ;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <a class="code" href="group___c_o_m_m_o_n_s.html#ga4ecf5d80299a4ca1dc13c3a19610db11">__n_assert</a>( str, <span class="keywordflow">return</span> NULL );</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment">/*!\fn int npcre_delete( N_PCRE ** pcre )</span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment"> *\brief Free a N_PCRE pointer</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment"> *\param pcre The N_PCRE regexp holder</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment"> *\return TRUE or FALSE</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="group___p_c_r_e.html#gaf198eb0bc8c55ac41cc92af8e538ce04">   72</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="group___p_c_r_e.html#gaf198eb0bc8c55ac41cc92af8e538ce04">npcre_delete</a>( <a class="code" href="struct_n___p_c_r_e.html">N_PCRE</a> ** pcre )</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;{</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <a class="code" href="group___c_o_m_m_o_n_s.html#ga4ecf5d80299a4ca1dc13c3a19610db11">__n_assert</a>( pcre&amp;&amp;(*pcre), <span class="keywordflow">return</span> FALSE );</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordflow">if</span>( (*pcre) -&gt; ovector )</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    {</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <a class="code" href="group___c_o_m_m_o_n_s.html#gae62e40d702e99a7760ba1de7451dff51">Free</a>( (*pcre) -&gt; ovector );</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    }</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordflow">if</span>( (*pcre) -&gt; regexp )</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    {</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        pcre_free( (*pcre) -&gt; regexp );</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        (*pcre) -&gt; regexp = NULL ;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    }</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="preprocessor">#ifdef LINUX</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="preprocessor"></span>    pcre_free_study(  (*pcre) -&gt; extra );</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    (*pcre) -&gt; extra = NULL ;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="preprocessor"></span>    pcre_free( (*pcre) -&gt; extra );</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    (*pcre) -&gt; extra = NULL ;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="preprocessor"></span>    <span class="keywordflow">if</span>( (*pcre) -&gt; captured &gt; 0 )</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    {</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        pcre_free_substring_list( (*pcre) -&gt; match_list );</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    }</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <a class="code" href="group___c_o_m_m_o_n_s.html#ga079dc7a6a7e7c54bb714d8bb2afdd022">FreeNoLog</a>( (*pcre) -&gt; regexp_str );</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <a class="code" href="group___c_o_m_m_o_n_s.html#ga079dc7a6a7e7c54bb714d8bb2afdd022">FreeNoLog</a>( (*pcre) );</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordflow">return</span> TRUE ;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;} <span class="comment">/* npcre_delete (...) */</span></div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="comment">/*!\fn int npcre_clean_match( N_PCRE *pcre )</span></div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="comment"> *\brief clean the match list of the last capture, if any</span></div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="comment"> *\param pcre The N_PCRE regexp holder</span></div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="comment"> *\return TRUE or FALSE</span></div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00109"></a><span class="lineno"><a class="line" href="group___p_c_r_e.html#ga89e67d2b218e2138a12aaecc2deab8fc">  109</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="group___p_c_r_e.html#ga89e67d2b218e2138a12aaecc2deab8fc">npcre_clean_match</a>( <a class="code" href="struct_n___p_c_r_e.html">N_PCRE</a> *pcre )</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;{</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <a class="code" href="group___c_o_m_m_o_n_s.html#ga4ecf5d80299a4ca1dc13c3a19610db11">__n_assert</a>( pcre, <span class="keywordflow">return</span> FALSE );</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <a class="code" href="group___c_o_m_m_o_n_s.html#ga4ecf5d80299a4ca1dc13c3a19610db11">__n_assert</a>( pcre -&gt; match_list, <span class="keywordflow">return</span> FALSE );</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="keywordflow">if</span>( pcre -&gt; captured &gt; 0 )</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    {</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        pcre -&gt; captured = 0 ;</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        pcre_free_substring_list( pcre -&gt; match_list );</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    }</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="keywordflow">return</span> TRUE ;</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;} <span class="comment">/* npcre_clean_match */</span></div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="comment">/*!\fn int npcre_match( char *str, N_PCRE *pcre )</span></div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="comment"> *\brief Return TRUE if str matches regexp, and make captures up to max_cap</span></div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="comment"> *\param pcre The N_PCRE regexp holder</span></div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="comment"> *\param str String to test against the regexp</span></div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="comment"> *\return TRUE or FALSE</span></div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00130"></a><span class="lineno"><a class="line" href="group___p_c_r_e.html#ga605b60ef645cf217bd2b3dc548d1d6c2">  130</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="group___p_c_r_e.html#ga605b60ef645cf217bd2b3dc548d1d6c2">npcre_match</a>( <span class="keywordtype">char</span> *str, <a class="code" href="struct_n___p_c_r_e.html">N_PCRE</a> *pcre )</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;{</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    <a class="code" href="group___c_o_m_m_o_n_s.html#ga4ecf5d80299a4ca1dc13c3a19610db11">__n_assert</a>( str, <span class="keywordflow">return</span> FALSE );</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <a class="code" href="group___c_o_m_m_o_n_s.html#ga4ecf5d80299a4ca1dc13c3a19610db11">__n_assert</a>( pcre, <span class="keywordflow">return</span> FALSE );</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    <a class="code" href="group___c_o_m_m_o_n_s.html#ga4ecf5d80299a4ca1dc13c3a19610db11">__n_assert</a>( pcre -&gt; regexp_str, <span class="keywordflow">return</span> FALSE );</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <a class="code" href="group___c_o_m_m_o_n_s.html#ga4ecf5d80299a4ca1dc13c3a19610db11">__n_assert</a>( pcre -&gt; regexp, <span class="keywordflow">return</span> FALSE );</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <a class="code" href="group___c_o_m_m_o_n_s.html#ga46bf052fc99248347a1dcf89bc0757c6">Malloc</a>( pcre, <a class="code" href="struct_n___p_c_r_e.html">N_PCRE</a>, 1 );</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <a class="code" href="group___c_o_m_m_o_n_s.html#ga4ecf5d80299a4ca1dc13c3a19610db11">__n_assert</a>( pcre, <span class="keywordflow">return</span> NULL );</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    pcre -&gt; captured = 0 ;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordflow">if</span>( max_cap &lt;= 0 )</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    {</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        max_cap = 1 ;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    }</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    pcre -&gt; match_list = NULL ;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    pcre -&gt; regexp_str = strdup( str );</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <a class="code" href="group___c_o_m_m_o_n_s.html#ga4ecf5d80299a4ca1dc13c3a19610db11">__n_assert</a>( str, <a class="code" href="group___p_c_r_e.html#gaf198eb0bc8c55ac41cc92af8e538ce04">npcre_delete</a>( &amp;pcre ); <span class="keywordflow">return</span> NULL );</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    pcre -&gt; ovecount = max_cap ;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <a class="code" href="group___c_o_m_m_o_n_s.html#ga46bf052fc99248347a1dcf89bc0757c6">Malloc</a>( pcre -&gt; ovector, <span class="keywordtype">int</span>, 3 * max_cap );</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <a class="code" href="group___c_o_m_m_o_n_s.html#ga4ecf5d80299a4ca1dc13c3a19610db11">__n_assert</a>( pcre -&gt; ovector, <a class="code" href="group___p_c_r_e.html#gaf198eb0bc8c55ac41cc92af8e538ce04">npcre_delete</a>( &amp;pcre ); <span class="keywordflow">return</span> NULL );</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> *error = NULL ;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordtype">int</span> erroroffset = 0 ;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    pcre -&gt; regexp = pcre_compile( str, flags,  &amp;error, &amp;erroroffset, NULL  ) ;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordflow">if</span>( !pcre -&gt; regexp )</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    {</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <a class="code" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a>, <span class="stringliteral">&quot; pcre compilation of %s failed at offset %d : %s&quot;</span>, str, erroroffset, error );</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <a class="code" href="group___p_c_r_e.html#gaf198eb0bc8c55ac41cc92af8e538ce04">npcre_delete</a>( &amp;pcre );</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <span class="keywordflow">return</span> FALSE ;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    }</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="comment">/* no flags for study = no JIT compilation */</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    pcre -&gt; extra = pcre_study( pcre -&gt; regexp, 0, &amp;error );</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordflow">return</span> pcre ;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;}<span class="comment">/* npcre_new(...) */</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="comment">/*!\fn int npcre_delete( N_PCRE ** pcre )</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="comment"> *\brief Free a N_PCRE pointer</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="comment"> *\param pcre The N_PCRE regexp holder</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="comment"> *\return TRUE or FALSE</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno"><a class="line" href="group___p_c_r_e.html#gaf198eb0bc8c55ac41cc92af8e538ce04">  107</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="group___p_c_r_e.html#gaf198eb0bc8c55ac41cc92af8e538ce04">npcre_delete</a>( <a class="code" href="struct_n___p_c_r_e.html">N_PCRE</a> ** pcre )</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;{</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <a class="code" href="group___c_o_m_m_o_n_s.html#ga4ecf5d80299a4ca1dc13c3a19610db11">__n_assert</a>( pcre&amp;&amp;(*pcre), <span class="keywordflow">return</span> FALSE );</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="keywordflow">if</span>( (*pcre) -&gt; ovector )</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    {</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        <a class="code" href="group___c_o_m_m_o_n_s.html#gae62e40d702e99a7760ba1de7451dff51">Free</a>( (*pcre) -&gt; ovector );</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    }</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keywordflow">if</span>( (*pcre) -&gt; regexp )</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    {</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        pcre_free( (*pcre) -&gt; regexp );</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        (*pcre) -&gt; regexp = NULL ;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    }</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="preprocessor">#ifdef LINUX</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="preprocessor"></span>    pcre_free_study(  (*pcre) -&gt; extra );</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    (*pcre) -&gt; extra = NULL ;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="preprocessor"></span>    pcre_free( (*pcre) -&gt; extra );</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    (*pcre) -&gt; extra = NULL ;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="preprocessor"></span>    <span class="keywordflow">if</span>( (*pcre) -&gt; captured &gt; 0 )</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    {</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        pcre_free_substring_list( (*pcre) -&gt; match_list );</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    }</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <a class="code" href="group___c_o_m_m_o_n_s.html#ga079dc7a6a7e7c54bb714d8bb2afdd022">FreeNoLog</a>( (*pcre) -&gt; regexp_str );</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    <a class="code" href="group___c_o_m_m_o_n_s.html#ga079dc7a6a7e7c54bb714d8bb2afdd022">FreeNoLog</a>( (*pcre) );</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <span class="keywordflow">return</span> TRUE ;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;} <span class="comment">/* npcre_delete (...) */</span></div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;</div>
 <div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    <span class="keywordtype">int</span> rc, len = 0;</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    len = ( int )strlen( str ) ;</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    rc = pcre_exec( pcre -&gt; regexp, pcre -&gt; extra, str, len, 0, 0, pcre -&gt; ovector, pcre -&gt; ovecount );</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    <span class="keywordflow">if</span> ( rc &lt; 0 )</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    {</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        <span class="comment">/*switch( rc )</span></div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;<span class="comment">        {</span></div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;<span class="comment">        case PCRE_ERROR_NOMATCH      :</span></div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;<span class="comment">            n_log( LOG_DEBUG, &quot;String did not match the pattern&quot;);</span></div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="comment">            break;</span></div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="comment">        case PCRE_ERROR_NULL         :</span></div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<span class="comment">            n_log( LOG_DEBUG, &quot;Something was null&quot;);</span></div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="comment">            break;</span></div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="comment">        case PCRE_ERROR_BADOPTION    :</span></div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="comment">            n_log( LOG_DEBUG, &quot;A bad option was passed&quot;);</span></div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;<span class="comment">            break;</span></div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;<span class="comment">        case PCRE_ERROR_BADMAGIC     :</span></div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;<span class="comment">            n_log( LOG_DEBUG, &quot;Magic number bad (compiled re corrupt?)&quot;);</span></div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;<span class="comment">            break;</span></div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;<span class="comment">        case PCRE_ERROR_UNKNOWN_NODE :</span></div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="comment">            n_log( LOG_DEBUG, &quot;Something kooky in the compiled regexp&quot;);</span></div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;<span class="comment">            break;</span></div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;<span class="comment">        case PCRE_ERROR_NOMEMORY     :</span></div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="comment">            n_log( LOG_DEBUG, &quot;Ran out of memory&quot;);</span></div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="comment">            break;</span></div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="comment">        default                      :</span></div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="comment">            n_log( LOG_DEBUG, &quot;Unknown error&quot;);</span></div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="comment">            break;</span></div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="comment">        }*/</span></div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        <span class="keywordflow">return</span> FALSE ;</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    }</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span>( rc == 0 )</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    {</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;        rc = pcre -&gt; ovecount ;</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    }</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    <span class="keywordflow">if</span>( rc &gt; 0 )</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    {</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        <a class="code" href="group___p_c_r_e.html#ga89e67d2b218e2138a12aaecc2deab8fc">npcre_clean_match</a>( pcre );</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        pcre -&gt; captured = rc ;</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        pcre_get_substring_list( str, pcre -&gt; ovector, rc, &amp;pcre -&gt; match_list );</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    }</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    <span class="keywordflow">return</span> TRUE ;</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;}<span class="comment">/* npcre_match(...) */</span></div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;<span class="comment">/*!\fn int npcre_clean_match( N_PCRE *pcre )</span></div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;<span class="comment"> *\brief clean the match list of the last capture, if any</span></div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;<span class="comment"> *\param pcre The N_PCRE regexp holder</span></div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;<span class="comment"> *\return TRUE or FALSE</span></div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00144"></a><span class="lineno"><a class="line" href="group___p_c_r_e.html#ga89e67d2b218e2138a12aaecc2deab8fc">  144</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="group___p_c_r_e.html#ga89e67d2b218e2138a12aaecc2deab8fc">npcre_clean_match</a>( <a class="code" href="struct_n___p_c_r_e.html">N_PCRE</a> *pcre )</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;{</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <a class="code" href="group___c_o_m_m_o_n_s.html#ga4ecf5d80299a4ca1dc13c3a19610db11">__n_assert</a>( pcre, <span class="keywordflow">return</span> FALSE );</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    <a class="code" href="group___c_o_m_m_o_n_s.html#ga4ecf5d80299a4ca1dc13c3a19610db11">__n_assert</a>( pcre -&gt; match_list, <span class="keywordflow">return</span> FALSE );</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    <span class="keywordflow">if</span>( pcre -&gt; captured &gt; 0 )</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    {</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        pcre -&gt; captured = 0 ;</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        pcre_free_substring_list( pcre -&gt; match_list );</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    }</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    <span class="keywordflow">return</span> TRUE ;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;} <span class="comment">/* npcre_clean_match */</span></div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;<span class="comment">/*!\fn int npcre_match( char *str, N_PCRE *pcre )</span></div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;<span class="comment"> *\brief Return TRUE if str matches regexp, and make captures up to max_cap</span></div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="comment"> *\param pcre The N_PCRE regexp holder</span></div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="comment"> *\param str String to test against the regexp</span></div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="comment"> *\return TRUE or FALSE</span></div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00165"></a><span class="lineno"><a class="line" href="group___p_c_r_e.html#ga605b60ef645cf217bd2b3dc548d1d6c2">  165</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="group___p_c_r_e.html#ga605b60ef645cf217bd2b3dc548d1d6c2">npcre_match</a>( <span class="keywordtype">char</span> *str, <a class="code" href="struct_n___p_c_r_e.html">N_PCRE</a> *pcre )</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;{</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    <a class="code" href="group___c_o_m_m_o_n_s.html#ga4ecf5d80299a4ca1dc13c3a19610db11">__n_assert</a>( str, <span class="keywordflow">return</span> FALSE );</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    <a class="code" href="group___c_o_m_m_o_n_s.html#ga4ecf5d80299a4ca1dc13c3a19610db11">__n_assert</a>( pcre, <span class="keywordflow">return</span> FALSE );</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    <a class="code" href="group___c_o_m_m_o_n_s.html#ga4ecf5d80299a4ca1dc13c3a19610db11">__n_assert</a>( pcre -&gt; regexp_str, <span class="keywordflow">return</span> FALSE );</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    <a class="code" href="group___c_o_m_m_o_n_s.html#ga4ecf5d80299a4ca1dc13c3a19610db11">__n_assert</a>( pcre -&gt; regexp, <span class="keywordflow">return</span> FALSE );</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    <span class="keywordtype">int</span> rc, len = 0;</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    len = ( int )strlen( str ) ;</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    rc = pcre_exec( pcre -&gt; regexp, pcre -&gt; extra, str, len, 0, 0, pcre -&gt; ovector, pcre -&gt; ovecount );</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    <span class="keywordflow">if</span> ( rc &lt; 0 )</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    {</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        <span class="comment">/*switch( rc )</span></div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;<span class="comment">        {</span></div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;<span class="comment">        case PCRE_ERROR_NOMATCH      :</span></div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;<span class="comment">            n_log( LOG_DEBUG, &quot;String did not match the pattern&quot;);</span></div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;<span class="comment">            break;</span></div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;<span class="comment">        case PCRE_ERROR_NULL         :</span></div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;<span class="comment">            n_log( LOG_DEBUG, &quot;Something was null&quot;);</span></div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;<span class="comment">            break;</span></div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;<span class="comment">        case PCRE_ERROR_BADOPTION    :</span></div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;<span class="comment">            n_log( LOG_DEBUG, &quot;A bad option was passed&quot;);</span></div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;<span class="comment">            break;</span></div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;<span class="comment">        case PCRE_ERROR_BADMAGIC     :</span></div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;<span class="comment">            n_log( LOG_DEBUG, &quot;Magic number bad (compiled re corrupt?)&quot;);</span></div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;<span class="comment">            break;</span></div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;<span class="comment">        case PCRE_ERROR_UNKNOWN_NODE :</span></div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;<span class="comment">            n_log( LOG_DEBUG, &quot;Something kooky in the compiled regexp&quot;);</span></div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;<span class="comment">            break;</span></div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;<span class="comment">        case PCRE_ERROR_NOMEMORY     :</span></div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;<span class="comment">            n_log( LOG_DEBUG, &quot;Ran out of memory&quot;);</span></div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;<span class="comment">            break;</span></div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;<span class="comment">        default                      :</span></div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;<span class="comment">            n_log( LOG_DEBUG, &quot;Unknown error&quot;);</span></div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;<span class="comment">            break;</span></div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;<span class="comment">        }*/</span></div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        <span class="keywordflow">return</span> FALSE ;</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    }</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span>( rc == 0 )</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    {</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;        rc = pcre -&gt; ovecount ;</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    }</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    <span class="keywordflow">if</span>( rc &gt; 0 )</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    {</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;        <a class="code" href="group___p_c_r_e.html#ga89e67d2b218e2138a12aaecc2deab8fc">npcre_clean_match</a>( pcre );</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;        pcre -&gt; captured = rc ;</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;        pcre_get_substring_list( str, pcre -&gt; ovector, rc, &amp;pcre -&gt; match_list );</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;    }</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    <span class="keywordflow">return</span> TRUE ;</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;}<span class="comment">/* npcre_match(...) */</span></div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;</div>
 <div class="ttc" id="struct_n___p_c_r_e_html"><div class="ttname"><a href="struct_n___p_c_r_e.html">N_PCRE</a></div><div class="ttdoc">N_PCRE structure. </div><div class="ttdef"><b>Definition:</b> <a href="n__pcre_8h_source.html#l00029">n_pcre.h:29</a></div></div>
 <div class="ttc" id="group___c_o_m_m_o_n_s_html_ga46bf052fc99248347a1dcf89bc0757c6"><div class="ttname"><a href="group___c_o_m_m_o_n_s.html#ga46bf052fc99248347a1dcf89bc0757c6">Malloc</a></div><div class="ttdeci">#define Malloc(__ptr, __struct, __size)</div><div class="ttdoc">Malloc Handler to get errors and set to 0. </div><div class="ttdef"><b>Definition:</b> <a href="n__common_8h_source.html#l00180">n_common.h:180</a></div></div>
 <div class="ttc" id="n__pcre_8h_html"><div class="ttname"><a href="n__pcre_8h.html">n_pcre.h</a></div><div class="ttdoc">PCRE helpers for regex matching. </div></div>
-<div class="ttc" id="group___p_c_r_e_html_ga89e67d2b218e2138a12aaecc2deab8fc"><div class="ttname"><a href="group___p_c_r_e.html#ga89e67d2b218e2138a12aaecc2deab8fc">npcre_clean_match</a></div><div class="ttdeci">int npcre_clean_match(N_PCRE *pcre)</div><div class="ttdoc">clean the match list of the last capture, if any </div><div class="ttdef"><b>Definition:</b> <a href="n__pcre_8c_source.html#l00109">n_pcre.c:109</a></div></div>
+<div class="ttc" id="group___p_c_r_e_html_ga89e67d2b218e2138a12aaecc2deab8fc"><div class="ttname"><a href="group___p_c_r_e.html#ga89e67d2b218e2138a12aaecc2deab8fc">npcre_clean_match</a></div><div class="ttdeci">int npcre_clean_match(N_PCRE *pcre)</div><div class="ttdoc">clean the match list of the last capture, if any </div><div class="ttdef"><b>Definition:</b> <a href="n__pcre_8c_source.html#l00144">n_pcre.c:144</a></div></div>
 <div class="ttc" id="group___l_o_g_html_ga61355655c6d490cdf201afdfc340df4b"><div class="ttname"><a href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a></div><div class="ttdeci">#define n_log(__LEVEL__,...)</div><div class="ttdoc">Logging function wrapper to get line and func. </div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00073">n_log.h:73</a></div></div>
 <div class="ttc" id="group___c_o_m_m_o_n_s_html_ga4ecf5d80299a4ca1dc13c3a19610db11"><div class="ttname"><a href="group___c_o_m_m_o_n_s.html#ga4ecf5d80299a4ca1dc13c3a19610db11">__n_assert</a></div><div class="ttdeci">#define __n_assert(__ptr, __ret)</div><div class="ttdoc">macro to assert things </div><div class="ttdef"><b>Definition:</b> <a href="n__common_8h_source.html#l00260">n_common.h:260</a></div></div>
 <div class="ttc" id="group___c_o_m_m_o_n_s_html_gae62e40d702e99a7760ba1de7451dff51"><div class="ttname"><a href="group___c_o_m_m_o_n_s.html#gae62e40d702e99a7760ba1de7451dff51">Free</a></div><div class="ttdeci">#define Free(__ptr)</div><div class="ttdoc">Free Handler to get errors. </div><div class="ttdef"><b>Definition:</b> <a href="n__common_8h_source.html#l00240">n_common.h:240</a></div></div>
 <div class="ttc" id="group___c_o_m_m_o_n_s_html_ga079dc7a6a7e7c54bb714d8bb2afdd022"><div class="ttname"><a href="group___c_o_m_m_o_n_s.html#ga079dc7a6a7e7c54bb714d8bb2afdd022">FreeNoLog</a></div><div class="ttdeci">#define FreeNoLog(__ptr)</div><div class="ttdoc">Free Handler without log. </div><div class="ttdef"><b>Definition:</b> <a href="n__common_8h_source.html#l00252">n_common.h:252</a></div></div>
-<div class="ttc" id="group___p_c_r_e_html_gaf198eb0bc8c55ac41cc92af8e538ce04"><div class="ttname"><a href="group___p_c_r_e.html#gaf198eb0bc8c55ac41cc92af8e538ce04">npcre_delete</a></div><div class="ttdeci">int npcre_delete(N_PCRE **pcre)</div><div class="ttdoc">Free a N_PCRE pointer. </div><div class="ttdef"><b>Definition:</b> <a href="n__pcre_8c_source.html#l00072">n_pcre.c:72</a></div></div>
+<div class="ttc" id="group___p_c_r_e_html_gaf198eb0bc8c55ac41cc92af8e538ce04"><div class="ttname"><a href="group___p_c_r_e.html#gaf198eb0bc8c55ac41cc92af8e538ce04">npcre_delete</a></div><div class="ttdeci">int npcre_delete(N_PCRE **pcre)</div><div class="ttdoc">Free a N_PCRE pointer. </div><div class="ttdef"><b>Definition:</b> <a href="n__pcre_8c_source.html#l00107">n_pcre.c:107</a></div></div>
 <div class="ttc" id="group___l_o_g_html_ga96fad55b3f5adf08c39e4c877cf185e3"><div class="ttname"><a href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a></div><div class="ttdeci">#define LOG_ERR</div><div class="ttdoc">error conditions </div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00057">n_log.h:57</a></div></div>
-<div class="ttc" id="group___p_c_r_e_html_ga605b60ef645cf217bd2b3dc548d1d6c2"><div class="ttname"><a href="group___p_c_r_e.html#ga605b60ef645cf217bd2b3dc548d1d6c2">npcre_match</a></div><div class="ttdeci">int npcre_match(char *str, N_PCRE *pcre)</div><div class="ttdoc">Return TRUE if str matches regexp, and make captures up to max_cap. </div><div class="ttdef"><b>Definition:</b> <a href="n__pcre_8c_source.html#l00130">n_pcre.c:130</a></div></div>
-<div class="ttc" id="group___p_c_r_e_html_gabd3d86629f8aa1898e8553c58afd938e"><div class="ttname"><a href="group___p_c_r_e.html#gabd3d86629f8aa1898e8553c58afd938e">npcre_new</a></div><div class="ttdeci">N_PCRE * npcre_new(char *str, int max_cap, int flags)</div><div class="ttdoc">create a compiled regex </div><div class="ttdef"><b>Definition:</b> <a href="n__pcre_8c_source.html#l00024">n_pcre.c:24</a></div></div>
+<div class="ttc" id="group___p_c_r_e_html_ga605b60ef645cf217bd2b3dc548d1d6c2"><div class="ttname"><a href="group___p_c_r_e.html#ga605b60ef645cf217bd2b3dc548d1d6c2">npcre_match</a></div><div class="ttdeci">int npcre_match(char *str, N_PCRE *pcre)</div><div class="ttdoc">Return TRUE if str matches regexp, and make captures up to max_cap. </div><div class="ttdef"><b>Definition:</b> <a href="n__pcre_8c_source.html#l00165">n_pcre.c:165</a></div></div>
+<div class="ttc" id="group___p_c_r_e_html_gabd3d86629f8aa1898e8553c58afd938e"><div class="ttname"><a href="group___p_c_r_e.html#gabd3d86629f8aa1898e8553c58afd938e">npcre_new</a></div><div class="ttdeci">N_PCRE * npcre_new(char *str, int max_cap, int flags)</div><div class="ttdoc">create a compiled regex From pcre doc, the flag bits are: PCRE_ANCHORED Force pattern anchoring PCRE_...</div><div class="ttdef"><b>Definition:</b> <a href="n__pcre_8c_source.html#l00059">n_pcre.c:59</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><b>n_pcre.c</b></li>
-    <li class="footer">Generated on Mon Jan 31 2022 16:50:02 for Nilorea Library by
+    <li class="footer">Generated on Tue Feb 1 2022 16:48:22 for Nilorea Library by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.5 </li>
   </ul>

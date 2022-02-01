@@ -12,8 +12,7 @@
 #include "nilorea/n_hash.h"
 
 #include <pthread.h>
-#include <string.h>
-#include <fnmatch.h>
+#include <strings.h>
 
 #ifdef __windows__
 #include <winsock.h>
@@ -21,6 +20,8 @@
 #include <arpa/inet.h>
 #endif
 
+#define _GNU_SOURCE
+#include <fnmatch.h>
 
 
 /*!\fn HASH_NODE *_ht_new_node_trie( HASH_TABLE *table , char key )
@@ -659,31 +660,33 @@ void _ht_print_trie( HASH_TABLE *table )
 	return ;
 }
 
-void _ht_search_trie_helper( LIST *results , HASH_NODE *node , char *exp )
+void _ht_search_trie_helper( LIST *results , HASH_NODE *node , int (*node_is_matching)( HASH_NODE *node ) )
 {
 	if( !node )
 		return ;
 
 	if( node -> is_leaf )
 	{
-		if( !fnmatch( exp , node -> key , FNM_NOESCAPE ) )
+		if( node_is_matching( node ) == TRUE )
 		{
 			list_push( results , strdup( node -> key ) , &free );
 		}
 	}
 	for( uint32_t it = 0 ; it < node -> alphabet_length ; it++ )
 	{
-		_ht_search_trie_helper( results , node -> children[ it ] , exp );
+		_ht_search_trie_helper( results , node -> children[ it ] , node_is_matching );
 	}
 }
 
-LIST *_ht_search_trie( HASH_TABLE *table , char *exp )
+LIST *_ht_search_trie( HASH_TABLE *table , int (*node_is_matching)( HASH_NODE *node ) )
 {
 	__n_assert( table , return NULL );
-	__n_assert( exp , return NULL );
+	
 	LIST *results = new_generic_list( 0 );
+	__n_assert( results , return NULL );
+	
+	_ht_search_trie_helper( results , table -> root , node_is_matching );
 
-	_ht_search_trie_helper( results , table -> root , exp );
 	if( results -> nb_items < 1 )
 		list_destroy( &results );
 
@@ -718,7 +721,7 @@ int _ht_depth_first_search( HASH_NODE *node , LIST *results )
 
 
 /* completion search keys */
-LIST *_ht_get_completion_list( HASH_TABLE *table , char *keybud , uint32_t max_results )
+LIST *ht_get_completion_list( HASH_TABLE *table , char *keybud , uint32_t max_results )
 {
 	__n_assert( table , return NULL );
 	__n_assert( keybud , return NULL );
@@ -742,7 +745,13 @@ LIST *_ht_get_completion_list( HASH_TABLE *table , char *keybud , uint32_t max_r
 	}
 	else if( table -> mode == HASH_CLASSIC )
 	{
-		results = ht_search( table , keybud );
+		int matching_nodes( HASH_NODE *node)
+		{ 
+			if( strncasecmp( "key" , node -> key , 3 ) == 0 )
+				return TRUE ;
+			return FALSE ;
+		}
+		results = ht_search( table , &matching_nodes );
 	}
 	else
 	{
@@ -1733,21 +1742,25 @@ void _ht_print( HASH_TABLE *table )
 
 
 
-LIST *_ht_search( HASH_TABLE *table , char *exp )
+LIST *_ht_search( HASH_TABLE *table , int (*node_is_matching)( HASH_NODE *node ) )
 {
 	__n_assert( table , return NULL );
-	__n_assert( exp , return NULL );
+	
 	LIST *results = new_generic_list( 0 );
+	__n_assert( results , return NULL );
+	
 	ht_foreach( node , table )
 	{
 		HASH_NODE *hnode = (HASH_NODE *)node -> ptr;
-		if( !fnmatch( exp , hnode -> key , FNM_NOESCAPE ) )
+		if( node_is_matching( hnode ) == TRUE )
 		{
 			list_push( results , strdup( hnode -> key ) , &free );
 		}
 	}
+
 	if( results -> nb_items < 1 )
 		list_destroy( &results );
+
 	return results ;
 }
 
@@ -1933,25 +1946,22 @@ void ht_print( HASH_TABLE *table )
 	return ;
 }
 
-LIST *ht_search( HASH_TABLE *table , char *exp )
+LIST *ht_search( HASH_TABLE *table , int (*node_is_matching)( HASH_NODE *node ) )
 {
 	__n_assert( table , return FALSE );
-	__n_assert( exp , return FALSE );
-	return table -> ht_search( table , exp );
+	return table -> ht_search( table , node_is_matching );
 }
 
 int empty_ht( HASH_TABLE *table )
 {
 	__n_assert( table , return FALSE );
-	table -> empty_ht( table );
-	return FALSE;
+	return table -> empty_ht( table );
 }
 
 int destroy_ht( HASH_TABLE **table )
 {
 	__n_assert( (*table) , return FALSE );
-	(*table)->destroy_ht( table );
-	return FALSE;
+	return (*table)->destroy_ht( table );
 }
 
 

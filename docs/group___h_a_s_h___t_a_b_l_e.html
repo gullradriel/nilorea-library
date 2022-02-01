@@ -160,15 +160,26 @@ Macros</h2></td></tr>
 <tr class="memdesc:gafd04f4d8463ac67a011caef42b109595"><td class="mdescLeft">&#160;</td><td class="mdescRight">value of unknow type inside the hash node <br/></td></tr>
 <tr class="separator:gafd04f4d8463ac67a011caef42b109595"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaeb031d4f0f896b1802b9c27e62f28d14"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaeb031d4f0f896b1802b9c27e62f28d14"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#gaeb031d4f0f896b1802b9c27e62f28d14">hash_val</a>(node, type)&#160;&#160;&#160;( (node &amp;&amp; node -&gt; ptr) ? ( (type *)(((<a class="el" href="struct_h_a_s_h___n_o_d_e.html">HASH_NODE</a> *)node -&gt; ptr )-&gt; data . ptr) ) : NULL )</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#gaeb031d4f0f896b1802b9c27e62f28d14">hash_val</a>(node, type)&#160;&#160;&#160;( (node &amp;&amp; node -&gt; ptr) ? ( (type *)( ( (<a class="el" href="struct_h_a_s_h___n_o_d_e.html">HASH_NODE</a> *)node -&gt; ptr )-&gt; data . ptr) ) : NULL )</td></tr>
 <tr class="memdesc:gaeb031d4f0f896b1802b9c27e62f28d14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cast a <a class="el" href="struct_h_a_s_h___n_o_d_e.html" title="structure of a hash table node ">HASH_NODE</a> element. <br/></td></tr>
 <tr class="separator:gaeb031d4f0f896b1802b9c27e62f28d14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8e695e90d977acedccfe2e79148cf29e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga8e695e90d977acedccfe2e79148cf29e"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>HASH_VAL</b>(node, type)&#160;&#160;&#160;( (node &amp;&amp; node -&gt; data . ptr) ? ( (type *)node -&gt; data . ptr ) : NULL )</td></tr>
+<tr class="separator:ga8e695e90d977acedccfe2e79148cf29e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga072f117e6bd9fdde0d39776764b8784e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#ga072f117e6bd9fdde0d39776764b8784e">ht_foreach</a>(__ITEM_, __HASH_)</td></tr>
-<tr class="memdesc:ga072f117e6bd9fdde0d39776764b8784e"><td class="mdescLeft">&#160;</td><td class="mdescRight">ForEach macro helper.  <a href="#ga072f117e6bd9fdde0d39776764b8784e">More...</a><br/></td></tr>
+<tr class="memdesc:ga072f117e6bd9fdde0d39776764b8784e"><td class="mdescLeft">&#160;</td><td class="mdescRight">ForEach macro helper (classic / old)  <a href="#ga072f117e6bd9fdde0d39776764b8784e">More...</a><br/></td></tr>
 <tr class="separator:ga072f117e6bd9fdde0d39776764b8784e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf1c2ece096867efb7c26d301f160176c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaf1c2ece096867efb7c26d301f160176c"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#gaf1c2ece096867efb7c26d301f160176c">HT_FOREACH</a>(__ITEM_, __HASH_,...)</td></tr>
+<tr class="memdesc:gaf1c2ece096867efb7c26d301f160176c"><td class="mdescLeft">&#160;</td><td class="mdescRight">ForEach macro helper. <br/></td></tr>
+<tr class="separator:gaf1c2ece096867efb7c26d301f160176c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga2d5dc4bd5bcf119740bd59199cae7a4c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#ga2d5dc4bd5bcf119740bd59199cae7a4c">ht_foreach_r</a>(__ITEM_, __HASH_, __ITERATOR_)</td></tr>
-<tr class="memdesc:ga2d5dc4bd5bcf119740bd59199cae7a4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">ForEach macro helper.  <a href="#ga2d5dc4bd5bcf119740bd59199cae7a4c">More...</a><br/></td></tr>
+<tr class="memdesc:ga2d5dc4bd5bcf119740bd59199cae7a4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">ForEach macro helper, reentrant (classic / old)  <a href="#ga2d5dc4bd5bcf119740bd59199cae7a4c">More...</a><br/></td></tr>
 <tr class="separator:ga2d5dc4bd5bcf119740bd59199cae7a4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga23715b66af50d3cfa4ca46649274f283"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga23715b66af50d3cfa4ca46649274f283"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#ga23715b66af50d3cfa4ca46649274f283">HT_FOREACH_R</a>(__ITEM_, __HASH_, __ITERATOR,...)</td></tr>
+<tr class="memdesc:ga23715b66af50d3cfa4ca46649274f283"><td class="mdescLeft">&#160;</td><td class="mdescRight">ForEach macro helper. <br/></td></tr>
+<tr class="separator:ga23715b66af50d3cfa4ca46649274f283"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gab32bb365c62dcb0da675e248b7e814a9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gab32bb365c62dcb0da675e248b7e814a9"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#gab32bb365c62dcb0da675e248b7e814a9">ROTL32</a>(x, y)&#160;&#160;&#160;rotl32(x,y)</td></tr>
 <tr class="memdesc:gab32bb365c62dcb0da675e248b7e814a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">missing ROTL fix 32bit <br/></td></tr>
@@ -187,15 +198,15 @@ typedef struct <a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga2832c03b0fa61e6af59d70724cbdf7ca"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga2832c03b0fa61e6af59d70724cbdf7ca"></a>
-<a class="el" href="struct_l_i_s_t.html">LIST</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>_ht_get_completion_list</b> (<a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table, char *keybud, uint32_t max_results)</td></tr>
-<tr class="separator:ga2832c03b0fa61e6af59d70724cbdf7ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga22a943135dbcdb1611b40ce0547111ce"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#ga22a943135dbcdb1611b40ce0547111ce">destroy_ht</a> (<a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> **table)</td></tr>
 <tr class="memdesc:ga22a943135dbcdb1611b40ce0547111ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free and set the table to NULL.  <a href="#ga22a943135dbcdb1611b40ce0547111ce">More...</a><br/></td></tr>
 <tr class="separator:ga22a943135dbcdb1611b40ce0547111ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga5d2235e91b2b6b70129246897442f8d5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#ga5d2235e91b2b6b70129246897442f8d5">empty_ht</a> (<a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table)</td></tr>
 <tr class="memdesc:ga5d2235e91b2b6b70129246897442f8d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Empty a hash table.  <a href="#ga5d2235e91b2b6b70129246897442f8d5">More...</a><br/></td></tr>
 <tr class="separator:ga5d2235e91b2b6b70129246897442f8d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0a9fdcc295c16b845378aebbeadf7e2f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga0a9fdcc295c16b845378aebbeadf7e2f"></a>
+<a class="el" href="struct_l_i_s_t.html">LIST</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>ht_get_completion_list</b> (<a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table, char *keybud, uint32_t max_results)</td></tr>
+<tr class="separator:ga0a9fdcc295c16b845378aebbeadf7e2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaaa35befb530f8299abf88af3ee42e6eb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaaa35befb530f8299abf88af3ee42e6eb"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>ht_get_double</b> (<a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table, char *key, double *val)</td></tr>
 <tr class="separator:gaaa35befb530f8299abf88af3ee42e6eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -235,9 +246,9 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>ht_put_string_ptr</b> 
 <tr class="memitem:ga8d8873be47a634ad8a386e61f12a1f53"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga8d8873be47a634ad8a386e61f12a1f53"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>ht_remove</b> (<a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table, char *key)</td></tr>
 <tr class="separator:ga8d8873be47a634ad8a386e61f12a1f53"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac104bb29aa007dcc80ae7923b5708b96"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gac104bb29aa007dcc80ae7923b5708b96"></a>
-<a class="el" href="struct_l_i_s_t.html">LIST</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>ht_search</b> (<a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table, char *exp)</td></tr>
-<tr class="separator:gac104bb29aa007dcc80ae7923b5708b96"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga01cc08ddca42655d016da8d0eae5c89c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga01cc08ddca42655d016da8d0eae5c89c"></a>
+<a class="el" href="struct_l_i_s_t.html">LIST</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>ht_search</b> (<a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table, int(*node_is_matching)(<a class="el" href="struct_h_a_s_h___n_o_d_e.html">HASH_NODE</a> *node))</td></tr>
+<tr class="separator:ga01cc08ddca42655d016da8d0eae5c89c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga917618a4c922f524216381a5e5a43a60"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#ga917618a4c922f524216381a5e5a43a60">MurmurHash3_x86_128</a> (const void *key, int len, uint32_t seed, void *out)</td></tr>
 <tr class="memdesc:ga917618a4c922f524216381a5e5a43a60"><td class="mdescLeft">&#160;</td><td class="mdescRight">brief MurmurHash3 was written by Austin Appleby, and is placed in the public domain.  <a href="#ga917618a4c922f524216381a5e5a43a60">More...</a><br/></td></tr>
 <tr class="separator:ga917618a4c922f524216381a5e5a43a60"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -280,16 +291,21 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>ht_remove</b> (<a clas
 <div class="line">                { <a class="code" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">\</a></div>
 <div class="line"><a class="code" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">		n_log</a>( <a class="code" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a> , <span class="stringliteral">&quot;Error in ht_foreach, %s is NULL&quot;</span> , #__HASH_ ); \</div>
 <div class="line">                } \</div>
+<div class="line">                else <span class="keywordflow">if</span>( __HASH_ -&gt; mode != <a class="code" href="group___h_a_s_h___t_a_b_l_e.html#gaaf679be9dbe3da9e0b18126584fc276f">HASH_CLASSIC</a> ) \</div>
+<div class="line">                { <a class="code" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">\</a></div>
+<div class="line"><a class="code" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">		n_log</a>( <a class="code" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a> , <span class="stringliteral">&quot;Error in ht_foreach( %s , %s ) unsupportted mode %d&quot;</span> , #__ITEM_ , #__HASH_  , __HASH_ -&gt; mode ); \</div>
+<div class="line">                } \</div>
 <div class="line">                else \</div>
 <div class="line">                for( <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> __hash_it = 0 ; __hash_it &lt; __HASH_ -&gt; size ; __hash_it ++ ) \</div>
 <div class="line">                <span class="keywordflow">for</span>( <a class="code" href="struct_l_i_s_t___n_o_d_e.html">LIST_NODE</a> *__ITEM_ = __HASH_ -&gt; hash_table[ __hash_it ] -&gt; start ; __ITEM_ != NULL; __ITEM_ = __ITEM_ -&gt; next )</div>
 <div class="ttc" id="group___l_o_g_html_ga61355655c6d490cdf201afdfc340df4b"><div class="ttname"><a href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a></div><div class="ttdeci">#define n_log(__LEVEL__,...)</div><div class="ttdoc">Logging function wrapper to get line and func. </div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00073">n_log.h:73</a></div></div>
+<div class="ttc" id="group___h_a_s_h___t_a_b_l_e_html_gaaf679be9dbe3da9e0b18126584fc276f"><div class="ttname"><a href="group___h_a_s_h___t_a_b_l_e.html#gaaf679be9dbe3da9e0b18126584fc276f">HASH_CLASSIC</a></div><div class="ttdeci">#define HASH_CLASSIC</div><div class="ttdoc">Murmur hash using hash key string, hash key numeric value, index table with lists of elements...</div><div class="ttdef"><b>Definition:</b> <a href="n__hash_8h_source.html#l00063">n_hash.h:63</a></div></div>
 <div class="ttc" id="struct_l_i_s_t___n_o_d_e_html"><div class="ttname"><a href="struct_l_i_s_t___n_o_d_e.html">LIST_NODE</a></div><div class="ttdoc">Structure of a generic list node. </div><div class="ttdef"><b>Definition:</b> <a href="n__list_8h_source.html#l00026">n_list.h:26</a></div></div>
 <div class="ttc" id="group___l_o_g_html_ga96fad55b3f5adf08c39e4c877cf185e3"><div class="ttname"><a href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a></div><div class="ttdeci">#define LOG_ERR</div><div class="ttdoc">error conditions </div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00057">n_log.h:57</a></div></div>
 </div><!-- fragment -->
-<p>ForEach macro helper. </p>
+<p>ForEach macro helper (classic / old) </p>
 
-<p>Definition at line <a class="el" href="n__hash_8h_source.html#l00160">160</a> of file <a class="el" href="n__hash_8h_source.html">n_hash.h</a>.</p>
+<p>Definition at line <a class="el" href="n__hash_8h_source.html#l00167">167</a> of file <a class="el" href="n__hash_8h_source.html">n_hash.h</a>.</p>
 
 </div>
 </div>
@@ -326,16 +342,21 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>ht_remove</b> (<a clas
 <div class="line">                { <a class="code" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">\</a></div>
 <div class="line"><a class="code" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">		n_log</a>( <a class="code" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a> , <span class="stringliteral">&quot;Error in ht_foreach, %s is NULL&quot;</span> , #__HASH_ ); \</div>
 <div class="line">                } \</div>
+<div class="line">                else <span class="keywordflow">if</span>( __HASH_ -&gt; mode != <a class="code" href="group___h_a_s_h___t_a_b_l_e.html#gaaf679be9dbe3da9e0b18126584fc276f">HASH_CLASSIC</a> ) \</div>
+<div class="line">                { <a class="code" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">\</a></div>
+<div class="line"><a class="code" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">		n_log</a>( <a class="code" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a> , <span class="stringliteral">&quot;Error in ht_foreach, %d is an unsupported mode&quot;</span> , __HASH_ -&gt; mode ); \</div>
+<div class="line">                } \</div>
 <div class="line">                else \</div>
 <div class="line">                for( <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> __ITERATOR_ = 0 ; __ITERATOR_ &lt; __HASH_ -&gt; size ; __ITERATOR_ ++ ) \</div>
 <div class="line">                <span class="keywordflow">for</span>( <a class="code" href="struct_l_i_s_t___n_o_d_e.html">LIST_NODE</a> *__ITEM_ = __HASH_ -&gt; hash_table[ __ITERATOR_ ] -&gt; start ; __ITEM_ != NULL; __ITEM_ = __ITEM_ -&gt; next )</div>
 <div class="ttc" id="group___l_o_g_html_ga61355655c6d490cdf201afdfc340df4b"><div class="ttname"><a href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a></div><div class="ttdeci">#define n_log(__LEVEL__,...)</div><div class="ttdoc">Logging function wrapper to get line and func. </div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00073">n_log.h:73</a></div></div>
+<div class="ttc" id="group___h_a_s_h___t_a_b_l_e_html_gaaf679be9dbe3da9e0b18126584fc276f"><div class="ttname"><a href="group___h_a_s_h___t_a_b_l_e.html#gaaf679be9dbe3da9e0b18126584fc276f">HASH_CLASSIC</a></div><div class="ttdeci">#define HASH_CLASSIC</div><div class="ttdoc">Murmur hash using hash key string, hash key numeric value, index table with lists of elements...</div><div class="ttdef"><b>Definition:</b> <a href="n__hash_8h_source.html#l00063">n_hash.h:63</a></div></div>
 <div class="ttc" id="struct_l_i_s_t___n_o_d_e_html"><div class="ttname"><a href="struct_l_i_s_t___n_o_d_e.html">LIST_NODE</a></div><div class="ttdoc">Structure of a generic list node. </div><div class="ttdef"><b>Definition:</b> <a href="n__list_8h_source.html#l00026">n_list.h:26</a></div></div>
 <div class="ttc" id="group___l_o_g_html_ga96fad55b3f5adf08c39e4c877cf185e3"><div class="ttname"><a href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a></div><div class="ttdeci">#define LOG_ERR</div><div class="ttdoc">error conditions </div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00057">n_log.h:57</a></div></div>
 </div><!-- fragment -->
-<p>ForEach macro helper. </p>
+<p>ForEach macro helper, reentrant (classic / old) </p>
 
-<p>Definition at line <a class="el" href="n__hash_8h_source.html#l00169">169</a> of file <a class="el" href="n__hash_8h_source.html">n_hash.h</a>.</p>
+<p>Definition at line <a class="el" href="n__hash_8h_source.html#l00181">181</a> of file <a class="el" href="n__hash_8h_source.html">n_hash.h</a>.</p>
 
 </div>
 </div>
@@ -363,11 +384,11 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>ht_remove</b> (<a clas
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>TRUE or FALSE. </dd></dl>
 
-<p>Definition at line <a class="el" href="n__hash_8c_source.html#l01940">1940</a> of file <a class="el" href="n__hash_8c_source.html">n_hash.c</a>.</p>
+<p>Definition at line <a class="el" href="n__hash_8c_source.html#l01961">1961</a> of file <a class="el" href="n__hash_8c_source.html">n_hash.c</a>.</p>
 
 <p>References <a class="el" href="n__common_8h_source.html#l00260">__n_assert</a>.</p>
 
-<p>Referenced by <a class="el" href="n__nodup__log_8c_source.html#l00073">close_nodup_log()</a>, <a class="el" href="n__config__file_8c_source.html#l00033">destroy_config_file_section()</a>, <a class="el" href="n__network_8c_source.html#l02894">netw_destroy_pool()</a>, and <a class="el" href="n__hash_8c_source.html#l01751">new_ht_trie()</a>.</p>
+<p>Referenced by <a class="el" href="n__nodup__log_8c_source.html#l00073">close_nodup_log()</a>, <a class="el" href="n__config__file_8c_source.html#l00033">destroy_config_file_section()</a>, <a class="el" href="n__network_8c_source.html#l02894">netw_destroy_pool()</a>, and <a class="el" href="n__hash_8c_source.html#l01774">new_ht_trie()</a>.</p>
 
 <p><div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
@@ -405,11 +426,11 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>ht_remove</b> (<a clas
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>TRUE or FALSE. </dd></dl>
 
-<p>Definition at line <a class="el" href="n__hash_8c_source.html#l01933">1933</a> of file <a class="el" href="n__hash_8c_source.html">n_hash.c</a>.</p>
+<p>Definition at line <a class="el" href="n__hash_8c_source.html#l01955">1955</a> of file <a class="el" href="n__hash_8c_source.html">n_hash.c</a>.</p>
 
-<p>References <a class="el" href="n__common_8h_source.html#l00260">__n_assert</a>, and <a class="el" href="n__hash_8c_source.html#l01933">empty_ht()</a>.</p>
+<p>References <a class="el" href="n__common_8h_source.html#l00260">__n_assert</a>, and <a class="el" href="n__hash_8c_source.html#l01955">empty_ht()</a>.</p>
 
-<p>Referenced by <a class="el" href="n__hash_8c_source.html#l01933">empty_ht()</a>, <a class="el" href="n__nodup__log_8c_source.html#l00061">empty_nodup_table()</a>, and <a class="el" href="n__hash_8c_source.html#l01751">new_ht_trie()</a>.</p>
+<p>Referenced by <a class="el" href="n__hash_8c_source.html#l01955">empty_ht()</a>, <a class="el" href="n__nodup__log_8c_source.html#l00061">empty_nodup_table()</a>, and <a class="el" href="n__hash_8c_source.html#l01774">new_ht_trie()</a>.</p>
 
 <p><div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
@@ -456,11 +477,11 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>ht_remove</b> (<a clas
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>NULL or the associated node type </dd></dl>
 
-<p>Definition at line <a class="el" href="n__hash_8c_source.html#l01067">1067</a> of file <a class="el" href="n__hash_8c_source.html">n_hash.c</a>.</p>
+<p>Definition at line <a class="el" href="n__hash_8c_source.html#l01086">1086</a> of file <a class="el" href="n__hash_8c_source.html">n_hash.c</a>.</p>
 
 <p>References <a class="el" href="n__common_8h_source.html#l00260">__n_assert</a>, and <a class="el" href="n__hash_8h_source.html#l00057">HASH_UNKNOWN</a>.</p>
 
-<p>Referenced by <a class="el" href="n__hash_8c_source.html#l01519">_ht_get_double()</a>, <a class="el" href="n__hash_8c_source.html#l00308">_ht_get_double_trie()</a>, <a class="el" href="n__hash_8c_source.html#l01487">_ht_get_int()</a>, <a class="el" href="n__hash_8c_source.html#l00276">_ht_get_int_trie()</a>, <a class="el" href="n__hash_8c_source.html#l01552">_ht_get_ptr()</a>, <a class="el" href="n__hash_8c_source.html#l00371">_ht_get_ptr_trie()</a>, <a class="el" href="n__hash_8c_source.html#l01583">_ht_get_string()</a>, <a class="el" href="n__hash_8c_source.html#l00340">_ht_get_string_trie()</a>, <a class="el" href="n__hash_8c_source.html#l01322">_ht_put_double()</a>, <a class="el" href="n__hash_8c_source.html#l01284">_ht_put_int()</a>, <a class="el" href="n__hash_8c_source.html#l01361">_ht_put_ptr()</a>, <a class="el" href="n__hash_8c_source.html#l01405">_ht_put_string()</a>, and <a class="el" href="n__hash_8c_source.html#l01445">_ht_put_string_ptr()</a>.</p>
+<p>Referenced by <a class="el" href="n__hash_8c_source.html#l01538">_ht_get_double()</a>, <a class="el" href="n__hash_8c_source.html#l00309">_ht_get_double_trie()</a>, <a class="el" href="n__hash_8c_source.html#l01506">_ht_get_int()</a>, <a class="el" href="n__hash_8c_source.html#l00277">_ht_get_int_trie()</a>, <a class="el" href="n__hash_8c_source.html#l01571">_ht_get_ptr()</a>, <a class="el" href="n__hash_8c_source.html#l00372">_ht_get_ptr_trie()</a>, <a class="el" href="n__hash_8c_source.html#l01602">_ht_get_string()</a>, <a class="el" href="n__hash_8c_source.html#l00341">_ht_get_string_trie()</a>, <a class="el" href="n__hash_8c_source.html#l01341">_ht_put_double()</a>, <a class="el" href="n__hash_8c_source.html#l01303">_ht_put_int()</a>, <a class="el" href="n__hash_8c_source.html#l01380">_ht_put_ptr()</a>, <a class="el" href="n__hash_8c_source.html#l01424">_ht_put_string()</a>, and <a class="el" href="n__hash_8c_source.html#l01464">_ht_put_string_ptr()</a>.</p>
 
 <p><div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
@@ -523,7 +544,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>ht_remove</b> (<a clas
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="n__hash_8c_source.html#l00897">897</a> of file <a class="el" href="n__hash_8c_source.html">n_hash.c</a>.</p>
+<p>Definition at line <a class="el" href="n__hash_8c_source.html#l00916">916</a> of file <a class="el" href="n__hash_8c_source.html">n_hash.c</a>.</p>
 
 <p>References <a class="el" href="n__common_8h_source.html#l00051">FALL_THROUGH</a>, and <a class="el" href="n__hash_8h_source.html#l00041">ROTL32</a>.</p>
 
@@ -577,11 +598,11 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>ht_remove</b> (<a clas
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="n__hash_8c_source.html#l00827">827</a> of file <a class="el" href="n__hash_8c_source.html">n_hash.c</a>.</p>
+<p>Definition at line <a class="el" href="n__hash_8c_source.html#l00846">846</a> of file <a class="el" href="n__hash_8c_source.html">n_hash.c</a>.</p>
 
 <p>References <a class="el" href="n__common_8h_source.html#l00051">FALL_THROUGH</a>, and <a class="el" href="n__hash_8h_source.html#l00041">ROTL32</a>.</p>
 
-<p>Referenced by <a class="el" href="n__hash_8c_source.html#l01086">_ht_get_node()</a>, and <a class="el" href="n__hash_8c_source.html#l01613">_ht_remove()</a>.</p>
+<p>Referenced by <a class="el" href="n__hash_8c_source.html#l01105">_ht_get_node()</a>, and <a class="el" href="n__hash_8c_source.html#l01632">_ht_remove()</a>.</p>
 
 <p><div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
@@ -629,9 +650,9 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>ht_remove</b> (<a clas
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>NULL or the new allocated hash table </dd></dl>
 
-<p>Definition at line <a class="el" href="n__hash_8c_source.html#l01751">1751</a> of file <a class="el" href="n__hash_8c_source.html">n_hash.c</a>.</p>
+<p>Definition at line <a class="el" href="n__hash_8c_source.html#l01774">1774</a> of file <a class="el" href="n__hash_8c_source.html">n_hash.c</a>.</p>
 
-<p>References <a class="el" href="n__common_8h_source.html#l00260">__n_assert</a>, <a class="el" href="n__hash_8c_source.html#l00579">_empty_ht_trie()</a>, <a class="el" href="n__hash_8c_source.html#l00308">_ht_get_double_trie()</a>, <a class="el" href="n__hash_8c_source.html#l00276">_ht_get_int_trie()</a>, <a class="el" href="n__hash_8c_source.html#l00371">_ht_get_ptr_trie()</a>, <a class="el" href="n__hash_8c_source.html#l00340">_ht_get_string_trie()</a>, <a class="el" href="n__hash_8c_source.html#l01940">destroy_ht()</a>, <a class="el" href="n__hash_8c_source.html#l01933">empty_ht()</a>, <a class="el" href="n__hash_8h_source.html#l00065">HASH_TRIE</a>, <a class="el" href="n__log_8h_source.html#l00057">LOG_ERR</a>, <a class="el" href="n__common_8h_source.html#l00180">Malloc</a>, and <a class="el" href="n__log_8h_source.html#l00073">n_log</a>.</p>
+<p>References <a class="el" href="n__common_8h_source.html#l00260">__n_assert</a>, <a class="el" href="n__hash_8c_source.html#l00580">_empty_ht_trie()</a>, <a class="el" href="n__hash_8c_source.html#l00309">_ht_get_double_trie()</a>, <a class="el" href="n__hash_8c_source.html#l00277">_ht_get_int_trie()</a>, <a class="el" href="n__hash_8c_source.html#l00372">_ht_get_ptr_trie()</a>, <a class="el" href="n__hash_8c_source.html#l00341">_ht_get_string_trie()</a>, <a class="el" href="n__hash_8c_source.html#l01961">destroy_ht()</a>, <a class="el" href="n__hash_8c_source.html#l01955">empty_ht()</a>, <a class="el" href="n__hash_8h_source.html#l00065">HASH_TRIE</a>, <a class="el" href="n__log_8h_source.html#l00057">LOG_ERR</a>, <a class="el" href="n__common_8h_source.html#l00180">Malloc</a>, and <a class="el" href="n__log_8h_source.html#l00073">n_log</a>.</p>
 
 <p><div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
@@ -651,7 +672,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>ht_remove</b> (<a clas
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Mon Jan 31 2022 16:50:03 for Nilorea Library by
+    <li class="footer">Generated on Tue Feb 1 2022 16:48:22 for Nilorea Library by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.5 </li>
   </ul>

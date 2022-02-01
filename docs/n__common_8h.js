@@ -12,6 +12,8 @@ var n__common_8h =
     [ "BYTEORDER_LITTLE_ENDIAN", "n__common_8h.html#ga3188941b4d65de46471a2e1259fc0ca3", null ],
     [ "CALL_RETRY", "n__common_8h.html#gaf355f5fc76fc13a2bb894b92f7fb1ad9", null ],
     [ "checkerror", "n__common_8h.html#gac1ba27872d9628ba6bd9b3f3637c7d91", null ],
+    [ "CONCAT", "n__common_8h.html#ga88fa737059e67b4b17ec980e5877361e", null ],
+    [ "CONCAT_BUILDER", "n__common_8h.html#gab5cf9772871f6212ae61eed9a8085e30", null ],
     [ "DEFAULT", "n__common_8h.html#ga3da44afeba217135a680a7477b5e3ce3", null ],
     [ "endif", "n__common_8h.html#gaa0c1167bb311135eecf24a0e7c885b7f", null ],
     [ "equal_if", "n__common_8h.html#ga2507d4d96edcb14310f82085f71dbaaa", null ],

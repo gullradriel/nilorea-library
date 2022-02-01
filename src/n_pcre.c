@@ -13,12 +13,47 @@
 
 
 /*!\fn N_PCRE *npcre_new( char *str , int max_cap , int flags )
- *
  *\brief create a compiled regex
+ *  From pcre doc, the flag bits are:
+ *        PCRE_ANCHORED           Force pattern anchoring
+ *        PCRE_AUTO_CALLOUT       Compile automatic callouts
+ *        PCRE_BSR_ANYCRLF        \\R matches only CR, LF, or CRLF
+ *        PCRE_BSR_UNICODE        \\R matches all Unicode line endings
+ *        PCRE_CASELESS           Do caseless matching
+ *        PCRE_DOLLAR_ENDONLY     $ not to match newline at end
+ *        PCRE_DOTALL             . matches anything including NL
+ *        PCRE_DUPNAMES           Allow duplicate names for subpatterns
+ *        PCRE_EXTENDED           Ignore white space and # comments
+ *        PCRE_EXTRA              PCRE extra features
+ *                                  (not much use currently)
+ *        PCRE_FIRSTLINE          Force matching to be before newline
+ *        PCRE_JAVASCRIPT_COMPAT  JavaScript compatibility
+ *        PCRE_MULTILINE          ^ and $ match newlines within data
+ *        PCRE_NEWLINE_ANY        Recognize any Unicode newline sequence
+ *        PCRE_NEWLINE_ANYCRLF    Recognize CR, LF, and CRLF as newline
+ *                                  sequences
+ *        PCRE_NEWLINE_CR         Set CR as the newline sequence
+ *        PCRE_NEWLINE_CRLF       Set CRLF as the newline sequence
+ *        PCRE_NEWLINE_LF         Set LF as the newline sequence
+ *        PCRE_NO_AUTO_CAPTURE    Disable numbered capturing paren-
+ *                                  theses (named ones available)
+ *        PCRE_NO_UTF16_CHECK     Do not check the pattern for UTF-16
+ *                                  validity (only relevant if
+ *                                  PCRE_UTF16 is set)
+ *        PCRE_NO_UTF32_CHECK     Do not check the pattern for UTF-32
+ *                                  validity (only relevant if
+ *                                  PCRE_UTF32 is set)
+ *        PCRE_NO_UTF8_CHECK      Do not check the pattern for UTF-8
+ *                                  validity (only relevant if
+ *                                  PCRE_UTF8 is set)
+ *        PCRE_UCP                Use Unicode properties for \d, \w, etc.
+ *        PCRE_UNGREEDY           Invert greediness of quantifiers
+ *        PCRE_UTF16              Run in pcre16_compile() UTF-16 mode
+ *        PCRE_UTF32              Run in pcre32_compile() UTF-32 mode
+ *        PCRE_UTF8               Run in pcre_compile() UTF-8 mode
  *\param str The string containing the regexp
  *\param max_cap Maximum number of captures. str The string containing the regexp
  *\param flags pcre_compile flags
- *
  *\return a filled N_PCRE struct or NULL
  */
 N_PCRE *npcre_new( char *str, int max_cap, int flags )

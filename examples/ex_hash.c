@@ -10,6 +10,9 @@
 #include "nilorea/n_list.h"
 #include "nilorea/n_hash.h"
 
+#define _GNU_SOURCE
+#include <fnmatch.h>
+
 #define NB_ELEMENTS 16
 
 /*! string and int holder */
@@ -84,6 +87,10 @@ int main( void )
 	HT_FOREACH( node, htable , {
 			n_log( LOG_INFO , "HT_FOREACH key:%s" , _str( node -> key ) );	
 		} );
+	HT_FOREACH_R( node, htable , hash_iterator , {
+			n_log( LOG_INFO , "HT_FOREACH_R key:%s" , _str( node -> key ) );	
+		} );
+
 
 	/*ht_print( htable );
 	  char input_key[ 1024 ] = "" ;
@@ -102,18 +109,23 @@ int main( void )
 	  list_destroy( &results );
 	  }
 	  }*/
-	LIST *results = _ht_get_completion_list( htable , "key1" , 10 );
+	LIST *results = ht_get_completion_list( htable , "key" , 10 );
 	if( results )
 	{
 		list_foreach( node , results )
 		{
-			n_log( LOG_INFO , "completion result: %s\n" , (char *)node -> ptr );
+			n_log( LOG_INFO , "completion result: %s" , (char *)node -> ptr );
 		}
 		list_destroy( &results );
 	}
 
-
-	results = ht_search( htable , "key****" );
+	int matching_nodes( HASH_NODE *node)
+	{ 
+		if( strncasecmp( "key" , node -> key , 3 ) == 0 )
+			return TRUE ;
+		return FALSE ;
+	}
+	results = ht_search( htable , &matching_nodes );
 	list_foreach( node , results )
 	{
 		n_log( LOG_INFO , "htsearch: key: %s" , (char *)node -> ptr );
@@ -141,7 +153,7 @@ int main( void )
 	ht_get_string( htable , "TestString" , &string );
 	n_log( LOG_INFO , "Trie:%d %f %s" , ival , fval , string );
 
-	results = _ht_get_completion_list( htable , "Test" , 10 );
+	results = ht_get_completion_list( htable , "Test" , 10 );
 	if( results )
 	{
 		list_foreach( node , results )

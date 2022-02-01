@@ -147,7 +147,7 @@ extern "C" {
 		/*! remove given's key node from the table */
 		int (*ht_remove)( struct HASH_TABLE *table, char *key );
 		/*! search elements given an expression */
-		LIST *(*ht_search)( struct HASH_TABLE *table, char *exp );
+		LIST *(*ht_search)( struct HASH_TABLE *table, int (*node_is_matching)( HASH_NODE *node ) );
 		/*! empty a hash table. char *strings are also freed */
 		int (*empty_ht)( struct HASH_TABLE *table );
 		/*! destroy a hash table*/
@@ -331,12 +331,12 @@ extern "C" {
 	int ht_put_string_ptr( HASH_TABLE *table, char *key, char *string );
 	int ht_remove( HASH_TABLE *table, char *key );
 	void ht_print( HASH_TABLE *table );
-	LIST *ht_search( HASH_TABLE *table , char *exp );
+	LIST *ht_search( HASH_TABLE *table , int (*node_is_matching)( HASH_NODE *node ) );
 	int empty_ht( HASH_TABLE *table );
 	int destroy_ht( HASH_TABLE **table );
 
 	/* completion search keys */
-	LIST *_ht_get_completion_list( HASH_TABLE *table , char *keybud , uint32_t max_results );
+	LIST *ht_get_completion_list( HASH_TABLE *table , char *keybud , uint32_t max_results );
 
 
 	/**
