@@ -156,28 +156,160 @@ extern "C" {
 		void (*ht_print)( struct HASH_TABLE *table );
 	} HASH_TABLE ;
 
-	/*! ForEach macro helper */
+	/*! Cast a HASH_NODE element */
+#define hash_val( node , type )\
+	( (node && node -> ptr) ? ( (type *)( ( (HASH_NODE *)node -> ptr )-> data . ptr) ) : NULL )
+
+#define HASH_VAL( node , type )\
+	( (node && node -> data . ptr) ? ( (type *)node -> data . ptr ) : NULL )
+
+	/*! ForEach macro helper (classic / old) */
 #define ht_foreach( __ITEM_ , __HASH_  ) \
 	if( !__HASH_ ) \
 	{ \
 		n_log( LOG_ERR , "Error in ht_foreach, %s is NULL" , #__HASH_ ); \
 	} \
+	else if( __HASH_ -> mode != HASH_CLASSIC ) \
+	{ \
+		n_log( LOG_ERR , "Error in ht_foreach( %s , %s ) unsupportted mode %d" , #__ITEM_ , #__HASH_  , __HASH_ -> mode ); \
+	} \
 	else \
 	for( unsigned long int __hash_it = 0 ; __hash_it < __HASH_ -> size ; __hash_it ++ ) \
 	for( LIST_NODE *__ITEM_ = __HASH_ -> hash_table[ __hash_it ] -> start ; __ITEM_ != NULL; __ITEM_ = __ITEM_ -> next )
-	/*! ForEach macro helper */
+
+	/*! ForEach macro helper, reentrant (classic / old)  */
 #define ht_foreach_r( __ITEM_ , __HASH_ , __ITERATOR_ ) \
 	if( !__HASH_ ) \
 	{ \
 		n_log( LOG_ERR , "Error in ht_foreach, %s is NULL" , #__HASH_ ); \
 	} \
+	else if( __HASH_ -> mode != HASH_CLASSIC ) \
+	{ \
+		n_log( LOG_ERR , "Error in ht_foreach, %d is an unsupported mode" , __HASH_ -> mode ); \
+	} \
 	else \
 	for( unsigned long int __ITERATOR_ = 0 ; __ITERATOR_ < __HASH_ -> size ; __ITERATOR_ ++ ) \
 	for( LIST_NODE *__ITEM_ = __HASH_ -> hash_table[ __ITERATOR_ ] -> start ; __ITEM_ != NULL; __ITEM_ = __ITEM_ -> next )
 
-	/*! Cast a HASH_NODE element */
-#define hash_val( node , type )\
-	( (node && node -> ptr) ? ( (type *)(((HASH_NODE *)node -> ptr )-> data . ptr) ) : NULL )
+		/*!  ForEach macro helper */
+#define HT_FOREACH( __ITEM_ , __HASH_ , ... ) \
+	{ \
+		do \
+		{ \
+			if( !__HASH_ ) \
+			{ \
+				n_log( LOG_ERR , "Error in ht_foreach, %s is NULL" , #__HASH_ ); \
+			} \
+			else \
+			{ \
+				if( __HASH_ -> mode == HASH_CLASSIC ) \
+				{ \
+					int CONCAT(__ht_node_trie_func_macro_break_flag_classic,__LINE__) = 0 ; \
+					for( unsigned long int __hash_it = 0 ; __hash_it < __HASH_ -> size ; __hash_it ++ ) \
+					{ \
+						for( LIST_NODE *__ht_list_node = __HASH_ -> hash_table[ __hash_it ] -> start ; __ht_list_node != NULL; __ht_list_node = __ht_list_node -> next ) \
+						{ \
+							HASH_NODE *__ITEM_ = (HASH_NODE *)__ht_list_node -> ptr ; \
+							CONCAT(__ht_node_trie_func_macro_break_flag_classic,__LINE__) = 1 ; \
+							__VA_ARGS__ \
+							CONCAT(__ht_node_trie_func_macro_break_flag_classic,__LINE__) = 0 ; \
+						} \
+						if( CONCAT(__ht_node_trie_func_macro_break_flag_classic,__LINE__) == 1 ) \
+							break ; \
+					} \
+				} \
+				else if( __HASH_ -> mode == HASH_TRIE ) \
+				{ \
+					int CONCAT(__ht_node_trie_func_macro,__LINE__)( HASH_NODE *__ITEM_ ) \
+					{ \
+						if( !__ITEM_ ) return TRUE ; \
+						int CONCAT(__ht_node_trie_func_macro_break_flag,__LINE__) = 1 ; \
+						if( __ITEM_ -> is_leaf ) \
+						{ \
+							do \
+							{ \
+								__VA_ARGS__  \
+								CONCAT(__ht_node_trie_func_macro_break_flag,__LINE__) = 0 ; \
+							}while ( 0 ); \
+						} \
+						if( CONCAT(__ht_node_trie_func_macro_break_flag,__LINE__) == 1 ) return FALSE ; \
+						for( uint32_t it = 0 ; it < __ITEM_ -> alphabet_length ; it++ ) \
+						{ \
+							if( CONCAT(__ht_node_trie_func_macro,__LINE__)( __ITEM_ -> children[ it ] ) == FALSE )  \
+								return FALSE ; \
+						} \
+						return TRUE ; \
+					} \
+					CONCAT(__ht_node_trie_func_macro,__LINE__)( __HASH_ -> root ); \
+				} \
+				else \
+				{ \
+					n_log( LOG_ERR , "Error in ht_foreach, %d is an unsupported mode" , __HASH_ -> mode ); \
+					break ; \
+				} \
+			} \
+		}while( 0 ); \
+	} 
+
+	/*!  ForEach macro helper */
+#define HT_FOREACH_R( __ITEM_ , __HASH_ , __ITERATOR , ... ) \
+	{ \
+		do \
+		{ \
+			if( !__HASH_ ) \
+			{ \
+				n_log( LOG_ERR , "Error in ht_foreach, %s is NULL" , #__HASH_ ); \
+			} \
+			else \
+			{ \
+				if( __HASH_ -> mode == HASH_CLASSIC ) \
+				{ \
+					int CONCAT(__ht_node_trie_func_macro_break_flag_classic,__LINE__) = 0 ; \
+					for( unsigned long int __ITERATOR = 0 ; __ITERATOR < __HASH_ -> size ; __ITERATOR ++ ) \
+					{ \
+						for( LIST_NODE *__ht_list_node = __HASH_ -> hash_table[ __ITERATOR ] -> start ; __ht_list_node != NULL; __ht_list_node = __ht_list_node -> next ) \
+						{ \
+							HASH_NODE *__ITEM_ = (HASH_NODE *)__ht_list_node -> ptr ; \
+							CONCAT(__ht_node_trie_func_macro_break_flag_classic,__LINE__) = 1 ; \
+							__VA_ARGS__ \
+							CONCAT(__ht_node_trie_func_macro_break_flag_classic,__LINE__) = 0 ; \
+						} \
+						if( CONCAT(__ht_node_trie_func_macro_break_flag_classic,__LINE__) == 1 ) \
+							break ; \
+					} \
+				} \
+				else if( __HASH_ -> mode == HASH_TRIE ) \
+				{ \
+					int CONCAT(__ht_node_trie_func_macro,__LINE__)( HASH_NODE *__ITEM_ ) \
+					{ \
+						if( !__ITEM_ ) return TRUE ; \
+						int CONCAT(__ht_node_trie_func_macro_break_flag,__LINE__) = 1 ; \
+						if( __ITEM_ -> is_leaf ) \
+						{ \
+							do \
+							{ \
+								__VA_ARGS__  \
+								CONCAT(__ht_node_trie_func_macro_break_flag,__LINE__) = 0 ; \
+							}while ( 0 ); \
+						} \
+						if( CONCAT(__ht_node_trie_func_macro_break_flag,__LINE__) == 1 ) return FALSE ; \
+						for( uint32_t it = 0 ; it < __ITEM_ -> alphabet_length ; it++ ) \
+						{ \
+							if( CONCAT(__ht_node_trie_func_macro,__LINE__)( __ITEM_ -> children[ it ] ) == FALSE )  \
+								return FALSE ; \
+						} \
+						return TRUE ; \
+					} \
+					CONCAT(__ht_node_trie_func_macro,__LINE__)( __HASH_ -> root ); \
+				} \
+				else \
+				{ \
+					n_log( LOG_ERR , "Error in ht_foreach, %d is an unsupported mode" , __HASH_ -> mode ); \
+					break ; \
+				} \
+			} \
+		}while( 0 ); \
+	} 
 
 	void MurmurHash3_x86_32  ( const void * key, int len, uint32_t seed, void * out );
 	void MurmurHash3_x86_128 ( const void * key, int len, uint32_t seed, void * out );

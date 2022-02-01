@@ -162,9 +162,9 @@ int _ht_put_string_trie( HASH_TABLE *table , char *key , char *string )
 	node -> key = strdup( key );
 	/* Put the value */
 	if( string )
-			node -> data . string = strdup( string );
+		node -> data . string = strdup( string );
 	else
-			node -> data . string = NULL ;
+		node -> data . string = NULL ;
 
 	node -> type = HASH_STRING ;
 
@@ -721,24 +721,34 @@ int _ht_depth_first_search( HASH_NODE *node , LIST *results )
 LIST *_ht_get_completion_list( HASH_TABLE *table , char *keybud , uint32_t max_results )
 {
 	__n_assert( table , return NULL );
-	__n_assert( table -> root , return NULL );
 	__n_assert( keybud , return NULL );
 
-	LIST *results = new_generic_list( max_results );
-	int found = FALSE ;
-
-	HASH_NODE* node = _ht_get_node_trie( table , keybud );
-	if( node )
+	LIST *results = NULL ;
+	if( table -> mode == HASH_TRIE )
 	{
-		if( list_push( results , strdup( keybud ) , &free ) == TRUE )
+		int found = FALSE ;
+		results = new_generic_list( max_results );
+		HASH_NODE* node = _ht_get_node_trie( table , keybud );
+		if( node )
 		{
-			found = TRUE ;
-			_ht_depth_first_search( node , results );
+			if( list_push( results , strdup( keybud ) , &free ) == TRUE )
+			{
+				found = TRUE ;
+				_ht_depth_first_search( node , results );
+			}
 		}
+		if( found == FALSE )
+			list_destroy( &results );
 	}
-	if( found == FALSE )
-		list_destroy( &results );
-
+	else if( table -> mode == HASH_CLASSIC )
+	{
+		results = ht_search( table , keybud );
+	}
+	else
+	{
+		n_log( LOG_ERR , "unsupported mode %d" , table -> mode );
+		return NULL ;
+	}
 	return results ;
 }
 
@@ -1855,7 +1865,7 @@ HASH_NODE *ht_get_node( HASH_TABLE *table, char *key )
 	__n_assert( key , return FALSE );
 	return table->ht_get_node( table , key );
 }
- 
+
 int ht_get_double( HASH_TABLE *table, char * key, double *val )
 {
 	__n_assert( table , return FALSE );

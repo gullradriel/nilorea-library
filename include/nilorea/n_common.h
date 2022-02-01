@@ -445,6 +445,12 @@ goto error ; \
 #define MAX(a,b) (((a)>(b))?(a):(b))
 #endif
 
+
+/*! CONCAT macro helper */
+#define CONCAT_BUILDER(a, b) a ## b
+/*! Concatenate two macro */
+#define CONCAT(a, b) CONCAT_BUILDER(a, b)
+
 #ifndef __windows__
 int n_daemonize( void );
 #endif

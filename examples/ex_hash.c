@@ -37,8 +37,7 @@ int main( void )
 
 	set_log_level( LOG_DEBUG );
 
-	HASH_TABLE *htable = new_ht_trie( 256 , 32 );
-	//HASH_TABLE *htable = new_ht( NB_ELEMENTS );
+	HASH_TABLE *htable = new_ht( NB_ELEMENTS );
 	LIST *keys_list = new_generic_list( NB_ELEMENTS + 1 );
 	DATA *data = NULL ;
 	char *str = NULL ;
@@ -82,28 +81,10 @@ int main( void )
 	}
 
 	n_log( LOG_INFO, "Reading hash table with ht_foreach" );
-	ht_foreach( node, htable ) 
-	{
-		HASH_NODE *htnode = (HASH_NODE *)node -> ptr ;
-		switch( htnode -> type )
-		{
-			case HASH_INT:
-				n_log( LOG_INFO, "Get int %d with key %s", htnode -> data . ival, htnode -> key );
-				break ;
-			case HASH_DOUBLE:
-				n_log( LOG_INFO, "Get double %g with key %s", htnode -> data . fval, htnode -> key );
-				break ;
-			case HASH_PTR:
-				n_log( LOG_INFO, "Get rnd_str %s value %d with key %s", _nstr( ((DATA *)htnode -> data . ptr)->rnd_str ),  ((DATA *)htnode -> data . ptr)->value,  htnode -> key );
-				break ;
-			case HASH_STRING:
-				n_log( LOG_INFO, "Get string %s with key %s", htnode -> data . string, htnode -> key );
-				break ;
-			default:
-				n_log( LOG_INFO, "Get unknwow node key %s",  htnode -> key );
-				break ;
-		}
-	}
+	HT_FOREACH( node, htable , {
+			n_log( LOG_INFO , "HT_FOREACH key:%s" , _str( node -> key ) );	
+		} );
+
 	/*ht_print( htable );
 	  char input_key[ 1024 ] = "" ;
 	  printf( "Enter key starting piece, q! to quit:\n");
@@ -126,7 +107,7 @@ int main( void )
 	{
 		list_foreach( node , results )
 		{
-			printf( "result: %s\n" , (char *)node -> ptr );
+			n_log( LOG_INFO , "completion result: %s\n" , (char *)node -> ptr );
 		}
 		list_destroy( &results );
 	}
@@ -135,7 +116,7 @@ int main( void )
 	results = ht_search( htable , "key****" );
 	list_foreach( node , results )
 	{
-		printf( "Found key: %s\n" , (char *)node -> ptr );
+		n_log( LOG_INFO , "htsearch: key: %s" , (char *)node -> ptr );
 	}
 	list_destroy( &results );
 
@@ -158,10 +139,19 @@ int main( void )
 	ht_get_double( htable , "TestDouble" , &fval );
 	char *string = NULL ;
 	ht_get_string( htable , "TestString" , &string );
-	printf( "Trie:%d %f %s\n" , ival , fval , string );
-	ht_print( htable );
-	destroy_ht( &htable );
+	n_log( LOG_INFO , "Trie:%d %f %s" , ival , fval , string );
 
+	results = _ht_get_completion_list( htable , "Test" , 10 );
+	if( results )
+	{
+		list_foreach( node , results )
+		{
+			n_log( LOG_INFO , "completion result: %s" , (char *)node -> ptr );
+		}
+		list_destroy( &results );
+	}
+
+	destroy_ht( &htable );
 
 	exit( 0 );
 
