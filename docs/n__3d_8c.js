@@ -1,7 +1,7 @@
 var n__3d_8c =
 [
     [ "distance", "group___d.html#ga436d6582b13cb4a7a52e5814236ae5f0", null ],
-    [ "same_sign", "n__3d_8c.html#a6f56419ce39a4f1fcdfc2fe741f6670c", null ],
+    [ "same_sign", "n__3d_8c.html#a550d75b899d1053205b846e12d48fa35", null ],
     [ "update_physics_position", "group___d.html#gadc7a001ab64c72a43243175e56a86264", null ],
     [ "update_physics_position_nb", "group___d.html#ga5a40d51963e17af619b6a3c36c687462", null ],
     [ "update_physics_position_reverse", "group___d.html#ga7644cdf589832471424103293b68f77b", null ],

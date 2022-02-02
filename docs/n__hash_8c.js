@@ -1,7 +1,5 @@
 var n__hash_8c =
 [
-    [ "_GNU_SOURCE", "n__hash_8c.html#a369266c24eacffb87046522897a570d5", null ],
-    [ "__attribute__", "n__hash_8c.html#a8c8313d05785802938c6d8a2a7fa3e09", null ],
     [ "_destroy_ht", "n__hash_8c.html#a0ee7e0fa87da033f857c04dae6f1586a", null ],
     [ "_destroy_ht_trie", "n__hash_8c.html#ab9d1b16f848c310836772818278a4014", null ],
     [ "_empty_ht", "n__hash_8c.html#a883490d95c386d9d82a7306663a6c2ce", null ],
@@ -48,6 +46,8 @@ var n__hash_8c =
     [ "_ht_search_trie_helper", "n__hash_8c.html#af9f6e937f781df402b5ec4ac788f6f6e", null ],
     [ "destroy_ht", "group___h_a_s_h___t_a_b_l_e.html#ga22a943135dbcdb1611b40ce0547111ce", null ],
     [ "empty_ht", "group___h_a_s_h___t_a_b_l_e.html#ga5d2235e91b2b6b70129246897442f8d5", null ],
+    [ "fmix32", "n__hash_8c.html#abdab255e21a13fc1b2986e02fda0367a", null ],
+    [ "getblock", "n__hash_8c.html#a6a1b75002afc7d08ccc3129f78b62c07", null ],
     [ "ht_get_completion_list", "group___h_a_s_h___t_a_b_l_e.html#ga21e528f4d0a0124c495479ddd265a99b", null ],
     [ "ht_get_double", "group___h_a_s_h___t_a_b_l_e.html#gaaa35befb530f8299abf88af3ee42e6eb", null ],
     [ "ht_get_int", "group___h_a_s_h___t_a_b_l_e.html#ga1dad8732deb44eada370325427824b0d", null ],
@@ -66,5 +66,6 @@ var n__hash_8c =
     [ "MurmurHash3_x86_128", "group___h_a_s_h___t_a_b_l_e.html#ga917618a4c922f524216381a5e5a43a60", null ],
     [ "MurmurHash3_x86_32", "group___h_a_s_h___t_a_b_l_e.html#ga37412933f308bda727603640d9acefba", null ],
     [ "new_ht", "group___h_a_s_h___t_a_b_l_e.html#gaa2d879c1afd3c71a0917bbe2c0766664", null ],
-    [ "new_ht_trie", "group___h_a_s_h___t_a_b_l_e.html#gab95fe0967850a3665d21837519ede6c8", null ]
+    [ "new_ht_trie", "group___h_a_s_h___t_a_b_l_e.html#gab95fe0967850a3665d21837519ede6c8", null ],
+    [ "rotl32", "n__hash_8c.html#a324269020bad851cd569c40a23a862ef", null ]
 ];

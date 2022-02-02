@@ -12,8 +12,6 @@ var group___c_o_n_f_i_g_f_i_l_e =
     [ "config_foreach", "group___c_o_n_f_i_g_f_i_l_e.html#gaa56fa5c30fab08e7145ab2640e12cde5", null ],
     [ "CONFIG_SECTION_HASH_TABLE_LEN", "group___c_o_n_f_i_g_f_i_l_e.html#ga3ed215f5c5f97f94ae329eca4c35e7cd", null ],
     [ "MAX_CONFIG_LINE_LEN", "group___c_o_n_f_i_g_f_i_l_e.html#ga7186273cd88640b740b6333cd98ae243", null ],
-    [ "CONFIG_FILE", "group___c_o_n_f_i_g_f_i_l_e.html#gaae5f457bb6642631b3b1fe78d00035b0", null ],
-    [ "CONFIG_FILE_SECTION", "group___c_o_n_f_i_g_f_i_l_e.html#ga8643b16fe8804a662402c7103324f4a4", null ],
     [ "destroy_config_file", "group___c_o_n_f_i_g_f_i_l_e.html#ga5c6e573bf39871c909dcd71c9bcc13b4", null ],
     [ "get_config_section_value", "group___c_o_n_f_i_g_f_i_l_e.html#ga1ce5c0ab9aff3664d2284a26f6263b85", null ],
     [ "get_nb_config_file_sections", "group___c_o_n_f_i_g_f_i_l_e.html#gae3a92ac0d4158b6991e18beba9446689", null ],

@@ -9,7 +9,6 @@ var n__str_8h =
     [ "strprintf", "group___n___s_t_r.html#ga413e4753210ae76b4231721a2354f06b", null ],
     [ "WILDMAT_ABORT", "group___n___s_t_r.html#ga79fa44855e34ba816359656e8bfd841f", null ],
     [ "WILDMAT_NEGATE_CLASS", "group___n___s_t_r.html#ga868c667912754efcf68370278b0aaee1", null ],
-    [ "N_STR", "group___n___s_t_r.html#ga72e748cc682e5d2b029a33ab2daf4337", null ],
     [ "NSTRBYTE", "group___n___s_t_r.html#ga555af8dd48b4cd567551bf0e13f982c8", null ],
     [ "_free_nstr", "group___n___s_t_r.html#gaca4a7a2dfa962f043cb8f3762ce28761", null ],
     [ "char_to_nstr", "group___n___s_t_r.html#ga69e5f2dbf75571a73e5a3332929642a4", null ],

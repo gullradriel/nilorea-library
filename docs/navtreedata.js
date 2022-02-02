@@ -33,24 +33,22 @@ var NAVTREE =
       [ "Closing Words", "index.html#end", null ]
     ] ],
     [ "Modules", "modules.html", "modules" ],
-    [ "Data Structures", "annotated.html", [
-      [ "Data Structures", "annotated.html", "annotated_dup" ],
-      [ "Data Structure Index", "classes.html", null ],
-      [ "Data Fields", "functions.html", [
+    [ "Classes", "annotated.html", [
+      [ "Class List", "annotated.html", "annotated_dup" ],
+      [ "Class Index", "classes.html", null ],
+      [ "Class Members", "functions.html", [
         [ "All", "functions.html", "functions_dup" ],
         [ "Variables", "functions_vars.html", "functions_vars" ]
       ] ]
     ] ],
     [ "Files", "files.html", [
       [ "File List", "files.html", "files_dup" ],
-      [ "Globals", "globals.html", [
+      [ "File Members", "globals.html", [
         [ "All", "globals.html", "globals_dup" ],
         [ "Functions", "globals_func.html", "globals_func" ],
         [ "Variables", "globals_vars.html", null ],
         [ "Typedefs", "globals_type.html", null ],
-        [ "Enumerations", "globals_enum.html", null ],
-        [ "Enumerator", "globals_eval.html", null ],
-        [ "Macros", "globals_defs.html", "globals_defs" ]
+        [ "Macros", "globals_defs.html", null ]
       ] ]
     ] ]
   ] ]
@@ -59,10 +57,10 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"group___e_n_u_m_s.html#gab3b5dd061164258de176f7ffa32fe145",
-"group___n_e_t_w_o_r_k___m_s_g.html#ga5752ebf119504833871560aaff3142a3",
-"n__hash_8c.html#a3b482644f6bf5ac3cfec10961a9bfdbc",
-"struct_h_a_s_h___t_a_b_l_e.html#aa8df44a08b270669e40549c85ce51e83"
+"group___g_f_x.html#gad09c04081bd396158e15d64bc938b1ec",
+"group___n_e_t_w_o_r_k_i_n_g.html#ga63e06c0450013078c54bb4951e9438ac",
+"n__nodup__log_8c.html#ae8142f2ea37554437482e312432761d8",
+"struct_n_e_t_w_o_r_k.html#a1a7df16e28d83e9bc7004abb15898ae0"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

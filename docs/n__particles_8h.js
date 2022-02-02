@@ -10,8 +10,6 @@ var n__particles_8h =
     [ "STAR_PART", "group___p_a_r_t_i_c_l_e_s.html#gafc693964956e87207d950ee952fa2c98", null ],
     [ "TEXT_PART", "group___p_a_r_t_i_c_l_e_s.html#ga7256f319a5807b336a5cd9f83fd03c96", null ],
     [ "TRANS_PART", "group___p_a_r_t_i_c_l_e_s.html#ga661ec824b54dfdf70f6a737ab8bdaef4", null ],
-    [ "PARTICLE", "group___p_a_r_t_i_c_l_e_s.html#gad4210081f52499841a0b4e4798f62332", null ],
-    [ "PARTICLE_SYSTEM", "group___p_a_r_t_i_c_l_e_s.html#ga1bbff3a33fd23acc54f94d58cd438156", null ],
     [ "add_particle", "group___p_a_r_t_i_c_l_e_s.html#gae8252f1cd818ef45e20e7d4c54351d2e", null ],
     [ "add_particle_ex", "group___p_a_r_t_i_c_l_e_s.html#gad8c6a1f791072a6485af0439a3c4d94f", null ],
     [ "draw_particle", "group___p_a_r_t_i_c_l_e_s.html#ga09e19e83e2251d87db737b6b702a7d70", null ],

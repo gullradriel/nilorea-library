@@ -1,6 +1,5 @@
 var n__pcre_8h =
 [
-    [ "N_PCRE", "group___p_c_r_e.html#ga513af2fed2d0707b7e81dd035f67403c", null ],
     [ "npcre_clean_match", "group___p_c_r_e.html#ga89e67d2b218e2138a12aaecc2deab8fc", null ],
     [ "npcre_delete", "group___p_c_r_e.html#gaf198eb0bc8c55ac41cc92af8e538ce04", null ],
     [ "npcre_match", "group___p_c_r_e.html#ga605b60ef645cf217bd2b3dc548d1d6c2", null ],

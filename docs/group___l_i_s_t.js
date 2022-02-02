@@ -17,8 +17,6 @@ var group___l_i_s_t =
     [ "list_pop", "group___l_i_s_t.html#ga1b74755b55e46d1f993985b5979029bd", null ],
     [ "list_shift", "group___l_i_s_t.html#ga1109e1a0b5996fb3c362ad243e2f8f80", null ],
     [ "remove_list_node", "group___l_i_s_t.html#ga366776cfa85e526b247ef1d348c34e0c", null ],
-    [ "LIST", "group___l_i_s_t.html#ga919ed711f9b02b104096b04d8ae3e64a", null ],
-    [ "LIST_NODE", "group___l_i_s_t.html#gaa734af6e11e1e07f6b33c3261fd3dbb4", null ],
     [ "list_destroy", "group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755", null ],
     [ "list_empty", "group___l_i_s_t.html#ga1dafe7a250ddad51fadd375f057287e7", null ],
     [ "list_empty_with_f", "group___l_i_s_t.html#gae77e34ac35b77e9d1b3124536aa77722", null ],

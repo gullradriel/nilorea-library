@@ -7,8 +7,6 @@ var n__iso__engine_8h =
     [ "N_TILE", "group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga942503317c8fd73c07f63baff1f41fa6", null ],
     [ "SWIM", "group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga154a04fc36112a0bbaf49752569165e9", null ],
     [ "WALK", "group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga4083fcbe80d42575b0336ddbf4ebc622", null ],
-    [ "CELL", "group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga43f04e57ad30df209bc5bb7a3f28b8a2", null ],
-    [ "MAP", "group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#gacb08daaffe2421032c8c3db3f4e58499", null ],
     [ "camera_to_map", "group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga525e12d4a6810091df368bebfead7432", null ],
     [ "camera_to_scr", "group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga78d7a5ad73f85f937963b3619f65b0d7", null ],
     [ "create_empty_map", "group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#gafbd6e8d63e4a9bffb9bae939e6f33d95", null ],

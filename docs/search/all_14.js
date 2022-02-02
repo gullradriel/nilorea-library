@@ -11,11 +11,11 @@ var searchData=
   ['thr_8',['thr',['../struct_t_h_r_e_a_d___p_o_o_l___n_o_d_e.html#a6e5ec8ba0a3eadfcffbd8d97e0c2ac52',1,'THREAD_POOL_NODE']]],
   ['thread_9',['thread',['../struct_n___p_t_h_r_e_a_d___i_n_f_o.html#aa5ee411985d27d7e2b5264b23f8bb33b',1,'N_PTHREAD_INFO']]],
   ['thread_5flist_10',['thread_list',['../struct_t_h_r_e_a_d___p_o_o_l.html#a82a4f1f2900076822de004f357ef4e4a',1,'THREAD_POOL']]],
-  ['thread_5fpool_11',['THREAD_POOL',['../struct_t_h_r_e_a_d___p_o_o_l.html',1,'THREAD_POOL'],['../group___t_h_r_e_a_d_s.html#ga6e2f55fba396ce5cd21ace22f5f181e9',1,'THREAD_POOL():&#160;n_thread_pool.h']]],
-  ['thread_5fpool_5fnode_12',['THREAD_POOL_NODE',['../struct_t_h_r_e_a_d___p_o_o_l___n_o_d_e.html',1,'THREAD_POOL_NODE'],['../group___t_h_r_e_a_d_s.html#ga859901f843c0f65ae2d128617eea65b4',1,'THREAD_POOL_NODE():&#160;n_thread_pool.h']]],
+  ['thread_5fpool_11',['THREAD_POOL',['../struct_t_h_r_e_a_d___p_o_o_l.html',1,'']]],
+  ['thread_5fpool_5fnode_12',['THREAD_POOL_NODE',['../struct_t_h_r_e_a_d___p_o_o_l___n_o_d_e.html',1,'']]],
   ['thread_5fpool_5fprocessing_5ffunction_13',['thread_pool_processing_function',['../n__thread__pool_8c.html#abd0649708787bc15e1bc1ee59d64fd1f',1,'n_thread_pool.c']]],
   ['thread_5fstate_14',['thread_state',['../struct_t_h_r_e_a_d___p_o_o_l___n_o_d_e.html#acbfd0602c9f617ee1b8ed54747111a33',1,'THREAD_POOL_NODE']]],
-  ['thread_5fwaiting_5fproc_15',['THREAD_WAITING_PROC',['../struct_t_h_r_e_a_d___w_a_i_t_i_n_g___p_r_o_c.html',1,'THREAD_WAITING_PROC'],['../group___t_h_r_e_a_d_s.html#gab45c465f5d8115c0fa68538900302f88',1,'THREAD_WAITING_PROC():&#160;n_thread_pool.h']]],
+  ['thread_5fwaiting_5fproc_15',['THREAD_WAITING_PROC',['../struct_t_h_r_e_a_d___w_a_i_t_i_n_g___p_r_o_c.html',1,'']]],
   ['threaded_5fengine_5fstatus_16',['threaded_engine_status',['../struct_n_e_t_w_o_r_k.html#a18fed15683e91916116ec855e5890756',1,'NETWORK']]],
   ['threads_3a_20tools_20to_20create_20and_20manage_20a_20thread_20pool_17',['THREADS: tools to create and manage a thread pool',['../group___t_h_r_e_a_d_s.html',1,'']]],
   ['throw_18',['Throw',['../group___e_x_c_e_p_t_i_o_n_s.html#ga0193ae08c69e967b76172464d544db04',1,'n_exceptions.h']]],
@@ -28,6 +28,6 @@ var searchData=
   ['trim_25',['trim',['../group___n___s_t_r.html#gae5bb0c43f76b886197ee48679f0e8dbc',1,'trim(char *s):&#160;n_str.c'],['../group___n___s_t_r.html#gae5bb0c43f76b886197ee48679f0e8dbc',1,'trim(char *s):&#160;n_str.c']]],
   ['trim_5fnocopy_26',['trim_nocopy',['../group___n___s_t_r.html#ga096b9e0a33d6e0f97e26c86b96415330',1,'trim_nocopy(char *s):&#160;n_str.c'],['../group___n___s_t_r.html#ga096b9e0a33d6e0f97e26c86b96415330',1,'trim_nocopy(char *s):&#160;n_str.c']]],
   ['try_27',['Try',['../group___e_x_c_e_p_t_i_o_n_s.html#ga7a2b8ccf41cff483bac8e86ac7feff9b',1,'n_exceptions.h']]],
-  ['ts_5flog_28',['TS_LOG',['../struct_t_s___l_o_g.html',1,'TS_LOG'],['../group___l_o_g.html#ga5b17a093b2ff569f7ed2ffadc6fa522a',1,'TS_LOG():&#160;n_log.h']]],
+  ['ts_5flog_28',['TS_LOG',['../struct_t_s___l_o_g.html',1,'']]],
   ['type_29',['type',['../struct_a_n_i_m___g_f_x.html#a2095ed8bc17398522ba6cfe8e90c7cf8',1,'ANIM_GFX::type()'],['../struct_h_a_s_h___n_o_d_e.html#a5cd9a167ac8d507a9a98f34fee5577f2',1,'HASH_NODE::type()'],['../struct_t_h_r_e_a_d___p_o_o_l___n_o_d_e.html#a1671454dbf63472ffa867ca84f0afb0f',1,'THREAD_POOL_NODE::type()'],['../struct_p_h_y_s_i_c_s.html#acb5258af9c058f1d9589849b3e97a298',1,'PHYSICS::type()']]]
 ];

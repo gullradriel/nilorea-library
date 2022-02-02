@@ -6,8 +6,8 @@ var searchData=
   ['port_3',['port',['../struct_n___s_o_c_k_e_t.html#a9a3e2418aaf67a7ef77a15c83c5584db',1,'N_SOCKET']]],
   ['position_4',['position',['../struct_p_h_y_s_i_c_s.html#ac379b3c6d18ea45f11ed71b7058b35ae',1,'PHYSICS::position()'],['../struct_n___u_s_e_r.html#ac64a7499749300b573a4cfeb61dd8702',1,'N_USER::position()']]],
   ['prev_5',['prev',['../struct_l_i_s_t___n_o_d_e.html#a97363c506efb3e5cc52dafc68e55f63a',1,'LIST_NODE']]],
-  ['prioritynames_6',['prioritynames',['../n__log_8c.html#a186eba90ff80001df254696dd2867cb8',1,'n_log.c']]],
-  ['proc_5fname_7',['proc_name',['../n__log_8c.html#a2935a9f42014b138d8e8cf7de161450c',1,'n_log.c']]],
+  ['prioritynames_6',['prioritynames',['../n__log_8c.html#a65a1f0ec5bdb9c776a079c89093c83b4',1,'n_log.c']]],
+  ['proc_5fname_7',['proc_name',['../n__log_8c.html#a3b9e0cf786435848ca02419833de49d0',1,'n_log.c']]],
   ['ptanchorx_8',['ptanchorX',['../struct_m_a_p.html#a7ee606fd309f1e469290814e3c17036f',1,'MAP']]],
   ['ptanchory_9',['ptanchorY',['../struct_m_a_p.html#a74066517862f256df00d1e930de9d2f8',1,'MAP']]],
   ['ptr_10',['ptr',['../struct_d_e_b_u_g___m_e_m___i_t_e_m.html#a1693ec377e40f4bf70bea29881b707dd',1,'DEBUG_MEM_ITEM::ptr()'],['../union_h_a_s_h___v_a_l_u_e.html#a4ec9d766374970fa70cb356e5a4b8f96',1,'HASH_VALUE::ptr()'],['../struct_l_i_s_t___n_o_d_e.html#a3e3c8144183582d63ffad5fb3315ea69',1,'LIST_NODE::ptr()']]]

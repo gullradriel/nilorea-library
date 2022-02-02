@@ -10,7 +10,6 @@ var n__network__msg_8h =
     [ "NETMSG_POSITION", "group___n_e_t_w_o_r_k___m_s_g.html#ga6be40a0228eaffdc2591bd892801ad6f", null ],
     [ "NETMSG_QUIT", "group___n_e_t_w_o_r_k___m_s_g.html#ga5752ebf119504833871560aaff3142a3", null ],
     [ "NETMSG_STRING", "group___n_e_t_w_o_r_k___m_s_g.html#ga2cd8d019ec9563557d35e165c7fd820f", null ],
-    [ "NETW_MSG", "group___n_e_t_w_o_r_k___m_s_g.html#ga6835dda6e89d2baf1679b7dd6fdeac74", null ],
     [ "add_int_to_msg", "group___n_e_t_w_o_r_k___m_s_g.html#ga9aa63e987d00d99d9a21aec35efecf74", null ],
     [ "add_nb_to_msg", "group___n_e_t_w_o_r_k___m_s_g.html#gae7c4f1b2c58aabda4856a2f5c782b863", null ],
     [ "add_nstrdup_to_msg", "group___n_e_t_w_o_r_k___m_s_g.html#ga84f36b52e6d9dfe9ca6186c3177f5472", null ],

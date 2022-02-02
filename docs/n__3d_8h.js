@@ -8,7 +8,6 @@ var n__3d_8h =
     [ "VECTOR3D_DO_INTERSECT", "group___d.html#ga4aa4f8e93ec25da82dbef99b4dcca990", null ],
     [ "VECTOR3D_DONT_INTERSECT", "group___d.html#ga6f567ec1eef50b1902b47b3d67b0cece", null ],
     [ "VECTOR3D_SET", "group___d.html#ga0d342c376c3e3125c8fb97bcbe7f93c0", null ],
-    [ "PHYSICS", "group___d.html#gafdae092cf98d69b587016c373b650e44", null ],
     [ "VECTOR3D", "group___d.html#ga4cbdd7084ea2076595f397a969feba63", null ],
     [ "distance", "group___d.html#ga436d6582b13cb4a7a52e5814236ae5f0", null ],
     [ "update_physics_position", "group___d.html#gadc7a001ab64c72a43243175e56a86264", null ],

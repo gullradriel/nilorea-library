@@ -83,7 +83,8 @@ $(document).ready(function(){initNavTree('struct_t_h_r_e_a_d___p_o_o_l___n_o_d_e
 
 <div class="header">
   <div class="summary">
-<a href="#pub-attribs">Data Fields</a>  </div>
+<a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="struct_t_h_r_e_a_d___p_o_o_l___n_o_d_e-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">THREAD_POOL_NODE Struct Reference<div class="ingroups"><a class="el" href="group___t_h_r_e_a_d_s.html">THREADS: tools to create and manage a thread pool</a></div></div></div>
 </div><!--header-->
 <div class="contents">
@@ -91,7 +92,7 @@ $(document).ready(function(){initNavTree('struct_t_h_r_e_a_d___p_o_o_l___n_o_d_e
 <p>A thread pool node.  
  <a href="struct_t_h_r_e_a_d___p_o_o_l___n_o_d_e.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="n__thread__pool_8h_source.html">n_thread_pool.h</a>&gt;</code></p>
+<p><code>#include &quot;<a class="el" href="n__thread__pool_8h_source.html">n_thread_pool.h</a>&quot;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for THREAD_POOL_NODE:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
@@ -110,7 +111,7 @@ $(document).ready(function(){initNavTree('struct_t_h_r_e_a_d___p_o_o_l___n_o_d_e
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
-Data Fields</h2></td></tr>
+Public Attributes</h2></td></tr>
 <tr class="memitem:a34366b14ed447b68b13afc113589c367"><td class="memItemLeft" align="right" valign="top">void *(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_t_h_r_e_a_d___p_o_o_l___n_o_d_e.html#a34366b14ed447b68b13afc113589c367">func</a> )(void *<a class="el" href="struct_t_h_r_e_a_d___p_o_o_l___n_o_d_e.html#af2c6175edf922b474d70a8e9ba45ff67">param</a>)</td></tr>
 <tr class="memdesc:a34366b14ed447b68b13afc113589c367"><td class="mdescLeft">&#160;</td><td class="mdescRight">function to call in the thread  <a href="struct_t_h_r_e_a_d___p_o_o_l___n_o_d_e.html#a34366b14ed447b68b13afc113589c367">More...</a><br /></td></tr>
 <tr class="separator:a34366b14ed447b68b13afc113589c367"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -143,7 +144,7 @@ Data Fields</h2></td></tr>
 <div class="textblock"><p >A thread pool node. </p>
 
 <p class="definition">Definition at line <a class="el" href="n__thread__pool_8h_source.html#l00047">47</a> of file <a class="el" href="n__thread__pool_8h_source.html">n_thread_pool.h</a>.</p>
-</div><h2 class="groupheader">Field Documentation</h2>
+</div><h2 class="groupheader">Member Data Documentation</h2>
 <a id="a34366b14ed447b68b13afc113589c367" name="a34366b14ed447b68b13afc113589c367"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a34366b14ed447b68b13afc113589c367">&#9670;&nbsp;</a></span>func</h2>
 
@@ -159,6 +160,8 @@ Data Fields</h2></td></tr>
 <p>function to call in the thread </p>
 
 <p class="definition">Definition at line <a class="el" href="n__thread__pool_8h_source.html#l00050">50</a> of file <a class="el" href="n__thread__pool_8h_source.html">n_thread_pool.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="n__thread__pool_8c_source.html#l00164">add_threaded_process()</a>, and <a class="el" href="n__thread__pool_8c_source.html#l00025">thread_pool_processing_function()</a>.</p>
 
 </div>
 </div>
@@ -196,6 +199,8 @@ Data Fields</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="n__thread__pool_8h_source.html#l00053">53</a> of file <a class="el" href="n__thread__pool_8h_source.html">n_thread_pool.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="n__thread__pool_8c_source.html#l00164">add_threaded_process()</a>, and <a class="el" href="n__thread__pool_8c_source.html#l00025">thread_pool_processing_function()</a>.</p>
+
 </div>
 </div>
 <a id="a065b2419124f6d3824a182e3147bab43" name="a065b2419124f6d3824a182e3147bab43"></a>
@@ -213,6 +218,8 @@ Data Fields</h2></td></tr>
 <p>state of the proc , RUNNING_PROC when it is busy processing func( param) , IDLE_PROC when it waits for some func and param to process , WAITING_PROC when it has things waiting to be processed </p>
 
 <p class="definition">Definition at line <a class="el" href="n__thread__pool_8h_source.html#l00058">58</a> of file <a class="el" href="n__thread__pool_8h_source.html">n_thread_pool.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="n__thread__pool_8c_source.html#l00164">add_threaded_process()</a>, <a class="el" href="n__thread__pool_8c_source.html#l00340">destroy_threaded_pool()</a>, <a class="el" href="n__thread__pool_8c_source.html#l00094">new_thread_pool()</a>, <a class="el" href="n__thread__pool_8c_source.html#l00404">refresh_thread_pool()</a>, <a class="el" href="n__thread__pool_8c_source.html#l00248">start_threaded_pool()</a>, <a class="el" href="n__thread__pool_8c_source.html#l00025">thread_pool_processing_function()</a>, and <a class="el" href="n__thread__pool_8c_source.html#l00289">wait_for_threaded_pool()</a>.</p>
 
 </div>
 </div>
@@ -286,6 +293,8 @@ Data Fields</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="n__thread__pool_8h_source.html#l00060">60</a> of file <a class="el" href="n__thread__pool_8h_source.html">n_thread_pool.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="n__thread__pool_8c_source.html#l00164">add_threaded_process()</a>, <a class="el" href="n__thread__pool_8c_source.html#l00340">destroy_threaded_pool()</a>, <a class="el" href="n__thread__pool_8c_source.html#l00094">new_thread_pool()</a>, and <a class="el" href="n__thread__pool_8c_source.html#l00025">thread_pool_processing_function()</a>.</p>
+
 </div>
 </div>
 <a id="a1671454dbf63472ffa867ca84f0afb0f" name="a1671454dbf63472ffa867ca84f0afb0f"></a>
@@ -304,6 +313,8 @@ Data Fields</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="n__thread__pool_8h_source.html#l00056">56</a> of file <a class="el" href="n__thread__pool_8h_source.html">n_thread_pool.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="n__thread__pool_8c_source.html#l00164">add_threaded_process()</a>, <a class="el" href="n__thread__pool_8c_source.html#l00094">new_thread_pool()</a>, <a class="el" href="n__thread__pool_8c_source.html#l00248">start_threaded_pool()</a>, and <a class="el" href="n__thread__pool_8c_source.html#l00025">thread_pool_processing_function()</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
@@ -315,7 +326,7 @@ Data Fields</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="struct_t_h_r_e_a_d___p_o_o_l___n_o_d_e.html">THREAD_POOL_NODE</a></li>
-    <li class="footer">Generated on Tue Feb 1 2022 21:13:49 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+    <li class="footer">Generated on Wed Feb 2 2022 14:24:11 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
   </ul>
 </div>
 </body>

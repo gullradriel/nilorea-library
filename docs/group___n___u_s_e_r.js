@@ -20,8 +20,6 @@ var group___n___u_s_e_r =
     [ "USERLIST_ALL", "group___n___u_s_e_r.html#gaa1818df59987698f547d177eb46517a4", null ],
     [ "USERLIST_ALL_EXCEPT", "group___n___u_s_e_r.html#ga83e39582966eb2e63f5c3ddce6cbc6ef", null ],
     [ "USERLIST_ONE", "group___n___u_s_e_r.html#ga6aa5b8a1350ee4a1ad01d47b4100ea92", null ],
-    [ "N_USER", "group___n___u_s_e_r.html#ga52d5851aeb85bb8cee0140f7f6edb646", null ],
-    [ "N_USERLIST", "group___n___u_s_e_r.html#ga9d32e5319e56c3151d492439d4d15365", null ],
     [ "userlist_add_msg_to", "group___n___u_s_e_r.html#ga25d7254e2bc5d4c6d4e89dadef9c67cd", null ],
     [ "userlist_add_msg_to_all", "group___n___u_s_e_r.html#gaaf1860e26c4355764ad00e1016547b2c", null ],
     [ "userlist_add_msg_to_all_except", "group___n___u_s_e_r.html#gaec87d76c70852173c2187e4eceb707ee", null ],

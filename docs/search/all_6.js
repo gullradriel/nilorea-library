@@ -12,7 +12,7 @@ var searchData=
   ['enumerations_3a_20quick_20and_20clean_20enum_20macro_20set_9',['ENUMERATIONS: quick and clean enum macro set',['../group___e_n_u_m_s.html',1,'']]],
   ['equal_5fif_10',['equal_if',['../group___c_o_m_m_o_n_s.html#ga2507d4d96edcb14310f82085f71dbaaa',1,'n_common.h']]],
   ['eventbolt_11',['eventbolt',['../struct_n_e_t_w_o_r_k.html#a56b1f8c6c3cacad772798dbe044d6758',1,'NETWORK']]],
-  ['exceptioncontextlist_12',['ExceptionContextList',['../struct_exception_context_list.html',1,'ExceptionContextList'],['../group___e_x_c_e_p_t_i_o_n_s.html#gaaa9369eb836f9d74f14736cee873e88b',1,'ExceptionContextList():&#160;n_exceptions.h']]],
+  ['exceptioncontextlist_12',['ExceptionContextList',['../struct_exception_context_list.html',1,'']]],
   ['exceptions_3a_20c_2b_2b_20style_20try_2ccatch_2cendtry_2cthrow_13',['EXCEPTIONS: C++ style try,catch,endtry,throw',['../group___e_x_c_e_p_t_i_o_n_s.html',1,'']]],
   ['exited_5fthread_14',['EXITED_THREAD',['../group___t_h_r_e_a_d_s.html#ga1acdd58d4aee3c8453ea124bd862518d',1,'n_thread_pool.h']]],
   ['exiting_5fthread_15',['EXITING_THREAD',['../group___t_h_r_e_a_d_s.html#gaac52c55616f27d8f95c4435d4b2cf91d',1,'n_thread_pool.h']]],

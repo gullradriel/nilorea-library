@@ -85,57 +85,55 @@ $(document).ready(function(){initNavTree('n__allegro5_8c_source.html',''); initR
   <div class="headertitle"><div class="title">n_allegro5.c</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="n__allegro5_8c.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/**\file n_allegro5.c</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> *  allegro5 helpers</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> *\author Castagnier Mickael</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> *\version 1.0</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> *\date 10/05/2020</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> */</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;<a class="code" href="n__common_8h.html">nilorea/n_common.h</a>&quot;</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;<a class="code" href="n__allegro5_8h.html">nilorea/n_allegro5.h</a>&quot;</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment"></span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment">/*!\fn int get_keyboard( ALLEGRO_USTR *str, ALLEGRO_EVENT event )</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment"> *\brief update a keyboard buffer from an event</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment"> *\param str A string to hold the inputs</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment"> *\param event The event in which we&#39;ll try to read an input</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment"> *\return TRUE or FALSE</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment"> */</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="group___a_l_l_e_g_r_o5.html#ga89b632f62c41b87b68e83a086e302247">   19</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="group___a_l_l_e_g_r_o5.html#ga89b632f62c41b87b68e83a086e302247">get_keyboard</a>( ALLEGRO_USTR *str, ALLEGRO_EVENT event )</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>{</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <a class="code hl_define" href="group___c_o_m_m_o_n_s.html#ga4ecf5d80299a4ca1dc13c3a19610db11">__n_assert</a>( str, <span class="keywordflow">return</span> FALSE );</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keywordflow">if</span>( event.type == ALLEGRO_EVENT_KEY_CHAR )</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    {</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        <span class="keywordflow">if</span>(event.keyboard.unichar &gt;= 32)</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        {</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>            al_ustr_append_chr(str, event.keyboard.unichar);</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        }</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span>(event.keyboard.keycode == ALLEGRO_KEY_BACKSPACE)</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        {</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>            <span class="keywordtype">int</span> pos = (int)al_ustr_size(str);</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>            <span class="keywordflow">if</span>(al_ustr_prev(str, &amp;pos))</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>                al_ustr_truncate(str, pos);</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        }</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    }</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    {</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <span class="keywordflow">return</span> FALSE ;</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    }</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keywordflow">return</span> TRUE ;</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>}</div>
+<a href="n__allegro5_8c.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><span class="lineno">    1</span><span class="comment">/**\file n_allegro5.c</span></div>
+<div class="line"><span class="lineno">    2</span><span class="comment"> *  allegro5 helpers</span></div>
+<div class="line"><span class="lineno">    3</span><span class="comment"> *\author Castagnier Mickael</span></div>
+<div class="line"><span class="lineno">    4</span><span class="comment"> *\version 1.0</span></div>
+<div class="line"><span class="lineno">    5</span><span class="comment"> *\date 10/05/2020</span></div>
+<div class="line"><span class="lineno">    6</span><span class="comment"> */</span></div>
+<div class="line"><span class="lineno">    7</span> </div>
+<div class="line"><span class="lineno">    8</span> </div>
+<div class="line"><span class="lineno">    9</span><span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&quot;nilorea/n_common.h&quot;</span></div>
+<div class="line"><span class="lineno">   10</span><span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&quot;nilorea/n_allegro5.h&quot;</span></div>
+<div class="line"><span class="lineno">   11</span> </div>
+<div class="line"><span class="lineno">   12</span> </div>
+<div class="line"><span class="lineno">   13</span><span class="comment">/*!\fn int get_keyboard( ALLEGRO_USTR *str, ALLEGRO_EVENT event )</span></div>
+<div class="line"><span class="lineno">   14</span><span class="comment"> *\brief update a keyboard buffer from an event</span></div>
+<div class="line"><span class="lineno">   15</span><span class="comment"> *\param str A string to hold the inputs</span></div>
+<div class="line"><span class="lineno">   16</span><span class="comment"> *\param event The event in which we&#39;ll try to read an input</span></div>
+<div class="line"><span class="lineno">   17</span><span class="comment"> *\return TRUE or FALSE</span></div>
+<div class="line"><span class="lineno">   18</span><span class="comment"> */</span></div>
+<div class="line"><span class="lineno"><a class="line" href="group___a_l_l_e_g_r_o5.html#ga89b632f62c41b87b68e83a086e302247">   19</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="group___a_l_l_e_g_r_o5.html#ga89b632f62c41b87b68e83a086e302247">get_keyboard</a>( ALLEGRO_USTR *str, ALLEGRO_EVENT event )</div>
+<div class="line"><span class="lineno">   20</span>{</div>
+<div class="line"><span class="lineno">   21</span>    <a class="code hl_define" href="group___c_o_m_m_o_n_s.html#ga4ecf5d80299a4ca1dc13c3a19610db11">__n_assert</a>( str, <span class="keywordflow">return</span> FALSE );</div>
+<div class="line"><span class="lineno">   22</span>    <span class="keywordflow">if</span>( event.type == ALLEGRO_EVENT_KEY_CHAR )</div>
+<div class="line"><span class="lineno">   23</span>    {</div>
+<div class="line"><span class="lineno">   24</span>        <span class="keywordflow">if</span>(event.keyboard.unichar &gt;= 32)</div>
+<div class="line"><span class="lineno">   25</span>        {</div>
+<div class="line"><span class="lineno">   26</span>            al_ustr_append_chr(str, event.keyboard.unichar);</div>
+<div class="line"><span class="lineno">   27</span>        }</div>
+<div class="line"><span class="lineno">   28</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span>(event.keyboard.keycode == ALLEGRO_KEY_BACKSPACE)</div>
+<div class="line"><span class="lineno">   29</span>        {</div>
+<div class="line"><span class="lineno">   30</span>            <span class="keywordtype">int</span> pos = (<span class="keywordtype">int</span>)al_ustr_size(str);</div>
+<div class="line"><span class="lineno">   31</span>            <span class="keywordflow">if</span>(al_ustr_prev(str, &amp;pos))</div>
+<div class="line"><span class="lineno">   32</span>                al_ustr_truncate(str, pos);</div>
+<div class="line"><span class="lineno">   33</span>        }</div>
+<div class="line"><span class="lineno">   34</span>    }</div>
+<div class="line"><span class="lineno">   35</span>    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">   36</span>    {</div>
+<div class="line"><span class="lineno">   37</span>        <span class="keywordflow">return</span> FALSE ;</div>
+<div class="line"><span class="lineno">   38</span>    }</div>
+<div class="line"><span class="lineno">   39</span>    <span class="keywordflow">return</span> TRUE ;</div>
+<div class="line"><span class="lineno">   40</span>}</div>
 <div class="ttc" id="agroup___a_l_l_e_g_r_o5_html_ga89b632f62c41b87b68e83a086e302247"><div class="ttname"><a href="group___a_l_l_e_g_r_o5.html#ga89b632f62c41b87b68e83a086e302247">get_keyboard</a></div><div class="ttdeci">int get_keyboard(ALLEGRO_USTR *str, ALLEGRO_EVENT event)</div><div class="ttdoc">update a keyboard buffer from an event</div><div class="ttdef"><b>Definition:</b> <a href="n__allegro5_8c_source.html#l00019">n_allegro5.c:19</a></div></div>
 <div class="ttc" id="agroup___c_o_m_m_o_n_s_html_ga4ecf5d80299a4ca1dc13c3a19610db11"><div class="ttname"><a href="group___c_o_m_m_o_n_s.html#ga4ecf5d80299a4ca1dc13c3a19610db11">__n_assert</a></div><div class="ttdeci">#define __n_assert(__ptr, __ret)</div><div class="ttdoc">macro to assert things</div><div class="ttdef"><b>Definition:</b> <a href="n__common_8h_source.html#l00260">n_common.h:260</a></div></div>
-<div class="ttc" id="an__allegro5_8h_html"><div class="ttname"><a href="n__allegro5_8h.html">n_allegro5.h</a></div><div class="ttdoc">allegro5 helpers</div></div>
-<div class="ttc" id="an__common_8h_html"><div class="ttname"><a href="n__common_8h.html">n_common.h</a></div><div class="ttdoc">common headers and low-level hugly functions &amp; define</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="n__allegro5_8c.html">n_allegro5.c</a></li>
-    <li class="footer">Generated on Tue Feb 1 2022 21:13:47 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+    <li class="footer">Generated on Wed Feb 2 2022 14:24:09 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
   </ul>
 </div>
 </body>

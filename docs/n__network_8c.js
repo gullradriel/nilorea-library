@@ -2,21 +2,8 @@ var n__network_8c =
 [
     [ "neterrno", "n__network_8c.html#aa852852826e7fd48fa5791e9ac1e32ae", null ],
     [ "netstrerror", "n__network_8c.html#a9fe7353395b6abe8f260a2de5d3b3d96", null ],
-    [ "NS_IN6ADDRSZ", "n__network_8c.html#a698052f043e7a380c9c4618ddac6271f", null ],
-    [ "NS_IN6ADDRSZ", "n__network_8c.html#a698052f043e7a380c9c4618ddac6271f", null ],
-    [ "NS_INADDRSZ", "n__network_8c.html#ae844c8e3e7def7773d2b480642a48ccc", null ],
-    [ "NS_INT16SZ", "n__network_8c.html#a74152bda75f22ff370cc351ad51e4997", null ],
-    [ "NS_INT16SZ", "n__network_8c.html#a74152bda75f22ff370cc351ad51e4997", null ],
-    [ "__netw_code_type_isValid", "group___n_e_t_w_o_r_k_i_n_g.html#ga481416ccbe2658a12c064896c5979b21", null ],
-    [ "__netw_code_type_toString", "group___n_e_t_w_o_r_k_i_n_g.html#ga7bec5ee0c7e69c745038e41bc7c07ffb", null ],
     [ "deplete_send_buffer", "n__network_8c.html#a47e28ca4745f27fc86baf2ce2848d295", null ],
     [ "get_in_addr", "n__network_8c.html#ab995208f051c8975b80f13ff2cfeae32", null ],
-    [ "inet_ntop", "n__network_8c.html#adcb6745d0482b62584ae7595aa91eddb", null ],
-    [ "inet_ntop4", "n__network_8c.html#a77e4f6e0422267bbf283ef9354008220", null ],
-    [ "inet_ntop6", "n__network_8c.html#afb587e171ee7801b98d558925cb84d09", null ],
-    [ "inet_pton", "n__network_8c.html#acdce1d46efd09e8485a2f682b388ebc0", null ],
-    [ "inet_pton4", "n__network_8c.html#a804c930c67b46dbc7c4ead9137bbbd8d", null ],
-    [ "inet_pton6", "n__network_8c.html#a212bf5b6c98d5d8d15ef62275c36fff2", null ],
     [ "netw_accept_from", "group___n_e_t_w_o_r_k_i_n_g.html#gab99090cbf623f95556ea610e690b50d9", null ],
     [ "netw_accept_from_ex", "group___n_e_t_w_o_r_k_i_n_g.html#ga80624fa0de793761e9ea5cebff424c68", null ],
     [ "netw_accept_nonblock_from", "group___n_e_t_w_o_r_k_i_n_g.html#ga32138772c399518190a14e81164fc469", null ],
@@ -50,6 +37,7 @@ var n__network_8c =
     [ "netw_set_blocking", "group___n_e_t_w_o_r_k_i_n_g.html#gad02f949dd057ae7dd382f03f9364cac0", null ],
     [ "netw_set_user_id", "group___n_e_t_w_o_r_k_i_n_g.html#ga4dcf657c3f133ae52d1fa6f2a2e0cd18", null ],
     [ "netw_setsockopt", "group___n_e_t_w_o_r_k_i_n_g.html#gaa5ed966d8c5844ded549eda41e38c0be", null ],
+    [ "netw_sigchld_handler", "n__network_8c.html#a6d493e1a8e3717c37b3186b2f63acbb2", null ],
     [ "netw_start_thr_engine", "group___n_e_t_w_o_r_k_i_n_g.html#ga5ba0555c5ccd261227c3c1216923d563", null ],
     [ "netw_stop_thr_engine", "group___n_e_t_w_o_r_k_i_n_g.html#ga29159184519b3129c0154b1a2c2a3e2f", null ],
     [ "netw_wait_close", "group___n_e_t_w_o_r_k_i_n_g.html#ga60beb772aa298f36d1443a28e3ec5ec8", null ],
@@ -58,7 +46,5 @@ var n__network_8c =
     [ "recv_data", "group___n_e_t_w_o_r_k_i_n_g.html#ga1fc319fa3b0eba19e163070a9fb3dae4", null ],
     [ "recv_php", "group___n_e_t_w_o_r_k_i_n_g.html#gaf3e1619c354974bd6a40b511b2896e60", null ],
     [ "send_data", "group___n_e_t_w_o_r_k_i_n_g.html#gaf3dc736265484a58e6678c250e38cef8", null ],
-    [ "send_php", "group___n_e_t_w_o_r_k_i_n_g.html#ga0f3aa54a82aed45e85124acbd7af6a29", null ],
-    [ "strlcpy", "n__network_8c.html#aeb79f86261de904967d433c1b5e9a1de", null ],
-    [ "wchar_to_char", "n__network_8c.html#a913b02f2145bafd508ffc7c3cfe9fdcd", null ]
+    [ "send_php", "group___n_e_t_w_o_r_k_i_n_g.html#ga0f3aa54a82aed45e85124acbd7af6a29", null ]
 ];

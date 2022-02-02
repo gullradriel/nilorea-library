@@ -1,15 +1,14 @@
 <map id="netw_wait_close_timed" name="netw_wait_close_timed">
-<area shape="rect" id="node1" title="Wait for peer closing a specified Network, destroy queues, free the structure." alt="" coords="5,308,161,335"/>
-<area shape="rect" id="node2" href="$n__network_8c.html#a47e28ca4745f27fc86baf2ce2848d295" title="wait until the socket is empty or timeout, checking each 100 msec." alt="" coords="209,181,347,208"/>
-<area shape="rect" id="node3" href="$group___n_e_t_w_o_r_k_i_n_g.html#gac345c1af1935cebb9ee33edd4c32267a" title="Closing a specified Network, destroy queues, free the structure." alt="" coords="235,232,321,259"/>
-<area shape="rect" id="node6" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaf25c0f462f174092815b0c5d019441db" title="Get the state of a network." alt="" coords="601,308,712,335"/>
-<area shape="rect" id="node7" href="$n__debug__locks_8c.html#a12809c44718c21544ceb280dc1a53573" title=" " alt="" coords="760,308,899,335"/>
-<area shape="rect" id="node4" href="$group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755" title="Empty and Free a list container." alt="" coords="785,181,874,208"/>
-<area shape="rect" id="node8" href="$group___n_e_t_w_o_r_k_i_n_g.html#gafc7a91b4be2a997710a2b54037c25168" title=" " alt="" coords="410,31,538,57"/>
-<area shape="rect" id="node11" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaa8e1fe7978995197f08aa0ef24a76c33" title="Restart or reset the specified network ability." alt="" coords="619,232,694,259"/>
-<area shape="rect" id="node12" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga29159184519b3129c0154b1a2c2a3e2f" title="Stop a NETWORK connection sending and receing thread." alt="" coords="400,257,548,284"/>
-<area shape="rect" id="node13" href="$n__debug__locks_8c.html#a3cf620ff3a40af11d79cf28901dc55e2" title=" " alt="" coords="395,105,553,132"/>
-<area shape="rect" id="node5" href="$group___l_i_s_t.html#ga1dafe7a250ddad51fadd375f057287e7" title="Empty a LIST list of pointers." alt="" coords="947,207,1029,233"/>
-<area shape="rect" id="node9" href="$group___h_a_s_h___t_a_b_l_e.html#ga8d8873be47a634ad8a386e61f12a1f53" title=" " alt="" coords="616,5,697,32"/>
-<area shape="rect" id="node10" href="$group___l_i_s_t.html#gae009d6d3c835a2affb99071ea8457803" title="search ptr in list" alt="" coords="614,56,699,83"/>
+<area shape="rect" id="node1" title="Wait for peer closing a specified Network, destroy queues, free the structure." alt="" coords="5,259,161,285"/>
+<area shape="rect" id="node2" href="$group___n_e_t_w_o_r_k_i_n_g.html#gac345c1af1935cebb9ee33edd4c32267a" title="Closing a specified Network, destroy queues, free the structure." alt="" coords="209,183,296,209"/>
+<area shape="rect" id="node5" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaf25c0f462f174092815b0c5d019441db" title="Get the state of a network." alt="" coords="540,259,651,285"/>
+<area shape="rect" id="node3" href="$group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755" title="Empty and Free a list container." alt="" coords="702,107,791,133"/>
+<area shape="rect" id="node6" href="$group___n_e_t_w_o_r_k_i_n_g.html#gafc7a91b4be2a997710a2b54037c25168" title=" " alt="" coords="354,56,482,83"/>
+<area shape="rect" id="node9" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaa8e1fe7978995197f08aa0ef24a76c33" title="Restart or reset the specified network ability." alt="" coords="558,157,633,184"/>
+<area shape="rect" id="node10" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga29159184519b3129c0154b1a2c2a3e2f" title="Stop a NETWORK connection sending and receing thread." alt="" coords="344,208,492,235"/>
+<area shape="rect" id="node4" href="$group___l_i_s_t.html#ga1dafe7a250ddad51fadd375f057287e7" title="Empty a LIST list of pointers." alt="" coords="843,132,925,159"/>
+<area shape="rect" id="node7" href="$group___n___s_t_r.html#gaca4a7a2dfa962f043cb8f3762ce28761" title="Free a N_STR structure and set the pointer to NULL." alt="" coords="556,5,635,32"/>
+<area shape="rect" id="node8" href="$group___l_i_s_t.html#gae009d6d3c835a2affb99071ea8457803" title="search ptr in list" alt="" coords="553,56,638,83"/>
+<area shape="rect" id="node11" href="$group___l_o_g.html#gafbbbfcb9063b9f1454a499dbf98f7a56" title="Logging function." alt="" coords="565,208,625,235"/>
+<area shape="rect" id="node12" href="$group___l_o_g.html#gafeea44ab08778cbff68e91e831d44112" title="Get the global log level value." alt="" coords="699,208,795,235"/>
 </map>

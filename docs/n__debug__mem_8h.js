@@ -1,8 +1,6 @@
 var n__debug__mem_8h =
 [
     [ "DEBUG_MEM_DUMP_MAX_LEN", "group___d_e_b_u_g_m_e_m_c_o_r_e.html#ga0ee85545fc2f0a35e282ff54bec7fad4", null ],
-    [ "DEBUG_MEM_ITEM", "group___d_e_b_u_g_m_e_m_c_o_r_e.html#gaf6e80cf1cc5145f9f63a578438c9a2e3", null ],
-    [ "DEBUG_MEM_TABLE", "group___d_e_b_u_g_m_e_m_c_o_r_e.html#gaca38874073cb1bcb9e4e2063ca93d3a7", null ],
     [ "db_mem_alloc", "group___d_e_b_u_g_m_e_m_c_o_r_e.html#ga3f63c1a843b2f1685d31b4564ee03918", null ],
     [ "db_mem_dump_leaked", "group___d_e_b_u_g_m_e_m_c_o_r_e.html#ga53876f346e6461281c59a47451b08a5c", null ],
     [ "db_mem_free", "group___d_e_b_u_g_m_e_m_c_o_r_e.html#gaea4d614fcd75f3493130a64e0e58113d", null ],

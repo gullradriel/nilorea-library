@@ -13,7 +13,6 @@ var n__log_8h =
     [ "LOG_SYSJRNL", "group___l_o_g.html#ga22d57c47fac1ff91517133741592cc01", null ],
     [ "LOG_WARNING", "group___l_o_g.html#gadf4476a6a4ea6c74231c826e899d7189", null ],
     [ "n_log", "group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b", null ],
-    [ "TS_LOG", "group___l_o_g.html#ga5b17a093b2ff569f7ed2ffadc6fa522a", null ],
     [ "_n_log", "group___l_o_g.html#gafbbbfcb9063b9f1454a499dbf98f7a56", null ],
     [ "close_safe_logging", "group___l_o_g.html#gab0f29a8f3d807e2738376cd0bd657eb0", null ],
     [ "close_sysjrnl", "group___l_o_g.html#ga6b48448b4bb689cc55c6a7267daf77ca", null ],

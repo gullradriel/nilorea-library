@@ -85,109 +85,85 @@ $(document).ready(function(){initNavTree('nilorea_8h_source.html',''); initResiz
   <div class="headertitle"><div class="title">nilorea.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="nilorea_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef HEADER_48364550BE28290E</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define HEADER_48364550BE28290E</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"></span> </div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">/**\file nilorea.h</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> *  Header to include for use with libnilorea</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> *\author Castagnier Mickael</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> *\version 1.0</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> *\date 24/03/05</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"> */</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#ifndef __NILOREA_Unified_Library__</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="nilorea_8h.html#a7e31aeb8676f4f9a50724be028177c39">   13</a></span><span class="preprocessor">#define __NILOREA_Unified_Library__</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment"></span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment">/**\defgroup GLOBALHEADER HEADER: just a global header to include all the modules</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment">  \addtogroup GLOBALHEADER</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment">  @{</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment">  */</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#include &lt;<a class="code" href="n__3d_8h.html">nilorea/n_3d.h</a>&gt;</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#include &lt;<a class="code" href="n__common_8h.html">nilorea/n_common.h</a>&gt;</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#include &lt;<a class="code" href="n__config__file_8h.html">nilorea/n_config_file.h</a>&gt;</span></div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#include &lt;<a class="code" href="n__exceptions_8h.html">nilorea/n_exceptions.h</a>&gt;</span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#include &lt;<a class="code" href="n__games_8h.html">nilorea/n_games.h</a>&gt;</span></div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#include &lt;<a class="code" href="n__hash_8h.html">nilorea/n_hash.h</a>&gt;</span></div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="preprocessor">#include &lt;<a class="code" href="n__iso__engine_8h.html">nilorea/n_iso_engine.h</a>&gt;</span></div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#include &lt;<a class="code" href="n__list_8h.html">nilorea/n_list.h</a>&gt;</span></div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">#include &lt;<a class="code" href="n__log_8h.html">nilorea/n_log.h</a>&gt;</span></div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">#include &lt;<a class="code" href="n__network_8h.html">nilorea/n_network.h</a>&gt;</span></div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">#include &lt;<a class="code" href="n__network__msg_8h.html">nilorea/n_network_msg.h</a>&gt;</span></div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#include &lt;<a class="code" href="n__nodup__log_8h.html">nilorea/n_nodup_log.h</a>&gt;</span></div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#include &lt;<a class="code" href="n__pcre_8h.html">nilorea/n_pcre.h</a>&gt;</span></div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#include &lt;<a class="code" href="n__signals_8h.html">nilorea/n_signals.h</a>&gt;</span></div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">#include &lt;<a class="code" href="n__stack_8h.html">nilorea/n_stack.h</a>&gt;</span></div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">#include &lt;<a class="code" href="n__str_8h.html">nilorea/n_str.h</a>&gt;</span></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#include &lt;<a class="code" href="n__thread__pool_8h.html">nilorea/n_thread_pool.h</a>&gt;</span></div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="preprocessor">#include &lt;<a class="code" href="n__time_8h.html">nilorea/n_time.h</a>&gt;</span></div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="preprocessor">#include &lt;<a class="code" href="n__user_8h.html">nilorea/n_user.h</a>&gt;</span></div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="preprocessor">#include &lt;<a class="code" href="n__zlib_8h.html">nilorea/n_zlib.h</a>&gt;</span></div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment">/* wip_unstable #include &lt;nilorea/n_neural_networks.h&gt; */</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="comment">/* wip_unstable #include &lt;nilorea/n_file.h&gt; */</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="comment">/* Must revamp this</span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="comment">#include &lt;nilorea/n_debug_mem.h&gt;</span></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="comment">#include &lt;nilorea/n_debug_mem_h.h&gt;</span></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="comment">*/</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="preprocessor">#ifdef HAVE_ALLEGRO</span></div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="preprocessor">#include &lt;<a class="code" href="n__gfx_8h.html">nilorea/n_gfx.h</a>&gt;</span></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="preprocessor">#include &lt;<a class="code" href="n__anim_8h.html">nilorea/n_anim.h</a>&gt;</span></div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="preprocessor">#include &lt;nilorea/n_gui.h&gt;</span></div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="preprocessor">#include &lt;<a class="code" href="n__particles_8h.html">nilorea/n_particles.h</a>&gt;</span></div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="comment">/* wip_unstable #include &lt;nilorea/n_resources.h&gt; */</span></div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="comment"></span> </div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="comment">/**</span></div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="comment">  @}</span></div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="comment">  */</span></div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>}</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="preprocessor">#endif </span><span class="comment">/*#ifndef __NILOREA_Unified_Library__*/</span><span class="preprocessor"></span></div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="preprocessor">#endif </span><span class="comment">// header guard</span></div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
-<div class="ttc" id="an__3d_8h_html"><div class="ttname"><a href="n__3d_8h.html">n_3d.h</a></div><div class="ttdoc">3D helpers, vector and camera</div></div>
-<div class="ttc" id="an__anim_8h_html"><div class="ttname"><a href="n__anim_8h.html">n_anim.h</a></div><div class="ttdoc">anim header</div></div>
-<div class="ttc" id="an__common_8h_html"><div class="ttname"><a href="n__common_8h.html">n_common.h</a></div><div class="ttdoc">common headers and low-level hugly functions &amp; define</div></div>
-<div class="ttc" id="an__config__file_8h_html"><div class="ttname"><a href="n__config__file_8h.html">n_config_file.h</a></div><div class="ttdoc">config file reading</div></div>
-<div class="ttc" id="an__exceptions_8h_html"><div class="ttname"><a href="n__exceptions_8h.html">n_exceptions.h</a></div><div class="ttdoc">Exception management for C.</div></div>
-<div class="ttc" id="an__games_8h_html"><div class="ttname"><a href="n__games_8h.html">n_games.h</a></div><div class="ttdoc">Games helpers functions.</div></div>
-<div class="ttc" id="an__gfx_8h_html"><div class="ttname"><a href="n__gfx_8h.html">n_gfx.h</a></div><div class="ttdoc">Graphic mode and helpers functions.</div></div>
-<div class="ttc" id="an__hash_8h_html"><div class="ttname"><a href="n__hash_8h.html">n_hash.h</a></div><div class="ttdoc">Hash functions and table.</div></div>
-<div class="ttc" id="an__iso__engine_8h_html"><div class="ttname"><a href="n__iso__engine_8h.html">n_iso_engine.h</a></div><div class="ttdoc">Map loading, saving, with objects, animations, ...</div></div>
-<div class="ttc" id="an__list_8h_html"><div class="ttname"><a href="n__list_8h.html">n_list.h</a></div><div class="ttdoc">Pointer list structures and definitions.</div></div>
-<div class="ttc" id="an__log_8h_html"><div class="ttname"><a href="n__log_8h.html">n_log.h</a></div></div>
-<div class="ttc" id="an__network_8h_html"><div class="ttname"><a href="n__network_8h.html">n_network.h</a></div><div class="ttdoc">Network Engine.</div></div>
-<div class="ttc" id="an__network__msg_8h_html"><div class="ttname"><a href="n__network__msg_8h.html">n_network_msg.h</a></div><div class="ttdoc">network messages declaration Network Engine</div></div>
-<div class="ttc" id="an__nodup__log_8h_html"><div class="ttname"><a href="n__nodup__log_8h.html">n_nodup_log.h</a></div></div>
-<div class="ttc" id="an__particles_8h_html"><div class="ttname"><a href="n__particles_8h.html">n_particles.h</a></div><div class="ttdoc">particle header file for SPEEDHACK 2014</div></div>
-<div class="ttc" id="an__pcre_8h_html"><div class="ttname"><a href="n__pcre_8h.html">n_pcre.h</a></div><div class="ttdoc">PCRE helpers for regex matching.</div></div>
-<div class="ttc" id="an__signals_8h_html"><div class="ttname"><a href="n__signals_8h.html">n_signals.h</a></div><div class="ttdoc">signals general handling with stack printing, from https://gist.github.com/jvranish/4441299</div></div>
-<div class="ttc" id="an__stack_8h_html"><div class="ttname"><a href="n__stack_8h.html">n_stack.h</a></div></div>
-<div class="ttc" id="an__str_8h_html"><div class="ttname"><a href="n__str_8h.html">n_str.h</a></div><div class="ttdoc">N_STR and string function declaration.</div></div>
-<div class="ttc" id="an__thread__pool_8h_html"><div class="ttname"><a href="n__thread__pool_8h.html">n_thread_pool.h</a></div><div class="ttdoc">Thread pool declaration.</div></div>
-<div class="ttc" id="an__time_8h_html"><div class="ttname"><a href="n__time_8h.html">n_time.h</a></div><div class="ttdoc">common headers and low-level hugly functions &amp; define</div></div>
-<div class="ttc" id="an__user_8h_html"><div class="ttname"><a href="n__user_8h.html">n_user.h</a></div><div class="ttdoc">USERS handling for everything you want.</div></div>
-<div class="ttc" id="an__zlib_8h_html"><div class="ttname"><a href="n__zlib_8h.html">n_zlib.h</a></div><div class="ttdoc">ZLIB compression handler.</div></div>
+<a href="nilorea_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><span class="lineno">    1</span><span class="preprocessor">#</span><span class="preprocessor">ifndef</span> <span class="preprocessor">HEADER_48364550BE28290E</span></div>
+<div class="line"><span class="lineno">    2</span><span class="preprocessor">#</span><span class="preprocessor">define</span> <span class="preprocessor">HEADER_48364550BE28290E</span></div>
+<div class="line"><span class="lineno">    3</span> </div>
+<div class="line"><span class="lineno">    4</span><span class="comment">/**\file nilorea.h</span></div>
+<div class="line"><span class="lineno">    5</span><span class="comment"> *  Header to include for use with libnilorea</span></div>
+<div class="line"><span class="lineno">    6</span><span class="comment"> *\author Castagnier Mickael</span></div>
+<div class="line"><span class="lineno">    7</span><span class="comment"> *\version 1.0</span></div>
+<div class="line"><span class="lineno">    8</span><span class="comment"> *\date 24/03/05</span></div>
+<div class="line"><span class="lineno">    9</span><span class="comment"> */</span></div>
+<div class="line"><span class="lineno">   10</span> </div>
+<div class="line"><span class="lineno">   11</span><span class="preprocessor">#</span><span class="preprocessor">ifndef</span> <span class="preprocessor">__NILOREA_Unified_Library__</span></div>
+<div class="line"><span class="lineno">   12</span> </div>
+<div class="line"><span class="lineno"><a class="line" href="nilorea_8h.html#a7e31aeb8676f4f9a50724be028177c39">   13</a></span><span class="preprocessor">#</span><span class="preprocessor">define</span> <span class="preprocessor">__NILOREA_Unified_Library__</span></div>
+<div class="line"><span class="lineno">   14</span> </div>
+<div class="line"><span class="lineno">   15</span><span class="preprocessor">#</span><span class="preprocessor">ifdef</span> __cplusplus</div>
+<div class="line"><span class="lineno">   16</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><span class="lineno">   17</span><span class="preprocessor">#</span><span class="preprocessor">endif</span></div>
+<div class="line"><span class="lineno">   18</span> </div>
+<div class="line"><span class="lineno">   19</span><span class="comment">/**\defgroup GLOBALHEADER HEADER: just a global header to include all the modules</span></div>
+<div class="line"><span class="lineno">   20</span><span class="comment">  \addtogroup GLOBALHEADER</span></div>
+<div class="line"><span class="lineno">   21</span><span class="comment">  @{</span></div>
+<div class="line"><span class="lineno">   22</span><span class="comment">  */</span></div>
+<div class="line"><span class="lineno">   23</span><span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&lt;</span><span class="preprocessor">nilorea</span><span class="preprocessor">/</span><span class="preprocessor">n_3d</span><span class="preprocessor">.</span><span class="preprocessor">h</span><span class="preprocessor">&gt;</span></div>
+<div class="line"><span class="lineno">   24</span> </div>
+<div class="line"><span class="lineno">   25</span><span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&lt;</span><span class="preprocessor">nilorea</span><span class="preprocessor">/</span><span class="preprocessor">n_common</span><span class="preprocessor">.</span><span class="preprocessor">h</span><span class="preprocessor">&gt;</span></div>
+<div class="line"><span class="lineno">   26</span><span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&lt;</span><span class="preprocessor">nilorea</span><span class="preprocessor">/</span><span class="preprocessor">n_config_file</span><span class="preprocessor">.</span><span class="preprocessor">h</span><span class="preprocessor">&gt;</span></div>
+<div class="line"><span class="lineno">   27</span><span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&lt;</span><span class="preprocessor">nilorea</span><span class="preprocessor">/</span><span class="preprocessor">n_exceptions</span><span class="preprocessor">.</span><span class="preprocessor">h</span><span class="preprocessor">&gt;</span></div>
+<div class="line"><span class="lineno">   28</span><span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&lt;</span><span class="preprocessor">nilorea</span><span class="preprocessor">/</span><span class="preprocessor">n_games</span><span class="preprocessor">.</span><span class="preprocessor">h</span><span class="preprocessor">&gt;</span></div>
+<div class="line"><span class="lineno">   29</span><span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&lt;</span><span class="preprocessor">nilorea</span><span class="preprocessor">/</span><span class="preprocessor">n_hash</span><span class="preprocessor">.</span><span class="preprocessor">h</span><span class="preprocessor">&gt;</span></div>
+<div class="line"><span class="lineno">   30</span><span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&lt;</span><span class="preprocessor">nilorea</span><span class="preprocessor">/</span><span class="preprocessor">n_iso_engine</span><span class="preprocessor">.</span><span class="preprocessor">h</span><span class="preprocessor">&gt;</span></div>
+<div class="line"><span class="lineno">   31</span><span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&lt;</span><span class="preprocessor">nilorea</span><span class="preprocessor">/</span><span class="preprocessor">n_list</span><span class="preprocessor">.</span><span class="preprocessor">h</span><span class="preprocessor">&gt;</span></div>
+<div class="line"><span class="lineno">   32</span><span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&lt;</span><span class="preprocessor">nilorea</span><span class="preprocessor">/</span><span class="preprocessor">n_log</span><span class="preprocessor">.</span><span class="preprocessor">h</span><span class="preprocessor">&gt;</span></div>
+<div class="line"><span class="lineno">   33</span><span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&lt;</span><span class="preprocessor">nilorea</span><span class="preprocessor">/</span><span class="preprocessor">n_network</span><span class="preprocessor">.</span><span class="preprocessor">h</span><span class="preprocessor">&gt;</span></div>
+<div class="line"><span class="lineno">   34</span><span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&lt;</span><span class="preprocessor">nilorea</span><span class="preprocessor">/</span><span class="preprocessor">n_network_msg</span><span class="preprocessor">.</span><span class="preprocessor">h</span><span class="preprocessor">&gt;</span></div>
+<div class="line"><span class="lineno">   35</span><span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&lt;</span><span class="preprocessor">nilorea</span><span class="preprocessor">/</span><span class="preprocessor">n_nodup_log</span><span class="preprocessor">.</span><span class="preprocessor">h</span><span class="preprocessor">&gt;</span></div>
+<div class="line"><span class="lineno">   36</span><span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&lt;</span><span class="preprocessor">nilorea</span><span class="preprocessor">/</span><span class="preprocessor">n_pcre</span><span class="preprocessor">.</span><span class="preprocessor">h</span><span class="preprocessor">&gt;</span></div>
+<div class="line"><span class="lineno">   37</span><span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&lt;</span><span class="preprocessor">nilorea</span><span class="preprocessor">/</span><span class="preprocessor">n_signals</span><span class="preprocessor">.</span><span class="preprocessor">h</span><span class="preprocessor">&gt;</span></div>
+<div class="line"><span class="lineno">   38</span><span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&lt;</span><span class="preprocessor">nilorea</span><span class="preprocessor">/</span><span class="preprocessor">n_stack</span><span class="preprocessor">.</span><span class="preprocessor">h</span><span class="preprocessor">&gt;</span></div>
+<div class="line"><span class="lineno">   39</span><span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&lt;</span><span class="preprocessor">nilorea</span><span class="preprocessor">/</span><span class="preprocessor">n_str</span><span class="preprocessor">.</span><span class="preprocessor">h</span><span class="preprocessor">&gt;</span></div>
+<div class="line"><span class="lineno">   40</span><span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&lt;</span><span class="preprocessor">nilorea</span><span class="preprocessor">/</span><span class="preprocessor">n_thread_pool</span><span class="preprocessor">.</span><span class="preprocessor">h</span><span class="preprocessor">&gt;</span></div>
+<div class="line"><span class="lineno">   41</span><span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&lt;</span><span class="preprocessor">nilorea</span><span class="preprocessor">/</span><span class="preprocessor">n_time</span><span class="preprocessor">.</span><span class="preprocessor">h</span><span class="preprocessor">&gt;</span></div>
+<div class="line"><span class="lineno">   42</span><span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&lt;</span><span class="preprocessor">nilorea</span><span class="preprocessor">/</span><span class="preprocessor">n_user</span><span class="preprocessor">.</span><span class="preprocessor">h</span><span class="preprocessor">&gt;</span></div>
+<div class="line"><span class="lineno">   43</span><span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&lt;</span><span class="preprocessor">nilorea</span><span class="preprocessor">/</span><span class="preprocessor">n_zlib</span><span class="preprocessor">.</span><span class="preprocessor">h</span><span class="preprocessor">&gt;</span></div>
+<div class="line"><span class="lineno">   44</span> </div>
+<div class="line"><span class="lineno">   45</span><span class="comment">/* wip_unstable #include &lt;nilorea/n_neural_networks.h&gt; */</span></div>
+<div class="line"><span class="lineno">   46</span><span class="comment">/* wip_unstable #include &lt;nilorea/n_file.h&gt; */</span></div>
+<div class="line"><span class="lineno">   47</span> </div>
+<div class="line"><span class="lineno">   48</span><span class="comment">/* Must revamp this</span></div>
+<div class="line"><span class="lineno">   49</span><span class="comment">#include &lt;nilorea/n_debug_mem.h&gt;</span></div>
+<div class="line"><span class="lineno">   50</span><span class="comment">#include &lt;nilorea/n_debug_mem_h.h&gt;</span></div>
+<div class="line"><span class="lineno">   51</span><span class="comment">*/</span></div>
+<div class="line"><span class="lineno">   52</span> </div>
+<div class="line"><span class="lineno">   53</span><span class="preprocessor">#</span><span class="preprocessor">ifdef</span> <span class="preprocessor">HAVE_ALLEGRO</span></div>
+<div class="line"><span class="lineno">   54</span><span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&lt;</span><span class="preprocessor">nilorea</span><span class="preprocessor">/</span><span class="preprocessor">n_gfx</span><span class="preprocessor">.</span><span class="preprocessor">h</span><span class="preprocessor">&gt;</span></div>
+<div class="line"><span class="lineno">   55</span><span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&lt;</span><span class="preprocessor">nilorea</span><span class="preprocessor">/</span><span class="preprocessor">n_anim</span><span class="preprocessor">.</span><span class="preprocessor">h</span><span class="preprocessor">&gt;</span></div>
+<div class="line"><span class="lineno">   56</span><span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&lt;</span><span class="preprocessor">nilorea</span><span class="preprocessor">/</span><span class="preprocessor">n_gui</span><span class="preprocessor">.</span><span class="preprocessor">h</span><span class="preprocessor">&gt;</span></div>
+<div class="line"><span class="lineno">   57</span><span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&lt;</span><span class="preprocessor">nilorea</span><span class="preprocessor">/</span><span class="preprocessor">n_particles</span><span class="preprocessor">.</span><span class="preprocessor">h</span><span class="preprocessor">&gt;</span></div>
+<div class="line"><span class="lineno">   58</span><span class="comment">/* wip_unstable #include &lt;nilorea/n_resources.h&gt; */</span></div>
+<div class="line"><span class="lineno">   59</span><span class="preprocessor">#</span><span class="preprocessor">endif</span></div>
+<div class="line"><span class="lineno">   60</span> </div>
+<div class="line"><span class="lineno">   61</span> </div>
+<div class="line"><span class="lineno">   62</span> </div>
+<div class="line"><span class="lineno">   63</span><span class="comment">/**</span></div>
+<div class="line"><span class="lineno">   64</span><span class="comment">  @}</span></div>
+<div class="line"><span class="lineno">   65</span><span class="comment">  */</span></div>
+<div class="line"><span class="lineno">   66</span> </div>
+<div class="line"><span class="lineno">   67</span><span class="preprocessor">#</span><span class="preprocessor">ifdef</span> __cplusplus</div>
+<div class="line"><span class="lineno">   68</span>}</div>
+<div class="line"><span class="lineno">   69</span><span class="preprocessor">#</span><span class="preprocessor">endif</span></div>
+<div class="line"><span class="lineno">   70</span> </div>
+<div class="line"><span class="lineno">   71</span><span class="preprocessor">#</span><span class="preprocessor">endif</span> <span class="comment">/*#ifndef __NILOREA_Unified_Library__*/</span></div>
+<div class="line"><span class="lineno">   72</span><span class="preprocessor">#</span><span class="preprocessor">endif</span> <span class="comment">// header guard</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="nilorea_8h.html">nilorea.h</a></li>
-    <li class="footer">Generated on Tue Feb 1 2022 21:13:46 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+    <li class="footer">Generated on Wed Feb 2 2022 14:24:10 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
   </ul>
 </div>
 </body>

@@ -85,214 +85,214 @@ $(document).ready(function(){initNavTree('n__debug__mem_8c_source.html',''); ini
   <div class="headertitle"><div class="title">n_debug_mem.c</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="n__debug__mem_8c.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*!\file n_debug_mem.c</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> * Helpers for debugging memory</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> *\author Castagnier Mickael</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> *\date 2014-10-10</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> */</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;<a class="code" href="n__debug__mem_8h.html">nilorea/n_debug_mem.h</a>&quot;</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;<a class="code" href="n__common_8h.html">nilorea/n_common.h</a>&quot;</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;<a class="code" href="n__log_8h.html">nilorea/n_log.h</a>&quot;</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;<a class="code" href="n__hash_8h.html">nilorea/n_hash.h</a>&quot;</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment"></span> </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment">/*! global table of allocation */</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="n__debug__mem_8c.html#a5a36fe55f9afc1554e1bcfa2858c47d1">   15</a></span><span class="keyword">static</span> <a class="code hl_struct" href="struct_d_e_b_u_g___m_e_m___t_a_b_l_e.html">DEBUG_MEM_TABLE</a> <a class="code hl_variable" href="n__debug__mem_8c.html#a5a36fe55f9afc1554e1bcfa2858c47d1">__debug_mem_table</a> ;</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment"></span> </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment">/*!\fn int init_debug_mem()</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment"> *\brief initialize debug tables</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment"> *\return TRUE or FALSE</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment"> */</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#ga465b28122f5d12702a8a9289a978d255">   22</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#ga465b28122f5d12702a8a9289a978d255">init_debug_mem</a>()</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>{</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <a class="code hl_variable" href="n__debug__mem_8c.html#a5a36fe55f9afc1554e1bcfa2858c47d1">__debug_mem_table</a> . nb_malloc = 0 ;</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <a class="code hl_variable" href="n__debug__mem_8c.html#a5a36fe55f9afc1554e1bcfa2858c47d1">__debug_mem_table</a> . nb_free = 0 ;</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="comment">/* A huge table because there could be a ton of memory allocation */</span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <a class="code hl_variable" href="n__debug__mem_8c.html#a5a36fe55f9afc1554e1bcfa2858c47d1">__debug_mem_table</a> . table = <a class="code hl_function" href="group___h_a_s_h___t_a_b_l_e.html#gaa2d879c1afd3c71a0917bbe2c0766664">new_ht</a>( 1048576 );</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keywordflow">if</span>( ! <a class="code hl_variable" href="n__debug__mem_8c.html#a5a36fe55f9afc1554e1bcfa2858c47d1">__debug_mem_table</a> . table )</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    {</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a>, <span class="stringliteral">&quot;Unable to allocate a 1048576 item hash table&quot;</span> );</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        <span class="keywordflow">return</span> FALSE ;</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    }</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keywordflow">if</span>( pthread_mutex_init( &amp;<a class="code hl_variable" href="n__debug__mem_8c.html#a5a36fe55f9afc1554e1bcfa2858c47d1">__debug_mem_table</a> . lock, NULL ) != 0 )</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    {</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a>, <span class="stringliteral">&quot;Unable to initialize lock&quot;</span> );</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <span class="keywordflow">return</span> FALSE ;</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    }</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keywordflow">return</span> TRUE ;</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>} <span class="comment">/* init_debuf_mem() */</span></div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment"></span> </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="comment">/*!\fn DEBUG_MEM_ITEM *new_db_mem_item( void *ptr , size_t size , int line , char *file , char *func )</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="comment"> *\brief allocate a new item in the debug table</span></div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="comment"> *\param ptr Pointer address to save</span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="comment"> *\param size the size of the allocated data</span></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="comment"> *\param line line of the allocation</span></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="comment"> *\param file file of the allocation</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="comment"> *\param func function where the allocation was made</span></div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="comment"> *\return A new item or NULL</span></div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="comment"> */</span></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#gafaf9dc7faf6565944999cf7565c43e55">   55</a></span><a class="code hl_struct" href="struct_d_e_b_u_g___m_e_m___i_t_e_m.html">DEBUG_MEM_ITEM</a> *<a class="code hl_function" href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#gafaf9dc7faf6565944999cf7565c43e55">new_db_mem_item</a>( <span class="keywordtype">void</span> *ptr, <span class="keywordtype">size_t</span> size, <span class="keywordtype">int</span> line, <span class="keywordtype">char</span> *file, <span class="keywordtype">char</span> *func )</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>{</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <a class="code hl_struct" href="struct_d_e_b_u_g___m_e_m___i_t_e_m.html">DEBUG_MEM_ITEM</a> *item = NULL ;</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    item = (<a class="code hl_struct" href="struct_d_e_b_u_g___m_e_m___i_t_e_m.html">DEBUG_MEM_ITEM</a> *)calloc( 1, <span class="keyword">sizeof</span>( <a class="code hl_struct" href="struct_d_e_b_u_g___m_e_m___i_t_e_m.html">DEBUG_MEM_ITEM</a> ) );</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keywordflow">if</span>( !item )</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    {</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a>, <span class="stringliteral">&quot;Unable to allocate a DEBUG_MEM_ITEM&quot;</span> );</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        <span class="keywordflow">return</span> NULL ;</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    }</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    item -&gt; ptr = ptr ;</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    item -&gt; size = size ;</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    item -&gt; line = line ;</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    item -&gt; file = file ;</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    item -&gt; func = func ;</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <span class="keywordflow">return</span> item ;</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>} <span class="comment">/* new_db_item() */</span></div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="comment"></span> </div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="comment">/*!\fn void delete_db_mem_item( void *ptr )</span></div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="comment"> *\brief delete a debug mem item</span></div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="comment"> *\param ptr the item to destroy</span></div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="comment"> */</span></div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#ga5a41f05742f748434ea0771e1b3b8aac">   80</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#ga5a41f05742f748434ea0771e1b3b8aac">delete_db_mem_item</a>( <span class="keywordtype">void</span> *ptr )</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>{</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <a class="code hl_struct" href="struct_d_e_b_u_g___m_e_m___i_t_e_m.html">DEBUG_MEM_ITEM</a> *item = (<a class="code hl_struct" href="struct_d_e_b_u_g___m_e_m___i_t_e_m.html">DEBUG_MEM_ITEM</a> *)ptr ;</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <span class="keywordflow">if</span>( item )</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    {</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        <a class="code hl_define" href="group___c_o_m_m_o_n_s.html#ga079dc7a6a7e7c54bb714d8bb2afdd022">FreeNoLog</a>( item -&gt; file );</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        <a class="code hl_define" href="group___c_o_m_m_o_n_s.html#ga079dc7a6a7e7c54bb714d8bb2afdd022">FreeNoLog</a>( item -&gt; func );</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        <a class="code hl_define" href="group___c_o_m_m_o_n_s.html#ga079dc7a6a7e7c54bb714d8bb2afdd022">FreeNoLog</a>( item );</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    }</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>} <span class="comment">/* delete_db_mem_item */</span></div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="comment"></span> </div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="comment">/*!\fn void *db_mem_alloc( size_t size , int line , char *file , const char *func )</span></div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="comment"> *\brief allocate a new pointer with size and also put it in the debug table</span></div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span><span class="comment"> *\param size the size of the allocated data</span></div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="comment"> *\param line line of the allocation</span></div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="comment"> *\param file file of the allocation</span></div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><span class="comment"> *\param func function where the allocation was made</span></div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="comment"> *\return A new item or NULL</span></div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><span class="comment"> */</span></div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno"><a class="line" href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#ga3f63c1a843b2f1685d31b4564ee03918">  101</a></span><span class="keywordtype">void</span> *<a class="code hl_function" href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#ga3f63c1a843b2f1685d31b4564ee03918">db_mem_alloc</a>( <span class="keywordtype">size_t</span> size, <span class="keywordtype">int</span> line, <span class="keywordtype">char</span> *file, <span class="keyword">const</span> <span class="keywordtype">char</span> *func )</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>{</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    <a class="code hl_struct" href="struct_d_e_b_u_g___m_e_m___i_t_e_m.html">DEBUG_MEM_ITEM</a> *item = NULL ;</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    <span class="keywordtype">void</span> *ptr = NULL ;</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    <a class="code hl_variable" href="n__debug__mem_8c.html#a5a36fe55f9afc1554e1bcfa2858c47d1">__debug_mem_table</a> . nb_malloc ++ ;</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    ptr = calloc( 1, size );</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    <span class="keywordflow">if</span>( ptr )</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    {</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>        <span class="keywordtype">char</span> key[ 512 ] = <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>        item = <a class="code hl_function" href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#gafaf9dc7faf6565944999cf7565c43e55">new_db_mem_item</a>( ptr, size, line, strdup( file ), strdup( func ) );</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        sprintf( key, <span class="stringliteral">&quot;%p&quot;</span>, ptr );</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        <a class="code hl_function" href="group___h_a_s_h___t_a_b_l_e.html#ga2baa0497b21bdf86e3c64bb023124930">ht_put_ptr</a>( <a class="code hl_variable" href="n__debug__mem_8c.html#a5a36fe55f9afc1554e1bcfa2858c47d1">__debug_mem_table</a> . table, key, item, <a class="code hl_function" href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#ga5a41f05742f748434ea0771e1b3b8aac">delete_db_mem_item</a> );</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>        <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#ga6ff63e8955665c4a58b1598f2b07c51a">LOG_DEBUG</a>, <span class="stringliteral">&quot;Added %p size %zu file %s func %s line %d&quot;</span>, item -&gt; ptr, item -&gt; size, item -&gt; file, item -&gt; func, item -&gt; line );</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    }</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    {</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>        <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a>, <span class="stringliteral">&quot;Unable to allocate %d oct at file %s func %s line %d &quot;</span>, size, file, func, line );</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    }</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    <span class="keywordflow">return</span> ptr ;</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>}</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span> </div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span> </div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span><span class="comment"></span> </div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span><span class="comment">/*!\fn void *db_mem_free( void *ptr )</span></div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span><span class="comment"> *\brief Free a pointer and also remove it from debug table</span></div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span><span class="comment"> *\param ptr Pointer to free</span></div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span><span class="comment"> *\param line line of the free call</span></div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span><span class="comment"> *\param file file of the free call</span></div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span><span class="comment"> *\param func function where the free call was made</span></div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span><span class="comment"> */</span></div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno"><a class="line" href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#gaea4d614fcd75f3493130a64e0e58113d">  133</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#gaea4d614fcd75f3493130a64e0e58113d">db_mem_free</a>( <span class="keywordtype">void</span> *ptr, <span class="keywordtype">int</span> line, <span class="keywordtype">char</span> *file, <span class="keyword">const</span> <span class="keywordtype">char</span> *func )</div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>{</div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    <span class="keywordtype">void</span> *hashptr = NULL ;</div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>    <span class="keywordtype">char</span> key[ 512 ] = <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span> </div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>    sprintf( key, <span class="stringliteral">&quot;%p&quot;</span>, ptr );</div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>    <a class="code hl_function" href="group___h_a_s_h___t_a_b_l_e.html#gae34a331ccbda86f7e5b2319f1852d6ca">ht_get_ptr</a>( <a class="code hl_variable" href="n__debug__mem_8c.html#a5a36fe55f9afc1554e1bcfa2858c47d1">__debug_mem_table</a> . table, key, &amp;hashptr );</div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>    <span class="keywordflow">if</span>( hashptr )</div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>    {</div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>        <a class="code hl_struct" href="struct_d_e_b_u_g___m_e_m___i_t_e_m.html">DEBUG_MEM_ITEM</a> *item = hashptr ;</div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>        <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#ga6ff63e8955665c4a58b1598f2b07c51a">LOG_DEBUG</a>, <span class="stringliteral">&quot;Removed %p size %zu file %s func %s line %d\nCall from %s,%s:%d&quot;</span>, item -&gt; ptr, item -&gt; size, item -&gt; file, item -&gt; func, item -&gt; line, file, func, line );</div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>        <a class="code hl_function" href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#ga5a41f05742f748434ea0771e1b3b8aac">delete_db_mem_item</a>( item );</div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>        item = NULL ;</div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>        <a class="code hl_function" href="group___h_a_s_h___t_a_b_l_e.html#ga8d8873be47a634ad8a386e61f12a1f53">ht_remove</a>( <a class="code hl_variable" href="n__debug__mem_8c.html#a5a36fe55f9afc1554e1bcfa2858c47d1">__debug_mem_table</a> . table, key );</div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>        <a class="code hl_variable" href="n__debug__mem_8c.html#a5a36fe55f9afc1554e1bcfa2858c47d1">__debug_mem_table</a> . nb_free ++ ;</div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>    }</div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>    <a class="code hl_define" href="group___c_o_m_m_o_n_s.html#gae62e40d702e99a7760ba1de7451dff51">Free</a>( ptr );</div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>} <span class="comment">/* db_mem_free() */</span></div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span> </div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span> </div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span><span class="comment"></span> </div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span><span class="comment">/*!\fn int db_mem_dump_leaked( char *file )</span></div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span><span class="comment"> *\brief Dump the current debug memory table</span></div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span><span class="comment"> *\param file The name of the logfile</span></div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span><span class="comment"> *\return TRUE or FALSE</span></div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span><span class="comment"> */</span></div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno"><a class="line" href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#ga53876f346e6461281c59a47451b08a5c">  159</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#ga53876f346e6461281c59a47451b08a5c">db_mem_dump_leaked</a>( <span class="keywordtype">char</span> *file )</div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>{</div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>    FILE *out = NULL ;</div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    <a class="code hl_struct" href="struct_l_i_s_t___n_o_d_e.html">LIST_NODE</a> *node = NULL ;</div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    <a class="code hl_struct" href="struct_h_a_s_h___n_o_d_e.html">HASH_NODE</a> *hash_entry = NULL ;</div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>    <a class="code hl_struct" href="struct_d_e_b_u_g___m_e_m___i_t_e_m.html">DEBUG_MEM_ITEM</a> *item = NULL ;</div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>    <span class="keywordtype">size_t</span> len = 0 ;</div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span> </div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>    out = fopen( file, <span class="stringliteral">&quot;w&quot;</span> );</div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>    <span class="keywordflow">if</span>( !out )</div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>    {</div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>        <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a>,<span class="stringliteral">&quot;Unable to open %s&quot;</span>, file );</div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>        <span class="keywordflow">return</span> FALSE ;</div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>    }</div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span> </div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>    fprintf( out, <span class="stringliteral">&quot;%d malloc / %d free\n&quot;</span>, <a class="code hl_variable" href="n__debug__mem_8c.html#a5a36fe55f9afc1554e1bcfa2858c47d1">__debug_mem_table</a> . nb_malloc, <a class="code hl_variable" href="n__debug__mem_8c.html#a5a36fe55f9afc1554e1bcfa2858c47d1">__debug_mem_table</a> . nb_free );</div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span> </div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>    <span class="keywordflow">for</span>( <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> it = 0 ; it &lt; <a class="code hl_variable" href="n__debug__mem_8c.html#a5a36fe55f9afc1554e1bcfa2858c47d1">__debug_mem_table</a> . table -&gt; size ; it ++ )</div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>    {</div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>        node =  <a class="code hl_variable" href="n__debug__mem_8c.html#a5a36fe55f9afc1554e1bcfa2858c47d1">__debug_mem_table</a> . table -&gt; hash_table[ it ] -&gt; start ;</div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>        <span class="keywordflow">while</span>( node )</div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>        {</div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>            hash_entry= (<a class="code hl_struct" href="struct_h_a_s_h___n_o_d_e.html">HASH_NODE</a> *)node -&gt; ptr ;</div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>            item = hash_entry -&gt; data . ptr ;</div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span> </div>
-<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>            <span class="keywordflow">if</span>( item )</div>
-<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>            {</div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>                fprintf( out, <span class="stringliteral">&quot;%p size %zu file %s func %s line %d dump:&quot;</span>, item -&gt; ptr, item -&gt; size, item -&gt; file, item -&gt; func, item -&gt; line );</div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>                <span class="keywordflow">if</span>( item -&gt; size &gt; <a class="code hl_define" href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#ga0ee85545fc2f0a35e282ff54bec7fad4">DEBUG_MEM_DUMP_MAX_LEN</a> )</div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>                    len = <a class="code hl_define" href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#ga0ee85545fc2f0a35e282ff54bec7fad4">DEBUG_MEM_DUMP_MAX_LEN</a> ;</div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>                <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>                    len = item -&gt; size ;</div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span> </div>
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>                fwrite( item -&gt; ptr, len, 1, out );</div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>                fprintf( out, <span class="stringliteral">&quot;\n&quot;</span> );</div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>                <a class="code hl_function" href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#ga5a41f05742f748434ea0771e1b3b8aac">delete_db_mem_item</a>( item );</div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>                item = NULL ;</div>
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>            }</div>
-<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>            <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>            {</div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>                <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a>,<span class="stringliteral">&quot;Unable to load item from node -&gt; ptr&quot;</span> );</div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>            }</div>
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>            node = node -&gt; next ;</div>
-<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>        }</div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>    }</div>
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span> </div>
-<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>    fclose( out );</div>
-<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>    <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#ga6ff63e8955665c4a58b1598f2b07c51a">LOG_DEBUG</a>, <span class="stringliteral">&quot;Memory dump finished&quot;</span> );</div>
-<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>    <span class="keywordflow">return</span> TRUE ;</div>
-<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>} <span class="comment">/*db_mem_dump_leaked() */</span></div>
+<a href="n__debug__mem_8c.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><span class="lineno">    1</span><span class="comment">/*!\file n_debug_mem.c</span></div>
+<div class="line"><span class="lineno">    2</span><span class="comment"> * Helpers for debugging memory</span></div>
+<div class="line"><span class="lineno">    3</span><span class="comment"> *\author Castagnier Mickael</span></div>
+<div class="line"><span class="lineno">    4</span><span class="comment"> *\date 2014-10-10</span></div>
+<div class="line"><span class="lineno">    5</span><span class="comment"> */</span></div>
+<div class="line"><span class="lineno">    6</span> </div>
+<div class="line"><span class="lineno">    7</span><span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&quot;nilorea/n_debug_mem.h&quot;</span></div>
+<div class="line"><span class="lineno">    8</span><span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&quot;nilorea/n_common.h&quot;</span></div>
+<div class="line"><span class="lineno">    9</span><span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&quot;nilorea/n_log.h&quot;</span></div>
+<div class="line"><span class="lineno">   10</span><span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&quot;nilorea/n_hash.h&quot;</span></div>
+<div class="line"><span class="lineno">   11</span> </div>
+<div class="line"><span class="lineno">   12</span> </div>
+<div class="line"><span class="lineno">   13</span> </div>
+<div class="line"><span class="lineno">   14</span><span class="comment">/*! global table of allocation */</span></div>
+<div class="line"><span class="lineno"><a class="line" href="n__debug__mem_8c.html#af9bf7d5952f5c710864940062121da54">   15</a></span><span class="keyword">static</span> <a class="code hl_struct" href="struct_d_e_b_u_g___m_e_m___t_a_b_l_e.html">DEBUG_MEM_TABLE</a> <a class="code hl_variable" href="n__debug__mem_8c.html#af9bf7d5952f5c710864940062121da54">__debug_mem_table</a> ;</div>
+<div class="line"><span class="lineno">   16</span> </div>
+<div class="line"><span class="lineno">   17</span> </div>
+<div class="line"><span class="lineno">   18</span><span class="comment">/*!\fn int init_debug_mem()</span></div>
+<div class="line"><span class="lineno">   19</span><span class="comment"> *\brief initialize debug tables</span></div>
+<div class="line"><span class="lineno">   20</span><span class="comment"> *\return TRUE or FALSE</span></div>
+<div class="line"><span class="lineno">   21</span><span class="comment"> */</span></div>
+<div class="line"><span class="lineno"><a class="line" href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#ga465b28122f5d12702a8a9289a978d255">   22</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#ga465b28122f5d12702a8a9289a978d255">init_debug_mem</a>()</div>
+<div class="line"><span class="lineno">   23</span>{</div>
+<div class="line"><span class="lineno">   24</span>    <a class="code hl_variable" href="n__debug__mem_8c.html#af9bf7d5952f5c710864940062121da54">__debug_mem_table</a> <a class="code hl_variable" href="struct_d_e_b_u_g___m_e_m___t_a_b_l_e.html#a3fc94bc00fbb6decfa43272469a60786">.</a> <a class="code hl_variable" href="struct_d_e_b_u_g___m_e_m___t_a_b_l_e.html#a3fc94bc00fbb6decfa43272469a60786">nb_malloc</a> = 0 ;</div>
+<div class="line"><span class="lineno">   25</span>    <a class="code hl_variable" href="n__debug__mem_8c.html#af9bf7d5952f5c710864940062121da54">__debug_mem_table</a> <a class="code hl_variable" href="struct_d_e_b_u_g___m_e_m___t_a_b_l_e.html#aae81bc833d89447567a72ff71d0e580e">.</a> <a class="code hl_variable" href="struct_d_e_b_u_g___m_e_m___t_a_b_l_e.html#aae81bc833d89447567a72ff71d0e580e">nb_free</a> = 0 ;</div>
+<div class="line"><span class="lineno">   26</span> </div>
+<div class="line"><span class="lineno">   27</span>    <span class="comment">/* A huge table because there could be a ton of memory allocation */</span></div>
+<div class="line"><span class="lineno">   28</span>    <a class="code hl_variable" href="n__debug__mem_8c.html#af9bf7d5952f5c710864940062121da54">__debug_mem_table</a> <a class="code hl_variable" href="struct_d_e_b_u_g___m_e_m___t_a_b_l_e.html#a3fb224c53482feeef8f347d5b126da1c">.</a> <a class="code hl_variable" href="struct_d_e_b_u_g___m_e_m___t_a_b_l_e.html#a3fb224c53482feeef8f347d5b126da1c">table</a> = <a class="code hl_function" href="group___h_a_s_h___t_a_b_l_e.html#gaa2d879c1afd3c71a0917bbe2c0766664">new_ht</a><a class="code hl_function" href="group___h_a_s_h___t_a_b_l_e.html#gaa2d879c1afd3c71a0917bbe2c0766664">(</a> 1048576 <a class="code hl_function" href="group___h_a_s_h___t_a_b_l_e.html#gaa2d879c1afd3c71a0917bbe2c0766664">)</a>;</div>
+<div class="line"><span class="lineno">   29</span>    <span class="keywordflow">if</span>( ! <a class="code hl_variable" href="n__debug__mem_8c.html#af9bf7d5952f5c710864940062121da54">__debug_mem_table</a> <a class="code hl_variable" href="struct_d_e_b_u_g___m_e_m___t_a_b_l_e.html#a3fb224c53482feeef8f347d5b126da1c">.</a> <a class="code hl_variable" href="struct_d_e_b_u_g___m_e_m___t_a_b_l_e.html#a3fb224c53482feeef8f347d5b126da1c">table</a> )</div>
+<div class="line"><span class="lineno">   30</span>    {</div>
+<div class="line"><span class="lineno">   31</span>        <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a>, <span class="stringliteral">&quot;Unable to allocate a 1048576 item hash table&quot;</span> );</div>
+<div class="line"><span class="lineno">   32</span>        <span class="keywordflow">return</span> FALSE ;</div>
+<div class="line"><span class="lineno">   33</span>    }</div>
+<div class="line"><span class="lineno">   34</span> </div>
+<div class="line"><span class="lineno">   35</span>    <span class="keywordflow">if</span>( pthread_mutex_init( &amp;__debug_mem_table . lock, NULL ) != 0 )</div>
+<div class="line"><span class="lineno">   36</span>    {</div>
+<div class="line"><span class="lineno">   37</span>        <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a>, <span class="stringliteral">&quot;Unable to initialize lock&quot;</span> );</div>
+<div class="line"><span class="lineno">   38</span>        <span class="keywordflow">return</span> FALSE ;</div>
+<div class="line"><span class="lineno">   39</span>    }</div>
+<div class="line"><span class="lineno">   40</span> </div>
+<div class="line"><span class="lineno">   41</span>    <span class="keywordflow">return</span> TRUE ;</div>
+<div class="line"><span class="lineno">   42</span>} <span class="comment">/* init_debuf_mem() */</span></div>
+<div class="line"><span class="lineno">   43</span> </div>
+<div class="line"><span class="lineno">   44</span> </div>
+<div class="line"><span class="lineno">   45</span> </div>
+<div class="line"><span class="lineno">   46</span><span class="comment">/*!\fn DEBUG_MEM_ITEM *new_db_mem_item( void *ptr , size_t size , int line , char *file , char *func )</span></div>
+<div class="line"><span class="lineno">   47</span><span class="comment"> *\brief allocate a new item in the debug table</span></div>
+<div class="line"><span class="lineno">   48</span><span class="comment"> *\param ptr Pointer address to save</span></div>
+<div class="line"><span class="lineno">   49</span><span class="comment"> *\param size the size of the allocated data</span></div>
+<div class="line"><span class="lineno">   50</span><span class="comment"> *\param line line of the allocation</span></div>
+<div class="line"><span class="lineno">   51</span><span class="comment"> *\param file file of the allocation</span></div>
+<div class="line"><span class="lineno">   52</span><span class="comment"> *\param func function where the allocation was made</span></div>
+<div class="line"><span class="lineno">   53</span><span class="comment"> *\return A new item or NULL</span></div>
+<div class="line"><span class="lineno">   54</span><span class="comment"> */</span></div>
+<div class="line"><span class="lineno"><a class="line" href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#gafaf9dc7faf6565944999cf7565c43e55">   55</a></span>DEBUG_MEM_ITEM *<a class="code hl_function" href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#gafaf9dc7faf6565944999cf7565c43e55">new_db_mem_item</a>( <span class="keywordtype">void</span> *ptr, size_t size, <span class="keywordtype">int</span> line, <span class="keywordtype">char</span> *file, <span class="keywordtype">char</span> *func )</div>
+<div class="line"><span class="lineno">   56</span>{</div>
+<div class="line"><span class="lineno">   57</span>    DEBUG_MEM_ITEM *item = NULL ;</div>
+<div class="line"><span class="lineno">   58</span> </div>
+<div class="line"><span class="lineno">   59</span>    item = (DEBUG_MEM_ITEM *)calloc( 1, <span class="keyword">sizeof</span>( DEBUG_MEM_ITEM ) );</div>
+<div class="line"><span class="lineno">   60</span>    <span class="keywordflow">if</span>( !item )</div>
+<div class="line"><span class="lineno">   61</span>    {</div>
+<div class="line"><span class="lineno">   62</span>        <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a>, <span class="stringliteral">&quot;Unable to allocate a DEBUG_MEM_ITEM&quot;</span> );</div>
+<div class="line"><span class="lineno">   63</span>        <span class="keywordflow">return</span> NULL ;</div>
+<div class="line"><span class="lineno">   64</span>    }</div>
+<div class="line"><span class="lineno">   65</span>    item <a class="code hl_variable" href="struct_d_e_b_u_g___m_e_m___i_t_e_m.html#a1693ec377e40f4bf70bea29881b707dd">-&gt;</a> <a class="code hl_variable" href="struct_d_e_b_u_g___m_e_m___i_t_e_m.html#a1693ec377e40f4bf70bea29881b707dd">ptr</a> = ptr ;</div>
+<div class="line"><span class="lineno">   66</span>    item <a class="code hl_variable" href="struct_d_e_b_u_g___m_e_m___i_t_e_m.html#a87de3a9659e25fa8cc525d852e0d5d79">-&gt;</a> <a class="code hl_variable" href="struct_d_e_b_u_g___m_e_m___i_t_e_m.html#a87de3a9659e25fa8cc525d852e0d5d79">size</a> = size ;</div>
+<div class="line"><span class="lineno">   67</span>    item <a class="code hl_variable" href="struct_d_e_b_u_g___m_e_m___i_t_e_m.html#a44e202b57f57602745cdf51aeb4a59d0">-&gt;</a> <a class="code hl_variable" href="struct_d_e_b_u_g___m_e_m___i_t_e_m.html#a44e202b57f57602745cdf51aeb4a59d0">line</a> = line ;</div>
+<div class="line"><span class="lineno">   68</span>    item <a class="code hl_variable" href="struct_d_e_b_u_g___m_e_m___i_t_e_m.html#aa2ad23002b8c0d167a3b51c042f366af">-&gt;</a> <a class="code hl_variable" href="struct_d_e_b_u_g___m_e_m___i_t_e_m.html#aa2ad23002b8c0d167a3b51c042f366af">file</a> = file ;</div>
+<div class="line"><span class="lineno">   69</span>    item <a class="code hl_variable" href="struct_d_e_b_u_g___m_e_m___i_t_e_m.html#a0bb48a8ae360918e4ce005b836f815d7">-&gt;</a> <a class="code hl_variable" href="struct_d_e_b_u_g___m_e_m___i_t_e_m.html#a0bb48a8ae360918e4ce005b836f815d7">func</a> = func ;</div>
+<div class="line"><span class="lineno">   70</span> </div>
+<div class="line"><span class="lineno">   71</span>    <span class="keywordflow">return</span> item ;</div>
+<div class="line"><span class="lineno">   72</span>} <span class="comment">/* new_db_item() */</span></div>
+<div class="line"><span class="lineno">   73</span> </div>
+<div class="line"><span class="lineno">   74</span> </div>
+<div class="line"><span class="lineno">   75</span> </div>
+<div class="line"><span class="lineno">   76</span><span class="comment">/*!\fn void delete_db_mem_item( void *ptr )</span></div>
+<div class="line"><span class="lineno">   77</span><span class="comment"> *\brief delete a debug mem item</span></div>
+<div class="line"><span class="lineno">   78</span><span class="comment"> *\param ptr the item to destroy</span></div>
+<div class="line"><span class="lineno">   79</span><span class="comment"> */</span></div>
+<div class="line"><span class="lineno"><a class="line" href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#ga5a41f05742f748434ea0771e1b3b8aac">   80</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#ga5a41f05742f748434ea0771e1b3b8aac">delete_db_mem_item</a>( <span class="keywordtype">void</span> *ptr )</div>
+<div class="line"><span class="lineno">   81</span>{</div>
+<div class="line"><span class="lineno">   82</span>    DEBUG_MEM_ITEM *item = (DEBUG_MEM_ITEM *)ptr ;</div>
+<div class="line"><span class="lineno">   83</span>    <span class="keywordflow">if</span>( item )</div>
+<div class="line"><span class="lineno">   84</span>    {</div>
+<div class="line"><span class="lineno">   85</span>        <a class="code hl_define" href="group___c_o_m_m_o_n_s.html#ga079dc7a6a7e7c54bb714d8bb2afdd022">FreeNoLog</a>( item -&gt; file );</div>
+<div class="line"><span class="lineno">   86</span>        <a class="code hl_define" href="group___c_o_m_m_o_n_s.html#ga079dc7a6a7e7c54bb714d8bb2afdd022">FreeNoLog</a>( item -&gt; func );</div>
+<div class="line"><span class="lineno">   87</span>        <a class="code hl_define" href="group___c_o_m_m_o_n_s.html#ga079dc7a6a7e7c54bb714d8bb2afdd022">FreeNoLog</a>( item );</div>
+<div class="line"><span class="lineno">   88</span>    }</div>
+<div class="line"><span class="lineno">   89</span>} <span class="comment">/* delete_db_mem_item */</span></div>
+<div class="line"><span class="lineno">   90</span> </div>
+<div class="line"><span class="lineno">   91</span> </div>
+<div class="line"><span class="lineno">   92</span> </div>
+<div class="line"><span class="lineno">   93</span><span class="comment">/*!\fn void *db_mem_alloc( size_t size , int line , char *file , const char *func )</span></div>
+<div class="line"><span class="lineno">   94</span><span class="comment"> *\brief allocate a new pointer with size and also put it in the debug table</span></div>
+<div class="line"><span class="lineno">   95</span><span class="comment"> *\param size the size of the allocated data</span></div>
+<div class="line"><span class="lineno">   96</span><span class="comment"> *\param line line of the allocation</span></div>
+<div class="line"><span class="lineno">   97</span><span class="comment"> *\param file file of the allocation</span></div>
+<div class="line"><span class="lineno">   98</span><span class="comment"> *\param func function where the allocation was made</span></div>
+<div class="line"><span class="lineno">   99</span><span class="comment"> *\return A new item or NULL</span></div>
+<div class="line"><span class="lineno">  100</span><span class="comment"> */</span></div>
+<div class="line"><span class="lineno"><a class="line" href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#ga3f63c1a843b2f1685d31b4564ee03918">  101</a></span><span class="keywordtype">void</span> *<a class="code hl_function" href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#ga3f63c1a843b2f1685d31b4564ee03918">db_mem_alloc</a>( size_t size, <span class="keywordtype">int</span> line, <span class="keywordtype">char</span> *file, <span class="keyword">const</span> <span class="keywordtype">char</span> *func )</div>
+<div class="line"><span class="lineno">  102</span>{</div>
+<div class="line"><span class="lineno">  103</span>    DEBUG_MEM_ITEM *item = NULL ;</div>
+<div class="line"><span class="lineno">  104</span>    <span class="keywordtype">void</span> *ptr = NULL ;</div>
+<div class="line"><span class="lineno">  105</span> </div>
+<div class="line"><span class="lineno">  106</span>    <a class="code hl_variable" href="n__debug__mem_8c.html#af9bf7d5952f5c710864940062121da54">__debug_mem_table</a> <a class="code hl_variable" href="struct_d_e_b_u_g___m_e_m___t_a_b_l_e.html#a3fc94bc00fbb6decfa43272469a60786">.</a> <a class="code hl_variable" href="struct_d_e_b_u_g___m_e_m___t_a_b_l_e.html#a3fc94bc00fbb6decfa43272469a60786">nb_malloc</a> ++ ;</div>
+<div class="line"><span class="lineno">  107</span> </div>
+<div class="line"><span class="lineno">  108</span>    ptr = calloc( 1, size );</div>
+<div class="line"><span class="lineno">  109</span>    <span class="keywordflow">if</span>( ptr )</div>
+<div class="line"><span class="lineno">  110</span>    {</div>
+<div class="line"><span class="lineno">  111</span>        <span class="keywordtype">char</span> key[ 512 ] = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><span class="lineno">  112</span>        item = new_db_mem_item( ptr, size, line, strdup( file ), strdup( func ) );</div>
+<div class="line"><span class="lineno">  113</span>        sprintf( key, <span class="stringliteral">&quot;%p&quot;</span>, ptr );</div>
+<div class="line"><span class="lineno">  114</span>        <a class="code hl_function" href="group___h_a_s_h___t_a_b_l_e.html#ga2baa0497b21bdf86e3c64bb023124930">ht_put_ptr</a><a class="code hl_function" href="group___h_a_s_h___t_a_b_l_e.html#ga2baa0497b21bdf86e3c64bb023124930">(</a> <a class="code hl_variable" href="n__debug__mem_8c.html#af9bf7d5952f5c710864940062121da54">__debug_mem_table</a> <a class="code hl_variable" href="struct_d_e_b_u_g___m_e_m___t_a_b_l_e.html#a3fb224c53482feeef8f347d5b126da1c">.</a> <a class="code hl_variable" href="struct_d_e_b_u_g___m_e_m___t_a_b_l_e.html#a3fb224c53482feeef8f347d5b126da1c">table</a><a class="code hl_function" href="group___h_a_s_h___t_a_b_l_e.html#ga2baa0497b21bdf86e3c64bb023124930">,</a> key<a class="code hl_function" href="group___h_a_s_h___t_a_b_l_e.html#ga2baa0497b21bdf86e3c64bb023124930">,</a> item<a class="code hl_function" href="group___h_a_s_h___t_a_b_l_e.html#ga2baa0497b21bdf86e3c64bb023124930">,</a> <a class="code hl_function" href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#ga5a41f05742f748434ea0771e1b3b8aac">delete_db_mem_item</a> <a class="code hl_function" href="group___h_a_s_h___t_a_b_l_e.html#ga2baa0497b21bdf86e3c64bb023124930">)</a>;</div>
+<div class="line"><span class="lineno">  115</span>        <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#ga6ff63e8955665c4a58b1598f2b07c51a">LOG_DEBUG</a>, <span class="stringliteral">&quot;Added %p size %zu file %s func %s line %d&quot;</span><a class="code hl_function" href="group___l_o_g.html#gafbbbfcb9063b9f1454a499dbf98f7a56">,</a> item <a class="code hl_variable" href="struct_d_e_b_u_g___m_e_m___i_t_e_m.html#a1693ec377e40f4bf70bea29881b707dd">-&gt;</a> <a class="code hl_variable" href="struct_d_e_b_u_g___m_e_m___i_t_e_m.html#a1693ec377e40f4bf70bea29881b707dd">ptr</a><a class="code hl_function" href="group___l_o_g.html#gafbbbfcb9063b9f1454a499dbf98f7a56">,</a> item <a class="code hl_variable" href="struct_d_e_b_u_g___m_e_m___i_t_e_m.html#a87de3a9659e25fa8cc525d852e0d5d79">-&gt;</a> <a class="code hl_variable" href="struct_d_e_b_u_g___m_e_m___i_t_e_m.html#a87de3a9659e25fa8cc525d852e0d5d79">size</a><a class="code hl_function" href="group___l_o_g.html#gafbbbfcb9063b9f1454a499dbf98f7a56">,</a> item <a class="code hl_variable" href="struct_d_e_b_u_g___m_e_m___i_t_e_m.html#aa2ad23002b8c0d167a3b51c042f366af">-&gt;</a> <a class="code hl_variable" href="struct_d_e_b_u_g___m_e_m___i_t_e_m.html#aa2ad23002b8c0d167a3b51c042f366af">file</a><a class="code hl_function" href="group___l_o_g.html#gafbbbfcb9063b9f1454a499dbf98f7a56">,</a> item <a class="code hl_variable" href="struct_d_e_b_u_g___m_e_m___i_t_e_m.html#a0bb48a8ae360918e4ce005b836f815d7">-&gt;</a> <a class="code hl_variable" href="struct_d_e_b_u_g___m_e_m___i_t_e_m.html#a0bb48a8ae360918e4ce005b836f815d7">func</a><a class="code hl_function" href="group___l_o_g.html#gafbbbfcb9063b9f1454a499dbf98f7a56">,</a> item <a class="code hl_variable" href="struct_d_e_b_u_g___m_e_m___i_t_e_m.html#a44e202b57f57602745cdf51aeb4a59d0">-&gt;</a> <a class="code hl_variable" href="struct_d_e_b_u_g___m_e_m___i_t_e_m.html#a44e202b57f57602745cdf51aeb4a59d0">line</a> );</div>
+<div class="line"><span class="lineno">  116</span>    }</div>
+<div class="line"><span class="lineno">  117</span>    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  118</span>    {</div>
+<div class="line"><span class="lineno">  119</span>        <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a>, <span class="stringliteral">&quot;Unable to allocate %d oct at file %s func %s line %d &quot;</span><a class="code hl_function" href="group___l_o_g.html#gafbbbfcb9063b9f1454a499dbf98f7a56">,</a> size<a class="code hl_function" href="group___l_o_g.html#gafbbbfcb9063b9f1454a499dbf98f7a56">,</a> file<a class="code hl_function" href="group___l_o_g.html#gafbbbfcb9063b9f1454a499dbf98f7a56">,</a> func<a class="code hl_function" href="group___l_o_g.html#gafbbbfcb9063b9f1454a499dbf98f7a56">,</a> line );</div>
+<div class="line"><span class="lineno">  120</span>    }</div>
+<div class="line"><span class="lineno">  121</span>    <span class="keywordflow">return</span> ptr ;</div>
+<div class="line"><span class="lineno">  122</span>}</div>
+<div class="line"><span class="lineno">  123</span> </div>
+<div class="line"><span class="lineno">  124</span> </div>
+<div class="line"><span class="lineno">  125</span> </div>
+<div class="line"><span class="lineno">  126</span><span class="comment">/*!\fn void *db_mem_free( void *ptr )</span></div>
+<div class="line"><span class="lineno">  127</span><span class="comment"> *\brief Free a pointer and also remove it from debug table</span></div>
+<div class="line"><span class="lineno">  128</span><span class="comment"> *\param ptr Pointer to free</span></div>
+<div class="line"><span class="lineno">  129</span><span class="comment"> *\param line line of the free call</span></div>
+<div class="line"><span class="lineno">  130</span><span class="comment"> *\param file file of the free call</span></div>
+<div class="line"><span class="lineno">  131</span><span class="comment"> *\param func function where the free call was made</span></div>
+<div class="line"><span class="lineno">  132</span><span class="comment"> */</span></div>
+<div class="line"><span class="lineno"><a class="line" href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#gaea4d614fcd75f3493130a64e0e58113d">  133</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#gaea4d614fcd75f3493130a64e0e58113d">db_mem_free</a>( <span class="keywordtype">void</span> *ptr, <span class="keywordtype">int</span> line, <span class="keywordtype">char</span> *file, <span class="keyword">const</span> <span class="keywordtype">char</span> *func )</div>
+<div class="line"><span class="lineno">  134</span>{</div>
+<div class="line"><span class="lineno">  135</span>    <span class="keywordtype">void</span> *hashptr = NULL ;</div>
+<div class="line"><span class="lineno">  136</span>    <span class="keywordtype">char</span> key[ 512 ] = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><span class="lineno">  137</span> </div>
+<div class="line"><span class="lineno">  138</span>    sprintf( key, <span class="stringliteral">&quot;%p&quot;</span>, ptr );</div>
+<div class="line"><span class="lineno">  139</span>    <a class="code hl_function" href="group___h_a_s_h___t_a_b_l_e.html#gae34a331ccbda86f7e5b2319f1852d6ca">ht_get_ptr</a><a class="code hl_function" href="group___h_a_s_h___t_a_b_l_e.html#gae34a331ccbda86f7e5b2319f1852d6ca">(</a> <a class="code hl_variable" href="n__debug__mem_8c.html#af9bf7d5952f5c710864940062121da54">__debug_mem_table</a> <a class="code hl_variable" href="struct_d_e_b_u_g___m_e_m___t_a_b_l_e.html#a3fb224c53482feeef8f347d5b126da1c">.</a> <a class="code hl_variable" href="struct_d_e_b_u_g___m_e_m___t_a_b_l_e.html#a3fb224c53482feeef8f347d5b126da1c">table</a><a class="code hl_function" href="group___h_a_s_h___t_a_b_l_e.html#gae34a331ccbda86f7e5b2319f1852d6ca">,</a> key<a class="code hl_function" href="group___h_a_s_h___t_a_b_l_e.html#gae34a331ccbda86f7e5b2319f1852d6ca">,</a> &amp;hashptr <a class="code hl_function" href="group___h_a_s_h___t_a_b_l_e.html#gae34a331ccbda86f7e5b2319f1852d6ca">)</a>;</div>
+<div class="line"><span class="lineno">  140</span>    <span class="keywordflow">if</span>( hashptr )</div>
+<div class="line"><span class="lineno">  141</span>    {</div>
+<div class="line"><span class="lineno">  142</span>        DEBUG_MEM_ITEM *item = hashptr ;</div>
+<div class="line"><span class="lineno">  143</span>        <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#ga6ff63e8955665c4a58b1598f2b07c51a">LOG_DEBUG</a>, <span class="stringliteral">&quot;Removed %p size %zu file %s func %s line %d\nCall from %s,%s:%d&quot;</span><a class="code hl_function" href="group___l_o_g.html#gafbbbfcb9063b9f1454a499dbf98f7a56">,</a> item <a class="code hl_variable" href="struct_d_e_b_u_g___m_e_m___i_t_e_m.html#a1693ec377e40f4bf70bea29881b707dd">-&gt;</a> <a class="code hl_variable" href="struct_d_e_b_u_g___m_e_m___i_t_e_m.html#a1693ec377e40f4bf70bea29881b707dd">ptr</a><a class="code hl_function" href="group___l_o_g.html#gafbbbfcb9063b9f1454a499dbf98f7a56">,</a> item <a class="code hl_variable" href="struct_d_e_b_u_g___m_e_m___i_t_e_m.html#a87de3a9659e25fa8cc525d852e0d5d79">-&gt;</a> <a class="code hl_variable" href="struct_d_e_b_u_g___m_e_m___i_t_e_m.html#a87de3a9659e25fa8cc525d852e0d5d79">size</a><a class="code hl_function" href="group___l_o_g.html#gafbbbfcb9063b9f1454a499dbf98f7a56">,</a> item <a class="code hl_variable" href="struct_d_e_b_u_g___m_e_m___i_t_e_m.html#aa2ad23002b8c0d167a3b51c042f366af">-&gt;</a> <a class="code hl_variable" href="struct_d_e_b_u_g___m_e_m___i_t_e_m.html#aa2ad23002b8c0d167a3b51c042f366af">file</a><a class="code hl_function" href="group___l_o_g.html#gafbbbfcb9063b9f1454a499dbf98f7a56">,</a> item <a class="code hl_variable" href="struct_d_e_b_u_g___m_e_m___i_t_e_m.html#a0bb48a8ae360918e4ce005b836f815d7">-&gt;</a> <a class="code hl_variable" href="struct_d_e_b_u_g___m_e_m___i_t_e_m.html#a0bb48a8ae360918e4ce005b836f815d7">func</a><a class="code hl_function" href="group___l_o_g.html#gafbbbfcb9063b9f1454a499dbf98f7a56">,</a> item <a class="code hl_variable" href="struct_d_e_b_u_g___m_e_m___i_t_e_m.html#a44e202b57f57602745cdf51aeb4a59d0">-&gt;</a> <a class="code hl_variable" href="struct_d_e_b_u_g___m_e_m___i_t_e_m.html#a44e202b57f57602745cdf51aeb4a59d0">line</a><a class="code hl_function" href="group___l_o_g.html#gafbbbfcb9063b9f1454a499dbf98f7a56">,</a> file<a class="code hl_function" href="group___l_o_g.html#gafbbbfcb9063b9f1454a499dbf98f7a56">,</a> func<a class="code hl_function" href="group___l_o_g.html#gafbbbfcb9063b9f1454a499dbf98f7a56">,</a> line );</div>
+<div class="line"><span class="lineno">  144</span>        <a class="code hl_function" href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#ga5a41f05742f748434ea0771e1b3b8aac">delete_db_mem_item</a><a class="code hl_function" href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#ga5a41f05742f748434ea0771e1b3b8aac">(</a> item <a class="code hl_function" href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#ga5a41f05742f748434ea0771e1b3b8aac">)</a>;</div>
+<div class="line"><span class="lineno">  145</span>        item = NULL ;</div>
+<div class="line"><span class="lineno">  146</span>        <a class="code hl_function" href="group___h_a_s_h___t_a_b_l_e.html#ga8d8873be47a634ad8a386e61f12a1f53">ht_remove</a><a class="code hl_function" href="group___h_a_s_h___t_a_b_l_e.html#ga8d8873be47a634ad8a386e61f12a1f53">(</a> <a class="code hl_variable" href="n__debug__mem_8c.html#af9bf7d5952f5c710864940062121da54">__debug_mem_table</a> <a class="code hl_variable" href="struct_d_e_b_u_g___m_e_m___t_a_b_l_e.html#a3fb224c53482feeef8f347d5b126da1c">.</a> <a class="code hl_variable" href="struct_d_e_b_u_g___m_e_m___t_a_b_l_e.html#a3fb224c53482feeef8f347d5b126da1c">table</a><a class="code hl_function" href="group___h_a_s_h___t_a_b_l_e.html#ga8d8873be47a634ad8a386e61f12a1f53">,</a> key <a class="code hl_function" href="group___h_a_s_h___t_a_b_l_e.html#ga8d8873be47a634ad8a386e61f12a1f53">)</a>;</div>
+<div class="line"><span class="lineno">  147</span>        <a class="code hl_variable" href="n__debug__mem_8c.html#af9bf7d5952f5c710864940062121da54">__debug_mem_table</a> <a class="code hl_variable" href="struct_d_e_b_u_g___m_e_m___t_a_b_l_e.html#aae81bc833d89447567a72ff71d0e580e">.</a> <a class="code hl_variable" href="struct_d_e_b_u_g___m_e_m___t_a_b_l_e.html#aae81bc833d89447567a72ff71d0e580e">nb_free</a> ++ ;</div>
+<div class="line"><span class="lineno">  148</span>    }</div>
+<div class="line"><span class="lineno">  149</span>    <a class="code hl_define" href="group___c_o_m_m_o_n_s.html#gae62e40d702e99a7760ba1de7451dff51">Free</a>( ptr );</div>
+<div class="line"><span class="lineno">  150</span>} <span class="comment">/* db_mem_free() */</span></div>
+<div class="line"><span class="lineno">  151</span> </div>
+<div class="line"><span class="lineno">  152</span> </div>
+<div class="line"><span class="lineno">  153</span> </div>
+<div class="line"><span class="lineno">  154</span><span class="comment">/*!\fn int db_mem_dump_leaked( char *file )</span></div>
+<div class="line"><span class="lineno">  155</span><span class="comment"> *\brief Dump the current debug memory table</span></div>
+<div class="line"><span class="lineno">  156</span><span class="comment"> *\param file The name of the logfile</span></div>
+<div class="line"><span class="lineno">  157</span><span class="comment"> *\return TRUE or FALSE</span></div>
+<div class="line"><span class="lineno">  158</span><span class="comment"> */</span></div>
+<div class="line"><span class="lineno"><a class="line" href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#ga53876f346e6461281c59a47451b08a5c">  159</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#ga53876f346e6461281c59a47451b08a5c">db_mem_dump_leaked</a>( <span class="keywordtype">char</span> *file )</div>
+<div class="line"><span class="lineno">  160</span>{</div>
+<div class="line"><span class="lineno">  161</span>    FILE *out = NULL ;</div>
+<div class="line"><span class="lineno">  162</span>    LIST_NODE *node = NULL ;</div>
+<div class="line"><span class="lineno">  163</span>    <a class="code hl_struct" href="struct_h_a_s_h___n_o_d_e.html">HASH_NODE</a> *hash_entry = NULL ;</div>
+<div class="line"><span class="lineno">  164</span>    DEBUG_MEM_ITEM *item = NULL ;</div>
+<div class="line"><span class="lineno">  165</span>    size_t len = 0 ;</div>
+<div class="line"><span class="lineno">  166</span> </div>
+<div class="line"><span class="lineno">  167</span>    out = fopen( file, <span class="stringliteral">&quot;w&quot;</span> );</div>
+<div class="line"><span class="lineno">  168</span>    <span class="keywordflow">if</span>( !out )</div>
+<div class="line"><span class="lineno">  169</span>    {</div>
+<div class="line"><span class="lineno">  170</span>        <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a>,<span class="stringliteral">&quot;Unable to open %s&quot;</span><a class="code hl_function" href="group___l_o_g.html#gafbbbfcb9063b9f1454a499dbf98f7a56">,</a> file );</div>
+<div class="line"><span class="lineno">  171</span>        <span class="keywordflow">return</span> FALSE ;</div>
+<div class="line"><span class="lineno">  172</span>    }</div>
+<div class="line"><span class="lineno">  173</span> </div>
+<div class="line"><span class="lineno">  174</span>    fprintf( out, <span class="stringliteral">&quot;%d malloc / %d free\n&quot;</span>, __debug_mem_table . nb_malloc, __debug_mem_table . nb_free );</div>
+<div class="line"><span class="lineno">  175</span> </div>
+<div class="line"><span class="lineno">  176</span>    <span class="keywordflow">for</span>( <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> it = 0 ; it &lt; <a class="code hl_variable" href="n__debug__mem_8c.html#af9bf7d5952f5c710864940062121da54">__debug_mem_table</a> <a class="code hl_variable" href="struct_d_e_b_u_g___m_e_m___t_a_b_l_e.html#a3fb224c53482feeef8f347d5b126da1c">.</a> <a class="code hl_variable" href="struct_d_e_b_u_g___m_e_m___t_a_b_l_e.html#a3fb224c53482feeef8f347d5b126da1c">table</a> <a class="code hl_variable" href="struct_h_a_s_h___t_a_b_l_e.html#ae2397c35498afb9670f1f49641e8755c">-&gt;</a> <a class="code hl_variable" href="struct_h_a_s_h___t_a_b_l_e.html#ae2397c35498afb9670f1f49641e8755c">size</a> ; it ++ )</div>
+<div class="line"><span class="lineno">  177</span>    {</div>
+<div class="line"><span class="lineno">  178</span>        node =  <a class="code hl_variable" href="n__debug__mem_8c.html#af9bf7d5952f5c710864940062121da54">__debug_mem_table</a> <a class="code hl_variable" href="struct_d_e_b_u_g___m_e_m___t_a_b_l_e.html#a3fb224c53482feeef8f347d5b126da1c">.</a> <a class="code hl_variable" href="struct_d_e_b_u_g___m_e_m___t_a_b_l_e.html#a3fb224c53482feeef8f347d5b126da1c">table</a> <a class="code hl_variable" href="struct_h_a_s_h___t_a_b_l_e.html#a5f15783b0b38e5269cbe64afe90835ca">-&gt;</a> <a class="code hl_variable" href="struct_h_a_s_h___t_a_b_l_e.html#a5f15783b0b38e5269cbe64afe90835ca">hash_table</a>[ it ] <a class="code hl_variable" href="struct_l_i_s_t.html#aaaf4b83d5bfb568b4a840032ba46ead3">-&gt;</a> <a class="code hl_variable" href="struct_l_i_s_t.html#aaaf4b83d5bfb568b4a840032ba46ead3">start</a> ;</div>
+<div class="line"><span class="lineno">  179</span>        <span class="keywordflow">while</span>( node )</div>
+<div class="line"><span class="lineno">  180</span>        {</div>
+<div class="line"><span class="lineno">  181</span>            hash_entry= (<a class="code hl_struct" href="struct_h_a_s_h___n_o_d_e.html">HASH_NODE</a> *)node <a class="code hl_variable" href="struct_l_i_s_t___n_o_d_e.html#a3e3c8144183582d63ffad5fb3315ea69">-&gt;</a> <a class="code hl_variable" href="struct_l_i_s_t___n_o_d_e.html#a3e3c8144183582d63ffad5fb3315ea69">ptr</a> ;</div>
+<div class="line"><span class="lineno">  182</span>            item = hash_entry <a class="code hl_variable" href="struct_h_a_s_h___n_o_d_e.html#a64156acdfb776968152ebb5bd01901af">-&gt;</a> <a class="code hl_variable" href="struct_h_a_s_h___n_o_d_e.html#a64156acdfb776968152ebb5bd01901af">data</a> <a class="code hl_variable" href="union_h_a_s_h___v_a_l_u_e.html#a4ec9d766374970fa70cb356e5a4b8f96">.</a> <a class="code hl_variable" href="union_h_a_s_h___v_a_l_u_e.html#a4ec9d766374970fa70cb356e5a4b8f96">ptr</a> ;</div>
+<div class="line"><span class="lineno">  183</span> </div>
+<div class="line"><span class="lineno">  184</span>            <span class="keywordflow">if</span>( item )</div>
+<div class="line"><span class="lineno">  185</span>            {</div>
+<div class="line"><span class="lineno">  186</span>                fprintf( out, <span class="stringliteral">&quot;%p size %zu file %s func %s line %d dump:&quot;</span>, item -&gt; ptr, item -&gt; size, item -&gt; file, item -&gt; func, item -&gt; line );</div>
+<div class="line"><span class="lineno">  187</span>                <span class="keywordflow">if</span>( item <a class="code hl_variable" href="struct_d_e_b_u_g___m_e_m___i_t_e_m.html#a87de3a9659e25fa8cc525d852e0d5d79">-&gt;</a> <a class="code hl_variable" href="struct_d_e_b_u_g___m_e_m___i_t_e_m.html#a87de3a9659e25fa8cc525d852e0d5d79">size</a> &gt; <a class="code hl_define" href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#ga0ee85545fc2f0a35e282ff54bec7fad4">DEBUG_MEM_DUMP_MAX_LEN</a> )</div>
+<div class="line"><span class="lineno">  188</span>                    len = <a class="code hl_define" href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#ga0ee85545fc2f0a35e282ff54bec7fad4">DEBUG_MEM_DUMP_MAX_LEN</a> ;</div>
+<div class="line"><span class="lineno">  189</span>                <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  190</span>                    len = item <a class="code hl_variable" href="struct_d_e_b_u_g___m_e_m___i_t_e_m.html#a87de3a9659e25fa8cc525d852e0d5d79">-&gt;</a> <a class="code hl_variable" href="struct_d_e_b_u_g___m_e_m___i_t_e_m.html#a87de3a9659e25fa8cc525d852e0d5d79">size</a> ;</div>
+<div class="line"><span class="lineno">  191</span> </div>
+<div class="line"><span class="lineno">  192</span>                fwrite( item -&gt; ptr, len, 1, out );</div>
+<div class="line"><span class="lineno">  193</span>                fprintf( out, <span class="stringliteral">&quot;\n&quot;</span> );</div>
+<div class="line"><span class="lineno">  194</span>                <a class="code hl_function" href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#ga5a41f05742f748434ea0771e1b3b8aac">delete_db_mem_item</a><a class="code hl_function" href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#ga5a41f05742f748434ea0771e1b3b8aac">(</a> item <a class="code hl_function" href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#ga5a41f05742f748434ea0771e1b3b8aac">)</a>;</div>
+<div class="line"><span class="lineno">  195</span>                item = NULL ;</div>
+<div class="line"><span class="lineno">  196</span>            }</div>
+<div class="line"><span class="lineno">  197</span>            <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  198</span>            {</div>
+<div class="line"><span class="lineno">  199</span>                <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a>,<span class="stringliteral">&quot;Unable to load item from node -&gt; ptr&quot;</span> );</div>
+<div class="line"><span class="lineno">  200</span>            }</div>
+<div class="line"><span class="lineno">  201</span>            node = node <a class="code hl_variable" href="struct_l_i_s_t___n_o_d_e.html#ad6f2edb2e5026bbdff71604e5f9d8f3c">-&gt;</a> <a class="code hl_variable" href="struct_l_i_s_t___n_o_d_e.html#ad6f2edb2e5026bbdff71604e5f9d8f3c">next</a> ;</div>
+<div class="line"><span class="lineno">  202</span>        }</div>
+<div class="line"><span class="lineno">  203</span>    }</div>
+<div class="line"><span class="lineno">  204</span> </div>
+<div class="line"><span class="lineno">  205</span>    fclose( out );</div>
+<div class="line"><span class="lineno">  206</span>    <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#ga6ff63e8955665c4a58b1598f2b07c51a">LOG_DEBUG</a>, <span class="stringliteral">&quot;Memory dump finished&quot;</span> );</div>
+<div class="line"><span class="lineno">  207</span>    <span class="keywordflow">return</span> TRUE ;</div>
+<div class="line"><span class="lineno">  208</span>} <span class="comment">/*db_mem_dump_leaked() */</span></div>
 <div class="ttc" id="agroup___c_o_m_m_o_n_s_html_ga079dc7a6a7e7c54bb714d8bb2afdd022"><div class="ttname"><a href="group___c_o_m_m_o_n_s.html#ga079dc7a6a7e7c54bb714d8bb2afdd022">FreeNoLog</a></div><div class="ttdeci">#define FreeNoLog(__ptr)</div><div class="ttdoc">Free Handler without log.</div><div class="ttdef"><b>Definition:</b> <a href="n__common_8h_source.html#l00252">n_common.h:252</a></div></div>
 <div class="ttc" id="agroup___c_o_m_m_o_n_s_html_gae62e40d702e99a7760ba1de7451dff51"><div class="ttname"><a href="group___c_o_m_m_o_n_s.html#gae62e40d702e99a7760ba1de7451dff51">Free</a></div><div class="ttdeci">#define Free(__ptr)</div><div class="ttdoc">Free Handler to get errors.</div><div class="ttdef"><b>Definition:</b> <a href="n__common_8h_source.html#l00240">n_common.h:240</a></div></div>
 <div class="ttc" id="agroup___d_e_b_u_g_m_e_m_c_o_r_e_html_ga0ee85545fc2f0a35e282ff54bec7fad4"><div class="ttname"><a href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#ga0ee85545fc2f0a35e282ff54bec7fad4">DEBUG_MEM_DUMP_MAX_LEN</a></div><div class="ttdeci">#define DEBUG_MEM_DUMP_MAX_LEN</div><div class="ttdoc">max memory dumped by leaked unit</div><div class="ttdef"><b>Definition:</b> <a href="n__debug__mem_8h_source.html#l00026">n_debug_mem.h:26</a></div></div>
@@ -302,29 +302,39 @@ $(document).ready(function(){initNavTree('n__debug__mem_8c_source.html',''); ini
 <div class="ttc" id="agroup___d_e_b_u_g_m_e_m_c_o_r_e_html_ga5a41f05742f748434ea0771e1b3b8aac"><div class="ttname"><a href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#ga5a41f05742f748434ea0771e1b3b8aac">delete_db_mem_item</a></div><div class="ttdeci">void delete_db_mem_item(void *ptr)</div><div class="ttdoc">delete a debug mem item</div><div class="ttdef"><b>Definition:</b> <a href="n__debug__mem_8c_source.html#l00080">n_debug_mem.c:80</a></div></div>
 <div class="ttc" id="agroup___d_e_b_u_g_m_e_m_c_o_r_e_html_gaea4d614fcd75f3493130a64e0e58113d"><div class="ttname"><a href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#gaea4d614fcd75f3493130a64e0e58113d">db_mem_free</a></div><div class="ttdeci">void db_mem_free(void *ptr, int line, char *file, const char *func)</div><div class="ttdef"><b>Definition:</b> <a href="n__debug__mem_8c_source.html#l00133">n_debug_mem.c:133</a></div></div>
 <div class="ttc" id="agroup___d_e_b_u_g_m_e_m_c_o_r_e_html_gafaf9dc7faf6565944999cf7565c43e55"><div class="ttname"><a href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#gafaf9dc7faf6565944999cf7565c43e55">new_db_mem_item</a></div><div class="ttdeci">DEBUG_MEM_ITEM * new_db_mem_item(void *ptr, size_t size, int line, char *file, char *func)</div><div class="ttdoc">allocate a new item in the debug table</div><div class="ttdef"><b>Definition:</b> <a href="n__debug__mem_8c_source.html#l00055">n_debug_mem.c:55</a></div></div>
-<div class="ttc" id="agroup___h_a_s_h___t_a_b_l_e_html_ga2baa0497b21bdf86e3c64bb023124930"><div class="ttname"><a href="group___h_a_s_h___t_a_b_l_e.html#ga2baa0497b21bdf86e3c64bb023124930">ht_put_ptr</a></div><div class="ttdeci">int ht_put_ptr(HASH_TABLE *table, char *key, void *ptr, void(*destructor)(void *ptr))</div><div class="ttdef"><b>Definition:</b> <a href="n__hash_8c_source.html#l01963">n_hash.c:1963</a></div></div>
-<div class="ttc" id="agroup___h_a_s_h___t_a_b_l_e_html_ga8d8873be47a634ad8a386e61f12a1f53"><div class="ttname"><a href="group___h_a_s_h___t_a_b_l_e.html#ga8d8873be47a634ad8a386e61f12a1f53">ht_remove</a></div><div class="ttdeci">int ht_remove(HASH_TABLE *table, char *key)</div><div class="ttdef"><b>Definition:</b> <a href="n__hash_8c_source.html#l01981">n_hash.c:1981</a></div></div>
-<div class="ttc" id="agroup___h_a_s_h___t_a_b_l_e_html_gaa2d879c1afd3c71a0917bbe2c0766664"><div class="ttname"><a href="group___h_a_s_h___t_a_b_l_e.html#gaa2d879c1afd3c71a0917bbe2c0766664">new_ht</a></div><div class="ttdeci">HASH_TABLE * new_ht(unsigned long int size)</div><div class="ttdef"><b>Definition:</b> <a href="n__hash_8c_source.html#l01861">n_hash.c:1861</a></div></div>
-<div class="ttc" id="agroup___h_a_s_h___t_a_b_l_e_html_gae34a331ccbda86f7e5b2319f1852d6ca"><div class="ttname"><a href="group___h_a_s_h___t_a_b_l_e.html#gae34a331ccbda86f7e5b2319f1852d6ca">ht_get_ptr</a></div><div class="ttdeci">int ht_get_ptr(HASH_TABLE *table, char *key, void **val)</div><div class="ttdef"><b>Definition:</b> <a href="n__hash_8c_source.html#l01939">n_hash.c:1939</a></div></div>
+<div class="ttc" id="agroup___h_a_s_h___t_a_b_l_e_html_ga2baa0497b21bdf86e3c64bb023124930"><div class="ttname"><a href="group___h_a_s_h___t_a_b_l_e.html#ga2baa0497b21bdf86e3c64bb023124930">ht_put_ptr</a></div><div class="ttdeci">int ht_put_ptr(HASH_TABLE *table, char *key, void *ptr, void(*destructor)(void *ptr))</div><div class="ttdef"><b>Definition:</b> <a href="n__hash_8c_source.html#l01962">n_hash.c:1962</a></div></div>
+<div class="ttc" id="agroup___h_a_s_h___t_a_b_l_e_html_ga8d8873be47a634ad8a386e61f12a1f53"><div class="ttname"><a href="group___h_a_s_h___t_a_b_l_e.html#ga8d8873be47a634ad8a386e61f12a1f53">ht_remove</a></div><div class="ttdeci">int ht_remove(HASH_TABLE *table, char *key)</div><div class="ttdef"><b>Definition:</b> <a href="n__hash_8c_source.html#l01980">n_hash.c:1980</a></div></div>
+<div class="ttc" id="agroup___h_a_s_h___t_a_b_l_e_html_gaa2d879c1afd3c71a0917bbe2c0766664"><div class="ttname"><a href="group___h_a_s_h___t_a_b_l_e.html#gaa2d879c1afd3c71a0917bbe2c0766664">new_ht</a></div><div class="ttdeci">HASH_TABLE * new_ht(unsigned long int size)</div><div class="ttdef"><b>Definition:</b> <a href="n__hash_8c_source.html#l01860">n_hash.c:1860</a></div></div>
+<div class="ttc" id="agroup___h_a_s_h___t_a_b_l_e_html_gae34a331ccbda86f7e5b2319f1852d6ca"><div class="ttname"><a href="group___h_a_s_h___t_a_b_l_e.html#gae34a331ccbda86f7e5b2319f1852d6ca">ht_get_ptr</a></div><div class="ttdeci">int ht_get_ptr(HASH_TABLE *table, char *key, void **val)</div><div class="ttdef"><b>Definition:</b> <a href="n__hash_8c_source.html#l01938">n_hash.c:1938</a></div></div>
 <div class="ttc" id="agroup___l_o_g_html_ga61355655c6d490cdf201afdfc340df4b"><div class="ttname"><a href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a></div><div class="ttdeci">#define n_log(__LEVEL__,...)</div><div class="ttdoc">Logging function wrapper to get line and func.</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00073">n_log.h:73</a></div></div>
 <div class="ttc" id="agroup___l_o_g_html_ga6ff63e8955665c4a58b1598f2b07c51a"><div class="ttname"><a href="group___l_o_g.html#ga6ff63e8955665c4a58b1598f2b07c51a">LOG_DEBUG</a></div><div class="ttdeci">#define LOG_DEBUG</div><div class="ttdoc">debug-level messages</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00065">n_log.h:65</a></div></div>
 <div class="ttc" id="agroup___l_o_g_html_ga96fad55b3f5adf08c39e4c877cf185e3"><div class="ttname"><a href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a></div><div class="ttdeci">#define LOG_ERR</div><div class="ttdoc">error conditions</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00057">n_log.h:57</a></div></div>
-<div class="ttc" id="an__common_8h_html"><div class="ttname"><a href="n__common_8h.html">n_common.h</a></div><div class="ttdoc">common headers and low-level hugly functions &amp; define</div></div>
-<div class="ttc" id="an__debug__mem_8c_html_a5a36fe55f9afc1554e1bcfa2858c47d1"><div class="ttname"><a href="n__debug__mem_8c.html#a5a36fe55f9afc1554e1bcfa2858c47d1">__debug_mem_table</a></div><div class="ttdeci">static DEBUG_MEM_TABLE __debug_mem_table</div><div class="ttdoc">global table of allocation</div><div class="ttdef"><b>Definition:</b> <a href="n__debug__mem_8c_source.html#l00015">n_debug_mem.c:15</a></div></div>
-<div class="ttc" id="an__debug__mem_8h_html"><div class="ttname"><a href="n__debug__mem_8h.html">n_debug_mem.h</a></div><div class="ttdoc">Helpers for debugging memory.</div></div>
-<div class="ttc" id="an__hash_8h_html"><div class="ttname"><a href="n__hash_8h.html">n_hash.h</a></div><div class="ttdoc">Hash functions and table.</div></div>
-<div class="ttc" id="an__log_8h_html"><div class="ttname"><a href="n__log_8h.html">n_log.h</a></div></div>
-<div class="ttc" id="astruct_d_e_b_u_g___m_e_m___i_t_e_m_html"><div class="ttname"><a href="struct_d_e_b_u_g___m_e_m___i_t_e_m.html">DEBUG_MEM_ITEM</a></div><div class="ttdoc">structure of a debug unit</div><div class="ttdef"><b>Definition:</b> <a href="n__debug__mem_8h_source.html#l00029">n_debug_mem.h:30</a></div></div>
+<div class="ttc" id="agroup___l_o_g_html_gafbbbfcb9063b9f1454a499dbf98f7a56"><div class="ttname"><a href="group___l_o_g.html#gafbbbfcb9063b9f1454a499dbf98f7a56">_n_log</a></div><div class="ttdeci">void _n_log(int level, const char *file, const char *func, int line, const char *format,...)</div><div class="ttdoc">Logging function.</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8c_source.html#l00216">n_log.c:216</a></div></div>
+<div class="ttc" id="an__debug__mem_8c_html_af9bf7d5952f5c710864940062121da54"><div class="ttname"><a href="n__debug__mem_8c.html#af9bf7d5952f5c710864940062121da54">__debug_mem_table</a></div><div class="ttdeci">static DEBUG_MEM_TABLE __debug_mem_table</div><div class="ttdoc">global table of allocation</div><div class="ttdef"><b>Definition:</b> <a href="n__debug__mem_8c_source.html#l00015">n_debug_mem.c:15</a></div></div>
+<div class="ttc" id="astruct_d_e_b_u_g___m_e_m___i_t_e_m_html_a0bb48a8ae360918e4ce005b836f815d7"><div class="ttname"><a href="struct_d_e_b_u_g___m_e_m___i_t_e_m.html#a0bb48a8ae360918e4ce005b836f815d7">DEBUG_MEM_ITEM::func</a></div><div class="ttdeci">char * func</div><div class="ttdoc">function in the file of the call generating that pointer</div><div class="ttdef"><b>Definition:</b> <a href="n__debug__mem_8h_source.html#l00038">n_debug_mem.h:38</a></div></div>
+<div class="ttc" id="astruct_d_e_b_u_g___m_e_m___i_t_e_m_html_a1693ec377e40f4bf70bea29881b707dd"><div class="ttname"><a href="struct_d_e_b_u_g___m_e_m___i_t_e_m.html#a1693ec377e40f4bf70bea29881b707dd">DEBUG_MEM_ITEM::ptr</a></div><div class="ttdeci">void * ptr</div><div class="ttdoc">address of the tracked pointer</div><div class="ttdef"><b>Definition:</b> <a href="n__debug__mem_8h_source.html#l00032">n_debug_mem.h:32</a></div></div>
+<div class="ttc" id="astruct_d_e_b_u_g___m_e_m___i_t_e_m_html_a44e202b57f57602745cdf51aeb4a59d0"><div class="ttname"><a href="struct_d_e_b_u_g___m_e_m___i_t_e_m.html#a44e202b57f57602745cdf51aeb4a59d0">DEBUG_MEM_ITEM::line</a></div><div class="ttdeci">int line</div><div class="ttdoc">line of the call generating the pointer</div><div class="ttdef"><b>Definition:</b> <a href="n__debug__mem_8h_source.html#l00040">n_debug_mem.h:40</a></div></div>
+<div class="ttc" id="astruct_d_e_b_u_g___m_e_m___i_t_e_m_html_a87de3a9659e25fa8cc525d852e0d5d79"><div class="ttname"><a href="struct_d_e_b_u_g___m_e_m___i_t_e_m.html#a87de3a9659e25fa8cc525d852e0d5d79">DEBUG_MEM_ITEM::size</a></div><div class="ttdeci">size_t size</div><div class="ttdoc">size of the pointer</div><div class="ttdef"><b>Definition:</b> <a href="n__debug__mem_8h_source.html#l00034">n_debug_mem.h:34</a></div></div>
+<div class="ttc" id="astruct_d_e_b_u_g___m_e_m___i_t_e_m_html_aa2ad23002b8c0d167a3b51c042f366af"><div class="ttname"><a href="struct_d_e_b_u_g___m_e_m___i_t_e_m.html#aa2ad23002b8c0d167a3b51c042f366af">DEBUG_MEM_ITEM::file</a></div><div class="ttdeci">char * file</div><div class="ttdoc">file of the call generating that pointer</div><div class="ttdef"><b>Definition:</b> <a href="n__debug__mem_8h_source.html#l00036">n_debug_mem.h:36</a></div></div>
 <div class="ttc" id="astruct_d_e_b_u_g___m_e_m___t_a_b_l_e_html"><div class="ttname"><a href="struct_d_e_b_u_g___m_e_m___t_a_b_l_e.html">DEBUG_MEM_TABLE</a></div><div class="ttdoc">structure of a table of DEBUG_MEM_ITEM</div><div class="ttdef"><b>Definition:</b> <a href="n__debug__mem_8h_source.html#l00045">n_debug_mem.h:46</a></div></div>
-<div class="ttc" id="astruct_h_a_s_h___n_o_d_e_html"><div class="ttname"><a href="struct_h_a_s_h___n_o_d_e.html">HASH_NODE</a></div><div class="ttdoc">structure of a hash table node</div><div class="ttdef"><b>Definition:</b> <a href="n__hash_8h_source.html#l00086">n_hash.h:87</a></div></div>
-<div class="ttc" id="astruct_l_i_s_t___n_o_d_e_html"><div class="ttname"><a href="struct_l_i_s_t___n_o_d_e.html">LIST_NODE</a></div><div class="ttdoc">Structure of a generic list node.</div><div class="ttdef"><b>Definition:</b> <a href="n__list_8h_source.html#l00026">n_list.h:27</a></div></div>
+<div class="ttc" id="astruct_d_e_b_u_g___m_e_m___t_a_b_l_e_html_a3fb224c53482feeef8f347d5b126da1c"><div class="ttname"><a href="struct_d_e_b_u_g___m_e_m___t_a_b_l_e.html#a3fb224c53482feeef8f347d5b126da1c">DEBUG_MEM_TABLE::table</a></div><div class="ttdeci">HASH_TABLE * table</div><div class="ttdoc">table of tracked elements</div><div class="ttdef"><b>Definition:</b> <a href="n__debug__mem_8h_source.html#l00052">n_debug_mem.h:52</a></div></div>
+<div class="ttc" id="astruct_d_e_b_u_g___m_e_m___t_a_b_l_e_html_a3fc94bc00fbb6decfa43272469a60786"><div class="ttname"><a href="struct_d_e_b_u_g___m_e_m___t_a_b_l_e.html#a3fc94bc00fbb6decfa43272469a60786">DEBUG_MEM_TABLE::nb_malloc</a></div><div class="ttdeci">int nb_malloc</div><div class="ttdoc">track of the number of allocated</div><div class="ttdef"><b>Definition:</b> <a href="n__debug__mem_8h_source.html#l00048">n_debug_mem.h:48</a></div></div>
+<div class="ttc" id="astruct_d_e_b_u_g___m_e_m___t_a_b_l_e_html_aae81bc833d89447567a72ff71d0e580e"><div class="ttname"><a href="struct_d_e_b_u_g___m_e_m___t_a_b_l_e.html#aae81bc833d89447567a72ff71d0e580e">DEBUG_MEM_TABLE::nb_free</a></div><div class="ttdeci">int nb_free</div><div class="ttdoc">track of the number of freed</div><div class="ttdef"><b>Definition:</b> <a href="n__debug__mem_8h_source.html#l00050">n_debug_mem.h:50</a></div></div>
+<div class="ttc" id="astruct_h_a_s_h___n_o_d_e_html"><div class="ttname"><a href="struct_h_a_s_h___n_o_d_e.html">HASH_NODE</a></div><div class="ttdoc">structure of a hash table node</div><div class="ttdef"><b>Definition:</b> <a href="n__hash_8h_source.html#l00082">n_hash.h:83</a></div></div>
+<div class="ttc" id="astruct_h_a_s_h___n_o_d_e_html_a64156acdfb776968152ebb5bd01901af"><div class="ttname"><a href="struct_h_a_s_h___n_o_d_e.html#a64156acdfb776968152ebb5bd01901af">HASH_NODE::data</a></div><div class="ttdeci">union HASH_VALUE data</div><div class="ttdoc">data inside the node</div><div class="ttdef"><b>Definition:</b> <a href="n__hash_8h_source.html#l00095">n_hash.h:95</a></div></div>
+<div class="ttc" id="astruct_h_a_s_h___t_a_b_l_e_html_a5f15783b0b38e5269cbe64afe90835ca"><div class="ttname"><a href="struct_h_a_s_h___t_a_b_l_e.html#a5f15783b0b38e5269cbe64afe90835ca">HASH_TABLE::hash_table</a></div><div class="ttdeci">LIST ** hash_table</div><div class="ttdoc">HASH_CLASSIC mode: preallocated hash table.</div><div class="ttdef"><b>Definition:</b> <a href="n__hash_8h_source.html#l00117">n_hash.h:117</a></div></div>
+<div class="ttc" id="astruct_h_a_s_h___t_a_b_l_e_html_ae2397c35498afb9670f1f49641e8755c"><div class="ttname"><a href="struct_h_a_s_h___t_a_b_l_e.html#ae2397c35498afb9670f1f49641e8755c">HASH_TABLE::size</a></div><div class="ttdeci">unsigned long int size</div><div class="ttdoc">size of the hash table</div><div class="ttdef"><b>Definition:</b> <a href="n__hash_8h_source.html#l00111">n_hash.h:111</a></div></div>
+<div class="ttc" id="astruct_l_i_s_t___n_o_d_e_html_a3e3c8144183582d63ffad5fb3315ea69"><div class="ttname"><a href="struct_l_i_s_t___n_o_d_e.html#a3e3c8144183582d63ffad5fb3315ea69">LIST_NODE::ptr</a></div><div class="ttdeci">void * ptr</div><div class="ttdoc">void pointer to store</div><div class="ttdef"><b>Definition:</b> <a href="n__list_8h_source.html#l00029">n_list.h:29</a></div></div>
+<div class="ttc" id="astruct_l_i_s_t___n_o_d_e_html_ad6f2edb2e5026bbdff71604e5f9d8f3c"><div class="ttname"><a href="struct_l_i_s_t___n_o_d_e.html#ad6f2edb2e5026bbdff71604e5f9d8f3c">LIST_NODE::next</a></div><div class="ttdeci">struct LIST_NODE * next</div><div class="ttdoc">pointer to the next node</div><div class="ttdef"><b>Definition:</b> <a href="n__list_8h_source.html#l00035">n_list.h:35</a></div></div>
+<div class="ttc" id="astruct_l_i_s_t_html_aaaf4b83d5bfb568b4a840032ba46ead3"><div class="ttname"><a href="struct_l_i_s_t.html#aaaf4b83d5bfb568b4a840032ba46ead3">LIST::start</a></div><div class="ttdeci">LIST_NODE * start</div><div class="ttdoc">pointer to the start of the list</div><div class="ttdef"><b>Definition:</b> <a href="n__list_8h_source.html#l00052">n_list.h:52</a></div></div>
+<div class="ttc" id="aunion_h_a_s_h___v_a_l_u_e_html_a4ec9d766374970fa70cb356e5a4b8f96"><div class="ttname"><a href="union_h_a_s_h___v_a_l_u_e.html#a4ec9d766374970fa70cb356e5a4b8f96">HASH_VALUE::ptr</a></div><div class="ttdeci">void * ptr</div><div class="ttdoc">pointer type</div><div class="ttdef"><b>Definition:</b> <a href="n__hash_8h_source.html#l00075">n_hash.h:75</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="n__debug__mem_8c.html">n_debug_mem.c</a></li>
-    <li class="footer">Generated on Tue Feb 1 2022 21:13:47 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+    <li class="footer">Generated on Wed Feb 2 2022 14:24:10 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
   </ul>
 </div>
 </body>

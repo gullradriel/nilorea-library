@@ -85,45 +85,44 @@ $(document).ready(function(){initNavTree('n__stack_8h_source.html',''); initResi
   <div class="headertitle"><div class="title">n_stack.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="n__stack_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/**\file n_stack.c</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> *  Stack header definitions</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> *\author Castagnier Mickael</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> *\version 2.0</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> *\date 01/01/2018</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> */</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#ifndef __N_STACK_HEADER</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#define __N_STACK_HEADER</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>{</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment"></span> </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment">/**\defgroup STACK STACK: generic type stack</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment">   \addtogroup STACK</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment">  @{</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment">*/</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment"></span> </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment">/*! STACK structure */</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="struct_s_t_a_c_k.html">   22</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="struct_s_t_a_c_k.html">STACK</a></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>{<span class="comment"></span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment">    /*! STACK array */</span></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="struct_s_t_a_c_k.html#ad77c52267296ea55332df3e3b6af6001">   25</a></span>    <span class="keywordtype">void</span> **<a class="code hl_variable" href="struct_s_t_a_c_k.html#ad77c52267296ea55332df3e3b6af6001">stack</a> ;<span class="comment"></span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="comment">    /*! Size of array */</span></div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="struct_s_t_a_c_k.html#ab646d026a80e5047f0e871fa5f7c1bd8">   27</a></span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code hl_variable" href="struct_s_t_a_c_k.html#ab646d026a80e5047f0e871fa5f7c1bd8">size</a> ;</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="group___s_t_a_c_k.html#ga3d36f5af7c0218824ce98c10cb353bc5">   28</a></span>} <a class="code hl_typedef" href="group___s_t_a_c_k.html#ga3d36f5af7c0218824ce98c10cb353bc5">STACK</a> ;</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="comment"></span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="comment">/**</span></div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="comment">@}</span></div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="comment">*/</span></div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>}</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="agroup___s_t_a_c_k_html_ga3d36f5af7c0218824ce98c10cb353bc5"><div class="ttname"><a href="group___s_t_a_c_k.html#ga3d36f5af7c0218824ce98c10cb353bc5">STACK</a></div><div class="ttdeci">struct STACK STACK</div><div class="ttdoc">STACK structure.</div></div>
+<a href="n__stack_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><span class="lineno">    1</span><span class="comment">/**\file n_stack.c</span></div>
+<div class="line"><span class="lineno">    2</span><span class="comment"> *  Stack header definitions</span></div>
+<div class="line"><span class="lineno">    3</span><span class="comment"> *\author Castagnier Mickael</span></div>
+<div class="line"><span class="lineno">    4</span><span class="comment"> *\version 2.0</span></div>
+<div class="line"><span class="lineno">    5</span><span class="comment"> *\date 01/01/2018</span></div>
+<div class="line"><span class="lineno">    6</span><span class="comment"> */</span></div>
+<div class="line"><span class="lineno">    7</span> </div>
+<div class="line"><span class="lineno">    8</span><span class="preprocessor">#</span><span class="preprocessor">ifndef</span> <span class="preprocessor">__N_STACK_HEADER</span></div>
+<div class="line"><span class="lineno">    9</span><span class="preprocessor">#</span><span class="preprocessor">define</span> <span class="preprocessor">__N_STACK_HEADER</span></div>
+<div class="line"><span class="lineno">   10</span> </div>
+<div class="line"><span class="lineno">   11</span><span class="preprocessor">#</span><span class="preprocessor">ifdef</span> __cplusplus</div>
+<div class="line"><span class="lineno">   12</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span></div>
+<div class="line"><span class="lineno">   13</span>{</div>
+<div class="line"><span class="lineno">   14</span><span class="preprocessor">#</span><span class="preprocessor">endif</span></div>
+<div class="line"><span class="lineno">   15</span> </div>
+<div class="line"><span class="lineno">   16</span><span class="comment">/**\defgroup STACK STACK: generic type stack</span></div>
+<div class="line"><span class="lineno">   17</span><span class="comment">   \addtogroup STACK</span></div>
+<div class="line"><span class="lineno">   18</span><span class="comment">  @{</span></div>
+<div class="line"><span class="lineno">   19</span><span class="comment">*/</span></div>
+<div class="line"><span class="lineno">   20</span> </div>
+<div class="line"><span class="lineno">   21</span><span class="comment">/*! STACK structure */</span></div>
+<div class="line"><span class="lineno"><a class="line" href="struct_s_t_a_c_k.html">   22</a></span><span class="keyword">typedef</span> <span class="keyword">struct</span> <a class="code hl_struct" href="struct_s_t_a_c_k.html">STACK</a></div>
+<div class="line"><span class="lineno">   23</span>{</div>
+<div class="line"><span class="lineno">   24</span>    <span class="comment">/*! STACK array */</span></div>
+<div class="line"><span class="lineno"><a class="line" href="struct_s_t_a_c_k.html#ad77c52267296ea55332df3e3b6af6001">   25</a></span>    <span class="keywordtype">void</span> **<a class="code hl_variable" href="struct_s_t_a_c_k.html#ad77c52267296ea55332df3e3b6af6001">stack</a> ;</div>
+<div class="line"><span class="lineno">   26</span>    <span class="comment">/*! Size of array */</span></div>
+<div class="line"><span class="lineno"><a class="line" href="struct_s_t_a_c_k.html#ab646d026a80e5047f0e871fa5f7c1bd8">   27</a></span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code hl_variable" href="struct_s_t_a_c_k.html#ab646d026a80e5047f0e871fa5f7c1bd8">size</a> ;</div>
+<div class="line"><span class="lineno">   28</span>} STACK ;</div>
+<div class="line"><span class="lineno">   29</span> </div>
+<div class="line"><span class="lineno">   30</span><span class="comment">/**</span></div>
+<div class="line"><span class="lineno">   31</span><span class="comment">@}</span></div>
+<div class="line"><span class="lineno">   32</span><span class="comment">*/</span></div>
+<div class="line"><span class="lineno">   33</span> </div>
+<div class="line"><span class="lineno">   34</span><span class="preprocessor">#</span><span class="preprocessor">ifdef</span> __cplusplus</div>
+<div class="line"><span class="lineno">   35</span>}</div>
+<div class="line"><span class="lineno">   36</span><span class="preprocessor">#</span><span class="preprocessor">endif</span></div>
+<div class="line"><span class="lineno">   37</span> </div>
+<div class="line"><span class="lineno">   38</span><span class="preprocessor">#</span><span class="preprocessor">endif</span></div>
 <div class="ttc" id="astruct_s_t_a_c_k_html"><div class="ttname"><a href="struct_s_t_a_c_k.html">STACK</a></div><div class="ttdoc">STACK structure.</div><div class="ttdef"><b>Definition:</b> <a href="n__stack_8h_source.html#l00022">n_stack.h:23</a></div></div>
 <div class="ttc" id="astruct_s_t_a_c_k_html_ab646d026a80e5047f0e871fa5f7c1bd8"><div class="ttname"><a href="struct_s_t_a_c_k.html#ab646d026a80e5047f0e871fa5f7c1bd8">STACK::size</a></div><div class="ttdeci">unsigned int size</div><div class="ttdoc">Size of array.</div><div class="ttdef"><b>Definition:</b> <a href="n__stack_8h_source.html#l00027">n_stack.h:27</a></div></div>
 <div class="ttc" id="astruct_s_t_a_c_k_html_ad77c52267296ea55332df3e3b6af6001"><div class="ttname"><a href="struct_s_t_a_c_k.html#ad77c52267296ea55332df3e3b6af6001">STACK::stack</a></div><div class="ttdeci">void ** stack</div><div class="ttdoc">STACK array.</div><div class="ttdef"><b>Definition:</b> <a href="n__stack_8h_source.html#l00025">n_stack.h:25</a></div></div>
@@ -133,7 +132,7 @@ $(document).ready(function(){initNavTree('n__stack_8h_source.html',''); initResi
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_310dcdd4703e877a6b99d5dc3fc54d27.html">nilorea</a></li><li class="navelem"><a class="el" href="n__stack_8h.html">n_stack.h</a></li>
-    <li class="footer">Generated on Tue Feb 1 2022 21:13:47 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+    <li class="footer">Generated on Wed Feb 2 2022 14:24:10 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
   </ul>
 </div>
 </body>

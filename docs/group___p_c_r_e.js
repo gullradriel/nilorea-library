@@ -9,7 +9,6 @@ var group___p_c_r_e =
       [ "regexp", "struct_n___p_c_r_e.html#ab8a517b034fe3c02105248b2d5bd33bf", null ],
       [ "regexp_str", "struct_n___p_c_r_e.html#a89555cc89b6429c253443c6181102491", null ]
     ] ],
-    [ "N_PCRE", "group___p_c_r_e.html#ga513af2fed2d0707b7e81dd035f67403c", null ],
     [ "npcre_clean_match", "group___p_c_r_e.html#ga89e67d2b218e2138a12aaecc2deab8fc", null ],
     [ "npcre_delete", "group___p_c_r_e.html#gaf198eb0bc8c55ac41cc92af8e538ce04", null ],
     [ "npcre_match", "group___p_c_r_e.html#ga605b60ef645cf217bd2b3dc548d1d6c2", null ],
