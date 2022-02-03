@@ -1,5 +1,5 @@
 /**\file n_common.h
- *  common headers and low-level hugly functions & define
+ * Common headers and low-level hugly functions & define
  *\author Castagnier Mickael
  *\version 1.0
  *\date 24/03/05
@@ -70,7 +70,9 @@ extern "C"
 #endif
 #endif
 
+/*! Little endian macro value */
 #define BYTEORDER_LITTLE_ENDIAN 0 // Little endian machine.
+/*! Big endian macro value */
 #define BYTEORDER_BIG_ENDIAN 1 // Big endian machine.
 
 
@@ -309,8 +311,10 @@ goto error ; \
 #define equal_if( __a , __cond , __b ) if( (__a) __cond (__b) ){ __a = __b ; }
 
 #ifdef RWLOCK_DEBUG
-#define RWLOCK_LOGLEVEL LOG_DEBUG
+/*! flag to tell the API to log DEBUG operation on locks if needed */
+define RWLOCK_LOGLEVEL LOG_DEBUG
 #else
+/*! flag to tell the API to disable DEBUG log on locks */
 #define RWLOCK_LOGLEVEL LOG_NULL
 #endif
 

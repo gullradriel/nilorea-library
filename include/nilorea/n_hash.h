@@ -159,9 +159,6 @@ typedef struct HASH_TABLE
 #define hash_val( node , type )\
 	( (node && node -> ptr) ? ( (type *)( ( (HASH_NODE *)node -> ptr )-> data . ptr) ) : NULL )
 
-#define HASH_VAL( node , type )\
-	( (node && node -> data . ptr) ? ( (type *)node -> data . ptr ) : NULL )
-
 /*! ForEach macro helper (classic / old) */
 #define ht_foreach( __ITEM_ , __HASH_  ) \
 	if( !__HASH_ ) \
@@ -189,6 +186,10 @@ typedef struct HASH_TABLE
 	else \
 	for( unsigned long int __ITERATOR_ = 0 ; __ITERATOR_ < __HASH_ -> size ; __ITERATOR_ ++ ) \
 	for( LIST_NODE *__ITEM_ = __HASH_ -> hash_table[ __ITERATOR_ ] -> start ; __ITEM_ != NULL; __ITEM_ = __ITEM_ -> next )
+
+/*! Cast a HASH_NODE element */
+#define HASH_VAL( node , type )\
+	( (node && node -> data . ptr) ? ( (type *)node -> data . ptr ) : NULL )
 
 /*!  ForEach macro helper */
 #define HT_FOREACH( __ITEM_ , __HASH_ , ... ) \

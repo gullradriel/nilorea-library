@@ -83,8 +83,9 @@ $(document).ready(function(){initNavTree('n__debug__mem_8h.html',''); initResiza
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
+<a href="#nested-classes">Data Structures</a> &#124;
 <a href="#define-members">Macros</a> &#124;
+<a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">n_debug_mem.h File Reference</div></div>
@@ -109,13 +110,13 @@ $(document).ready(function(){initNavTree('n__debug__mem_8h.html',''); initResiza
 <area shape="rect" href="n__hash_8h.html" title="Hash functions and table." alt="" coords="448,80,522,107"/>
 <area shape="rect" title=" " alt="" coords="950,304,1015,331"/>
 <area shape="rect" title=" " alt="" coords="400,155,466,181"/>
-<area shape="rect" href="n__common_8h.html" title="common headers and low&#45;level hugly functions &amp; define" alt="" coords="490,155,587,181"/>
-<area shape="rect" href="n__list_8h.html" title="Pointer list structures and definitions." alt="" coords="22,229,86,256"/>
+<area shape="rect" href="n__common_8h.html" title="Common headers and low&#45;level hugly functions &amp; define." alt="" coords="490,155,587,181"/>
+<area shape="rect" href="n__list_8h.html" title="List structures and definitions." alt="" coords="22,229,86,256"/>
 <area shape="rect" title=" " alt="" coords="161,229,252,256"/>
 <area shape="rect" title=" " alt="" coords="276,229,344,256"/>
 <area shape="rect" title=" " alt="" coords="368,229,439,256"/>
 <area shape="rect" title=" " alt="" coords="463,229,526,256"/>
-<area shape="rect" href="n__log_8h.html" title=" " alt="" coords="641,229,748,256"/>
+<area shape="rect" href="n__log_8h.html" title="Generic log system." alt="" coords="641,229,748,256"/>
 <area shape="rect" href="n__enum_8h.html" title="Macro to build enums and their tostring counterparts, a reduced version of https://github...." alt="" coords="823,229,944,256"/>
 <area shape="rect" title=" " alt="" coords="550,229,617,256"/>
 <area shape="rect" title=" " alt="" coords="305,304,366,331"/>
@@ -141,7 +142,7 @@ $(document).ready(function(){initNavTree('n__debug__mem_8h.html',''); initResiza
 <p><a href="n__debug__mem_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
-Classes</h2></td></tr>
+Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_d_e_b_u_g___m_e_m___i_t_e_m.html">DEBUG_MEM_ITEM</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">structure of a debug unit  <a href="struct_d_e_b_u_g___m_e_m___i_t_e_m.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -155,14 +156,30 @@ Macros</h2></td></tr>
 <tr class="memdesc:ga0ee85545fc2f0a35e282ff54bec7fad4"><td class="mdescLeft">&#160;</td><td class="mdescRight">max memory dumped by leaked unit  <a href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#ga0ee85545fc2f0a35e282ff54bec7fad4">More...</a><br /></td></tr>
 <tr class="separator:ga0ee85545fc2f0a35e282ff54bec7fad4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:gaf6e80cf1cc5145f9f63a578438c9a2e3"><td class="memItemLeft" align="right" valign="top">
+typedef struct <a class="el" href="struct_d_e_b_u_g___m_e_m___i_t_e_m.html">DEBUG_MEM_ITEM</a>&#160;</td><td class="memItemRight" valign="bottom"><b>DEBUG_MEM_ITEM</b></td></tr>
+<tr class="memdesc:gaf6e80cf1cc5145f9f63a578438c9a2e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">structure of a debug unit <br /></td></tr>
+<tr class="separator:gaf6e80cf1cc5145f9f63a578438c9a2e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaca38874073cb1bcb9e4e2063ca93d3a7"><td class="memItemLeft" align="right" valign="top">
+typedef struct <a class="el" href="struct_d_e_b_u_g___m_e_m___t_a_b_l_e.html">DEBUG_MEM_TABLE</a>&#160;</td><td class="memItemRight" valign="bottom"><b>DEBUG_MEM_TABLE</b></td></tr>
+<tr class="memdesc:gaca38874073cb1bcb9e4e2063ca93d3a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">structure of a table of <a class="el" href="struct_d_e_b_u_g___m_e_m___i_t_e_m.html" title="structure of a debug unit">DEBUG_MEM_ITEM</a> <br /></td></tr>
+<tr class="separator:gaca38874073cb1bcb9e4e2063ca93d3a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ga3f63c1a843b2f1685d31b4564ee03918"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#ga3f63c1a843b2f1685d31b4564ee03918">db_mem_alloc</a> (size_t size, int line, char *file, const char *func)</td></tr>
 <tr class="memdesc:ga3f63c1a843b2f1685d31b4564ee03918"><td class="mdescLeft">&#160;</td><td class="mdescRight">allocate a new pointer with size and also put it in the debug table  <a href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#ga3f63c1a843b2f1685d31b4564ee03918">More...</a><br /></td></tr>
 <tr class="separator:ga3f63c1a843b2f1685d31b4564ee03918"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8af149d6268fd41d1cf18e124bc725c5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#ga8af149d6268fd41d1cf18e124bc725c5">db_mem_destroy</a> (void)</td></tr>
+<tr class="memdesc:ga8af149d6268fd41d1cf18e124bc725c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dump the current debug memory table.  <a href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#ga8af149d6268fd41d1cf18e124bc725c5">More...</a><br /></td></tr>
+<tr class="separator:ga8af149d6268fd41d1cf18e124bc725c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga53876f346e6461281c59a47451b08a5c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#ga53876f346e6461281c59a47451b08a5c">db_mem_dump_leaked</a> (char *file)</td></tr>
 <tr class="memdesc:ga53876f346e6461281c59a47451b08a5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dump the current debug memory table.  <a href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#ga53876f346e6461281c59a47451b08a5c">More...</a><br /></td></tr>
 <tr class="separator:ga53876f346e6461281c59a47451b08a5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4850cb69166320bdd2b2133f61c25d3c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#ga4850cb69166320bdd2b2133f61c25d3c">db_mem_empty</a> (void)</td></tr>
+<tr class="separator:ga4850cb69166320bdd2b2133f61c25d3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaea4d614fcd75f3493130a64e0e58113d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#gaea4d614fcd75f3493130a64e0e58113d">db_mem_free</a> (void *ptr, int line, char *file, const char *func)</td></tr>
 <tr class="separator:gaea4d614fcd75f3493130a64e0e58113d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga5a41f05742f748434ea0771e1b3b8aac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#ga5a41f05742f748434ea0771e1b3b8aac">delete_db_mem_item</a> (void *ptr)</td></tr>
@@ -177,13 +194,13 @@ Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:ga1d82ee51b2017f3e2af9d8531f14cb4c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_d_e_b_u_g___m_e_m___t_a_b_l_e.html">DEBUG_MEM_TABLE</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#ga1d82ee51b2017f3e2af9d8531f14cb4c">debug_mem_table</a></td></tr>
-<tr class="memdesc:ga1d82ee51b2017f3e2af9d8531f14cb4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">external table for tracking by file usage  <a href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#ga1d82ee51b2017f3e2af9d8531f14cb4c">More...</a><br /></td></tr>
+<tr class="memitem:ga1d82ee51b2017f3e2af9d8531f14cb4c"><td class="memItemLeft" align="right" valign="top">
+<a class="el" href="struct_d_e_b_u_g___m_e_m___t_a_b_l_e.html">DEBUG_MEM_TABLE</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>debug_mem_table</b></td></tr>
+<tr class="memdesc:ga1d82ee51b2017f3e2af9d8531f14cb4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">external table for tracking by file usage <br /></td></tr>
 <tr class="separator:ga1d82ee51b2017f3e2af9d8531f14cb4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >Helpers for debugging memory. </p>
-<dl class="section author"><dt>Author</dt><dd>Castagnier Mickael </dd></dl>
+<div class="textblock"><dl class="section author"><dt>Author</dt><dd>Castagnier Mickael </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2014-09-10 </dd></dl>
 
 <p class="definition">Definition in file <a class="el" href="n__debug__mem_8h_source.html">n_debug_mem.h</a>.</p>
@@ -193,7 +210,7 @@ Variables</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_310dcdd4703e877a6b99d5dc3fc54d27.html">nilorea</a></li><li class="navelem"><a class="el" href="n__debug__mem_8h.html">n_debug_mem.h</a></li>
-    <li class="footer">Generated on Wed Feb 2 2022 14:24:10 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+    <li class="footer">Generated on Thu Feb 3 2022 15:37:40 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
   </ul>
 </div>
 </body>

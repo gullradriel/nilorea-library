@@ -2,25 +2,6 @@ var n__debug__locks_8c =
 [
     [ "N_MUTEX_INFO", "struct_n___m_u_t_e_x___i_n_f_o.html", "struct_n___m_u_t_e_x___i_n_f_o" ],
     [ "N_PTHREAD_INFO", "struct_n___p_t_h_r_e_a_d___i_n_f_o.html", "struct_n___p_t_h_r_e_a_d___i_n_f_o" ],
-    [ "N_DEBUGLOCK_INVALID_IDX", "n__debug__locks_8c.html#a295c3dc25ec04a923235def22df5cf29", null ],
-    [ "N_DEBUGLOCK_INVALID_MUTEX", "n__debug__locks_8c.html#abbd16d22ec5d899da73c2eb53948b5af", null ],
-    [ "N_DEBUGLOCK_INVALID_THREAD", "n__debug__locks_8c.html#abccd66fa3805d336f25685f33811eba1", null ],
-    [ "lp_lock_precheck_diagnose", "n__debug__locks_8c.html#afd32bd7dba28efc8c8dc0757738de4f7", null ],
-    [ "lp_unlock_precheck_diagnose", "n__debug__locks_8c.html#aa0efee0c0560b397dd50006ff3a457ff", null ],
-    [ "n_pthread_mutex_init", "n__debug__locks_8c.html#a07327c3a794f6ab307a5e162a4dcbe11", null ],
-    [ "n_pthread_mutex_lock", "n__debug__locks_8c.html#ae55a9773966aac1415314a8cc9674983", null ],
-    [ "n_pthread_mutex_trylock", "n__debug__locks_8c.html#ac578c83fd958eb3ba376b783ddfed9dd", null ],
-    [ "n_pthread_mutex_unlock", "n__debug__locks_8c.html#ad372ae3dc2a0083004fb2b5bf17e6202", null ],
-    [ "n_pthread_rwlock_rdlock", "n__debug__locks_8c.html#a309fb3f63941017043072f87b38510d2", null ],
-    [ "n_pthread_rwlock_tryrdlock", "n__debug__locks_8c.html#ad1913fa0dd2aef410417a51bf5e23f06", null ],
-    [ "n_pthread_rwlock_wrlock", "n__debug__locks_8c.html#ab0714915925b4b1f32e14d72370c21d2", null ],
-    [ "pthread_mutex_destroy", "n__debug__locks_8c.html#a3cf620ff3a40af11d79cf28901dc55e2", null ],
-    [ "pthread_mutex_lock", "n__debug__locks_8c.html#a12809c44718c21544ceb280dc1a53573", null ],
-    [ "pthread_mutex_trylock", "n__debug__locks_8c.html#a27da386211db1a7e9a3b2a0db4d22144", null ],
-    [ "pthread_rwlock_trywrlock", "n__debug__locks_8c.html#ab7fb141b42278ad8042f4d7697c5e9d5", null ],
-    [ "DEBUG_LOCKS", "n__debug__locks_8c.html#a93172ecfbe6fc90c2f5a29757b34ffe6", null ],
-    [ "DEBUG_LOCKS_INITIALIZED", "n__debug__locks_8c.html#a1102dcb567acaedaaa043bccaaa19a8b", null ],
-    [ "debuglock_lock", "n__debug__locks_8c.html#a872020eada5e48d36024dbce13808e10", null ],
-    [ "n_mutex_list", "n__debug__locks_8c.html#ab039487e5e9ba36bf4f70da58b35d765", null ],
-    [ "n_thread_list", "n__debug__locks_8c.html#a77e43c52444bb3da3555e29a8fa8a043", null ]
+    [ "N_MUTEX_INFO", "n__debug__locks_8c.html#a721836aeb451f7c58e71873f3f96e797", null ],
+    [ "N_PTHREAD_INFO", "n__debug__locks_8c.html#a139238d9ed95edd5a8c9708450216521", null ]
 ];

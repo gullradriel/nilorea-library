@@ -83,7 +83,7 @@ $(document).ready(function(){initNavTree('group___h_a_s_h___t_a_b_l_e.html','');
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
+<a href="#nested-classes">Data Structures</a> &#124;
 <a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">HASH TABLE: classic or trie tree hash_tables</div></div>
@@ -91,78 +91,56 @@ $(document).ready(function(){initNavTree('group___h_a_s_h___t_a_b_l_e.html','');
 <div class="contents">
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
-Classes</h2></td></tr>
+Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_h_a_s_h___n_o_d_e.html">HASH_NODE</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">structure of a hash table node  <a href="struct_h_a_s_h___n_o_d_e.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">structure of a hash table  <a href="struct_h_a_s_h___t_a_b_l_e.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">union &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="union_h_a_s_h___v_a_l_u_e.html">HASH_VALUE</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">union of the value of a node  <a href="union_h_a_s_h___v_a_l_u_e.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:ga8e0f90a6ea3d3db65033b8ace70cb65a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#ga8e0f90a6ea3d3db65033b8ace70cb65a">BIG_CONSTANT</a>(x)&#160;&#160;&#160;(x##LLU)</td></tr>
-<tr class="memdesc:ga8e0f90a6ea3d3db65033b8ace70cb65a"><td class="mdescLeft">&#160;</td><td class="mdescRight">missing ROTL constant fix 64bit  <a href="group___h_a_s_h___t_a_b_l_e.html#ga8e0f90a6ea3d3db65033b8ace70cb65a">More...</a><br /></td></tr>
 <tr class="separator:ga8e0f90a6ea3d3db65033b8ace70cb65a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaaf679be9dbe3da9e0b18126584fc276f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#gaaf679be9dbe3da9e0b18126584fc276f">HASH_CLASSIC</a>&#160;&#160;&#160;128</td></tr>
-<tr class="memdesc:gaaf679be9dbe3da9e0b18126584fc276f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Murmur hash using hash key string, hash key numeric value, index table with lists of elements.  <a href="group___h_a_s_h___t_a_b_l_e.html#gaaf679be9dbe3da9e0b18126584fc276f">More...</a><br /></td></tr>
 <tr class="separator:gaaf679be9dbe3da9e0b18126584fc276f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga567061089afaa05f04d40a1e076a5705"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#ga567061089afaa05f04d40a1e076a5705">HASH_DOUBLE</a>&#160;&#160;&#160;2</td></tr>
-<tr class="memdesc:ga567061089afaa05f04d40a1e076a5705"><td class="mdescLeft">&#160;</td><td class="mdescRight">value of double type inside the hash node  <a href="group___h_a_s_h___t_a_b_l_e.html#ga567061089afaa05f04d40a1e076a5705">More...</a><br /></td></tr>
 <tr class="separator:ga567061089afaa05f04d40a1e076a5705"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gae5cab5caf80df2b545b79010e58c930e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#gae5cab5caf80df2b545b79010e58c930e">HASH_INT</a>&#160;&#160;&#160;1</td></tr>
-<tr class="memdesc:gae5cab5caf80df2b545b79010e58c930e"><td class="mdescLeft">&#160;</td><td class="mdescRight">value of integral type inside the hash node  <a href="group___h_a_s_h___t_a_b_l_e.html#gae5cab5caf80df2b545b79010e58c930e">More...</a><br /></td></tr>
 <tr class="separator:gae5cab5caf80df2b545b79010e58c930e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga03937f1bda9c901c6e206c569d8d0975"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#ga03937f1bda9c901c6e206c569d8d0975">HASH_KEY_NUM</a>&#160;&#160;&#160;32</td></tr>
-<tr class="memdesc:ga03937f1bda9c901c6e206c569d8d0975"><td class="mdescLeft">&#160;</td><td class="mdescRight">value of string key type inside the hash node  <a href="group___h_a_s_h___t_a_b_l_e.html#ga03937f1bda9c901c6e206c569d8d0975">More...</a><br /></td></tr>
 <tr class="separator:ga03937f1bda9c901c6e206c569d8d0975"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaace734823fbd28f8d98e5a55db5348c7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#gaace734823fbd28f8d98e5a55db5348c7">HASH_KEY_STRING</a>&#160;&#160;&#160;64</td></tr>
-<tr class="memdesc:gaace734823fbd28f8d98e5a55db5348c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">value of string key type inside the hash node  <a href="group___h_a_s_h___t_a_b_l_e.html#gaace734823fbd28f8d98e5a55db5348c7">More...</a><br /></td></tr>
 <tr class="separator:gaace734823fbd28f8d98e5a55db5348c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga380f9944f2162350b1fc52f1e20cf47c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#ga380f9944f2162350b1fc52f1e20cf47c">HASH_PTR</a>&#160;&#160;&#160;8</td></tr>
-<tr class="memdesc:ga380f9944f2162350b1fc52f1e20cf47c"><td class="mdescLeft">&#160;</td><td class="mdescRight">value of pointer type inside the hash node  <a href="group___h_a_s_h___t_a_b_l_e.html#ga380f9944f2162350b1fc52f1e20cf47c">More...</a><br /></td></tr>
 <tr class="separator:ga380f9944f2162350b1fc52f1e20cf47c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga610bced429f9d429f9b54d69135e9253"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#ga610bced429f9d429f9b54d69135e9253">HASH_STRING</a>&#160;&#160;&#160;4</td></tr>
-<tr class="memdesc:ga610bced429f9d429f9b54d69135e9253"><td class="mdescLeft">&#160;</td><td class="mdescRight">value of char * type inside the hash node  <a href="group___h_a_s_h___t_a_b_l_e.html#ga610bced429f9d429f9b54d69135e9253">More...</a><br /></td></tr>
 <tr class="separator:ga610bced429f9d429f9b54d69135e9253"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gac2850d8278af32c2e76e7ab856902bdc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#gac2850d8278af32c2e76e7ab856902bdc">HASH_TRIE</a>&#160;&#160;&#160;256</td></tr>
-<tr class="memdesc:gac2850d8278af32c2e76e7ab856902bdc"><td class="mdescLeft">&#160;</td><td class="mdescRight">TRIE tree more using hash key string.  <a href="group___h_a_s_h___t_a_b_l_e.html#gac2850d8278af32c2e76e7ab856902bdc">More...</a><br /></td></tr>
 <tr class="separator:gac2850d8278af32c2e76e7ab856902bdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gafd04f4d8463ac67a011caef42b109595"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#gafd04f4d8463ac67a011caef42b109595">HASH_UNKNOWN</a>&#160;&#160;&#160;16</td></tr>
-<tr class="memdesc:gafd04f4d8463ac67a011caef42b109595"><td class="mdescLeft">&#160;</td><td class="mdescRight">value of unknow type inside the hash node  <a href="group___h_a_s_h___t_a_b_l_e.html#gafd04f4d8463ac67a011caef42b109595">More...</a><br /></td></tr>
 <tr class="separator:gafd04f4d8463ac67a011caef42b109595"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaeb031d4f0f896b1802b9c27e62f28d14"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#gaeb031d4f0f896b1802b9c27e62f28d14">hash_val</a>(node,  type)&#160;&#160;&#160;	( (node &amp;&amp; node -&gt; ptr) ? ( (type *)( ( (<a class="el" href="struct_h_a_s_h___n_o_d_e.html">HASH_NODE</a> *)node -&gt; ptr )-&gt; data . ptr) ) : NULL )</td></tr>
-<tr class="memdesc:gaeb031d4f0f896b1802b9c27e62f28d14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cast a <a class="el" href="struct_h_a_s_h___n_o_d_e.html" title="structure of a hash table node">HASH_NODE</a> element.  <a href="group___h_a_s_h___t_a_b_l_e.html#gaeb031d4f0f896b1802b9c27e62f28d14">More...</a><br /></td></tr>
 <tr class="separator:gaeb031d4f0f896b1802b9c27e62f28d14"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga8e695e90d977acedccfe2e79148cf29e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#ga8e695e90d977acedccfe2e79148cf29e">HASH_VAL</a>(node,  type)&#160;&#160;&#160;	( (node &amp;&amp; node -&gt; data . ptr) ? ( (type *)node -&gt; data . ptr ) : NULL )</td></tr>
 <tr class="separator:ga8e695e90d977acedccfe2e79148cf29e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga072f117e6bd9fdde0d39776764b8784e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#ga072f117e6bd9fdde0d39776764b8784e">ht_foreach</a>(__ITEM_,  __HASH_)</td></tr>
-<tr class="memdesc:ga072f117e6bd9fdde0d39776764b8784e"><td class="mdescLeft">&#160;</td><td class="mdescRight">ForEach macro helper (classic / old)  <a href="group___h_a_s_h___t_a_b_l_e.html#ga072f117e6bd9fdde0d39776764b8784e">More...</a><br /></td></tr>
 <tr class="separator:ga072f117e6bd9fdde0d39776764b8784e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf1c2ece096867efb7c26d301f160176c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#gaf1c2ece096867efb7c26d301f160176c">HT_FOREACH</a>(__ITEM_,  __HASH_, ...)</td></tr>
-<tr class="memdesc:gaf1c2ece096867efb7c26d301f160176c"><td class="mdescLeft">&#160;</td><td class="mdescRight">ForEach macro helper.  <a href="group___h_a_s_h___t_a_b_l_e.html#gaf1c2ece096867efb7c26d301f160176c">More...</a><br /></td></tr>
 <tr class="separator:gaf1c2ece096867efb7c26d301f160176c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga23715b66af50d3cfa4ca46649274f283"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#ga23715b66af50d3cfa4ca46649274f283">HT_FOREACH_R</a>(__ITEM_,  __HASH_,  __ITERATOR, ...)</td></tr>
-<tr class="memdesc:ga23715b66af50d3cfa4ca46649274f283"><td class="mdescLeft">&#160;</td><td class="mdescRight">ForEach macro helper.  <a href="group___h_a_s_h___t_a_b_l_e.html#ga23715b66af50d3cfa4ca46649274f283">More...</a><br /></td></tr>
 <tr class="separator:ga23715b66af50d3cfa4ca46649274f283"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga2d5dc4bd5bcf119740bd59199cae7a4c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#ga2d5dc4bd5bcf119740bd59199cae7a4c">ht_foreach_r</a>(__ITEM_,  __HASH_,  __ITERATOR_)</td></tr>
-<tr class="memdesc:ga2d5dc4bd5bcf119740bd59199cae7a4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">ForEach macro helper, reentrant (classic / old) <br  />
-  <a href="group___h_a_s_h___t_a_b_l_e.html#ga2d5dc4bd5bcf119740bd59199cae7a4c">More...</a><br /></td></tr>
 <tr class="separator:ga2d5dc4bd5bcf119740bd59199cae7a4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab32bb365c62dcb0da675e248b7e814a9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#gab32bb365c62dcb0da675e248b7e814a9">ROTL32</a>(x,  y)&#160;&#160;&#160;<a class="el" href="n__hash_8c.html#a324269020bad851cd569c40a23a862ef">rotl32</a>(x,y)</td></tr>
-<tr class="memdesc:gab32bb365c62dcb0da675e248b7e814a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">missing ROTL fix 32bit  <a href="group___h_a_s_h___t_a_b_l_e.html#gab32bb365c62dcb0da675e248b7e814a9">More...</a><br /></td></tr>
+<tr class="memitem:gab32bb365c62dcb0da675e248b7e814a9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#gab32bb365c62dcb0da675e248b7e814a9">ROTL32</a>(x,  y)&#160;&#160;&#160;rotl32(x,y)</td></tr>
 <tr class="separator:gab32bb365c62dcb0da675e248b7e814a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ga22a943135dbcdb1611b40ce0547111ce"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#ga22a943135dbcdb1611b40ce0547111ce">destroy_ht</a> (<a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> **table)</td></tr>
-<tr class="memdesc:ga22a943135dbcdb1611b40ce0547111ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free and set the table to NULL.  <a href="group___h_a_s_h___t_a_b_l_e.html#ga22a943135dbcdb1611b40ce0547111ce">More...</a><br /></td></tr>
 <tr class="separator:ga22a943135dbcdb1611b40ce0547111ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga5d2235e91b2b6b70129246897442f8d5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#ga5d2235e91b2b6b70129246897442f8d5">empty_ht</a> (<a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table)</td></tr>
-<tr class="memdesc:ga5d2235e91b2b6b70129246897442f8d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Empty a hash table.  <a href="group___h_a_s_h___t_a_b_l_e.html#ga5d2235e91b2b6b70129246897442f8d5">More...</a><br /></td></tr>
 <tr class="separator:ga5d2235e91b2b6b70129246897442f8d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga21e528f4d0a0124c495479ddd265a99b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_l_i_s_t.html">LIST</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#ga21e528f4d0a0124c495479ddd265a99b">ht_get_completion_list</a> (<a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table, char *keybud, uint32_t max_results)</td></tr>
 <tr class="separator:ga21e528f4d0a0124c495479ddd265a99b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -177,7 +155,6 @@ Functions</h2></td></tr>
 <tr class="memitem:ga1044c61baf3c82c9783fa55bce28b4ae"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#ga1044c61baf3c82c9783fa55bce28b4ae">ht_get_string</a> (<a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table, char *key, char **val)</td></tr>
 <tr class="separator:ga1044c61baf3c82c9783fa55bce28b4ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga1392981a507905d028136bc0b92aa48b"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#ga1392981a507905d028136bc0b92aa48b">ht_node_type</a> (<a class="el" href="struct_h_a_s_h___n_o_d_e.html">HASH_NODE</a> *node)</td></tr>
-<tr class="memdesc:ga1392981a507905d028136bc0b92aa48b"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the type of a node , text version  <a href="group___h_a_s_h___t_a_b_l_e.html#ga1392981a507905d028136bc0b92aa48b">More...</a><br /></td></tr>
 <tr class="separator:ga1392981a507905d028136bc0b92aa48b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga62ef2a517efcbc464f0103995f28c3e8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#ga62ef2a517efcbc464f0103995f28c3e8">ht_print</a> (<a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table)</td></tr>
 <tr class="separator:ga62ef2a517efcbc464f0103995f28c3e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -196,15 +173,12 @@ Functions</h2></td></tr>
 <tr class="memitem:ga16446a54727b375dfd0c92704dc39995"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_l_i_s_t.html">LIST</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#ga16446a54727b375dfd0c92704dc39995">ht_search</a> (<a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table, int(*node_is_matching)(<a class="el" href="struct_h_a_s_h___n_o_d_e.html">HASH_NODE</a> *node))</td></tr>
 <tr class="separator:ga16446a54727b375dfd0c92704dc39995"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga917618a4c922f524216381a5e5a43a60"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#ga917618a4c922f524216381a5e5a43a60">MurmurHash3_x86_128</a> (const void *key, int len, uint32_t seed, void *out)</td></tr>
-<tr class="memdesc:ga917618a4c922f524216381a5e5a43a60"><td class="mdescLeft">&#160;</td><td class="mdescRight">brief MurmurHash3 was written by Austin Appleby, and is placed in the public domain.  <a href="group___h_a_s_h___t_a_b_l_e.html#ga917618a4c922f524216381a5e5a43a60">More...</a><br /></td></tr>
 <tr class="separator:ga917618a4c922f524216381a5e5a43a60"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga37412933f308bda727603640d9acefba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#ga37412933f308bda727603640d9acefba">MurmurHash3_x86_32</a> (const void *key, int len, uint32_t seed, void *out)</td></tr>
-<tr class="memdesc:ga37412933f308bda727603640d9acefba"><td class="mdescLeft">&#160;</td><td class="mdescRight">brief MurmurHash3 was written by Austin Appleby, and is placed in the public domain.  <a href="group___h_a_s_h___t_a_b_l_e.html#ga37412933f308bda727603640d9acefba">More...</a><br /></td></tr>
 <tr class="separator:ga37412933f308bda727603640d9acefba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaa2d879c1afd3c71a0917bbe2c0766664"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#gaa2d879c1afd3c71a0917bbe2c0766664">new_ht</a> (unsigned long int size)</td></tr>
 <tr class="separator:gaa2d879c1afd3c71a0917bbe2c0766664"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gab95fe0967850a3665d21837519ede6c8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#gab95fe0967850a3665d21837519ede6c8">new_ht_trie</a> (unsigned int alphabet_size, unsigned int alphabet_offset)</td></tr>
-<tr class="memdesc:gab95fe0967850a3665d21837519ede6c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a hash table with the given size.  <a href="group___h_a_s_h___t_a_b_l_e.html#gab95fe0967850a3665d21837519ede6c8">More...</a><br /></td></tr>
 <tr class="separator:gab95fe0967850a3665d21837519ede6c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -442,6 +416,8 @@ Functions</h2></td></tr>
 <p><code>#include &lt;<a class="el" href="n__hash_8h.html">n_hash.h</a>&gt;</code></p>
 
 <p>Cast a <a class="el" href="struct_h_a_s_h___n_o_d_e.html" title="structure of a hash table node">HASH_NODE</a> element. </p>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ex_gui_netclient_8c-example.html#a10">ex_gui_netclient.c</a>, and <a class="el" href="ex_gui_netserver_8c-example.html#a16">ex_gui_netserver.c</a>.</dd>
+</dl>
 
 <p class="definition">Definition at line <a class="el" href="n__hash_8h_source.html#l00159">159</a> of file <a class="el" href="n__hash_8h_source.html">n_hash.h</a>.</p>
 
@@ -475,7 +451,9 @@ Functions</h2></td></tr>
 
 <p><code>#include &lt;<a class="el" href="n__hash_8h.html">n_hash.h</a>&gt;</code></p>
 
-<p class="definition">Definition at line <a class="el" href="n__hash_8h_source.html#l00162">162</a> of file <a class="el" href="n__hash_8h_source.html">n_hash.h</a>.</p>
+<p>Cast a <a class="el" href="struct_h_a_s_h___n_o_d_e.html" title="structure of a hash table node">HASH_NODE</a> element. </p>
+
+<p class="definition">Definition at line <a class="el" href="n__hash_8h_source.html#l00191">191</a> of file <a class="el" href="n__hash_8h_source.html">n_hash.h</a>.</p>
 
 </div>
 </div>
@@ -518,12 +496,14 @@ Functions</h2></td></tr>
 <div class="line">                for( <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> __hash_it = 0 ; __hash_it &lt; __HASH_ -&gt; size ; __hash_it ++ ) \</div>
 <div class="line">                <span class="keywordflow">for</span>( <a class="code hl_struct" href="struct_l_i_s_t___n_o_d_e.html">LIST_NODE</a> *__ITEM_ = __HASH_ -&gt; hash_table[ __hash_it ] -&gt; start ; __ITEM_ != NULL; __ITEM_ = __ITEM_ -&gt; next )</div>
 <div class="ttc" id="agroup___h_a_s_h___t_a_b_l_e_html_gaaf679be9dbe3da9e0b18126584fc276f"><div class="ttname"><a href="group___h_a_s_h___t_a_b_l_e.html#gaaf679be9dbe3da9e0b18126584fc276f">HASH_CLASSIC</a></div><div class="ttdeci">#define HASH_CLASSIC</div><div class="ttdoc">Murmur hash using hash key string, hash key numeric value, index table with lists of elements.</div><div class="ttdef"><b>Definition:</b> <a href="n__hash_8h_source.html#l00062">n_hash.h:62</a></div></div>
-<div class="ttc" id="agroup___l_o_g_html_ga96fad55b3f5adf08c39e4c877cf185e3"><div class="ttname"><a href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a></div><div class="ttdeci">#define LOG_ERR</div><div class="ttdoc">error conditions</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00057">n_log.h:57</a></div></div>
+<div class="ttc" id="agroup___l_o_g_html_ga96fad55b3f5adf08c39e4c877cf185e3"><div class="ttname"><a href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a></div><div class="ttdeci">#define LOG_ERR</div><div class="ttdoc">error conditions</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00058">n_log.h:58</a></div></div>
 <div class="ttc" id="astruct_l_i_s_t___n_o_d_e_html"><div class="ttname"><a href="struct_l_i_s_t___n_o_d_e.html">LIST_NODE</a></div><div class="ttdoc">Structure of a generic list node.</div><div class="ttdef"><b>Definition:</b> <a href="n__list_8h_source.html#l00026">n_list.h:27</a></div></div>
 </div><!-- fragment -->
 <p>ForEach macro helper (classic / old) </p>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ex_gui_netclient_8c-example.html#a9">ex_gui_netclient.c</a>, and <a class="el" href="ex_gui_netserver_8c-example.html#a13">ex_gui_netserver.c</a>.</dd>
+</dl>
 
-<p class="definition">Definition at line <a class="el" href="n__hash_8h_source.html#l00166">166</a> of file <a class="el" href="n__hash_8h_source.html">n_hash.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="n__hash_8h_source.html#l00163">163</a> of file <a class="el" href="n__hash_8h_source.html">n_hash.h</a>.</p>
 
 </div>
 </div>
@@ -562,8 +542,10 @@ Functions</h2></td></tr>
 <p><code>#include &lt;<a class="el" href="n__hash_8h.html">n_hash.h</a>&gt;</code></p>
 
 <p>ForEach macro helper. </p>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ex_hash_8c-example.html#a18">ex_hash.c</a>.</dd>
+</dl>
 
-<p class="definition">Definition at line <a class="el" href="n__hash_8h_source.html#l00194">194</a> of file <a class="el" href="n__hash_8h_source.html">n_hash.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="n__hash_8h_source.html#l00195">195</a> of file <a class="el" href="n__hash_8h_source.html">n_hash.h</a>.</p>
 
 </div>
 </div>
@@ -608,8 +590,10 @@ Functions</h2></td></tr>
 <p><code>#include &lt;<a class="el" href="n__hash_8h.html">n_hash.h</a>&gt;</code></p>
 
 <p>ForEach macro helper. </p>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ex_hash_8c-example.html#a20">ex_hash.c</a>.</dd>
+</dl>
 
-<p class="definition">Definition at line <a class="el" href="n__hash_8h_source.html#l00254">254</a> of file <a class="el" href="n__hash_8h_source.html">n_hash.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="n__hash_8h_source.html#l00255">255</a> of file <a class="el" href="n__hash_8h_source.html">n_hash.h</a>.</p>
 
 </div>
 </div>
@@ -661,7 +645,7 @@ Functions</h2></td></tr>
 <p>ForEach macro helper, reentrant (classic / old) <br  />
  </p>
 
-<p class="definition">Definition at line <a class="el" href="n__hash_8h_source.html#l00180">180</a> of file <a class="el" href="n__hash_8h_source.html">n_hash.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="n__hash_8h_source.html#l00177">177</a> of file <a class="el" href="n__hash_8h_source.html">n_hash.h</a>.</p>
 
 </div>
 </div>
@@ -686,7 +670,7 @@ Functions</h2></td></tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td>&#160;&#160;&#160;<a class="el" href="n__hash_8c.html#a324269020bad851cd569c40a23a862ef">rotl32</a>(x,y)</td>
+          <td></td><td>&#160;&#160;&#160;rotl32(x,y)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -727,11 +711,11 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>TRUE or FALSE. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="n__hash_8c_source.html#l02005">2005</a> of file <a class="el" href="n__hash_8c_source.html">n_hash.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="n__hash_8c_source.html#l02049">2049</a> of file <a class="el" href="n__hash_8c_source.html">n_hash.c</a>.</p>
 
-<p class="reference">References <a class="el" href="n__hash_8h_source.html#l00153">destroy_ht</a>.</p>
+<p class="reference">References <a class="el" href="n__common_8h_source.html#l00262">__n_assert</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="n__nodup__log_8c_source.html#l00073">close_nodup_log()</a>, <a class="el" href="n__config__file_8c_source.html#l00033">destroy_config_file_section()</a>, and <a class="el" href="n__network_8c_source.html#l02894">netw_destroy_pool()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="n__config__file_8c_source.html#l00033">destroy_config_file_section()</a>, and <a class="el" href="n__network_8c_source.html#l02894">netw_destroy_pool()</a>.</p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
@@ -739,11 +723,9 @@ Functions</h2></td></tr>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="group___h_a_s_h___t_a_b_l_e_ga22a943135dbcdb1611b40ce0547111ce_icgraph.png" border="0" usemap="#agroup___h_a_s_h___t_a_b_l_e_ga22a943135dbcdb1611b40ce0547111ce_icgraph" alt=""/></div>
 <map name="agroup___h_a_s_h___t_a_b_l_e_ga22a943135dbcdb1611b40ce0547111ce_icgraph" id="agroup___h_a_s_h___t_a_b_l_e_ga22a943135dbcdb1611b40ce0547111ce_icgraph">
-<area shape="rect" title="Free and set the table to NULL." alt="" coords="343,64,425,91"/>
-<area shape="rect" href="group___l_o_g_n_o_d_u_p.html#ga46eca069bfff2be6809828df52d1031d" title="Empty nodup logtable and close the no duplicate logging session." alt="" coords="170,5,289,32"/>
-<area shape="rect" href="n__config__file_8c.html#abd0a2133de663a5b572ffa99e5273ec2" title="Destroy a config file section." alt="" coords="165,57,294,98"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#ga5c0996a0b85b32d296c4e679a6eb86c2" title="free a network pool" alt="" coords="164,123,295,149"/>
-<area shape="rect" href="group___c_o_n_f_i_g_f_i_l_e.html#ga0206fadb78039ac602fc0696b27b85a6" title="load a config file" alt="" coords="5,64,116,91"/>
+<area shape="rect" title="Free and set the table to NULL." alt="" coords="184,42,267,69"/>
+<area shape="rect" href="n__config__file_8c.html#abd0a2133de663a5b572ffa99e5273ec2" title="Destroy a config file section." alt="" coords="6,5,135,47"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#ga5c0996a0b85b32d296c4e679a6eb86c2" title="free a network pool" alt="" coords="5,71,136,98"/>
 </map>
 </div>
 
@@ -776,20 +758,29 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>TRUE or FALSE. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="n__hash_8c_source.html#l01999">1999</a> of file <a class="el" href="n__hash_8c_source.html">n_hash.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="n__hash_8c_source.html#l02043">2043</a> of file <a class="el" href="n__hash_8c_source.html">n_hash.c</a>.</p>
 
-<p class="reference">References <a class="el" href="n__hash_8h_source.html#l00151">empty_ht</a>.</p>
+<p class="reference">References <a class="el" href="n__common_8h_source.html#l00262">__n_assert</a>, and <a class="el" href="n__hash_8c_source.html#l02043">empty_ht()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="n__nodup__log_8c_source.html#l00061">empty_nodup_table()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="n__hash_8c_source.html#l02043">empty_ht()</a>.</p>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group___h_a_s_h___t_a_b_l_e_ga5d2235e91b2b6b70129246897442f8d5_cgraph.png" border="0" usemap="#agroup___h_a_s_h___t_a_b_l_e_ga5d2235e91b2b6b70129246897442f8d5_cgraph" alt=""/></div>
+<map name="agroup___h_a_s_h___t_a_b_l_e_ga5d2235e91b2b6b70129246897442f8d5_cgraph" id="agroup___h_a_s_h___t_a_b_l_e_ga5d2235e91b2b6b70129246897442f8d5_cgraph">
+<area shape="rect" title="Empty a hash table." alt="" coords="5,29,81,56"/>
+</map>
+</div>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="group___h_a_s_h___t_a_b_l_e_ga5d2235e91b2b6b70129246897442f8d5_icgraph.png" border="0" usemap="#agroup___h_a_s_h___t_a_b_l_e_ga5d2235e91b2b6b70129246897442f8d5_icgraph" alt=""/></div>
 <map name="agroup___h_a_s_h___t_a_b_l_e_ga5d2235e91b2b6b70129246897442f8d5_icgraph" id="agroup___h_a_s_h___t_a_b_l_e_ga5d2235e91b2b6b70129246897442f8d5_icgraph">
-<area shape="rect" title="Empty a hash table." alt="" coords="188,5,264,32"/>
-<area shape="rect" href="group___l_o_g_n_o_d_u_p.html#ga823d1d2f22f2279e24d4c5bd927ff322" title="Empty the nodup internal table." alt="" coords="5,5,140,32"/>
+<area shape="rect" title="Empty a hash table." alt="" coords="5,29,81,56"/>
 </map>
 </div>
 
@@ -829,25 +820,7 @@ Functions</h2></td></tr>
 
 <p><code>#include &lt;<a class="el" href="n__hash_8h.html">n_hash.h</a>&gt;</code></p>
 
-<p class="definition">Definition at line <a class="el" href="n__hash_8c_source.html#l00768">768</a> of file <a class="el" href="n__hash_8c_source.html">n_hash.c</a>.</p>
-
-<p class="reference">References <a class="el" href="n__hash_8c_source.html#l00743">_ht_depth_first_search()</a>, <a class="el" href="n__hash_8c_source.html#l00272">_ht_get_node_trie()</a>, <a class="el" href="n__log_8c_source.html#l00216">_n_log()</a>, <a class="el" href="n__list_8c_source.html#l00480">list_destroy()</a>, and <a class="el" href="n__hash_8h_source.html#l00125">mode</a>.</p>
-<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group___h_a_s_h___t_a_b_l_e_ga21e528f4d0a0124c495479ddd265a99b_cgraph.png" border="0" usemap="#agroup___h_a_s_h___t_a_b_l_e_ga21e528f4d0a0124c495479ddd265a99b_cgraph" alt=""/></div>
-<map name="agroup___h_a_s_h___t_a_b_l_e_ga21e528f4d0a0124c495479ddd265a99b_cgraph" id="agroup___h_a_s_h___t_a_b_l_e_ga21e528f4d0a0124c495479ddd265a99b_cgraph">
-<area shape="rect" title=" " alt="" coords="5,81,157,108"/>
-<area shape="rect" href="n__hash_8c.html#a35d5a23776c64cb68260bbd0c4138ee2" title=" " alt="" coords="205,5,359,32"/>
-<area shape="rect" href="n__hash_8c.html#a86f34c4320c35174e0e443efeaedd113" title=" " alt="" coords="219,56,345,83"/>
-<area shape="rect" href="group___l_o_g.html#gafbbbfcb9063b9f1454a499dbf98f7a56" title="Logging function." alt="" coords="252,107,312,133"/>
-<area shape="rect" href="group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755" title="Empty and Free a list container." alt="" coords="237,157,327,184"/>
-<area shape="rect" href="group___l_o_g.html#gafeea44ab08778cbff68e91e831d44112" title="Get the global log level value." alt="" coords="407,107,503,133"/>
-<area shape="rect" href="group___l_i_s_t.html#ga1dafe7a250ddad51fadd375f057287e7" title="Empty a LIST list of pointers." alt="" coords="413,157,496,184"/>
-</map>
-</div>
+<p class="definition">Definition at line <a class="el" href="n__hash_8c_source.html#l00824">824</a> of file <a class="el" href="n__hash_8c_source.html">n_hash.c</a>.</p>
 
 </div>
 </div>
@@ -885,9 +858,7 @@ Functions</h2></td></tr>
 
 <p><code>#include &lt;<a class="el" href="n__hash_8h.html">n_hash.h</a>&gt;</code></p>
 
-<p class="definition">Definition at line <a class="el" href="n__hash_8c_source.html#l01926">1926</a> of file <a class="el" href="n__hash_8c_source.html">n_hash.c</a>.</p>
-
-<p class="reference">References <a class="el" href="n__hash_8h_source.html#l00141">ht_get_double</a>.</p>
+<p class="definition">Definition at line <a class="el" href="n__hash_8c_source.html#l01962">1962</a> of file <a class="el" href="n__hash_8c_source.html">n_hash.c</a>.</p>
 
 </div>
 </div>
@@ -925,9 +896,7 @@ Functions</h2></td></tr>
 
 <p><code>#include &lt;<a class="el" href="n__hash_8h.html">n_hash.h</a>&gt;</code></p>
 
-<p class="definition">Definition at line <a class="el" href="n__hash_8c_source.html#l01932">1932</a> of file <a class="el" href="n__hash_8c_source.html">n_hash.c</a>.</p>
-
-<p class="reference">References <a class="el" href="n__hash_8h_source.html#l00139">ht_get_int</a>.</p>
+<p class="definition">Definition at line <a class="el" href="n__hash_8c_source.html#l01968">1968</a> of file <a class="el" href="n__hash_8c_source.html">n_hash.c</a>.</p>
 
 </div>
 </div>
@@ -959,23 +928,7 @@ Functions</h2></td></tr>
 
 <p><code>#include &lt;<a class="el" href="n__hash_8h.html">n_hash.h</a>&gt;</code></p>
 
-<p class="definition">Definition at line <a class="el" href="n__hash_8c_source.html#l01919">1919</a> of file <a class="el" href="n__hash_8c_source.html">n_hash.c</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="n__nodup__log_8c_source.html#l00214">_n_nodup_log()</a>, <a class="el" href="n__nodup__log_8c_source.html#l00274">_n_nodup_log_indexed()</a>, <a class="el" href="n__nodup__log_8c_source.html#l00131">check_n_log_dup()</a>, and <a class="el" href="n__nodup__log_8c_source.html#l00174">check_n_log_dup_indexed()</a>.</p>
-<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group___h_a_s_h___t_a_b_l_e_gac2a504c78f251c3dfb1e8b0623e2fdb1_icgraph.png" border="0" usemap="#agroup___h_a_s_h___t_a_b_l_e_gac2a504c78f251c3dfb1e8b0623e2fdb1_icgraph" alt=""/></div>
-<map name="agroup___h_a_s_h___t_a_b_l_e_gac2a504c78f251c3dfb1e8b0623e2fdb1_icgraph" id="agroup___h_a_s_h___t_a_b_l_e_gac2a504c78f251c3dfb1e8b0623e2fdb1_icgraph">
-<area shape="rect" title=" " alt="" coords="431,55,524,81"/>
-<area shape="rect" href="group___l_o_g_n_o_d_u_p.html#ga650828539395216dd2f4f28da5131c42" title="Logging function." alt="" coords="31,17,134,44"/>
-<area shape="rect" href="group___l_o_g_n_o_d_u_p.html#gacbf9e2a1400ab6f00a30186d9a5c4683" title="Logging function." alt="" coords="5,93,160,120"/>
-<area shape="rect" href="n__nodup__log_8c.html#a06be6d2200f1e76bb42c37388700f6c2" title="check if a log was already done or not at the given line, func, file" alt="" coords="234,29,357,56"/>
-<area shape="rect" href="n__nodup__log_8c.html#a1ad89f00ce2247d0335000f0d4643ddc" title="check if a log was already done or not at the given line, func, file" alt="" coords="208,131,383,157"/>
-</map>
-</div>
+<p class="definition">Definition at line <a class="el" href="n__hash_8c_source.html#l01955">1955</a> of file <a class="el" href="n__hash_8c_source.html">n_hash.c</a>.</p>
 
 </div>
 </div>
@@ -1013,22 +966,7 @@ Functions</h2></td></tr>
 
 <p><code>#include &lt;<a class="el" href="n__hash_8h.html">n_hash.h</a>&gt;</code></p>
 
-<p class="definition">Definition at line <a class="el" href="n__hash_8c_source.html#l01938">1938</a> of file <a class="el" href="n__hash_8c_source.html">n_hash.c</a>.</p>
-
-<p class="reference">References <a class="el" href="n__hash_8h_source.html#l00143">ht_get_ptr</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="n__debug__mem_8c_source.html#l00133">db_mem_free()</a>.</p>
-<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-4-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group___h_a_s_h___t_a_b_l_e_gae34a331ccbda86f7e5b2319f1852d6ca_icgraph.png" border="0" usemap="#agroup___h_a_s_h___t_a_b_l_e_gae34a331ccbda86f7e5b2319f1852d6ca_icgraph" alt=""/></div>
-<map name="agroup___h_a_s_h___t_a_b_l_e_gae34a331ccbda86f7e5b2319f1852d6ca_icgraph" id="agroup___h_a_s_h___t_a_b_l_e_gae34a331ccbda86f7e5b2319f1852d6ca_icgraph">
-<area shape="rect" title=" " alt="" coords="153,5,233,32"/>
-<area shape="rect" href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#gaea4d614fcd75f3493130a64e0e58113d" title=" " alt="" coords="5,5,105,32"/>
-</map>
-</div>
+<p class="definition">Definition at line <a class="el" href="n__hash_8c_source.html#l01974">1974</a> of file <a class="el" href="n__hash_8c_source.html">n_hash.c</a>.</p>
 
 </div>
 </div>
@@ -1066,9 +1004,7 @@ Functions</h2></td></tr>
 
 <p><code>#include &lt;<a class="el" href="n__hash_8h.html">n_hash.h</a>&gt;</code></p>
 
-<p class="definition">Definition at line <a class="el" href="n__hash_8c_source.html#l01944">1944</a> of file <a class="el" href="n__hash_8c_source.html">n_hash.c</a>.</p>
-
-<p class="reference">References <a class="el" href="n__hash_8h_source.html#l00145">ht_get_string</a>.</p>
+<p class="definition">Definition at line <a class="el" href="n__hash_8c_source.html#l01980">1980</a> of file <a class="el" href="n__hash_8c_source.html">n_hash.c</a>.</p>
 
 </div>
 </div>
@@ -1099,38 +1035,28 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>NULL or the associated node type </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="n__hash_8c_source.html#l01130">1130</a> of file <a class="el" href="n__hash_8c_source.html">n_hash.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="n__hash_8c_source.html#l01169">1169</a> of file <a class="el" href="n__hash_8c_source.html">n_hash.c</a>.</p>
 
-<p class="reference">References <a class="el" href="n__hash_8h_source.html#l00093">HASH_NODE::type</a>.</p>
+<p class="reference">References <a class="el" href="n__common_8h_source.html#l00262">__n_assert</a>, and <a class="el" href="n__hash_8h_source.html#l00056">HASH_UNKNOWN</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="n__hash_8c_source.html#l01582">_ht_get_double()</a>, <a class="el" href="n__hash_8c_source.html#l00337">_ht_get_double_trie()</a>, <a class="el" href="n__hash_8c_source.html#l01550">_ht_get_int()</a>, <a class="el" href="n__hash_8c_source.html#l00305">_ht_get_int_trie()</a>, <a class="el" href="n__hash_8c_source.html#l01615">_ht_get_ptr()</a>, <a class="el" href="n__hash_8c_source.html#l00400">_ht_get_ptr_trie()</a>, <a class="el" href="n__hash_8c_source.html#l01646">_ht_get_string()</a>, <a class="el" href="n__hash_8c_source.html#l00369">_ht_get_string_trie()</a>, <a class="el" href="n__hash_8c_source.html#l01385">_ht_put_double()</a>, <a class="el" href="n__hash_8c_source.html#l01347">_ht_put_int()</a>, <a class="el" href="n__hash_8c_source.html#l01424">_ht_put_ptr()</a>, <a class="el" href="n__hash_8c_source.html#l01468">_ht_put_string()</a>, and <a class="el" href="n__hash_8c_source.html#l01508">_ht_put_string_ptr()</a>.</p>
-<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+<p class="reference">Referenced by <a class="el" href="n__hash_8c_source.html#l01618">_ht_get_double()</a>, <a class="el" href="n__hash_8c_source.html#l01586">_ht_get_int()</a>, <a class="el" href="n__hash_8c_source.html#l01651">_ht_get_ptr()</a>, <a class="el" href="n__hash_8c_source.html#l01682">_ht_get_string()</a>, <a class="el" href="n__hash_8c_source.html#l01421">_ht_put_double()</a>, <a class="el" href="n__hash_8c_source.html#l01383">_ht_put_int()</a>, <a class="el" href="n__hash_8c_source.html#l01460">_ht_put_ptr()</a>, <a class="el" href="n__hash_8c_source.html#l01504">_ht_put_string()</a>, and <a class="el" href="n__hash_8c_source.html#l01544">_ht_put_string_ptr()</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="group___h_a_s_h___t_a_b_l_e_ga1392981a507905d028136bc0b92aa48b_icgraph.png" border="0" usemap="#agroup___h_a_s_h___t_a_b_l_e_ga1392981a507905d028136bc0b92aa48b_icgraph" alt=""/></div>
 <map name="agroup___h_a_s_h___t_a_b_l_e_ga1392981a507905d028136bc0b92aa48b_icgraph" id="agroup___h_a_s_h___t_a_b_l_e_ga1392981a507905d028136bc0b92aa48b_icgraph">
-<area shape="rect" title="get the type of a node , text version" alt="" coords="489,309,589,336"/>
-<area shape="rect" href="n__hash_8c.html#a7ce57bb0fb64ca5ff513c6ade7c26852" title="Retrieve a double value in the hash table, at the given key." alt="" coords="319,208,429,235"/>
-<area shape="rect" href="n__hash_8c.html#a825546ece9c87894de351354131d9c9d" title="Retrieve an integral value in the hash table, at the given key." alt="" coords="307,5,441,32"/>
-<area shape="rect" href="n__hash_8c.html#ae7c50bafbc80902f92c27e59d29ffd40" title="Retrieve an integral value in the hash table, at the given key." alt="" coords="331,259,417,285"/>
-<area shape="rect" href="n__hash_8c.html#a256287de4bd12cc39e8eb885a0938cd0" title="Retrieve an integral value in the hash table, at the given key." alt="" coords="319,56,429,83"/>
-<area shape="rect" href="n__hash_8c.html#a0299747d5cd82effd51fdaec945e80ee" title="Retrieve a pointer value in the hash table, at the given key." alt="" coords="331,309,417,336"/>
-<area shape="rect" href="n__hash_8c.html#a53e2b70cd04dd251387054c30f9fc4de" title="Retrieve an integral value in the hash table, at the given key." alt="" coords="318,107,430,133"/>
-<area shape="rect" href="n__hash_8c.html#a524a224940bc3ceea122824ca3d4842b" title="Retrieve a char *string value in the hash table, at the given key." alt="" coords="322,360,426,387"/>
-<area shape="rect" href="n__hash_8c.html#a3facd71bf74b9dae8f82a1bfb6dc9fc2" title="Retrieve an integral value in the hash table, at the given key." alt="" coords="309,157,439,184"/>
-<area shape="rect" href="n__hash_8c.html#a870d138d5408e20e8111c750cdc77d36" title="put a double value with given key in the targeted hash table" alt="" coords="319,411,429,437"/>
-<area shape="rect" href="n__hash_8c.html#a4713652203bc7965a2dda268ffa1e4d5" title="put an integral value with given key in the targeted hash table" alt="" coords="331,461,417,488"/>
-<area shape="rect" href="n__hash_8c.html#a853357465a1599d42ff6d095aa762424" title="put a pointer value with given key in the targeted hash table" alt="" coords="331,512,417,539"/>
-<area shape="rect" href="n__hash_8c.html#a35ed4b8f492e6265b7cdcc8f380b6130" title="put a null terminated char *string with given key in the targeted hash table (copy of string)" alt="" coords="322,563,426,589"/>
-<area shape="rect" href="n__hash_8c.html#a8bfbff53ffcafc65317e2b1041df314f" title="put a null terminated char *string with given key in the targeted hash table (pointer)" alt="" coords="311,613,437,640"/>
-<area shape="rect" href="group___h_a_s_h___t_a_b_l_e.html#gaa2d879c1afd3c71a0917bbe2c0766664" title=" " alt="" coords="183,411,246,437"/>
-<area shape="rect" href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#ga465b28122f5d12702a8a9289a978d255" title="initialize debug tables" alt="" coords="5,335,123,361"/>
-<area shape="rect" href="group___l_o_g_n_o_d_u_p.html#gaf9c9b8e129263da15345f428cd73f19e" title="initialize the no duplicate logging system" alt="" coords="11,385,117,412"/>
-<area shape="rect" href="group___c_o_n_f_i_g_f_i_l_e.html#ga0206fadb78039ac602fc0696b27b85a6" title="load a config file" alt="" coords="9,436,119,463"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#gadb5284c7b187815cf3b286a5cd972876" title="return a new network pool of nb_min_element" alt="" coords="9,487,119,513"/>
-<area shape="rect" href="group___h_a_s_h___t_a_b_l_e.html#gab95fe0967850a3665d21837519ede6c8" title="Create a hash table with the given size." alt="" coords="171,81,259,108"/>
+<area shape="rect" title="get the type of a node , text version" alt="" coords="180,208,280,235"/>
+<area shape="rect" href="n__hash_8c.html#a7ce57bb0fb64ca5ff513c6ade7c26852" title="Retrieve a double value in the hash table, at the given key." alt="" coords="13,5,124,32"/>
+<area shape="rect" href="n__hash_8c.html#ae7c50bafbc80902f92c27e59d29ffd40" title="Retrieve an integral value in the hash table, at the given key." alt="" coords="25,56,112,83"/>
+<area shape="rect" href="n__hash_8c.html#a0299747d5cd82effd51fdaec945e80ee" title="Retrieve a pointer value in the hash table, at the given key." alt="" coords="25,107,112,133"/>
+<area shape="rect" href="n__hash_8c.html#a524a224940bc3ceea122824ca3d4842b" title="Retrieve a char *string value in the hash table, at the given key." alt="" coords="17,157,121,184"/>
+<area shape="rect" href="n__hash_8c.html#a870d138d5408e20e8111c750cdc77d36" title="put a double value with given key in the targeted hash table" alt="" coords="13,208,124,235"/>
+<area shape="rect" href="n__hash_8c.html#a4713652203bc7965a2dda268ffa1e4d5" title="put an integral value with given key in the targeted hash table [CLASSIC HASH TABLE)" alt="" coords="25,259,112,285"/>
+<area shape="rect" href="n__hash_8c.html#a853357465a1599d42ff6d095aa762424" title="put a pointer value with given key in the targeted hash table" alt="" coords="25,309,112,336"/>
+<area shape="rect" href="n__hash_8c.html#a35ed4b8f492e6265b7cdcc8f380b6130" title="put a null terminated char *string with given key in the targeted hash table (copy of string)" alt="" coords="17,360,121,387"/>
+<area shape="rect" href="n__hash_8c.html#a8bfbff53ffcafc65317e2b1041df314f" title="put a null terminated char *string with given key in the targeted hash table (pointer)" alt="" coords="5,411,132,437"/>
 </map>
 </div>
 
@@ -1154,9 +1080,7 @@ Functions</h2></td></tr>
 
 <p><code>#include &lt;<a class="el" href="n__hash_8h.html">n_hash.h</a>&gt;</code></p>
 
-<p class="definition">Definition at line <a class="el" href="n__hash_8c_source.html#l01986">1986</a> of file <a class="el" href="n__hash_8c_source.html">n_hash.c</a>.</p>
-
-<p class="reference">References <a class="el" href="n__hash_8h_source.html#l00155">ht_print</a>.</p>
+<p class="definition">Definition at line <a class="el" href="n__hash_8c_source.html#l02030">2030</a> of file <a class="el" href="n__hash_8c_source.html">n_hash.c</a>.</p>
 
 </div>
 </div>
@@ -1194,9 +1118,7 @@ Functions</h2></td></tr>
 
 <p><code>#include &lt;<a class="el" href="n__hash_8h.html">n_hash.h</a>&gt;</code></p>
 
-<p class="definition">Definition at line <a class="el" href="n__hash_8c_source.html#l01950">1950</a> of file <a class="el" href="n__hash_8c_source.html">n_hash.c</a>.</p>
-
-<p class="reference">References <a class="el" href="n__hash_8h_source.html#l00131">ht_put_double</a>.</p>
+<p class="definition">Definition at line <a class="el" href="n__hash_8c_source.html#l01986">1986</a> of file <a class="el" href="n__hash_8c_source.html">n_hash.c</a>.</p>
 
 </div>
 </div>
@@ -1234,9 +1156,33 @@ Functions</h2></td></tr>
 
 <p><code>#include &lt;<a class="el" href="n__hash_8h.html">n_hash.h</a>&gt;</code></p>
 
-<p class="definition">Definition at line <a class="el" href="n__hash_8c_source.html#l01956">1956</a> of file <a class="el" href="n__hash_8c_source.html">n_hash.c</a>.</p>
+<p>put an integral value with given key in the targeted hash table </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">table</td><td>Targeted hash table </td></tr>
+    <tr><td class="paramname">key</td><td>Size Associated value's key </td></tr>
+    <tr><td class="paramname">value</td><td>integral value to put </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>TRUE or FALSE </dd></dl>
 
-<p class="reference">References <a class="el" href="n__hash_8h_source.html#l00129">ht_put_int</a>.</p>
+<p class="definition">Definition at line <a class="el" href="n__hash_8c_source.html#l02000">2000</a> of file <a class="el" href="n__hash_8c_source.html">n_hash.c</a>.</p>
+
+<p class="reference">References <a class="el" href="n__common_8h_source.html#l00262">__n_assert</a>, and <a class="el" href="n__hash_8h_source.html#l00129">ht_put_int</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="n__hash_8c_source.html#l01854">new_ht_trie()</a>.</p>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group___h_a_s_h___t_a_b_l_e_ga06cafdf266f9913c197a8e9e6a1fba5d_icgraph.png" border="0" usemap="#agroup___h_a_s_h___t_a_b_l_e_ga06cafdf266f9913c197a8e9e6a1fba5d_icgraph" alt=""/></div>
+<map name="agroup___h_a_s_h___t_a_b_l_e_ga06cafdf266f9913c197a8e9e6a1fba5d_icgraph" id="agroup___h_a_s_h___t_a_b_l_e_ga06cafdf266f9913c197a8e9e6a1fba5d_icgraph">
+<area shape="rect" title="put an integral value with given key in the targeted hash table" alt="" coords="141,5,220,32"/>
+<area shape="rect" href="group___h_a_s_h___t_a_b_l_e.html#gab95fe0967850a3665d21837519ede6c8" title="Create a hash table with the given size." alt="" coords="5,5,93,32"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -1280,22 +1226,7 @@ Functions</h2></td></tr>
 
 <p><code>#include &lt;<a class="el" href="n__hash_8h.html">n_hash.h</a>&gt;</code></p>
 
-<p class="definition">Definition at line <a class="el" href="n__hash_8c_source.html#l01962">1962</a> of file <a class="el" href="n__hash_8c_source.html">n_hash.c</a>.</p>
-
-<p class="reference">References <a class="el" href="n__hash_8h_source.html#l00133">ht_put_ptr</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="n__debug__mem_8c_source.html#l00101">db_mem_alloc()</a>.</p>
-<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-6-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group___h_a_s_h___t_a_b_l_e_ga2baa0497b21bdf86e3c64bb023124930_icgraph.png" border="0" usemap="#agroup___h_a_s_h___t_a_b_l_e_ga2baa0497b21bdf86e3c64bb023124930_icgraph" alt=""/></div>
-<map name="agroup___h_a_s_h___t_a_b_l_e_ga2baa0497b21bdf86e3c64bb023124930_icgraph" id="agroup___h_a_s_h___t_a_b_l_e_ga2baa0497b21bdf86e3c64bb023124930_icgraph">
-<area shape="rect" title=" " alt="" coords="160,5,240,32"/>
-<area shape="rect" href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#ga3f63c1a843b2f1685d31b4564ee03918" title="allocate a new pointer with size and also put it in the debug table" alt="" coords="5,5,112,32"/>
-</map>
-</div>
+<p class="definition">Definition at line <a class="el" href="n__hash_8c_source.html#l02006">2006</a> of file <a class="el" href="n__hash_8c_source.html">n_hash.c</a>.</p>
 
 </div>
 </div>
@@ -1333,23 +1264,7 @@ Functions</h2></td></tr>
 
 <p><code>#include &lt;<a class="el" href="n__hash_8h.html">n_hash.h</a>&gt;</code></p>
 
-<p class="definition">Definition at line <a class="el" href="n__hash_8c_source.html#l01968">1968</a> of file <a class="el" href="n__hash_8c_source.html">n_hash.c</a>.</p>
-
-<p class="reference">References <a class="el" href="n__hash_8h_source.html#l00135">ht_put_string</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="n__nodup__log_8c_source.html#l00214">_n_nodup_log()</a>, and <a class="el" href="n__nodup__log_8c_source.html#l00274">_n_nodup_log_indexed()</a>.</p>
-<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-7-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group___h_a_s_h___t_a_b_l_e_gaa7dae105905e1751943ec3a4e4226480_icgraph.png" border="0" usemap="#agroup___h_a_s_h___t_a_b_l_e_gaa7dae105905e1751943ec3a4e4226480_icgraph" alt=""/></div>
-<map name="agroup___h_a_s_h___t_a_b_l_e_gaa7dae105905e1751943ec3a4e4226480_icgraph" id="agroup___h_a_s_h___t_a_b_l_e_gaa7dae105905e1751943ec3a4e4226480_icgraph">
-<area shape="rect" title=" " alt="" coords="208,31,305,57"/>
-<area shape="rect" href="group___l_o_g_n_o_d_u_p.html#ga650828539395216dd2f4f28da5131c42" title="Logging function." alt="" coords="31,5,134,32"/>
-<area shape="rect" href="group___l_o_g_n_o_d_u_p.html#gacbf9e2a1400ab6f00a30186d9a5c4683" title="Logging function." alt="" coords="5,56,160,83"/>
-</map>
-</div>
+<p class="definition">Definition at line <a class="el" href="n__hash_8c_source.html#l02012">2012</a> of file <a class="el" href="n__hash_8c_source.html">n_hash.c</a>.</p>
 
 </div>
 </div>
@@ -1387,9 +1302,7 @@ Functions</h2></td></tr>
 
 <p><code>#include &lt;<a class="el" href="n__hash_8h.html">n_hash.h</a>&gt;</code></p>
 
-<p class="definition">Definition at line <a class="el" href="n__hash_8c_source.html#l01974">1974</a> of file <a class="el" href="n__hash_8c_source.html">n_hash.c</a>.</p>
-
-<p class="reference">References <a class="el" href="n__hash_8h_source.html#l00137">ht_put_string_ptr</a>.</p>
+<p class="definition">Definition at line <a class="el" href="n__hash_8c_source.html#l02018">2018</a> of file <a class="el" href="n__hash_8c_source.html">n_hash.c</a>.</p>
 
 </div>
 </div>
@@ -1421,22 +1334,7 @@ Functions</h2></td></tr>
 
 <p><code>#include &lt;<a class="el" href="n__hash_8h.html">n_hash.h</a>&gt;</code></p>
 
-<p class="definition">Definition at line <a class="el" href="n__hash_8c_source.html#l01980">1980</a> of file <a class="el" href="n__hash_8c_source.html">n_hash.c</a>.</p>
-
-<p class="reference">References <a class="el" href="n__hash_8h_source.html#l00147">ht_remove</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="n__debug__mem_8c_source.html#l00133">db_mem_free()</a>.</p>
-<div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-8-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-8-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group___h_a_s_h___t_a_b_l_e_ga8d8873be47a634ad8a386e61f12a1f53_icgraph.png" border="0" usemap="#agroup___h_a_s_h___t_a_b_l_e_ga8d8873be47a634ad8a386e61f12a1f53_icgraph" alt=""/></div>
-<map name="agroup___h_a_s_h___t_a_b_l_e_ga8d8873be47a634ad8a386e61f12a1f53_icgraph" id="agroup___h_a_s_h___t_a_b_l_e_ga8d8873be47a634ad8a386e61f12a1f53_icgraph">
-<area shape="rect" title=" " alt="" coords="153,5,235,32"/>
-<area shape="rect" href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#gaea4d614fcd75f3493130a64e0e58113d" title=" " alt="" coords="5,5,105,32"/>
-</map>
-</div>
+<p class="definition">Definition at line <a class="el" href="n__hash_8c_source.html#l02024">2024</a> of file <a class="el" href="n__hash_8c_source.html">n_hash.c</a>.</p>
 
 </div>
 </div>
@@ -1468,7 +1366,7 @@ Functions</h2></td></tr>
 
 <p><code>#include &lt;<a class="el" href="n__hash_8h.html">n_hash.h</a>&gt;</code></p>
 
-<p class="definition">Definition at line <a class="el" href="n__hash_8c_source.html#l01993">1993</a> of file <a class="el" href="n__hash_8c_source.html">n_hash.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="n__hash_8c_source.html#l02037">2037</a> of file <a class="el" href="n__hash_8c_source.html">n_hash.c</a>.</p>
 
 </div>
 </div>
@@ -1487,7 +1385,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">const int&#160;</td>
           <td class="paramname"><em>len</em>, </td>
         </tr>
         <tr>
@@ -1523,7 +1421,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="n__hash_8c_source.html#l00960">960</a> of file <a class="el" href="n__hash_8c_source.html">n_hash.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="n__hash_8c_source.html#l00999">999</a> of file <a class="el" href="n__hash_8c_source.html">n_hash.c</a>.</p>
 
 </div>
 </div>
@@ -1578,7 +1476,35 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="n__hash_8c_source.html#l00890">890</a> of file <a class="el" href="n__hash_8c_source.html">n_hash.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="n__hash_8c_source.html#l00929">929</a> of file <a class="el" href="n__hash_8c_source.html">n_hash.c</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="n__hash_8c_source.html#l01188">_ht_get_node()</a>, <a class="el" href="n__hash_8c_source.html#l01229">_ht_new_node()</a>, and <a class="el" href="n__hash_8c_source.html#l01712">_ht_remove()</a>.</p>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group___h_a_s_h___t_a_b_l_e_ga37412933f308bda727603640d9acefba_icgraph.png" border="0" usemap="#agroup___h_a_s_h___t_a_b_l_e_ga37412933f308bda727603640d9acefba_icgraph" alt=""/></div>
+<map name="agroup___h_a_s_h___t_a_b_l_e_ga37412933f308bda727603640d9acefba_icgraph" id="agroup___h_a_s_h___t_a_b_l_e_ga37412933f308bda727603640d9acefba_icgraph">
+<area shape="rect" title="brief MurmurHash3 was written by Austin Appleby, and is placed in the public domain." alt="" coords="548,309,700,336"/>
+<area shape="rect" href="n__hash_8c.html#a364dffbf42be500d3266410895694bd8" title="return the associated key&#39;s node inside the hash_table" alt="" coords="213,208,313,235"/>
+<area shape="rect" href="n__hash_8c.html#a9a7239b9d94b50486662ad11381fd3bf" title="node creation, HASH_CLASSIC mode" alt="" coords="395,309,500,336"/>
+<area shape="rect" href="n__hash_8c.html#aa0b7465426719eec2e02cd83e8ac290d" title="Remove a key from a hash table." alt="" coords="403,360,491,387"/>
+<area shape="rect" href="n__hash_8c.html#a7ce57bb0fb64ca5ff513c6ade7c26852" title="Retrieve a double value in the hash table, at the given key." alt="" coords="13,107,124,133"/>
+<area shape="rect" href="n__hash_8c.html#ae7c50bafbc80902f92c27e59d29ffd40" title="Retrieve an integral value in the hash table, at the given key." alt="" coords="25,157,112,184"/>
+<area shape="rect" href="n__hash_8c.html#a0299747d5cd82effd51fdaec945e80ee" title="Retrieve a pointer value in the hash table, at the given key." alt="" coords="25,208,112,235"/>
+<area shape="rect" href="n__hash_8c.html#a524a224940bc3ceea122824ca3d4842b" title="Retrieve a char *string value in the hash table, at the given key." alt="" coords="17,5,121,32"/>
+<area shape="rect" href="n__hash_8c.html#a870d138d5408e20e8111c750cdc77d36" title="put a double value with given key in the targeted hash table" alt="" coords="13,411,124,437"/>
+<area shape="rect" href="n__hash_8c.html#a4713652203bc7965a2dda268ffa1e4d5" title="put an integral value with given key in the targeted hash table [CLASSIC HASH TABLE)" alt="" coords="25,259,112,285"/>
+<area shape="rect" href="n__hash_8c.html#a853357465a1599d42ff6d095aa762424" title="put a pointer value with given key in the targeted hash table" alt="" coords="25,56,112,83"/>
+<area shape="rect" href="n__hash_8c.html#a35ed4b8f492e6265b7cdcc8f380b6130" title="put a null terminated char *string with given key in the targeted hash table (copy of string)" alt="" coords="17,309,121,336"/>
+<area shape="rect" href="n__hash_8c.html#a8bfbff53ffcafc65317e2b1041df314f" title="put a null terminated char *string with given key in the targeted hash table (pointer)" alt="" coords="5,360,132,387"/>
+<area shape="rect" href="n__hash_8c.html#a538c336dd719701659e9234dc069f848" title="node creation, HASH_CLASSIC mode" alt="" coords="188,411,339,437"/>
+<area shape="rect" href="n__hash_8c.html#aca52825e0662da52f7f59cb2c282dd0d" title="node creation, HASH_CLASSIC mode" alt="" coords="200,259,327,285"/>
+<area shape="rect" href="n__hash_8c.html#a3b482644f6bf5ac3cfec10961a9bfdbc" title="node creation, HASH_CLASSIC mode, strdup of value" alt="" coords="191,309,335,336"/>
+<area shape="rect" href="n__hash_8c.html#ac461724d2c01d3d29753274497f07e09" title="node creation, HASH_CLASSIC mode, pointer to string value" alt="" coords="180,360,347,387"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -1600,64 +1526,7 @@ Functions</h2></td></tr>
 
 <p><code>#include &lt;<a class="el" href="n__hash_8h.html">n_hash.h</a>&gt;</code></p>
 
-<p class="definition">Definition at line <a class="el" href="n__hash_8c_source.html#l01860">1860</a> of file <a class="el" href="n__hash_8c_source.html">n_hash.c</a>.</p>
-
-<p class="reference">References <a class="el" href="n__hash_8c_source.html#l01754">_destroy_ht()</a>, <a class="el" href="n__hash_8c_source.html#l01728">_empty_ht()</a>, <a class="el" href="n__hash_8c_source.html#l01582">_ht_get_double()</a>, <a class="el" href="n__hash_8c_source.html#l01550">_ht_get_int()</a>, <a class="el" href="n__hash_8c_source.html#l01149">_ht_get_node()</a>, <a class="el" href="n__hash_8c_source.html#l01615">_ht_get_ptr()</a>, <a class="el" href="n__hash_8c_source.html#l01646">_ht_get_string()</a>, <a class="el" href="n__hash_8c_source.html#l01775">_ht_print()</a>, <a class="el" href="n__hash_8c_source.html#l01385">_ht_put_double()</a>, <a class="el" href="n__hash_8c_source.html#l01347">_ht_put_int()</a>, <a class="el" href="n__hash_8c_source.html#l01424">_ht_put_ptr()</a>, <a class="el" href="n__hash_8c_source.html#l01468">_ht_put_string()</a>, <a class="el" href="n__hash_8c_source.html#l01508">_ht_put_string_ptr()</a>, <a class="el" href="n__hash_8c_source.html#l01676">_ht_remove()</a>, <a class="el" href="n__hash_8c_source.html#l01789">_ht_search()</a>, <a class="el" href="n__log_8c_source.html#l00216">_n_log()</a>, <a class="el" href="n__hash_8h_source.html#l00153">destroy_ht</a>, <a class="el" href="n__hash_8h_source.html#l00151">empty_ht</a>, <a class="el" href="n__hash_8h_source.html#l00117">hash_table</a>, <a class="el" href="n__hash_8h_source.html#l00141">ht_get_double</a>, <a class="el" href="n__hash_8h_source.html#l00139">ht_get_int</a>, <a class="el" href="n__hash_8h_source.html#l00143">ht_get_ptr</a>, <a class="el" href="n__hash_8h_source.html#l00145">ht_get_string</a>, <a class="el" href="n__hash_8h_source.html#l00155">ht_print</a>, <a class="el" href="n__hash_8h_source.html#l00131">ht_put_double</a>, <a class="el" href="n__hash_8h_source.html#l00129">ht_put_int</a>, <a class="el" href="n__hash_8h_source.html#l00133">ht_put_ptr</a>, <a class="el" href="n__hash_8h_source.html#l00135">ht_put_string</a>, <a class="el" href="n__hash_8h_source.html#l00137">ht_put_string_ptr</a>, <a class="el" href="n__hash_8h_source.html#l00147">ht_remove</a>, <a class="el" href="n__list_8c_source.html#l00480">list_destroy()</a>, <a class="el" href="n__hash_8h_source.html#l00125">mode</a>, <a class="el" href="n__hash_8h_source.html#l00113">nb_keys</a>, <a class="el" href="n__list_8c_source.html#l00020">new_generic_list()</a>, and <a class="el" href="n__hash_8h_source.html#l00111">size</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="n__debug__mem_8c_source.html#l00022">init_debug_mem()</a>, <a class="el" href="n__nodup__log_8c_source.html#l00030">init_nodup_log()</a>, <a class="el" href="n__config__file_8c_source.html#l00051">load_config_file()</a>, and <a class="el" href="n__network_8c_source.html#l02872">netw_new_pool()</a>.</p>
-<div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-9-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-9-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group___h_a_s_h___t_a_b_l_e_gaa2d879c1afd3c71a0917bbe2c0766664_cgraph.png" border="0" usemap="#agroup___h_a_s_h___t_a_b_l_e_gaa2d879c1afd3c71a0917bbe2c0766664_cgraph" alt=""/></div>
-<map name="agroup___h_a_s_h___t_a_b_l_e_gaa2d879c1afd3c71a0917bbe2c0766664_cgraph" id="agroup___h_a_s_h___t_a_b_l_e_gaa2d879c1afd3c71a0917bbe2c0766664_cgraph">
-<area shape="rect" title=" " alt="" coords="5,525,68,552"/>
-<area shape="rect" href="n__hash_8c.html#a0ee7e0fa87da033f857c04dae6f1586a" title=" " alt="" coords="134,44,225,71"/>
-<area shape="rect" href="group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755" title="Empty and Free a list container." alt="" coords="321,44,411,71"/>
-<area shape="rect" href="n__hash_8c.html#a883490d95c386d9d82a7306663a6c2ce" title=" " alt="" coords="138,399,221,425"/>
-<area shape="rect" href="n__hash_8c.html#a7ce57bb0fb64ca5ff513c6ade7c26852" title="Retrieve a double value in the hash table, at the given key." alt="" coords="124,703,235,729"/>
-<area shape="rect" href="n__hash_8c.html#a364dffbf42be500d3266410895694bd8" title="return the associated key&#39;s node inside the hash_table" alt="" coords="316,855,416,881"/>
-<area shape="rect" href="group___l_o_g.html#gafbbbfcb9063b9f1454a499dbf98f7a56" title="Logging function." alt="" coords="643,576,703,603"/>
-<area shape="rect" href="n__hash_8c.html#ae7c50bafbc80902f92c27e59d29ffd40" title="Retrieve an integral value in the hash table, at the given key." alt="" coords="136,753,223,780"/>
-<area shape="rect" href="n__hash_8c.html#a0299747d5cd82effd51fdaec945e80ee" title="Retrieve a pointer value in the hash table, at the given key." alt="" coords="136,804,223,831"/>
-<area shape="rect" href="n__hash_8c.html#a524a224940bc3ceea122824ca3d4842b" title="Retrieve a char *string value in the hash table, at the given key." alt="" coords="127,855,231,881"/>
-<area shape="rect" href="n__hash_8c.html#a719f4d3d6315d1118478bf66bbf3d7d4" title=" " alt="" coords="143,956,215,983"/>
-<area shape="rect" href="n__hash_8c.html#a870d138d5408e20e8111c750cdc77d36" title="put a double value with given key in the targeted hash table" alt="" coords="124,551,235,577"/>
-<area shape="rect" href="n__hash_8c.html#a4713652203bc7965a2dda268ffa1e4d5" title="put an integral value with given key in the targeted hash table" alt="" coords="136,601,223,628"/>
-<area shape="rect" href="n__hash_8c.html#a853357465a1599d42ff6d095aa762424" title="put a pointer value with given key in the targeted hash table" alt="" coords="136,652,223,679"/>
-<area shape="rect" href="n__hash_8c.html#a35ed4b8f492e6265b7cdcc8f380b6130" title="put a null terminated char *string with given key in the targeted hash table (copy of string)" alt="" coords="127,449,231,476"/>
-<area shape="rect" href="n__hash_8c.html#a8bfbff53ffcafc65317e2b1041df314f" title="put a null terminated char *string with given key in the targeted hash table (pointer)" alt="" coords="116,500,243,527"/>
-<area shape="rect" href="n__hash_8c.html#aa0b7465426719eec2e02cd83e8ac290d" title="Remove a key from a hash table." alt="" coords="135,348,223,375"/>
-<area shape="rect" href="n__hash_8c.html#af5e4567a16f469d013410e8cf675a28c" title=" " alt="" coords="136,95,223,121"/>
-<area shape="rect" href="group___l_i_s_t.html#gada615e3b144e97bcff147dfe89f6fef6" title="Initialiaze a generic list container to max_items pointers." alt="" coords="307,95,425,121"/>
-<area shape="rect" href="group___l_i_s_t.html#ga1dafe7a250ddad51fadd375f057287e7" title="Empty a LIST list of pointers." alt="" coords="501,44,583,71"/>
-<area shape="rect" href="n__hash_8c.html#a013153fa30199bbcaf5f92890ae97ba8" title="destroy a HASH_NODE by first calling the HASH_NODE destructor" alt="" coords="303,348,429,375"/>
-<area shape="rect" href="group___h_a_s_h___t_a_b_l_e.html#ga1392981a507905d028136bc0b92aa48b" title="get the type of a node , text version" alt="" coords="316,703,416,729"/>
-<area shape="rect" href="group___l_o_g.html#gafeea44ab08778cbff68e91e831d44112" title="Get the global log level value." alt="" coords="751,576,847,603"/>
-<area shape="rect" href="n__hash_8c.html#a538c336dd719701659e9234dc069f848" title="node creation, HASH_CLASSIC mode" alt="" coords="291,551,441,577"/>
-<area shape="rect" href="group___l_i_s_t.html#ga4eab319289a83524639ee5e9f0441fdf" title="Add a pointer to the end of the list." alt="" coords="329,500,403,527"/>
-<area shape="rect" href="n__hash_8c.html#a9a7239b9d94b50486662ad11381fd3bf" title="node creation, HASH_CLASSIC mode" alt="" coords="489,588,595,615"/>
-<area shape="rect" href="group___l_i_s_t.html#ga678e828550efc8e64a836bb8c713c2f4" title="Allocate a new node to link in a list." alt="" coords="490,512,594,539"/>
-<area shape="rect" href="n__hash_8c.html#aca52825e0662da52f7f59cb2c282dd0d" title="node creation, HASH_CLASSIC mode" alt="" coords="303,601,429,628"/>
-<area shape="rect" href="n__hash_8c.html#afcb17d6b3dd2abad4cb9e58a2f70de98" title=" " alt="" coords="303,753,429,780"/>
-<area shape="rect" href="n__hash_8c.html#a3b482644f6bf5ac3cfec10961a9bfdbc" title="node creation, HASH_CLASSIC mode, strdup of value" alt="" coords="294,297,438,324"/>
-</map>
-</div>
-<div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-10-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-10-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-10-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group___h_a_s_h___t_a_b_l_e_gaa2d879c1afd3c71a0917bbe2c0766664_icgraph.png" border="0" usemap="#agroup___h_a_s_h___t_a_b_l_e_gaa2d879c1afd3c71a0917bbe2c0766664_icgraph" alt=""/></div>
-<map name="agroup___h_a_s_h___t_a_b_l_e_gaa2d879c1afd3c71a0917bbe2c0766664_icgraph" id="agroup___h_a_s_h___t_a_b_l_e_gaa2d879c1afd3c71a0917bbe2c0766664_icgraph">
-<area shape="rect" title=" " alt="" coords="171,81,233,108"/>
-<area shape="rect" href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#ga465b28122f5d12702a8a9289a978d255" title="initialize debug tables" alt="" coords="5,5,123,32"/>
-<area shape="rect" href="group___l_o_g_n_o_d_u_p.html#gaf9c9b8e129263da15345f428cd73f19e" title="initialize the no duplicate logging system" alt="" coords="11,56,117,83"/>
-<area shape="rect" href="group___c_o_n_f_i_g_f_i_l_e.html#ga0206fadb78039ac602fc0696b27b85a6" title="load a config file" alt="" coords="9,107,119,133"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#gadb5284c7b187815cf3b286a5cd972876" title="return a new network pool of nb_min_element" alt="" coords="9,157,119,184"/>
-</map>
-</div>
+<p class="definition">Definition at line <a class="el" href="n__hash_8c_source.html#l01896">1896</a> of file <a class="el" href="n__hash_8c_source.html">n_hash.c</a>.</p>
 
 </div>
 </div>
@@ -1671,7 +1540,7 @@ Functions</h2></td></tr>
           <td class="memname"><a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> * new_ht_trie </td>
           <td>(</td>
           <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>alphabet_size</em>, </td>
+          <td class="paramname"><em>alphabet_length</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1698,45 +1567,20 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>NULL or the new allocated hash table </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="n__hash_8c_source.html#l01818">1818</a> of file <a class="el" href="n__hash_8c_source.html">n_hash.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="n__hash_8c_source.html#l01854">1854</a> of file <a class="el" href="n__hash_8c_source.html">n_hash.c</a>.</p>
 
-<p class="reference">References <a class="el" href="n__hash_8c_source.html#l00643">_destroy_ht_trie()</a>, <a class="el" href="n__hash_8c_source.html#l00624">_empty_ht_trie()</a>, <a class="el" href="n__hash_8c_source.html#l00337">_ht_get_double_trie()</a>, <a class="el" href="n__hash_8c_source.html#l00305">_ht_get_int_trie()</a>, <a class="el" href="n__hash_8c_source.html#l00400">_ht_get_ptr_trie()</a>, <a class="el" href="n__hash_8c_source.html#l00369">_ht_get_string_trie()</a>, <a class="el" href="n__hash_8c_source.html#l00033">_ht_new_node_trie()</a>, <a class="el" href="n__hash_8c_source.html#l00695">_ht_print_trie()</a>, <a class="el" href="n__hash_8c_source.html#l00105">_ht_put_double_trie()</a>, <a class="el" href="n__hash_8c_source.html#l00064">_ht_put_int_trie()</a>, <a class="el" href="n__hash_8c_source.html#l00229">_ht_put_ptr_trie()</a>, <a class="el" href="n__hash_8c_source.html#l00189">_ht_put_string_ptr_trie()</a>, <a class="el" href="n__hash_8c_source.html#l00146">_ht_put_string_trie()</a>, <a class="el" href="n__hash_8c_source.html#l00553">_ht_remove_trie()</a>, <a class="el" href="n__hash_8c_source.html#l00725">_ht_search_trie()</a>, <a class="el" href="n__hash_8h_source.html#l00121">alphabet_length</a>, <a class="el" href="n__hash_8h_source.html#l00123">alphabet_offset</a>, <a class="el" href="n__hash_8h_source.html#l00153">destroy_ht</a>, <a class="el" href="n__hash_8h_source.html#l00151">empty_ht</a>, <a class="el" href="n__hash_8h_source.html#l00141">ht_get_double</a>, <a class="el" href="n__hash_8h_source.html#l00139">ht_get_int</a>, <a class="el" href="n__hash_8h_source.html#l00143">ht_get_ptr</a>, <a class="el" href="n__hash_8h_source.html#l00145">ht_get_string</a>, <a class="el" href="n__hash_8h_source.html#l00155">ht_print</a>, <a class="el" href="n__hash_8h_source.html#l00131">ht_put_double</a>, <a class="el" href="n__hash_8h_source.html#l00129">ht_put_int</a>, <a class="el" href="n__hash_8h_source.html#l00133">ht_put_ptr</a>, <a class="el" href="n__hash_8h_source.html#l00135">ht_put_string</a>, <a class="el" href="n__hash_8h_source.html#l00137">ht_put_string_ptr</a>, <a class="el" href="n__hash_8h_source.html#l00147">ht_remove</a>, <a class="el" href="n__hash_8h_source.html#l00125">mode</a>, <a class="el" href="n__hash_8h_source.html#l00113">nb_keys</a>, <a class="el" href="n__hash_8h_source.html#l00119">root</a>, and <a class="el" href="n__hash_8h_source.html#l00111">size</a>.</p>
-<div id="dynsection-11" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-11-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-11-summary" class="dynsummary" style="display:block;">
+<p class="reference">References <a class="el" href="n__common_8h_source.html#l00262">__n_assert</a>, <a class="el" href="n__hash_8c_source.html#l00069">_ht_put_int_trie()</a>, <a class="el" href="n__hash_8c_source.html#l02000">ht_put_int()</a>, <a class="el" href="n__log_8h_source.html#l00058">LOG_ERR</a>, <a class="el" href="n__common_8h_source.html#l00182">Malloc</a>, and <a class="el" href="n__log_8h_source.html#l00074">n_log</a>.</p>
+<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-11-content" class="dyncontent" style="display:none;">
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="group___h_a_s_h___t_a_b_l_e_gab95fe0967850a3665d21837519ede6c8_cgraph.png" border="0" usemap="#agroup___h_a_s_h___t_a_b_l_e_gab95fe0967850a3665d21837519ede6c8_cgraph" alt=""/></div>
 <map name="agroup___h_a_s_h___t_a_b_l_e_gab95fe0967850a3665d21837519ede6c8_cgraph" id="agroup___h_a_s_h___t_a_b_l_e_gab95fe0967850a3665d21837519ede6c8_cgraph">
-<area shape="rect" title="Create a hash table with the given size." alt="" coords="5,360,93,387"/>
-<area shape="rect" href="n__hash_8c.html#ab9d1b16f848c310836772818278a4014" title=" " alt="" coords="159,5,274,32"/>
-<area shape="rect" href="n__hash_8c.html#abfa263c3762bcc52625fc3d33ba20014" title="Empty a TRIE hash table." alt="" coords="163,56,271,83"/>
-<area shape="rect" href="n__hash_8c.html#a934900314d008a0557f1608d267ebb04" title="node creation, HASH_CLASSIC mode" alt="" coords="364,81,495,108"/>
-<area shape="rect" href="n__hash_8c.html#a825546ece9c87894de351354131d9c9d" title="Retrieve an integral value in the hash table, at the given key." alt="" coords="149,309,284,336"/>
-<area shape="rect" href="n__hash_8c.html#a256287de4bd12cc39e8eb885a0938cd0" title="Retrieve an integral value in the hash table, at the given key." alt="" coords="161,157,272,184"/>
-<area shape="rect" href="n__hash_8c.html#a53e2b70cd04dd251387054c30f9fc4de" title="Retrieve an integral value in the hash table, at the given key." alt="" coords="161,208,273,235"/>
-<area shape="rect" href="n__hash_8c.html#a3facd71bf74b9dae8f82a1bfb6dc9fc2" title="Retrieve an integral value in the hash table, at the given key." alt="" coords="152,259,281,285"/>
-<area shape="rect" href="n__hash_8c.html#a3ea3a506fda15848cf7c87b847851294" title=" " alt="" coords="168,360,265,387"/>
-<area shape="rect" href="n__hash_8c.html#a4a07758c1bc609934f5f4f5fff5c4c84" title=" " alt="" coords="149,411,284,437"/>
-<area shape="rect" href="n__hash_8c.html#a63e749663982d1fadd98abbedc39783e" title=" " alt="" coords="161,461,272,488"/>
-<area shape="rect" href="n__hash_8c.html#a0f3f56b2cc5073fe8edb01858071764d" title=" " alt="" coords="161,512,273,539"/>
-<area shape="rect" href="n__hash_8c.html#aed9dcb9decb12aee7f6839352eda4821" title=" " alt="" coords="141,563,292,589"/>
-<area shape="rect" href="n__hash_8c.html#a84bc6d76e1d60c33715ee8cd30261c1c" title=" " alt="" coords="152,613,281,640"/>
-<area shape="rect" href="n__hash_8c.html#ad27874c10926fdce03e06204404659f4" title=" " alt="" coords="160,664,273,691"/>
-<area shape="rect" href="n__hash_8c.html#aa80d786e98105e52ebc7246fc91ff33f" title=" " alt="" coords="161,740,272,767"/>
-<area shape="rect" href="n__hash_8c.html#a013153fa30199bbcaf5f92890ae97ba8" title="destroy a HASH_NODE by first calling the HASH_NODE destructor" alt="" coords="367,19,492,45"/>
-<area shape="rect" href="n__hash_8c.html#a86f34c4320c35174e0e443efeaedd113" title=" " alt="" coords="367,183,492,209"/>
-<area shape="rect" href="group___l_o_g.html#gafbbbfcb9063b9f1454a499dbf98f7a56" title="Logging function." alt="" coords="399,233,459,260"/>
-<area shape="rect" href="group___h_a_s_h___t_a_b_l_e.html#ga1392981a507905d028136bc0b92aa48b" title="get the type of a node , text version" alt="" coords="379,284,479,311"/>
-<area shape="rect" href="group___l_o_g.html#gafeea44ab08778cbff68e91e831d44112" title="Get the global log level value." alt="" coords="606,233,702,260"/>
-<area shape="rect" href="n__hash_8c.html#a4bd19fa8c4204b765b769c88bddfc0bc" title=" " alt="" coords="360,360,499,387"/>
-<area shape="rect" href="n__hash_8c.html#ad1332f1f9255a994217f32aab90daea4" title=" " alt="" coords="340,664,519,691"/>
-<area shape="rect" href="n__hash_8c.html#a1b6308d7ad4141a9ae95c1d8c1824004" title=" " alt="" coords="357,613,501,640"/>
-<area shape="rect" href="n__hash_8c.html#a4747b0ee5ab0c7f2b02397df6235bf8c" title=" " alt="" coords="567,664,741,691"/>
-<area shape="rect" href="n__hash_8c.html#af9f6e937f781df402b5ec4ac788f6f6e" title=" " alt="" coords="353,715,506,741"/>
-<area shape="rect" href="group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755" title="Empty and Free a list container." alt="" coords="385,765,474,792"/>
-<area shape="rect" href="group___l_i_s_t.html#gada615e3b144e97bcff147dfe89f6fef6" title="Initialiaze a generic list container to max_items pointers." alt="" coords="370,816,489,843"/>
-<area shape="rect" href="group___l_i_s_t.html#ga1dafe7a250ddad51fadd375f057287e7" title="Empty a LIST list of pointers." alt="" coords="613,765,695,792"/>
+<area shape="rect" title="Create a hash table with the given size." alt="" coords="5,31,93,57"/>
+<area shape="rect" href="n__hash_8c.html#a63e749663982d1fadd98abbedc39783e" title="put an integral value with given key in the targeted hash table [TRIE HASH TABLE)" alt="" coords="141,5,252,32"/>
+<area shape="rect" href="group___h_a_s_h___t_a_b_l_e.html#ga06cafdf266f9913c197a8e9e6a1fba5d" title="put an integral value with given key in the targeted hash table" alt="" coords="157,56,236,83"/>
+<area shape="rect" href="n__hash_8c.html#a934900314d008a0557f1608d267ebb04" title="node creation, HASH_CLASSIC mode" alt="" coords="300,5,431,32"/>
 </map>
 </div>
 
@@ -1747,7 +1591,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Wed Feb 2 2022 14:24:10 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+    <li class="footer">Generated on Thu Feb 3 2022 21:53:47 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
   </ul>
 </div>
 </body>

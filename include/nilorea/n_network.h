@@ -1,12 +1,10 @@
-#ifndef HEADER_C51A8071CDECA532
-#define HEADER_C51A8071CDECA532
-
 /**\file n_network.h
  *  Network Engine
  *\author Castagnier Mickael
  *\version 2.0
  *\date 11/03/2015
  */
+
 #ifndef N_NETWORK
 #define N_NETWORK
 
@@ -168,6 +166,7 @@ void netw_sigchld_handler( int sig );
 #include <openssl/err.h>
 #endif
 
+/*! Network codes */
 #define N_ENUM_netw_code_type(_)\
 	_(NETW_CLIENT, 2)\
 	_(NETW_SERVER, 4)\
@@ -191,48 +190,9 @@ void netw_sigchld_handler( int sig );
 
 N_ENUM_DECLARE( N_ENUM_netw_code_type, __netw_code_type )
 
-/*! NETWORK -> mode value for a CLIENT (meaning connecting) */
-//#define NETW_CLIENT 2
-/*! NETWORK -> mode value for a SERVER (meaning listening) */
-//#define NETW_SERVER 4
-/*! Flag: start or rester intertal network timing */
-//#define NETW_RESTART_TIMER    8
-/*! Flag: empty send buffer */
-//#define NETW_EMPTY_SENDBUF    16
-/*! Flag: empty recv buffer */
-//#define NETW_EMPTY_RECVBUF    32
-/*! State for a running NETWORK */
-//#define NETW_RUN     64
-/*! State for a NETWORK who want to end/exit connection */
-//#define NETW_EXIT_ASKED    128
-/*! State for a NETWORK that was first asked to exit, then is exited */
-//#define NETW_EXITED    256
-/*! State to signal errors in the network */
-//#define NETW_ERROR   512
-/*! Flag : no encryption on connection (default) */
-//#define NETW_CRYPTO_NONE 1024
-/*! Flag : encryption is based on the peers possibilities, selecting the most secure starting from the higher to the lower level */
-//#define NETW_CRYPTO_NEGOCIATE 2048
-/*! Flag : encryption is mandatory */
-//#define NETW_CRYPTO_MANDATORY 4096
-/*! Flag : set vigenere crypto */
-//#define NETW_ENCRYPT_NONE 8192
-/*! Flag : set vigenere crypto */
-//#define NETW_ENCRYPT_VIGENERE 16384
-/*! Flag : set openssl crypto */
-//#define NETW_ENCRYPT_OPENSSL 32768
-/*! State for a started threaded network engine */
-//#define NETW_THR_ENGINE_STARTED 65536
-/*! State for a stopped threaded network engine */
-//#define NETW_THR_ENGINE_STOPPED 131072
-/*! Flag: empty send buffer */
-//#define NETW_DESTROY_SENDBUF 262144
-/*! Flag: empty recv buffer */
-//#define NETW_DESTROY_RECVBUF 524288
-//
 /*! PHP send and receive header size */
 #define HEAD_SIZE 10
-/*! PHP send and receive header size */
+/*! PHP send and receive header code */
 #define HEAD_CODE 3
 
 /*! send/recv func ptr type */
@@ -342,8 +302,7 @@ typedef struct NETWORK
 
     /*! pointers to network pools if members of any */
     LIST *pools ;
-
-
+<
 } NETWORK;
 
 
@@ -466,6 +425,3 @@ int netw_send_quit( NETWORK *netw );
 #endif
 
 #endif /*#ifndef N_NETWORK*/
-
-#endif // header guard
-

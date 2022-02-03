@@ -5,7 +5,9 @@
  *\date 26/05/2015
  */
 
+/*! type of data message */
 #define NETMSG_DATA 1
+
 #include <getopt.h>
 #include <sys/time.h>
 #include <sys/types.h>
@@ -34,7 +36,12 @@ void sigchld_handler( int sig )
 #endif
 
 
-
+/*!\fn int send_net_datas( NETWORK *netw, N_STR *data )
+ *\brief send data to specified network
+ *\param netw the target network
+ *\param data the data to send
+ *\return TRUE or FALSE
+ */
 int send_net_datas( NETWORK *netw, N_STR *data )
 {
     __n_assert( netw, return FALSE );
@@ -81,7 +88,13 @@ int send_net_datas( NETWORK *netw, N_STR *data )
 } /* send_net_datas */
 
 
-
+/*!\fn int get_net_datas( N_STR *str, N_STR **hostname, N_STR **data )
+ *\brief decode data we got from network
+ *\param str the string to decode
+ *\param hostname decoded hostname
+ *\param data decoded data
+ *\return TRUE or FALSE
+ */
 int get_net_datas( N_STR *str, N_STR **hostname, N_STR **data )
 {
     NETW_MSG *netmsg = NULL ;
@@ -118,6 +131,11 @@ int get_net_datas( N_STR *str, N_STR **hostname, N_STR **data )
 
 
 
+/*!\fn void* manage_client( void *ptr )
+ *\brief recv/send datas if any for the client
+ *\param ptr pointer to the client structure to manage
+ *\return NULL
+ */
 void* manage_client( void *ptr )
 {
     NETWORK *netw  = (NETWORK *)ptr ;

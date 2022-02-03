@@ -1,9 +1,10 @@
 <map id="add_nstrptr_to_msg" name="add_nstrptr_to_msg">
-<area shape="rect" id="node1" title="Add a string to the string list in the message." alt="" coords="368,107,505,133"/>
-<area shape="rect" id="node2" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga3fd01fccdf5fee20c2f0df7429ab3dd7" title="Make a single message of the string." alt="" coords="180,107,320,133"/>
-<area shape="rect" id="node3" href="$group___n_e_t_w_o_r_k___m_s_g.html#gaf2d84e34e50db7b3b7aca16c6bdb06f8" title="Retrieves identification from netwmsg." alt="" coords="14,5,123,32"/>
-<area shape="rect" id="node4" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga525ee81a12f526d55b2b380d9338424e" title="Retrieves a ping travel elapsed time." alt="" coords="16,56,121,83"/>
-<area shape="rect" id="node5" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga241bf3b1ebc63dd986dfec1b0fe4998b" title="Retrieves position from netwmsg." alt="" coords="5,107,132,133"/>
-<area shape="rect" id="node6" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga601ef18cfe3570caaa81cc43c09004c2" title=" " alt="" coords="17,157,120,184"/>
-<area shape="rect" id="node7" href="$group___n_e_t_w_o_r_k___m_s_g.html#gace220d6339bd8085269ecee2b35126fb" title="Retrieves string from netwmsg." alt="" coords="12,208,125,235"/>
+<area shape="rect" id="node1" title="Add a string to the string list in the message." alt="" coords="523,107,660,133"/>
+<area shape="rect" id="node2" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga3fd01fccdf5fee20c2f0df7429ab3dd7" title="Make a single message of the string." alt="" coords="335,107,475,133"/>
+<area shape="rect" id="node3" href="$ex__network_8h.html#a6f950bd6cd1d0314572ecae401ac1883" title="decode data we got from network" alt="" coords="171,5,275,32"/>
+<area shape="rect" id="node5" href="$group___n_e_t_w_o_r_k___m_s_g.html#gaf2d84e34e50db7b3b7aca16c6bdb06f8" title="Retrieves identification from netwmsg." alt="" coords="169,56,278,83"/>
+<area shape="rect" id="node6" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga525ee81a12f526d55b2b380d9338424e" title="Retrieves a ping travel elapsed time." alt="" coords="171,107,276,133"/>
+<area shape="rect" id="node7" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga241bf3b1ebc63dd986dfec1b0fe4998b" title="Retrieves position from netwmsg." alt="" coords="160,157,287,184"/>
+<area shape="rect" id="node8" href="$group___n_e_t_w_o_r_k___m_s_g.html#gace220d6339bd8085269ecee2b35126fb" title="Retrieves string from netwmsg." alt="" coords="167,208,280,235"/>
+<area shape="rect" id="node4" href="$ex__network_8h.html#a2af070d97fced1a0eadad90c6aa4903b" title="recv/send datas if any for the client" alt="" coords="5,5,112,32"/>
 </map>

@@ -4,6 +4,7 @@
  *\version 1.0
  *\date 30/04/2014
  */
+
 #ifndef NILOREA_THREAD_POOL_LIBRARY
 #define NILOREA_THREAD_POOL_LIBRARY
 

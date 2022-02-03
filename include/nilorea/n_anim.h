@@ -1,13 +1,8 @@
 /**\file n_anim.h
-*
-*  anim header
-*
+* Animations graphics and animations parameters
 *\author Castagnier Mickael aka Gull Ra Driel
-*
 *\version 1.0
-*
 *\date 30/12/2016
-*
 */
 
 #ifndef __N_ANIM_HEADER
@@ -22,7 +17,7 @@ extern "C" {
 #include "n_str.h"
 #include "allegro5/allegro.h"
 
-/**\defgroup ANIM_LIB ANIM LIB: animation library, loading structures and blit funcs
+/**\defgroup ANIM_LIB GAMEDEV: animation library, loading structures and blit funcs
   \addtogroup ANIM_LIB
   @{
   */

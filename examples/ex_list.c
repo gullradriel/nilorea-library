@@ -43,7 +43,7 @@ int main(void)
     N_STR *nstr = NULL ;
 
     n_log( LOG_NOTICE, "Testing empty list cleaning" );
-    
+
     list_destroy( &list );
 
 

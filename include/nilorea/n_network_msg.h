@@ -1,6 +1,5 @@
 /**\file n_network_msg.h
- *  network messages declaration
- *  Network Engine
+ *  Network messages , serialization tools
  *\author Castagnier Mickael
  *\version 1.0
  *\date 10/05/2005

@@ -1,8 +1,9 @@
-/*\file n_nodup_log.h
- * generic log system with no duplicate
+/**\file n_nodup_log.h
+ * Generic No Dup Log system
  *\author Castagnier Mickael
  *\date 2013-04-15
  */
+
 #ifndef __NO_DUP_LOG_HEADER_GUARD__
 #define __NO_DUP_LOG_HEADER_GUARD__
 
@@ -29,13 +30,14 @@ int empty_nodup_table();
 /* end nodup session */
 int close_nodup_log();
 
+/*! nodup log macro helper */
 #define n_nodup_log( __LEVEL__  , ... ) \
    do \
    { \
       _n_nodup_log( __LEVEL__ , __FILE__ , __func__ , __LINE__ , __VA_ARGS__ ); \
    }while( 0 )
 
-
+/*! nodup log indexed macro helper */
 #define n_nodup_log_indexed( __LEVEL__  , __PREF__ , ... ) \
    do \
    { \

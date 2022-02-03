@@ -4,8 +4,6 @@
  *\date 03/01/2019
  */
 
-
-
 #include <stdio.h>
 #include <errno.h>
 #include <string.h>

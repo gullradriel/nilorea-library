@@ -92,10 +92,8 @@ $(document).ready(function(){initNavTree('group___s_i_g_n_a_l_s.html',''); initR
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:ga2ed127ee3fe422f95420f138273e6da7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___s_i_g_n_a_l_s.html#ga2ed127ee3fe422f95420f138273e6da7">MAX_STACK_FRAMES</a>&#160;&#160;&#160;32</td></tr>
-<tr class="memdesc:ga2ed127ee3fe422f95420f138273e6da7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of backtrace log lines.  <a href="group___s_i_g_n_a_l_s.html#ga2ed127ee3fe422f95420f138273e6da7">More...</a><br /></td></tr>
 <tr class="separator:ga2ed127ee3fe422f95420f138273e6da7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga00580ffdbc034e7e5f76f7b3936c0229"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___s_i_g_n_a_l_s.html#ga00580ffdbc034e7e5f76f7b3936c0229">SIGALTSTACK_SIZE</a>&#160;&#160;&#160;65536</td></tr>
-<tr class="memdesc:ga00580ffdbc034e7e5f76f7b3936c0229"><td class="mdescLeft">&#160;</td><td class="mdescRight">Size of the signal handler alternate stack.  <a href="group___s_i_g_n_a_l_s.html#ga00580ffdbc034e7e5f76f7b3936c0229">More...</a><br /></td></tr>
 <tr class="separator:ga00580ffdbc034e7e5f76f7b3936c0229"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
@@ -164,7 +162,15 @@ Functions</h2></td></tr>
 
 <p><code>#include &lt;<a class="el" href="n__signals_8h.html">n_signals.h</a>&gt;</code></p>
 
-<p class="definition">Definition at line <a class="el" href="n__signals_8c_source.html#l00353">353</a> of file <a class="el" href="n__signals_8c_source.html">n_signals.c</a>.</p>
+<p>Install a signal handler for progname. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">progname</td><td>name of the program to monitor </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="n__signals_8c_source.html#l00391">391</a> of file <a class="el" href="n__signals_8c_source.html">n_signals.c</a>.</p>
 
 </div>
 </div>
@@ -173,7 +179,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Wed Feb 2 2022 14:24:11 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+    <li class="footer">Generated on Thu Feb 3 2022 21:53:48 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
   </ul>
 </div>
 </body>

@@ -1,5 +1,5 @@
 /**\file n_signals.h
- *  signals general handling with stack printing, from https://gist.github.com/jvranish/4441299
+ *  Signals general handling with stack printing, from https://gist.github.com/jvranish/4441299
  \author Castagnier Mickael
  *\version 1.0
  *\date 08/11/2018
@@ -23,8 +23,6 @@ extern "C"
 #define SIGALTSTACK_SIZE 65536
 /*! Number of backtrace log lines */
 #define MAX_STACK_FRAMES 32
-
-
 
 /* install the backtrace handler */
 void set_signal_handler( const char *progname );

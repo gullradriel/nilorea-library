@@ -1,8 +1,9 @@
-/*\file n_log.h
- * generic log system
+/**\file n_log.h
+ * Generic log system
  *\author Castagnier Mickael
  *\date 2013-04-15
  */
+
 #ifndef __LOG_HEADER_GUARD__
 #define __LOG_HEADER_GUARD__
 

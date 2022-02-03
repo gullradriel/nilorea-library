@@ -1,15 +1,7 @@
 <map id="netw_new" name="netw_new">
-<area shape="rect" id="node1" title="Return an empty allocated network ready to be netw_closed." alt="" coords="5,107,84,133"/>
-<area shape="rect" id="node2" href="$group___l_o_g.html#gafbbbfcb9063b9f1454a499dbf98f7a56" title="Logging function." alt="" coords="520,5,580,32"/>
-<area shape="rect" id="node4" href="$group___n_e_t_w_o_r_k_i_n_g.html#gac345c1af1935cebb9ee33edd4c32267a" title="Closing a specified Network, destroy queues, free the structure." alt="" coords="148,107,235,133"/>
-<area shape="rect" id="node13" href="$group___l_i_s_t.html#gada615e3b144e97bcff147dfe89f6fef6" title="Initialiaze a generic list container to max_items pointers." alt="" coords="132,157,251,184"/>
-<area shape="rect" id="node3" href="$group___l_o_g.html#gafeea44ab08778cbff68e91e831d44112" title="Get the global log level value." alt="" coords="653,5,749,32"/>
-<area shape="rect" id="node5" href="$group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755" title="Empty and Free a list container." alt="" coords="657,132,746,159"/>
-<area shape="rect" id="node7" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaf25c0f462f174092815b0c5d019441db" title="Get the state of a network." alt="" coords="495,132,605,159"/>
-<area shape="rect" id="node8" href="$group___n_e_t_w_o_r_k_i_n_g.html#gafc7a91b4be2a997710a2b54037c25168" title=" " alt="" coords="309,233,437,260"/>
-<area shape="rect" id="node11" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaa8e1fe7978995197f08aa0ef24a76c33" title="Restart or reset the specified network ability." alt="" coords="513,81,587,108"/>
-<area shape="rect" id="node12" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga29159184519b3129c0154b1a2c2a3e2f" title="Stop a NETWORK connection sending and receing thread." alt="" coords="299,81,447,108"/>
-<area shape="rect" id="node6" href="$group___l_i_s_t.html#ga1dafe7a250ddad51fadd375f057287e7" title="Empty a LIST list of pointers." alt="" coords="797,107,880,133"/>
-<area shape="rect" id="node9" href="$group___n___s_t_r.html#gaca4a7a2dfa962f043cb8f3762ce28761" title="Free a N_STR structure and set the pointer to NULL." alt="" coords="511,284,589,311"/>
-<area shape="rect" id="node10" href="$group___l_i_s_t.html#gae009d6d3c835a2affb99071ea8457803" title="search ptr in list" alt="" coords="507,233,593,260"/>
+<area shape="rect" id="node1" title="Return an empty allocated network ready to be netw_closed." alt="" coords="5,81,84,108"/>
+<area shape="rect" id="node2" href="$group___n_e_t_w_o_r_k_i_n_g.html#gac345c1af1935cebb9ee33edd4c32267a" title="Closing a specified Network, destroy queues, free the structure." alt="" coords="148,5,235,32"/>
+<area shape="rect" id="node3" href="$group___l_i_s_t.html#gada615e3b144e97bcff147dfe89f6fef6" title="Initialiaze a generic list container to max_items pointers." alt="" coords="132,56,251,83"/>
+<area shape="rect" id="node4" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga1fc319fa3b0eba19e163070a9fb3dae4" title="recv data from the socket" alt="" coords="153,107,230,133"/>
+<area shape="rect" id="node5" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaf3dc736265484a58e6678c250e38cef8" title="send data onto the socket" alt="" coords="150,157,233,184"/>
 </map>

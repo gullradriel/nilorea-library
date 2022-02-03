@@ -82,14 +82,9 @@ $(document).ready(function(){initNavTree('nilorea_8h.html',''); initResizable();
 </div>
 
 <div class="header">
-  <div class="summary">
-<a href="#define-members">Macros</a>  </div>
   <div class="headertitle"><div class="title">nilorea.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-
-<p>Header to include for use with libnilorea.  
-<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;<a class="el" href="n__3d_8h_source.html">nilorea/n_3d.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="n__common_8h_source.html">nilorea/n_common.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="n__config__file_8h_source.html">nilorea/n_config_file.h</a>&gt;</code><br />
@@ -104,7 +99,7 @@ $(document).ready(function(){initNavTree('nilorea_8h.html',''); initResizable();
 <code>#include &lt;<a class="el" href="n__nodup__log_8h_source.html">nilorea/n_nodup_log.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="n__pcre_8h_source.html">nilorea/n_pcre.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="n__signals_8h_source.html">nilorea/n_signals.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="n__stack_8h_source.html">nilorea/n_stack.h</a>&gt;</code><br />
+<code>#include &lt;nilorea/n_stack.h&gt;</code><br />
 <code>#include &lt;<a class="el" href="n__str_8h_source.html">nilorea/n_str.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="n__thread__pool_8h_source.html">nilorea/n_thread_pool.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="n__time_8h_source.html">nilorea/n_time.h</a>&gt;</code><br />
@@ -117,26 +112,26 @@ $(document).ready(function(){initNavTree('nilorea_8h.html',''); initResizable();
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="nilorea_8h__incl.png" border="0" usemap="#anilorea_8h" alt=""/></div>
 <map name="anilorea_8h" id="anilorea_8h">
-<area shape="rect" title="Header to include for use with libnilorea." alt="" coords="1091,5,1162,32"/>
-<area shape="rect" href="n__3d_8h.html" title="3D helpers, vector and camera" alt="" coords="584,155,687,181"/>
-<area shape="rect" href="n__log_8h.html" title=" " alt="" coords="732,229,796,256"/>
-<area shape="rect" href="n__common_8h.html" title="common headers and low&#45;level hugly functions &amp; define" alt="" coords="440,304,538,331"/>
-<area shape="rect" href="n__config__file_8h.html" title="config file reading" alt="" coords="986,155,1133,181"/>
+<area shape="rect" title="Header for a monolith use." alt="" coords="1091,5,1162,32"/>
+<area shape="rect" href="n__3d_8h.html" title="3D helpers, vector and" alt="" coords="584,155,687,181"/>
+<area shape="rect" href="n__log_8h.html" title="Generic log system." alt="" coords="732,229,796,256"/>
+<area shape="rect" href="n__common_8h.html" title="Common headers and low&#45;level hugly functions &amp; define." alt="" coords="440,304,538,331"/>
+<area shape="rect" href="n__config__file_8h.html" title="Config file reading and writing." alt="" coords="986,155,1133,181"/>
 <area shape="rect" href="n__hash_8h.html" title="Hash functions and table." alt="" coords="1133,229,1208,256"/>
-<area shape="rect" href="n__list_8h.html" title="Pointer list structures and definitions." alt="" coords="1278,304,1342,331"/>
+<area shape="rect" href="n__list_8h.html" title="List structures and definitions." alt="" coords="1278,304,1342,331"/>
 <area shape="rect" href="n__str_8h.html" title="N_STR and string function declaration." alt="" coords="1650,229,1712,256"/>
 <area shape="rect" href="n__exceptions_8h.html" title="Exception management for C." alt="" coords="562,304,714,331"/>
 <area shape="rect" href="n__games_8h.html" title="Games helpers functions." alt="" coords="274,80,402,107"/>
-<area shape="rect" href="n__time_8h.html" title="common headers and low&#45;level hugly functions &amp; define" alt="" coords="109,155,181,181"/>
+<area shape="rect" href="n__time_8h.html" title="Timing utilities." alt="" coords="109,155,181,181"/>
 <area shape="rect" href="n__iso__engine_8h.html" title="Map loading, saving, with objects, animations, ..." alt="" coords="307,155,458,181"/>
 <area shape="rect" href="n__network_8h.html" title="Network Engine." alt="" coords="1208,155,1343,181"/>
-<area shape="rect" href="n__network__msg_8h.html" title="network messages declaration Network Engine" alt="" coords="1367,80,1534,107"/>
-<area shape="rect" href="n__nodup__log_8h.html" title=" " alt="" coords="814,155,962,181"/>
-<area shape="rect" href="n__pcre_8h.html" title="N_STR and string function declaration." alt="" coords="1910,80,2025,107"/>
-<area shape="rect" href="n__signals_8h.html" title="signals general handling with stack printing, from https://gist.github.com/jvranish/4441299" alt="" coords="1609,80,1740,107"/>
-<area shape="rect" href="n__stack_8h.html" title=" " alt="" coords="1764,80,1886,107"/>
+<area shape="rect" href="n__network__msg_8h.html" title="Network messages , serialization tools." alt="" coords="1367,80,1534,107"/>
+<area shape="rect" href="n__nodup__log_8h.html" title="Generic No Dup Log system." alt="" coords="814,155,962,181"/>
+<area shape="rect" href="n__pcre_8h.html" title="PCRE helpers for regex matching." alt="" coords="1910,80,2025,107"/>
+<area shape="rect" href="n__signals_8h.html" title="Signals general handling with stack printing, from https://gist.github.com/jvranish/4441299." alt="" coords="1609,80,1740,107"/>
+<area shape="rect" href="n__stack_8h_source.html" title=" " alt="" coords="1764,80,1886,107"/>
 <area shape="rect" href="n__thread__pool_8h.html" title="Thread pool declaration." alt="" coords="1470,229,1626,256"/>
-<area shape="rect" href="n__user_8h.html" title="USERS handling for everything you want." alt="" coords="782,80,897,107"/>
+<area shape="rect" href="n__user_8h.html" title="USERS handling for tiny game apps." alt="" coords="782,80,897,107"/>
 <area shape="rect" href="n__zlib_8h.html" title="ZLIB compression handler." alt="" coords="2100,80,2209,107"/>
 <area shape="rect" title=" " alt="" coords="309,229,392,256"/>
 <area shape="rect" title=" " alt="" coords="1372,379,1433,405"/>
@@ -166,45 +161,32 @@ $(document).ready(function(){initNavTree('nilorea_8h.html',''); initResizable();
 <area shape="rect" title=" " alt="" coords="2100,155,2153,181"/>
 </map>
 </div>
+</div><div class="textblock"><div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> This graph shows which files directly or indirectly include this file:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="nilorea_8h__dep__incl.png" border="0" usemap="#anilorea_8hdep" alt=""/></div>
+<map name="anilorea_8hdep" id="anilorea_8hdep">
+<area shape="rect" title="Header for a monolith use." alt="" coords="21,5,92,32"/>
+<area shape="rect" href="ex__monolith_8c_source.html" title=" " alt="" coords="5,80,108,107"/>
+</map>
+</div>
 </div>
 <p><a href="nilorea_8h_source.html">Go to the source code of this file.</a></p>
-<table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:a7e31aeb8676f4f9a50724be028177c39"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="nilorea_8h.html#a7e31aeb8676f4f9a50724be028177c39">__NILOREA_Unified_Library__</a></td></tr>
-<tr class="separator:a7e31aeb8676f4f9a50724be028177c39"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >Header to include for use with libnilorea. </p>
-<dl class="section author"><dt>Author</dt><dd>Castagnier Mickael </dd></dl>
+<div class="textblock"><dl class="section author"><dt>Author</dt><dd>Castagnier Mickael </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>1.0 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>24/03/05 </dd></dl>
 
 <p class="definition">Definition in file <a class="el" href="nilorea_8h_source.html">nilorea.h</a>.</p>
-</div><h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="a7e31aeb8676f4f9a50724be028177c39" name="a7e31aeb8676f4f9a50724be028177c39"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7e31aeb8676f4f9a50724be028177c39">&#9670;&nbsp;</a></span>__NILOREA_Unified_Library__</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define __NILOREA_Unified_Library__</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="nilorea_8h_source.html#l00013">13</a> of file <a class="el" href="nilorea_8h_source.html">nilorea.h</a>.</p>
-
-</div>
-</div>
-</div><!-- contents -->
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="nilorea_8h.html">nilorea.h</a></li>
-    <li class="footer">Generated on Wed Feb 2 2022 14:24:10 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+    <li class="footer">Generated on Thu Feb 3 2022 21:53:47 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
   </ul>
 </div>
 </body>

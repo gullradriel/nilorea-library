@@ -1,18 +1,9 @@
 <map id="netw_accept_from_ex" name="netw_accept_from_ex">
-<area shape="rect" id="node1" title="make a normal &#39;accept&#39; ." alt="" coords="5,149,153,176"/>
-<area shape="rect" id="node2" href="$group___l_o_g.html#gafbbbfcb9063b9f1454a499dbf98f7a56" title="Logging function." alt="" coords="767,48,827,74"/>
-<area shape="rect" id="node4" href="$group___n_e_t_w_o_r_k_i_n_g.html#gac345c1af1935cebb9ee33edd4c32267a" title="Closing a specified Network, destroy queues, free the structure." alt="" coords="395,174,481,201"/>
-<area shape="rect" id="node11" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaa8e1fe7978995197f08aa0ef24a76c33" title="Restart or reset the specified network ability." alt="" coords="759,262,834,289"/>
-<area shape="rect" id="node13" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga22bc4dd5d80c2229c3c43f6d6705dece" title="Do not directly use, internal api." alt="" coords="215,377,317,404"/>
-<area shape="rect" id="node14" href="$n__network_8c.html#a9caee75e3a67942e37ccb4de2c889105" title="Return an empty allocated network ready to be netw_closed." alt="" coords="227,73,305,100"/>
-<area shape="rect" id="node16" href="$group___n_e_t_w_o_r_k_i_n_g.html#gad02f949dd057ae7dd382f03f9364cac0" title="Modify blocking socket mode." alt="" coords="201,124,331,150"/>
-<area shape="rect" id="node3" href="$group___l_o_g.html#gafeea44ab08778cbff68e91e831d44112" title="Get the global log level value." alt="" coords="900,48,996,74"/>
-<area shape="rect" id="node5" href="$group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755" title="Empty and Free a list container." alt="" coords="903,212,993,238"/>
-<area shape="rect" id="node7" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaf25c0f462f174092815b0c5d019441db" title="Get the state of a network." alt="" coords="741,186,852,213"/>
-<area shape="rect" id="node8" href="$group___n_e_t_w_o_r_k_i_n_g.html#gafc7a91b4be2a997710a2b54037c25168" title=" " alt="" coords="555,377,683,404"/>
-<area shape="rect" id="node12" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga29159184519b3129c0154b1a2c2a3e2f" title="Stop a NETWORK connection sending and receing thread." alt="" coords="545,174,693,201"/>
-<area shape="rect" id="node6" href="$group___l_i_s_t.html#ga1dafe7a250ddad51fadd375f057287e7" title="Empty a LIST list of pointers." alt="" coords="1044,237,1127,264"/>
-<area shape="rect" id="node9" href="$group___n___s_t_r.html#gaca4a7a2dfa962f043cb8f3762ce28761" title="Free a N_STR structure and set the pointer to NULL." alt="" coords="757,352,836,378"/>
-<area shape="rect" id="node10" href="$group___l_i_s_t.html#gae009d6d3c835a2affb99071ea8457803" title="search ptr in list" alt="" coords="754,402,839,429"/>
-<area shape="rect" id="node15" href="$group___l_i_s_t.html#gada615e3b144e97bcff147dfe89f6fef6" title="Initialiaze a generic list container to max_items pointers." alt="" coords="379,73,497,100"/>
+<area shape="rect" id="node1" title="make a normal &#39;accept&#39; ." alt="" coords="5,56,153,83"/>
+<area shape="rect" id="node2" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga22bc4dd5d80c2229c3c43f6d6705dece" title="Do not directly use, internal api." alt="" coords="201,31,304,57"/>
+<area shape="rect" id="node3" href="$n__network_8c.html#a9caee75e3a67942e37ccb4de2c889105" title="Return an empty allocated network ready to be netw_closed." alt="" coords="213,81,292,108"/>
+<area shape="rect" id="node4" href="$group___n_e_t_w_o_r_k_i_n_g.html#gac345c1af1935cebb9ee33edd4c32267a" title="Closing a specified Network, destroy queues, free the structure." alt="" coords="368,5,455,32"/>
+<area shape="rect" id="node5" href="$group___l_i_s_t.html#gada615e3b144e97bcff147dfe89f6fef6" title="Initialiaze a generic list container to max_items pointers." alt="" coords="352,56,471,83"/>
+<area shape="rect" id="node6" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga1fc319fa3b0eba19e163070a9fb3dae4" title="recv data from the socket" alt="" coords="373,107,450,133"/>
+<area shape="rect" id="node7" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaf3dc736265484a58e6678c250e38cef8" title="send data onto the socket" alt="" coords="370,157,453,184"/>
 </map>

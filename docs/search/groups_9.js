@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['network_20messages_3a_20tools_20to_20serialize_20integers_2c_20double_2c_20n_5fstr_20from_20and_20back_20to_20a_20single_20n_5fstr_20_2amessage_0',['NETWORK MESSAGES: tools to serialize integers, double, N_STR from and back to a single N_STR *message',['../group___n_e_t_w_o_r_k___m_s_g.html',1,'']]],
-  ['networking_3a_20connect_2c_20accept_2c_20send_20and_20recv_20wrappers_2e_20network_20queue_2c_20thread_2dsafe_20add_2fget_20message_2c_20ssl_2ftls_20secured_20communications_1',['NETWORKING: connect, accept, send and recv wrappers. Network Queue, thread-safe add/get message, ssl/tls secured communications',['../group___n_e_t_w_o_r_k_i_n_g.html',1,'']]]
+  ['zlib_3a_20shortcuts_20to_20easy_20compress_2fdecompress_20data_0',['ZLIB: shortcuts to easy compress/decompress data',['../group___z_l_i_b.html',1,'']]]
 ];

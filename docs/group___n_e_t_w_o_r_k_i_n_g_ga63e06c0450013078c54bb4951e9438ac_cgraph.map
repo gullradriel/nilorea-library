@@ -1,11 +1,10 @@
 <map id="netw_recv_func" name="netw_recv_func">
-<area shape="rect" id="node1" title="To Thread Receiving function." alt="" coords="5,52,116,79"/>
-<area shape="rect" id="node2" href="$group___l_o_g.html#gafbbbfcb9063b9f1454a499dbf98f7a56" title="Logging function." alt="" coords="470,40,530,67"/>
-<area shape="rect" id="node4" href="$group___n___s_t_r.html#ga0a864a4ce4997389f2e5e2e16c51a30a" title="Free a N_STR pointer structure." alt="" coords="164,27,259,53"/>
-<area shape="rect" id="node5" href="$group___l_i_s_t.html#ga4eab319289a83524639ee5e9f0441fdf" title="Add a pointer to the end of the list." alt="" coords="174,77,249,104"/>
-<area shape="rect" id="node7" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaa8e1fe7978995197f08aa0ef24a76c33" title="Restart or reset the specified network ability." alt="" coords="174,128,249,155"/>
-<area shape="rect" id="node3" href="$group___l_o_g.html#gafeea44ab08778cbff68e91e831d44112" title="Get the global log level value." alt="" coords="589,40,685,67"/>
-<area shape="rect" id="node6" href="$group___l_i_s_t.html#ga678e828550efc8e64a836bb8c713c2f4" title="Allocate a new node to link in a list." alt="" coords="307,52,411,79"/>
-<area shape="rect" id="node8" href="$group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755" title="Empty and Free a list container." alt="" coords="314,103,403,129"/>
-<area shape="rect" id="node9" href="$group___l_i_s_t.html#ga1dafe7a250ddad51fadd375f057287e7" title="Empty a LIST list of pointers." alt="" coords="459,116,541,143"/>
+<area shape="rect" id="node1" title="To Thread Receiving function." alt="" coords="5,81,116,108"/>
+<area shape="rect" id="node2" href="$group___n___s_t_r.html#ga0a864a4ce4997389f2e5e2e16c51a30a" title="Free a N_STR pointer structure." alt="" coords="172,5,267,32"/>
+<area shape="rect" id="node3" href="$group___l_i_s_t.html#ga4eab319289a83524639ee5e9f0441fdf" title="Add a pointer to the end of the list." alt="" coords="182,56,257,83"/>
+<area shape="rect" id="node5" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaf25c0f462f174092815b0c5d019441db" title="Get the state of a network." alt="" coords="164,107,275,133"/>
+<area shape="rect" id="node6" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaa8e1fe7978995197f08aa0ef24a76c33" title="Restart or reset the specified network ability." alt="" coords="182,157,257,184"/>
+<area shape="rect" id="node4" href="$group___l_i_s_t.html#ga678e828550efc8e64a836bb8c713c2f4" title="Allocate a new node to link in a list." alt="" coords="323,56,427,83"/>
+<area shape="rect" id="node7" href="$group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755" title="Empty and Free a list container." alt="" coords="330,132,419,159"/>
+<area shape="rect" id="node8" href="$group___l_i_s_t.html#ga1dafe7a250ddad51fadd375f057287e7" title="Empty a LIST list of pointers." alt="" coords="475,157,557,184"/>
 </map>

@@ -83,8 +83,9 @@ $(document).ready(function(){initNavTree('group___d_e_b_u_g_m_e_m_c_o_r_e.html',
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
+<a href="#nested-classes">Data Structures</a> &#124;
 <a href="#define-members">Macros</a> &#124;
+<a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">MEMORY DEBUG: leaked memory checker core files</div></div>
@@ -92,7 +93,7 @@ $(document).ready(function(){initNavTree('group___d_e_b_u_g_m_e_m_c_o_r_e.html',
 <div class="contents">
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
-Classes</h2></td></tr>
+Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_d_e_b_u_g___m_e_m___i_t_e_m.html">DEBUG_MEM_ITEM</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">structure of a debug unit  <a href="struct_d_e_b_u_g___m_e_m___i_t_e_m.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -106,14 +107,30 @@ Macros</h2></td></tr>
 <tr class="memdesc:ga0ee85545fc2f0a35e282ff54bec7fad4"><td class="mdescLeft">&#160;</td><td class="mdescRight">max memory dumped by leaked unit  <a href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#ga0ee85545fc2f0a35e282ff54bec7fad4">More...</a><br /></td></tr>
 <tr class="separator:ga0ee85545fc2f0a35e282ff54bec7fad4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:gaf6e80cf1cc5145f9f63a578438c9a2e3"><td class="memItemLeft" align="right" valign="top"><a id="gaf6e80cf1cc5145f9f63a578438c9a2e3" name="gaf6e80cf1cc5145f9f63a578438c9a2e3"></a>
+typedef struct <a class="el" href="struct_d_e_b_u_g___m_e_m___i_t_e_m.html">DEBUG_MEM_ITEM</a>&#160;</td><td class="memItemRight" valign="bottom"><b>DEBUG_MEM_ITEM</b></td></tr>
+<tr class="memdesc:gaf6e80cf1cc5145f9f63a578438c9a2e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">structure of a debug unit <br /></td></tr>
+<tr class="separator:gaf6e80cf1cc5145f9f63a578438c9a2e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaca38874073cb1bcb9e4e2063ca93d3a7"><td class="memItemLeft" align="right" valign="top"><a id="gaca38874073cb1bcb9e4e2063ca93d3a7" name="gaca38874073cb1bcb9e4e2063ca93d3a7"></a>
+typedef struct <a class="el" href="struct_d_e_b_u_g___m_e_m___t_a_b_l_e.html">DEBUG_MEM_TABLE</a>&#160;</td><td class="memItemRight" valign="bottom"><b>DEBUG_MEM_TABLE</b></td></tr>
+<tr class="memdesc:gaca38874073cb1bcb9e4e2063ca93d3a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">structure of a table of <a class="el" href="struct_d_e_b_u_g___m_e_m___i_t_e_m.html" title="structure of a debug unit">DEBUG_MEM_ITEM</a> <br /></td></tr>
+<tr class="separator:gaca38874073cb1bcb9e4e2063ca93d3a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ga3f63c1a843b2f1685d31b4564ee03918"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#ga3f63c1a843b2f1685d31b4564ee03918">db_mem_alloc</a> (size_t size, int line, char *file, const char *func)</td></tr>
 <tr class="memdesc:ga3f63c1a843b2f1685d31b4564ee03918"><td class="mdescLeft">&#160;</td><td class="mdescRight">allocate a new pointer with size and also put it in the debug table  <a href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#ga3f63c1a843b2f1685d31b4564ee03918">More...</a><br /></td></tr>
 <tr class="separator:ga3f63c1a843b2f1685d31b4564ee03918"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8af149d6268fd41d1cf18e124bc725c5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#ga8af149d6268fd41d1cf18e124bc725c5">db_mem_destroy</a> (void)</td></tr>
+<tr class="memdesc:ga8af149d6268fd41d1cf18e124bc725c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dump the current debug memory table.  <a href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#ga8af149d6268fd41d1cf18e124bc725c5">More...</a><br /></td></tr>
+<tr class="separator:ga8af149d6268fd41d1cf18e124bc725c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga53876f346e6461281c59a47451b08a5c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#ga53876f346e6461281c59a47451b08a5c">db_mem_dump_leaked</a> (char *file)</td></tr>
 <tr class="memdesc:ga53876f346e6461281c59a47451b08a5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dump the current debug memory table.  <a href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#ga53876f346e6461281c59a47451b08a5c">More...</a><br /></td></tr>
 <tr class="separator:ga53876f346e6461281c59a47451b08a5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4850cb69166320bdd2b2133f61c25d3c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#ga4850cb69166320bdd2b2133f61c25d3c">db_mem_empty</a> (void)</td></tr>
+<tr class="separator:ga4850cb69166320bdd2b2133f61c25d3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaea4d614fcd75f3493130a64e0e58113d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#gaea4d614fcd75f3493130a64e0e58113d">db_mem_free</a> (void *ptr, int line, char *file, const char *func)</td></tr>
 <tr class="separator:gaea4d614fcd75f3493130a64e0e58113d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga5a41f05742f748434ea0771e1b3b8aac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#ga5a41f05742f748434ea0771e1b3b8aac">delete_db_mem_item</a> (void *ptr)</td></tr>
@@ -128,8 +145,9 @@ Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:ga1d82ee51b2017f3e2af9d8531f14cb4c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_d_e_b_u_g___m_e_m___t_a_b_l_e.html">DEBUG_MEM_TABLE</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#ga1d82ee51b2017f3e2af9d8531f14cb4c">debug_mem_table</a></td></tr>
-<tr class="memdesc:ga1d82ee51b2017f3e2af9d8531f14cb4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">external table for tracking by file usage  <a href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#ga1d82ee51b2017f3e2af9d8531f14cb4c">More...</a><br /></td></tr>
+<tr class="memitem:ga1d82ee51b2017f3e2af9d8531f14cb4c"><td class="memItemLeft" align="right" valign="top"><a id="ga1d82ee51b2017f3e2af9d8531f14cb4c" name="ga1d82ee51b2017f3e2af9d8531f14cb4c"></a>
+<a class="el" href="struct_d_e_b_u_g___m_e_m___t_a_b_l_e.html">DEBUG_MEM_TABLE</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>debug_mem_table</b></td></tr>
+<tr class="memdesc:ga1d82ee51b2017f3e2af9d8531f14cb4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">external table for tracking by file usage <br /></td></tr>
 <tr class="separator:ga1d82ee51b2017f3e2af9d8531f14cb4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -147,8 +165,6 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p><code>#include &lt;<a class="el" href="n__debug__mem_8h.html">n_debug_mem.h</a>&gt;</code></p>
-
-<p>max memory dumped by leaked unit </p>
 
 <p class="definition">Definition at line <a class="el" href="n__debug__mem_8h_source.html#l00026">26</a> of file <a class="el" href="n__debug__mem_8h_source.html">n_debug_mem.h</a>.</p>
 
@@ -194,8 +210,6 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p><code>#include &lt;<a class="el" href="n__debug__mem_8h.html">n_debug_mem.h</a>&gt;</code></p>
-
-<p>allocate a new pointer with size and also put it in the debug table </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">size</td><td>the size of the allocated data </td></tr>
@@ -209,21 +223,29 @@ Variables</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="n__debug__mem_8c_source.html#l00101">101</a> of file <a class="el" href="n__debug__mem_8c_source.html">n_debug_mem.c</a>.</p>
 
-<p class="reference">References <a class="el" href="n__debug__mem_8c_source.html#l00015">__debug_mem_table</a>, <a class="el" href="n__log_8c_source.html#l00216">_n_log()</a>, <a class="el" href="n__debug__mem_8c_source.html#l00080">delete_db_mem_item()</a>, <a class="el" href="n__debug__mem_8h_source.html#l00036">DEBUG_MEM_ITEM::file</a>, <a class="el" href="n__debug__mem_8h_source.html#l00038">DEBUG_MEM_ITEM::func</a>, <a class="el" href="n__hash_8c_source.html#l01962">ht_put_ptr()</a>, <a class="el" href="n__debug__mem_8h_source.html#l00040">DEBUG_MEM_ITEM::line</a>, <a class="el" href="n__debug__mem_8h_source.html#l00048">DEBUG_MEM_TABLE::nb_malloc</a>, <a class="el" href="n__debug__mem_8h_source.html#l00032">DEBUG_MEM_ITEM::ptr</a>, <a class="el" href="n__debug__mem_8h_source.html#l00034">DEBUG_MEM_ITEM::size</a>, and <a class="el" href="n__debug__mem_8h_source.html#l00052">DEBUG_MEM_TABLE::table</a>.</p>
-<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group___d_e_b_u_g_m_e_m_c_o_r_e_ga3f63c1a843b2f1685d31b4564ee03918_cgraph.png" border="0" usemap="#agroup___d_e_b_u_g_m_e_m_c_o_r_e_ga3f63c1a843b2f1685d31b4564ee03918_cgraph" alt=""/></div>
-<map name="agroup___d_e_b_u_g_m_e_m_c_o_r_e_ga3f63c1a843b2f1685d31b4564ee03918_cgraph" id="agroup___d_e_b_u_g_m_e_m_c_o_r_e_ga3f63c1a843b2f1685d31b4564ee03918_cgraph">
-<area shape="rect" title="allocate a new pointer with size and also put it in the debug table" alt="" coords="5,56,112,83"/>
-<area shape="rect" href="group___l_o_g.html#gafbbbfcb9063b9f1454a499dbf98f7a56" title="Logging function." alt="" coords="203,5,263,32"/>
-<area shape="rect" href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#ga5a41f05742f748434ea0771e1b3b8aac" title="delete a debug mem item" alt="" coords="160,56,307,83"/>
-<area shape="rect" href="group___h_a_s_h___t_a_b_l_e.html#ga2baa0497b21bdf86e3c64bb023124930" title=" " alt="" coords="193,107,273,133"/>
-<area shape="rect" href="group___l_o_g.html#gafeea44ab08778cbff68e91e831d44112" title="Get the global log level value." alt="" coords="355,5,451,32"/>
-</map>
 </div>
+<a id="ga8af149d6268fd41d1cf18e124bc725c5" name="ga8af149d6268fd41d1cf18e124bc725c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga8af149d6268fd41d1cf18e124bc725c5">&#9670;&nbsp;</a></span>db_mem_destroy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void db_mem_destroy </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;<a class="el" href="n__debug__mem_8h.html">n_debug_mem.h</a>&gt;</code></p>
+
+<p class="definition">Definition at line <a class="el" href="n__debug__mem_8c_source.html#l00224">224</a> of file <a class="el" href="n__debug__mem_8c_source.html">n_debug_mem.c</a>.</p>
+
+<p class="reference">References <a class="el" href="n__common_8h_source.html#l00260">__n_assert</a>.</p>
 
 </div>
 </div>
@@ -244,8 +266,6 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p><code>#include &lt;<a class="el" href="n__debug__mem_8h.html">n_debug_mem.h</a>&gt;</code></p>
-
-<p>Dump the current debug memory table. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">file</td><td>The name of the logfile </td></tr>
@@ -256,20 +276,29 @@ Variables</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="n__debug__mem_8c_source.html#l00159">159</a> of file <a class="el" href="n__debug__mem_8c_source.html">n_debug_mem.c</a>.</p>
 
-<p class="reference">References <a class="el" href="n__debug__mem_8c_source.html#l00015">__debug_mem_table</a>, <a class="el" href="n__log_8c_source.html#l00216">_n_log()</a>, <a class="el" href="n__hash_8h_source.html#l00095">HASH_NODE::data</a>, <a class="el" href="n__debug__mem_8c_source.html#l00080">delete_db_mem_item()</a>, <a class="el" href="n__hash_8h_source.html#l00117">HASH_TABLE::hash_table</a>, <a class="el" href="n__list_8h_source.html#l00035">LIST_NODE::next</a>, <a class="el" href="n__hash_8h_source.html#l00075">HASH_VALUE::ptr</a>, <a class="el" href="n__list_8h_source.html#l00029">LIST_NODE::ptr</a>, <a class="el" href="n__debug__mem_8h_source.html#l00034">DEBUG_MEM_ITEM::size</a>, <a class="el" href="n__hash_8h_source.html#l00111">HASH_TABLE::size</a>, <a class="el" href="n__list_8h_source.html#l00052">LIST::start</a>, and <a class="el" href="n__debug__mem_8h_source.html#l00052">DEBUG_MEM_TABLE::table</a>.</p>
-<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+<p class="reference">References <a class="el" href="n__log_8h_source.html#l00058">LOG_ERR</a>, and <a class="el" href="n__log_8h_source.html#l00074">n_log</a>.</p>
+
 </div>
-<div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group___d_e_b_u_g_m_e_m_c_o_r_e_ga53876f346e6461281c59a47451b08a5c_cgraph.png" border="0" usemap="#agroup___d_e_b_u_g_m_e_m_c_o_r_e_ga53876f346e6461281c59a47451b08a5c_cgraph" alt=""/></div>
-<map name="agroup___d_e_b_u_g_m_e_m_c_o_r_e_ga53876f346e6461281c59a47451b08a5c_cgraph" id="agroup___d_e_b_u_g_m_e_m_c_o_r_e_ga53876f346e6461281c59a47451b08a5c_cgraph">
-<area shape="rect" title="Dump the current debug memory table." alt="" coords="5,31,161,57"/>
-<area shape="rect" href="group___l_o_g.html#gafbbbfcb9063b9f1454a499dbf98f7a56" title="Logging function." alt="" coords="253,5,313,32"/>
-<area shape="rect" href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#ga5a41f05742f748434ea0771e1b3b8aac" title="delete a debug mem item" alt="" coords="209,56,356,83"/>
-<area shape="rect" href="group___l_o_g.html#gafeea44ab08778cbff68e91e831d44112" title="Get the global log level value." alt="" coords="404,5,500,32"/>
-</map>
 </div>
+<a id="ga4850cb69166320bdd2b2133f61c25d3c" name="ga4850cb69166320bdd2b2133f61c25d3c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga4850cb69166320bdd2b2133f61c25d3c">&#9670;&nbsp;</a></span>db_mem_empty()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void db_mem_empty </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;<a class="el" href="n__debug__mem_8h.html">n_debug_mem.h</a>&gt;</code></p>
+
+<p class="definition">Definition at line <a class="el" href="n__debug__mem_8c_source.html#l00214">214</a> of file <a class="el" href="n__debug__mem_8c_source.html">n_debug_mem.c</a>.</p>
 
 </div>
 </div>
@@ -315,23 +344,6 @@ Variables</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="n__debug__mem_8c_source.html#l00133">133</a> of file <a class="el" href="n__debug__mem_8c_source.html">n_debug_mem.c</a>.</p>
 
-<p class="reference">References <a class="el" href="n__debug__mem_8c_source.html#l00015">__debug_mem_table</a>, <a class="el" href="n__log_8c_source.html#l00216">_n_log()</a>, <a class="el" href="n__debug__mem_8c_source.html#l00080">delete_db_mem_item()</a>, <a class="el" href="n__debug__mem_8h_source.html#l00036">DEBUG_MEM_ITEM::file</a>, <a class="el" href="n__debug__mem_8h_source.html#l00038">DEBUG_MEM_ITEM::func</a>, <a class="el" href="n__hash_8c_source.html#l01938">ht_get_ptr()</a>, <a class="el" href="n__hash_8c_source.html#l01980">ht_remove()</a>, <a class="el" href="n__debug__mem_8h_source.html#l00040">DEBUG_MEM_ITEM::line</a>, <a class="el" href="n__debug__mem_8h_source.html#l00050">DEBUG_MEM_TABLE::nb_free</a>, <a class="el" href="n__debug__mem_8h_source.html#l00032">DEBUG_MEM_ITEM::ptr</a>, <a class="el" href="n__debug__mem_8h_source.html#l00034">DEBUG_MEM_ITEM::size</a>, and <a class="el" href="n__debug__mem_8h_source.html#l00052">DEBUG_MEM_TABLE::table</a>.</p>
-<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group___d_e_b_u_g_m_e_m_c_o_r_e_gaea4d614fcd75f3493130a64e0e58113d_cgraph.png" border="0" usemap="#agroup___d_e_b_u_g_m_e_m_c_o_r_e_gaea4d614fcd75f3493130a64e0e58113d_cgraph" alt=""/></div>
-<map name="agroup___d_e_b_u_g_m_e_m_c_o_r_e_gaea4d614fcd75f3493130a64e0e58113d_cgraph" id="agroup___d_e_b_u_g_m_e_m_c_o_r_e_gaea4d614fcd75f3493130a64e0e58113d_cgraph">
-<area shape="rect" title=" " alt="" coords="5,81,105,108"/>
-<area shape="rect" href="group___l_o_g.html#gafbbbfcb9063b9f1454a499dbf98f7a56" title="Logging function." alt="" coords="197,5,257,32"/>
-<area shape="rect" href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#ga5a41f05742f748434ea0771e1b3b8aac" title="delete a debug mem item" alt="" coords="153,56,300,83"/>
-<area shape="rect" href="group___h_a_s_h___t_a_b_l_e.html#gae34a331ccbda86f7e5b2319f1852d6ca" title=" " alt="" coords="187,107,267,133"/>
-<area shape="rect" href="group___h_a_s_h___t_a_b_l_e.html#ga8d8873be47a634ad8a386e61f12a1f53" title=" " alt="" coords="186,157,267,184"/>
-<area shape="rect" href="group___l_o_g.html#gafeea44ab08778cbff68e91e831d44112" title="Get the global log level value." alt="" coords="348,5,444,32"/>
-</map>
-</div>
-
 </div>
 </div>
 <a id="ga5a41f05742f748434ea0771e1b3b8aac" name="ga5a41f05742f748434ea0771e1b3b8aac"></a>
@@ -351,8 +363,6 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p><code>#include &lt;<a class="el" href="n__debug__mem_8h.html">n_debug_mem.h</a>&gt;</code></p>
-
-<p>delete a debug mem item </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">ptr</td><td>the item to destroy </td></tr>
@@ -362,20 +372,7 @@ Variables</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="n__debug__mem_8c_source.html#l00080">80</a> of file <a class="el" href="n__debug__mem_8c_source.html">n_debug_mem.c</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="n__debug__mem_8c_source.html#l00101">db_mem_alloc()</a>, <a class="el" href="n__debug__mem_8c_source.html#l00159">db_mem_dump_leaked()</a>, and <a class="el" href="n__debug__mem_8c_source.html#l00133">db_mem_free()</a>.</p>
-<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group___d_e_b_u_g_m_e_m_c_o_r_e_ga5a41f05742f748434ea0771e1b3b8aac_icgraph.png" border="0" usemap="#agroup___d_e_b_u_g_m_e_m_c_o_r_e_ga5a41f05742f748434ea0771e1b3b8aac_icgraph" alt=""/></div>
-<map name="agroup___d_e_b_u_g_m_e_m_c_o_r_e_ga5a41f05742f748434ea0771e1b3b8aac_icgraph" id="agroup___d_e_b_u_g_m_e_m_c_o_r_e_ga5a41f05742f748434ea0771e1b3b8aac_icgraph">
-<area shape="rect" title="delete a debug mem item" alt="" coords="209,56,356,83"/>
-<area shape="rect" href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#ga3f63c1a843b2f1685d31b4564ee03918" title="allocate a new pointer with size and also put it in the debug table" alt="" coords="30,5,137,32"/>
-<area shape="rect" href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#ga53876f346e6461281c59a47451b08a5c" title="Dump the current debug memory table." alt="" coords="5,56,161,83"/>
-<area shape="rect" href="group___d_e_b_u_g_m_e_m_c_o_r_e.html#gaea4d614fcd75f3493130a64e0e58113d" title=" " alt="" coords="33,107,133,133"/>
-</map>
-</div>
+<p class="reference">References <a class="el" href="n__common_8h_source.html#l00252">FreeNoLog</a>.</p>
 
 </div>
 </div>
@@ -395,53 +392,9 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p><code>#include &lt;<a class="el" href="n__debug__mem_8h.html">n_debug_mem.h</a>&gt;</code></p>
-
-<p>initialize debug tables </p>
 <dl class="section return"><dt>Returns</dt><dd>TRUE or FALSE </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="n__debug__mem_8c_source.html#l00022">22</a> of file <a class="el" href="n__debug__mem_8c_source.html">n_debug_mem.c</a>.</p>
-
-<p class="reference">References <a class="el" href="n__debug__mem_8c_source.html#l00015">__debug_mem_table</a>, <a class="el" href="n__debug__mem_8h_source.html#l00050">DEBUG_MEM_TABLE::nb_free</a>, <a class="el" href="n__debug__mem_8h_source.html#l00048">DEBUG_MEM_TABLE::nb_malloc</a>, <a class="el" href="n__hash_8c_source.html#l01860">new_ht()</a>, and <a class="el" href="n__debug__mem_8h_source.html#l00052">DEBUG_MEM_TABLE::table</a>.</p>
-<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-4-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group___d_e_b_u_g_m_e_m_c_o_r_e_ga465b28122f5d12702a8a9289a978d255_cgraph.png" border="0" usemap="#agroup___d_e_b_u_g_m_e_m_c_o_r_e_ga465b28122f5d12702a8a9289a978d255_cgraph" alt=""/></div>
-<map name="agroup___d_e_b_u_g_m_e_m_c_o_r_e_ga465b28122f5d12702a8a9289a978d255_cgraph" id="agroup___d_e_b_u_g_m_e_m_c_o_r_e_ga465b28122f5d12702a8a9289a978d255_cgraph">
-<area shape="rect" title="initialize debug tables" alt="" coords="5,525,123,552"/>
-<area shape="rect" href="group___h_a_s_h___t_a_b_l_e.html#gaa2d879c1afd3c71a0917bbe2c0766664" title=" " alt="" coords="171,525,233,552"/>
-<area shape="rect" href="n__hash_8c.html#a0ee7e0fa87da033f857c04dae6f1586a" title=" " alt="" coords="299,44,390,71"/>
-<area shape="rect" href="group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755" title="Empty and Free a list container." alt="" coords="487,44,576,71"/>
-<area shape="rect" href="n__hash_8c.html#a883490d95c386d9d82a7306663a6c2ce" title=" " alt="" coords="303,399,386,425"/>
-<area shape="rect" href="n__hash_8c.html#a7ce57bb0fb64ca5ff513c6ade7c26852" title="Retrieve a double value in the hash table, at the given key." alt="" coords="289,703,400,729"/>
-<area shape="rect" href="n__hash_8c.html#a364dffbf42be500d3266410895694bd8" title="return the associated key&#39;s node inside the hash_table" alt="" coords="481,855,581,881"/>
-<area shape="rect" href="group___l_o_g.html#gafbbbfcb9063b9f1454a499dbf98f7a56" title="Logging function." alt="" coords="808,576,868,603"/>
-<area shape="rect" href="n__hash_8c.html#ae7c50bafbc80902f92c27e59d29ffd40" title="Retrieve an integral value in the hash table, at the given key." alt="" coords="301,753,388,780"/>
-<area shape="rect" href="n__hash_8c.html#a0299747d5cd82effd51fdaec945e80ee" title="Retrieve a pointer value in the hash table, at the given key." alt="" coords="301,804,388,831"/>
-<area shape="rect" href="n__hash_8c.html#a524a224940bc3ceea122824ca3d4842b" title="Retrieve a char *string value in the hash table, at the given key." alt="" coords="293,855,397,881"/>
-<area shape="rect" href="n__hash_8c.html#a719f4d3d6315d1118478bf66bbf3d7d4" title=" " alt="" coords="309,956,381,983"/>
-<area shape="rect" href="n__hash_8c.html#a870d138d5408e20e8111c750cdc77d36" title="put a double value with given key in the targeted hash table" alt="" coords="289,551,400,577"/>
-<area shape="rect" href="n__hash_8c.html#a4713652203bc7965a2dda268ffa1e4d5" title="put an integral value with given key in the targeted hash table" alt="" coords="301,601,388,628"/>
-<area shape="rect" href="n__hash_8c.html#a853357465a1599d42ff6d095aa762424" title="put a pointer value with given key in the targeted hash table" alt="" coords="301,652,388,679"/>
-<area shape="rect" href="n__hash_8c.html#a35ed4b8f492e6265b7cdcc8f380b6130" title="put a null terminated char *string with given key in the targeted hash table (copy of string)" alt="" coords="293,449,397,476"/>
-<area shape="rect" href="n__hash_8c.html#a8bfbff53ffcafc65317e2b1041df314f" title="put a null terminated char *string with given key in the targeted hash table (pointer)" alt="" coords="281,500,408,527"/>
-<area shape="rect" href="n__hash_8c.html#aa0b7465426719eec2e02cd83e8ac290d" title="Remove a key from a hash table." alt="" coords="301,348,389,375"/>
-<area shape="rect" href="n__hash_8c.html#af5e4567a16f469d013410e8cf675a28c" title=" " alt="" coords="301,95,388,121"/>
-<area shape="rect" href="group___l_i_s_t.html#gada615e3b144e97bcff147dfe89f6fef6" title="Initialiaze a generic list container to max_items pointers." alt="" coords="472,95,591,121"/>
-<area shape="rect" href="group___l_i_s_t.html#ga1dafe7a250ddad51fadd375f057287e7" title="Empty a LIST list of pointers." alt="" coords="666,44,749,71"/>
-<area shape="rect" href="n__hash_8c.html#a013153fa30199bbcaf5f92890ae97ba8" title="destroy a HASH_NODE by first calling the HASH_NODE destructor" alt="" coords="469,348,594,375"/>
-<area shape="rect" href="group___h_a_s_h___t_a_b_l_e.html#ga1392981a507905d028136bc0b92aa48b" title="get the type of a node , text version" alt="" coords="481,703,581,729"/>
-<area shape="rect" href="group___l_o_g.html#gafeea44ab08778cbff68e91e831d44112" title="Get the global log level value." alt="" coords="916,576,1012,603"/>
-<area shape="rect" href="n__hash_8c.html#a538c336dd719701659e9234dc069f848" title="node creation, HASH_CLASSIC mode" alt="" coords="456,551,607,577"/>
-<area shape="rect" href="group___l_i_s_t.html#ga4eab319289a83524639ee5e9f0441fdf" title="Add a pointer to the end of the list." alt="" coords="494,500,569,527"/>
-<area shape="rect" href="n__hash_8c.html#a9a7239b9d94b50486662ad11381fd3bf" title="node creation, HASH_CLASSIC mode" alt="" coords="655,588,760,615"/>
-<area shape="rect" href="group___l_i_s_t.html#ga678e828550efc8e64a836bb8c713c2f4" title="Allocate a new node to link in a list." alt="" coords="655,512,759,539"/>
-<area shape="rect" href="n__hash_8c.html#aca52825e0662da52f7f59cb2c282dd0d" title="node creation, HASH_CLASSIC mode" alt="" coords="468,601,595,628"/>
-<area shape="rect" href="n__hash_8c.html#afcb17d6b3dd2abad4cb9e58a2f70de98" title=" " alt="" coords="468,753,595,780"/>
-<area shape="rect" href="n__hash_8c.html#a3b482644f6bf5ac3cfec10961a9bfdbc" title="node creation, HASH_CLASSIC mode, strdup of value" alt="" coords="459,297,603,324"/>
-</map>
-</div>
 
 </div>
 </div>
@@ -490,8 +443,6 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p><code>#include &lt;<a class="el" href="n__debug__mem_8h.html">n_debug_mem.h</a>&gt;</code></p>
-
-<p>allocate a new item in the debug table </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">ptr</td><td>Pointer address to save </td></tr>
@@ -506,34 +457,7 @@ Variables</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="n__debug__mem_8c_source.html#l00055">55</a> of file <a class="el" href="n__debug__mem_8c_source.html">n_debug_mem.c</a>.</p>
 
-<p class="reference">References <a class="el" href="n__debug__mem_8h_source.html#l00036">DEBUG_MEM_ITEM::file</a>, <a class="el" href="n__debug__mem_8h_source.html#l00038">DEBUG_MEM_ITEM::func</a>, <a class="el" href="n__debug__mem_8h_source.html#l00040">DEBUG_MEM_ITEM::line</a>, <a class="el" href="n__debug__mem_8h_source.html#l00032">DEBUG_MEM_ITEM::ptr</a>, and <a class="el" href="n__debug__mem_8h_source.html#l00034">DEBUG_MEM_ITEM::size</a>.</p>
-
-</div>
-</div>
-<h2 class="groupheader">Variable Documentation</h2>
-<a id="ga1d82ee51b2017f3e2af9d8531f14cb4c" name="ga1d82ee51b2017f3e2af9d8531f14cb4c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga1d82ee51b2017f3e2af9d8531f14cb4c">&#9670;&nbsp;</a></span>debug_mem_table</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_d_e_b_u_g___m_e_m___t_a_b_l_e.html">DEBUG_MEM_TABLE</a>* debug_mem_table</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p><code>#include &lt;<a class="el" href="n__debug__mem_8h.html">n_debug_mem.h</a>&gt;</code></p>
-
-<p>external table for tracking by file usage </p>
+<p class="reference">References <a class="el" href="n__log_8h_source.html#l00058">LOG_ERR</a>, and <a class="el" href="n__log_8h_source.html#l00074">n_log</a>.</p>
 
 </div>
 </div>
@@ -542,7 +466,7 @@ Variables</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Wed Feb 2 2022 14:24:11 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+    <li class="footer">Generated on Thu Feb 3 2022 15:37:41 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
   </ul>
 </div>
 </body>

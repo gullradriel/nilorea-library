@@ -1,15 +1,9 @@
 /**\file n_user.h
-*
-*  USERS handling for everything you want
-*
-*\author Castagnier Mickael
-*
-*\version 1.0
-*
-*\date 20/02/2006
-*
+ * USERS handling for tiny game apps
+ *\author Castagnier Mickael
+ *\version 1.0
+ *\date 20/02/2006
 */
-
 
 #ifndef N_USER_MANAGEMENT
 
@@ -26,7 +20,7 @@ extern "C"
 #include "nilorea/n_network.h"
 #include "nilorea/n_3d.h"
 
-/**\defgroup N_USER GAMES: User handling
+/**\defgroup N_USER GAMEDEV: user handling
   \addtogroup N_USER
   @{
   */

@@ -1,4 +1,4 @@
-/**\file n_pcre.h
+/**\file n_pcre.c
  *  PCRE helpers for regex matching
  *\author Castagnier Mickael
  *\version 2.0

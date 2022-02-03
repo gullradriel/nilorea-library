@@ -20,24 +20,27 @@ extern "C" {
   @{
 */
 
+/*! helper to build an N_ENUM */
 #define N_ENUM_ENTRY(class, method) class##_##method
 
-/* UTILS MACROS */
+/* MACROS FOR N_ENUMS MACRO ENTRIES (START) */
+/*! internal: case element */
 #define __N_ENUM_MACRO_ENTRY_CASE(element_name) case element_name:
+/*! internal: error element */
 #define __N_ENUM_MACRO_ENTRY_UNKNOWN_VALUE(enum_name) __##enum_name##_UNKNOWN_VALUE__
-
-/* MACROS FOR N_ENUMS MACRO ENTRIES (TWO PARAMETERS) PREFIX : __N_ENUM_MACRO_ENTRY_ */
+/*! internal: macro to convert N_ENUMS entry to a real ENUM element */
 #define __N_ENUM_MACRO_ENTRY_TO_ENUM_ELEMENT(element_name, element_value)\
 	element_name = element_value,
-
+/*! internal: macro to test N_ENUMS entry */
 #define __N_ENUM_MACRO_ENTRY_TO_ISVALID_CASE(element_name, element_value)\
 	__N_ENUM_MACRO_ENTRY_CASE(element_name) return true;
-
+/*! internal: macro to convert N_ENUMS entry to a string element */
 #define __N_ENUM_MACRO_ENTRY_TO_TOSTRING_CASE(element_name, element_value)\
 	__N_ENUM_MACRO_ENTRY_CASE(element_name) return #element_name;
 /* MACROS FOR N_ENUMS MACRO ENTRIES (END) */
 
-/* MACRO FOR ENUM DECLARATION */
+/* MACRO FOR ENUM DECLARATION (START) */
+/*! internal: macro for ENUM declaration */
 #define __N_ENUM_DECLARE_ENUM(MACRO_DEFINITION, enum_name)\
 	typedef enum enum_name\
 {\
@@ -48,16 +51,18 @@ enum_name;
 /* MACRO FOR ENUM DECLARATION (END) */
 
 /* MACRO FOR N_ENUMS FUNCTIONS * PREFIX : __N_ENUM_FUNCTION_ */
+/*! internal: create a getter function */
 #define __N_ENUM_DECLARE_FUNCTION(__N_ENUM_FUNCTION, enum_name) __N_ENUM_FUNCTION(enum_name); // MACRO for function declaration (just add ; after function)
-
+/*! internal: create a test function */
 #define __N_ENUM_FUNCTION_ISVALID(enum_name)\
 	bool N_ENUM_ENTRY(enum_name, isValid)(enum_name value)
-
+/*! internal: create a to string function */
 #define __N_ENUM_FUNCTION_TOSTRING(enum_name)\
 	const char* N_ENUM_ENTRY(enum_name, toString)(enum_name value)
 /* MACRO FOR N_ENUMS FUNCTIONS (END) */
 
 /* MACRO FOR N_ENUMS FUNCTIONS DEFINITIONS * PREFIX : __N_ENUM_DEFINE_FUNCTION_ */
+/*! internal: create getter functions is_valid */
 #define __N_ENUM_DEFINE_FUNCTION_ISVALID(MACRO_DEFINITION, enum_name)\
 	__N_ENUM_FUNCTION_ISVALID(enum_name)\
 {\
@@ -67,7 +72,7 @@ enum_name;
 		default: return false;\
 	}\
 }
-
+/*! internal: create getter functions to_string */
 #define __N_ENUM_DEFINE_FUNCTION_TOSTRING(MACRO_DEFINITION, enum_name)\
 	__N_ENUM_FUNCTION_TOSTRING(enum_name)\
 {\
@@ -80,6 +85,7 @@ enum_name;
 /* MACRO FOR N_ENUMS FUNCTIONS DEFINITIONS (END) */
 
 /* N_ENUM DECLARATION */
+/*! Macro to declare a N_ENUM */
 #define N_ENUM_DECLARE(MACRO_DEFINITION, enum_name)\
 	__N_ENUM_DECLARE_ENUM(MACRO_DEFINITION, enum_name)\
 	__N_ENUM_DECLARE_FUNCTION(__N_ENUM_FUNCTION_ISVALID, enum_name)\
@@ -87,6 +93,7 @@ enum_name;
 /* N_ENUM DECLARATION (END) */
 
 /* N_ENUM DEFINITION */
+/*! Macro to define an N_ENUM */
 #define N_ENUM_DEFINE(MACRO_DEFINITION, enum_name)\
 	__N_ENUM_DEFINE_FUNCTION_ISVALID(MACRO_DEFINITION, enum_name)\
 	__N_ENUM_DEFINE_FUNCTION_TOSTRING(MACRO_DEFINITION, enum_name)

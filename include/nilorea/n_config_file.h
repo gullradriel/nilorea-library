@@ -1,5 +1,5 @@
 /**\file n_config_file.h
- *  config file reading
+ *  Config file reading and writing
  *\author Castagnier Mickael
  *\version 1.0
  *\date 24/03/05
@@ -56,7 +56,7 @@ int get_nb_config_file_sections_entries( CONFIG_FILE *cfg_file, char *section_na
 /* destroy a loaded config */
 int destroy_config_file( CONFIG_FILE **cfg_file );
 
-
+/*! Foreach elements of CONFIG_FILE macro, i.e config_foreach( config , section , key , val ); config_endfor; */
 #define config_foreach( __config , __section_name , __key , __val ) \
 	if( !__config || !__config -> sections ) \
 	{ \
@@ -76,6 +76,7 @@ int destroy_config_file( CONFIG_FILE **cfg_file );
 					__key = htnode -> key ; \
 					__val = htnode -> data . ptr ;
 
+/*! Foreach elements of CONFIG_FILE macro END. Will cause errors if ommitted */
 #define config_endfor \
 				} \
 			} \

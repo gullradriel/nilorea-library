@@ -1,5 +1,5 @@
 /**\file n_time.h
- *  common headers and low-level hugly functions & define
+ * Timing utilities
  *\author Castagnier Mickael
  *\version 1.0
  *\date 24/03/05

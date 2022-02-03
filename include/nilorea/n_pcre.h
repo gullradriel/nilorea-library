@@ -1,10 +1,9 @@
 /**\file n_pcre.h
- *  N_STR and string function declaration
+ *  PCRE helpers for regex matching
  *\author Castagnier Mickael
  *\version 2.0
- *\date 05/02/14
+ *\date 04/12/2019
  */
-
 
 #ifndef __NILOREA_PCRE_HELPERS__
 #define __NILOREA_PCRE_HELPERS__

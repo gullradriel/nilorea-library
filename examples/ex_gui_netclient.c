@@ -37,8 +37,8 @@ int update_peer( HASH_TABLE *peer_table, int id, double position[ 3 ] )
 
     PEER_OBJECT *peer = NULL ;
 
-	char id_str[ 64 ] = "";
-	sprintf( id_str , "%d" , id );
+    char id_str[ 64 ] = "";
+    sprintf( id_str, "%d", id );
     if( ht_get_ptr( peer_table, id_str, (void *)&peer ) == TRUE )
     {
         memcpy( peer -> position, position, 3 * sizeof( double ) );
@@ -74,8 +74,8 @@ int manage_peers( HASH_TABLE *peer_table, int delta_t )
         if( node && node -> ptr )
         {
             PEER_OBJECT *peer = (PEER_OBJECT *)node -> ptr ;
-			char id_str[ 64 ] = "";
-			sprintf( id_str , "%d" , peer -> id );
+            char id_str[ 64 ] = "";
+            sprintf( id_str, "%d", peer -> id );
             ht_remove( peer_table, id_str );
         }
     }

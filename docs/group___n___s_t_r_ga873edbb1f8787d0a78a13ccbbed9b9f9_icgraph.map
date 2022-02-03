@@ -1,18 +1,17 @@
 <map id="new_nstr" name="new_nstr">
-<area shape="rect" id="node1" title="create a new N_STR string" alt="" coords="811,81,885,108"/>
-<area shape="rect" id="node2" href="$group___n___s_t_r.html#gac4314e9f0ada88300a09d66405d541a8" title="Convert a char into a N_STR, extended version." alt="" coords="648,5,763,32"/>
-<area shape="rect" id="node3" href="$group___c_o_m_m_o_n_s.html#ga9c848fa27b401335936f5875aa918f21" title=" " alt="" coords="670,56,741,83"/>
-<area shape="rect" id="node5" href="$group___n___s_t_r.html#ga3e30a18ec42d0f4cd8651c442bf62651" title="Duplicate a N_STR." alt="" coords="673,107,738,133"/>
-<area shape="rect" id="node16" href="$group___z_l_i_b.html#gae1e033816ab406b33b403c687c2d7dea" title=" " alt="" coords="671,157,739,184"/>
-<area shape="rect" id="node4" href="$n__signals_8c.html#a303cb27f9c5239698d99891cd7341648" title=" " alt="" coords="481,31,556,57"/>
-<area shape="rect" id="node6" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga84f36b52e6d9dfe9ca6186c3177f5472" title="Add a copy of str to the string list in the message." alt="" coords="447,81,590,108"/>
-<area shape="rect" id="node9" href="$group___n_e_t_w_o_r_k___m_s_g.html#gafb91c3ea7bfa93212141fa1fe074fb3d" title=" " alt="" coords="215,119,389,145"/>
-<area shape="rect" id="node12" href="$group___n___u_s_e_r.html#ga2f336886f3d5e909c397f1660419701d" title=" " alt="" coords="437,195,600,221"/>
-<area shape="rect" id="node7" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga7bae3c3de53204413c7663007ec4a4d7" title="Add a formatted NETWMSG_IDENT message to the specified network." alt="" coords="233,68,371,95"/>
-<area shape="rect" id="node8" href="$group___n_e_t_w_o_r_k_i_n_g.html#gae8345266fcf7a23c0e8ffe176b0e086f" title="Add a formatted NETWMSG_IDENT message to the specified network." alt="" coords="27,68,145,95"/>
-<area shape="rect" id="node10" href="$group___n_e_t_w_o_r_k_i_n_g.html#gad3b590da2eb8b594c75d1d5f46ba7b45" title=" " alt="" coords="15,119,157,145"/>
-<area shape="rect" id="node11" href="$n__network_8c.html#a02b35de5d3b84e79c4fecbf4cebce603" title=" " alt="" coords="5,169,167,196"/>
-<area shape="rect" id="node13" href="$group___n___u_s_e_r.html#ga25d7254e2bc5d4c6d4e89dadef9c67cd" title=" " alt="" coords="231,169,373,196"/>
-<area shape="rect" id="node14" href="$group___n___u_s_e_r.html#gaaf1860e26c4355764ad00e1016547b2c" title=" " alt="" coords="221,220,383,247"/>
-<area shape="rect" id="node15" href="$group___n___u_s_e_r.html#gaec87d76c70852173c2187e4eceb707ee" title=" " alt="" coords="231,271,373,313"/>
+<area shape="rect" id="node1" title="create a new N_STR string" alt="" coords="712,157,787,184"/>
+<area shape="rect" id="node2" href="$group___n___s_t_r.html#gac4314e9f0ada88300a09d66405d541a8" title="Convert a char into a N_STR, extended version." alt="" coords="549,5,664,32"/>
+<area shape="rect" id="node5" href="$group___n___s_t_r.html#gad2c9b27509a55615e57ef8efd2ca3a02" title="Load a whole file into a N_STR." alt="" coords="564,56,649,83"/>
+<area shape="rect" id="node6" href="$group___c_o_m_m_o_n_s.html#ga9c848fa27b401335936f5875aa918f21" title="launch a command abd return output and status" alt="" coords="571,107,642,133"/>
+<area shape="rect" id="node8" href="$group___n___s_t_r.html#ga3e30a18ec42d0f4cd8651c442bf62651" title="Duplicate a N_STR." alt="" coords="574,157,639,184"/>
+<area shape="rect" id="node12" href="$ex__network_8h.html#a97064904e9c2be2094c349413ff348fc" title="send data to specified network" alt="" coords="549,208,664,235"/>
+<area shape="rect" id="node14" href="$group___z_l_i_b.html#gab434f8d8cbd741ecffd35be2125b66fe" title=" " alt="" coords="565,259,648,285"/>
+<area shape="rect" id="node15" href="$group___z_l_i_b.html#gae1e033816ab406b33b403c687c2d7dea" title=" " alt="" coords="573,309,641,336"/>
+<area shape="rect" id="node3" href="$group___n___s_t_r.html#ga69e5f2dbf75571a73e5a3332929642a4" title="Convert a char into a N_STR, short version." alt="" coords="383,5,477,32"/>
+<area shape="rect" id="node4" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga35d5127628fc0ddafd5cde36296ce583" title="Add a copy of char *str to the string list in the message." alt="" coords="173,5,309,32"/>
+<area shape="rect" id="node7" href="$n__signals_8c.html#a303cb27f9c5239698d99891cd7341648" title="Resolve symbol name and source location given the path to the executable and an address." alt="" coords="393,107,467,133"/>
+<area shape="rect" id="node9" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga84f36b52e6d9dfe9ca6186c3177f5472" title="Add a copy of str to the string list in the message." alt="" coords="359,157,501,184"/>
+<area shape="rect" id="node10" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga7bae3c3de53204413c7663007ec4a4d7" title="Add a formatted NETWMSG_IDENT message to the specified network." alt="" coords="172,157,311,184"/>
+<area shape="rect" id="node11" href="$group___n_e_t_w_o_r_k_i_n_g.html#gae8345266fcf7a23c0e8ffe176b0e086f" title="Add a formatted NETWMSG_IDENT message to the specified network." alt="" coords="5,157,124,184"/>
+<area shape="rect" id="node13" href="$ex__network_8h.html#a2af070d97fced1a0eadad90c6aa4903b" title="recv/send datas if any for the client" alt="" coords="377,208,483,235"/>
 </map>

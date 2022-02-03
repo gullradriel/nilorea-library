@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.3"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Nilorea Library: 3D: physics, movement simulation</title>
+<title>Nilorea Library: GAMEDEV: physics, movement simulation</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -83,76 +83,60 @@ $(document).ready(function(){initNavTree('group___d.html',''); initResizable(); 
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
+<a href="#nested-classes">Data Structures</a> &#124;
 <a href="#define-members">Macros</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a>  </div>
-  <div class="headertitle"><div class="title">3D: physics, movement simulation</div></div>
+  <div class="headertitle"><div class="title">GAMEDEV: physics, movement simulation</div></div>
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
-Classes</h2></td></tr>
+Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_p_h_y_s_i_c_s.html">PHYSICS</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">structure of the physics of an object  <a href="struct_p_h_y_s_i_c_s.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:ga55ea8f9ffbf8113d1404c6f497891958"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d.html#ga55ea8f9ffbf8113d1404c6f497891958">copy_point</a>(__src_,  __dst_)&#160;&#160;&#160;   memcpy( __dst_ , __src_ , sizeof( <a class="el" href="group___d.html#ga4cbdd7084ea2076595f397a969feba63">VECTOR3D</a> ) );</td></tr>
-<tr class="memdesc:ga55ea8f9ffbf8113d1404c6f497891958"><td class="mdescLeft">&#160;</td><td class="mdescRight">VECTOR3D copy wrapper.  <a href="group___d.html#ga55ea8f9ffbf8113d1404c6f497891958">More...</a><br /></td></tr>
 <tr class="separator:ga55ea8f9ffbf8113d1404c6f497891958"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gafd490454081da9fd11b3a8564a1b1e57"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d.html#gafd490454081da9fd11b3a8564a1b1e57">MOVE_INTER</a>&#160;&#160;&#160;1</td></tr>
-<tr class="memdesc:gafd490454081da9fd11b3a8564a1b1e57"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="struct_p_h_y_s_i_c_s.html" title="structure of the physics of an object">PHYSICS</a> object state for move interpolated between two position.  <a href="group___d.html#gafd490454081da9fd11b3a8564a1b1e57">More...</a><br /></td></tr>
 <tr class="separator:gafd490454081da9fd11b3a8564a1b1e57"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaeca89443b9e6938674997d41a89dd7f0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d.html#gaeca89443b9e6938674997d41a89dd7f0">MOVE_SIMU</a>&#160;&#160;&#160;2</td></tr>
-<tr class="memdesc:gaeca89443b9e6938674997d41a89dd7f0"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="struct_p_h_y_s_i_c_s.html" title="structure of the physics of an object">PHYSICS</a> object state for move simulated from latest update.  <a href="group___d.html#gaeca89443b9e6938674997d41a89dd7f0">More...</a><br /></td></tr>
 <tr class="separator:gaeca89443b9e6938674997d41a89dd7f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga37296420ee4666a035fbc7773e5d63b0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d.html#ga37296420ee4666a035fbc7773e5d63b0">MOVE_STOPPED</a>&#160;&#160;&#160;0</td></tr>
-<tr class="memdesc:ga37296420ee4666a035fbc7773e5d63b0"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="struct_p_h_y_s_i_c_s.html" title="structure of the physics of an object">PHYSICS</a> object state for STOPPED.  <a href="group___d.html#ga37296420ee4666a035fbc7773e5d63b0">More...</a><br /></td></tr>
 <tr class="separator:ga37296420ee4666a035fbc7773e5d63b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga1553548da310962d8aac7f06896d015a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d.html#ga1553548da310962d8aac7f06896d015a">VECTOR3D_COLLINEAR</a>&#160;&#160;&#160;-1</td></tr>
-<tr class="memdesc:ga1553548da310962d8aac7f06896d015a"><td class="mdescLeft">&#160;</td><td class="mdescRight">value when the two VECTOR3D are collinear  <a href="group___d.html#ga1553548da310962d8aac7f06896d015a">More...</a><br /></td></tr>
 <tr class="separator:ga1553548da310962d8aac7f06896d015a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga4aa4f8e93ec25da82dbef99b4dcca990"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d.html#ga4aa4f8e93ec25da82dbef99b4dcca990">VECTOR3D_DO_INTERSECT</a>&#160;&#160;&#160;0</td></tr>
-<tr class="memdesc:ga4aa4f8e93ec25da82dbef99b4dcca990"><td class="mdescLeft">&#160;</td><td class="mdescRight">value when the two VECTOR3D are intersecting  <a href="group___d.html#ga4aa4f8e93ec25da82dbef99b4dcca990">More...</a><br /></td></tr>
 <tr class="separator:ga4aa4f8e93ec25da82dbef99b4dcca990"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga6f567ec1eef50b1902b47b3d67b0cece"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d.html#ga6f567ec1eef50b1902b47b3d67b0cece">VECTOR3D_DONT_INTERSECT</a>&#160;&#160;&#160;-2</td></tr>
-<tr class="memdesc:ga6f567ec1eef50b1902b47b3d67b0cece"><td class="mdescLeft">&#160;</td><td class="mdescRight">value when the two VECTOR3D are not connected  <a href="group___d.html#ga6f567ec1eef50b1902b47b3d67b0cece">More...</a><br /></td></tr>
 <tr class="separator:ga6f567ec1eef50b1902b47b3d67b0cece"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga0d342c376c3e3125c8fb97bcbe7f93c0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d.html#ga0d342c376c3e3125c8fb97bcbe7f93c0">VECTOR3D_SET</a>(VECTOR,  X,  Y,  Z)</td></tr>
-<tr class="memdesc:ga0d342c376c3e3125c8fb97bcbe7f93c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">helper to set a VECTOR3D position  <a href="group___d.html#ga0d342c376c3e3125c8fb97bcbe7f93c0">More...</a><br /></td></tr>
 <tr class="separator:ga0d342c376c3e3125c8fb97bcbe7f93c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:ga4cbdd7084ea2076595f397a969feba63"><td class="memItemLeft" align="right" valign="top">typedef double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d.html#ga4cbdd7084ea2076595f397a969feba63">VECTOR3D</a>[3]</td></tr>
-<tr class="memdesc:ga4cbdd7084ea2076595f397a969feba63"><td class="mdescLeft">&#160;</td><td class="mdescRight">struct of a point  <a href="group___d.html#ga4cbdd7084ea2076595f397a969feba63">More...</a><br /></td></tr>
 <tr class="separator:ga4cbdd7084ea2076595f397a969feba63"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ga436d6582b13cb4a7a52e5814236ae5f0"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d.html#ga436d6582b13cb4a7a52e5814236ae5f0">distance</a> (<a class="el" href="group___d.html#ga4cbdd7084ea2076595f397a969feba63">VECTOR3D</a> *p1, <a class="el" href="group___d.html#ga4cbdd7084ea2076595f397a969feba63">VECTOR3D</a> *p2)</td></tr>
-<tr class="memdesc:ga436d6582b13cb4a7a52e5814236ae5f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">compute the distance between two VECTOR3D points  <a href="group___d.html#ga436d6582b13cb4a7a52e5814236ae5f0">More...</a><br /></td></tr>
 <tr class="separator:ga436d6582b13cb4a7a52e5814236ae5f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gadc7a001ab64c72a43243175e56a86264"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d.html#gadc7a001ab64c72a43243175e56a86264">update_physics_position</a> (<a class="el" href="struct_p_h_y_s_i_c_s.html">PHYSICS</a> *object, double delta_t)</td></tr>
-<tr class="memdesc:gadc7a001ab64c72a43243175e56a86264"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update object position, reversed.  <a href="group___d.html#gadc7a001ab64c72a43243175e56a86264">More...</a><br /></td></tr>
 <tr class="separator:gadc7a001ab64c72a43243175e56a86264"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga5a40d51963e17af619b6a3c36c687462"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d.html#ga5a40d51963e17af619b6a3c36c687462">update_physics_position_nb</a> (<a class="el" href="struct_p_h_y_s_i_c_s.html">PHYSICS</a> *object, int it, double delta_t)</td></tr>
-<tr class="memdesc:ga5a40d51963e17af619b6a3c36c687462"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update object position componant.  <a href="group___d.html#ga5a40d51963e17af619b6a3c36c687462">More...</a><br /></td></tr>
 <tr class="separator:ga5a40d51963e17af619b6a3c36c687462"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga7644cdf589832471424103293b68f77b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d.html#ga7644cdf589832471424103293b68f77b">update_physics_position_reverse</a> (<a class="el" href="struct_p_h_y_s_i_c_s.html">PHYSICS</a> *object, double delta_t)</td></tr>
-<tr class="memdesc:ga7644cdf589832471424103293b68f77b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update object position, reversed.  <a href="group___d.html#ga7644cdf589832471424103293b68f77b">More...</a><br /></td></tr>
 <tr class="separator:ga7644cdf589832471424103293b68f77b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaa8021a03baa26410f81f6fcdf77da564"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d.html#gaa8021a03baa26410f81f6fcdf77da564">update_physics_position_reverse_nb</a> (<a class="el" href="struct_p_h_y_s_i_c_s.html">PHYSICS</a> *object, int it, double delta_t)</td></tr>
-<tr class="memdesc:gaa8021a03baa26410f81f6fcdf77da564"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update object position componant, reversed.  <a href="group___d.html#gaa8021a03baa26410f81f6fcdf77da564">More...</a><br /></td></tr>
 <tr class="separator:gaa8021a03baa26410f81f6fcdf77da564"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga523b38d99b808d695819e5d42c91b182"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d.html#ga523b38d99b808d695819e5d42c91b182">vector_angle_between</a> (<a class="el" href="group___d.html#ga4cbdd7084ea2076595f397a969feba63">VECTOR3D</a> *vec1, <a class="el" href="group___d.html#ga4cbdd7084ea2076595f397a969feba63">VECTOR3D</a> *vec2)</td></tr>
 <tr class="separator:ga523b38d99b808d695819e5d42c91b182"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga08fa4eb6d167cc941fe6cfd5d21b255d"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d.html#ga08fa4eb6d167cc941fe6cfd5d21b255d">vector_dot_product</a> (<a class="el" href="group___d.html#ga4cbdd7084ea2076595f397a969feba63">VECTOR3D</a> *vec1, <a class="el" href="group___d.html#ga4cbdd7084ea2076595f397a969feba63">VECTOR3D</a> *vec2)</td></tr>
 <tr class="separator:ga08fa4eb6d167cc941fe6cfd5d21b255d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gafc35e47713f26cce316cc85dd85354b7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d.html#gafc35e47713f26cce316cc85dd85354b7">vector_intersect</a> (<a class="el" href="group___d.html#ga4cbdd7084ea2076595f397a969feba63">VECTOR3D</a> *p0, <a class="el" href="group___d.html#ga4cbdd7084ea2076595f397a969feba63">VECTOR3D</a> *p1, <a class="el" href="group___d.html#ga4cbdd7084ea2076595f397a969feba63">VECTOR3D</a> *p2, <a class="el" href="group___d.html#ga4cbdd7084ea2076595f397a969feba63">VECTOR3D</a> *p3, <a class="el" href="group___d.html#ga4cbdd7084ea2076595f397a969feba63">VECTOR3D</a> *px)</td></tr>
-<tr class="memdesc:gafc35e47713f26cce316cc85dd85354b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute if two vectors are intersecting or not.  <a href="group___d.html#gafc35e47713f26cce316cc85dd85354b7">More...</a><br /></td></tr>
 <tr class="separator:gafc35e47713f26cce316cc85dd85354b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gab69467787b1b55290585366a20cf82cb"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d.html#gab69467787b1b55290585366a20cf82cb">vector_normalize</a> (<a class="el" href="group___d.html#ga4cbdd7084ea2076595f397a969feba63">VECTOR3D</a> *vec)</td></tr>
 <tr class="separator:gab69467787b1b55290585366a20cf82cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -357,6 +341,8 @@ Functions</h2></td></tr>
 <div class="line">   VECTOR[ 2 ] = (Z) ;</div>
 </div><!-- fragment -->
 <p>helper to set a VECTOR3D position </p>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ex_gui_particles_8c-example.html#a14">ex_gui_particles.c</a>.</dd>
+</dl>
 
 <p class="definition">Definition at line <a class="el" href="n__3d_8h_source.html#l00043">43</a> of file <a class="el" href="n__3d_8h_source.html">n_3d.h</a>.</p>
 
@@ -528,7 +514,7 @@ Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="n__3d_8c_source.html#l00034">34</a> of file <a class="el" href="n__3d_8c_source.html">n_3d.c</a>.</p>
 
-<p class="reference">References <a class="el" href="n__3d_8h_source.html#l00058">PHYSICS::acceleration</a>, <a class="el" href="n__3d_8h_source.html#l00064">PHYSICS::angular_acceleration</a>, <a class="el" href="n__3d_8h_source.html#l00062">PHYSICS::angular_speed</a>, <a class="el" href="n__3d_8h_source.html#l00066">PHYSICS::gravity</a>, <a class="el" href="n__3d_8h_source.html#l00054">PHYSICS::position</a>, and <a class="el" href="n__3d_8h_source.html#l00056">PHYSICS::speed</a>.</p>
+<p class="reference">References <a class="el" href="n__common_8h_source.html#l00262">__n_assert</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="n__3d_8c_source.html#l00098">update_physics_position()</a>, and <a class="el" href="n__3d_8c_source.html#l00073">update_physics_position_reverse()</a>.</p>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -586,7 +572,7 @@ Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="n__3d_8c_source.html#l00073">73</a> of file <a class="el" href="n__3d_8c_source.html">n_3d.c</a>.</p>
 
-<p class="reference">References <a class="el" href="n__3d_8h_source.html#l00058">PHYSICS::acceleration</a>, <a class="el" href="n__3d_8h_source.html#l00062">PHYSICS::angular_speed</a>, <a class="el" href="n__3d_8h_source.html#l00056">PHYSICS::speed</a>, and <a class="el" href="n__3d_8c_source.html#l00034">update_physics_position_nb()</a>.</p>
+<p class="reference">References <a class="el" href="n__3d_8c_source.html#l00034">update_physics_position_nb()</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
@@ -648,7 +634,7 @@ Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="n__3d_8c_source.html#l00055">55</a> of file <a class="el" href="n__3d_8c_source.html">n_3d.c</a>.</p>
 
-<p class="reference">References <a class="el" href="n__3d_8h_source.html#l00058">PHYSICS::acceleration</a>, <a class="el" href="n__3d_8h_source.html#l00064">PHYSICS::angular_acceleration</a>, <a class="el" href="n__3d_8h_source.html#l00062">PHYSICS::angular_speed</a>, <a class="el" href="n__3d_8h_source.html#l00054">PHYSICS::position</a>, and <a class="el" href="n__3d_8h_source.html#l00056">PHYSICS::speed</a>.</p>
+<p class="reference">References <a class="el" href="n__common_8h_source.html#l00262">__n_assert</a>.</p>
 
 </div>
 </div>
@@ -680,9 +666,19 @@ Functions</h2></td></tr>
 
 <p><code>#include &lt;<a class="el" href="n__3d_8h.html">n_3d.h</a>&gt;</code></p>
 
-<p class="definition">Definition at line <a class="el" href="n__3d_8c_source.html#l00233">233</a> of file <a class="el" href="n__3d_8c_source.html">n_3d.c</a>.</p>
+<p>Compute angle beteen two VECTOR3D. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vec1</td><td>first VECTOR3D </td></tr>
+    <tr><td class="paramname">vec2</td><td>second VECTOR3D </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>angle between vectors in rad (todeg = returnval * 180/PI_2) </dd></dl>
 
-<p class="reference">References <a class="el" href="n__3d_8c_source.html#l00217">vector_dot_prod()</a>, and <a class="el" href="n__3d_8c_source.html#l00222">vector_normalize()</a>.</p>
+<p class="definition">Definition at line <a class="el" href="n__3d_8c_source.html#l00254">254</a> of file <a class="el" href="n__3d_8c_source.html">n_3d.c</a>.</p>
+
+<p class="reference">References <a class="el" href="n__3d_8c_source.html#l00224">vector_dot_product()</a>, and <a class="el" href="n__3d_8c_source.html#l00236">vector_normalize()</a>.</p>
 <div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
@@ -690,9 +686,9 @@ Functions</h2></td></tr>
 <div id="dynsection-3-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="group___d_ga523b38d99b808d695819e5d42c91b182_cgraph.png" border="0" usemap="#agroup___d_ga523b38d99b808d695819e5d42c91b182_cgraph" alt=""/></div>
 <map name="agroup___d_ga523b38d99b808d695819e5d42c91b182_cgraph" id="agroup___d_ga523b38d99b808d695819e5d42c91b182_cgraph">
-<area shape="rect" title=" " alt="" coords="5,31,155,57"/>
-<area shape="rect" href="n__3d_8c.html#aeaec0fc38e6e4e8386d2802a160189ff" title=" " alt="" coords="205,5,319,32"/>
-<area shape="rect" href="group___d.html#gab69467787b1b55290585366a20cf82cb" title=" " alt="" coords="203,56,321,83"/>
+<area shape="rect" title="Compute angle beteen two VECTOR3D." alt="" coords="5,31,155,57"/>
+<area shape="rect" href="group___d.html#ga08fa4eb6d167cc941fe6cfd5d21b255d" title="Compute the dot product of two VECTOR3D." alt="" coords="203,5,333,32"/>
+<area shape="rect" href="group___d.html#gab69467787b1b55290585366a20cf82cb" title="Return the normalized value of vec." alt="" coords="209,56,327,83"/>
 </map>
 </div>
 
@@ -725,6 +721,31 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p><code>#include &lt;<a class="el" href="n__3d_8h.html">n_3d.h</a>&gt;</code></p>
+
+<p>Compute the dot product of two VECTOR3D. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vec1</td><td>first VECTOR3D </td></tr>
+    <tr><td class="paramname">vec2</td><td>second VECTOR3D </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>dot product value </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="n__3d_8c_source.html#l00224">224</a> of file <a class="el" href="n__3d_8c_source.html">n_3d.c</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="n__3d_8c_source.html#l00254">vector_angle_between()</a>.</p>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group___d_ga08fa4eb6d167cc941fe6cfd5d21b255d_icgraph.png" border="0" usemap="#agroup___d_ga08fa4eb6d167cc941fe6cfd5d21b255d_icgraph" alt=""/></div>
+<map name="agroup___d_ga08fa4eb6d167cc941fe6cfd5d21b255d_icgraph" id="agroup___d_ga08fa4eb6d167cc941fe6cfd5d21b255d_icgraph">
+<area shape="rect" title="Compute the dot product of two VECTOR3D." alt="" coords="203,5,333,32"/>
+<area shape="rect" href="group___d.html#ga523b38d99b808d695819e5d42c91b182" title="Compute angle beteen two VECTOR3D." alt="" coords="5,5,155,32"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -789,19 +810,6 @@ Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="n__3d_8c_source.html#l00132">132</a> of file <a class="el" href="n__3d_8c_source.html">n_3d.c</a>.</p>
 
-<p class="reference">References <a class="el" href="n__3d_8c_source.html#l00116">same_sign()</a>.</p>
-<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-4-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group___d_gafc35e47713f26cce316cc85dd85354b7_cgraph.png" border="0" usemap="#agroup___d_gafc35e47713f26cce316cc85dd85354b7_cgraph" alt=""/></div>
-<map name="agroup___d_gafc35e47713f26cce316cc85dd85354b7_cgraph" id="agroup___d_gafc35e47713f26cce316cc85dd85354b7_cgraph">
-<area shape="rect" title="Compute if two vectors are intersecting or not." alt="" coords="5,5,119,32"/>
-<area shape="rect" href="n__3d_8c.html#a550d75b899d1053205b846e12d48fa35" title="Quickly check if two walue are the same sign or not." alt="" coords="167,5,252,32"/>
-</map>
-</div>
-
 </div>
 </div>
 <a id="gab69467787b1b55290585366a20cf82cb" name="gab69467787b1b55290585366a20cf82cb"></a>
@@ -822,9 +830,18 @@ Functions</h2></td></tr>
 
 <p><code>#include &lt;<a class="el" href="n__3d_8h.html">n_3d.h</a>&gt;</code></p>
 
-<p class="definition">Definition at line <a class="el" href="n__3d_8c_source.html#l00222">222</a> of file <a class="el" href="n__3d_8c_source.html">n_3d.c</a>.</p>
+<p>Return the normalized value of vec. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vec</td><td>VECTOR3D to normalize </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>normalized value of vec </dd></dl>
 
-<p class="reference">Referenced by <a class="el" href="n__3d_8c_source.html#l00233">vector_angle_between()</a>.</p>
+<p class="definition">Definition at line <a class="el" href="n__3d_8c_source.html#l00236">236</a> of file <a class="el" href="n__3d_8c_source.html">n_3d.c</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="n__3d_8c_source.html#l00254">vector_angle_between()</a>.</p>
 <div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-5-summary" class="dynsummary" style="display:block;">
@@ -832,8 +849,8 @@ Functions</h2></td></tr>
 <div id="dynsection-5-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="group___d_gab69467787b1b55290585366a20cf82cb_icgraph.png" border="0" usemap="#agroup___d_gab69467787b1b55290585366a20cf82cb_icgraph" alt=""/></div>
 <map name="agroup___d_gab69467787b1b55290585366a20cf82cb_icgraph" id="agroup___d_gab69467787b1b55290585366a20cf82cb_icgraph">
-<area shape="rect" title=" " alt="" coords="203,5,321,32"/>
-<area shape="rect" href="group___d.html#ga523b38d99b808d695819e5d42c91b182" title=" " alt="" coords="5,5,155,32"/>
+<area shape="rect" title="Return the normalized value of vec." alt="" coords="203,5,321,32"/>
+<area shape="rect" href="group___d.html#ga523b38d99b808d695819e5d42c91b182" title="Compute angle beteen two VECTOR3D." alt="" coords="5,5,155,32"/>
 </map>
 </div>
 
@@ -844,7 +861,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Wed Feb 2 2022 14:24:10 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+    <li class="footer">Generated on Thu Feb 3 2022 21:53:47 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
   </ul>
 </div>
 </body>

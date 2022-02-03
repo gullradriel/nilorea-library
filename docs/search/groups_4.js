@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['games_3a_203d_20particles_20utilities_0',['GAMES: 3D PARTICLES utilities',['../group___p_a_r_t_i_c_l_e_s.html',1,'']]],
-  ['games_3a_20tiny_20game_20management_20utilities_1',['GAMES: tiny game management utilities',['../group___g_a_m_e_s.html',1,'']]],
-  ['games_3a_20user_20handling_2',['GAMES: User handling',['../group___n___u_s_e_r.html',1,'']]],
-  ['gfx_3a_20graphic_20mode_20utilities_3',['GFX: graphic mode utilities',['../group___g_f_x.html',1,'']]]
+  ['lists_3a_20generic_20type_20list_0',['LISTS: generic type list',['../group___l_i_s_t.html',1,'']]],
+  ['logging_20nodup_3a_20no_20duplicate_20logging_20to_20console_2c_20to_20file_2c_20to_20syslog_20under_20_2ax_1',['LOGGING NODUP: no duplicate logging to console, to file, to syslog under *x',['../group___l_o_g_n_o_d_u_p.html',1,'']]],
+  ['logging_3a_20logging_20to_20console_2c_20to_20file_2c_20to_20syslog_2c_20to_20event_20log_2',['LOGGING: logging to console, to file, to syslog, to event log',['../group___l_o_g.html',1,'']]]
 ];

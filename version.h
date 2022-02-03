@@ -1,11 +1,7 @@
-#ifndef HEADER_32C48226A749067
-#define HEADER_32C48226A749067
-
 #ifndef NILOREA_LIBRARY_VERSION
 #define NILOREA_LIBRARY_VERSION
 #define BUILD_NUMBER  1
 #define MINOR_VERSION
 #define MAJOR_VERSION
-#endif
-#endif // header guard 
+#endif // header guard
 

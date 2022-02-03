@@ -33,13 +33,9 @@ var group___n_e_t_w_o_r_k___m_s_g =
     [ "make_str_from_msg", "group___n_e_t_w_o_r_k___m_s_g.html#ga5145350ad23fa9c0db3057e566d70722", null ],
     [ "netmsg_make_ident", "group___n_e_t_w_o_r_k___m_s_g.html#ga7bae3c3de53204413c7663007ec4a4d7", null ],
     [ "netmsg_make_ping", "group___n_e_t_w_o_r_k___m_s_g.html#gaeb5e94070c0ee79ff2d11a707d225c3a", null ],
-    [ "netmsg_make_position_msg", "group___n_e_t_w_o_r_k___m_s_g.html#ga6d469c5cbc4fdfa266be68a35d10a904", null ],
-    [ "netmsg_make_quit_msg", "group___n_e_t_w_o_r_k___m_s_g.html#gaea4cc09810479665c6c7e689dfaecff7", null ],
-    [ "netmsg_make_string_msg", "group___n_e_t_w_o_r_k___m_s_g.html#gafb91c3ea7bfa93212141fa1fe074fb3d", null ],
     [ "netw_get_ident", "group___n_e_t_w_o_r_k___m_s_g.html#gaf2d84e34e50db7b3b7aca16c6bdb06f8", null ],
     [ "netw_get_ping", "group___n_e_t_w_o_r_k___m_s_g.html#ga525ee81a12f526d55b2b380d9338424e", null ],
     [ "netw_get_position", "group___n_e_t_w_o_r_k___m_s_g.html#ga241bf3b1ebc63dd986dfec1b0fe4998b", null ],
-    [ "netw_get_quit", "group___n_e_t_w_o_r_k___m_s_g.html#ga601ef18cfe3570caaa81cc43c09004c2", null ],
     [ "netw_get_string", "group___n_e_t_w_o_r_k___m_s_g.html#gace220d6339bd8085269ecee2b35126fb", null ],
     [ "netw_msg_get_type", "group___n_e_t_w_o_r_k___m_s_g.html#ga70abef02e9578c21b5707eecb3750fef", null ],
     [ "ntohd", "group___n_e_t_w_o_r_k___m_s_g.html#gaaed102598c4379bd1e0dc78f834972b0", null ]

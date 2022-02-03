@@ -11,9 +11,9 @@
 
 
 /*!\fn ANIM_LIB *create_anim_library( char *name, unsigned int size )
- *\brief Allocate an animation stream
- *\param name Name for the stream or NULL (in which case 'generic_name' will be assigned)
- *\param size Number of frames
+ *\brief Allocate an animation library
+ *\param name Name for the library or NULL (in which case 'generic_name' will be assigned)
+ *\param size Number of animations
  *\return An allocated ANIM_LIB *object or NULL
  */
 ANIM_LIB *create_anim_library( char *name, unsigned int size )
@@ -48,6 +48,24 @@ ANIM_LIB *create_anim_library( char *name, unsigned int size )
 
 
 
+/*!\fn int destroy_anim_lib( ANIM_LIB **lib )
+ *\brief Destroy an animation library
+ *\param lib animation library to destroy
+ *\return TRUE or FALSE
+ */
+int destroy_anim_lib( ANIM_LIB **lib )
+{
+    __n_assert( (*lib) , return FALSE );
+
+    for( uint32_t it = 0 ; it < (*lib) -> nb_max_gfxs ; it ++ )
+    {
+        FreeNoLog( (*lib) -> gfxs[ it ] );
+    }
+    Free( (*lib) );
+    return TRUE ;
+} /* destroy_anim_lib */
+
+
 /*!\fn int delete_bmp_from_lib( ANIM_LIB *lib, unsigned int id )
  *\brief Delete the frame at 'id' from 'lib'
  *\param lib Target animation stream
@@ -66,9 +84,12 @@ int delete_bmp_from_lib( ANIM_LIB *lib, unsigned int id )
 
 
 /*!\fn int add_bmp_to_lib( ANIM_LIB *lib, unsigned int pos, char *file, char *resfile )
- *\brief
- *\param
- *\return
+ *\brief add a bitmap to a ANIM_LIB *lib
+ *\param lib targetted library
+ *\param pos position in the animation library
+ *\param file input bitmap file
+ *\param resfile associated input bitmap text file
+ *\return TRUE or FALSE
  */
 int add_bmp_to_lib( ANIM_LIB *lib, unsigned int pos, char *file, char *resfile )
 {
@@ -125,13 +146,14 @@ int add_bmp_to_lib( ANIM_LIB *lib, unsigned int pos, char *file, char *resfile )
     lib -> gfxs[ pos ] = gfx ;
 
     return TRUE ;
-}
+} /* add_bmp_to_lib( ... ) */
 
 
-/*!\fn int delete_bmp_from_lib( ANIM_LIB *lib, unsigned int id )
- *\brief
- *\param
- *\return
+/*!\fn int update_anim( ANIM_DATA *data, unsigned int delta_t )
+ *\brief compute and update an ANIM_DATA context based on elapsed delta_t time in usecs
+ *\param data targetted ANIM_DATA
+ *\param delta_t elapsed time to apply (usecs)
+ *\return TRUE or FALSE
  */
 int update_anim( ANIM_DATA *data, unsigned int delta_t )
 {
@@ -146,13 +168,15 @@ int update_anim( ANIM_DATA *data, unsigned int delta_t )
             data -> frame = 0 ;
     }
     return TRUE ;
-}
+} /* update_anim( ... ) */
 
 
-/*!\fn int delete_bmp_from_lib( ANIM_LIB *lib, unsigned int id )
- *\brief
- *\param
- *\return
+/*!\fn int draw_anim( ANIM_DATA *data, int x,  int y )
+ *\brief blit an ANIM_DATA at position x,y ( current selected video buffer is used )
+ *\param data ANIM_DATA *source to use
+ *\param x x position on screen
+ *\param y y position on screen
+ *\return TRUE or FALSE
  */
 int draw_anim( ANIM_DATA *data, int x,  int y )
 {
@@ -171,5 +195,4 @@ int draw_anim( ANIM_DATA *data, int x,  int y )
 
     return TRUE ;
 }
-/*int destroy_anim_lib( ANIM_LIB **lib );*/
-
+/* draw_anim( ... ) */

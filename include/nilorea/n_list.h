@@ -1,5 +1,5 @@
 /**\file n_list.h
- *  Pointer list structures and definitions
+ *  List structures and definitions
  *\author Castagnier Mickael
  *\version 1.0
  *\date 24/04/13

@@ -5,8 +5,6 @@
  *\date 16/03/2015
  */
 
-
-
 #include "nilorea/n_common.h"
 #include "nilorea/n_log.h"
 #include "nilorea/n_hash.h"
@@ -19,7 +17,6 @@
 #else
 #include <arpa/inet.h>
 #endif
-
 
 
 
@@ -57,10 +54,18 @@ HASH_NODE *_ht_new_node_trie( HASH_TABLE *table, char key )
     new_hash_node -> is_leaf = 0 ;
     new_hash_node -> key_id = key ;
     return new_hash_node;
-}
+} /* _ht_new_node_trie(...) */
 
 
-
+/*!
+ *\internal
+ *\fn int _ht_put_int_trie( HASH_TABLE *table, char *key, int value )
+ *\brief put an integral value with given key in the targeted hash table [TRIE HASH TABLE)
+ *\param table Targeted hash table
+ *\param key Size Associated value's key
+ *\param value integral value to put
+ *\return TRUE or FALSE
+ */
 int _ht_put_int_trie( HASH_TABLE *table, char *key, int value )
 {
     __n_assert( table, return FALSE );
@@ -99,9 +104,19 @@ int _ht_put_int_trie( HASH_TABLE *table, char *key, int value )
     node -> type = HASH_INT ;
 
     return TRUE;
-}
+} /* _ht_put_int_trie(...) */
 
 
+
+/*!
+ *\internal
+ *\fn int _ht_put_double_trie( HASH_TABLE *table, char *key, double value )
+ *\brief put a double value with given key in the targeted hash table [TRIE HASH TABLE)
+ *\param table Targeted hash table
+ *\param key Size Associated value's key
+ *\param value double value to put
+ *\return TRUE or FALSE
+ */
 int _ht_put_double_trie( HASH_TABLE *table, char *key, double value )
 {
     __n_assert( table, return FALSE );
@@ -139,10 +154,19 @@ int _ht_put_double_trie( HASH_TABLE *table, char *key, double value )
     node -> type = HASH_DOUBLE ;
 
     return TRUE;
-}
+} /* _ht_put_double_trie(...) */
 
 
 
+/*!
+ *\internal
+ *\fn int _ht_put_string_trie( HASH_TABLE *table, char *key, char *string )
+ *\brief put a duplicate of the string value with given key in the targeted hash table [TRIE HASH TABLE)
+ *\param table Targeted hash table
+ *\param key Size Associated value's key
+ *\param value string value to put (copy)
+ *\return TRUE or FALSE
+ */
 int _ht_put_string_trie( HASH_TABLE *table, char *key, char *string )
 {
     __n_assert( table, return FALSE );
@@ -184,8 +208,19 @@ int _ht_put_string_trie( HASH_TABLE *table, char *key, char *string )
     node -> type = HASH_STRING ;
 
     return TRUE;
-}
+} /* _ht_put_string_trie(...) */
 
+
+
+/*!
+ *\internal
+ *\fn int _ht_put_string_ptr_trie( HASH_TABLE *table, char *key, char *string )
+ *\brief put a pointer to the string value with given key in the targeted hash table [TRIE HASH TABLE)
+ *\param table Targeted hash table
+ *\param key Size Associated value's key
+ *\param value string value to put (pointer)
+ *\return TRUE or FALSE
+ */
 int _ht_put_string_ptr_trie( HASH_TABLE *table, char *key, char *string )
 {
     __n_assert( table, return FALSE );
@@ -223,9 +258,20 @@ int _ht_put_string_ptr_trie( HASH_TABLE *table, char *key, char *string )
     node -> type = HASH_STRING ;
 
     return TRUE;
-}
+} /* _ht_put_string_ptr_trie(...) */
 
 
+
+/*!
+ *\internal
+ *\fn int _ht_put_ptr_trie( HASH_TABLE *table, char *key, void *ptr, void (*destructor)(void *ptr ) )
+ *\brief put a pointer to the string value with given key in the targeted hash table [TRIE HASH TABLE)
+ *\param table Targeted hash table
+ *\param key Size Associated value's key
+ *\param ptr pointer value to put
+ *\param destructor the destructor func for ptr or NULL
+ *\return TRUE or FALSE
+ */
 int _ht_put_ptr_trie( HASH_TABLE *table, char *key, void *ptr, void (*destructor)(void *ptr ) )
 {
     __n_assert( table, return FALSE );
@@ -265,10 +311,20 @@ int _ht_put_ptr_trie( HASH_TABLE *table, char *key, void *ptr, void (*destructor
     node -> type = HASH_PTR ;
 
     return TRUE;
-}
+} /* _ht_put_ptr_trie(...) */
 
 
 
+/*!
+ *\internal
+ *\fn int _ht_put_ptr_trie( HASH_TABLE *table, char *key, void *ptr, void (*destructor)(void *ptr ) )
+ *\brief put a pointer to the string value with given key in the targeted hash table [TRIE HASH TABLE)
+ *\param table Targeted hash table
+ *\param key Size Associated value's key
+ *\param ptr pointer value to put
+ *\param destructor the destructor func for ptr or NULL
+ *\return TRUE or FALSE
+ */
 HASH_NODE *_ht_get_node_trie( HASH_TABLE *table, char *key )
 {
     __n_assert( table, return NULL );
@@ -856,23 +912,6 @@ static FORCE_INLINE uint32_t fmix32 ( uint32_t h )
     return h;
 } /* fmix32(...) */
 
-/*!\fn static FORCE_INLINE uint64_t fmix64 ( uint64_t k )
- *\brief Finalization mix - force all bits of a hash block to avalanche, 64bit version (from murmur's author)
- *\param k value
- *\return mixed value
- */
-/*static FORCE_INLINE uint64_t fmix64 ( uint64_t k )
-  {
-  k ^= k >> 33;
-  k *= BIG_CONSTANT(0xff51afd7ed558ccd);
-  k ^= k >> 33;
-  k *= BIG_CONSTANT(0xc4ceb9fe1a85ec53);
-  k ^= k >> 33;
-
-  return k;
-  } */
-/* fmix64(...) */
-
 
 
 /*!\fn void MurmurHash3_x86_32 ( const void * key, int len, uint32_t seed, void * out )
@@ -1332,13 +1371,10 @@ HASH_NODE *_ht_new_ptr_node( HASH_TABLE *table, char *key, void *value, void (*d
 
 
 
-
-
-
-
-
-/*!\fn int _ht_put_int( HASH_TABLE *table , char * key , int value )
- *\brief put an integral value with given key in the targeted hash table
+/*!
+ *\internal
+ *\fn int _ht_put_int( HASH_TABLE *table , char * key , int value )
+ *\brief put an integral value with given key in the targeted hash table [CLASSIC HASH TABLE)
  *\param table Targeted hash table
  *\param key Size Associated value's key
  *\param value integral value to put
@@ -1953,6 +1989,14 @@ int ht_put_double( HASH_TABLE *table, char *key, double value )
     __n_assert( key, return FALSE );
     return table->ht_put_double( table, key, value );
 }
+
+/*!\fn int ht_put_int( HASH_TABLE *table , char * key , int value )
+ *\brief put an integral value with given key in the targeted hash table
+ *\param table Targeted hash table
+ *\param key Size Associated value's key
+ *\param value integral value to put
+ *\return TRUE or FALSE
+ */
 int ht_put_int( HASH_TABLE *table, char * key, int value )
 {
     __n_assert( table, return FALSE );

@@ -83,8 +83,9 @@ $(document).ready(function(){initNavTree('n__debug__locks_8c.html',''); initResi
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
+<a href="#nested-classes">Data Structures</a> &#124;
 <a href="#define-members">Macros</a> &#124;
+<a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">n_debug_locks.c File Reference</div></div>
@@ -107,13 +108,13 @@ $(document).ready(function(){initNavTree('n__debug__locks_8c.html',''); initResi
 <area shape="rect" title="Helpers for debugging thread locks, on an idea of Aurelian Melinte ( see https://linuxgazette...." alt="" coords="595,5,715,32"/>
 <area shape="rect" href="n__debug__mem_8h.html" title="Helpers for debugging memory." alt="" coords="663,80,823,107"/>
 <area shape="rect" href="n__hash_8h.html" title="Hash functions and table." alt="" coords="887,155,962,181"/>
-<area shape="rect" href="n__common_8h.html" title="common headers and low&#45;level hugly functions &amp; define" alt="" coords="535,229,632,256"/>
-<area shape="rect" href="n__log_8h.html" title=" " alt="" coords="86,304,193,331"/>
+<area shape="rect" href="n__common_8h.html" title="Common headers and low&#45;level hugly functions &amp; define." alt="" coords="535,229,632,256"/>
+<area shape="rect" href="n__log_8h.html" title="Generic log system." alt="" coords="86,304,193,331"/>
 <area shape="rect" title=" " alt="" coords="937,379,1001,405"/>
 <area shape="rect" title=" " alt="" coords="5,379,81,405"/>
 <area shape="rect" title=" " alt="" coords="523,379,588,405"/>
 <area shape="rect" title=" " alt="" coords="1021,229,1087,256"/>
-<area shape="rect" href="n__list_8h.html" title="Pointer list structures and definitions." alt="" coords="997,304,1061,331"/>
+<area shape="rect" href="n__list_8h.html" title="List structures and definitions." alt="" coords="997,304,1061,331"/>
 <area shape="rect" title=" " alt="" coords="593,304,683,331"/>
 <area shape="rect" title=" " alt="" coords="708,304,776,331"/>
 <area shape="rect" title=" " alt="" coords="800,304,871,331"/>
@@ -130,7 +131,7 @@ $(document).ready(function(){initNavTree('n__debug__locks_8c.html',''); initResi
 <p><a href="n__debug__locks_8c_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
-Classes</h2></td></tr>
+Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_n___m_u_t_e_x___i_n_f_o.html">N_MUTEX_INFO</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Debuglock mutexes informations.  <a href="struct_n___m_u_t_e_x___i_n_f_o.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -147,6 +148,17 @@ Macros</h2></td></tr>
 <tr class="memitem:abccd66fa3805d336f25685f33811eba1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="n__debug__locks_8c.html#abccd66fa3805d336f25685f33811eba1">N_DEBUGLOCK_INVALID_THREAD</a>&#160;&#160;&#160;((pthread_t)0)</td></tr>
 <tr class="separator:abccd66fa3805d336f25685f33811eba1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:a721836aeb451f7c58e71873f3f96e797"><td class="memItemLeft" align="right" valign="top"><a id="a721836aeb451f7c58e71873f3f96e797" name="a721836aeb451f7c58e71873f3f96e797"></a>
+typedef struct <a class="el" href="struct_n___m_u_t_e_x___i_n_f_o.html">N_MUTEX_INFO</a>&#160;</td><td class="memItemRight" valign="bottom"><b>N_MUTEX_INFO</b></td></tr>
+<tr class="memdesc:a721836aeb451f7c58e71873f3f96e797"><td class="mdescLeft">&#160;</td><td class="mdescRight">Debuglock mutexes informations. <br /></td></tr>
+<tr class="separator:a721836aeb451f7c58e71873f3f96e797"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a139238d9ed95edd5a8c9708450216521"><td class="memItemLeft" align="right" valign="top"><a id="a139238d9ed95edd5a8c9708450216521" name="a139238d9ed95edd5a8c9708450216521"></a>
+typedef struct <a class="el" href="struct_n___p_t_h_r_e_a_d___i_n_f_o.html">N_PTHREAD_INFO</a>&#160;</td><td class="memItemRight" valign="bottom"><b>N_PTHREAD_INFO</b></td></tr>
+<tr class="memdesc:a139238d9ed95edd5a8c9708450216521"><td class="mdescLeft">&#160;</td><td class="mdescRight">Debuglock thread informations. <br /></td></tr>
+<tr class="separator:a139238d9ed95edd5a8c9708450216521"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:afd32bd7dba28efc8c8dc0757738de4f7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="n__debug__locks_8c.html#afd32bd7dba28efc8c8dc0757738de4f7">lp_lock_precheck_diagnose</a> (const pthread_mutex_t *mutex)</td></tr>
@@ -159,9 +171,11 @@ Functions</h2></td></tr>
 <tr class="separator:ae55a9773966aac1415314a8cc9674983"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac578c83fd958eb3ba376b783ddfed9dd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="n__debug__locks_8c.html#ac578c83fd958eb3ba376b783ddfed9dd">n_pthread_mutex_trylock</a> (pthread_mutex_t *mutex)</td></tr>
 <tr class="separator:ac578c83fd958eb3ba376b783ddfed9dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad372ae3dc2a0083004fb2b5bf17e6202"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="n__debug__locks_8c.html#ad372ae3dc2a0083004fb2b5bf17e6202">n_pthread_mutex_unlock</a> (pthread_mutex_t *mutex)</td></tr>
+<tr class="memitem:ad372ae3dc2a0083004fb2b5bf17e6202"><td class="memItemLeft" align="right" valign="top"><a id="ad372ae3dc2a0083004fb2b5bf17e6202" name="ad372ae3dc2a0083004fb2b5bf17e6202"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>n_pthread_mutex_unlock</b> (pthread_mutex_t *mutex)</td></tr>
 <tr class="separator:ad372ae3dc2a0083004fb2b5bf17e6202"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a309fb3f63941017043072f87b38510d2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="n__debug__locks_8c.html#a309fb3f63941017043072f87b38510d2">n_pthread_rwlock_rdlock</a> (pthread_rwlock_t *rwlock)</td></tr>
+<tr class="memitem:a309fb3f63941017043072f87b38510d2"><td class="memItemLeft" align="right" valign="top"><a id="a309fb3f63941017043072f87b38510d2" name="a309fb3f63941017043072f87b38510d2"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>n_pthread_rwlock_rdlock</b> (pthread_rwlock_t *rwlock)</td></tr>
 <tr class="separator:a309fb3f63941017043072f87b38510d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad1913fa0dd2aef410417a51bf5e23f06"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="n__debug__locks_8c.html#ad1913fa0dd2aef410417a51bf5e23f06">n_pthread_rwlock_tryrdlock</a> (pthread_rwlock_t *rwlock)</td></tr>
 <tr class="separator:ad1913fa0dd2aef410417a51bf5e23f06"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -178,20 +192,15 @@ Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a93172ecfbe6fc90c2f5a29757b34ffe6"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="n__debug__locks_8c.html#a93172ecfbe6fc90c2f5a29757b34ffe6">DEBUG_LOCKS</a> = 0</td></tr>
-<tr class="separator:a93172ecfbe6fc90c2f5a29757b34ffe6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1102dcb567acaedaaa043bccaaa19a8b"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="n__debug__locks_8c.html#a1102dcb567acaedaaa043bccaaa19a8b">DEBUG_LOCKS_INITIALIZED</a> = 0</td></tr>
-<tr class="separator:a1102dcb567acaedaaa043bccaaa19a8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a872020eada5e48d36024dbce13808e10"><td class="memItemLeft" align="right" valign="top">pthread_mutex_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="n__debug__locks_8c.html#a872020eada5e48d36024dbce13808e10">debuglock_lock</a></td></tr>
 <tr class="separator:a872020eada5e48d36024dbce13808e10"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab039487e5e9ba36bf4f70da58b35d765"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_l_i_s_t.html">LIST</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="n__debug__locks_8c.html#ab039487e5e9ba36bf4f70da58b35d765">n_mutex_list</a> = NULL</td></tr>
-<tr class="separator:ab039487e5e9ba36bf4f70da58b35d765"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a77e43c52444bb3da3555e29a8fa8a043"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_l_i_s_t.html">LIST</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="n__debug__locks_8c.html#a77e43c52444bb3da3555e29a8fa8a043">n_thread_list</a> = NULL</td></tr>
-<tr class="separator:a77e43c52444bb3da3555e29a8fa8a043"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46961a01862d3f35e43613692b9aa5fe"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_l_i_s_t.html">LIST</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="n__debug__locks_8c.html#a46961a01862d3f35e43613692b9aa5fe">n_mutex_list</a> = NULL</td></tr>
+<tr class="separator:a46961a01862d3f35e43613692b9aa5fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe610bf6e75be566728c09fe3daa705b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_l_i_s_t.html">LIST</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="n__debug__locks_8c.html#afe610bf6e75be566728c09fe3daa705b">n_thread_list</a> = NULL</td></tr>
+<tr class="separator:afe610bf6e75be566728c09fe3daa705b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >Helpers for debugging thread locks, on an idea of Aurelian Melinte ( see <a href="https://linuxgazette.net/150/melinte.html">https://linuxgazette.net/150/melinte.html</a> ) </p>
-<dl class="section author"><dt>Author</dt><dd>Castagnier Mickael </dd></dl>
+<div class="textblock"><dl class="section author"><dt>Author</dt><dd>Castagnier Mickael </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2014-10-10 </dd></dl>
 
 <p class="definition">Definition in file <a class="el" href="n__debug__locks_8c_source.html">n_debug_locks.c</a>.</p>
@@ -355,44 +364,6 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="ad372ae3dc2a0083004fb2b5bf17e6202" name="ad372ae3dc2a0083004fb2b5bf17e6202"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad372ae3dc2a0083004fb2b5bf17e6202">&#9670;&nbsp;</a></span>n_pthread_mutex_unlock()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int n_pthread_mutex_unlock </td>
-          <td>(</td>
-          <td class="paramtype">pthread_mutex_t *&#160;</td>
-          <td class="paramname"><em>mutex</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a309fb3f63941017043072f87b38510d2" name="a309fb3f63941017043072f87b38510d2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a309fb3f63941017043072f87b38510d2">&#9670;&nbsp;</a></span>n_pthread_rwlock_rdlock()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int n_pthread_rwlock_rdlock </td>
-          <td>(</td>
-          <td class="paramtype">pthread_rwlock_t *&#160;</td>
-          <td class="paramname"><em>rwlock</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">{</div>
-<div class="line">    pthread_mutex_unlock( mutex )</div>
-</div><!-- fragment -->
-</div>
-</div>
 <a id="ad1913fa0dd2aef410417a51bf5e23f06" name="ad1913fa0dd2aef410417a51bf5e23f06"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad1913fa0dd2aef410417a51bf5e23f06">&#9670;&nbsp;</a></span>n_pthread_rwlock_tryrdlock()</h2>
 
@@ -408,9 +379,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">{</div>
-<div class="line">    pthread_rwlock_rdlock( rwlock )</div>
-</div><!-- fragment -->
+
 <p class="definition">Definition at line <a class="el" href="n__debug__locks_8c_source.html#l00080">80</a> of file <a class="el" href="n__debug__locks_8c_source.html">n_debug_locks.c</a>.</p>
 
 </div>
@@ -516,56 +485,6 @@ Variables</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
-<a id="a93172ecfbe6fc90c2f5a29757b34ffe6" name="a93172ecfbe6fc90c2f5a29757b34ffe6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a93172ecfbe6fc90c2f5a29757b34ffe6">&#9670;&nbsp;</a></span>DEBUG_LOCKS</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static int DEBUG_LOCKS = 0</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p >:flag for enabling or disabling debugging on locks </p>
-
-<p class="definition">Definition at line <a class="el" href="n__debug__locks_8c_source.html#l00017">17</a> of file <a class="el" href="n__debug__locks_8c_source.html">n_debug_locks.c</a>.</p>
-
-</div>
-</div>
-<a id="a1102dcb567acaedaaa043bccaaa19a8b" name="a1102dcb567acaedaaa043bccaaa19a8b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1102dcb567acaedaaa043bccaaa19a8b">&#9670;&nbsp;</a></span>DEBUG_LOCKS_INITIALIZED</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static int DEBUG_LOCKS_INITIALIZED = 0</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p >:flag for to check initialisation status </p>
-
-<p class="definition">Definition at line <a class="el" href="n__debug__locks_8c_source.html#l00019">19</a> of file <a class="el" href="n__debug__locks_8c_source.html">n_debug_locks.c</a>.</p>
-
-</div>
-</div>
 <a id="a872020eada5e48d36024dbce13808e10" name="a872020eada5e48d36024dbce13808e10"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a872020eada5e48d36024dbce13808e10">&#9670;&nbsp;</a></span>debuglock_lock</h2>
 
@@ -577,20 +496,19 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >: mutex to lock debuglock infos </p>
 
 <p class="definition">Definition at line <a class="el" href="n__debug__locks_8c_source.html#l00021">21</a> of file <a class="el" href="n__debug__locks_8c_source.html">n_debug_locks.c</a>.</p>
 
 </div>
 </div>
-<a id="ab039487e5e9ba36bf4f70da58b35d765" name="ab039487e5e9ba36bf4f70da58b35d765"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab039487e5e9ba36bf4f70da58b35d765">&#9670;&nbsp;</a></span>n_mutex_list</h2>
+<a id="a46961a01862d3f35e43613692b9aa5fe" name="a46961a01862d3f35e43613692b9aa5fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a46961a01862d3f35e43613692b9aa5fe">&#9670;&nbsp;</a></span>n_mutex_list</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="struct_l_i_s_t.html">LIST</a> * n_mutex_list = NULL</td>
+          <td class="memname"><a class="el" href="struct_l_i_s_t.html">LIST</a>* n_mutex_list = NULL</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -599,14 +517,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a77e43c52444bb3da3555e29a8fa8a043" name="a77e43c52444bb3da3555e29a8fa8a043"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a77e43c52444bb3da3555e29a8fa8a043">&#9670;&nbsp;</a></span>n_thread_list</h2>
+<a id="afe610bf6e75be566728c09fe3daa705b" name="afe610bf6e75be566728c09fe3daa705b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe610bf6e75be566728c09fe3daa705b">&#9670;&nbsp;</a></span>n_thread_list</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="struct_l_i_s_t.html">LIST</a> * n_thread_list = NULL</td>
+          <td class="memname"><a class="el" href="struct_l_i_s_t.html">LIST</a>* n_thread_list = NULL</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -621,7 +539,7 @@ Variables</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="n__debug__locks_8c.html">n_debug_locks.c</a></li>
-    <li class="footer">Generated on Wed Feb 2 2022 14:24:10 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+    <li class="footer">Generated on Thu Feb 3 2022 15:37:40 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
   </ul>
 </div>
 </body>

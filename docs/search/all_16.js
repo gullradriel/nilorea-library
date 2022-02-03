@@ -1,15 +1,21 @@
 var searchData=
 [
-  ['vasprintf_0',['vasprintf',['../n__log_8c.html#a5ec7fd90ebe6015636bce974c192c86a',1,'n_log.c']]],
-  ['vector3d_1',['VECTOR3D',['../group___d.html#ga4cbdd7084ea2076595f397a969feba63',1,'n_3d.h']]],
-  ['vector3d_5fcollinear_2',['VECTOR3D_COLLINEAR',['../group___d.html#ga1553548da310962d8aac7f06896d015a',1,'n_3d.h']]],
-  ['vector3d_5fdo_5fintersect_3',['VECTOR3D_DO_INTERSECT',['../group___d.html#ga4aa4f8e93ec25da82dbef99b4dcca990',1,'n_3d.h']]],
-  ['vector3d_5fdont_5fintersect_4',['VECTOR3D_DONT_INTERSECT',['../group___d.html#ga6f567ec1eef50b1902b47b3d67b0cece',1,'n_3d.h']]],
-  ['vector3d_5fset_5',['VECTOR3D_SET',['../group___d.html#ga0d342c376c3e3125c8fb97bcbe7f93c0',1,'n_3d.h']]],
-  ['vector_5fangle_5fbetween_6',['vector_angle_between',['../group___d.html#ga523b38d99b808d695819e5d42c91b182',1,'vector_angle_between(VECTOR3D *vec1, VECTOR3D *vec2):&#160;n_3d.c'],['../group___d.html#ga523b38d99b808d695819e5d42c91b182',1,'vector_angle_between(VECTOR3D *vec1, VECTOR3D *vec2):&#160;n_3d.c']]],
-  ['vector_5fdot_5fprod_7',['vector_dot_prod',['../n__3d_8c.html#aeaec0fc38e6e4e8386d2802a160189ff',1,'n_3d.c']]],
-  ['vector_5fdot_5fproduct_8',['vector_dot_product',['../group___d.html#ga08fa4eb6d167cc941fe6cfd5d21b255d',1,'n_3d.h']]],
-  ['vector_5fintersect_9',['vector_intersect',['../group___d.html#gafc35e47713f26cce316cc85dd85354b7',1,'vector_intersect(VECTOR3D *p1, VECTOR3D *p2, VECTOR3D *p3, VECTOR3D *p4, VECTOR3D *px):&#160;n_3d.c'],['../group___d.html#gafc35e47713f26cce316cc85dd85354b7',1,'vector_intersect(VECTOR3D *p0, VECTOR3D *p1, VECTOR3D *p2, VECTOR3D *p3, VECTOR3D *px):&#160;n_3d.c']]],
-  ['vector_5fnormalize_10',['vector_normalize',['../group___d.html#gab69467787b1b55290585366a20cf82cb',1,'vector_normalize(VECTOR3D *vec):&#160;n_3d.c'],['../group___d.html#gab69467787b1b55290585366a20cf82cb',1,'vector_normalize(VECTOR3D *vec):&#160;n_3d.c']]],
-  ['vigenere_5fkey_11',['vigenere_key',['../struct_n_e_t_w_o_r_k.html#ac016926c4c578d16b97071be74aac8bf',1,'NETWORK']]]
+  ['w_0',['w',['../struct_a_n_i_m___g_f_x.html#a2af34142394cac7ad42b58495ed7c4fe',1,'ANIM_GFX']]],
+  ['w_5fname_1',['w_name',['../struct_l_o_g___l_e_v_e_l_s.html#abe396fe7169ae2341fdbfee87ecf389d',1,'LOG_LEVELS']]],
+  ['wait_5ffor_5fslowing_5fdown_5fcpu_2',['wait_for_slowing_down_cpu',['../struct_g_a_m_e___e_n_v.html#aa8b57b5162ab0145a1a369436caa5f02',1,'GAME_ENV']]],
+  ['wait_5ffor_5fthreaded_5fpool_3',['wait_for_threaded_pool',['../group___t_h_r_e_a_d_s.html#ga992fc2a67a2d66733ccd10f7d9e2ead3',1,'wait_for_threaded_pool(THREAD_POOL *thread_pool, int delay):&#160;n_thread_pool.c'],['../group___t_h_r_e_a_d_s.html#ga992fc2a67a2d66733ccd10f7d9e2ead3',1,'wait_for_threaded_pool(THREAD_POOL *thread_pool, int delay):&#160;n_thread_pool.c']]],
+  ['waiting_5flist_4',['waiting_list',['../struct_t_h_r_e_a_d___p_o_o_l.html#a86b5f24f3379eb4659ac2e6e06e8835d',1,'THREAD_POOL']]],
+  ['waiting_5fproc_5',['WAITING_PROC',['../group___t_h_r_e_a_d_s.html#gad1478c0e8f6772bb9673116dd0902e56',1,'n_thread_pool.h']]],
+  ['walk_6',['WALK',['../group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga4083fcbe80d42575b0336ddbf4ebc622',1,'n_iso_engine.h']]],
+  ['wildmat_7',['wildmat',['../group___n___s_t_r.html#gabcfef0711183d5a9eb5ccb9c72ccaf85',1,'wildmat(register const char *text, register const char *p):&#160;n_str.c'],['../group___n___s_t_r.html#gabcfef0711183d5a9eb5ccb9c72ccaf85',1,'wildmat(register const char *text, register const char *p):&#160;n_str.c']]],
+  ['wildmat_5fabort_8',['WILDMAT_ABORT',['../group___n___s_t_r.html#ga79fa44855e34ba816359656e8bfd841f',1,'n_str.h']]],
+  ['wildmat_5fnegate_5fclass_9',['WILDMAT_NEGATE_CLASS',['../group___n___s_t_r.html#ga868c667912754efcf68370278b0aaee1',1,'n_str.h']]],
+  ['wildmatcase_10',['wildmatcase',['../group___n___s_t_r.html#ga83b7c5c99476048f972ead97468ab7c2',1,'wildmatcase(register const char *text, register const char *p):&#160;n_str.c'],['../group___n___s_t_r.html#ga83b7c5c99476048f972ead97468ab7c2',1,'wildmatcase(register const char *text, register const char *p):&#160;n_str.c']]],
+  ['wirecolor_11',['wirecolor',['../struct_m_a_p.html#a797d9aeaa70901ea56b5053cd298eec0',1,'MAP']]],
+  ['write_5fand_5ffit_12',['write_and_fit',['../group___n___s_t_r.html#gaf871f697487843d865b54ecd8cfd44a3',1,'write_and_fit(char **dest, NSTRBYTE *size, NSTRBYTE *written, char *src):&#160;n_str.c'],['../group___n___s_t_r.html#gaf871f697487843d865b54ecd8cfd44a3',1,'write_and_fit(char **dest, NSTRBYTE *size, NSTRBYTE *written, char *src):&#160;n_str.c']]],
+  ['write_5fand_5ffit_5fex_13',['write_and_fit_ex',['../group___n___s_t_r.html#ga6ed24cee257fc28cf2febc8f607cbfb0',1,'write_and_fit_ex(char **dest, NSTRBYTE *size, NSTRBYTE *written, char *src, NSTRBYTE src_size, NSTRBYTE additional_padding):&#160;n_str.c'],['../group___n___s_t_r.html#ga6ed24cee257fc28cf2febc8f607cbfb0',1,'write_and_fit_ex(char **dest, NSTRBYTE *size, NSTRBYTE *written, char *src, NSTRBYTE src_size, NSTRBYTE additional_padding):&#160;n_str.c']]],
+  ['write_5fconfig_5ffile_14',['write_config_file',['../group___c_o_n_f_i_g_f_i_l_e.html#ga1b22438cb7d7a274b748d49e555f7f50',1,'write_config_file(CONFIG_FILE *cfg_file, char *filename):&#160;n_config_file.c'],['../group___c_o_n_f_i_g_f_i_l_e.html#ga1b22438cb7d7a274b748d49e555f7f50',1,'write_config_file(CONFIG_FILE *cfg_file, char *filename):&#160;n_config_file.c']]],
+  ['write_5flock_15',['write_lock',['../group___c_o_m_m_o_n_s.html#gabf9cebcdf845c2c9b879a608be4c9dce',1,'n_common.h']]],
+  ['write_5fsafe_5flog_16',['write_safe_log',['../group___l_o_g.html#ga4351d7c5fb7f3464480aebb763b70d69',1,'write_safe_log(TS_LOG *log, char *pat,...):&#160;n_log.c'],['../group___l_o_g.html#ga4351d7c5fb7f3464480aebb763b70d69',1,'write_safe_log(TS_LOG *log, char *pat,...):&#160;n_log.c']]],
+  ['written_17',['written',['../struct_n___s_t_r.html#aacd53350ba5ffcb9284e23069f74da3d',1,'N_STR']]]
 ];

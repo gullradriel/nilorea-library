@@ -98,9 +98,9 @@ $(document).ready(function(){initNavTree('n__pcre_8c.html',''); initResizable();
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="n__pcre_8c__incl.png" border="0" usemap="#an__pcre_8c" alt=""/></div>
 <map name="an__pcre_8c" id="an__pcre_8c">
-<area shape="rect" title=" " alt="" coords="260,5,332,32"/>
-<area shape="rect" href="n__pcre_8h.html" title="N_STR and string function declaration." alt="" coords="5,80,120,107"/>
-<area shape="rect" href="n__log_8h.html" title=" " alt="" coords="381,80,488,107"/>
+<area shape="rect" title="PCRE helpers for regex matching." alt="" coords="260,5,332,32"/>
+<area shape="rect" href="n__pcre_8h.html" title="PCRE helpers for regex matching." alt="" coords="5,80,120,107"/>
+<area shape="rect" href="n__log_8h.html" title="Generic log system." alt="" coords="381,80,488,107"/>
 <area shape="rect" title=" " alt="" coords="487,304,553,331"/>
 <area shape="rect" title=" " alt="" coords="512,80,584,107"/>
 <area shape="rect" title=" " alt="" coords="33,155,92,181"/>
@@ -108,7 +108,7 @@ $(document).ready(function(){initNavTree('n__pcre_8c.html',''); initResizable();
 <area shape="rect" title=" " alt="" coords="909,229,973,256"/>
 <area shape="rect" title=" " alt="" coords="195,155,275,181"/>
 <area shape="rect" title=" " alt="" coords="299,155,375,181"/>
-<area shape="rect" href="n__common_8h.html" title="common headers and low&#45;level hugly functions &amp; define" alt="" coords="579,155,677,181"/>
+<area shape="rect" href="n__common_8h.html" title="Common headers and low&#45;level hugly functions &amp; define." alt="" coords="579,155,677,181"/>
 <area shape="rect" title=" " alt="" coords="400,155,469,181"/>
 <area shape="rect" title=" " alt="" coords="648,229,739,256"/>
 <area shape="rect" title=" " alt="" coords="233,229,301,256"/>
@@ -125,25 +125,27 @@ $(document).ready(function(){initNavTree('n__pcre_8c.html',''); initResizable();
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ga89e67d2b218e2138a12aaecc2deab8fc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___p_c_r_e.html#ga89e67d2b218e2138a12aaecc2deab8fc">npcre_clean_match</a> (<a class="el" href="struct_n___p_c_r_e.html">N_PCRE</a> *pcre)</td></tr>
-<tr class="memdesc:ga89e67d2b218e2138a12aaecc2deab8fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">clean the match list of the last capture, if any  <a href="group___p_c_r_e.html#ga89e67d2b218e2138a12aaecc2deab8fc">More...</a><br /></td></tr>
 <tr class="separator:ga89e67d2b218e2138a12aaecc2deab8fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf198eb0bc8c55ac41cc92af8e538ce04"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___p_c_r_e.html#gaf198eb0bc8c55ac41cc92af8e538ce04">npcre_delete</a> (<a class="el" href="struct_n___p_c_r_e.html">N_PCRE</a> **pcre)</td></tr>
-<tr class="memdesc:gaf198eb0bc8c55ac41cc92af8e538ce04"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free a <a class="el" href="struct_n___p_c_r_e.html" title="N_PCRE structure.">N_PCRE</a> pointer.  <a href="group___p_c_r_e.html#gaf198eb0bc8c55ac41cc92af8e538ce04">More...</a><br /></td></tr>
 <tr class="separator:gaf198eb0bc8c55ac41cc92af8e538ce04"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga605b60ef645cf217bd2b3dc548d1d6c2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___p_c_r_e.html#ga605b60ef645cf217bd2b3dc548d1d6c2">npcre_match</a> (char *str, <a class="el" href="struct_n___p_c_r_e.html">N_PCRE</a> *pcre)</td></tr>
-<tr class="memdesc:ga605b60ef645cf217bd2b3dc548d1d6c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return TRUE if str matches regexp, and make captures up to max_cap.  <a href="group___p_c_r_e.html#ga605b60ef645cf217bd2b3dc548d1d6c2">More...</a><br /></td></tr>
 <tr class="separator:ga605b60ef645cf217bd2b3dc548d1d6c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga54f913d2ee09d63de0f06fc1b9439d4a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_n___p_c_r_e.html">N_PCRE</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___p_c_r_e.html#ga54f913d2ee09d63de0f06fc1b9439d4a">npcre_new</a> (char *str, int max_cap, int flags)</td></tr>
-<tr class="memdesc:ga54f913d2ee09d63de0f06fc1b9439d4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">create a compiled regex From pcre doc, the flag bits are: PCRE_ANCHORED Force pattern anchoring PCRE_AUTO_CALLOUT Compile automatic callouts PCRE_BSR_ANYCRLF \R matches only CR, LF, or CRLF PCRE_BSR_UNICODE \R matches all Unicode line endings PCRE_CASELESS Do caseless matching PCRE_DOLLAR_ENDONLY $ not to match newline at end PCRE_DOTALL .  <a href="group___p_c_r_e.html#ga54f913d2ee09d63de0f06fc1b9439d4a">More...</a><br /></td></tr>
 <tr class="separator:ga54f913d2ee09d63de0f06fc1b9439d4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><dl class="section author"><dt>Author</dt><dd>Castagnier Mickael </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>2.0 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>04/12/2019 </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="n__pcre_8c_source.html">n_pcre.c</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="n__pcre_8c.html">n_pcre.c</a></li>
-    <li class="footer">Generated on Wed Feb 2 2022 14:24:10 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+    <li class="footer">Generated on Thu Feb 3 2022 21:53:47 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
   </ul>
 </div>
 </body>

@@ -13,8 +13,8 @@
 extern "C"
 {
 #endif
-/**\defgroup GAMES GAMES: tiny game management utilities
-   \addtogroup GAMES
+/**\defgroup GAME_ENV GAMEDEV: game environment management utilities
+   \addtogroup GAME_ENV
   @{
 */
 

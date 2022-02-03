@@ -1,16 +1,9 @@
 /**\file n_particles.h
-*
-*  particle header file for SPEEDHACK 2014
-*
-*\author Castagnier Mickael aka Gull Ra Driel
-*
-*\version 1.0
-*
-*\date 20/12/2012
-*
+ * Particles management
+ *\author Castagnier Mickael aka Gull Ra Driel
+ *\version 1.0
+ *\date 20/12/2012
 */
-
-
 
 #ifndef __N_PARTICLE_HEADER
 #define __N_PARTICLE_HEADER
@@ -19,7 +12,7 @@
 extern "C" {
 #endif
 
-/**\defgroup PARTICLES GAMES: 3D PARTICLES utilities
+/**\defgroup PARTICLES GAMEDEV: 3D particles utilities
    \addtogroup PARTICLES
   @{
 */

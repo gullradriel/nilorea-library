@@ -46,60 +46,6 @@
 		<Unit filename="Doxyfile" />
 		<Unit filename="Makefile" />
 		<Unit filename="README.md" />
-		<Unit filename="examples/client.cfg" />
-		<Unit filename="examples/ex_common.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="examples/ex_configfile.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="examples/ex_configfile.cfg" />
-		<Unit filename="examples/ex_debug_mem.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="examples/ex_exceptions.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="examples/ex_gui.cfg" />
-		<Unit filename="examples/ex_gui_netclient.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="examples/ex_gui_netserver.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="examples/ex_gui_particles.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="examples/ex_hash.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="examples/ex_list.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="examples/ex_log.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="examples/ex_monolith.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="examples/ex_network.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="examples/ex_network.h" />
-		<Unit filename="examples/ex_nstr.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="examples/ex_pcre.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="examples/ex_signals.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="examples/ex_threads.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="examples/serveur.cfg" />
-		<Unit filename="examples/valgrind-suppressions.cfg" />
 		<Unit filename="include/nilorea.h" />
 		<Unit filename="include/nilorea/n_3d.h" />
 		<Unit filename="include/nilorea/n_allegro5.h" />
@@ -107,11 +53,9 @@
 		<Unit filename="include/nilorea/n_common.h" />
 		<Unit filename="include/nilorea/n_config_file.h" />
 		<Unit filename="include/nilorea/n_debug_mem.h" />
-		<Unit filename="include/nilorea/n_debug_mem_h.h" />
 		<Unit filename="include/nilorea/n_enum.h" />
 		<Unit filename="include/nilorea/n_exceptions.h" />
 		<Unit filename="include/nilorea/n_games.h" />
-		<Unit filename="include/nilorea/n_gfx.h" />
 		<Unit filename="include/nilorea/n_hash.h" />
 		<Unit filename="include/nilorea/n_iso_engine.h" />
 		<Unit filename="include/nilorea/n_list.h" />
@@ -145,19 +89,10 @@
 		<Unit filename="src/n_config_file.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="src/n_debug_locks.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="src/n_debug_mem.c">
-			<Option compilerVar="CC" />
-		</Unit>
 		<Unit filename="src/n_exceptions.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/n_games.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="src/n_gfx.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/n_hash.c">

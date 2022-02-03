@@ -99,22 +99,16 @@ Macros</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ga650828539395216dd2f4f28da5131c42"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___l_o_g_n_o_d_u_p.html#ga650828539395216dd2f4f28da5131c42">_n_nodup_log</a> (int LEVEL, const char *file, const char *func, int line, const char *format,...)</td></tr>
-<tr class="memdesc:ga650828539395216dd2f4f28da5131c42"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logging function.  <a href="group___l_o_g_n_o_d_u_p.html#ga650828539395216dd2f4f28da5131c42">More...</a><br /></td></tr>
 <tr class="separator:ga650828539395216dd2f4f28da5131c42"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gacbf9e2a1400ab6f00a30186d9a5c4683"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___l_o_g_n_o_d_u_p.html#gacbf9e2a1400ab6f00a30186d9a5c4683">_n_nodup_log_indexed</a> (int LEVEL, const char *prefix, const char *file, const char *func, int line, const char *format,...)</td></tr>
-<tr class="memdesc:gacbf9e2a1400ab6f00a30186d9a5c4683"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logging function.  <a href="group___l_o_g_n_o_d_u_p.html#gacbf9e2a1400ab6f00a30186d9a5c4683">More...</a><br /></td></tr>
 <tr class="separator:gacbf9e2a1400ab6f00a30186d9a5c4683"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga46eca069bfff2be6809828df52d1031d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___l_o_g_n_o_d_u_p.html#ga46eca069bfff2be6809828df52d1031d">close_nodup_log</a> ()</td></tr>
-<tr class="memdesc:ga46eca069bfff2be6809828df52d1031d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Empty nodup logtable and close the no duplicate logging session.  <a href="group___l_o_g_n_o_d_u_p.html#ga46eca069bfff2be6809828df52d1031d">More...</a><br /></td></tr>
 <tr class="separator:ga46eca069bfff2be6809828df52d1031d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga38552b9724c76daede8b3c30833e9d09"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___l_o_g_n_o_d_u_p.html#ga38552b9724c76daede8b3c30833e9d09">dump_nodup_log</a> (char *file)</td></tr>
-<tr class="memdesc:ga38552b9724c76daede8b3c30833e9d09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dump the duplicate error log hash table in a file.  <a href="group___l_o_g_n_o_d_u_p.html#ga38552b9724c76daede8b3c30833e9d09">More...</a><br /></td></tr>
 <tr class="separator:ga38552b9724c76daede8b3c30833e9d09"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga823d1d2f22f2279e24d4c5bd927ff322"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___l_o_g_n_o_d_u_p.html#ga823d1d2f22f2279e24d4c5bd927ff322">empty_nodup_table</a> ()</td></tr>
-<tr class="memdesc:ga823d1d2f22f2279e24d4c5bd927ff322"><td class="mdescLeft">&#160;</td><td class="mdescRight">Empty the nodup internal table.  <a href="group___l_o_g_n_o_d_u_p.html#ga823d1d2f22f2279e24d4c5bd927ff322">More...</a><br /></td></tr>
 <tr class="separator:ga823d1d2f22f2279e24d4c5bd927ff322"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf9c9b8e129263da15345f428cd73f19e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___l_o_g_n_o_d_u_p.html#gaf9c9b8e129263da15345f428cd73f19e">init_nodup_log</a> (int max)</td></tr>
-<tr class="memdesc:gaf9c9b8e129263da15345f428cd73f19e"><td class="mdescLeft">&#160;</td><td class="mdescRight">initialize the no duplicate logging system  <a href="group___l_o_g_n_o_d_u_p.html#gaf9c9b8e129263da15345f428cd73f19e">More...</a><br /></td></tr>
 <tr class="separator:gaf9c9b8e129263da15345f428cd73f19e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -151,7 +145,11 @@ Functions</h2></td></tr>
 <div class="line">      _n_nodup_log( __LEVEL__ , __FILE__ , __func__ , __LINE__ , __VA_ARGS__ ); \</div>
 <div class="line">   }<span class="keywordflow">while</span>( 0 )</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="n__nodup__log_8h_source.html#l00032">32</a> of file <a class="el" href="n__nodup__log_8h_source.html">n_nodup_log.h</a>.</p>
+<p>nodup log macro helper </p>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ex_log_8c-example.html#a13">ex_log.c</a>.</dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="n__nodup__log_8h_source.html#l00034">34</a> of file <a class="el" href="n__nodup__log_8h_source.html">n_nodup_log.h</a>.</p>
 
 </div>
 </div>
@@ -193,7 +191,11 @@ Functions</h2></td></tr>
 <div class="line">      _n_nodup_log_indexed( __LEVEL__ , __PREF__ , __FILE__ , __func__ , __LINE__ , __VA_ARGS__ ); \</div>
 <div class="line">   }<span class="keywordflow">while</span>( 0 )</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="n__nodup__log_8h_source.html#l00039">39</a> of file <a class="el" href="n__nodup__log_8h_source.html">n_nodup_log.h</a>.</p>
+<p>nodup log indexed macro helper </p>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ex_log_8c-example.html#a14">ex_log.c</a>.</dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="n__nodup__log_8h_source.html#l00041">41</a> of file <a class="el" href="n__nodup__log_8h_source.html">n_nodup_log.h</a>.</p>
 
 </div>
 </div>
@@ -263,24 +265,6 @@ Functions</h2></td></tr>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="n__nodup__log_8c_source.html#l00214">214</a> of file <a class="el" href="n__nodup__log_8c_source.html">n_nodup_log.c</a>.</p>
-
-<p class="reference">References <a class="el" href="n__log_8c_source.html#l00216">_n_log()</a>, <a class="el" href="n__nodup__log_8c_source.html#l00023">_n_nodup_table</a>, <a class="el" href="n__nodup__log_8c_source.html#l00131">check_n_log_dup()</a>, <a class="el" href="n__hash_8h_source.html#l00095">HASH_NODE::data</a>, <a class="el" href="n__nodup__log_8c_source.html#l00087">get_nodup_key()</a>, <a class="el" href="n__hash_8c_source.html#l01919">ht_get_node()</a>, <a class="el" href="n__hash_8c_source.html#l01968">ht_put_string()</a>, and <a class="el" href="n__hash_8h_source.html#l00077">HASH_VALUE::string</a>.</p>
-<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group___l_o_g_n_o_d_u_p_ga650828539395216dd2f4f28da5131c42_cgraph.png" border="0" usemap="#agroup___l_o_g_n_o_d_u_p_ga650828539395216dd2f4f28da5131c42_cgraph" alt=""/></div>
-<map name="agroup___l_o_g_n_o_d_u_p_ga650828539395216dd2f4f28da5131c42_cgraph" id="agroup___l_o_g_n_o_d_u_p_ga650828539395216dd2f4f28da5131c42_cgraph">
-<area shape="rect" title="Logging function." alt="" coords="5,107,108,133"/>
-<area shape="rect" href="group___l_o_g.html#gafbbbfcb9063b9f1454a499dbf98f7a56" title="Logging function." alt="" coords="187,5,247,32"/>
-<area shape="rect" href="n__nodup__log_8c.html#a06be6d2200f1e76bb42c37388700f6c2" title="check if a log was already done or not at the given line, func, file" alt="" coords="156,107,279,133"/>
-<area shape="rect" href="n__nodup__log_8c.html#ab9affc4470727ff591aa5bd79e192ed5" title="internal, get a key for a log entry" alt="" coords="327,68,437,95"/>
-<area shape="rect" href="group___h_a_s_h___t_a_b_l_e.html#gac2a504c78f251c3dfb1e8b0623e2fdb1" title=" " alt="" coords="335,144,429,171"/>
-<area shape="rect" href="group___h_a_s_h___t_a_b_l_e.html#gaa7dae105905e1751943ec3a4e4226480" title=" " alt="" coords="169,208,266,235"/>
-<area shape="rect" href="group___l_o_g.html#gafeea44ab08778cbff68e91e831d44112" title="Get the global log level value." alt="" coords="334,5,430,32"/>
-</map>
-</div>
 
 </div>
 </div>
@@ -357,24 +341,6 @@ Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="n__nodup__log_8c_source.html#l00274">274</a> of file <a class="el" href="n__nodup__log_8c_source.html">n_nodup_log.c</a>.</p>
 
-<p class="reference">References <a class="el" href="n__log_8c_source.html#l00216">_n_log()</a>, <a class="el" href="n__nodup__log_8c_source.html#l00023">_n_nodup_table</a>, <a class="el" href="n__nodup__log_8c_source.html#l00174">check_n_log_dup_indexed()</a>, <a class="el" href="n__hash_8h_source.html#l00095">HASH_NODE::data</a>, <a class="el" href="n__nodup__log_8c_source.html#l00108">get_nodup_indexed_key()</a>, <a class="el" href="n__hash_8c_source.html#l01919">ht_get_node()</a>, <a class="el" href="n__hash_8c_source.html#l01968">ht_put_string()</a>, and <a class="el" href="n__hash_8h_source.html#l00077">HASH_VALUE::string</a>.</p>
-<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group___l_o_g_n_o_d_u_p_gacbf9e2a1400ab6f00a30186d9a5c4683_cgraph.png" border="0" usemap="#agroup___l_o_g_n_o_d_u_p_gacbf9e2a1400ab6f00a30186d9a5c4683_cgraph" alt=""/></div>
-<map name="agroup___l_o_g_n_o_d_u_p_gacbf9e2a1400ab6f00a30186d9a5c4683_cgraph" id="agroup___l_o_g_n_o_d_u_p_gacbf9e2a1400ab6f00a30186d9a5c4683_cgraph">
-<area shape="rect" title="Logging function." alt="" coords="5,107,160,133"/>
-<area shape="rect" href="group___l_o_g.html#gafbbbfcb9063b9f1454a499dbf98f7a56" title="Logging function." alt="" coords="265,5,325,32"/>
-<area shape="rect" href="n__nodup__log_8c.html#a1ad89f00ce2247d0335000f0d4643ddc" title="check if a log was already done or not at the given line, func, file" alt="" coords="208,107,383,133"/>
-<area shape="rect" href="n__nodup__log_8c.html#ae8142f2ea37554437482e312432761d8" title="internal, get a key for an indexed log entry" alt="" coords="431,68,593,95"/>
-<area shape="rect" href="group___h_a_s_h___t_a_b_l_e.html#gac2a504c78f251c3dfb1e8b0623e2fdb1" title=" " alt="" coords="465,144,559,171"/>
-<area shape="rect" href="group___h_a_s_h___t_a_b_l_e.html#gaa7dae105905e1751943ec3a4e4226480" title=" " alt="" coords="247,208,344,235"/>
-<area shape="rect" href="group___l_o_g.html#gafeea44ab08778cbff68e91e831d44112" title="Get the global log level value." alt="" coords="464,5,560,32"/>
-</map>
-</div>
-
 </div>
 </div>
 <a id="ga46eca069bfff2be6809828df52d1031d" name="ga46eca069bfff2be6809828df52d1031d"></a>
@@ -399,18 +365,7 @@ Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="n__nodup__log_8c_source.html#l00073">73</a> of file <a class="el" href="n__nodup__log_8c_source.html">n_nodup_log.c</a>.</p>
 
-<p class="reference">References <a class="el" href="n__nodup__log_8c_source.html#l00023">_n_nodup_table</a>, and <a class="el" href="n__hash_8c_source.html#l02005">destroy_ht()</a>.</p>
-<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group___l_o_g_n_o_d_u_p_ga46eca069bfff2be6809828df52d1031d_cgraph.png" border="0" usemap="#agroup___l_o_g_n_o_d_u_p_ga46eca069bfff2be6809828df52d1031d_cgraph" alt=""/></div>
-<map name="agroup___l_o_g_n_o_d_u_p_ga46eca069bfff2be6809828df52d1031d_cgraph" id="agroup___l_o_g_n_o_d_u_p_ga46eca069bfff2be6809828df52d1031d_cgraph">
-<area shape="rect" title="Empty nodup logtable and close the no duplicate logging session." alt="" coords="5,5,124,32"/>
-<area shape="rect" href="group___h_a_s_h___t_a_b_l_e.html#ga22a943135dbcdb1611b40ce0547111ce" title="Free and set the table to NULL." alt="" coords="172,5,255,32"/>
-</map>
-</div>
+<p class="reference">References <a class="el" href="n__common_8h_source.html#l00262">__n_assert</a>.</p>
 
 </div>
 </div>
@@ -443,19 +398,7 @@ Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="n__nodup__log_8c_source.html#l00332">332</a> of file <a class="el" href="n__nodup__log_8c_source.html">n_nodup_log.c</a>.</p>
 
-<p class="reference">References <a class="el" href="n__log_8c_source.html#l00216">_n_log()</a>, <a class="el" href="n__nodup__log_8c_source.html#l00023">_n_nodup_table</a>, <a class="el" href="n__hash_8h_source.html#l00117">HASH_TABLE::hash_table</a>, <a class="el" href="n__list_8h_source.html#l00029">LIST_NODE::ptr</a>, and <a class="el" href="n__hash_8h_source.html#l00111">HASH_TABLE::size</a>.</p>
-<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group___l_o_g_n_o_d_u_p_ga38552b9724c76daede8b3c30833e9d09_cgraph.png" border="0" usemap="#agroup___l_o_g_n_o_d_u_p_ga38552b9724c76daede8b3c30833e9d09_cgraph" alt=""/></div>
-<map name="agroup___l_o_g_n_o_d_u_p_ga38552b9724c76daede8b3c30833e9d09_cgraph" id="agroup___l_o_g_n_o_d_u_p_ga38552b9724c76daede8b3c30833e9d09_cgraph">
-<area shape="rect" title="Dump the duplicate error log hash table in a file." alt="" coords="5,5,125,32"/>
-<area shape="rect" href="group___l_o_g.html#gafbbbfcb9063b9f1454a499dbf98f7a56" title="Logging function." alt="" coords="173,5,233,32"/>
-<area shape="rect" href="group___l_o_g.html#gafeea44ab08778cbff68e91e831d44112" title="Get the global log level value." alt="" coords="281,5,377,32"/>
-</map>
-</div>
+<p class="reference">References <a class="el" href="n__common_8h_source.html#l00262">__n_assert</a>.</p>
 
 </div>
 </div>
@@ -481,18 +424,7 @@ Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="n__nodup__log_8c_source.html#l00061">61</a> of file <a class="el" href="n__nodup__log_8c_source.html">n_nodup_log.c</a>.</p>
 
-<p class="reference">References <a class="el" href="n__nodup__log_8c_source.html#l00023">_n_nodup_table</a>, and <a class="el" href="n__hash_8c_source.html#l01999">empty_ht()</a>.</p>
-<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-4-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group___l_o_g_n_o_d_u_p_ga823d1d2f22f2279e24d4c5bd927ff322_cgraph.png" border="0" usemap="#agroup___l_o_g_n_o_d_u_p_ga823d1d2f22f2279e24d4c5bd927ff322_cgraph" alt=""/></div>
-<map name="agroup___l_o_g_n_o_d_u_p_ga823d1d2f22f2279e24d4c5bd927ff322_cgraph" id="agroup___l_o_g_n_o_d_u_p_ga823d1d2f22f2279e24d4c5bd927ff322_cgraph">
-<area shape="rect" title="Empty the nodup internal table." alt="" coords="5,5,140,32"/>
-<area shape="rect" href="group___h_a_s_h___t_a_b_l_e.html#ga5d2235e91b2b6b70129246897442f8d5" title="Empty a hash table." alt="" coords="188,5,264,32"/>
-</map>
-</div>
+<p class="reference">References <a class="el" href="n__common_8h_source.html#l00262">__n_assert</a>.</p>
 
 </div>
 </div>
@@ -525,48 +457,6 @@ Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="n__nodup__log_8c_source.html#l00030">30</a> of file <a class="el" href="n__nodup__log_8c_source.html">n_nodup_log.c</a>.</p>
 
-<p class="reference">References <a class="el" href="n__log_8c_source.html#l00216">_n_log()</a>, <a class="el" href="n__nodup__log_8c_source.html#l00023">_n_nodup_table</a>, and <a class="el" href="n__hash_8c_source.html#l01860">new_ht()</a>.</p>
-<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-5-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group___l_o_g_n_o_d_u_p_gaf9c9b8e129263da15345f428cd73f19e_cgraph.png" border="0" usemap="#agroup___l_o_g_n_o_d_u_p_gaf9c9b8e129263da15345f428cd73f19e_cgraph" alt=""/></div>
-<map name="agroup___l_o_g_n_o_d_u_p_gaf9c9b8e129263da15345f428cd73f19e_cgraph" id="agroup___l_o_g_n_o_d_u_p_gaf9c9b8e129263da15345f428cd73f19e_cgraph">
-<area shape="rect" title="initialize the no duplicate logging system" alt="" coords="5,284,111,311"/>
-<area shape="rect" href="group___l_o_g.html#gafbbbfcb9063b9f1454a499dbf98f7a56" title="Logging function." alt="" coords="796,321,856,348"/>
-<area shape="rect" href="group___h_a_s_h___t_a_b_l_e.html#gaa2d879c1afd3c71a0917bbe2c0766664" title=" " alt="" coords="159,575,221,601"/>
-<area shape="rect" href="group___l_o_g.html#gafeea44ab08778cbff68e91e831d44112" title="Get the global log level value." alt="" coords="904,321,1000,348"/>
-<area shape="rect" href="n__hash_8c.html#a0ee7e0fa87da033f857c04dae6f1586a" title=" " alt="" coords="287,968,378,995"/>
-<area shape="rect" href="group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755" title="Empty and Free a list container." alt="" coords="475,1031,564,1057"/>
-<area shape="rect" href="n__hash_8c.html#a883490d95c386d9d82a7306663a6c2ce" title=" " alt="" coords="291,777,374,804"/>
-<area shape="rect" href="n__hash_8c.html#a7ce57bb0fb64ca5ff513c6ade7c26852" title="Retrieve a double value in the hash table, at the given key." alt="" coords="277,271,388,297"/>
-<area shape="rect" href="n__hash_8c.html#a364dffbf42be500d3266410895694bd8" title="return the associated key&#39;s node inside the hash_table" alt="" coords="469,473,569,500"/>
-<area shape="rect" href="n__hash_8c.html#ae7c50bafbc80902f92c27e59d29ffd40" title="Retrieve an integral value in the hash table, at the given key." alt="" coords="289,321,376,348"/>
-<area shape="rect" href="n__hash_8c.html#a0299747d5cd82effd51fdaec945e80ee" title="Retrieve a pointer value in the hash table, at the given key." alt="" coords="289,372,376,399"/>
-<area shape="rect" href="n__hash_8c.html#a524a224940bc3ceea122824ca3d4842b" title="Retrieve a char *string value in the hash table, at the given key." alt="" coords="281,423,385,449"/>
-<area shape="rect" href="n__hash_8c.html#a719f4d3d6315d1118478bf66bbf3d7d4" title=" " alt="" coords="297,43,369,69"/>
-<area shape="rect" href="n__hash_8c.html#a870d138d5408e20e8111c750cdc77d36" title="put a double value with given key in the targeted hash table" alt="" coords="277,473,388,500"/>
-<area shape="rect" href="n__hash_8c.html#a4713652203bc7965a2dda268ffa1e4d5" title="put an integral value with given key in the targeted hash table" alt="" coords="289,575,376,601"/>
-<area shape="rect" href="n__hash_8c.html#a853357465a1599d42ff6d095aa762424" title="put a pointer value with given key in the targeted hash table" alt="" coords="289,625,376,652"/>
-<area shape="rect" href="n__hash_8c.html#a35ed4b8f492e6265b7cdcc8f380b6130" title="put a null terminated char *string with given key in the targeted hash table (copy of string)" alt="" coords="281,676,385,703"/>
-<area shape="rect" href="n__hash_8c.html#a8bfbff53ffcafc65317e2b1041df314f" title="put a null terminated char *string with given key in the targeted hash table (pointer)" alt="" coords="269,727,396,753"/>
-<area shape="rect" href="n__hash_8c.html#aa0b7465426719eec2e02cd83e8ac290d" title="Remove a key from a hash table." alt="" coords="289,828,377,855"/>
-<area shape="rect" href="n__hash_8c.html#af5e4567a16f469d013410e8cf675a28c" title=" " alt="" coords="289,1031,376,1057"/>
-<area shape="rect" href="group___l_i_s_t.html#gada615e3b144e97bcff147dfe89f6fef6" title="Initialiaze a generic list container to max_items pointers." alt="" coords="460,1081,579,1108"/>
-<area shape="rect" href="group___l_i_s_t.html#ga1dafe7a250ddad51fadd375f057287e7" title="Empty a LIST list of pointers." alt="" coords="654,1031,737,1057"/>
-<area shape="rect" href="n__hash_8c.html#a013153fa30199bbcaf5f92890ae97ba8" title="destroy a HASH_NODE by first calling the HASH_NODE destructor" alt="" coords="457,828,582,855"/>
-<area shape="rect" href="group___h_a_s_h___t_a_b_l_e.html#ga1392981a507905d028136bc0b92aa48b" title="get the type of a node , text version" alt="" coords="469,423,569,449"/>
-<area shape="rect" href="n__hash_8c.html#a538c336dd719701659e9234dc069f848" title="node creation, HASH_CLASSIC mode" alt="" coords="444,372,595,399"/>
-<area shape="rect" href="group___l_i_s_t.html#ga4eab319289a83524639ee5e9f0441fdf" title="Add a pointer to the end of the list." alt="" coords="482,676,557,703"/>
-<area shape="rect" href="n__hash_8c.html#a9a7239b9d94b50486662ad11381fd3bf" title="node creation, HASH_CLASSIC mode" alt="" coords="643,587,748,613"/>
-<area shape="rect" href="group___l_i_s_t.html#ga678e828550efc8e64a836bb8c713c2f4" title="Allocate a new node to link in a list." alt="" coords="643,651,747,677"/>
-<area shape="rect" href="n__hash_8c.html#aca52825e0662da52f7f59cb2c282dd0d" title="node creation, HASH_CLASSIC mode" alt="" coords="456,575,583,601"/>
-<area shape="rect" href="n__hash_8c.html#afcb17d6b3dd2abad4cb9e58a2f70de98" title=" " alt="" coords="456,625,583,652"/>
-<area shape="rect" href="n__hash_8c.html#a3b482644f6bf5ac3cfec10961a9bfdbc" title="node creation, HASH_CLASSIC mode, strdup of value" alt="" coords="447,879,591,905"/>
-</map>
-</div>
-
 </div>
 </div>
 </div><!-- contents -->
@@ -574,7 +464,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Wed Feb 2 2022 14:24:10 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+    <li class="footer">Generated on Thu Feb 3 2022 21:53:47 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
   </ul>
 </div>
 </body>

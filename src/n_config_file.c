@@ -359,6 +359,43 @@ CONFIG_FILE *load_config_file( char *filename, int *errors )
 
 
 
+/*!\fn int write_config_file( CONFIG_FILE *cfg_file, char *filename )
+ *\brief write a config file
+ *\param filename destination filename
+ *\param cfg_file source config file to write
+ *\return TRUE or FALSE
+ */
+int write_config_file( CONFIG_FILE *cfg_file, char *filename )
+{
+    __n_assert( cfg_file , return FALSE );
+    __n_assert( filename , return FALSE );
+
+    FILE *out = NULL ;
+    out = fopen( filename , "w" );
+    int error = errno ;
+    __n_assert( out , n_log( LOG_ERR , "Could not open %s, %s" , filename , strerror( error ) ); return FALSE );
+
+    char *last_section = NULL ;
+    config_foreach( cfg_file , section , key , val )
+    {
+        /* write section name */
+        if( !last_section || strcmp( last_section , section ) != 0 )
+        {
+            fprintf( out , "[%d]\n" , section );
+            FreeNoLog( last_section );
+            last_section = strdup( section );
+        }
+        fprintf( "%s=%s\n" , key , value );
+    }
+    fclose( out );
+    FreeNoLog( last_section );
+
+    return TRUE ;
+} /* write_config_file */
+
+
+
+
 /*!\fn int get_nb_config_file_sections( CONFIG_FILE *cfg_file , char *section_name )
  *\brief Get the number of config file with section_name
  *\param cfg_file Config file to process

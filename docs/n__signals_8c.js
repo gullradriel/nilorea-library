@@ -6,8 +6,5 @@ var n__signals_8c =
     [ "addr2line", "n__signals_8c.html#a303cb27f9c5239698d99891cd7341648", null ],
     [ "posix_print_stack_trace", "n__signals_8c.html#afbe2520f5f64f71fb4967ab3351fbd11", null ],
     [ "posix_signal_handler", "n__signals_8c.html#afddb4cb4b779781c794bcefd1083f16b", null ],
-    [ "set_signal_handler", "group___s_i_g_n_a_l_s.html#ga439d6a2f0248222f4f7ef75ee00e1d50", null ],
-    [ "alternate_stack", "n__signals_8c.html#a9d3a53b5307a4157c7cc73ef523bb822", null ],
-    [ "icky_global_program_name", "n__signals_8c.html#a1e490162588acbd9e8eb5a538b9459ff", null ],
-    [ "stack_traces", "n__signals_8c.html#a59444272abcd1d76fa843c81fa858f6c", null ]
+    [ "set_signal_handler", "group___s_i_g_n_a_l_s.html#ga439d6a2f0248222f4f7ef75ee00e1d50", null ]
 ];

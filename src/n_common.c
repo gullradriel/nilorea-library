@@ -140,11 +140,11 @@ char *get_prog_name( void )
 
 
 
-/*!\fn int n_popen( char *cmd , int read_buf_size , void *nstr_output , int *ret )
+/*!\fn int n_popen( char *cmd, int read_buf_size, void **nstr_output, int *ret )
  * \brief launch a command abd return output and status
  * \param cmd The command to launch
  * \param read_buf_size popen read buf. Also serves as a minimum size for the dynamically allocated returned output if not already allocaded
- * \param output Pointer to a valid N_STR or NULL (see read_buf_size)
+ * \param nstr_output Pointer to a valid N_STR or NULL (see read_buf_size)
  * \param ret Command output if any. Should be initialized to -1 and tested against to check if it's valid.
  * \return TRUE or FALSE
  */

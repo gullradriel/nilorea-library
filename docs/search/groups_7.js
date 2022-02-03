@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['lists_3a_20generic_20type_20list_0',['LISTS: generic type list',['../group___l_i_s_t.html',1,'']]],
-  ['logging_20nodup_3a_20no_20duplicate_20logging_20to_20console_2c_20to_20file_2c_20to_20syslog_20under_20_2ax_1',['LOGGING NODUP: no duplicate logging to console, to file, to syslog under *x',['../group___l_o_g_n_o_d_u_p.html',1,'']]],
-  ['logging_3a_20logging_20to_20console_2c_20to_20file_2c_20to_20syslog_2c_20to_20event_20log_2',['LOGGING: logging to console, to file, to syslog, to event log',['../group___l_o_g.html',1,'']]]
+  ['signals_3a_20signals_20handling_20and_20stack_20printing_0',['SIGNALS: signals handling and stack printing',['../group___s_i_g_n_a_l_s.html',1,'']]],
+  ['stack_3a_20generic_20type_20stack_1',['STACK: generic type stack',['../group___s_t_a_c_k.html',1,'']]],
+  ['strings_3a_20replacement_20to_20char_20_2astrings_20with_20dynamic_20resizing_20and_20boundary_20checking_2',['STRINGS: replacement to char *strings with dynamic resizing and boundary checking',['../group___n___s_t_r.html',1,'']]]
 ];

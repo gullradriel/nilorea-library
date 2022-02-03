@@ -20,12 +20,17 @@
 #include "nilorea/n_signals.h"
 #include "nilorea/n_str.h"
 
+/*! internal: output to stderr */
 #define LOGFPRT( ... ) fprintf( stderr , "Error: " __VA_ARGS__ )
+
+/*! internal: output to syslog */
 #define LOGNLOG( ... ) n_log( LOG_ERR , __VA_ARGS__ )
 
+/*! internal: output to syslog */
 #define LOGSIG LOGNLOG
 
-static const char *icky_global_program_name ;
+/*! name of program to debug (addr2line & co) */
+static const char *__n_stack_traced_progam_name ;
 
 #ifdef _WIN32
 #include <windows.h>
@@ -74,8 +79,12 @@ static const char *icky_global_program_name ;
 
 
 
-/* Resolve symbol name and source location given the path to the executable
-   and an address */
+/*!\fn int addr2line(char const * const program_name, void const * const addr)
+ *\brief Resolve symbol name and source location given the path to the executable and an address
+ *\param program_name target filename
+ *\param addr address to peek
+ *\return addr2line command return code
+ */
 int addr2line(char const * const program_name, void const * const addr)
 {
     char addr2line_cmd[4093] = "" ;
@@ -99,10 +108,14 @@ int addr2line(char const * const program_name, void const * const addr)
     LOGSIG( "%s", output -> data );
     free_nstr( &output );
     return ret ;
-}
+} /* addr2line(...) */
 
 
 #ifdef _WIN32
+/*!\fn void windows_print_stacktrace(CONTEXT* context)
+ *\brief unroll and print a windows context stacktrace
+ *\param context the context to unroll
+ */
 void windows_print_stacktrace(CONTEXT* context)
 {
     SymInitialize(GetCurrentProcess(), 0, true);
@@ -127,7 +140,6 @@ void windows_print_stacktrace(CONTEXT* context)
     frame.AddrFrame.Mode        = AddrModeFlat;
 #endif
 
-
     while (StackWalk(IMAGE_FILE_MACHINE_I386,
                      GetCurrentProcess(),
                      GetCurrentThread(),
@@ -138,12 +150,19 @@ void windows_print_stacktrace(CONTEXT* context)
                      SymGetModuleBase,
                      0 ) )
     {
-        addr2line( icky_global_program_name, (void*)frame.AddrPC.Offset);
+        addr2line( __n_stack_traced_progam_name, (void*)frame.AddrPC.Offset);
     }
 
     SymCleanup( GetCurrentProcess() );
-}
+} /* windows_print_stacktrace(...) */
 
+
+
+/*!\fn LONG WINAPI windows_exception_handler(EXCEPTION_POINTERS * ExceptionInfo)
+ *\brief decode exception and call a stacktrace print
+ *\param ExceptionInfo the exception to unroll
+ *\return EXCEPTION_EXECUTE_HANDLER
+ */
 LONG WINAPI windows_exception_handler(EXCEPTION_POINTERS * ExceptionInfo)
 {
     switch(ExceptionInfo->ExceptionRecord->ExceptionCode)
@@ -212,7 +231,6 @@ LONG WINAPI windows_exception_handler(EXCEPTION_POINTERS * ExceptionInfo)
         LOGSIG( "Error: Unrecognized Exception" );
         break;
     }
-
     /* If this is a stack overflow then we can't walk the stack, so just show
        where the error happened */
     if (EXCEPTION_STACK_OVERFLOW != ExceptionInfo->ExceptionRecord->ExceptionCode)
@@ -221,21 +239,30 @@ LONG WINAPI windows_exception_handler(EXCEPTION_POINTERS * ExceptionInfo)
     }
     else
     {
-        addr2line(icky_global_program_name, (void*)ExceptionInfo->ContextRecord->Rip);
+        addr2line(__n_stack_traced_progam_name, (void*)ExceptionInfo->ContextRecord->Rip);
     }
     fflush(stdout);
     fflush(stderr);
     return EXCEPTION_EXECUTE_HANDLER;
-}
+} /* windows_exception_handler( ... ) */
 
+
+/*!\fn void set_signal_handler( const char *progname )
+ *\brief Install a signal handler for progname
+ *\param progname name of the program to monitor
+ */
 void set_signal_handler( const char *progname )
 {
-    icky_global_program_name = progname ;
+    __n_stack_traced_progam_name = progname ;
     SetUnhandledExceptionFilter(windows_exception_handler);
 }
 #else
-
+/*! static frame list */
 static void *stack_traces[MAX_STACK_FRAMES];
+
+/*!\fn void posix_print_stack_trace()
+ *\brief print current stack
+ */
 void posix_print_stack_trace()
 {
     int i, trace_size = 0;
@@ -249,7 +276,7 @@ void posix_print_stack_trace()
     // for (i = 3; i < (trace_size - 1); ++i)
     for (i = 0; i < trace_size; ++i) // we'll use this for now so you can see what's going on
     {
-        if (addr2line(icky_global_program_name, stack_traces[i]) != 0)
+        if (addr2line(__n_stack_traced_progam_name, stack_traces[i]) != 0)
         {
             LOGSIG("  error determining line # for: %s", messages[i] );
         }
@@ -260,6 +287,12 @@ void posix_print_stack_trace()
     }
 }
 
+/*!\fn void posix_signal_handler(int sig, siginfo_t *siginfo, void *context)
+ *\brief decode a signal and call stack print
+ *\param sig signal to decode
+ *\param siginfo details of the signal
+ *\param context the context to unroll
+ */
 void posix_signal_handler(int sig, siginfo_t *siginfo, void *context)
 {
     (void)context;
@@ -348,11 +381,16 @@ void posix_signal_handler(int sig, siginfo_t *siginfo, void *context)
     _Exit(1);
 }
 
+/*! static block for alternate stack */
 static uint8_t alternate_stack[SIGALTSTACK_SIZE];
 
+/*!\fn void set_signal_handler( const char *progname )
+ *\brief Install a signal handler for progname
+ *\param progname name of the program to monitor
+ */
 void set_signal_handler( const char *progname )
 {
-    icky_global_program_name = progname ;
+    __n_stack_traced_progam_name = progname ;
 
 #ifdef RLIMIT_STACK
     /* Before starting the endless recursion, try to be friendly to the user's

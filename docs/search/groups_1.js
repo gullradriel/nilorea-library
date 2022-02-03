@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['allegro5_3a_20helpers_20and_20api_20addons_0',['ALLEGRO5: helpers and api addons',['../group___a_l_l_e_g_r_o5.html',1,'']]],
-  ['anim_20lib_3a_20animation_20library_2c_20loading_20structures_20and_20blit_20funcs_1',['ANIM LIB: animation library, loading structures and blit funcs',['../group___a_n_i_m___l_i_b.html',1,'']]]
+  ['enumerations_3a_20quick_20and_20clean_20enum_20macro_20set_0',['ENUMERATIONS: quick and clean enum macro set',['../group___e_n_u_m_s.html',1,'']]],
+  ['exceptions_3a_20c_2b_2b_20style_20try_2ccatch_2cendtry_2cthrow_1',['EXCEPTIONS: C++ style try,catch,endtry,throw',['../group___e_x_c_e_p_t_i_o_n_s.html',1,'']]]
 ];

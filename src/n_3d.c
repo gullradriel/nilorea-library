@@ -1,5 +1,5 @@
 /**\file n_3d.c
- *  3D helpers, vector and camera
+ *  3D helpers, vector
  *\author Castagnier Mickael
  *\version 1.0
  *\date 30/04/2014
@@ -214,11 +214,25 @@ int vector_intersect(  VECTOR3D *p1, VECTOR3D *p2, VECTOR3D *p3, VECTOR3D *p4, V
 } /* vector_intersect(...) */
 
 
-double vector_dot_prod( VECTOR3D *vec1, VECTOR3D *vec2 )
+
+/*!\fn double vector_dot_product( VECTOR3D *vec1, VECTOR3D *vec2 )
+ *\brief Compute the dot product of two VECTOR3D
+ *\param vec1 first VECTOR3D
+ *\param vec2 second VECTOR3D
+ *\return dot product value
+ */
+double vector_dot_product( VECTOR3D *vec1, VECTOR3D *vec2 )
 {
     return (*vec1)[ 0 ] * (*vec2)[ 0 ] + (*vec1)[ 1 ] * (*vec2)[ 1 ] + (*vec1)[ 2 ] * (*vec2)[ 2 ];
-}
+} /* vector_dot_product(...) */
 
+
+
+/*!\fn double vector_normalize( VECTOR3D *vec )
+ *\brief Return the normalized value of vec
+ *\param vec VECTOR3D to normalize
+ *\return normalized value of vec
+ */
 double vector_normalize( VECTOR3D *vec )
 {
     double res = 0.0 ;
@@ -227,12 +241,19 @@ double vector_normalize( VECTOR3D *vec )
         res += pow( (*vec)[ i ], 2 );
     }
     return sqrt( res );
-}
+} /* vector_normalize(...) */
 
-/* RESULT * 180 / M_PI */
+
+
+/*!\fn double vector_angle_between( VECTOR3D *vec1, VECTOR3D *vec2 )
+ *\brief Compute angle beteen two VECTOR3D
+ *\param vec1 first VECTOR3D
+ *\param vec2 second VECTOR3D
+ *\return angle between vectors in rad (todeg = returnval * 180/PI_2)
+ */
 double vector_angle_between( VECTOR3D *vec1, VECTOR3D *vec2 )
 {
-    return acos( vector_dot_prod( &(*vec1), &(*vec2) ) / ( vector_normalize( &(*vec1) ) * vector_normalize( &(*vec2) ) ) );
-}
+    return acos( vector_dot_product( &(*vec1), &(*vec2) ) / ( vector_normalize( &(*vec1) ) * vector_normalize( &(*vec2) ) ) );
+} /* vector_angle_between( ... ) */
 
 

@@ -83,14 +83,10 @@ $(document).ready(function(){initNavTree('struct_h_a_s_h___n_o_d_e.html',''); in
 
 <div class="header">
   <div class="summary">
-<a href="#pub-attribs">Public Attributes</a> &#124;
-<a href="struct_h_a_s_h___n_o_d_e-members.html">List of all members</a>  </div>
+<a href="#pub-attribs">Data Fields</a>  </div>
   <div class="headertitle"><div class="title">HASH_NODE Struct Reference<div class="ingroups"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html">HASH TABLE: classic or trie tree hash_tables</a></div></div></div>
 </div><!--header-->
 <div class="contents">
-
-<p>structure of a hash table node  
- <a href="struct_h_a_s_h___n_o_d_e.html#details">More...</a></p>
 
 <p><code>#include &quot;<a class="el" href="n__hash_8h_source.html">n_hash.h</a>&quot;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -113,43 +109,34 @@ $(document).ready(function(){initNavTree('struct_h_a_s_h___n_o_d_e.html',''); in
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
+Data Fields</h2></td></tr>
 <tr class="memitem:a06a89d17175949c04ad28897baf2a1be"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_h_a_s_h___n_o_d_e.html#a06a89d17175949c04ad28897baf2a1be">alphabet_length</a></td></tr>
-<tr class="memdesc:a06a89d17175949c04ad28897baf2a1be"><td class="mdescLeft">&#160;</td><td class="mdescRight">HASH_TRIE mode: size of alphabet and so size of children allocated array.  <a href="struct_h_a_s_h___n_o_d_e.html#a06a89d17175949c04ad28897baf2a1be">More...</a><br /></td></tr>
 <tr class="separator:a06a89d17175949c04ad28897baf2a1be"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac4fb9aa602717ff4e9c06b49ce648803"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="struct_h_a_s_h___n_o_d_e.html">HASH_NODE</a> **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_h_a_s_h___n_o_d_e.html#ac4fb9aa602717ff4e9c06b49ce648803">children</a></td></tr>
-<tr class="memdesc:ac4fb9aa602717ff4e9c06b49ce648803"><td class="mdescLeft">&#160;</td><td class="mdescRight">HASH_TRIE mode: pointers to children.  <a href="struct_h_a_s_h___n_o_d_e.html#ac4fb9aa602717ff4e9c06b49ce648803">More...</a><br /></td></tr>
 <tr class="separator:ac4fb9aa602717ff4e9c06b49ce648803"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a64156acdfb776968152ebb5bd01901af"><td class="memItemLeft" align="right" valign="top">union <a class="el" href="union_h_a_s_h___v_a_l_u_e.html">HASH_VALUE</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_h_a_s_h___n_o_d_e.html#a64156acdfb776968152ebb5bd01901af">data</a></td></tr>
-<tr class="memdesc:a64156acdfb776968152ebb5bd01901af"><td class="mdescLeft">&#160;</td><td class="mdescRight">data inside the node  <a href="struct_h_a_s_h___n_o_d_e.html#a64156acdfb776968152ebb5bd01901af">More...</a><br /></td></tr>
 <tr class="separator:a64156acdfb776968152ebb5bd01901af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af16485d50b52eee83f99c819d3a4e0ac"><td class="memItemLeft" align="right" valign="top">void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_h_a_s_h___n_o_d_e.html#af16485d50b52eee83f99c819d3a4e0ac">destroy_func</a> )(void *ptr)</td></tr>
-<tr class="memdesc:af16485d50b52eee83f99c819d3a4e0ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">destroy_func  <a href="struct_h_a_s_h___n_o_d_e.html#af16485d50b52eee83f99c819d3a4e0ac">More...</a><br /></td></tr>
 <tr class="separator:af16485d50b52eee83f99c819d3a4e0ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa75a7b03514e6a939ef38d9c79845737"><td class="memItemLeft" align="right" valign="top">unsigned long int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_h_a_s_h___n_o_d_e.html#aa75a7b03514e6a939ef38d9c79845737">hash_value</a></td></tr>
-<tr class="memdesc:aa75a7b03514e6a939ef38d9c79845737"><td class="mdescLeft">&#160;</td><td class="mdescRight">numeric key of the node if any, else &lt; 0  <a href="struct_h_a_s_h___n_o_d_e.html#aa75a7b03514e6a939ef38d9c79845737">More...</a><br /></td></tr>
 <tr class="separator:aa75a7b03514e6a939ef38d9c79845737"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3a39060513f4af39aedef416fec38296"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_h_a_s_h___n_o_d_e.html#a3a39060513f4af39aedef416fec38296">is_leaf</a></td></tr>
-<tr class="memdesc:a3a39060513f4af39aedef416fec38296"><td class="mdescLeft">&#160;</td><td class="mdescRight">HASH_TRIE mode: does it have a value.  <a href="struct_h_a_s_h___n_o_d_e.html#a3a39060513f4af39aedef416fec38296">More...</a><br /></td></tr>
 <tr class="separator:a3a39060513f4af39aedef416fec38296"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2c219363728255e08c112ef10506fb68"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_h_a_s_h___n_o_d_e.html#a2c219363728255e08c112ef10506fb68">key</a></td></tr>
-<tr class="memdesc:a2c219363728255e08c112ef10506fb68"><td class="mdescLeft">&#160;</td><td class="mdescRight">string key of the node if any, else NULL  <a href="struct_h_a_s_h___n_o_d_e.html#a2c219363728255e08c112ef10506fb68">More...</a><br /></td></tr>
 <tr class="separator:a2c219363728255e08c112ef10506fb68"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a242a1f7255fc836bb1395079e1c0016b"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_h_a_s_h___n_o_d_e.html#a242a1f7255fc836bb1395079e1c0016b">key_id</a></td></tr>
-<tr class="memdesc:a242a1f7255fc836bb1395079e1c0016b"><td class="mdescLeft">&#160;</td><td class="mdescRight">key id of the node if any  <a href="struct_h_a_s_h___n_o_d_e.html#a242a1f7255fc836bb1395079e1c0016b">More...</a><br /></td></tr>
 <tr class="separator:a242a1f7255fc836bb1395079e1c0016b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1b488aad2fd7b94ebb4c09dc76cebcda"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_h_a_s_h___n_o_d_e.html#a1b488aad2fd7b94ebb4c09dc76cebcda">key_type</a></td></tr>
-<tr class="memdesc:a1b488aad2fd7b94ebb4c09dc76cebcda"><td class="mdescLeft">&#160;</td><td class="mdescRight">type of the key  <a href="struct_h_a_s_h___n_o_d_e.html#a1b488aad2fd7b94ebb4c09dc76cebcda">More...</a><br /></td></tr>
 <tr class="separator:a1b488aad2fd7b94ebb4c09dc76cebcda"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5cd9a167ac8d507a9a98f34fee5577f2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_h_a_s_h___n_o_d_e.html#a5cd9a167ac8d507a9a98f34fee5577f2">type</a></td></tr>
-<tr class="memdesc:a5cd9a167ac8d507a9a98f34fee5577f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">type of the node  <a href="struct_h_a_s_h___n_o_d_e.html#a5cd9a167ac8d507a9a98f34fee5577f2">More...</a><br /></td></tr>
 <tr class="separator:a5cd9a167ac8d507a9a98f34fee5577f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >structure of a hash table node </p>
+<div class="textblock"><dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ex_hash_8c-example.html#_a23">ex_hash.c</a>.</dd>
+</dl>
 
 <p class="definition">Definition at line <a class="el" href="n__hash_8h_source.html#l00082">82</a> of file <a class="el" href="n__hash_8h_source.html">n_hash.h</a>.</p>
-</div><h2 class="groupheader">Member Data Documentation</h2>
+</div><h2 class="groupheader">Field Documentation</h2>
 <a id="a06a89d17175949c04ad28897baf2a1be" name="a06a89d17175949c04ad28897baf2a1be"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a06a89d17175949c04ad28897baf2a1be">&#9670;&nbsp;</a></span>alphabet_length</h2>
 
@@ -184,8 +171,6 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="n__hash_8h_source.html#l00101">101</a> of file <a class="el" href="n__hash_8h_source.html">n_hash.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="n__hash_8c_source.html#l00033">_ht_new_node_trie()</a>.</p>
-
 </div>
 </div>
 <a id="a64156acdfb776968152ebb5bd01901af" name="a64156acdfb776968152ebb5bd01901af"></a>
@@ -203,8 +188,6 @@ Public Attributes</h2></td></tr>
 <p>data inside the node </p>
 
 <p class="definition">Definition at line <a class="el" href="n__hash_8h_source.html#l00095">95</a> of file <a class="el" href="n__hash_8h_source.html">n_hash.h</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="n__hash_8c_source.html#l01582">_ht_get_double()</a>, <a class="el" href="n__hash_8c_source.html#l00337">_ht_get_double_trie()</a>, <a class="el" href="n__hash_8c_source.html#l01550">_ht_get_int()</a>, <a class="el" href="n__hash_8c_source.html#l00305">_ht_get_int_trie()</a>, <a class="el" href="n__hash_8c_source.html#l01615">_ht_get_ptr()</a>, <a class="el" href="n__hash_8c_source.html#l00400">_ht_get_ptr_trie()</a>, <a class="el" href="n__hash_8c_source.html#l01646">_ht_get_string()</a>, <a class="el" href="n__hash_8c_source.html#l00369">_ht_get_string_trie()</a>, <a class="el" href="n__hash_8c_source.html#l01250">_ht_new_double_node()</a>, <a class="el" href="n__hash_8c_source.html#l01228">_ht_new_int_node()</a>, <a class="el" href="n__hash_8c_source.html#l01320">_ht_new_ptr_node()</a>, <a class="el" href="n__hash_8c_source.html#l01272">_ht_new_string_node()</a>, <a class="el" href="n__hash_8c_source.html#l01297">_ht_new_string_ptr_node()</a>, <a class="el" href="n__hash_8c_source.html#l00515">_ht_node_destroy()</a>, <a class="el" href="n__hash_8c_source.html#l00659">_ht_print_trie_helper()</a>, <a class="el" href="n__hash_8c_source.html#l01385">_ht_put_double()</a>, <a class="el" href="n__hash_8c_source.html#l00105">_ht_put_double_trie()</a>, <a class="el" href="n__hash_8c_source.html#l01347">_ht_put_int()</a>, <a class="el" href="n__hash_8c_source.html#l00064">_ht_put_int_trie()</a>, <a class="el" href="n__hash_8c_source.html#l01424">_ht_put_ptr()</a>, <a class="el" href="n__hash_8c_source.html#l00229">_ht_put_ptr_trie()</a>, <a class="el" href="n__hash_8c_source.html#l01468">_ht_put_string()</a>, <a class="el" href="n__hash_8c_source.html#l01508">_ht_put_string_ptr()</a>, <a class="el" href="n__hash_8c_source.html#l00189">_ht_put_string_ptr_trie()</a>, <a class="el" href="n__hash_8c_source.html#l00146">_ht_put_string_trie()</a>, <a class="el" href="n__nodup__log_8c_source.html#l00214">_n_nodup_log()</a>, <a class="el" href="n__nodup__log_8c_source.html#l00274">_n_nodup_log_indexed()</a>, <a class="el" href="n__nodup__log_8c_source.html#l00131">check_n_log_dup()</a>, <a class="el" href="n__nodup__log_8c_source.html#l00174">check_n_log_dup_indexed()</a>, and <a class="el" href="n__debug__mem_8c_source.html#l00159">db_mem_dump_leaked()</a>.</p>
 
 </div>
 </div>
@@ -224,8 +207,6 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="n__hash_8h_source.html#l00097">97</a> of file <a class="el" href="n__hash_8h_source.html">n_hash.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="n__hash_8c_source.html#l01320">_ht_new_ptr_node()</a>, <a class="el" href="n__hash_8c_source.html#l00515">_ht_node_destroy()</a>, <a class="el" href="n__hash_8c_source.html#l01424">_ht_put_ptr()</a>, and <a class="el" href="n__hash_8c_source.html#l00229">_ht_put_ptr_trie()</a>.</p>
-
 </div>
 </div>
 <a id="aa75a7b03514e6a939ef38d9c79845737" name="aa75a7b03514e6a939ef38d9c79845737"></a>
@@ -243,8 +224,6 @@ Public Attributes</h2></td></tr>
 <p>numeric key of the node if any, else &lt; 0 </p>
 
 <p class="definition">Definition at line <a class="el" href="n__hash_8h_source.html#l00089">89</a> of file <a class="el" href="n__hash_8h_source.html">n_hash.h</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="n__hash_8c_source.html#l00033">_ht_new_node_trie()</a>, <a class="el" href="n__hash_8c_source.html#l01385">_ht_put_double()</a>, <a class="el" href="n__hash_8c_source.html#l01347">_ht_put_int()</a>, <a class="el" href="n__hash_8c_source.html#l01424">_ht_put_ptr()</a>, <a class="el" href="n__hash_8c_source.html#l01468">_ht_put_string()</a>, and <a class="el" href="n__hash_8c_source.html#l01508">_ht_put_string_ptr()</a>.</p>
 
 </div>
 </div>
@@ -264,8 +243,6 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="n__hash_8h_source.html#l00099">99</a> of file <a class="el" href="n__hash_8h_source.html">n_hash.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="n__hash_8c_source.html#l00743">_ht_depth_first_search()</a>, <a class="el" href="n__hash_8c_source.html#l00337">_ht_get_double_trie()</a>, <a class="el" href="n__hash_8c_source.html#l00305">_ht_get_int_trie()</a>, <a class="el" href="n__hash_8c_source.html#l00400">_ht_get_ptr_trie()</a>, <a class="el" href="n__hash_8c_source.html#l00369">_ht_get_string_trie()</a>, <a class="el" href="n__hash_8c_source.html#l00489">_ht_is_leaf_node_trie()</a>, <a class="el" href="n__hash_8c_source.html#l01190">_ht_new_node()</a>, <a class="el" href="n__hash_8c_source.html#l00033">_ht_new_node_trie()</a>, <a class="el" href="n__hash_8c_source.html#l00659">_ht_print_trie_helper()</a>, <a class="el" href="n__hash_8c_source.html#l00105">_ht_put_double_trie()</a>, <a class="el" href="n__hash_8c_source.html#l00064">_ht_put_int_trie()</a>, <a class="el" href="n__hash_8c_source.html#l00229">_ht_put_ptr_trie()</a>, <a class="el" href="n__hash_8c_source.html#l00189">_ht_put_string_ptr_trie()</a>, <a class="el" href="n__hash_8c_source.html#l00146">_ht_put_string_trie()</a>, and <a class="el" href="n__hash_8c_source.html#l00707">_ht_search_trie_helper()</a>.</p>
-
 </div>
 </div>
 <a id="a2c219363728255e08c112ef10506fb68" name="a2c219363728255e08c112ef10506fb68"></a>
@@ -284,8 +261,6 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="n__hash_8h_source.html#l00085">85</a> of file <a class="el" href="n__hash_8h_source.html">n_hash.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="n__hash_8c_source.html#l01149">_ht_get_node()</a>, <a class="el" href="n__hash_8c_source.html#l01190">_ht_new_node()</a>, <a class="el" href="n__hash_8c_source.html#l00659">_ht_print_trie_helper()</a>, <a class="el" href="n__hash_8c_source.html#l01385">_ht_put_double()</a>, <a class="el" href="n__hash_8c_source.html#l00105">_ht_put_double_trie()</a>, <a class="el" href="n__hash_8c_source.html#l01347">_ht_put_int()</a>, <a class="el" href="n__hash_8c_source.html#l00064">_ht_put_int_trie()</a>, <a class="el" href="n__hash_8c_source.html#l01424">_ht_put_ptr()</a>, <a class="el" href="n__hash_8c_source.html#l00229">_ht_put_ptr_trie()</a>, <a class="el" href="n__hash_8c_source.html#l01468">_ht_put_string()</a>, <a class="el" href="n__hash_8c_source.html#l01508">_ht_put_string_ptr()</a>, <a class="el" href="n__hash_8c_source.html#l00189">_ht_put_string_ptr_trie()</a>, <a class="el" href="n__hash_8c_source.html#l00146">_ht_put_string_trie()</a>, and <a class="el" href="n__hash_8c_source.html#l01676">_ht_remove()</a>.</p>
-
 </div>
 </div>
 <a id="a242a1f7255fc836bb1395079e1c0016b" name="a242a1f7255fc836bb1395079e1c0016b"></a>
@@ -303,8 +278,6 @@ Public Attributes</h2></td></tr>
 <p>key id of the node if any </p>
 
 <p class="definition">Definition at line <a class="el" href="n__hash_8h_source.html#l00087">87</a> of file <a class="el" href="n__hash_8h_source.html">n_hash.h</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="n__hash_8c_source.html#l01190">_ht_new_node()</a>, and <a class="el" href="n__hash_8c_source.html#l00033">_ht_new_node_trie()</a>.</p>
 
 </div>
 </div>
@@ -342,8 +315,6 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="n__hash_8h_source.html#l00093">93</a> of file <a class="el" href="n__hash_8h_source.html">n_hash.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="n__hash_8c_source.html#l01582">_ht_get_double()</a>, <a class="el" href="n__hash_8c_source.html#l00337">_ht_get_double_trie()</a>, <a class="el" href="n__hash_8c_source.html#l01550">_ht_get_int()</a>, <a class="el" href="n__hash_8c_source.html#l00305">_ht_get_int_trie()</a>, <a class="el" href="n__hash_8c_source.html#l01615">_ht_get_ptr()</a>, <a class="el" href="n__hash_8c_source.html#l00400">_ht_get_ptr_trie()</a>, <a class="el" href="n__hash_8c_source.html#l01646">_ht_get_string()</a>, <a class="el" href="n__hash_8c_source.html#l00369">_ht_get_string_trie()</a>, <a class="el" href="n__hash_8c_source.html#l01250">_ht_new_double_node()</a>, <a class="el" href="n__hash_8c_source.html#l01228">_ht_new_int_node()</a>, <a class="el" href="n__hash_8c_source.html#l01320">_ht_new_ptr_node()</a>, <a class="el" href="n__hash_8c_source.html#l01272">_ht_new_string_node()</a>, <a class="el" href="n__hash_8c_source.html#l01297">_ht_new_string_ptr_node()</a>, <a class="el" href="n__hash_8c_source.html#l00515">_ht_node_destroy()</a>, <a class="el" href="n__hash_8c_source.html#l00659">_ht_print_trie_helper()</a>, <a class="el" href="n__hash_8c_source.html#l01385">_ht_put_double()</a>, <a class="el" href="n__hash_8c_source.html#l00105">_ht_put_double_trie()</a>, <a class="el" href="n__hash_8c_source.html#l01347">_ht_put_int()</a>, <a class="el" href="n__hash_8c_source.html#l00064">_ht_put_int_trie()</a>, <a class="el" href="n__hash_8c_source.html#l01424">_ht_put_ptr()</a>, <a class="el" href="n__hash_8c_source.html#l00229">_ht_put_ptr_trie()</a>, <a class="el" href="n__hash_8c_source.html#l01468">_ht_put_string()</a>, <a class="el" href="n__hash_8c_source.html#l01508">_ht_put_string_ptr()</a>, <a class="el" href="n__hash_8c_source.html#l00189">_ht_put_string_ptr_trie()</a>, <a class="el" href="n__hash_8c_source.html#l00146">_ht_put_string_trie()</a>, and <a class="el" href="n__hash_8c_source.html#l01130">ht_node_type()</a>.</p>
-
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
@@ -355,7 +326,7 @@ Public Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="struct_h_a_s_h___n_o_d_e.html">HASH_NODE</a></li>
-    <li class="footer">Generated on Wed Feb 2 2022 14:24:11 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+    <li class="footer">Generated on Thu Feb 3 2022 21:53:48 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
   </ul>
 </div>
 </body>

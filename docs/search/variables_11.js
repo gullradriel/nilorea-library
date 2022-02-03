@@ -11,6 +11,7 @@ var searchData=
   ['rhost_8',['rhost',['../struct_n___s_o_c_k_e_t.html#a091a70428cc5ad4d98cab3bf50d3bd9b',1,'N_SOCKET']]],
   ['right_5fattack_9',['right_attack',['../struct_g_a_m_e___e_n_v.html#aacabb3a45734f030083fd043f61e95e9',1,'GAME_ENV']]],
   ['right_5fattack_5fpos_10',['right_attack_pos',['../struct_g_a_m_e___e_n_v.html#af2386c1538136333703226460d02fa4b',1,'GAME_ENV']]],
-  ['root_11',['root',['../struct_h_a_s_h___t_a_b_l_e.html#a4031706df3cb7933765e247a63ba461a',1,'HASH_TABLE']]],
-  ['rwlock_12',['rwlock',['../struct_n_e_t_w_o_r_k___p_o_o_l.html#a39cc4a5d3010ac9a8452dd03f9dd1105',1,'NETWORK_POOL']]]
+  ['rnd_5fstr_11',['rnd_str',['../struct_d_a_t_a.html#aa0c7143c62a17fd248a2439b897b967a',1,'DATA']]],
+  ['root_12',['root',['../struct_h_a_s_h___t_a_b_l_e.html#a4031706df3cb7933765e247a63ba461a',1,'HASH_TABLE']]],
+  ['rwlock_13',['rwlock',['../struct_n_e_t_w_o_r_k___p_o_o_l.html#a39cc4a5d3010ac9a8452dd03f9dd1105',1,'NETWORK_POOL']]]
 ];

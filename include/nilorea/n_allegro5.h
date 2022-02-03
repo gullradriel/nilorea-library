@@ -1,5 +1,5 @@
 /**\file n_allegro5.h
- *  allegro5 helpers
+ * Allegro5 helpers
  *\author Castagnier Mickael
  *\version 1.0
  *\date 10/05/2020
@@ -13,8 +13,8 @@ extern "C"
 {
 #endif
 
-/**\defgroup ALLEGRO5 ALLEGRO5: helpers and api addons
-  \addtogroup ALLEGRO5
+/**\defgroup ALLEGRO5 GAMEDEV: Allegro 5 keyboard helper
+   \addtogroup ALLEGRO5
   @{
   */
 
