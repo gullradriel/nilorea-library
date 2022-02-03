@@ -66,9 +66,9 @@ int destroy_config_file( CONFIG_FILE **cfg_file );
 	{ \
 		list_foreach( listnode , __config -> sections ) \
 		{ \
-			CONFIG_FILE_SECTION *section = (CONFIG_FILE_SECTION *)listnode -> ptr ; \
-			__section_name = section -> section_name ; \
-			ht_foreach( entry , section -> entries ) \
+			CONFIG_FILE_SECTION *__section = (CONFIG_FILE_SECTION *)listnode -> ptr ; \
+			__section_name = __section -> section_name ; \
+			ht_foreach( entry , __section -> entries ) \
 			{ \
 				HASH_NODE *htnode = (HASH_NODE *)entry -> ptr ; \
 				if( htnode && htnode -> data . ptr ) \
@@ -81,7 +81,7 @@ int destroy_config_file( CONFIG_FILE **cfg_file );
 				} \
 			} \
 		} \
-	} \
+	}
 
 /**
 @}

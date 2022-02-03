@@ -376,17 +376,20 @@ int write_config_file( CONFIG_FILE *cfg_file, char *filename )
     __n_assert( out , n_log( LOG_ERR , "Could not open %s, %s" , filename , strerror( error ) ); return FALSE );
 
     char *last_section = NULL ;
+    char *section = NULL, *key = NULL, *val = NULL ;
+
     config_foreach( cfg_file , section , key , val )
     {
         /* write section name */
         if( !last_section || strcmp( last_section , section ) != 0 )
         {
-            fprintf( out , "[%d]\n" , section );
+            fprintf( out , "[%s]\n" , section );
             FreeNoLog( last_section );
             last_section = strdup( section );
         }
-        fprintf( "%s=%s\n" , key , value );
+        fprintf( out , "%s=%s\n" , key , val );
     }
+    config_endfor;
     fclose( out );
     FreeNoLog( last_section );
 

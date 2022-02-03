@@ -302,7 +302,7 @@ typedef struct NETWORK
 
     /*! pointers to network pools if members of any */
     LIST *pools ;
-<
+
 } NETWORK;
 
 
