@@ -77,7 +77,7 @@ typedef int SOCKET_TYPE ;
 void netw_sigchld_handler( int sig );
 
 /*! install the reap zombie process signal handler */
-#define netw_server_set_signal_handler(void) \
+#define netw_server_set_signal_handler \
 { \
         #ifdef LINUX \
         struct sigaction sa; \
