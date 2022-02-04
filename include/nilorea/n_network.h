@@ -74,6 +74,8 @@ typedef int SOCKET_TYPE ;
 #include <signal.h>
 #endif
 
+void netw_unload();
+
 void netw_sigchld_handler( int sig );
 
 /*! install the reap zombie process signal handler */
