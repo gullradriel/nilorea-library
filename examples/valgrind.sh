@@ -24,7 +24,7 @@ function valgrind_test {
 	params=$2
 	procfile=${proc}_applog$3.txt
 	valgrind_log=${proc}_debugmem$3.txt
-	
+
 	PROC_OUTPUT=`valgrind --suppressions=valgrind-suppressions.cfg --leak-check=full --show-leak-kinds=all --show-reachable=yes --run-libc-freeres=no --verbose --log-file=$valgrind_log ./$proc $params -V LOG_DEBUG 2>&1`
 	PROC_RET=$?
 
@@ -54,14 +54,14 @@ function valgrind_test {
 		echo "AppliLog:"
 		cat $procfile
 		echo "ValgrindLog:"
-		cat $valgrind_log 
+		cat $valgrind_log
 	else
 		echo "Memory test OK for $proc."
 		rm $valgrind_log
 	fi
 	if [ $RET -gt $most_critical ]
 	then
-		most_critical=$PROC_RET	
+		most_critical=$PROC_RET
 	fi
 	if ! flock -u $FD
 	then
@@ -72,24 +72,23 @@ function valgrind_test {
 	return $PROC_RET
 }
 
-#valgrind_test "ex_log" 
-valgrind_test "ex_list"  
-valgrind_test "ex_nstr"  
-valgrind_test "ex_common"  
-valgrind_test "ex_log"  
-valgrind_test "ex_exceptions"  
-valgrind_test "ex_hash"  
-valgrind_test "ex_pcre" '"TEST(.*)TEST" "TESTazerty1234TEST"'  
+#valgrind_test "ex_log"
+valgrind_test "ex_list"
+valgrind_test "ex_nstr"
+valgrind_test "ex_common"
+valgrind_test "ex_log"
+valgrind_test "ex_exceptions"
+valgrind_test "ex_hash"
+valgrind_test "ex_pcre" '"TEST(.*)TEST" "TESTazerty1234TEST"'
 valgrind_test "ex_configfile" "ex_configfile.cfg"
 valgrind_test "ex_threads"
-valgrind_test "ex_debug_mem"
-echo "#### NETWORK TESTING client ####" 
+echo "#### NETWORK TESTING client ####"
 ./ex_network -a localhost -p 6666 &
 sleep 1
 valgrind_test "ex_network" "-s localhost -p 6666"
 
-#valgrind_test "ex_gui_particles"  
-#valgrind_test "ex_monolith"  
+#valgrind_test "ex_gui_particles"
+#valgrind_test "ex_monolith"
 
 rm $LOCKFILE
 
