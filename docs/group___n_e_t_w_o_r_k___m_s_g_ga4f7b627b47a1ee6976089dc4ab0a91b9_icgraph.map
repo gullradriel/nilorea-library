@@ -1,17 +1,30 @@
 <map id="double_swap" name="double_swap">
-<area shape="rect" id="node1" title="Swap bytes endiannes for a double." alt="" coords="649,157,747,184"/>
-<area shape="rect" id="node2" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga0cf26e3b1e26847bbd66fbd4b4a1a67c" title="If needed swap bytes for a double." alt="" coords="547,81,601,108"/>
-<area shape="rect" id="node8" href="$group___n_e_t_w_o_r_k___m_s_g.html#gaaed102598c4379bd1e0dc78f834972b0" title="If needed swap bytes for a double." alt="" coords="547,183,601,209"/>
-<area shape="rect" id="node3" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga5145350ad23fa9c0db3057e566d70722" title="Make a single string of the message." alt="" coords="359,56,499,83"/>
-<area shape="rect" id="node4" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga7bae3c3de53204413c7663007ec4a4d7" title="Add a formatted NETWMSG_IDENT message to the specified network." alt="" coords="172,5,311,32"/>
-<area shape="rect" id="node6" href="$group___n_e_t_w_o_r_k___m_s_g.html#gaeb5e94070c0ee79ff2d11a707d225c3a" title="Make a ping message to send to a network." alt="" coords="174,56,309,83"/>
-<area shape="rect" id="node5" href="$group___n_e_t_w_o_r_k_i_n_g.html#gae8345266fcf7a23c0e8ffe176b0e086f" title="Add a formatted NETWMSG_IDENT message to the specified network." alt="" coords="5,5,124,32"/>
-<area shape="rect" id="node7" href="$group___n_e_t_w_o_r_k_i_n_g.html#gad9588cf27263ecf40f57d3923ccf721a" title="Add a ping reply to the network." alt="" coords="7,56,122,83"/>
-<area shape="rect" id="node9" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga3fd01fccdf5fee20c2f0df7429ab3dd7" title="Make a single message of the string." alt="" coords="359,196,499,223"/>
-<area shape="rect" id="node10" href="$ex__network_8h.html#a6f950bd6cd1d0314572ecae401ac1883" title="decode data we got from network" alt="" coords="189,107,293,133"/>
-<area shape="rect" id="node12" href="$group___n_e_t_w_o_r_k___m_s_g.html#gaf2d84e34e50db7b3b7aca16c6bdb06f8" title="Retrieves identification from netwmsg." alt="" coords="187,157,296,184"/>
-<area shape="rect" id="node13" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga525ee81a12f526d55b2b380d9338424e" title="Retrieves a ping travel elapsed time." alt="" coords="189,208,294,235"/>
-<area shape="rect" id="node14" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga241bf3b1ebc63dd986dfec1b0fe4998b" title="Retrieves position from netwmsg." alt="" coords="178,259,305,285"/>
-<area shape="rect" id="node15" href="$group___n_e_t_w_o_r_k___m_s_g.html#gace220d6339bd8085269ecee2b35126fb" title="Retrieves string from netwmsg." alt="" coords="185,309,298,336"/>
-<area shape="rect" id="node11" href="$ex__network_8h.html#a2af070d97fced1a0eadad90c6aa4903b" title="recv/send datas if any for the client" alt="" coords="11,107,118,133"/>
+<area shape="rect" id="node1" title="Swap bytes endiannes for a double." alt="" coords="1001,335,1099,361"/>
+<area shape="rect" id="node2" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga0cf26e3b1e26847bbd66fbd4b4a1a67c" title="If needed swap bytes for a double." alt="" coords="899,360,953,387"/>
+<area shape="rect" id="node21" href="$group___n_e_t_w_o_r_k___m_s_g.html#gaaed102598c4379bd1e0dc78f834972b0" title="If needed swap bytes for a double." alt="" coords="899,259,953,285"/>
+<area shape="rect" id="node3" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga5145350ad23fa9c0db3057e566d70722" title="Make a single string of the message." alt="" coords="711,461,851,488"/>
+<area shape="rect" id="node4" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga7bae3c3de53204413c7663007ec4a4d7" title="Add a formatted NETWMSG_IDENT message to the specified network." alt="" coords="499,537,638,564"/>
+<area shape="rect" id="node9" href="$group___n_e_t_w_o_r_k___m_s_g.html#gaeb5e94070c0ee79ff2d11a707d225c3a" title="Make a ping message to send to a network." alt="" coords="501,664,636,691"/>
+<area shape="rect" id="node11" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga6d469c5cbc4fdfa266be68a35d10a904" title=" " alt="" coords="475,335,663,361"/>
+<area shape="rect" id="node13" href="$group___n_e_t_w_o_r_k___m_s_g.html#gaea4cc09810479665c6c7e689dfaecff7" title=" " alt="" coords="487,613,651,640"/>
+<area shape="rect" id="node15" href="$group___n_e_t_w_o_r_k___m_s_g.html#gafb91c3ea7bfa93212141fa1fe074fb3d" title=" " alt="" coords="481,461,656,488"/>
+<area shape="rect" id="node18" href="$ex__network_8h.html#a97064904e9c2be2094c349413ff348fc" title="send data to specified network" alt="" coords="289,56,403,83"/>
+<area shape="rect" id="node5" href="$group___n_e_t_w_o_r_k_i_n_g.html#gae8345266fcf7a23c0e8ffe176b0e086f" title="Add a formatted NETWMSG_IDENT message to the specified network." alt="" coords="287,563,405,589"/>
+<area shape="rect" id="node6" href="$ex__gui__netclient_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="135,309,186,336"/>
+<area shape="rect" id="node7" href="$ex__gui__netserver_8c.html#a1f1e6cd9b7f8f1845345c9a5673cf384" title=" " alt="" coords="104,588,217,615"/>
+<area shape="rect" id="node8" href="$ex__gui__netserver_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,588,56,615"/>
+<area shape="rect" id="node10" href="$group___n_e_t_w_o_r_k_i_n_g.html#gad9588cf27263ecf40f57d3923ccf721a" title="Add a ping reply to the network." alt="" coords="289,715,403,741"/>
+<area shape="rect" id="node12" href="$group___n_e_t_w_o_r_k_i_n_g.html#gafaf1202a5f56a9f2285fccfbcacb3a6c" title="Add a formatted NETWMSG_IDENT message to the specified network." alt="" coords="278,259,414,285"/>
+<area shape="rect" id="node14" href="$group___n_e_t_w_o_r_k_i_n_g.html#gac8b30599c7a5c2cce35ee401d7b9d7f1" title="Add a formatted NETMSG_QUIT message to the specified network." alt="" coords="290,613,402,640"/>
+<area shape="rect" id="node16" href="$group___n_e_t_w_o_r_k_i_n_g.html#gad3b590da2eb8b594c75d1d5f46ba7b45" title="Add a string to the network, aiming a specific user." alt="" coords="275,461,417,488"/>
+<area shape="rect" id="node17" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga02b35de5d3b84e79c4fecbf4cebce603" title="Add a string to the network, aiming all server&#45;side users." alt="" coords="265,512,427,539"/>
+<area shape="rect" id="node19" href="$ex__network_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,31,56,57"/>
+<area shape="rect" id="node20" href="$ex__network_8h.html#a2af070d97fced1a0eadad90c6aa4903b" title="recv/send datas if any for the client" alt="" coords="107,31,214,57"/>
+<area shape="rect" id="node22" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga3fd01fccdf5fee20c2f0df7429ab3dd7" title="Make a single message of the string." alt="" coords="499,208,639,235"/>
+<area shape="rect" id="node23" href="$ex__network_8h.html#a6f950bd6cd1d0314572ecae401ac1883" title="decode data we got from network" alt="" coords="294,5,398,32"/>
+<area shape="rect" id="node24" href="$group___n_e_t_w_o_r_k___m_s_g.html#gaf2d84e34e50db7b3b7aca16c6bdb06f8" title="Retrieves identification from netwmsg." alt="" coords="291,360,401,387"/>
+<area shape="rect" id="node25" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga525ee81a12f526d55b2b380d9338424e" title="Retrieves a ping travel elapsed time." alt="" coords="293,411,399,437"/>
+<area shape="rect" id="node26" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga241bf3b1ebc63dd986dfec1b0fe4998b" title="Retrieves position from netwmsg." alt="" coords="283,208,409,235"/>
+<area shape="rect" id="node27" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga601ef18cfe3570caaa81cc43c09004c2" title=" " alt="" coords="295,107,397,133"/>
+<area shape="rect" id="node28" href="$group___n_e_t_w_o_r_k___m_s_g.html#gace220d6339bd8085269ecee2b35126fb" title="Retrieves string from netwmsg." alt="" coords="289,157,403,184"/>
 </map>

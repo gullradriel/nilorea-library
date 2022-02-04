@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.3"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Nilorea Library: ex_monolith.c Source File</title>
+<title>Nilorea Library: examples/ex_monolith.c Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -85,14 +85,14 @@ $(document).ready(function(){initNavTree('ex__monolith_8c_source.html',''); init
   <div class="headertitle"><div class="title">ex_monolith.c</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<a href="ex__monolith_8c.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;<a class="code" href="nilorea_8h.html">nilorea.h</a>&quot;</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keywordtype">int</span> main(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="ex__monolith_8c.html#a840291bc02cba5474a4cb46a9b9566fe">    9</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="ex__monolith_8c.html#a840291bc02cba5474a4cb46a9b9566fe">main</a>(<span class="keywordtype">void</span>)</div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>{</div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    <a class="code hl_function" href="group___l_o_g.html#gacad9b2d55788f46ddde811c986ead9ae">set_log_level</a>( <a class="code hl_define" href="group___l_o_g.html#ga6ff63e8955665c4a58b1598f2b07c51a">LOG_DEBUG</a> );</div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <a class="code hl_struct" href="struct_n___s_t_r.html">N_STR</a> *nstr = NULL ;</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <a class="code hl_struct" href="group___n___s_t_r.html#struct_n___s_t_r">N_STR</a> *nstr = NULL ;</div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    printf( <span class="stringliteral">&quot;str:%s\n&quot;</span>, <a class="code hl_define" href="group___c_o_m_m_o_n_s.html#gaf0e29edead3f943a4ac241c5724e1384">_nstr</a>( nstr ) );</div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
@@ -104,7 +104,7 @@ $(document).ready(function(){initNavTree('ex__monolith_8c_source.html',''); init
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    printf( <span class="stringliteral">&quot;str:%s\n&quot;</span>, <a class="code hl_define" href="group___c_o_m_m_o_n_s.html#gaf0e29edead3f943a4ac241c5724e1384">_nstr</a>( nstr ) );</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    free_nstr( &amp;nstr );</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <a class="code hl_define" href="group___n___s_t_r.html#ga113e906d03374ac38e441f1df44095fb">free_nstr</a>( &amp;nstr );</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    nstr = <a class="code hl_function" href="group___n___s_t_r.html#ga873edbb1f8787d0a78a13ccbbed9b9f9">new_nstr</a>( 1024 );</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
@@ -120,11 +120,11 @@ $(document).ready(function(){initNavTree('ex__monolith_8c_source.html',''); init
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <a class="code hl_define" href="group___n___s_t_r.html#gad0cfa38dd5915341138cdfce6d17e01f">nstrprintf_cat</a>( nstr, <span class="stringliteral">&quot; - some more texte&quot;</span> );</div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <a class="code hl_struct" href="struct_n___s_t_r.html">N_STR</a> *nstr2 = <a class="code hl_function" href="group___n___s_t_r.html#ga3e30a18ec42d0f4cd8651c442bf62651">nstrdup</a>( nstr );</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <a class="code hl_struct" href="group___n___s_t_r.html#struct_n___s_t_r">N_STR</a> *nstr2 = <a class="code hl_function" href="group___n___s_t_r.html#ga3e30a18ec42d0f4cd8651c442bf62651">nstrdup</a>( nstr );</div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    printf( <span class="stringliteral">&quot;str: %s\n str2: %s\n&quot;</span>, <a class="code hl_define" href="group___c_o_m_m_o_n_s.html#gaf0e29edead3f943a4ac241c5724e1384">_nstr</a>( nstr ), <a class="code hl_define" href="group___c_o_m_m_o_n_s.html#gaf0e29edead3f943a4ac241c5724e1384">_nstr</a>( nstr2 ) );</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <a class="code hl_struct" href="struct_n___s_t_r.html">N_STR</a> *nstr3 = NULL ;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <a class="code hl_struct" href="group___n___s_t_r.html#struct_n___s_t_r">N_STR</a> *nstr3 = NULL ;</div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <a class="code hl_function" href="group___n___s_t_r.html#ga092e6ee522715bd6b3664dbd1081c3a3">nstrcat</a>( nstr3, nstr );</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <a class="code hl_function" href="group___n___s_t_r.html#ga092e6ee522715bd6b3664dbd1081c3a3">nstrcat</a>( nstr3, nstr2 );</div>
@@ -138,30 +138,32 @@ $(document).ready(function(){initNavTree('ex__monolith_8c_source.html',''); init
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    printf( <span class="stringliteral">&quot;str:%s\n&quot;</span>, <a class="code hl_define" href="group___c_o_m_m_o_n_s.html#gaf0e29edead3f943a4ac241c5724e1384">_nstr</a>( nstr3 ) );</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    free_nstr( &amp;nstr );</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    free_nstr( &amp;nstr2 );</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    free_nstr( &amp;nstr3 );</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <a class="code hl_define" href="group___n___s_t_r.html#ga113e906d03374ac38e441f1df44095fb">free_nstr</a>( &amp;nstr );</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <a class="code hl_define" href="group___n___s_t_r.html#ga113e906d03374ac38e441f1df44095fb">free_nstr</a>( &amp;nstr2 );</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <a class="code hl_define" href="group___n___s_t_r.html#ga113e906d03374ac38e441f1df44095fb">free_nstr</a>( &amp;nstr3 );</div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    exit( 0 );</div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>}</div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
-<div class="ttc" id="agroup___c_o_m_m_o_n_s_html_gaf0e29edead3f943a4ac241c5724e1384"><div class="ttname"><a href="group___c_o_m_m_o_n_s.html#gaf0e29edead3f943a4ac241c5724e1384">_nstr</a></div><div class="ttdeci">#define _nstr(__PTR)</div><div class="ttdoc">N_STR or &quot;NULL&quot; string for logging purposes.</div><div class="ttdef"><b>Definition:</b> <a href="n__common_8h_source.html#l00177">n_common.h:177</a></div></div>
-<div class="ttc" id="agroup___l_o_g_html_ga6ff63e8955665c4a58b1598f2b07c51a"><div class="ttname"><a href="group___l_o_g.html#ga6ff63e8955665c4a58b1598f2b07c51a">LOG_DEBUG</a></div><div class="ttdeci">#define LOG_DEBUG</div><div class="ttdoc">debug-level messages</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00066">n_log.h:66</a></div></div>
+<div class="ttc" id="aex__monolith_8c_html_a840291bc02cba5474a4cb46a9b9566fe"><div class="ttname"><a href="ex__monolith_8c.html#a840291bc02cba5474a4cb46a9b9566fe">main</a></div><div class="ttdeci">int main(void)</div><div class="ttdef"><b>Definition:</b> <a href="ex__monolith_8c_source.html#l00009">ex_monolith.c:9</a></div></div>
+<div class="ttc" id="agroup___c_o_m_m_o_n_s_html_gaf0e29edead3f943a4ac241c5724e1384"><div class="ttname"><a href="group___c_o_m_m_o_n_s.html#gaf0e29edead3f943a4ac241c5724e1384">_nstr</a></div><div class="ttdeci">#define _nstr(__PTR)</div><div class="ttdef"><b>Definition:</b> <a href="n__common_8h_source.html#l00177">n_common.h:177</a></div></div>
+<div class="ttc" id="agroup___l_o_g_html_ga6ff63e8955665c4a58b1598f2b07c51a"><div class="ttname"><a href="group___l_o_g.html#ga6ff63e8955665c4a58b1598f2b07c51a">LOG_DEBUG</a></div><div class="ttdeci">#define LOG_DEBUG</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00066">n_log.h:66</a></div></div>
 <div class="ttc" id="agroup___l_o_g_html_gacad9b2d55788f46ddde811c986ead9ae"><div class="ttname"><a href="group___l_o_g.html#gacad9b2d55788f46ddde811c986ead9ae">set_log_level</a></div><div class="ttdeci">void set_log_level(const int log_level)</div><div class="ttdoc">Set the global log level value ( static int LOG_LEVEL )</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8c_source.html#l00097">n_log.c:97</a></div></div>
 <div class="ttc" id="agroup___n___s_t_r_html_ga092e6ee522715bd6b3664dbd1081c3a3"><div class="ttname"><a href="group___n___s_t_r.html#ga092e6ee522715bd6b3664dbd1081c3a3">nstrcat</a></div><div class="ttdeci">int nstrcat(N_STR *dst, N_STR *src)</div><div class="ttdoc">Add N_STR *src content to N_STR *dst, resizing it if needed.</div><div class="ttdef"><b>Definition:</b> <a href="n__str_8c_source.html#l01163">n_str.c:1163</a></div></div>
-<div class="ttc" id="agroup___n___s_t_r_html_ga1c1f4062c727970a68bfd932c3fabcd5"><div class="ttname"><a href="group___n___s_t_r.html#ga1c1f4062c727970a68bfd932c3fabcd5">nstrprintf</a></div><div class="ttdeci">#define nstrprintf(__nstr_var,...)</div><div class="ttdoc">Macro to quickly allocate and sprintf to N_STR *.</div><div class="ttdef"><b>Definition:</b> <a href="n__str_8h_source.html#l00097">n_str.h:97</a></div></div>
+<div class="ttc" id="agroup___n___s_t_r_html_ga113e906d03374ac38e441f1df44095fb"><div class="ttname"><a href="group___n___s_t_r.html#ga113e906d03374ac38e441f1df44095fb">free_nstr</a></div><div class="ttdeci">#define free_nstr(__ptr)</div><div class="ttdef"><b>Definition:</b> <a href="n__str_8h_source.html#l00200">n_str.h:200</a></div></div>
+<div class="ttc" id="agroup___n___s_t_r_html_ga1c1f4062c727970a68bfd932c3fabcd5"><div class="ttname"><a href="group___n___s_t_r.html#ga1c1f4062c727970a68bfd932c3fabcd5">nstrprintf</a></div><div class="ttdeci">#define nstrprintf(__nstr_var,...)</div><div class="ttdef"><b>Definition:</b> <a href="n__str_8h_source.html#l00097">n_str.h:97</a></div></div>
 <div class="ttc" id="agroup___n___s_t_r_html_ga3e30a18ec42d0f4cd8651c442bf62651"><div class="ttname"><a href="group___n___s_t_r.html#ga3e30a18ec42d0f4cd8651c442bf62651">nstrdup</a></div><div class="ttdeci">N_STR * nstrdup(N_STR *str)</div><div class="ttdoc">Duplicate a N_STR.</div><div class="ttdef"><b>Definition:</b> <a href="n__str_8c_source.html#l00746">n_str.c:746</a></div></div>
 <div class="ttc" id="agroup___n___s_t_r_html_ga873edbb1f8787d0a78a13ccbbed9b9f9"><div class="ttname"><a href="group___n___s_t_r.html#ga873edbb1f8787d0a78a13ccbbed9b9f9">new_nstr</a></div><div class="ttdeci">N_STR * new_nstr(NSTRBYTE size)</div><div class="ttdoc">create a new N_STR string</div><div class="ttdef"><b>Definition:</b> <a href="n__str_8c_source.html#l00209">n_str.c:209</a></div></div>
-<div class="ttc" id="agroup___n___s_t_r_html_gad0cfa38dd5915341138cdfce6d17e01f"><div class="ttname"><a href="group___n___s_t_r.html#gad0cfa38dd5915341138cdfce6d17e01f">nstrprintf_cat</a></div><div class="ttdeci">#define nstrprintf_cat(__nstr_var,...)</div><div class="ttdoc">Macro to quickly allocate and sprintf and cat to a N_STR *.</div><div class="ttdef"><b>Definition:</b> <a href="n__str_8h_source.html#l00117">n_str.h:117</a></div></div>
-<div class="ttc" id="anilorea_8h_html"><div class="ttname"><a href="nilorea_8h.html">nilorea.h</a></div><div class="ttdoc">Header for a monolith use.</div></div>
-<div class="ttc" id="astruct_n___s_t_r_html"><div class="ttname"><a href="struct_n___s_t_r.html">N_STR</a></div><div class="ttdoc">A box including a string and his lenght.</div><div class="ttdef"><b>Definition:</b> <a href="n__str_8h_source.html#l00150">n_str.h:151</a></div></div>
+<div class="ttc" id="agroup___n___s_t_r_html_gad0cfa38dd5915341138cdfce6d17e01f"><div class="ttname"><a href="group___n___s_t_r.html#gad0cfa38dd5915341138cdfce6d17e01f">nstrprintf_cat</a></div><div class="ttdeci">#define nstrprintf_cat(__nstr_var,...)</div><div class="ttdef"><b>Definition:</b> <a href="n__str_8h_source.html#l00117">n_str.h:117</a></div></div>
+<div class="ttc" id="agroup___n___s_t_r_html_struct_n___s_t_r"><div class="ttname"><a href="group___n___s_t_r.html#struct_n___s_t_r">N_STR</a></div><div class="ttdef"><b>Definition:</b> <a href="n__str_8h_source.html#l00150">n_str.h:151</a></div></div>
+<div class="ttc" id="anilorea_8h_html"><div class="ttname"><a href="nilorea_8h.html">nilorea.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d28a4824dc47e487b107a5db32ef43c4.html">examples</a></li><li class="navelem"><b>ex_monolith.c</b></li>
-    <li class="footer">Generated on Thu Feb 3 2022 21:53:47 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+    <li class="navelem"><a class="el" href="dir_d28a4824dc47e487b107a5db32ef43c4.html">examples</a></li><li class="navelem"><a class="el" href="ex__monolith_8c.html">ex_monolith.c</a></li>
+    <li class="footer">Generated on Fri Feb 4 2022 17:12:03 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
   </ul>
 </div>
 </body>

@@ -92,8 +92,8 @@ $(document).ready(function(){initNavTree('group___l_i_s_t.html',''); initResizab
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Data Structures</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_l_i_s_t.html">LIST</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:struct_l_i_s_t"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___l_i_s_t.html#struct_l_i_s_t">LIST</a></td></tr>
+<tr class="separator:struct_l_i_s_t"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_l_i_s_t___n_o_d_e.html">LIST_NODE</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -112,36 +112,115 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga90d32fef68ce6f3ec0a7b4085690c755"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755">list_destroy</a> (<a class="el" href="struct_l_i_s_t.html">LIST</a> **list)</td></tr>
+<tr class="memitem:ga90d32fef68ce6f3ec0a7b4085690c755"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755">list_destroy</a> (<a class="el" href="group___l_i_s_t.html#struct_l_i_s_t">LIST</a> **list)</td></tr>
+<tr class="memdesc:ga90d32fef68ce6f3ec0a7b4085690c755"><td class="mdescLeft">&#160;</td><td class="mdescRight">Empty and Free a list container. Call the destructor each time.  <a href="group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755">More...</a><br /></td></tr>
 <tr class="separator:ga90d32fef68ce6f3ec0a7b4085690c755"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga1dafe7a250ddad51fadd375f057287e7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___l_i_s_t.html#ga1dafe7a250ddad51fadd375f057287e7">list_empty</a> (<a class="el" href="struct_l_i_s_t.html">LIST</a> *list)</td></tr>
+<tr class="memitem:ga1dafe7a250ddad51fadd375f057287e7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___l_i_s_t.html#ga1dafe7a250ddad51fadd375f057287e7">list_empty</a> (<a class="el" href="group___l_i_s_t.html#struct_l_i_s_t">LIST</a> *list)</td></tr>
+<tr class="memdesc:ga1dafe7a250ddad51fadd375f057287e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Empty a <a class="el" href="group___l_i_s_t.html#struct_l_i_s_t">LIST</a> list of pointers.  <a href="group___l_i_s_t.html#ga1dafe7a250ddad51fadd375f057287e7">More...</a><br /></td></tr>
 <tr class="separator:ga1dafe7a250ddad51fadd375f057287e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae77e34ac35b77e9d1b3124536aa77722"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___l_i_s_t.html#gae77e34ac35b77e9d1b3124536aa77722">list_empty_with_f</a> (<a class="el" href="struct_l_i_s_t.html">LIST</a> *list, void(*free_fnct)(void *ptr))</td></tr>
+<tr class="memitem:gae77e34ac35b77e9d1b3124536aa77722"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___l_i_s_t.html#gae77e34ac35b77e9d1b3124536aa77722">list_empty_with_f</a> (<a class="el" href="group___l_i_s_t.html#struct_l_i_s_t">LIST</a> *list, void(*free_fnct)(void *ptr))</td></tr>
+<tr class="memdesc:gae77e34ac35b77e9d1b3124536aa77722"><td class="mdescLeft">&#160;</td><td class="mdescRight">Empty a <a class="el" href="group___l_i_s_t.html#struct_l_i_s_t">LIST</a> list of pointers.  <a href="group___l_i_s_t.html#gae77e34ac35b77e9d1b3124536aa77722">More...</a><br /></td></tr>
 <tr class="separator:gae77e34ac35b77e9d1b3124536aa77722"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga0a1ce227da1f0c6bac9cd02e2d6b36c0"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___l_i_s_t.html#ga0a1ce227da1f0c6bac9cd02e2d6b36c0">list_pop_f</a> (<a class="el" href="struct_l_i_s_t.html">LIST</a> *list)</td></tr>
+<tr class="memitem:ga0a1ce227da1f0c6bac9cd02e2d6b36c0"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___l_i_s_t.html#ga0a1ce227da1f0c6bac9cd02e2d6b36c0">list_pop_f</a> (<a class="el" href="group___l_i_s_t.html#struct_l_i_s_t">LIST</a> *list)</td></tr>
+<tr class="memdesc:ga0a1ce227da1f0c6bac9cd02e2d6b36c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a pointer from the end of the list.  <a href="group___l_i_s_t.html#ga0a1ce227da1f0c6bac9cd02e2d6b36c0">More...</a><br /></td></tr>
 <tr class="separator:ga0a1ce227da1f0c6bac9cd02e2d6b36c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga4eab319289a83524639ee5e9f0441fdf"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___l_i_s_t.html#ga4eab319289a83524639ee5e9f0441fdf">list_push</a> (<a class="el" href="struct_l_i_s_t.html">LIST</a> *list, void *ptr, void(*destructor)(void *ptr))</td></tr>
+<tr class="memitem:ga4eab319289a83524639ee5e9f0441fdf"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___l_i_s_t.html#ga4eab319289a83524639ee5e9f0441fdf">list_push</a> (<a class="el" href="group___l_i_s_t.html#struct_l_i_s_t">LIST</a> *list, void *ptr, void(*destructor)(void *ptr))</td></tr>
+<tr class="memdesc:ga4eab319289a83524639ee5e9f0441fdf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a pointer to the end of the list.  <a href="group___l_i_s_t.html#ga4eab319289a83524639ee5e9f0441fdf">More...</a><br /></td></tr>
 <tr class="separator:ga4eab319289a83524639ee5e9f0441fdf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae582df4f7b31ccc5a6a026ffd8ea9555"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___l_i_s_t.html#gae582df4f7b31ccc5a6a026ffd8ea9555">list_push_sorted</a> (<a class="el" href="struct_l_i_s_t.html">LIST</a> *list, void *ptr, int(*comparator)(const void *a, const void *b), void(*destructor)(void *ptr))</td></tr>
+<tr class="memitem:gae582df4f7b31ccc5a6a026ffd8ea9555"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___l_i_s_t.html#gae582df4f7b31ccc5a6a026ffd8ea9555">list_push_sorted</a> (<a class="el" href="group___l_i_s_t.html#struct_l_i_s_t">LIST</a> *list, void *ptr, int(*comparator)(const void *a, const void *b), void(*destructor)(void *ptr))</td></tr>
+<tr class="memdesc:gae582df4f7b31ccc5a6a026ffd8ea9555"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a pointer sorted in the list , starting by the end of the list.  <a href="group___l_i_s_t.html#gae582df4f7b31ccc5a6a026ffd8ea9555">More...</a><br /></td></tr>
 <tr class="separator:gae582df4f7b31ccc5a6a026ffd8ea9555"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae009d6d3c835a2affb99071ea8457803"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_l_i_s_t___n_o_d_e.html">LIST_NODE</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___l_i_s_t.html#gae009d6d3c835a2affb99071ea8457803">list_search</a> (<a class="el" href="struct_l_i_s_t.html">LIST</a> *list, void *ptr)</td></tr>
+<tr class="memitem:gae009d6d3c835a2affb99071ea8457803"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_l_i_s_t___n_o_d_e.html">LIST_NODE</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___l_i_s_t.html#gae009d6d3c835a2affb99071ea8457803">list_search</a> (<a class="el" href="group___l_i_s_t.html#struct_l_i_s_t">LIST</a> *list, void *ptr)</td></tr>
+<tr class="memdesc:gae009d6d3c835a2affb99071ea8457803"><td class="mdescLeft">&#160;</td><td class="mdescRight">search ptr in list  <a href="group___l_i_s_t.html#gae009d6d3c835a2affb99071ea8457803">More...</a><br /></td></tr>
 <tr class="separator:gae009d6d3c835a2affb99071ea8457803"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaecb20955816170bab5035b81e98e043d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_l_i_s_t___n_o_d_e.html">LIST_NODE</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___l_i_s_t.html#gaecb20955816170bab5035b81e98e043d">list_search_with_f</a> (<a class="el" href="struct_l_i_s_t.html">LIST</a> *list, int(*checkfunk)(void *ptr))</td></tr>
+<tr class="memitem:gaecb20955816170bab5035b81e98e043d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_l_i_s_t___n_o_d_e.html">LIST_NODE</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___l_i_s_t.html#gaecb20955816170bab5035b81e98e043d">list_search_with_f</a> (<a class="el" href="group___l_i_s_t.html#struct_l_i_s_t">LIST</a> *list, int(*checkfunk)(void *ptr))</td></tr>
+<tr class="memdesc:gaecb20955816170bab5035b81e98e043d"><td class="mdescLeft">&#160;</td><td class="mdescRight">search ptr in list  <a href="group___l_i_s_t.html#gaecb20955816170bab5035b81e98e043d">More...</a><br /></td></tr>
 <tr class="separator:gaecb20955816170bab5035b81e98e043d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac0af2f948e9d7cd5946329bf8ac282cf"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___l_i_s_t.html#gac0af2f948e9d7cd5946329bf8ac282cf">list_shift_f</a> (<a class="el" href="struct_l_i_s_t.html">LIST</a> *list)</td></tr>
+<tr class="memitem:gac0af2f948e9d7cd5946329bf8ac282cf"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___l_i_s_t.html#gac0af2f948e9d7cd5946329bf8ac282cf">list_shift_f</a> (<a class="el" href="group___l_i_s_t.html#struct_l_i_s_t">LIST</a> *list)</td></tr>
+<tr class="memdesc:gac0af2f948e9d7cd5946329bf8ac282cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a pointer from the start of the list.  <a href="group___l_i_s_t.html#gac0af2f948e9d7cd5946329bf8ac282cf">More...</a><br /></td></tr>
 <tr class="separator:gac0af2f948e9d7cd5946329bf8ac282cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga65687bd547104e185bad1b7da5cb0d98"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___l_i_s_t.html#ga65687bd547104e185bad1b7da5cb0d98">list_unshift</a> (<a class="el" href="struct_l_i_s_t.html">LIST</a> *list, void *ptr, void(*destructor)(void *ptr))</td></tr>
+<tr class="memitem:ga65687bd547104e185bad1b7da5cb0d98"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___l_i_s_t.html#ga65687bd547104e185bad1b7da5cb0d98">list_unshift</a> (<a class="el" href="group___l_i_s_t.html#struct_l_i_s_t">LIST</a> *list, void *ptr, void(*destructor)(void *ptr))</td></tr>
+<tr class="memdesc:ga65687bd547104e185bad1b7da5cb0d98"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a pointer at the start of the list.  <a href="group___l_i_s_t.html#ga65687bd547104e185bad1b7da5cb0d98">More...</a><br /></td></tr>
 <tr class="separator:ga65687bd547104e185bad1b7da5cb0d98"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga98e4e6e168d82f062e987ef578ce8e43"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___l_i_s_t.html#ga98e4e6e168d82f062e987ef578ce8e43">list_unshift_sorted</a> (<a class="el" href="struct_l_i_s_t.html">LIST</a> *list, void *ptr, int(*comparator)(const void *a, const void *b), void(*destructor)(void *ptr))</td></tr>
+<tr class="memitem:ga98e4e6e168d82f062e987ef578ce8e43"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___l_i_s_t.html#ga98e4e6e168d82f062e987ef578ce8e43">list_unshift_sorted</a> (<a class="el" href="group___l_i_s_t.html#struct_l_i_s_t">LIST</a> *list, void *ptr, int(*comparator)(const void *a, const void *b), void(*destructor)(void *ptr))</td></tr>
+<tr class="memdesc:ga98e4e6e168d82f062e987ef578ce8e43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a pointer sorted in the list , starting by the start of the list.  <a href="group___l_i_s_t.html#ga98e4e6e168d82f062e987ef578ce8e43">More...</a><br /></td></tr>
 <tr class="separator:ga98e4e6e168d82f062e987ef578ce8e43"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gada615e3b144e97bcff147dfe89f6fef6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_l_i_s_t.html">LIST</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___l_i_s_t.html#gada615e3b144e97bcff147dfe89f6fef6">new_generic_list</a> (int max_items)</td></tr>
+<tr class="memitem:gada615e3b144e97bcff147dfe89f6fef6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___l_i_s_t.html#struct_l_i_s_t">LIST</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___l_i_s_t.html#gada615e3b144e97bcff147dfe89f6fef6">new_generic_list</a> (int max_items)</td></tr>
+<tr class="memdesc:gada615e3b144e97bcff147dfe89f6fef6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialiaze a generic list container to max_items pointers.  <a href="group___l_i_s_t.html#gada615e3b144e97bcff147dfe89f6fef6">More...</a><br /></td></tr>
 <tr class="separator:gada615e3b144e97bcff147dfe89f6fef6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga678e828550efc8e64a836bb8c713c2f4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_l_i_s_t___n_o_d_e.html">LIST_NODE</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___l_i_s_t.html#ga678e828550efc8e64a836bb8c713c2f4">new_list_node</a> (void *ptr, void(*destructor)(void *ptr))</td></tr>
+<tr class="memdesc:ga678e828550efc8e64a836bb8c713c2f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocate a new node to link in a list.  <a href="group___l_i_s_t.html#ga678e828550efc8e64a836bb8c713c2f4">More...</a><br /></td></tr>
 <tr class="separator:ga678e828550efc8e64a836bb8c713c2f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gabd7f04c5a1cd8307c0f289dcccdb5a41"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___l_i_s_t.html#gabd7f04c5a1cd8307c0f289dcccdb5a41">remove_list_node_f</a> (<a class="el" href="struct_l_i_s_t.html">LIST</a> *list, <a class="el" href="struct_l_i_s_t___n_o_d_e.html">LIST_NODE</a> *node)</td></tr>
+<tr class="memitem:gabd7f04c5a1cd8307c0f289dcccdb5a41"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___l_i_s_t.html#gabd7f04c5a1cd8307c0f289dcccdb5a41">remove_list_node_f</a> (<a class="el" href="group___l_i_s_t.html#struct_l_i_s_t">LIST</a> *list, <a class="el" href="struct_l_i_s_t___n_o_d_e.html">LIST_NODE</a> *node)</td></tr>
+<tr class="memdesc:gabd7f04c5a1cd8307c0f289dcccdb5a41"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internal function called each time we need to get a node out of a list.  <a href="group___l_i_s_t.html#gabd7f04c5a1cd8307c0f289dcccdb5a41">More...</a><br /></td></tr>
 <tr class="separator:gabd7f04c5a1cd8307c0f289dcccdb5a41"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<hr/><h2 class="groupheader">Data Structure Documentation</h2>
+<a name="struct_l_i_s_t" id="struct_l_i_s_t"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#struct_l_i_s_t">&#9670;&nbsp;</a></span>LIST</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct LIST</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="textblock"><p >Structure of a generic <a class="el" href="group___l_i_s_t.html#struct_l_i_s_t">LIST</a> container </p>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ex_gui_netclient_8c-example.html#_a11">ex_gui_netclient.c</a>, <a class="el" href="ex_gui_netserver_8c-example.html#_a18">ex_gui_netserver.c</a>, <a class="el" href="ex_gui_particles_8c-example.html#_a8">ex_gui_particles.c</a>, <a class="el" href="ex_hash_8c-example.html#_a13">ex_hash.c</a>, and <a class="el" href="ex_list_8c-example.html#_a1">ex_list.c</a>.</dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="n__list_8h_source.html#l00044">44</a> of file <a class="el" href="n__list_8h_source.html">n_list.h</a>.</p>
+</div><div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for LIST:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="struct_l_i_s_t__coll__graph.png" border="0" usemap="#a_l_i_s_t_coll__map" alt="Collaboration graph"/></div>
+<map name="a_l_i_s_t_coll__map" id="a_l_i_s_t_coll__map">
+<area shape="rect" title=" " alt="" coords="62,300,110,377"/>
+<area shape="rect" title=" " alt="" coords="5,145,44,223"/>
+<area shape="rect" href="struct_l_i_s_t___n_o_d_e.html" title=" " alt="" coords="103,145,195,223"/>
+<area shape="rect" title=" " alt="" coords="69,5,122,83"/>
+<area shape="rect" title=" " alt="" coords="147,5,257,83"/>
+</map>
+</div>
+<table class="fieldtable">
+<tr><th colspan="3">Data Fields</th></tr>
+<tr><td class="fieldtype">
+<a id="a353e892f4b77631bfe0eeef1bd05db39" name="a353e892f4b77631bfe0eeef1bd05db39"></a><a class="el" href="struct_l_i_s_t___n_o_d_e.html">LIST_NODE</a> *</td>
+<td class="fieldname">
+end</td>
+<td class="fielddoc">
+<p >pointer to the end of the list </p>
+</td></tr>
+<tr><td class="fieldtype">
+<a id="a17ecceed58e4353b703f55133a36c0d1" name="a17ecceed58e4353b703f55133a36c0d1"></a>int</td>
+<td class="fieldname">
+nb_items</td>
+<td class="fielddoc">
+<p >number of item currently in the list </p>
+</td></tr>
+<tr><td class="fieldtype">
+<a id="af29cb936692783d93e2da27c357d5dfb" name="af29cb936692783d93e2da27c357d5dfb"></a>int</td>
+<td class="fieldname">
+nb_max_items</td>
+<td class="fielddoc">
+<p >maximum number of item in the list. Unlimited 0 or negative </p>
+</td></tr>
+<tr><td class="fieldtype">
+<a id="aaaf4b83d5bfb568b4a840032ba46ead3" name="aaaf4b83d5bfb568b4a840032ba46ead3"></a><a class="el" href="struct_l_i_s_t___n_o_d_e.html">LIST_NODE</a> *</td>
+<td class="fieldname">
+start</td>
+<td class="fielddoc">
+<p >pointer to the start of the list </p>
+</td></tr>
+</table>
+
+</div>
+</div>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="ga720a8cd6c95044b33d3c952e5dadebc3" name="ga720a8cd6c95044b33d3c952e5dadebc3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga720a8cd6c95044b33d3c952e5dadebc3">&#9670;&nbsp;</a></span>link_node</h2>
@@ -169,15 +248,14 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__list_8h.html">n_list.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="n__list_8h.html">include/nilorea/n_list.h</a>&gt;</code></p>
 <b>Value:</b><div class="fragment"><div class="line">   <span class="keywordflow">do</span> \</div>
 <div class="line">   { \</div>
 <div class="line">      __NODE_2 -&gt; prev = __NODE_1 ; \</div>
 <div class="line">      __NODE_1 -&gt; next = __NODE_2 ; \</div>
 <div class="line">   } \</div>
 <div class="line">   while( 0 )</div>
-</div><!-- fragment -->
-<p>Macro helper for linking two nodes. </p>
+</div><!-- fragment --><p >Macro helper for linking two nodes </p>
 
 <p class="definition">Definition at line <a class="el" href="n__list_8h_source.html#l00061">61</a> of file <a class="el" href="n__list_8h_source.html">n_list.h</a>.</p>
 
@@ -209,18 +287,17 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__list_8h.html">n_list.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="n__list_8h.html">include/nilorea/n_list.h</a>&gt;</code></p>
 <b>Value:</b><div class="fragment"><div class="line">   <span class="keywordflow">if</span>( !__LIST_ ) \</div>
 <div class="line">   { \</div>
 <div class="line">      n_log( <a class="code hl_define" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a> , <span class="stringliteral">&quot;Error in list_foreach, %s is NULL&quot;</span> , #__LIST_ ); \</div>
 <div class="line">   } \</div>
 <div class="line">   else \</div>
 <div class="line">   for( <a class="code hl_struct" href="struct_l_i_s_t___n_o_d_e.html">LIST_NODE</a> *__ITEM_ = __LIST_ -&gt; start ; __ITEM_ ; __ITEM_ = __ITEM_ -&gt; next )</div>
-<div class="ttc" id="agroup___l_o_g_html_ga96fad55b3f5adf08c39e4c877cf185e3"><div class="ttname"><a href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a></div><div class="ttdeci">#define LOG_ERR</div><div class="ttdoc">error conditions</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00058">n_log.h:58</a></div></div>
-<div class="ttc" id="astruct_l_i_s_t___n_o_d_e_html"><div class="ttname"><a href="struct_l_i_s_t___n_o_d_e.html">LIST_NODE</a></div><div class="ttdoc">Structure of a generic list node.</div><div class="ttdef"><b>Definition:</b> <a href="n__list_8h_source.html#l00026">n_list.h:27</a></div></div>
-</div><!-- fragment -->
-<p>ForEach macro helper. </p>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ex_gui_netclient_8c-example.html#a12">ex_gui_netclient.c</a>, <a class="el" href="ex_hash_8c-example.html#a21">ex_hash.c</a>, and <a class="el" href="ex_list_8c-example.html#a17">ex_list.c</a>.</dd>
+<div class="ttc" id="agroup___l_o_g_html_ga96fad55b3f5adf08c39e4c877cf185e3"><div class="ttname"><a href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a></div><div class="ttdeci">#define LOG_ERR</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00058">n_log.h:58</a></div></div>
+<div class="ttc" id="astruct_l_i_s_t___n_o_d_e_html"><div class="ttname"><a href="struct_l_i_s_t___n_o_d_e.html">LIST_NODE</a></div><div class="ttdef"><b>Definition:</b> <a href="n__list_8h_source.html#l00026">n_list.h:27</a></div></div>
+</div><!-- fragment --><p >ForEach macro helper </p>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ex_gui_netclient_8c-example.html#a16">ex_gui_netclient.c</a>, <a class="el" href="ex_hash_8c-example.html#a31">ex_hash.c</a>, and <a class="el" href="ex_list_8c-example.html#a23">ex_list.c</a>.</dd>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="n__list_8h_source.html#l00070">70</a> of file <a class="el" href="n__list_8h_source.html">n_list.h</a>.</p>
@@ -253,9 +330,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__list_8h.html">n_list.h</a>&gt;</code></p>
-
-<p>Pop macro helper for void pointer casting. </p>
+<p><code>#include &lt;<a class="el" href="n__list_8h.html">include/nilorea/n_list.h</a>&gt;</code></p>
+<p >Pop macro helper for void pointer casting </p>
 
 <p class="definition">Definition at line <a class="el" href="n__list_8h_source.html#l00079">79</a> of file <a class="el" href="n__list_8h_source.html">n_list.h</a>.</p>
 
@@ -287,9 +363,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__list_8h.html">n_list.h</a>&gt;</code></p>
-
-<p>Shift macro helper for void pointer casting. </p>
+<p><code>#include &lt;<a class="el" href="n__list_8h.html">include/nilorea/n_list.h</a>&gt;</code></p>
+<p >Shift macro helper for void pointer casting </p>
 
 <p class="definition">Definition at line <a class="el" href="n__list_8h_source.html#l00081">81</a> of file <a class="el" href="n__list_8h_source.html">n_list.h</a>.</p>
 
@@ -327,9 +402,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__list_8h.html">n_list.h</a>&gt;</code></p>
-
-<p>Remove macro helper for void pointer casting. </p>
+<p><code>#include &lt;<a class="el" href="n__list_8h.html">include/nilorea/n_list.h</a>&gt;</code></p>
+<p >Remove macro helper for void pointer casting </p>
 
 <p class="definition">Definition at line <a class="el" href="n__list_8h_source.html#l00083">83</a> of file <a class="el" href="n__list_8h_source.html">n_list.h</a>.</p>
 
@@ -345,17 +419,17 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">int list_destroy </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_l_i_s_t.html">LIST</a> **&#160;</td>
+          <td class="paramtype"><a class="el" href="group___l_i_s_t.html#struct_l_i_s_t">LIST</a> **&#160;</td>
           <td class="paramname"><em>list</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__list_8h.html">n_list.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="n__list_8h.html">include/nilorea/n_list.h</a>&gt;</code></p>
 
-<p>Empty and Free a list container. </p>
-<p >Call the destructor each time. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Empty and Free a list container. Call the destructor each time. </p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">list</td><td>The list to destroy. An already empty or null list will cause an error and a _log message. </td></tr>
   </table>
@@ -367,43 +441,75 @@ Functions</h2></td></tr>
 
 <p class="reference">References <a class="el" href="n__common_8h_source.html#l00262">__n_assert</a>, <a class="el" href="n__common_8h_source.html#l00242">Free</a>, <a class="el" href="n__list_8c_source.html#l00424">list_empty()</a>, <a class="el" href="n__log_8h_source.html#l00058">LOG_ERR</a>, and <a class="el" href="n__log_8h_source.html#l00074">n_log</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="n__network__msg_8c_source.html#l00106">delete_msg()</a>, <a class="el" href="n__config__file_8c_source.html#l00537">destroy_config_file()</a>, <a class="el" href="n__thread__pool_8c_source.html#l00340">destroy_threaded_pool()</a>, and <a class="el" href="n__network_8c_source.html#l01420">netw_set()</a>.</p>
-<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="group___l_i_s_t_ga90d32fef68ce6f3ec0a7b4085690c755_cgraph.png" border="0" usemap="#agroup___l_i_s_t_ga90d32fef68ce6f3ec0a7b4085690c755_cgraph" alt=""/></div>
-<map name="agroup___l_i_s_t_ga90d32fef68ce6f3ec0a7b4085690c755_cgraph" id="agroup___l_i_s_t_ga90d32fef68ce6f3ec0a7b4085690c755_cgraph">
-<area shape="rect" title="Empty and Free a list container." alt="" coords="5,5,95,32"/>
-<area shape="rect" href="group___l_i_s_t.html#ga1dafe7a250ddad51fadd375f057287e7" title="Empty a LIST list of pointers." alt="" coords="143,5,225,32"/>
-</map>
-</div>
+<p class="reference">Referenced by <a class="el" href="n__hash_8c_source.html#l01832">_destroy_ht()</a>, <a class="el" href="n__hash_8c_source.html#l01880">_ht_search()</a>, <a class="el" href="n__hash_8c_source.html#l00851">_ht_search_trie()</a>, <a class="el" href="n__network__msg_8c_source.html#l00106">delete_msg()</a>, <a class="el" href="n__config__file_8c_source.html#l00540">destroy_config_file()</a>, <a class="el" href="n__thread__pool_8c_source.html#l00340">destroy_threaded_pool()</a>, <a class="el" href="n__hash_8c_source.html#l02254">ht_get_completion_list()</a>, <a class="el" href="ex__gui__netserver_8c_source.html#l00256">main()</a>, <a class="el" href="n__network_8c_source.html#l01508">netw_close()</a>, <a class="el" href="n__network_8c_source.html#l01431">netw_set()</a>, <a class="el" href="n__hash_8c_source.html#l01958">new_ht()</a>, <a class="el" href="ex__gui__netserver_8c_source.html#l00154">process_clients()</a>, and <a class="el" href="n__user_8c_source.html#l00189">userlist_destroy()</a>.</p>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group___l_i_s_t_ga90d32fef68ce6f3ec0a7b4085690c755_cgraph.png" border="0" usemap="#agroup___l_i_s_t_ga90d32fef68ce6f3ec0a7b4085690c755_cgraph" alt=""/></div>
+<map name="agroup___l_i_s_t_ga90d32fef68ce6f3ec0a7b4085690c755_cgraph" id="agroup___l_i_s_t_ga90d32fef68ce6f3ec0a7b4085690c755_cgraph">
+<area shape="rect" title="Empty and Free a list container. Call the destructor each time." alt="" coords="5,5,95,32"/>
+<area shape="rect" href="group___l_i_s_t.html#ga1dafe7a250ddad51fadd375f057287e7" title="Empty a LIST list of pointers." alt="" coords="143,5,225,32"/>
+</map>
+</div>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="group___l_i_s_t_ga90d32fef68ce6f3ec0a7b4085690c755_icgraph.png" border="0" usemap="#agroup___l_i_s_t_ga90d32fef68ce6f3ec0a7b4085690c755_icgraph" alt=""/></div>
 <map name="agroup___l_i_s_t_ga90d32fef68ce6f3ec0a7b4085690c755_icgraph" id="agroup___l_i_s_t_ga90d32fef68ce6f3ec0a7b4085690c755_icgraph">
-<area shape="rect" title="Empty and Free a list container." alt="" coords="755,259,844,285"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#gadcc2854217553f3a4890973873bdf634" title="Delete a NETW_MSG *object." alt="" coords="585,171,675,197"/>
-<area shape="rect" href="group___c_o_n_f_i_g_f_i_l_e.html#ga5c6e573bf39871c909dcd71c9bcc13b4" title="Destroy a loaded config file." alt="" coords="565,233,695,260"/>
-<area shape="rect" href="group___t_h_r_e_a_d_s.html#ga12ce28c2aaa5a5a1a05abe11071dd83f" title="delete a thread_pool, exit the threads and free the structs" alt="" coords="553,284,707,311"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#gaa8e1fe7978995197f08aa0ef24a76c33" title="Restart or reset the specified network ability." alt="" coords="593,360,667,387"/>
-<area shape="rect" href="ex__network_8h.html#a6f950bd6cd1d0314572ecae401ac1883" title="decode data we got from network" alt="" coords="183,5,287,32"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#ga7bae3c3de53204413c7663007ec4a4d7" title="Add a formatted NETWMSG_IDENT message to the specified network." alt="" coords="362,56,501,83"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#gaeb5e94070c0ee79ff2d11a707d225c3a" title="Make a ping message to send to a network." alt="" coords="364,107,499,133"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#gaf2d84e34e50db7b3b7aca16c6bdb06f8" title="Retrieves identification from netwmsg." alt="" coords="377,157,486,184"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#ga525ee81a12f526d55b2b380d9338424e" title="Retrieves a ping travel elapsed time." alt="" coords="379,208,484,235"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#ga241bf3b1ebc63dd986dfec1b0fe4998b" title="Retrieves position from netwmsg." alt="" coords="368,259,495,285"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#gace220d6339bd8085269ecee2b35126fb" title="Retrieves string from netwmsg." alt="" coords="375,309,488,336"/>
-<area shape="rect" href="ex__network_8h.html#a2af070d97fced1a0eadad90c6aa4903b" title="recv/send datas if any for the client" alt="" coords="5,95,112,121"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#gae8345266fcf7a23c0e8ffe176b0e086f" title="Add a formatted NETWMSG_IDENT message to the specified network." alt="" coords="175,56,294,83"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#gad9588cf27263ecf40f57d3923ccf721a" title="Add a ping reply to the network." alt="" coords="177,107,292,133"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#ga63e06c0450013078c54bb4951e9438ac" title="To Thread Receiving function." alt="" coords="376,360,487,387"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#ga29159184519b3129c0154b1a2c2a3e2f" title="Stop a NETWORK connection sending and receing thread." alt="" coords="357,411,505,437"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#ga5ba0555c5ccd261227c3c1216923d563" title="Start the NETWORK netw Threaded Engine." alt="" coords="160,272,309,299"/>
+<area shape="rect" title="Empty and Free a list container. Call the destructor each time." alt="" coords="1131,664,1220,691"/>
+<area shape="rect" href="n__hash_8c.html#a0ee7e0fa87da033f857c04dae6f1586a" title="Free and set the table to NULL." alt="" coords="961,183,1051,209"/>
+<area shape="rect" href="group___h_a_s_h___t_a_b_l_e.html#gaa2d879c1afd3c71a0917bbe2c0766664" title="Create a hash table with the given size." alt="" coords="756,132,819,159"/>
+<area shape="rect" href="ex__gui__netserver_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,917,56,944"/>
+<area shape="rect" href="n__hash_8c.html#af5e4567a16f469d013410e8cf675a28c" title="Search hash table&#39;s keys and apply a matching func to put results in the list." alt="" coords="963,81,1049,108"/>
+<area shape="rect" href="n__hash_8c.html#aa80d786e98105e52ebc7246fc91ff33f" title="Search tree&#39;s keys and apply a matching func to put results in the list." alt="" coords="951,1297,1061,1324"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#gadcc2854217553f3a4890973873bdf634" title="Delete a NETW_MSG *object." alt="" coords="961,664,1051,691"/>
+<area shape="rect" href="ex__gui__netserver_8c.html#a1f1e6cd9b7f8f1845345c9a5673cf384" title=" " alt="" coords="321,917,435,944"/>
+<area shape="rect" href="group___c_o_n_f_i_g_f_i_l_e.html#ga5c6e573bf39871c909dcd71c9bcc13b4" title="Destroy a loaded config file." alt="" coords="941,5,1071,32"/>
+<area shape="rect" href="group___t_h_r_e_a_d_s.html#ga12ce28c2aaa5a5a1a05abe11071dd83f" title="delete a thread_pool, exit the threads and free the structs" alt="" coords="929,448,1083,475"/>
+<area shape="rect" href="group___h_a_s_h___t_a_b_l_e.html#ga21e528f4d0a0124c495479ddd265a99b" title="get next matching keys in table tree" alt="" coords="930,1348,1082,1375"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#gac345c1af1935cebb9ee33edd4c32267a" title="Closing a specified Network, destroy queues, free the structure." alt="" coords="531,1221,618,1248"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#gaa8e1fe7978995197f08aa0ef24a76c33" title="Restart or reset the specified network ability." alt="" coords="969,1247,1043,1273"/>
+<area shape="rect" href="group___n___u_s_e_r.html#gafa7f69dc21b1036e4e7815d8ab88c8d1" title=" " alt="" coords="949,1399,1063,1425"/>
+<area shape="rect" href="group___l_o_g_n_o_d_u_p.html#gaf9c9b8e129263da15345f428cd73f19e" title="initialize the no duplicate logging system" alt="" coords="522,81,627,108"/>
+<area shape="rect" href="group___c_o_n_f_i_g_f_i_l_e.html#ga0206fadb78039ac602fc0696b27b85a6" title="load a config file" alt="" coords="519,31,630,57"/>
+<area shape="rect" href="ex__gui__netclient_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="353,613,403,640"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#gadb5284c7b187815cf3b286a5cd972876" title="return a new network pool of nb_min_element" alt="" coords="123,132,233,159"/>
+<area shape="rect" href="ex__configfile_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="353,5,403,32"/>
+<area shape="rect" href="group___h_a_s_h___t_a_b_l_e.html#gab95fe0967850a3665d21837519ede6c8" title="create a TRIE hash table with the alphabet_size, each key value beeing decreased by alphabet_offset" alt="" coords="743,1551,831,1577"/>
+<area shape="rect" href="ex__hash_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="549,1576,600,1603"/>
+<area shape="rect" href="ex__network_8h.html#a6f950bd6cd1d0314572ecae401ac1883" title="decode data we got from network" alt="" coords="735,385,839,412"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#ga7bae3c3de53204413c7663007ec4a4d7" title="Add a formatted NETWMSG_IDENT message to the specified network." alt="" coords="718,841,857,868"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#gaeb5e94070c0ee79ff2d11a707d225c3a" title="Make a ping message to send to a network." alt="" coords="720,892,855,919"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#ga6d469c5cbc4fdfa266be68a35d10a904" title=" " alt="" coords="693,487,881,513"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#gaea4cc09810479665c6c7e689dfaecff7" title=" " alt="" coords="705,740,869,767"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#gafb91c3ea7bfa93212141fa1fe074fb3d" title=" " alt="" coords="700,689,875,716"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#gaf2d84e34e50db7b3b7aca16c6bdb06f8" title="Retrieves identification from netwmsg." alt="" coords="520,791,629,817"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#ga525ee81a12f526d55b2b380d9338424e" title="Retrieves a ping travel elapsed time." alt="" coords="735,968,840,995"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#ga241bf3b1ebc63dd986dfec1b0fe4998b" title="Retrieves position from netwmsg." alt="" coords="511,537,638,564"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#ga601ef18cfe3570caaa81cc43c09004c2" title=" " alt="" coords="736,588,839,615"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#gace220d6339bd8085269ecee2b35126fb" title="Retrieves string from netwmsg." alt="" coords="518,588,631,615"/>
+<area shape="rect" href="ex__network_8h.html#a97064904e9c2be2094c349413ff348fc" title="send data to specified network" alt="" coords="730,436,845,463"/>
+<area shape="rect" href="ex__network_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="353,385,403,412"/>
+<area shape="rect" href="ex__network_8h.html#a2af070d97fced1a0eadad90c6aa4903b" title="recv/send datas if any for the client" alt="" coords="521,385,628,412"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#gae8345266fcf7a23c0e8ffe176b0e086f" title="Add a formatted NETWMSG_IDENT message to the specified network." alt="" coords="515,841,634,868"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#gad9588cf27263ecf40f57d3923ccf721a" title="Add a ping reply to the network." alt="" coords="517,892,632,919"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#gafaf1202a5f56a9f2285fccfbcacb3a6c" title="Add a formatted NETWMSG_IDENT message to the specified network." alt="" coords="507,487,643,513"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#gac8b30599c7a5c2cce35ee401d7b9d7f1" title="Add a formatted NETMSG_QUIT message to the specified network." alt="" coords="519,740,631,767"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#gad3b590da2eb8b594c75d1d5f46ba7b45" title="Add a string to the network, aiming a specific user." alt="" coords="504,689,645,716"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#ga80624fa0de793761e9ea5cebff424c68" title="make a normal &#39;accept&#39; . Network &#39;from&#39; must be allocated with netw_make_listening." alt="" coords="104,1196,252,1223"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#ga4cef67bc400323306a3d1c1ed5cec17b" title="Use this to connect a NETWORK to any listening one." alt="" coords="117,1095,239,1121"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#ga52afd4f5662c9c8f334d224ae2cdbdf2" title="Make a NETWORK be a Listening network." alt="" coords="107,1348,249,1375"/>
+<area shape="rect" href="n__network_8c.html#a9caee75e3a67942e37ccb4de2c889105" title="Return an empty allocated network ready to be netw_closed." alt="" coords="339,1145,417,1172"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#gab0da745063a55fd79b6252339d5276a4" title="close a network from a network pool" alt="" coords="302,1247,454,1273"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#gad02f949dd057ae7dd382f03f9364cac0" title="Modify blocking socket mode." alt="" coords="313,1348,443,1375"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#ga995d9aaabaca026d79f15a9823eaebaf" title="Wait for peer closing a specified Network, destroy queues, free the structure." alt="" coords="300,1297,456,1324"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#ga63e06c0450013078c54bb4951e9438ac" title="To Thread Receiving function." alt="" coords="732,1196,843,1223"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#ga2ef0aab7ff9fb531466a536773b53683" title="Thread send function." alt="" coords="730,1247,845,1273"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#ga29159184519b3129c0154b1a2c2a3e2f" title="Stop a NETWORK connection sending and receing thread." alt="" coords="713,1297,861,1324"/>
 </map>
 </div>
 
@@ -418,16 +524,16 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">int list_empty </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_l_i_s_t.html">LIST</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="group___l_i_s_t.html#struct_l_i_s_t">LIST</a> *&#160;</td>
           <td class="paramname"><em>list</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__list_8h.html">n_list.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="n__list_8h.html">include/nilorea/n_list.h</a>&gt;</code></p>
 
-<p>Empty a <a class="el" href="struct_l_i_s_t.html" title="Structure of a generic LIST container.">LIST</a> list of pointers. </p>
+<p>Empty a <a class="el" href="group___l_i_s_t.html#struct_l_i_s_t">LIST</a> list of pointers. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">list</td><td>The list to empty. An already empty or null list will cause an error and a _log message. </td></tr>
@@ -440,34 +546,64 @@ Functions</h2></td></tr>
 
 <p class="reference">References <a class="el" href="n__common_8h_source.html#l00262">__n_assert</a>, <a class="el" href="n__common_8h_source.html#l00242">Free</a>, <a class="el" href="n__log_8h_source.html#l00058">LOG_ERR</a>, and <a class="el" href="n__log_8h_source.html#l00074">n_log</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="n__network__msg_8c_source.html#l00139">empty_msg()</a>, <a class="el" href="n__list_8c_source.html#l00480">list_destroy()</a>, and <a class="el" href="n__network_8c_source.html#l01420">netw_set()</a>.</p>
-<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+<p class="reference">Referenced by <a class="el" href="n__network__msg_8c_source.html#l00139">empty_msg()</a>, <a class="el" href="n__list_8c_source.html#l00480">list_destroy()</a>, <a class="el" href="ex__list_8c_source.html#l00035">main()</a>, <a class="el" href="n__network_8c_source.html#l01431">netw_set()</a>, <a class="el" href="n__user_8c_source.html#l00096">userlist_del_user()</a>, <a class="el" href="n__user_8c_source.html#l00248">userlist_send_waiting_msgs()</a>, and <a class="el" href="n__user_8c_source.html#l00227">userlist_user_send_waiting_msgs()</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="group___l_i_s_t_ga1dafe7a250ddad51fadd375f057287e7_icgraph.png" border="0" usemap="#agroup___l_i_s_t_ga1dafe7a250ddad51fadd375f057287e7_icgraph" alt=""/></div>
 <map name="agroup___l_i_s_t_ga1dafe7a250ddad51fadd375f057287e7_icgraph" id="agroup___l_i_s_t_ga1dafe7a250ddad51fadd375f057287e7_icgraph">
-<area shape="rect" title="Empty a LIST list of pointers." alt="" coords="893,309,976,336"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#ga425d9f110062f063dc2e9af0212b793d" title="Empty a NETW_MSG *object." alt="" coords="755,259,845,285"/>
-<area shape="rect" href="group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755" title="Empty and Free a list container." alt="" coords="755,309,845,336"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#gaa8e1fe7978995197f08aa0ef24a76c33" title="Restart or reset the specified network ability." alt="" coords="593,360,667,387"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#gadcc2854217553f3a4890973873bdf634" title="Delete a NETW_MSG *object." alt="" coords="585,183,675,209"/>
-<area shape="rect" href="group___c_o_n_f_i_g_f_i_l_e.html#ga5c6e573bf39871c909dcd71c9bcc13b4" title="Destroy a loaded config file." alt="" coords="565,259,695,285"/>
-<area shape="rect" href="group___t_h_r_e_a_d_s.html#ga12ce28c2aaa5a5a1a05abe11071dd83f" title="delete a thread_pool, exit the threads and free the structs" alt="" coords="553,309,707,336"/>
-<area shape="rect" href="ex__network_8h.html#a6f950bd6cd1d0314572ecae401ac1883" title="decode data we got from network" alt="" coords="183,5,287,32"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#ga7bae3c3de53204413c7663007ec4a4d7" title="Add a formatted NETWMSG_IDENT message to the specified network." alt="" coords="362,56,501,83"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#gaeb5e94070c0ee79ff2d11a707d225c3a" title="Make a ping message to send to a network." alt="" coords="364,107,499,133"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#gaf2d84e34e50db7b3b7aca16c6bdb06f8" title="Retrieves identification from netwmsg." alt="" coords="377,157,486,184"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#ga525ee81a12f526d55b2b380d9338424e" title="Retrieves a ping travel elapsed time." alt="" coords="379,208,484,235"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#ga241bf3b1ebc63dd986dfec1b0fe4998b" title="Retrieves position from netwmsg." alt="" coords="368,259,495,285"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#gace220d6339bd8085269ecee2b35126fb" title="Retrieves string from netwmsg." alt="" coords="375,309,488,336"/>
-<area shape="rect" href="ex__network_8h.html#a2af070d97fced1a0eadad90c6aa4903b" title="recv/send datas if any for the client" alt="" coords="5,95,112,121"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#gae8345266fcf7a23c0e8ffe176b0e086f" title="Add a formatted NETWMSG_IDENT message to the specified network." alt="" coords="175,56,294,83"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#gad9588cf27263ecf40f57d3923ccf721a" title="Add a ping reply to the network." alt="" coords="177,107,292,133"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#ga63e06c0450013078c54bb4951e9438ac" title="To Thread Receiving function." alt="" coords="376,360,487,387"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#ga29159184519b3129c0154b1a2c2a3e2f" title="Stop a NETWORK connection sending and receing thread." alt="" coords="357,411,505,437"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#ga5ba0555c5ccd261227c3c1216923d563" title="Start the NETWORK netw Threaded Engine." alt="" coords="160,272,309,299"/>
+<area shape="rect" title="Empty a LIST list of pointers." alt="" coords="1353,461,1436,488"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#ga425d9f110062f063dc2e9af0212b793d" title="Empty a NETW_MSG *object." alt="" coords="1195,5,1285,32"/>
+<area shape="rect" href="group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755" title="Empty and Free a list container. Call the destructor each time." alt="" coords="1195,411,1285,437"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#gaa8e1fe7978995197f08aa0ef24a76c33" title="Restart or reset the specified network ability." alt="" coords="1013,1360,1087,1387"/>
+<area shape="rect" href="ex__list_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="1215,461,1265,488"/>
+<area shape="rect" href="group___n___u_s_e_r.html#ga199e127e979f625ff75a01e45afe0d5b" title=" " alt="" coords="1180,512,1300,539"/>
+<area shape="rect" href="group___n___u_s_e_r.html#gac33945e0ace7b69815c92c2e9ba248a1" title=" " alt="" coords="104,189,289,216"/>
+<area shape="rect" href="group___n___u_s_e_r.html#ga7b395e123b45d9d9215ea4318d5ff2cc" title=" " alt="" coords="1175,614,1305,655"/>
+<area shape="rect" href="n__hash_8c.html#a0ee7e0fa87da033f857c04dae6f1586a" title="Free and set the table to NULL." alt="" coords="1005,259,1095,285"/>
+<area shape="rect" href="group___h_a_s_h___t_a_b_l_e.html#gaa2d879c1afd3c71a0917bbe2c0766664" title="Create a hash table with the given size." alt="" coords="820,347,883,373"/>
+<area shape="rect" href="ex__gui__netserver_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,613,56,640"/>
+<area shape="rect" href="n__hash_8c.html#af5e4567a16f469d013410e8cf675a28c" title="Search hash table&#39;s keys and apply a matching func to put results in the list." alt="" coords="1007,411,1093,437"/>
+<area shape="rect" href="n__hash_8c.html#aa80d786e98105e52ebc7246fc91ff33f" title="Search tree&#39;s keys and apply a matching func to put results in the list." alt="" coords="995,157,1105,184"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#gadcc2854217553f3a4890973873bdf634" title="Delete a NETW_MSG *object." alt="" coords="807,803,896,829"/>
+<area shape="rect" href="ex__gui__netserver_8c.html#a1f1e6cd9b7f8f1845345c9a5673cf384" title=" " alt="" coords="359,1107,472,1133"/>
+<area shape="rect" href="group___c_o_n_f_i_g_f_i_l_e.html#ga5c6e573bf39871c909dcd71c9bcc13b4" title="Destroy a loaded config file." alt="" coords="787,208,916,235"/>
+<area shape="rect" href="group___t_h_r_e_a_d_s.html#ga12ce28c2aaa5a5a1a05abe11071dd83f" title="delete a thread_pool, exit the threads and free the structs" alt="" coords="973,512,1127,539"/>
+<area shape="rect" href="group___h_a_s_h___t_a_b_l_e.html#ga21e528f4d0a0124c495479ddd265a99b" title="get next matching keys in table tree" alt="" coords="974,107,1126,133"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#gac345c1af1935cebb9ee33edd4c32267a" title="Closing a specified Network, destroy queues, free the structure." alt="" coords="592,1436,679,1463"/>
+<area shape="rect" href="group___n___u_s_e_r.html#gafa7f69dc21b1036e4e7815d8ab88c8d1" title=" " alt="" coords="993,309,1107,336"/>
+<area shape="rect" href="group___l_o_g_n_o_d_u_p.html#gaf9c9b8e129263da15345f428cd73f19e" title="initialize the no duplicate logging system" alt="" coords="583,296,688,323"/>
+<area shape="rect" href="group___c_o_n_f_i_g_f_i_l_e.html#ga0206fadb78039ac602fc0696b27b85a6" title="load a config file" alt="" coords="580,245,691,272"/>
+<area shape="rect" href="ex__gui__netclient_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="390,600,441,627"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#gadb5284c7b187815cf3b286a5cd972876" title="return a new network pool of nb_min_element" alt="" coords="141,372,252,399"/>
+<area shape="rect" href="ex__configfile_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="390,220,441,247"/>
+<area shape="rect" href="group___h_a_s_h___t_a_b_l_e.html#gab95fe0967850a3665d21837519ede6c8" title="create a TRIE hash table with the alphabet_size, each key value beeing decreased by alphabet_offset" alt="" coords="807,157,895,184"/>
+<area shape="rect" href="ex__hash_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="610,119,661,145"/>
+<area shape="rect" href="ex__network_8h.html#a6f950bd6cd1d0314572ecae401ac1883" title="decode data we got from network" alt="" coords="583,955,687,981"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#ga7bae3c3de53204413c7663007ec4a4d7" title="Add a formatted NETWMSG_IDENT message to the specified network." alt="" coords="566,803,705,829"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#gaeb5e94070c0ee79ff2d11a707d225c3a" title="Make a ping message to send to a network." alt="" coords="568,1107,703,1133"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#ga6d469c5cbc4fdfa266be68a35d10a904" title=" " alt="" coords="541,853,729,880"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#gaea4cc09810479665c6c7e689dfaecff7" title=" " alt="" coords="553,904,717,931"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#gafb91c3ea7bfa93212141fa1fe074fb3d" title=" " alt="" coords="548,651,723,677"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#gaf2d84e34e50db7b3b7aca16c6bdb06f8" title="Retrieves identification from netwmsg." alt="" coords="581,1005,690,1032"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#ga525ee81a12f526d55b2b380d9338424e" title="Retrieves a ping travel elapsed time." alt="" coords="583,1056,688,1083"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#ga241bf3b1ebc63dd986dfec1b0fe4998b" title="Retrieves position from netwmsg." alt="" coords="572,549,699,576"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#ga601ef18cfe3570caaa81cc43c09004c2" title=" " alt="" coords="584,701,687,728"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#gace220d6339bd8085269ecee2b35126fb" title="Retrieves string from netwmsg." alt="" coords="579,600,692,627"/>
+<area shape="rect" href="ex__network_8h.html#a97064904e9c2be2094c349413ff348fc" title="send data to specified network" alt="" coords="578,752,693,779"/>
+<area shape="rect" href="ex__network_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="390,853,441,880"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#ga80624fa0de793761e9ea5cebff424c68" title="make a normal &#39;accept&#39; . Network &#39;from&#39; must be allocated with netw_make_listening." alt="" coords="123,1613,271,1640"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#ga4cef67bc400323306a3d1c1ed5cec17b" title="Use this to connect a NETWORK to any listening one." alt="" coords="135,1461,258,1488"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#ga52afd4f5662c9c8f334d224ae2cdbdf2" title="Make a NETWORK be a Listening network." alt="" coords="125,1309,268,1336"/>
+<area shape="rect" href="n__network_8c.html#a9caee75e3a67942e37ccb4de2c889105" title="Return an empty allocated network ready to be netw_closed." alt="" coords="376,1461,455,1488"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#gab0da745063a55fd79b6252339d5276a4" title="close a network from a network pool" alt="" coords="339,1411,491,1437"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#gad02f949dd057ae7dd382f03f9364cac0" title="Modify blocking socket mode." alt="" coords="351,1613,480,1640"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#ga995d9aaabaca026d79f15a9823eaebaf" title="Wait for peer closing a specified Network, destroy queues, free the structure." alt="" coords="337,1563,493,1589"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#ga63e06c0450013078c54bb4951e9438ac" title="To Thread Receiving function." alt="" coords="796,1411,907,1437"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#ga2ef0aab7ff9fb531466a536773b53683" title="Thread send function." alt="" coords="794,1461,909,1488"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#ga29159184519b3129c0154b1a2c2a3e2f" title="Stop a NETWORK connection sending and receing thread." alt="" coords="777,1512,925,1539"/>
 </map>
 </div>
 
@@ -482,7 +618,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">int list_empty_with_f </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_l_i_s_t.html">LIST</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="group___l_i_s_t.html#struct_l_i_s_t">LIST</a> *&#160;</td>
           <td class="paramname"><em>list</em>, </td>
         </tr>
         <tr>
@@ -499,9 +635,9 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__list_8h.html">n_list.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="n__list_8h.html">include/nilorea/n_list.h</a>&gt;</code></p>
 
-<p>Empty a <a class="el" href="struct_l_i_s_t.html" title="Structure of a generic LIST container.">LIST</a> list of pointers. </p>
+<p>Empty a <a class="el" href="group___l_i_s_t.html#struct_l_i_s_t">LIST</a> list of pointers. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">list</td><td>The list to empty. An already empty or null list will cause an error and a _log message. </td></tr>
@@ -526,14 +662,14 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void * list_pop_f </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_l_i_s_t.html">LIST</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="group___l_i_s_t.html#struct_l_i_s_t">LIST</a> *&#160;</td>
           <td class="paramname"><em>list</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__list_8h.html">n_list.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="n__list_8h.html">include/nilorea/n_list.h</a>&gt;</code></p>
 
 <p>Get a pointer from the end of the list. </p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -559,7 +695,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">int list_push </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_l_i_s_t.html">LIST</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="group___l_i_s_t.html#struct_l_i_s_t">LIST</a> *&#160;</td>
           <td class="paramname"><em>list</em>, </td>
         </tr>
         <tr>
@@ -582,7 +718,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__list_8h.html">n_list.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="n__list_8h.html">include/nilorea/n_list.h</a>&gt;</code></p>
 
 <p>Add a pointer to the end of the list. </p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -599,55 +735,75 @@ Functions</h2></td></tr>
 
 <p class="reference">References <a class="el" href="n__common_8h_source.html#l00262">__n_assert</a>, <a class="el" href="n__log_8h_source.html#l00058">LOG_ERR</a>, <a class="el" href="n__log_8h_source.html#l00074">n_log</a>, and <a class="el" href="n__list_8c_source.html#l00046">new_list_node()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="n__hash_8c_source.html#l01421">_ht_put_double()</a>, <a class="el" href="n__hash_8c_source.html#l01383">_ht_put_int()</a>, <a class="el" href="n__hash_8c_source.html#l01504">_ht_put_string()</a>, <a class="el" href="n__hash_8c_source.html#l01544">_ht_put_string_ptr()</a>, <a class="el" href="n__network__msg_8c_source.html#l00181">add_int_to_msg()</a>, <a class="el" href="n__network__msg_8c_source.html#l00159">add_nb_to_msg()</a>, <a class="el" href="n__network__msg_8c_source.html#l00219">add_nstrdup_to_msg()</a>, <a class="el" href="n__network__msg_8c_source.html#l00203">add_nstrptr_to_msg()</a>, <a class="el" href="n__network__msg_8c_source.html#l00237">add_strdup_to_msg()</a>, <a class="el" href="n__thread__pool_8c_source.html#l00164">add_threaded_process()</a>, <a class="el" href="n__list_8c_source.html#l00162">list_push_sorted()</a>, <a class="el" href="n__list_8c_source.html#l00259">list_unshift_sorted()</a>, <a class="el" href="n__network_8c_source.html#l01982">netw_add_msg()</a>, <a class="el" href="n__network_8c_source.html#l02018">netw_add_msg_ex()</a>, and <a class="el" href="n__network_8c_source.html#l02319">netw_recv_func()</a>.</p>
-<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+<p class="reference">Referenced by <a class="el" href="n__hash_8c_source.html#l00876">_ht_depth_first_search()</a>, <a class="el" href="n__hash_8c_source.html#l01459">_ht_put_double()</a>, <a class="el" href="n__hash_8c_source.html#l01421">_ht_put_int()</a>, <a class="el" href="n__hash_8c_source.html#l01498">_ht_put_ptr()</a>, <a class="el" href="n__hash_8c_source.html#l01542">_ht_put_string()</a>, <a class="el" href="n__hash_8c_source.html#l01582">_ht_put_string_ptr()</a>, <a class="el" href="n__hash_8c_source.html#l01880">_ht_search()</a>, <a class="el" href="n__hash_8c_source.html#l00824">_ht_search_trie_helper()</a>, <a class="el" href="n__network__msg_8c_source.html#l00181">add_int_to_msg()</a>, <a class="el" href="n__network__msg_8c_source.html#l00159">add_nb_to_msg()</a>, <a class="el" href="n__network__msg_8c_source.html#l00219">add_nstrdup_to_msg()</a>, <a class="el" href="n__network__msg_8c_source.html#l00203">add_nstrptr_to_msg()</a>, <a class="el" href="n__particles_8c_source.html#l00033">add_particle()</a>, <a class="el" href="n__network__msg_8c_source.html#l00237">add_strdup_to_msg()</a>, <a class="el" href="n__thread__pool_8c_source.html#l00164">add_threaded_process()</a>, <a class="el" href="n__hash_8c_source.html#l02254">ht_get_completion_list()</a>, <a class="el" href="n__list_8c_source.html#l00162">list_push_sorted()</a>, <a class="el" href="n__list_8c_source.html#l00259">list_unshift_sorted()</a>, <a class="el" href="n__config__file_8c_source.html#l00051">load_config_file()</a>, <a class="el" href="ex__list_8c_source.html#l00035">main()</a>, <a class="el" href="ex__gui__netclient_8c_source.html#l00062">manage_peers()</a>, <a class="el" href="n__network_8c_source.html#l01993">netw_add_msg()</a>, <a class="el" href="n__network_8c_source.html#l02029">netw_add_msg_ex()</a>, <a class="el" href="n__network_8c_source.html#l02946">netw_pool_add()</a>, <a class="el" href="n__network_8c_source.html#l02332">netw_recv_func()</a>, <a class="el" href="ex__gui__netserver_8c_source.html#l00154">process_clients()</a>, <a class="el" href="n__str_8c_source.html#l01295">scan_dir_ex()</a>, and <a class="el" href="n__user_8c_source.html#l00209">userlist_user_add_waiting_msg()</a>.</p>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="group___l_i_s_t_ga4eab319289a83524639ee5e9f0441fdf_cgraph.png" border="0" usemap="#agroup___l_i_s_t_ga4eab319289a83524639ee5e9f0441fdf_cgraph" alt=""/></div>
 <map name="agroup___l_i_s_t_ga4eab319289a83524639ee5e9f0441fdf_cgraph" id="agroup___l_i_s_t_ga4eab319289a83524639ee5e9f0441fdf_cgraph">
 <area shape="rect" title="Add a pointer to the end of the list." alt="" coords="5,5,80,32"/>
 <area shape="rect" href="group___l_i_s_t.html#ga678e828550efc8e64a836bb8c713c2f4" title="Allocate a new node to link in a list." alt="" coords="128,5,232,32"/>
 </map>
 </div>
-<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="group___l_i_s_t_ga4eab319289a83524639ee5e9f0441fdf_icgraph.png" border="0" usemap="#agroup___l_i_s_t_ga4eab319289a83524639ee5e9f0441fdf_icgraph" alt=""/></div>
 <map name="agroup___l_i_s_t_ga4eab319289a83524639ee5e9f0441fdf_icgraph" id="agroup___l_i_s_t_ga4eab319289a83524639ee5e9f0441fdf_icgraph">
-<area shape="rect" title="Add a pointer to the end of the list." alt="" coords="761,360,836,387"/>
-<area shape="rect" href="n__hash_8c.html#a870d138d5408e20e8111c750cdc77d36" title="put a double value with given key in the targeted hash table" alt="" coords="581,5,692,32"/>
-<area shape="rect" href="n__hash_8c.html#a4713652203bc7965a2dda268ffa1e4d5" title="put an integral value with given key in the targeted hash table [CLASSIC HASH TABLE)" alt="" coords="593,56,680,83"/>
-<area shape="rect" href="n__hash_8c.html#a35ed4b8f492e6265b7cdcc8f380b6130" title="put a null terminated char *string with given key in the targeted hash table (copy of string)" alt="" coords="585,107,689,133"/>
-<area shape="rect" href="n__hash_8c.html#a8bfbff53ffcafc65317e2b1041df314f" title="put a null terminated char *string with given key in the targeted hash table (pointer)" alt="" coords="573,157,700,184"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#ga9aa63e987d00d99d9a21aec35efecf74" title="Add an int to the int list int the message." alt="" coords="579,360,694,387"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#gae7c4f1b2c58aabda4856a2f5c782b863" title="Add an float to the message." alt="" coords="579,259,694,285"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#ga84f36b52e6d9dfe9ca6186c3177f5472" title="Add a copy of str to the string list in the message." alt="" coords="565,461,708,488"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#ga53dfbdd3b5d1cfcf387d17b4465e5f3a" title="Add a string to the string list in the message." alt="" coords="568,208,705,235"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#ga35d5127628fc0ddafd5cde36296ce583" title="Add a copy of char *str to the string list in the message." alt="" coords="569,512,705,539"/>
-<area shape="rect" href="group___t_h_r_e_a_d_s.html#ga46497eb81066d0df83dfd07ad0a9f561" title="add a function and params to a thread pool" alt="" coords="560,563,713,589"/>
-<area shape="rect" href="group___l_i_s_t.html#gae582df4f7b31ccc5a6a026ffd8ea9555" title="Add a pointer sorted in the list , starting by the end of the list." alt="" coords="578,613,695,640"/>
-<area shape="rect" href="group___l_i_s_t.html#ga98e4e6e168d82f062e987ef578ce8e43" title="Add a pointer sorted in the list , starting by the start of the list." alt="" coords="573,664,700,691"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#ga10429a9fa106b61c38f28635242ce502" title="Add a message to send in aimed NETWORK." alt="" coords="383,411,492,437"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#gafd17b2ed695976a31b4cdee5091e0ef7" title="Add a message to send in aimed NETWORK." alt="" coords="571,715,702,741"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#ga63e06c0450013078c54bb4951e9438ac" title="To Thread Receiving function." alt="" coords="581,309,692,336"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#ga3fd01fccdf5fee20c2f0df7429ab3dd7" title="Make a single message of the string." alt="" coords="367,233,507,260"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#ga7bae3c3de53204413c7663007ec4a4d7" title="Add a formatted NETWMSG_IDENT message to the specified network." alt="" coords="368,461,507,488"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#gaeb5e94070c0ee79ff2d11a707d225c3a" title="Make a ping message to send to a network." alt="" coords="370,360,505,387"/>
-<area shape="rect" href="ex__network_8h.html#a6f950bd6cd1d0314572ecae401ac1883" title="decode data we got from network" alt="" coords="185,296,289,323"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#gaf2d84e34e50db7b3b7aca16c6bdb06f8" title="Retrieves identification from netwmsg." alt="" coords="183,195,292,221"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#ga525ee81a12f526d55b2b380d9338424e" title="Retrieves a ping travel elapsed time." alt="" coords="185,245,290,272"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#ga241bf3b1ebc63dd986dfec1b0fe4998b" title="Retrieves position from netwmsg." alt="" coords="174,93,301,120"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#gace220d6339bd8085269ecee2b35126fb" title="Retrieves string from netwmsg." alt="" coords="181,144,294,171"/>
-<area shape="rect" href="ex__network_8h.html#a2af070d97fced1a0eadad90c6aa4903b" title="recv/send datas if any for the client" alt="" coords="5,321,112,348"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#gae8345266fcf7a23c0e8ffe176b0e086f" title="Add a formatted NETWMSG_IDENT message to the specified network." alt="" coords="178,461,297,488"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#gad9588cf27263ecf40f57d3923ccf721a" title="Add a ping reply to the network." alt="" coords="180,411,295,437"/>
-<area shape="rect" href="group___t_h_r_e_a_d_s.html#ga5d9ce1747e4b7cb58ce3767f7e56cd8b" title="try to add some waiting DIRECT_PROCs on some free thread slots, else do nothing" alt="" coords="370,563,505,589"/>
-<area shape="rect" href="group___t_h_r_e_a_d_s.html#ga992fc2a67a2d66733ccd10f7d9e2ead3" title="Wait for all the launched process in the thread pool to terminate." alt="" coords="160,563,315,589"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#ga5ba0555c5ccd261227c3c1216923d563" title="Start the NETWORK netw Threaded Engine." alt="" coords="363,309,512,336"/>
+<area shape="rect" title="Add a pointer to the end of the list." alt="" coords="845,711,920,737"/>
+<area shape="rect" href="n__hash_8c.html#a35d5a23776c64cb68260bbd0c4138ee2" title="recursive, helper for ht_get_completion_list, get the list of leaf starting from node" alt="" coords="619,77,773,104"/>
+<area shape="rect" href="group___h_a_s_h___t_a_b_l_e.html#ga21e528f4d0a0124c495479ddd265a99b" title="get next matching keys in table tree" alt="" coords="377,77,529,104"/>
+<area shape="rect" href="n__hash_8c.html#a870d138d5408e20e8111c750cdc77d36" title="put a double value with given key in the targeted hash table" alt="" coords="641,381,751,408"/>
+<area shape="rect" href="group___c_o_n_f_i_g_f_i_l_e.html#ga0206fadb78039ac602fc0696b27b85a6" title="load a config file" alt="" coords="183,159,294,185"/>
+<area shape="rect" href="n__hash_8c.html#a4713652203bc7965a2dda268ffa1e4d5" title="put an integral value with given key in the targeted hash table [CLASSIC HASH TABLE)" alt="" coords="653,432,739,459"/>
+<area shape="rect" href="n__hash_8c.html#a853357465a1599d42ff6d095aa762424" title="put a pointer value with given key in the targeted hash table" alt="" coords="653,179,739,205"/>
+<area shape="rect" href="n__hash_8c.html#a35ed4b8f492e6265b7cdcc8f380b6130" title="put a null terminated char *string with given key in the targeted hash table (copy of string)" alt="" coords="644,229,748,256"/>
+<area shape="rect" href="n__hash_8c.html#a8bfbff53ffcafc65317e2b1041df314f" title="put a null terminated char *string with given key in the targeted hash table (pointer)" alt="" coords="633,280,759,307"/>
+<area shape="rect" href="n__hash_8c.html#af5e4567a16f469d013410e8cf675a28c" title="Search hash table&#39;s keys and apply a matching func to put results in the list." alt="" coords="653,331,739,357"/>
+<area shape="rect" href="n__hash_8c.html#af9f6e937f781df402b5ec4ac788f6f6e" title="Recursive function to search tree&#39;s keys and apply a matching func to put results in the list." alt="" coords="619,912,773,939"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#ga9aa63e987d00d99d9a21aec35efecf74" title="Add an int to the int list int the message." alt="" coords="639,635,753,661"/>
+<area shape="rect" href="ex__gui__netserver_8c.html#a1f1e6cd9b7f8f1845345c9a5673cf384" title=" " alt="" coords="5,621,119,648"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#gae7c4f1b2c58aabda4856a2f5c782b863" title="Add an float to the message." alt="" coords="639,685,753,712"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#ga84f36b52e6d9dfe9ca6186c3177f5472" title="Add a copy of str to the string list in the message." alt="" coords="625,533,767,560"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#ga53dfbdd3b5d1cfcf387d17b4465e5f3a" title="Add a string to the string list in the message." alt="" coords="627,736,765,763"/>
+<area shape="rect" href="group___p_a_r_t_i_c_l_e_s.html#gae8252f1cd818ef45e20e7d4c54351d2e" title=" " alt="" coords="650,963,742,989"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#ga35d5127628fc0ddafd5cde36296ce583" title="Add a copy of char *str to the string list in the message." alt="" coords="628,1013,764,1040"/>
+<area shape="rect" href="group___t_h_r_e_a_d_s.html#ga46497eb81066d0df83dfd07ad0a9f561" title="add a function and params to a thread pool" alt="" coords="376,900,529,927"/>
+<area shape="rect" href="group___l_i_s_t.html#gae582df4f7b31ccc5a6a026ffd8ea9555" title="Add a pointer sorted in the list , starting by the end of the list." alt="" coords="637,1165,755,1192"/>
+<area shape="rect" href="ex__list_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="427,1115,478,1141"/>
+<area shape="rect" href="group___l_i_s_t.html#ga98e4e6e168d82f062e987ef578ce8e43" title="Add a pointer sorted in the list , starting by the start of the list." alt="" coords="633,1064,759,1091"/>
+<area shape="rect" href="ex__gui__netclient_8c.html#ae35cba0c2e39eed0d1b641cd2f1e3299" title=" " alt="" coords="185,292,292,319"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#ga10429a9fa106b61c38f28635242ce502" title="Add a message to send in aimed NETWORK." alt="" coords="398,495,507,521"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#gafd17b2ed695976a31b4cdee5091e0ef7" title="Add a message to send in aimed NETWORK." alt="" coords="631,1216,761,1243"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#gaed3d4b17261c0ce51cd7671b81b5a007" title="add a NETWORK *netw to a NETWORK_POOL *pool" alt="" coords="642,1267,750,1293"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#ga63e06c0450013078c54bb4951e9438ac" title="To Thread Receiving function." alt="" coords="641,1317,751,1344"/>
+<area shape="rect" href="group___n___s_t_r.html#ga3257ab0fdf5a36d0dfca480a161d9fbf" title="Scan a list of directory and return a list of char *file." alt="" coords="650,1392,742,1419"/>
+<area shape="rect" href="group___n___u_s_e_r.html#gafeb353e9e5f9e0242e9b6d26ab668765" title=" " alt="" coords="595,1443,797,1469"/>
+<area shape="rect" href="ex__hash_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="213,77,264,104"/>
+<area shape="rect" href="group___h_a_s_h___t_a_b_l_e.html#gaa2d879c1afd3c71a0917bbe2c0766664" title="Create a hash table with the given size." alt="" coords="421,241,484,268"/>
+<area shape="rect" href="ex__gui__netclient_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="37,393,87,420"/>
+<area shape="rect" href="ex__configfile_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="37,159,87,185"/>
+<area shape="rect" href="n__hash_8c.html#aa80d786e98105e52ebc7246fc91ff33f" title="Search tree&#39;s keys and apply a matching func to put results in the list." alt="" coords="397,951,508,977"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#ga3fd01fccdf5fee20c2f0df7429ab3dd7" title="Make a single message of the string." alt="" coords="383,748,523,775"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#ga7bae3c3de53204413c7663007ec4a4d7" title="Add a formatted NETWMSG_IDENT message to the specified network." alt="" coords="383,393,522,420"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#gaeb5e94070c0ee79ff2d11a707d225c3a" title="Make a ping message to send to a network." alt="" coords="385,596,520,623"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#ga6d469c5cbc4fdfa266be68a35d10a904" title=" " alt="" coords="359,444,547,471"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#gaea4cc09810479665c6c7e689dfaecff7" title=" " alt="" coords="371,545,535,572"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#gafb91c3ea7bfa93212141fa1fe074fb3d" title=" " alt="" coords="365,343,540,369"/>
+<area shape="rect" href="ex__network_8h.html#a97064904e9c2be2094c349413ff348fc" title="send data to specified network" alt="" coords="181,748,296,775"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#gae8345266fcf7a23c0e8ffe176b0e086f" title="Add a formatted NETWMSG_IDENT message to the specified network." alt="" coords="179,393,298,420"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#gad9588cf27263ecf40f57d3923ccf721a" title="Add a ping reply to the network." alt="" coords="181,647,296,673"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#gafaf1202a5f56a9f2285fccfbcacb3a6c" title="Add a formatted NETWMSG_IDENT message to the specified network." alt="" coords="171,444,307,471"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#gac8b30599c7a5c2cce35ee401d7b9d7f1" title="Add a formatted NETMSG_QUIT message to the specified network." alt="" coords="183,545,295,572"/>
+<area shape="rect" href="ex__network_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="37,900,87,927"/>
+<area shape="rect" href="group___p_a_r_t_i_c_l_e_s.html#gad8c6a1f791072a6485af0439a3c4d94f" title=" " alt="" coords="396,1001,509,1028"/>
+<area shape="rect" href="ex__gui__particles_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="427,1052,478,1079"/>
+<area shape="rect" href="group___t_h_r_e_a_d_s.html#ga5d9ce1747e4b7cb58ce3767f7e56cd8b" title="try to add some waiting DIRECT_PROCs on some free thread slots, else do nothing" alt="" coords="171,951,306,977"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#ga06115ed18a658114104ca6b6823f5d79" title="add net_msg to all network in netork pool" alt="" coords="167,596,311,623"/>
 </map>
 </div>
 
@@ -662,7 +818,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">int list_push_sorted </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_l_i_s_t.html">LIST</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="group___l_i_s_t.html#struct_l_i_s_t">LIST</a> *&#160;</td>
           <td class="paramname"><em>list</em>, </td>
         </tr>
         <tr>
@@ -691,7 +847,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__list_8h.html">n_list.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="n__list_8h.html">include/nilorea/n_list.h</a>&gt;</code></p>
 
 <p>Add a pointer sorted in the list , starting by the end of the list. </p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -708,17 +864,30 @@ Functions</h2></td></tr>
 <p class="definition">Definition at line <a class="el" href="n__list_8c_source.html#l00162">162</a> of file <a class="el" href="n__list_8c_source.html">n_list.c</a>.</p>
 
 <p class="reference">References <a class="el" href="n__common_8h_source.html#l00262">__n_assert</a>, <a class="el" href="n__list_8h_source.html#l00061">link_node</a>, <a class="el" href="n__list_8c_source.html#l00121">list_push()</a>, <a class="el" href="n__list_8c_source.html#l00219">list_unshift()</a>, <a class="el" href="n__log_8h_source.html#l00058">LOG_ERR</a>, <a class="el" href="n__log_8h_source.html#l00074">n_log</a>, and <a class="el" href="n__list_8c_source.html#l00046">new_list_node()</a>.</p>
-<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+
+<p class="reference">Referenced by <a class="el" href="ex__list_8c_source.html#l00035">main()</a>.</p>
+<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="group___l_i_s_t_gae582df4f7b31ccc5a6a026ffd8ea9555_cgraph.png" border="0" usemap="#agroup___l_i_s_t_gae582df4f7b31ccc5a6a026ffd8ea9555_cgraph" alt=""/></div>
 <map name="agroup___l_i_s_t_gae582df4f7b31ccc5a6a026ffd8ea9555_cgraph" id="agroup___l_i_s_t_gae582df4f7b31ccc5a6a026ffd8ea9555_cgraph">
 <area shape="rect" title="Add a pointer sorted in the list , starting by the end of the list." alt="" coords="5,56,123,83"/>
 <area shape="rect" href="group___l_i_s_t.html#ga4eab319289a83524639ee5e9f0441fdf" title="Add a pointer to the end of the list." alt="" coords="175,5,250,32"/>
 <area shape="rect" href="group___l_i_s_t.html#ga678e828550efc8e64a836bb8c713c2f4" title="Allocate a new node to link in a list." alt="" coords="303,56,407,83"/>
 <area shape="rect" href="group___l_i_s_t.html#ga65687bd547104e185bad1b7da5cb0d98" title="Add a pointer at the start of the list." alt="" coords="171,107,255,133"/>
+</map>
+</div>
+<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-7-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group___l_i_s_t_gae582df4f7b31ccc5a6a026ffd8ea9555_icgraph.png" border="0" usemap="#agroup___l_i_s_t_gae582df4f7b31ccc5a6a026ffd8ea9555_icgraph" alt=""/></div>
+<map name="agroup___l_i_s_t_gae582df4f7b31ccc5a6a026ffd8ea9555_icgraph" id="agroup___l_i_s_t_gae582df4f7b31ccc5a6a026ffd8ea9555_icgraph">
+<area shape="rect" title="Add a pointer sorted in the list , starting by the end of the list." alt="" coords="104,5,221,32"/>
+<area shape="rect" href="ex__list_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="5,5,56,32"/>
 </map>
 </div>
 
@@ -733,7 +902,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="struct_l_i_s_t___n_o_d_e.html">LIST_NODE</a> * list_search </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_l_i_s_t.html">LIST</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="group___l_i_s_t.html#struct_l_i_s_t">LIST</a> *&#160;</td>
           <td class="paramname"><em>list</em>, </td>
         </tr>
         <tr>
@@ -750,7 +919,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__list_8h.html">n_list.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="n__list_8h.html">include/nilorea/n_list.h</a>&gt;</code></p>
 
 <p>search ptr in list </p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -760,11 +929,42 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The <a class="el" href="struct_l_i_s_t___n_o_d_e.html" title="Structure of a generic list node.">LIST_NODE</a> *node or NULL </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The <a class="el" href="struct_l_i_s_t___n_o_d_e.html">LIST_NODE</a> *node or NULL </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="n__list_8c_source.html#l00385">385</a> of file <a class="el" href="n__list_8c_source.html">n_list.c</a>.</p>
 
 <p class="reference">References <a class="el" href="n__common_8h_source.html#l00262">__n_assert</a>, and <a class="el" href="n__list_8h_source.html#l00070">list_foreach</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="n__network_8c_source.html#l02985">netw_pool_remove()</a>.</p>
+<div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-8-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-8-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group___l_i_s_t_gae009d6d3c835a2affb99071ea8457803_icgraph.png" border="0" usemap="#agroup___l_i_s_t_gae009d6d3c835a2affb99071ea8457803_icgraph" alt=""/></div>
+<map name="agroup___l_i_s_t_gae009d6d3c835a2affb99071ea8457803_icgraph" id="agroup___l_i_s_t_gae009d6d3c835a2affb99071ea8457803_icgraph">
+<area shape="rect" title="search ptr in list" alt="" coords="1049,232,1135,259"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#gafc7a91b4be2a997710a2b54037c25168" title="remove a NETWORK *netw to a NETWORK_POOL *pool" alt="" coords="873,232,1001,259"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#gac345c1af1935cebb9ee33edd4c32267a" title="Closing a specified Network, destroy queues, free the structure." alt="" coords="739,232,825,259"/>
+<area shape="rect" href="ex__network_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,80,56,107"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#ga80624fa0de793761e9ea5cebff424c68" title="make a normal &#39;accept&#39; . Network &#39;from&#39; must be allocated with netw_make_listening." alt="" coords="339,207,487,233"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#ga4cef67bc400323306a3d1c1ed5cec17b" title="Use this to connect a NETWORK to any listening one." alt="" coords="351,283,474,309"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#ga52afd4f5662c9c8f334d224ae2cdbdf2" title="Make a NETWORK be a Listening network." alt="" coords="341,333,484,360"/>
+<area shape="rect" href="n__network_8c.html#a9caee75e3a67942e37ccb4de2c889105" title="Return an empty allocated network ready to be netw_closed." alt="" coords="573,283,652,309"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#gab0da745063a55fd79b6252339d5276a4" title="close a network from a network pool" alt="" coords="537,384,689,411"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#gad02f949dd057ae7dd382f03f9364cac0" title="Modify blocking socket mode." alt="" coords="548,131,677,157"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#ga995d9aaabaca026d79f15a9823eaebaf" title="Wait for peer closing a specified Network, destroy queues, free the structure." alt="" coords="535,80,691,107"/>
+<area shape="rect" href="ex__gui__netserver_8c.html#a1f1e6cd9b7f8f1845345c9a5673cf384" title=" " alt="" coords="556,435,669,461"/>
+<area shape="rect" href="ex__gui__netserver_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="172,359,223,385"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#gab99090cbf623f95556ea610e690b50d9" title="make a normal blocking &#39;accept&#39; . Network &#39;from&#39; must be allocated with netw_make_listening." alt="" coords="134,232,261,259"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#ga32138772c399518190a14e81164fc469" title="make a normal blocking &#39;accept&#39; . Network &#39;from&#39; must be allocated with netw_make_listening." alt="" coords="104,181,291,208"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#gae18d52a130063ba1fd0a4cf4b6a2da20" title="Use this to connect a NETWORK to any listening one, unrestricted send/recv lists." alt="" coords="146,283,249,309"/>
+<area shape="rect" href="ex__gui__netclient_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,207,56,233"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#gaed3d4b17261c0ce51cd7671b81b5a007" title="add a NETWORK *netw to a NETWORK_POOL *pool" alt="" coords="359,384,467,411"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#ga60beb772aa298f36d1443a28e3ec5ec8" title="Wait for peer closing a specified Network, destroy queues, free the structure. Default 30 seconds tim..." alt="" coords="354,80,471,107"/>
+<area shape="rect" href="ex__network_8h.html#a2af070d97fced1a0eadad90c6aa4903b" title="recv/send datas if any for the client" alt="" coords="144,80,251,107"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -777,7 +977,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="struct_l_i_s_t___n_o_d_e.html">LIST_NODE</a> * list_search_with_f </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_l_i_s_t.html">LIST</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="group___l_i_s_t.html#struct_l_i_s_t">LIST</a> *&#160;</td>
           <td class="paramname"><em>list</em>, </td>
         </tr>
         <tr>
@@ -794,7 +994,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__list_8h.html">n_list.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="n__list_8h.html">include/nilorea/n_list.h</a>&gt;</code></p>
 
 <p>search ptr in list </p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -804,7 +1004,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The <a class="el" href="struct_l_i_s_t___n_o_d_e.html" title="Structure of a generic list node.">LIST_NODE</a> *node or NULL </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The <a class="el" href="struct_l_i_s_t___n_o_d_e.html">LIST_NODE</a> *node or NULL </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="n__list_8c_source.html#l00405">405</a> of file <a class="el" href="n__list_8c_source.html">n_list.c</a>.</p>
 
@@ -821,14 +1021,14 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void * list_shift_f </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_l_i_s_t.html">LIST</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="group___l_i_s_t.html#struct_l_i_s_t">LIST</a> *&#160;</td>
           <td class="paramname"><em>list</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__list_8h.html">n_list.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="n__list_8h.html">include/nilorea/n_list.h</a>&gt;</code></p>
 
 <p>Get a pointer from the start of the list. </p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -854,7 +1054,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">int list_unshift </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_l_i_s_t.html">LIST</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="group___l_i_s_t.html#struct_l_i_s_t">LIST</a> *&#160;</td>
           <td class="paramname"><em>list</em>, </td>
         </tr>
         <tr>
@@ -877,7 +1077,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__list_8h.html">n_list.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="n__list_8h.html">include/nilorea/n_list.h</a>&gt;</code></p>
 
 <p>Add a pointer at the start of the list. </p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -894,28 +1094,29 @@ Functions</h2></td></tr>
 
 <p class="reference">References <a class="el" href="n__common_8h_source.html#l00262">__n_assert</a>, <a class="el" href="n__list_8h_source.html#l00061">link_node</a>, <a class="el" href="n__log_8h_source.html#l00058">LOG_ERR</a>, <a class="el" href="n__log_8h_source.html#l00074">n_log</a>, and <a class="el" href="n__list_8c_source.html#l00046">new_list_node()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="n__list_8c_source.html#l00162">list_push_sorted()</a>, and <a class="el" href="n__list_8c_source.html#l00259">list_unshift_sorted()</a>.</p>
-<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
+<p class="reference">Referenced by <a class="el" href="n__list_8c_source.html#l00162">list_push_sorted()</a>, <a class="el" href="n__list_8c_source.html#l00259">list_unshift_sorted()</a>, and <a class="el" href="ex__list_8c_source.html#l00035">main()</a>.</p>
+<div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-9-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-6-content" class="dyncontent" style="display:none;">
+<div id="dynsection-9-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="group___l_i_s_t_ga65687bd547104e185bad1b7da5cb0d98_cgraph.png" border="0" usemap="#agroup___l_i_s_t_ga65687bd547104e185bad1b7da5cb0d98_cgraph" alt=""/></div>
 <map name="agroup___l_i_s_t_ga65687bd547104e185bad1b7da5cb0d98_cgraph" id="agroup___l_i_s_t_ga65687bd547104e185bad1b7da5cb0d98_cgraph">
 <area shape="rect" title="Add a pointer at the start of the list." alt="" coords="5,5,89,32"/>
 <area shape="rect" href="group___l_i_s_t.html#ga678e828550efc8e64a836bb8c713c2f4" title="Allocate a new node to link in a list." alt="" coords="137,5,241,32"/>
 </map>
 </div>
-<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-10-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-10-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-7-content" class="dyncontent" style="display:none;">
+<div id="dynsection-10-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="group___l_i_s_t_ga65687bd547104e185bad1b7da5cb0d98_icgraph.png" border="0" usemap="#agroup___l_i_s_t_ga65687bd547104e185bad1b7da5cb0d98_icgraph" alt=""/></div>
 <map name="agroup___l_i_s_t_ga65687bd547104e185bad1b7da5cb0d98_icgraph" id="agroup___l_i_s_t_ga65687bd547104e185bad1b7da5cb0d98_icgraph">
-<area shape="rect" title="Add a pointer at the start of the list." alt="" coords="180,31,264,57"/>
-<area shape="rect" href="group___l_i_s_t.html#gae582df4f7b31ccc5a6a026ffd8ea9555" title="Add a pointer sorted in the list , starting by the end of the list." alt="" coords="10,5,127,32"/>
-<area shape="rect" href="group___l_i_s_t.html#ga98e4e6e168d82f062e987ef578ce8e43" title="Add a pointer sorted in the list , starting by the start of the list." alt="" coords="5,56,132,83"/>
+<area shape="rect" title="Add a pointer at the start of the list." alt="" coords="279,56,363,83"/>
+<area shape="rect" href="group___l_i_s_t.html#gae582df4f7b31ccc5a6a026ffd8ea9555" title="Add a pointer sorted in the list , starting by the end of the list." alt="" coords="109,5,226,32"/>
+<area shape="rect" href="ex__list_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="5,56,56,83"/>
+<area shape="rect" href="group___l_i_s_t.html#ga98e4e6e168d82f062e987ef578ce8e43" title="Add a pointer sorted in the list , starting by the start of the list." alt="" coords="104,107,231,133"/>
 </map>
 </div>
 
@@ -930,7 +1131,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">int list_unshift_sorted </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_l_i_s_t.html">LIST</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="group___l_i_s_t.html#struct_l_i_s_t">LIST</a> *&#160;</td>
           <td class="paramname"><em>list</em>, </td>
         </tr>
         <tr>
@@ -959,7 +1160,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__list_8h.html">n_list.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="n__list_8h.html">include/nilorea/n_list.h</a>&gt;</code></p>
 
 <p>Add a pointer sorted in the list , starting by the start of the list. </p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -976,17 +1177,30 @@ Functions</h2></td></tr>
 <p class="definition">Definition at line <a class="el" href="n__list_8c_source.html#l00259">259</a> of file <a class="el" href="n__list_8c_source.html">n_list.c</a>.</p>
 
 <p class="reference">References <a class="el" href="n__common_8h_source.html#l00262">__n_assert</a>, <a class="el" href="n__list_8h_source.html#l00061">link_node</a>, <a class="el" href="n__list_8c_source.html#l00121">list_push()</a>, <a class="el" href="n__list_8c_source.html#l00219">list_unshift()</a>, <a class="el" href="n__log_8h_source.html#l00058">LOG_ERR</a>, <a class="el" href="n__log_8h_source.html#l00074">n_log</a>, and <a class="el" href="n__list_8c_source.html#l00046">new_list_node()</a>.</p>
-<div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-8-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
+
+<p class="reference">Referenced by <a class="el" href="ex__list_8c_source.html#l00035">main()</a>.</p>
+<div id="dynsection-11" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-11-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-11-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-8-content" class="dyncontent" style="display:none;">
+<div id="dynsection-11-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="group___l_i_s_t_ga98e4e6e168d82f062e987ef578ce8e43_cgraph.png" border="0" usemap="#agroup___l_i_s_t_ga98e4e6e168d82f062e987ef578ce8e43_cgraph" alt=""/></div>
 <map name="agroup___l_i_s_t_ga98e4e6e168d82f062e987ef578ce8e43_cgraph" id="agroup___l_i_s_t_ga98e4e6e168d82f062e987ef578ce8e43_cgraph">
 <area shape="rect" title="Add a pointer sorted in the list , starting by the start of the list." alt="" coords="5,56,132,83"/>
 <area shape="rect" href="group___l_i_s_t.html#ga4eab319289a83524639ee5e9f0441fdf" title="Add a pointer to the end of the list." alt="" coords="185,5,259,32"/>
 <area shape="rect" href="group___l_i_s_t.html#ga678e828550efc8e64a836bb8c713c2f4" title="Allocate a new node to link in a list." alt="" coords="312,56,416,83"/>
 <area shape="rect" href="group___l_i_s_t.html#ga65687bd547104e185bad1b7da5cb0d98" title="Add a pointer at the start of the list." alt="" coords="180,107,264,133"/>
+</map>
+</div>
+<div id="dynsection-12" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-12-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-12-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-12-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group___l_i_s_t_ga98e4e6e168d82f062e987ef578ce8e43_icgraph.png" border="0" usemap="#agroup___l_i_s_t_ga98e4e6e168d82f062e987ef578ce8e43_icgraph" alt=""/></div>
+<map name="agroup___l_i_s_t_ga98e4e6e168d82f062e987ef578ce8e43_icgraph" id="agroup___l_i_s_t_ga98e4e6e168d82f062e987ef578ce8e43_icgraph">
+<area shape="rect" title="Add a pointer sorted in the list , starting by the start of the list." alt="" coords="104,5,231,32"/>
+<area shape="rect" href="ex__list_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="5,5,56,32"/>
 </map>
 </div>
 
@@ -999,7 +1213,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="struct_l_i_s_t.html">LIST</a> * new_generic_list </td>
+          <td class="memname"><a class="el" href="group___l_i_s_t.html#struct_l_i_s_t">LIST</a> * new_generic_list </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>max_items</em></td><td>)</td>
@@ -1008,7 +1222,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__list_8h.html">n_list.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="n__list_8h.html">include/nilorea/n_list.h</a>&gt;</code></p>
 
 <p>Initialiaze a generic list container to max_items pointers. </p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -1017,43 +1231,69 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>a new <a class="el" href="struct_l_i_s_t.html" title="Structure of a generic LIST container.">LIST</a> or NULL </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>a new <a class="el" href="group___l_i_s_t.html#struct_l_i_s_t">LIST</a> or NULL </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="n__list_8c_source.html#l00020">20</a> of file <a class="el" href="n__list_8c_source.html">n_list.c</a>.</p>
 
 <p class="reference">References <a class="el" href="n__common_8h_source.html#l00262">__n_assert</a>, and <a class="el" href="n__common_8h_source.html#l00182">Malloc</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="n__network__msg_8c_source.html#l00078">create_msg()</a>, <a class="el" href="n__config__file_8c_source.html#l00051">load_config_file()</a>, <a class="el" href="n__network_8c_source.html#l00631">netw_new()</a>, and <a class="el" href="n__thread__pool_8c_source.html#l00094">new_thread_pool()</a>.</p>
-<div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-9-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
+<p class="reference">Referenced by <a class="el" href="n__hash_8c_source.html#l01880">_ht_search()</a>, <a class="el" href="n__hash_8c_source.html#l00851">_ht_search_trie()</a>, <a class="el" href="n__network__msg_8c_source.html#l00078">create_msg()</a>, <a class="el" href="n__hash_8c_source.html#l02254">ht_get_completion_list()</a>, <a class="el" href="n__particles_8c_source.html#l00014">init_particle_system()</a>, <a class="el" href="n__config__file_8c_source.html#l00051">load_config_file()</a>, <a class="el" href="ex__gui__netclient_8c_source.html#l00239">main()</a>, <a class="el" href="ex__gui__netclient_8c_source.html#l00062">manage_peers()</a>, <a class="el" href="n__network_8c_source.html#l00641">netw_new()</a>, <a class="el" href="n__hash_8c_source.html#l01958">new_ht()</a>, <a class="el" href="n__thread__pool_8c_source.html#l00094">new_thread_pool()</a>, <a class="el" href="ex__gui__netserver_8c_source.html#l00154">process_clients()</a>, and <a class="el" href="n__user_8c_source.html#l00021">userlist_new()</a>.</p>
+<div id="dynsection-13" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-13-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-13-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-9-content" class="dyncontent" style="display:none;">
+<div id="dynsection-13-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="group___l_i_s_t_gada615e3b144e97bcff147dfe89f6fef6_icgraph.png" border="0" usemap="#agroup___l_i_s_t_gada615e3b144e97bcff147dfe89f6fef6_icgraph" alt=""/></div>
 <map name="agroup___l_i_s_t_gada615e3b144e97bcff147dfe89f6fef6_icgraph" id="agroup___l_i_s_t_gada615e3b144e97bcff147dfe89f6fef6_icgraph">
-<area shape="rect" title="Initialiaze a generic list container to max_items pointers." alt="" coords="757,411,876,437"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#ga62ae674d9de6171bcbd604e68a3b94a9" title="Create a NETW_MSG *object." alt="" coords="605,309,695,336"/>
-<area shape="rect" href="group___c_o_n_f_i_g_f_i_l_e.html#ga0206fadb78039ac602fc0696b27b85a6" title="load a config file" alt="" coords="595,385,705,412"/>
-<area shape="rect" href="n__network_8c.html#a9caee75e3a67942e37ccb4de2c889105" title="Return an empty allocated network ready to be netw_closed." alt="" coords="611,436,689,463"/>
-<area shape="rect" href="group___t_h_r_e_a_d_s.html#gadb3f2b85b758433e29e84b54992cfed4" title="Create a new pool of nbmaxthr threads." alt="" coords="591,487,709,513"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#ga3fd01fccdf5fee20c2f0df7429ab3dd7" title="Make a single message of the string." alt="" coords="399,132,539,159"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#ga7bae3c3de53204413c7663007ec4a4d7" title="Add a formatted NETWMSG_IDENT message to the specified network." alt="" coords="399,259,538,285"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#gaeb5e94070c0ee79ff2d11a707d225c3a" title="Make a ping message to send to a network." alt="" coords="401,309,536,336"/>
-<area shape="rect" href="ex__network_8h.html#a97064904e9c2be2094c349413ff348fc" title="send data to specified network" alt="" coords="411,360,526,387"/>
-<area shape="rect" href="ex__network_8h.html#a6f950bd6cd1d0314572ecae401ac1883" title="decode data we got from network" alt="" coords="201,5,305,32"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#gaf2d84e34e50db7b3b7aca16c6bdb06f8" title="Retrieves identification from netwmsg." alt="" coords="199,56,308,83"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#ga525ee81a12f526d55b2b380d9338424e" title="Retrieves a ping travel elapsed time." alt="" coords="201,107,306,133"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#ga241bf3b1ebc63dd986dfec1b0fe4998b" title="Retrieves position from netwmsg." alt="" coords="190,157,317,184"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#gace220d6339bd8085269ecee2b35126fb" title="Retrieves string from netwmsg." alt="" coords="197,208,310,235"/>
-<area shape="rect" href="ex__network_8h.html#a2af070d97fced1a0eadad90c6aa4903b" title="recv/send datas if any for the client" alt="" coords="5,183,112,209"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#gae8345266fcf7a23c0e8ffe176b0e086f" title="Add a formatted NETWMSG_IDENT message to the specified network." alt="" coords="194,259,313,285"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#gad9588cf27263ecf40f57d3923ccf721a" title="Add a ping reply to the network." alt="" coords="196,309,311,336"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#ga80624fa0de793761e9ea5cebff424c68" title="make a normal &#39;accept&#39; ." alt="" coords="395,423,543,449"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#ga4cef67bc400323306a3d1c1ed5cec17b" title="Use this to connect a NETWORK to any listening one." alt="" coords="407,473,530,500"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#ga52afd4f5662c9c8f334d224ae2cdbdf2" title="Make a NETWORK be a Listening network." alt="" coords="397,524,540,551"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#gab99090cbf623f95556ea610e690b50d9" title="make a normal blocking &#39;accept&#39; ." alt="" coords="190,411,317,437"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#ga32138772c399518190a14e81164fc469" title="make a normal blocking &#39;accept&#39; ." alt="" coords="160,461,347,488"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#gae18d52a130063ba1fd0a4cf4b6a2da20" title="Use this to connect a NETWORK to any listening one, unrestricted send/recv lists." alt="" coords="202,512,305,539"/>
+<area shape="rect" title="Initialiaze a generic list container to max_items pointers." alt="" coords="984,673,1103,700"/>
+<area shape="rect" href="n__hash_8c.html#af5e4567a16f469d013410e8cf675a28c" title="Search hash table&#39;s keys and apply a matching func to put results in the list." alt="" coords="817,116,903,143"/>
+<area shape="rect" href="group___h_a_s_h___t_a_b_l_e.html#gaa2d879c1afd3c71a0917bbe2c0766664" title="Create a hash table with the given size." alt="" coords="611,116,673,143"/>
+<area shape="rect" href="group___c_o_n_f_i_g_f_i_l_e.html#ga0206fadb78039ac602fc0696b27b85a6" title="load a config file" alt="" coords="364,15,475,41"/>
+<area shape="rect" href="ex__gui__netclient_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="172,825,223,852"/>
+<area shape="rect" href="n__hash_8c.html#aa80d786e98105e52ebc7246fc91ff33f" title="Search tree&#39;s keys and apply a matching func to put results in the list." alt="" coords="805,344,915,371"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#ga62ae674d9de6171bcbd604e68a3b94a9" title="Create a NETW_MSG *object." alt="" coords="815,673,905,700"/>
+<area shape="rect" href="ex__gui__netserver_8c.html#a1f1e6cd9b7f8f1845345c9a5673cf384" title=" " alt="" coords="141,521,254,548"/>
+<area shape="rect" href="group___h_a_s_h___t_a_b_l_e.html#ga21e528f4d0a0124c495479ddd265a99b" title="get next matching keys in table tree" alt="" coords="784,471,936,497"/>
+<area shape="rect" href="group___p_a_r_t_i_c_l_e_s.html#gaf00630a2c4eaa468e124fe4d9557c825" title=" " alt="" coords="791,1028,929,1055"/>
+<area shape="rect" href="ex__gui__netclient_8c.html#ae35cba0c2e39eed0d1b641cd2f1e3299" title=" " alt="" coords="807,800,913,827"/>
+<area shape="rect" href="n__network_8c.html#a9caee75e3a67942e37ccb4de2c889105" title="Return an empty allocated network ready to be netw_closed." alt="" coords="821,1091,899,1117"/>
+<area shape="rect" href="group___t_h_r_e_a_d_s.html#gadb3f2b85b758433e29e84b54992cfed4" title="Create a new pool of nbmaxthr threads." alt="" coords="138,1535,257,1561"/>
+<area shape="rect" href="group___n___u_s_e_r.html#ga9b5ba218fe230aa8fa0934fce44c90be" title=" " alt="" coords="813,1155,907,1181"/>
+<area shape="rect" href="group___l_o_g_n_o_d_u_p.html#gaf9c9b8e129263da15345f428cd73f19e" title="initialize the no duplicate logging system" alt="" coords="367,65,472,92"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#gadb5284c7b187815cf3b286a5cd972876" title="return a new network pool of nb_min_element" alt="" coords="142,293,253,320"/>
+<area shape="rect" href="ex__log_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="172,65,223,92"/>
+<area shape="rect" href="ex__configfile_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="172,15,223,41"/>
+<area shape="rect" href="ex__gui__netserver_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,1129,56,1156"/>
+<area shape="rect" href="group___h_a_s_h___t_a_b_l_e.html#gab95fe0967850a3665d21837519ede6c8" title="create a TRIE hash table with the alphabet_size, each key value beeing decreased by alphabet_offset" alt="" coords="598,268,686,295"/>
+<area shape="rect" href="ex__hash_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="394,268,445,295"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#ga3fd01fccdf5fee20c2f0df7429ab3dd7" title="Make a single message of the string." alt="" coords="572,775,712,801"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#ga7bae3c3de53204413c7663007ec4a4d7" title="Add a formatted NETWMSG_IDENT message to the specified network." alt="" coords="573,457,711,484"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#gaeb5e94070c0ee79ff2d11a707d225c3a" title="Make a ping message to send to a network." alt="" coords="575,369,709,396"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#ga6d469c5cbc4fdfa266be68a35d10a904" title=" " alt="" coords="548,825,736,852"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#gaea4cc09810479665c6c7e689dfaecff7" title=" " alt="" coords="560,673,724,700"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#gafb91c3ea7bfa93212141fa1fe074fb3d" title=" " alt="" coords="555,547,729,573"/>
+<area shape="rect" href="ex__network_8h.html#a97064904e9c2be2094c349413ff348fc" title="send data to specified network" alt="" coords="362,1281,477,1308"/>
+<area shape="rect" href="ex__network_8h.html#a6f950bd6cd1d0314572ecae401ac1883" title="decode data we got from network" alt="" coords="367,1231,471,1257"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#gaf2d84e34e50db7b3b7aca16c6bdb06f8" title="Retrieves identification from netwmsg." alt="" coords="365,724,474,751"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#ga525ee81a12f526d55b2b380d9338424e" title="Retrieves a ping travel elapsed time." alt="" coords="367,623,472,649"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#ga241bf3b1ebc63dd986dfec1b0fe4998b" title="Retrieves position from netwmsg." alt="" coords="356,876,483,903"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#ga601ef18cfe3570caaa81cc43c09004c2" title=" " alt="" coords="368,775,471,801"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#gace220d6339bd8085269ecee2b35126fb" title="Retrieves string from netwmsg." alt="" coords="363,825,476,852"/>
+<area shape="rect" href="ex__network_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,1383,56,1409"/>
+<area shape="rect" href="ex__network_8h.html#a2af070d97fced1a0eadad90c6aa4903b" title="recv/send datas if any for the client" alt="" coords="144,1281,251,1308"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#gae8345266fcf7a23c0e8ffe176b0e086f" title="Add a formatted NETWMSG_IDENT message to the specified network." alt="" coords="360,420,479,447"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#gad9588cf27263ecf40f57d3923ccf721a" title="Add a ping reply to the network." alt="" coords="362,369,477,396"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#gafaf1202a5f56a9f2285fccfbcacb3a6c" title="Add a formatted NETWMSG_IDENT message to the specified network." alt="" coords="351,927,487,953"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#gac8b30599c7a5c2cce35ee401d7b9d7f1" title="Add a formatted NETMSG_QUIT message to the specified network." alt="" coords="363,673,475,700"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#gad3b590da2eb8b594c75d1d5f46ba7b45" title="Add a string to the network, aiming a specific user." alt="" coords="349,521,490,548"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#ga02b35de5d3b84e79c4fecbf4cebce603" title="Add a string to the network, aiming all server&#45;side users." alt="" coords="339,471,500,497"/>
+<area shape="rect" href="ex__gui__particles_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="617,1028,667,1055"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#ga80624fa0de793761e9ea5cebff424c68" title="make a normal &#39;accept&#39; . Network &#39;from&#39; must be allocated with netw_make_listening." alt="" coords="345,1369,493,1396"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#ga4cef67bc400323306a3d1c1ed5cec17b" title="Use this to connect a NETWORK to any listening one." alt="" coords="581,1079,703,1105"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#ga52afd4f5662c9c8f334d224ae2cdbdf2" title="Make a NETWORK be a Listening network." alt="" coords="126,1129,269,1156"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#gab99090cbf623f95556ea610e690b50d9" title="make a normal blocking &#39;accept&#39; . Network &#39;from&#39; must be allocated with netw_make_listening." alt="" coords="134,1484,261,1511"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#ga32138772c399518190a14e81164fc469" title="make a normal blocking &#39;accept&#39; . Network &#39;from&#39; must be allocated with netw_make_listening." alt="" coords="104,1433,291,1460"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#gae18d52a130063ba1fd0a4cf4b6a2da20" title="Use this to connect a NETWORK to any listening one, unrestricted send/recv lists." alt="" coords="368,1079,471,1105"/>
 </map>
 </div>
 
@@ -1085,7 +1325,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__list_8h.html">n_list.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="n__list_8h.html">include/nilorea/n_list.h</a>&gt;</code></p>
 
 <p>Allocate a new node to link in a list. </p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -1102,45 +1342,63 @@ Functions</h2></td></tr>
 <p class="reference">References <a class="el" href="n__common_8h_source.html#l00262">__n_assert</a>, <a class="el" href="n__log_8h_source.html#l00058">LOG_ERR</a>, <a class="el" href="n__common_8h_source.html#l00182">Malloc</a>, and <a class="el" href="n__log_8h_source.html#l00074">n_log</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="n__list_8c_source.html#l00121">list_push()</a>, <a class="el" href="n__list_8c_source.html#l00162">list_push_sorted()</a>, <a class="el" href="n__list_8c_source.html#l00219">list_unshift()</a>, and <a class="el" href="n__list_8c_source.html#l00259">list_unshift_sorted()</a>.</p>
-<div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-10-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-10-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-14" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-14-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-14-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-10-content" class="dyncontent" style="display:none;">
+<div id="dynsection-14-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="group___l_i_s_t_ga678e828550efc8e64a836bb8c713c2f4_icgraph.png" border="0" usemap="#agroup___l_i_s_t_ga678e828550efc8e64a836bb8c713c2f4_icgraph" alt=""/></div>
 <map name="agroup___l_i_s_t_ga678e828550efc8e64a836bb8c713c2f4_icgraph" id="agroup___l_i_s_t_ga678e828550efc8e64a836bb8c713c2f4_icgraph">
-<area shape="rect" title="Allocate a new node to link in a list." alt="" coords="893,639,997,665"/>
-<area shape="rect" href="group___l_i_s_t.html#ga4eab319289a83524639ee5e9f0441fdf" title="Add a pointer to the end of the list." alt="" coords="766,385,841,412"/>
-<area shape="rect" href="group___l_i_s_t.html#gae582df4f7b31ccc5a6a026ffd8ea9555" title="Add a pointer sorted in the list , starting by the end of the list." alt="" coords="578,664,695,691"/>
-<area shape="rect" href="group___l_i_s_t.html#ga98e4e6e168d82f062e987ef578ce8e43" title="Add a pointer sorted in the list , starting by the start of the list." alt="" coords="573,715,700,741"/>
-<area shape="rect" href="group___l_i_s_t.html#ga65687bd547104e185bad1b7da5cb0d98" title="Add a pointer at the start of the list." alt="" coords="761,664,845,691"/>
-<area shape="rect" href="n__hash_8c.html#a870d138d5408e20e8111c750cdc77d36" title="put a double value with given key in the targeted hash table" alt="" coords="581,309,692,336"/>
-<area shape="rect" href="n__hash_8c.html#a4713652203bc7965a2dda268ffa1e4d5" title="put an integral value with given key in the targeted hash table [CLASSIC HASH TABLE)" alt="" coords="593,360,680,387"/>
-<area shape="rect" href="n__hash_8c.html#a35ed4b8f492e6265b7cdcc8f380b6130" title="put a null terminated char *string with given key in the targeted hash table (copy of string)" alt="" coords="585,411,689,437"/>
-<area shape="rect" href="n__hash_8c.html#a8bfbff53ffcafc65317e2b1041df314f" title="put a null terminated char *string with given key in the targeted hash table (pointer)" alt="" coords="573,461,700,488"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#ga9aa63e987d00d99d9a21aec35efecf74" title="Add an int to the int list int the message." alt="" coords="579,259,694,285"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#gae7c4f1b2c58aabda4856a2f5c782b863" title="Add an float to the message." alt="" coords="579,512,694,539"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#ga84f36b52e6d9dfe9ca6186c3177f5472" title="Add a copy of str to the string list in the message." alt="" coords="565,107,708,133"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#ga53dfbdd3b5d1cfcf387d17b4465e5f3a" title="Add a string to the string list in the message." alt="" coords="568,563,705,589"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#ga35d5127628fc0ddafd5cde36296ce583" title="Add a copy of char *str to the string list in the message." alt="" coords="569,56,705,83"/>
-<area shape="rect" href="group___t_h_r_e_a_d_s.html#ga46497eb81066d0df83dfd07ad0a9f561" title="add a function and params to a thread pool" alt="" coords="560,5,713,32"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#ga10429a9fa106b61c38f28635242ce502" title="Add a message to send in aimed NETWORK." alt="" coords="383,171,492,197"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#gafd17b2ed695976a31b4cdee5091e0ef7" title="Add a message to send in aimed NETWORK." alt="" coords="571,208,702,235"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#ga63e06c0450013078c54bb4951e9438ac" title="To Thread Receiving function." alt="" coords="581,613,692,640"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#ga3fd01fccdf5fee20c2f0df7429ab3dd7" title="Make a single message of the string." alt="" coords="367,500,507,527"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#ga7bae3c3de53204413c7663007ec4a4d7" title="Add a formatted NETWMSG_IDENT message to the specified network." alt="" coords="368,120,507,147"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#gaeb5e94070c0ee79ff2d11a707d225c3a" title="Make a ping message to send to a network." alt="" coords="370,247,505,273"/>
-<area shape="rect" href="ex__network_8h.html#a6f950bd6cd1d0314572ecae401ac1883" title="decode data we got from network" alt="" coords="185,392,289,419"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#gaf2d84e34e50db7b3b7aca16c6bdb06f8" title="Retrieves identification from netwmsg." alt="" coords="183,595,292,621"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#ga525ee81a12f526d55b2b380d9338424e" title="Retrieves a ping travel elapsed time." alt="" coords="185,443,290,469"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#ga241bf3b1ebc63dd986dfec1b0fe4998b" title="Retrieves position from netwmsg." alt="" coords="174,493,301,520"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#gace220d6339bd8085269ecee2b35126fb" title="Retrieves string from netwmsg." alt="" coords="181,544,294,571"/>
-<area shape="rect" href="ex__network_8h.html#a2af070d97fced1a0eadad90c6aa4903b" title="recv/send datas if any for the client" alt="" coords="5,519,112,545"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#gae8345266fcf7a23c0e8ffe176b0e086f" title="Add a formatted NETWMSG_IDENT message to the specified network." alt="" coords="178,139,297,165"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#gad9588cf27263ecf40f57d3923ccf721a" title="Add a ping reply to the network." alt="" coords="180,227,295,253"/>
-<area shape="rect" href="group___t_h_r_e_a_d_s.html#ga5d9ce1747e4b7cb58ce3767f7e56cd8b" title="try to add some waiting DIRECT_PROCs on some free thread slots, else do nothing" alt="" coords="370,5,505,32"/>
-<area shape="rect" href="group___t_h_r_e_a_d_s.html#ga992fc2a67a2d66733ccd10f7d9e2ead3" title="Wait for all the launched process in the thread pool to terminate." alt="" coords="160,5,315,32"/>
-<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#ga5ba0555c5ccd261227c3c1216923d563" title="Start the NETWORK netw Threaded Engine." alt="" coords="363,620,512,647"/>
+<area shape="rect" title="Allocate a new node to link in a list." alt="" coords="977,1395,1081,1421"/>
+<area shape="rect" href="group___l_i_s_t.html#ga4eab319289a83524639ee5e9f0441fdf" title="Add a pointer to the end of the list." alt="" coords="850,763,925,789"/>
+<area shape="rect" href="group___l_i_s_t.html#gae582df4f7b31ccc5a6a026ffd8ea9555" title="Add a pointer sorted in the list , starting by the end of the list." alt="" coords="637,1445,755,1472"/>
+<area shape="rect" href="group___l_i_s_t.html#ga98e4e6e168d82f062e987ef578ce8e43" title="Add a pointer sorted in the list , starting by the start of the list." alt="" coords="633,1395,759,1421"/>
+<area shape="rect" href="group___l_i_s_t.html#ga65687bd547104e185bad1b7da5cb0d98" title="Add a pointer at the start of the list." alt="" coords="845,1420,929,1447"/>
+<area shape="rect" href="n__hash_8c.html#a35d5a23776c64cb68260bbd0c4138ee2" title="recursive, helper for ht_get_completion_list, get the list of leaf starting from node" alt="" coords="619,205,773,232"/>
+<area shape="rect" href="group___h_a_s_h___t_a_b_l_e.html#ga21e528f4d0a0124c495479ddd265a99b" title="get next matching keys in table tree" alt="" coords="377,231,529,257"/>
+<area shape="rect" href="n__hash_8c.html#a870d138d5408e20e8111c750cdc77d36" title="put a double value with given key in the targeted hash table" alt="" coords="641,611,751,637"/>
+<area shape="rect" href="group___c_o_n_f_i_g_f_i_l_e.html#ga0206fadb78039ac602fc0696b27b85a6" title="load a config file" alt="" coords="183,332,294,359"/>
+<area shape="rect" href="n__hash_8c.html#a4713652203bc7965a2dda268ffa1e4d5" title="put an integral value with given key in the targeted hash table [CLASSIC HASH TABLE)" alt="" coords="653,357,739,384"/>
+<area shape="rect" href="n__hash_8c.html#a853357465a1599d42ff6d095aa762424" title="put a pointer value with given key in the targeted hash table" alt="" coords="653,408,739,435"/>
+<area shape="rect" href="n__hash_8c.html#a35ed4b8f492e6265b7cdcc8f380b6130" title="put a null terminated char *string with given key in the targeted hash table (copy of string)" alt="" coords="644,459,748,485"/>
+<area shape="rect" href="n__hash_8c.html#a8bfbff53ffcafc65317e2b1041df314f" title="put a null terminated char *string with given key in the targeted hash table (pointer)" alt="" coords="633,509,759,536"/>
+<area shape="rect" href="n__hash_8c.html#af5e4567a16f469d013410e8cf675a28c" title="Search hash table&#39;s keys and apply a matching func to put results in the list." alt="" coords="653,560,739,587"/>
+<area shape="rect" href="n__hash_8c.html#af9f6e937f781df402b5ec4ac788f6f6e" title="Recursive function to search tree&#39;s keys and apply a matching func to put results in the list." alt="" coords="619,1091,773,1117"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#ga9aa63e987d00d99d9a21aec35efecf74" title="Add an int to the int list int the message." alt="" coords="639,864,753,891"/>
+<area shape="rect" href="ex__gui__netserver_8c.html#a1f1e6cd9b7f8f1845345c9a5673cf384" title=" " alt="" coords="5,813,119,840"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#gae7c4f1b2c58aabda4856a2f5c782b863" title="Add an float to the message." alt="" coords="639,965,753,992"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#ga84f36b52e6d9dfe9ca6186c3177f5472" title="Add a copy of str to the string list in the message." alt="" coords="625,763,767,789"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#ga53dfbdd3b5d1cfcf387d17b4465e5f3a" title="Add a string to the string list in the message." alt="" coords="627,915,765,941"/>
+<area shape="rect" href="group___p_a_r_t_i_c_l_e_s.html#gae8252f1cd818ef45e20e7d4c54351d2e" title=" " alt="" coords="650,1141,742,1168"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#ga35d5127628fc0ddafd5cde36296ce583" title="Add a copy of char *str to the string list in the message." alt="" coords="628,1192,764,1219"/>
+<area shape="rect" href="group___t_h_r_e_a_d_s.html#ga46497eb81066d0df83dfd07ad0a9f561" title="add a function and params to a thread pool" alt="" coords="619,1016,773,1043"/>
+<area shape="rect" href="ex__list_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="427,1420,478,1447"/>
+<area shape="rect" href="ex__gui__netclient_8c.html#ae35cba0c2e39eed0d1b641cd2f1e3299" title=" " alt="" coords="185,459,292,485"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#ga10429a9fa106b61c38f28635242ce502" title="Add a message to send in aimed NETWORK." alt="" coords="641,712,751,739"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#gafd17b2ed695976a31b4cdee5091e0ef7" title="Add a message to send in aimed NETWORK." alt="" coords="631,1243,761,1269"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#gaed3d4b17261c0ce51cd7671b81b5a007" title="add a NETWORK *netw to a NETWORK_POOL *pool" alt="" coords="642,1293,750,1320"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#ga63e06c0450013078c54bb4951e9438ac" title="To Thread Receiving function." alt="" coords="641,5,751,32"/>
+<area shape="rect" href="group___n___s_t_r.html#ga3257ab0fdf5a36d0dfca480a161d9fbf" title="Scan a list of directory and return a list of char *file." alt="" coords="650,80,742,107"/>
+<area shape="rect" href="group___n___u_s_e_r.html#gafeb353e9e5f9e0242e9b6d26ab668765" title=" " alt="" coords="595,131,797,157"/>
+<area shape="rect" href="ex__hash_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="213,231,264,257"/>
+<area shape="rect" href="group___h_a_s_h___t_a_b_l_e.html#gaa2d879c1afd3c71a0917bbe2c0766664" title="Create a hash table with the given size." alt="" coords="421,408,484,435"/>
+<area shape="rect" href="ex__gui__netclient_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="37,509,87,536"/>
+<area shape="rect" href="ex__configfile_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="37,332,87,359"/>
+<area shape="rect" href="n__hash_8c.html#aa80d786e98105e52ebc7246fc91ff33f" title="Search tree&#39;s keys and apply a matching func to put results in the list." alt="" coords="397,1219,508,1245"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#ga3fd01fccdf5fee20c2f0df7429ab3dd7" title="Make a single message of the string." alt="" coords="383,1016,523,1043"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#ga7bae3c3de53204413c7663007ec4a4d7" title="Add a formatted NETWMSG_IDENT message to the specified network." alt="" coords="383,763,522,789"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#gaeb5e94070c0ee79ff2d11a707d225c3a" title="Make a ping message to send to a network." alt="" coords="385,864,520,891"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#ga6d469c5cbc4fdfa266be68a35d10a904" title=" " alt="" coords="359,1067,547,1093"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#gaea4cc09810479665c6c7e689dfaecff7" title=" " alt="" coords="371,965,535,992"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k___m_s_g.html#gafb91c3ea7bfa93212141fa1fe074fb3d" title=" " alt="" coords="365,712,540,739"/>
+<area shape="rect" href="ex__network_8h.html#a97064904e9c2be2094c349413ff348fc" title="send data to specified network" alt="" coords="395,915,510,941"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#gae8345266fcf7a23c0e8ffe176b0e086f" title="Add a formatted NETWMSG_IDENT message to the specified network." alt="" coords="179,687,298,713"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#gad9588cf27263ecf40f57d3923ccf721a" title="Add a ping reply to the network." alt="" coords="181,864,296,891"/>
+<area shape="rect" href="ex__network_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="213,1117,264,1144"/>
+<area shape="rect" href="group___p_a_r_t_i_c_l_e_s.html#gad8c6a1f791072a6485af0439a3c4d94f" title=" " alt="" coords="396,1269,509,1296"/>
+<area shape="rect" href="ex__gui__particles_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="427,1320,478,1347"/>
+<area shape="rect" href="group___t_h_r_e_a_d_s.html#ga5d9ce1747e4b7cb58ce3767f7e56cd8b" title="try to add some waiting DIRECT_PROCs on some free thread slots, else do nothing" alt="" coords="385,1168,520,1195"/>
+<area shape="rect" href="group___n_e_t_w_o_r_k_i_n_g.html#ga06115ed18a658114104ca6b6823f5d79" title="add net_msg to all network in netork pool" alt="" coords="167,751,311,777"/>
 </map>
 </div>
 
@@ -1155,7 +1413,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void * remove_list_node_f </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_l_i_s_t.html">LIST</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="group___l_i_s_t.html#struct_l_i_s_t">LIST</a> *&#160;</td>
           <td class="paramname"><em>list</em>, </td>
         </tr>
         <tr>
@@ -1172,7 +1430,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__list_8h.html">n_list.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="n__list_8h.html">include/nilorea/n_list.h</a>&gt;</code></p>
 
 <p>Internal function called each time we need to get a node out of a list. </p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -1195,7 +1453,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Feb 3 2022 21:53:47 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+    <li class="footer">Generated on Fri Feb 4 2022 17:12:05 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
   </ul>
 </div>
 </body>

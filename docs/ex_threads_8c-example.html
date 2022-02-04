@@ -85,7 +85,6 @@ $(document).ready(function(){initNavTree('ex_threads_8c-example.html',''); initR
   <div class="headertitle"><div class="title">ex_threads.c</div></div>
 </div><!--header-->
 <div class="contents">
-<p >Nilorea Library thread pool api example.</p>
 <p >Nilorea Library thread pool api example </p><dl class="section author"><dt>Author</dt><dd>Castagnier Mickael </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>1.0 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>03/01/2019</dd></dl>
@@ -97,23 +96,23 @@ $(document).ready(function(){initNavTree('ex_threads_8c-example.html',''); initR
 <div class="line"><span class="preprocessor">#include &quot;<a class="code" href="n__log_8h.html">nilorea/n_log.h</a>&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;<a class="code" href="n__thread__pool_8h.html">nilorea/n_thread_pool.h</a>&quot;</span></div>
 <div class="line"> </div>
-<div class="line"><span class="keyword">static</span> pthread_t netw_thr ;</div>
+<div class="line"><span class="keyword">static</span> pthread_t <a id="a0" name="a0"></a><a class="code hl_variable" href="ex__threads_8c.html#a75a4b872120a9e428801230cbcb610de">netw_thr</a> ;</div>
 <div class="line"> </div>
-<div class="line"><span class="keywordtype">void</span> usage(<span class="keywordtype">void</span>)</div>
+<div class="line"><span class="keywordtype">void</span> <a id="a1" name="a1"></a><a class="code hl_function" href="ex__threads_8c.html#ae8605e2b78cd4a81b6c6b5c30cb7366a">usage</a>(<span class="keywordtype">void</span>)</div>
 <div class="line">{</div>
 <div class="line">    fprintf( stderr, <span class="stringliteral">&quot;     -v version\n&quot;</span></div>
 <div class="line">             <span class="stringliteral">&quot;     -h help\n&quot;</span></div>
 <div class="line">             <span class="stringliteral">&quot;     -V LOG_LEVEL (LOG_DEBUG,INFO,NOTICE,ERR)\n&quot;</span> );</div>
 <div class="line">}</div>
 <div class="line"> </div>
-<div class="line"><span class="keywordtype">void</span> process_args( <span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv )</div>
+<div class="line"><span class="keywordtype">void</span> <a id="a2" name="a2"></a><a class="code hl_function" href="ex__threads_8c.html#aefcb3f70374ff9b6256aac6e12870399">process_args</a>( <span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv )</div>
 <div class="line">{</div>
-<div class="line">    <span class="keywordtype">int</span> getoptret = 0,</div>
-<div class="line">        log_level = <a id="a0" name="a0"></a><a class="code hl_define" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a>;  <span class="comment">/* default log level */</span></div>
+<div class="line">    <span class="keywordtype">int</span> <a id="a3" name="a3"></a><a class="code hl_variable" href="ex__gui__particles_8c.html#a40367f95374e226128dde2c270b32f0f">getoptret</a> = 0,</div>
+<div class="line">        <a id="a4" name="a4"></a><a class="code hl_variable" href="ex__gui__particles_8c.html#ab5a71c2541c377b3d5b34fdb35964c2e">log_level</a> = <a id="a5" name="a5"></a><a class="code hl_define" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a>;  <span class="comment">/* default log level */</span></div>
 <div class="line"> </div>
-<div class="line">    <span class="keywordflow">while</span>( ( getoptret = getopt( argc, argv, <span class="stringliteral">&quot;vhV:&quot;</span> ) ) != EOF)</div>
+<div class="line">    <span class="keywordflow">while</span>( ( <a class="code hl_variable" href="ex__gui__particles_8c.html#a40367f95374e226128dde2c270b32f0f">getoptret</a> = getopt( argc, argv, <span class="stringliteral">&quot;vhV:&quot;</span> ) ) != EOF)</div>
 <div class="line">    {</div>
-<div class="line">        <span class="keywordflow">switch</span>( getoptret )</div>
+<div class="line">        <span class="keywordflow">switch</span>( <a class="code hl_variable" href="ex__gui__particles_8c.html#a40367f95374e226128dde2c270b32f0f">getoptret</a> )</div>
 <div class="line">        {</div>
 <div class="line">        <span class="keywordflow">case</span> <span class="charliteral">&#39;v&#39;</span> :</div>
 <div class="line">            fprintf( stderr, <span class="stringliteral">&quot;Date de compilation : %s a %s.\n&quot;</span>, __DATE__, __TIME__ );</div>
@@ -121,31 +120,31 @@ $(document).ready(function(){initNavTree('ex_threads_8c-example.html',''); initR
 <div class="line">        <span class="keywordflow">case</span> <span class="charliteral">&#39;V&#39;</span> :</div>
 <div class="line">            <span class="keywordflow">if</span>( !strncmp( <span class="stringliteral">&quot;LOG_NULL&quot;</span>, optarg, 5 ) )</div>
 <div class="line">            {</div>
-<div class="line">                log_level = <a id="a1" name="a1"></a><a class="code hl_define" href="group___l_o_g.html#gae3b3638575ad43aa2dba40543dcec45c">LOG_NULL</a> ;</div>
+<div class="line">                <a class="code hl_variable" href="ex__gui__particles_8c.html#ab5a71c2541c377b3d5b34fdb35964c2e">log_level</a> = <a id="a6" name="a6"></a><a class="code hl_define" href="group___l_o_g.html#gae3b3638575ad43aa2dba40543dcec45c">LOG_NULL</a> ;</div>
 <div class="line">            }</div>
 <div class="line">            <span class="keywordflow">else</span></div>
 <div class="line">            {</div>
 <div class="line">                <span class="keywordflow">if</span>( !strncmp( <span class="stringliteral">&quot;LOG_NOTICE&quot;</span>, optarg, 6 ) )</div>
 <div class="line">                {</div>
-<div class="line">                    log_level = <a id="a2" name="a2"></a><a class="code hl_define" href="group___l_o_g.html#gad89ee324d180cdcd7defcc709ff9ca42">LOG_NOTICE</a>;</div>
+<div class="line">                    <a class="code hl_variable" href="ex__gui__particles_8c.html#ab5a71c2541c377b3d5b34fdb35964c2e">log_level</a> = <a id="a7" name="a7"></a><a class="code hl_define" href="group___l_o_g.html#gad89ee324d180cdcd7defcc709ff9ca42">LOG_NOTICE</a>;</div>
 <div class="line">                }</div>
 <div class="line">                <span class="keywordflow">else</span></div>
 <div class="line">                {</div>
 <div class="line">                    <span class="keywordflow">if</span>( !strncmp( <span class="stringliteral">&quot;LOG_INFO&quot;</span>, optarg, 7 ) )</div>
 <div class="line">                    {</div>
-<div class="line">                        log_level = <a id="a3" name="a3"></a><a class="code hl_define" href="group___l_o_g.html#gaeb4f36db01bd128c7afeac5889dac311">LOG_INFO</a>;</div>
+<div class="line">                        <a class="code hl_variable" href="ex__gui__particles_8c.html#ab5a71c2541c377b3d5b34fdb35964c2e">log_level</a> = <a id="a8" name="a8"></a><a class="code hl_define" href="group___l_o_g.html#gaeb4f36db01bd128c7afeac5889dac311">LOG_INFO</a>;</div>
 <div class="line">                    }</div>
 <div class="line">                    <span class="keywordflow">else</span></div>
 <div class="line">                    {</div>
 <div class="line">                        <span class="keywordflow">if</span>( !strncmp( <span class="stringliteral">&quot;LOG_ERR&quot;</span>, optarg, 5 ) )</div>
 <div class="line">                        {</div>
-<div class="line">                            log_level = <a class="code hl_define" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a>;</div>
+<div class="line">                            <a class="code hl_variable" href="ex__gui__particles_8c.html#ab5a71c2541c377b3d5b34fdb35964c2e">log_level</a> = <a class="code hl_define" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a>;</div>
 <div class="line">                        }</div>
 <div class="line">                        <span class="keywordflow">else</span></div>
 <div class="line">                        {</div>
 <div class="line">                            <span class="keywordflow">if</span>( !strncmp( <span class="stringliteral">&quot;LOG_DEBUG&quot;</span>, optarg, 5 ) )</div>
 <div class="line">                            {</div>
-<div class="line">                                log_level = <a id="a4" name="a4"></a><a class="code hl_define" href="group___l_o_g.html#ga6ff63e8955665c4a58b1598f2b07c51a">LOG_DEBUG</a>;</div>
+<div class="line">                                <a class="code hl_variable" href="ex__gui__particles_8c.html#ab5a71c2541c377b3d5b34fdb35964c2e">log_level</a> = <a id="a9" name="a9"></a><a class="code hl_define" href="group___l_o_g.html#ga6ff63e8955665c4a58b1598f2b07c51a">LOG_DEBUG</a>;</div>
 <div class="line">                            }</div>
 <div class="line">                            <span class="keywordflow">else</span></div>
 <div class="line">                            {</div>
@@ -164,26 +163,26 @@ $(document).ready(function(){initNavTree('ex_threads_8c-example.html',''); initR
 <div class="line">            {</div>
 <div class="line">                fprintf( stderr, <span class="stringliteral">&quot;\n      Missing log level\n&quot;</span> );</div>
 <div class="line">            }</div>
-<div class="line">            usage();</div>
+<div class="line">            <a class="code hl_function" href="ex__threads_8c.html#ae8605e2b78cd4a81b6c6b5c30cb7366a">usage</a>();</div>
 <div class="line">            exit( 1 );</div>
 <div class="line">        }</div>
 <div class="line">        <span class="keywordflow">case</span> <span class="charliteral">&#39;h&#39;</span> :</div>
 <div class="line">        {</div>
-<div class="line">            usage();</div>
+<div class="line">            <a class="code hl_function" href="ex__threads_8c.html#ae8605e2b78cd4a81b6c6b5c30cb7366a">usage</a>();</div>
 <div class="line">            exit( 1 );</div>
 <div class="line">        }</div>
 <div class="line">        } <span class="comment">/* switch */</span></div>
-<div class="line">        <a id="a5" name="a5"></a><a class="code hl_function" href="group___l_o_g.html#gacad9b2d55788f46ddde811c986ead9ae">set_log_level</a>( log_level );</div>
+<div class="line">        <a id="a10" name="a10"></a><a class="code hl_function" href="group___l_o_g.html#gacad9b2d55788f46ddde811c986ead9ae">set_log_level</a>( <a class="code hl_variable" href="ex__gui__particles_8c.html#ab5a71c2541c377b3d5b34fdb35964c2e">log_level</a> );</div>
 <div class="line">    }</div>
 <div class="line">} <span class="comment">/* void process_args( ... ) */</span></div>
 <div class="line"> </div>
-<div class="line"><span class="keywordtype">void</span> *occupy_thread( <span class="keywordtype">void</span> *rest )</div>
+<div class="line"><span class="keywordtype">void</span> *<a id="a11" name="a11"></a><a class="code hl_function" href="ex__threads_8c.html#a68eec6c325d242e9503f478d8a7b86f6">occupy_thread</a>( <span class="keywordtype">void</span> *rest )</div>
 <div class="line">{</div>
-<div class="line">    <a id="a6" name="a6"></a><a class="code hl_define" href="group___c_o_m_m_o_n_s.html#ga4ecf5d80299a4ca1dc13c3a19610db11">__n_assert</a>( rest, <span class="keywordflow">return</span> NULL );</div>
+<div class="line">    <a id="a12" name="a12"></a><a class="code hl_define" href="group___c_o_m_m_o_n_s.html#ga4ecf5d80299a4ca1dc13c3a19610db11">__n_assert</a>( rest, <span class="keywordflow">return</span> NULL );</div>
 <div class="line"> </div>
 <div class="line">    intptr_t sleep_value = (intptr_t)(rest) ;</div>
 <div class="line"> </div>
-<div class="line">    <a id="a7" name="a7"></a><a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#gaeb4f36db01bd128c7afeac5889dac311">LOG_INFO</a>, <span class="stringliteral">&quot;Starting to sleep %d secs on thread %lld&quot;</span>, sleep_value/1000000, pthread_self() );</div>
+<div class="line">    <a id="a13" name="a13"></a><a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#gaeb4f36db01bd128c7afeac5889dac311">LOG_INFO</a>, <span class="stringliteral">&quot;Starting to sleep %d secs on thread %lld&quot;</span>, sleep_value/1000000, pthread_self() );</div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">if</span>( sleep_value &lt; 1000000 )</div>
 <div class="line">        usleep( sleep_value );</div>
@@ -196,22 +195,22 @@ $(document).ready(function(){initNavTree('ex_threads_8c-example.html',''); initR
 <div class="line">    <span class="keywordflow">return</span> NULL ;</div>
 <div class="line">}</div>
 <div class="line"> </div>
-<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv)</div>
+<div class="line"><span class="keywordtype">int</span> <a id="a14" name="a14"></a><a class="code hl_function" href="ex__threads_8c.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv)</div>
 <div class="line">{</div>
 <div class="line">    <a class="code hl_function" href="group___l_o_g.html#gacad9b2d55788f46ddde811c986ead9ae">set_log_level</a>( <a class="code hl_define" href="group___l_o_g.html#ga6ff63e8955665c4a58b1598f2b07c51a">LOG_DEBUG</a> );</div>
 <div class="line"> </div>
 <div class="line">    <span class="comment">/* processing args and set log_level */</span></div>
-<div class="line">    process_args( argc, argv );</div>
+<div class="line">    <a class="code hl_function" href="ex__threads_8c.html#aefcb3f70374ff9b6256aac6e12870399">process_args</a>( argc, argv );</div>
 <div class="line"> </div>
 <div class="line">    <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#gaeb4f36db01bd128c7afeac5889dac311">LOG_INFO</a>, <span class="stringliteral">&quot;Creating a new thread pool of 3 active and 10 waiting threads&quot;</span> );</div>
-<div class="line">    <a id="_a8" name="_a8"></a><a class="code hl_struct" href="struct_t_h_r_e_a_d___p_o_o_l.html">THREAD_POOL</a> *thread_pool = <a id="a9" name="a9"></a><a class="code hl_function" href="group___t_h_r_e_a_d_s.html#gadb3f2b85b758433e29e84b54992cfed4">new_thread_pool</a>( 8, 50 );</div>
+<div class="line">    <a id="_a15" name="_a15"></a><a class="code hl_struct" href="group___t_h_r_e_a_d_s.html#struct_t_h_r_e_a_d___p_o_o_l">THREAD_POOL</a> *thread_pool = <a id="a16" name="a16"></a><a class="code hl_function" href="group___t_h_r_e_a_d_s.html#gadb3f2b85b758433e29e84b54992cfed4">new_thread_pool</a>( 8, 50 );</div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">for</span>( <span class="keywordtype">int</span> it1 = 0 ; it1 &lt; 15 ; it1 ++ )</div>
 <div class="line">    {</div>
 <div class="line">        <span class="keywordflow">for</span>( <span class="keywordtype">int</span> it2 = 0 ; it2 &lt; 100 ; it2 ++ )</div>
 <div class="line">        {</div>
 <div class="line">            <span class="keywordtype">int</span> sleep_value = 1+rand()%10000000 ;</div>
-<div class="line">            <span class="keywordflow">if</span>( <a id="a10" name="a10"></a><a class="code hl_function" href="group___t_h_r_e_a_d_s.html#ga46497eb81066d0df83dfd07ad0a9f561">add_threaded_process</a>( thread_pool, &amp;occupy_thread, (<span class="keywordtype">void</span> *)(intptr_t)sleep_value, <a id="a11" name="a11"></a><a class="code hl_define" href="group___t_h_r_e_a_d_s.html#ga8c7d9cf88f160af14b39be46a66f8189">DIRECT_PROC</a>) == FALSE )</div>
+<div class="line">            <span class="keywordflow">if</span>( <a id="a17" name="a17"></a><a class="code hl_function" href="group___t_h_r_e_a_d_s.html#ga46497eb81066d0df83dfd07ad0a9f561">add_threaded_process</a>( thread_pool, &amp;<a class="code hl_function" href="ex__threads_8c.html#a68eec6c325d242e9503f478d8a7b86f6">occupy_thread</a>, (<span class="keywordtype">void</span> *)(intptr_t)sleep_value, <a id="a18" name="a18"></a><a class="code hl_define" href="group___t_h_r_e_a_d_s.html#ga8c7d9cf88f160af14b39be46a66f8189">DIRECT_PROC</a>) == FALSE )</div>
 <div class="line">            {</div>
 <div class="line">                <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a>, <span class="stringliteral">&quot;Error ading client management to thread pool&quot;</span> );</div>
 <div class="line">            }</div>
@@ -219,40 +218,47 @@ $(document).ready(function(){initNavTree('ex_threads_8c-example.html',''); initR
 <div class="line">            {</div>
 <div class="line">                <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#gaeb4f36db01bd128c7afeac5889dac311">LOG_INFO</a>, <span class="stringliteral">&quot;Added new process&quot;</span> );</div>
 <div class="line">            }</div>
-<div class="line">            <a id="a12" name="a12"></a><a class="code hl_function" href="group___t_h_r_e_a_d_s.html#ga5d9ce1747e4b7cb58ce3767f7e56cd8b">refresh_thread_pool</a>( thread_pool );</div>
+<div class="line">            <a id="a19" name="a19"></a><a class="code hl_function" href="group___t_h_r_e_a_d_s.html#ga5d9ce1747e4b7cb58ce3767f7e56cd8b">refresh_thread_pool</a>( thread_pool );</div>
 <div class="line">        }</div>
 <div class="line">        sleep( 1 );</div>
 <div class="line">    }</div>
 <div class="line">    <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#gaeb4f36db01bd128c7afeac5889dac311">LOG_INFO</a>, <span class="stringliteral">&quot;Waiting pool...&quot;</span> );</div>
-<div class="line">    <a id="a13" name="a13"></a><a class="code hl_function" href="group___t_h_r_e_a_d_s.html#ga992fc2a67a2d66733ccd10f7d9e2ead3">wait_for_threaded_pool</a>( thread_pool, 250000 );</div>
+<div class="line">    <a id="a20" name="a20"></a><a class="code hl_function" href="group___t_h_r_e_a_d_s.html#ga992fc2a67a2d66733ccd10f7d9e2ead3">wait_for_threaded_pool</a>( thread_pool, 250000 );</div>
 <div class="line">    <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#gaeb4f36db01bd128c7afeac5889dac311">LOG_INFO</a>, <span class="stringliteral">&quot;Destroying pool...&quot;</span> );</div>
-<div class="line">    <a id="a14" name="a14"></a><a class="code hl_function" href="group___t_h_r_e_a_d_s.html#ga12ce28c2aaa5a5a1a05abe11071dd83f">destroy_threaded_pool</a>( &amp;thread_pool, 250000 );</div>
+<div class="line">    <a id="a21" name="a21"></a><a class="code hl_function" href="group___t_h_r_e_a_d_s.html#ga12ce28c2aaa5a5a1a05abe11071dd83f">destroy_threaded_pool</a>( &amp;thread_pool, 250000 );</div>
 <div class="line"> </div>
 <div class="line">    exit( 0 );</div>
 <div class="line">} <span class="comment">/* END_OF_MAIN() */</span></div>
-<div class="ttc" id="agroup___c_o_m_m_o_n_s_html_ga4ecf5d80299a4ca1dc13c3a19610db11"><div class="ttname"><a href="group___c_o_m_m_o_n_s.html#ga4ecf5d80299a4ca1dc13c3a19610db11">__n_assert</a></div><div class="ttdeci">#define __n_assert(__ptr, __ret)</div><div class="ttdoc">macro to assert things</div><div class="ttdef"><b>Definition:</b> <a href="n__common_8h_source.html#l00262">n_common.h:262</a></div></div>
-<div class="ttc" id="agroup___l_o_g_html_ga61355655c6d490cdf201afdfc340df4b"><div class="ttname"><a href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a></div><div class="ttdeci">#define n_log(__LEVEL__,...)</div><div class="ttdoc">Logging function wrapper to get line and func.</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00074">n_log.h:74</a></div></div>
-<div class="ttc" id="agroup___l_o_g_html_ga6ff63e8955665c4a58b1598f2b07c51a"><div class="ttname"><a href="group___l_o_g.html#ga6ff63e8955665c4a58b1598f2b07c51a">LOG_DEBUG</a></div><div class="ttdeci">#define LOG_DEBUG</div><div class="ttdoc">debug-level messages</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00066">n_log.h:66</a></div></div>
-<div class="ttc" id="agroup___l_o_g_html_ga96fad55b3f5adf08c39e4c877cf185e3"><div class="ttname"><a href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a></div><div class="ttdeci">#define LOG_ERR</div><div class="ttdoc">error conditions</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00058">n_log.h:58</a></div></div>
+<div class="ttc" id="aex__gui__particles_8c_html_a40367f95374e226128dde2c270b32f0f"><div class="ttname"><a href="ex__gui__particles_8c.html#a40367f95374e226128dde2c270b32f0f">getoptret</a></div><div class="ttdeci">int getoptret</div><div class="ttdef"><b>Definition:</b> <a href="ex__gui__particles_8c_source.html#l00020">ex_gui_particles.c:20</a></div></div>
+<div class="ttc" id="aex__gui__particles_8c_html_ab5a71c2541c377b3d5b34fdb35964c2e"><div class="ttname"><a href="ex__gui__particles_8c.html#ab5a71c2541c377b3d5b34fdb35964c2e">log_level</a></div><div class="ttdeci">int log_level</div><div class="ttdef"><b>Definition:</b> <a href="ex__gui__particles_8c_source.html#l00021">ex_gui_particles.c:21</a></div></div>
+<div class="ttc" id="aex__threads_8c_html_a3c04138a5bfe5d72780bb7e82a18e627"><div class="ttname"><a href="ex__threads_8c.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a></div><div class="ttdeci">int main(int argc, char **argv)</div><div class="ttdef"><b>Definition:</b> <a href="ex__threads_8c_source.html#l00113">ex_threads.c:113</a></div></div>
+<div class="ttc" id="aex__threads_8c_html_a68eec6c325d242e9503f478d8a7b86f6"><div class="ttname"><a href="ex__threads_8c.html#a68eec6c325d242e9503f478d8a7b86f6">occupy_thread</a></div><div class="ttdeci">void * occupy_thread(void *rest)</div><div class="ttdef"><b>Definition:</b> <a href="ex__threads_8c_source.html#l00094">ex_threads.c:94</a></div></div>
+<div class="ttc" id="aex__threads_8c_html_a75a4b872120a9e428801230cbcb610de"><div class="ttname"><a href="ex__threads_8c.html#a75a4b872120a9e428801230cbcb610de">netw_thr</a></div><div class="ttdeci">static pthread_t netw_thr</div><div class="ttdef"><b>Definition:</b> <a href="ex__threads_8c_source.html#l00014">ex_threads.c:14</a></div></div>
+<div class="ttc" id="aex__threads_8c_html_ae8605e2b78cd4a81b6c6b5c30cb7366a"><div class="ttname"><a href="ex__threads_8c.html#ae8605e2b78cd4a81b6c6b5c30cb7366a">usage</a></div><div class="ttdeci">void usage(void)</div><div class="ttdef"><b>Definition:</b> <a href="ex__threads_8c_source.html#l00016">ex_threads.c:16</a></div></div>
+<div class="ttc" id="aex__threads_8c_html_aefcb3f70374ff9b6256aac6e12870399"><div class="ttname"><a href="ex__threads_8c.html#aefcb3f70374ff9b6256aac6e12870399">process_args</a></div><div class="ttdeci">void process_args(int argc, char **argv)</div><div class="ttdef"><b>Definition:</b> <a href="ex__threads_8c_source.html#l00023">ex_threads.c:23</a></div></div>
+<div class="ttc" id="agroup___c_o_m_m_o_n_s_html_ga4ecf5d80299a4ca1dc13c3a19610db11"><div class="ttname"><a href="group___c_o_m_m_o_n_s.html#ga4ecf5d80299a4ca1dc13c3a19610db11">__n_assert</a></div><div class="ttdeci">#define __n_assert(__ptr, __ret)</div><div class="ttdef"><b>Definition:</b> <a href="n__common_8h_source.html#l00262">n_common.h:262</a></div></div>
+<div class="ttc" id="agroup___l_o_g_html_ga61355655c6d490cdf201afdfc340df4b"><div class="ttname"><a href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a></div><div class="ttdeci">#define n_log(__LEVEL__,...)</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00074">n_log.h:74</a></div></div>
+<div class="ttc" id="agroup___l_o_g_html_ga6ff63e8955665c4a58b1598f2b07c51a"><div class="ttname"><a href="group___l_o_g.html#ga6ff63e8955665c4a58b1598f2b07c51a">LOG_DEBUG</a></div><div class="ttdeci">#define LOG_DEBUG</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00066">n_log.h:66</a></div></div>
+<div class="ttc" id="agroup___l_o_g_html_ga96fad55b3f5adf08c39e4c877cf185e3"><div class="ttname"><a href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a></div><div class="ttdeci">#define LOG_ERR</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00058">n_log.h:58</a></div></div>
 <div class="ttc" id="agroup___l_o_g_html_gacad9b2d55788f46ddde811c986ead9ae"><div class="ttname"><a href="group___l_o_g.html#gacad9b2d55788f46ddde811c986ead9ae">set_log_level</a></div><div class="ttdeci">void set_log_level(const int log_level)</div><div class="ttdoc">Set the global log level value ( static int LOG_LEVEL )</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8c_source.html#l00097">n_log.c:97</a></div></div>
-<div class="ttc" id="agroup___l_o_g_html_gad89ee324d180cdcd7defcc709ff9ca42"><div class="ttname"><a href="group___l_o_g.html#gad89ee324d180cdcd7defcc709ff9ca42">LOG_NOTICE</a></div><div class="ttdeci">#define LOG_NOTICE</div><div class="ttdoc">normal but significant condition</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00062">n_log.h:62</a></div></div>
-<div class="ttc" id="agroup___l_o_g_html_gae3b3638575ad43aa2dba40543dcec45c"><div class="ttname"><a href="group___l_o_g.html#gae3b3638575ad43aa2dba40543dcec45c">LOG_NULL</a></div><div class="ttdeci">#define LOG_NULL</div><div class="ttdoc">no log output</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00027">n_log.h:27</a></div></div>
-<div class="ttc" id="agroup___l_o_g_html_gaeb4f36db01bd128c7afeac5889dac311"><div class="ttname"><a href="group___l_o_g.html#gaeb4f36db01bd128c7afeac5889dac311">LOG_INFO</a></div><div class="ttdeci">#define LOG_INFO</div><div class="ttdoc">informational</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00064">n_log.h:64</a></div></div>
+<div class="ttc" id="agroup___l_o_g_html_gad89ee324d180cdcd7defcc709ff9ca42"><div class="ttname"><a href="group___l_o_g.html#gad89ee324d180cdcd7defcc709ff9ca42">LOG_NOTICE</a></div><div class="ttdeci">#define LOG_NOTICE</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00062">n_log.h:62</a></div></div>
+<div class="ttc" id="agroup___l_o_g_html_gae3b3638575ad43aa2dba40543dcec45c"><div class="ttname"><a href="group___l_o_g.html#gae3b3638575ad43aa2dba40543dcec45c">LOG_NULL</a></div><div class="ttdeci">#define LOG_NULL</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00027">n_log.h:27</a></div></div>
+<div class="ttc" id="agroup___l_o_g_html_gaeb4f36db01bd128c7afeac5889dac311"><div class="ttname"><a href="group___l_o_g.html#gaeb4f36db01bd128c7afeac5889dac311">LOG_INFO</a></div><div class="ttdeci">#define LOG_INFO</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00064">n_log.h:64</a></div></div>
 <div class="ttc" id="agroup___t_h_r_e_a_d_s_html_ga12ce28c2aaa5a5a1a05abe11071dd83f"><div class="ttname"><a href="group___t_h_r_e_a_d_s.html#ga12ce28c2aaa5a5a1a05abe11071dd83f">destroy_threaded_pool</a></div><div class="ttdeci">int destroy_threaded_pool(THREAD_POOL **pool, int delay)</div><div class="ttdoc">delete a thread_pool, exit the threads and free the structs</div><div class="ttdef"><b>Definition:</b> <a href="n__thread__pool_8c_source.html#l00340">n_thread_pool.c:340</a></div></div>
 <div class="ttc" id="agroup___t_h_r_e_a_d_s_html_ga46497eb81066d0df83dfd07ad0a9f561"><div class="ttname"><a href="group___t_h_r_e_a_d_s.html#ga46497eb81066d0df83dfd07ad0a9f561">add_threaded_process</a></div><div class="ttdeci">int add_threaded_process(THREAD_POOL *thread_pool, void *(*func_ptr)(void *param), void *param, int mode)</div><div class="ttdoc">add a function and params to a thread pool</div><div class="ttdef"><b>Definition:</b> <a href="n__thread__pool_8c_source.html#l00164">n_thread_pool.c:164</a></div></div>
 <div class="ttc" id="agroup___t_h_r_e_a_d_s_html_ga5d9ce1747e4b7cb58ce3767f7e56cd8b"><div class="ttname"><a href="group___t_h_r_e_a_d_s.html#ga5d9ce1747e4b7cb58ce3767f7e56cd8b">refresh_thread_pool</a></div><div class="ttdeci">int refresh_thread_pool(THREAD_POOL *thread_pool)</div><div class="ttdoc">try to add some waiting DIRECT_PROCs on some free thread slots, else do nothing</div><div class="ttdef"><b>Definition:</b> <a href="n__thread__pool_8c_source.html#l00404">n_thread_pool.c:404</a></div></div>
-<div class="ttc" id="agroup___t_h_r_e_a_d_s_html_ga8c7d9cf88f160af14b39be46a66f8189"><div class="ttname"><a href="group___t_h_r_e_a_d_s.html#ga8c7d9cf88f160af14b39be46a66f8189">DIRECT_PROC</a></div><div class="ttdeci">#define DIRECT_PROC</div><div class="ttdoc">processing mode for added func, direct start</div><div class="ttdef"><b>Definition:</b> <a href="n__thread__pool_8h_source.html#l00029">n_thread_pool.h:29</a></div></div>
+<div class="ttc" id="agroup___t_h_r_e_a_d_s_html_ga8c7d9cf88f160af14b39be46a66f8189"><div class="ttname"><a href="group___t_h_r_e_a_d_s.html#ga8c7d9cf88f160af14b39be46a66f8189">DIRECT_PROC</a></div><div class="ttdeci">#define DIRECT_PROC</div><div class="ttdef"><b>Definition:</b> <a href="n__thread__pool_8h_source.html#l00029">n_thread_pool.h:29</a></div></div>
 <div class="ttc" id="agroup___t_h_r_e_a_d_s_html_ga992fc2a67a2d66733ccd10f7d9e2ead3"><div class="ttname"><a href="group___t_h_r_e_a_d_s.html#ga992fc2a67a2d66733ccd10f7d9e2ead3">wait_for_threaded_pool</a></div><div class="ttdeci">int wait_for_threaded_pool(THREAD_POOL *thread_pool, int delay)</div><div class="ttdoc">Wait for all the launched process in the thread pool to terminate.</div><div class="ttdef"><b>Definition:</b> <a href="n__thread__pool_8c_source.html#l00289">n_thread_pool.c:289</a></div></div>
 <div class="ttc" id="agroup___t_h_r_e_a_d_s_html_gadb3f2b85b758433e29e84b54992cfed4"><div class="ttname"><a href="group___t_h_r_e_a_d_s.html#gadb3f2b85b758433e29e84b54992cfed4">new_thread_pool</a></div><div class="ttdeci">THREAD_POOL * new_thread_pool(int nbmaxthr, int nb_max_waiting)</div><div class="ttdoc">Create a new pool of nbmaxthr threads.</div><div class="ttdef"><b>Definition:</b> <a href="n__thread__pool_8c_source.html#l00094">n_thread_pool.c:94</a></div></div>
-<div class="ttc" id="an__log_8h_html"><div class="ttname"><a href="n__log_8h.html">n_log.h</a></div><div class="ttdoc">Generic log system.</div></div>
-<div class="ttc" id="an__thread__pool_8h_html"><div class="ttname"><a href="n__thread__pool_8h.html">n_thread_pool.h</a></div><div class="ttdoc">Thread pool declaration.</div></div>
-<div class="ttc" id="astruct_t_h_r_e_a_d___p_o_o_l_html"><div class="ttname"><a href="struct_t_h_r_e_a_d___p_o_o_l.html">THREAD_POOL</a></div><div class="ttdoc">Structure of a trhead pool.</div><div class="ttdef"><b>Definition:</b> <a href="n__thread__pool_8h_source.html#l00076">n_thread_pool.h:77</a></div></div>
+<div class="ttc" id="agroup___t_h_r_e_a_d_s_html_struct_t_h_r_e_a_d___p_o_o_l"><div class="ttname"><a href="group___t_h_r_e_a_d_s.html#struct_t_h_r_e_a_d___p_o_o_l">THREAD_POOL</a></div><div class="ttdef"><b>Definition:</b> <a href="n__thread__pool_8h_source.html#l00076">n_thread_pool.h:77</a></div></div>
+<div class="ttc" id="an__log_8h_html"><div class="ttname"><a href="n__log_8h.html">n_log.h</a></div></div>
+<div class="ttc" id="an__thread__pool_8h_html"><div class="ttname"><a href="n__thread__pool_8h.html">n_thread_pool.h</a></div></div>
 </div><!-- fragment --> </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Feb 3 2022 21:53:46 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+    <li class="footer">Generated on Fri Feb 4 2022 17:12:03 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
   </ul>
 </div>
 </body>

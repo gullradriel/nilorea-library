@@ -8,5 +8,8 @@ var n__nodup__log_8c =
     [ "close_nodup_log", "group___l_o_g_n_o_d_u_p.html#ga46eca069bfff2be6809828df52d1031d", null ],
     [ "dump_nodup_log", "group___l_o_g_n_o_d_u_p.html#ga38552b9724c76daede8b3c30833e9d09", null ],
     [ "empty_nodup_table", "group___l_o_g_n_o_d_u_p.html#ga823d1d2f22f2279e24d4c5bd927ff322", null ],
-    [ "init_nodup_log", "group___l_o_g_n_o_d_u_p.html#gaf9c9b8e129263da15345f428cd73f19e", null ]
+    [ "get_nodup_indexed_key", "n__nodup__log_8c.html#aad87e98f27fbce43793143aaf562590d", null ],
+    [ "get_nodup_key", "n__nodup__log_8c.html#a7ced205f799238a352c2080c2af6b156", null ],
+    [ "init_nodup_log", "group___l_o_g_n_o_d_u_p.html#gaf9c9b8e129263da15345f428cd73f19e", null ],
+    [ "_n_nodup_table", "n__nodup__log_8c.html#ac3484044fe72c29480f013078bb34e51", null ]
 ];

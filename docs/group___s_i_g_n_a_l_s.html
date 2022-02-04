@@ -98,7 +98,8 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga439d6a2f0248222f4f7ef75ee00e1d50"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___s_i_g_n_a_l_s.html#ga439d6a2f0248222f4f7ef75ee00e1d50">set_signal_handler</a> (const char *progname)</td></tr>
+<tr class="memitem:ga439d6a2f0248222f4f7ef75ee00e1d50"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___s_i_g_n_a_l_s.html#ga439d6a2f0248222f4f7ef75ee00e1d50">set_signal_handler</a> (const char *<a class="el" href="ex__signals_8c.html#ab9e1449fd00c98428516f0b41eddcb10">progname</a>)</td></tr>
+<tr class="memdesc:ga439d6a2f0248222f4f7ef75ee00e1d50"><td class="mdescLeft">&#160;</td><td class="mdescRight">Install a signal handler for progname.  <a href="group___s_i_g_n_a_l_s.html#ga439d6a2f0248222f4f7ef75ee00e1d50">More...</a><br /></td></tr>
 <tr class="separator:ga439d6a2f0248222f4f7ef75ee00e1d50"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -115,9 +116,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__signals_8h.html">n_signals.h</a>&gt;</code></p>
-
-<p>Number of backtrace log lines. </p>
+<p><code>#include &lt;<a class="el" href="n__signals_8h.html">include/nilorea/n_signals.h</a>&gt;</code></p>
+<p >Number of backtrace log lines </p>
 
 <p class="definition">Definition at line <a class="el" href="n__signals_8h_source.html#l00025">25</a> of file <a class="el" href="n__signals_8h_source.html">n_signals.h</a>.</p>
 
@@ -135,9 +135,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__signals_8h.html">n_signals.h</a>&gt;</code></p>
-
-<p>Size of the signal handler alternate stack. </p>
+<p><code>#include &lt;<a class="el" href="n__signals_8h.html">include/nilorea/n_signals.h</a>&gt;</code></p>
+<p >Size of the signal handler alternate stack </p>
 
 <p class="definition">Definition at line <a class="el" href="n__signals_8h_source.html#l00023">23</a> of file <a class="el" href="n__signals_8h_source.html">n_signals.h</a>.</p>
 
@@ -160,7 +159,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__signals_8h.html">n_signals.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="n__signals_8h.html">include/nilorea/n_signals.h</a>&gt;</code></p>
 
 <p>Install a signal handler for progname. </p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -172,6 +171,36 @@ Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="n__signals_8c_source.html#l00391">391</a> of file <a class="el" href="n__signals_8c_source.html">n_signals.c</a>.</p>
 
+<p class="reference">References <a class="el" href="n__signals_8c_source.html#l00033">__n_stack_traced_progam_name</a>, <a class="el" href="n__signals_8c_source.html#l00385">alternate_stack</a>, <a class="el" href="n__signals_8c_source.html#l00296">posix_signal_handler()</a>, and <a class="el" href="ex__signals_8c_source.html#l00030">progname</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="ex__signals_8c_source.html#l00032">main()</a>.</p>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group___s_i_g_n_a_l_s_ga439d6a2f0248222f4f7ef75ee00e1d50_cgraph.png" border="0" usemap="#agroup___s_i_g_n_a_l_s_ga439d6a2f0248222f4f7ef75ee00e1d50_cgraph" alt=""/></div>
+<map name="agroup___s_i_g_n_a_l_s_ga439d6a2f0248222f4f7ef75ee00e1d50_cgraph" id="agroup___s_i_g_n_a_l_s_ga439d6a2f0248222f4f7ef75ee00e1d50_cgraph">
+<area shape="rect" title="Install a signal handler for progname." alt="" coords="5,5,136,32"/>
+<area shape="rect" href="n__signals_8c.html#afddb4cb4b779781c794bcefd1083f16b" title="decode a signal and call stack print" alt="" coords="184,5,327,32"/>
+<area shape="rect" href="n__signals_8c.html#afbe2520f5f64f71fb4967ab3351fbd11" title="print current stack" alt="" coords="375,5,535,32"/>
+<area shape="rect" href="n__signals_8c.html#a303cb27f9c5239698d99891cd7341648" title="Resolve symbol name and source location given the path to the executable and an address." alt="" coords="583,5,657,32"/>
+<area shape="rect" href="group___c_o_m_m_o_n_s.html#ga9c848fa27b401335936f5875aa918f21" title="launch a command abd return output and status" alt="" coords="705,5,776,32"/>
+<area shape="rect" href="group___n___s_t_r.html#ga873edbb1f8787d0a78a13ccbbed9b9f9" title="create a new N_STR string" alt="" coords="824,5,899,32"/>
+</map>
+</div>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group___s_i_g_n_a_l_s_ga439d6a2f0248222f4f7ef75ee00e1d50_icgraph.png" border="0" usemap="#agroup___s_i_g_n_a_l_s_ga439d6a2f0248222f4f7ef75ee00e1d50_icgraph" alt=""/></div>
+<map name="agroup___s_i_g_n_a_l_s_ga439d6a2f0248222f4f7ef75ee00e1d50_icgraph" id="agroup___s_i_g_n_a_l_s_ga439d6a2f0248222f4f7ef75ee00e1d50_icgraph">
+<area shape="rect" title="Install a signal handler for progname." alt="" coords="104,5,235,32"/>
+<area shape="rect" href="ex__signals_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,5,56,32"/>
+</map>
+</div>
+
 </div>
 </div>
 </div><!-- contents -->
@@ -179,7 +208,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Feb 3 2022 21:53:48 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+    <li class="footer">Generated on Fri Feb 4 2022 17:12:05 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
   </ul>
 </div>
 </body>

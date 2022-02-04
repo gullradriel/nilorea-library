@@ -92,10 +92,10 @@ $(document).ready(function(){initNavTree('group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Data Structures</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_c_e_l_l.html">CELL</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_m_a_p.html">MAP</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:struct_c_e_l_l"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#struct_c_e_l_l">CELL</a></td></tr>
+<tr class="separator:struct_c_e_l_l"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:struct_m_a_p"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#struct_m_a_p">MAP</a></td></tr>
+<tr class="separator:struct_m_a_p"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
@@ -116,28 +116,262 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga525e12d4a6810091df368bebfead7432"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga525e12d4a6810091df368bebfead7432">camera_to_map</a> (<a class="el" href="struct_m_a_p.html">MAP</a> **map, int tx, int ty, int x, int y)</td></tr>
+<tr class="memitem:ga525e12d4a6810091df368bebfead7432"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga525e12d4a6810091df368bebfead7432">camera_to_map</a> (<a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#struct_m_a_p">MAP</a> **map, int tx, int ty, int x, int y)</td></tr>
+<tr class="memdesc:ga525e12d4a6810091df368bebfead7432"><td class="mdescLeft">&#160;</td><td class="mdescRight">Center Map on given map coordinate, with x &amp; y offset.  <a href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga525e12d4a6810091df368bebfead7432">More...</a><br /></td></tr>
 <tr class="separator:ga525e12d4a6810091df368bebfead7432"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga78d7a5ad73f85f937963b3619f65b0d7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga78d7a5ad73f85f937963b3619f65b0d7">camera_to_scr</a> (<a class="el" href="struct_m_a_p.html">MAP</a> **map, int x, int y)</td></tr>
+<tr class="memitem:ga78d7a5ad73f85f937963b3619f65b0d7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga78d7a5ad73f85f937963b3619f65b0d7">camera_to_scr</a> (<a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#struct_m_a_p">MAP</a> **map, int x, int y)</td></tr>
+<tr class="memdesc:ga78d7a5ad73f85f937963b3619f65b0d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Center Map on given screen coordinate.  <a href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga78d7a5ad73f85f937963b3619f65b0d7">More...</a><br /></td></tr>
 <tr class="separator:ga78d7a5ad73f85f937963b3619f65b0d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gafbd6e8d63e4a9bffb9bae939e6f33d95"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#gafbd6e8d63e4a9bffb9bae939e6f33d95">create_empty_map</a> (<a class="el" href="struct_m_a_p.html">MAP</a> **map, char *name, int XSIZE, int YSIZE, int TILEW, int TILEH, int nbmaxobjects, int nbmaxgroup, int nbmaxanims, int nbtiles, int nbanims)</td></tr>
+<tr class="memitem:gafbd6e8d63e4a9bffb9bae939e6f33d95"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#gafbd6e8d63e4a9bffb9bae939e6f33d95">create_empty_map</a> (<a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#struct_m_a_p">MAP</a> **map, char *name, int XSIZE, int YSIZE, int TILEW, int TILEH, int nbmaxobjects, int nbmaxgroup, int nbmaxanims, int nbtiles, int nbanims)</td></tr>
+<tr class="memdesc:gafbd6e8d63e4a9bffb9bae939e6f33d95"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create an empty map.  <a href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#gafbd6e8d63e4a9bffb9bae939e6f33d95">More...</a><br /></td></tr>
 <tr class="separator:gafbd6e8d63e4a9bffb9bae939e6f33d95"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gadbfcc4dbd27990aa04aa68b3434480ef"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#gadbfcc4dbd27990aa04aa68b3434480ef">draw_map</a> (<a class="el" href="struct_m_a_p.html">MAP</a> *map, BITMAP *bmp, int destx, int desty, int mode)</td></tr>
+<tr class="memitem:gadbfcc4dbd27990aa04aa68b3434480ef"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#gadbfcc4dbd27990aa04aa68b3434480ef">draw_map</a> (<a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#struct_m_a_p">MAP</a> *map, BITMAP *bmp, int destx, int desty, int <a class="el" href="ex__network_8c.html#a1ea5d0cb93f22f7d0fdf804bd68c3326">mode</a>)</td></tr>
+<tr class="memdesc:gadbfcc4dbd27990aa04aa68b3434480ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw a <a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#struct_m_a_p">MAP</a> *map on the BITMAP *bmp.  <a href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#gadbfcc4dbd27990aa04aa68b3434480ef">More...</a><br /></td></tr>
 <tr class="separator:gadbfcc4dbd27990aa04aa68b3434480ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gafa40b1cd0683fd3a0088d759b8f4a57b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#gafa40b1cd0683fd3a0088d759b8f4a57b">free_map</a> (<a class="el" href="struct_m_a_p.html">MAP</a> **map)</td></tr>
+<tr class="memitem:gafa40b1cd0683fd3a0088d759b8f4a57b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#gafa40b1cd0683fd3a0088d759b8f4a57b">free_map</a> (<a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#struct_m_a_p">MAP</a> **map)</td></tr>
+<tr class="memdesc:gafa40b1cd0683fd3a0088d759b8f4a57b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free the map.  <a href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#gafa40b1cd0683fd3a0088d759b8f4a57b">More...</a><br /></td></tr>
 <tr class="separator:gafa40b1cd0683fd3a0088d759b8f4a57b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2021990e7c7fa6c4589752a771aa48f3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga2021990e7c7fa6c4589752a771aa48f3">get_value</a> (<a class="el" href="struct_m_a_p.html">MAP</a> *map, int type, int x, int y)</td></tr>
+<tr class="memitem:ga2021990e7c7fa6c4589752a771aa48f3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga2021990e7c7fa6c4589752a771aa48f3">get_value</a> (<a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#struct_m_a_p">MAP</a> *map, int type, int x, int y)</td></tr>
+<tr class="memdesc:ga2021990e7c7fa6c4589752a771aa48f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a the tilenumber of a cell item.  <a href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga2021990e7c7fa6c4589752a771aa48f3">More...</a><br /></td></tr>
 <tr class="separator:ga2021990e7c7fa6c4589752a771aa48f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga4d6c75959391f3afd98d81a1773ffe84"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga4d6c75959391f3afd98d81a1773ffe84">load_map</a> (<a class="el" href="struct_m_a_p.html">MAP</a> **map, char *filename)</td></tr>
+<tr class="memitem:ga4d6c75959391f3afd98d81a1773ffe84"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga4d6c75959391f3afd98d81a1773ffe84">load_map</a> (<a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#struct_m_a_p">MAP</a> **map, char *filename)</td></tr>
+<tr class="memdesc:ga4d6c75959391f3afd98d81a1773ffe84"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load the map from filename.  <a href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga4d6c75959391f3afd98d81a1773ffe84">More...</a><br /></td></tr>
 <tr class="separator:ga4d6c75959391f3afd98d81a1773ffe84"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga045b27c2f11572951f654b62ede9baa0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga045b27c2f11572951f654b62ede9baa0">save_map</a> (<a class="el" href="struct_m_a_p.html">MAP</a> *map, char *filename)</td></tr>
+<tr class="memitem:ga045b27c2f11572951f654b62ede9baa0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga045b27c2f11572951f654b62ede9baa0">save_map</a> (<a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#struct_m_a_p">MAP</a> *map, char *filename)</td></tr>
+<tr class="memdesc:ga045b27c2f11572951f654b62ede9baa0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Save the map to filename.  <a href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga045b27c2f11572951f654b62ede9baa0">More...</a><br /></td></tr>
 <tr class="separator:ga045b27c2f11572951f654b62ede9baa0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gadfbec14d5cfbe60a7034d59022a97cb3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#gadfbec14d5cfbe60a7034d59022a97cb3">ScreenToMap</a> (int mx, int my, int *Tilex, int *Tiley, BITMAP *mousemap)</td></tr>
+<tr class="memdesc:gadfbec14d5cfbe60a7034d59022a97cb3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert screen coordinate to map coordinate.  <a href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#gadfbec14d5cfbe60a7034d59022a97cb3">More...</a><br /></td></tr>
 <tr class="separator:gadfbec14d5cfbe60a7034d59022a97cb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8366c42e9ace1872eaad8efda0e9a244"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga8366c42e9ace1872eaad8efda0e9a244">set_value</a> (<a class="el" href="struct_m_a_p.html">MAP</a> *map, int type, int x, int y, int value)</td></tr>
+<tr class="memitem:ga8366c42e9ace1872eaad8efda0e9a244"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga8366c42e9ace1872eaad8efda0e9a244">set_value</a> (<a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#struct_m_a_p">MAP</a> *map, int type, int x, int y, int value)</td></tr>
+<tr class="memdesc:ga8366c42e9ace1872eaad8efda0e9a244"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the value of a cell in a map.  <a href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga8366c42e9ace1872eaad8efda0e9a244">More...</a><br /></td></tr>
 <tr class="separator:ga8366c42e9ace1872eaad8efda0e9a244"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<hr/><h2 class="groupheader">Data Structure Documentation</h2>
+<a name="struct_c_e_l_l" id="struct_c_e_l_l"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#struct_c_e_l_l">&#9670;&nbsp;</a></span>CELL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct CELL</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="textblock"><p >Cell of a <a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#struct_m_a_p">MAP</a> </p>
+
+<p class="definition">Definition at line <a class="el" href="n__iso__engine_8h_source.html#l00043">43</a> of file <a class="el" href="n__iso__engine_8h_source.html">n_iso_engine.h</a>.</p>
+</div><div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for CELL:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="struct_c_e_l_l__coll__graph.png" border="0" usemap="#a_c_e_l_l_coll__map" alt="Collaboration graph"/></div>
+<map name="a_c_e_l_l_coll__map" id="a_c_e_l_l_coll__map">
+<area shape="rect" title=" " alt="" coords="5,189,60,267"/>
+<area shape="rect" title=" " alt="" coords="13,5,52,83"/>
+</map>
+</div>
+<table class="fieldtable">
+<tr><th colspan="3">Data Fields</th></tr>
+<tr><td class="fieldtype">
+<a id="a3eba2670b3a8632e18de3fb7f19dc6d9" name="a3eba2670b3a8632e18de3fb7f19dc6d9"></a>int</td>
+<td class="fieldname">
+ability</td>
+<td class="fielddoc">
+<p >ability of the tile (walking, swimming, blocking, killing ?) </p>
+</td></tr>
+<tr><td class="fieldtype">
+<a id="acd30658812d6260ff554b45d6c50aa25" name="acd30658812d6260ff554b45d6c50aa25"></a>int</td>
+<td class="fieldname">
+music</td>
+<td class="fielddoc">
+<p >ident of the music on the tile </p>
+</td></tr>
+<tr><td class="fieldtype">
+<a id="ad7c5b510f5914c694133dc2be0d19a15" name="ad7c5b510f5914c694133dc2be0d19a15"></a>int</td>
+<td class="fieldname">
+objectnumber</td>
+<td class="fielddoc">
+<p >ident of the object in the MAP-&gt;object library </p>
+</td></tr>
+<tr><td class="fieldtype">
+<a id="a6273847e0559e755eaac94323f1def98" name="a6273847e0559e755eaac94323f1def98"></a>int</td>
+<td class="fieldname">
+tilenumber</td>
+<td class="fielddoc">
+<p >ident of the tile in the MAP-&gt;tile library </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a name="struct_m_a_p" id="struct_m_a_p"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#struct_m_a_p">&#9670;&nbsp;</a></span>MAP</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct MAP</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="textblock"><p ><a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#struct_m_a_p">MAP</a> with objects, tiles, skins </p>
+
+<p class="definition">Definition at line <a class="el" href="n__iso__engine_8h_source.html#l00057">57</a> of file <a class="el" href="n__iso__engine_8h_source.html">n_iso_engine.h</a>.</p>
+</div><div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for MAP:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="struct_m_a_p__coll__graph.png" border="0" usemap="#a_m_a_p_coll__map" alt="Collaboration graph"/></div>
+<map name="a_m_a_p_coll__map" id="a_m_a_p_coll__map">
+<area shape="rect" title=" " alt="" coords="143,472,193,549"/>
+<area shape="rect" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#struct_c_e_l_l" title=" " alt="" coords="106,231,161,309"/>
+<area shape="rect" title=" " alt="" coords="15,5,54,83"/>
+<area shape="rect" title=" " alt="" coords="185,231,231,309"/>
+<area shape="rect" title=" " alt="" coords="333,231,411,309"/>
+</map>
+</div>
+<table class="fieldtable">
+<tr><th colspan="3">Data Fields</th></tr>
+<tr><td class="fieldtype">
+<a id="acc28b5353975b1eecc04feaada8e0e6d" name="acc28b5353975b1eecc04feaada8e0e6d"></a>char *</td>
+<td class="fieldname">
+anim_group_names</td>
+<td class="fielddoc">
+<p >animation board</p>
+<p >as for previous:char *object_group_names </p>
+</td></tr>
+<tr><td class="fieldtype">
+<a id="ad03f029a461547062edfd9fe6e6b8629" name="ad03f029a461547062edfd9fe6e6b8629"></a>int</td>
+<td class="fieldname">
+bgcolor</td>
+<td class="fielddoc">
+<p >color of the bg </p>
+</td></tr>
+<tr><td class="fieldtype">
+<a id="a858b3594d985a1e8d8b3140d73f39db7" name="a858b3594d985a1e8d8b3140d73f39db7"></a>BITMAP *</td>
+<td class="fieldname">
+colortile</td>
+<td class="fielddoc">
+<p >defaut full colored background tile </p>
+</td></tr>
+<tr><td class="fieldtype">
+<a id="aa358962e9063fc034f305040b4ccc0bb" name="aa358962e9063fc034f305040b4ccc0bb"></a><a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#struct_c_e_l_l">CELL</a> *</td>
+<td class="fieldname">
+grid</td>
+<td class="fielddoc">
+<p >Grid of each cell of the map </p>
+</td></tr>
+<tr><td class="fieldtype">
+<a id="af4bf0e727bac8c5b1aa0e80f04eb57d1" name="af4bf0e727bac8c5b1aa0e80f04eb57d1"></a>BITMAP *</td>
+<td class="fieldname">
+mousemap</td>
+<td class="fielddoc">
+<p >Map for mouse collision between mouse pointer and map </p>
+</td></tr>
+<tr><td class="fieldtype">
+<a id="a6e4ab9656865f6b08cf08cb1ec7b7f6f" name="a6e4ab9656865f6b08cf08cb1ec7b7f6f"></a>char *</td>
+<td class="fieldname">
+name</td>
+<td class="fielddoc">
+<p >Name of the map ( used for linking between two map ) </p>
+</td></tr>
+<tr><td class="fieldtype">
+<a id="a994b026a2594ab38ba844dd6c101fa33" name="a994b026a2594ab38ba844dd6c101fa33"></a>char *</td>
+<td class="fieldname">
+object_group_names</td>
+<td class="fielddoc">
+<p >active objects</p>
+<p >name of the main group of the (kind of) library of objects, filled by zero else, size iz limited to 512 characaters </p>
+</td></tr>
+<tr><td class="fieldtype">
+<a id="a7ee606fd309f1e469290814e3c17036f" name="a7ee606fd309f1e469290814e3c17036f"></a>int</td>
+<td class="fieldname">
+ptanchorX</td>
+<td class="fielddoc">
+<p >X starting cell for drawing </p>
+</td></tr>
+<tr><td class="fieldtype">
+<a id="a74066517862f256df00d1e930de9d2f8" name="a74066517862f256df00d1e930de9d2f8"></a>int</td>
+<td class="fieldname">
+ptanchorY</td>
+<td class="fielddoc">
+<p >Y starting cell for drawing </p>
+</td></tr>
+<tr><td class="fieldtype">
+<a id="a0415021e8033dd4004ea933bbad228d8" name="a0415021e8033dd4004ea933bbad228d8"></a>char *</td>
+<td class="fieldname">
+quests_group_names</td>
+<td class="fielddoc">
+<p >quest library</p>
+<p >as for previous:char *object_group_names </p>
+</td></tr>
+<tr><td class="fieldtype">
+<a id="a1fc1a98c11ee64e76f5ad6d204e024bd" name="a1fc1a98c11ee64e76f5ad6d204e024bd"></a>char *</td>
+<td class="fieldname">
+sounds_group_names</td>
+<td class="fielddoc">
+<p >sounds library</p>
+<p >as for previous:char *object_group_names </p>
+</td></tr>
+<tr><td class="fieldtype">
+<a id="a95707556190c6c8041048aa182fdeea2" name="a95707556190c6c8041048aa182fdeea2"></a>int</td>
+<td class="fieldname">
+TILEH</td>
+<td class="fielddoc">
+<p >size Y of tiles of the map (in pixel) </p>
+</td></tr>
+<tr><td class="fieldtype">
+<a id="a215b5540e1867e1a7c1aa8ec31394df9" name="a215b5540e1867e1a7c1aa8ec31394df9"></a>int</td>
+<td class="fieldname">
+TILEW</td>
+<td class="fielddoc">
+<p >size X of tiles of the map (in pixel) </p>
+</td></tr>
+<tr><td class="fieldtype">
+<a id="a797d9aeaa70901ea56b5053cd298eec0" name="a797d9aeaa70901ea56b5053cd298eec0"></a>int</td>
+<td class="fieldname">
+wirecolor</td>
+<td class="fielddoc">
+<p >color of wire </p>
+</td></tr>
+<tr><td class="fieldtype">
+<a id="a1717fd32c721e12a0e83e03c53b1b7a6" name="a1717fd32c721e12a0e83e03c53b1b7a6"></a>int</td>
+<td class="fieldname">
+X</td>
+<td class="fielddoc">
+<p >X move in pixel for drawing </p>
+</td></tr>
+<tr><td class="fieldtype">
+<a id="abba4c269619477240afe1978dd5520d3" name="abba4c269619477240afe1978dd5520d3"></a>int</td>
+<td class="fieldname">
+XSIZE</td>
+<td class="fielddoc">
+<p >size X of the grid (nbXcell) </p>
+</td></tr>
+<tr><td class="fieldtype">
+<a id="af0ab2d5eec93cb4a514274b5f0db3f09" name="af0ab2d5eec93cb4a514274b5f0db3f09"></a>int</td>
+<td class="fieldname">
+Y</td>
+<td class="fielddoc">
+<p >Y move in pixel for drawing </p>
+</td></tr>
+<tr><td class="fieldtype">
+<a id="ab729e7d08a8a24ab3a5e5cb38f52366b" name="ab729e7d08a8a24ab3a5e5cb38f52366b"></a>int</td>
+<td class="fieldname">
+YSIZE</td>
+<td class="fielddoc">
+<p >size Y of the grid (nbYcell) </p>
+</td></tr>
+</table>
+
+</div>
+</div>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="gae0863acc1b854b0f522caf85f9651f13" name="gae0863acc1b854b0f522caf85f9651f13"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gae0863acc1b854b0f522caf85f9651f13">&#9670;&nbsp;</a></span>BLCK</h2>
@@ -151,9 +385,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__iso__engine_8h.html">n_iso_engine.h</a>&gt;</code></p>
-
-<p>FLAG of a stopping tile. </p>
+<p><code>#include &lt;<a class="el" href="n__iso__engine_8h.html">include/nilorea/n_iso_engine.h</a>&gt;</code></p>
+<p >FLAG of a stopping tile </p>
 
 <p class="definition">Definition at line <a class="el" href="n__iso__engine_8h_source.html#l00039">39</a> of file <a class="el" href="n__iso__engine_8h_source.html">n_iso_engine.h</a>.</p>
 
@@ -171,9 +404,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__iso__engine_8h.html">n_iso_engine.h</a>&gt;</code></p>
-
-<p>FLAG of ability type. </p>
+<p><code>#include &lt;<a class="el" href="n__iso__engine_8h.html">include/nilorea/n_iso_engine.h</a>&gt;</code></p>
+<p >FLAG of ability type </p>
 
 <p class="definition">Definition at line <a class="el" href="n__iso__engine_8h_source.html#l00029">29</a> of file <a class="el" href="n__iso__engine_8h_source.html">n_iso_engine.h</a>.</p>
 
@@ -191,9 +423,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__iso__engine_8h.html">n_iso_engine.h</a>&gt;</code></p>
-
-<p>FLAG of music type. </p>
+<p><code>#include &lt;<a class="el" href="n__iso__engine_8h.html">include/nilorea/n_iso_engine.h</a>&gt;</code></p>
+<p >FLAG of music type </p>
 
 <p class="definition">Definition at line <a class="el" href="n__iso__engine_8h_source.html#l00031">31</a> of file <a class="el" href="n__iso__engine_8h_source.html">n_iso_engine.h</a>.</p>
 
@@ -211,9 +442,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__iso__engine_8h.html">n_iso_engine.h</a>&gt;</code></p>
-
-<p>FLAG of object type. </p>
+<p><code>#include &lt;<a class="el" href="n__iso__engine_8h.html">include/nilorea/n_iso_engine.h</a>&gt;</code></p>
+<p >FLAG of object type </p>
 
 <p class="definition">Definition at line <a class="el" href="n__iso__engine_8h_source.html#l00033">33</a> of file <a class="el" href="n__iso__engine_8h_source.html">n_iso_engine.h</a>.</p>
 
@@ -231,9 +461,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__iso__engine_8h.html">n_iso_engine.h</a>&gt;</code></p>
-
-<p>FLAG of tile type. </p>
+<p><code>#include &lt;<a class="el" href="n__iso__engine_8h.html">include/nilorea/n_iso_engine.h</a>&gt;</code></p>
+<p >FLAG of tile type </p>
 
 <p class="definition">Definition at line <a class="el" href="n__iso__engine_8h_source.html#l00027">27</a> of file <a class="el" href="n__iso__engine_8h_source.html">n_iso_engine.h</a>.</p>
 
@@ -251,9 +480,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__iso__engine_8h.html">n_iso_engine.h</a>&gt;</code></p>
-
-<p>FLAG of a swimmable tile. </p>
+<p><code>#include &lt;<a class="el" href="n__iso__engine_8h.html">include/nilorea/n_iso_engine.h</a>&gt;</code></p>
+<p >FLAG of a swimmable tile </p>
 
 <p class="definition">Definition at line <a class="el" href="n__iso__engine_8h_source.html#l00037">37</a> of file <a class="el" href="n__iso__engine_8h_source.html">n_iso_engine.h</a>.</p>
 
@@ -271,9 +499,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__iso__engine_8h.html">n_iso_engine.h</a>&gt;</code></p>
-
-<p>FLAG of a walkable tile. </p>
+<p><code>#include &lt;<a class="el" href="n__iso__engine_8h.html">include/nilorea/n_iso_engine.h</a>&gt;</code></p>
+<p >FLAG of a walkable tile </p>
 
 <p class="definition">Definition at line <a class="el" href="n__iso__engine_8h_source.html#l00035">35</a> of file <a class="el" href="n__iso__engine_8h_source.html">n_iso_engine.h</a>.</p>
 
@@ -289,7 +516,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">int camera_to_map </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_m_a_p.html">MAP</a> **&#160;</td>
+          <td class="paramtype"><a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#struct_m_a_p">MAP</a> **&#160;</td>
           <td class="paramname"><em>map</em>, </td>
         </tr>
         <tr>
@@ -324,12 +551,12 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__iso__engine_8h.html">n_iso_engine.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="n__iso__engine_8h.html">include/nilorea/n_iso_engine.h</a>&gt;</code></p>
 
 <p>Center Map on given map coordinate, with x &amp; y offset. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">map</td><td>A <a class="el" href="struct_m_a_p.html" title="MAP with objects, tiles, skins.">MAP</a> *map to center on tx+x , ty+y </td></tr>
+    <tr><td class="paramname">map</td><td>A <a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#struct_m_a_p">MAP</a> *map to center on tx+x , ty+y </td></tr>
     <tr><td class="paramname">tx</td><td>TILEX offset in tile </td></tr>
     <tr><td class="paramname">ty</td><td>TILEY offset in tile </td></tr>
     <tr><td class="paramname">x</td><td>X offset in pixel </td></tr>
@@ -352,7 +579,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">int camera_to_scr </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_m_a_p.html">MAP</a> **&#160;</td>
+          <td class="paramtype"><a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#struct_m_a_p">MAP</a> **&#160;</td>
           <td class="paramname"><em>map</em>, </td>
         </tr>
         <tr>
@@ -375,12 +602,12 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__iso__engine_8h.html">n_iso_engine.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="n__iso__engine_8h.html">include/nilorea/n_iso_engine.h</a>&gt;</code></p>
 
 <p>Center Map on given screen coordinate. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">map</td><td>A <a class="el" href="struct_m_a_p.html" title="MAP with objects, tiles, skins.">MAP</a> *map to center on x,y </td></tr>
+    <tr><td class="paramname">map</td><td>A <a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#struct_m_a_p">MAP</a> *map to center on x,y </td></tr>
     <tr><td class="paramname">x</td><td>the X coordinate (in pixel) to center on; </td></tr>
     <tr><td class="paramname">y</td><td>the Y coordintae (in pixel) to center on; </td></tr>
   </table>
@@ -401,7 +628,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">int create_empty_map </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_m_a_p.html">MAP</a> **&#160;</td>
+          <td class="paramtype"><a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#struct_m_a_p">MAP</a> **&#160;</td>
           <td class="paramname"><em>map</em>, </td>
         </tr>
         <tr>
@@ -472,7 +699,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__iso__engine_8h.html">n_iso_engine.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="n__iso__engine_8h.html">include/nilorea/n_iso_engine.h</a>&gt;</code></p>
 
 <p>Create an empty map. </p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -498,22 +725,22 @@ Functions</h2></td></tr>
 <p class="reference">References <a class="el" href="n__common_8h_source.html#l00182">Malloc</a>, <a class="el" href="n__iso__engine_8h_source.html#l00029">N_ABILITY</a>, <a class="el" href="n__iso__engine_8h_source.html#l00031">N_MUSIC</a>, <a class="el" href="n__iso__engine_8h_source.html#l00033">N_OBJECT</a>, <a class="el" href="n__iso__engine_8h_source.html#l00027">N_TILE</a>, and <a class="el" href="n__iso__engine_8c_source.html#l00122">set_value()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="n__iso__engine_8c_source.html#l00415">load_map()</a>.</p>
-<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e_gafbd6e8d63e4a9bffb9bae939e6f33d95_cgraph.png" border="0" usemap="#agroup___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e_gafbd6e8d63e4a9bffb9bae939e6f33d95_cgraph" alt=""/></div>
 <map name="agroup___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e_gafbd6e8d63e4a9bffb9bae939e6f33d95_cgraph" id="agroup___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e_gafbd6e8d63e4a9bffb9bae939e6f33d95_cgraph">
 <area shape="rect" title="Create an empty map." alt="" coords="5,5,139,32"/>
 <area shape="rect" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga8366c42e9ace1872eaad8efda0e9a244" title="Set the value of a cell in a map." alt="" coords="187,5,263,32"/>
 </map>
 </div>
-<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e_gafbd6e8d63e4a9bffb9bae939e6f33d95_icgraph.png" border="0" usemap="#agroup___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e_gafbd6e8d63e4a9bffb9bae939e6f33d95_icgraph" alt=""/></div>
 <map name="agroup___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e_gafbd6e8d63e4a9bffb9bae939e6f33d95_icgraph" id="agroup___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e_gafbd6e8d63e4a9bffb9bae939e6f33d95_icgraph">
 <area shape="rect" title="Create an empty map." alt="" coords="132,5,265,32"/>
@@ -532,7 +759,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">int draw_map </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_m_a_p.html">MAP</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#struct_m_a_p">MAP</a> *&#160;</td>
           <td class="paramname"><em>map</em>, </td>
         </tr>
         <tr>
@@ -567,9 +794,9 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__iso__engine_8h.html">n_iso_engine.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="n__iso__engine_8h.html">include/nilorea/n_iso_engine.h</a>&gt;</code></p>
 
-<p>Draw a <a class="el" href="struct_m_a_p.html" title="MAP with objects, tiles, skins.">MAP</a> *map on the BITMAP *bmp. </p>
+<p>Draw a <a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#struct_m_a_p">MAP</a> *map on the BITMAP *bmp. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">map</td><td>The Map to draw </td></tr>
@@ -584,7 +811,7 @@ Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="n__iso__engine_8c_source.html#l00329">329</a> of file <a class="el" href="n__iso__engine_8c_source.html">n_iso_engine.c</a>.</p>
 
-<p class="reference">References <a class="el" href="n__iso__engine_8h_source.html#l00078">MAP::TILEH</a>, <a class="el" href="n__iso__engine_8h_source.html#l00072">MAP::XSIZE</a>, and <a class="el" href="n__iso__engine_8h_source.html#l00074">MAP::YSIZE</a>.</p>
+<p class="reference">References <a class="el" href="ex__network_8c_source.html#l00020">mode</a>, <a class="el" href="n__iso__engine_8h_source.html#l00078">MAP::TILEH</a>, <a class="el" href="n__iso__engine_8h_source.html#l00072">MAP::XSIZE</a>, and <a class="el" href="n__iso__engine_8h_source.html#l00074">MAP::YSIZE</a>.</p>
 
 </div>
 </div>
@@ -597,14 +824,14 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">int free_map </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_m_a_p.html">MAP</a> **&#160;</td>
+          <td class="paramtype"><a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#struct_m_a_p">MAP</a> **&#160;</td>
           <td class="paramname"><em>map</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__iso__engine_8h.html">n_iso_engine.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="n__iso__engine_8h.html">include/nilorea/n_iso_engine.h</a>&gt;</code></p>
 
 <p>Free the map. </p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -620,11 +847,11 @@ Functions</h2></td></tr>
 <p class="reference">References <a class="el" href="n__common_8h_source.html#l00242">Free</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="n__iso__engine_8c_source.html#l00415">load_map()</a>.</p>
-<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e_gafa40b1cd0683fd3a0088d759b8f4a57b_icgraph.png" border="0" usemap="#agroup___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e_gafa40b1cd0683fd3a0088d759b8f4a57b_icgraph" alt=""/></div>
 <map name="agroup___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e_gafa40b1cd0683fd3a0088d759b8f4a57b_icgraph" id="agroup___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e_gafa40b1cd0683fd3a0088d759b8f4a57b_icgraph">
 <area shape="rect" title="Free the map." alt="" coords="132,5,207,32"/>
@@ -643,7 +870,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">int get_value </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_m_a_p.html">MAP</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#struct_m_a_p">MAP</a> *&#160;</td>
           <td class="paramname"><em>map</em>, </td>
         </tr>
         <tr>
@@ -672,12 +899,12 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__iso__engine_8h.html">n_iso_engine.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="n__iso__engine_8h.html">include/nilorea/n_iso_engine.h</a>&gt;</code></p>
 
 <p>Get a the tilenumber of a cell item. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">map</td><td>A <a class="el" href="struct_m_a_p.html" title="MAP with objects, tiles, skins.">MAP</a> *map to 'touch' </td></tr>
+    <tr><td class="paramname">map</td><td>A <a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#struct_m_a_p">MAP</a> *map to 'touch' </td></tr>
     <tr><td class="paramname">type</td><td>It is the type of value to change , it can be N_TILE,N_ABILITY,N_MUSIC,N_OBJECT </td></tr>
     <tr><td class="paramname">x</td><td>X coordinate of the cell </td></tr>
     <tr><td class="paramname">y</td><td>Y coordinate of the cell </td></tr>
@@ -701,7 +928,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">int load_map </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_m_a_p.html">MAP</a> **&#160;</td>
+          <td class="paramtype"><a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#struct_m_a_p">MAP</a> **&#160;</td>
           <td class="paramname"><em>map</em>, </td>
         </tr>
         <tr>
@@ -718,12 +945,12 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__iso__engine_8h.html">n_iso_engine.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="n__iso__engine_8h.html">include/nilorea/n_iso_engine.h</a>&gt;</code></p>
 
 <p>Load the map from filename. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">map</td><td>A <a class="el" href="struct_m_a_p.html" title="MAP with objects, tiles, skins.">MAP</a> *pointer to point on the loaded map </td></tr>
+    <tr><td class="paramname">map</td><td>A <a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#struct_m_a_p">MAP</a> *pointer to point on the loaded map </td></tr>
     <tr><td class="paramname">filename</td><td>The filename of the map to load </td></tr>
   </table>
   </dd>
@@ -733,11 +960,11 @@ Functions</h2></td></tr>
 <p class="definition">Definition at line <a class="el" href="n__iso__engine_8c_source.html#l00415">415</a> of file <a class="el" href="n__iso__engine_8c_source.html">n_iso_engine.c</a>.</p>
 
 <p class="reference">References <a class="el" href="n__iso__engine_8h_source.html#l00088">MAP::bgcolor</a>, <a class="el" href="n__iso__engine_8c_source.html#l00027">create_empty_map()</a>, <a class="el" href="n__iso__engine_8c_source.html#l00547">free_map()</a>, <a class="el" href="n__common_8h_source.html#l00182">Malloc</a>, and <a class="el" href="n__iso__engine_8h_source.html#l00090">MAP::wirecolor</a>.</p>
-<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e_ga4d6c75959391f3afd98d81a1773ffe84_cgraph.png" border="0" usemap="#agroup___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e_ga4d6c75959391f3afd98d81a1773ffe84_cgraph" alt=""/></div>
 <map name="agroup___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e_ga4d6c75959391f3afd98d81a1773ffe84_cgraph" id="agroup___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e_ga4d6c75959391f3afd98d81a1773ffe84_cgraph">
 <area shape="rect" title="Load the map from filename." alt="" coords="5,31,84,57"/>
@@ -758,7 +985,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">int save_map </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_m_a_p.html">MAP</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#struct_m_a_p">MAP</a> *&#160;</td>
           <td class="paramname"><em>map</em>, </td>
         </tr>
         <tr>
@@ -775,12 +1002,12 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__iso__engine_8h.html">n_iso_engine.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="n__iso__engine_8h.html">include/nilorea/n_iso_engine.h</a>&gt;</code></p>
 
 <p>Save the map to filename. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">map</td><td>A <a class="el" href="struct_m_a_p.html" title="MAP with objects, tiles, skins.">MAP</a> *pointer </td></tr>
+    <tr><td class="paramname">map</td><td>A <a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#struct_m_a_p">MAP</a> *pointer </td></tr>
     <tr><td class="paramname">filename</td><td>The filename of the file where to save the map </td></tr>
   </table>
   </dd>
@@ -835,7 +1062,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__iso__engine_8h.html">n_iso_engine.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="n__iso__engine_8h.html">include/nilorea/n_iso_engine.h</a>&gt;</code></p>
 
 <p>Convert screen coordinate to map coordinate. </p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -863,7 +1090,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">int set_value </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_m_a_p.html">MAP</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#struct_m_a_p">MAP</a> *&#160;</td>
           <td class="paramname"><em>map</em>, </td>
         </tr>
         <tr>
@@ -898,12 +1125,12 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__iso__engine_8h.html">n_iso_engine.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="n__iso__engine_8h.html">include/nilorea/n_iso_engine.h</a>&gt;</code></p>
 
 <p>Set the value of a cell in a map. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">map</td><td>A <a class="el" href="struct_m_a_p.html" title="MAP with objects, tiles, skins.">MAP</a> *map to 'touch' </td></tr>
+    <tr><td class="paramname">map</td><td>A <a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#struct_m_a_p">MAP</a> *map to 'touch' </td></tr>
     <tr><td class="paramname">type</td><td>It is the type of value to change , it can be N_TILE,N_ABILITY,N_MUSIC,N_OBJECT </td></tr>
     <tr><td class="paramname">x</td><td>X coordinate of the cell </td></tr>
     <tr><td class="paramname">y</td><td>Y coordinate of the cell </td></tr>
@@ -918,11 +1145,11 @@ Functions</h2></td></tr>
 <p class="reference">References <a class="el" href="n__iso__engine_8h_source.html#l00029">N_ABILITY</a>, <a class="el" href="n__iso__engine_8h_source.html#l00031">N_MUSIC</a>, <a class="el" href="n__iso__engine_8h_source.html#l00033">N_OBJECT</a>, and <a class="el" href="n__iso__engine_8h_source.html#l00027">N_TILE</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="n__iso__engine_8c_source.html#l00027">create_empty_map()</a>.</p>
-<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e_ga8366c42e9ace1872eaad8efda0e9a244_icgraph.png" border="0" usemap="#agroup___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e_ga8366c42e9ace1872eaad8efda0e9a244_icgraph" alt=""/></div>
 <map name="agroup___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e_ga8366c42e9ace1872eaad8efda0e9a244_icgraph" id="agroup___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e_ga8366c42e9ace1872eaad8efda0e9a244_icgraph">
 <area shape="rect" title="Set the value of a cell in a map." alt="" coords="313,5,389,32"/>
@@ -938,7 +1165,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Feb 3 2022 21:53:47 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+    <li class="footer">Generated on Fri Feb 4 2022 17:12:04 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
   </ul>
 </div>
 </body>

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.3"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Nilorea Library: GAMEDEV: 3D particles utilities</title>
+<title>Nilorea Library: GRAPHICS: 3D particles utilities</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -86,16 +86,16 @@ $(document).ready(function(){initNavTree('group___p_a_r_t_i_c_l_e_s.html',''); i
 <a href="#nested-classes">Data Structures</a> &#124;
 <a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a>  </div>
-  <div class="headertitle"><div class="title">GAMEDEV: 3D particles utilities</div></div>
+  <div class="headertitle"><div class="title">GRAPHICS: 3D particles utilities</div></div>
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Data Structures</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_p_a_r_t_i_c_l_e.html">PARTICLE</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_p_a_r_t_i_c_l_e___s_y_s_t_e_m.html">PARTICLE_SYSTEM</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:struct_p_a_r_t_i_c_l_e"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___p_a_r_t_i_c_l_e_s.html#struct_p_a_r_t_i_c_l_e">PARTICLE</a></td></tr>
+<tr class="separator:struct_p_a_r_t_i_c_l_e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:struct_p_a_r_t_i_c_l_e___s_y_s_t_e_m"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___p_a_r_t_i_c_l_e_s.html#struct_p_a_r_t_i_c_l_e___s_y_s_t_e_m">PARTICLE_SYSTEM</a></td></tr>
+<tr class="separator:struct_p_a_r_t_i_c_l_e___s_y_s_t_e_m"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
@@ -122,22 +122,177 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:gae8252f1cd818ef45e20e7d4c54351d2e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___p_a_r_t_i_c_l_e_s.html#gae8252f1cd818ef45e20e7d4c54351d2e">add_particle</a> (<a class="el" href="struct_p_a_r_t_i_c_l_e___s_y_s_t_e_m.html">PARTICLE_SYSTEM</a> *psys, int spr, int mode, int lifetime, int size, ALLEGRO_COLOR color, <a class="el" href="struct_p_h_y_s_i_c_s.html">PHYSICS</a> object)</td></tr>
+<tr class="memitem:gae8252f1cd818ef45e20e7d4c54351d2e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___p_a_r_t_i_c_l_e_s.html#gae8252f1cd818ef45e20e7d4c54351d2e">add_particle</a> (<a class="el" href="group___p_a_r_t_i_c_l_e_s.html#struct_p_a_r_t_i_c_l_e___s_y_s_t_e_m">PARTICLE_SYSTEM</a> *psys, int spr, int <a class="el" href="ex__network_8c.html#a1ea5d0cb93f22f7d0fdf804bd68c3326">mode</a>, int lifetime, int size, ALLEGRO_COLOR color, <a class="el" href="group___p_h_y_s_i_c_s.html#struct_p_h_y_s_i_c_s">PHYSICS</a> object)</td></tr>
 <tr class="separator:gae8252f1cd818ef45e20e7d4c54351d2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad8c6a1f791072a6485af0439a3c4d94f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___p_a_r_t_i_c_l_e_s.html#gad8c6a1f791072a6485af0439a3c4d94f">add_particle_ex</a> (<a class="el" href="struct_p_a_r_t_i_c_l_e___s_y_s_t_e_m.html">PARTICLE_SYSTEM</a> *psys, int spr, int mode, int off_x, int off_y, int lifetime, int size, ALLEGRO_COLOR color, double vx, double vy, double vz, double ax, double ay, double az)</td></tr>
+<tr class="memitem:gad8c6a1f791072a6485af0439a3c4d94f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___p_a_r_t_i_c_l_e_s.html#gad8c6a1f791072a6485af0439a3c4d94f">add_particle_ex</a> (<a class="el" href="group___p_a_r_t_i_c_l_e_s.html#struct_p_a_r_t_i_c_l_e___s_y_s_t_e_m">PARTICLE_SYSTEM</a> *psys, int spr, int <a class="el" href="ex__network_8c.html#a1ea5d0cb93f22f7d0fdf804bd68c3326">mode</a>, int off_x, int off_y, int lifetime, int size, ALLEGRO_COLOR color, double vx, double vy, double vz, double ax, double ay, double az)</td></tr>
 <tr class="separator:gad8c6a1f791072a6485af0439a3c4d94f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga09e19e83e2251d87db737b6b702a7d70"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___p_a_r_t_i_c_l_e_s.html#ga09e19e83e2251d87db737b6b702a7d70">draw_particle</a> (<a class="el" href="struct_p_a_r_t_i_c_l_e___s_y_s_t_e_m.html">PARTICLE_SYSTEM</a> *psys, double xpos, double ypos, int w, int h, double range)</td></tr>
+<tr class="memitem:ga09e19e83e2251d87db737b6b702a7d70"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___p_a_r_t_i_c_l_e_s.html#ga09e19e83e2251d87db737b6b702a7d70">draw_particle</a> (<a class="el" href="group___p_a_r_t_i_c_l_e_s.html#struct_p_a_r_t_i_c_l_e___s_y_s_t_e_m">PARTICLE_SYSTEM</a> *psys, double xpos, double ypos, int w, int h, double range)</td></tr>
 <tr class="separator:ga09e19e83e2251d87db737b6b702a7d70"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga80e275b9835fae499b29b6082c29970c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___p_a_r_t_i_c_l_e_s.html#ga80e275b9835fae499b29b6082c29970c">free_particle_system</a> (<a class="el" href="struct_p_a_r_t_i_c_l_e___s_y_s_t_e_m.html">PARTICLE_SYSTEM</a> **psys)</td></tr>
+<tr class="memitem:ga80e275b9835fae499b29b6082c29970c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___p_a_r_t_i_c_l_e_s.html#ga80e275b9835fae499b29b6082c29970c">free_particle_system</a> (<a class="el" href="group___p_a_r_t_i_c_l_e_s.html#struct_p_a_r_t_i_c_l_e___s_y_s_t_e_m">PARTICLE_SYSTEM</a> **psys)</td></tr>
 <tr class="separator:ga80e275b9835fae499b29b6082c29970c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaf00630a2c4eaa468e124fe4d9557c825"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___p_a_r_t_i_c_l_e_s.html#gaf00630a2c4eaa468e124fe4d9557c825">init_particle_system</a> (<a class="el" href="struct_p_a_r_t_i_c_l_e___s_y_s_t_e_m.html">PARTICLE_SYSTEM</a> **psys, int max, double x, double y, double z, int max_sprites)</td></tr>
+<tr class="memitem:gaf00630a2c4eaa468e124fe4d9557c825"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___p_a_r_t_i_c_l_e_s.html#gaf00630a2c4eaa468e124fe4d9557c825">init_particle_system</a> (<a class="el" href="group___p_a_r_t_i_c_l_e_s.html#struct_p_a_r_t_i_c_l_e___s_y_s_t_e_m">PARTICLE_SYSTEM</a> **psys, int max, double x, double y, double z, int max_sprites)</td></tr>
 <tr class="separator:gaf00630a2c4eaa468e124fe4d9557c825"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8a92ddb62fe9f945d5baed9d22938a10"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___p_a_r_t_i_c_l_e_s.html#ga8a92ddb62fe9f945d5baed9d22938a10">manage_particle</a> (<a class="el" href="struct_p_a_r_t_i_c_l_e___s_y_s_t_e_m.html">PARTICLE_SYSTEM</a> *psys)</td></tr>
+<tr class="memitem:ga8a92ddb62fe9f945d5baed9d22938a10"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___p_a_r_t_i_c_l_e_s.html#ga8a92ddb62fe9f945d5baed9d22938a10">manage_particle</a> (<a class="el" href="group___p_a_r_t_i_c_l_e_s.html#struct_p_a_r_t_i_c_l_e___s_y_s_t_e_m">PARTICLE_SYSTEM</a> *psys)</td></tr>
 <tr class="separator:ga8a92ddb62fe9f945d5baed9d22938a10"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga1a20afdfa79e8cc5ee3f214ab34ca96d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___p_a_r_t_i_c_l_e_s.html#ga1a20afdfa79e8cc5ee3f214ab34ca96d">move_particles</a> (<a class="el" href="struct_p_a_r_t_i_c_l_e___s_y_s_t_e_m.html">PARTICLE_SYSTEM</a> *psys, double vx, double vy, double vz)</td></tr>
+<tr class="memitem:ga1a20afdfa79e8cc5ee3f214ab34ca96d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___p_a_r_t_i_c_l_e_s.html#ga1a20afdfa79e8cc5ee3f214ab34ca96d">move_particles</a> (<a class="el" href="group___p_a_r_t_i_c_l_e_s.html#struct_p_a_r_t_i_c_l_e___s_y_s_t_e_m">PARTICLE_SYSTEM</a> *psys, double vx, double vy, double vz)</td></tr>
 <tr class="separator:ga1a20afdfa79e8cc5ee3f214ab34ca96d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<hr/><h2 class="groupheader">Data Structure Documentation</h2>
+<a name="struct_p_a_r_t_i_c_l_e" id="struct_p_a_r_t_i_c_l_e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#struct_p_a_r_t_i_c_l_e">&#9670;&nbsp;</a></span>PARTICLE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct PARTICLE</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="textblock"><p >Structure of a single particle </p>
+
+<p class="definition">Definition at line <a class="el" href="n__particles_8h_source.html#l00057">57</a> of file <a class="el" href="n__particles_8h_source.html">n_particles.h</a>.</p>
+</div><div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for PARTICLE:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="struct_p_a_r_t_i_c_l_e__coll__graph.png" border="0" usemap="#a_p_a_r_t_i_c_l_e_coll__map" alt="Collaboration graph"/></div>
+<map name="a_p_a_r_t_i_c_l_e_coll__map" id="a_p_a_r_t_i_c_l_e_coll__map">
+<area shape="rect" title=" " alt="" coords="91,373,175,451"/>
+<area shape="rect" title=" " alt="" coords="5,5,44,83"/>
+<area shape="rect" href="group___p_h_y_s_i_c_s.html#struct_p_h_y_s_i_c_s" title=" " alt="" coords="93,233,172,311"/>
+<area shape="rect" title=" " alt="" coords="196,233,331,311"/>
+<area shape="rect" title=" " alt="" coords="117,5,175,83"/>
+<area shape="rect" title=" " alt="" coords="200,5,260,83"/>
+</map>
+</div>
+<table class="fieldtable">
+<tr><th colspan="3">Data Fields</th></tr>
+<tr><td class="fieldtype">
+<a id="a32c238feac26c4241fb069049c2b4c03" name="a32c238feac26c4241fb069049c2b4c03"></a>ALLEGRO_COLOR</td>
+<td class="fieldname">
+color</td>
+<td class="fielddoc">
+<p >color of the particle </p>
+</td></tr>
+<tr><td class="fieldtype">
+<a id="a548bd0f49b865829b184454ccb00135f" name="a548bd0f49b865829b184454ccb00135f"></a>int</td>
+<td class="fieldname">
+lifetime</td>
+<td class="fielddoc">
+<p >lifetime </p>
+</td></tr>
+<tr><td class="fieldtype">
+<a id="a92c335fa485b1cc860b7d0c7a799c3e3" name="a92c335fa485b1cc860b7d0c7a799c3e3"></a>int</td>
+<td class="fieldname">
+mode</td>
+<td class="fielddoc">
+<p >particle mode: NORMAL_PART,SINUS_PART,TRANS_PART,SNOW_PART,FIRE_PART,STAR_PART,CIRCLE_PART,PIXEL_PART </p>
+</td></tr>
+<tr><td class="fieldtype">
+<a id="a48dfa06a47ccb1dab0e136d4256c5722" name="a48dfa06a47ccb1dab0e136d4256c5722"></a><a class="el" href="group___p_h_y_s_i_c_s.html#struct_p_h_y_s_i_c_s">PHYSICS</a></td>
+<td class="fieldname">
+object</td>
+<td class="fielddoc">
+<p >particle physical properties </p>
+</td></tr>
+<tr><td class="fieldtype">
+<a id="a1ecb6448e1197f93019658cfff4ca6b4" name="a1ecb6448e1197f93019658cfff4ca6b4"></a>int</td>
+<td class="fieldname">
+size</td>
+<td class="fielddoc">
+<p >size of particle </p>
+</td></tr>
+<tr><td class="fieldtype">
+<a id="a4de324e827e35ac50606e92c089dd378" name="a4de324e827e35ac50606e92c089dd378"></a>int</td>
+<td class="fieldname">
+spr_id</td>
+<td class="fielddoc">
+<p >sprite id in library </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a name="struct_p_a_r_t_i_c_l_e___s_y_s_t_e_m" id="struct_p_a_r_t_i_c_l_e___s_y_s_t_e_m"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#struct_p_a_r_t_i_c_l_e___s_y_s_t_e_m">&#9670;&nbsp;</a></span>PARTICLE_SYSTEM</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct PARTICLE_SYSTEM</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="textblock"><p >Structure of a particle system </p>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ex_gui_particles_8c-example.html#_a10">ex_gui_particles.c</a>.</dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="n__particles_8h_source.html#l00077">77</a> of file <a class="el" href="n__particles_8h_source.html">n_particles.h</a>.</p>
+</div><div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for PARTICLE_SYSTEM:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="struct_p_a_r_t_i_c_l_e___s_y_s_t_e_m__coll__graph.png" border="0" usemap="#a_p_a_r_t_i_c_l_e___s_y_s_t_e_m_coll__map" alt="Collaboration graph"/></div>
+<map name="a_p_a_r_t_i_c_l_e___s_y_s_t_e_m_coll__map" id="a_p_a_r_t_i_c_l_e___s_y_s_t_e_m_coll__map">
+<area shape="rect" title=" " alt="" coords="155,440,300,517"/>
+<area shape="rect" href="group___l_i_s_t.html#struct_l_i_s_t" title=" " alt="" coords="125,300,173,377"/>
+<area shape="rect" title=" " alt="" coords="5,145,44,223"/>
+<area shape="rect" href="struct_l_i_s_t___n_o_d_e.html" title=" " alt="" coords="108,145,200,223"/>
+<area shape="rect" title=" " alt="" coords="74,5,127,83"/>
+<area shape="rect" title=" " alt="" coords="152,5,263,83"/>
+<area shape="rect" title=" " alt="" coords="197,300,257,377"/>
+<area shape="rect" href="group___n___t_i_m_e.html#struct_n___t_i_m_e" title=" " alt="" coords="281,300,349,377"/>
+<area shape="rect" title=" " alt="" coords="286,145,345,223"/>
+<area shape="rect" title=" " alt="" coords="369,145,467,223"/>
+<area shape="rect" title=" " alt="" coords="374,300,526,377"/>
+</map>
+</div>
+<table class="fieldtable">
+<tr><th colspan="3">Data Fields</th></tr>
+<tr><td class="fieldtype">
+<a id="a7f6a60fa6c291c8a8e5118fd5b054e52" name="a7f6a60fa6c291c8a8e5118fd5b054e52"></a><a class="el" href="group___l_i_s_t.html#struct_l_i_s_t">LIST</a> *</td>
+<td class="fieldname">
+list</td>
+<td class="fielddoc">
+<p >list of <a class="el" href="group___p_a_r_t_i_c_l_e_s.html#struct_p_a_r_t_i_c_l_e">PARTICLE</a> pointers </p>
+</td></tr>
+<tr><td class="fieldtype">
+<a id="a2743358c5741f348ba48525b7d2bc0f4" name="a2743358c5741f348ba48525b7d2bc0f4"></a>int</td>
+<td class="fieldname">
+max_sprites</td>
+<td class="fielddoc">
+<p >size of the picture library </p>
+</td></tr>
+<tr><td class="fieldtype">
+<a id="a6acfd8c66e6ed89bf9661e816f3d94b3" name="a6acfd8c66e6ed89bf9661e816f3d94b3"></a><a class="el" href="group___p_h_y_s_i_c_s.html#ga4cbdd7084ea2076595f397a969feba63">VECTOR3D</a></td>
+<td class="fieldname">
+source</td>
+<td class="fielddoc">
+<p >Coordinate of emitting point </p>
+</td></tr>
+<tr><td class="fieldtype">
+<a id="ab9d6d952c1de30377308476c7356f6cf" name="ab9d6d952c1de30377308476c7356f6cf"></a>ALLEGRO_BITMAP **</td>
+<td class="fieldname">
+sprites</td>
+<td class="fielddoc">
+<p >Library of picture for the particles </p>
+</td></tr>
+<tr><td class="fieldtype">
+<a id="a0eb5551a71d4412d76e970b19cc0078e" name="a0eb5551a71d4412d76e970b19cc0078e"></a><a class="el" href="group___n___t_i_m_e.html#struct_n___t_i_m_e">N_TIME</a></td>
+<td class="fieldname">
+timer</td>
+<td class="fielddoc">
+<p >Internal: particle system timer </p>
+</td></tr>
+</table>
+
+</div>
+</div>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="ga3ff8114200b93147ade488aeb96f41a5" name="ga3ff8114200b93147ade488aeb96f41a5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga3ff8114200b93147ade488aeb96f41a5">&#9670;&nbsp;</a></span>BITMAP_PART</h2>
@@ -151,9 +306,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__particles_8h.html">n_particles.h</a>&gt;</code></p>
-
-<p>bitmap particle </p>
+<p><code>#include &lt;<a class="el" href="n__particles_8h.html">include/nilorea/n_particles.h</a>&gt;</code></p>
+<p >bitmap particle </p>
 
 <p class="definition">Definition at line <a class="el" href="n__particles_8h_source.html#l00051">51</a> of file <a class="el" href="n__particles_8h_source.html">n_particles.h</a>.</p>
 
@@ -171,9 +325,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__particles_8h.html">n_particles.h</a>&gt;</code></p>
-
-<p>circle particle </p>
+<p><code>#include &lt;<a class="el" href="n__particles_8h.html">include/nilorea/n_particles.h</a>&gt;</code></p>
+<p >circle particle </p>
 
 <p class="definition">Definition at line <a class="el" href="n__particles_8h_source.html#l00047">47</a> of file <a class="el" href="n__particles_8h_source.html">n_particles.h</a>.</p>
 
@@ -191,9 +344,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__particles_8h.html">n_particles.h</a>&gt;</code></p>
-
-<p>fire particle </p>
+<p><code>#include &lt;<a class="el" href="n__particles_8h.html">include/nilorea/n_particles.h</a>&gt;</code></p>
+<p >fire particle </p>
 
 <p class="definition">Definition at line <a class="el" href="n__particles_8h_source.html#l00043">43</a> of file <a class="el" href="n__particles_8h_source.html">n_particles.h</a>.</p>
 
@@ -211,9 +363,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__particles_8h.html">n_particles.h</a>&gt;</code></p>
-
-<p>classic moving particle </p>
+<p><code>#include &lt;<a class="el" href="n__particles_8h.html">include/nilorea/n_particles.h</a>&gt;</code></p>
+<p >classic moving particle </p>
 
 <p class="definition">Definition at line <a class="el" href="n__particles_8h_source.html#l00035">35</a> of file <a class="el" href="n__particles_8h_source.html">n_particles.h</a>.</p>
 
@@ -231,10 +382,9 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__particles_8h.html">n_particles.h</a>&gt;</code></p>
-
-<p>pixel particle </p>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ex_gui_particles_8c-example.html#a15">ex_gui_particles.c</a>.</dd>
+<p><code>#include &lt;<a class="el" href="n__particles_8h.html">include/nilorea/n_particles.h</a>&gt;</code></p>
+<p >pixel particle </p>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ex_gui_particles_8c-example.html#a40">ex_gui_particles.c</a>.</dd>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="n__particles_8h_source.html#l00049">49</a> of file <a class="el" href="n__particles_8h_source.html">n_particles.h</a>.</p>
@@ -253,9 +403,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__particles_8h.html">n_particles.h</a>&gt;</code></p>
-
-<p>sinus based moving particle </p>
+<p><code>#include &lt;<a class="el" href="n__particles_8h.html">include/nilorea/n_particles.h</a>&gt;</code></p>
+<p >sinus based moving particle </p>
 
 <p class="definition">Definition at line <a class="el" href="n__particles_8h_source.html#l00037">37</a> of file <a class="el" href="n__particles_8h_source.html">n_particles.h</a>.</p>
 
@@ -273,9 +422,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__particles_8h.html">n_particles.h</a>&gt;</code></p>
-
-<p>snow particle </p>
+<p><code>#include &lt;<a class="el" href="n__particles_8h.html">include/nilorea/n_particles.h</a>&gt;</code></p>
+<p >snow particle </p>
 
 <p class="definition">Definition at line <a class="el" href="n__particles_8h_source.html#l00041">41</a> of file <a class="el" href="n__particles_8h_source.html">n_particles.h</a>.</p>
 
@@ -293,9 +441,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__particles_8h.html">n_particles.h</a>&gt;</code></p>
-
-<p>star particle </p>
+<p><code>#include &lt;<a class="el" href="n__particles_8h.html">include/nilorea/n_particles.h</a>&gt;</code></p>
+<p >star particle </p>
 
 <p class="definition">Definition at line <a class="el" href="n__particles_8h_source.html#l00045">45</a> of file <a class="el" href="n__particles_8h_source.html">n_particles.h</a>.</p>
 
@@ -313,9 +460,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__particles_8h.html">n_particles.h</a>&gt;</code></p>
-
-<p>bitmap particle </p>
+<p><code>#include &lt;<a class="el" href="n__particles_8h.html">include/nilorea/n_particles.h</a>&gt;</code></p>
+<p >bitmap particle </p>
 
 <p class="definition">Definition at line <a class="el" href="n__particles_8h_source.html#l00053">53</a> of file <a class="el" href="n__particles_8h_source.html">n_particles.h</a>.</p>
 
@@ -333,9 +479,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__particles_8h.html">n_particles.h</a>&gt;</code></p>
-
-<p>transparent particle </p>
+<p><code>#include &lt;<a class="el" href="n__particles_8h.html">include/nilorea/n_particles.h</a>&gt;</code></p>
+<p >transparent particle </p>
 
 <p class="definition">Definition at line <a class="el" href="n__particles_8h_source.html#l00039">39</a> of file <a class="el" href="n__particles_8h_source.html">n_particles.h</a>.</p>
 
@@ -351,7 +496,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">int add_particle </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_p_a_r_t_i_c_l_e___s_y_s_t_e_m.html">PARTICLE_SYSTEM</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="group___p_a_r_t_i_c_l_e_s.html#struct_p_a_r_t_i_c_l_e___s_y_s_t_e_m">PARTICLE_SYSTEM</a> *&#160;</td>
           <td class="paramname"><em>psys</em>, </td>
         </tr>
         <tr>
@@ -387,7 +532,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="struct_p_h_y_s_i_c_s.html">PHYSICS</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="group___p_h_y_s_i_c_s.html#struct_p_h_y_s_i_c_s">PHYSICS</a>&#160;</td>
           <td class="paramname"><em>object</em>&#160;</td>
         </tr>
         <tr>
@@ -398,9 +543,37 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__particles_8h.html">n_particles.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="n__particles_8h.html">include/nilorea/n_particles.h</a>&gt;</code></p>
 
 <p class="definition">Definition at line <a class="el" href="n__particles_8c_source.html#l00033">33</a> of file <a class="el" href="n__particles_8c_source.html">n_particles.c</a>.</p>
+
+<p class="reference">References <a class="el" href="n__common_8h_source.html#l00262">__n_assert</a>, <a class="el" href="n__list_8c_source.html#l00121">list_push()</a>, <a class="el" href="n__common_8h_source.html#l00182">Malloc</a>, and <a class="el" href="ex__network_8c_source.html#l00020">mode</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="n__particles_8c_source.html#l00071">add_particle_ex()</a>, and <a class="el" href="ex__gui__particles_8c_source.html#l00032">main()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group___p_a_r_t_i_c_l_e_s_gae8252f1cd818ef45e20e7d4c54351d2e_cgraph.png" border="0" usemap="#agroup___p_a_r_t_i_c_l_e_s_gae8252f1cd818ef45e20e7d4c54351d2e_cgraph" alt=""/></div>
+<map name="agroup___p_a_r_t_i_c_l_e_s_gae8252f1cd818ef45e20e7d4c54351d2e_cgraph" id="agroup___p_a_r_t_i_c_l_e_s_gae8252f1cd818ef45e20e7d4c54351d2e_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,97,32"/>
+<area shape="rect" href="group___l_i_s_t.html#ga4eab319289a83524639ee5e9f0441fdf" title="Add a pointer to the end of the list." alt="" coords="145,5,220,32"/>
+<area shape="rect" href="group___l_i_s_t.html#ga678e828550efc8e64a836bb8c713c2f4" title="Allocate a new node to link in a list." alt="" coords="268,5,372,32"/>
+</map>
+</div>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group___p_a_r_t_i_c_l_e_s_gae8252f1cd818ef45e20e7d4c54351d2e_icgraph.png" border="0" usemap="#agroup___p_a_r_t_i_c_l_e_s_gae8252f1cd818ef45e20e7d4c54351d2e_icgraph" alt=""/></div>
+<map name="agroup___p_a_r_t_i_c_l_e_s_gae8252f1cd818ef45e20e7d4c54351d2e_icgraph" id="agroup___p_a_r_t_i_c_l_e_s_gae8252f1cd818ef45e20e7d4c54351d2e_icgraph">
+<area shape="rect" title=" " alt="" coords="167,31,259,57"/>
+<area shape="rect" href="group___p_a_r_t_i_c_l_e_s.html#gad8c6a1f791072a6485af0439a3c4d94f" title=" " alt="" coords="5,5,119,32"/>
+<area shape="rect" href="ex__gui__particles_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="37,56,87,83"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -413,7 +586,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">int add_particle_ex </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_p_a_r_t_i_c_l_e___s_y_s_t_e_m.html">PARTICLE_SYSTEM</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="group___p_a_r_t_i_c_l_e_s.html#struct_p_a_r_t_i_c_l_e___s_y_s_t_e_m">PARTICLE_SYSTEM</a> *&#160;</td>
           <td class="paramname"><em>psys</em>, </td>
         </tr>
         <tr>
@@ -502,9 +675,24 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__particles_8h.html">n_particles.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="n__particles_8h.html">include/nilorea/n_particles.h</a>&gt;</code></p>
 
 <p class="definition">Definition at line <a class="el" href="n__particles_8c_source.html#l00071">71</a> of file <a class="el" href="n__particles_8c_source.html">n_particles.c</a>.</p>
+
+<p class="reference">References <a class="el" href="n__particles_8c_source.html#l00033">add_particle()</a>, <a class="el" href="ex__network_8c_source.html#l00020">mode</a>, and <a class="el" href="n__3d_8h_source.html#l00043">VECTOR3D_SET</a>.</p>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group___p_a_r_t_i_c_l_e_s_gad8c6a1f791072a6485af0439a3c4d94f_cgraph.png" border="0" usemap="#agroup___p_a_r_t_i_c_l_e_s_gad8c6a1f791072a6485af0439a3c4d94f_cgraph" alt=""/></div>
+<map name="agroup___p_a_r_t_i_c_l_e_s_gad8c6a1f791072a6485af0439a3c4d94f_cgraph" id="agroup___p_a_r_t_i_c_l_e_s_gad8c6a1f791072a6485af0439a3c4d94f_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,119,32"/>
+<area shape="rect" href="group___p_a_r_t_i_c_l_e_s.html#gae8252f1cd818ef45e20e7d4c54351d2e" title=" " alt="" coords="167,5,259,32"/>
+<area shape="rect" href="group___l_i_s_t.html#ga4eab319289a83524639ee5e9f0441fdf" title="Add a pointer to the end of the list." alt="" coords="307,5,381,32"/>
+<area shape="rect" href="group___l_i_s_t.html#ga678e828550efc8e64a836bb8c713c2f4" title="Allocate a new node to link in a list." alt="" coords="429,5,533,32"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -517,7 +705,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">int draw_particle </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_p_a_r_t_i_c_l_e___s_y_s_t_e_m.html">PARTICLE_SYSTEM</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="group___p_a_r_t_i_c_l_e_s.html#struct_p_a_r_t_i_c_l_e___s_y_s_t_e_m">PARTICLE_SYSTEM</a> *&#160;</td>
           <td class="paramname"><em>psys</em>, </td>
         </tr>
         <tr>
@@ -558,9 +746,24 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__particles_8h.html">n_particles.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="n__particles_8h.html">include/nilorea/n_particles.h</a>&gt;</code></p>
 
 <p class="definition">Definition at line <a class="el" href="n__particles_8c_source.html#l00128">128</a> of file <a class="el" href="n__particles_8c_source.html">n_particles.c</a>.</p>
+
+<p class="reference">References <a class="el" href="ex__network_8c_source.html#l00020">mode</a>, <a class="el" href="n__particles_8h_source.html#l00035">NORMAL_PART</a>, <a class="el" href="n__particles_8h_source.html#l00049">PIXEL_PART</a>, and <a class="el" href="n__particles_8h_source.html#l00037">SINUS_PART</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="ex__gui__particles_8c_source.html#l00032">main()</a>.</p>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group___p_a_r_t_i_c_l_e_s_ga09e19e83e2251d87db737b6b702a7d70_icgraph.png" border="0" usemap="#agroup___p_a_r_t_i_c_l_e_s_ga09e19e83e2251d87db737b6b702a7d70_icgraph" alt=""/></div>
+<map name="agroup___p_a_r_t_i_c_l_e_s_ga09e19e83e2251d87db737b6b702a7d70_icgraph" id="agroup___p_a_r_t_i_c_l_e_s_ga09e19e83e2251d87db737b6b702a7d70_icgraph">
+<area shape="rect" title=" " alt="" coords="104,5,203,32"/>
+<area shape="rect" href="ex__gui__particles_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,5,56,32"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -573,16 +776,18 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">int free_particle_system </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_p_a_r_t_i_c_l_e___s_y_s_t_e_m.html">PARTICLE_SYSTEM</a> **&#160;</td>
+          <td class="paramtype"><a class="el" href="group___p_a_r_t_i_c_l_e_s.html#struct_p_a_r_t_i_c_l_e___s_y_s_t_e_m">PARTICLE_SYSTEM</a> **&#160;</td>
           <td class="paramname"><em>psys</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__particles_8h.html">n_particles.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="n__particles_8h.html">include/nilorea/n_particles.h</a>&gt;</code></p>
 
 <p class="definition">Definition at line <a class="el" href="n__particles_8c_source.html#l00203">203</a> of file <a class="el" href="n__particles_8c_source.html">n_particles.c</a>.</p>
+
+<p class="reference">References <a class="el" href="n__common_8h_source.html#l00242">Free</a>, and <a class="el" href="n__list_8h_source.html#l00083">remove_list_node</a>.</p>
 
 </div>
 </div>
@@ -595,7 +800,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">int init_particle_system </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_p_a_r_t_i_c_l_e___s_y_s_t_e_m.html">PARTICLE_SYSTEM</a> **&#160;</td>
+          <td class="paramtype"><a class="el" href="group___p_a_r_t_i_c_l_e_s.html#struct_p_a_r_t_i_c_l_e___s_y_s_t_e_m">PARTICLE_SYSTEM</a> **&#160;</td>
           <td class="paramname"><em>psys</em>, </td>
         </tr>
         <tr>
@@ -636,9 +841,36 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__particles_8h.html">n_particles.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="n__particles_8h.html">include/nilorea/n_particles.h</a>&gt;</code></p>
 
 <p class="definition">Definition at line <a class="el" href="n__particles_8c_source.html#l00014">14</a> of file <a class="el" href="n__particles_8c_source.html">n_particles.c</a>.</p>
+
+<p class="reference">References <a class="el" href="n__common_8h_source.html#l00182">Malloc</a>, <a class="el" href="n__list_8c_source.html#l00020">new_generic_list()</a>, and <a class="el" href="n__time_8c_source.html#l00069">start_HiTimer()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="ex__gui__particles_8c_source.html#l00032">main()</a>.</p>
+<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group___p_a_r_t_i_c_l_e_s_gaf00630a2c4eaa468e124fe4d9557c825_cgraph.png" border="0" usemap="#agroup___p_a_r_t_i_c_l_e_s_gaf00630a2c4eaa468e124fe4d9557c825_cgraph" alt=""/></div>
+<map name="agroup___p_a_r_t_i_c_l_e_s_gaf00630a2c4eaa468e124fe4d9557c825_cgraph" id="agroup___p_a_r_t_i_c_l_e_s_gaf00630a2c4eaa468e124fe4d9557c825_cgraph">
+<area shape="rect" title=" " alt="" coords="5,31,144,57"/>
+<area shape="rect" href="group___l_i_s_t.html#gada615e3b144e97bcff147dfe89f6fef6" title="Initialiaze a generic list container to max_items pointers." alt="" coords="192,5,311,32"/>
+<area shape="rect" href="group___n___t_i_m_e.html#ga83bf99faafa00b4a69f31a589ca712ff" title="Initialize or restart from zero any N_TIME HiTimer." alt="" coords="202,56,301,83"/>
+</map>
+</div>
+<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-7-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group___p_a_r_t_i_c_l_e_s_gaf00630a2c4eaa468e124fe4d9557c825_icgraph.png" border="0" usemap="#agroup___p_a_r_t_i_c_l_e_s_gaf00630a2c4eaa468e124fe4d9557c825_icgraph" alt=""/></div>
+<map name="agroup___p_a_r_t_i_c_l_e_s_gaf00630a2c4eaa468e124fe4d9557c825_icgraph" id="agroup___p_a_r_t_i_c_l_e_s_gaf00630a2c4eaa468e124fe4d9557c825_icgraph">
+<area shape="rect" title=" " alt="" coords="104,5,243,32"/>
+<area shape="rect" href="ex__gui__particles_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,5,56,32"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -651,16 +883,44 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">int manage_particle </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_p_a_r_t_i_c_l_e___s_y_s_t_e_m.html">PARTICLE_SYSTEM</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="group___p_a_r_t_i_c_l_e_s.html#struct_p_a_r_t_i_c_l_e___s_y_s_t_e_m">PARTICLE_SYSTEM</a> *&#160;</td>
           <td class="paramname"><em>psys</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__particles_8h.html">n_particles.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="n__particles_8h.html">include/nilorea/n_particles.h</a>&gt;</code></p>
 
 <p class="definition">Definition at line <a class="el" href="n__particles_8c_source.html#l00088">88</a> of file <a class="el" href="n__particles_8c_source.html">n_particles.c</a>.</p>
+
+<p class="reference">References <a class="el" href="n__common_8h_source.html#l00242">Free</a>, <a class="el" href="n__time_8c_source.html#l00094">get_usec()</a>, <a class="el" href="n__list_8h_source.html#l00083">remove_list_node</a>, and <a class="el" href="n__3d_8c_source.html#l00098">update_physics_position()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="ex__gui__particles_8c_source.html#l00032">main()</a>.</p>
+<div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-8-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-8-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group___p_a_r_t_i_c_l_e_s_ga8a92ddb62fe9f945d5baed9d22938a10_cgraph.png" border="0" usemap="#agroup___p_a_r_t_i_c_l_e_s_ga8a92ddb62fe9f945d5baed9d22938a10_cgraph" alt=""/></div>
+<map name="agroup___p_a_r_t_i_c_l_e_s_ga8a92ddb62fe9f945d5baed9d22938a10_cgraph" id="agroup___p_a_r_t_i_c_l_e_s_ga8a92ddb62fe9f945d5baed9d22938a10_cgraph">
+<area shape="rect" title=" " alt="" coords="5,31,123,57"/>
+<area shape="rect" href="group___n___t_i_m_e.html#gaa26bb3d464f6def321b9919bf1e9d1f4" title="Poll any N_TIME HiTimer, returning usec, and moving currentTime to startTime." alt="" coords="216,5,291,32"/>
+<area shape="rect" href="group___p_h_y_s_i_c_s.html#gadc7a001ab64c72a43243175e56a86264" title="Update object position, reversed. Wrapper of update_physics_position_reverse_nb to update each compon..." alt="" coords="171,56,336,83"/>
+<area shape="rect" href="group___p_h_y_s_i_c_s.html#ga5a40d51963e17af619b6a3c36c687462" title="Update object position componant." alt="" coords="384,56,571,83"/>
+</map>
+</div>
+<div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-9-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-9-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group___p_a_r_t_i_c_l_e_s_ga8a92ddb62fe9f945d5baed9d22938a10_icgraph.png" border="0" usemap="#agroup___p_a_r_t_i_c_l_e_s_ga8a92ddb62fe9f945d5baed9d22938a10_icgraph" alt=""/></div>
+<map name="agroup___p_a_r_t_i_c_l_e_s_ga8a92ddb62fe9f945d5baed9d22938a10_icgraph" id="agroup___p_a_r_t_i_c_l_e_s_ga8a92ddb62fe9f945d5baed9d22938a10_icgraph">
+<area shape="rect" title=" " alt="" coords="104,5,221,32"/>
+<area shape="rect" href="ex__gui__particles_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,5,56,32"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -673,7 +933,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">int move_particles </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_p_a_r_t_i_c_l_e___s_y_s_t_e_m.html">PARTICLE_SYSTEM</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="group___p_a_r_t_i_c_l_e_s.html#struct_p_a_r_t_i_c_l_e___s_y_s_t_e_m">PARTICLE_SYSTEM</a> *&#160;</td>
           <td class="paramname"><em>psys</em>, </td>
         </tr>
         <tr>
@@ -702,7 +962,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__particles_8h.html">n_particles.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="n__particles_8h.html">include/nilorea/n_particles.h</a>&gt;</code></p>
 
 <p class="definition">Definition at line <a class="el" href="n__particles_8c_source.html#l00217">217</a> of file <a class="el" href="n__particles_8c_source.html">n_particles.c</a>.</p>
 
@@ -713,7 +973,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Feb 3 2022 21:53:47 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+    <li class="footer">Generated on Fri Feb 4 2022 17:12:04 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
   </ul>
 </div>
 </body>

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['enumerations_3a_20quick_20and_20clean_20enum_20macro_20set_0',['ENUMERATIONS: quick and clean enum macro set',['../group___e_n_u_m_s.html',1,'']]],
-  ['exceptions_3a_20c_2b_2b_20style_20try_2ccatch_2cendtry_2cthrow_1',['EXCEPTIONS: C++ style try,catch,endtry,throw',['../group___e_x_c_e_p_t_i_o_n_s.html',1,'']]]
+  ['commons_20and_20macros_3a_20generally_20used_20headers_2c_20defines_2c_20timers_2c_20allocators_2c_2e_2e_2e_0',['COMMONS AND MACROS: generally used headers, defines, timers, allocators,...',['../group___c_o_m_m_o_n_s.html',1,'']]],
+  ['configuration_20files_3a_20classic_20config_20file_20loading_2fsaving_1',['CONFIGURATION FILES: classic config file loading/saving',['../group___c_o_n_f_i_g_f_i_l_e.html',1,'']]]
 ];

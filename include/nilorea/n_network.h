@@ -23,15 +23,35 @@ extern "C"
 #include "n_list.h"
 #include "n_hash.h"
 
+/*! Flag for auto detection by OS of ip version to use */
 #define NETWORK_IPALL 0
+/*! Flag to force IPV4  */
 #define NETWORK_IPV4  1
+/*! Flag to force IPV6  */
 #define NETWORK_IPV6  2
+/*! Flag to set send buffer depletion timeout  */
 #define NETWORK_DEPLETE_TIMEOUT 4096
+/*! Flag to set consecutive send waiting timeout  */
 #define NETWORK_CONSECUTIVE_SEND_TIMEOUT 8192
+/*! Size of a HEAD message */
+#define HEAD_SIZE 10
+/*! Code of a HEAD message */
+#define HEAD_CODE 3
 
-
-/*! WINDOWS ONLY call at program exit. Unload WSA DLL and call cleanups, no effect on other OS */
-#define netw_unload() netw_init_wsa( 0 , 2 , 2 )
+#ifndef SOCKET
+/*! default socket declaration */
+#ifdef __windows__
+/*! socket type for windows */
+typedef long long unsigned int SOCKET_TYPE ;
+/*! socket macro shortcut */
+#define SOCKET SOCKET_TYPE
+#else
+/*! socket type for linux */
+typedef int SOCKET_TYPE ;
+/*! socket macro shortcut */
+#define SOCKET SOCKET_TYPE
+#endif
+#endif
 
 #if defined( __linux__ ) || defined( __sun ) || defined( _AIX )
 #include <sys/types.h>
@@ -56,17 +76,24 @@ extern "C"
 
 void netw_sigchld_handler( int sig );
 
+/*! install the reap zombie process signal handler */
+#define netw_server_set_signal_handler() \
+{ \
+        #ifdef LINUX \
+        struct sigaction sa; \
+        sa.sa_handler = sigchld_handler; /* reap dead processes */ \
+        sigemptyset(&sa.sa_mask); \
+        sa.sa_flags = SA_RESTART; \
+        if( sigaction( SIGCHLD , &sa , NULL ) == -1 ) \
+        { \
+            n_log( LOG_ERR , "sigaction error %s" , strerror( errno ) ); \
+            exit( 1 ); \
+        } \
+        #endif \
+}
+
 #ifndef MSG_NOSIGNAL
 #define MSG_NOSIGNAL 0
-#endif
-
-#ifndef SOCKET
-/*! default socket declaration */
-#ifdef __windows__
-#define SOCKET long long unsigned int
-#else
-#define SOCKET int
-#endif
 #endif
 
 /*! socket wrapper */
@@ -157,6 +184,9 @@ void netw_sigchld_handler( int sig );
 /*! Netflag for sigpipe */
 #define NETFLAGS 0           /* no flags needed for microsoft */
 
+/*! WINDOWS ONLY call at program exit. Unload WSA DLL and call cleanups, no effect on other OS */
+#define netw_unload() netw_init_wsa( 0 , 2 , 2 )
+
 #endif
 
 #ifdef HAVE_OPENSSL
@@ -166,7 +196,7 @@ void netw_sigchld_handler( int sig );
 #include <openssl/err.h>
 #endif
 
-/*! Network codes */
+/*! Network codes definition */
 #define N_ENUM_netw_code_type(_)\
 	_(NETW_CLIENT, 2)\
 	_(NETW_SERVER, 4)\
@@ -188,12 +218,8 @@ void netw_sigchld_handler( int sig );
 	_(NETW_DESTROY_RECVBUF, 262144)\
 	_(NETW_DESTROY_SENDBUF, 524288)
 
-N_ENUM_DECLARE( N_ENUM_netw_code_type, __netw_code_type )
-
-/*! PHP send and receive header size */
-#define HEAD_SIZE 10
-/*! PHP send and receive header code */
-#define HEAD_CODE 3
+/*! Network codes declaration */
+N_ENUM_DECLARE( N_ENUM_netw_code_type, __netw_code_type );
 
 /*! send/recv func ptr type */
 typedef int (*netw_func)( SOCKET, char *, NSTRBYTE );
@@ -412,7 +438,7 @@ int netw_send_ping( NETWORK *netw, int type, int id_from, int id_to, int time );
 int netw_send_ident( NETWORK *netw, int type, int id, N_STR *name, N_STR *passwd  );
 int netw_send_position( NETWORK *netw, int id, double X, double Y, double vx, double vy, double acc_x, double acc_y, int time_stamp );
 int netw_send_string_to( NETWORK *netw, int id_to, N_STR *name, N_STR *chan, N_STR *txt, int color );
-int netw_send_string_all( NETWORK *netw, char *name, N_STR *chan, N_STR *N_STR, int color );
+int netw_send_string_to_all( NETWORK *netw, N_STR *name, N_STR *chan, N_STR *txt, int color );
 int netw_send_quit( NETWORK *netw );
 
 

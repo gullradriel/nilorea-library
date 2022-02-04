@@ -1,5 +1,5 @@
 /**\file n_3d.h
- * 3D helpers, vector and
+ * Simple 3D movement simulation
  *\author Castagnier Mickael
  *\version 1.0
  *\date 30/04/2014
@@ -12,8 +12,8 @@
 extern "C" {
 #endif
 
-/**\defgroup 3D GAMEDEV: physics, movement simulation
-   \addtogroup 3D
+/**\defgroup PHYSICS PHYSICS: simple 3D movement simulation
+   \addtogroup PHYSICS
   @{
 */
 

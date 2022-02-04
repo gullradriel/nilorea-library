@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.3"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Nilorea Library: n_time.c Source File</title>
+<title>Nilorea Library: src/n_time.c Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -131,7 +131,7 @@ $(document).ready(function(){initNavTree('n__time_8c_source.html',''); initResiz
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="group___n___t_i_m_e.html#ga83bf99faafa00b4a69f31a589ca712ff">   69</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="group___n___t_i_m_e.html#ga83bf99faafa00b4a69f31a589ca712ff">start_HiTimer</a>( <a class="code hl_struct" href="struct_n___t_i_m_e.html">N_TIME</a> *timer )</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="group___n___t_i_m_e.html#ga83bf99faafa00b4a69f31a589ca712ff">   69</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="group___n___t_i_m_e.html#ga83bf99faafa00b4a69f31a589ca712ff">start_HiTimer</a>( <a class="code hl_struct" href="group___n___t_i_m_e.html#struct_n___t_i_m_e">N_TIME</a> *timer )</div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>{</div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <span class="comment">/* set delta to 0 */</span></div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    timer -&gt; delta = 0;</div>
@@ -151,7 +151,7 @@ $(document).ready(function(){initNavTree('n__time_8c_source.html',''); initResiz
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
 <div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno"><a class="line" href="group___n___t_i_m_e.html#gaa26bb3d464f6def321b9919bf1e9d1f4">   94</a></span>time_t <a class="code hl_function" href="group___n___t_i_m_e.html#gaa26bb3d464f6def321b9919bf1e9d1f4">get_usec</a>( <a class="code hl_struct" href="struct_n___t_i_m_e.html">N_TIME</a> *timer )</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno"><a class="line" href="group___n___t_i_m_e.html#gaa26bb3d464f6def321b9919bf1e9d1f4">   94</a></span>time_t <a class="code hl_function" href="group___n___t_i_m_e.html#gaa26bb3d464f6def321b9919bf1e9d1f4">get_usec</a>( <a class="code hl_struct" href="group___n___t_i_m_e.html#struct_n___t_i_m_e">N_TIME</a> *timer )</div>
 <div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>{</div>
 <div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="preprocessor">#ifdef __windows__</span></div>
 <div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    QueryPerformanceCounter( ( LARGE_INTEGER * ) &amp; timer -&gt; currentTime );</div>
@@ -169,7 +169,7 @@ $(document).ready(function(){initNavTree('n__time_8c_source.html',''); initResiz
 <div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
 <div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
 <div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno"><a class="line" href="group___n___t_i_m_e.html#gaa71a2f2a65caafed11a79e4317e88b44">  117</a></span>time_t <a class="code hl_function" href="group___n___t_i_m_e.html#gaa71a2f2a65caafed11a79e4317e88b44">get_msec</a>( <a class="code hl_struct" href="struct_n___t_i_m_e.html">N_TIME</a> *timer )</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno"><a class="line" href="group___n___t_i_m_e.html#gaa71a2f2a65caafed11a79e4317e88b44">  117</a></span>time_t <a class="code hl_function" href="group___n___t_i_m_e.html#gaa71a2f2a65caafed11a79e4317e88b44">get_msec</a>( <a class="code hl_struct" href="group___n___t_i_m_e.html#struct_n___t_i_m_e">N_TIME</a> *timer )</div>
 <div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>{</div>
 <div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span><span class="preprocessor">#ifdef __windows__</span></div>
 <div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    QueryPerformanceCounter( ( LARGE_INTEGER * ) &amp; timer -&gt; currentTime );</div>
@@ -187,7 +187,7 @@ $(document).ready(function(){initNavTree('n__time_8c_source.html',''); initResiz
 <div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span> </div>
 <div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span> </div>
 <div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span> </div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno"><a class="line" href="group___n___t_i_m_e.html#gab5811f13d7c9699d13752c197d72cb67">  140</a></span>time_t <a class="code hl_function" href="group___n___t_i_m_e.html#gab5811f13d7c9699d13752c197d72cb67">get_sec</a>( <a class="code hl_struct" href="struct_n___t_i_m_e.html">N_TIME</a> *timer )</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno"><a class="line" href="group___n___t_i_m_e.html#gab5811f13d7c9699d13752c197d72cb67">  140</a></span>time_t <a class="code hl_function" href="group___n___t_i_m_e.html#gab5811f13d7c9699d13752c197d72cb67">get_sec</a>( <a class="code hl_struct" href="group___n___t_i_m_e.html#struct_n___t_i_m_e">N_TIME</a> *timer )</div>
 <div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>{</div>
 <div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span><span class="preprocessor">#ifdef __windows__</span></div>
 <div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>    QueryPerformanceCounter( ( LARGE_INTEGER * ) &amp; timer -&gt; currentTime );</div>
@@ -208,15 +208,15 @@ $(document).ready(function(){initNavTree('n__time_8c_source.html',''); initResiz
 <div class="ttc" id="agroup___n___t_i_m_e_html_gaa71a2f2a65caafed11a79e4317e88b44"><div class="ttname"><a href="group___n___t_i_m_e.html#gaa71a2f2a65caafed11a79e4317e88b44">get_msec</a></div><div class="ttdeci">time_t get_msec(N_TIME *timer)</div><div class="ttdoc">Poll any N_TIME HiTimer, returning msec, and moving currentTime to startTime.</div><div class="ttdef"><b>Definition:</b> <a href="n__time_8c_source.html#l00117">n_time.c:117</a></div></div>
 <div class="ttc" id="agroup___n___t_i_m_e_html_gab5811f13d7c9699d13752c197d72cb67"><div class="ttname"><a href="group___n___t_i_m_e.html#gab5811f13d7c9699d13752c197d72cb67">get_sec</a></div><div class="ttdeci">time_t get_sec(N_TIME *timer)</div><div class="ttdoc">Poll any N_TIME HiTimer, returning sec, and moving currentTime to startTime.</div><div class="ttdef"><b>Definition:</b> <a href="n__time_8c_source.html#l00140">n_time.c:140</a></div></div>
 <div class="ttc" id="agroup___n___t_i_m_e_html_gae4029ed3ae38f152bc572933ed1997be"><div class="ttname"><a href="group___n___t_i_m_e.html#gae4029ed3ae38f152bc572933ed1997be">PAUSE</a></div><div class="ttdeci">void PAUSE(void)</div><div class="ttdoc">make a pause in a terminal</div><div class="ttdef"><b>Definition:</b> <a href="n__time_8c_source.html#l00049">n_time.c:49</a></div></div>
-<div class="ttc" id="an__time_8h_html"><div class="ttname"><a href="n__time_8h.html">n_time.h</a></div><div class="ttdoc">Timing utilities.</div></div>
-<div class="ttc" id="astruct_n___t_i_m_e_html"><div class="ttname"><a href="struct_n___t_i_m_e.html">N_TIME</a></div><div class="ttdoc">Timing Structure.</div><div class="ttdef"><b>Definition:</b> <a href="n__time_8h_source.html#l00033">n_time.h:34</a></div></div>
+<div class="ttc" id="agroup___n___t_i_m_e_html_struct_n___t_i_m_e"><div class="ttname"><a href="group___n___t_i_m_e.html#struct_n___t_i_m_e">N_TIME</a></div><div class="ttdef"><b>Definition:</b> <a href="n__time_8h_source.html#l00033">n_time.h:34</a></div></div>
+<div class="ttc" id="an__time_8h_html"><div class="ttname"><a href="n__time_8h.html">n_time.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="n__time_8c.html">n_time.c</a></li>
-    <li class="footer">Generated on Thu Feb 3 2022 21:53:47 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+    <li class="footer">Generated on Fri Feb 4 2022 17:12:04 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
   </ul>
 </div>
 </body>

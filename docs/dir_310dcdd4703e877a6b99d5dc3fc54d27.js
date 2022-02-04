@@ -18,10 +18,10 @@ var dir_310dcdd4703e877a6b99d5dc3fc54d27 =
     [ "n_particles.h", "n__particles_8h.html", "n__particles_8h" ],
     [ "n_pcre.h", "n__pcre_8h.html", "n__pcre_8h" ],
     [ "n_signals.h", "n__signals_8h.html", "n__signals_8h" ],
-    [ "n_stack.h", "n__stack_8h_source.html", null ],
+    [ "n_stack.h", "n__stack_8h.html", null ],
     [ "n_str.h", "n__str_8h.html", "n__str_8h" ],
     [ "n_thread_pool.h", "n__thread__pool_8h.html", "n__thread__pool_8h" ],
     [ "n_time.h", "n__time_8h.html", "n__time_8h" ],
-    [ "n_user.h", "n__user_8h.html", null ],
+    [ "n_user.h", "n__user_8h.html", "n__user_8h" ],
     [ "n_zlib.h", "n__zlib_8h.html", "n__zlib_8h" ]
 ];

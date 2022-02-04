@@ -92,8 +92,8 @@ $(document).ready(function(){initNavTree('group___l_o_g.html',''); initResizable
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Data Structures</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_t_s___l_o_g.html">TS_LOG</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:struct_t_s___l_o_g"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___l_o_g.html#struct_t_s___l_o_g">TS_LOG</a></td></tr>
+<tr class="separator:struct_t_s___l_o_g"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
@@ -127,27 +127,86 @@ Macros</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:gafbbbfcb9063b9f1454a499dbf98f7a56"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___l_o_g.html#gafbbbfcb9063b9f1454a499dbf98f7a56">_n_log</a> (int level, const char *file, const char *func, int line, const char *format,...)</td></tr>
+<tr class="memdesc:gafbbbfcb9063b9f1454a499dbf98f7a56"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logging function. log( level , const char *format , ... ) is a macro around _log.  <a href="group___l_o_g.html#gafbbbfcb9063b9f1454a499dbf98f7a56">More...</a><br /></td></tr>
 <tr class="separator:gafbbbfcb9063b9f1454a499dbf98f7a56"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab0f29a8f3d807e2738376cd0bd657eb0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___l_o_g.html#gab0f29a8f3d807e2738376cd0bd657eb0">close_safe_logging</a> (<a class="el" href="struct_t_s___l_o_g.html">TS_LOG</a> *log)</td></tr>
+<tr class="memitem:gab0f29a8f3d807e2738376cd0bd657eb0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___l_o_g.html#gab0f29a8f3d807e2738376cd0bd657eb0">close_safe_logging</a> (<a class="el" href="group___l_o_g.html#struct_t_s___l_o_g">TS_LOG</a> *log)</td></tr>
+<tr class="memdesc:gab0f29a8f3d807e2738376cd0bd657eb0"><td class="mdescLeft">&#160;</td><td class="mdescRight">close a thread-safe logging file  <a href="group___l_o_g.html#gab0f29a8f3d807e2738376cd0bd657eb0">More...</a><br /></td></tr>
 <tr class="separator:gab0f29a8f3d807e2738376cd0bd657eb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga6b48448b4bb689cc55c6a7267daf77ca"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___l_o_g.html#ga6b48448b4bb689cc55c6a7267daf77ca">close_sysjrnl</a> (void)</td></tr>
+<tr class="memdesc:ga6b48448b4bb689cc55c6a7267daf77ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Close syslog connection or clean internals for event log.  <a href="group___l_o_g.html#ga6b48448b4bb689cc55c6a7267daf77ca">More...</a><br /></td></tr>
 <tr class="separator:ga6b48448b4bb689cc55c6a7267daf77ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga2ff7ac3ed2362bf2820e1639b4ddaf8f"><td class="memItemLeft" align="right" valign="top">FILE *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___l_o_g.html#ga2ff7ac3ed2362bf2820e1639b4ddaf8f">get_log_file</a> (void)</td></tr>
+<tr class="memdesc:ga2ff7ac3ed2362bf2820e1639b4ddaf8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the current log_file  <a href="group___l_o_g.html#ga2ff7ac3ed2362bf2820e1639b4ddaf8f">More...</a><br /></td></tr>
 <tr class="separator:ga2ff7ac3ed2362bf2820e1639b4ddaf8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gafeea44ab08778cbff68e91e831d44112"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___l_o_g.html#gafeea44ab08778cbff68e91e831d44112">get_log_level</a> (void)</td></tr>
+<tr class="memdesc:gafeea44ab08778cbff68e91e831d44112"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the global log level value.  <a href="group___l_o_g.html#gafeea44ab08778cbff68e91e831d44112">More...</a><br /></td></tr>
 <tr class="separator:gafeea44ab08778cbff68e91e831d44112"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga51d76a6d03860ab048a2f09eabc27f9a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___l_o_g.html#ga51d76a6d03860ab048a2f09eabc27f9a">open_safe_logging</a> (<a class="el" href="struct_t_s___l_o_g.html">TS_LOG</a> **log, char *pathname, char *opt)</td></tr>
+<tr class="memitem:ga51d76a6d03860ab048a2f09eabc27f9a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___l_o_g.html#ga51d76a6d03860ab048a2f09eabc27f9a">open_safe_logging</a> (<a class="el" href="group___l_o_g.html#struct_t_s___l_o_g">TS_LOG</a> **log, char *pathname, char *opt)</td></tr>
+<tr class="memdesc:ga51d76a6d03860ab048a2f09eabc27f9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Open a thread-safe logging file.  <a href="group___l_o_g.html#ga51d76a6d03860ab048a2f09eabc27f9a">More...</a><br /></td></tr>
 <tr class="separator:ga51d76a6d03860ab048a2f09eabc27f9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga669c0bbf1e87d5531b6432ae87c46648"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___l_o_g.html#ga669c0bbf1e87d5531b6432ae87c46648">open_sysjrnl</a> (char *identity)</td></tr>
+<tr class="memdesc:ga669c0bbf1e87d5531b6432ae87c46648"><td class="mdescLeft">&#160;</td><td class="mdescRight">Open connection to syslog or create internals for event log.  <a href="group___l_o_g.html#ga669c0bbf1e87d5531b6432ae87c46648">More...</a><br /></td></tr>
 <tr class="separator:ga669c0bbf1e87d5531b6432ae87c46648"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gac83aa9829ddf0d169e2890ef63052b52"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___l_o_g.html#gac83aa9829ddf0d169e2890ef63052b52">set_log_file</a> (char *file)</td></tr>
+<tr class="memdesc:gac83aa9829ddf0d169e2890ef63052b52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the logging to a file instead of stderr.  <a href="group___l_o_g.html#gac83aa9829ddf0d169e2890ef63052b52">More...</a><br /></td></tr>
 <tr class="separator:gac83aa9829ddf0d169e2890ef63052b52"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gacad9b2d55788f46ddde811c986ead9ae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___l_o_g.html#gacad9b2d55788f46ddde811c986ead9ae">set_log_level</a> (const int log_level)</td></tr>
+<tr class="memitem:gacad9b2d55788f46ddde811c986ead9ae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___l_o_g.html#gacad9b2d55788f46ddde811c986ead9ae">set_log_level</a> (const int <a class="el" href="ex__gui__particles_8c.html#ab5a71c2541c377b3d5b34fdb35964c2e">log_level</a>)</td></tr>
+<tr class="memdesc:gacad9b2d55788f46ddde811c986ead9ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the global log level value ( static int LOG_LEVEL )  <a href="group___l_o_g.html#gacad9b2d55788f46ddde811c986ead9ae">More...</a><br /></td></tr>
 <tr class="separator:gacad9b2d55788f46ddde811c986ead9ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga4351d7c5fb7f3464480aebb763b70d69"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___l_o_g.html#ga4351d7c5fb7f3464480aebb763b70d69">write_safe_log</a> (<a class="el" href="struct_t_s___l_o_g.html">TS_LOG</a> *log, char *pat,...)</td></tr>
+<tr class="memitem:ga4351d7c5fb7f3464480aebb763b70d69"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___l_o_g.html#ga4351d7c5fb7f3464480aebb763b70d69">write_safe_log</a> (<a class="el" href="group___l_o_g.html#struct_t_s___l_o_g">TS_LOG</a> *log, char *pat,...)</td></tr>
+<tr class="memdesc:ga4351d7c5fb7f3464480aebb763b70d69"><td class="mdescLeft">&#160;</td><td class="mdescRight">write to a thread-safe logging file  <a href="group___l_o_g.html#ga4351d7c5fb7f3464480aebb763b70d69">More...</a><br /></td></tr>
 <tr class="separator:ga4351d7c5fb7f3464480aebb763b70d69"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<hr/><h2 class="groupheader">Data Structure Documentation</h2>
+<a name="struct_t_s___l_o_g" id="struct_t_s___l_o_g"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#struct_t_s___l_o_g">&#9670;&nbsp;</a></span>TS_LOG</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct TS_LOG</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="textblock"><p >ThreadSafe LOGging structure </p>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ex_log_8c-example.html#_a18">ex_log.c</a>.</dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="n__log_8h_source.html#l00082">82</a> of file <a class="el" href="n__log_8h_source.html">n_log.h</a>.</p>
+</div><div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for TS_LOG:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="struct_t_s___l_o_g__coll__graph.png" border="0" usemap="#a_t_s___l_o_g_coll__map" alt="Collaboration graph"/></div>
+<map name="a_t_s___l_o_g_coll__map" id="a_t_s___l_o_g_coll__map">
+<area shape="rect" title=" " alt="" coords="89,145,161,223"/>
+<area shape="rect" title=" " alt="" coords="5,5,124,83"/>
+<area shape="rect" title=" " alt="" coords="155,5,214,83"/>
+</map>
+</div>
+<table class="fieldtable">
+<tr><th colspan="3">Data Fields</th></tr>
+<tr><td class="fieldtype">
+<a id="a6a76aec4c92f3ec5fe144d43c7598d0b" name="a6a76aec4c92f3ec5fe144d43c7598d0b"></a>FILE *</td>
+<td class="fieldname">
+file</td>
+<td class="fielddoc">
+<p >File handler </p>
+</td></tr>
+<tr><td class="fieldtype">
+<a id="a32664ef9397f6cd959979f9778791269" name="a32664ef9397f6cd959979f9778791269"></a>pthread_mutex_t</td>
+<td class="fieldname">
+LOG_MUTEX</td>
+<td class="fielddoc">
+<p >mutex for thread-safe writting </p>
+</td></tr>
+</table>
+
+</div>
+</div>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="ga12b2a3bb9e3adfeb35b4e5514e7d9043" name="ga12b2a3bb9e3adfeb35b4e5514e7d9043"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga12b2a3bb9e3adfeb35b4e5514e7d9043">&#9670;&nbsp;</a></span>LOG_ALERT</h2>
@@ -161,10 +220,9 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__log_8h.html">n_log.h</a>&gt;</code></p>
-
-<p>action must be taken immediately </p>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ex_log_8c-example.html#a4">ex_log.c</a>.</dd>
+<p><code>#include &lt;<a class="el" href="n__log_8h.html">include/nilorea/n_log.h</a>&gt;</code></p>
+<p >action must be taken immediately </p>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ex_log_8c-example.html#a5">ex_log.c</a>.</dd>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="n__log_8h_source.html#l00054">54</a> of file <a class="el" href="n__log_8h_source.html">n_log.h</a>.</p>
@@ -183,10 +241,9 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__log_8h.html">n_log.h</a>&gt;</code></p>
-
-<p>critical conditions </p>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ex_log_8c-example.html#a5">ex_log.c</a>.</dd>
+<p><code>#include &lt;<a class="el" href="n__log_8h.html">include/nilorea/n_log.h</a>&gt;</code></p>
+<p >critical conditions </p>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ex_log_8c-example.html#a6">ex_log.c</a>.</dd>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="n__log_8h_source.html#l00056">56</a> of file <a class="el" href="n__log_8h_source.html">n_log.h</a>.</p>
@@ -205,10 +262,9 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__log_8h.html">n_log.h</a>&gt;</code></p>
-
-<p>debug-level messages </p>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ex_common_8c-example.html#a0">ex_common.c</a>, <a class="el" href="ex_configfile_8c-example.html#a1">ex_configfile.c</a>, <a class="el" href="ex_exceptions_8c-example.html#a9">ex_exceptions.c</a>, <a class="el" href="ex_gui_netclient_8c-example.html#a21">ex_gui_netclient.c</a>, <a class="el" href="ex_gui_netserver_8c-example.html#a5">ex_gui_netserver.c</a>, <a class="el" href="ex_gui_particles_8c-example.html#a10">ex_gui_particles.c</a>, <a class="el" href="ex_hash_8c-example.html#a6">ex_hash.c</a>, <a class="el" href="ex_list_8c-example.html#a6">ex_list.c</a>, <a class="el" href="ex_log_8c-example.html#a10">ex_log.c</a>, <a class="el" href="ex_monolith_8c-example.html#a1">ex_monolith.c</a>, <a class="el" href="ex_network_8c-example.html#a6">ex_network.c</a>, <a class="el" href="ex_nstr_8c-example.html#a1">ex_nstr.c</a>, <a class="el" href="ex_pcre_8c-example.html#a2">ex_pcre.c</a>, <a class="el" href="ex_signals_8c-example.html#a1">ex_signals.c</a>, and <a class="el" href="ex_threads_8c-example.html#a4">ex_threads.c</a>.</dd>
+<p><code>#include &lt;<a class="el" href="n__log_8h.html">include/nilorea/n_log.h</a>&gt;</code></p>
+<p >debug-level messages </p>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ex_common_8c-example.html#a4">ex_common.c</a>, <a class="el" href="ex_configfile_8c-example.html#a2">ex_configfile.c</a>, <a class="el" href="ex_exceptions_8c-example.html#a15">ex_exceptions.c</a>, <a class="el" href="ex_gui_netclient_8c-example.html#a36">ex_gui_netclient.c</a>, <a class="el" href="ex_gui_netserver_8c-example.html#a12">ex_gui_netserver.c</a>, <a class="el" href="ex_gui_particles_8c-example.html#a22">ex_gui_particles.c</a>, <a class="el" href="ex_hash_8c-example.html#a9">ex_hash.c</a>, <a class="el" href="ex_list_8c-example.html#a9">ex_list.c</a>, <a class="el" href="ex_log_8c-example.html#a11">ex_log.c</a>, <a class="el" href="ex_monolith_8c-example.html#a2">ex_monolith.c</a>, <a class="el" href="ex_network_8c-example.html#a19">ex_network.c</a>, <a class="el" href="ex_nstr_8c-example.html#a2">ex_nstr.c</a>, <a class="el" href="ex_pcre_8c-example.html#a3">ex_pcre.c</a>, <a class="el" href="ex_signals_8c-example.html#a9">ex_signals.c</a>, and <a class="el" href="ex_threads_8c-example.html#a9">ex_threads.c</a>.</dd>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="n__log_8h_source.html#l00066">66</a> of file <a class="el" href="n__log_8h_source.html">n_log.h</a>.</p>
@@ -227,10 +283,9 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__log_8h.html">n_log.h</a>&gt;</code></p>
-
-<p>system is unusable </p>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ex_log_8c-example.html#a3">ex_log.c</a>.</dd>
+<p><code>#include &lt;<a class="el" href="n__log_8h.html">include/nilorea/n_log.h</a>&gt;</code></p>
+<p >system is unusable </p>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ex_log_8c-example.html#a4">ex_log.c</a>.</dd>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="n__log_8h_source.html#l00052">52</a> of file <a class="el" href="n__log_8h_source.html">n_log.h</a>.</p>
@@ -249,10 +304,9 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__log_8h.html">n_log.h</a>&gt;</code></p>
-
-<p>error conditions </p>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ex_common_8c-example.html#a4">ex_common.c</a>, <a class="el" href="ex_configfile_8c-example.html#a3">ex_configfile.c</a>, <a class="el" href="ex_gui_netclient_8c-example.html#a16">ex_gui_netclient.c</a>, <a class="el" href="ex_gui_netserver_8c-example.html#a0">ex_gui_netserver.c</a>, <a class="el" href="ex_gui_particles_8c-example.html#a0">ex_gui_particles.c</a>, <a class="el" href="ex_list_8c-example.html#a15">ex_list.c</a>, <a class="el" href="ex_log_8c-example.html#a6">ex_log.c</a>, <a class="el" href="ex_network_8c-example.html#a1">ex_network.c</a>, <a class="el" href="ex_pcre_8c-example.html#a5">ex_pcre.c</a>, and <a class="el" href="ex_threads_8c-example.html#a0">ex_threads.c</a>.</dd>
+<p><code>#include &lt;<a class="el" href="n__log_8h.html">include/nilorea/n_log.h</a>&gt;</code></p>
+<p >error conditions </p>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ex_common_8c-example.html#a8">ex_common.c</a>, <a class="el" href="ex_configfile_8c-example.html#a4">ex_configfile.c</a>, <a class="el" href="ex_gui_netclient_8c-example.html#a29">ex_gui_netclient.c</a>, <a class="el" href="ex_gui_netserver_8c-example.html#a5">ex_gui_netserver.c</a>, <a class="el" href="ex_gui_particles_8c-example.html#a4">ex_gui_particles.c</a>, <a class="el" href="ex_list_8c-example.html#a21">ex_list.c</a>, <a class="el" href="ex_log_8c-example.html#a7">ex_log.c</a>, <a class="el" href="ex_network_8c-example.html#a12">ex_network.c</a>, <a class="el" href="ex_pcre_8c-example.html#a6">ex_pcre.c</a>, and <a class="el" href="ex_threads_8c-example.html#a5">ex_threads.c</a>.</dd>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="n__log_8h_source.html#l00058">58</a> of file <a class="el" href="n__log_8h_source.html">n_log.h</a>.</p>
@@ -271,9 +325,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__log_8h.html">n_log.h</a>&gt;</code></p>
-
-<p>internal, logging to file </p>
+<p><code>#include &lt;<a class="el" href="n__log_8h.html">include/nilorea/n_log.h</a>&gt;</code></p>
+<p >internal, logging to file </p>
 
 <p class="definition">Definition at line <a class="el" href="n__log_8h_source.html#l00029">29</a> of file <a class="el" href="n__log_8h_source.html">n_log.h</a>.</p>
 
@@ -291,10 +344,9 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__log_8h.html">n_log.h</a>&gt;</code></p>
-
-<p>informational </p>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ex_common_8c-example.html#a3">ex_common.c</a>, <a class="el" href="ex_configfile_8c-example.html#a7">ex_configfile.c</a>, <a class="el" href="ex_exceptions_8c-example.html#a11">ex_exceptions.c</a>, <a class="el" href="ex_gui_netclient_8c-example.html#a20">ex_gui_netclient.c</a>, <a class="el" href="ex_gui_netserver_8c-example.html#a4">ex_gui_netserver.c</a>, <a class="el" href="ex_gui_particles_8c-example.html#a9">ex_gui_particles.c</a>, <a class="el" href="ex_hash_8c-example.html#a11">ex_hash.c</a>, <a class="el" href="ex_list_8c-example.html#a18">ex_list.c</a>, <a class="el" href="ex_log_8c-example.html#a9">ex_log.c</a>, <a class="el" href="ex_network_8c-example.html#a5">ex_network.c</a>, <a class="el" href="ex_nstr_8c-example.html#a4">ex_nstr.c</a>, <a class="el" href="ex_pcre_8c-example.html#a4">ex_pcre.c</a>, and <a class="el" href="ex_threads_8c-example.html#a3">ex_threads.c</a>.</dd>
+<p><code>#include &lt;<a class="el" href="n__log_8h.html">include/nilorea/n_log.h</a>&gt;</code></p>
+<p >informational </p>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ex_common_8c-example.html#a7">ex_common.c</a>, <a class="el" href="ex_configfile_8c-example.html#a8">ex_configfile.c</a>, <a class="el" href="ex_exceptions_8c-example.html#a17">ex_exceptions.c</a>, <a class="el" href="ex_gui_netclient_8c-example.html#a35">ex_gui_netclient.c</a>, <a class="el" href="ex_gui_netserver_8c-example.html#a11">ex_gui_netserver.c</a>, <a class="el" href="ex_gui_particles_8c-example.html#a21">ex_gui_particles.c</a>, <a class="el" href="ex_hash_8c-example.html#a16">ex_hash.c</a>, <a class="el" href="ex_list_8c-example.html#a24">ex_list.c</a>, <a class="el" href="ex_log_8c-example.html#a10">ex_log.c</a>, <a class="el" href="ex_network_8c-example.html#a18">ex_network.c</a>, <a class="el" href="ex_nstr_8c-example.html#a5">ex_nstr.c</a>, <a class="el" href="ex_pcre_8c-example.html#a5">ex_pcre.c</a>, and <a class="el" href="ex_threads_8c-example.html#a8">ex_threads.c</a>.</dd>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="n__log_8h_source.html#l00064">64</a> of file <a class="el" href="n__log_8h_source.html">n_log.h</a>.</p>
@@ -313,10 +365,9 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__log_8h.html">n_log.h</a>&gt;</code></p>
-
-<p>normal but significant condition </p>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ex_common_8c-example.html#a2">ex_common.c</a>, <a class="el" href="ex_exceptions_8c-example.html#a1">ex_exceptions.c</a>, <a class="el" href="ex_gui_netclient_8c-example.html#a18">ex_gui_netclient.c</a>, <a class="el" href="ex_gui_netserver_8c-example.html#a2">ex_gui_netserver.c</a>, <a class="el" href="ex_gui_particles_8c-example.html#a4">ex_gui_particles.c</a>, <a class="el" href="ex_list_8c-example.html#a3">ex_list.c</a>, <a class="el" href="ex_log_8c-example.html#a8">ex_log.c</a>, <a class="el" href="ex_network_8c-example.html#a3">ex_network.c</a>, and <a class="el" href="ex_threads_8c-example.html#a2">ex_threads.c</a>.</dd>
+<p><code>#include &lt;<a class="el" href="n__log_8h.html">include/nilorea/n_log.h</a>&gt;</code></p>
+<p >normal but significant condition </p>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ex_common_8c-example.html#a6">ex_common.c</a>, <a class="el" href="ex_exceptions_8c-example.html#a2">ex_exceptions.c</a>, <a class="el" href="ex_gui_netclient_8c-example.html#a32">ex_gui_netclient.c</a>, <a class="el" href="ex_gui_netserver_8c-example.html#a8">ex_gui_netserver.c</a>, <a class="el" href="ex_gui_particles_8c-example.html#a14">ex_gui_particles.c</a>, <a class="el" href="ex_list_8c-example.html#a4">ex_list.c</a>, <a class="el" href="ex_log_8c-example.html#a9">ex_log.c</a>, <a class="el" href="ex_network_8c-example.html#a15">ex_network.c</a>, and <a class="el" href="ex_threads_8c-example.html#a7">ex_threads.c</a>.</dd>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="n__log_8h_source.html#l00062">62</a> of file <a class="el" href="n__log_8h_source.html">n_log.h</a>.</p>
@@ -335,10 +386,9 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__log_8h.html">n_log.h</a>&gt;</code></p>
-
-<p>no log output </p>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ex_common_8c-example.html#a1">ex_common.c</a>, <a class="el" href="ex_gui_netclient_8c-example.html#a19">ex_gui_netclient.c</a>, <a class="el" href="ex_gui_netserver_8c-example.html#a3">ex_gui_netserver.c</a>, <a class="el" href="ex_log_8c-example.html#a1">ex_log.c</a>, <a class="el" href="ex_network_8c-example.html#a4">ex_network.c</a>, and <a class="el" href="ex_threads_8c-example.html#a1">ex_threads.c</a>.</dd>
+<p><code>#include &lt;<a class="el" href="n__log_8h.html">include/nilorea/n_log.h</a>&gt;</code></p>
+<p >no log output </p>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ex_common_8c-example.html#a5">ex_common.c</a>, <a class="el" href="ex_gui_netclient_8c-example.html#a34">ex_gui_netclient.c</a>, <a class="el" href="ex_gui_netserver_8c-example.html#a10">ex_gui_netserver.c</a>, <a class="el" href="ex_log_8c-example.html#a2">ex_log.c</a>, <a class="el" href="ex_network_8c-example.html#a17">ex_network.c</a>, and <a class="el" href="ex_threads_8c-example.html#a6">ex_threads.c</a>.</dd>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="n__log_8h_source.html#l00027">27</a> of file <a class="el" href="n__log_8h_source.html">n_log.h</a>.</p>
@@ -357,10 +407,9 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__log_8h.html">n_log.h</a>&gt;</code></p>
-
-<p>internal, default LOG_TYPE </p>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ex_exceptions_8c-example.html#a8">ex_exceptions.c</a>, <a class="el" href="ex_pcre_8c-example.html#a1">ex_pcre.c</a>, and <a class="el" href="ex_signals_8c-example.html#a2">ex_signals.c</a>.</dd>
+<p><code>#include &lt;<a class="el" href="n__log_8h.html">include/nilorea/n_log.h</a>&gt;</code></p>
+<p >internal, default LOG_TYPE </p>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ex_exceptions_8c-example.html#a14">ex_exceptions.c</a>, <a class="el" href="ex_pcre_8c-example.html#a2">ex_pcre.c</a>, and <a class="el" href="ex_signals_8c-example.html#a10">ex_signals.c</a>.</dd>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="n__log_8h_source.html#l00031">31</a> of file <a class="el" href="n__log_8h_source.html">n_log.h</a>.</p>
@@ -379,9 +428,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__log_8h.html">n_log.h</a>&gt;</code></p>
-
-<p>to sysjrnl </p>
+<p><code>#include &lt;<a class="el" href="n__log_8h.html">include/nilorea/n_log.h</a>&gt;</code></p>
+<p >to sysjrnl </p>
 
 <p class="definition">Definition at line <a class="el" href="n__log_8h_source.html#l00033">33</a> of file <a class="el" href="n__log_8h_source.html">n_log.h</a>.</p>
 
@@ -399,10 +447,9 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__log_8h.html">n_log.h</a>&gt;</code></p>
-
-<p>warning conditions </p>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ex_log_8c-example.html#a7">ex_log.c</a>.</dd>
+<p><code>#include &lt;<a class="el" href="n__log_8h.html">include/nilorea/n_log.h</a>&gt;</code></p>
+<p >warning conditions </p>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ex_log_8c-example.html#a8">ex_log.c</a>.</dd>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="n__log_8h_source.html#l00060">60</a> of file <a class="el" href="n__log_8h_source.html">n_log.h</a>.</p>
@@ -435,14 +482,13 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__log_8h.html">n_log.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="n__log_8h.html">include/nilorea/n_log.h</a>&gt;</code></p>
 <b>Value:</b><div class="fragment"><div class="line">                <span class="keywordflow">do</span> \</div>
 <div class="line">                { \</div>
 <div class="line">                                _n_log( __LEVEL__ , __FILE__ , __func__ , __LINE__ , __VA_ARGS__ ); \</div>
 <div class="line">                }<span class="keywordflow">while</span>( 0 )</div>
-</div><!-- fragment -->
-<p>Logging function wrapper to get line and func. </p>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ex_common_8c-example.html#a7">ex_common.c</a>, <a class="el" href="ex_configfile_8c-example.html#a2">ex_configfile.c</a>, <a class="el" href="ex_exceptions_8c-example.html#a0">ex_exceptions.c</a>, <a class="el" href="ex_gui_netclient_8c-example.html#a17">ex_gui_netclient.c</a>, <a class="el" href="ex_gui_netserver_8c-example.html#a1">ex_gui_netserver.c</a>, <a class="el" href="ex_gui_particles_8c-example.html#a7">ex_gui_particles.c</a>, <a class="el" href="ex_hash_8c-example.html#a10">ex_hash.c</a>, <a class="el" href="ex_list_8c-example.html#a2">ex_list.c</a>, <a class="el" href="ex_log_8c-example.html#a2">ex_log.c</a>, <a class="el" href="ex_network_8c-example.html#a2">ex_network.c</a>, <a class="el" href="ex_nstr_8c-example.html#a3">ex_nstr.c</a>, <a class="el" href="ex_pcre_8c-example.html#a3">ex_pcre.c</a>, <a class="el" href="ex_signals_8c-example.html#a3">ex_signals.c</a>, and <a class="el" href="ex_threads_8c-example.html#a7">ex_threads.c</a>.</dd>
+</div><!-- fragment --><p >Logging function wrapper to get line and func </p>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ex_common_8c-example.html#a12">ex_common.c</a>, <a class="el" href="ex_configfile_8c-example.html#a3">ex_configfile.c</a>, <a class="el" href="ex_exceptions_8c-example.html#a1">ex_exceptions.c</a>, <a class="el" href="ex_gui_netclient_8c-example.html#a31">ex_gui_netclient.c</a>, <a class="el" href="ex_gui_netserver_8c-example.html#a7">ex_gui_netserver.c</a>, <a class="el" href="ex_gui_particles_8c-example.html#a19">ex_gui_particles.c</a>, <a class="el" href="ex_hash_8c-example.html#a15">ex_hash.c</a>, <a class="el" href="ex_list_8c-example.html#a3">ex_list.c</a>, <a class="el" href="ex_log_8c-example.html#a3">ex_log.c</a>, <a class="el" href="ex_network_8c-example.html#a14">ex_network.c</a>, <a class="el" href="ex_nstr_8c-example.html#a4">ex_nstr.c</a>, <a class="el" href="ex_pcre_8c-example.html#a4">ex_pcre.c</a>, <a class="el" href="ex_signals_8c-example.html#a11">ex_signals.c</a>, and <a class="el" href="ex_threads_8c-example.html#a13">ex_threads.c</a>.</dd>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="n__log_8h_source.html#l00074">74</a> of file <a class="el" href="n__log_8h_source.html">n_log.h</a>.</p>
@@ -500,10 +546,10 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__log_8h.html">n_log.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="n__log_8h.html">include/nilorea/n_log.h</a>&gt;</code></p>
 
-<p>Logging function. </p>
-<p >log( level , const char *format , ... ) is a macro around _log </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Logging function. log( level , const char *format , ... ) is a macro around _log. </p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">level</td><td>Logging level </td></tr>
     <tr><td class="paramname">file</td><td>File containing the emmited log </td></tr>
@@ -516,7 +562,34 @@ Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="n__log_8c_source.html#l00216">216</a> of file <a class="el" href="n__log_8c_source.html">n_log.c</a>.</p>
 
-<p class="reference">References <a class="el" href="n__log_8h_source.html#l00027">LOG_NULL</a>.</p>
+<p class="reference">References <a class="el" href="n__common_8h_source.html#l00254">FreeNoLog</a>, <a class="el" href="n__log_8c_source.html#l00123">get_log_level()</a>, <a class="el" href="n__log_8c_source.html#l00053">log_file</a>, <a class="el" href="ex__gui__particles_8c_source.html#l00021">log_level</a>, <a class="el" href="n__log_8h_source.html#l00027">LOG_NULL</a>, <a class="el" href="n__log_8h_source.html#l00033">LOG_SYSJRNL</a>, <a class="el" href="n__log_8c_source.html#l00050">LOG_TYPE</a>, <a class="el" href="n__common_8h_source.html#l00182">Malloc</a>, <a class="el" href="n__log_8c_source.html#l00033">prioritynames</a>, <a class="el" href="n__log_8c_source.html#l00056">proc_name</a>, and <a class="el" href="n__log_8c_source.html#l00180">vasprintf()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="n__nodup__log_8c_source.html#l00214">_n_nodup_log()</a>, and <a class="el" href="n__nodup__log_8c_source.html#l00274">_n_nodup_log_indexed()</a>.</p>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group___l_o_g_gafbbbfcb9063b9f1454a499dbf98f7a56_cgraph.png" border="0" usemap="#agroup___l_o_g_gafbbbfcb9063b9f1454a499dbf98f7a56_cgraph" alt=""/></div>
+<map name="agroup___l_o_g_gafbbbfcb9063b9f1454a499dbf98f7a56_cgraph" id="agroup___l_o_g_gafbbbfcb9063b9f1454a499dbf98f7a56_cgraph">
+<area shape="rect" title="Logging function. log( level , const char *format , ... ) is a macro around _log." alt="" coords="5,31,65,57"/>
+<area shape="rect" href="group___l_o_g.html#gafeea44ab08778cbff68e91e831d44112" title="Get the global log level value." alt="" coords="113,5,209,32"/>
+<area shape="rect" href="n__log_8c.html#a5ec7fd90ebe6015636bce974c192c86a" title=" " alt="" coords="127,56,196,83"/>
+<area shape="rect" href="n__log_8c.html#afe6a9c3590b857b2efb7a03938a44d5d" title=" " alt="" coords="257,56,355,83"/>
+</map>
+</div>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group___l_o_g_gafbbbfcb9063b9f1454a499dbf98f7a56_icgraph.png" border="0" usemap="#agroup___l_o_g_gafbbbfcb9063b9f1454a499dbf98f7a56_icgraph" alt=""/></div>
+<map name="agroup___l_o_g_gafbbbfcb9063b9f1454a499dbf98f7a56_icgraph" id="agroup___l_o_g_gafbbbfcb9063b9f1454a499dbf98f7a56_icgraph">
+<area shape="rect" title="Logging function. log( level , const char *format , ... ) is a macro around _log." alt="" coords="208,31,268,57"/>
+<area shape="rect" href="group___l_o_g_n_o_d_u_p.html#ga650828539395216dd2f4f28da5131c42" title="Logging function. log( level , const char *format , ... ) is a macro around _log." alt="" coords="31,5,134,32"/>
+<area shape="rect" href="group___l_o_g_n_o_d_u_p.html#gacbf9e2a1400ab6f00a30186d9a5c4683" title="Logging function. log( level , const char *format , ... ) is a macro around _log." alt="" coords="5,56,160,83"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -529,25 +602,38 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">int close_safe_logging </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_t_s___l_o_g.html">TS_LOG</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="group___l_o_g.html#struct_t_s___l_o_g">TS_LOG</a> *&#160;</td>
           <td class="paramname"><em>log</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__log_8h.html">n_log.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="n__log_8h.html">include/nilorea/n_log.h</a>&gt;</code></p>
 
 <p>close a thread-safe logging file </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">log</td><td>A <a class="el" href="struct_t_s___l_o_g.html" title="ThreadSafe LOGging structure.">TS_LOG</a> handler </td></tr>
+    <tr><td class="paramname">log</td><td>A <a class="el" href="group___l_o_g.html#struct_t_s___l_o_g">TS_LOG</a> handler </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>TRUE on success, FALSE on error </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="n__log_8c_source.html#l00350">350</a> of file <a class="el" href="n__log_8c_source.html">n_log.c</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="ex__log_8c_source.html#l00010">main()</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group___l_o_g_gab0f29a8f3d807e2738376cd0bd657eb0_icgraph.png" border="0" usemap="#agroup___l_o_g_gab0f29a8f3d807e2738376cd0bd657eb0_icgraph" alt=""/></div>
+<map name="agroup___l_o_g_gab0f29a8f3d807e2738376cd0bd657eb0_icgraph" id="agroup___l_o_g_gab0f29a8f3d807e2738376cd0bd657eb0_icgraph">
+<area shape="rect" title="close a thread&#45;safe logging file" alt="" coords="104,5,236,32"/>
+<area shape="rect" href="ex__log_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="5,5,56,32"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -567,7 +653,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__log_8h.html">n_log.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="n__log_8h.html">include/nilorea/n_log.h</a>&gt;</code></p>
 
 <p>Close syslog connection or clean internals for event log. </p>
 
@@ -593,12 +679,14 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__log_8h.html">n_log.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="n__log_8h.html">include/nilorea/n_log.h</a>&gt;</code></p>
 
 <p>return the current log_file </p>
 <dl class="section return"><dt>Returns</dt><dd>a valid FILE handle or NULL </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="n__log_8c_source.html#l00160">160</a> of file <a class="el" href="n__log_8c_source.html">n_log.c</a>.</p>
+
+<p class="reference">References <a class="el" href="n__log_8c_source.html#l00053">log_file</a>.</p>
 
 </div>
 </div>
@@ -618,12 +706,29 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__log_8h.html">n_log.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="n__log_8h.html">include/nilorea/n_log.h</a>&gt;</code></p>
 
 <p>Get the global log level value. </p>
 <dl class="section return"><dt>Returns</dt><dd>static int LOG_LEVEL </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="n__log_8c_source.html#l00123">123</a> of file <a class="el" href="n__log_8c_source.html">n_log.c</a>.</p>
+
+<p class="reference">References <a class="el" href="n__log_8c_source.html#l00047">LOG_LEVEL</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="n__log_8c_source.html#l00216">_n_log()</a>.</p>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group___l_o_g_gafeea44ab08778cbff68e91e831d44112_icgraph.png" border="0" usemap="#agroup___l_o_g_gafeea44ab08778cbff68e91e831d44112_icgraph" alt=""/></div>
+<map name="agroup___l_o_g_gafeea44ab08778cbff68e91e831d44112_icgraph" id="agroup___l_o_g_gafeea44ab08778cbff68e91e831d44112_icgraph">
+<area shape="rect" title="Get the global log level value." alt="" coords="316,31,412,57"/>
+<area shape="rect" href="group___l_o_g.html#gafbbbfcb9063b9f1454a499dbf98f7a56" title="Logging function. log( level , const char *format , ... ) is a macro around _log." alt="" coords="208,31,268,57"/>
+<area shape="rect" href="group___l_o_g_n_o_d_u_p.html#ga650828539395216dd2f4f28da5131c42" title="Logging function. log( level , const char *format , ... ) is a macro around _log." alt="" coords="31,5,134,32"/>
+<area shape="rect" href="group___l_o_g_n_o_d_u_p.html#gacbf9e2a1400ab6f00a30186d9a5c4683" title="Logging function. log( level , const char *format , ... ) is a macro around _log." alt="" coords="5,56,160,83"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -636,7 +741,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">int open_safe_logging </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_t_s___l_o_g.html">TS_LOG</a> **&#160;</td>
+          <td class="paramtype"><a class="el" href="group___l_o_g.html#struct_t_s___l_o_g">TS_LOG</a> **&#160;</td>
           <td class="paramname"><em>log</em>, </td>
         </tr>
         <tr>
@@ -659,12 +764,12 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__log_8h.html">n_log.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="n__log_8h.html">include/nilorea/n_log.h</a>&gt;</code></p>
 
 <p>Open a thread-safe logging file. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">log</td><td>A <a class="el" href="struct_t_s___l_o_g.html" title="ThreadSafe LOGging structure.">TS_LOG</a> handler </td></tr>
+    <tr><td class="paramname">log</td><td>A <a class="el" href="group___l_o_g.html#struct_t_s___l_o_g">TS_LOG</a> handler </td></tr>
     <tr><td class="paramname">pathname</td><td>The file path (if any) and name </td></tr>
     <tr><td class="paramname">opt</td><td>Options for opening (please never forget to use "w") </td></tr>
   </table>
@@ -675,6 +780,19 @@ Functions</h2></td></tr>
 <p class="definition">Definition at line <a class="el" href="n__log_8c_source.html#l00280">280</a> of file <a class="el" href="n__log_8c_source.html">n_log.c</a>.</p>
 
 <p class="reference">References <a class="el" href="n__common_8h_source.html#l00182">Malloc</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="ex__log_8c_source.html#l00010">main()</a>.</p>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group___l_o_g_ga51d76a6d03860ab048a2f09eabc27f9a_icgraph.png" border="0" usemap="#agroup___l_o_g_ga51d76a6d03860ab048a2f09eabc27f9a_icgraph" alt=""/></div>
+<map name="agroup___l_o_g_ga51d76a6d03860ab048a2f09eabc27f9a_icgraph" id="agroup___l_o_g_ga51d76a6d03860ab048a2f09eabc27f9a_icgraph">
+<area shape="rect" title="Open a thread&#45;safe logging file." alt="" coords="104,5,233,32"/>
+<area shape="rect" href="ex__log_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="5,5,56,32"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -694,7 +812,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__log_8h.html">n_log.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="n__log_8h.html">include/nilorea/n_log.h</a>&gt;</code></p>
 
 <p>Open connection to syslog or create internals for event log. </p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -727,7 +845,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__log_8h.html">n_log.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="n__log_8h.html">include/nilorea/n_log.h</a>&gt;</code></p>
 
 <p>Set the logging to a file instead of stderr. </p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -740,7 +858,31 @@ Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="n__log_8c_source.html#l00135">135</a> of file <a class="el" href="n__log_8c_source.html">n_log.c</a>.</p>
 
-<p class="reference">References <a class="el" href="n__common_8h_source.html#l00262">__n_assert</a>.</p>
+<p class="reference">References <a class="el" href="n__common_8h_source.html#l00262">__n_assert</a>, <a class="el" href="n__log_8h_source.html#l00029">LOG_FILE</a>, <a class="el" href="n__log_8c_source.html#l00053">log_file</a>, and <a class="el" href="n__log_8c_source.html#l00097">set_log_level()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="ex__gui__particles_8c_source.html#l00032">main()</a>.</p>
+<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group___l_o_g_gac83aa9829ddf0d169e2890ef63052b52_cgraph.png" border="0" usemap="#agroup___l_o_g_gac83aa9829ddf0d169e2890ef63052b52_cgraph" alt=""/></div>
+<map name="agroup___l_o_g_gac83aa9829ddf0d169e2890ef63052b52_cgraph" id="agroup___l_o_g_gac83aa9829ddf0d169e2890ef63052b52_cgraph">
+<area shape="rect" title="Set the logging to a file instead of stderr." alt="" coords="5,5,92,32"/>
+<area shape="rect" href="group___l_o_g.html#gacad9b2d55788f46ddde811c986ead9ae" title="Set the global log level value ( static int LOG_LEVEL )" alt="" coords="140,5,236,32"/>
+</map>
+</div>
+<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-7-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group___l_o_g_gac83aa9829ddf0d169e2890ef63052b52_icgraph.png" border="0" usemap="#agroup___l_o_g_gac83aa9829ddf0d169e2890ef63052b52_icgraph" alt=""/></div>
+<map name="agroup___l_o_g_gac83aa9829ddf0d169e2890ef63052b52_icgraph" id="agroup___l_o_g_gac83aa9829ddf0d169e2890ef63052b52_icgraph">
+<area shape="rect" title="Set the logging to a file instead of stderr." alt="" coords="104,5,191,32"/>
+<area shape="rect" href="ex__gui__particles_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,5,56,32"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -760,7 +902,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__log_8h.html">n_log.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="n__log_8h.html">include/nilorea/n_log.h</a>&gt;</code></p>
 
 <p>Set the global log level value ( static int LOG_LEVEL ) </p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -772,7 +914,24 @@ Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="n__log_8c_source.html#l00097">97</a> of file <a class="el" href="n__log_8c_source.html">n_log.c</a>.</p>
 
-<p class="reference">References <a class="el" href="n__log_8h_source.html#l00029">LOG_FILE</a>.</p>
+<p class="reference">References <a class="el" href="n__log_8h_source.html#l00029">LOG_FILE</a>, <a class="el" href="ex__gui__particles_8c_source.html#l00021">log_level</a>, <a class="el" href="n__log_8c_source.html#l00047">LOG_LEVEL</a>, <a class="el" href="n__log_8h_source.html#l00031">LOG_STDERR</a>, <a class="el" href="n__log_8h_source.html#l00033">LOG_SYSJRNL</a>, and <a class="el" href="n__log_8c_source.html#l00050">LOG_TYPE</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="ex__configfile_8c_source.html#l00009">main()</a>, <a class="el" href="ex__common_8c_source.html#l00027">process_args()</a>, and <a class="el" href="n__log_8c_source.html#l00135">set_log_file()</a>.</p>
+<div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-8-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-8-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group___l_o_g_gacad9b2d55788f46ddde811c986ead9ae_icgraph.png" border="0" usemap="#agroup___l_o_g_gacad9b2d55788f46ddde811c986ead9ae_icgraph" alt=""/></div>
+<map name="agroup___l_o_g_gacad9b2d55788f46ddde811c986ead9ae_icgraph" id="agroup___l_o_g_gacad9b2d55788f46ddde811c986ead9ae_icgraph">
+<area shape="rect" title="Set the global log level value ( static int LOG_LEVEL )" alt="" coords="252,56,348,83"/>
+<area shape="rect" href="ex__configfile_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="129,5,179,32"/>
+<area shape="rect" href="ex__common_8c.html#aefcb3f70374ff9b6256aac6e12870399" title=" " alt="" coords="104,56,204,83"/>
+<area shape="rect" href="group___l_o_g.html#gac83aa9829ddf0d169e2890ef63052b52" title="Set the logging to a file instead of stderr." alt="" coords="111,107,197,133"/>
+<area shape="rect" href="ex__common_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,56,56,83"/>
+<area shape="rect" href="ex__gui__particles_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,107,56,133"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -785,7 +944,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">int write_safe_log </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_t_s___l_o_g.html">TS_LOG</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="group___l_o_g.html#struct_t_s___l_o_g">TS_LOG</a> *&#160;</td>
           <td class="paramname"><em>log</em>, </td>
         </tr>
         <tr>
@@ -808,12 +967,12 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__log_8h.html">n_log.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="n__log_8h.html">include/nilorea/n_log.h</a>&gt;</code></p>
 
 <p>write to a thread-safe logging file </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">log</td><td>A <a class="el" href="struct_t_s___l_o_g.html" title="ThreadSafe LOGging structure.">TS_LOG</a> handler </td></tr>
+    <tr><td class="paramname">log</td><td>A <a class="el" href="group___l_o_g.html#struct_t_s___l_o_g">TS_LOG</a> handler </td></tr>
     <tr><td class="paramname">pat</td><td>Pattern for writting (i.e "%d %d %s") </td></tr>
   </table>
   </dd>
@@ -822,6 +981,19 @@ Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="n__log_8c_source.html#l00319">319</a> of file <a class="el" href="n__log_8c_source.html">n_log.c</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="ex__log_8c_source.html#l00010">main()</a>.</p>
+<div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-9-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-9-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group___l_o_g_ga4351d7c5fb7f3464480aebb763b70d69_icgraph.png" border="0" usemap="#agroup___l_o_g_ga4351d7c5fb7f3464480aebb763b70d69_icgraph" alt=""/></div>
+<map name="agroup___l_o_g_ga4351d7c5fb7f3464480aebb763b70d69_icgraph" id="agroup___l_o_g_ga4351d7c5fb7f3464480aebb763b70d69_icgraph">
+<area shape="rect" title="write to a thread&#45;safe logging file" alt="" coords="104,5,208,32"/>
+<area shape="rect" href="ex__log_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="5,5,56,32"/>
+</map>
+</div>
+
 </div>
 </div>
 </div><!-- contents -->
@@ -829,7 +1001,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Feb 3 2022 21:53:47 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+    <li class="footer">Generated on Fri Feb 4 2022 17:12:05 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
   </ul>
 </div>
 </body>

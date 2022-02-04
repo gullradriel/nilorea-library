@@ -23,7 +23,7 @@ See the modules sections for more informations
 
 If using graphical/audio modules:
 
-- Allegro   5.0.0 or better http://alleg.sf.net/ (if HAVE_ALLEGRO is used)
+- Allegro   5.0.0 or better http://alleg.sf.net/
 
 Mainly for thread and network module:
 
@@ -31,12 +31,12 @@ Mainly for thread and network module:
 
 - Pthread lib (posix pthread for windows or linux)
 
-- OpenSSL libs (if HAVE_OPENSSL is used)
+- OpenSSL libs
 
 - PCRE library for pattern matching in various places
 
 \section install Installation
-Just type make and use the library or put the right files in your LIB and INCLUDE directory, link them with your code and let's go ! 
+Just type make and use the library or put the right files in your LIB and INCLUDE directory, link them with your code and let's go !
 Don't forget to define FLAGS for parts you don't need, it can save you memory and compilation time.
 
 
@@ -46,7 +46,7 @@ Nilorea is a 'make life easier' library, you're welcome using it.
 
 Everything inside is free or under GPL license, read it at http://www.gnu.org/license/gpl.html
 
-You can join me at coder at nilorea.net  
+You can join me at coder at nilorea.net
 
 More informations on the website: https://www.nilorea.net
 

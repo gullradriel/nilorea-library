@@ -1,13 +1,11 @@
 <map id="netw_close" name="netw_close">
-<area shape="rect" id="node1" title="Closing a specified Network, destroy queues, free the structure." alt="" coords="5,132,92,159"/>
-<area shape="rect" id="node2" href="$group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755" title="Empty and Free a list container." alt="" coords="530,5,619,32"/>
-<area shape="rect" id="node4" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaf25c0f462f174092815b0c5d019441db" title="Get the state of a network." alt="" coords="347,107,457,133"/>
-<area shape="rect" id="node6" href="$group___n_e_t_w_o_r_k_i_n_g.html#gafc7a91b4be2a997710a2b54037c25168" title=" " alt="" coords="155,208,283,235"/>
-<area shape="rect" id="node9" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaa8e1fe7978995197f08aa0ef24a76c33" title="Restart or reset the specified network ability." alt="" coords="365,56,439,83"/>
-<area shape="rect" id="node10" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga29159184519b3129c0154b1a2c2a3e2f" title="Stop a NETWORK connection sending and receing thread." alt="" coords="145,107,293,133"/>
-<area shape="rect" id="node11" href="$n__debug__locks_8c.html#a3cf620ff3a40af11d79cf28901dc55e2" title=" " alt="" coords="140,283,299,309"/>
-<area shape="rect" id="node3" href="$group___l_i_s_t.html#ga1dafe7a250ddad51fadd375f057287e7" title="Empty a LIST list of pointers." alt="" coords="692,31,775,57"/>
-<area shape="rect" id="node5" href="$n__debug__locks_8c.html#a12809c44718c21544ceb280dc1a53573" title=" " alt="" coords="505,107,644,133"/>
-<area shape="rect" id="node7" href="$group___h_a_s_h___t_a_b_l_e.html#ga8d8873be47a634ad8a386e61f12a1f53" title=" " alt="" coords="361,183,443,209"/>
-<area shape="rect" id="node8" href="$group___l_i_s_t.html#gae009d6d3c835a2affb99071ea8457803" title="search ptr in list" alt="" coords="359,233,445,260"/>
+<area shape="rect" id="node1" title="Closing a specified Network, destroy queues, free the structure." alt="" coords="5,109,92,136"/>
+<area shape="rect" id="node2" href="$group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755" title="Empty and Free a list container. Call the destructor each time." alt="" coords="495,160,584,187"/>
+<area shape="rect" id="node4" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaf25c0f462f174092815b0c5d019441db" title="Get the state of a network." alt="" coords="336,160,447,187"/>
+<area shape="rect" id="node5" href="$group___n_e_t_w_o_r_k_i_n_g.html#gafc7a91b4be2a997710a2b54037c25168" title="remove a NETWORK *netw to a NETWORK_POOL *pool" alt="" coords="150,59,278,85"/>
+<area shape="rect" id="node8" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaa8e1fe7978995197f08aa0ef24a76c33" title="Restart or reset the specified network ability." alt="" coords="354,211,429,237"/>
+<area shape="rect" id="node9" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga29159184519b3129c0154b1a2c2a3e2f" title="Stop a NETWORK connection sending and receing thread." alt="" coords="140,160,288,187"/>
+<area shape="rect" id="node3" href="$group___l_i_s_t.html#ga1dafe7a250ddad51fadd375f057287e7" title="Empty a LIST list of pointers." alt="" coords="632,185,715,212"/>
+<area shape="rect" id="node6" href="$group___h_a_s_h___t_a_b_l_e.html#ga8d8873be47a634ad8a386e61f12a1f53" title="remove and delete node at key in table" alt="" coords="351,59,432,85"/>
+<area shape="rect" id="node7" href="$group___l_i_s_t.html#gae009d6d3c835a2affb99071ea8457803" title="search ptr in list" alt="" coords="349,109,434,136"/>
 </map>

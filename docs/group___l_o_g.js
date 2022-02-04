@@ -1,8 +1,8 @@
 var group___l_o_g =
 [
-    [ "TS_LOG", "struct_t_s___l_o_g.html", [
-      [ "file", "struct_t_s___l_o_g.html#a6a76aec4c92f3ec5fe144d43c7598d0b", null ],
-      [ "LOG_MUTEX", "struct_t_s___l_o_g.html#a32664ef9397f6cd959979f9778791269", null ]
+    [ "TS_LOG", "group___l_o_g.html#struct_t_s___l_o_g", [
+      [ "file", "group___l_o_g.html#a6a76aec4c92f3ec5fe144d43c7598d0b", null ],
+      [ "LOG_MUTEX", "group___l_o_g.html#a32664ef9397f6cd959979f9778791269", null ]
     ] ],
     [ "LOG_ALERT", "group___l_o_g.html#ga12b2a3bb9e3adfeb35b4e5514e7d9043", null ],
     [ "LOG_CRIT", "group___l_o_g.html#gaaa731313f5c63e855fefb5f6519c3283", null ],

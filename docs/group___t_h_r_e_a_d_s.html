@@ -92,8 +92,8 @@ $(document).ready(function(){initNavTree('group___t_h_r_e_a_d_s.html',''); initR
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Data Structures</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_t_h_r_e_a_d___p_o_o_l.html">THREAD_POOL</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:struct_t_h_r_e_a_d___p_o_o_l"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___t_h_r_e_a_d_s.html#struct_t_h_r_e_a_d___p_o_o_l">THREAD_POOL</a></td></tr>
+<tr class="separator:struct_t_h_r_e_a_d___p_o_o_l"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_t_h_r_e_a_d___p_o_o_l___n_o_d_e.html">THREAD_POOL_NODE</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_t_h_r_e_a_d___w_a_i_t_i_n_g___p_r_o_c.html">THREAD_WAITING_PROC</a></td></tr>
@@ -124,20 +124,111 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga46497eb81066d0df83dfd07ad0a9f561"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___t_h_r_e_a_d_s.html#ga46497eb81066d0df83dfd07ad0a9f561">add_threaded_process</a> (<a class="el" href="struct_t_h_r_e_a_d___p_o_o_l.html">THREAD_POOL</a> *thread_pool, void *(*func_ptr)(void *param), void *param, int mode)</td></tr>
+<tr class="memitem:ga46497eb81066d0df83dfd07ad0a9f561"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___t_h_r_e_a_d_s.html#ga46497eb81066d0df83dfd07ad0a9f561">add_threaded_process</a> (<a class="el" href="group___t_h_r_e_a_d_s.html#struct_t_h_r_e_a_d___p_o_o_l">THREAD_POOL</a> *thread_pool, void *(*func_ptr)(void *param), void *param, int <a class="el" href="ex__network_8c.html#a1ea5d0cb93f22f7d0fdf804bd68c3326">mode</a>)</td></tr>
+<tr class="memdesc:ga46497eb81066d0df83dfd07ad0a9f561"><td class="mdescLeft">&#160;</td><td class="mdescRight">add a function and params to a thread pool  <a href="group___t_h_r_e_a_d_s.html#ga46497eb81066d0df83dfd07ad0a9f561">More...</a><br /></td></tr>
 <tr class="separator:ga46497eb81066d0df83dfd07ad0a9f561"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga12ce28c2aaa5a5a1a05abe11071dd83f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___t_h_r_e_a_d_s.html#ga12ce28c2aaa5a5a1a05abe11071dd83f">destroy_threaded_pool</a> (<a class="el" href="struct_t_h_r_e_a_d___p_o_o_l.html">THREAD_POOL</a> **thread_pool, int delay)</td></tr>
+<tr class="memitem:ga12ce28c2aaa5a5a1a05abe11071dd83f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___t_h_r_e_a_d_s.html#ga12ce28c2aaa5a5a1a05abe11071dd83f">destroy_threaded_pool</a> (<a class="el" href="group___t_h_r_e_a_d_s.html#struct_t_h_r_e_a_d___p_o_o_l">THREAD_POOL</a> **thread_pool, int delay)</td></tr>
+<tr class="memdesc:ga12ce28c2aaa5a5a1a05abe11071dd83f"><td class="mdescLeft">&#160;</td><td class="mdescRight">delete a thread_pool, exit the threads and free the structs  <a href="group___t_h_r_e_a_d_s.html#ga12ce28c2aaa5a5a1a05abe11071dd83f">More...</a><br /></td></tr>
 <tr class="separator:ga12ce28c2aaa5a5a1a05abe11071dd83f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gadb3f2b85b758433e29e84b54992cfed4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_t_h_r_e_a_d___p_o_o_l.html">THREAD_POOL</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___t_h_r_e_a_d_s.html#gadb3f2b85b758433e29e84b54992cfed4">new_thread_pool</a> (int nbmaxthr, int nb_max_waiting)</td></tr>
+<tr class="memitem:gadb3f2b85b758433e29e84b54992cfed4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___t_h_r_e_a_d_s.html#struct_t_h_r_e_a_d___p_o_o_l">THREAD_POOL</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___t_h_r_e_a_d_s.html#gadb3f2b85b758433e29e84b54992cfed4">new_thread_pool</a> (int nbmaxthr, int nb_max_waiting)</td></tr>
+<tr class="memdesc:gadb3f2b85b758433e29e84b54992cfed4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a new pool of nbmaxthr threads.  <a href="group___t_h_r_e_a_d_s.html#gadb3f2b85b758433e29e84b54992cfed4">More...</a><br /></td></tr>
 <tr class="separator:gadb3f2b85b758433e29e84b54992cfed4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga5d9ce1747e4b7cb58ce3767f7e56cd8b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___t_h_r_e_a_d_s.html#ga5d9ce1747e4b7cb58ce3767f7e56cd8b">refresh_thread_pool</a> (<a class="el" href="struct_t_h_r_e_a_d___p_o_o_l.html">THREAD_POOL</a> *thread_pool)</td></tr>
+<tr class="memitem:ga5d9ce1747e4b7cb58ce3767f7e56cd8b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___t_h_r_e_a_d_s.html#ga5d9ce1747e4b7cb58ce3767f7e56cd8b">refresh_thread_pool</a> (<a class="el" href="group___t_h_r_e_a_d_s.html#struct_t_h_r_e_a_d___p_o_o_l">THREAD_POOL</a> *thread_pool)</td></tr>
+<tr class="memdesc:ga5d9ce1747e4b7cb58ce3767f7e56cd8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">try to add some waiting DIRECT_PROCs on some free thread slots, else do nothing  <a href="group___t_h_r_e_a_d_s.html#ga5d9ce1747e4b7cb58ce3767f7e56cd8b">More...</a><br /></td></tr>
 <tr class="separator:ga5d9ce1747e4b7cb58ce3767f7e56cd8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga0563294cf52eb2b9e4f1d017390ff46c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___t_h_r_e_a_d_s.html#ga0563294cf52eb2b9e4f1d017390ff46c">start_threaded_pool</a> (<a class="el" href="struct_t_h_r_e_a_d___p_o_o_l.html">THREAD_POOL</a> *thread_pool)</td></tr>
+<tr class="memitem:ga0563294cf52eb2b9e4f1d017390ff46c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___t_h_r_e_a_d_s.html#ga0563294cf52eb2b9e4f1d017390ff46c">start_threaded_pool</a> (<a class="el" href="group___t_h_r_e_a_d_s.html#struct_t_h_r_e_a_d___p_o_o_l">THREAD_POOL</a> *thread_pool)</td></tr>
+<tr class="memdesc:ga0563294cf52eb2b9e4f1d017390ff46c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Launch the process waiting for exectution in the thread pool.  <a href="group___t_h_r_e_a_d_s.html#ga0563294cf52eb2b9e4f1d017390ff46c">More...</a><br /></td></tr>
 <tr class="separator:ga0563294cf52eb2b9e4f1d017390ff46c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga992fc2a67a2d66733ccd10f7d9e2ead3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___t_h_r_e_a_d_s.html#ga992fc2a67a2d66733ccd10f7d9e2ead3">wait_for_threaded_pool</a> (<a class="el" href="struct_t_h_r_e_a_d___p_o_o_l.html">THREAD_POOL</a> *thread_pool, int delay)</td></tr>
+<tr class="memitem:ga992fc2a67a2d66733ccd10f7d9e2ead3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___t_h_r_e_a_d_s.html#ga992fc2a67a2d66733ccd10f7d9e2ead3">wait_for_threaded_pool</a> (<a class="el" href="group___t_h_r_e_a_d_s.html#struct_t_h_r_e_a_d___p_o_o_l">THREAD_POOL</a> *thread_pool, int delay)</td></tr>
+<tr class="memdesc:ga992fc2a67a2d66733ccd10f7d9e2ead3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wait for all the launched process in the thread pool to terminate.  <a href="group___t_h_r_e_a_d_s.html#ga992fc2a67a2d66733ccd10f7d9e2ead3">More...</a><br /></td></tr>
 <tr class="separator:ga992fc2a67a2d66733ccd10f7d9e2ead3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<hr/><h2 class="groupheader">Data Structure Documentation</h2>
+<a name="struct_t_h_r_e_a_d___p_o_o_l" id="struct_t_h_r_e_a_d___p_o_o_l"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#struct_t_h_r_e_a_d___p_o_o_l">&#9670;&nbsp;</a></span>THREAD_POOL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct THREAD_POOL</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="textblock"><p >Structure of a trhead pool </p>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ex_network_8c-example.html#_a28">ex_network.c</a>, and <a class="el" href="ex_threads_8c-example.html#_a15">ex_threads.c</a>.</dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="n__thread__pool_8h_source.html#l00076">76</a> of file <a class="el" href="n__thread__pool_8h_source.html">n_thread_pool.h</a>.</p>
+</div><div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for THREAD_POOL:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="struct_t_h_r_e_a_d___p_o_o_l__coll__graph.png" border="0" usemap="#a_t_h_r_e_a_d___p_o_o_l_coll__map" alt="Collaboration graph"/></div>
+<map name="a_t_h_r_e_a_d___p_o_o_l_coll__map" id="a_t_h_r_e_a_d___p_o_o_l_coll__map">
+<area shape="rect" title=" " alt="" coords="237,455,354,532"/>
+<area shape="rect" href="struct_t_h_r_e_a_d___p_o_o_l___n_o_d_e.html" title=" " alt="" coords="384,315,545,392"/>
+<area shape="rect" title=" " alt="" coords="342,145,483,223"/>
+<area shape="rect" title=" " alt="" coords="403,5,457,83"/>
+<area shape="rect" href="struct_l_i_s_t___n_o_d_e.html" title=" " alt="" coords="15,145,107,223"/>
+<area shape="rect" title=" " alt="" coords="196,145,235,223"/>
+<area shape="rect" href="group___l_i_s_t.html#struct_l_i_s_t" title=" " alt="" coords="87,315,135,392"/>
+<area shape="rect" title=" " alt="" coords="605,145,681,223"/>
+<area shape="rect" title=" " alt="" coords="259,145,318,223"/>
+<area shape="rect" title=" " alt="" coords="705,145,824,223"/>
+<area shape="rect" title=" " alt="" coords="5,5,116,83"/>
+</map>
+</div>
+<table class="fieldtable">
+<tr><th colspan="3">Data Fields</th></tr>
+<tr><td class="fieldtype">
+<a id="aeb127ec28e1d2dd253c51240af9b98cf" name="aeb127ec28e1d2dd253c51240af9b98cf"></a>pthread_mutex_t</td>
+<td class="fieldname">
+lock</td>
+<td class="fielddoc">
+<p >mutex to prevent mutual access of waiting_list parameters </p>
+</td></tr>
+<tr><td class="fieldtype">
+<a id="ad1032e66a3c497de40dc989cb245c28d" name="ad1032e66a3c497de40dc989cb245c28d"></a>int</td>
+<td class="fieldname">
+max_threads</td>
+<td class="fielddoc">
+<p >Maximum number of running threads in the list </p>
+</td></tr>
+<tr><td class="fieldtype">
+<a id="a0dedc7e382229d6d1b263a6438300941" name="a0dedc7e382229d6d1b263a6438300941"></a>int</td>
+<td class="fieldname">
+nb_actives</td>
+<td class="fielddoc">
+<p >number of threads actually doing a proc </p>
+</td></tr>
+<tr><td class="fieldtype">
+<a id="abe43ad9cb87f223ab2a875cda79b53ed" name="abe43ad9cb87f223ab2a875cda79b53ed"></a>int</td>
+<td class="fieldname">
+nb_max_waiting</td>
+<td class="fielddoc">
+<p >Maximum number of waiting procedures int the list, 0 or -1 for unlimited </p>
+</td></tr>
+<tr><td class="fieldtype">
+<a id="a82a4f1f2900076822de004f357ef4e4a" name="a82a4f1f2900076822de004f357ef4e4a"></a><a class="el" href="struct_t_h_r_e_a_d___p_o_o_l___n_o_d_e.html">THREAD_POOL_NODE</a> **</td>
+<td class="fieldname">
+thread_list</td>
+<td class="fielddoc">
+<p >Dynamically allocated but fixed size thread array </p>
+</td></tr>
+<tr><td class="fieldtype">
+<a id="a86b5f24f3379eb4659ac2e6e06e8835d" name="a86b5f24f3379eb4659ac2e6e06e8835d"></a><a class="el" href="group___l_i_s_t.html#struct_l_i_s_t">LIST</a> *</td>
+<td class="fieldname">
+waiting_list</td>
+<td class="fielddoc">
+<p >Waiting list handling </p>
+</td></tr>
+</table>
+
+</div>
+</div>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="ga8c7d9cf88f160af14b39be46a66f8189" name="ga8c7d9cf88f160af14b39be46a66f8189"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga8c7d9cf88f160af14b39be46a66f8189">&#9670;&nbsp;</a></span>DIRECT_PROC</h2>
@@ -151,10 +242,9 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__thread__pool_8h.html">n_thread_pool.h</a>&gt;</code></p>
-
-<p>processing mode for added func, direct start </p>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ex_network_8c-example.html#a17">ex_network.c</a>, and <a class="el" href="ex_threads_8c-example.html#a11">ex_threads.c</a>.</dd>
+<p><code>#include &lt;<a class="el" href="n__thread__pool_8h.html">include/nilorea/n_thread_pool.h</a>&gt;</code></p>
+<p >processing mode for added func, direct start </p>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ex_network_8c-example.html#a32">ex_network.c</a>, and <a class="el" href="ex_threads_8c-example.html#a18">ex_threads.c</a>.</dd>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="n__thread__pool_8h_source.html#l00029">29</a> of file <a class="el" href="n__thread__pool_8h_source.html">n_thread_pool.h</a>.</p>
@@ -173,9 +263,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__thread__pool_8h.html">n_thread_pool.h</a>&gt;</code></p>
-
-<p>indicate that the pool is off, all jobs have been consumed </p>
+<p><code>#include &lt;<a class="el" href="n__thread__pool_8h.html">include/nilorea/n_thread_pool.h</a>&gt;</code></p>
+<p >indicate that the pool is off, all jobs have been consumed </p>
 
 <p class="definition">Definition at line <a class="el" href="n__thread__pool_8h_source.html#l00043">43</a> of file <a class="el" href="n__thread__pool_8h_source.html">n_thread_pool.h</a>.</p>
 
@@ -193,9 +282,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__thread__pool_8h.html">n_thread_pool.h</a>&gt;</code></p>
-
-<p>indicate that the pool is exiting, unfinished jobs will finish and the pool will exit the threads and enter the EXITED state </p>
+<p><code>#include &lt;<a class="el" href="n__thread__pool_8h.html">include/nilorea/n_thread_pool.h</a>&gt;</code></p>
+<p >indicate that the pool is exiting, unfinished jobs will finish and the pool will exit the threads and enter the EXITED state </p>
 
 <p class="definition">Definition at line <a class="el" href="n__thread__pool_8h_source.html#l00041">41</a> of file <a class="el" href="n__thread__pool_8h_source.html">n_thread_pool.h</a>.</p>
 
@@ -213,9 +301,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__thread__pool_8h.html">n_thread_pool.h</a>&gt;</code></p>
-
-<p>status of a thread which is waiting for some proc </p>
+<p><code>#include &lt;<a class="el" href="n__thread__pool_8h.html">include/nilorea/n_thread_pool.h</a>&gt;</code></p>
+<p >status of a thread which is waiting for some proc </p>
 
 <p class="definition">Definition at line <a class="el" href="n__thread__pool_8h_source.html#l00033">33</a> of file <a class="el" href="n__thread__pool_8h_source.html">n_thread_pool.h</a>.</p>
 
@@ -233,9 +320,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__thread__pool_8h.html">n_thread_pool.h</a>&gt;</code></p>
-
-<p>if passed to add_threaded_process, skip main table lock in case we are in a func which is already locking it </p>
+<p><code>#include &lt;<a class="el" href="n__thread__pool_8h.html">include/nilorea/n_thread_pool.h</a>&gt;</code></p>
+<p >if passed to add_threaded_process, skip main table lock in case we are in a func which is already locking it </p>
 
 <p class="definition">Definition at line <a class="el" href="n__thread__pool_8h_source.html#l00045">45</a> of file <a class="el" href="n__thread__pool_8h_source.html">n_thread_pool.h</a>.</p>
 
@@ -253,9 +339,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__thread__pool_8h.html">n_thread_pool.h</a>&gt;</code></p>
-
-<p>processing mode for waiting_list: do not readd the work in queue </p>
+<p><code>#include &lt;<a class="el" href="n__thread__pool_8h.html">include/nilorea/n_thread_pool.h</a>&gt;</code></p>
+<p >processing mode for waiting_list: do not readd the work in queue </p>
 
 <p class="definition">Definition at line <a class="el" href="n__thread__pool_8h_source.html#l00031">31</a> of file <a class="el" href="n__thread__pool_8h_source.html">n_thread_pool.h</a>.</p>
 
@@ -273,9 +358,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__thread__pool_8h.html">n_thread_pool.h</a>&gt;</code></p>
-
-<p>status of a thread which proc is currently running </p>
+<p><code>#include &lt;<a class="el" href="n__thread__pool_8h.html">include/nilorea/n_thread_pool.h</a>&gt;</code></p>
+<p >status of a thread which proc is currently running </p>
 
 <p class="definition">Definition at line <a class="el" href="n__thread__pool_8h_source.html#l00037">37</a> of file <a class="el" href="n__thread__pool_8h_source.html">n_thread_pool.h</a>.</p>
 
@@ -293,9 +377,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__thread__pool_8h.html">n_thread_pool.h</a>&gt;</code></p>
-
-<p>indicate that the pool is running and ready to use </p>
+<p><code>#include &lt;<a class="el" href="n__thread__pool_8h.html">include/nilorea/n_thread_pool.h</a>&gt;</code></p>
+<p >indicate that the pool is running and ready to use </p>
 
 <p class="definition">Definition at line <a class="el" href="n__thread__pool_8h_source.html#l00039">39</a> of file <a class="el" href="n__thread__pool_8h_source.html">n_thread_pool.h</a>.</p>
 
@@ -313,9 +396,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__thread__pool_8h.html">n_thread_pool.h</a>&gt;</code></p>
-
-<p>processing mode for added func, synced start </p>
+<p><code>#include &lt;<a class="el" href="n__thread__pool_8h.html">include/nilorea/n_thread_pool.h</a>&gt;</code></p>
+<p >processing mode for added func, synced start </p>
 
 <p class="definition">Definition at line <a class="el" href="n__thread__pool_8h_source.html#l00027">27</a> of file <a class="el" href="n__thread__pool_8h_source.html">n_thread_pool.h</a>.</p>
 
@@ -333,9 +415,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__thread__pool_8h.html">n_thread_pool.h</a>&gt;</code></p>
-
-<p>status of a thread who have proc waiting to be processed <br  />
+<p><code>#include &lt;<a class="el" href="n__thread__pool_8h.html">include/nilorea/n_thread_pool.h</a>&gt;</code></p>
+<p >status of a thread who have proc waiting to be processed <br  />
  </p>
 
 <p class="definition">Definition at line <a class="el" href="n__thread__pool_8h_source.html#l00035">35</a> of file <a class="el" href="n__thread__pool_8h_source.html">n_thread_pool.h</a>.</p>
@@ -352,7 +433,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">int add_threaded_process </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_t_h_r_e_a_d___p_o_o_l.html">THREAD_POOL</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="group___t_h_r_e_a_d_s.html#struct_t_h_r_e_a_d___p_o_o_l">THREAD_POOL</a> *&#160;</td>
           <td class="paramname"><em>thread_pool</em>, </td>
         </tr>
         <tr>
@@ -381,7 +462,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__thread__pool_8h.html">n_thread_pool.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="n__thread__pool_8h.html">include/nilorea/n_thread_pool.h</a>&gt;</code></p>
 
 <p>add a function and params to a thread pool </p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -397,14 +478,14 @@ Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="n__thread__pool_8c_source.html#l00164">164</a> of file <a class="el" href="n__thread__pool_8c_source.html">n_thread_pool.c</a>.</p>
 
-<p class="reference">References <a class="el" href="n__thread__pool_8h_source.html#l00029">DIRECT_PROC</a>, <a class="el" href="n__thread__pool_8h_source.html#l00033">IDLE_PROC</a>, <a class="el" href="n__list_8c_source.html#l00121">list_push()</a>, <a class="el" href="n__log_8h_source.html#l00066">LOG_DEBUG</a>, <a class="el" href="n__log_8h_source.html#l00058">LOG_ERR</a>, <a class="el" href="n__common_8h_source.html#l00182">Malloc</a>, <a class="el" href="n__log_8h_source.html#l00074">n_log</a>, <a class="el" href="n__thread__pool_8h_source.html#l00045">NO_LOCK</a>, <a class="el" href="n__thread__pool_8h_source.html#l00031">NOQUEUE</a>, <a class="el" href="n__thread__pool_8h_source.html#l00039">RUNNING_THREAD</a>, <a class="el" href="n__thread__pool_8h_source.html#l00027">SYNCED_PROC</a>, and <a class="el" href="n__thread__pool_8h_source.html#l00035">WAITING_PROC</a>.</p>
+<p class="reference">References <a class="el" href="n__thread__pool_8h_source.html#l00029">DIRECT_PROC</a>, <a class="el" href="n__thread__pool_8h_source.html#l00033">IDLE_PROC</a>, <a class="el" href="n__list_8c_source.html#l00121">list_push()</a>, <a class="el" href="n__log_8h_source.html#l00066">LOG_DEBUG</a>, <a class="el" href="n__log_8h_source.html#l00058">LOG_ERR</a>, <a class="el" href="n__common_8h_source.html#l00182">Malloc</a>, <a class="el" href="ex__network_8c_source.html#l00020">mode</a>, <a class="el" href="n__log_8h_source.html#l00074">n_log</a>, <a class="el" href="n__thread__pool_8h_source.html#l00045">NO_LOCK</a>, <a class="el" href="n__thread__pool_8h_source.html#l00031">NOQUEUE</a>, <a class="el" href="n__thread__pool_8h_source.html#l00039">RUNNING_THREAD</a>, <a class="el" href="n__thread__pool_8h_source.html#l00027">SYNCED_PROC</a>, and <a class="el" href="n__thread__pool_8h_source.html#l00035">WAITING_PROC</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="n__thread__pool_8c_source.html#l00404">refresh_thread_pool()</a>.</p>
-<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+<p class="reference">Referenced by <a class="el" href="ex__network_8c_source.html#l00162">main()</a>, and <a class="el" href="n__thread__pool_8c_source.html#l00404">refresh_thread_pool()</a>.</p>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="group___t_h_r_e_a_d_s_ga46497eb81066d0df83dfd07ad0a9f561_cgraph.png" border="0" usemap="#agroup___t_h_r_e_a_d_s_ga46497eb81066d0df83dfd07ad0a9f561_cgraph" alt=""/></div>
 <map name="agroup___t_h_r_e_a_d_s_ga46497eb81066d0df83dfd07ad0a9f561_cgraph" id="agroup___t_h_r_e_a_d_s_ga46497eb81066d0df83dfd07ad0a9f561_cgraph">
 <area shape="rect" title="add a function and params to a thread pool" alt="" coords="5,5,159,32"/>
@@ -412,16 +493,17 @@ Functions</h2></td></tr>
 <area shape="rect" href="group___l_i_s_t.html#ga678e828550efc8e64a836bb8c713c2f4" title="Allocate a new node to link in a list." alt="" coords="329,5,433,32"/>
 </map>
 </div>
-<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="group___t_h_r_e_a_d_s_ga46497eb81066d0df83dfd07ad0a9f561_icgraph.png" border="0" usemap="#agroup___t_h_r_e_a_d_s_ga46497eb81066d0df83dfd07ad0a9f561_icgraph" alt=""/></div>
 <map name="agroup___t_h_r_e_a_d_s_ga46497eb81066d0df83dfd07ad0a9f561_icgraph" id="agroup___t_h_r_e_a_d_s_ga46497eb81066d0df83dfd07ad0a9f561_icgraph">
-<area shape="rect" title="add a function and params to a thread pool" alt="" coords="391,5,544,32"/>
-<area shape="rect" href="group___t_h_r_e_a_d_s.html#ga5d9ce1747e4b7cb58ce3767f7e56cd8b" title="try to add some waiting DIRECT_PROCs on some free thread slots, else do nothing" alt="" coords="208,5,343,32"/>
-<area shape="rect" href="group___t_h_r_e_a_d_s.html#ga992fc2a67a2d66733ccd10f7d9e2ead3" title="Wait for all the launched process in the thread pool to terminate." alt="" coords="5,5,160,32"/>
+<area shape="rect" title="add a function and params to a thread pool" alt="" coords="489,5,643,32"/>
+<area shape="rect" href="ex__network_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,31,56,57"/>
+<area shape="rect" href="group___t_h_r_e_a_d_s.html#ga5d9ce1747e4b7cb58ce3767f7e56cd8b" title="try to add some waiting DIRECT_PROCs on some free thread slots, else do nothing" alt="" coords="307,31,441,57"/>
+<area shape="rect" href="group___t_h_r_e_a_d_s.html#ga992fc2a67a2d66733ccd10f7d9e2ead3" title="Wait for all the launched process in the thread pool to terminate." alt="" coords="104,81,259,108"/>
 </map>
 </div>
 
@@ -436,7 +518,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">int destroy_threaded_pool </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_t_h_r_e_a_d___p_o_o_l.html">THREAD_POOL</a> **&#160;</td>
+          <td class="paramtype"><a class="el" href="group___t_h_r_e_a_d_s.html#struct_t_h_r_e_a_d___p_o_o_l">THREAD_POOL</a> **&#160;</td>
           <td class="paramname"><em>pool</em>, </td>
         </tr>
         <tr>
@@ -453,13 +535,13 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__thread__pool_8h.html">n_thread_pool.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="n__thread__pool_8h.html">include/nilorea/n_thread_pool.h</a>&gt;</code></p>
 
 <p>delete a thread_pool, exit the threads and free the structs </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pool</td><td>The <a class="el" href="struct_t_h_r_e_a_d___p_o_o_l.html" title="Structure of a trhead pool.">THREAD_POOL</a> *object to kill </td></tr>
-    <tr><td class="paramname">delay</td><td>The <a class="el" href="struct_t_h_r_e_a_d___p_o_o_l.html" title="Structure of a trhead pool.">THREAD_POOL</a> *object to kill </td></tr>
+    <tr><td class="paramname">pool</td><td>The <a class="el" href="group___t_h_r_e_a_d_s.html#struct_t_h_r_e_a_d___p_o_o_l">THREAD_POOL</a> *object to kill </td></tr>
+    <tr><td class="paramname">delay</td><td>The <a class="el" href="group___t_h_r_e_a_d_s.html#struct_t_h_r_e_a_d___p_o_o_l">THREAD_POOL</a> *object to kill </td></tr>
   </table>
   </dd>
 </dl>
@@ -467,18 +549,31 @@ Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="n__thread__pool_8c_source.html#l00340">340</a> of file <a class="el" href="n__thread__pool_8c_source.html">n_thread_pool.c</a>.</p>
 
-<p class="reference">References <a class="el" href="n__common_8h_source.html#l00262">__n_assert</a>, <a class="el" href="n__thread__pool_8h_source.html#l00041">EXITING_THREAD</a>, <a class="el" href="n__common_8h_source.html#l00242">Free</a>, <a class="el" href="n__thread__pool_8h_source.html#l00033">IDLE_PROC</a>, <a class="el" href="n__list_8c_source.html#l00480">list_destroy()</a>, <a class="el" href="n__log_8h_source.html#l00066">LOG_DEBUG</a>, <a class="el" href="n__log_8h_source.html#l00074">n_log</a>, and <a class="el" href="n__time_8c_source.html#l00038">u_sleep()</a>.</p>
-<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+<p class="reference">References <a class="el" href="n__common_8h_source.html#l00262">__n_assert</a>, <a class="el" href="ex__gui__particles_8c_source.html#l00019">DONE</a>, <a class="el" href="n__thread__pool_8h_source.html#l00041">EXITING_THREAD</a>, <a class="el" href="n__common_8h_source.html#l00242">Free</a>, <a class="el" href="n__thread__pool_8h_source.html#l00033">IDLE_PROC</a>, <a class="el" href="n__list_8c_source.html#l00480">list_destroy()</a>, <a class="el" href="n__log_8h_source.html#l00066">LOG_DEBUG</a>, <a class="el" href="n__log_8h_source.html#l00074">n_log</a>, and <a class="el" href="n__time_8c_source.html#l00038">u_sleep()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="ex__network_8c_source.html#l00162">main()</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="group___t_h_r_e_a_d_s_ga12ce28c2aaa5a5a1a05abe11071dd83f_cgraph.png" border="0" usemap="#agroup___t_h_r_e_a_d_s_ga12ce28c2aaa5a5a1a05abe11071dd83f_cgraph" alt=""/></div>
 <map name="agroup___t_h_r_e_a_d_s_ga12ce28c2aaa5a5a1a05abe11071dd83f_cgraph" id="agroup___t_h_r_e_a_d_s_ga12ce28c2aaa5a5a1a05abe11071dd83f_cgraph">
 <area shape="rect" title="delete a thread_pool, exit the threads and free the structs" alt="" coords="5,31,159,57"/>
-<area shape="rect" href="group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755" title="Empty and Free a list container." alt="" coords="207,5,296,32"/>
+<area shape="rect" href="group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755" title="Empty and Free a list container. Call the destructor each time." alt="" coords="207,5,296,32"/>
 <area shape="rect" href="group___n___t_i_m_e.html#ga690f12dde1a446d47b8bf5f959493003" title="wrapper around usleep for API consistency" alt="" coords="218,56,285,83"/>
 <area shape="rect" href="group___l_i_s_t.html#ga1dafe7a250ddad51fadd375f057287e7" title="Empty a LIST list of pointers." alt="" coords="344,5,427,32"/>
+</map>
+</div>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group___t_h_r_e_a_d_s_ga12ce28c2aaa5a5a1a05abe11071dd83f_icgraph.png" border="0" usemap="#agroup___t_h_r_e_a_d_s_ga12ce28c2aaa5a5a1a05abe11071dd83f_icgraph" alt=""/></div>
+<map name="agroup___t_h_r_e_a_d_s_ga12ce28c2aaa5a5a1a05abe11071dd83f_icgraph" id="agroup___t_h_r_e_a_d_s_ga12ce28c2aaa5a5a1a05abe11071dd83f_icgraph">
+<area shape="rect" title="delete a thread_pool, exit the threads and free the structs" alt="" coords="104,5,257,32"/>
+<area shape="rect" href="ex__network_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,5,56,32"/>
 </map>
 </div>
 
@@ -491,7 +586,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="struct_t_h_r_e_a_d___p_o_o_l.html">THREAD_POOL</a> * new_thread_pool </td>
+          <td class="memname"><a class="el" href="group___t_h_r_e_a_d_s.html#struct_t_h_r_e_a_d___p_o_o_l">THREAD_POOL</a> * new_thread_pool </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>nbmaxthr</em>, </td>
@@ -510,7 +605,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__thread__pool_8h.html">n_thread_pool.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="n__thread__pool_8h.html">include/nilorea/n_thread_pool.h</a>&gt;</code></p>
 
 <p>Create a new pool of nbmaxthr threads. </p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -525,16 +620,29 @@ Functions</h2></td></tr>
 <p class="definition">Definition at line <a class="el" href="n__thread__pool_8c_source.html#l00094">94</a> of file <a class="el" href="n__thread__pool_8c_source.html">n_thread_pool.c</a>.</p>
 
 <p class="reference">References <a class="el" href="n__common_8h_source.html#l00242">Free</a>, <a class="el" href="n__thread__pool_8h_source.html#l00033">IDLE_PROC</a>, <a class="el" href="n__log_8h_source.html#l00058">LOG_ERR</a>, <a class="el" href="n__common_8h_source.html#l00182">Malloc</a>, <a class="el" href="n__log_8h_source.html#l00074">n_log</a>, <a class="el" href="n__list_8c_source.html#l00020">new_generic_list()</a>, <a class="el" href="n__thread__pool_8h_source.html#l00039">RUNNING_THREAD</a>, and <a class="el" href="n__thread__pool_8c_source.html#l00025">thread_pool_processing_function()</a>.</p>
-<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+
+<p class="reference">Referenced by <a class="el" href="ex__network_8c_source.html#l00162">main()</a>.</p>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="group___t_h_r_e_a_d_s_gadb3f2b85b758433e29e84b54992cfed4_cgraph.png" border="0" usemap="#agroup___t_h_r_e_a_d_s_gadb3f2b85b758433e29e84b54992cfed4_cgraph" alt=""/></div>
 <map name="agroup___t_h_r_e_a_d_s_gadb3f2b85b758433e29e84b54992cfed4_cgraph" id="agroup___t_h_r_e_a_d_s_gadb3f2b85b758433e29e84b54992cfed4_cgraph">
 <area shape="rect" title="Create a new pool of nbmaxthr threads." alt="" coords="5,35,124,61"/>
 <area shape="rect" href="group___l_i_s_t.html#gada615e3b144e97bcff147dfe89f6fef6" title="Initialiaze a generic list container to max_items pointers." alt="" coords="192,5,311,32"/>
 <area shape="rect" href="n__thread__pool_8c.html#abd0649708787bc15e1bc1ee59d64fd1f" title="Internal thread pool processing function." alt="" coords="172,57,331,98"/>
+</map>
+</div>
+<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group___t_h_r_e_a_d_s_gadb3f2b85b758433e29e84b54992cfed4_icgraph.png" border="0" usemap="#agroup___t_h_r_e_a_d_s_gadb3f2b85b758433e29e84b54992cfed4_icgraph" alt=""/></div>
+<map name="agroup___t_h_r_e_a_d_s_gadb3f2b85b758433e29e84b54992cfed4_icgraph" id="agroup___t_h_r_e_a_d_s_gadb3f2b85b758433e29e84b54992cfed4_icgraph">
+<area shape="rect" title="Create a new pool of nbmaxthr threads." alt="" coords="104,5,223,32"/>
+<area shape="rect" href="ex__network_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,5,56,32"/>
 </map>
 </div>
 
@@ -549,14 +657,14 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">int refresh_thread_pool </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_t_h_r_e_a_d___p_o_o_l.html">THREAD_POOL</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="group___t_h_r_e_a_d_s.html#struct_t_h_r_e_a_d___p_o_o_l">THREAD_POOL</a> *&#160;</td>
           <td class="paramname"><em>thread_pool</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__thread__pool_8h.html">n_thread_pool.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="n__thread__pool_8h.html">include/nilorea/n_thread_pool.h</a>&gt;</code></p>
 
 <p>try to add some waiting DIRECT_PROCs on some free thread slots, else do nothing </p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -571,12 +679,12 @@ Functions</h2></td></tr>
 
 <p class="reference">References <a class="el" href="n__common_8h_source.html#l00262">__n_assert</a>, <a class="el" href="n__thread__pool_8c_source.html#l00164">add_threaded_process()</a>, <a class="el" href="n__thread__pool_8h_source.html#l00029">DIRECT_PROC</a>, <a class="el" href="n__common_8h_source.html#l00242">Free</a>, <a class="el" href="n__log_8h_source.html#l00066">LOG_DEBUG</a>, <a class="el" href="n__log_8h_source.html#l00074">n_log</a>, <a class="el" href="n__thread__pool_8h_source.html#l00045">NO_LOCK</a>, <a class="el" href="n__thread__pool_8h_source.html#l00031">NOQUEUE</a>, <a class="el" href="n__list_8h_source.html#l00083">remove_list_node</a>, and <a class="el" href="n__thread__pool_8h_source.html#l00037">RUNNING_PROC</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="n__thread__pool_8c_source.html#l00289">wait_for_threaded_pool()</a>.</p>
-<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+<p class="reference">Referenced by <a class="el" href="ex__network_8c_source.html#l00162">main()</a>, and <a class="el" href="n__thread__pool_8c_source.html#l00289">wait_for_threaded_pool()</a>.</p>
+<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div id="dynsection-7-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="group___t_h_r_e_a_d_s_ga5d9ce1747e4b7cb58ce3767f7e56cd8b_cgraph.png" border="0" usemap="#agroup___t_h_r_e_a_d_s_ga5d9ce1747e4b7cb58ce3767f7e56cd8b_cgraph" alt=""/></div>
 <map name="agroup___t_h_r_e_a_d_s_ga5d9ce1747e4b7cb58ce3767f7e56cd8b_cgraph" id="agroup___t_h_r_e_a_d_s_ga5d9ce1747e4b7cb58ce3767f7e56cd8b_cgraph">
 <area shape="rect" title="try to add some waiting DIRECT_PROCs on some free thread slots, else do nothing" alt="" coords="5,5,140,32"/>
@@ -585,15 +693,16 @@ Functions</h2></td></tr>
 <area shape="rect" href="group___l_i_s_t.html#ga678e828550efc8e64a836bb8c713c2f4" title="Allocate a new node to link in a list." alt="" coords="512,5,616,32"/>
 </map>
 </div>
-<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-8-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div id="dynsection-8-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="group___t_h_r_e_a_d_s_ga5d9ce1747e4b7cb58ce3767f7e56cd8b_icgraph.png" border="0" usemap="#agroup___t_h_r_e_a_d_s_ga5d9ce1747e4b7cb58ce3767f7e56cd8b_icgraph" alt=""/></div>
 <map name="agroup___t_h_r_e_a_d_s_ga5d9ce1747e4b7cb58ce3767f7e56cd8b_icgraph" id="agroup___t_h_r_e_a_d_s_ga5d9ce1747e4b7cb58ce3767f7e56cd8b_icgraph">
-<area shape="rect" title="try to add some waiting DIRECT_PROCs on some free thread slots, else do nothing" alt="" coords="208,5,343,32"/>
-<area shape="rect" href="group___t_h_r_e_a_d_s.html#ga992fc2a67a2d66733ccd10f7d9e2ead3" title="Wait for all the launched process in the thread pool to terminate." alt="" coords="5,5,160,32"/>
+<area shape="rect" title="try to add some waiting DIRECT_PROCs on some free thread slots, else do nothing" alt="" coords="307,5,441,32"/>
+<area shape="rect" href="ex__network_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,5,56,32"/>
+<area shape="rect" href="group___t_h_r_e_a_d_s.html#ga992fc2a67a2d66733ccd10f7d9e2ead3" title="Wait for all the launched process in the thread pool to terminate." alt="" coords="104,31,259,57"/>
 </map>
 </div>
 
@@ -608,14 +717,14 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">int start_threaded_pool </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_t_h_r_e_a_d___p_o_o_l.html">THREAD_POOL</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="group___t_h_r_e_a_d_s.html#struct_t_h_r_e_a_d___p_o_o_l">THREAD_POOL</a> *&#160;</td>
           <td class="paramname"><em>thread_pool</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__thread__pool_8h.html">n_thread_pool.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="n__thread__pool_8h.html">include/nilorea/n_thread_pool.h</a>&gt;</code></p>
 
 <p>Launch the process waiting for exectution in the thread pool. </p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -641,7 +750,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">int wait_for_threaded_pool </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_t_h_r_e_a_d___p_o_o_l.html">THREAD_POOL</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="group___t_h_r_e_a_d_s.html#struct_t_h_r_e_a_d___p_o_o_l">THREAD_POOL</a> *&#160;</td>
           <td class="paramname"><em>thread_pool</em>, </td>
         </tr>
         <tr>
@@ -658,7 +767,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><code>#include &lt;<a class="el" href="n__thread__pool_8h.html">n_thread_pool.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="n__thread__pool_8h.html">include/nilorea/n_thread_pool.h</a>&gt;</code></p>
 
 <p>Wait for all the launched process in the thread pool to terminate. </p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -672,12 +781,14 @@ Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="n__thread__pool_8c_source.html#l00289">289</a> of file <a class="el" href="n__thread__pool_8c_source.html">n_thread_pool.c</a>.</p>
 
-<p class="reference">References <a class="el" href="n__thread__pool_8h_source.html#l00033">IDLE_PROC</a>, <a class="el" href="n__log_8h_source.html#l00066">LOG_DEBUG</a>, <a class="el" href="n__log_8h_source.html#l00074">n_log</a>, <a class="el" href="n__thread__pool_8c_source.html#l00404">refresh_thread_pool()</a>, and <a class="el" href="n__time_8c_source.html#l00038">u_sleep()</a>.</p>
-<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
+<p class="reference">References <a class="el" href="ex__gui__particles_8c_source.html#l00019">DONE</a>, <a class="el" href="n__thread__pool_8h_source.html#l00033">IDLE_PROC</a>, <a class="el" href="n__log_8h_source.html#l00066">LOG_DEBUG</a>, <a class="el" href="n__log_8h_source.html#l00074">n_log</a>, <a class="el" href="n__thread__pool_8c_source.html#l00404">refresh_thread_pool()</a>, and <a class="el" href="n__time_8c_source.html#l00038">u_sleep()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="ex__network_8c_source.html#l00162">main()</a>.</p>
+<div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-9-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-6-content" class="dyncontent" style="display:none;">
+<div id="dynsection-9-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="group___t_h_r_e_a_d_s_ga992fc2a67a2d66733ccd10f7d9e2ead3_cgraph.png" border="0" usemap="#agroup___t_h_r_e_a_d_s_ga992fc2a67a2d66733ccd10f7d9e2ead3_cgraph" alt=""/></div>
 <map name="agroup___t_h_r_e_a_d_s_ga992fc2a67a2d66733ccd10f7d9e2ead3_cgraph" id="agroup___t_h_r_e_a_d_s_ga992fc2a67a2d66733ccd10f7d9e2ead3_cgraph">
 <area shape="rect" title="Wait for all the launched process in the thread pool to terminate." alt="" coords="5,31,160,57"/>
@@ -688,6 +799,17 @@ Functions</h2></td></tr>
 <area shape="rect" href="group___l_i_s_t.html#ga678e828550efc8e64a836bb8c713c2f4" title="Allocate a new node to link in a list." alt="" coords="715,5,819,32"/>
 </map>
 </div>
+<div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-10-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-10-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-10-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="group___t_h_r_e_a_d_s_ga992fc2a67a2d66733ccd10f7d9e2ead3_icgraph.png" border="0" usemap="#agroup___t_h_r_e_a_d_s_ga992fc2a67a2d66733ccd10f7d9e2ead3_icgraph" alt=""/></div>
+<map name="agroup___t_h_r_e_a_d_s_ga992fc2a67a2d66733ccd10f7d9e2ead3_icgraph" id="agroup___t_h_r_e_a_d_s_ga992fc2a67a2d66733ccd10f7d9e2ead3_icgraph">
+<area shape="rect" title="Wait for all the launched process in the thread pool to terminate." alt="" coords="104,5,259,32"/>
+<area shape="rect" href="ex__network_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,5,56,32"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -696,7 +818,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Feb 3 2022 21:53:48 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+    <li class="footer">Generated on Fri Feb 4 2022 17:12:05 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
   </ul>
 </div>
 </body>

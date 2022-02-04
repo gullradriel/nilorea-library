@@ -60,7 +60,7 @@ extern "C" {
 #define HASH_KEY_STRING 64
 /*! Murmur hash using hash key string, hash key numeric value, index table with lists of elements */
 #define HASH_CLASSIC    128
-/*! TRIE tree more using hash key string */
+/*! TRIE tree using hash key string */
 #define HASH_TRIE       256
 
 

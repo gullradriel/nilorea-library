@@ -91,6 +91,7 @@
 		</Unit>
 		<Unit filename="serveur.cfg" />
 		<Unit filename="valgrind-suppressions.cfg" />
+		<Unit filename="valgrind.sh" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

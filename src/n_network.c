@@ -581,13 +581,15 @@ const char *xdigits :
 
 #endif /* if GCC_VERSION <= 4.5 */
 
-#else /* ifdef __windows__ */
+#else /* not ifdef __windows__ */
 
 #include <sys/types.h>
 #include <sys/wait.h>
 
+
 /*! Keep it compatible with bsd like */
 #define neterrno errno
+
 /*! BSD style errno string NO WORKING ON REDHAT */
 /* #define netstrerror( code )({ \
    size_t errmsglen = 512 ; // strerrorlen_s( code ) + 1  ; \
@@ -600,6 +602,7 @@ const char *xdigits :
    errmsg ; \
    }) */
 
+/*! get last error code string */
 #define netstrerror( code )({ \
 		char *errmsg = NULL ; \
 		errno = 0 ; \
@@ -611,6 +614,11 @@ const char *xdigits :
 		errmsg ; \
 		})
 
+
+/*!\fn void netw_sigchld_handler( int sig )
+ *\brief signal handler to reap zombies when forking
+ *\param sig the received signal
+ */
 void netw_sigchld_handler( int sig )
 {
     // waitpid() might overwrite errno, so we save and restore it:
@@ -619,6 +627,8 @@ void netw_sigchld_handler( int sig )
     errno = saved_errno;
     n_log( LOG_DEBUG, "Signal %d", sig );
 }
+
+
 
 #endif /* ifndef windows */
 
@@ -730,9 +740,10 @@ NETWORK *netw_new( int send_list_limit, int recv_list_limit )
 
 
 
-/*!\fn void *get_in_addr(struct addrinfo *sa)
+/*!\fn char *get_in_addr(struct sockaddr *sa)
  *\brief get sockaddr, IPv4 or IPv6
  *\param sa addrinfo to get
+ *\return socket address
  */
 char *get_in_addr(struct sockaddr *sa)
 {
@@ -860,7 +871,7 @@ int netw_set_blocking( NETWORK *netw, unsigned long int is_blocking )
  *\brief Modify common socket options on the given netw
  *\param netw The socket to configure
  *\param optname NETWORK_DEPLETE_TIMEOUT,NETWORK_CONSECUTIVE_SEND_TIMEOUT ,SO_REUSEADDR,TCP_NODELAY,SO_SNDBUF,SO_RCVBUF,SO_LINGER,SO_RCVTIMEO,SO_SNDTIMEO. Please refer to man setsockopt for details
- *\value The value of the socket parameter
+ *\param value The value of the socket parameter
  *\return TRUE or FALSE
  */
 int netw_setsockopt( NETWORK *netw, int optname, int value )
@@ -1552,7 +1563,7 @@ int netw_close( NETWORK **netw )
 /*!\fn int deplete_send_buffer( int fd , long timeout )
  *\brief wait until the socket is empty or timeout, checking each 100 msec. Not as reliable as expected.
  *\param fd socket descriptor
- *\timeout timeout value in msec , zero or negative value => disabled
+ *\param timeout timeout value in msec , zero or negative value => disabled
  *\return 0 or the amount of remaining datas in bytes
  */
 int deplete_send_buffer( int fd, long timeout )
@@ -2185,6 +2196,7 @@ int netw_start_thr_engine( NETWORK *netw )
 /*!\fn void *netw_send_func( void *NET )
  *\brief Thread send function
  *\param NET the NETWORK connection to use, casted into (void*)
+ *\return NULL
  */
 void *netw_send_func( void *NET )
 {
@@ -2315,6 +2327,7 @@ void *netw_send_func( void *NET )
 /*!\fn void *netw_recv_func( void *NET )
  *\brief To Thread Receiving function
  *\param NET the NETWORK connection to use
+ *\return NULL ;
  */
 void *netw_recv_func( void *NET )
 {
@@ -2865,8 +2878,8 @@ int netw_get_queue_status( NETWORK *netw, int *nb_to_send, int *nb_to_read )
 
 
 /*!\fn NETWORK_POOL *netw_new_pool( int nb_min_element )
- *
  *\brief return a new network pool of nb_min_element
+ *\param nb_min_element size of internal hash table for network pool
  *\return a new NETWORK_POOL or NULL
  */
 NETWORK_POOL *netw_new_pool( int nb_min_element )
@@ -2887,8 +2900,8 @@ NETWORK_POOL *netw_new_pool( int nb_min_element )
 
 
 /*!\fn int netw_destroy_pool( NETWORK_POOL **netw_pool )
- *\brief free a network pool
- *\param the address of a pointer to free
+ *\brief free a NETWORK_POOL *pool
+ *\param netw_pool the address of a NETWORK_POOL *pointer to free
  *\return TRUE or FALSE
  */
 int netw_destroy_pool(  NETWORK_POOL **netw_pool )
@@ -2909,17 +2922,27 @@ int netw_destroy_pool(  NETWORK_POOL **netw_pool )
 
 
 
+/*!\fn void netw_pool_netw_close( void *netw_ptr )
+ *\brief close a network from a network pool
+ *\param netw_ptr NETWORK *network pointer
+ */
 void netw_pool_netw_close( void *netw_ptr )
 {
     NETWORK *netw = (NETWORK *)netw_ptr ;
     __n_assert( netw, return );
+    netw_close( &netw );
     n_log( LOG_DEBUG, "Network pool %p: network id %d still active !!", netw, netw -> link . sock );
     return ;
-}
+} /* netw_pool_netw_close() */
 
 
 
-/* add network to pool */
+/*!\fn int netw_pool_add( NETWORK_POOL *netw_pool, NETWORK *netw )
+ *\brief add a NETWORK *netw to a NETWORK_POOL *pool
+ *\param netw_pool targeted network pool
+ *\param netw network to add
+ *\return TRUE or FALSE
+ */
 int netw_pool_add( NETWORK_POOL *netw_pool, NETWORK *netw )
 {
     __n_assert( netw_pool, return FALSE );
@@ -2949,11 +2972,16 @@ int netw_pool_add( NETWORK_POOL *netw_pool, NETWORK *netw )
     unlock( netw_pool -> rwlock );
 
     return retval ;
-} /* netw_pool_add */
+} /* netw_pool_add() */
 
 
 
-/* remove network to pool */
+/*!\fn int netw_pool_remove( NETWORK_POOL *netw_pool, NETWORK *netw )
+ *\brief remove a NETWORK *netw to a NETWORK_POOL *pool
+ *\param netw_pool targeted network pool
+ *\param netw network to remove
+ *\return TRUE or FALSE
+ */
 int netw_pool_remove( NETWORK_POOL *netw_pool, NETWORK *netw )
 {
     __n_assert( netw_pool, return FALSE );
@@ -2988,7 +3016,13 @@ int netw_pool_remove( NETWORK_POOL *netw_pool, NETWORK *netw )
 
 
 
-/* add message to pool */
+/*!\fn int netw_pool_broadcast( NETWORK_POOL *netw_pool, NETWORK *from, N_STR *net_msg )
+ *\brief add net_msg to all network in netork pool
+ *\param netw_pool targeted network pool
+ *\param from source network
+ *\param net_msg mesage to broadcast
+ *\return TRUE or FALSE
+ */
 int netw_pool_broadcast( NETWORK_POOL *netw_pool, NETWORK *from, N_STR *net_msg )
 {
     __n_assert( netw_pool, return FALSE );
@@ -3014,7 +3048,12 @@ int netw_pool_broadcast( NETWORK_POOL *netw_pool, NETWORK *from, N_STR *net_msg 
 } /* netw_pool_broadcast */
 
 
-/* get nb clients */
+
+/*!\fn int netw_pool_nbclients( NETWORK_POOL *netw_pool )
+ *\brief return the number of networks in netw_pool
+ *\param netw_pool targeted network pool
+ *\return -1 or the number of networks in netw_pool
+ */
 int netw_pool_nbclients( NETWORK_POOL *netw_pool )
 {
     __n_assert( netw_pool, return -1 );
@@ -3025,16 +3064,22 @@ int netw_pool_nbclients( NETWORK_POOL *netw_pool )
     unlock( netw_pool -> rwlock );
 
     return nb ;
-}
+} /* netw_pool_nbclients() */
 
 
-/* set user id on a netw */
+
+/*!\fn int netw_set_user_id( NETWORK *netw, int id )
+ *\brief associate an id and a network
+ *\param netw targeted network
+ *\param id id we want to associated with
+ *\return TRUE or FALSE
+ */
 int netw_set_user_id( NETWORK *netw, int id )
 {
     __n_assert( netw, return FALSE );
     netw -> user_id = id ;
     return TRUE ;
-}
+} /* netw_set_user_id() */
 
 
 
@@ -3111,12 +3156,12 @@ int netw_send_position( NETWORK *netw, int id, double X, double Y, double vx, do
 
 
 
-/*!\fn int netw_send_string_to( NETWORK *netw , int id_to , N_STR *name , N_STR *txt , int color )
+/*!\fn int netw_send_string_to( NETWORK *netw, int id_to, N_STR *name, N_STR *chan, N_STR *txt, int color )
  *\brief Add a string to the network, aiming a specific user
  *\param netw The aimed NETWORK where we want to add something to send
- *\param id_from The ID of the sending client
  *\param id_to The ID of the targetted client
  *\param name Sender Name
+ *\param chan channel to use
  *\param txt Sender text
  *\param color Sender text color
  *\return TRUE or FALSE
@@ -3135,17 +3180,15 @@ int netw_send_string_to( NETWORK *netw, int id_to, N_STR *name, N_STR *chan, N_S
 
 
 
-/*!\fn netw_send_string_to_all( NETWORK *netw , int id , char *name , char *chan , char *txt , int color )
+/*!\fn int netw_send_string_to_all( NETWORK *netw, N_STR *name, N_STR *chan, N_STR *txt, int color )
  *\brief Add a string to the network, aiming all server-side users
  *\param netw The aimed NETWORK where we want to add something to send
- *\param id The ID of the sending client
  *\param name Name of user
  *\param chan Target Channel, if any. Pass "ALL" to target the default channel
  *\param txt The text to send
  *\param color The color of the text
  *\return TRUE or FALSE;
  */
-
 int netw_send_string_to_all( NETWORK *netw, N_STR *name, N_STR *chan, N_STR *txt, int color )
 {
     N_STR *tmpstr = NULL ;

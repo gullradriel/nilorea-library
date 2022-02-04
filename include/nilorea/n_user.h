@@ -20,7 +20,7 @@ extern "C"
 #include "nilorea/n_network.h"
 #include "nilorea/n_3d.h"
 
-/**\defgroup N_USER GAMEDEV: user handling
+/**\defgroup N_USER APPDEV: user handling
   \addtogroup N_USER
   @{
   */

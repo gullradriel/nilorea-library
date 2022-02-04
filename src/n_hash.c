@@ -20,10 +20,14 @@
 
 
 
+/************ TRIE TREE TABLES ************/
+
+
+
 /*!\fn HASH_NODE *_ht_new_node_trie( HASH_TABLE *table , char key )
  *\internal
  *\brief node creation, HASH_CLASSIC mode
- *\param table Target table
+ *\param table targeted table
  *\param key key of new node
  *\return NULL or a new HASH_NODE *
  */
@@ -61,8 +65,8 @@ HASH_NODE *_ht_new_node_trie( HASH_TABLE *table, char key )
  *\internal
  *\fn int _ht_put_int_trie( HASH_TABLE *table, char *key, int value )
  *\brief put an integral value with given key in the targeted hash table [TRIE HASH TABLE)
- *\param table Targeted hash table
- *\param key Size Associated value's key
+ *\param table targeted hash table
+ *\param key associated value's key
  *\param value integral value to put
  *\return TRUE or FALSE
  */
@@ -112,8 +116,8 @@ int _ht_put_int_trie( HASH_TABLE *table, char *key, int value )
  *\internal
  *\fn int _ht_put_double_trie( HASH_TABLE *table, char *key, double value )
  *\brief put a double value with given key in the targeted hash table [TRIE HASH TABLE)
- *\param table Targeted hash table
- *\param key Size Associated value's key
+ *\param table targeted hash table
+ *\param key associated value's key
  *\param value double value to put
  *\return TRUE or FALSE
  */
@@ -162,9 +166,9 @@ int _ht_put_double_trie( HASH_TABLE *table, char *key, double value )
  *\internal
  *\fn int _ht_put_string_trie( HASH_TABLE *table, char *key, char *string )
  *\brief put a duplicate of the string value with given key in the targeted hash table [TRIE HASH TABLE)
- *\param table Targeted hash table
- *\param key Size Associated value's key
- *\param value string value to put (copy)
+ *\param table targeted hash table
+ *\param key associated value's key
+ *\param string string value to put (copy)
  *\return TRUE or FALSE
  */
 int _ht_put_string_trie( HASH_TABLE *table, char *key, char *string )
@@ -216,9 +220,9 @@ int _ht_put_string_trie( HASH_TABLE *table, char *key, char *string )
  *\internal
  *\fn int _ht_put_string_ptr_trie( HASH_TABLE *table, char *key, char *string )
  *\brief put a pointer to the string value with given key in the targeted hash table [TRIE HASH TABLE)
- *\param table Targeted hash table
- *\param key Size Associated value's key
- *\param value string value to put (pointer)
+ *\param table targeted hash table
+ *\param key associated value's key
+ *\param string string value to put (pointer)
  *\return TRUE or FALSE
  */
 int _ht_put_string_ptr_trie( HASH_TABLE *table, char *key, char *string )
@@ -266,8 +270,8 @@ int _ht_put_string_ptr_trie( HASH_TABLE *table, char *key, char *string )
  *\internal
  *\fn int _ht_put_ptr_trie( HASH_TABLE *table, char *key, void *ptr, void (*destructor)(void *ptr ) )
  *\brief put a pointer to the string value with given key in the targeted hash table [TRIE HASH TABLE)
- *\param table Targeted hash table
- *\param key Size Associated value's key
+ *\param table targeted hash table
+ *\param key associated value's key
  *\param ptr pointer value to put
  *\param destructor the destructor func for ptr or NULL
  *\return TRUE or FALSE
@@ -317,13 +321,11 @@ int _ht_put_ptr_trie( HASH_TABLE *table, char *key, void *ptr, void (*destructor
 
 /*!
  *\internal
- *\fn int _ht_put_ptr_trie( HASH_TABLE *table, char *key, void *ptr, void (*destructor)(void *ptr ) )
- *\brief put a pointer to the string value with given key in the targeted hash table [TRIE HASH TABLE)
- *\param table Targeted hash table
- *\param key Size Associated value's key
- *\param ptr pointer value to put
- *\param destructor the destructor func for ptr or NULL
- *\return TRUE or FALSE
+ *\fn HASH_NODE *_ht_get_node_trie( HASH_TABLE *table, char *key )
+ *\brief retrieve a HASH_NODE at key from table
+ *\param table targeted hash table
+ *\param key associated value's key
+ *\return a HASH_NODE *node or NULL
  */
 HASH_NODE *_ht_get_node_trie( HASH_TABLE *table, char *key )
 {
@@ -347,15 +349,15 @@ HASH_NODE *_ht_get_node_trie( HASH_TABLE *table, char *key )
         node = node -> children[ index ];
     }
     return node ;
-}
+} /* _ht_get_node_trie(...) */
 
 
 
 /*!\fn int _ht_get_int_trie( HASH_TABLE *table , char *key , int *val )
  *\brief Retrieve an integral value in the hash table, at the given key. Leave val untouched if key is not found.
- *\param table Targeted hash table
- *\param key Size Associated value's key
- *\param val A pointer to a destination integer
+ *\param table targeted hash table
+ *\param key associated value's key
+ *\param val a pointer to a destination integer
  *\return TRUE or FALSE.
  */
 int _ht_get_int_trie( HASH_TABLE *table, char *key, int *val )
@@ -384,10 +386,10 @@ int _ht_get_int_trie( HASH_TABLE *table, char *key, int *val )
 
 
 /*!\fn int _ht_get_double_trie( HASH_TABLE *table , char *key , double *val )
- *\brief Retrieve an integral value in the hash table, at the given key. Leave val untouched if key is not found.
- *\param table Targeted hash table
- *\param key Size Associated value's key
- *\param val A pointer to a destination integer
+ *\brief Retrieve an double value in the hash table, at the given key. Leave val untouched if key is not found.
+ *\param table targeted hash table
+ *\param key associated value's key
+ *\param val a pointer to a destination double
  *\return TRUE or FALSE.
  */
 int _ht_get_double_trie( HASH_TABLE *table, char *key, double *val )
@@ -416,10 +418,10 @@ int _ht_get_double_trie( HASH_TABLE *table, char *key, double *val )
 
 
 /*!\fn int _ht_get_string_trie( HASH_TABLE *table , char *key , char **val )
- *\brief Retrieve an integral value in the hash table, at the given key. Leave val untouched if key is not found.
- *\param table Targeted hash table
- *\param key Size Associated value's key
- *\param val A pointer to a destination integer
+ *\brief Retrieve an char *string value in the hash table, at the given key. Leave val untouched if key is not found.
+ *\param table targeted hash table
+ *\param key associated value's key
+ *\param val a pointer to a destination char *string
  *\return TRUE or FALSE.
  */
 int _ht_get_string_trie( HASH_TABLE *table, char *key, char **val )
@@ -447,10 +449,10 @@ int _ht_get_string_trie( HASH_TABLE *table, char *key, char **val )
 
 
 /*!\fn int _ht_get_ptr_trie( HASH_TABLE *table , char *key , void **val )
- *\brief Retrieve an integral value in the hash table, at the given key. Leave val untouched if key is not found.
- *\param table Targeted hash table
- *\param key Size Associated value's key
- *\param val A pointer to a destination pointer
+ *\brief Retrieve a pointer value in the hash table, at the given key. Leave val untouched if key is not found.
+ *\param table targeted hash table
+ *\param key associated value's key
+ *\param val a pointer to a destination pointer
  *\return TRUE or FALSE.
  */
 int _ht_get_ptr_trie( HASH_TABLE *table, char *key, void **val )
@@ -478,12 +480,20 @@ int _ht_get_ptr_trie( HASH_TABLE *table, char *key, void **val )
 
 
 
+/*!
+ *\internal
+ *\fn int _ht_check_trie_divergence( HASH_TABLE *table, char *key )
+ *\brief check and return branching index in key if any
+ *\param table targeted hash table
+ *\param key associated value's key
+ *\return TRUE or FALSE
+ */
 int _ht_check_trie_divergence( HASH_TABLE *table, char *key )
 {
     __n_assert( table, return FALSE );
     __n_assert( key, return FALSE );
 
-    /* check and return branching if any */
+
     HASH_NODE* node = table -> root;
 
     int last_index = 0;
@@ -512,10 +522,18 @@ int _ht_check_trie_divergence( HASH_TABLE *table, char *key )
         }
     }
     return last_index;
-}
+} /* _ht_check_trie_divergence(...) */
 
 
 
+/*!
+ *\internal
+ *\fn char* _ht_find_longest_prefix_trie( HASH_TABLE *table, char *key )
+ *\brief  find the longest prefix string that is not the current key
+ *\param table targeted hash table
+ *\param key key to search prefix for
+ *\return TRUE or FALSE
+ */
 char* _ht_find_longest_prefix_trie( HASH_TABLE *table, char *key )
 {
     __n_assert( table, return NULL );
@@ -538,10 +556,18 @@ char* _ht_find_longest_prefix_trie( HASH_TABLE *table, char *key )
         __n_assert( longest_prefix, return NULL );
     }
     return longest_prefix;
-}
+} /* _ht_find_longest_prefix_trie(...) */
 
 
 
+/*!
+ *\internal
+ *\fn int _ht_is_leaf_node_trie( HASH_TABLE *table, char *key )
+ *\brief  Search a key and tell if it's holding a value (leaf)
+ *\param table targeted hash table
+ *\param key key verify
+ *\return 1 or 0
+ */
 int _ht_is_leaf_node_trie( HASH_TABLE *table, char *key )
 {
     __n_assert( table, return -1 );
@@ -562,9 +588,13 @@ int _ht_is_leaf_node_trie( HASH_TABLE *table, char *key )
         }
     }
     return node -> is_leaf ;
-}
+} /* _ht_is_leaf_node_trie(...) */
 
-/*!\fn void _ht_node_destroy( void *node )
+
+
+/*!
+ *\internal
+ *\fn void _ht_node_destroy( void *node )
  *\brief destroy a HASH_NODE by first calling the HASH_NODE destructor
  *\param node The node to kill
  */
@@ -606,6 +636,14 @@ void _ht_node_destroy( void *node )
 
 
 
+/*!
+ *\internal
+ *\fn int _ht_remove_trie( HASH_TABLE *table, char *key )
+ *\brief Remove a key from a trie table and destroy the node
+ *\param table targeted tabled
+ *\param key the node key to kill
+ *\return TRUE or FALSE
+ */
 int _ht_remove_trie( HASH_TABLE *table, char *key )
 {
     __n_assert( table, return FALSE );
@@ -668,13 +706,15 @@ int _ht_remove_trie( HASH_TABLE *table, char *key )
     }
     Free( longest_prefix );
     return TRUE ;
-}
+} /* _ht_remove_trie(...) */
 
 
 
-/*!\fn int _empty_ht_trie( HASH_TABLE *table )
+/*!
+ *\internal
+ *\fn int _empty_ht_trie( HASH_TABLE *table )
  *\brief Empty a TRIE hash table
- *\param table Targeted hash table
+ *\param table targeted hash table
  *\return TRUE or FALSE.
  */
 int _empty_ht_trie( HASH_TABLE *table )
@@ -691,9 +731,11 @@ int _empty_ht_trie( HASH_TABLE *table )
 
 
 
-/*!\fn int destroy_ht( HASH_TABLE **table )
- *\brief Free and set the table to NULL
- *\param table Targeted hash table
+/*!
+ *\internal
+ *\fn int _destroy_ht_trie( HASH_TABLE **table )
+ *\brief Free and set the table to NULL (TRIE mode)
+ *\param table targeted hash table
  *\return TRUE or FALSE.
  */
 int _destroy_ht_trie( HASH_TABLE **table )
@@ -705,13 +747,17 @@ int _destroy_ht_trie( HASH_TABLE **table )
     Free( (*table ) );
 
     return TRUE ;
-} /* _destroy_ht */
+} /* _destroy_ht_trie */
 
 
 
-
-
-
+/*!
+ *\internal
+ *\fn void _ht_print_trie_helper( HASH_TABLE *table, HASH_NODE *node )
+ *\brief Recursive function to print trie tree's keys and values
+ *\param table targeted hash table
+ *\param node current node
+ */
 void _ht_print_trie_helper( HASH_TABLE *table, HASH_NODE *node )
 {
     if( !node )
@@ -744,10 +790,16 @@ void _ht_print_trie_helper( HASH_TABLE *table, HASH_NODE *node )
     {
         _ht_print_trie_helper( table, node -> children[ it ] );
     }
-}
+} /* _ht_print_trie_helper(...) */
 
 
 
+/*!
+ *\internal
+ *\fn void _ht_print_trie( HASH_TABLE *table )
+ *\brief Generic print func call for trie trees
+ *\param table targeted hash table
+ */
 void _ht_print_trie( HASH_TABLE *table )
 {
     __n_assert( table, return );
@@ -758,8 +810,17 @@ void _ht_print_trie( HASH_TABLE *table )
     _ht_print_trie_helper( table, node );
 
     return ;
-}
+} /* _ht_print_trie(...) */
 
+
+/*!
+ *\internal
+ *\fn void _ht_search_trie_helper( LIST *results, HASH_NODE *node, int (*node_is_matching)( HASH_NODE *node ) )
+ *\brief Recursive function to search tree's keys and apply a matching func to put results in the list
+ *\param results targeted and initialized LIST in which the matching nodes will be put
+ *\param node targeted starting trie node
+ *\param node_is_matching pointer to a matching function to use
+ */
 void _ht_search_trie_helper( LIST *results, HASH_NODE *node, int (*node_is_matching)( HASH_NODE *node ) )
 {
     if( !node )
@@ -778,6 +839,15 @@ void _ht_search_trie_helper( LIST *results, HASH_NODE *node, int (*node_is_match
     }
 }
 
+
+/*!
+ *\internal
+ *\fn LIST *_ht_search_trie( HASH_TABLE *table, int (*node_is_matching)( HASH_NODE *node ) )
+ *\brief Search tree's keys and apply a matching func to put results in the list
+ *\param table targeted table
+ *\param node_is_matching pointer to a matching function to use
+ *\return NULL or a LIST *list of HASH_NODE *elements
+ */
 LIST *_ht_search_trie( HASH_TABLE *table, int (*node_is_matching)( HASH_NODE *node ) )
 {
     __n_assert( table, return NULL );
@@ -791,11 +861,18 @@ LIST *_ht_search_trie( HASH_TABLE *table, int (*node_is_matching)( HASH_NODE *no
         list_destroy( &results );
 
     return results ;
-}
+} /* _ht_search_trie(...) */
 
 
 
-/* depth search of key */
+/*!
+ *\internal
+ *\fn int _ht_depth_first_search( HASH_NODE *node, LIST *results )
+ *\brief recursive, helper for ht_get_completion_list, get the list of leaf starting from node
+ *\param node starting node
+ *\param results initialized LIST * for the matching NODES
+ *\return TRUE if some matched, else FALSE
+ */
 int _ht_depth_first_search( HASH_NODE *node, LIST *results )
 {
     __n_assert( results, return FALSE );
@@ -813,53 +890,14 @@ int _ht_depth_first_search( HASH_NODE *node, LIST *results )
         {
             return list_push( results, strdup( node -> key ), &free );
         }
-        return FALSE ;
+        return TRUE ;
     }
-    return TRUE ;
-}
+    return FALSE ;
+} /* _ht_depth_first_search(...) */
 
 
 
-/* completion search keys */
-LIST *ht_get_completion_list( HASH_TABLE *table, char *keybud, uint32_t max_results )
-{
-    __n_assert( table, return NULL );
-    __n_assert( keybud, return NULL );
-
-    LIST *results = NULL ;
-    if( table -> mode == HASH_TRIE )
-    {
-        int found = FALSE ;
-        results = new_generic_list( max_results );
-        HASH_NODE* node = _ht_get_node_trie( table, keybud );
-        if( node )
-        {
-            if( list_push( results, strdup( keybud ), &free ) == TRUE )
-            {
-                found = TRUE ;
-                _ht_depth_first_search( node, results );
-            }
-        }
-        if( found == FALSE )
-            list_destroy( &results );
-    }
-    else if( table -> mode == HASH_CLASSIC )
-    {
-        int matching_nodes( HASH_NODE *node)
-        {
-            if( strncasecmp( "key", node -> key, 3 ) == 0 )
-                return TRUE ;
-            return FALSE ;
-        }
-        results = ht_search( table, &matching_nodes );
-    }
-    else
-    {
-        n_log( LOG_ERR, "unsupported mode %d", table -> mode );
-        return NULL ;
-    }
-    return results ;
-}
+/************ CLASSIC HASH TABLE ************/
 
 
 
@@ -1181,7 +1219,7 @@ char *ht_node_type( HASH_NODE *node )
 
 /*!\fn HASH_NODE *_ht_get_node( HASH_TABLE *table , char *key )
  *\brief return the associated key's node inside the hash_table
- *\param table Targeted hash table
+ *\param table targeted table
  *\param key Associated value's key
  *\return The found node, or NULL
  */
@@ -1222,7 +1260,7 @@ HASH_NODE *_ht_get_node( HASH_TABLE *table, char *key )
 /*!\fn HASH_NODE *_ht_new_node( HASH_TABLE *table , char *key )
  *\internal
  *\brief node creation, HASH_CLASSIC mode
- *\param table Target table
+ *\param table targeted table
  *\param key key of new node
  *\return NULL or a new HASH_NODE *
  */
@@ -1259,7 +1297,7 @@ HASH_NODE *_ht_new_node( HASH_TABLE *table, char *key )
 /*!\fn HASH_NODE *_ht_new_int_node( HASH_TABLE *table , char *key , int value )
  *\internal
  *\brief node creation, HASH_CLASSIC mode
- *\param table Target table
+ *\param table targeted table
  *\param key key of new node
  *\param value int value of key
  *\return NULL or a new HASH_NODE *
@@ -1281,7 +1319,7 @@ HASH_NODE *_ht_new_int_node( HASH_TABLE *table, char *key, int value )
 /*!\fn HASH_NODE *_ht_new_double_node( HASH_TABLE *table , char *key , double value )
  *\internal
  *\brief node creation, HASH_CLASSIC mode
- *\param table Target table
+ *\param table targeted table
  *\param key key of new node
  *\param value double value of key
  *\return NULL or a new HASH_NODE *
@@ -1303,7 +1341,7 @@ HASH_NODE *_ht_new_double_node( HASH_TABLE *table, char *key, double value )
 /*!\fn HASH_NODE *_ht_new_string_node( HASH_TABLE *table , char *key , char *value )
  *\internal
  *\brief node creation, HASH_CLASSIC mode, strdup of value
- *\param table Target table
+ *\param table targeted table
  *\param key key of new node
  *\param value char *value of key
  *\return NULL or a new HASH_NODE *
@@ -1328,7 +1366,7 @@ HASH_NODE *_ht_new_string_node( HASH_TABLE *table, char *key, char *value )
 /*!\fn HASH_NODE *_ht_new_string_ptr_node( HASH_TABLE *table , char *key , char *value )
  *\internal
  *\brief node creation, HASH_CLASSIC mode, pointer to string value
- *\param table Target table
+ *\param table targeted table
  *\param key key of new node
  *\param value char *value of key
  *\return NULL or a new HASH_NODE *
@@ -1347,10 +1385,10 @@ HASH_NODE *_ht_new_string_ptr_node( HASH_TABLE *table, char *key, char *value )
 
 
 
-/*!\fn HASH_NODE *_ht_new_string_ptr_node( HASH_TABLE *table , void *value , void (*destructor)(void *ptr ) )
+/*!\fn HASH_NODE *_ht_new_ptr_node( HASH_TABLE *table, char *key, void *value, void (*destructor)(void *ptr ) )
  *\internal
  *\brief node creation, HASH_CLASSIC mode, pointer to string value
- *\param table Target table
+ *\param table targeted table
  *\param key key of new node
  *\param value pointer data of key
  *\param destructor function pointer to a destructor of value type
@@ -1375,8 +1413,8 @@ HASH_NODE *_ht_new_ptr_node( HASH_TABLE *table, char *key, void *value, void (*d
  *\internal
  *\fn int _ht_put_int( HASH_TABLE *table , char * key , int value )
  *\brief put an integral value with given key in the targeted hash table [CLASSIC HASH TABLE)
- *\param table Targeted hash table
- *\param key Size Associated value's key
+ *\param table targeted table
+ *\param key associated value's key
  *\param value integral value to put
  *\return TRUE or FALSE
  */
@@ -1413,8 +1451,8 @@ int _ht_put_int( HASH_TABLE *table, char * key, int value )
 
 /*!\fn int _ht_put_double( HASH_TABLE *table , char * key , double value )
  *\brief put a double value with given key in the targeted hash table
- *\param table Targeted hash table
- *\param key Size Associated value's key
+ *\param table targeted hash table
+ *\param key associated value's key
  *\param value double value to put
  *\return TRUE or FALSE
  */
@@ -1451,7 +1489,7 @@ int _ht_put_double( HASH_TABLE *table, char *key, double value )
 
 /*!\fn int _ht_put_ptr( HASH_TABLE *table , char *key , void  *ptr , void (*destructor)(void *ptr ) )
  *\brief put a pointer value with given key in the targeted hash table
- *\param table Targeted hash table
+ *\param table targeted hash table
  *\param key Associated value's key
  *\param ptr pointer value to put
  *\param destructor Pointer to the ptr type destructor function. Leave to NULL if there isn't
@@ -1496,7 +1534,7 @@ int _ht_put_ptr( HASH_TABLE *table, char *key, void  *ptr, void (*destructor)(vo
 
 /*!\fn int _ht_put_string( HASH_TABLE *table , char *key , char  *string )
  *\brief put a null terminated char *string with given key in the targeted hash table (copy of string)
- *\param table Targeted hash table
+ *\param table targeted hash table
  *\param key Associated value's key
  *\param string string value to put (will be strdup'ed)
  *\return TRUE or FALSE
@@ -1536,7 +1574,7 @@ int _ht_put_string( HASH_TABLE *table, char *key, char *string )
 
 /*!\fn int _ht_put_string_ptr( HASH_TABLE *table , char *key , char  *string )
  *\brief put a null terminated char *string with given key in the targeted hash table (pointer)
- *\param table Targeted hash table
+ *\param table targeted hash table
  *\param key Associated value's key
  *\param string The string to put
  *\return TRUE or FALSE
@@ -1578,8 +1616,8 @@ int _ht_put_string_ptr( HASH_TABLE *table, char *key, char *string )
 
 /*!\fn int _ht_get_int( HASH_TABLE *table , char *key , int *val )
  *\brief Retrieve an integral value in the hash table, at the given key. Leave val untouched if key is not found.
- *\param table Targeted hash table
- *\param key Size Associated value's key
+ *\param table targeted hash table
+ *\param key associated value's key
  *\param val A pointer to a destination integer
  *\return TRUE or FALSE.
  */
@@ -1610,8 +1648,8 @@ int _ht_get_int( HASH_TABLE *table, char *key, int *val )
 
 /*!\fn int _ht_get_double( HASH_TABLE *table , char *key , double *val )
  *\brief Retrieve a double value in the hash table, at the given key. Leave val untouched if key is not found.
- *\param table Targeted hash table
- *\param key Size Associated value's key
+ *\param table targeted hash table
+ *\param key associated value's key
  *\param val A pointer to a destination double
  *\return TRUE or FALSE.
  */
@@ -1643,8 +1681,8 @@ int _ht_get_double( HASH_TABLE *table, char * key, double *val )
 
 /*!\fn int _ht_get_ptr( HASH_TABLE *table , char *key , void **val )
  *\brief Retrieve a pointer value in the hash table, at the given key. Leave val untouched if key is not found.
- *\param table Targeted hash table
- *\param key Size Associated value's key
+ *\param table targeted hash table
+ *\param key associated value's key
  *\param val A pointer to an empty pointer store
  *\return TRUE or FALSE.
  */
@@ -1674,8 +1712,8 @@ int _ht_get_ptr( HASH_TABLE *table, char *key, void  **val )
 
 /*!\fn int _ht_get_string( HASH_TABLE *table , char *key , char **val )
  *\brief Retrieve a char *string value in the hash table, at the given key. Leave val untouched if key is not found.
- *\param table Targeted hash table
- *\param key Size Associated value's key
+ *\param table targeted hash table
+ *\param key associated value's key
  *\param val A pointer to an empty destination char *string
  *\return TRUE or FALSE.
  */
@@ -1705,7 +1743,7 @@ int _ht_get_string( HASH_TABLE *table, char * key, char  **val )
 
 /*!\fn int _ht_remove( HASH_TABLE *table , char *key )
  *\brief Remove a key from a hash table
- *\param table Targeted hash table
+ *\param table targeted hash table
  *\param key Key to remove
  *\return TRUE or FALSE.
  */
@@ -1756,9 +1794,11 @@ int _ht_remove( HASH_TABLE *table, char *key )
 
 
 
-/*!\fn int empty_ht( HASH_TABLE *table )
- *\brief Empty a hash table
- *\param table Targeted hash table
+/*!
+ *\internal
+ *\fn int _empty_ht( HASH_TABLE *table )
+ *\brief Empty a hash table (CLASSIC mode)
+ *\param table targeted hash table
  *\return TRUE or FALSE.
  */
 int _empty_ht( HASH_TABLE *table )
@@ -1782,9 +1822,11 @@ int _empty_ht( HASH_TABLE *table )
 
 
 
-/*!\fn int destroy_ht( HASH_TABLE **table )
+/*!
+ *\internal
+ *\fn int _destroy_ht( HASH_TABLE **table )
  *\brief Free and set the table to NULL
- *\param table Targeted hash table
+ *\param table targeted hash table
  *\return TRUE or FALSE.
  */
 int _destroy_ht( HASH_TABLE **table )
@@ -1808,6 +1850,12 @@ int _destroy_ht( HASH_TABLE **table )
 } /* _destroy_ht */
 
 
+/*!
+ *\internal
+ *\fn void _ht_print( HASH_TABLE *table )
+ *\brief Generic print func call for classic hash tables
+ *\param table targeted hash table
+ */
 void _ht_print( HASH_TABLE *table )
 {
     __n_assert( table, return );
@@ -1818,10 +1866,17 @@ void _ht_print( HASH_TABLE *table )
     }
 
     return ;
-}
+} /* _ht_print(...) */
 
 
-
+/*!
+ *\internal
+ *\fn LIST *_ht_search( HASH_TABLE *table, int (*node_is_matching)( HASH_NODE *node ) )
+ *\brief Search hash table's keys and apply a matching func to put results in the list
+ *\param table targeted table
+ *\param node_is_matching pointer to a matching function to use
+ *\return NULL or a LIST *list of HASH_NODE *elements
+ */
 LIST *_ht_search( HASH_TABLE *table, int (*node_is_matching)( HASH_NODE *node ) )
 {
     __n_assert( table, return NULL );
@@ -1842,13 +1897,18 @@ LIST *_ht_search( HASH_TABLE *table, int (*node_is_matching)( HASH_NODE *node ) 
         list_destroy( &results );
 
     return results ;
-}
+} /* _ht_search(...) */
 
 
 
-/*!\fn HASH_TABLE *new_ht_trie( unsigned int alphabet_size , unsigned int alphabet_offset )
- *\brief Create a hash table with the given size
- *\param size Size of the root hash node table
+/************ HASH_TABLES FUNCTION POINTERS AND COMMON TABLE TYPE FUNCS ************/
+
+
+
+/*!\fn HASH_TABLE *new_ht_trie( unsigned int alphabet_length, unsigned int alphabet_offset )
+ *\brief create a TRIE hash table with the alphabet_size, each key value beeing decreased by alphabet_offset
+ *\param alphabet_length of the alphabet
+ *\param alphabet_offset offset of each character in a key (i.e: to have 'a->z' with 'a' starting at zero, offset must be 32.
  *\return NULL or the new allocated hash table
  */
 HASH_TABLE *new_ht_trie( unsigned int alphabet_length, unsigned int alphabet_offset )
@@ -1888,7 +1948,9 @@ HASH_TABLE *new_ht_trie( unsigned int alphabet_length, unsigned int alphabet_off
     return table ;
 } /* new_ht_trie */
 
-/*!\fn HASH_TABLE *new_ht( int size )
+
+
+/*!\fn HASH_TABLE *new_ht( unsigned long int size )
  *\brief Create a hash table with the given size
  *\param size Size of the root hash node table
  *\return NULL or the new allocated hash table
@@ -1950,50 +2012,109 @@ HASH_TABLE *new_ht( unsigned long int size )
     table -> ht_print          = _ht_print ;
 
     return table ;
-} /* new_ht */
+} /* new_ht(...) */
 
+
+
+/*!\fn HASH_NODE *ht_get_node( HASH_TABLE *table, char *key )
+ *\brief get node at 'key' from 'table'
+ *\param table targeted table
+ *\param key key to retrieve
+ *\return NULL or the matching HASH_NODE *node
+ */
 HASH_NODE *ht_get_node( HASH_TABLE *table, char *key )
 {
     __n_assert( table, return FALSE );
     __n_assert( key, return FALSE );
     return table->ht_get_node( table, key );
-}
+} /*ht_get_node(...) */
 
+
+
+/*!\fn int ht_get_double( HASH_TABLE *table, char * key, double *val )
+ *\brief get double at 'key' from 'table'
+ *\param table targeted table
+ *\param key key to retrieve
+ *\param val pointer to double storage
+ *\return TRUE if found, else FALSE. 'val' value is preserved if no key is matching.
+ */
 int ht_get_double( HASH_TABLE *table, char * key, double *val )
 {
     __n_assert( table, return FALSE );
     __n_assert( key, return FALSE );
     return table->ht_get_double( table, key, val );
-}
+} /* ht_get_double(...) */
+
+
+
+/*!\fn int ht_get_int( HASH_TABLE *table, char *key, int *val )
+ *\brief get node at 'key' from 'table'
+ *\param table targeted table
+ *\param key key to retrieve
+ *\param val pointer to int storage
+ *\return TRUE if found, else FALSE. 'val' value is preserved if no key is matching.
+ */
 int ht_get_int( HASH_TABLE *table, char *key, int *val )
 {
     __n_assert( table, return FALSE );
     __n_assert( key, return FALSE );
     return table->ht_get_int( table, key, val );
-}
+} /* ht_get_int(...) */
+
+
+
+/*!\fn int ht_get_ptr( HASH_TABLE *table, char * key, void  **val )
+ *\brief get pointer at 'key' from 'table'
+ *\param table targeted table
+ *\param key key to retrieve
+ *\param val pointer to pointer storage
+ *\return TRUE if found, else FALSE. 'val' value is preserved if no key is matching.
+ */
 int ht_get_ptr( HASH_TABLE *table, char * key, void  **val )
 {
     __n_assert( table, return FALSE );
     __n_assert( key, return FALSE );
     return table -> ht_get_ptr( table, key, &(*val) );
-}
+} /* ht_get_ptr(...) */
+
+
+
+/*!\fn int ht_get_string( HASH_TABLE *table, char * key, char  **val )
+ *\brief get string at 'key' from 'table'
+ *\param table targeted table
+ *\param key key to retrieve
+ *\param val pointer to string storage
+ *\return TRUE if found, else FALSE. 'val' value is preserved if no key is matching.
+ */
 int ht_get_string( HASH_TABLE *table, char * key, char  **val )
 {
     __n_assert( table, return FALSE );
     __n_assert( key, return FALSE );
     return table->ht_get_string( table, key, val );
-}
+} /* ht_get_string(...) */
+
+
+
+/*!\fn int ht_put_double( HASH_TABLE *table, char *key, double value )
+ *\brief put a double value with given key in the targeted hash table
+ *\param table targeted table
+ *\param key key to retrieve
+ *\param value double value to put
+ *\return TRUE or FALSE
+ */
 int ht_put_double( HASH_TABLE *table, char *key, double value )
 {
     __n_assert( table, return FALSE );
     __n_assert( key, return FALSE );
     return table->ht_put_double( table, key, value );
-}
+} /* ht_put_double(...) */
+
+
 
 /*!\fn int ht_put_int( HASH_TABLE *table , char * key , int value )
  *\brief put an integral value with given key in the targeted hash table
- *\param table Targeted hash table
- *\param key Size Associated value's key
+ *\param table targeted hash table
+ *\param key associated value's key
  *\param value integral value to put
  *\return TRUE or FALSE
  */
@@ -2002,56 +2123,170 @@ int ht_put_int( HASH_TABLE *table, char * key, int value )
     __n_assert( table, return FALSE );
     __n_assert( key, return FALSE );
     return table->ht_put_int( table, key, value );
-}
+} /* ht_put_int(...) */
+
+
+
+/*!\fn int ht_put_ptr( HASH_TABLE *table, char *key, void *ptr, void (*destructor)(void *ptr ) )
+ *\brief put a pointer to the string value with given key in the targeted hash table
+ *\param table targeted hash table
+ *\param key associated value's key
+ *\param ptr pointer value to put
+ *\param destructor the destructor func for ptr or NULL
+ *\return TRUE or FALSE
+ */
 int ht_put_ptr( HASH_TABLE *table, char *key, void  *ptr, void (*destructor)(void *ptr ) )
 {
     __n_assert( table, return FALSE );
     __n_assert( key, return FALSE );
     return table->ht_put_ptr( table, key, ptr, destructor );
-}
+} /* ht_put_ptr(...) */
+
+
+
+/*!\fn int ht_put_string( HASH_TABLE *table, char *key, char *string )
+ *\brief put a string value (copy/dup) with given key in the targeted hash table
+ *\param table targeted hash table
+ *\param key associated value's key
+ *\param string string value to put (copy)
+ *\return TRUE or FALSE
+ */
 int ht_put_string( HASH_TABLE *table, char *key, char *string )
 {
     __n_assert( table, return FALSE );
     __n_assert( key, return FALSE );
     return table->ht_put_string( table, key, string );
-}
+} /* ht_put_string(...) */
+
+
+
+/*!\fn int ht_put_string_ptr( HASH_TABLE *table, char *key, char *string )
+ *\brief put a string value (pointer) with given key in the targeted hash table
+ *\param table targeted hash table
+ *\param key associated value's key
+ *\param string string value to put (pointer)
+ *\return TRUE or FALSE
+ */
 int ht_put_string_ptr( HASH_TABLE *table, char *key, char *string )
 {
     __n_assert( table, return FALSE );
     __n_assert( key, return FALSE );
     return table->ht_put_string_ptr( table, key, string );
-}
+} /* ht_put_string_ptr(...) */
+
+
+
+/*!\fn int ht_remove( HASH_TABLE *table, char *key )
+ *\brief remove and delete node at key in table
+ *\param table targeted hash table
+ *\param key key of node to destroy
+ *\return TRUE or FALSE
+ */
 int ht_remove( HASH_TABLE *table, char *key )
 {
     __n_assert( table, return FALSE );
     __n_assert( key, return FALSE );
     return table->ht_remove( table, key );
-}
+} /* ht_remove(...) */
+
+
+
+/*!\fn void ht_print( HASH_TABLE *table )
+ *\brief print contents of table
+ *\param table targeted hash table
+ */
 void ht_print( HASH_TABLE *table )
 {
     __n_assert( table, return );
     table->ht_print( table );
     return ;
-}
+} /* ht_print(...) */
 
+
+
+/*!\fn LIST *ht_search( HASH_TABLE *table, int (*node_is_matching)( HASH_NODE *node ) )
+ *\brief seach table for matching nodes
+ *\param table targeted hash table
+ *\param node_is_matching matching function
+ *\return NULL or a LIST *list of HASH_NODE *nodes
+ */
 LIST *ht_search( HASH_TABLE *table, int (*node_is_matching)( HASH_NODE *node ) )
 {
     __n_assert( table, return FALSE );
     return table -> ht_search( table, node_is_matching );
-}
+} /* ht_search(...) */
 
+
+
+/*!\fn int empty_ht( HASH_TABLE *table )
+ *\brief empty a table
+ *\param table targeted hash table
+ *\return TRUE or FALSE
+ */
 int empty_ht( HASH_TABLE *table )
 {
     __n_assert( table, return FALSE );
     return table -> empty_ht( table );
-}
+} /* empty_ht(...) */
 
+
+
+/*!\fn int destroy_ht( HASH_TABLE **table )
+ *\brief empty a table and destroy it
+ *\param table targeted hash table
+ *\return TRUE or FALSE
+ */
 int destroy_ht( HASH_TABLE **table )
 {
     __n_assert( (*table), return FALSE );
     return (*table)->destroy_ht( table );
-}
+} /* destroy_ht(...) */
 
 
 
+/*!\fn LIST *ht_get_completion_list( HASH_TABLE *table, char *keybud, uint32_t max_results )
+ *\brief get next matching keys in table tree
+ *\param table targeted hash table
+ *\param keybud starting characters of the keys we want
+ *\param max_results maximum number of matching keys in list
+ *\return NULL or a LIST *list of matching HASH_NODE *nodes
+ */
+LIST *ht_get_completion_list( HASH_TABLE *table, char *keybud, uint32_t max_results )
+{
+    __n_assert( table, return NULL );
+    __n_assert( keybud, return NULL );
 
+    LIST *results = NULL ;
+    if( table -> mode == HASH_TRIE )
+    {
+        int found = FALSE ;
+        results = new_generic_list( max_results );
+        HASH_NODE* node = _ht_get_node_trie( table, keybud );
+        if( node )
+        {
+            if( list_push( results, strdup( keybud ), &free ) == TRUE )
+            {
+                found = TRUE ;
+                _ht_depth_first_search( node, results );
+            }
+        }
+        if( found == FALSE )
+            list_destroy( &results );
+    }
+    else if( table -> mode == HASH_CLASSIC )
+    {
+        int matching_nodes( HASH_NODE *node)
+        {
+            if( strncasecmp( keybud , node -> key , strlen( keybud ) ) == 0 )
+                return TRUE ;
+            return FALSE ;
+        }
+        results = ht_search( table, &matching_nodes );
+    }
+    else
+    {
+        n_log( LOG_ERR, "unsupported mode %d", table -> mode );
+        return NULL ;
+    }
+    return results ;
+} /* ht_get_completion_list(...) */

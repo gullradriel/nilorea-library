@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['vector3d_0',['VECTOR3D',['../group___d.html#ga4cbdd7084ea2076595f397a969feba63',1,'n_3d.h']]]
+  ['socket_5ftype_0',['SOCKET_TYPE',['../group___n_e_t_w_o_r_k_i_n_g.html#gadb1fd2057def9e8dd095a5b24bf5450a',1,'n_network.h']]]
 ];

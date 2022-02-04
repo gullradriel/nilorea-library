@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.3"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Nilorea Library: n_games.c Source File</title>
+<title>Nilorea Library: src/n_games.c Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -88,11 +88,11 @@ $(document).ready(function(){initNavTree('n__games_8c_source.html',''); initResi
 <a href="n__games_8c.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;<a class="code" href="n__games_8h.html">nilorea/n_games.h</a>&quot;</span></div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="group___g_a_m_e___e_n_v.html#gab086402feba2e0fe1845453a8d899bf6">   15</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="group___g_a_m_e___e_n_v.html#gab086402feba2e0fe1845453a8d899bf6">init_game_env</a>( <a class="code hl_struct" href="struct_g_a_m_e___e_n_v.html">GAME_ENV</a> **game )</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="group___g_a_m_e___e_n_v.html#gab086402feba2e0fe1845453a8d899bf6">   15</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="group___g_a_m_e___e_n_v.html#gab086402feba2e0fe1845453a8d899bf6">init_game_env</a>( <a class="code hl_struct" href="group___g_a_m_e___e_n_v.html#struct_g_a_m_e___e_n_v">GAME_ENV</a> **game )</div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>{</div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="keywordflow">if</span>( !(*game) )</div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    {</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        <a class="code hl_define" href="group___c_o_m_m_o_n_s.html#ga46bf052fc99248347a1dcf89bc0757c6">Malloc</a>( (*game), <a class="code hl_struct" href="struct_g_a_m_e___e_n_v.html">GAME_ENV</a>, 1 );</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        <a class="code hl_define" href="group___c_o_m_m_o_n_s.html#ga46bf052fc99248347a1dcf89bc0757c6">Malloc</a>( (*game), <a class="code hl_struct" href="group___g_a_m_e___e_n_v.html#struct_g_a_m_e___e_n_v">GAME_ENV</a>, 1 );</div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        <span class="keywordflow">if</span>( !(*game ) )</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        {</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>            <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a>, <span class="stringliteral">&quot;Could not allocate a new game env&quot;</span> );</div>
@@ -101,7 +101,7 @@ $(document).ready(function(){initNavTree('n__games_8c_source.html',''); initResi
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    }</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    (*game) -&gt; BLUR = 1 ;</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    (*game) -&gt; fade_value = 20 ;</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    (*game) -&gt; DONE = 0 ;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    (*game) -&gt; <a class="code hl_variable" href="ex__gui__particles_8c.html#a5819e6b9d2ee24c8e96d702de02421a0">DONE</a> = 0 ;</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    (*game) -&gt; GFX_CONFIG_MODE = GFX_DIRECTX_WIN ;</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    (*game) -&gt; CPU_MODE = <a class="code hl_define" href="group___g_a_m_e___e_n_v.html#ga84d4d6cd71758c35c7aefbb8e3684c22">CPU_USE_FULL</a> ;</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    (*game) -&gt; nb_min_particles = 0 ;</div>
@@ -128,7 +128,7 @@ $(document).ready(function(){initNavTree('n__games_8c_source.html',''); initResi
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="group___g_a_m_e___e_n_v.html#ga47fd0bb7f6db4234af06b5ebafb18837">   58</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="group___g_a_m_e___e_n_v.html#ga47fd0bb7f6db4234af06b5ebafb18837">destroy_game_env</a>( <a class="code hl_struct" href="struct_g_a_m_e___e_n_v.html">GAME_ENV</a> **game )</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="group___g_a_m_e___e_n_v.html#ga47fd0bb7f6db4234af06b5ebafb18837">   58</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="group___g_a_m_e___e_n_v.html#ga47fd0bb7f6db4234af06b5ebafb18837">destroy_game_env</a>( <a class="code hl_struct" href="group___g_a_m_e___e_n_v.html#struct_g_a_m_e___e_n_v">GAME_ENV</a> **game )</div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>{</div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keywordflow">if</span>( (*game) )</div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    {</div>
@@ -140,7 +140,7 @@ $(document).ready(function(){initNavTree('n__games_8c_source.html',''); initResi
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="group___g_a_m_e___e_n_v.html#gaa343f04284422e7cfafa561b82c8f4f3">   75</a></span><a class="code hl_struct" href="struct_g_a_m_e___e_n_v.html">GAME_ENV</a> *<a class="code hl_function" href="group___g_a_m_e___e_n_v.html#gaa343f04284422e7cfafa561b82c8f4f3">load_game_config</a>( <span class="keywordtype">char</span> *config_name )</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="group___g_a_m_e___e_n_v.html#gaa343f04284422e7cfafa561b82c8f4f3">   75</a></span><a class="code hl_struct" href="group___g_a_m_e___e_n_v.html#struct_g_a_m_e___e_n_v">GAME_ENV</a> *<a class="code hl_function" href="group___g_a_m_e___e_n_v.html#gaa343f04284422e7cfafa561b82c8f4f3">load_game_config</a>( <span class="keywordtype">char</span> *config_name )</div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>{</div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    FILE *config = NULL ;</div>
 <div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <span class="keywordtype">char</span> strbuf[ 1024 ] = <span class="stringliteral">&quot;&quot;</span> ;</div>
@@ -154,7 +154,7 @@ $(document).ready(function(){initNavTree('n__games_8c_source.html',''); initResi
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        <span class="keywordflow">return</span> NULL  ;</div>
 <div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    }</div>
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <a class="code hl_struct" href="struct_g_a_m_e___e_n_v.html">GAME_ENV</a> *game = NULL ;</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <a class="code hl_struct" href="group___g_a_m_e___e_n_v.html#struct_g_a_m_e___e_n_v">GAME_ENV</a> *game = NULL ;</div>
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <a class="code hl_function" href="group___g_a_m_e___e_n_v.html#gab086402feba2e0fe1845453a8d899bf6">init_game_env</a>( &amp;game );</div>
 <div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    <span class="keywordflow">if</span>( !game )</div>
 <div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    {</div>
@@ -294,26 +294,27 @@ $(document).ready(function(){initNavTree('n__games_8c_source.html',''); initResi
 <div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span> </div>
 <div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>    <span class="keywordflow">return</span> game ;</div>
 <div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>} <span class="comment">/* destroy_game_env */</span></div>
-<div class="ttc" id="agroup___c_o_m_m_o_n_s_html_ga46bf052fc99248347a1dcf89bc0757c6"><div class="ttname"><a href="group___c_o_m_m_o_n_s.html#ga46bf052fc99248347a1dcf89bc0757c6">Malloc</a></div><div class="ttdeci">#define Malloc(__ptr, __struct, __size)</div><div class="ttdoc">Malloc Handler to get errors and set to 0.</div><div class="ttdef"><b>Definition:</b> <a href="n__common_8h_source.html#l00182">n_common.h:182</a></div></div>
-<div class="ttc" id="agroup___c_o_m_m_o_n_s_html_gae62e40d702e99a7760ba1de7451dff51"><div class="ttname"><a href="group___c_o_m_m_o_n_s.html#gae62e40d702e99a7760ba1de7451dff51">Free</a></div><div class="ttdeci">#define Free(__ptr)</div><div class="ttdoc">Free Handler to get errors.</div><div class="ttdef"><b>Definition:</b> <a href="n__common_8h_source.html#l00242">n_common.h:242</a></div></div>
+<div class="ttc" id="aex__gui__particles_8c_html_a5819e6b9d2ee24c8e96d702de02421a0"><div class="ttname"><a href="ex__gui__particles_8c.html#a5819e6b9d2ee24c8e96d702de02421a0">DONE</a></div><div class="ttdeci">int DONE</div><div class="ttdef"><b>Definition:</b> <a href="ex__gui__particles_8c_source.html#l00019">ex_gui_particles.c:19</a></div></div>
+<div class="ttc" id="agroup___c_o_m_m_o_n_s_html_ga46bf052fc99248347a1dcf89bc0757c6"><div class="ttname"><a href="group___c_o_m_m_o_n_s.html#ga46bf052fc99248347a1dcf89bc0757c6">Malloc</a></div><div class="ttdeci">#define Malloc(__ptr, __struct, __size)</div><div class="ttdef"><b>Definition:</b> <a href="n__common_8h_source.html#l00182">n_common.h:182</a></div></div>
+<div class="ttc" id="agroup___c_o_m_m_o_n_s_html_gae62e40d702e99a7760ba1de7451dff51"><div class="ttname"><a href="group___c_o_m_m_o_n_s.html#gae62e40d702e99a7760ba1de7451dff51">Free</a></div><div class="ttdeci">#define Free(__ptr)</div><div class="ttdef"><b>Definition:</b> <a href="n__common_8h_source.html#l00242">n_common.h:242</a></div></div>
 <div class="ttc" id="agroup___g_a_m_e___e_n_v_html_ga47fd0bb7f6db4234af06b5ebafb18837"><div class="ttname"><a href="group___g_a_m_e___e_n_v.html#ga47fd0bb7f6db4234af06b5ebafb18837">destroy_game_env</a></div><div class="ttdeci">void destroy_game_env(GAME_ENV **game)</div><div class="ttdef"><b>Definition:</b> <a href="n__games_8c_source.html#l00058">n_games.c:58</a></div></div>
-<div class="ttc" id="agroup___g_a_m_e___e_n_v_html_ga5bb1d90aeda09d9646e3c19f632251d1"><div class="ttname"><a href="group___g_a_m_e___e_n_v.html#ga5bb1d90aeda09d9646e3c19f632251d1">CPU_USE_LESS</a></div><div class="ttdeci">#define CPU_USE_LESS</div><div class="ttdoc">wait more</div><div class="ttdef"><b>Definition:</b> <a href="n__games_8h_source.html#l00030">n_games.h:30</a></div></div>
-<div class="ttc" id="agroup___g_a_m_e___e_n_v_html_ga84d4d6cd71758c35c7aefbb8e3684c22"><div class="ttname"><a href="group___g_a_m_e___e_n_v.html#ga84d4d6cd71758c35c7aefbb8e3684c22">CPU_USE_FULL</a></div><div class="ttdeci">#define CPU_USE_FULL</div><div class="ttdoc">full use of CPU</div><div class="ttdef"><b>Definition:</b> <a href="n__games_8h_source.html#l00026">n_games.h:26</a></div></div>
+<div class="ttc" id="agroup___g_a_m_e___e_n_v_html_ga5bb1d90aeda09d9646e3c19f632251d1"><div class="ttname"><a href="group___g_a_m_e___e_n_v.html#ga5bb1d90aeda09d9646e3c19f632251d1">CPU_USE_LESS</a></div><div class="ttdeci">#define CPU_USE_LESS</div><div class="ttdef"><b>Definition:</b> <a href="n__games_8h_source.html#l00030">n_games.h:30</a></div></div>
+<div class="ttc" id="agroup___g_a_m_e___e_n_v_html_ga84d4d6cd71758c35c7aefbb8e3684c22"><div class="ttname"><a href="group___g_a_m_e___e_n_v.html#ga84d4d6cd71758c35c7aefbb8e3684c22">CPU_USE_FULL</a></div><div class="ttdeci">#define CPU_USE_FULL</div><div class="ttdef"><b>Definition:</b> <a href="n__games_8h_source.html#l00026">n_games.h:26</a></div></div>
 <div class="ttc" id="agroup___g_a_m_e___e_n_v_html_gaa343f04284422e7cfafa561b82c8f4f3"><div class="ttname"><a href="group___g_a_m_e___e_n_v.html#gaa343f04284422e7cfafa561b82c8f4f3">load_game_config</a></div><div class="ttdeci">GAME_ENV * load_game_config(char *config_name)</div><div class="ttdoc">load a config from file</div><div class="ttdef"><b>Definition:</b> <a href="n__games_8c_source.html#l00075">n_games.c:75</a></div></div>
 <div class="ttc" id="agroup___g_a_m_e___e_n_v_html_gab086402feba2e0fe1845453a8d899bf6"><div class="ttname"><a href="group___g_a_m_e___e_n_v.html#gab086402feba2e0fe1845453a8d899bf6">init_game_env</a></div><div class="ttdeci">int init_game_env(GAME_ENV **game)</div><div class="ttdef"><b>Definition:</b> <a href="n__games_8c_source.html#l00015">n_games.c:15</a></div></div>
-<div class="ttc" id="agroup___g_a_m_e___e_n_v_html_gaf442dcd3e6a11816794a1150ac94bbde"><div class="ttname"><a href="group___g_a_m_e___e_n_v.html#gaf442dcd3e6a11816794a1150ac94bbde">CPU_USE_NICE</a></div><div class="ttdeci">#define CPU_USE_NICE</div><div class="ttdoc">let the other process have some times</div><div class="ttdef"><b>Definition:</b> <a href="n__games_8h_source.html#l00028">n_games.h:28</a></div></div>
-<div class="ttc" id="agroup___l_o_g_html_ga61355655c6d490cdf201afdfc340df4b"><div class="ttname"><a href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a></div><div class="ttdeci">#define n_log(__LEVEL__,...)</div><div class="ttdoc">Logging function wrapper to get line and func.</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00074">n_log.h:74</a></div></div>
-<div class="ttc" id="agroup___l_o_g_html_ga96fad55b3f5adf08c39e4c877cf185e3"><div class="ttname"><a href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a></div><div class="ttdeci">#define LOG_ERR</div><div class="ttdoc">error conditions</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00058">n_log.h:58</a></div></div>
-<div class="ttc" id="agroup___l_o_g_html_gad89ee324d180cdcd7defcc709ff9ca42"><div class="ttname"><a href="group___l_o_g.html#gad89ee324d180cdcd7defcc709ff9ca42">LOG_NOTICE</a></div><div class="ttdeci">#define LOG_NOTICE</div><div class="ttdoc">normal but significant condition</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00062">n_log.h:62</a></div></div>
-<div class="ttc" id="an__games_8h_html"><div class="ttname"><a href="n__games_8h.html">n_games.h</a></div><div class="ttdoc">Games helpers functions.</div></div>
-<div class="ttc" id="astruct_g_a_m_e___e_n_v_html"><div class="ttname"><a href="struct_g_a_m_e___e_n_v.html">GAME_ENV</a></div><div class="ttdoc">Game Environment structure.</div><div class="ttdef"><b>Definition:</b> <a href="n__games_8h_source.html#l00033">n_games.h:34</a></div></div>
+<div class="ttc" id="agroup___g_a_m_e___e_n_v_html_gaf442dcd3e6a11816794a1150ac94bbde"><div class="ttname"><a href="group___g_a_m_e___e_n_v.html#gaf442dcd3e6a11816794a1150ac94bbde">CPU_USE_NICE</a></div><div class="ttdeci">#define CPU_USE_NICE</div><div class="ttdef"><b>Definition:</b> <a href="n__games_8h_source.html#l00028">n_games.h:28</a></div></div>
+<div class="ttc" id="agroup___g_a_m_e___e_n_v_html_struct_g_a_m_e___e_n_v"><div class="ttname"><a href="group___g_a_m_e___e_n_v.html#struct_g_a_m_e___e_n_v">GAME_ENV</a></div><div class="ttdef"><b>Definition:</b> <a href="n__games_8h_source.html#l00033">n_games.h:34</a></div></div>
+<div class="ttc" id="agroup___l_o_g_html_ga61355655c6d490cdf201afdfc340df4b"><div class="ttname"><a href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a></div><div class="ttdeci">#define n_log(__LEVEL__,...)</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00074">n_log.h:74</a></div></div>
+<div class="ttc" id="agroup___l_o_g_html_ga96fad55b3f5adf08c39e4c877cf185e3"><div class="ttname"><a href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a></div><div class="ttdeci">#define LOG_ERR</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00058">n_log.h:58</a></div></div>
+<div class="ttc" id="agroup___l_o_g_html_gad89ee324d180cdcd7defcc709ff9ca42"><div class="ttname"><a href="group___l_o_g.html#gad89ee324d180cdcd7defcc709ff9ca42">LOG_NOTICE</a></div><div class="ttdeci">#define LOG_NOTICE</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00062">n_log.h:62</a></div></div>
+<div class="ttc" id="an__games_8h_html"><div class="ttname"><a href="n__games_8h.html">n_games.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="n__games_8c.html">n_games.c</a></li>
-    <li class="footer">Generated on Thu Feb 3 2022 21:53:47 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+    <li class="footer">Generated on Fri Feb 4 2022 17:12:03 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
   </ul>
 </div>
 </body>

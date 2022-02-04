@@ -17,7 +17,7 @@ extern "C" {
 #include "n_str.h"
 #include "allegro5/allegro.h"
 
-/**\defgroup ANIM_LIB GAMEDEV: animation library, loading structures and blit funcs
+/**\defgroup ANIM_LIB GRAPHICS: animation library, loading structures and blit funcs
   \addtogroup ANIM_LIB
   @{
   */

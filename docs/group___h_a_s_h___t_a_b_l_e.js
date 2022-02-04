@@ -37,11 +37,11 @@ var group___h_a_s_h___t_a_b_l_e =
       [ "seed", "struct_h_a_s_h___t_a_b_l_e.html#a00535f448b0ceac3fa414c31155f8795", null ],
       [ "size", "struct_h_a_s_h___t_a_b_l_e.html#ae2397c35498afb9670f1f49641e8755c", null ]
     ] ],
-    [ "HASH_VALUE", "union_h_a_s_h___v_a_l_u_e.html", [
-      [ "fval", "union_h_a_s_h___v_a_l_u_e.html#a0b2a2e282bf74af80ea036dcc921d490", null ],
-      [ "ival", "union_h_a_s_h___v_a_l_u_e.html#a0dbe816b8bd261f7e6a8b9ee2daed0c2", null ],
-      [ "ptr", "union_h_a_s_h___v_a_l_u_e.html#a4ec9d766374970fa70cb356e5a4b8f96", null ],
-      [ "string", "union_h_a_s_h___v_a_l_u_e.html#a87e405ab266333478941b3493c625e74", null ]
+    [ "HASH_VALUE", "group___h_a_s_h___t_a_b_l_e.html#union_h_a_s_h___v_a_l_u_e", [
+      [ "fval", "group___h_a_s_h___t_a_b_l_e.html#a0b2a2e282bf74af80ea036dcc921d490", null ],
+      [ "ival", "group___h_a_s_h___t_a_b_l_e.html#a0dbe816b8bd261f7e6a8b9ee2daed0c2", null ],
+      [ "ptr", "group___h_a_s_h___t_a_b_l_e.html#a4ec9d766374970fa70cb356e5a4b8f96", null ],
+      [ "string", "group___h_a_s_h___t_a_b_l_e.html#a87e405ab266333478941b3493c625e74", null ]
     ] ],
     [ "BIG_CONSTANT", "group___h_a_s_h___t_a_b_l_e.html#ga8e0f90a6ea3d3db65033b8ace70cb65a", null ],
     [ "HASH_CLASSIC", "group___h_a_s_h___t_a_b_l_e.html#gaaf679be9dbe3da9e0b18126584fc276f", null ],
@@ -62,9 +62,23 @@ var group___h_a_s_h___t_a_b_l_e =
     [ "ROTL32", "group___h_a_s_h___t_a_b_l_e.html#gab32bb365c62dcb0da675e248b7e814a9", null ],
     [ "destroy_ht", "group___h_a_s_h___t_a_b_l_e.html#ga22a943135dbcdb1611b40ce0547111ce", null ],
     [ "empty_ht", "group___h_a_s_h___t_a_b_l_e.html#ga5d2235e91b2b6b70129246897442f8d5", null ],
+    [ "ht_get_completion_list", "group___h_a_s_h___t_a_b_l_e.html#ga21e528f4d0a0124c495479ddd265a99b", null ],
+    [ "ht_get_double", "group___h_a_s_h___t_a_b_l_e.html#gaaa35befb530f8299abf88af3ee42e6eb", null ],
+    [ "ht_get_int", "group___h_a_s_h___t_a_b_l_e.html#ga1dad8732deb44eada370325427824b0d", null ],
+    [ "ht_get_node", "group___h_a_s_h___t_a_b_l_e.html#gac2a504c78f251c3dfb1e8b0623e2fdb1", null ],
+    [ "ht_get_ptr", "group___h_a_s_h___t_a_b_l_e.html#gae34a331ccbda86f7e5b2319f1852d6ca", null ],
+    [ "ht_get_string", "group___h_a_s_h___t_a_b_l_e.html#ga1044c61baf3c82c9783fa55bce28b4ae", null ],
     [ "ht_node_type", "group___h_a_s_h___t_a_b_l_e.html#ga1392981a507905d028136bc0b92aa48b", null ],
+    [ "ht_print", "group___h_a_s_h___t_a_b_l_e.html#ga62ef2a517efcbc464f0103995f28c3e8", null ],
+    [ "ht_put_double", "group___h_a_s_h___t_a_b_l_e.html#ga2df4cb0772adec1c5155b4b254277d6c", null ],
     [ "ht_put_int", "group___h_a_s_h___t_a_b_l_e.html#ga06cafdf266f9913c197a8e9e6a1fba5d", null ],
+    [ "ht_put_ptr", "group___h_a_s_h___t_a_b_l_e.html#ga2baa0497b21bdf86e3c64bb023124930", null ],
+    [ "ht_put_string", "group___h_a_s_h___t_a_b_l_e.html#gaa7dae105905e1751943ec3a4e4226480", null ],
+    [ "ht_put_string_ptr", "group___h_a_s_h___t_a_b_l_e.html#gaa1b9cd7ea20aa51fb4d4f4159c3ebad6", null ],
+    [ "ht_remove", "group___h_a_s_h___t_a_b_l_e.html#ga8d8873be47a634ad8a386e61f12a1f53", null ],
+    [ "ht_search", "group___h_a_s_h___t_a_b_l_e.html#ga16446a54727b375dfd0c92704dc39995", null ],
     [ "MurmurHash3_x86_128", "group___h_a_s_h___t_a_b_l_e.html#ga917618a4c922f524216381a5e5a43a60", null ],
     [ "MurmurHash3_x86_32", "group___h_a_s_h___t_a_b_l_e.html#ga37412933f308bda727603640d9acefba", null ],
+    [ "new_ht", "group___h_a_s_h___t_a_b_l_e.html#gaa2d879c1afd3c71a0917bbe2c0766664", null ],
     [ "new_ht_trie", "group___h_a_s_h___t_a_b_l_e.html#gab95fe0967850a3665d21837519ede6c8", null ]
 ];

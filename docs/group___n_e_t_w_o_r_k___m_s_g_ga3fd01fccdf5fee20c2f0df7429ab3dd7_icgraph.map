@@ -1,9 +1,14 @@
 <map id="make_msg_from_str" name="make_msg_from_str">
-<area shape="rect" id="node1" title="Make a single message of the string." alt="" coords="335,107,475,133"/>
-<area shape="rect" id="node2" href="$ex__network_8h.html#a6f950bd6cd1d0314572ecae401ac1883" title="decode data we got from network" alt="" coords="171,5,275,32"/>
-<area shape="rect" id="node4" href="$group___n_e_t_w_o_r_k___m_s_g.html#gaf2d84e34e50db7b3b7aca16c6bdb06f8" title="Retrieves identification from netwmsg." alt="" coords="169,56,278,83"/>
-<area shape="rect" id="node5" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga525ee81a12f526d55b2b380d9338424e" title="Retrieves a ping travel elapsed time." alt="" coords="171,107,276,133"/>
-<area shape="rect" id="node6" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga241bf3b1ebc63dd986dfec1b0fe4998b" title="Retrieves position from netwmsg." alt="" coords="160,157,287,184"/>
-<area shape="rect" id="node7" href="$group___n_e_t_w_o_r_k___m_s_g.html#gace220d6339bd8085269ecee2b35126fb" title="Retrieves string from netwmsg." alt="" coords="167,208,280,235"/>
-<area shape="rect" id="node3" href="$ex__network_8h.html#a2af070d97fced1a0eadad90c6aa4903b" title="recv/send datas if any for the client" alt="" coords="5,5,112,32"/>
+<area shape="rect" id="node1" title="Make a single message of the string." alt="" coords="440,132,580,159"/>
+<area shape="rect" id="node2" href="$ex__network_8h.html#a6f950bd6cd1d0314572ecae401ac1883" title="decode data we got from network" alt="" coords="277,5,381,32"/>
+<area shape="rect" id="node5" href="$group___n_e_t_w_o_r_k___m_s_g.html#gaf2d84e34e50db7b3b7aca16c6bdb06f8" title="Retrieves identification from netwmsg." alt="" coords="274,157,383,184"/>
+<area shape="rect" id="node9" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga525ee81a12f526d55b2b380d9338424e" title="Retrieves a ping travel elapsed time." alt="" coords="276,259,381,285"/>
+<area shape="rect" id="node10" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga241bf3b1ebc63dd986dfec1b0fe4998b" title="Retrieves position from netwmsg." alt="" coords="265,56,392,83"/>
+<area shape="rect" id="node11" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga601ef18cfe3570caaa81cc43c09004c2" title=" " alt="" coords="277,208,380,235"/>
+<area shape="rect" id="node12" href="$group___n_e_t_w_o_r_k___m_s_g.html#gace220d6339bd8085269ecee2b35126fb" title="Retrieves string from netwmsg." alt="" coords="272,107,385,133"/>
+<area shape="rect" id="node3" href="$ex__network_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,5,56,32"/>
+<area shape="rect" id="node4" href="$ex__network_8h.html#a2af070d97fced1a0eadad90c6aa4903b" title="recv/send datas if any for the client" alt="" coords="107,31,214,57"/>
+<area shape="rect" id="node6" href="$ex__gui__netclient_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="135,107,186,133"/>
+<area shape="rect" id="node7" href="$ex__gui__netserver_8c.html#a1f1e6cd9b7f8f1845345c9a5673cf384" title=" " alt="" coords="104,208,217,235"/>
+<area shape="rect" id="node8" href="$ex__gui__netserver_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,208,56,235"/>
 </map>

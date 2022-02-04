@@ -1,8 +1,8 @@
 var group___e_x_c_e_p_t_i_o_n_s =
 [
-    [ "ExceptionContextList", "struct_exception_context_list.html", [
-      [ "context", "struct_exception_context_list.html#a8ee113094e4f995bc21560067f072da9", null ],
-      [ "head", "struct_exception_context_list.html#aedb7815df9c9358f9737aeaa95fe610f", null ]
+    [ "ExceptionContextList", "group___e_x_c_e_p_t_i_o_n_s.html#struct_exception_context_list", [
+      [ "context", "group___e_x_c_e_p_t_i_o_n_s.html#a8ee113094e4f995bc21560067f072da9", null ],
+      [ "head", "group___e_x_c_e_p_t_i_o_n_s.html#aedb7815df9c9358f9737aeaa95fe610f", null ]
     ] ],
     [ "ARRAY_EXCEPTION", "group___e_x_c_e_p_t_i_o_n_s.html#gabc660e09e2c417997846e1cb4dbad16b", null ],
     [ "Catch", "group___e_x_c_e_p_t_i_o_n_s.html#gac211d2a791b3dbdf25ffcaa8f8ab47b8", null ],

@@ -13,7 +13,7 @@ extern "C"
 {
 #endif
 
-/**\defgroup ALLEGRO5 GAMEDEV: Allegro 5 keyboard helper
+/**\defgroup ALLEGRO5 APPDEV: Allegro 5 keyboard helper
    \addtogroup ALLEGRO5
   @{
   */

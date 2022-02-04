@@ -12,7 +12,7 @@
 extern "C" {
 #endif
 
-/**\defgroup PARTICLES GAMEDEV: 3D particles utilities
+/**\defgroup PARTICLES GRAPHICS: 3D particles utilities
    \addtogroup PARTICLES
   @{
 */

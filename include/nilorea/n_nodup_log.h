@@ -12,7 +12,7 @@ extern "C"
 {
 #endif
 
-/**\defgroup LOGNODUP LOGGING NODUP: no duplicate logging to console, to file, to syslog under *x
+/**\defgroup LOGNODUP LOGGING NODUP: no duplicate logging to console, to file, to syslog
    \addtogroup LOGNODUP
   @{
 */

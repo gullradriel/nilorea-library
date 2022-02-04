@@ -1,7 +1,11 @@
 <map id="get_nstr_from_msg" name="get_nstr_from_msg">
-<area shape="rect" id="node1" title="Get a string from a message string list." alt="" coords="321,56,455,83"/>
-<area shape="rect" id="node2" href="$ex__network_8h.html#a6f950bd6cd1d0314572ecae401ac1883" title="decode data we got from network" alt="" coords="165,5,269,32"/>
-<area shape="rect" id="node4" href="$group___n_e_t_w_o_r_k___m_s_g.html#gaf2d84e34e50db7b3b7aca16c6bdb06f8" title="Retrieves identification from netwmsg." alt="" coords="162,56,271,83"/>
-<area shape="rect" id="node5" href="$group___n_e_t_w_o_r_k___m_s_g.html#gace220d6339bd8085269ecee2b35126fb" title="Retrieves string from netwmsg." alt="" coords="160,107,273,133"/>
-<area shape="rect" id="node3" href="$ex__network_8h.html#a2af070d97fced1a0eadad90c6aa4903b" title="recv/send datas if any for the client" alt="" coords="5,5,112,32"/>
+<area shape="rect" id="node1" title="Get a string from a message string list." alt="" coords="427,81,560,108"/>
+<area shape="rect" id="node2" href="$ex__network_8h.html#a6f950bd6cd1d0314572ecae401ac1883" title="decode data we got from network" alt="" coords="270,31,374,57"/>
+<area shape="rect" id="node5" href="$group___n_e_t_w_o_r_k___m_s_g.html#gaf2d84e34e50db7b3b7aca16c6bdb06f8" title="Retrieves identification from netwmsg." alt="" coords="267,132,377,159"/>
+<area shape="rect" id="node9" href="$group___n_e_t_w_o_r_k___m_s_g.html#gace220d6339bd8085269ecee2b35126fb" title="Retrieves string from netwmsg." alt="" coords="265,81,379,108"/>
+<area shape="rect" id="node3" href="$ex__network_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,5,56,32"/>
+<area shape="rect" id="node4" href="$ex__network_8h.html#a2af070d97fced1a0eadad90c6aa4903b" title="recv/send datas if any for the client" alt="" coords="107,31,214,57"/>
+<area shape="rect" id="node6" href="$ex__gui__netclient_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="135,81,186,108"/>
+<area shape="rect" id="node7" href="$ex__gui__netserver_8c.html#a1f1e6cd9b7f8f1845345c9a5673cf384" title=" " alt="" coords="104,132,217,159"/>
+<area shape="rect" id="node8" href="$ex__gui__netserver_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,132,56,159"/>
 </map>

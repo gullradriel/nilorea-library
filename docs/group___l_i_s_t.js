@@ -1,10 +1,10 @@
 var group___l_i_s_t =
 [
-    [ "LIST", "struct_l_i_s_t.html", [
-      [ "end", "struct_l_i_s_t.html#a353e892f4b77631bfe0eeef1bd05db39", null ],
-      [ "nb_items", "struct_l_i_s_t.html#a17ecceed58e4353b703f55133a36c0d1", null ],
-      [ "nb_max_items", "struct_l_i_s_t.html#af29cb936692783d93e2da27c357d5dfb", null ],
-      [ "start", "struct_l_i_s_t.html#aaaf4b83d5bfb568b4a840032ba46ead3", null ]
+    [ "LIST", "group___l_i_s_t.html#struct_l_i_s_t", [
+      [ "end", "group___l_i_s_t.html#a353e892f4b77631bfe0eeef1bd05db39", null ],
+      [ "nb_items", "group___l_i_s_t.html#a17ecceed58e4353b703f55133a36c0d1", null ],
+      [ "nb_max_items", "group___l_i_s_t.html#af29cb936692783d93e2da27c357d5dfb", null ],
+      [ "start", "group___l_i_s_t.html#aaaf4b83d5bfb568b4a840032ba46ead3", null ]
     ] ],
     [ "LIST_NODE", "struct_l_i_s_t___n_o_d_e.html", [
       [ "destroy_func", "struct_l_i_s_t___n_o_d_e.html#ac79aba60fed7fb7dcc4649e13e1b7a02", null ],

@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['threads_3a_20tools_20to_20create_20and_20manage_20a_20thread_20pool_0',['THREADS: tools to create and manage a thread pool',['../group___t_h_r_e_a_d_s.html',1,'']]],
-  ['timing_3a_20generally_20used_20headers_2c_20defines_2c_20timers_2c_20allocators_2c_2e_2e_2e_1',['TIMING: generally used headers, defines, timers, allocators,...',['../group___n___t_i_m_e.html',1,'']]]
+  ['signals_3a_20signals_20handling_20and_20stack_20printing_0',['SIGNALS: signals handling and stack printing',['../group___s_i_g_n_a_l_s.html',1,'']]],
+  ['stack_3a_20generic_20type_20stack_1',['STACK: generic type stack',['../group___s_t_a_c_k.html',1,'']]],
+  ['strings_3a_20replacement_20to_20char_20_2astrings_20with_20dynamic_20resizing_20and_20boundary_20checking_2',['STRINGS: replacement to char *strings with dynamic resizing and boundary checking',['../group___n___s_t_r.html',1,'']]]
 ];
