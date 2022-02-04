@@ -1,0 +1,52 @@
+<map id="main" name="main">
+<area shape="rect" id="node1" title=" " alt="" coords="5,734,56,761"/>
+<area shape="rect" id="node2" href="$group___t_h_r_e_a_d_s.html#ga46497eb81066d0df83dfd07ad0a9f561" title="add a function and params to a thread pool" alt="" coords="513,76,667,102"/>
+<area shape="rect" id="node4" href="$group___n___s_t_r.html#ga69e5f2dbf75571a73e5a3332929642a4" title="Convert a char into a N_STR, short version." alt="" coords="134,76,229,102"/>
+<area shape="rect" id="node6" href="$group___t_h_r_e_a_d_s.html#ga12ce28c2aaa5a5a1a05abe11071dd83f" title="delete a thread_pool, exit the threads and free the structs" alt="" coords="513,380,667,406"/>
+<area shape="rect" id="node8" href="$group___n___t_i_m_e.html#ga690f12dde1a446d47b8bf5f959493003" title="wrapper around usleep for API consistency" alt="" coords="753,582,819,609"/>
+<area shape="rect" id="node9" href="$ex__network_8h.html#a6f950bd6cd1d0314572ecae401ac1883" title="decode data we got from network" alt="" coords="334,278,438,305"/>
+<area shape="rect" id="node18" href="$ex__network_8h.html#a2af070d97fced1a0eadad90c6aa4903b" title="recv/send datas if any for the client" alt="" coords="128,532,235,558"/>
+<area shape="rect" id="node22" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga5ba0555c5ccd261227c3c1216923d563" title="Start the NETWORK netw Threaded Engine. Create a sending &amp; receiving thread." alt="" coords="311,633,461,660"/>
+<area shape="rect" id="node27" href="$ex__network_8h.html#a97064904e9c2be2094c349413ff348fc" title="send data to specified network" alt="" coords="533,177,647,204"/>
+<area shape="rect" id="node30" href="$group___n_e_t_w_o_r_k_i_n_g.html#gab99090cbf623f95556ea610e690b50d9" title="make a normal blocking &#39;accept&#39; . Network &#39;from&#39; must be allocated with netw_make_listening." alt="" coords="118,937,245,964"/>
+<area shape="rect" id="node31" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga80624fa0de793761e9ea5cebff424c68" title="make a normal &#39;accept&#39; . Network &#39;from&#39; must be allocated with netw_make_listening." alt="" coords="312,988,460,1014"/>
+<area shape="rect" id="node33" href="$group___n_e_t_w_o_r_k_i_n_g.html#gac345c1af1935cebb9ee33edd4c32267a" title="Closing a specified Network, destroy queues, free the structure." alt="" coords="743,988,829,1014"/>
+<area shape="rect" id="node40" href="$group___n_e_t_w_o_r_k_i_n_g.html#gae18d52a130063ba1fd0a4cf4b6a2da20" title="Use this to connect a NETWORK to any listening one, unrestricted send/recv lists." alt="" coords="130,1229,233,1256"/>
+<area shape="rect" id="node42" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga52afd4f5662c9c8f334d224ae2cdbdf2" title="Make a NETWORK be a Listening network." alt="" coords="315,1140,457,1166"/>
+<area shape="rect" id="node43" href="$group___n_e_t_w_o_r_k_i_n_g.html#gace3b069637ff0f12809eca2fb1a0b696" title="Wait a message from aimed NETWORK. Recheck each usec until a valid." alt="" coords="126,785,237,812"/>
+<area shape="rect" id="node44" href="$group___t_h_r_e_a_d_s.html#gadb3f2b85b758433e29e84b54992cfed4" title="Create a new pool of nbmaxthr threads." alt="" coords="122,1312,241,1338"/>
+<area shape="rect" id="node46" href="$ex__network_8c.html#a9f717ba19d50959d05d352a7619adec3" title=" " alt="" coords="131,1444,231,1470"/>
+<area shape="rect" id="node47" href="$group___l_o_g.html#gacad9b2d55788f46ddde811c986ead9ae" title="Set the global log level value ( static int LOG_LEVEL )" alt="" coords="338,1444,434,1470"/>
+<area shape="rect" id="node49" href="$group___t_h_r_e_a_d_s.html#ga5d9ce1747e4b7cb58ce3767f7e56cd8b" title="try to add some waiting DIRECT_PROCs on some free thread slots, else do nothing" alt="" coords="319,126,453,153"/>
+<area shape="rect" id="node50" href="$group___t_h_r_e_a_d_s.html#ga992fc2a67a2d66733ccd10f7d9e2ead3" title="Wait for all the launched process in the thread pool to terminate." alt="" coords="104,304,259,330"/>
+<area shape="rect" id="node3" href="$group___l_i_s_t.html#ga4eab319289a83524639ee5e9f0441fdf" title="Add a pointer to the end of the list." alt="" coords="942,177,1017,204"/>
+<area shape="rect" id="node5" href="$group___n___s_t_r.html#gac4314e9f0ada88300a09d66405d541a8" title="Convert a char into a N_STR, extended version." alt="" coords="329,76,443,102"/>
+<area shape="rect" id="node7" href="$group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755" title="Empty and Free a list container. Call the destructor each time." alt="" coords="1260,633,1349,660"/>
+<area shape="rect" id="node10" href="$group___n_e_t_w_o_r_k___m_s_g.html#gadcc2854217553f3a4890973873bdf634" title="Delete a NETW_MSG *object." alt="" coords="741,329,831,356"/>
+<area shape="rect" id="node11" href="$group___n_e_t_w_o_r_k___m_s_g.html#gafc6e48e4853310c09174f5ff3dfed85b" title="Get a number from a message number list." alt="" coords="527,228,653,254"/>
+<area shape="rect" id="node12" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga73be780021c7c875f476ef4e02d2bc1c" title="Get a string from a message string list." alt="" coords="523,278,657,305"/>
+<area shape="rect" id="node13" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga3fd01fccdf5fee20c2f0df7429ab3dd7" title="Make a single message of the string." alt="" coords="520,126,660,153"/>
+<area shape="rect" id="node14" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga9aa63e987d00d99d9a21aec35efecf74" title="Add an int to the int list int the message." alt="" coords="729,177,843,204"/>
+<area shape="rect" id="node15" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga53dfbdd3b5d1cfcf387d17b4465e5f3a" title="Add a string to the string list in the message." alt="" coords="717,126,855,153"/>
+<area shape="rect" id="node16" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga62ae674d9de6171bcbd604e68a3b94a9" title="Create a NETW_MSG *object." alt="" coords="741,532,831,558"/>
+<area shape="rect" id="node17" href="$group___l_i_s_t.html#gada615e3b144e97bcff147dfe89f6fef6" title="Initialiaze a generic list container to max_items pointers." alt="" coords="920,1140,1039,1166"/>
+<area shape="rect" id="node19" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga0d0992b4eac986d7757ecddbc66e3b90" title="Get a message from aimed NETWORK." alt="" coords="333,684,439,710"/>
+<area shape="rect" id="node20" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaf25c0f462f174092815b0c5d019441db" title="Get the state of a network." alt="" coords="1101,709,1212,736"/>
+<area shape="rect" id="node21" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga70abef02e9578c21b5707eecb3750fef" title="Get the type of message without killing the first number. Use with netw_get_XXX." alt="" coords="317,481,455,508"/>
+<area shape="rect" id="node26" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga60beb772aa298f36d1443a28e3ec5ec8" title="Wait for peer closing a specified Network, destroy queues, free the structure. Default 30 seconds tim..." alt="" coords="327,532,445,558"/>
+<area shape="rect" id="node23" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga63e06c0450013078c54bb4951e9438ac" title="To Thread Receiving function." alt="" coords="731,481,841,508"/>
+<area shape="rect" id="node25" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga2ef0aab7ff9fb531466a536773b53683" title="Thread send function." alt="" coords="533,734,647,761"/>
+<area shape="rect" id="node24" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaa8e1fe7978995197f08aa0ef24a76c33" title="Restart or reset the specified network ability." alt="" coords="1119,912,1194,938"/>
+<area shape="rect" id="node28" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga84f36b52e6d9dfe9ca6186c3177f5472" title="Add a copy of str to the string list in the message." alt="" coords="715,228,857,254"/>
+<area shape="rect" id="node29" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga5145350ad23fa9c0db3057e566d70722" title="Make a single string of the message." alt="" coords="716,278,856,305"/>
+<area shape="rect" id="node32" href="$n__network_8c.html#ab995208f051c8975b80f13ff2cfeae32" title="get sockaddr, IPv4 or IPv6" alt="" coords="545,1292,635,1318"/>
+<area shape="rect" id="node36" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga22bc4dd5d80c2229c3c43f6d6705dece" title="Do not directly use, internal api. Initialize winsock dll loading on windows if needed." alt="" coords="539,1089,641,1116"/>
+<area shape="rect" id="node37" href="$n__network_8c.html#a9caee75e3a67942e37ccb4de2c889105" title="Return an empty allocated network ready to be netw_closed." alt="" coords="551,1190,629,1217"/>
+<area shape="rect" id="node38" href="$group___n_e_t_w_o_r_k_i_n_g.html#gad02f949dd057ae7dd382f03f9364cac0" title="Modify blocking socket mode." alt="" coords="525,937,655,964"/>
+<area shape="rect" id="node39" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaa5ed966d8c5844ded549eda41e38c0be" title="Modify common socket options on the given netw." alt="" coords="530,1038,650,1065"/>
+<area shape="rect" id="node34" href="$group___n_e_t_w_o_r_k_i_n_g.html#gafc7a91b4be2a997710a2b54037c25168" title="remove a NETWORK *netw to a NETWORK_POOL *pool" alt="" coords="915,1038,1043,1065"/>
+<area shape="rect" id="node35" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga29159184519b3129c0154b1a2c2a3e2f" title="Stop a NETWORK connection sending and receing thread." alt="" coords="905,886,1053,913"/>
+<area shape="rect" id="node41" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga4cef67bc400323306a3d1c1ed5cec17b" title="Use this to connect a NETWORK to any listening one." alt="" coords="325,1241,447,1268"/>
+<area shape="rect" id="node45" href="$n__thread__pool_8c.html#abd0649708787bc15e1bc1ee59d64fd1f" title="Internal thread pool processing function." alt="" coords="307,1304,465,1346"/>
+<area shape="rect" id="node48" href="$ex__network_8c.html#ae8605e2b78cd4a81b6c6b5c30cb7366a" title=" " alt="" coords="357,1494,415,1521"/>
+</map>

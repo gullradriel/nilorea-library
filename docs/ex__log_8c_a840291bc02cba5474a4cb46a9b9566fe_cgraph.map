@@ -1,0 +1,52 @@
+<map id="main" name="main">
+<area shape="rect" id="node1" title=" " alt="" coords="5,893,56,920"/>
+<area shape="rect" id="node2" href="$group___l_o_g_n_o_d_u_p.html#ga46eca069bfff2be6809828df52d1031d" title="Empty nodup logtable and close the no duplicate logging session." alt="" coords="284,651,403,677"/>
+<area shape="rect" id="node4" href="$group___l_o_g.html#gab0f29a8f3d807e2738376cd0bd657eb0" title="close a thread&#45;safe logging file" alt="" coords="104,817,236,844"/>
+<area shape="rect" id="node5" href="$group___l_o_g_n_o_d_u_p.html#ga38552b9724c76daede8b3c30833e9d09" title="Dump the duplicate error log hash table in a file." alt="" coords="110,868,230,895"/>
+<area shape="rect" id="node6" href="$group___l_o_g_n_o_d_u_p.html#gaf9c9b8e129263da15345f428cd73f19e" title="initialize the no duplicate logging system" alt="" coords="117,767,223,793"/>
+<area shape="rect" id="node47" href="$group___l_o_g.html#ga51d76a6d03860ab048a2f09eabc27f9a" title="Open a thread&#45;safe logging file." alt="" coords="105,919,235,945"/>
+<area shape="rect" id="node48" href="$group___l_o_g.html#gac83aa9829ddf0d169e2890ef63052b52" title="Set the logging to a file instead of stderr." alt="" coords="127,1020,213,1047"/>
+<area shape="rect" id="node49" href="$group___l_o_g.html#gacad9b2d55788f46ddde811c986ead9ae" title="Set the global log level value ( static int LOG_LEVEL )" alt="" coords="295,995,391,1021"/>
+<area shape="rect" id="node50" href="$group___l_o_g.html#ga4351d7c5fb7f3464480aebb763b70d69" title="write to a thread&#45;safe logging file" alt="" coords="118,1071,222,1097"/>
+<area shape="rect" id="node3" href="$group___h_a_s_h___t_a_b_l_e.html#ga22a943135dbcdb1611b40ce0547111ce" title="empty a table and destroy it" alt="" coords="473,5,555,32"/>
+<area shape="rect" id="node7" href="$group___h_a_s_h___t_a_b_l_e.html#gaa2d879c1afd3c71a0917bbe2c0766664" title="Create a hash table with the given size." alt="" coords="312,789,375,816"/>
+<area shape="rect" id="node8" href="$n__hash_8c.html#a0ee7e0fa87da033f857c04dae6f1586a" title="Free and set the table to NULL." alt="" coords="469,333,559,360"/>
+<area shape="rect" id="node9" href="$group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755" title="Empty and Free a list container. Call the destructor each time." alt="" coords="656,333,745,360"/>
+<area shape="rect" id="node10" href="$n__hash_8c.html#a883490d95c386d9d82a7306663a6c2ce" title="Empty a hash table (CLASSIC mode)" alt="" coords="473,587,555,613"/>
+<area shape="rect" id="node12" href="$n__hash_8c.html#a7ce57bb0fb64ca5ff513c6ade7c26852" title="Retrieve a double value in the hash table, at the given key. Leave val untouched if key is not found." alt="" coords="459,941,569,968"/>
+<area shape="rect" id="node13" href="$n__hash_8c.html#a364dffbf42be500d3266410895694bd8" title="return the associated key&#39;s node inside the hash_table" alt="" coords="651,813,751,840"/>
+<area shape="rect" id="node16" href="$n__hash_8c.html#ae7c50bafbc80902f92c27e59d29ffd40" title="Retrieve an integral value in the hash table, at the given key. Leave val untouched if key is not fou..." alt="" coords="471,891,557,917"/>
+<area shape="rect" id="node17" href="$n__hash_8c.html#a0299747d5cd82effd51fdaec945e80ee" title="Retrieve a pointer value in the hash table, at the given key. Leave val untouched if key is not found..." alt="" coords="471,992,557,1019"/>
+<area shape="rect" id="node18" href="$n__hash_8c.html#a524a224940bc3ceea122824ca3d4842b" title="Retrieve a char *string value in the hash table, at the given key. Leave val untouched if key is not ..." alt="" coords="462,789,566,816"/>
+<area shape="rect" id="node19" href="$n__hash_8c.html#a719f4d3d6315d1118478bf66bbf3d7d4" title="Generic print func call for classic hash tables." alt="" coords="478,1093,550,1120"/>
+<area shape="rect" id="node20" href="$n__hash_8c.html#a870d138d5408e20e8111c750cdc77d36" title="put a double value with given key in the targeted hash table" alt="" coords="459,485,569,512"/>
+<area shape="rect" id="node23" href="$n__hash_8c.html#a4713652203bc7965a2dda268ffa1e4d5" title="put an integral value with given key in the targeted hash table [CLASSIC HASH TABLE)" alt="" coords="471,536,557,563"/>
+<area shape="rect" id="node25" href="$n__hash_8c.html#a853357465a1599d42ff6d095aa762424" title="put a pointer value with given key in the targeted hash table" alt="" coords="471,637,557,664"/>
+<area shape="rect" id="node27" href="$n__hash_8c.html#a35ed4b8f492e6265b7cdcc8f380b6130" title="put a null terminated char *string with given key in the targeted hash table (copy of string)" alt="" coords="462,739,566,765"/>
+<area shape="rect" id="node29" href="$n__hash_8c.html#a8bfbff53ffcafc65317e2b1041df314f" title="put a null terminated char *string with given key in the targeted hash table (pointer)" alt="" coords="451,688,577,715"/>
+<area shape="rect" id="node30" href="$n__hash_8c.html#aa0b7465426719eec2e02cd83e8ac290d" title="Remove a key from a hash table." alt="" coords="470,840,558,867"/>
+<area shape="rect" id="node31" href="$n__hash_8c.html#af5e4567a16f469d013410e8cf675a28c" title="Search hash table&#39;s keys and apply a matching func to put results in the list." alt="" coords="471,384,557,411"/>
+<area shape="rect" id="node32" href="$group___l_i_s_t.html#gada615e3b144e97bcff147dfe89f6fef6" title="Initialiaze a generic list container to max_items pointers." alt="" coords="641,384,760,411"/>
+<area shape="rect" id="node33" href="$group___h_a_s_h___t_a_b_l_e.html#ga5d2235e91b2b6b70129246897442f8d5" title="empty a table" alt="" coords="476,1168,552,1195"/>
+<area shape="rect" id="node34" href="$group___h_a_s_h___t_a_b_l_e.html#gaaa35befb530f8299abf88af3ee42e6eb" title="get double at &#39;key&#39; from &#39;table&#39;" alt="" coords="463,1219,565,1245"/>
+<area shape="rect" id="node35" href="$group___h_a_s_h___t_a_b_l_e.html#ga1dad8732deb44eada370325427824b0d" title="get node at &#39;key&#39; from &#39;table&#39;" alt="" coords="475,1269,553,1296"/>
+<area shape="rect" id="node36" href="$group___h_a_s_h___t_a_b_l_e.html#gac2a504c78f251c3dfb1e8b0623e2fdb1" title="get node at &#39;key&#39; from &#39;table&#39;" alt="" coords="467,1320,561,1347"/>
+<area shape="rect" id="node37" href="$group___h_a_s_h___t_a_b_l_e.html#gae34a331ccbda86f7e5b2319f1852d6ca" title="get pointer at &#39;key&#39; from &#39;table&#39;" alt="" coords="474,1395,554,1421"/>
+<area shape="rect" id="node38" href="$group___h_a_s_h___t_a_b_l_e.html#ga1044c61baf3c82c9783fa55bce28b4ae" title="get string at &#39;key&#39; from &#39;table&#39;" alt="" coords="465,1445,563,1472"/>
+<area shape="rect" id="node39" href="$group___h_a_s_h___t_a_b_l_e.html#ga62ef2a517efcbc464f0103995f28c3e8" title="print contents of table" alt="" coords="481,1496,547,1523"/>
+<area shape="rect" id="node40" href="$group___h_a_s_h___t_a_b_l_e.html#ga2df4cb0772adec1c5155b4b254277d6c" title="put a double value with given key in the targeted hash table" alt="" coords="463,1547,565,1573"/>
+<area shape="rect" id="node41" href="$group___h_a_s_h___t_a_b_l_e.html#ga06cafdf266f9913c197a8e9e6a1fba5d" title="put an integral value with given key in the targeted hash table" alt="" coords="475,1597,553,1624"/>
+<area shape="rect" id="node42" href="$group___h_a_s_h___t_a_b_l_e.html#ga2baa0497b21bdf86e3c64bb023124930" title="put a pointer to the string value with given key in the targeted hash table" alt="" coords="474,1648,554,1675"/>
+<area shape="rect" id="node43" href="$group___h_a_s_h___t_a_b_l_e.html#gaa7dae105905e1751943ec3a4e4226480" title="put a string value (copy/dup) with given key in the targeted hash table" alt="" coords="465,56,563,83"/>
+<area shape="rect" id="node44" href="$group___h_a_s_h___t_a_b_l_e.html#gaa1b9cd7ea20aa51fb4d4f4159c3ebad6" title="put a string value (pointer) with given key in the targeted hash table" alt="" coords="455,107,573,133"/>
+<area shape="rect" id="node45" href="$group___h_a_s_h___t_a_b_l_e.html#ga8d8873be47a634ad8a386e61f12a1f53" title="remove and delete node at key in table" alt="" coords="473,157,555,184"/>
+<area shape="rect" id="node46" href="$group___h_a_s_h___t_a_b_l_e.html#ga16446a54727b375dfd0c92704dc39995" title="seach table for matching nodes" alt="" coords="475,232,553,259"/>
+<area shape="rect" id="node11" href="$n__hash_8c.html#a013153fa30199bbcaf5f92890ae97ba8" title="destroy a HASH_NODE by first calling the HASH_NODE destructor" alt="" coords="638,661,763,688"/>
+<area shape="rect" id="node15" href="$group___h_a_s_h___t_a_b_l_e.html#ga1392981a507905d028136bc0b92aa48b" title="get the type of a node , text version" alt="" coords="651,763,751,789"/>
+<area shape="rect" id="node14" href="$group___h_a_s_h___t_a_b_l_e.html#ga37412933f308bda727603640d9acefba" title=" " alt="" coords="824,839,976,865"/>
+<area shape="rect" id="node21" href="$n__hash_8c.html#a538c336dd719701659e9234dc069f848" title="node creation, HASH_CLASSIC mode" alt="" coords="625,435,776,461"/>
+<area shape="rect" id="node22" href="$group___l_i_s_t.html#ga4eab319289a83524639ee5e9f0441fdf" title="Add a pointer to the end of the list." alt="" coords="663,536,738,563"/>
+<area shape="rect" id="node24" href="$n__hash_8c.html#aca52825e0662da52f7f59cb2c282dd0d" title="node creation, HASH_CLASSIC mode" alt="" coords="637,485,764,512"/>
+<area shape="rect" id="node26" href="$n__hash_8c.html#afcb17d6b3dd2abad4cb9e58a2f70de98" title="node creation, HASH_CLASSIC mode, pointer to string value" alt="" coords="637,587,764,613"/>
+<area shape="rect" id="node28" href="$n__hash_8c.html#a3b482644f6bf5ac3cfec10961a9bfdbc" title="node creation, HASH_CLASSIC mode, strdup of value" alt="" coords="629,712,773,739"/>
+</map>
