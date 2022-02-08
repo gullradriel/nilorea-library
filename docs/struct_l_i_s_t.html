@@ -24,9 +24,11 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="NiloreaStudio.png"/></td>
   <td id="projectalign">
    <div id="projectname">Nilorea Library
    </div>
+   <div id="projectbrief">C utilities for networking, threading, graphics</div>
   </td>
  </tr>
  </tbody>
@@ -88,6 +90,9 @@ $(document).ready(function(){initNavTree('struct_l_i_s_t.html',''); initResizabl
 </div><!--header-->
 <div class="contents">
 
+<p>Structure of a generic <a class="el" href="struct_l_i_s_t.html" title="Structure of a generic LIST container.">LIST</a> container.  
+ <a href="struct_l_i_s_t.html#details">More...</a></p>
+
 <p><code>#include &quot;<a class="el" href="n__list_8h_source.html">n_list.h</a>&quot;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for LIST:</div>
@@ -96,9 +101,9 @@ $(document).ready(function(){initNavTree('struct_l_i_s_t.html',''); initResizabl
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="struct_l_i_s_t__coll__graph.png" border="0" usemap="#a_l_i_s_t_coll__map" alt="Collaboration graph"/></div>
 <map name="a_l_i_s_t_coll__map" id="a_l_i_s_t_coll__map">
-<area shape="rect" title=" " alt="" coords="62,300,110,377"/>
+<area shape="rect" title="Structure of a generic LIST container." alt="" coords="62,300,110,377"/>
 <area shape="rect" title=" " alt="" coords="5,145,44,223"/>
-<area shape="rect" href="struct_l_i_s_t___n_o_d_e.html" title=" " alt="" coords="103,145,195,223"/>
+<area shape="rect" href="struct_l_i_s_t___n_o_d_e.html" title="Structure of a generic list node." alt="" coords="103,145,195,223"/>
 <area shape="rect" title=" " alt="" coords="69,5,122,83"/>
 <area shape="rect" title=" " alt="" coords="147,5,257,83"/>
 </map>
@@ -107,17 +112,20 @@ $(document).ready(function(){initNavTree('struct_l_i_s_t.html',''); initResizabl
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Data Fields</h2></td></tr>
 <tr class="memitem:a353e892f4b77631bfe0eeef1bd05db39"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_l_i_s_t___n_o_d_e.html">LIST_NODE</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_l_i_s_t.html#a353e892f4b77631bfe0eeef1bd05db39">end</a></td></tr>
+<tr class="memdesc:a353e892f4b77631bfe0eeef1bd05db39"><td class="mdescLeft">&#160;</td><td class="mdescRight">pointer to the end of the list  <a href="struct_l_i_s_t.html#a353e892f4b77631bfe0eeef1bd05db39">More...</a><br /></td></tr>
 <tr class="separator:a353e892f4b77631bfe0eeef1bd05db39"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a17ecceed58e4353b703f55133a36c0d1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_l_i_s_t.html#a17ecceed58e4353b703f55133a36c0d1">nb_items</a></td></tr>
+<tr class="memdesc:a17ecceed58e4353b703f55133a36c0d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">number of item currently in the list  <a href="struct_l_i_s_t.html#a17ecceed58e4353b703f55133a36c0d1">More...</a><br /></td></tr>
 <tr class="separator:a17ecceed58e4353b703f55133a36c0d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af29cb936692783d93e2da27c357d5dfb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_l_i_s_t.html#af29cb936692783d93e2da27c357d5dfb">nb_max_items</a></td></tr>
+<tr class="memdesc:af29cb936692783d93e2da27c357d5dfb"><td class="mdescLeft">&#160;</td><td class="mdescRight">maximum number of item in the list.  <a href="struct_l_i_s_t.html#af29cb936692783d93e2da27c357d5dfb">More...</a><br /></td></tr>
 <tr class="separator:af29cb936692783d93e2da27c357d5dfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaaf4b83d5bfb568b4a840032ba46ead3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_l_i_s_t___n_o_d_e.html">LIST_NODE</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_l_i_s_t.html#aaaf4b83d5bfb568b4a840032ba46ead3">start</a></td></tr>
+<tr class="memdesc:aaaf4b83d5bfb568b4a840032ba46ead3"><td class="mdescLeft">&#160;</td><td class="mdescRight">pointer to the start of the list  <a href="struct_l_i_s_t.html#aaaf4b83d5bfb568b4a840032ba46ead3">More...</a><br /></td></tr>
 <tr class="separator:aaaf4b83d5bfb568b4a840032ba46ead3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >Structure of a generic <a class="el" href="struct_l_i_s_t.html">LIST</a> container </p>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ex_gui_netclient_8c-example.html#_a11">ex_gui_netclient.c</a>, <a class="el" href="ex_gui_netserver_8c-example.html#_a18">ex_gui_netserver.c</a>, <a class="el" href="ex_gui_particles_8c-example.html#_a8">ex_gui_particles.c</a>, <a class="el" href="ex_hash_8c-example.html#_a13">ex_hash.c</a>, and <a class="el" href="ex_list_8c-example.html#_a1">ex_list.c</a>.</dd>
+<div class="textblock"><dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ex_gui_netclient_8c-example.html#_a9">ex_gui_netclient.c</a>, <a class="el" href="ex_gui_netserver_8c-example.html#_a12">ex_gui_netserver.c</a>, <a class="el" href="ex_gui_particles_8c-example.html#_a1">ex_gui_particles.c</a>, <a class="el" href="ex_hash_8c-example.html#_a9">ex_hash.c</a>, and <a class="el" href="ex_list_8c-example.html#_a0">ex_list.c</a>.</dd>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="n__list_8h_source.html#l00044">44</a> of file <a class="el" href="n__list_8h_source.html">n_list.h</a>.</p>
@@ -133,7 +141,6 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >pointer to the end of the list </p>
 
 <p class="definition">Definition at line <a class="el" href="n__list_8h_source.html#l00054">54</a> of file <a class="el" href="n__list_8h_source.html">n_list.h</a>.</p>
 
@@ -152,7 +159,6 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >number of item currently in the list </p>
 
 <p class="definition">Definition at line <a class="el" href="n__list_8h_source.html#l00047">47</a> of file <a class="el" href="n__list_8h_source.html">n_list.h</a>.</p>
 
@@ -169,7 +175,7 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >maximum number of item in the list. Unlimited 0 or negative </p>
+<p >Unlimited 0 or negative </p>
 
 <p class="definition">Definition at line <a class="el" href="n__list_8h_source.html#l00049">49</a> of file <a class="el" href="n__list_8h_source.html">n_list.h</a>.</p>
 
@@ -186,7 +192,6 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >pointer to the start of the list </p>
 
 <p class="definition">Definition at line <a class="el" href="n__list_8h_source.html#l00052">52</a> of file <a class="el" href="n__list_8h_source.html">n_list.h</a>.</p>
 
@@ -203,7 +208,7 @@ Data Fields</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="struct_l_i_s_t.html">LIST</a></li>
-    <li class="footer">Generated on Fri Feb 4 2022 16:56:07 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+    <li class="footer">Generated on Tue Feb 8 2022 11:34:29 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
   </ul>
 </div>
 </body>

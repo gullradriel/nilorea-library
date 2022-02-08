@@ -24,9 +24,11 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="NiloreaStudio.png"/></td>
   <td id="projectalign">
    <div id="projectname">Nilorea Library
    </div>
+   <div id="projectbrief">C utilities for networking, threading, graphics</div>
   </td>
  </tr>
  </tbody>
@@ -88,6 +90,9 @@ $(document).ready(function(){initNavTree('struct_t_h_r_e_a_d___p_o_o_l.html','')
 </div><!--header-->
 <div class="contents">
 
+<p>Structure of a trhead pool.  
+ <a href="struct_t_h_r_e_a_d___p_o_o_l.html#details">More...</a></p>
+
 <p><code>#include &quot;<a class="el" href="n__thread__pool_8h_source.html">n_thread_pool.h</a>&quot;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for THREAD_POOL:</div>
@@ -96,13 +101,13 @@ $(document).ready(function(){initNavTree('struct_t_h_r_e_a_d___p_o_o_l.html','')
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="struct_t_h_r_e_a_d___p_o_o_l__coll__graph.png" border="0" usemap="#a_t_h_r_e_a_d___p_o_o_l_coll__map" alt="Collaboration graph"/></div>
 <map name="a_t_h_r_e_a_d___p_o_o_l_coll__map" id="a_t_h_r_e_a_d___p_o_o_l_coll__map">
-<area shape="rect" title=" " alt="" coords="237,455,354,532"/>
-<area shape="rect" href="struct_t_h_r_e_a_d___p_o_o_l___n_o_d_e.html" title=" " alt="" coords="384,315,545,392"/>
+<area shape="rect" title="Structure of a trhead pool." alt="" coords="237,455,354,532"/>
+<area shape="rect" href="struct_t_h_r_e_a_d___p_o_o_l___n_o_d_e.html" title="A thread pool node." alt="" coords="384,315,545,392"/>
 <area shape="rect" title=" " alt="" coords="342,145,483,223"/>
 <area shape="rect" title=" " alt="" coords="403,5,457,83"/>
-<area shape="rect" href="struct_l_i_s_t___n_o_d_e.html" title=" " alt="" coords="15,145,107,223"/>
+<area shape="rect" href="struct_l_i_s_t___n_o_d_e.html" title="Structure of a generic list node." alt="" coords="15,145,107,223"/>
 <area shape="rect" title=" " alt="" coords="196,145,235,223"/>
-<area shape="rect" href="struct_l_i_s_t.html" title=" " alt="" coords="87,315,135,392"/>
+<area shape="rect" href="struct_l_i_s_t.html" title="Structure of a generic LIST container." alt="" coords="87,315,135,392"/>
 <area shape="rect" title=" " alt="" coords="605,145,681,223"/>
 <area shape="rect" title=" " alt="" coords="259,145,318,223"/>
 <area shape="rect" title=" " alt="" coords="705,145,824,223"/>
@@ -113,21 +118,26 @@ $(document).ready(function(){initNavTree('struct_t_h_r_e_a_d___p_o_o_l.html','')
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Data Fields</h2></td></tr>
 <tr class="memitem:aeb127ec28e1d2dd253c51240af9b98cf"><td class="memItemLeft" align="right" valign="top">pthread_mutex_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_t_h_r_e_a_d___p_o_o_l.html#aeb127ec28e1d2dd253c51240af9b98cf">lock</a></td></tr>
+<tr class="memdesc:aeb127ec28e1d2dd253c51240af9b98cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">mutex to prevent mutual access of waiting_list parameters  <a href="struct_t_h_r_e_a_d___p_o_o_l.html#aeb127ec28e1d2dd253c51240af9b98cf">More...</a><br /></td></tr>
 <tr class="separator:aeb127ec28e1d2dd253c51240af9b98cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad1032e66a3c497de40dc989cb245c28d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_t_h_r_e_a_d___p_o_o_l.html#ad1032e66a3c497de40dc989cb245c28d">max_threads</a></td></tr>
+<tr class="memdesc:ad1032e66a3c497de40dc989cb245c28d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum number of running threads in the list.  <a href="struct_t_h_r_e_a_d___p_o_o_l.html#ad1032e66a3c497de40dc989cb245c28d">More...</a><br /></td></tr>
 <tr class="separator:ad1032e66a3c497de40dc989cb245c28d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0dedc7e382229d6d1b263a6438300941"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_t_h_r_e_a_d___p_o_o_l.html#a0dedc7e382229d6d1b263a6438300941">nb_actives</a></td></tr>
+<tr class="memdesc:a0dedc7e382229d6d1b263a6438300941"><td class="mdescLeft">&#160;</td><td class="mdescRight">number of threads actually doing a proc  <a href="struct_t_h_r_e_a_d___p_o_o_l.html#a0dedc7e382229d6d1b263a6438300941">More...</a><br /></td></tr>
 <tr class="separator:a0dedc7e382229d6d1b263a6438300941"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abe43ad9cb87f223ab2a875cda79b53ed"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_t_h_r_e_a_d___p_o_o_l.html#abe43ad9cb87f223ab2a875cda79b53ed">nb_max_waiting</a></td></tr>
+<tr class="memdesc:abe43ad9cb87f223ab2a875cda79b53ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum number of waiting procedures int the list, 0 or -1 for unlimited.  <a href="struct_t_h_r_e_a_d___p_o_o_l.html#abe43ad9cb87f223ab2a875cda79b53ed">More...</a><br /></td></tr>
 <tr class="separator:abe43ad9cb87f223ab2a875cda79b53ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a82a4f1f2900076822de004f357ef4e4a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_t_h_r_e_a_d___p_o_o_l___n_o_d_e.html">THREAD_POOL_NODE</a> **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_t_h_r_e_a_d___p_o_o_l.html#a82a4f1f2900076822de004f357ef4e4a">thread_list</a></td></tr>
+<tr class="memdesc:a82a4f1f2900076822de004f357ef4e4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dynamically allocated but fixed size thread array.  <a href="struct_t_h_r_e_a_d___p_o_o_l.html#a82a4f1f2900076822de004f357ef4e4a">More...</a><br /></td></tr>
 <tr class="separator:a82a4f1f2900076822de004f357ef4e4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a86b5f24f3379eb4659ac2e6e06e8835d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_l_i_s_t.html">LIST</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_t_h_r_e_a_d___p_o_o_l.html#a86b5f24f3379eb4659ac2e6e06e8835d">waiting_list</a></td></tr>
+<tr class="memdesc:a86b5f24f3379eb4659ac2e6e06e8835d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Waiting list handling.  <a href="struct_t_h_r_e_a_d___p_o_o_l.html#a86b5f24f3379eb4659ac2e6e06e8835d">More...</a><br /></td></tr>
 <tr class="separator:a86b5f24f3379eb4659ac2e6e06e8835d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >Structure of a trhead pool </p>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ex_network_8c-example.html#_a28">ex_network.c</a>, and <a class="el" href="ex_threads_8c-example.html#_a15">ex_threads.c</a>.</dd>
+<div class="textblock"><dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ex_network_8c-example.html#_a15">ex_network.c</a>, and <a class="el" href="ex_threads_8c-example.html#_a8">ex_threads.c</a>.</dd>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="n__thread__pool_8h_source.html#l00076">76</a> of file <a class="el" href="n__thread__pool_8h_source.html">n_thread_pool.h</a>.</p>
@@ -143,7 +153,6 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >mutex to prevent mutual access of waiting_list parameters </p>
 
 <p class="definition">Definition at line <a class="el" href="n__thread__pool_8h_source.html#l00089">89</a> of file <a class="el" href="n__thread__pool_8h_source.html">n_thread_pool.h</a>.</p>
 
@@ -160,7 +169,6 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Maximum number of running threads in the list </p>
 
 <p class="definition">Definition at line <a class="el" href="n__thread__pool_8h_source.html#l00082">82</a> of file <a class="el" href="n__thread__pool_8h_source.html">n_thread_pool.h</a>.</p>
 
@@ -177,7 +185,6 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >number of threads actually doing a proc </p>
 
 <p class="definition">Definition at line <a class="el" href="n__thread__pool_8h_source.html#l00086">86</a> of file <a class="el" href="n__thread__pool_8h_source.html">n_thread_pool.h</a>.</p>
 
@@ -194,7 +201,6 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Maximum number of waiting procedures int the list, 0 or -1 for unlimited </p>
 
 <p class="definition">Definition at line <a class="el" href="n__thread__pool_8h_source.html#l00084">84</a> of file <a class="el" href="n__thread__pool_8h_source.html">n_thread_pool.h</a>.</p>
 
@@ -211,7 +217,6 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Dynamically allocated but fixed size thread array </p>
 
 <p class="definition">Definition at line <a class="el" href="n__thread__pool_8h_source.html#l00079">79</a> of file <a class="el" href="n__thread__pool_8h_source.html">n_thread_pool.h</a>.</p>
 
@@ -228,7 +233,6 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Waiting list handling </p>
 
 <p class="definition">Definition at line <a class="el" href="n__thread__pool_8h_source.html#l00091">91</a> of file <a class="el" href="n__thread__pool_8h_source.html">n_thread_pool.h</a>.</p>
 
@@ -243,7 +247,7 @@ Data Fields</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="struct_t_h_r_e_a_d___p_o_o_l.html">THREAD_POOL</a></li>
-    <li class="footer">Generated on Fri Feb 4 2022 16:56:07 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+    <li class="footer">Generated on Tue Feb 8 2022 11:34:29 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
   </ul>
 </div>
 </body>

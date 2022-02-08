@@ -24,9 +24,11 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="NiloreaStudio.png"/></td>
   <td id="projectalign">
    <div id="projectname">Nilorea Library
    </div>
+   <div id="projectbrief">C utilities for networking, threading, graphics</div>
   </td>
  </tr>
  </tbody>
@@ -89,6 +91,9 @@ $(document).ready(function(){initNavTree('n__thread__pool_8h.html',''); initResi
   <div class="headertitle"><div class="title">n_thread_pool.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Thread pool declaration.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="n__list_8h_source.html">n_list.h</a>&quot;</code><br />
 <code>#include &lt;pthread.h&gt;</code><br />
 <code>#include &lt;semaphore.h&gt;</code><br />
@@ -99,8 +104,8 @@ $(document).ready(function(){initNavTree('n__thread__pool_8h.html',''); initResi
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="n__thread__pool_8h__incl.png" border="0" usemap="#ainclude_2nilorea_2n__thread__pool_8h" alt=""/></div>
 <map name="ainclude_2nilorea_2n__thread__pool_8h" id="ainclude_2nilorea_2n__thread__pool_8h">
-<area shape="rect" title=" " alt="" coords="94,5,253,47"/>
-<area shape="rect" href="n__list_8h.html" title=" " alt="" coords="47,95,111,121"/>
+<area shape="rect" title="Thread pool declaration." alt="" coords="94,5,253,47"/>
+<area shape="rect" href="n__list_8h.html" title="List structures and definitions." alt="" coords="47,95,111,121"/>
 <area shape="rect" title=" " alt="" coords="135,95,211,121"/>
 <area shape="rect" title=" " alt="" coords="235,95,333,121"/>
 <area shape="rect" title=" " alt="" coords="5,169,67,196"/>
@@ -114,13 +119,13 @@ $(document).ready(function(){initNavTree('n__thread__pool_8h.html',''); initResi
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="n__thread__pool_8h__dep__incl.png" border="0" usemap="#ainclude_2nilorea_2n__thread__pool_8hdep" alt=""/></div>
 <map name="ainclude_2nilorea_2n__thread__pool_8hdep" id="ainclude_2nilorea_2n__thread__pool_8hdep">
-<area shape="rect" title=" " alt="" coords="268,5,427,47"/>
-<area shape="rect" href="ex__network_8h.html" title=" " alt="" coords="5,95,164,121"/>
-<area shape="rect" href="ex__threads_8c.html" title=" " alt="" coords="189,95,346,121"/>
-<area shape="rect" href="nilorea_8h.html" title=" " alt="" coords="371,95,487,121"/>
-<area shape="rect" href="n__thread__pool_8c.html" title=" " alt="" coords="511,95,647,121"/>
-<area shape="rect" href="ex__network_8c.html" title=" " alt="" coords="5,169,164,196"/>
-<area shape="rect" href="ex__monolith_8c.html" title=" " alt="" coords="347,169,510,196"/>
+<area shape="rect" title="Thread pool declaration." alt="" coords="268,5,427,47"/>
+<area shape="rect" href="ex__network_8h.html" title="Nilorea Library n_network api test." alt="" coords="5,95,164,121"/>
+<area shape="rect" href="ex__threads_8c_source.html" title=" " alt="" coords="189,95,346,121"/>
+<area shape="rect" href="nilorea_8h.html" title="Header for a monolith use." alt="" coords="371,95,487,121"/>
+<area shape="rect" href="n__thread__pool_8c.html" title="Thread pool functions." alt="" coords="511,95,647,121"/>
+<area shape="rect" href="ex__network_8c_source.html" title=" " alt="" coords="5,169,164,196"/>
+<area shape="rect" href="ex__monolith_8c_source.html" title=" " alt="" coords="347,169,510,196"/>
 </map>
 </div>
 </div>
@@ -129,38 +134,52 @@ $(document).ready(function(){initNavTree('n__thread__pool_8h.html',''); initResi
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Data Structures</h2></td></tr>
 <tr class="memitem:struct_t_h_r_e_a_d___p_o_o_l"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___t_h_r_e_a_d_s.html#struct_t_h_r_e_a_d___p_o_o_l">THREAD_POOL</a></td></tr>
+<tr class="memdesc:struct_t_h_r_e_a_d___p_o_o_l"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure of a trhead pool.  <a href="group___t_h_r_e_a_d_s.html#struct_t_h_r_e_a_d___p_o_o_l">More...</a><br /></td></tr>
 <tr class="separator:struct_t_h_r_e_a_d___p_o_o_l"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_t_h_r_e_a_d___p_o_o_l___n_o_d_e.html">THREAD_POOL_NODE</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_t_h_r_e_a_d___w_a_i_t_i_n_g___p_r_o_c.html">THREAD_WAITING_PROC</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:struct_t_h_r_e_a_d___p_o_o_l___n_o_d_e"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___t_h_r_e_a_d_s.html#struct_t_h_r_e_a_d___p_o_o_l___n_o_d_e">THREAD_POOL_NODE</a></td></tr>
+<tr class="memdesc:struct_t_h_r_e_a_d___p_o_o_l___n_o_d_e"><td class="mdescLeft">&#160;</td><td class="mdescRight">A thread pool node.  <a href="group___t_h_r_e_a_d_s.html#struct_t_h_r_e_a_d___p_o_o_l___n_o_d_e">More...</a><br /></td></tr>
+<tr class="separator:struct_t_h_r_e_a_d___p_o_o_l___n_o_d_e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:struct_t_h_r_e_a_d___w_a_i_t_i_n_g___p_r_o_c"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___t_h_r_e_a_d_s.html#struct_t_h_r_e_a_d___w_a_i_t_i_n_g___p_r_o_c">THREAD_WAITING_PROC</a></td></tr>
+<tr class="memdesc:struct_t_h_r_e_a_d___w_a_i_t_i_n_g___p_r_o_c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure of a waiting process item.  <a href="group___t_h_r_e_a_d_s.html#struct_t_h_r_e_a_d___w_a_i_t_i_n_g___p_r_o_c">More...</a><br /></td></tr>
+<tr class="separator:struct_t_h_r_e_a_d___w_a_i_t_i_n_g___p_r_o_c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:ga8c7d9cf88f160af14b39be46a66f8189"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___t_h_r_e_a_d_s.html#ga8c7d9cf88f160af14b39be46a66f8189">DIRECT_PROC</a>&#160;&#160;&#160;2</td></tr>
+<tr class="memdesc:ga8c7d9cf88f160af14b39be46a66f8189"><td class="mdescLeft">&#160;</td><td class="mdescRight">processing mode for added func, direct start  <a href="group___t_h_r_e_a_d_s.html#ga8c7d9cf88f160af14b39be46a66f8189">More...</a><br /></td></tr>
 <tr class="separator:ga8c7d9cf88f160af14b39be46a66f8189"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga1acdd58d4aee3c8453ea124bd862518d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___t_h_r_e_a_d_s.html#ga1acdd58d4aee3c8453ea124bd862518d">EXITED_THREAD</a>&#160;&#160;&#160;256</td></tr>
+<tr class="memdesc:ga1acdd58d4aee3c8453ea124bd862518d"><td class="mdescLeft">&#160;</td><td class="mdescRight">indicate that the pool is off, all jobs have been consumed  <a href="group___t_h_r_e_a_d_s.html#ga1acdd58d4aee3c8453ea124bd862518d">More...</a><br /></td></tr>
 <tr class="separator:ga1acdd58d4aee3c8453ea124bd862518d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaac52c55616f27d8f95c4435d4b2cf91d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___t_h_r_e_a_d_s.html#gaac52c55616f27d8f95c4435d4b2cf91d">EXITING_THREAD</a>&#160;&#160;&#160;128</td></tr>
+<tr class="memdesc:gaac52c55616f27d8f95c4435d4b2cf91d"><td class="mdescLeft">&#160;</td><td class="mdescRight">indicate that the pool is exiting, unfinished jobs will finish and the pool will exit the threads and enter the EXITED state  <a href="group___t_h_r_e_a_d_s.html#gaac52c55616f27d8f95c4435d4b2cf91d">More...</a><br /></td></tr>
 <tr class="separator:gaac52c55616f27d8f95c4435d4b2cf91d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga7131f70ca662b8211de3586a2a6a5a16"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___t_h_r_e_a_d_s.html#ga7131f70ca662b8211de3586a2a6a5a16">IDLE_PROC</a>&#160;&#160;&#160;8</td></tr>
+<tr class="memdesc:ga7131f70ca662b8211de3586a2a6a5a16"><td class="mdescLeft">&#160;</td><td class="mdescRight">status of a thread which is waiting for some proc  <a href="group___t_h_r_e_a_d_s.html#ga7131f70ca662b8211de3586a2a6a5a16">More...</a><br /></td></tr>
 <tr class="separator:ga7131f70ca662b8211de3586a2a6a5a16"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga993c05b6c403f10fb3627e9e4fc30c83"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___t_h_r_e_a_d_s.html#ga993c05b6c403f10fb3627e9e4fc30c83">NO_LOCK</a>&#160;&#160;&#160;512</td></tr>
+<tr class="memdesc:ga993c05b6c403f10fb3627e9e4fc30c83"><td class="mdescLeft">&#160;</td><td class="mdescRight">if passed to add_threaded_process, skip main table lock in case we are in a func which is already locking it  <a href="group___t_h_r_e_a_d_s.html#ga993c05b6c403f10fb3627e9e4fc30c83">More...</a><br /></td></tr>
 <tr class="separator:ga993c05b6c403f10fb3627e9e4fc30c83"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaa558974d10eb2bf6f6915b6cc2bfea34"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___t_h_r_e_a_d_s.html#gaa558974d10eb2bf6f6915b6cc2bfea34">NOQUEUE</a>&#160;&#160;&#160;4</td></tr>
+<tr class="memdesc:gaa558974d10eb2bf6f6915b6cc2bfea34"><td class="mdescLeft">&#160;</td><td class="mdescRight">processing mode for waiting_list: do not readd the work in queue  <a href="group___t_h_r_e_a_d_s.html#gaa558974d10eb2bf6f6915b6cc2bfea34">More...</a><br /></td></tr>
 <tr class="separator:gaa558974d10eb2bf6f6915b6cc2bfea34"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga928be77c90a9b28e1931431b5eac113b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___t_h_r_e_a_d_s.html#ga928be77c90a9b28e1931431b5eac113b">RUNNING_PROC</a>&#160;&#160;&#160;32</td></tr>
+<tr class="memdesc:ga928be77c90a9b28e1931431b5eac113b"><td class="mdescLeft">&#160;</td><td class="mdescRight">status of a thread which proc is currently running  <a href="group___t_h_r_e_a_d_s.html#ga928be77c90a9b28e1931431b5eac113b">More...</a><br /></td></tr>
 <tr class="separator:ga928be77c90a9b28e1931431b5eac113b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gac3966893f43d72bd23c7c3f410df9a48"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___t_h_r_e_a_d_s.html#gac3966893f43d72bd23c7c3f410df9a48">RUNNING_THREAD</a>&#160;&#160;&#160;64</td></tr>
+<tr class="memdesc:gac3966893f43d72bd23c7c3f410df9a48"><td class="mdescLeft">&#160;</td><td class="mdescRight">indicate that the pool is running and ready to use  <a href="group___t_h_r_e_a_d_s.html#gac3966893f43d72bd23c7c3f410df9a48">More...</a><br /></td></tr>
 <tr class="separator:gac3966893f43d72bd23c7c3f410df9a48"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga2b400f548be5f43fa27d8f8b18892c08"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___t_h_r_e_a_d_s.html#ga2b400f548be5f43fa27d8f8b18892c08">SYNCED_PROC</a>&#160;&#160;&#160;1</td></tr>
+<tr class="memdesc:ga2b400f548be5f43fa27d8f8b18892c08"><td class="mdescLeft">&#160;</td><td class="mdescRight">processing mode for added func, synced start  <a href="group___t_h_r_e_a_d_s.html#ga2b400f548be5f43fa27d8f8b18892c08">More...</a><br /></td></tr>
 <tr class="separator:ga2b400f548be5f43fa27d8f8b18892c08"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gad1478c0e8f6772bb9673116dd0902e56"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___t_h_r_e_a_d_s.html#gad1478c0e8f6772bb9673116dd0902e56">WAITING_PROC</a>&#160;&#160;&#160;16</td></tr>
+<tr class="memdesc:gad1478c0e8f6772bb9673116dd0902e56"><td class="mdescLeft">&#160;</td><td class="mdescRight">status of a thread who have proc waiting to be processed <br  />
+  <a href="group___t_h_r_e_a_d_s.html#gad1478c0e8f6772bb9673116dd0902e56">More...</a><br /></td></tr>
 <tr class="separator:gad1478c0e8f6772bb9673116dd0902e56"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga46497eb81066d0df83dfd07ad0a9f561"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___t_h_r_e_a_d_s.html#ga46497eb81066d0df83dfd07ad0a9f561">add_threaded_process</a> (<a class="el" href="group___t_h_r_e_a_d_s.html#struct_t_h_r_e_a_d___p_o_o_l">THREAD_POOL</a> *thread_pool, void *(*func_ptr)(void *param), void *param, int <a class="el" href="ex__network_8c.html#a1ea5d0cb93f22f7d0fdf804bd68c3326">mode</a>)</td></tr>
+<tr class="memitem:ga46497eb81066d0df83dfd07ad0a9f561"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___t_h_r_e_a_d_s.html#ga46497eb81066d0df83dfd07ad0a9f561">add_threaded_process</a> (<a class="el" href="group___t_h_r_e_a_d_s.html#struct_t_h_r_e_a_d___p_o_o_l">THREAD_POOL</a> *thread_pool, void *(*func_ptr)(void *param), void *param, int mode)</td></tr>
 <tr class="memdesc:ga46497eb81066d0df83dfd07ad0a9f561"><td class="mdescLeft">&#160;</td><td class="mdescRight">add a function and params to a thread pool  <a href="group___t_h_r_e_a_d_s.html#ga46497eb81066d0df83dfd07ad0a9f561">More...</a><br /></td></tr>
 <tr class="separator:ga46497eb81066d0df83dfd07ad0a9f561"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga12ce28c2aaa5a5a1a05abe11071dd83f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___t_h_r_e_a_d_s.html#ga12ce28c2aaa5a5a1a05abe11071dd83f">destroy_threaded_pool</a> (<a class="el" href="group___t_h_r_e_a_d_s.html#struct_t_h_r_e_a_d___p_o_o_l">THREAD_POOL</a> **thread_pool, int delay)</td></tr>
@@ -180,7 +199,8 @@ Functions</h2></td></tr>
 <tr class="separator:ga992fc2a67a2d66733ccd10f7d9e2ead3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >Thread pool declaration </p><dl class="section author"><dt>Author</dt><dd>Castagnier Mickael </dd></dl>
+<div class="textblock"><p >Thread pool declaration. </p>
+<dl class="section author"><dt>Author</dt><dd>Castagnier Mickael </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>1.0 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>30/04/2014 </dd></dl>
 
@@ -191,7 +211,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_310dcdd4703e877a6b99d5dc3fc54d27.html">nilorea</a></li><li class="navelem"><a class="el" href="n__thread__pool_8h.html">n_thread_pool.h</a></li>
-    <li class="footer">Generated on Fri Feb 4 2022 17:12:04 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+    <li class="footer">Generated on Tue Feb 8 2022 14:10:25 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
   </ul>
 </div>
 </body>

@@ -24,9 +24,11 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="NiloreaStudio.png"/></td>
   <td id="projectalign">
    <div id="projectname">Nilorea Library
    </div>
+   <div id="projectbrief">C utilities for networking, threading, graphics</div>
   </td>
  </tr>
  </tbody>
@@ -96,13 +98,13 @@ $(document).ready(function(){initNavTree('struct_h_a_s_h___t_a_b_l_e.html',''); 
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="struct_h_a_s_h___t_a_b_l_e__coll__graph.png" border="0" usemap="#a_h_a_s_h___t_a_b_l_e_coll__map" alt="Collaboration graph"/></div>
 <map name="a_h_a_s_h___t_a_b_l_e_coll__map" id="a_h_a_s_h___t_a_b_l_e_coll__map">
-<area shape="rect" title=" " alt="" coords="324,601,509,767"/>
+<area shape="rect" title="structure of a hash table" alt="" coords="324,601,509,767"/>
 <area shape="rect" title=" " alt="" coords="292,5,331,83"/>
-<area shape="rect" href="group___l_i_s_t.html#struct_l_i_s_t" title=" " alt="" coords="278,439,326,517"/>
-<area shape="rect" href="struct_h_a_s_h___n_o_d_e.html" title=" " alt="" coords="580,439,683,517"/>
-<area shape="rect" href="group___h_a_s_h___t_a_b_l_e.html#union_h_a_s_h___v_a_l_u_e" title=" " alt="" coords="867,145,975,223"/>
+<area shape="rect" href="group___l_i_s_t.html#struct_l_i_s_t" title="Structure of a generic LIST container." alt="" coords="278,439,326,517"/>
+<area shape="rect" href="struct_h_a_s_h___n_o_d_e.html" title="structure of a hash table node" alt="" coords="580,439,683,517"/>
+<area shape="rect" href="group___h_a_s_h___t_a_b_l_e.html#union_h_a_s_h___v_a_l_u_e" title="union of the value of a node" alt="" coords="867,145,975,223"/>
 <area shape="rect" title=" " alt="" coords="433,145,501,223"/>
-<area shape="rect" href="struct_l_i_s_t___n_o_d_e.html" title=" " alt="" coords="256,145,348,223"/>
+<area shape="rect" href="struct_l_i_s_t___n_o_d_e.html" title="Structure of a generic list node." alt="" coords="256,145,348,223"/>
 <area shape="rect" title=" " alt="" coords="758,5,811,83"/>
 <area shape="rect" title=" " alt="" coords="560,5,671,83"/>
 <area shape="rect" title=" " alt="" coords="651,145,707,223"/>
@@ -124,29 +126,29 @@ Data Fields</h2></td></tr>
 <tr class="separator:a5dbf9bc5fdcbb834ff8103b7dc01a827"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5f15783b0b38e5269cbe64afe90835ca"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___l_i_s_t.html#struct_l_i_s_t">LIST</a> **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_h_a_s_h___t_a_b_l_e.html#a5f15783b0b38e5269cbe64afe90835ca">hash_table</a></td></tr>
 <tr class="separator:a5f15783b0b38e5269cbe64afe90835ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8face4d7c309083e3817ea585d48858f"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_h_a_s_h___t_a_b_l_e.html#a8face4d7c309083e3817ea585d48858f">ht_get_double</a> )(struct <a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table, char *<a class="el" href="ex__gui__netclient_8c.html#ac73942f75861b7977297231f5528c382">key</a>, double *val)</td></tr>
+<tr class="memitem:a8face4d7c309083e3817ea585d48858f"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_h_a_s_h___t_a_b_l_e.html#a8face4d7c309083e3817ea585d48858f">ht_get_double</a> )(struct <a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table, char *key, double *val)</td></tr>
 <tr class="separator:a8face4d7c309083e3817ea585d48858f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a56ab1b655e106f76d58e422a40e60c86"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_h_a_s_h___t_a_b_l_e.html#a56ab1b655e106f76d58e422a40e60c86">ht_get_int</a> )(struct <a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table, char *<a class="el" href="ex__gui__netclient_8c.html#ac73942f75861b7977297231f5528c382">key</a>, int *val)</td></tr>
+<tr class="memitem:a56ab1b655e106f76d58e422a40e60c86"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_h_a_s_h___t_a_b_l_e.html#a56ab1b655e106f76d58e422a40e60c86">ht_get_int</a> )(struct <a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table, char *key, int *val)</td></tr>
 <tr class="separator:a56ab1b655e106f76d58e422a40e60c86"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0e1fe1205acfdf8a150d4ca8fa0850d0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_h_a_s_h___n_o_d_e.html">HASH_NODE</a> *(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_h_a_s_h___t_a_b_l_e.html#a0e1fe1205acfdf8a150d4ca8fa0850d0">ht_get_node</a> )(struct <a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table, char *<a class="el" href="ex__gui__netclient_8c.html#ac73942f75861b7977297231f5528c382">key</a>)</td></tr>
+<tr class="memitem:a0e1fe1205acfdf8a150d4ca8fa0850d0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_h_a_s_h___n_o_d_e.html">HASH_NODE</a> *(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_h_a_s_h___t_a_b_l_e.html#a0e1fe1205acfdf8a150d4ca8fa0850d0">ht_get_node</a> )(struct <a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table, char *key)</td></tr>
 <tr class="separator:a0e1fe1205acfdf8a150d4ca8fa0850d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0abfafc888483dc0a329ecb33c81e074"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_h_a_s_h___t_a_b_l_e.html#a0abfafc888483dc0a329ecb33c81e074">ht_get_ptr</a> )(struct <a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table, char *<a class="el" href="ex__gui__netclient_8c.html#ac73942f75861b7977297231f5528c382">key</a>, void **val)</td></tr>
+<tr class="memitem:a0abfafc888483dc0a329ecb33c81e074"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_h_a_s_h___t_a_b_l_e.html#a0abfafc888483dc0a329ecb33c81e074">ht_get_ptr</a> )(struct <a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table, char *key, void **val)</td></tr>
 <tr class="separator:a0abfafc888483dc0a329ecb33c81e074"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5d77408c37e5bfbcfc373244593bd36c"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_h_a_s_h___t_a_b_l_e.html#a5d77408c37e5bfbcfc373244593bd36c">ht_get_string</a> )(struct <a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table, char *<a class="el" href="ex__gui__netclient_8c.html#ac73942f75861b7977297231f5528c382">key</a>, char **val)</td></tr>
+<tr class="memitem:a5d77408c37e5bfbcfc373244593bd36c"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_h_a_s_h___t_a_b_l_e.html#a5d77408c37e5bfbcfc373244593bd36c">ht_get_string</a> )(struct <a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table, char *key, char **val)</td></tr>
 <tr class="separator:a5d77408c37e5bfbcfc373244593bd36c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aac2041ddaca00fb2bf4e04488870fc66"><td class="memItemLeft" align="right" valign="top">void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_h_a_s_h___t_a_b_l_e.html#aac2041ddaca00fb2bf4e04488870fc66">ht_print</a> )(struct <a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table)</td></tr>
 <tr class="separator:aac2041ddaca00fb2bf4e04488870fc66"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad8b4112b6deac48a51200c1e55870bef"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_h_a_s_h___t_a_b_l_e.html#ad8b4112b6deac48a51200c1e55870bef">ht_put_double</a> )(struct <a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table, char *<a class="el" href="ex__gui__netclient_8c.html#ac73942f75861b7977297231f5528c382">key</a>, double val)</td></tr>
+<tr class="memitem:ad8b4112b6deac48a51200c1e55870bef"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_h_a_s_h___t_a_b_l_e.html#ad8b4112b6deac48a51200c1e55870bef">ht_put_double</a> )(struct <a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table, char *key, double val)</td></tr>
 <tr class="separator:ad8b4112b6deac48a51200c1e55870bef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af8db0c5d44877a825a9a97e7b0815888"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_h_a_s_h___t_a_b_l_e.html#af8db0c5d44877a825a9a97e7b0815888">ht_put_int</a> )(struct <a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table, char *<a class="el" href="ex__gui__netclient_8c.html#ac73942f75861b7977297231f5528c382">key</a>, int val)</td></tr>
+<tr class="memitem:af8db0c5d44877a825a9a97e7b0815888"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_h_a_s_h___t_a_b_l_e.html#af8db0c5d44877a825a9a97e7b0815888">ht_put_int</a> )(struct <a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table, char *key, int val)</td></tr>
 <tr class="separator:af8db0c5d44877a825a9a97e7b0815888"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3e04d5d1354d26a67ded47d519b88a3b"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_h_a_s_h___t_a_b_l_e.html#a3e04d5d1354d26a67ded47d519b88a3b">ht_put_ptr</a> )(struct <a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table, char *<a class="el" href="ex__gui__netclient_8c.html#ac73942f75861b7977297231f5528c382">key</a>, void *ptr, void(*destructor)(void *ptr))</td></tr>
+<tr class="memitem:a3e04d5d1354d26a67ded47d519b88a3b"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_h_a_s_h___t_a_b_l_e.html#a3e04d5d1354d26a67ded47d519b88a3b">ht_put_ptr</a> )(struct <a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table, char *key, void *ptr, void(*destructor)(void *ptr))</td></tr>
 <tr class="separator:a3e04d5d1354d26a67ded47d519b88a3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1fddd5f97467d9c8b1a63a519384427b"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_h_a_s_h___t_a_b_l_e.html#a1fddd5f97467d9c8b1a63a519384427b">ht_put_string</a> )(struct <a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table, char *<a class="el" href="ex__gui__netclient_8c.html#ac73942f75861b7977297231f5528c382">key</a>, char *val)</td></tr>
+<tr class="memitem:a1fddd5f97467d9c8b1a63a519384427b"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_h_a_s_h___t_a_b_l_e.html#a1fddd5f97467d9c8b1a63a519384427b">ht_put_string</a> )(struct <a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table, char *key, char *val)</td></tr>
 <tr class="separator:a1fddd5f97467d9c8b1a63a519384427b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a67cf9849486e10e6cd5295a4c9d4d28e"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_h_a_s_h___t_a_b_l_e.html#a67cf9849486e10e6cd5295a4c9d4d28e">ht_put_string_ptr</a> )(struct <a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table, char *<a class="el" href="ex__gui__netclient_8c.html#ac73942f75861b7977297231f5528c382">key</a>, char *val)</td></tr>
+<tr class="memitem:a67cf9849486e10e6cd5295a4c9d4d28e"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_h_a_s_h___t_a_b_l_e.html#a67cf9849486e10e6cd5295a4c9d4d28e">ht_put_string_ptr</a> )(struct <a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table, char *key, char *val)</td></tr>
 <tr class="separator:a67cf9849486e10e6cd5295a4c9d4d28e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2d94e68fcbf2f811d1daf13c904322d5"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_h_a_s_h___t_a_b_l_e.html#a2d94e68fcbf2f811d1daf13c904322d5">ht_remove</a> )(struct <a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table, char *<a class="el" href="ex__gui__netclient_8c.html#ac73942f75861b7977297231f5528c382">key</a>)</td></tr>
+<tr class="memitem:a2d94e68fcbf2f811d1daf13c904322d5"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_h_a_s_h___t_a_b_l_e.html#a2d94e68fcbf2f811d1daf13c904322d5">ht_remove</a> )(struct <a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table, char *key)</td></tr>
 <tr class="separator:a2d94e68fcbf2f811d1daf13c904322d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aedf59ccd6d3f240141ceea3d33ae55b8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___l_i_s_t.html#struct_l_i_s_t">LIST</a> *(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_h_a_s_h___t_a_b_l_e.html#aedf59ccd6d3f240141ceea3d33ae55b8">ht_search</a> )(struct <a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table, int(*node_is_matching)(<a class="el" href="struct_h_a_s_h___n_o_d_e.html">HASH_NODE</a> *node))</td></tr>
 <tr class="separator:aedf59ccd6d3f240141ceea3d33ae55b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -162,8 +164,7 @@ Data Fields</h2></td></tr>
 <tr class="separator:ae2397c35498afb9670f1f49641e8755c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >structure of a hash table </p>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ex_gui_netclient_8c-example.html#_a5">ex_gui_netclient.c</a>, and <a class="el" href="ex_hash_8c-example.html#_a10">ex_hash.c</a>.</dd>
+<div class="textblock"><dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ex_gui_netclient_8c-example.html#_a4">ex_gui_netclient.c</a>, and <a class="el" href="ex_hash_8c-example.html#_a7">ex_hash.c</a>.</dd>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="n__hash_8h_source.html#l00108">108</a> of file <a class="el" href="n__hash_8h_source.html">n_hash.h</a>.</p>
@@ -179,7 +180,8 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >HASH_TRIE mode: size of the alphabet </p>
+
+<p>HASH_TRIE mode: size of the alphabet. </p>
 
 <p class="definition">Definition at line <a class="el" href="n__hash_8h_source.html#l00121">121</a> of file <a class="el" href="n__hash_8h_source.html">n_hash.h</a>.</p>
 
@@ -196,7 +198,8 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >HASH_TRIE mode: offset to deduce to individual key digits </p>
+
+<p>HASH_TRIE mode: offset to deduce to individual key digits. </p>
 
 <p class="definition">Definition at line <a class="el" href="n__hash_8h_source.html#l00123">123</a> of file <a class="el" href="n__hash_8h_source.html">n_hash.h</a>.</p>
 
@@ -213,7 +216,8 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >destroy a hash table </p>
+
+<p>destroy a hash table </p>
 
 <p class="definition">Definition at line <a class="el" href="n__hash_8h_source.html#l00153">153</a> of file <a class="el" href="n__hash_8h_source.html">n_hash.h</a>.</p>
 
@@ -230,7 +234,9 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >empty a hash table. char *strings are also freed </p>
+
+<p>empty a hash table. </p>
+<p >char *strings are also freed </p>
 
 <p class="definition">Definition at line <a class="el" href="n__hash_8h_source.html#l00151">151</a> of file <a class="el" href="n__hash_8h_source.html">n_hash.h</a>.</p>
 
@@ -247,7 +253,8 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >HASH_CLASSIC mode: preallocated hash table </p>
+
+<p>HASH_CLASSIC mode: preallocated hash table. </p>
 
 <p class="definition">Definition at line <a class="el" href="n__hash_8h_source.html#l00117">117</a> of file <a class="el" href="n__hash_8h_source.html">n_hash.h</a>.</p>
 
@@ -260,11 +267,12 @@ Data Fields</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int(* HASH_TABLE::ht_get_double) (struct <a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table, char *<a class="el" href="ex__gui__netclient_8c.html#ac73942f75861b7977297231f5528c382">key</a>, double *val)</td>
+          <td class="memname">int(* HASH_TABLE::ht_get_double) (struct <a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table, char *key, double *val)</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >get a double from a key's node </p>
+
+<p>get a double from a key's node </p>
 
 <p class="definition">Definition at line <a class="el" href="n__hash_8h_source.html#l00141">141</a> of file <a class="el" href="n__hash_8h_source.html">n_hash.h</a>.</p>
 
@@ -279,11 +287,12 @@ Data Fields</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int(* HASH_TABLE::ht_get_int) (struct <a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table, char *<a class="el" href="ex__gui__netclient_8c.html#ac73942f75861b7977297231f5528c382">key</a>, int *val)</td>
+          <td class="memname">int(* HASH_TABLE::ht_get_int) (struct <a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table, char *key, int *val)</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >get an int from a key's node </p>
+
+<p>get an int from a key's node </p>
 
 <p class="definition">Definition at line <a class="el" href="n__hash_8h_source.html#l00139">139</a> of file <a class="el" href="n__hash_8h_source.html">n_hash.h</a>.</p>
 
@@ -298,11 +307,12 @@ Data Fields</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="struct_h_a_s_h___n_o_d_e.html">HASH_NODE</a> *(* HASH_TABLE::ht_get_node) (struct <a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table, char *<a class="el" href="ex__gui__netclient_8c.html#ac73942f75861b7977297231f5528c382">key</a>)</td>
+          <td class="memname"><a class="el" href="struct_h_a_s_h___n_o_d_e.html">HASH_NODE</a> *(* HASH_TABLE::ht_get_node) (struct <a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table, char *key)</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >get <a class="el" href="struct_h_a_s_h___n_o_d_e.html">HASH_NODE</a> at 'key' from table </p>
+
+<p>get <a class="el" href="struct_h_a_s_h___n_o_d_e.html" title="structure of a hash table node">HASH_NODE</a> at 'key' from table </p>
 
 <p class="definition">Definition at line <a class="el" href="n__hash_8h_source.html#l00127">127</a> of file <a class="el" href="n__hash_8h_source.html">n_hash.h</a>.</p>
 
@@ -317,11 +327,12 @@ Data Fields</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int(* HASH_TABLE::ht_get_ptr) (struct <a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table, char *<a class="el" href="ex__gui__netclient_8c.html#ac73942f75861b7977297231f5528c382">key</a>, void **val)</td>
+          <td class="memname">int(* HASH_TABLE::ht_get_ptr) (struct <a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table, char *key, void **val)</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >get a pointer from a key's node </p>
+
+<p>get a pointer from a key's node </p>
 
 <p class="definition">Definition at line <a class="el" href="n__hash_8h_source.html#l00143">143</a> of file <a class="el" href="n__hash_8h_source.html">n_hash.h</a>.</p>
 
@@ -334,11 +345,12 @@ Data Fields</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int(* HASH_TABLE::ht_get_string) (struct <a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table, char *<a class="el" href="ex__gui__netclient_8c.html#ac73942f75861b7977297231f5528c382">key</a>, char **val)</td>
+          <td class="memname">int(* HASH_TABLE::ht_get_string) (struct <a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table, char *key, char **val)</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >get a char *string from a key's node </p>
+
+<p>get a char *string from a key's node </p>
 
 <p class="definition">Definition at line <a class="el" href="n__hash_8h_source.html#l00145">145</a> of file <a class="el" href="n__hash_8h_source.html">n_hash.h</a>.</p>
 
@@ -357,7 +369,8 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >print table </p>
+
+<p>print table </p>
 
 <p class="definition">Definition at line <a class="el" href="n__hash_8h_source.html#l00155">155</a> of file <a class="el" href="n__hash_8h_source.html">n_hash.h</a>.</p>
 
@@ -372,11 +385,12 @@ Data Fields</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int(* HASH_TABLE::ht_put_double) (struct <a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table, char *<a class="el" href="ex__gui__netclient_8c.html#ac73942f75861b7977297231f5528c382">key</a>, double val)</td>
+          <td class="memname">int(* HASH_TABLE::ht_put_double) (struct <a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table, char *key, double val)</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >put a double </p>
+
+<p>put a double </p>
 
 <p class="definition">Definition at line <a class="el" href="n__hash_8h_source.html#l00131">131</a> of file <a class="el" href="n__hash_8h_source.html">n_hash.h</a>.</p>
 
@@ -391,11 +405,12 @@ Data Fields</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int(* HASH_TABLE::ht_put_int) (struct <a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table, char *<a class="el" href="ex__gui__netclient_8c.html#ac73942f75861b7977297231f5528c382">key</a>, int val)</td>
+          <td class="memname">int(* HASH_TABLE::ht_put_int) (struct <a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table, char *key, int val)</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >put an integer </p>
+
+<p>put an integer </p>
 
 <p class="definition">Definition at line <a class="el" href="n__hash_8h_source.html#l00129">129</a> of file <a class="el" href="n__hash_8h_source.html">n_hash.h</a>.</p>
 
@@ -410,11 +425,12 @@ Data Fields</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int(* HASH_TABLE::ht_put_ptr) (struct <a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table, char *<a class="el" href="ex__gui__netclient_8c.html#ac73942f75861b7977297231f5528c382">key</a>, void *ptr, void(*destructor)(void *ptr))</td>
+          <td class="memname">int(* HASH_TABLE::ht_put_ptr) (struct <a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table, char *key, void *ptr, void(*destructor)(void *ptr))</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >put a a pointer </p>
+
+<p>put a a pointer </p>
 
 <p class="definition">Definition at line <a class="el" href="n__hash_8h_source.html#l00133">133</a> of file <a class="el" href="n__hash_8h_source.html">n_hash.h</a>.</p>
 
@@ -429,11 +445,12 @@ Data Fields</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int(* HASH_TABLE::ht_put_string) (struct <a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table, char *<a class="el" href="ex__gui__netclient_8c.html#ac73942f75861b7977297231f5528c382">key</a>, char *val)</td>
+          <td class="memname">int(* HASH_TABLE::ht_put_string) (struct <a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table, char *key, char *val)</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >put an char *string </p>
+
+<p>put an char *string </p>
 
 <p class="definition">Definition at line <a class="el" href="n__hash_8h_source.html#l00135">135</a> of file <a class="el" href="n__hash_8h_source.html">n_hash.h</a>.</p>
 
@@ -448,11 +465,12 @@ Data Fields</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int(* HASH_TABLE::ht_put_string_ptr) (struct <a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table, char *<a class="el" href="ex__gui__netclient_8c.html#ac73942f75861b7977297231f5528c382">key</a>, char *val)</td>
+          <td class="memname">int(* HASH_TABLE::ht_put_string_ptr) (struct <a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table, char *key, char *val)</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >put an char *string pointer </p>
+
+<p>put an char *string pointer </p>
 
 <p class="definition">Definition at line <a class="el" href="n__hash_8h_source.html#l00137">137</a> of file <a class="el" href="n__hash_8h_source.html">n_hash.h</a>.</p>
 
@@ -467,11 +485,12 @@ Data Fields</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int(* HASH_TABLE::ht_remove) (struct <a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table, char *<a class="el" href="ex__gui__netclient_8c.html#ac73942f75861b7977297231f5528c382">key</a>)</td>
+          <td class="memname">int(* HASH_TABLE::ht_remove) (struct <a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table, char *key)</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >remove given's key node from the table </p>
+
+<p>remove given's key node from the table </p>
 
 <p class="definition">Definition at line <a class="el" href="n__hash_8h_source.html#l00147">147</a> of file <a class="el" href="n__hash_8h_source.html">n_hash.h</a>.</p>
 
@@ -490,7 +509,8 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >search elements given an expression </p>
+
+<p>search elements given an expression </p>
 
 <p class="definition">Definition at line <a class="el" href="n__hash_8h_source.html#l00149">149</a> of file <a class="el" href="n__hash_8h_source.html">n_hash.h</a>.</p>
 
@@ -507,7 +527,8 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >hashing mode, murmurhash and classic HASH_MURMUR, or HASH_TRIE </p>
+
+<p>hashing mode, murmurhash and classic HASH_MURMUR, or HASH_TRIE </p>
 
 <p class="definition">Definition at line <a class="el" href="n__hash_8h_source.html#l00125">125</a> of file <a class="el" href="n__hash_8h_source.html">n_hash.h</a>.</p>
 
@@ -524,7 +545,8 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >total number of used keys in the table </p>
+
+<p>total number of used keys in the table </p>
 
 <p class="definition">Definition at line <a class="el" href="n__hash_8h_source.html#l00113">113</a> of file <a class="el" href="n__hash_8h_source.html">n_hash.h</a>.</p>
 
@@ -541,7 +563,8 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >HASH_TRIE mode: Start of tree </p>
+
+<p>HASH_TRIE mode: Start of tree. </p>
 
 <p class="definition">Definition at line <a class="el" href="n__hash_8h_source.html#l00119">119</a> of file <a class="el" href="n__hash_8h_source.html">n_hash.h</a>.</p>
 
@@ -558,7 +581,8 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >table's seed </p>
+
+<p>table's seed </p>
 
 <p class="definition">Definition at line <a class="el" href="n__hash_8h_source.html#l00115">115</a> of file <a class="el" href="n__hash_8h_source.html">n_hash.h</a>.</p>
 
@@ -575,7 +599,8 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >size of the hash table </p>
+
+<p>size of the hash table </p>
 
 <p class="definition">Definition at line <a class="el" href="n__hash_8h_source.html#l00111">111</a> of file <a class="el" href="n__hash_8h_source.html">n_hash.h</a>.</p>
 
@@ -592,7 +617,7 @@ Data Fields</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a></li>
-    <li class="footer">Generated on Fri Feb 4 2022 17:12:05 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+    <li class="footer">Generated on Tue Feb 8 2022 11:38:04 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
   </ul>
 </div>
 </body>

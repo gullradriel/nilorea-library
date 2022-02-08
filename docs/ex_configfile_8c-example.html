@@ -24,9 +24,11 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="NiloreaStudio.png"/></td>
   <td id="projectalign">
    <div id="projectname">Nilorea Library
    </div>
+   <div id="projectbrief">C utilities for networking, threading, graphics</div>
   </td>
  </tr>
  </tbody>
@@ -85,22 +87,23 @@ $(document).ready(function(){initNavTree('ex_configfile_8c-example.html',''); in
   <div class="headertitle"><div class="title">ex_configfile.c</div></div>
 </div><!--header-->
 <div class="contents">
+<p >Nilorea Library config api test.</p>
 <p >Nilorea Library config api test </p><dl class="section author"><dt>Author</dt><dd>Mickael Castagnier </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>1.0 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2018-26-10</dd></dl>
 <div class="fragment"><div class="line"> </div>
 <div class="line"><span class="preprocessor">#include &quot;<a class="code" href="n__config__file_8h.html">nilorea/n_config_file.h</a>&quot;</span></div>
 <div class="line"> </div>
-<div class="line"><span class="keywordtype">int</span> <a id="a0" name="a0"></a><a class="code hl_function" href="ex__configfile_8c.html#a0ddf1224851353fc92bfbff6f499fa97">main</a>( <span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> *argv[] )</div>
+<div class="line"><span class="keywordtype">int</span> main( <span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> *argv[] )</div>
 <div class="line">{</div>
-<div class="line">    <a id="a1" name="a1"></a><a class="code hl_function" href="group___l_o_g.html#gacad9b2d55788f46ddde811c986ead9ae">set_log_level</a>( <a id="a2" name="a2"></a><a class="code hl_define" href="group___l_o_g.html#ga6ff63e8955665c4a58b1598f2b07c51a">LOG_DEBUG</a> );</div>
+<div class="line">    <a id="a0" name="a0"></a><a class="code hl_function" href="group___l_o_g.html#gacad9b2d55788f46ddde811c986ead9ae">set_log_level</a>( <a id="a1" name="a1"></a><a class="code hl_define" href="group___l_o_g.html#ga6ff63e8955665c4a58b1598f2b07c51a">LOG_DEBUG</a> );</div>
 <div class="line">    <span class="keywordflow">if</span>( argc &lt; 2 )</div>
 <div class="line">    {</div>
-<div class="line">        <a id="a3" name="a3"></a><a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a id="a4" name="a4"></a><a class="code hl_define" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a>, <span class="stringliteral">&quot;Not enough arguments. Use ex_configfile file&quot;</span> );</div>
+<div class="line">        <a id="a2" name="a2"></a><a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a id="a3" name="a3"></a><a class="code hl_define" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a>, <span class="stringliteral">&quot;Not enough arguments. Use ex_configfile file&quot;</span> );</div>
 <div class="line">        exit( 1 );</div>
 <div class="line">    }</div>
 <div class="line">    <span class="keywordtype">int</span> errors = 0 ;</div>
-<div class="line">    <a id="_a5" name="_a5"></a><a class="code hl_struct" href="group___c_o_n_f_i_g_f_i_l_e.html#struct_c_o_n_f_i_g___f_i_l_e">CONFIG_FILE</a> *config = <a id="a6" name="a6"></a><a class="code hl_function" href="group___c_o_n_f_i_g_f_i_l_e.html#ga0206fadb78039ac602fc0696b27b85a6">load_config_file</a>( argv[ 1 ], &amp;errors );</div>
+<div class="line">    <a id="_a4" name="_a4"></a><a class="code hl_struct" href="group___c_o_n_f_i_g_f_i_l_e.html#struct_c_o_n_f_i_g___f_i_l_e">CONFIG_FILE</a> *config = <a id="a5" name="a5"></a><a class="code hl_function" href="group___c_o_n_f_i_g_f_i_l_e.html#ga0206fadb78039ac602fc0696b27b85a6">load_config_file</a>( argv[ 1 ], &amp;errors );</div>
 <div class="line">    <span class="keywordflow">if</span>( !config )</div>
 <div class="line">    {</div>
 <div class="line">        <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a>, <span class="stringliteral">&quot;Unable to load config file from %s&quot;</span>, argv[ 1 ] );</div>
@@ -112,12 +115,12 @@ $(document).ready(function(){initNavTree('ex_configfile_8c-example.html',''); in
 <div class="line"> </div>
 <div class="line">    }</div>
 <div class="line">    <span class="comment">/* default section, only one should be allocated. Let&#39;s test it ! */</span></div>
-<div class="line">    <span class="keywordtype">int</span> nb = <a id="a7" name="a7"></a><a class="code hl_function" href="group___c_o_n_f_i_g_f_i_l_e.html#gae3a92ac0d4158b6991e18beba9446689">get_nb_config_file_sections</a>( config, <span class="stringliteral">&quot;__DEFAULT__&quot;</span> );</div>
+<div class="line">    <span class="keywordtype">int</span> nb = <a id="a6" name="a6"></a><a class="code hl_function" href="group___c_o_n_f_i_g_f_i_l_e.html#gae3a92ac0d4158b6991e18beba9446689">get_nb_config_file_sections</a>( config, <span class="stringliteral">&quot;__DEFAULT__&quot;</span> );</div>
 <div class="line">    <span class="keywordflow">for</span>( <span class="keywordtype">int</span> it = 0 ; it &lt; nb ; it++ )</div>
 <div class="line">    {</div>
-<div class="line">        <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a id="a8" name="a8"></a><a class="code hl_define" href="group___l_o_g.html#gaeb4f36db01bd128c7afeac5889dac311">LOG_INFO</a>, <span class="stringliteral">&quot;[DEFAULT]&quot;</span> );</div>
+<div class="line">        <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a id="a7" name="a7"></a><a class="code hl_define" href="group___l_o_g.html#gaeb4f36db01bd128c7afeac5889dac311">LOG_INFO</a>, <span class="stringliteral">&quot;[DEFAULT]&quot;</span> );</div>
 <div class="line">        <span class="keywordtype">char</span> *value = NULL ;</div>
-<div class="line">        value = <a id="a9" name="a9"></a><a class="code hl_function" href="group___c_o_n_f_i_g_f_i_l_e.html#ga1ce5c0ab9aff3664d2284a26f6263b85">get_config_section_value</a>( config, <span class="stringliteral">&quot;__DEFAULT__&quot;</span>, it, <span class="stringliteral">&quot;check_interval&quot;</span>, 0 );</div>
+<div class="line">        value = <a id="a8" name="a8"></a><a class="code hl_function" href="group___c_o_n_f_i_g_f_i_l_e.html#ga1ce5c0ab9aff3664d2284a26f6263b85">get_config_section_value</a>( config, <span class="stringliteral">&quot;__DEFAULT__&quot;</span>, it, <span class="stringliteral">&quot;check_interval&quot;</span>, 0 );</div>
 <div class="line">        <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#gaeb4f36db01bd128c7afeac5889dac311">LOG_INFO</a>, <span class="stringliteral">&quot;check_interval:%s&quot;</span>, (value!=NULL)?value:<span class="stringliteral">&quot;NULL&quot;</span> );</div>
 <div class="line">        value = <a class="code hl_function" href="group___c_o_n_f_i_g_f_i_l_e.html#ga1ce5c0ab9aff3664d2284a26f6263b85">get_config_section_value</a>( config, <span class="stringliteral">&quot;__DEFAULT__&quot;</span>, it, <span class="stringliteral">&quot;refresh_interval&quot;</span>, 0 );</div>
 <div class="line">        <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#gaeb4f36db01bd128c7afeac5889dac311">LOG_INFO</a>, <span class="stringliteral">&quot;refresh_interval:%s&quot;</span>,  (value!=NULL)?value:<span class="stringliteral">&quot;NULL&quot;</span> );</div>
@@ -179,7 +182,7 @@ $(document).ready(function(){initNavTree('ex_configfile_8c-example.html',''); in
 <div class="line">        <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#gaeb4f36db01bd128c7afeac5889dac311">LOG_INFO</a>, <span class="stringliteral">&quot;check_interval:%s&quot;</span>, (value!=NULL)?value:<span class="stringliteral">&quot;NULL&quot;</span> );</div>
 <div class="line">        value = <a class="code hl_function" href="group___c_o_n_f_i_g_f_i_l_e.html#ga1ce5c0ab9aff3664d2284a26f6263b85">get_config_section_value</a>( config, <span class="stringliteral">&quot;SECTION_FILE_MULTICMD&quot;</span>, it, <span class="stringliteral">&quot;command_timeout&quot;</span>, 0 );</div>
 <div class="line">        <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#gaeb4f36db01bd128c7afeac5889dac311">LOG_INFO</a>, <span class="stringliteral">&quot;command_timeout:%s&quot;</span>, (value!=NULL)?value:<span class="stringliteral">&quot;NULL&quot;</span> );</div>
-<div class="line">        <span class="keywordtype">int</span> nb_cmd = <a id="a10" name="a10"></a><a class="code hl_function" href="group___c_o_n_f_i_g_f_i_l_e.html#gaf57bc2bde1a2e2493be7d9e37c3d7da7">get_nb_config_file_sections_entries</a>( config, <span class="stringliteral">&quot;SECTION_FILE_MULTICMD&quot;</span>, it, <span class="stringliteral">&quot;command&quot;</span> );</div>
+<div class="line">        <span class="keywordtype">int</span> nb_cmd = <a id="a9" name="a9"></a><a class="code hl_function" href="group___c_o_n_f_i_g_f_i_l_e.html#gaf57bc2bde1a2e2493be7d9e37c3d7da7">get_nb_config_file_sections_entries</a>( config, <span class="stringliteral">&quot;SECTION_FILE_MULTICMD&quot;</span>, it, <span class="stringliteral">&quot;command&quot;</span> );</div>
 <div class="line">        <span class="keywordflow">for</span>( <span class="keywordtype">int</span> it1 = 0 ; it1 &lt; nb_cmd ; it1 ++ )</div>
 <div class="line">        {</div>
 <div class="line">            value = <a class="code hl_function" href="group___c_o_n_f_i_g_f_i_l_e.html#ga1ce5c0ab9aff3664d2284a26f6263b85">get_config_section_value</a>( config, <span class="stringliteral">&quot;SECTION_FILE_MULTICMD&quot;</span>, it, <span class="stringliteral">&quot;command&quot;</span>, it1 );</div>
@@ -188,40 +191,38 @@ $(document).ready(function(){initNavTree('ex_configfile_8c-example.html',''); in
 <div class="line">    }</div>
 <div class="line">    <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#gaeb4f36db01bd128c7afeac5889dac311">LOG_INFO</a>, <span class="stringliteral">&quot;\n\nCONFIG_FILE foreach !!&quot;</span> );</div>
 <div class="line"> </div>
-<div class="line">    <span class="keywordtype">char</span> *section_name = NULL, *<a id="a11" name="a11"></a><a class="code hl_variable" href="ex__gui__netclient_8c.html#ac73942f75861b7977297231f5528c382">key</a>=NULL, *val = NULL ;</div>
-<div class="line">    <a id="a12" name="a12"></a><a class="code hl_define" href="group___c_o_n_f_i_g_f_i_l_e.html#gaa56fa5c30fab08e7145ab2640e12cde5">config_foreach</a>( config, section_name, <a class="code hl_variable" href="ex__gui__netclient_8c.html#ac73942f75861b7977297231f5528c382">key</a>, val )</div>
+<div class="line">    <span class="keywordtype">char</span> *section_name = NULL, *key=NULL, *val = NULL ;</div>
+<div class="line">    <a id="a10" name="a10"></a><a class="code hl_define" href="group___c_o_n_f_i_g_f_i_l_e.html#gaa56fa5c30fab08e7145ab2640e12cde5">config_foreach</a>( config, section_name, key, val )</div>
 <div class="line">    {</div>
-<div class="line">        <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#gaeb4f36db01bd128c7afeac5889dac311">LOG_INFO</a>, <span class="stringliteral">&quot;[%s]%s:%s&quot;</span>, section_name, <a class="code hl_variable" href="ex__gui__netclient_8c.html#ac73942f75861b7977297231f5528c382">key</a>, val );</div>
+<div class="line">        <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#gaeb4f36db01bd128c7afeac5889dac311">LOG_INFO</a>, <span class="stringliteral">&quot;[%s]%s:%s&quot;</span>, section_name, key, val );</div>
 <div class="line">    }</div>
-<div class="line">    <a id="a13" name="a13"></a><a class="code hl_define" href="group___c_o_n_f_i_g_f_i_l_e.html#ga2d2b6213151d9b9c50149149cffea041">config_endfor</a>;</div>
+<div class="line">    <a id="a11" name="a11"></a><a class="code hl_define" href="group___c_o_n_f_i_g_f_i_l_e.html#ga2d2b6213151d9b9c50149149cffea041">config_endfor</a>;</div>
 <div class="line"> </div>
-<div class="line">    <a id="a14" name="a14"></a><a class="code hl_function" href="group___c_o_n_f_i_g_f_i_l_e.html#ga5c6e573bf39871c909dcd71c9bcc13b4">destroy_config_file</a>( &amp;config );</div>
+<div class="line">    <a id="a12" name="a12"></a><a class="code hl_function" href="group___c_o_n_f_i_g_f_i_l_e.html#ga5c6e573bf39871c909dcd71c9bcc13b4">destroy_config_file</a>( &amp;config );</div>
 <div class="line">    exit( 0 );</div>
 <div class="line">}</div>
 <div class="line"> </div>
 <div class="line"> </div>
-<div class="ttc" id="aex__configfile_8c_html_a0ddf1224851353fc92bfbff6f499fa97"><div class="ttname"><a href="ex__configfile_8c.html#a0ddf1224851353fc92bfbff6f499fa97">main</a></div><div class="ttdeci">int main(int argc, char *argv[])</div><div class="ttdef"><b>Definition:</b> <a href="ex__configfile_8c_source.html#l00009">ex_configfile.c:9</a></div></div>
-<div class="ttc" id="aex__gui__netclient_8c_html_ac73942f75861b7977297231f5528c382"><div class="ttname"><a href="ex__gui__netclient_8c.html#ac73942f75861b7977297231f5528c382">key</a></div><div class="ttdeci">int key[7]</div><div class="ttdef"><b>Definition:</b> <a href="ex__gui__netclient_8c_source.html#l00235">ex_gui_netclient.c:235</a></div></div>
 <div class="ttc" id="agroup___c_o_n_f_i_g_f_i_l_e_html_ga0206fadb78039ac602fc0696b27b85a6"><div class="ttname"><a href="group___c_o_n_f_i_g_f_i_l_e.html#ga0206fadb78039ac602fc0696b27b85a6">load_config_file</a></div><div class="ttdeci">CONFIG_FILE * load_config_file(char *filename, int *errors)</div><div class="ttdoc">load a config file</div><div class="ttdef"><b>Definition:</b> <a href="n__config__file_8c_source.html#l00051">n_config_file.c:51</a></div></div>
 <div class="ttc" id="agroup___c_o_n_f_i_g_f_i_l_e_html_ga1ce5c0ab9aff3664d2284a26f6263b85"><div class="ttname"><a href="group___c_o_n_f_i_g_f_i_l_e.html#ga1ce5c0ab9aff3664d2284a26f6263b85">get_config_section_value</a></div><div class="ttdeci">char * get_config_section_value(CONFIG_FILE *cfg_file, char *section_name, int section_position, char *entry, int entry_position)</div><div class="ttdoc">Function to parse sections and get entries values.</div><div class="ttdef"><b>Definition:</b> <a href="n__config__file_8c_source.html#l00490">n_config_file.c:490</a></div></div>
-<div class="ttc" id="agroup___c_o_n_f_i_g_f_i_l_e_html_ga2d2b6213151d9b9c50149149cffea041"><div class="ttname"><a href="group___c_o_n_f_i_g_f_i_l_e.html#ga2d2b6213151d9b9c50149149cffea041">config_endfor</a></div><div class="ttdeci">#define config_endfor</div><div class="ttdef"><b>Definition:</b> <a href="n__config__file_8h_source.html#l00080">n_config_file.h:80</a></div></div>
+<div class="ttc" id="agroup___c_o_n_f_i_g_f_i_l_e_html_ga2d2b6213151d9b9c50149149cffea041"><div class="ttname"><a href="group___c_o_n_f_i_g_f_i_l_e.html#ga2d2b6213151d9b9c50149149cffea041">config_endfor</a></div><div class="ttdeci">#define config_endfor</div><div class="ttdoc">Foreach elements of CONFIG_FILE macro END.</div><div class="ttdef"><b>Definition:</b> <a href="n__config__file_8h_source.html#l00080">n_config_file.h:80</a></div></div>
 <div class="ttc" id="agroup___c_o_n_f_i_g_f_i_l_e_html_ga5c6e573bf39871c909dcd71c9bcc13b4"><div class="ttname"><a href="group___c_o_n_f_i_g_f_i_l_e.html#ga5c6e573bf39871c909dcd71c9bcc13b4">destroy_config_file</a></div><div class="ttdeci">int destroy_config_file(CONFIG_FILE **cfg_file)</div><div class="ttdoc">Destroy a loaded config file.</div><div class="ttdef"><b>Definition:</b> <a href="n__config__file_8c_source.html#l00540">n_config_file.c:540</a></div></div>
-<div class="ttc" id="agroup___c_o_n_f_i_g_f_i_l_e_html_gaa56fa5c30fab08e7145ab2640e12cde5"><div class="ttname"><a href="group___c_o_n_f_i_g_f_i_l_e.html#gaa56fa5c30fab08e7145ab2640e12cde5">config_foreach</a></div><div class="ttdeci">#define config_foreach(__config, __section_name, __key, __val)</div><div class="ttdef"><b>Definition:</b> <a href="n__config__file_8h_source.html#l00060">n_config_file.h:60</a></div></div>
+<div class="ttc" id="agroup___c_o_n_f_i_g_f_i_l_e_html_gaa56fa5c30fab08e7145ab2640e12cde5"><div class="ttname"><a href="group___c_o_n_f_i_g_f_i_l_e.html#gaa56fa5c30fab08e7145ab2640e12cde5">config_foreach</a></div><div class="ttdeci">#define config_foreach(__config, __section_name, __key, __val)</div><div class="ttdoc">Foreach elements of CONFIG_FILE macro, i.e config_foreach( config , section , key ,...</div><div class="ttdef"><b>Definition:</b> <a href="n__config__file_8h_source.html#l00060">n_config_file.h:60</a></div></div>
 <div class="ttc" id="agroup___c_o_n_f_i_g_f_i_l_e_html_gae3a92ac0d4158b6991e18beba9446689"><div class="ttname"><a href="group___c_o_n_f_i_g_f_i_l_e.html#gae3a92ac0d4158b6991e18beba9446689">get_nb_config_file_sections</a></div><div class="ttdeci">int get_nb_config_file_sections(CONFIG_FILE *cfg_file, char *section_name)</div><div class="ttdoc">Get the number of config file with section_name.</div><div class="ttdef"><b>Definition:</b> <a href="n__config__file_8c_source.html#l00408">n_config_file.c:408</a></div></div>
 <div class="ttc" id="agroup___c_o_n_f_i_g_f_i_l_e_html_gaf57bc2bde1a2e2493be7d9e37c3d7da7"><div class="ttname"><a href="group___c_o_n_f_i_g_f_i_l_e.html#gaf57bc2bde1a2e2493be7d9e37c3d7da7">get_nb_config_file_sections_entries</a></div><div class="ttdeci">int get_nb_config_file_sections_entries(CONFIG_FILE *cfg_file, char *section_name, int section_position, char *entry)</div><div class="ttdoc">Get the number of config file with section_name.</div><div class="ttdef"><b>Definition:</b> <a href="n__config__file_8c_source.html#l00442">n_config_file.c:442</a></div></div>
-<div class="ttc" id="agroup___c_o_n_f_i_g_f_i_l_e_html_struct_c_o_n_f_i_g___f_i_l_e"><div class="ttname"><a href="group___c_o_n_f_i_g_f_i_l_e.html#struct_c_o_n_f_i_g___f_i_l_e">CONFIG_FILE</a></div><div class="ttdef"><b>Definition:</b> <a href="n__config__file_8h_source.html#l00040">n_config_file.h:41</a></div></div>
-<div class="ttc" id="agroup___l_o_g_html_ga61355655c6d490cdf201afdfc340df4b"><div class="ttname"><a href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a></div><div class="ttdeci">#define n_log(__LEVEL__,...)</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00074">n_log.h:74</a></div></div>
-<div class="ttc" id="agroup___l_o_g_html_ga6ff63e8955665c4a58b1598f2b07c51a"><div class="ttname"><a href="group___l_o_g.html#ga6ff63e8955665c4a58b1598f2b07c51a">LOG_DEBUG</a></div><div class="ttdeci">#define LOG_DEBUG</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00066">n_log.h:66</a></div></div>
-<div class="ttc" id="agroup___l_o_g_html_ga96fad55b3f5adf08c39e4c877cf185e3"><div class="ttname"><a href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a></div><div class="ttdeci">#define LOG_ERR</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00058">n_log.h:58</a></div></div>
+<div class="ttc" id="agroup___c_o_n_f_i_g_f_i_l_e_html_struct_c_o_n_f_i_g___f_i_l_e"><div class="ttname"><a href="group___c_o_n_f_i_g_f_i_l_e.html#struct_c_o_n_f_i_g___f_i_l_e">CONFIG_FILE</a></div><div class="ttdoc">Structure of a config file.</div><div class="ttdef"><b>Definition:</b> <a href="n__config__file_8h_source.html#l00040">n_config_file.h:41</a></div></div>
+<div class="ttc" id="agroup___l_o_g_html_ga61355655c6d490cdf201afdfc340df4b"><div class="ttname"><a href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a></div><div class="ttdeci">#define n_log(__LEVEL__,...)</div><div class="ttdoc">Logging function wrapper to get line and func.</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00074">n_log.h:74</a></div></div>
+<div class="ttc" id="agroup___l_o_g_html_ga6ff63e8955665c4a58b1598f2b07c51a"><div class="ttname"><a href="group___l_o_g.html#ga6ff63e8955665c4a58b1598f2b07c51a">LOG_DEBUG</a></div><div class="ttdeci">#define LOG_DEBUG</div><div class="ttdoc">debug-level messages</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00066">n_log.h:66</a></div></div>
+<div class="ttc" id="agroup___l_o_g_html_ga96fad55b3f5adf08c39e4c877cf185e3"><div class="ttname"><a href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a></div><div class="ttdeci">#define LOG_ERR</div><div class="ttdoc">error conditions</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00058">n_log.h:58</a></div></div>
 <div class="ttc" id="agroup___l_o_g_html_gacad9b2d55788f46ddde811c986ead9ae"><div class="ttname"><a href="group___l_o_g.html#gacad9b2d55788f46ddde811c986ead9ae">set_log_level</a></div><div class="ttdeci">void set_log_level(const int log_level)</div><div class="ttdoc">Set the global log level value ( static int LOG_LEVEL )</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8c_source.html#l00097">n_log.c:97</a></div></div>
-<div class="ttc" id="agroup___l_o_g_html_gaeb4f36db01bd128c7afeac5889dac311"><div class="ttname"><a href="group___l_o_g.html#gaeb4f36db01bd128c7afeac5889dac311">LOG_INFO</a></div><div class="ttdeci">#define LOG_INFO</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00064">n_log.h:64</a></div></div>
-<div class="ttc" id="an__config__file_8h_html"><div class="ttname"><a href="n__config__file_8h.html">n_config_file.h</a></div></div>
+<div class="ttc" id="agroup___l_o_g_html_gaeb4f36db01bd128c7afeac5889dac311"><div class="ttname"><a href="group___l_o_g.html#gaeb4f36db01bd128c7afeac5889dac311">LOG_INFO</a></div><div class="ttdeci">#define LOG_INFO</div><div class="ttdoc">informational</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00064">n_log.h:64</a></div></div>
+<div class="ttc" id="an__config__file_8h_html"><div class="ttname"><a href="n__config__file_8h.html">n_config_file.h</a></div><div class="ttdoc">Config file reading and writing.</div></div>
 </div><!-- fragment --> </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Feb 4 2022 17:12:03 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+    <li class="footer">Generated on Tue Feb 8 2022 14:10:25 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
   </ul>
 </div>
 </body>

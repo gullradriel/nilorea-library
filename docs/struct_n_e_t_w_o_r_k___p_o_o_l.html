@@ -24,9 +24,11 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="NiloreaStudio.png"/></td>
   <td id="projectalign">
    <div id="projectname">Nilorea Library
    </div>
+   <div id="projectbrief">C utilities for networking, threading, graphics</div>
   </td>
  </tr>
  </tbody>
@@ -88,6 +90,9 @@ $(document).ready(function(){initNavTree('struct_n_e_t_w_o_r_k___p_o_o_l.html','
 </div><!--header-->
 <div class="contents">
 
+<p>structure of a network pool  
+ <a href="struct_n_e_t_w_o_r_k___p_o_o_l.html#details">More...</a></p>
+
 <p><code>#include &quot;<a class="el" href="n__network_8h_source.html">n_network.h</a>&quot;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for NETWORK_POOL:</div>
@@ -96,14 +101,14 @@ $(document).ready(function(){initNavTree('struct_n_e_t_w_o_r_k___p_o_o_l.html','
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="struct_n_e_t_w_o_r_k___p_o_o_l__coll__graph.png" border="0" usemap="#a_n_e_t_w_o_r_k___p_o_o_l_coll__map" alt="Collaboration graph"/></div>
 <map name="a_n_e_t_w_o_r_k___p_o_o_l_coll__map" id="a_n_e_t_w_o_r_k___p_o_o_l_coll__map">
-<area shape="rect" title=" " alt="" coords="483,829,614,907"/>
-<area shape="rect" href="struct_h_a_s_h___t_a_b_l_e.html" title=" " alt="" coords="324,601,509,767"/>
+<area shape="rect" title="structure of a network pool" alt="" coords="483,829,614,907"/>
+<area shape="rect" href="struct_h_a_s_h___t_a_b_l_e.html" title="structure of a hash table" alt="" coords="324,601,509,767"/>
 <area shape="rect" title=" " alt="" coords="292,5,331,83"/>
-<area shape="rect" href="struct_l_i_s_t.html" title=" " alt="" coords="278,439,326,517"/>
-<area shape="rect" href="struct_h_a_s_h___n_o_d_e.html" title=" " alt="" coords="580,439,683,517"/>
-<area shape="rect" href="union_h_a_s_h___v_a_l_u_e.html" title=" " alt="" coords="867,145,975,223"/>
+<area shape="rect" href="struct_l_i_s_t.html" title="Structure of a generic LIST container." alt="" coords="278,439,326,517"/>
+<area shape="rect" href="struct_h_a_s_h___n_o_d_e.html" title="structure of a hash table node" alt="" coords="580,439,683,517"/>
+<area shape="rect" href="union_h_a_s_h___v_a_l_u_e.html" title="union of the value of a node" alt="" coords="867,145,975,223"/>
 <area shape="rect" title=" " alt="" coords="433,145,501,223"/>
-<area shape="rect" href="struct_l_i_s_t___n_o_d_e.html" title=" " alt="" coords="256,145,348,223"/>
+<area shape="rect" href="struct_l_i_s_t___n_o_d_e.html" title="Structure of a generic list node." alt="" coords="256,145,348,223"/>
 <area shape="rect" title=" " alt="" coords="758,5,811,83"/>
 <area shape="rect" title=" " alt="" coords="560,5,671,83"/>
 <area shape="rect" title=" " alt="" coords="651,145,707,223"/>
@@ -117,16 +122,17 @@ $(document).ready(function(){initNavTree('struct_n_e_t_w_o_r_k___p_o_o_l.html','
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Data Fields</h2></td></tr>
 <tr class="memitem:af120ab26f1240d792d9b5c3b52235fec"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_n_e_t_w_o_r_k___p_o_o_l.html#af120ab26f1240d792d9b5c3b52235fec">pool</a></td></tr>
+<tr class="memdesc:af120ab26f1240d792d9b5c3b52235fec"><td class="mdescLeft">&#160;</td><td class="mdescRight">table of clients  <a href="struct_n_e_t_w_o_r_k___p_o_o_l.html#af120ab26f1240d792d9b5c3b52235fec">More...</a><br /></td></tr>
 <tr class="separator:af120ab26f1240d792d9b5c3b52235fec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a39cc4a5d3010ac9a8452dd03f9dd1105"><td class="memItemLeft" align="right" valign="top">pthread_rwlock_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_n_e_t_w_o_r_k___p_o_o_l.html#a39cc4a5d3010ac9a8452dd03f9dd1105">rwlock</a></td></tr>
+<tr class="memdesc:a39cc4a5d3010ac9a8452dd03f9dd1105"><td class="mdescLeft">&#160;</td><td class="mdescRight">thread safety  <a href="struct_n_e_t_w_o_r_k___p_o_o_l.html#a39cc4a5d3010ac9a8452dd03f9dd1105">More...</a><br /></td></tr>
 <tr class="separator:a39cc4a5d3010ac9a8452dd03f9dd1105"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >structure of a network pool </p>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ex_gui_netserver_8c-example.html#_a15">ex_gui_netserver.c</a>.</dd>
+<div class="textblock"><dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ex_gui_netserver_8c-example.html#_a9">ex_gui_netserver.c</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="n__network_8h_source.html#l00337">337</a> of file <a class="el" href="n__network_8h_source.html">n_network.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="n__network_8h_source.html#l00339">339</a> of file <a class="el" href="n__network_8h_source.html">n_network.h</a>.</p>
 </div><h2 class="groupheader">Field Documentation</h2>
 <a id="af120ab26f1240d792d9b5c3b52235fec" name="af120ab26f1240d792d9b5c3b52235fec"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af120ab26f1240d792d9b5c3b52235fec">&#9670;&nbsp;</a></span>pool</h2>
@@ -139,9 +145,8 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >table of clients </p>
 
-<p class="definition">Definition at line <a class="el" href="n__network_8h_source.html#l00340">340</a> of file <a class="el" href="n__network_8h_source.html">n_network.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="n__network_8h_source.html#l00342">342</a> of file <a class="el" href="n__network_8h_source.html">n_network.h</a>.</p>
 
 </div>
 </div>
@@ -156,9 +161,8 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >thread safety </p>
 
-<p class="definition">Definition at line <a class="el" href="n__network_8h_source.html#l00343">343</a> of file <a class="el" href="n__network_8h_source.html">n_network.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="n__network_8h_source.html#l00345">345</a> of file <a class="el" href="n__network_8h_source.html">n_network.h</a>.</p>
 
 </div>
 </div>
@@ -171,7 +175,7 @@ Data Fields</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="struct_n_e_t_w_o_r_k___p_o_o_l.html">NETWORK_POOL</a></li>
-    <li class="footer">Generated on Fri Feb 4 2022 16:56:07 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+    <li class="footer">Generated on Tue Feb 8 2022 11:34:29 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
   </ul>
 </div>
 </body>

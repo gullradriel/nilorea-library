@@ -1,31 +1,23 @@
 <map id="ht_remove" name="ht_remove">
-<area shape="rect" id="node1" title="remove and delete node at key in table" alt="" coords="1069,279,1151,306"/>
-<area shape="rect" id="node2" href="$ex__gui__netclient_8c.html#ae35cba0c2e39eed0d1b641cd2f1e3299" title=" " alt="" coords="739,51,845,78"/>
-<area shape="rect" id="node4" href="$group___n_e_t_w_o_r_k_i_n_g.html#gafc7a91b4be2a997710a2b54037c25168" title="remove a NETWORK *netw to a NETWORK_POOL *pool" alt="" coords="893,254,1021,280"/>
-<area shape="rect" id="node22" href="$group___h_a_s_h___t_a_b_l_e.html#gaa2d879c1afd3c71a0917bbe2c0766664" title="Create a hash table with the given size." alt="" coords="581,507,644,534"/>
-<area shape="rect" id="node28" href="$group___h_a_s_h___t_a_b_l_e.html#gab95fe0967850a3665d21837519ede6c8" title="create a TRIE hash table with the alphabet_size, each key value beeing decreased by alphabet_offset" alt="" coords="913,355,1001,382"/>
-<area shape="rect" id="node3" href="$ex__gui__netclient_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,330,56,356"/>
-<area shape="rect" id="node5" href="$group___n_e_t_w_o_r_k_i_n_g.html#gac345c1af1935cebb9ee33edd4c32267a" title="Closing a specified Network, destroy queues, free the structure." alt="" coords="749,254,835,280"/>
-<area shape="rect" id="node6" href="$ex__network_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,115,56,142"/>
-<area shape="rect" id="node7" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga80624fa0de793761e9ea5cebff424c68" title="make a normal &#39;accept&#39; . Network &#39;from&#39; must be allocated with netw_make_listening." alt="" coords="339,152,487,179"/>
-<area shape="rect" id="node11" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga4cef67bc400323306a3d1c1ed5cec17b" title="Use this to connect a NETWORK to any listening one." alt="" coords="351,203,474,230"/>
-<area shape="rect" id="node13" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga52afd4f5662c9c8f334d224ae2cdbdf2" title="Make a NETWORK be a Listening network." alt="" coords="341,254,484,280"/>
-<area shape="rect" id="node14" href="$n__network_8c.html#a9caee75e3a67942e37ccb4de2c889105" title="Return an empty allocated network ready to be netw_closed." alt="" coords="573,254,652,280"/>
-<area shape="rect" id="node15" href="$group___n_e_t_w_o_r_k_i_n_g.html#gab0da745063a55fd79b6252339d5276a4" title="close a network from a network pool" alt="" coords="537,355,689,382"/>
-<area shape="rect" id="node17" href="$group___n_e_t_w_o_r_k_i_n_g.html#gad02f949dd057ae7dd382f03f9364cac0" title="Modify blocking socket mode." alt="" coords="548,152,677,179"/>
-<area shape="rect" id="node18" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga995d9aaabaca026d79f15a9823eaebaf" title="Wait for peer closing a specified Network, destroy queues, free the structure." alt="" coords="535,456,691,483"/>
-<area shape="rect" id="node21" href="$ex__gui__netserver_8c.html#a1f1e6cd9b7f8f1845345c9a5673cf384" title=" " alt="" coords="556,406,669,432"/>
-<area shape="rect" id="node8" href="$ex__gui__netserver_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="172,304,223,331"/>
-<area shape="rect" id="node9" href="$group___n_e_t_w_o_r_k_i_n_g.html#gab99090cbf623f95556ea610e690b50d9" title="make a normal blocking &#39;accept&#39; . Network &#39;from&#39; must be allocated with netw_make_listening." alt="" coords="134,115,261,142"/>
-<area shape="rect" id="node10" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga32138772c399518190a14e81164fc469" title="make a normal blocking &#39;accept&#39; . Network &#39;from&#39; must be allocated with netw_make_listening." alt="" coords="104,166,291,192"/>
-<area shape="rect" id="node12" href="$group___n_e_t_w_o_r_k_i_n_g.html#gae18d52a130063ba1fd0a4cf4b6a2da20" title="Use this to connect a NETWORK to any listening one, unrestricted send/recv lists." alt="" coords="146,228,249,255"/>
-<area shape="rect" id="node16" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaed3d4b17261c0ce51cd7671b81b5a007" title="add a NETWORK *netw to a NETWORK_POOL *pool" alt="" coords="359,304,467,331"/>
-<area shape="rect" id="node19" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga60beb772aa298f36d1443a28e3ec5ec8" title="Wait for peer closing a specified Network, destroy queues, free the structure. Default 30 seconds tim..." alt="" coords="354,456,471,483"/>
-<area shape="rect" id="node20" href="$ex__network_8h.html#a2af070d97fced1a0eadad90c6aa4903b" title="recv/send datas if any for the client" alt="" coords="144,380,251,407"/>
-<area shape="rect" id="node23" href="$group___l_o_g_n_o_d_u_p.html#gaf9c9b8e129263da15345f428cd73f19e" title="initialize the no duplicate logging system" alt="" coords="360,558,465,584"/>
-<area shape="rect" id="node25" href="$group___c_o_n_f_i_g_f_i_l_e.html#ga0206fadb78039ac602fc0696b27b85a6" title="load a config file" alt="" coords="357,608,468,635"/>
-<area shape="rect" id="node27" href="$group___n_e_t_w_o_r_k_i_n_g.html#gadb5284c7b187815cf3b286a5cd972876" title="return a new network pool of nb_min_element" alt="" coords="357,406,468,432"/>
-<area shape="rect" id="node24" href="$ex__log_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="172,558,223,584"/>
-<area shape="rect" id="node26" href="$ex__configfile_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="172,608,223,635"/>
-<area shape="rect" id="node29" href="$ex__hash_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="767,355,817,382"/>
+<area shape="rect" id="node1" title="remove and delete node at key in table" alt="" coords="975,233,1056,260"/>
+<area shape="rect" id="node2" href="$group___n_e_t_w_o_r_k_i_n_g.html#gafc7a91b4be2a997710a2b54037c25168" title="remove a NETWORK *netw to a NETWORK_POOL *pool" alt="" coords="799,171,927,197"/>
+<area shape="rect" id="node17" href="$group___h_a_s_h___t_a_b_l_e.html#gaa2d879c1afd3c71a0917bbe2c0766664" title="Create a hash table with the given size." alt="" coords="831,233,894,260"/>
+<area shape="rect" id="node21" href="$group___h_a_s_h___t_a_b_l_e.html#gab95fe0967850a3665d21837519ede6c8" title="create a TRIE hash table with the alphabet_size, each key value beeing decreased by alphabet_offset" alt="" coords="819,284,907,311"/>
+<area shape="rect" id="node3" href="$group___n_e_t_w_o_r_k_i_n_g.html#gac345c1af1935cebb9ee33edd4c32267a" title="Closing a specified Network, destroy queues, free the structure." alt="" coords="652,157,739,184"/>
+<area shape="rect" id="node4" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga80624fa0de793761e9ea5cebff424c68" title="make a normal &#39;accept&#39; ." alt="" coords="240,56,388,83"/>
+<area shape="rect" id="node7" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga4cef67bc400323306a3d1c1ed5cec17b" title="Use this to connect a NETWORK to any listening one." alt="" coords="253,139,375,165"/>
+<area shape="rect" id="node9" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga52afd4f5662c9c8f334d224ae2cdbdf2" title="Make a NETWORK be a Listening network." alt="" coords="243,196,385,223"/>
+<area shape="rect" id="node10" href="$n__network_8c.html#a9caee75e3a67942e37ccb4de2c889105" title="Return an empty allocated network ready to be netw_closed." alt="" coords="475,157,553,184"/>
+<area shape="rect" id="node11" href="$group___n_e_t_w_o_r_k_i_n_g.html#gab0da745063a55fd79b6252339d5276a4" title="close a network from a network pool" alt="" coords="438,259,590,285"/>
+<area shape="rect" id="node13" href="$group___n_e_t_w_o_r_k_i_n_g.html#gad02f949dd057ae7dd382f03f9364cac0" title="Modify blocking socket mode." alt="" coords="449,5,579,32"/>
+<area shape="rect" id="node14" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga995d9aaabaca026d79f15a9823eaebaf" title="Wait for peer closing a specified Network, destroy queues, free the structure." alt="" coords="436,309,592,336"/>
+<area shape="rect" id="node5" href="$group___n_e_t_w_o_r_k_i_n_g.html#gab99090cbf623f95556ea610e690b50d9" title="make a normal blocking &#39;accept&#39; ." alt="" coords="35,12,162,39"/>
+<area shape="rect" id="node6" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga32138772c399518190a14e81164fc469" title="make a normal blocking &#39;accept&#39; ." alt="" coords="5,63,192,89"/>
+<area shape="rect" id="node8" href="$group___n_e_t_w_o_r_k_i_n_g.html#gae18d52a130063ba1fd0a4cf4b6a2da20" title="Use this to connect a NETWORK to any listening one, unrestricted send/recv lists." alt="" coords="47,139,150,165"/>
+<area shape="rect" id="node12" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaed3d4b17261c0ce51cd7671b81b5a007" title="add a NETWORK *netw to a NETWORK_POOL *pool" alt="" coords="260,259,368,285"/>
+<area shape="rect" id="node15" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga60beb772aa298f36d1443a28e3ec5ec8" title="Wait for peer closing a specified Network, destroy queues, free the structure." alt="" coords="255,309,373,336"/>
+<area shape="rect" id="node16" href="$ex__network_8h.html#a2af070d97fced1a0eadad90c6aa4903b" title="recv/send datas if any for the client" alt="" coords="45,309,152,336"/>
+<area shape="rect" id="node18" href="$group___l_o_g_n_o_d_u_p.html#gaf9c9b8e129263da15345f428cd73f19e" title="initialize the no duplicate logging system" alt="" coords="643,208,748,235"/>
+<area shape="rect" id="node19" href="$group___c_o_n_f_i_g_f_i_l_e.html#ga0206fadb78039ac602fc0696b27b85a6" title="load a config file" alt="" coords="640,259,751,285"/>
+<area shape="rect" id="node20" href="$group___n_e_t_w_o_r_k_i_n_g.html#gadb5284c7b187815cf3b286a5cd972876" title="return a new network pool of nb_min_element" alt="" coords="640,309,751,336"/>
 </map>

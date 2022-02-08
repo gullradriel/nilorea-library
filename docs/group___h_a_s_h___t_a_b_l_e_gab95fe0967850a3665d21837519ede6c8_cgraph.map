@@ -3,10 +3,10 @@
 <area shape="rect" id="node2" href="$n__hash_8c.html#ab9d1b16f848c310836772818278a4014" title="Free and set the table to NULL (TRIE mode)" alt="" coords="159,107,274,133"/>
 <area shape="rect" id="node4" href="$n__hash_8c.html#abfa263c3762bcc52625fc3d33ba20014" title="Empty a TRIE hash table." alt="" coords="163,157,271,184"/>
 <area shape="rect" id="node5" href="$n__hash_8c.html#a934900314d008a0557f1608d267ebb04" title="node creation, HASH_CLASSIC mode" alt="" coords="364,309,495,336"/>
-<area shape="rect" id="node6" href="$n__hash_8c.html#a825546ece9c87894de351354131d9c9d" title="Retrieve an double value in the hash table, at the given key. Leave val untouched if key is not found..." alt="" coords="149,563,284,589"/>
-<area shape="rect" id="node9" href="$n__hash_8c.html#a256287de4bd12cc39e8eb885a0938cd0" title="Retrieve an integral value in the hash table, at the given key. Leave val untouched if key is not fou..." alt="" coords="161,613,272,640"/>
-<area shape="rect" id="node10" href="$n__hash_8c.html#a53e2b70cd04dd251387054c30f9fc4de" title="Retrieve a pointer value in the hash table, at the given key. Leave val untouched if key is not found..." alt="" coords="161,664,273,691"/>
-<area shape="rect" id="node11" href="$n__hash_8c.html#a3facd71bf74b9dae8f82a1bfb6dc9fc2" title="Retrieve an char *string value in the hash table, at the given key. Leave val untouched if key is not..." alt="" coords="152,512,281,539"/>
+<area shape="rect" id="node6" href="$n__hash_8c.html#a825546ece9c87894de351354131d9c9d" title="Retrieve an double value in the hash table, at the given key." alt="" coords="149,563,284,589"/>
+<area shape="rect" id="node9" href="$n__hash_8c.html#a256287de4bd12cc39e8eb885a0938cd0" title="Retrieve an integral value in the hash table, at the given key." alt="" coords="161,613,272,640"/>
+<area shape="rect" id="node10" href="$n__hash_8c.html#a53e2b70cd04dd251387054c30f9fc4de" title="Retrieve a pointer value in the hash table, at the given key." alt="" coords="161,664,273,691"/>
+<area shape="rect" id="node11" href="$n__hash_8c.html#a3facd71bf74b9dae8f82a1bfb6dc9fc2" title="Retrieve an char *string value in the hash table, at the given key." alt="" coords="152,512,281,539"/>
 <area shape="rect" id="node12" href="$n__hash_8c.html#a3ea3a506fda15848cf7c87b847851294" title="Generic print func call for trie trees." alt="" coords="168,715,265,741"/>
 <area shape="rect" id="node14" href="$n__hash_8c.html#a4a07758c1bc609934f5f4f5fff5c4c84" title="put a double value with given key in the targeted hash table [TRIE HASH TABLE)" alt="" coords="149,411,284,437"/>
 <area shape="rect" id="node15" href="$n__hash_8c.html#a63e749663982d1fadd98abbedc39783e" title="put an integral value with given key in the targeted hash table [TRIE HASH TABLE)" alt="" coords="161,461,272,488"/>
@@ -37,7 +37,7 @@
 <area shape="rect" id="node22" href="$n__hash_8c.html#a1b6308d7ad4141a9ae95c1d8c1824004" title="Search a key and tell if it&#39;s holding a value (leaf)" alt="" coords="357,5,501,32"/>
 <area shape="rect" id="node21" href="$n__hash_8c.html#a4747b0ee5ab0c7f2b02397df6235bf8c" title="check and return branching index in key if any" alt="" coords="567,56,741,83"/>
 <area shape="rect" id="node24" href="$n__hash_8c.html#af9f6e937f781df402b5ec4ac788f6f6e" title="Recursive function to search tree&#39;s keys and apply a matching func to put results in the list." alt="" coords="353,764,506,791"/>
-<area shape="rect" id="node27" href="$group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755" title="Empty and Free a list container. Call the destructor each time." alt="" coords="385,815,474,841"/>
+<area shape="rect" id="node27" href="$group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755" title="Empty and Free a list container." alt="" coords="385,815,474,841"/>
 <area shape="rect" id="node29" href="$group___l_i_s_t.html#gada615e3b144e97bcff147dfe89f6fef6" title="Initialiaze a generic list container to max_items pointers." alt="" coords="370,865,489,892"/>
 <area shape="rect" id="node25" href="$group___l_i_s_t.html#ga4eab319289a83524639ee5e9f0441fdf" title="Add a pointer to the end of the list." alt="" coords="617,764,691,791"/>
 <area shape="rect" id="node26" href="$group___l_i_s_t.html#ga678e828550efc8e64a836bb8c713c2f4" title="Allocate a new node to link in a list." alt="" coords="789,764,893,791"/>

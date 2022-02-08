@@ -1,20 +1,16 @@
 <map id="make_str_from_msg" name="make_str_from_msg">
-<area shape="rect" id="node1" title="Make a single string of the message." alt="" coords="711,198,851,224"/>
-<area shape="rect" id="node2" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga7bae3c3de53204413c7663007ec4a4d7" title="Add a formatted NETWMSG_IDENT message to the specified network." alt="" coords="499,84,638,111"/>
-<area shape="rect" id="node7" href="$group___n_e_t_w_o_r_k___m_s_g.html#gaeb5e94070c0ee79ff2d11a707d225c3a" title="Make a ping message to send to a network." alt="" coords="501,27,636,54"/>
-<area shape="rect" id="node9" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga6d469c5cbc4fdfa266be68a35d10a904" title=" " alt="" coords="475,324,663,351"/>
-<area shape="rect" id="node11" href="$group___n_e_t_w_o_r_k___m_s_g.html#gaea4cc09810479665c6c7e689dfaecff7" title=" " alt="" coords="487,147,651,174"/>
-<area shape="rect" id="node13" href="$group___n_e_t_w_o_r_k___m_s_g.html#gafb91c3ea7bfa93212141fa1fe074fb3d" title=" " alt="" coords="481,223,656,250"/>
-<area shape="rect" id="node16" href="$ex__network_8h.html#a97064904e9c2be2094c349413ff348fc" title="send data to specified network" alt="" coords="511,382,626,408"/>
-<area shape="rect" id="node3" href="$group___n_e_t_w_o_r_k_i_n_g.html#gae8345266fcf7a23c0e8ffe176b0e086f" title="Add a formatted NETWMSG_IDENT message to the specified network." alt="" coords="287,78,405,104"/>
-<area shape="rect" id="node4" href="$ex__gui__netclient_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="135,204,186,231"/>
-<area shape="rect" id="node5" href="$ex__gui__netserver_8c.html#a1f1e6cd9b7f8f1845345c9a5673cf384" title=" " alt="" coords="104,52,217,79"/>
-<area shape="rect" id="node6" href="$ex__gui__netserver_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,52,56,79"/>
-<area shape="rect" id="node8" href="$group___n_e_t_w_o_r_k_i_n_g.html#gad9588cf27263ecf40f57d3923ccf721a" title="Add a ping reply to the network." alt="" coords="289,27,403,54"/>
-<area shape="rect" id="node10" href="$group___n_e_t_w_o_r_k_i_n_g.html#gafaf1202a5f56a9f2285fccfbcacb3a6c" title="Add a formatted NETWMSG_IDENT message to the specified network." alt="" coords="278,331,414,358"/>
-<area shape="rect" id="node12" href="$group___n_e_t_w_o_r_k_i_n_g.html#gac8b30599c7a5c2cce35ee401d7b9d7f1" title="Add a formatted NETMSG_QUIT message to the specified network." alt="" coords="290,128,402,155"/>
-<area shape="rect" id="node14" href="$group___n_e_t_w_o_r_k_i_n_g.html#gad3b590da2eb8b594c75d1d5f46ba7b45" title="Add a string to the network, aiming a specific user." alt="" coords="275,230,417,256"/>
-<area shape="rect" id="node15" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga02b35de5d3b84e79c4fecbf4cebce603" title="Add a string to the network, aiming all server&#45;side users." alt="" coords="265,179,427,206"/>
-<area shape="rect" id="node17" href="$ex__network_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="135,407,186,434"/>
-<area shape="rect" id="node18" href="$ex__network_8h.html#a2af070d97fced1a0eadad90c6aa4903b" title="recv/send datas if any for the client" alt="" coords="293,432,399,459"/>
+<area shape="rect" id="node1" title="Make a single string of the message." alt="" coords="451,132,591,159"/>
+<area shape="rect" id="node2" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga7bae3c3de53204413c7663007ec4a4d7" title="Add a formatted NETWMSG_IDENT message to the specified network." alt="" coords="239,5,378,32"/>
+<area shape="rect" id="node4" href="$group___n_e_t_w_o_r_k___m_s_g.html#gaeb5e94070c0ee79ff2d11a707d225c3a" title="Make a ping message to send to a network." alt="" coords="241,56,376,83"/>
+<area shape="rect" id="node6" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga6d469c5cbc4fdfa266be68a35d10a904" title="make a network NETMSG_POSITION message with given parameters" alt="" coords="215,107,403,133"/>
+<area shape="rect" id="node8" href="$group___n_e_t_w_o_r_k___m_s_g.html#gaea4cc09810479665c6c7e689dfaecff7" title="make a generic network NETMSG_QUIT message" alt="" coords="227,157,391,184"/>
+<area shape="rect" id="node10" href="$group___n_e_t_w_o_r_k___m_s_g.html#gafb91c3ea7bfa93212141fa1fe074fb3d" title="make a network NETMSG_STRING message with given parameters" alt="" coords="221,208,396,235"/>
+<area shape="rect" id="node13" href="$ex__network_8h.html#a97064904e9c2be2094c349413ff348fc" title="send data to specified network" alt="" coords="251,284,366,311"/>
+<area shape="rect" id="node3" href="$group___n_e_t_w_o_r_k_i_n_g.html#gae8345266fcf7a23c0e8ffe176b0e086f" title="Add a formatted NETWMSG_IDENT message to the specified network." alt="" coords="27,5,145,32"/>
+<area shape="rect" id="node5" href="$group___n_e_t_w_o_r_k_i_n_g.html#gad9588cf27263ecf40f57d3923ccf721a" title="Add a ping reply to the network." alt="" coords="29,56,143,83"/>
+<area shape="rect" id="node7" href="$group___n_e_t_w_o_r_k_i_n_g.html#gafaf1202a5f56a9f2285fccfbcacb3a6c" title="Add a formatted NETWMSG_IDENT message to the specified network." alt="" coords="18,107,154,133"/>
+<area shape="rect" id="node9" href="$group___n_e_t_w_o_r_k_i_n_g.html#gac8b30599c7a5c2cce35ee401d7b9d7f1" title="Add a formatted NETMSG_QUIT message to the specified network." alt="" coords="30,157,142,184"/>
+<area shape="rect" id="node11" href="$group___n_e_t_w_o_r_k_i_n_g.html#gad3b590da2eb8b594c75d1d5f46ba7b45" title="Add a string to the network, aiming a specific user." alt="" coords="15,208,157,235"/>
+<area shape="rect" id="node12" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga02b35de5d3b84e79c4fecbf4cebce603" title="Add a string to the network, aiming all server&#45;side users." alt="" coords="5,259,167,285"/>
+<area shape="rect" id="node14" href="$ex__network_8h.html#a2af070d97fced1a0eadad90c6aa4903b" title="recv/send datas if any for the client" alt="" coords="33,309,139,336"/>
 </map>

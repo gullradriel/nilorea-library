@@ -24,9 +24,11 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="NiloreaStudio.png"/></td>
   <td id="projectalign">
    <div id="projectname">Nilorea Library
    </div>
+   <div id="projectbrief">C utilities for networking, threading, graphics</div>
   </td>
  </tr>
  </tbody>
@@ -96,10 +98,10 @@ $(document).ready(function(){initNavTree('struct_h_a_s_h___n_o_d_e.html',''); in
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="struct_h_a_s_h___n_o_d_e__coll__graph.png" border="0" usemap="#a_h_a_s_h___n_o_d_e_coll__map" alt="Collaboration graph"/></div>
 <map name="a_h_a_s_h___n_o_d_e_coll__map" id="a_h_a_s_h___n_o_d_e_coll__map">
-<area shape="rect" title=" " alt="" coords="319,285,422,363"/>
+<area shape="rect" title="structure of a hash table node" alt="" coords="319,285,422,363"/>
 <area shape="rect" title=" " alt="" coords="5,145,61,223"/>
 <area shape="rect" title=" " alt="" coords="107,5,154,83"/>
-<area shape="rect" href="group___h_a_s_h___t_a_b_l_e.html#union_h_a_s_h___v_a_l_u_e" title=" " alt="" coords="237,145,345,223"/>
+<area shape="rect" href="group___h_a_s_h___t_a_b_l_e.html#union_h_a_s_h___v_a_l_u_e" title="union of the value of a node" alt="" coords="237,145,345,223"/>
 <area shape="rect" title=" " alt="" coords="370,5,409,83"/>
 <area shape="rect" title=" " alt="" coords="189,5,249,83"/>
 <area shape="rect" title=" " alt="" coords="273,5,327,83"/>
@@ -132,8 +134,7 @@ Data Fields</h2></td></tr>
 <tr class="separator:a5cd9a167ac8d507a9a98f34fee5577f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >structure of a hash table node </p>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ex_hash_8c-example.html#_a33">ex_hash.c</a>.</dd>
+<div class="textblock"><dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ex_hash_8c-example.html#_a28">ex_hash.c</a>.</dd>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="n__hash_8h_source.html#l00082">82</a> of file <a class="el" href="n__hash_8h_source.html">n_hash.h</a>.</p>
@@ -149,7 +150,8 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >HASH_TRIE mode: size of alphabet and so size of children allocated array </p>
+
+<p>HASH_TRIE mode: size of alphabet and so size of children allocated array. </p>
 
 <p class="definition">Definition at line <a class="el" href="n__hash_8h_source.html#l00103">103</a> of file <a class="el" href="n__hash_8h_source.html">n_hash.h</a>.</p>
 
@@ -166,7 +168,8 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >HASH_TRIE mode: pointers to children </p>
+
+<p>HASH_TRIE mode: pointers to children. </p>
 
 <p class="definition">Definition at line <a class="el" href="n__hash_8h_source.html#l00101">101</a> of file <a class="el" href="n__hash_8h_source.html">n_hash.h</a>.</p>
 
@@ -185,7 +188,8 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >data inside the node </p>
+
+<p>data inside the node </p>
 
 <p class="definition">Definition at line <a class="el" href="n__hash_8h_source.html#l00095">95</a> of file <a class="el" href="n__hash_8h_source.html">n_hash.h</a>.</p>
 
@@ -202,7 +206,8 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >destroy_func </p>
+
+<p>destroy_func </p>
 
 <p class="definition">Definition at line <a class="el" href="n__hash_8h_source.html#l00097">97</a> of file <a class="el" href="n__hash_8h_source.html">n_hash.h</a>.</p>
 
@@ -219,7 +224,8 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >numeric key of the node if any, else &lt; 0 </p>
+
+<p>numeric key of the node if any, else &lt; 0 </p>
 
 <p class="definition">Definition at line <a class="el" href="n__hash_8h_source.html#l00089">89</a> of file <a class="el" href="n__hash_8h_source.html">n_hash.h</a>.</p>
 
@@ -236,7 +242,8 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >HASH_TRIE mode: does it have a value </p>
+
+<p>HASH_TRIE mode: does it have a value. </p>
 
 <p class="definition">Definition at line <a class="el" href="n__hash_8h_source.html#l00099">99</a> of file <a class="el" href="n__hash_8h_source.html">n_hash.h</a>.</p>
 
@@ -253,7 +260,8 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >string key of the node if any, else NULL </p>
+
+<p>string key of the node if any, else NULL </p>
 
 <p class="definition">Definition at line <a class="el" href="n__hash_8h_source.html#l00085">85</a> of file <a class="el" href="n__hash_8h_source.html">n_hash.h</a>.</p>
 
@@ -270,7 +278,8 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >key id of the node if any </p>
+
+<p>key id of the node if any </p>
 
 <p class="definition">Definition at line <a class="el" href="n__hash_8h_source.html#l00087">87</a> of file <a class="el" href="n__hash_8h_source.html">n_hash.h</a>.</p>
 
@@ -287,7 +296,8 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >type of the key </p>
+
+<p>type of the key </p>
 
 <p class="definition">Definition at line <a class="el" href="n__hash_8h_source.html#l00091">91</a> of file <a class="el" href="n__hash_8h_source.html">n_hash.h</a>.</p>
 
@@ -304,7 +314,8 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >type of the node </p>
+
+<p>type of the node </p>
 
 <p class="definition">Definition at line <a class="el" href="n__hash_8h_source.html#l00093">93</a> of file <a class="el" href="n__hash_8h_source.html">n_hash.h</a>.</p>
 
@@ -319,7 +330,7 @@ Data Fields</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="struct_h_a_s_h___n_o_d_e.html">HASH_NODE</a></li>
-    <li class="footer">Generated on Fri Feb 4 2022 17:12:05 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+    <li class="footer">Generated on Tue Feb 8 2022 11:38:04 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
   </ul>
 </div>
 </body>

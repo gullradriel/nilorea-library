@@ -24,9 +24,11 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="NiloreaStudio.png"/></td>
   <td id="projectalign">
    <div id="projectname">Nilorea Library
    </div>
+   <div id="projectbrief">C utilities for networking, threading, graphics</div>
   </td>
  </tr>
  </tbody>
@@ -89,6 +91,9 @@ $(document).ready(function(){initNavTree('n__games_8h.html',''); initResizable()
   <div class="headertitle"><div class="title">n_games.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Games helpers functions.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="n__common_8h_source.html">n_common.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="n__log_8h_source.html">n_log.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="n__time_8h_source.html">n_time.h</a>&quot;</code><br />
@@ -99,17 +104,17 @@ $(document).ready(function(){initNavTree('n__games_8h.html',''); initResizable()
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="n__games_8h__incl.png" border="0" usemap="#ainclude_2nilorea_2n__games_8h" alt=""/></div>
 <map name="ainclude_2nilorea_2n__games_8h" id="ainclude_2nilorea_2n__games_8h">
-<area shape="rect" title=" " alt="" coords="413,5,587,32"/>
-<area shape="rect" href="n__common_8h.html" title=" " alt="" coords="451,155,549,181"/>
-<area shape="rect" href="n__log_8h.html" title=" " alt="" coords="189,229,296,256"/>
-<area shape="rect" href="n__time_8h.html" title=" " alt="" coords="579,80,651,107"/>
+<area shape="rect" title="Games helpers functions." alt="" coords="413,5,587,32"/>
+<area shape="rect" href="n__common_8h.html" title="Common headers and low&#45;level hugly functions &amp; define." alt="" coords="451,155,549,181"/>
+<area shape="rect" href="n__log_8h.html" title="Generic log system." alt="" coords="189,229,296,256"/>
+<area shape="rect" href="n__time_8h.html" title="Timing utilities." alt="" coords="579,80,651,107"/>
 <area shape="rect" title=" " alt="" coords="935,229,1025,256"/>
 <area shape="rect" title=" " alt="" coords="321,229,389,256"/>
 <area shape="rect" title=" " alt="" coords="393,304,457,331"/>
 <area shape="rect" title=" " alt="" coords="465,229,535,256"/>
 <area shape="rect" title=" " alt="" coords="559,229,622,256"/>
 <area shape="rect" title=" " alt="" coords="630,304,695,331"/>
-<area shape="rect" href="n__enum_8h.html" title=" " alt="" coords="698,229,819,256"/>
+<area shape="rect" href="n__enum_8h.html" title="Macro to build enums and their tostring counterparts, a reduced version of https://github...." alt="" coords="698,229,819,256"/>
 <area shape="rect" title=" " alt="" coords="844,229,911,256"/>
 <area shape="rect" title=" " alt="" coords="304,304,365,331"/>
 <area shape="rect" title=" " alt="" coords="5,304,85,331"/>
@@ -128,10 +133,10 @@ $(document).ready(function(){initNavTree('n__games_8h.html',''); initResizable()
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="n__games_8h__dep__incl.png" border="0" usemap="#ainclude_2nilorea_2n__games_8hdep" alt=""/></div>
 <map name="ainclude_2nilorea_2n__games_8hdep" id="ainclude_2nilorea_2n__games_8hdep">
-<area shape="rect" title=" " alt="" coords="68,5,241,32"/>
-<area shape="rect" href="nilorea_8h.html" title=" " alt="" coords="29,80,145,107"/>
-<area shape="rect" href="n__games_8c.html" title=" " alt="" coords="169,80,277,107"/>
-<area shape="rect" href="ex__monolith_8c.html" title=" " alt="" coords="5,155,168,181"/>
+<area shape="rect" title="Games helpers functions." alt="" coords="68,5,241,32"/>
+<area shape="rect" href="nilorea_8h.html" title="Header for a monolith use." alt="" coords="29,80,145,107"/>
+<area shape="rect" href="n__games_8c.html" title="Games helpers functions." alt="" coords="169,80,277,107"/>
+<area shape="rect" href="ex__monolith_8c_source.html" title=" " alt="" coords="5,155,168,181"/>
 </map>
 </div>
 </div>
@@ -140,15 +145,19 @@ $(document).ready(function(){initNavTree('n__games_8h.html',''); initResizable()
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Data Structures</h2></td></tr>
 <tr class="memitem:struct_g_a_m_e___e_n_v"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a_m_e___e_n_v.html#struct_g_a_m_e___e_n_v">GAME_ENV</a></td></tr>
+<tr class="memdesc:struct_g_a_m_e___e_n_v"><td class="mdescLeft">&#160;</td><td class="mdescRight">Game Environment structure.  <a href="group___g_a_m_e___e_n_v.html#struct_g_a_m_e___e_n_v">More...</a><br /></td></tr>
 <tr class="separator:struct_g_a_m_e___e_n_v"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:ga84d4d6cd71758c35c7aefbb8e3684c22"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a_m_e___e_n_v.html#ga84d4d6cd71758c35c7aefbb8e3684c22">CPU_USE_FULL</a>&#160;&#160;&#160;-1</td></tr>
+<tr class="memdesc:ga84d4d6cd71758c35c7aefbb8e3684c22"><td class="mdescLeft">&#160;</td><td class="mdescRight">full use of CPU  <a href="group___g_a_m_e___e_n_v.html#ga84d4d6cd71758c35c7aefbb8e3684c22">More...</a><br /></td></tr>
 <tr class="separator:ga84d4d6cd71758c35c7aefbb8e3684c22"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga5bb1d90aeda09d9646e3c19f632251d1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a_m_e___e_n_v.html#ga5bb1d90aeda09d9646e3c19f632251d1">CPU_USE_LESS</a>&#160;&#160;&#160;10</td></tr>
+<tr class="memdesc:ga5bb1d90aeda09d9646e3c19f632251d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">wait more  <a href="group___g_a_m_e___e_n_v.html#ga5bb1d90aeda09d9646e3c19f632251d1">More...</a><br /></td></tr>
 <tr class="separator:ga5bb1d90aeda09d9646e3c19f632251d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf442dcd3e6a11816794a1150ac94bbde"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a_m_e___e_n_v.html#gaf442dcd3e6a11816794a1150ac94bbde">CPU_USE_NICE</a>&#160;&#160;&#160;0</td></tr>
+<tr class="memdesc:gaf442dcd3e6a11816794a1150ac94bbde"><td class="mdescLeft">&#160;</td><td class="mdescRight">let the other process have some times  <a href="group___g_a_m_e___e_n_v.html#gaf442dcd3e6a11816794a1150ac94bbde">More...</a><br /></td></tr>
 <tr class="separator:gaf442dcd3e6a11816794a1150ac94bbde"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
@@ -162,7 +171,8 @@ Functions</h2></td></tr>
 <tr class="separator:gaa343f04284422e7cfafa561b82c8f4f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >Games helpers functions </p><dl class="section author"><dt>Author</dt><dd>Castagnier Mickael </dd></dl>
+<div class="textblock"><p >Games helpers functions. </p>
+<dl class="section author"><dt>Author</dt><dd>Castagnier Mickael </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>1.0 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>26/06/2015 </dd></dl>
 
@@ -173,7 +183,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_310dcdd4703e877a6b99d5dc3fc54d27.html">nilorea</a></li><li class="navelem"><a class="el" href="n__games_8h.html">n_games.h</a></li>
-    <li class="footer">Generated on Fri Feb 4 2022 17:12:04 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+    <li class="footer">Generated on Tue Feb 8 2022 14:10:25 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
   </ul>
 </div>
 </body>

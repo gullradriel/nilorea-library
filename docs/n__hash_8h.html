@@ -24,9 +24,11 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="NiloreaStudio.png"/></td>
   <td id="projectalign">
    <div id="projectname">Nilorea Library
    </div>
+   <div id="projectbrief">C utilities for networking, threading, graphics</div>
   </td>
  </tr>
  </tbody>
@@ -89,6 +91,9 @@ $(document).ready(function(){initNavTree('n__hash_8h.html',''); initResizable();
   <div class="headertitle"><div class="title">n_hash.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Hash functions and table.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;string.h&gt;</code><br />
 <code>#include &lt;stdint.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="n__common_8h_source.html">n_common.h</a>&quot;</code><br />
@@ -100,18 +105,18 @@ $(document).ready(function(){initNavTree('n__hash_8h.html',''); initResizable();
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="n__hash_8h__incl.png" border="0" usemap="#ainclude_2nilorea_2n__hash_8h" alt=""/></div>
 <map name="ainclude_2nilorea_2n__hash_8h" id="ainclude_2nilorea_2n__hash_8h">
-<area shape="rect" title=" " alt="" coords="437,5,599,32"/>
+<area shape="rect" title="Hash functions and table." alt="" coords="437,5,599,32"/>
 <area shape="rect" title=" " alt="" coords="5,229,71,256"/>
 <area shape="rect" title=" " alt="" coords="600,80,665,107"/>
-<area shape="rect" href="n__common_8h.html" title=" " alt="" coords="427,80,524,107"/>
-<area shape="rect" href="n__list_8h.html" title=" " alt="" coords="885,155,949,181"/>
+<area shape="rect" href="n__common_8h.html" title="Common headers and low&#45;level hugly functions &amp; define." alt="" coords="427,80,524,107"/>
+<area shape="rect" href="n__list_8h.html" title="List structures and definitions." alt="" coords="885,155,949,181"/>
 <area shape="rect" title=" " alt="" coords="495,155,586,181"/>
 <area shape="rect" title=" " alt="" coords="741,155,809,181"/>
 <area shape="rect" title=" " alt="" coords="870,229,934,256"/>
 <area shape="rect" title=" " alt="" coords="76,155,147,181"/>
 <area shape="rect" title=" " alt="" coords="171,155,233,181"/>
-<area shape="rect" href="n__log_8h.html" title=" " alt="" coords="610,155,717,181"/>
-<area shape="rect" href="n__enum_8h.html" title=" " alt="" coords="349,155,471,181"/>
+<area shape="rect" href="n__log_8h.html" title="Generic log system." alt="" coords="610,155,717,181"/>
+<area shape="rect" href="n__enum_8h.html" title="Macro to build enums and their tostring counterparts, a reduced version of https://github...." alt="" coords="349,155,471,181"/>
 <area shape="rect" title=" " alt="" coords="258,155,325,181"/>
 <area shape="rect" title=" " alt="" coords="785,229,846,256"/>
 <area shape="rect" title=" " alt="" coords="681,229,761,256"/>
@@ -127,26 +132,26 @@ $(document).ready(function(){initNavTree('n__hash_8h.html',''); initResizable();
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="n__hash_8h__dep__incl.png" border="0" usemap="#ainclude_2nilorea_2n__hash_8hdep" alt=""/></div>
 <map name="ainclude_2nilorea_2n__hash_8hdep" id="ainclude_2nilorea_2n__hash_8hdep">
-<area shape="rect" title=" " alt="" coords="1288,5,1451,32"/>
-<area shape="rect" href="ex__gui__netclient_8c.html" title=" " alt="" coords="25,169,212,196"/>
-<area shape="rect" href="ex__gui__netserver_8c.html" title=" " alt="" coords="89,244,279,271"/>
-<area shape="rect" href="ex__hash_8c.html" title=" " alt="" coords="1813,87,1955,114"/>
-<area shape="rect" href="nilorea_8h.html" title=" " alt="" coords="1309,244,1425,271"/>
-<area shape="rect" href="n__config__file_8h.html" title=" " alt="" coords="1200,80,1357,121"/>
-<area shape="rect" href="n__network_8h.html" title=" " alt="" coords="549,87,728,114"/>
-<area shape="rect" href="n__network_8c.html" title=" " alt="" coords="875,169,989,196"/>
-<area shape="rect" href="n__nodup__log_8h.html" title=" " alt="" coords="1409,80,1567,121"/>
-<area shape="rect" href="n__nodup__log_8c.html" title=" " alt="" coords="1609,169,1737,196"/>
-<area shape="rect" href="n__hash_8c.html" title=" " alt="" coords="1979,87,2077,114"/>
-<area shape="rect" href="ex__monolith_8c.html" title=" " alt="" coords="1285,319,1448,345"/>
-<area shape="rect" href="ex__configfile_8c.html" title=" " alt="" coords="1014,169,1178,196"/>
-<area shape="rect" href="n__config__file_8c.html" title=" " alt="" coords="1202,169,1329,196"/>
-<area shape="rect" href="ex__network_8h.html" title=" " alt="" coords="287,169,446,196"/>
-<area shape="rect" href="n__user_8h.html" title=" " alt="" coords="470,169,629,196"/>
-<area shape="rect" href="n__network__msg_8c.html" title=" " alt="" coords="653,169,800,196"/>
-<area shape="rect" href="ex__network_8c.html" title=" " alt="" coords="303,244,462,271"/>
-<area shape="rect" href="n__user_8c.html" title=" " alt="" coords="502,244,597,271"/>
-<area shape="rect" href="ex__log_8c.html" title=" " alt="" coords="1455,169,1585,196"/>
+<area shape="rect" title="Hash functions and table." alt="" coords="1288,5,1451,32"/>
+<area shape="rect" href="ex__gui__netclient_8c_source.html" title=" " alt="" coords="25,169,212,196"/>
+<area shape="rect" href="ex__gui__netserver_8c_source.html" title=" " alt="" coords="89,244,279,271"/>
+<area shape="rect" href="ex__hash_8c_source.html" title=" " alt="" coords="1813,87,1955,114"/>
+<area shape="rect" href="nilorea_8h.html" title="Header for a monolith use." alt="" coords="1309,244,1425,271"/>
+<area shape="rect" href="n__config__file_8h.html" title="Config file reading and writing." alt="" coords="1200,80,1357,121"/>
+<area shape="rect" href="n__network_8h.html" title="Network Engine." alt="" coords="549,87,728,114"/>
+<area shape="rect" href="n__network_8c.html" title="Network Engine." alt="" coords="875,169,989,196"/>
+<area shape="rect" href="n__nodup__log_8h.html" title="Generic No Dup Log system." alt="" coords="1409,80,1567,121"/>
+<area shape="rect" href="n__nodup__log_8c.html" title="generic no duplicate logging system" alt="" coords="1609,169,1737,196"/>
+<area shape="rect" href="n__hash_8c.html" title="Hash functions and table." alt="" coords="1979,87,2077,114"/>
+<area shape="rect" href="ex__monolith_8c_source.html" title=" " alt="" coords="1285,319,1448,345"/>
+<area shape="rect" href="ex__configfile_8c_source.html" title=" " alt="" coords="1014,169,1178,196"/>
+<area shape="rect" href="n__config__file_8c.html" title="common function" alt="" coords="1202,169,1329,196"/>
+<area shape="rect" href="ex__network_8h.html" title="Nilorea Library n_network api test." alt="" coords="287,169,446,196"/>
+<area shape="rect" href="n__user_8h.html" title="USERS handling for tiny game apps." alt="" coords="470,169,629,196"/>
+<area shape="rect" href="n__network__msg_8c.html" title="network messages function Network Engine" alt="" coords="653,169,800,196"/>
+<area shape="rect" href="ex__network_8c_source.html" title=" " alt="" coords="303,244,462,271"/>
+<area shape="rect" href="n__user_8c.html" title="USERS fonctions." alt="" coords="502,244,597,271"/>
+<area shape="rect" href="ex__log_8c_source.html" title=" " alt="" coords="1455,169,1585,196"/>
 </map>
 </div>
 </div>
@@ -154,116 +159,140 @@ $(document).ready(function(){initNavTree('n__hash_8h.html',''); initResizable();
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Data Structures</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_h_a_s_h___n_o_d_e.html">HASH_NODE</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:struct_h_a_s_h___n_o_d_e"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#struct_h_a_s_h___n_o_d_e">HASH_NODE</a></td></tr>
+<tr class="memdesc:struct_h_a_s_h___n_o_d_e"><td class="mdescLeft">&#160;</td><td class="mdescRight">structure of a hash table node  <a href="group___h_a_s_h___t_a_b_l_e.html#struct_h_a_s_h___n_o_d_e">More...</a><br /></td></tr>
+<tr class="separator:struct_h_a_s_h___n_o_d_e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:struct_h_a_s_h___t_a_b_l_e"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#struct_h_a_s_h___t_a_b_l_e">HASH_TABLE</a></td></tr>
+<tr class="memdesc:struct_h_a_s_h___t_a_b_l_e"><td class="mdescLeft">&#160;</td><td class="mdescRight">structure of a hash table  <a href="group___h_a_s_h___t_a_b_l_e.html#struct_h_a_s_h___t_a_b_l_e">More...</a><br /></td></tr>
+<tr class="separator:struct_h_a_s_h___t_a_b_l_e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:union_h_a_s_h___v_a_l_u_e"><td class="memItemLeft" align="right" valign="top">union &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#union_h_a_s_h___v_a_l_u_e">HASH_VALUE</a></td></tr>
+<tr class="memdesc:union_h_a_s_h___v_a_l_u_e"><td class="mdescLeft">&#160;</td><td class="mdescRight">union of the value of a node  <a href="group___h_a_s_h___t_a_b_l_e.html#union_h_a_s_h___v_a_l_u_e">More...</a><br /></td></tr>
 <tr class="separator:union_h_a_s_h___v_a_l_u_e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:ga8e0f90a6ea3d3db65033b8ace70cb65a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#ga8e0f90a6ea3d3db65033b8ace70cb65a">BIG_CONSTANT</a>(x)&#160;&#160;&#160;(x##LLU)</td></tr>
+<tr class="memdesc:ga8e0f90a6ea3d3db65033b8ace70cb65a"><td class="mdescLeft">&#160;</td><td class="mdescRight">missing ROTL constant fix 64bit  <a href="group___h_a_s_h___t_a_b_l_e.html#ga8e0f90a6ea3d3db65033b8ace70cb65a">More...</a><br /></td></tr>
 <tr class="separator:ga8e0f90a6ea3d3db65033b8ace70cb65a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaaf679be9dbe3da9e0b18126584fc276f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#gaaf679be9dbe3da9e0b18126584fc276f">HASH_CLASSIC</a>&#160;&#160;&#160;128</td></tr>
+<tr class="memdesc:gaaf679be9dbe3da9e0b18126584fc276f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Murmur hash using hash key string, hash key numeric value, index table with lists of elements.  <a href="group___h_a_s_h___t_a_b_l_e.html#gaaf679be9dbe3da9e0b18126584fc276f">More...</a><br /></td></tr>
 <tr class="separator:gaaf679be9dbe3da9e0b18126584fc276f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga567061089afaa05f04d40a1e076a5705"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#ga567061089afaa05f04d40a1e076a5705">HASH_DOUBLE</a>&#160;&#160;&#160;2</td></tr>
+<tr class="memdesc:ga567061089afaa05f04d40a1e076a5705"><td class="mdescLeft">&#160;</td><td class="mdescRight">value of double type inside the hash node  <a href="group___h_a_s_h___t_a_b_l_e.html#ga567061089afaa05f04d40a1e076a5705">More...</a><br /></td></tr>
 <tr class="separator:ga567061089afaa05f04d40a1e076a5705"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gae5cab5caf80df2b545b79010e58c930e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#gae5cab5caf80df2b545b79010e58c930e">HASH_INT</a>&#160;&#160;&#160;1</td></tr>
+<tr class="memdesc:gae5cab5caf80df2b545b79010e58c930e"><td class="mdescLeft">&#160;</td><td class="mdescRight">value of integral type inside the hash node  <a href="group___h_a_s_h___t_a_b_l_e.html#gae5cab5caf80df2b545b79010e58c930e">More...</a><br /></td></tr>
 <tr class="separator:gae5cab5caf80df2b545b79010e58c930e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga03937f1bda9c901c6e206c569d8d0975"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#ga03937f1bda9c901c6e206c569d8d0975">HASH_KEY_NUM</a>&#160;&#160;&#160;32</td></tr>
+<tr class="memdesc:ga03937f1bda9c901c6e206c569d8d0975"><td class="mdescLeft">&#160;</td><td class="mdescRight">value of string key type inside the hash node  <a href="group___h_a_s_h___t_a_b_l_e.html#ga03937f1bda9c901c6e206c569d8d0975">More...</a><br /></td></tr>
 <tr class="separator:ga03937f1bda9c901c6e206c569d8d0975"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaace734823fbd28f8d98e5a55db5348c7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#gaace734823fbd28f8d98e5a55db5348c7">HASH_KEY_STRING</a>&#160;&#160;&#160;64</td></tr>
+<tr class="memdesc:gaace734823fbd28f8d98e5a55db5348c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">value of string key type inside the hash node  <a href="group___h_a_s_h___t_a_b_l_e.html#gaace734823fbd28f8d98e5a55db5348c7">More...</a><br /></td></tr>
 <tr class="separator:gaace734823fbd28f8d98e5a55db5348c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga380f9944f2162350b1fc52f1e20cf47c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#ga380f9944f2162350b1fc52f1e20cf47c">HASH_PTR</a>&#160;&#160;&#160;8</td></tr>
+<tr class="memdesc:ga380f9944f2162350b1fc52f1e20cf47c"><td class="mdescLeft">&#160;</td><td class="mdescRight">value of pointer type inside the hash node  <a href="group___h_a_s_h___t_a_b_l_e.html#ga380f9944f2162350b1fc52f1e20cf47c">More...</a><br /></td></tr>
 <tr class="separator:ga380f9944f2162350b1fc52f1e20cf47c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga610bced429f9d429f9b54d69135e9253"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#ga610bced429f9d429f9b54d69135e9253">HASH_STRING</a>&#160;&#160;&#160;4</td></tr>
+<tr class="memdesc:ga610bced429f9d429f9b54d69135e9253"><td class="mdescLeft">&#160;</td><td class="mdescRight">value of char * type inside the hash node  <a href="group___h_a_s_h___t_a_b_l_e.html#ga610bced429f9d429f9b54d69135e9253">More...</a><br /></td></tr>
 <tr class="separator:ga610bced429f9d429f9b54d69135e9253"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gac2850d8278af32c2e76e7ab856902bdc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#gac2850d8278af32c2e76e7ab856902bdc">HASH_TRIE</a>&#160;&#160;&#160;256</td></tr>
+<tr class="memdesc:gac2850d8278af32c2e76e7ab856902bdc"><td class="mdescLeft">&#160;</td><td class="mdescRight">TRIE tree using hash key string.  <a href="group___h_a_s_h___t_a_b_l_e.html#gac2850d8278af32c2e76e7ab856902bdc">More...</a><br /></td></tr>
 <tr class="separator:gac2850d8278af32c2e76e7ab856902bdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gafd04f4d8463ac67a011caef42b109595"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#gafd04f4d8463ac67a011caef42b109595">HASH_UNKNOWN</a>&#160;&#160;&#160;16</td></tr>
+<tr class="memdesc:gafd04f4d8463ac67a011caef42b109595"><td class="mdescLeft">&#160;</td><td class="mdescRight">value of unknow type inside the hash node  <a href="group___h_a_s_h___t_a_b_l_e.html#gafd04f4d8463ac67a011caef42b109595">More...</a><br /></td></tr>
 <tr class="separator:gafd04f4d8463ac67a011caef42b109595"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaeb031d4f0f896b1802b9c27e62f28d14"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#gaeb031d4f0f896b1802b9c27e62f28d14">hash_val</a>(node,  type)&#160;&#160;&#160;	( (node &amp;&amp; node -&gt; ptr) ? ( (type *)( ( (<a class="el" href="struct_h_a_s_h___n_o_d_e.html">HASH_NODE</a> *)node -&gt; ptr )-&gt; data . ptr) ) : NULL )</td></tr>
+<tr class="memitem:gaeb031d4f0f896b1802b9c27e62f28d14"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#gaeb031d4f0f896b1802b9c27e62f28d14">hash_val</a>(node,  type)&#160;&#160;&#160;	( (node &amp;&amp; node -&gt; ptr) ? ( (type *)( ( (<a class="el" href="group___h_a_s_h___t_a_b_l_e.html#struct_h_a_s_h___n_o_d_e">HASH_NODE</a> *)node -&gt; ptr )-&gt; data . ptr) ) : NULL )</td></tr>
+<tr class="memdesc:gaeb031d4f0f896b1802b9c27e62f28d14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cast a <a class="el" href="group___h_a_s_h___t_a_b_l_e.html#struct_h_a_s_h___n_o_d_e" title="structure of a hash table node">HASH_NODE</a> element.  <a href="group___h_a_s_h___t_a_b_l_e.html#gaeb031d4f0f896b1802b9c27e62f28d14">More...</a><br /></td></tr>
 <tr class="separator:gaeb031d4f0f896b1802b9c27e62f28d14"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga8e695e90d977acedccfe2e79148cf29e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#ga8e695e90d977acedccfe2e79148cf29e">HASH_VAL</a>(node,  type)&#160;&#160;&#160;	( (node &amp;&amp; node -&gt; data . ptr) ? ( (type *)node -&gt; data . ptr ) : NULL )</td></tr>
+<tr class="memdesc:ga8e695e90d977acedccfe2e79148cf29e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cast a <a class="el" href="group___h_a_s_h___t_a_b_l_e.html#struct_h_a_s_h___n_o_d_e" title="structure of a hash table node">HASH_NODE</a> element.  <a href="group___h_a_s_h___t_a_b_l_e.html#ga8e695e90d977acedccfe2e79148cf29e">More...</a><br /></td></tr>
 <tr class="separator:ga8e695e90d977acedccfe2e79148cf29e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga072f117e6bd9fdde0d39776764b8784e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#ga072f117e6bd9fdde0d39776764b8784e">ht_foreach</a>(__ITEM_,  __HASH_)</td></tr>
+<tr class="memdesc:ga072f117e6bd9fdde0d39776764b8784e"><td class="mdescLeft">&#160;</td><td class="mdescRight">ForEach macro helper (classic / old)  <a href="group___h_a_s_h___t_a_b_l_e.html#ga072f117e6bd9fdde0d39776764b8784e">More...</a><br /></td></tr>
 <tr class="separator:ga072f117e6bd9fdde0d39776764b8784e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf1c2ece096867efb7c26d301f160176c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#gaf1c2ece096867efb7c26d301f160176c">HT_FOREACH</a>(__ITEM_,  __HASH_, ...)</td></tr>
+<tr class="memdesc:gaf1c2ece096867efb7c26d301f160176c"><td class="mdescLeft">&#160;</td><td class="mdescRight">ForEach macro helper.  <a href="group___h_a_s_h___t_a_b_l_e.html#gaf1c2ece096867efb7c26d301f160176c">More...</a><br /></td></tr>
 <tr class="separator:gaf1c2ece096867efb7c26d301f160176c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga23715b66af50d3cfa4ca46649274f283"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#ga23715b66af50d3cfa4ca46649274f283">HT_FOREACH_R</a>(__ITEM_,  __HASH_,  __ITERATOR, ...)</td></tr>
+<tr class="memdesc:ga23715b66af50d3cfa4ca46649274f283"><td class="mdescLeft">&#160;</td><td class="mdescRight">ForEach macro helper.  <a href="group___h_a_s_h___t_a_b_l_e.html#ga23715b66af50d3cfa4ca46649274f283">More...</a><br /></td></tr>
 <tr class="separator:ga23715b66af50d3cfa4ca46649274f283"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga2d5dc4bd5bcf119740bd59199cae7a4c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#ga2d5dc4bd5bcf119740bd59199cae7a4c">ht_foreach_r</a>(__ITEM_,  __HASH_,  __ITERATOR_)</td></tr>
+<tr class="memdesc:ga2d5dc4bd5bcf119740bd59199cae7a4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">ForEach macro helper, reentrant (classic / old) <br  />
+  <a href="group___h_a_s_h___t_a_b_l_e.html#ga2d5dc4bd5bcf119740bd59199cae7a4c">More...</a><br /></td></tr>
 <tr class="separator:ga2d5dc4bd5bcf119740bd59199cae7a4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gab32bb365c62dcb0da675e248b7e814a9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#gab32bb365c62dcb0da675e248b7e814a9">ROTL32</a>(x,  y)&#160;&#160;&#160;<a class="el" href="n__hash_8c.html#a324269020bad851cd569c40a23a862ef">rotl32</a>(x,y)</td></tr>
+<tr class="memdesc:gab32bb365c62dcb0da675e248b7e814a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">missing ROTL fix 32bit  <a href="group___h_a_s_h___t_a_b_l_e.html#gab32bb365c62dcb0da675e248b7e814a9">More...</a><br /></td></tr>
 <tr class="separator:gab32bb365c62dcb0da675e248b7e814a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga22a943135dbcdb1611b40ce0547111ce"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#ga22a943135dbcdb1611b40ce0547111ce">destroy_ht</a> (<a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> **table)</td></tr>
+<tr class="memitem:ga22a943135dbcdb1611b40ce0547111ce"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#ga22a943135dbcdb1611b40ce0547111ce">destroy_ht</a> (<a class="el" href="group___h_a_s_h___t_a_b_l_e.html#struct_h_a_s_h___t_a_b_l_e">HASH_TABLE</a> **table)</td></tr>
 <tr class="memdesc:ga22a943135dbcdb1611b40ce0547111ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">empty a table and destroy it  <a href="group___h_a_s_h___t_a_b_l_e.html#ga22a943135dbcdb1611b40ce0547111ce">More...</a><br /></td></tr>
 <tr class="separator:ga22a943135dbcdb1611b40ce0547111ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga5d2235e91b2b6b70129246897442f8d5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#ga5d2235e91b2b6b70129246897442f8d5">empty_ht</a> (<a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table)</td></tr>
+<tr class="memitem:ga5d2235e91b2b6b70129246897442f8d5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#ga5d2235e91b2b6b70129246897442f8d5">empty_ht</a> (<a class="el" href="group___h_a_s_h___t_a_b_l_e.html#struct_h_a_s_h___t_a_b_l_e">HASH_TABLE</a> *table)</td></tr>
 <tr class="memdesc:ga5d2235e91b2b6b70129246897442f8d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">empty a table  <a href="group___h_a_s_h___t_a_b_l_e.html#ga5d2235e91b2b6b70129246897442f8d5">More...</a><br /></td></tr>
 <tr class="separator:ga5d2235e91b2b6b70129246897442f8d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga21e528f4d0a0124c495479ddd265a99b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___l_i_s_t.html#struct_l_i_s_t">LIST</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#ga21e528f4d0a0124c495479ddd265a99b">ht_get_completion_list</a> (<a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table, char *keybud, uint32_t max_results)</td></tr>
+<tr class="memitem:ga21e528f4d0a0124c495479ddd265a99b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___l_i_s_t.html#struct_l_i_s_t">LIST</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#ga21e528f4d0a0124c495479ddd265a99b">ht_get_completion_list</a> (<a class="el" href="group___h_a_s_h___t_a_b_l_e.html#struct_h_a_s_h___t_a_b_l_e">HASH_TABLE</a> *table, char *keybud, uint32_t max_results)</td></tr>
 <tr class="memdesc:ga21e528f4d0a0124c495479ddd265a99b"><td class="mdescLeft">&#160;</td><td class="mdescRight">get next matching keys in table tree  <a href="group___h_a_s_h___t_a_b_l_e.html#ga21e528f4d0a0124c495479ddd265a99b">More...</a><br /></td></tr>
 <tr class="separator:ga21e528f4d0a0124c495479ddd265a99b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaaa35befb530f8299abf88af3ee42e6eb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#gaaa35befb530f8299abf88af3ee42e6eb">ht_get_double</a> (<a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table, char *<a class="el" href="ex__gui__netclient_8c.html#ac73942f75861b7977297231f5528c382">key</a>, double *val)</td></tr>
+<tr class="memitem:gaaa35befb530f8299abf88af3ee42e6eb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#gaaa35befb530f8299abf88af3ee42e6eb">ht_get_double</a> (<a class="el" href="group___h_a_s_h___t_a_b_l_e.html#struct_h_a_s_h___t_a_b_l_e">HASH_TABLE</a> *table, char *key, double *val)</td></tr>
 <tr class="memdesc:gaaa35befb530f8299abf88af3ee42e6eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">get double at 'key' from 'table'  <a href="group___h_a_s_h___t_a_b_l_e.html#gaaa35befb530f8299abf88af3ee42e6eb">More...</a><br /></td></tr>
 <tr class="separator:gaaa35befb530f8299abf88af3ee42e6eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga1dad8732deb44eada370325427824b0d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#ga1dad8732deb44eada370325427824b0d">ht_get_int</a> (<a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table, char *<a class="el" href="ex__gui__netclient_8c.html#ac73942f75861b7977297231f5528c382">key</a>, int *val)</td></tr>
+<tr class="memitem:ga1dad8732deb44eada370325427824b0d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#ga1dad8732deb44eada370325427824b0d">ht_get_int</a> (<a class="el" href="group___h_a_s_h___t_a_b_l_e.html#struct_h_a_s_h___t_a_b_l_e">HASH_TABLE</a> *table, char *key, int *val)</td></tr>
 <tr class="memdesc:ga1dad8732deb44eada370325427824b0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">get node at 'key' from 'table'  <a href="group___h_a_s_h___t_a_b_l_e.html#ga1dad8732deb44eada370325427824b0d">More...</a><br /></td></tr>
 <tr class="separator:ga1dad8732deb44eada370325427824b0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac2a504c78f251c3dfb1e8b0623e2fdb1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_h_a_s_h___n_o_d_e.html">HASH_NODE</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#gac2a504c78f251c3dfb1e8b0623e2fdb1">ht_get_node</a> (<a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table, char *<a class="el" href="ex__gui__netclient_8c.html#ac73942f75861b7977297231f5528c382">key</a>)</td></tr>
+<tr class="memitem:gac2a504c78f251c3dfb1e8b0623e2fdb1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#struct_h_a_s_h___n_o_d_e">HASH_NODE</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#gac2a504c78f251c3dfb1e8b0623e2fdb1">ht_get_node</a> (<a class="el" href="group___h_a_s_h___t_a_b_l_e.html#struct_h_a_s_h___t_a_b_l_e">HASH_TABLE</a> *table, char *key)</td></tr>
 <tr class="memdesc:gac2a504c78f251c3dfb1e8b0623e2fdb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">get node at 'key' from 'table'  <a href="group___h_a_s_h___t_a_b_l_e.html#gac2a504c78f251c3dfb1e8b0623e2fdb1">More...</a><br /></td></tr>
 <tr class="separator:gac2a504c78f251c3dfb1e8b0623e2fdb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae34a331ccbda86f7e5b2319f1852d6ca"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#gae34a331ccbda86f7e5b2319f1852d6ca">ht_get_ptr</a> (<a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table, char *<a class="el" href="ex__gui__netclient_8c.html#ac73942f75861b7977297231f5528c382">key</a>, void **val)</td></tr>
+<tr class="memitem:gae34a331ccbda86f7e5b2319f1852d6ca"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#gae34a331ccbda86f7e5b2319f1852d6ca">ht_get_ptr</a> (<a class="el" href="group___h_a_s_h___t_a_b_l_e.html#struct_h_a_s_h___t_a_b_l_e">HASH_TABLE</a> *table, char *key, void **val)</td></tr>
 <tr class="memdesc:gae34a331ccbda86f7e5b2319f1852d6ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">get pointer at 'key' from 'table'  <a href="group___h_a_s_h___t_a_b_l_e.html#gae34a331ccbda86f7e5b2319f1852d6ca">More...</a><br /></td></tr>
 <tr class="separator:gae34a331ccbda86f7e5b2319f1852d6ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga1044c61baf3c82c9783fa55bce28b4ae"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#ga1044c61baf3c82c9783fa55bce28b4ae">ht_get_string</a> (<a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table, char *<a class="el" href="ex__gui__netclient_8c.html#ac73942f75861b7977297231f5528c382">key</a>, char **val)</td></tr>
+<tr class="memitem:ga1044c61baf3c82c9783fa55bce28b4ae"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#ga1044c61baf3c82c9783fa55bce28b4ae">ht_get_string</a> (<a class="el" href="group___h_a_s_h___t_a_b_l_e.html#struct_h_a_s_h___t_a_b_l_e">HASH_TABLE</a> *table, char *key, char **val)</td></tr>
 <tr class="memdesc:ga1044c61baf3c82c9783fa55bce28b4ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">get string at 'key' from 'table'  <a href="group___h_a_s_h___t_a_b_l_e.html#ga1044c61baf3c82c9783fa55bce28b4ae">More...</a><br /></td></tr>
 <tr class="separator:ga1044c61baf3c82c9783fa55bce28b4ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga1392981a507905d028136bc0b92aa48b"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#ga1392981a507905d028136bc0b92aa48b">ht_node_type</a> (<a class="el" href="struct_h_a_s_h___n_o_d_e.html">HASH_NODE</a> *node)</td></tr>
+<tr class="memitem:ga1392981a507905d028136bc0b92aa48b"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#ga1392981a507905d028136bc0b92aa48b">ht_node_type</a> (<a class="el" href="group___h_a_s_h___t_a_b_l_e.html#struct_h_a_s_h___n_o_d_e">HASH_NODE</a> *node)</td></tr>
 <tr class="memdesc:ga1392981a507905d028136bc0b92aa48b"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the type of a node , text version  <a href="group___h_a_s_h___t_a_b_l_e.html#ga1392981a507905d028136bc0b92aa48b">More...</a><br /></td></tr>
 <tr class="separator:ga1392981a507905d028136bc0b92aa48b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga62ef2a517efcbc464f0103995f28c3e8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#ga62ef2a517efcbc464f0103995f28c3e8">ht_print</a> (<a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table)</td></tr>
+<tr class="memitem:ga62ef2a517efcbc464f0103995f28c3e8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#ga62ef2a517efcbc464f0103995f28c3e8">ht_print</a> (<a class="el" href="group___h_a_s_h___t_a_b_l_e.html#struct_h_a_s_h___t_a_b_l_e">HASH_TABLE</a> *table)</td></tr>
 <tr class="memdesc:ga62ef2a517efcbc464f0103995f28c3e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">print contents of table  <a href="group___h_a_s_h___t_a_b_l_e.html#ga62ef2a517efcbc464f0103995f28c3e8">More...</a><br /></td></tr>
 <tr class="separator:ga62ef2a517efcbc464f0103995f28c3e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2df4cb0772adec1c5155b4b254277d6c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#ga2df4cb0772adec1c5155b4b254277d6c">ht_put_double</a> (<a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table, char *<a class="el" href="ex__gui__netclient_8c.html#ac73942f75861b7977297231f5528c382">key</a>, double value)</td></tr>
+<tr class="memitem:ga2df4cb0772adec1c5155b4b254277d6c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#ga2df4cb0772adec1c5155b4b254277d6c">ht_put_double</a> (<a class="el" href="group___h_a_s_h___t_a_b_l_e.html#struct_h_a_s_h___t_a_b_l_e">HASH_TABLE</a> *table, char *key, double value)</td></tr>
 <tr class="memdesc:ga2df4cb0772adec1c5155b4b254277d6c"><td class="mdescLeft">&#160;</td><td class="mdescRight">put a double value with given key in the targeted hash table  <a href="group___h_a_s_h___t_a_b_l_e.html#ga2df4cb0772adec1c5155b4b254277d6c">More...</a><br /></td></tr>
 <tr class="separator:ga2df4cb0772adec1c5155b4b254277d6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga06cafdf266f9913c197a8e9e6a1fba5d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#ga06cafdf266f9913c197a8e9e6a1fba5d">ht_put_int</a> (<a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table, char *<a class="el" href="ex__gui__netclient_8c.html#ac73942f75861b7977297231f5528c382">key</a>, int value)</td></tr>
+<tr class="memitem:ga06cafdf266f9913c197a8e9e6a1fba5d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#ga06cafdf266f9913c197a8e9e6a1fba5d">ht_put_int</a> (<a class="el" href="group___h_a_s_h___t_a_b_l_e.html#struct_h_a_s_h___t_a_b_l_e">HASH_TABLE</a> *table, char *key, int value)</td></tr>
 <tr class="memdesc:ga06cafdf266f9913c197a8e9e6a1fba5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">put an integral value with given key in the targeted hash table  <a href="group___h_a_s_h___t_a_b_l_e.html#ga06cafdf266f9913c197a8e9e6a1fba5d">More...</a><br /></td></tr>
 <tr class="separator:ga06cafdf266f9913c197a8e9e6a1fba5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2baa0497b21bdf86e3c64bb023124930"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#ga2baa0497b21bdf86e3c64bb023124930">ht_put_ptr</a> (<a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table, char *<a class="el" href="ex__gui__netclient_8c.html#ac73942f75861b7977297231f5528c382">key</a>, void *ptr, void(*destructor)(void *ptr))</td></tr>
+<tr class="memitem:ga2baa0497b21bdf86e3c64bb023124930"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#ga2baa0497b21bdf86e3c64bb023124930">ht_put_ptr</a> (<a class="el" href="group___h_a_s_h___t_a_b_l_e.html#struct_h_a_s_h___t_a_b_l_e">HASH_TABLE</a> *table, char *key, void *ptr, void(*destructor)(void *ptr))</td></tr>
 <tr class="memdesc:ga2baa0497b21bdf86e3c64bb023124930"><td class="mdescLeft">&#160;</td><td class="mdescRight">put a pointer to the string value with given key in the targeted hash table  <a href="group___h_a_s_h___t_a_b_l_e.html#ga2baa0497b21bdf86e3c64bb023124930">More...</a><br /></td></tr>
 <tr class="separator:ga2baa0497b21bdf86e3c64bb023124930"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa7dae105905e1751943ec3a4e4226480"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#gaa7dae105905e1751943ec3a4e4226480">ht_put_string</a> (<a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table, char *<a class="el" href="ex__gui__netclient_8c.html#ac73942f75861b7977297231f5528c382">key</a>, char *string)</td></tr>
+<tr class="memitem:gaa7dae105905e1751943ec3a4e4226480"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#gaa7dae105905e1751943ec3a4e4226480">ht_put_string</a> (<a class="el" href="group___h_a_s_h___t_a_b_l_e.html#struct_h_a_s_h___t_a_b_l_e">HASH_TABLE</a> *table, char *key, char *string)</td></tr>
 <tr class="memdesc:gaa7dae105905e1751943ec3a4e4226480"><td class="mdescLeft">&#160;</td><td class="mdescRight">put a string value (copy/dup) with given key in the targeted hash table  <a href="group___h_a_s_h___t_a_b_l_e.html#gaa7dae105905e1751943ec3a4e4226480">More...</a><br /></td></tr>
 <tr class="separator:gaa7dae105905e1751943ec3a4e4226480"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa1b9cd7ea20aa51fb4d4f4159c3ebad6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#gaa1b9cd7ea20aa51fb4d4f4159c3ebad6">ht_put_string_ptr</a> (<a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table, char *<a class="el" href="ex__gui__netclient_8c.html#ac73942f75861b7977297231f5528c382">key</a>, char *string)</td></tr>
+<tr class="memitem:gaa1b9cd7ea20aa51fb4d4f4159c3ebad6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#gaa1b9cd7ea20aa51fb4d4f4159c3ebad6">ht_put_string_ptr</a> (<a class="el" href="group___h_a_s_h___t_a_b_l_e.html#struct_h_a_s_h___t_a_b_l_e">HASH_TABLE</a> *table, char *key, char *string)</td></tr>
 <tr class="memdesc:gaa1b9cd7ea20aa51fb4d4f4159c3ebad6"><td class="mdescLeft">&#160;</td><td class="mdescRight">put a string value (pointer) with given key in the targeted hash table  <a href="group___h_a_s_h___t_a_b_l_e.html#gaa1b9cd7ea20aa51fb4d4f4159c3ebad6">More...</a><br /></td></tr>
 <tr class="separator:gaa1b9cd7ea20aa51fb4d4f4159c3ebad6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8d8873be47a634ad8a386e61f12a1f53"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#ga8d8873be47a634ad8a386e61f12a1f53">ht_remove</a> (<a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table, char *<a class="el" href="ex__gui__netclient_8c.html#ac73942f75861b7977297231f5528c382">key</a>)</td></tr>
+<tr class="memitem:ga8d8873be47a634ad8a386e61f12a1f53"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#ga8d8873be47a634ad8a386e61f12a1f53">ht_remove</a> (<a class="el" href="group___h_a_s_h___t_a_b_l_e.html#struct_h_a_s_h___t_a_b_l_e">HASH_TABLE</a> *table, char *key)</td></tr>
 <tr class="memdesc:ga8d8873be47a634ad8a386e61f12a1f53"><td class="mdescLeft">&#160;</td><td class="mdescRight">remove and delete node at key in table  <a href="group___h_a_s_h___t_a_b_l_e.html#ga8d8873be47a634ad8a386e61f12a1f53">More...</a><br /></td></tr>
 <tr class="separator:ga8d8873be47a634ad8a386e61f12a1f53"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga16446a54727b375dfd0c92704dc39995"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___l_i_s_t.html#struct_l_i_s_t">LIST</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#ga16446a54727b375dfd0c92704dc39995">ht_search</a> (<a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *table, int(*node_is_matching)(<a class="el" href="struct_h_a_s_h___n_o_d_e.html">HASH_NODE</a> *node))</td></tr>
+<tr class="memitem:ga16446a54727b375dfd0c92704dc39995"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___l_i_s_t.html#struct_l_i_s_t">LIST</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#ga16446a54727b375dfd0c92704dc39995">ht_search</a> (<a class="el" href="group___h_a_s_h___t_a_b_l_e.html#struct_h_a_s_h___t_a_b_l_e">HASH_TABLE</a> *table, int(*node_is_matching)(<a class="el" href="group___h_a_s_h___t_a_b_l_e.html#struct_h_a_s_h___n_o_d_e">HASH_NODE</a> *node))</td></tr>
 <tr class="memdesc:ga16446a54727b375dfd0c92704dc39995"><td class="mdescLeft">&#160;</td><td class="mdescRight">seach table for matching nodes  <a href="group___h_a_s_h___t_a_b_l_e.html#ga16446a54727b375dfd0c92704dc39995">More...</a><br /></td></tr>
 <tr class="separator:ga16446a54727b375dfd0c92704dc39995"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga917618a4c922f524216381a5e5a43a60"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#ga917618a4c922f524216381a5e5a43a60">MurmurHash3_x86_128</a> (const void *<a class="el" href="ex__gui__netclient_8c.html#ac73942f75861b7977297231f5528c382">key</a>, int len, uint32_t seed, void *out)</td></tr>
+<tr class="memitem:ga917618a4c922f524216381a5e5a43a60"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#ga917618a4c922f524216381a5e5a43a60">MurmurHash3_x86_128</a> (const void *key, int len, uint32_t seed, void *out)</td></tr>
+<tr class="memdesc:ga917618a4c922f524216381a5e5a43a60"><td class="mdescLeft">&#160;</td><td class="mdescRight">MurmurHash3 was written by Austin Appleby, and is placed in the public domain.  <a href="group___h_a_s_h___t_a_b_l_e.html#ga917618a4c922f524216381a5e5a43a60">More...</a><br /></td></tr>
 <tr class="separator:ga917618a4c922f524216381a5e5a43a60"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga37412933f308bda727603640d9acefba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#ga37412933f308bda727603640d9acefba">MurmurHash3_x86_32</a> (const void *<a class="el" href="ex__gui__netclient_8c.html#ac73942f75861b7977297231f5528c382">key</a>, int len, uint32_t seed, void *out)</td></tr>
+<tr class="memitem:ga37412933f308bda727603640d9acefba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#ga37412933f308bda727603640d9acefba">MurmurHash3_x86_32</a> (const void *key, int len, uint32_t seed, void *out)</td></tr>
+<tr class="memdesc:ga37412933f308bda727603640d9acefba"><td class="mdescLeft">&#160;</td><td class="mdescRight">MurmurHash3 was written by Austin Appleby, and is placed in the public domain.  <a href="group___h_a_s_h___t_a_b_l_e.html#ga37412933f308bda727603640d9acefba">More...</a><br /></td></tr>
 <tr class="separator:ga37412933f308bda727603640d9acefba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa2d879c1afd3c71a0917bbe2c0766664"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#gaa2d879c1afd3c71a0917bbe2c0766664">new_ht</a> (unsigned long int size)</td></tr>
+<tr class="memitem:gaa2d879c1afd3c71a0917bbe2c0766664"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#struct_h_a_s_h___t_a_b_l_e">HASH_TABLE</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#gaa2d879c1afd3c71a0917bbe2c0766664">new_ht</a> (unsigned long int size)</td></tr>
 <tr class="memdesc:gaa2d879c1afd3c71a0917bbe2c0766664"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a hash table with the given size.  <a href="group___h_a_s_h___t_a_b_l_e.html#gaa2d879c1afd3c71a0917bbe2c0766664">More...</a><br /></td></tr>
 <tr class="separator:gaa2d879c1afd3c71a0917bbe2c0766664"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab95fe0967850a3665d21837519ede6c8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#gab95fe0967850a3665d21837519ede6c8">new_ht_trie</a> (unsigned int alphabet_size, unsigned int alphabet_offset)</td></tr>
+<tr class="memitem:gab95fe0967850a3665d21837519ede6c8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#struct_h_a_s_h___t_a_b_l_e">HASH_TABLE</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#gab95fe0967850a3665d21837519ede6c8">new_ht_trie</a> (unsigned int alphabet_size, unsigned int alphabet_offset)</td></tr>
 <tr class="memdesc:gab95fe0967850a3665d21837519ede6c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">create a TRIE hash table with the alphabet_size, each key value beeing decreased by alphabet_offset  <a href="group___h_a_s_h___t_a_b_l_e.html#gab95fe0967850a3665d21837519ede6c8">More...</a><br /></td></tr>
 <tr class="separator:gab95fe0967850a3665d21837519ede6c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >Hash functions and table </p><dl class="section author"><dt>Author</dt><dd>Castagnier Mickael </dd></dl>
+<div class="textblock"><p >Hash functions and table. </p>
+<dl class="section author"><dt>Author</dt><dd>Castagnier Mickael </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>2.0 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>16/03/2015 </dd></dl>
 
@@ -274,7 +303,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_310dcdd4703e877a6b99d5dc3fc54d27.html">nilorea</a></li><li class="navelem"><a class="el" href="n__hash_8h.html">n_hash.h</a></li>
-    <li class="footer">Generated on Fri Feb 4 2022 17:12:04 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+    <li class="footer">Generated on Tue Feb 8 2022 14:10:25 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
   </ul>
 </div>
 </body>

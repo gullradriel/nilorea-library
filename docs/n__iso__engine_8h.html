@@ -24,9 +24,11 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="NiloreaStudio.png"/></td>
   <td id="projectalign">
    <div id="projectname">Nilorea Library
    </div>
+   <div id="projectbrief">C utilities for networking, threading, graphics</div>
   </td>
  </tr>
  </tbody>
@@ -89,6 +91,9 @@ $(document).ready(function(){initNavTree('n__iso__engine_8h.html',''); initResiz
   <div class="headertitle"><div class="title">n_iso_engine.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Map loading, saving, with objects, animations, ...  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="n__common_8h_source.html">n_common.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="n__log_8h_source.html">n_log.h</a>&quot;</code><br />
 </div><div class="textblock"><div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -98,16 +103,16 @@ $(document).ready(function(){initNavTree('n__iso__engine_8h.html',''); initResiz
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="n__iso__engine_8h__incl.png" border="0" usemap="#ainclude_2nilorea_2n__iso__engine_8h" alt=""/></div>
 <map name="ainclude_2nilorea_2n__iso__engine_8h" id="ainclude_2nilorea_2n__iso__engine_8h">
-<area shape="rect" title=" " alt="" coords="495,5,635,47"/>
-<area shape="rect" href="n__common_8h.html" title=" " alt="" coords="473,95,571,121"/>
-<area shape="rect" href="n__log_8h.html" title=" " alt="" coords="733,169,839,196"/>
+<area shape="rect" title="Map loading, saving, with objects, animations, ..." alt="" coords="495,5,635,47"/>
+<area shape="rect" href="n__common_8h.html" title="Common headers and low&#45;level hugly functions &amp; define." alt="" coords="473,95,571,121"/>
+<area shape="rect" href="n__log_8h.html" title="Generic log system." alt="" coords="733,169,839,196"/>
 <area shape="rect" title=" " alt="" coords="477,169,567,196"/>
 <area shape="rect" title=" " alt="" coords="5,169,73,196"/>
 <area shape="rect" title=" " alt="" coords="573,244,637,271"/>
 <area shape="rect" title=" " alt="" coords="149,169,220,196"/>
 <area shape="rect" title=" " alt="" coords="244,169,307,196"/>
 <area shape="rect" title=" " alt="" coords="172,244,237,271"/>
-<area shape="rect" href="n__enum_8h.html" title=" " alt="" coords="331,169,452,196"/>
+<area shape="rect" href="n__enum_8h.html" title="Macro to build enums and their tostring counterparts, a reduced version of https://github...." alt="" coords="331,169,452,196"/>
 <area shape="rect" title=" " alt="" coords="642,169,709,196"/>
 <area shape="rect" title=" " alt="" coords="754,244,815,271"/>
 <area shape="rect" title=" " alt="" coords="839,244,919,271"/>
@@ -123,10 +128,10 @@ $(document).ready(function(){initNavTree('n__iso__engine_8h.html',''); initResiz
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="n__iso__engine_8h__dep__incl.png" border="0" usemap="#ainclude_2nilorea_2n__iso__engine_8hdep" alt=""/></div>
 <map name="ainclude_2nilorea_2n__iso__engine_8hdep" id="ainclude_2nilorea_2n__iso__engine_8hdep">
-<area shape="rect" title=" " alt="" coords="90,5,230,47"/>
-<area shape="rect" href="nilorea_8h.html" title=" " alt="" coords="29,95,145,121"/>
-<area shape="rect" href="n__iso__engine_8c.html" title=" " alt="" coords="169,95,300,121"/>
-<area shape="rect" href="ex__monolith_8c.html" title=" " alt="" coords="5,169,168,196"/>
+<area shape="rect" title="Map loading, saving, with objects, animations, ..." alt="" coords="90,5,230,47"/>
+<area shape="rect" href="nilorea_8h.html" title="Header for a monolith use." alt="" coords="29,95,145,121"/>
+<area shape="rect" href="n__iso__engine_8c.html" title="Map loading, saving, with objects, animations, ..." alt="" coords="169,95,300,121"/>
+<area shape="rect" href="ex__monolith_8c_source.html" title=" " alt="" coords="5,169,168,196"/>
 </map>
 </div>
 </div>
@@ -135,25 +140,34 @@ $(document).ready(function(){initNavTree('n__iso__engine_8h.html',''); initResiz
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Data Structures</h2></td></tr>
 <tr class="memitem:struct_c_e_l_l"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#struct_c_e_l_l">CELL</a></td></tr>
+<tr class="memdesc:struct_c_e_l_l"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cell of a <a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#struct_m_a_p" title="MAP with objects, tiles, skins.">MAP</a>.  <a href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#struct_c_e_l_l">More...</a><br /></td></tr>
 <tr class="separator:struct_c_e_l_l"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:struct_m_a_p"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#struct_m_a_p">MAP</a></td></tr>
+<tr class="memdesc:struct_m_a_p"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#struct_m_a_p" title="MAP with objects, tiles, skins.">MAP</a> with objects, tiles, skins.  <a href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#struct_m_a_p">More...</a><br /></td></tr>
 <tr class="separator:struct_m_a_p"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:gae0863acc1b854b0f522caf85f9651f13"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#gae0863acc1b854b0f522caf85f9651f13">BLCK</a>&#160;&#160;&#160;3</td></tr>
+<tr class="memdesc:gae0863acc1b854b0f522caf85f9651f13"><td class="mdescLeft">&#160;</td><td class="mdescRight">FLAG of a stopping tile.  <a href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#gae0863acc1b854b0f522caf85f9651f13">More...</a><br /></td></tr>
 <tr class="separator:gae0863acc1b854b0f522caf85f9651f13"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gac3020f81c4af6587694d3068728560db"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#gac3020f81c4af6587694d3068728560db">N_ABILITY</a>&#160;&#160;&#160;3</td></tr>
+<tr class="memdesc:gac3020f81c4af6587694d3068728560db"><td class="mdescLeft">&#160;</td><td class="mdescRight">FLAG of ability type.  <a href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#gac3020f81c4af6587694d3068728560db">More...</a><br /></td></tr>
 <tr class="separator:gac3020f81c4af6587694d3068728560db"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga86e6af08f2c7a754c9ad414fd17a6e40"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga86e6af08f2c7a754c9ad414fd17a6e40">N_MUSIC</a>&#160;&#160;&#160;4</td></tr>
+<tr class="memdesc:ga86e6af08f2c7a754c9ad414fd17a6e40"><td class="mdescLeft">&#160;</td><td class="mdescRight">FLAG of music type.  <a href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga86e6af08f2c7a754c9ad414fd17a6e40">More...</a><br /></td></tr>
 <tr class="separator:ga86e6af08f2c7a754c9ad414fd17a6e40"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga7300ffd75554bf5829e66684e9d66841"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga7300ffd75554bf5829e66684e9d66841">N_OBJECT</a>&#160;&#160;&#160;5</td></tr>
+<tr class="memdesc:ga7300ffd75554bf5829e66684e9d66841"><td class="mdescLeft">&#160;</td><td class="mdescRight">FLAG of object type.  <a href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga7300ffd75554bf5829e66684e9d66841">More...</a><br /></td></tr>
 <tr class="separator:ga7300ffd75554bf5829e66684e9d66841"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga942503317c8fd73c07f63baff1f41fa6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga942503317c8fd73c07f63baff1f41fa6">N_TILE</a>&#160;&#160;&#160;2</td></tr>
+<tr class="memdesc:ga942503317c8fd73c07f63baff1f41fa6"><td class="mdescLeft">&#160;</td><td class="mdescRight">FLAG of tile type.  <a href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga942503317c8fd73c07f63baff1f41fa6">More...</a><br /></td></tr>
 <tr class="separator:ga942503317c8fd73c07f63baff1f41fa6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga154a04fc36112a0bbaf49752569165e9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga154a04fc36112a0bbaf49752569165e9">SWIM</a>&#160;&#160;&#160;2</td></tr>
+<tr class="memdesc:ga154a04fc36112a0bbaf49752569165e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">FLAG of a swimmable tile.  <a href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga154a04fc36112a0bbaf49752569165e9">More...</a><br /></td></tr>
 <tr class="separator:ga154a04fc36112a0bbaf49752569165e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga4083fcbe80d42575b0336ddbf4ebc622"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga4083fcbe80d42575b0336ddbf4ebc622">WALK</a>&#160;&#160;&#160;1</td></tr>
+<tr class="memdesc:ga4083fcbe80d42575b0336ddbf4ebc622"><td class="mdescLeft">&#160;</td><td class="mdescRight">FLAG of a walkable tile.  <a href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga4083fcbe80d42575b0336ddbf4ebc622">More...</a><br /></td></tr>
 <tr class="separator:ga4083fcbe80d42575b0336ddbf4ebc622"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
@@ -167,8 +181,8 @@ Functions</h2></td></tr>
 <tr class="memitem:gafbd6e8d63e4a9bffb9bae939e6f33d95"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#gafbd6e8d63e4a9bffb9bae939e6f33d95">create_empty_map</a> (<a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#struct_m_a_p">MAP</a> **map, char *name, int XSIZE, int YSIZE, int TILEW, int TILEH, int nbmaxobjects, int nbmaxgroup, int nbmaxanims, int nbtiles, int nbanims)</td></tr>
 <tr class="memdesc:gafbd6e8d63e4a9bffb9bae939e6f33d95"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create an empty map.  <a href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#gafbd6e8d63e4a9bffb9bae939e6f33d95">More...</a><br /></td></tr>
 <tr class="separator:gafbd6e8d63e4a9bffb9bae939e6f33d95"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gadbfcc4dbd27990aa04aa68b3434480ef"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#gadbfcc4dbd27990aa04aa68b3434480ef">draw_map</a> (<a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#struct_m_a_p">MAP</a> *map, BITMAP *bmp, int destx, int desty, int <a class="el" href="ex__network_8c.html#a1ea5d0cb93f22f7d0fdf804bd68c3326">mode</a>)</td></tr>
-<tr class="memdesc:gadbfcc4dbd27990aa04aa68b3434480ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw a <a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#struct_m_a_p">MAP</a> *map on the BITMAP *bmp.  <a href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#gadbfcc4dbd27990aa04aa68b3434480ef">More...</a><br /></td></tr>
+<tr class="memitem:gadbfcc4dbd27990aa04aa68b3434480ef"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#gadbfcc4dbd27990aa04aa68b3434480ef">draw_map</a> (<a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#struct_m_a_p">MAP</a> *map, BITMAP *bmp, int destx, int desty, int mode)</td></tr>
+<tr class="memdesc:gadbfcc4dbd27990aa04aa68b3434480ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw a <a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#struct_m_a_p" title="MAP with objects, tiles, skins.">MAP</a> *map on the BITMAP *bmp.  <a href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#gadbfcc4dbd27990aa04aa68b3434480ef">More...</a><br /></td></tr>
 <tr class="separator:gadbfcc4dbd27990aa04aa68b3434480ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gafa40b1cd0683fd3a0088d759b8f4a57b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#gafa40b1cd0683fd3a0088d759b8f4a57b">free_map</a> (<a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#struct_m_a_p">MAP</a> **map)</td></tr>
 <tr class="memdesc:gafa40b1cd0683fd3a0088d759b8f4a57b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free the map.  <a href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#gafa40b1cd0683fd3a0088d759b8f4a57b">More...</a><br /></td></tr>
@@ -190,7 +204,8 @@ Functions</h2></td></tr>
 <tr class="separator:ga8366c42e9ace1872eaad8efda0e9a244"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >Map loading, saving, with objects, animations, ... </p><dl class="section author"><dt>Author</dt><dd>Castagnier Mickael </dd></dl>
+<div class="textblock"><p >Map loading, saving, with objects, animations, ... </p>
+<dl class="section author"><dt>Author</dt><dd>Castagnier Mickael </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>1.0 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>01/07/05 </dd></dl>
 
@@ -201,7 +216,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_310dcdd4703e877a6b99d5dc3fc54d27.html">nilorea</a></li><li class="navelem"><a class="el" href="n__iso__engine_8h.html">n_iso_engine.h</a></li>
-    <li class="footer">Generated on Fri Feb 4 2022 17:12:04 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+    <li class="footer">Generated on Tue Feb 8 2022 14:10:25 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
   </ul>
 </div>
 </body>

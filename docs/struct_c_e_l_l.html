@@ -24,9 +24,11 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="NiloreaStudio.png"/></td>
   <td id="projectalign">
    <div id="projectname">Nilorea Library
    </div>
+   <div id="projectbrief">C utilities for networking, threading, graphics</div>
   </td>
  </tr>
  </tbody>
@@ -84,9 +86,12 @@ $(document).ready(function(){initNavTree('struct_c_e_l_l.html',''); initResizabl
 <div class="header">
   <div class="summary">
 <a href="#pub-attribs">Data Fields</a>  </div>
-  <div class="headertitle"><div class="title">CELL Struct Reference<div class="ingroups"><a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html">GAMEDEV: isometric engine, maps, tiles, ...</a></div></div></div>
+  <div class="headertitle"><div class="title">CELL Struct Reference<div class="ingroups"><a class="el" href="group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html">GAME DEV: isometric engine, maps, tiles, ...</a></div></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Cell of a <a class="el" href="struct_m_a_p.html" title="MAP with objects, tiles, skins.">MAP</a>.  
+ <a href="struct_c_e_l_l.html#details">More...</a></p>
 
 <p><code>#include &quot;<a class="el" href="n__iso__engine_8h_source.html">n_iso_engine.h</a>&quot;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -96,7 +101,7 @@ $(document).ready(function(){initNavTree('struct_c_e_l_l.html',''); initResizabl
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="struct_c_e_l_l__coll__graph.png" border="0" usemap="#a_c_e_l_l_coll__map" alt="Collaboration graph"/></div>
 <map name="a_c_e_l_l_coll__map" id="a_c_e_l_l_coll__map">
-<area shape="rect" title=" " alt="" coords="5,189,60,267"/>
+<area shape="rect" title="Cell of a MAP." alt="" coords="5,189,60,267"/>
 <area shape="rect" title=" " alt="" coords="13,5,52,83"/>
 </map>
 </div>
@@ -104,17 +109,20 @@ $(document).ready(function(){initNavTree('struct_c_e_l_l.html',''); initResizabl
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Data Fields</h2></td></tr>
 <tr class="memitem:a3eba2670b3a8632e18de3fb7f19dc6d9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_c_e_l_l.html#a3eba2670b3a8632e18de3fb7f19dc6d9">ability</a></td></tr>
+<tr class="memdesc:a3eba2670b3a8632e18de3fb7f19dc6d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">ability of the tile (walking, swimming, blocking, killing ?)  <a href="struct_c_e_l_l.html#a3eba2670b3a8632e18de3fb7f19dc6d9">More...</a><br /></td></tr>
 <tr class="separator:a3eba2670b3a8632e18de3fb7f19dc6d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acd30658812d6260ff554b45d6c50aa25"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_c_e_l_l.html#acd30658812d6260ff554b45d6c50aa25">music</a></td></tr>
+<tr class="memdesc:acd30658812d6260ff554b45d6c50aa25"><td class="mdescLeft">&#160;</td><td class="mdescRight">ident of the music on the tile  <a href="struct_c_e_l_l.html#acd30658812d6260ff554b45d6c50aa25">More...</a><br /></td></tr>
 <tr class="separator:acd30658812d6260ff554b45d6c50aa25"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad7c5b510f5914c694133dc2be0d19a15"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_c_e_l_l.html#ad7c5b510f5914c694133dc2be0d19a15">objectnumber</a></td></tr>
+<tr class="memdesc:ad7c5b510f5914c694133dc2be0d19a15"><td class="mdescLeft">&#160;</td><td class="mdescRight">ident of the object in the MAP-&gt;object library  <a href="struct_c_e_l_l.html#ad7c5b510f5914c694133dc2be0d19a15">More...</a><br /></td></tr>
 <tr class="separator:ad7c5b510f5914c694133dc2be0d19a15"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6273847e0559e755eaac94323f1def98"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_c_e_l_l.html#a6273847e0559e755eaac94323f1def98">tilenumber</a></td></tr>
+<tr class="memdesc:a6273847e0559e755eaac94323f1def98"><td class="mdescLeft">&#160;</td><td class="mdescRight">ident of the tile in the MAP-&gt;tile library  <a href="struct_c_e_l_l.html#a6273847e0559e755eaac94323f1def98">More...</a><br /></td></tr>
 <tr class="separator:a6273847e0559e755eaac94323f1def98"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >Cell of a <a class="el" href="struct_m_a_p.html">MAP</a> </p>
-
+<div class="textblock">
 <p class="definition">Definition at line <a class="el" href="n__iso__engine_8h_source.html#l00043">43</a> of file <a class="el" href="n__iso__engine_8h_source.html">n_iso_engine.h</a>.</p>
 </div><h2 class="groupheader">Field Documentation</h2>
 <a id="a3eba2670b3a8632e18de3fb7f19dc6d9" name="a3eba2670b3a8632e18de3fb7f19dc6d9"></a>
@@ -128,7 +136,6 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >ability of the tile (walking, swimming, blocking, killing ?) </p>
 
 <p class="definition">Definition at line <a class="el" href="n__iso__engine_8h_source.html#l00048">48</a> of file <a class="el" href="n__iso__engine_8h_source.html">n_iso_engine.h</a>.</p>
 
@@ -145,7 +152,6 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >ident of the music on the tile </p>
 
 <p class="definition">Definition at line <a class="el" href="n__iso__engine_8h_source.html#l00052">52</a> of file <a class="el" href="n__iso__engine_8h_source.html">n_iso_engine.h</a>.</p>
 
@@ -162,7 +168,6 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >ident of the object in the MAP-&gt;object library </p>
 
 <p class="definition">Definition at line <a class="el" href="n__iso__engine_8h_source.html#l00050">50</a> of file <a class="el" href="n__iso__engine_8h_source.html">n_iso_engine.h</a>.</p>
 
@@ -179,7 +184,6 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >ident of the tile in the MAP-&gt;tile library </p>
 
 <p class="definition">Definition at line <a class="el" href="n__iso__engine_8h_source.html#l00046">46</a> of file <a class="el" href="n__iso__engine_8h_source.html">n_iso_engine.h</a>.</p>
 
@@ -194,7 +198,7 @@ Data Fields</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="struct_c_e_l_l.html">CELL</a></li>
-    <li class="footer">Generated on Fri Feb 4 2022 16:56:07 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+    <li class="footer">Generated on Tue Feb 8 2022 11:34:29 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
   </ul>
 </div>
 </body>

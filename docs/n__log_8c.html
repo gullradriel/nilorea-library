@@ -24,9 +24,11 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="NiloreaStudio.png"/></td>
   <td id="projectalign">
    <div id="projectname">Nilorea Library
    </div>
+   <div id="projectbrief">C utilities for networking, threading, graphics</div>
   </td>
  </tr>
  </tbody>
@@ -89,6 +91,9 @@ $(document).ready(function(){initNavTree('n__log_8c.html',''); initResizable(); 
   <div class="headertitle"><div class="title">n_log.c File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>generic logging system  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="n__common_8h_source.html">nilorea/n_common.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="n__log_8h_source.html">nilorea/n_log.h</a>&quot;</code><br />
 <code>#include &lt;pthread.h&gt;</code><br />
@@ -102,10 +107,10 @@ $(document).ready(function(){initNavTree('n__log_8c.html',''); initResizable(); 
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="n__log_8c__incl.png" border="0" usemap="#asrc_2n__log_8c" alt=""/></div>
 <map name="asrc_2n__log_8c" id="asrc_2n__log_8c">
-<area shape="rect" title=" " alt="" coords="826,5,913,32"/>
-<area shape="rect" href="n__common_8h.html" title=" " alt="" coords="427,80,566,107"/>
+<area shape="rect" title="generic logging system" alt="" coords="826,5,913,32"/>
+<area shape="rect" href="n__common_8h.html" title="Common headers and low&#45;level hugly functions &amp; define." alt="" coords="427,80,566,107"/>
 <area shape="rect" title=" " alt="" coords="301,229,366,256"/>
-<area shape="rect" href="n__log_8h.html" title=" " alt="" coords="751,155,858,181"/>
+<area shape="rect" href="n__log_8h.html" title="Generic log system." alt="" coords="751,155,858,181"/>
 <area shape="rect" title=" " alt="" coords="998,229,1074,256"/>
 <area shape="rect" title=" " alt="" coords="933,80,1012,107"/>
 <area shape="rect" title=" " alt="" coords="1036,80,1106,107"/>
@@ -114,7 +119,7 @@ $(document).ready(function(){initNavTree('n__log_8c.html',''); initResizable(); 
 <area shape="rect" title=" " alt="" coords="627,229,691,256"/>
 <area shape="rect" title=" " alt="" coords="24,155,94,181"/>
 <area shape="rect" title=" " alt="" coords="118,155,181,181"/>
-<area shape="rect" href="n__enum_8h.html" title=" " alt="" coords="554,155,676,181"/>
+<area shape="rect" href="n__enum_8h.html" title="Macro to build enums and their tostring counterparts, a reduced version of https://github...." alt="" coords="554,155,676,181"/>
 <area shape="rect" title=" " alt="" coords="371,155,438,181"/>
 <area shape="rect" title=" " alt="" coords="912,229,974,256"/>
 <area shape="rect" title=" " alt="" coords="715,229,795,256"/>
@@ -128,16 +133,19 @@ $(document).ready(function(){initNavTree('n__log_8c.html',''); initResizable(); 
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Data Structures</h2></td></tr>
 <tr class="memitem:struct_l_o_g___l_e_v_e_l_s"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="n__log_8c.html#struct_l_o_g___l_e_v_e_l_s">LOG_LEVELS</a></td></tr>
+<tr class="memdesc:struct_l_o_g___l_e_v_e_l_s"><td class="mdescLeft">&#160;</td><td class="mdescRight">internal struct to handle log types  <a href="n__log_8c.html#struct_l_o_g___l_e_v_e_l_s">More...</a><br /></td></tr>
 <tr class="separator:struct_l_o_g___l_e_v_e_l_s"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:gafbbbfcb9063b9f1454a499dbf98f7a56"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___l_o_g.html#gafbbbfcb9063b9f1454a499dbf98f7a56">_n_log</a> (int level, const char *file, const char *func, int line, const char *format,...)</td></tr>
-<tr class="memdesc:gafbbbfcb9063b9f1454a499dbf98f7a56"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logging function. log( level , const char *format , ... ) is a macro around _log.  <a href="group___l_o_g.html#gafbbbfcb9063b9f1454a499dbf98f7a56">More...</a><br /></td></tr>
+<tr class="memdesc:gafbbbfcb9063b9f1454a499dbf98f7a56"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logging function.  <a href="group___l_o_g.html#gafbbbfcb9063b9f1454a499dbf98f7a56">More...</a><br /></td></tr>
 <tr class="separator:gafbbbfcb9063b9f1454a499dbf98f7a56"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe6a9c3590b857b2efb7a03938a44d5d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="n__log_8c.html#afe6a9c3590b857b2efb7a03938a44d5d">_vscprintf_so</a> (const char *format, va_list pargs)</td></tr>
+<tr class="memdesc:afe6a9c3590b857b2efb7a03938a44d5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">compute the size of a string made with format 'fmt' and arguments in the va_list 'ap', helper for vasprintf  <a href="n__log_8c.html#afe6a9c3590b857b2efb7a03938a44d5d">More...</a><br /></td></tr>
 <tr class="separator:afe6a9c3590b857b2efb7a03938a44d5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6bf15f4f2f46c7238e58afb2ff61f1c4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="n__log_8c.html#a6bf15f4f2f46c7238e58afb2ff61f1c4">asprintf</a> (char *strp[], const char *fmt,...)</td></tr>
+<tr class="memdesc:a6bf15f4f2f46c7238e58afb2ff61f1c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">snprintf from a va_list  <a href="n__log_8c.html#a6bf15f4f2f46c7238e58afb2ff61f1c4">More...</a><br /></td></tr>
 <tr class="separator:a6bf15f4f2f46c7238e58afb2ff61f1c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gab0f29a8f3d807e2738376cd0bd657eb0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___l_o_g.html#gab0f29a8f3d807e2738376cd0bd657eb0">close_safe_logging</a> (<a class="el" href="group___l_o_g.html#struct_t_s___l_o_g">TS_LOG</a> *log)</td></tr>
 <tr class="memdesc:gab0f29a8f3d807e2738376cd0bd657eb0"><td class="mdescLeft">&#160;</td><td class="mdescRight">close a thread-safe logging file  <a href="group___l_o_g.html#gab0f29a8f3d807e2738376cd0bd657eb0">More...</a><br /></td></tr>
@@ -160,10 +168,11 @@ Functions</h2></td></tr>
 <tr class="memitem:gac83aa9829ddf0d169e2890ef63052b52"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___l_o_g.html#gac83aa9829ddf0d169e2890ef63052b52">set_log_file</a> (char *file)</td></tr>
 <tr class="memdesc:gac83aa9829ddf0d169e2890ef63052b52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the logging to a file instead of stderr.  <a href="group___l_o_g.html#gac83aa9829ddf0d169e2890ef63052b52">More...</a><br /></td></tr>
 <tr class="separator:gac83aa9829ddf0d169e2890ef63052b52"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gacad9b2d55788f46ddde811c986ead9ae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___l_o_g.html#gacad9b2d55788f46ddde811c986ead9ae">set_log_level</a> (const int <a class="el" href="ex__gui__particles_8c.html#ab5a71c2541c377b3d5b34fdb35964c2e">log_level</a>)</td></tr>
+<tr class="memitem:gacad9b2d55788f46ddde811c986ead9ae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___l_o_g.html#gacad9b2d55788f46ddde811c986ead9ae">set_log_level</a> (const int log_level)</td></tr>
 <tr class="memdesc:gacad9b2d55788f46ddde811c986ead9ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the global log level value ( static int LOG_LEVEL )  <a href="group___l_o_g.html#gacad9b2d55788f46ddde811c986ead9ae">More...</a><br /></td></tr>
 <tr class="separator:gacad9b2d55788f46ddde811c986ead9ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5ec7fd90ebe6015636bce974c192c86a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="n__log_8c.html#a5ec7fd90ebe6015636bce974c192c86a">vasprintf</a> (char **strp, const char *fmt, va_list ap)</td></tr>
+<tr class="memdesc:a5ec7fd90ebe6015636bce974c192c86a"><td class="mdescLeft">&#160;</td><td class="mdescRight">snprintf from a va_list, helper for asprintf  <a href="n__log_8c.html#a5ec7fd90ebe6015636bce974c192c86a">More...</a><br /></td></tr>
 <tr class="separator:a5ec7fd90ebe6015636bce974c192c86a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga4351d7c5fb7f3464480aebb763b70d69"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___l_o_g.html#ga4351d7c5fb7f3464480aebb763b70d69">write_safe_log</a> (<a class="el" href="group___l_o_g.html#struct_t_s___l_o_g">TS_LOG</a> *log, char *pat,...)</td></tr>
 <tr class="memdesc:ga4351d7c5fb7f3464480aebb763b70d69"><td class="mdescLeft">&#160;</td><td class="mdescRight">write to a thread-safe logging file  <a href="group___l_o_g.html#ga4351d7c5fb7f3464480aebb763b70d69">More...</a><br /></td></tr>
@@ -172,18 +181,24 @@ Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:ab936051f5aaca44c6c3c41dee0d19c36"><td class="memItemLeft" align="right" valign="top">static FILE *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="n__log_8c.html#ab936051f5aaca44c6c3c41dee0d19c36">log_file</a> = NULL</td></tr>
+<tr class="memdesc:ab936051f5aaca44c6c3c41dee0d19c36"><td class="mdescLeft">&#160;</td><td class="mdescRight">static FILE handling if logging to file is enabled  <a href="n__log_8c.html#ab936051f5aaca44c6c3c41dee0d19c36">More...</a><br /></td></tr>
 <tr class="separator:ab936051f5aaca44c6c3c41dee0d19c36"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3ecebc9d2fcb9f207a3373191a0ca251"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="n__log_8c.html#a3ecebc9d2fcb9f207a3373191a0ca251">LOG_LEVEL</a> = <a class="el" href="group___l_o_g.html#gae3b3638575ad43aa2dba40543dcec45c">LOG_NULL</a></td></tr>
+<tr class="memdesc:a3ecebc9d2fcb9f207a3373191a0ca251"><td class="mdescLeft">&#160;</td><td class="mdescRight">static global maximum wanted log level value  <a href="n__log_8c.html#a3ecebc9d2fcb9f207a3373191a0ca251">More...</a><br /></td></tr>
 <tr class="separator:a3ecebc9d2fcb9f207a3373191a0ca251"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a538d7688bbf77876683ab43e3632b204"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="n__log_8c.html#a538d7688bbf77876683ab43e3632b204">LOG_TYPE</a> = <a class="el" href="group___l_o_g.html#gaa6e90002990bd6fe70bf367456dc7d08">LOG_STDERR</a></td></tr>
+<tr class="memdesc:a538d7688bbf77876683ab43e3632b204"><td class="mdescLeft">&#160;</td><td class="mdescRight">static global logging type ( STDERR, FILE, SYSJRNL )  <a href="n__log_8c.html#a538d7688bbf77876683ab43e3632b204">More...</a><br /></td></tr>
 <tr class="separator:a538d7688bbf77876683ab43e3632b204"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a186eba90ff80001df254696dd2867cb8"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="n__log_8c.html#struct_l_o_g___l_e_v_e_l_s">LOG_LEVELS</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="n__log_8c.html#a186eba90ff80001df254696dd2867cb8">prioritynames</a> []</td></tr>
+<tr class="memdesc:a186eba90ff80001df254696dd2867cb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">array of log levels  <a href="n__log_8c.html#a186eba90ff80001df254696dd2867cb8">More...</a><br /></td></tr>
 <tr class="separator:a186eba90ff80001df254696dd2867cb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2935a9f42014b138d8e8cf7de161450c"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="n__log_8c.html#a2935a9f42014b138d8e8cf7de161450c">proc_name</a> = NULL</td></tr>
+<tr class="memdesc:a2935a9f42014b138d8e8cf7de161450c"><td class="mdescLeft">&#160;</td><td class="mdescRight">static proc name, for windows event log  <a href="n__log_8c.html#a2935a9f42014b138d8e8cf7de161450c">More...</a><br /></td></tr>
 <tr class="separator:a2935a9f42014b138d8e8cf7de161450c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >generic logging system </p><dl class="section author"><dt>Author</dt><dd>Castagnier Mickael </dd></dl>
+<div class="textblock"><p >generic logging system </p>
+<dl class="section author"><dt>Author</dt><dd>Castagnier Mickael </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2013-03-12 </dd></dl>
 
 <p class="definition">Definition in file <a class="el" href="n__log_8c_source.html">n_log.c</a>.</p>
@@ -209,7 +224,7 @@ Variables</h2></td></tr>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="struct_l_o_g___l_e_v_e_l_s__coll__graph.png" border="0" usemap="#a_l_o_g___l_e_v_e_l_s_coll__map" alt="Collaboration graph"/></div>
 <map name="a_l_o_g___l_e_v_e_l_s_coll__map" id="a_l_o_g___l_e_v_e_l_s_coll__map">
-<area shape="rect" title=" " alt="" coords="19,160,126,237"/>
+<area shape="rect" title="internal struct to handle log types" alt="" coords="19,160,126,237"/>
 <area shape="rect" title=" " alt="" coords="5,5,52,83"/>
 <area shape="rect" title=" " alt="" coords="99,5,137,83"/>
 </map>
@@ -221,22 +236,19 @@ Variables</h2></td></tr>
 <td class="fieldname">
 c_name</td>
 <td class="fielddoc">
-<p >string of log type </p>
-</td></tr>
+string of log type </td></tr>
 <tr><td class="fieldtype">
 <a id="a3496162d689b6d0cc531b00dcafee2be" name="a3496162d689b6d0cc531b00dcafee2be"></a>int</td>
 <td class="fieldname">
 c_val</td>
 <td class="fielddoc">
-<p >numeric value of log type </p>
-</td></tr>
+numeric value of log type </td></tr>
 <tr><td class="fieldtype">
 <a id="abe396fe7169ae2341fdbfee87ecf389d" name="abe396fe7169ae2341fdbfee87ecf389d"></a>char *</td>
 <td class="fieldname">
 w_name</td>
 <td class="fielddoc">
-<p >event log value </p>
-</td></tr>
+event log value </td></tr>
 </table>
 
 </div>
@@ -268,9 +280,19 @@ w_name</td>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="n__log_8c_source.html#l00168">168</a> of file <a class="el" href="n__log_8c_source.html">n_log.c</a>.</p>
+<p>compute the size of a string made with format 'fmt' and arguments in the va_list 'ap', helper for vasprintf </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">format</td><td>format to pass to printf </td></tr>
+    <tr><td class="paramname">pargs</td><td>va_list to use as printf parameter </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>-1 or the size of the string </dd></dl>
 
-<p class="reference">Referenced by <a class="el" href="n__log_8c_source.html#l00180">vasprintf()</a>.</p>
+<p class="definition">Definition at line <a class="el" href="n__log_8c_source.html#l00172">172</a> of file <a class="el" href="n__log_8c_source.html">n_log.c</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="n__log_8c_source.html#l00191">vasprintf()</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
@@ -278,12 +300,12 @@ w_name</td>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="n__log_8c_afe6a9c3590b857b2efb7a03938a44d5d_icgraph.png" border="0" usemap="#an__log_8c_afe6a9c3590b857b2efb7a03938a44d5d_icgraph" alt=""/></div>
 <map name="an__log_8c_afe6a9c3590b857b2efb7a03938a44d5d_icgraph" id="an__log_8c_afe6a9c3590b857b2efb7a03938a44d5d_icgraph">
-<area shape="rect" title=" " alt="" coords="437,56,535,83"/>
-<area shape="rect" href="n__log_8c.html#a5ec7fd90ebe6015636bce974c192c86a" title=" " alt="" coords="320,56,389,83"/>
-<area shape="rect" href="group___l_o_g.html#gafbbbfcb9063b9f1454a499dbf98f7a56" title="Logging function. log( level , const char *format , ... ) is a macro around _log." alt="" coords="210,31,270,57"/>
-<area shape="rect" href="group___l_o_g_n_o_d_u_p.html#ga650828539395216dd2f4f28da5131c42" title="Logging function. log( level , const char *format , ... ) is a macro around _log." alt="" coords="31,5,134,32"/>
-<area shape="rect" href="group___l_o_g_n_o_d_u_p.html#gacbf9e2a1400ab6f00a30186d9a5c4683" title="Logging function. log( level , const char *format , ... ) is a macro around _log." alt="" coords="5,56,160,83"/>
-<area shape="rect" href="n__log_8c.html#a6bf15f4f2f46c7238e58afb2ff61f1c4" title=" " alt="" coords="208,132,272,159"/>
+<area shape="rect" title="compute the size of a string made with format &#39;fmt&#39; and arguments in the va_list &#39;ap&#39;,..." alt="" coords="437,56,535,83"/>
+<area shape="rect" href="n__log_8c.html#a5ec7fd90ebe6015636bce974c192c86a" title="snprintf from a va_list, helper for asprintf" alt="" coords="320,56,389,83"/>
+<area shape="rect" href="group___l_o_g.html#gafbbbfcb9063b9f1454a499dbf98f7a56" title="Logging function." alt="" coords="210,31,270,57"/>
+<area shape="rect" href="group___l_o_g_n_o_d_u_p.html#ga650828539395216dd2f4f28da5131c42" title="Logging function." alt="" coords="31,5,134,32"/>
+<area shape="rect" href="group___l_o_g_n_o_d_u_p.html#gacbf9e2a1400ab6f00a30186d9a5c4683" title="Logging function." alt="" coords="5,56,160,83"/>
+<area shape="rect" href="n__log_8c.html#a6bf15f4f2f46c7238e58afb2ff61f1c4" title="snprintf from a va_list" alt="" coords="208,132,272,159"/>
 </map>
 </div>
 
@@ -321,9 +343,20 @@ w_name</td>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="n__log_8c_source.html#l00198">198</a> of file <a class="el" href="n__log_8c_source.html">n_log.c</a>.</p>
+<p>snprintf from a va_list </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">strp</td><td>string holding the result </td></tr>
+    <tr><td class="paramname">fmt</td><td>format to pass to printf </td></tr>
+    <tr><td class="paramname">...</td><td>list of format parameters </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>-1 or the size of the string </dd></dl>
 
-<p class="reference">References <a class="el" href="n__log_8c_source.html#l00180">vasprintf()</a>.</p>
+<p class="definition">Definition at line <a class="el" href="n__log_8c_source.html#l00216">216</a> of file <a class="el" href="n__log_8c_source.html">n_log.c</a>.</p>
+
+<p class="reference">References <a class="el" href="n__log_8c_source.html#l00191">vasprintf()</a>.</p>
 <div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
@@ -331,9 +364,9 @@ w_name</td>
 <div id="dynsection-3-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="n__log_8c_a6bf15f4f2f46c7238e58afb2ff61f1c4_cgraph.png" border="0" usemap="#an__log_8c_a6bf15f4f2f46c7238e58afb2ff61f1c4_cgraph" alt=""/></div>
 <map name="an__log_8c_a6bf15f4f2f46c7238e58afb2ff61f1c4_cgraph" id="an__log_8c_a6bf15f4f2f46c7238e58afb2ff61f1c4_cgraph">
-<area shape="rect" title=" " alt="" coords="5,5,69,32"/>
-<area shape="rect" href="n__log_8c.html#a5ec7fd90ebe6015636bce974c192c86a" title=" " alt="" coords="117,5,187,32"/>
-<area shape="rect" href="n__log_8c.html#afe6a9c3590b857b2efb7a03938a44d5d" title=" " alt="" coords="235,5,332,32"/>
+<area shape="rect" title="snprintf from a va_list" alt="" coords="5,5,69,32"/>
+<area shape="rect" href="n__log_8c.html#a5ec7fd90ebe6015636bce974c192c86a" title="snprintf from a va_list, helper for asprintf" alt="" coords="117,5,187,32"/>
+<area shape="rect" href="n__log_8c.html#afe6a9c3590b857b2efb7a03938a44d5d" title="compute the size of a string made with format &#39;fmt&#39; and arguments in the va_list &#39;ap&#39;,..." alt="" coords="235,5,332,32"/>
 </map>
 </div>
 
@@ -371,11 +404,22 @@ w_name</td>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="n__log_8c_source.html#l00180">180</a> of file <a class="el" href="n__log_8c_source.html">n_log.c</a>.</p>
+<p>snprintf from a va_list, helper for asprintf </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">strp</td><td>string holding the result </td></tr>
+    <tr><td class="paramname">fmt</td><td>format to pass to printf </td></tr>
+    <tr><td class="paramname">ap</td><td>va_list to use as printf parameter </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>-1 or the size of the string </dd></dl>
 
-<p class="reference">References <a class="el" href="n__log_8c_source.html#l00168">_vscprintf_so()</a>, and <a class="el" href="n__common_8h_source.html#l00182">Malloc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="n__log_8c_source.html#l00191">191</a> of file <a class="el" href="n__log_8c_source.html">n_log.c</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="n__log_8c_source.html#l00216">_n_log()</a>, <a class="el" href="n__nodup__log_8c_source.html#l00214">_n_nodup_log()</a>, <a class="el" href="n__nodup__log_8c_source.html#l00274">_n_nodup_log_indexed()</a>, and <a class="el" href="n__log_8c_source.html#l00198">asprintf()</a>.</p>
+<p class="reference">References <a class="el" href="n__log_8c_source.html#l00172">_vscprintf_so()</a>, and <a class="el" href="n__common_8h_source.html#l00182">Malloc</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="n__log_8c_source.html#l00234">_n_log()</a>, <a class="el" href="n__nodup__log_8c_source.html#l00214">_n_nodup_log()</a>, <a class="el" href="n__nodup__log_8c_source.html#l00274">_n_nodup_log_indexed()</a>, and <a class="el" href="n__log_8c_source.html#l00216">asprintf()</a>.</p>
 <div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
@@ -383,8 +427,8 @@ w_name</td>
 <div id="dynsection-4-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="n__log_8c_a5ec7fd90ebe6015636bce974c192c86a_cgraph.png" border="0" usemap="#an__log_8c_a5ec7fd90ebe6015636bce974c192c86a_cgraph" alt=""/></div>
 <map name="an__log_8c_a5ec7fd90ebe6015636bce974c192c86a_cgraph" id="an__log_8c_a5ec7fd90ebe6015636bce974c192c86a_cgraph">
-<area shape="rect" title=" " alt="" coords="5,5,75,32"/>
-<area shape="rect" href="n__log_8c.html#afe6a9c3590b857b2efb7a03938a44d5d" title=" " alt="" coords="123,5,220,32"/>
+<area shape="rect" title="snprintf from a va_list, helper for asprintf" alt="" coords="5,5,75,32"/>
+<area shape="rect" href="n__log_8c.html#afe6a9c3590b857b2efb7a03938a44d5d" title="compute the size of a string made with format &#39;fmt&#39; and arguments in the va_list &#39;ap&#39;,..." alt="" coords="123,5,220,32"/>
 </map>
 </div>
 <div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -394,11 +438,11 @@ w_name</td>
 <div id="dynsection-5-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="n__log_8c_a5ec7fd90ebe6015636bce974c192c86a_icgraph.png" border="0" usemap="#an__log_8c_a5ec7fd90ebe6015636bce974c192c86a_icgraph" alt=""/></div>
 <map name="an__log_8c_a5ec7fd90ebe6015636bce974c192c86a_icgraph" id="an__log_8c_a5ec7fd90ebe6015636bce974c192c86a_icgraph">
-<area shape="rect" title=" " alt="" coords="320,56,389,83"/>
-<area shape="rect" href="group___l_o_g.html#gafbbbfcb9063b9f1454a499dbf98f7a56" title="Logging function. log( level , const char *format , ... ) is a macro around _log." alt="" coords="210,31,270,57"/>
-<area shape="rect" href="group___l_o_g_n_o_d_u_p.html#ga650828539395216dd2f4f28da5131c42" title="Logging function. log( level , const char *format , ... ) is a macro around _log." alt="" coords="31,5,134,32"/>
-<area shape="rect" href="group___l_o_g_n_o_d_u_p.html#gacbf9e2a1400ab6f00a30186d9a5c4683" title="Logging function. log( level , const char *format , ... ) is a macro around _log." alt="" coords="5,56,160,83"/>
-<area shape="rect" href="n__log_8c.html#a6bf15f4f2f46c7238e58afb2ff61f1c4" title=" " alt="" coords="208,132,272,159"/>
+<area shape="rect" title="snprintf from a va_list, helper for asprintf" alt="" coords="320,56,389,83"/>
+<area shape="rect" href="group___l_o_g.html#gafbbbfcb9063b9f1454a499dbf98f7a56" title="Logging function." alt="" coords="210,31,270,57"/>
+<area shape="rect" href="group___l_o_g_n_o_d_u_p.html#ga650828539395216dd2f4f28da5131c42" title="Logging function." alt="" coords="31,5,134,32"/>
+<area shape="rect" href="group___l_o_g_n_o_d_u_p.html#gacbf9e2a1400ab6f00a30186d9a5c4683" title="Logging function." alt="" coords="5,56,160,83"/>
+<area shape="rect" href="n__log_8c.html#a6bf15f4f2f46c7238e58afb2ff61f1c4" title="snprintf from a va_list" alt="" coords="208,132,272,159"/>
 </map>
 </div>
 
@@ -424,13 +468,14 @@ w_name</td>
   </tr>
 </table>
 </div><div class="memdoc">
-<p >static FILE handling if logging to file is enabled </p>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ex_gui_particles_8c-example.html#a16">ex_gui_particles.c</a>.</dd>
+
+<p>static FILE handling if logging to file is enabled </p>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ex_gui_particles_8c-example.html#a6">ex_gui_particles.c</a>.</dd>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="n__log_8c_source.html#l00053">53</a> of file <a class="el" href="n__log_8c_source.html">n_log.c</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="n__log_8c_source.html#l00216">_n_log()</a>, <a class="el" href="n__log_8c_source.html#l00160">get_log_file()</a>, <a class="el" href="ex__gui__particles_8c_source.html#l00032">main()</a>, and <a class="el" href="n__log_8c_source.html#l00135">set_log_file()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="n__log_8c_source.html#l00234">_n_log()</a>, <a class="el" href="n__log_8c_source.html#l00160">get_log_file()</a>, and <a class="el" href="n__log_8c_source.html#l00135">set_log_file()</a>.</p>
 
 </div>
 </div>
@@ -453,7 +498,8 @@ w_name</td>
   </tr>
 </table>
 </div><div class="memdoc">
-<p >static global maximum wanted log level value </p>
+
+<p>static global maximum wanted log level value </p>
 
 <p class="definition">Definition at line <a class="el" href="n__log_8c_source.html#l00047">47</a> of file <a class="el" href="n__log_8c_source.html">n_log.c</a>.</p>
 
@@ -480,11 +526,12 @@ w_name</td>
   </tr>
 </table>
 </div><div class="memdoc">
-<p >static global logging type ( STDERR, FILE, SYSJRNL ) </p>
+
+<p>static global logging type ( STDERR, FILE, SYSJRNL ) </p>
 
 <p class="definition">Definition at line <a class="el" href="n__log_8c_source.html#l00050">50</a> of file <a class="el" href="n__log_8c_source.html">n_log.c</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="n__log_8c_source.html#l00216">_n_log()</a>, and <a class="el" href="n__log_8c_source.html#l00097">set_log_level()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="n__log_8c_source.html#l00234">_n_log()</a>, and <a class="el" href="n__log_8c_source.html#l00097">set_log_level()</a>.</p>
 
 </div>
 </div>
@@ -519,19 +566,20 @@ w_name</td>
 <div class="line">    {           <span class="stringliteral">&quot;DEBUG&quot;</span>,        <a class="code hl_define" href="group___l_o_g.html#ga6ff63e8955665c4a58b1598f2b07c51a">LOG_DEBUG</a>,                      <span class="stringliteral">&quot;INFORMATION&quot;</span> },</div>
 <div class="line">    {           NULL,                           -1,                                              NULL }</div>
 <div class="line">}</div>
-<div class="ttc" id="agroup___l_o_g_html_ga12b2a3bb9e3adfeb35b4e5514e7d9043"><div class="ttname"><a href="group___l_o_g.html#ga12b2a3bb9e3adfeb35b4e5514e7d9043">LOG_ALERT</a></div><div class="ttdeci">#define LOG_ALERT</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00054">n_log.h:54</a></div></div>
-<div class="ttc" id="agroup___l_o_g_html_ga5c6e8b60c2512dfc0e0224d25a61cb2c"><div class="ttname"><a href="group___l_o_g.html#ga5c6e8b60c2512dfc0e0224d25a61cb2c">LOG_EMERG</a></div><div class="ttdeci">#define LOG_EMERG</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00052">n_log.h:52</a></div></div>
-<div class="ttc" id="agroup___l_o_g_html_ga6ff63e8955665c4a58b1598f2b07c51a"><div class="ttname"><a href="group___l_o_g.html#ga6ff63e8955665c4a58b1598f2b07c51a">LOG_DEBUG</a></div><div class="ttdeci">#define LOG_DEBUG</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00066">n_log.h:66</a></div></div>
-<div class="ttc" id="agroup___l_o_g_html_ga96fad55b3f5adf08c39e4c877cf185e3"><div class="ttname"><a href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a></div><div class="ttdeci">#define LOG_ERR</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00058">n_log.h:58</a></div></div>
-<div class="ttc" id="agroup___l_o_g_html_gaaa731313f5c63e855fefb5f6519c3283"><div class="ttname"><a href="group___l_o_g.html#gaaa731313f5c63e855fefb5f6519c3283">LOG_CRIT</a></div><div class="ttdeci">#define LOG_CRIT</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00056">n_log.h:56</a></div></div>
-<div class="ttc" id="agroup___l_o_g_html_gad89ee324d180cdcd7defcc709ff9ca42"><div class="ttname"><a href="group___l_o_g.html#gad89ee324d180cdcd7defcc709ff9ca42">LOG_NOTICE</a></div><div class="ttdeci">#define LOG_NOTICE</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00062">n_log.h:62</a></div></div>
-<div class="ttc" id="agroup___l_o_g_html_gadf4476a6a4ea6c74231c826e899d7189"><div class="ttname"><a href="group___l_o_g.html#gadf4476a6a4ea6c74231c826e899d7189">LOG_WARNING</a></div><div class="ttdeci">#define LOG_WARNING</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00060">n_log.h:60</a></div></div>
-<div class="ttc" id="agroup___l_o_g_html_gaeb4f36db01bd128c7afeac5889dac311"><div class="ttname"><a href="group___l_o_g.html#gaeb4f36db01bd128c7afeac5889dac311">LOG_INFO</a></div><div class="ttdeci">#define LOG_INFO</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00064">n_log.h:64</a></div></div>
-</div><!-- fragment --><p >array of log levels </p>
+<div class="ttc" id="agroup___l_o_g_html_ga12b2a3bb9e3adfeb35b4e5514e7d9043"><div class="ttname"><a href="group___l_o_g.html#ga12b2a3bb9e3adfeb35b4e5514e7d9043">LOG_ALERT</a></div><div class="ttdeci">#define LOG_ALERT</div><div class="ttdoc">action must be taken immediately</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00054">n_log.h:54</a></div></div>
+<div class="ttc" id="agroup___l_o_g_html_ga5c6e8b60c2512dfc0e0224d25a61cb2c"><div class="ttname"><a href="group___l_o_g.html#ga5c6e8b60c2512dfc0e0224d25a61cb2c">LOG_EMERG</a></div><div class="ttdeci">#define LOG_EMERG</div><div class="ttdoc">system is unusable</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00052">n_log.h:52</a></div></div>
+<div class="ttc" id="agroup___l_o_g_html_ga6ff63e8955665c4a58b1598f2b07c51a"><div class="ttname"><a href="group___l_o_g.html#ga6ff63e8955665c4a58b1598f2b07c51a">LOG_DEBUG</a></div><div class="ttdeci">#define LOG_DEBUG</div><div class="ttdoc">debug-level messages</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00066">n_log.h:66</a></div></div>
+<div class="ttc" id="agroup___l_o_g_html_ga96fad55b3f5adf08c39e4c877cf185e3"><div class="ttname"><a href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a></div><div class="ttdeci">#define LOG_ERR</div><div class="ttdoc">error conditions</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00058">n_log.h:58</a></div></div>
+<div class="ttc" id="agroup___l_o_g_html_gaaa731313f5c63e855fefb5f6519c3283"><div class="ttname"><a href="group___l_o_g.html#gaaa731313f5c63e855fefb5f6519c3283">LOG_CRIT</a></div><div class="ttdeci">#define LOG_CRIT</div><div class="ttdoc">critical conditions</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00056">n_log.h:56</a></div></div>
+<div class="ttc" id="agroup___l_o_g_html_gad89ee324d180cdcd7defcc709ff9ca42"><div class="ttname"><a href="group___l_o_g.html#gad89ee324d180cdcd7defcc709ff9ca42">LOG_NOTICE</a></div><div class="ttdeci">#define LOG_NOTICE</div><div class="ttdoc">normal but significant condition</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00062">n_log.h:62</a></div></div>
+<div class="ttc" id="agroup___l_o_g_html_gadf4476a6a4ea6c74231c826e899d7189"><div class="ttname"><a href="group___l_o_g.html#gadf4476a6a4ea6c74231c826e899d7189">LOG_WARNING</a></div><div class="ttdeci">#define LOG_WARNING</div><div class="ttdoc">warning conditions</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00060">n_log.h:60</a></div></div>
+<div class="ttc" id="agroup___l_o_g_html_gaeb4f36db01bd128c7afeac5889dac311"><div class="ttname"><a href="group___l_o_g.html#gaeb4f36db01bd128c7afeac5889dac311">LOG_INFO</a></div><div class="ttdeci">#define LOG_INFO</div><div class="ttdoc">informational</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00064">n_log.h:64</a></div></div>
+</div><!-- fragment -->
+<p>array of log levels </p>
 
 <p class="definition">Definition at line <a class="el" href="n__log_8c_source.html#l00033">33</a> of file <a class="el" href="n__log_8c_source.html">n_log.c</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="n__log_8c_source.html#l00216">_n_log()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="n__log_8c_source.html#l00234">_n_log()</a>.</p>
 
 </div>
 </div>
@@ -546,11 +594,12 @@ w_name</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >static proc name, for windows event log </p>
+
+<p>static proc name, for windows event log </p>
 
 <p class="definition">Definition at line <a class="el" href="n__log_8c_source.html#l00056">56</a> of file <a class="el" href="n__log_8c_source.html">n_log.c</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="n__log_8c_source.html#l00216">_n_log()</a>, <a class="el" href="n__log_8c_source.html#l00083">close_sysjrnl()</a>, and <a class="el" href="n__log_8c_source.html#l00064">open_sysjrnl()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="n__log_8c_source.html#l00234">_n_log()</a>, <a class="el" href="n__log_8c_source.html#l00083">close_sysjrnl()</a>, and <a class="el" href="n__log_8c_source.html#l00064">open_sysjrnl()</a>.</p>
 
 </div>
 </div>
@@ -560,7 +609,7 @@ w_name</td>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="n__log_8c.html">n_log.c</a></li>
-    <li class="footer">Generated on Fri Feb 4 2022 17:12:04 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+    <li class="footer">Generated on Tue Feb 8 2022 14:10:26 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
   </ul>
 </div>
 </body>

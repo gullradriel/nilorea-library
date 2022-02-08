@@ -3,16 +3,11 @@ var group___a_n_i_m___l_i_b =
     [ "ANIM_DATA", "group___a_n_i_m___l_i_b.html#struct_a_n_i_m___d_a_t_a", [
       [ "elapsed", "group___a_n_i_m___l_i_b.html#a5cdb4a3091358a089feb56c34c9ada89", null ],
       [ "frame", "group___a_n_i_m___l_i_b.html#ac24c219490c4c52abb9419a3cb78734a", null ],
-      [ "id", "group___a_n_i_m___l_i_b.html#a46bb8f47f76ddba7aa7c9d4daf1f7cee", null ],
       [ "lib", "group___a_n_i_m___l_i_b.html#af28a6685e802d71d64f887998a72f6a2", null ],
       [ "x", "group___a_n_i_m___l_i_b.html#ae7b17885f76beaaa4f367566103c2313", null ],
       [ "y", "group___a_n_i_m___l_i_b.html#a9ae7208fc4e921f59b059e77daa3e8bf", null ]
     ] ],
-    [ "ANIM_FRAME", "group___a_n_i_m___l_i_b.html#struct_a_n_i_m___f_r_a_m_e", [
-      [ "duration", "group___a_n_i_m___l_i_b.html#a511e19020df9df971acbc1870b8be11a", null ],
-      [ "x", "group___a_n_i_m___l_i_b.html#abd27f58209ffb92a80c0ca421da13b5d", null ],
-      [ "y", "group___a_n_i_m___l_i_b.html#a28ad44b64e52174af42ed36711c99ac7", null ]
-    ] ],
+    [ "ANIM_FRAME", "group___a_n_i_m___l_i_b.html#struct_a_n_i_m___f_r_a_m_e", null ],
     [ "ANIM_GFX", "group___a_n_i_m___l_i_b.html#struct_a_n_i_m___g_f_x", [
       [ "bmp", "group___a_n_i_m___l_i_b.html#ac7f97a94a96e948f6a78d73acacf875f", null ],
       [ "frames", "group___a_n_i_m___l_i_b.html#a95583e7125821b52934b7c2ea88dca41", null ],

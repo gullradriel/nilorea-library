@@ -1,5 +1,5 @@
 <map id="netw_start_thr_engine" name="netw_start_thr_engine">
-<area shape="rect" id="node1" title="Start the NETWORK netw Threaded Engine. Create a sending &amp; receiving thread." alt="" coords="5,132,155,159"/>
+<area shape="rect" id="node1" title="Start the NETWORK netw Threaded Engine." alt="" coords="5,132,155,159"/>
 <area shape="rect" id="node2" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga63e06c0450013078c54bb4951e9438ac" title="To Thread Receiving function." alt="" coords="205,107,315,133"/>
 <area shape="rect" id="node10" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga2ef0aab7ff9fb531466a536773b53683" title="Thread send function." alt="" coords="203,157,317,184"/>
 <area shape="rect" id="node3" href="$group___n___s_t_r.html#ga0a864a4ce4997389f2e5e2e16c51a30a" title="Free a N_STR pointer structure." alt="" coords="373,56,468,83"/>
@@ -7,7 +7,7 @@
 <area shape="rect" id="node6" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaf25c0f462f174092815b0c5d019441db" title="Get the state of a network." alt="" coords="365,157,476,184"/>
 <area shape="rect" id="node7" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaa8e1fe7978995197f08aa0ef24a76c33" title="Restart or reset the specified network ability." alt="" coords="383,107,458,133"/>
 <area shape="rect" id="node5" href="$group___l_i_s_t.html#ga678e828550efc8e64a836bb8c713c2f4" title="Allocate a new node to link in a list." alt="" coords="524,5,628,32"/>
-<area shape="rect" id="node8" href="$group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755" title="Empty and Free a list container. Call the destructor each time." alt="" coords="531,132,621,159"/>
+<area shape="rect" id="node8" href="$group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755" title="Empty and Free a list container." alt="" coords="531,132,621,159"/>
 <area shape="rect" id="node9" href="$group___l_i_s_t.html#ga1dafe7a250ddad51fadd375f057287e7" title="Empty a LIST list of pointers." alt="" coords="676,107,759,133"/>
 <area shape="rect" id="node11" href="$group___n___t_i_m_e.html#ga690f12dde1a446d47b8bf5f959493003" title="wrapper around usleep for API consistency" alt="" coords="387,208,454,235"/>
 </map>

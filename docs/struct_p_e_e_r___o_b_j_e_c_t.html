@@ -24,9 +24,11 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="NiloreaStudio.png"/></td>
   <td id="projectalign">
    <div id="projectname">Nilorea Library
    </div>
+   <div id="projectbrief">C utilities for networking, threading, graphics</div>
   </td>
  </tr>
  </tbody>
@@ -87,6 +89,9 @@ $(document).ready(function(){initNavTree('struct_p_e_e_r___o_b_j_e_c_t.html','')
   <div class="headertitle"><div class="title">PEER_OBJECT Struct Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>a simple structure to hold objects positions / timeouts  
+ <a href="struct_p_e_e_r___o_b_j_e_c_t.html#details">More...</a></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for PEER_OBJECT:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
@@ -94,7 +99,7 @@ $(document).ready(function(){initNavTree('struct_p_e_e_r___o_b_j_e_c_t.html','')
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="struct_p_e_e_r___o_b_j_e_c_t__coll__graph.png" border="0" usemap="#a_p_e_e_r___o_b_j_e_c_t_coll__map" alt="Collaboration graph"/></div>
 <map name="a_p_e_e_r___o_b_j_e_c_t_coll__map" id="a_p_e_e_r___o_b_j_e_c_t_coll__map">
-<area shape="rect" title=" " alt="" coords="22,160,137,237"/>
+<area shape="rect" title="a simple structure to hold objects positions / timeouts" alt="" coords="22,160,137,237"/>
 <area shape="rect" title=" " alt="" coords="5,5,65,83"/>
 <area shape="rect" title=" " alt="" coords="104,5,143,83"/>
 </map>
@@ -103,10 +108,13 @@ $(document).ready(function(){initNavTree('struct_p_e_e_r___o_b_j_e_c_t.html','')
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Data Fields</h2></td></tr>
 <tr class="memitem:a762a558b9c9fa76e446e89cca3329209"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_p_e_e_r___o_b_j_e_c_t.html#a762a558b9c9fa76e446e89cca3329209">id</a></td></tr>
+<tr class="memdesc:a762a558b9c9fa76e446e89cca3329209"><td class="mdescLeft">&#160;</td><td class="mdescRight">remote object id  <a href="struct_p_e_e_r___o_b_j_e_c_t.html#a762a558b9c9fa76e446e89cca3329209">More...</a><br /></td></tr>
 <tr class="separator:a762a558b9c9fa76e446e89cca3329209"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a588d82db1e4703aa363a8f866e99fc77"><td class="memItemLeft" align="right" valign="top">long int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_p_e_e_r___o_b_j_e_c_t.html#a588d82db1e4703aa363a8f866e99fc77">life_time</a></td></tr>
+<tr class="memdesc:a588d82db1e4703aa363a8f866e99fc77"><td class="mdescLeft">&#160;</td><td class="mdescRight">current life time, updated when receiving a position from a peer.  <a href="struct_p_e_e_r___o_b_j_e_c_t.html#a588d82db1e4703aa363a8f866e99fc77">More...</a><br /></td></tr>
 <tr class="separator:a588d82db1e4703aa363a8f866e99fc77"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab2c5d731fde94a1a4415fabe1aba1284"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_p_e_e_r___o_b_j_e_c_t.html#ab2c5d731fde94a1a4415fabe1aba1284">position</a> [3]</td></tr>
+<tr class="memdesc:ab2c5d731fde94a1a4415fabe1aba1284"><td class="mdescLeft">&#160;</td><td class="mdescRight">last received object position  <a href="struct_p_e_e_r___o_b_j_e_c_t.html#ab2c5d731fde94a1a4415fabe1aba1284">More...</a><br /></td></tr>
 <tr class="separator:ab2c5d731fde94a1a4415fabe1aba1284"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -127,7 +135,8 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >remote object id </p>
+
+<p>remote object id </p>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ex_gui_netclient_8c-example.html#a2">ex_gui_netclient.c</a>.</dd>
 </dl>
 
@@ -146,7 +155,9 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >current life time, updated when receiving a position from a peer. Object is removed if it reach 0 </p>
+
+<p>current life time, updated when receiving a position from a peer. </p>
+<p >Object is removed if it reach 0 </p>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ex_gui_netclient_8c-example.html#a3">ex_gui_netclient.c</a>.</dd>
 </dl>
 
@@ -165,7 +176,8 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >last received object position </p>
+
+<p>last received object position </p>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ex_gui_netclient_8c-example.html#a1">ex_gui_netclient.c</a>.</dd>
 </dl>
 
@@ -182,7 +194,7 @@ Data Fields</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="struct_p_e_e_r___o_b_j_e_c_t.html">PEER_OBJECT</a></li>
-    <li class="footer">Generated on Fri Feb 4 2022 16:56:07 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+    <li class="footer">Generated on Tue Feb 8 2022 14:10:27 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
   </ul>
 </div>
 </body>

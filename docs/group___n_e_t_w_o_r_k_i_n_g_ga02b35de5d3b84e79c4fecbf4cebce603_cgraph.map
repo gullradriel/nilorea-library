@@ -1,6 +1,6 @@
 <map id="netw_send_string_to_all" name="netw_send_string_to_all">
 <area shape="rect" id="node1" title="Add a string to the network, aiming all server&#45;side users." alt="" coords="5,132,167,159"/>
-<area shape="rect" id="node2" href="$group___n_e_t_w_o_r_k___m_s_g.html#gafb91c3ea7bfa93212141fa1fe074fb3d" title=" " alt="" coords="215,157,389,184"/>
+<area shape="rect" id="node2" href="$group___n_e_t_w_o_r_k___m_s_g.html#gafb91c3ea7bfa93212141fa1fe074fb3d" title="make a network NETMSG_STRING message with given parameters" alt="" coords="215,157,389,184"/>
 <area shape="rect" id="node18" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga10429a9fa106b61c38f28635242ce502" title="Add a message to send in aimed NETWORK." alt="" coords="454,56,563,83"/>
 <area shape="rect" id="node3" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga9aa63e987d00d99d9a21aec35efecf74" title="Add an int to the int list int the message." alt="" coords="451,5,566,32"/>
 <area shape="rect" id="node6" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga84f36b52e6d9dfe9ca6186c3177f5472" title="Add a copy of str to the string list in the message." alt="" coords="437,107,580,133"/>
@@ -13,7 +13,7 @@
 <area shape="rect" id="node7" href="$group___n___s_t_r.html#ga0a864a4ce4997389f2e5e2e16c51a30a" title="Free a N_STR pointer structure." alt="" coords="640,107,735,133"/>
 <area shape="rect" id="node9" href="$group___n___s_t_r.html#ga873edbb1f8787d0a78a13ccbbed9b9f9" title="create a new N_STR string" alt="" coords="809,157,884,184"/>
 <area shape="rect" id="node11" href="$group___l_i_s_t.html#gada615e3b144e97bcff147dfe89f6fef6" title="Initialiaze a generic list container to max_items pointers." alt="" coords="628,208,747,235"/>
-<area shape="rect" id="node13" href="$group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755" title="Empty and Free a list container. Call the destructor each time." alt="" coords="643,259,732,285"/>
+<area shape="rect" id="node13" href="$group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755" title="Empty and Free a list container." alt="" coords="643,259,732,285"/>
 <area shape="rect" id="node14" href="$group___l_i_s_t.html#ga1dafe7a250ddad51fadd375f057287e7" title="Empty a LIST list of pointers." alt="" coords="805,259,888,285"/>
 <area shape="rect" id="node16" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga0cf26e3b1e26847bbd66fbd4b4a1a67c" title="If needed swap bytes for a double." alt="" coords="660,309,715,336"/>
 <area shape="rect" id="node17" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga4f7b627b47a1ee6976089dc4ab0a91b9" title="Swap bytes endiannes for a double." alt="" coords="798,309,895,336"/>

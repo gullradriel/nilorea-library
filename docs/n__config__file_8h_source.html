@@ -24,9 +24,11 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="NiloreaStudio.png"/></td>
   <td id="projectalign">
    <div id="projectname">Nilorea Library
    </div>
+   <div id="projectbrief">C utilities for networking, threading, graphics</div>
   </td>
  </tr>
  </tbody>
@@ -104,15 +106,15 @@ $(document).ready(function(){initNavTree('n__config__file_8h_source.html',''); i
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="group___c_o_n_f_i_g_f_i_l_e.html">   32</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="group___c_o_n_f_i_g_f_i_l_e.html#struct_c_o_n_f_i_g___f_i_l_e___s_e_c_t_i_o_n">CONFIG_FILE_SECTION</a></div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>{</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="group___c_o_n_f_i_g_f_i_l_e.html#a82e7e100e7369a44928a9cfbfe6e81e1">   34</a></span>    <span class="keywordtype">char</span> *<a class="code hl_variable" href="group___c_o_n_f_i_g_f_i_l_e.html#a82e7e100e7369a44928a9cfbfe6e81e1">section_name</a> ;</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="group___c_o_n_f_i_g_f_i_l_e.html#a7a312c60c64fa71c4f9b7dbbed66af16">   35</a></span>    <a class="code hl_struct" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *<a class="code hl_variable" href="group___c_o_n_f_i_g_f_i_l_e.html#a7a312c60c64fa71c4f9b7dbbed66af16">entries</a> ;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keywordtype">char</span> *section_name ;</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <a class="code hl_struct" href="group___h_a_s_h___t_a_b_l_e.html#struct_h_a_s_h___t_a_b_l_e">HASH_TABLE</a> *entries ;</div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>} <a class="code hl_struct" href="group___c_o_n_f_i_g_f_i_l_e.html#struct_c_o_n_f_i_g___f_i_l_e___s_e_c_t_i_o_n">CONFIG_FILE_SECTION</a> ;</div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="group___c_o_n_f_i_g_f_i_l_e.html">   40</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="group___c_o_n_f_i_g_f_i_l_e.html#struct_c_o_n_f_i_g___f_i_l_e">CONFIG_FILE</a></div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>{</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="group___c_o_n_f_i_g_f_i_l_e.html#aa37d75605afc940d7c278f436c929eb6">   42</a></span>    <span class="keywordtype">char</span> *<a class="code hl_variable" href="group___c_o_n_f_i_g_f_i_l_e.html#aa37d75605afc940d7c278f436c929eb6">filename</a> ;</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="group___c_o_n_f_i_g_f_i_l_e.html#ac75757e84bd2eaf5b9a874b69835e0f0">   43</a></span>    <a class="code hl_struct" href="group___l_i_s_t.html#struct_l_i_s_t">LIST</a> *<a class="code hl_variable" href="group___c_o_n_f_i_g_f_i_l_e.html#ac75757e84bd2eaf5b9a874b69835e0f0">sections</a> ;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keywordtype">char</span> *filename ;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <a class="code hl_struct" href="group___l_i_s_t.html#struct_l_i_s_t">LIST</a> *sections ;</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>} <a class="code hl_struct" href="group___c_o_n_f_i_g_f_i_l_e.html#struct_c_o_n_f_i_g___f_i_l_e">CONFIG_FILE</a> ;</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="comment">/* load a config from a file */</span></div>
@@ -159,30 +161,26 @@ $(document).ready(function(){initNavTree('n__config__file_8h_source.html',''); i
 <div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
 <div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="preprocessor">#endif </span><span class="comment">/* #ifndef __N_CONFIG_FILE__ */</span><span class="preprocessor"></span></div>
 <div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
-<div class="ttc" id="agroup___c_o_n_f_i_g_f_i_l_e_html_a7a312c60c64fa71c4f9b7dbbed66af16"><div class="ttname"><a href="group___c_o_n_f_i_g_f_i_l_e.html#a7a312c60c64fa71c4f9b7dbbed66af16">CONFIG_FILE_SECTION::entries</a></div><div class="ttdeci">HASH_TABLE * entries</div><div class="ttdef"><b>Definition:</b> <a href="n__config__file_8h_source.html#l00035">n_config_file.h:35</a></div></div>
-<div class="ttc" id="agroup___c_o_n_f_i_g_f_i_l_e_html_a82e7e100e7369a44928a9cfbfe6e81e1"><div class="ttname"><a href="group___c_o_n_f_i_g_f_i_l_e.html#a82e7e100e7369a44928a9cfbfe6e81e1">CONFIG_FILE_SECTION::section_name</a></div><div class="ttdeci">char * section_name</div><div class="ttdef"><b>Definition:</b> <a href="n__config__file_8h_source.html#l00034">n_config_file.h:34</a></div></div>
-<div class="ttc" id="agroup___c_o_n_f_i_g_f_i_l_e_html_aa37d75605afc940d7c278f436c929eb6"><div class="ttname"><a href="group___c_o_n_f_i_g_f_i_l_e.html#aa37d75605afc940d7c278f436c929eb6">CONFIG_FILE::filename</a></div><div class="ttdeci">char * filename</div><div class="ttdef"><b>Definition:</b> <a href="n__config__file_8h_source.html#l00042">n_config_file.h:42</a></div></div>
-<div class="ttc" id="agroup___c_o_n_f_i_g_f_i_l_e_html_ac75757e84bd2eaf5b9a874b69835e0f0"><div class="ttname"><a href="group___c_o_n_f_i_g_f_i_l_e.html#ac75757e84bd2eaf5b9a874b69835e0f0">CONFIG_FILE::sections</a></div><div class="ttdeci">LIST * sections</div><div class="ttdef"><b>Definition:</b> <a href="n__config__file_8h_source.html#l00043">n_config_file.h:43</a></div></div>
 <div class="ttc" id="agroup___c_o_n_f_i_g_f_i_l_e_html_ga0206fadb78039ac602fc0696b27b85a6"><div class="ttname"><a href="group___c_o_n_f_i_g_f_i_l_e.html#ga0206fadb78039ac602fc0696b27b85a6">load_config_file</a></div><div class="ttdeci">CONFIG_FILE * load_config_file(char *filename, int *errors)</div><div class="ttdoc">load a config file</div><div class="ttdef"><b>Definition:</b> <a href="n__config__file_8c_source.html#l00051">n_config_file.c:51</a></div></div>
 <div class="ttc" id="agroup___c_o_n_f_i_g_f_i_l_e_html_ga1b22438cb7d7a274b748d49e555f7f50"><div class="ttname"><a href="group___c_o_n_f_i_g_f_i_l_e.html#ga1b22438cb7d7a274b748d49e555f7f50">write_config_file</a></div><div class="ttdeci">int write_config_file(CONFIG_FILE *cfg_file, char *filename)</div><div class="ttdoc">write a config file</div><div class="ttdef"><b>Definition:</b> <a href="n__config__file_8c_source.html#l00368">n_config_file.c:368</a></div></div>
 <div class="ttc" id="agroup___c_o_n_f_i_g_f_i_l_e_html_ga1ce5c0ab9aff3664d2284a26f6263b85"><div class="ttname"><a href="group___c_o_n_f_i_g_f_i_l_e.html#ga1ce5c0ab9aff3664d2284a26f6263b85">get_config_section_value</a></div><div class="ttdeci">char * get_config_section_value(CONFIG_FILE *cfg_file, char *section_name, int section_position, char *entry, int entry_position)</div><div class="ttdoc">Function to parse sections and get entries values.</div><div class="ttdef"><b>Definition:</b> <a href="n__config__file_8c_source.html#l00490">n_config_file.c:490</a></div></div>
 <div class="ttc" id="agroup___c_o_n_f_i_g_f_i_l_e_html_ga5c6e573bf39871c909dcd71c9bcc13b4"><div class="ttname"><a href="group___c_o_n_f_i_g_f_i_l_e.html#ga5c6e573bf39871c909dcd71c9bcc13b4">destroy_config_file</a></div><div class="ttdeci">int destroy_config_file(CONFIG_FILE **cfg_file)</div><div class="ttdoc">Destroy a loaded config file.</div><div class="ttdef"><b>Definition:</b> <a href="n__config__file_8c_source.html#l00540">n_config_file.c:540</a></div></div>
 <div class="ttc" id="agroup___c_o_n_f_i_g_f_i_l_e_html_gae3a92ac0d4158b6991e18beba9446689"><div class="ttname"><a href="group___c_o_n_f_i_g_f_i_l_e.html#gae3a92ac0d4158b6991e18beba9446689">get_nb_config_file_sections</a></div><div class="ttdeci">int get_nb_config_file_sections(CONFIG_FILE *cfg_file, char *section_name)</div><div class="ttdoc">Get the number of config file with section_name.</div><div class="ttdef"><b>Definition:</b> <a href="n__config__file_8c_source.html#l00408">n_config_file.c:408</a></div></div>
 <div class="ttc" id="agroup___c_o_n_f_i_g_f_i_l_e_html_gaf57bc2bde1a2e2493be7d9e37c3d7da7"><div class="ttname"><a href="group___c_o_n_f_i_g_f_i_l_e.html#gaf57bc2bde1a2e2493be7d9e37c3d7da7">get_nb_config_file_sections_entries</a></div><div class="ttdeci">int get_nb_config_file_sections_entries(CONFIG_FILE *cfg_file, char *section_name, int section_position, char *entry)</div><div class="ttdoc">Get the number of config file with section_name.</div><div class="ttdef"><b>Definition:</b> <a href="n__config__file_8c_source.html#l00442">n_config_file.c:442</a></div></div>
-<div class="ttc" id="agroup___c_o_n_f_i_g_f_i_l_e_html_struct_c_o_n_f_i_g___f_i_l_e"><div class="ttname"><a href="group___c_o_n_f_i_g_f_i_l_e.html#struct_c_o_n_f_i_g___f_i_l_e">CONFIG_FILE</a></div><div class="ttdef"><b>Definition:</b> <a href="n__config__file_8h_source.html#l00040">n_config_file.h:41</a></div></div>
-<div class="ttc" id="agroup___c_o_n_f_i_g_f_i_l_e_html_struct_c_o_n_f_i_g___f_i_l_e___s_e_c_t_i_o_n"><div class="ttname"><a href="group___c_o_n_f_i_g_f_i_l_e.html#struct_c_o_n_f_i_g___f_i_l_e___s_e_c_t_i_o_n">CONFIG_FILE_SECTION</a></div><div class="ttdef"><b>Definition:</b> <a href="n__config__file_8h_source.html#l00032">n_config_file.h:33</a></div></div>
-<div class="ttc" id="agroup___l_i_s_t_html_struct_l_i_s_t"><div class="ttname"><a href="group___l_i_s_t.html#struct_l_i_s_t">LIST</a></div><div class="ttdef"><b>Definition:</b> <a href="n__list_8h_source.html#l00044">n_list.h:45</a></div></div>
-<div class="ttc" id="an__hash_8h_html"><div class="ttname"><a href="n__hash_8h.html">n_hash.h</a></div></div>
-<div class="ttc" id="an__log_8h_html"><div class="ttname"><a href="n__log_8h.html">n_log.h</a></div></div>
-<div class="ttc" id="an__str_8h_html"><div class="ttname"><a href="n__str_8h.html">n_str.h</a></div></div>
-<div class="ttc" id="astruct_h_a_s_h___t_a_b_l_e_html"><div class="ttname"><a href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a></div><div class="ttdef"><b>Definition:</b> <a href="n__hash_8h_source.html#l00108">n_hash.h:109</a></div></div>
+<div class="ttc" id="agroup___c_o_n_f_i_g_f_i_l_e_html_struct_c_o_n_f_i_g___f_i_l_e"><div class="ttname"><a href="group___c_o_n_f_i_g_f_i_l_e.html#struct_c_o_n_f_i_g___f_i_l_e">CONFIG_FILE</a></div><div class="ttdoc">Structure of a config file.</div><div class="ttdef"><b>Definition:</b> <a href="n__config__file_8h_source.html#l00040">n_config_file.h:41</a></div></div>
+<div class="ttc" id="agroup___c_o_n_f_i_g_f_i_l_e_html_struct_c_o_n_f_i_g___f_i_l_e___s_e_c_t_i_o_n"><div class="ttname"><a href="group___c_o_n_f_i_g_f_i_l_e.html#struct_c_o_n_f_i_g___f_i_l_e___s_e_c_t_i_o_n">CONFIG_FILE_SECTION</a></div><div class="ttdoc">Structure of a config section.</div><div class="ttdef"><b>Definition:</b> <a href="n__config__file_8h_source.html#l00032">n_config_file.h:33</a></div></div>
+<div class="ttc" id="agroup___h_a_s_h___t_a_b_l_e_html_struct_h_a_s_h___t_a_b_l_e"><div class="ttname"><a href="group___h_a_s_h___t_a_b_l_e.html#struct_h_a_s_h___t_a_b_l_e">HASH_TABLE</a></div><div class="ttdoc">structure of a hash table</div><div class="ttdef"><b>Definition:</b> <a href="n__hash_8h_source.html#l00108">n_hash.h:109</a></div></div>
+<div class="ttc" id="agroup___l_i_s_t_html_struct_l_i_s_t"><div class="ttname"><a href="group___l_i_s_t.html#struct_l_i_s_t">LIST</a></div><div class="ttdoc">Structure of a generic LIST container.</div><div class="ttdef"><b>Definition:</b> <a href="n__list_8h_source.html#l00044">n_list.h:45</a></div></div>
+<div class="ttc" id="an__hash_8h_html"><div class="ttname"><a href="n__hash_8h.html">n_hash.h</a></div><div class="ttdoc">Hash functions and table.</div></div>
+<div class="ttc" id="an__log_8h_html"><div class="ttname"><a href="n__log_8h.html">n_log.h</a></div><div class="ttdoc">Generic log system.</div></div>
+<div class="ttc" id="an__str_8h_html"><div class="ttname"><a href="n__str_8h.html">n_str.h</a></div><div class="ttdoc">N_STR and string function declaration.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_310dcdd4703e877a6b99d5dc3fc54d27.html">nilorea</a></li><li class="navelem"><a class="el" href="n__config__file_8h.html">n_config_file.h</a></li>
-    <li class="footer">Generated on Fri Feb 4 2022 17:12:03 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+    <li class="footer">Generated on Tue Feb 8 2022 14:10:25 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
   </ul>
 </div>
 </body>

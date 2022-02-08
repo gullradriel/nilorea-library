@@ -24,9 +24,11 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="NiloreaStudio.png"/></td>
   <td id="projectalign">
    <div id="projectname">Nilorea Library
    </div>
+   <div id="projectbrief">C utilities for networking, threading, graphics</div>
   </td>
  </tr>
  </tbody>
@@ -85,6 +87,7 @@ $(document).ready(function(){initNavTree('ex_gui_netclient_8c-example.html','');
   <div class="headertitle"><div class="title">ex_gui_netclient.c</div></div>
 </div><!--header-->
 <div class="contents">
+<p >Nilorea Library gui networking api test.</p>
 <p >Nilorea Library gui networking api test </p><dl class="section author"><dt>Author</dt><dd>Castagnier Mickael </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>1.0 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>02/05/2020</dd></dl>
@@ -103,24 +106,24 @@ $(document).ready(function(){initNavTree('ex_gui_netclient_8c-example.html','');
 <div class="line"><span class="preprocessor">#include &quot;<a class="code" href="n__allegro5_8h.html">nilorea/n_allegro5.h</a>&quot;</span></div>
 <div class="line"> </div>
 <div class="line"> </div>
-<div class="line"><span class="keyword">typedef</span> <span class="keyword">struct </span><a id="_a0" name="_a0"></a><a class="code hl_struct" href="ex__gui__netclient_8c.html#struct_p_e_e_r___o_b_j_e_c_t">PEER_OBJECT</a></div>
+<div class="line"><span class="keyword">typedef</span> <span class="keyword">struct </span><a id="_a0" name="_a0"></a><a class="code hl_struct" href="struct_p_e_e_r___o_b_j_e_c_t.html">PEER_OBJECT</a></div>
 <div class="line">{</div>
-<div class="line">    <span class="keywordtype">double</span> <a id="a1" name="a1"></a><a class="code hl_variable" href="ex__gui__netclient_8c.html#ab2c5d731fde94a1a4415fabe1aba1284">position</a>[ 3 ];</div>
-<div class="line">    <span class="keywordtype">int</span> <a id="a2" name="a2"></a><a class="code hl_variable" href="ex__gui__netclient_8c.html#a762a558b9c9fa76e446e89cca3329209">id</a> ;</div>
-<div class="line">    <span class="keywordtype">long</span> <span class="keywordtype">int</span> <a id="a3" name="a3"></a><a class="code hl_variable" href="ex__gui__netclient_8c.html#a588d82db1e4703aa363a8f866e99fc77">life_time</a> ;</div>
-<div class="line">} <a class="code hl_struct" href="ex__gui__netclient_8c.html#struct_p_e_e_r___o_b_j_e_c_t">PEER_OBJECT</a> ;</div>
+<div class="line">    <span class="keywordtype">double</span> <a id="a1" name="a1"></a><a class="code hl_variable" href="struct_p_e_e_r___o_b_j_e_c_t.html#ab2c5d731fde94a1a4415fabe1aba1284">position</a>[ 3 ];</div>
+<div class="line">    <span class="keywordtype">int</span> <a id="a2" name="a2"></a><a class="code hl_variable" href="struct_p_e_e_r___o_b_j_e_c_t.html#a762a558b9c9fa76e446e89cca3329209">id</a> ;</div>
+<div class="line">    <span class="keywordtype">long</span> <span class="keywordtype">int</span> <a id="a3" name="a3"></a><a class="code hl_variable" href="struct_p_e_e_r___o_b_j_e_c_t.html#a588d82db1e4703aa363a8f866e99fc77">life_time</a> ;</div>
+<div class="line">} <a class="code hl_struct" href="struct_p_e_e_r___o_b_j_e_c_t.html">PEER_OBJECT</a> ;</div>
 <div class="line"> </div>
 <div class="line"> </div>
 <div class="line"> </div>
-<div class="line"><span class="keywordtype">int</span> <a id="a4" name="a4"></a><a class="code hl_function" href="ex__gui__netclient_8c.html#adc080c2c1e79cf8f409cf44f9a0418ac">update_peer</a>( <a id="_a5" name="_a5"></a><a class="code hl_struct" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *peer_table, <span class="keywordtype">int</span> <span class="keywordtype">id</span>, <span class="keywordtype">double</span> position[ 3 ] )</div>
+<div class="line"><span class="keywordtype">int</span> update_peer( <a id="_a4" name="_a4"></a><a class="code hl_struct" href="group___h_a_s_h___t_a_b_l_e.html#struct_h_a_s_h___t_a_b_l_e">HASH_TABLE</a> *peer_table, <span class="keywordtype">int</span> <span class="keywordtype">id</span>, <span class="keywordtype">double</span> position[ 3 ] )</div>
 <div class="line">{</div>
-<div class="line">    <a id="a6" name="a6"></a><a class="code hl_define" href="group___c_o_m_m_o_n_s.html#ga4ecf5d80299a4ca1dc13c3a19610db11">__n_assert</a>( peer_table, <span class="keywordflow">return</span> FALSE );</div>
+<div class="line">    <a id="a5" name="a5"></a><a class="code hl_define" href="group___c_o_m_m_o_n_s.html#ga4ecf5d80299a4ca1dc13c3a19610db11">__n_assert</a>( peer_table, <span class="keywordflow">return</span> FALSE );</div>
 <div class="line"> </div>
-<div class="line">    <a class="code hl_struct" href="ex__gui__netclient_8c.html#struct_p_e_e_r___o_b_j_e_c_t">PEER_OBJECT</a> *peer = NULL ;</div>
+<div class="line">    <a class="code hl_struct" href="struct_p_e_e_r___o_b_j_e_c_t.html">PEER_OBJECT</a> *peer = NULL ;</div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordtype">char</span> id_str[ 64 ] = <span class="stringliteral">&quot;&quot;</span>;</div>
 <div class="line">    sprintf( id_str, <span class="stringliteral">&quot;%d&quot;</span>, <span class="keywordtype">id</span> );</div>
-<div class="line">    <span class="keywordflow">if</span>( <a id="a7" name="a7"></a><a class="code hl_function" href="group___h_a_s_h___t_a_b_l_e.html#gae34a331ccbda86f7e5b2319f1852d6ca">ht_get_ptr</a>( peer_table, id_str, (<span class="keywordtype">void</span> *)&amp;peer ) == TRUE )</div>
+<div class="line">    <span class="keywordflow">if</span>( <a id="a6" name="a6"></a><a class="code hl_function" href="group___h_a_s_h___t_a_b_l_e.html#gae34a331ccbda86f7e5b2319f1852d6ca">ht_get_ptr</a>( peer_table, id_str, (<span class="keywordtype">void</span> *)&amp;peer ) == TRUE )</div>
 <div class="line">    {</div>
 <div class="line">        memcpy( peer -&gt; position, position, 3 * <span class="keyword">sizeof</span>( <span class="keywordtype">double</span> ) );</div>
 <div class="line">        peer -&gt; life_time = 10000000 ; <span class="comment">/* 10s in usec */</span></div>
@@ -128,58 +131,58 @@ $(document).ready(function(){initNavTree('ex_gui_netclient_8c-example.html','');
 <div class="line">    <span class="keywordflow">else</span></div>
 <div class="line">    {</div>
 <div class="line"> </div>
-<div class="line">        <a id="a8" name="a8"></a><a class="code hl_define" href="group___c_o_m_m_o_n_s.html#ga46bf052fc99248347a1dcf89bc0757c6">Malloc</a>( peer, <a class="code hl_struct" href="ex__gui__netclient_8c.html#struct_p_e_e_r___o_b_j_e_c_t">PEER_OBJECT</a>, 1 );</div>
+<div class="line">        <a id="a7" name="a7"></a><a class="code hl_define" href="group___c_o_m_m_o_n_s.html#ga46bf052fc99248347a1dcf89bc0757c6">Malloc</a>( peer, <a class="code hl_struct" href="struct_p_e_e_r___o_b_j_e_c_t.html">PEER_OBJECT</a>, 1 );</div>
 <div class="line">        <a class="code hl_define" href="group___c_o_m_m_o_n_s.html#ga4ecf5d80299a4ca1dc13c3a19610db11">__n_assert</a>( peer, <span class="keywordflow">return</span> FALSE );</div>
 <div class="line"> </div>
 <div class="line">        memcpy( peer -&gt; position, position, 3 * <span class="keyword">sizeof</span>( <span class="keywordtype">double</span> ) );</div>
 <div class="line">        peer -&gt; <span class="keywordtype">id</span> = id ;</div>
 <div class="line">        peer -&gt; life_time = 10000000 ; <span class="comment">/* 10s in usec */</span></div>
 <div class="line"> </div>
-<div class="line">        <a id="a9" name="a9"></a><a class="code hl_function" href="group___h_a_s_h___t_a_b_l_e.html#ga2baa0497b21bdf86e3c64bb023124930">ht_put_ptr</a>( peer_table, id_str, peer, &amp;free );</div>
+<div class="line">        <a id="a8" name="a8"></a><a class="code hl_function" href="group___h_a_s_h___t_a_b_l_e.html#ga2baa0497b21bdf86e3c64bb023124930">ht_put_ptr</a>( peer_table, id_str, peer, &amp;free );</div>
 <div class="line">    }</div>
 <div class="line">    <span class="keywordflow">return</span> TRUE ;</div>
 <div class="line">}</div>
 <div class="line"> </div>
-<div class="line"><span class="keywordtype">int</span> <a id="a10" name="a10"></a><a class="code hl_function" href="ex__gui__netclient_8c.html#ae35cba0c2e39eed0d1b641cd2f1e3299">manage_peers</a>( <a class="code hl_struct" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *peer_table, <span class="keywordtype">int</span> delta_t )</div>
+<div class="line"><span class="keywordtype">int</span> manage_peers( <a class="code hl_struct" href="group___h_a_s_h___t_a_b_l_e.html#struct_h_a_s_h___t_a_b_l_e">HASH_TABLE</a> *peer_table, <span class="keywordtype">int</span> delta_t )</div>
 <div class="line">{</div>
-<div class="line">    <a id="_a11" name="_a11"></a><a class="code hl_struct" href="group___l_i_s_t.html#struct_l_i_s_t">LIST</a> *to_kill = <a id="a12" name="a12"></a><a class="code hl_function" href="group___l_i_s_t.html#gada615e3b144e97bcff147dfe89f6fef6">new_generic_list</a>( -1 );</div>
-<div class="line">    <a id="a13" name="a13"></a><a class="code hl_define" href="group___h_a_s_h___t_a_b_l_e.html#ga072f117e6bd9fdde0d39776764b8784e">ht_foreach</a>( node, peer_table )</div>
+<div class="line">    <a id="_a9" name="_a9"></a><a class="code hl_struct" href="group___l_i_s_t.html#struct_l_i_s_t">LIST</a> *to_kill = <a id="a10" name="a10"></a><a class="code hl_function" href="group___l_i_s_t.html#gada615e3b144e97bcff147dfe89f6fef6">new_generic_list</a>( -1 );</div>
+<div class="line">    <a id="a11" name="a11"></a><a class="code hl_define" href="group___h_a_s_h___t_a_b_l_e.html#ga072f117e6bd9fdde0d39776764b8784e">ht_foreach</a>( node, peer_table )</div>
 <div class="line">    {</div>
-<div class="line">        <a class="code hl_struct" href="ex__gui__netclient_8c.html#struct_p_e_e_r___o_b_j_e_c_t">PEER_OBJECT</a> *peer = <a id="a14" name="a14"></a><a class="code hl_define" href="group___h_a_s_h___t_a_b_l_e.html#gaeb031d4f0f896b1802b9c27e62f28d14">hash_val</a>( node, <a class="code hl_struct" href="ex__gui__netclient_8c.html#struct_p_e_e_r___o_b_j_e_c_t">PEER_OBJECT</a> );</div>
+<div class="line">        <a class="code hl_struct" href="struct_p_e_e_r___o_b_j_e_c_t.html">PEER_OBJECT</a> *peer = <a id="a12" name="a12"></a><a class="code hl_define" href="group___h_a_s_h___t_a_b_l_e.html#gaeb031d4f0f896b1802b9c27e62f28d14">hash_val</a>( node, <a class="code hl_struct" href="struct_p_e_e_r___o_b_j_e_c_t.html">PEER_OBJECT</a> );</div>
 <div class="line">        peer -&gt; life_time -= delta_t ;</div>
 <div class="line">        <span class="keywordflow">if</span>( peer -&gt; life_time &lt; 0 )</div>
-<div class="line">            <a id="a15" name="a15"></a><a class="code hl_function" href="group___l_i_s_t.html#ga4eab319289a83524639ee5e9f0441fdf">list_push</a>( to_kill, peer, NULL );</div>
+<div class="line">            <a id="a13" name="a13"></a><a class="code hl_function" href="group___l_i_s_t.html#ga4eab319289a83524639ee5e9f0441fdf">list_push</a>( to_kill, peer, NULL );</div>
 <div class="line">    }</div>
-<div class="line">    <a id="a16" name="a16"></a><a class="code hl_define" href="group___l_i_s_t.html#ga55cdaac0dd0f4f4d687607e6679a4634">list_foreach</a>( node, to_kill )</div>
+<div class="line">    <a id="a14" name="a14"></a><a class="code hl_define" href="group___l_i_s_t.html#ga55cdaac0dd0f4f4d687607e6679a4634">list_foreach</a>( node, to_kill )</div>
 <div class="line">    {</div>
 <div class="line">        <span class="keywordflow">if</span>( node &amp;&amp; node -&gt; ptr )</div>
 <div class="line">        {</div>
-<div class="line">            <a class="code hl_struct" href="ex__gui__netclient_8c.html#struct_p_e_e_r___o_b_j_e_c_t">PEER_OBJECT</a> *peer = (<a class="code hl_struct" href="ex__gui__netclient_8c.html#struct_p_e_e_r___o_b_j_e_c_t">PEER_OBJECT</a> *)node -&gt; ptr ;</div>
+<div class="line">            <a class="code hl_struct" href="struct_p_e_e_r___o_b_j_e_c_t.html">PEER_OBJECT</a> *peer = (<a class="code hl_struct" href="struct_p_e_e_r___o_b_j_e_c_t.html">PEER_OBJECT</a> *)node -&gt; ptr ;</div>
 <div class="line">            <span class="keywordtype">char</span> id_str[ 64 ] = <span class="stringliteral">&quot;&quot;</span>;</div>
 <div class="line">            sprintf( id_str, <span class="stringliteral">&quot;%d&quot;</span>, peer -&gt; <span class="keywordtype">id</span> );</div>
-<div class="line">            <a id="a17" name="a17"></a><a class="code hl_function" href="group___h_a_s_h___t_a_b_l_e.html#ga8d8873be47a634ad8a386e61f12a1f53">ht_remove</a>( peer_table, id_str );</div>
+<div class="line">            <a id="a15" name="a15"></a><a class="code hl_function" href="group___h_a_s_h___t_a_b_l_e.html#ga8d8873be47a634ad8a386e61f12a1f53">ht_remove</a>( peer_table, id_str );</div>
 <div class="line">        }</div>
 <div class="line">    }</div>
 <div class="line">    <span class="keywordflow">return</span> TRUE ;</div>
 <div class="line">}</div>
 <div class="line"> </div>
-<div class="line"><span class="keywordtype">int</span> <a id="a18" name="a18"></a><a class="code hl_function" href="ex__gui__netclient_8c.html#aa968b962ee729e997d5dc03476ccb257">draw_peers</a>( <a class="code hl_struct" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *peer_table, ALLEGRO_FONT *font, ALLEGRO_COLOR color )</div>
+<div class="line"><span class="keywordtype">int</span> draw_peers( <a class="code hl_struct" href="group___h_a_s_h___t_a_b_l_e.html#struct_h_a_s_h___t_a_b_l_e">HASH_TABLE</a> *peer_table, ALLEGRO_FONT *font, ALLEGRO_COLOR color )</div>
 <div class="line">{</div>
 <div class="line">    <a class="code hl_define" href="group___h_a_s_h___t_a_b_l_e.html#ga072f117e6bd9fdde0d39776764b8784e">ht_foreach</a>( node, peer_table )</div>
 <div class="line">    {</div>
-<div class="line">        <a class="code hl_struct" href="ex__gui__netclient_8c.html#struct_p_e_e_r___o_b_j_e_c_t">PEER_OBJECT</a> *peer = <a class="code hl_define" href="group___h_a_s_h___t_a_b_l_e.html#gaeb031d4f0f896b1802b9c27e62f28d14">hash_val</a>( node, <a class="code hl_struct" href="ex__gui__netclient_8c.html#struct_p_e_e_r___o_b_j_e_c_t">PEER_OBJECT</a> );</div>
+<div class="line">        <a class="code hl_struct" href="struct_p_e_e_r___o_b_j_e_c_t.html">PEER_OBJECT</a> *peer = <a class="code hl_define" href="group___h_a_s_h___t_a_b_l_e.html#gaeb031d4f0f896b1802b9c27e62f28d14">hash_val</a>( node, <a class="code hl_struct" href="struct_p_e_e_r___o_b_j_e_c_t.html">PEER_OBJECT</a> );</div>
 <div class="line">        <span class="comment">/* mouse pointers */</span></div>
 <div class="line">        al_draw_line( peer -&gt; position[ 0 ] - 5, peer -&gt; position[ 1 ], peer -&gt; position[ 0 ] + 5, peer -&gt; position[ 1 ], al_map_rgb( 255, 0, 0 ), 1 );</div>
 <div class="line">        al_draw_line( peer -&gt; position[ 0 ], peer -&gt; position[ 1 ] + 5, peer -&gt; position[ 0 ], peer -&gt; position[ 1 ] - 5, al_map_rgb( 255, 0, 0 ), 1 );</div>
-<div class="line">        <a id="_a19" name="_a19"></a><a class="code hl_struct" href="group___n___s_t_r.html#struct_n___s_t_r">N_STR</a> *textout = NULL ;</div>
-<div class="line">        <a id="a20" name="a20"></a><a class="code hl_define" href="group___n___s_t_r.html#ga1c1f4062c727970a68bfd932c3fabcd5">nstrprintf</a>( textout, <span class="stringliteral">&quot;id: %d&quot;</span>, peer -&gt; <span class="keywordtype">id</span> );</div>
-<div class="line">        al_draw_text( font, color, peer -&gt; position[ 0 ] + 10, peer -&gt; position[ 1 ], ALLEGRO_ALIGN_LEFT, <a id="a21" name="a21"></a><a class="code hl_define" href="group___c_o_m_m_o_n_s.html#gaf0e29edead3f943a4ac241c5724e1384">_nstr</a>( textout) );</div>
-<div class="line">        <a id="a22" name="a22"></a><a class="code hl_define" href="group___n___s_t_r.html#ga113e906d03374ac38e441f1df44095fb">free_nstr</a>( &amp;textout );</div>
+<div class="line">        <a id="_a16" name="_a16"></a><a class="code hl_struct" href="group___n___s_t_r.html#struct_n___s_t_r">N_STR</a> *textout = NULL ;</div>
+<div class="line">        <a id="a17" name="a17"></a><a class="code hl_define" href="group___n___s_t_r.html#ga1c1f4062c727970a68bfd932c3fabcd5">nstrprintf</a>( textout, <span class="stringliteral">&quot;id: %d&quot;</span>, peer -&gt; <span class="keywordtype">id</span> );</div>
+<div class="line">        al_draw_text( font, color, peer -&gt; position[ 0 ] + 10, peer -&gt; position[ 1 ], ALLEGRO_ALIGN_LEFT, <a id="a18" name="a18"></a><a class="code hl_define" href="group___c_o_m_m_o_n_s.html#gaf0e29edead3f943a4ac241c5724e1384">_nstr</a>( textout) );</div>
+<div class="line">        <a id="a19" name="a19"></a><a class="code hl_define" href="group___n___s_t_r.html#ga113e906d03374ac38e441f1df44095fb">free_nstr</a>( &amp;textout );</div>
 <div class="line">    }</div>
 <div class="line">    <span class="keywordflow">return</span> TRUE ;</div>
 <div class="line">}</div>
 <div class="line"> </div>
-<div class="line"><span class="keywordtype">void</span> <a id="a23" name="a23"></a><a class="code hl_function" href="ex__gui__netclient_8c.html#ae8605e2b78cd4a81b6c6b5c30cb7366a">usage</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><span class="keywordtype">void</span> usage(<span class="keywordtype">void</span>)</div>
 <div class="line">{</div>
 <div class="line">    fprintf( stderr, <span class="stringliteral">&quot;     -v version\n&quot;</span></div>
 <div class="line">             <span class="stringliteral">&quot;     -V log level: LOG_INFO, LOG_NOTICE, LOG_ERR, LOG_DEBUG\n&quot;</span></div>
@@ -190,10 +193,10 @@ $(document).ready(function(){initNavTree('ex_gui_netclient_8c-example.html','');
 <div class="line">             <span class="stringliteral">&quot;     -i [v4,v6] ip version (default support both ipv4 and ipv6 )\n&quot;</span> );</div>
 <div class="line">}</div>
 <div class="line"> </div>
-<div class="line"><span class="keywordtype">void</span> <a id="a24" name="a24"></a><a class="code hl_function" href="ex__gui__netclient_8c.html#ac74d0feedc2bec6d0b5b45d5478ccf6a">process_args</a>( <span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv, <span class="keywordtype">char</span> **<a id="a25" name="a25"></a><a class="code hl_variable" href="ex__network_8c.html#a516f037dddd27a8137d32553803548d6">server</a>, <span class="keywordtype">char</span> **port, <span class="keywordtype">int</span> *<a id="a26" name="a26"></a><a class="code hl_variable" href="ex__network_8c.html#a8796aa7b363f0bede0f8dc5b96436f0b">ip_version</a> )</div>
+<div class="line"><span class="keywordtype">void</span> process_args( <span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv, <span class="keywordtype">char</span> **server, <span class="keywordtype">char</span> **port, <span class="keywordtype">int</span> *ip_version )</div>
 <div class="line">{</div>
-<div class="line">    <span class="keywordtype">int</span> <a id="a27" name="a27"></a><a class="code hl_variable" href="ex__gui__particles_8c.html#a40367f95374e226128dde2c270b32f0f">getoptret</a> = 0,</div>
-<div class="line">        <a id="a28" name="a28"></a><a class="code hl_variable" href="ex__gui__particles_8c.html#ab5a71c2541c377b3d5b34fdb35964c2e">log_level</a> = <a id="a29" name="a29"></a><a class="code hl_define" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a>;  <span class="comment">/* default log level */</span></div>
+<div class="line">    <span class="keywordtype">int</span> getoptret = 0,</div>
+<div class="line">        log_level = <a id="a20" name="a20"></a><a class="code hl_define" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a>;  <span class="comment">/* default log level */</span></div>
 <div class="line"> </div>
 <div class="line">    <span class="comment">/* Arguments optionnels */</span></div>
 <div class="line">    <span class="comment">/* -v version</span></div>
@@ -207,22 +210,22 @@ $(document).ready(function(){initNavTree('ex_gui_netclient_8c-example.html','');
 <div class="line">    <span class="keywordflow">if</span>( argc == 1 )</div>
 <div class="line">    {</div>
 <div class="line">        fprintf( stderr,  <span class="stringliteral">&quot;No arguments given, help:\n&quot;</span> );</div>
-<div class="line">        <a class="code hl_function" href="ex__gui__netclient_8c.html#ae8605e2b78cd4a81b6c6b5c30cb7366a">usage</a>();</div>
+<div class="line">        usage();</div>
 <div class="line">        exit( 1 );</div>
 <div class="line">    }</div>
-<div class="line">    <span class="keywordflow">while</span>( ( <a class="code hl_variable" href="ex__gui__particles_8c.html#a40367f95374e226128dde2c270b32f0f">getoptret</a> = getopt( argc, argv, <span class="stringliteral">&quot;hvs:p:i:V:&quot;</span> ) ) != EOF)</div>
+<div class="line">    <span class="keywordflow">while</span>( ( getoptret = getopt( argc, argv, <span class="stringliteral">&quot;hvs:p:i:V:&quot;</span> ) ) != EOF)</div>
 <div class="line">    {</div>
-<div class="line">        <span class="keywordflow">switch</span>( <a class="code hl_variable" href="ex__gui__particles_8c.html#a40367f95374e226128dde2c270b32f0f">getoptret</a> )</div>
+<div class="line">        <span class="keywordflow">switch</span>( getoptret )</div>
 <div class="line">        {</div>
 <div class="line">        <span class="keywordflow">case</span> <span class="charliteral">&#39;i&#39;</span> :</div>
 <div class="line">            <span class="keywordflow">if</span>( !strcmp( <span class="stringliteral">&quot;v4&quot;</span>, optarg ) )</div>
 <div class="line">            {</div>
-<div class="line">                (*ip_version) = <a id="a30" name="a30"></a><a class="code hl_define" href="group___n_e_t_w_o_r_k_i_n_g.html#ga5f726a9a4d94caeeeff82e4449564d64">NETWORK_IPV4</a> ;</div>
-<div class="line">                <a id="a31" name="a31"></a><a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a id="a32" name="a32"></a><a class="code hl_define" href="group___l_o_g.html#gad89ee324d180cdcd7defcc709ff9ca42">LOG_NOTICE</a>, <span class="stringliteral">&quot;IPV4 selected&quot;</span> );</div>
+<div class="line">                (*ip_version) = <a id="a21" name="a21"></a><a class="code hl_define" href="group___n_e_t_w_o_r_k_i_n_g.html#ga5f726a9a4d94caeeeff82e4449564d64">NETWORK_IPV4</a> ;</div>
+<div class="line">                <a id="a22" name="a22"></a><a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a id="a23" name="a23"></a><a class="code hl_define" href="group___l_o_g.html#gad89ee324d180cdcd7defcc709ff9ca42">LOG_NOTICE</a>, <span class="stringliteral">&quot;IPV4 selected&quot;</span> );</div>
 <div class="line">            }</div>
 <div class="line">            <span class="keywordflow">else</span> <span class="keywordflow">if</span>( !strcmp( <span class="stringliteral">&quot;v6&quot;</span>, optarg ) )</div>
 <div class="line">            {</div>
-<div class="line">                (*ip_version) = <a id="a33" name="a33"></a><a class="code hl_define" href="group___n_e_t_w_o_r_k_i_n_g.html#ga3f93cb2837a5f8d836804f450415d7b8">NETWORK_IPV6</a> ;</div>
+<div class="line">                (*ip_version) = <a id="a24" name="a24"></a><a class="code hl_define" href="group___n_e_t_w_o_r_k_i_n_g.html#ga3f93cb2837a5f8d836804f450415d7b8">NETWORK_IPV6</a> ;</div>
 <div class="line">                <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#gad89ee324d180cdcd7defcc709ff9ca42">LOG_NOTICE</a>, <span class="stringliteral">&quot;IPV6 selected&quot;</span> );</div>
 <div class="line">            }</div>
 <div class="line">            <span class="keywordflow">else</span></div>
@@ -236,31 +239,31 @@ $(document).ready(function(){initNavTree('ex_gui_netclient_8c-example.html','');
 <div class="line">        <span class="keywordflow">case</span> <span class="charliteral">&#39;V&#39;</span> :</div>
 <div class="line">            <span class="keywordflow">if</span>( !strncmp( <span class="stringliteral">&quot;LOG_NULL&quot;</span>, optarg, 8 ) )</div>
 <div class="line">            {</div>
-<div class="line">                <a class="code hl_variable" href="ex__gui__particles_8c.html#ab5a71c2541c377b3d5b34fdb35964c2e">log_level</a> = <a id="a34" name="a34"></a><a class="code hl_define" href="group___l_o_g.html#gae3b3638575ad43aa2dba40543dcec45c">LOG_NULL</a> ;</div>
+<div class="line">                log_level = <a id="a25" name="a25"></a><a class="code hl_define" href="group___l_o_g.html#gae3b3638575ad43aa2dba40543dcec45c">LOG_NULL</a> ;</div>
 <div class="line">            }</div>
 <div class="line">            <span class="keywordflow">else</span></div>
 <div class="line">            {</div>
 <div class="line">                <span class="keywordflow">if</span>( !strncmp( <span class="stringliteral">&quot;LOG_NOTICE&quot;</span>, optarg, 10 ) )</div>
 <div class="line">                {</div>
-<div class="line">                    <a class="code hl_variable" href="ex__gui__particles_8c.html#ab5a71c2541c377b3d5b34fdb35964c2e">log_level</a> = <a class="code hl_define" href="group___l_o_g.html#gad89ee324d180cdcd7defcc709ff9ca42">LOG_NOTICE</a>;</div>
+<div class="line">                    log_level = <a class="code hl_define" href="group___l_o_g.html#gad89ee324d180cdcd7defcc709ff9ca42">LOG_NOTICE</a>;</div>
 <div class="line">                }</div>
 <div class="line">                <span class="keywordflow">else</span></div>
 <div class="line">                {</div>
 <div class="line">                    <span class="keywordflow">if</span>( !strncmp( <span class="stringliteral">&quot;LOG_INFO&quot;</span>, optarg, 8 ) )</div>
 <div class="line">                    {</div>
-<div class="line">                        <a class="code hl_variable" href="ex__gui__particles_8c.html#ab5a71c2541c377b3d5b34fdb35964c2e">log_level</a> = <a id="a35" name="a35"></a><a class="code hl_define" href="group___l_o_g.html#gaeb4f36db01bd128c7afeac5889dac311">LOG_INFO</a>;</div>
+<div class="line">                        log_level = <a id="a26" name="a26"></a><a class="code hl_define" href="group___l_o_g.html#gaeb4f36db01bd128c7afeac5889dac311">LOG_INFO</a>;</div>
 <div class="line">                    }</div>
 <div class="line">                    <span class="keywordflow">else</span></div>
 <div class="line">                    {</div>
 <div class="line">                        <span class="keywordflow">if</span>( !strncmp( <span class="stringliteral">&quot;LOG_ERR&quot;</span>, optarg, 7 ) )</div>
 <div class="line">                        {</div>
-<div class="line">                            <a class="code hl_variable" href="ex__gui__particles_8c.html#ab5a71c2541c377b3d5b34fdb35964c2e">log_level</a> = <a class="code hl_define" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a>;</div>
+<div class="line">                            log_level = <a class="code hl_define" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a>;</div>
 <div class="line">                        }</div>
 <div class="line">                        <span class="keywordflow">else</span></div>
 <div class="line">                        {</div>
 <div class="line">                            <span class="keywordflow">if</span>( !strncmp( <span class="stringliteral">&quot;LOG_DEBUG&quot;</span>, optarg, 9 ) )</div>
 <div class="line">                            {</div>
-<div class="line">                                <a class="code hl_variable" href="ex__gui__particles_8c.html#ab5a71c2541c377b3d5b34fdb35964c2e">log_level</a> = <a id="a36" name="a36"></a><a class="code hl_define" href="group___l_o_g.html#ga6ff63e8955665c4a58b1598f2b07c51a">LOG_DEBUG</a>;</div>
+<div class="line">                                log_level = <a id="a27" name="a27"></a><a class="code hl_define" href="group___l_o_g.html#ga6ff63e8955665c4a58b1598f2b07c51a">LOG_DEBUG</a>;</div>
 <div class="line">                            }</div>
 <div class="line">                            <span class="keywordflow">else</span></div>
 <div class="line">                            {</div>
@@ -293,53 +296,53 @@ $(document).ready(function(){initNavTree('ex_gui_netclient_8c-example.html','');
 <div class="line">            {</div>
 <div class="line">                fprintf( stderr, <span class="stringliteral">&quot;\n      Unknow missing option %c\n&quot;</span>, optopt );</div>
 <div class="line">            }</div>
-<div class="line">            <a class="code hl_function" href="ex__gui__netclient_8c.html#ae8605e2b78cd4a81b6c6b5c30cb7366a">usage</a>();</div>
+<div class="line">            usage();</div>
 <div class="line">            exit( 1 );</div>
 <div class="line">        }</div>
 <div class="line">        break ;</div>
 <div class="line">        <span class="keywordflow">case</span> <span class="charliteral">&#39;h&#39;</span> :</div>
 <div class="line">        {</div>
-<div class="line">            <a class="code hl_function" href="ex__gui__netclient_8c.html#ae8605e2b78cd4a81b6c6b5c30cb7366a">usage</a>();</div>
+<div class="line">            usage();</div>
 <div class="line">            exit( 1 );</div>
 <div class="line">        }</div>
 <div class="line">        break ;</div>
 <div class="line">        }</div>
 <div class="line">    }</div>
-<div class="line">    <a id="a37" name="a37"></a><a class="code hl_function" href="group___l_o_g.html#gacad9b2d55788f46ddde811c986ead9ae">set_log_level</a>( <a class="code hl_variable" href="ex__gui__particles_8c.html#ab5a71c2541c377b3d5b34fdb35964c2e">log_level</a> );</div>
+<div class="line">    <a id="a28" name="a28"></a><a class="code hl_function" href="group___l_o_g.html#gacad9b2d55788f46ddde811c986ead9ae">set_log_level</a>( log_level );</div>
 <div class="line">} <span class="comment">/* void process_args( ... ) */</span></div>
 <div class="line"> </div>
 <div class="line"> </div>
-<div class="line"><span class="keyword">enum</span> <a class="code hl_enumeration" href="ex__gui__netclient_8c.html#ad381705445518a234ef71c85cc7771a3">APP_KEYS</a></div>
+<div class="line"><span class="keyword">enum</span> APP_KEYS</div>
 <div class="line">{</div>
-<div class="line">    <a id="a38" name="a38"></a><a class="code hl_enumvalue" href="ex__gui__netclient_8c.html#ad381705445518a234ef71c85cc7771a3a0848a442d907968b211b97bc2bd88acd">KEY_UP</a>, <a id="a39" name="a39"></a><a class="code hl_enumvalue" href="ex__gui__netclient_8c.html#ad381705445518a234ef71c85cc7771a3aa9cdac7967bf7d88fdb761138a2a3416">KEY_DOWN</a>, <a id="a40" name="a40"></a><a class="code hl_enumvalue" href="ex__gui__netclient_8c.html#ad381705445518a234ef71c85cc7771a3a612120b69c7dfd46086db7aaebdbcf65">KEY_LEFT</a>, <a id="a41" name="a41"></a><a class="code hl_enumvalue" href="ex__gui__netclient_8c.html#ad381705445518a234ef71c85cc7771a3a6504370d9c6391e1a9da6a1a529b089d">KEY_RIGHT</a>, <a id="a42" name="a42"></a><a class="code hl_enumvalue" href="ex__gui__netclient_8c.html#ad381705445518a234ef71c85cc7771a3ae53e9370c0243e9b0260458d3a55f315">KEY_ESC</a>, <a id="a43" name="a43"></a><a class="code hl_enumvalue" href="ex__gui__netclient_8c.html#ad381705445518a234ef71c85cc7771a3a01d2889f9a7550008ad6140c41e733de">KEY_SPACE</a>, <a id="a44" name="a44"></a><a class="code hl_enumvalue" href="ex__gui__netclient_8c.html#ad381705445518a234ef71c85cc7771a3a03b9f1caf27fb28b593880fdca9cfe66">KEY_CTRL</a></div>
+<div class="line">    KEY_UP, KEY_DOWN, KEY_LEFT, KEY_RIGHT, KEY_ESC, KEY_SPACE, KEY_CTRL</div>
 <div class="line">};</div>
-<div class="line"><span class="keywordtype">int</span> <a id="a45" name="a45"></a><a class="code hl_variable" href="ex__gui__netclient_8c.html#ac73942f75861b7977297231f5528c382">key</a>[ 7 ] = {<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>};</div>
+<div class="line"><span class="keywordtype">int</span> key[ 7 ] = {<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>};</div>
 <div class="line"> </div>
 <div class="line"> </div>
 <div class="line"><span class="comment">/* start */</span></div>
-<div class="line"><span class="keywordtype">int</span> <a id="a46" name="a46"></a><a class="code hl_function" href="ex__gui__netclient_8c.html#a0ddf1224851353fc92bfbff6f499fa97">main</a>( <span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> *argv[] )</div>
+<div class="line"><span class="keywordtype">int</span> main( <span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> *argv[] )</div>
 <div class="line">{</div>
-<div class="line">    <span class="keywordtype">int</span>                         <a id="a47" name="a47"></a><a class="code hl_variable" href="ex__gui__particles_8c.html#a5819e6b9d2ee24c8e96d702de02421a0">DONE</a> = 0, QUIT_ASKED = 0,                      <span class="comment">/* Flag to check if we are always running */</span></div>
-<div class="line">            <a class="code hl_variable" href="ex__gui__particles_8c.html#a40367f95374e226128dde2c270b32f0f">getoptret</a> = 0,                                                        <span class="comment">/* launch parameter check */</span></div>
-<div class="line">            <a class="code hl_variable" href="ex__gui__particles_8c.html#ab5a71c2541c377b3d5b34fdb35964c2e">log_level</a> = <a class="code hl_define" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a> ;                                                <span class="comment">/* default LOG_LEVEL */</span></div>
+<div class="line">    <span class="keywordtype">int</span>                         DONE = 0, QUIT_ASKED = 0,                      <span class="comment">/* Flag to check if we are always running */</span></div>
+<div class="line">            getoptret = 0,                                                        <span class="comment">/* launch parameter check */</span></div>
+<div class="line">            log_level = <a class="code hl_define" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a> ;                                                <span class="comment">/* default LOG_LEVEL */</span></div>
 <div class="line"> </div>
-<div class="line">    ALLEGRO_DISPLAY *<a id="a48" name="a48"></a><a class="code hl_variable" href="ex__gui__particles_8c.html#af64cc6c8a47e5ddbf510b5aa92e062b9">display</a>  = NULL ;</div>
-<div class="line">    ALLEGRO_BITMAP *<a id="a49" name="a49"></a><a class="code hl_variable" href="ex__gui__particles_8c.html#aea5624d131084442bbda2e0bb6b98847">scr_buf</a>       = NULL ;</div>
-<div class="line">    ALLEGRO_TIMER *<a id="a50" name="a50"></a><a class="code hl_variable" href="ex__gui__particles_8c.html#a2616450263b3d62aa18f71a296fb80a5">fps_timer</a> = NULL ;</div>
-<div class="line">    ALLEGRO_TIMER *<a id="a51" name="a51"></a><a class="code hl_variable" href="ex__gui__particles_8c.html#af63a6683d8306869974571dca7ca3718">logic_timer</a> = NULL ;</div>
+<div class="line">    ALLEGRO_DISPLAY *display  = NULL ;</div>
+<div class="line">    ALLEGRO_BITMAP *scr_buf       = NULL ;</div>
+<div class="line">    ALLEGRO_TIMER *fps_timer = NULL ;</div>
+<div class="line">    ALLEGRO_TIMER *logic_timer = NULL ;</div>
 <div class="line">    ALLEGRO_TIMER *network_heartbeat_timer = NULL ;</div>
 <div class="line"> </div>
-<div class="line">    <span class="keywordtype">char</span> *<a class="code hl_variable" href="ex__network_8c.html#a516f037dddd27a8137d32553803548d6">server</a> = NULL ;</div>
+<div class="line">    <span class="keywordtype">char</span> *server = NULL ;</div>
 <div class="line">    <span class="keywordtype">char</span> *port = NULL ;</div>
 <div class="line">    <a class="code hl_struct" href="group___l_i_s_t.html#struct_l_i_s_t">LIST</a> *chatbuf = NULL;</div>
-<div class="line">    <a class="code hl_struct" href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a> *peer_table = NULL ;</div>
+<div class="line">    <a class="code hl_struct" href="group___h_a_s_h___t_a_b_l_e.html#struct_h_a_s_h___t_a_b_l_e">HASH_TABLE</a> *peer_table = NULL ;</div>
 <div class="line">    ALLEGRO_USTR *chat_line = NULL;</div>
 <div class="line"> </div>
 <div class="line">    <a class="code hl_struct" href="group___n___s_t_r.html#struct_n___s_t_r">N_STR</a> *name = NULL,</div>
 <div class="line">           *password = NULL ;</div>
 <div class="line"> </div>
-<div class="line">    <a id="_a52" name="_a52"></a><a class="code hl_struct" href="group___n_e_t_w_o_r_k_i_n_g.html#struct_n_e_t_w_o_r_k">NETWORK</a>  *<a id="a53" name="a53"></a><a class="code hl_variable" href="ex__network_8c.html#aaf647e21e94e41eb48f7f28fc120f199">netw</a>   = NULL   ; </div>
-<div class="line">    <span class="keywordtype">int</span> <a class="code hl_variable" href="ex__network_8c.html#a8796aa7b363f0bede0f8dc5b96436f0b">ip_version</a> = <a id="a54" name="a54"></a><a class="code hl_define" href="group___n_e_t_w_o_r_k_i_n_g.html#ga8c9c7f339ab7d4066257c92c1ce1d1ab">NETWORK_IPALL</a> ;</div>
+<div class="line">    <a id="_a29" name="_a29"></a><a class="code hl_struct" href="group___n_e_t_w_o_r_k_i_n_g.html#struct_n_e_t_w_o_r_k">NETWORK</a>  *netw   = NULL   ; </div>
+<div class="line">    <span class="keywordtype">int</span> ip_version = <a id="a30" name="a30"></a><a class="code hl_define" href="group___n_e_t_w_o_r_k_i_n_g.html#ga8c9c7f339ab7d4066257c92c1ce1d1ab">NETWORK_IPALL</a> ;</div>
 <div class="line">    <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> ping_time = 0 ;</div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordtype">int</span> mx = 0, my = 0, mouse_b1 = 0, mouse_b2 = 0 ;</div>
@@ -347,7 +350,7 @@ $(document).ready(function(){initNavTree('ex_gui_netclient_8c-example.html','');
 <div class="line">    <a class="code hl_struct" href="group___n___s_t_r.html#struct_n___s_t_r">N_STR</a> *netw_exchange = NULL ;</div>
 <div class="line">    <span class="keywordtype">int</span> it = -1, ident = -1 ;</div>
 <div class="line"> </div>
-<div class="line">    <span class="keyword">static</span> pthread_t <a id="a55" name="a55"></a><a class="code hl_variable" href="ex__network_8c.html#a75a4b872120a9e428801230cbcb610de">netw_thr</a> ;</div>
+<div class="line">    <span class="keyword">static</span> pthread_t netw_thr ;</div>
 <div class="line"> </div>
 <div class="line">    ALLEGRO_COLOR white_color = al_map_rgba_f(1, 1, 1, 1);</div>
 <div class="line">    ALLEGRO_FONT *font = NULL ;</div>
@@ -356,8 +359,8 @@ $(document).ready(function(){initNavTree('ex_gui_netclient_8c-example.html','');
 <div class="line">    <a class="code hl_function" href="group___l_o_g.html#gacad9b2d55788f46ddde811c986ead9ae">set_log_level</a>( <a class="code hl_define" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a> );</div>
 <div class="line"> </div>
 <div class="line">    <span class="comment">/* processing args and set log_level */</span></div>
-<div class="line">    <a class="code hl_function" href="ex__gui__netclient_8c.html#ac74d0feedc2bec6d0b5b45d5478ccf6a">process_args</a>( argc, argv, &amp;<a class="code hl_variable" href="ex__network_8c.html#a516f037dddd27a8137d32553803548d6">server</a>, &amp;port, &amp;<a class="code hl_variable" href="ex__network_8c.html#a8796aa7b363f0bede0f8dc5b96436f0b">ip_version</a> );</div>
-<div class="line">    <span class="keywordflow">if</span>( !<a class="code hl_variable" href="ex__network_8c.html#a516f037dddd27a8137d32553803548d6">server</a> )</div>
+<div class="line">    process_args( argc, argv, &amp;server, &amp;port, &amp;ip_version );</div>
+<div class="line">    <span class="keywordflow">if</span>( !server )</div>
 <div class="line">    {</div>
 <div class="line">        <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a>, <span class="stringliteral">&quot;No server given. Exiting.&quot;</span> );</div>
 <div class="line">        exit( -1 );</div>
@@ -370,7 +373,7 @@ $(document).ready(function(){initNavTree('ex_gui_netclient_8c-example.html','');
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#ifdef __linux__</span></div>
 <div class="line">    <span class="keyword">struct </span>sigaction sa;</div>
-<div class="line">    sa.sa_handler = <a id="a56" name="a56"></a><a class="code hl_function" href="n__network_8c.html#a6d493e1a8e3717c37b3186b2f63acbb2">netw_sigchld_handler</a>; <span class="comment">// reap all dead processes</span></div>
+<div class="line">    sa.sa_handler = <a id="a31" name="a31"></a><a class="code hl_function" href="n__network_8c.html#a6d493e1a8e3717c37b3186b2f63acbb2">netw_sigchld_handler</a>; <span class="comment">// reap all dead processes</span></div>
 <div class="line">    sigemptyset(&amp;sa.sa_mask);</div>
 <div class="line">    sa.sa_flags = SA_RESTART;</div>
 <div class="line">    <span class="keywordflow">if</span> (sigaction(SIGCHLD, &amp;sa, NULL) == -1)</div>
@@ -385,7 +388,7 @@ $(document).ready(function(){initNavTree('ex_gui_netclient_8c-example.html','');
 <div class="line">    <span class="comment">/* allegro 5 + addons loading */</span></div>
 <div class="line">    <span class="keywordflow">if</span> (!al_init())</div>
 <div class="line">    {</div>
-<div class="line">        <a id="a57" name="a57"></a><a class="code hl_function" href="group___c_o_m_m_o_n_s.html#gacaf9e791d31308d5d43c0322b03ee322">n_abort</a>(<span class="stringliteral">&quot;Could not init Allegro.\n&quot;</span>);</div>
+<div class="line">        <a id="a32" name="a32"></a><a class="code hl_function" href="group___c_o_m_m_o_n_s.html#gacaf9e791d31308d5d43c0322b03ee322">n_abort</a>(<span class="stringliteral">&quot;Could not init Allegro.\n&quot;</span>);</div>
 <div class="line">    }</div>
 <div class="line">    <span class="keywordflow">if</span> (!al_install_audio())</div>
 <div class="line">    {</div>
@@ -425,25 +428,25 @@ $(document).ready(function(){initNavTree('ex_gui_netclient_8c-example.html','');
 <div class="line">    <span class="keywordflow">if</span>(!event_queue)</div>
 <div class="line">    {</div>
 <div class="line">        fprintf(stderr, <span class="stringliteral">&quot;failed to create event_queue!\n&quot;</span>);</div>
-<div class="line">        al_destroy_display(<a class="code hl_variable" href="ex__gui__particles_8c.html#af64cc6c8a47e5ddbf510b5aa92e062b9">display</a>);</div>
+<div class="line">        al_destroy_display(display);</div>
 <div class="line">        <span class="keywordflow">return</span> -1;</div>
 <div class="line">    }</div>
 <div class="line"> </div>
-<div class="line">    <a class="code hl_variable" href="ex__gui__particles_8c.html#a2616450263b3d62aa18f71a296fb80a5">fps_timer</a> = al_create_timer( 1.0/60.0 );</div>
-<div class="line">    <a class="code hl_variable" href="ex__gui__particles_8c.html#af63a6683d8306869974571dca7ca3718">logic_timer</a> = al_create_timer( 1.0/60.0 );</div>
+<div class="line">    fps_timer = al_create_timer( 1.0/60.0 );</div>
+<div class="line">    logic_timer = al_create_timer( 1.0/60.0 );</div>
 <div class="line">    network_heartbeat_timer = al_create_timer( 1.0/10.0 );</div>
 <div class="line"> </div>
 <div class="line">    al_set_new_display_flags( ALLEGRO_OPENGL|ALLEGRO_WINDOWED );</div>
-<div class="line">    <a class="code hl_variable" href="ex__gui__particles_8c.html#af64cc6c8a47e5ddbf510b5aa92e062b9">display</a> = al_create_display( <a id="a58" name="a58"></a><a class="code hl_define" href="ex__gui__netclient_8c.html#a241aeeb764887ae5e3de58b98f04b16d">WIDTH</a>, <a id="a59" name="a59"></a><a class="code hl_define" href="ex__gui__netclient_8c.html#aed89bd71aee8be823e8a20ec4e093c1e">HEIGHT</a> );</div>
-<div class="line">    <span class="keywordflow">if</span>( !<a class="code hl_variable" href="ex__gui__particles_8c.html#af64cc6c8a47e5ddbf510b5aa92e062b9">display</a> )</div>
+<div class="line">    display = al_create_display( WIDTH, HEIGHT );</div>
+<div class="line">    <span class="keywordflow">if</span>( !display )</div>
 <div class="line">    {</div>
 <div class="line">        <a class="code hl_function" href="group___c_o_m_m_o_n_s.html#gacaf9e791d31308d5d43c0322b03ee322">n_abort</a>(<span class="stringliteral">&quot;Unable to create display\n&quot;</span>);</div>
 <div class="line">    }</div>
-<div class="line">    al_set_window_title( <a class="code hl_variable" href="ex__gui__particles_8c.html#af64cc6c8a47e5ddbf510b5aa92e062b9">display</a>, argv[ 0 ] );</div>
+<div class="line">    al_set_window_title( display, argv[ 0 ] );</div>
 <div class="line"> </div>
 <div class="line">    al_set_new_bitmap_flags( ALLEGRO_VIDEO_BITMAP );</div>
 <div class="line"> </div>
-<div class="line">    peer_table = <a id="a60" name="a60"></a><a class="code hl_function" href="group___h_a_s_h___t_a_b_l_e.html#gaa2d879c1afd3c71a0917bbe2c0766664">new_ht</a>( 1024 );</div>
+<div class="line">    peer_table = <a id="a33" name="a33"></a><a class="code hl_function" href="group___h_a_s_h___t_a_b_l_e.html#gaa2d879c1afd3c71a0917bbe2c0766664">new_ht</a>( 1024 );</div>
 <div class="line">    chatbuf = <a class="code hl_function" href="group___l_i_s_t.html#gada615e3b144e97bcff147dfe89f6fef6">new_generic_list</a>( 1000 );</div>
 <div class="line">    chat_line = al_ustr_new( <span class="stringliteral">&quot;&quot;</span> );</div>
 <div class="line">    font = al_load_font( <span class="stringliteral">&quot;2Dumb.ttf&quot;</span>, 18, 0 );</div>
@@ -452,33 +455,33 @@ $(document).ready(function(){initNavTree('ex_gui_netclient_8c-example.html','');
 <div class="line">        <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a>, <span class="stringliteral">&quot;Unable to load 2Dumb.ttf&quot;</span> );</div>
 <div class="line">        exit( 1 );</div>
 <div class="line">    }</div>
-<div class="line">    al_register_event_source(event_queue, al_get_display_event_source(<a class="code hl_variable" href="ex__gui__particles_8c.html#af64cc6c8a47e5ddbf510b5aa92e062b9">display</a>));</div>
+<div class="line">    al_register_event_source(event_queue, al_get_display_event_source(display));</div>
 <div class="line"> </div>
-<div class="line">    al_start_timer( <a class="code hl_variable" href="ex__gui__particles_8c.html#a2616450263b3d62aa18f71a296fb80a5">fps_timer</a> );</div>
-<div class="line">    al_start_timer( <a class="code hl_variable" href="ex__gui__particles_8c.html#af63a6683d8306869974571dca7ca3718">logic_timer</a> );</div>
+<div class="line">    al_start_timer( fps_timer );</div>
+<div class="line">    al_start_timer( logic_timer );</div>
 <div class="line">    al_start_timer( network_heartbeat_timer );</div>
 <div class="line"> </div>
-<div class="line">    al_register_event_source(event_queue, al_get_timer_event_source(<a class="code hl_variable" href="ex__gui__particles_8c.html#a2616450263b3d62aa18f71a296fb80a5">fps_timer</a>));</div>
-<div class="line">    al_register_event_source(event_queue, al_get_timer_event_source(<a class="code hl_variable" href="ex__gui__particles_8c.html#af63a6683d8306869974571dca7ca3718">logic_timer</a>));</div>
+<div class="line">    al_register_event_source(event_queue, al_get_timer_event_source(fps_timer));</div>
+<div class="line">    al_register_event_source(event_queue, al_get_timer_event_source(logic_timer));</div>
 <div class="line">    al_register_event_source(event_queue, al_get_timer_event_source(network_heartbeat_timer));</div>
 <div class="line"> </div>
 <div class="line">    al_register_event_source(event_queue, al_get_keyboard_event_source());</div>
 <div class="line">    al_register_event_source(event_queue, al_get_mouse_event_source());</div>
 <div class="line"> </div>
-<div class="line">    ALLEGRO_BITMAP *scrbuf = al_create_bitmap( <a class="code hl_define" href="ex__gui__netclient_8c.html#a241aeeb764887ae5e3de58b98f04b16d">WIDTH</a>, <a class="code hl_define" href="ex__gui__netclient_8c.html#aed89bd71aee8be823e8a20ec4e093c1e">HEIGHT</a> );</div>
+<div class="line">    ALLEGRO_BITMAP *scrbuf = al_create_bitmap( WIDTH, HEIGHT );</div>
 <div class="line"> </div>
-<div class="line">    al_hide_mouse_cursor(<a class="code hl_variable" href="ex__gui__particles_8c.html#af64cc6c8a47e5ddbf510b5aa92e062b9">display</a>);</div>
+<div class="line">    al_hide_mouse_cursor(display);</div>
 <div class="line"> </div>
-<div class="line">    <span class="keywordflow">if</span>( <a id="a61" name="a61"></a><a class="code hl_function" href="group___n_e_t_w_o_r_k_i_n_g.html#gae18d52a130063ba1fd0a4cf4b6a2da20">netw_connect</a>( &amp;<a class="code hl_variable" href="ex__network_8c.html#aaf647e21e94e41eb48f7f28fc120f199">netw</a>, <a class="code hl_variable" href="ex__network_8c.html#a516f037dddd27a8137d32553803548d6">server</a>, port, <a class="code hl_variable" href="ex__network_8c.html#a8796aa7b363f0bede0f8dc5b96436f0b">ip_version</a> ) != TRUE )</div>
+<div class="line">    <span class="keywordflow">if</span>( <a id="a34" name="a34"></a><a class="code hl_function" href="group___n_e_t_w_o_r_k_i_n_g.html#gae18d52a130063ba1fd0a4cf4b6a2da20">netw_connect</a>( &amp;netw, server, port, ip_version ) != TRUE )</div>
 <div class="line">    {</div>
-<div class="line">        <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a>, <span class="stringliteral">&quot;Could not connect to %s:%s&quot;</span>, <a id="a62" name="a62"></a><a class="code hl_define" href="group___c_o_m_m_o_n_s.html#ga55b9404f7bc9d3a3ead2f0103331a87e">_str</a>( <a class="code hl_variable" href="ex__network_8c.html#a516f037dddd27a8137d32553803548d6">server</a> ), <a class="code hl_define" href="group___c_o_m_m_o_n_s.html#ga55b9404f7bc9d3a3ead2f0103331a87e">_str</a>( port ) );</div>
+<div class="line">        <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a>, <span class="stringliteral">&quot;Could not connect to %s:%s&quot;</span>, <a id="a35" name="a35"></a><a class="code hl_define" href="group___c_o_m_m_o_n_s.html#ga55b9404f7bc9d3a3ead2f0103331a87e">_str</a>( server ), <a class="code hl_define" href="group___c_o_m_m_o_n_s.html#ga55b9404f7bc9d3a3ead2f0103331a87e">_str</a>( port ) );</div>
 <div class="line">    }</div>
-<div class="line">    <a id="a63" name="a63"></a><a class="code hl_function" href="group___n_e_t_w_o_r_k_i_n_g.html#ga5ba0555c5ccd261227c3c1216923d563">netw_start_thr_engine</a>( <a class="code hl_variable" href="ex__network_8c.html#aaf647e21e94e41eb48f7f28fc120f199">netw</a> );</div>
+<div class="line">    <a id="a36" name="a36"></a><a class="code hl_function" href="group___n_e_t_w_o_r_k_i_n_g.html#ga5ba0555c5ccd261227c3c1216923d563">netw_start_thr_engine</a>( netw );</div>
 <div class="line"> </div>
-<div class="line">    name = <a id="a64" name="a64"></a><a class="code hl_function" href="group___n___s_t_r.html#ga69e5f2dbf75571a73e5a3332929642a4">char_to_nstr</a>( <span class="stringliteral">&quot;ClientName&quot;</span> );</div>
+<div class="line">    name = <a id="a37" name="a37"></a><a class="code hl_function" href="group___n___s_t_r.html#ga69e5f2dbf75571a73e5a3332929642a4">char_to_nstr</a>( <span class="stringliteral">&quot;ClientName&quot;</span> );</div>
 <div class="line">    password = <a class="code hl_function" href="group___n___s_t_r.html#ga69e5f2dbf75571a73e5a3332929642a4">char_to_nstr</a>( <span class="stringliteral">&quot;ClientPassword&quot;</span> );</div>
 <div class="line"> </div>
-<div class="line">    <span class="keywordflow">if</span>( <a id="a65" name="a65"></a><a class="code hl_function" href="group___n_e_t_w_o_r_k_i_n_g.html#gae8345266fcf7a23c0e8ffe176b0e086f">netw_send_ident</a>( <a class="code hl_variable" href="ex__network_8c.html#aaf647e21e94e41eb48f7f28fc120f199">netw</a>, <a id="a66" name="a66"></a><a class="code hl_define" href="group___n_e_t_w_o_r_k___m_s_g.html#ga0aba2c6691315fe2da60573c228da4ce">NETMSG_IDENT_REQUEST</a>, 0, name, password ) == FALSE )</div>
+<div class="line">    <span class="keywordflow">if</span>( <a id="a38" name="a38"></a><a class="code hl_function" href="group___n_e_t_w_o_r_k_i_n_g.html#gae8345266fcf7a23c0e8ffe176b0e086f">netw_send_ident</a>( netw, <a id="a39" name="a39"></a><a class="code hl_define" href="group___n_e_t_w_o_r_k___m_s_g.html#ga0aba2c6691315fe2da60573c228da4ce">NETMSG_IDENT_REQUEST</a>, 0, name, password ) == FALSE )</div>
 <div class="line">    {</div>
 <div class="line">        <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a>, <span class="stringliteral">&quot;Sending ident request failed&quot;</span> );</div>
 <div class="line">        <span class="keywordflow">goto</span> exit_client;</div>
@@ -488,15 +491,15 @@ $(document).ready(function(){initNavTree('ex_gui_netclient_8c-example.html','');
 <div class="line">    <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> ident_timeout = 10000000 ;</div>
 <div class="line">    <span class="keywordflow">do</span></div>
 <div class="line">    {</div>
-<div class="line">        netw_exchange = <a id="a67" name="a67"></a><a class="code hl_function" href="group___n_e_t_w_o_r_k_i_n_g.html#ga0d0992b4eac986d7757ecddbc66e3b90">netw_get_msg</a>( <a class="code hl_variable" href="ex__network_8c.html#aaf647e21e94e41eb48f7f28fc120f199">netw</a> );</div>
+<div class="line">        netw_exchange = <a id="a40" name="a40"></a><a class="code hl_function" href="group___n_e_t_w_o_r_k_i_n_g.html#ga0d0992b4eac986d7757ecddbc66e3b90">netw_get_msg</a>( netw );</div>
 <div class="line">        <span class="keywordflow">if</span>( netw_exchange )</div>
 <div class="line">        {</div>
-<div class="line">            <span class="keywordtype">int</span> type = <a id="a68" name="a68"></a><a class="code hl_function" href="group___n_e_t_w_o_r_k___m_s_g.html#ga70abef02e9578c21b5707eecb3750fef">netw_msg_get_type</a>( netw_exchange );</div>
-<div class="line">            <span class="keywordflow">if</span>( type == <a id="a69" name="a69"></a><a class="code hl_define" href="group___n_e_t_w_o_r_k___m_s_g.html#gacd87327bd5e06b2dbceee860fb93cc90">NETMSG_IDENT_REPLY_OK</a> )</div>
+<div class="line">            <span class="keywordtype">int</span> type = <a id="a41" name="a41"></a><a class="code hl_function" href="group___n_e_t_w_o_r_k___m_s_g.html#ga70abef02e9578c21b5707eecb3750fef">netw_msg_get_type</a>( netw_exchange );</div>
+<div class="line">            <span class="keywordflow">if</span>( type == <a id="a42" name="a42"></a><a class="code hl_define" href="group___n_e_t_w_o_r_k___m_s_g.html#gacd87327bd5e06b2dbceee860fb93cc90">NETMSG_IDENT_REPLY_OK</a> )</div>
 <div class="line">            {</div>
 <div class="line">                break ;</div>
 <div class="line">            }</div>
-<div class="line">            <span class="keywordflow">if</span>( type == <a id="a70" name="a70"></a><a class="code hl_define" href="group___n_e_t_w_o_r_k___m_s_g.html#ga2c234a6eeea5e8f2fe26573ba2053423">NETMSG_IDENT_REPLY_NOK</a> )</div>
+<div class="line">            <span class="keywordflow">if</span>( type == <a id="a43" name="a43"></a><a class="code hl_define" href="group___n_e_t_w_o_r_k___m_s_g.html#ga2c234a6eeea5e8f2fe26573ba2053423">NETMSG_IDENT_REPLY_NOK</a> )</div>
 <div class="line">            {</div>
 <div class="line">                <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a>, <span class="stringliteral">&quot;Login refused !!!&quot;</span> );</div>
 <div class="line">                <span class="keywordflow">goto</span> exit_client ;</div>
@@ -508,7 +511,7 @@ $(document).ready(function(){initNavTree('ex_gui_netclient_8c-example.html','');
 <div class="line">    <span class="keywordflow">while</span>( ident_timeout &gt; 0 );</div>
 <div class="line">    <a class="code hl_define" href="group___n___s_t_r.html#ga113e906d03374ac38e441f1df44095fb">free_nstr</a>( &amp;name );</div>
 <div class="line">    <a class="code hl_define" href="group___n___s_t_r.html#ga113e906d03374ac38e441f1df44095fb">free_nstr</a>( &amp;password );</div>
-<div class="line">    <a id="a71" name="a71"></a><a class="code hl_function" href="group___n_e_t_w_o_r_k___m_s_g.html#gaf2d84e34e50db7b3b7aca16c6bdb06f8">netw_get_ident</a>( netw_exchange, &amp;it, &amp;ident, &amp;name, &amp;password );</div>
+<div class="line">    <a id="a44" name="a44"></a><a class="code hl_function" href="group___n_e_t_w_o_r_k___m_s_g.html#gaf2d84e34e50db7b3b7aca16c6bdb06f8">netw_get_ident</a>( netw_exchange, &amp;it, &amp;ident, &amp;name, &amp;password );</div>
 <div class="line">    <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#gaeb4f36db01bd128c7afeac5889dac311">LOG_INFO</a>,<span class="stringliteral">&quot;Id Message received, pointer:%p size %d id %d&quot;</span>, netw_exchange -&gt; data, netw_exchange -&gt; length, ident );</div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">if</span>( ident == -1 )</div>
@@ -518,7 +521,7 @@ $(document).ready(function(){initNavTree('ex_gui_netclient_8c-example.html','');
 <div class="line">    }</div>
 <div class="line">    <span class="comment">/* We got our id ! */</span></div>
 <div class="line">    <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#gad89ee324d180cdcd7defcc709ff9ca42">LOG_NOTICE</a>, <span class="stringliteral">&quot;Id is:%d&quot;</span>, ident );</div>
-<div class="line">    <a class="code hl_variable" href="ex__gui__particles_8c.html#a5819e6b9d2ee24c8e96d702de02421a0">DONE</a> = 0 ;</div>
+<div class="line">    DONE = 0 ;</div>
 <div class="line">    QUIT_ASKED = 0 ;</div>
 <div class="line">    <span class="keywordflow">do</span></div>
 <div class="line">    {</div>
@@ -531,26 +534,26 @@ $(document).ready(function(){initNavTree('ex_gui_netclient_8c-example.html','');
 <div class="line">            <span class="keywordflow">switch</span>(ev.keyboard.keycode)</div>
 <div class="line">            {</div>
 <div class="line">            <span class="keywordflow">case</span> ALLEGRO_KEY_UP:</div>
-<div class="line">                <a class="code hl_variable" href="ex__gui__netclient_8c.html#ac73942f75861b7977297231f5528c382">key</a>[<a class="code hl_enumvalue" href="ex__gui__netclient_8c.html#ad381705445518a234ef71c85cc7771a3a0848a442d907968b211b97bc2bd88acd">KEY_UP</a>] = 1;</div>
+<div class="line">                key[KEY_UP] = 1;</div>
 <div class="line">                <span class="keywordflow">break</span>;</div>
 <div class="line">            <span class="keywordflow">case</span> ALLEGRO_KEY_DOWN:</div>
-<div class="line">                <a class="code hl_variable" href="ex__gui__netclient_8c.html#ac73942f75861b7977297231f5528c382">key</a>[<a class="code hl_enumvalue" href="ex__gui__netclient_8c.html#ad381705445518a234ef71c85cc7771a3aa9cdac7967bf7d88fdb761138a2a3416">KEY_DOWN</a>] = 1;</div>
+<div class="line">                key[KEY_DOWN] = 1;</div>
 <div class="line">                <span class="keywordflow">break</span>;</div>
 <div class="line">            <span class="keywordflow">case</span> ALLEGRO_KEY_LEFT:</div>
-<div class="line">                <a class="code hl_variable" href="ex__gui__netclient_8c.html#ac73942f75861b7977297231f5528c382">key</a>[<a class="code hl_enumvalue" href="ex__gui__netclient_8c.html#ad381705445518a234ef71c85cc7771a3a612120b69c7dfd46086db7aaebdbcf65">KEY_LEFT</a>] = 1;</div>
+<div class="line">                key[KEY_LEFT] = 1;</div>
 <div class="line">                <span class="keywordflow">break</span>;</div>
 <div class="line">            <span class="keywordflow">case</span> ALLEGRO_KEY_RIGHT:</div>
-<div class="line">                <a class="code hl_variable" href="ex__gui__netclient_8c.html#ac73942f75861b7977297231f5528c382">key</a>[<a class="code hl_enumvalue" href="ex__gui__netclient_8c.html#ad381705445518a234ef71c85cc7771a3a6504370d9c6391e1a9da6a1a529b089d">KEY_RIGHT</a>] = 1;</div>
+<div class="line">                key[KEY_RIGHT] = 1;</div>
 <div class="line">                <span class="keywordflow">break</span>;</div>
 <div class="line">            <span class="keywordflow">case</span> ALLEGRO_KEY_ESCAPE:</div>
-<div class="line">                <a class="code hl_variable" href="ex__gui__netclient_8c.html#ac73942f75861b7977297231f5528c382">key</a>[<a class="code hl_enumvalue" href="ex__gui__netclient_8c.html#ad381705445518a234ef71c85cc7771a3ae53e9370c0243e9b0260458d3a55f315">KEY_ESC</a>] = 1 ;</div>
+<div class="line">                key[KEY_ESC] = 1 ;</div>
 <div class="line">                <span class="keywordflow">break</span>;</div>
 <div class="line">            <span class="keywordflow">case</span> ALLEGRO_KEY_SPACE:</div>
-<div class="line">                <a class="code hl_variable" href="ex__gui__netclient_8c.html#ac73942f75861b7977297231f5528c382">key</a>[<a class="code hl_enumvalue" href="ex__gui__netclient_8c.html#ad381705445518a234ef71c85cc7771a3a01d2889f9a7550008ad6140c41e733de">KEY_SPACE</a>] = 1 ;</div>
+<div class="line">                key[KEY_SPACE] = 1 ;</div>
 <div class="line">                <span class="keywordflow">break</span>;</div>
 <div class="line">            <span class="keywordflow">case</span> ALLEGRO_KEY_LCTRL:</div>
 <div class="line">            <span class="keywordflow">case</span> ALLEGRO_KEY_RCTRL:</div>
-<div class="line">                <a class="code hl_variable" href="ex__gui__netclient_8c.html#ac73942f75861b7977297231f5528c382">key</a>[<a class="code hl_enumvalue" href="ex__gui__netclient_8c.html#ad381705445518a234ef71c85cc7771a3a03b9f1caf27fb28b593880fdca9cfe66">KEY_CTRL</a>] = 1 ;</div>
+<div class="line">                key[KEY_CTRL] = 1 ;</div>
 <div class="line">            <span class="keywordflow">default</span>:</div>
 <div class="line">                <span class="keywordflow">break</span>;</div>
 <div class="line">            }</div>
@@ -560,48 +563,48 @@ $(document).ready(function(){initNavTree('ex_gui_netclient_8c-example.html','');
 <div class="line">            <span class="keywordflow">switch</span>(ev.keyboard.keycode)</div>
 <div class="line">            {</div>
 <div class="line">            <span class="keywordflow">case</span> ALLEGRO_KEY_UP:</div>
-<div class="line">                <a class="code hl_variable" href="ex__gui__netclient_8c.html#ac73942f75861b7977297231f5528c382">key</a>[<a class="code hl_enumvalue" href="ex__gui__netclient_8c.html#ad381705445518a234ef71c85cc7771a3a0848a442d907968b211b97bc2bd88acd">KEY_UP</a>] = 0;</div>
+<div class="line">                key[KEY_UP] = 0;</div>
 <div class="line">                <span class="keywordflow">break</span>;</div>
 <div class="line">            <span class="keywordflow">case</span> ALLEGRO_KEY_DOWN:</div>
-<div class="line">                <a class="code hl_variable" href="ex__gui__netclient_8c.html#ac73942f75861b7977297231f5528c382">key</a>[<a class="code hl_enumvalue" href="ex__gui__netclient_8c.html#ad381705445518a234ef71c85cc7771a3aa9cdac7967bf7d88fdb761138a2a3416">KEY_DOWN</a>] = 0;</div>
+<div class="line">                key[KEY_DOWN] = 0;</div>
 <div class="line">                <span class="keywordflow">break</span>;</div>
 <div class="line">            <span class="keywordflow">case</span> ALLEGRO_KEY_LEFT:</div>
-<div class="line">                <a class="code hl_variable" href="ex__gui__netclient_8c.html#ac73942f75861b7977297231f5528c382">key</a>[<a class="code hl_enumvalue" href="ex__gui__netclient_8c.html#ad381705445518a234ef71c85cc7771a3a612120b69c7dfd46086db7aaebdbcf65">KEY_LEFT</a>] = 0;</div>
+<div class="line">                key[KEY_LEFT] = 0;</div>
 <div class="line">                <span class="keywordflow">break</span>;</div>
 <div class="line">            <span class="keywordflow">case</span> ALLEGRO_KEY_RIGHT:</div>
-<div class="line">                <a class="code hl_variable" href="ex__gui__netclient_8c.html#ac73942f75861b7977297231f5528c382">key</a>[<a class="code hl_enumvalue" href="ex__gui__netclient_8c.html#ad381705445518a234ef71c85cc7771a3a6504370d9c6391e1a9da6a1a529b089d">KEY_RIGHT</a>] =0;</div>
+<div class="line">                key[KEY_RIGHT] =0;</div>
 <div class="line">                <span class="keywordflow">break</span>;</div>
 <div class="line">            <span class="keywordflow">case</span> ALLEGRO_KEY_ESCAPE:</div>
-<div class="line">                <a class="code hl_variable" href="ex__gui__netclient_8c.html#ac73942f75861b7977297231f5528c382">key</a>[<a class="code hl_enumvalue" href="ex__gui__netclient_8c.html#ad381705445518a234ef71c85cc7771a3ae53e9370c0243e9b0260458d3a55f315">KEY_ESC</a>] = 0 ;</div>
+<div class="line">                key[KEY_ESC] = 0 ;</div>
 <div class="line">                <span class="keywordflow">break</span>;</div>
 <div class="line">            <span class="keywordflow">case</span> ALLEGRO_KEY_SPACE:</div>
-<div class="line">                <a class="code hl_variable" href="ex__gui__netclient_8c.html#ac73942f75861b7977297231f5528c382">key</a>[<a class="code hl_enumvalue" href="ex__gui__netclient_8c.html#ad381705445518a234ef71c85cc7771a3a01d2889f9a7550008ad6140c41e733de">KEY_SPACE</a>] = 0 ;</div>
+<div class="line">                key[KEY_SPACE] = 0 ;</div>
 <div class="line">                <span class="keywordflow">break</span>;</div>
 <div class="line">            <span class="keywordflow">case</span> ALLEGRO_KEY_LCTRL:</div>
 <div class="line">            <span class="keywordflow">case</span> ALLEGRO_KEY_RCTRL:</div>
-<div class="line">                <a class="code hl_variable" href="ex__gui__netclient_8c.html#ac73942f75861b7977297231f5528c382">key</a>[<a class="code hl_enumvalue" href="ex__gui__netclient_8c.html#ad381705445518a234ef71c85cc7771a3a03b9f1caf27fb28b593880fdca9cfe66">KEY_CTRL</a>] = 0 ;</div>
+<div class="line">                key[KEY_CTRL] = 0 ;</div>
 <div class="line">            <span class="keywordflow">default</span>:</div>
 <div class="line">                <span class="keywordflow">break</span>;</div>
 <div class="line">            }</div>
 <div class="line">        }</div>
 <div class="line">        <span class="keywordflow">else</span> <span class="keywordflow">if</span>( ev.keyboard.keycode == ALLEGRO_KEY_ENTER )</div>
 <div class="line">        {</div>
-<div class="line">            <a class="code hl_struct" href="group___n___s_t_r.html#struct_n___s_t_r">N_STR</a> *txtmsg = <a id="a72" name="a72"></a><a class="code hl_function" href="group___n___s_t_r.html#ga873edbb1f8787d0a78a13ccbbed9b9f9">new_nstr</a>( 1024 );</div>
+<div class="line">            <a class="code hl_struct" href="group___n___s_t_r.html#struct_n___s_t_r">N_STR</a> *txtmsg = <a id="a45" name="a45"></a><a class="code hl_function" href="group___n___s_t_r.html#ga873edbb1f8787d0a78a13ccbbed9b9f9">new_nstr</a>( 1024 );</div>
 <div class="line">            al_ustr_trim_ws( chat_line ) ;</div>
 <div class="line">            al_ustr_to_buffer(  chat_line, txtmsg -&gt; data, txtmsg -&gt; length );</div>
 <div class="line"> </div>
-<div class="line">            <a class="code hl_struct" href="group___n___s_t_r.html#struct_n___s_t_r">N_STR</a> *netmsg = <a id="a73" name="a73"></a><a class="code hl_function" href="group___n_e_t_w_o_r_k___m_s_g.html#gafb91c3ea7bfa93212141fa1fe074fb3d">netmsg_make_string_msg</a>( <a class="code hl_variable" href="ex__network_8c.html#aaf647e21e94e41eb48f7f28fc120f199">netw</a> -&gt; link . sock, -1, name, txtmsg, txtmsg, 1 );</div>
-<div class="line">            <a id="a74" name="a74"></a><a class="code hl_function" href="group___n_e_t_w_o_r_k_i_n_g.html#ga10429a9fa106b61c38f28635242ce502">netw_add_msg</a>( <a class="code hl_variable" href="ex__network_8c.html#aaf647e21e94e41eb48f7f28fc120f199">netw</a>, netmsg );</div>
+<div class="line">            <a class="code hl_struct" href="group___n___s_t_r.html#struct_n___s_t_r">N_STR</a> *netmsg = <a id="a46" name="a46"></a><a class="code hl_function" href="group___n_e_t_w_o_r_k___m_s_g.html#gafb91c3ea7bfa93212141fa1fe074fb3d">netmsg_make_string_msg</a>( netw -&gt; link . sock, -1, name, txtmsg, txtmsg, 1 );</div>
+<div class="line">            <a id="a47" name="a47"></a><a class="code hl_function" href="group___n_e_t_w_o_r_k_i_n_g.html#ga10429a9fa106b61c38f28635242ce502">netw_add_msg</a>( netw, netmsg );</div>
 <div class="line">            <a class="code hl_define" href="group___n___s_t_r.html#ga113e906d03374ac38e441f1df44095fb">free_nstr</a>( &amp;txtmsg );</div>
 <div class="line"> </div>
 <div class="line">        }</div>
 <div class="line">        <span class="keywordflow">else</span> <span class="keywordflow">if</span>( ev.type == ALLEGRO_EVENT_TIMER )</div>
 <div class="line">        {</div>
-<div class="line">            <span class="keywordflow">if</span>( al_get_timer_event_source( <a class="code hl_variable" href="ex__gui__particles_8c.html#a2616450263b3d62aa18f71a296fb80a5">fps_timer</a> ) == ev.any.source )</div>
+<div class="line">            <span class="keywordflow">if</span>( al_get_timer_event_source( fps_timer ) == ev.any.source )</div>
 <div class="line">            {</div>
 <div class="line">                do_draw = 1 ;</div>
 <div class="line">            }</div>
-<div class="line">            <span class="keywordflow">else</span> <span class="keywordflow">if</span>( al_get_timer_event_source( <a class="code hl_variable" href="ex__gui__particles_8c.html#af63a6683d8306869974571dca7ca3718">logic_timer</a> ) == ev.any.source )</div>
+<div class="line">            <span class="keywordflow">else</span> <span class="keywordflow">if</span>( al_get_timer_event_source( logic_timer ) == ev.any.source )</div>
 <div class="line">            {</div>
 <div class="line">                do_logic = 1;</div>
 <div class="line">            }</div>
@@ -631,11 +634,11 @@ $(document).ready(function(){initNavTree('ex_gui_netclient_8c-example.html','');
 <div class="line">        }</div>
 <div class="line">        <span class="keywordflow">else</span> <span class="keywordflow">if</span>( ev.type == ALLEGRO_EVENT_DISPLAY_CLOSE )</div>
 <div class="line">        {</div>
-<div class="line">            <a class="code hl_variable" href="ex__gui__particles_8c.html#a5819e6b9d2ee24c8e96d702de02421a0">DONE</a> = 1 ;</div>
+<div class="line">            DONE = 1 ;</div>
 <div class="line">        }</div>
 <div class="line"> </div>
 <div class="line">        <span class="comment">/* Processing inputs */</span></div>
-<div class="line">        <a id="a75" name="a75"></a><a class="code hl_function" href="group___a_l_l_e_g_r_o5.html#ga89b632f62c41b87b68e83a086e302247">get_keyboard</a>( chat_line, ev );</div>
+<div class="line">        <a id="a48" name="a48"></a><a class="code hl_function" href="group___a_l_l_e_g_r_o5.html#ga89b632f62c41b87b68e83a086e302247">get_keyboard</a>( chat_line, ev );</div>
 <div class="line"> </div>
 <div class="line">        <span class="comment">/* dev mod: right click to temporary delete a block</span></div>
 <div class="line"><span class="comment">           left click to temporary add a block */</span></div>
@@ -646,7 +649,7 @@ $(document).ready(function(){initNavTree('ex_gui_netclient_8c-example.html','');
 <div class="line">            mouse_button = 2 ;</div>
 <div class="line"> </div>
 <div class="line"> </div>
-<div class="line">        <span class="keywordflow">if</span>( <a class="code hl_variable" href="ex__gui__netclient_8c.html#ac73942f75861b7977297231f5528c382">key</a>[ <a class="code hl_enumvalue" href="ex__gui__netclient_8c.html#ad381705445518a234ef71c85cc7771a3a0848a442d907968b211b97bc2bd88acd">KEY_UP</a> ] )</div>
+<div class="line">        <span class="keywordflow">if</span>( key[ KEY_UP ] )</div>
 <div class="line">        {</div>
 <div class="line">        }</div>
 <div class="line">        <span class="keywordflow">else</span></div>
@@ -654,22 +657,14 @@ $(document).ready(function(){initNavTree('ex_gui_netclient_8c-example.html','');
 <div class="line">        }</div>
 <div class="line"> </div>
 <div class="line"> </div>
-<div class="line">        <span class="keywordflow">if</span>( <a class="code hl_variable" href="ex__gui__netclient_8c.html#ac73942f75861b7977297231f5528c382">key</a>[ <a class="code hl_enumvalue" href="ex__gui__netclient_8c.html#ad381705445518a234ef71c85cc7771a3aa9cdac7967bf7d88fdb761138a2a3416">KEY_DOWN</a> ] )</div>
+<div class="line">        <span class="keywordflow">if</span>( key[ KEY_DOWN ] )</div>
 <div class="line">        {</div>
 <div class="line">        }</div>
 <div class="line">        <span class="keywordflow">else</span></div>
 <div class="line">        {</div>
 <div class="line">        }</div>
 <div class="line"> </div>
-<div class="line">        <span class="keywordflow">if</span>( <a class="code hl_variable" href="ex__gui__netclient_8c.html#ac73942f75861b7977297231f5528c382">key</a>[ <a class="code hl_enumvalue" href="ex__gui__netclient_8c.html#ad381705445518a234ef71c85cc7771a3a612120b69c7dfd46086db7aaebdbcf65">KEY_LEFT</a> ] )</div>
-<div class="line">        {</div>
-<div class="line">        }</div>
-<div class="line">        <span class="keywordflow">else</span></div>
-<div class="line">        {</div>
-<div class="line">        }</div>
-<div class="line"> </div>
-<div class="line"> </div>
-<div class="line">        <span class="keywordflow">if</span>( <a class="code hl_variable" href="ex__gui__netclient_8c.html#ac73942f75861b7977297231f5528c382">key</a>[ <a class="code hl_enumvalue" href="ex__gui__netclient_8c.html#ad381705445518a234ef71c85cc7771a3a6504370d9c6391e1a9da6a1a529b089d">KEY_RIGHT</a> ] )</div>
+<div class="line">        <span class="keywordflow">if</span>( key[ KEY_LEFT ] )</div>
 <div class="line">        {</div>
 <div class="line">        }</div>
 <div class="line">        <span class="keywordflow">else</span></div>
@@ -677,7 +672,15 @@ $(document).ready(function(){initNavTree('ex_gui_netclient_8c-example.html','');
 <div class="line">        }</div>
 <div class="line"> </div>
 <div class="line"> </div>
-<div class="line">        <span class="keywordflow">if</span>( <a class="code hl_variable" href="ex__gui__netclient_8c.html#ac73942f75861b7977297231f5528c382">key</a>[<a class="code hl_enumvalue" href="ex__gui__netclient_8c.html#ad381705445518a234ef71c85cc7771a3a03b9f1caf27fb28b593880fdca9cfe66">KEY_CTRL</a> ] || mouse_button == 1 )</div>
+<div class="line">        <span class="keywordflow">if</span>( key[ KEY_RIGHT ] )</div>
+<div class="line">        {</div>
+<div class="line">        }</div>
+<div class="line">        <span class="keywordflow">else</span></div>
+<div class="line">        {</div>
+<div class="line">        }</div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line">        <span class="keywordflow">if</span>( key[KEY_CTRL ] || mouse_button == 1 )</div>
 <div class="line">        {</div>
 <div class="line"> </div>
 <div class="line">        }</div>
@@ -689,53 +692,53 @@ $(document).ready(function(){initNavTree('ex_gui_netclient_8c-example.html','');
 <div class="line">        <span class="keywordflow">if</span>( do_logic == 1 )</div>
 <div class="line">        {</div>
 <div class="line">            <a class="code hl_struct" href="group___n___s_t_r.html#struct_n___s_t_r">N_STR</a> *netmsg = NULL ;</div>
-<div class="line">            netmsg = <a class="code hl_function" href="group___n_e_t_w_o_r_k_i_n_g.html#ga0d0992b4eac986d7757ecddbc66e3b90">netw_get_msg</a>( <a class="code hl_variable" href="ex__network_8c.html#aaf647e21e94e41eb48f7f28fc120f199">netw</a> );</div>
+<div class="line">            netmsg = <a class="code hl_function" href="group___n_e_t_w_o_r_k_i_n_g.html#ga0d0992b4eac986d7757ecddbc66e3b90">netw_get_msg</a>( netw );</div>
 <div class="line">            <span class="keywordflow">if</span>( netmsg )</div>
 <div class="line">            {</div>
 <div class="line">                <span class="keywordtype">int</span> type = -1 ;</div>
 <div class="line">                type = <a class="code hl_function" href="group___n_e_t_w_o_r_k___m_s_g.html#ga70abef02e9578c21b5707eecb3750fef">netw_msg_get_type</a>( netmsg );</div>
 <div class="line">                <span class="keywordflow">switch</span>( type )</div>
 <div class="line">                {</div>
-<div class="line">                <span class="keywordflow">case</span>( <a id="a76" name="a76"></a><a class="code hl_define" href="group___n_e_t_w_o_r_k___m_s_g.html#gab8dd7be31c5e0e263f81efa4962b38a6">NETMSG_GET_BOX</a> ):</div>
+<div class="line">                <span class="keywordflow">case</span>( <a id="a49" name="a49"></a><a class="code hl_define" href="group___n_e_t_w_o_r_k___m_s_g.html#gab8dd7be31c5e0e263f81efa4962b38a6">NETMSG_GET_BOX</a> ):</div>
 <div class="line">                    <span class="comment">/* ask for world box */</span></div>
 <div class="line">                    break ;</div>
-<div class="line">                <span class="keywordflow">case</span>( <a id="a77" name="a77"></a><a class="code hl_define" href="group___n_e_t_w_o_r_k___m_s_g.html#gaa4b51b1c41f36f6ee947958e7b2f461e">NETMSG_BOX</a> ):</div>
+<div class="line">                <span class="keywordflow">case</span>( <a id="a50" name="a50"></a><a class="code hl_define" href="group___n_e_t_w_o_r_k___m_s_g.html#gaa4b51b1c41f36f6ee947958e7b2f461e">NETMSG_BOX</a> ):</div>
 <div class="line">                    <span class="comment">/* a world object at position X,Y,Z with associated datas, add/update local world cache */</span></div>
 <div class="line">                    break ;</div>
-<div class="line">                <span class="keywordflow">case</span>( <a id="a78" name="a78"></a><a class="code hl_define" href="group___n_e_t_w_o_r_k___m_s_g.html#ga6be40a0228eaffdc2591bd892801ad6f">NETMSG_POSITION</a> ):</div>
+<div class="line">                <span class="keywordflow">case</span>( <a id="a51" name="a51"></a><a class="code hl_define" href="group___n_e_t_w_o_r_k___m_s_g.html#ga6be40a0228eaffdc2591bd892801ad6f">NETMSG_POSITION</a> ):</div>
 <div class="line">                {</div>
 <div class="line"> </div>
 <div class="line">                    <span class="comment">/* add/update object with id at position */</span></div>
 <div class="line">                    <span class="keywordtype">double</span> pos[ 3 ];</div>
 <div class="line">                    <span class="keywordtype">double</span> spe[ 3 ];</div>
 <div class="line">                    <span class="keywordtype">int</span> <span class="keywordtype">id</span> = -1, timestamp = -1 ;</div>
-<div class="line">                    <a id="a79" name="a79"></a><a class="code hl_function" href="group___n_e_t_w_o_r_k___m_s_g.html#ga241bf3b1ebc63dd986dfec1b0fe4998b">netw_get_position</a>( netmsg, &amp;<span class="keywordtype">id</span>, &amp;pos[ 0 ],&amp;pos[ 1 ],&amp;pos[ 2 ], &amp;spe[ 0 ], &amp;spe[ 1 ], &amp;spe[ 2 ], &amp;timestamp );</div>
+<div class="line">                    <a id="a52" name="a52"></a><a class="code hl_function" href="group___n_e_t_w_o_r_k___m_s_g.html#ga241bf3b1ebc63dd986dfec1b0fe4998b">netw_get_position</a>( netmsg, &amp;<span class="keywordtype">id</span>, &amp;pos[ 0 ],&amp;pos[ 1 ],&amp;pos[ 2 ], &amp;spe[ 0 ], &amp;spe[ 1 ], &amp;spe[ 2 ], &amp;timestamp );</div>
 <div class="line">                    <span class="comment">// too much log n_log( LOG_INFO, &quot;Received position from %d: %g %g&quot;, id, pos[ 0 ], pos[ 1 ] );</span></div>
-<div class="line">                    <a class="code hl_function" href="ex__gui__netclient_8c.html#adc080c2c1e79cf8f409cf44f9a0418ac">update_peer</a>( peer_table, <span class="keywordtype">id</span>, pos );</div>
+<div class="line">                    update_peer( peer_table, <span class="keywordtype">id</span>, pos );</div>
 <div class="line">                }</div>
 <div class="line">                <span class="keywordflow">break</span>;</div>
-<div class="line">                <span class="keywordflow">case</span>( <a id="a80" name="a80"></a><a class="code hl_define" href="group___n_e_t_w_o_r_k___m_s_g.html#ga2cd8d019ec9563557d35e165c7fd820f">NETMSG_STRING</a> ):</div>
+<div class="line">                <span class="keywordflow">case</span>( <a id="a53" name="a53"></a><a class="code hl_define" href="group___n_e_t_w_o_r_k___m_s_g.html#ga2cd8d019ec9563557d35e165c7fd820f">NETMSG_STRING</a> ):</div>
 <div class="line">                {</div>
 <div class="line">                    <span class="comment">/* add text to chat */</span></div>
 <div class="line">                    <span class="keywordtype">int</span> <span class="keywordtype">id</span> = -1, color = -1 ;</div>
 <div class="line">                    <a class="code hl_struct" href="group___n___s_t_r.html#struct_n___s_t_r">N_STR</a> *name = NULL, *txt = NULL, *chan = NULL ;</div>
-<div class="line">                    <a id="a81" name="a81"></a><a class="code hl_function" href="group___n_e_t_w_o_r_k___m_s_g.html#gace220d6339bd8085269ecee2b35126fb">netw_get_string</a>( netmsg, &amp;<span class="keywordtype">id</span>, &amp;name, &amp;chan, &amp;txt, &amp;color );</div>
+<div class="line">                    <a id="a54" name="a54"></a><a class="code hl_function" href="group___n_e_t_w_o_r_k___m_s_g.html#gace220d6339bd8085269ecee2b35126fb">netw_get_string</a>( netmsg, &amp;<span class="keywordtype">id</span>, &amp;name, &amp;chan, &amp;txt, &amp;color );</div>
 <div class="line">                    <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#gaeb4f36db01bd128c7afeac5889dac311">LOG_INFO</a>, <span class="stringliteral">&quot;Received chat from %s:%s:%s (id: %d , color:%d)&quot;</span>, name, chan, txt, <span class="keywordtype">id</span>, color );</div>
 <div class="line">                }</div>
 <div class="line">                <span class="keywordflow">break</span>;</div>
-<div class="line">                <span class="keywordflow">case</span>( <a id="a82" name="a82"></a><a class="code hl_define" href="group___n_e_t_w_o_r_k___m_s_g.html#ga2669f513eb1909d6f1940923f994eaf5">NETMSG_PING_REQUEST</a> ):</div>
+<div class="line">                <span class="keywordflow">case</span>( <a id="a55" name="a55"></a><a class="code hl_define" href="group___n_e_t_w_o_r_k___m_s_g.html#ga2669f513eb1909d6f1940923f994eaf5">NETMSG_PING_REQUEST</a> ):</div>
 <div class="line">                    <span class="comment">/* compare to sent pings and add string to chat with times */</span></div>
 <div class="line">                    <span class="keywordflow">break</span>;</div>
-<div class="line">                <span class="keywordflow">case</span>( <a id="a83" name="a83"></a><a class="code hl_define" href="group___n_e_t_w_o_r_k___m_s_g.html#ga322dcf158f5f222cb28df2736a533292">NETMSG_PING_REPLY</a> ):</div>
+<div class="line">                <span class="keywordflow">case</span>( <a id="a56" name="a56"></a><a class="code hl_define" href="group___n_e_t_w_o_r_k___m_s_g.html#ga322dcf158f5f222cb28df2736a533292">NETMSG_PING_REPLY</a> ):</div>
 <div class="line">                    <span class="comment">/* compare to sent pings and add string to chat with times */</span></div>
 <div class="line">                    <span class="keywordflow">break</span>;</div>
-<div class="line">                <span class="keywordflow">case</span>( <a id="a84" name="a84"></a><a class="code hl_define" href="group___n_e_t_w_o_r_k___m_s_g.html#ga5752ebf119504833871560aaff3142a3">NETMSG_QUIT</a> ):</div>
+<div class="line">                <span class="keywordflow">case</span>( <a id="a57" name="a57"></a><a class="code hl_define" href="group___n_e_t_w_o_r_k___m_s_g.html#ga5752ebf119504833871560aaff3142a3">NETMSG_QUIT</a> ):</div>
 <div class="line">                    <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#gaeb4f36db01bd128c7afeac5889dac311">LOG_INFO</a>, <span class="stringliteral">&quot;Quit received !&quot;</span> );</div>
-<div class="line">                    <a class="code hl_variable" href="ex__gui__particles_8c.html#a5819e6b9d2ee24c8e96d702de02421a0">DONE</a> = 1 ;</div>
+<div class="line">                    DONE = 1 ;</div>
 <div class="line">                    break ;</div>
 <div class="line">                <span class="keywordflow">default</span>:</div>
 <div class="line">                    <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a>, <span class="stringliteral">&quot;Unknow message type %d&quot;</span>, type );</div>
-<div class="line">                    <a class="code hl_variable" href="ex__gui__particles_8c.html#a5819e6b9d2ee24c8e96d702de02421a0">DONE</a> = 1 ;</div>
+<div class="line">                    DONE = 1 ;</div>
 <div class="line">                    break ;</div>
 <div class="line">                }</div>
 <div class="line">            }</div>
@@ -745,29 +748,29 @@ $(document).ready(function(){initNavTree('ex_gui_netclient_8c-example.html','');
 <div class="line">            }</div>
 <div class="line">            ping_time += 1.0 / 60.0 ;</div>
 <div class="line"> </div>
-<div class="line">            <span class="keywordflow">if</span>( <a class="code hl_variable" href="ex__gui__netclient_8c.html#ac73942f75861b7977297231f5528c382">key</a>[<a class="code hl_enumvalue" href="ex__gui__netclient_8c.html#ad381705445518a234ef71c85cc7771a3ae53e9370c0243e9b0260458d3a55f315">KEY_ESC</a>] )</div>
+<div class="line">            <span class="keywordflow">if</span>( key[KEY_ESC] )</div>
 <div class="line">            {</div>
 <div class="line">                <span class="keywordflow">if</span>( QUIT_ASKED != 1 )</div>
 <div class="line">                {</div>
 <div class="line">                    QUIT_ASKED = 1 ;</div>
 <div class="line">                    <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#gaeb4f36db01bd128c7afeac5889dac311">LOG_INFO</a>, <span class="stringliteral">&quot;Asking server to quit...&quot;</span> );</div>
-<div class="line">                    <a id="a85" name="a85"></a><a class="code hl_function" href="group___n_e_t_w_o_r_k_i_n_g.html#gac8b30599c7a5c2cce35ee401d7b9d7f1">netw_send_quit</a>( <a class="code hl_variable" href="ex__network_8c.html#aaf647e21e94e41eb48f7f28fc120f199">netw</a> );</div>
+<div class="line">                    <a id="a58" name="a58"></a><a class="code hl_function" href="group___n_e_t_w_o_r_k_i_n_g.html#gac8b30599c7a5c2cce35ee401d7b9d7f1">netw_send_quit</a>( netw );</div>
 <div class="line">                }</div>
 <div class="line">            }</div>
-<div class="line">            <a class="code hl_function" href="ex__gui__netclient_8c.html#ae35cba0c2e39eed0d1b641cd2f1e3299">manage_peers</a>( peer_table, 1000000 / 60.0 );</div>
+<div class="line">            manage_peers( peer_table, 1000000 / 60.0 );</div>
 <div class="line">            do_logic = 0 ;</div>
 <div class="line">        }</div>
 <div class="line"> </div>
 <div class="line">        <span class="keywordflow">if</span>( do_draw == 1 )</div>
 <div class="line">        {</div>
-<div class="line">            al_acknowledge_resize( <a class="code hl_variable" href="ex__gui__particles_8c.html#af64cc6c8a47e5ddbf510b5aa92e062b9">display</a> );</div>
-<div class="line">            <span class="keywordtype">int</span> w = al_get_display_width(  <a class="code hl_variable" href="ex__gui__particles_8c.html#af64cc6c8a47e5ddbf510b5aa92e062b9">display</a> );</div>
-<div class="line">            <span class="keywordtype">int</span> h = al_get_display_height( <a class="code hl_variable" href="ex__gui__particles_8c.html#af64cc6c8a47e5ddbf510b5aa92e062b9">display</a> );</div>
+<div class="line">            al_acknowledge_resize( display );</div>
+<div class="line">            <span class="keywordtype">int</span> w = al_get_display_width(  display );</div>
+<div class="line">            <span class="keywordtype">int</span> h = al_get_display_height( display );</div>
 <div class="line"> </div>
 <div class="line">            al_set_target_bitmap( scrbuf );</div>
 <div class="line">            al_clear_to_color( al_map_rgba( 0, 0, 0, 255 ) );</div>
 <div class="line"> </div>
-<div class="line">            al_set_target_bitmap( al_get_backbuffer( <a class="code hl_variable" href="ex__gui__particles_8c.html#af64cc6c8a47e5ddbf510b5aa92e062b9">display</a> ) );</div>
+<div class="line">            al_set_target_bitmap( al_get_backbuffer( display ) );</div>
 <div class="line"> </div>
 <div class="line">            al_clear_to_color( al_map_rgba( 0, 0, 0, 255 ) );</div>
 <div class="line">            al_draw_bitmap( scrbuf, 0, 0, 0 );</div>
@@ -776,9 +779,9 @@ $(document).ready(function(){initNavTree('ex_gui_netclient_8c-example.html','');
 <div class="line">            <span class="comment">/*al_draw_line( mx - 5, my, mx + 5, my, al_map_rgb( 255, 0, 0 ), 1 );</span></div>
 <div class="line"><span class="comment">            al_draw_line( mx, my + 5, mx, my - 5, al_map_rgb( 255, 0, 0 ), 1 );*/</span></div>
 <div class="line"> </div>
-<div class="line">            <a class="code hl_function" href="ex__gui__netclient_8c.html#aa968b962ee729e997d5dc03476ccb257">draw_peers</a>( peer_table, font, white_color );</div>
+<div class="line">            draw_peers( peer_table, font, white_color );</div>
 <div class="line"> </div>
-<div class="line">            al_draw_ustr( font, white_color, 0, <a class="code hl_define" href="ex__gui__netclient_8c.html#aed89bd71aee8be823e8a20ec4e093c1e">HEIGHT</a> - 20, ALLEGRO_ALIGN_LEFT, chat_line );</div>
+<div class="line">            al_draw_ustr( font, white_color, 0, HEIGHT - 20, ALLEGRO_ALIGN_LEFT, chat_line );</div>
 <div class="line"> </div>
 <div class="line">            al_flip_display();</div>
 <div class="line">            do_draw = 0 ;</div>
@@ -787,121 +790,93 @@ $(document).ready(function(){initNavTree('ex_gui_netclient_8c-example.html','');
 <div class="line">        <span class="keywordflow">if</span>( do_network_update == 1 )</div>
 <div class="line">        {</div>
 <div class="line">            <span class="comment">/* send position here */</span></div>
-<div class="line">            <a id="a86" name="a86"></a><a class="code hl_function" href="group___n_e_t_w_o_r_k_i_n_g.html#gafaf1202a5f56a9f2285fccfbcacb3a6c">netw_send_position</a>( <a class="code hl_variable" href="ex__network_8c.html#aaf647e21e94e41eb48f7f28fc120f199">netw</a>, ident, mx, my, 0, 0, 0, 0, 0 );</div>
+<div class="line">            <a id="a59" name="a59"></a><a class="code hl_function" href="group___n_e_t_w_o_r_k_i_n_g.html#gafaf1202a5f56a9f2285fccfbcacb3a6c">netw_send_position</a>( netw, ident, mx, my, 0, 0, 0, 0, 0 );</div>
 <div class="line">            do_network_update = 0 ;</div>
 <div class="line">        }</div>
 <div class="line"> </div>
 <div class="line">    }</div>
-<div class="line">    <span class="keywordflow">while</span>( !<a class="code hl_variable" href="ex__gui__particles_8c.html#a5819e6b9d2ee24c8e96d702de02421a0">DONE</a> );</div>
+<div class="line">    <span class="keywordflow">while</span>( !DONE );</div>
 <div class="line"> </div>
 <div class="line">exit_client:</div>
-<div class="line">    <a id="a87" name="a87"></a><a class="code hl_function" href="group___n_e_t_w_o_r_k_i_n_g.html#ga60beb772aa298f36d1443a28e3ec5ec8">netw_wait_close</a>( &amp;<a class="code hl_variable" href="ex__network_8c.html#aaf647e21e94e41eb48f7f28fc120f199">netw</a> );</div>
+<div class="line">    <a id="a60" name="a60"></a><a class="code hl_function" href="group___n_e_t_w_o_r_k_i_n_g.html#ga60beb772aa298f36d1443a28e3ec5ec8">netw_wait_close</a>( &amp;netw );</div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">return</span> 0;</div>
 <div class="line"> </div>
 <div class="line">}</div>
-<div class="ttc" id="aex__gui__netclient_8c_html_a0ddf1224851353fc92bfbff6f499fa97"><div class="ttname"><a href="ex__gui__netclient_8c.html#a0ddf1224851353fc92bfbff6f499fa97">main</a></div><div class="ttdeci">int main(int argc, char *argv[])</div><div class="ttdef"><b>Definition:</b> <a href="ex__gui__netclient_8c_source.html#l00239">ex_gui_netclient.c:239</a></div></div>
-<div class="ttc" id="aex__gui__netclient_8c_html_a241aeeb764887ae5e3de58b98f04b16d"><div class="ttname"><a href="ex__gui__netclient_8c.html#a241aeeb764887ae5e3de58b98f04b16d">WIDTH</a></div><div class="ttdeci">#define WIDTH</div><div class="ttdef"><b>Definition:</b> <a href="ex__gui__netclient_8c_source.html#l00007">ex_gui_netclient.c:7</a></div></div>
-<div class="ttc" id="aex__gui__netclient_8c_html_a588d82db1e4703aa363a8f866e99fc77"><div class="ttname"><a href="ex__gui__netclient_8c.html#a588d82db1e4703aa363a8f866e99fc77">PEER_OBJECT::life_time</a></div><div class="ttdeci">long int life_time</div><div class="ttdef"><b>Definition:</b> <a href="ex__gui__netclient_8c_source.html#l00029">ex_gui_netclient.c:29</a></div></div>
-<div class="ttc" id="aex__gui__netclient_8c_html_a762a558b9c9fa76e446e89cca3329209"><div class="ttname"><a href="ex__gui__netclient_8c.html#a762a558b9c9fa76e446e89cca3329209">PEER_OBJECT::id</a></div><div class="ttdeci">int id</div><div class="ttdef"><b>Definition:</b> <a href="ex__gui__netclient_8c_source.html#l00027">ex_gui_netclient.c:27</a></div></div>
-<div class="ttc" id="aex__gui__netclient_8c_html_aa968b962ee729e997d5dc03476ccb257"><div class="ttname"><a href="ex__gui__netclient_8c.html#aa968b962ee729e997d5dc03476ccb257">draw_peers</a></div><div class="ttdeci">int draw_peers(HASH_TABLE *peer_table, ALLEGRO_FONT *font, ALLEGRO_COLOR color)</div><div class="ttdef"><b>Definition:</b> <a href="ex__gui__netclient_8c_source.html#l00085">ex_gui_netclient.c:85</a></div></div>
-<div class="ttc" id="aex__gui__netclient_8c_html_ab2c5d731fde94a1a4415fabe1aba1284"><div class="ttname"><a href="ex__gui__netclient_8c.html#ab2c5d731fde94a1a4415fabe1aba1284">PEER_OBJECT::position</a></div><div class="ttdeci">double position[3]</div><div class="ttdef"><b>Definition:</b> <a href="ex__gui__netclient_8c_source.html#l00025">ex_gui_netclient.c:25</a></div></div>
-<div class="ttc" id="aex__gui__netclient_8c_html_ac73942f75861b7977297231f5528c382"><div class="ttname"><a href="ex__gui__netclient_8c.html#ac73942f75861b7977297231f5528c382">key</a></div><div class="ttdeci">int key[7]</div><div class="ttdef"><b>Definition:</b> <a href="ex__gui__netclient_8c_source.html#l00235">ex_gui_netclient.c:235</a></div></div>
-<div class="ttc" id="aex__gui__netclient_8c_html_ac74d0feedc2bec6d0b5b45d5478ccf6a"><div class="ttname"><a href="ex__gui__netclient_8c.html#ac74d0feedc2bec6d0b5b45d5478ccf6a">process_args</a></div><div class="ttdeci">void process_args(int argc, char **argv, char **server, char **port, int *ip_version)</div><div class="ttdef"><b>Definition:</b> <a href="ex__gui__netclient_8c_source.html#l00112">ex_gui_netclient.c:112</a></div></div>
-<div class="ttc" id="aex__gui__netclient_8c_html_ad381705445518a234ef71c85cc7771a3"><div class="ttname"><a href="ex__gui__netclient_8c.html#ad381705445518a234ef71c85cc7771a3">APP_KEYS</a></div><div class="ttdeci">APP_KEYS</div><div class="ttdef"><b>Definition:</b> <a href="ex__gui__netclient_8c_source.html#l00231">ex_gui_netclient.c:232</a></div></div>
-<div class="ttc" id="aex__gui__netclient_8c_html_ad381705445518a234ef71c85cc7771a3a01d2889f9a7550008ad6140c41e733de"><div class="ttname"><a href="ex__gui__netclient_8c.html#ad381705445518a234ef71c85cc7771a3a01d2889f9a7550008ad6140c41e733de">KEY_SPACE</a></div><div class="ttdeci">@ KEY_SPACE</div><div class="ttdef"><b>Definition:</b> <a href="ex__gui__netclient_8c_source.html#l00233">ex_gui_netclient.c:233</a></div></div>
-<div class="ttc" id="aex__gui__netclient_8c_html_ad381705445518a234ef71c85cc7771a3a03b9f1caf27fb28b593880fdca9cfe66"><div class="ttname"><a href="ex__gui__netclient_8c.html#ad381705445518a234ef71c85cc7771a3a03b9f1caf27fb28b593880fdca9cfe66">KEY_CTRL</a></div><div class="ttdeci">@ KEY_CTRL</div><div class="ttdef"><b>Definition:</b> <a href="ex__gui__netclient_8c_source.html#l00234">ex_gui_netclient.c:233</a></div></div>
-<div class="ttc" id="aex__gui__netclient_8c_html_ad381705445518a234ef71c85cc7771a3a0848a442d907968b211b97bc2bd88acd"><div class="ttname"><a href="ex__gui__netclient_8c.html#ad381705445518a234ef71c85cc7771a3a0848a442d907968b211b97bc2bd88acd">KEY_UP</a></div><div class="ttdeci">@ KEY_UP</div><div class="ttdef"><b>Definition:</b> <a href="ex__gui__netclient_8c_source.html#l00233">ex_gui_netclient.c:233</a></div></div>
-<div class="ttc" id="aex__gui__netclient_8c_html_ad381705445518a234ef71c85cc7771a3a612120b69c7dfd46086db7aaebdbcf65"><div class="ttname"><a href="ex__gui__netclient_8c.html#ad381705445518a234ef71c85cc7771a3a612120b69c7dfd46086db7aaebdbcf65">KEY_LEFT</a></div><div class="ttdeci">@ KEY_LEFT</div><div class="ttdef"><b>Definition:</b> <a href="ex__gui__netclient_8c_source.html#l00233">ex_gui_netclient.c:233</a></div></div>
-<div class="ttc" id="aex__gui__netclient_8c_html_ad381705445518a234ef71c85cc7771a3a6504370d9c6391e1a9da6a1a529b089d"><div class="ttname"><a href="ex__gui__netclient_8c.html#ad381705445518a234ef71c85cc7771a3a6504370d9c6391e1a9da6a1a529b089d">KEY_RIGHT</a></div><div class="ttdeci">@ KEY_RIGHT</div><div class="ttdef"><b>Definition:</b> <a href="ex__gui__netclient_8c_source.html#l00233">ex_gui_netclient.c:233</a></div></div>
-<div class="ttc" id="aex__gui__netclient_8c_html_ad381705445518a234ef71c85cc7771a3aa9cdac7967bf7d88fdb761138a2a3416"><div class="ttname"><a href="ex__gui__netclient_8c.html#ad381705445518a234ef71c85cc7771a3aa9cdac7967bf7d88fdb761138a2a3416">KEY_DOWN</a></div><div class="ttdeci">@ KEY_DOWN</div><div class="ttdef"><b>Definition:</b> <a href="ex__gui__netclient_8c_source.html#l00233">ex_gui_netclient.c:233</a></div></div>
-<div class="ttc" id="aex__gui__netclient_8c_html_ad381705445518a234ef71c85cc7771a3ae53e9370c0243e9b0260458d3a55f315"><div class="ttname"><a href="ex__gui__netclient_8c.html#ad381705445518a234ef71c85cc7771a3ae53e9370c0243e9b0260458d3a55f315">KEY_ESC</a></div><div class="ttdeci">@ KEY_ESC</div><div class="ttdef"><b>Definition:</b> <a href="ex__gui__netclient_8c_source.html#l00233">ex_gui_netclient.c:233</a></div></div>
-<div class="ttc" id="aex__gui__netclient_8c_html_adc080c2c1e79cf8f409cf44f9a0418ac"><div class="ttname"><a href="ex__gui__netclient_8c.html#adc080c2c1e79cf8f409cf44f9a0418ac">update_peer</a></div><div class="ttdeci">int update_peer(HASH_TABLE *peer_table, int id, double position[3])</div><div class="ttdef"><b>Definition:</b> <a href="ex__gui__netclient_8c_source.html#l00034">ex_gui_netclient.c:34</a></div></div>
-<div class="ttc" id="aex__gui__netclient_8c_html_ae35cba0c2e39eed0d1b641cd2f1e3299"><div class="ttname"><a href="ex__gui__netclient_8c.html#ae35cba0c2e39eed0d1b641cd2f1e3299">manage_peers</a></div><div class="ttdeci">int manage_peers(HASH_TABLE *peer_table, int delta_t)</div><div class="ttdef"><b>Definition:</b> <a href="ex__gui__netclient_8c_source.html#l00062">ex_gui_netclient.c:62</a></div></div>
-<div class="ttc" id="aex__gui__netclient_8c_html_ae8605e2b78cd4a81b6c6b5c30cb7366a"><div class="ttname"><a href="ex__gui__netclient_8c.html#ae8605e2b78cd4a81b6c6b5c30cb7366a">usage</a></div><div class="ttdeci">void usage(void)</div><div class="ttdef"><b>Definition:</b> <a href="ex__gui__netclient_8c_source.html#l00101">ex_gui_netclient.c:101</a></div></div>
-<div class="ttc" id="aex__gui__netclient_8c_html_aed89bd71aee8be823e8a20ec4e093c1e"><div class="ttname"><a href="ex__gui__netclient_8c.html#aed89bd71aee8be823e8a20ec4e093c1e">HEIGHT</a></div><div class="ttdeci">#define HEIGHT</div><div class="ttdef"><b>Definition:</b> <a href="ex__gui__netclient_8c_source.html#l00008">ex_gui_netclient.c:8</a></div></div>
-<div class="ttc" id="aex__gui__netclient_8c_html_struct_p_e_e_r___o_b_j_e_c_t"><div class="ttname"><a href="ex__gui__netclient_8c.html#struct_p_e_e_r___o_b_j_e_c_t">PEER_OBJECT</a></div><div class="ttdef"><b>Definition:</b> <a href="ex__gui__netclient_8c_source.html#l00022">ex_gui_netclient.c:23</a></div></div>
-<div class="ttc" id="aex__gui__particles_8c_html_a2616450263b3d62aa18f71a296fb80a5"><div class="ttname"><a href="ex__gui__particles_8c.html#a2616450263b3d62aa18f71a296fb80a5">fps_timer</a></div><div class="ttdeci">ALLEGRO_TIMER * fps_timer</div><div class="ttdef"><b>Definition:</b> <a href="ex__gui__particles_8c_source.html#l00025">ex_gui_particles.c:25</a></div></div>
-<div class="ttc" id="aex__gui__particles_8c_html_a40367f95374e226128dde2c270b32f0f"><div class="ttname"><a href="ex__gui__particles_8c.html#a40367f95374e226128dde2c270b32f0f">getoptret</a></div><div class="ttdeci">int getoptret</div><div class="ttdef"><b>Definition:</b> <a href="ex__gui__particles_8c_source.html#l00020">ex_gui_particles.c:20</a></div></div>
-<div class="ttc" id="aex__gui__particles_8c_html_a5819e6b9d2ee24c8e96d702de02421a0"><div class="ttname"><a href="ex__gui__particles_8c.html#a5819e6b9d2ee24c8e96d702de02421a0">DONE</a></div><div class="ttdeci">int DONE</div><div class="ttdef"><b>Definition:</b> <a href="ex__gui__particles_8c_source.html#l00019">ex_gui_particles.c:19</a></div></div>
-<div class="ttc" id="aex__gui__particles_8c_html_ab5a71c2541c377b3d5b34fdb35964c2e"><div class="ttname"><a href="ex__gui__particles_8c.html#ab5a71c2541c377b3d5b34fdb35964c2e">log_level</a></div><div class="ttdeci">int log_level</div><div class="ttdef"><b>Definition:</b> <a href="ex__gui__particles_8c_source.html#l00021">ex_gui_particles.c:21</a></div></div>
-<div class="ttc" id="aex__gui__particles_8c_html_aea5624d131084442bbda2e0bb6b98847"><div class="ttname"><a href="ex__gui__particles_8c.html#aea5624d131084442bbda2e0bb6b98847">scr_buf</a></div><div class="ttdeci">ALLEGRO_BITMAP * scr_buf</div><div class="ttdef"><b>Definition:</b> <a href="ex__gui__particles_8c_source.html#l00023">ex_gui_particles.c:23</a></div></div>
-<div class="ttc" id="aex__gui__particles_8c_html_af63a6683d8306869974571dca7ca3718"><div class="ttname"><a href="ex__gui__particles_8c.html#af63a6683d8306869974571dca7ca3718">logic_timer</a></div><div class="ttdeci">ALLEGRO_TIMER * logic_timer</div><div class="ttdef"><b>Definition:</b> <a href="ex__gui__particles_8c_source.html#l00026">ex_gui_particles.c:26</a></div></div>
-<div class="ttc" id="aex__gui__particles_8c_html_af64cc6c8a47e5ddbf510b5aa92e062b9"><div class="ttname"><a href="ex__gui__particles_8c.html#af64cc6c8a47e5ddbf510b5aa92e062b9">display</a></div><div class="ttdeci">ALLEGRO_DISPLAY * display</div><div class="ttdef"><b>Definition:</b> <a href="ex__gui__particles_8c_source.html#l00017">ex_gui_particles.c:17</a></div></div>
-<div class="ttc" id="aex__network_8c_html_a516f037dddd27a8137d32553803548d6"><div class="ttname"><a href="ex__network_8c.html#a516f037dddd27a8137d32553803548d6">server</a></div><div class="ttdeci">NETWORK * server</div><div class="ttdef"><b>Definition:</b> <a href="ex__network_8c_source.html#l00017">ex_network.c:17</a></div></div>
-<div class="ttc" id="aex__network_8c_html_a75a4b872120a9e428801230cbcb610de"><div class="ttname"><a href="ex__network_8c.html#a75a4b872120a9e428801230cbcb610de">netw_thr</a></div><div class="ttdeci">static pthread_t netw_thr</div><div class="ttdef"><b>Definition:</b> <a href="ex__network_8c_source.html#l00022">ex_network.c:22</a></div></div>
-<div class="ttc" id="aex__network_8c_html_a8796aa7b363f0bede0f8dc5b96436f0b"><div class="ttname"><a href="ex__network_8c.html#a8796aa7b363f0bede0f8dc5b96436f0b">ip_version</a></div><div class="ttdeci">int ip_version</div><div class="ttdef"><b>Definition:</b> <a href="ex__network_8c_source.html#l00020">ex_network.c:20</a></div></div>
-<div class="ttc" id="aex__network_8c_html_aaf647e21e94e41eb48f7f28fc120f199"><div class="ttname"><a href="ex__network_8c.html#aaf647e21e94e41eb48f7f28fc120f199">netw</a></div><div class="ttdeci">NETWORK * netw</div><div class="ttdef"><b>Definition:</b> <a href="ex__network_8c_source.html#l00018">ex_network.c:18</a></div></div>
 <div class="ttc" id="agroup___a_l_l_e_g_r_o5_html_ga89b632f62c41b87b68e83a086e302247"><div class="ttname"><a href="group___a_l_l_e_g_r_o5.html#ga89b632f62c41b87b68e83a086e302247">get_keyboard</a></div><div class="ttdeci">int get_keyboard(ALLEGRO_USTR *str, ALLEGRO_EVENT event)</div><div class="ttdoc">update a keyboard buffer from an event</div><div class="ttdef"><b>Definition:</b> <a href="n__allegro5_8c_source.html#l00019">n_allegro5.c:19</a></div></div>
-<div class="ttc" id="agroup___c_o_m_m_o_n_s_html_ga46bf052fc99248347a1dcf89bc0757c6"><div class="ttname"><a href="group___c_o_m_m_o_n_s.html#ga46bf052fc99248347a1dcf89bc0757c6">Malloc</a></div><div class="ttdeci">#define Malloc(__ptr, __struct, __size)</div><div class="ttdef"><b>Definition:</b> <a href="n__common_8h_source.html#l00182">n_common.h:182</a></div></div>
-<div class="ttc" id="agroup___c_o_m_m_o_n_s_html_ga4ecf5d80299a4ca1dc13c3a19610db11"><div class="ttname"><a href="group___c_o_m_m_o_n_s.html#ga4ecf5d80299a4ca1dc13c3a19610db11">__n_assert</a></div><div class="ttdeci">#define __n_assert(__ptr, __ret)</div><div class="ttdef"><b>Definition:</b> <a href="n__common_8h_source.html#l00262">n_common.h:262</a></div></div>
-<div class="ttc" id="agroup___c_o_m_m_o_n_s_html_ga55b9404f7bc9d3a3ead2f0103331a87e"><div class="ttname"><a href="group___c_o_m_m_o_n_s.html#ga55b9404f7bc9d3a3ead2f0103331a87e">_str</a></div><div class="ttdeci">#define _str(__PTR)</div><div class="ttdef"><b>Definition:</b> <a href="n__common_8h_source.html#l00171">n_common.h:171</a></div></div>
-<div class="ttc" id="agroup___c_o_m_m_o_n_s_html_gacaf9e791d31308d5d43c0322b03ee322"><div class="ttname"><a href="group___c_o_m_m_o_n_s.html#gacaf9e791d31308d5d43c0322b03ee322">n_abort</a></div><div class="ttdeci">void n_abort(char const *format,...)</div><div class="ttdoc">abort program with a text</div><div class="ttdef"><b>Definition:</b> <a href="n__common_8c_source.html#l00039">n_common.c:39</a></div></div>
-<div class="ttc" id="agroup___c_o_m_m_o_n_s_html_gaf0e29edead3f943a4ac241c5724e1384"><div class="ttname"><a href="group___c_o_m_m_o_n_s.html#gaf0e29edead3f943a4ac241c5724e1384">_nstr</a></div><div class="ttdeci">#define _nstr(__PTR)</div><div class="ttdef"><b>Definition:</b> <a href="n__common_8h_source.html#l00177">n_common.h:177</a></div></div>
-<div class="ttc" id="agroup___h_a_s_h___t_a_b_l_e_html_ga072f117e6bd9fdde0d39776764b8784e"><div class="ttname"><a href="group___h_a_s_h___t_a_b_l_e.html#ga072f117e6bd9fdde0d39776764b8784e">ht_foreach</a></div><div class="ttdeci">#define ht_foreach(__ITEM_, __HASH_)</div><div class="ttdef"><b>Definition:</b> <a href="n__hash_8h_source.html#l00163">n_hash.h:163</a></div></div>
+<div class="ttc" id="agroup___c_o_m_m_o_n_s_html_ga46bf052fc99248347a1dcf89bc0757c6"><div class="ttname"><a href="group___c_o_m_m_o_n_s.html#ga46bf052fc99248347a1dcf89bc0757c6">Malloc</a></div><div class="ttdeci">#define Malloc(__ptr, __struct, __size)</div><div class="ttdoc">Malloc Handler to get errors and set to 0.</div><div class="ttdef"><b>Definition:</b> <a href="n__common_8h_source.html#l00182">n_common.h:182</a></div></div>
+<div class="ttc" id="agroup___c_o_m_m_o_n_s_html_ga4ecf5d80299a4ca1dc13c3a19610db11"><div class="ttname"><a href="group___c_o_m_m_o_n_s.html#ga4ecf5d80299a4ca1dc13c3a19610db11">__n_assert</a></div><div class="ttdeci">#define __n_assert(__ptr, __ret)</div><div class="ttdoc">macro to assert things</div><div class="ttdef"><b>Definition:</b> <a href="n__common_8h_source.html#l00262">n_common.h:262</a></div></div>
+<div class="ttc" id="agroup___c_o_m_m_o_n_s_html_ga55b9404f7bc9d3a3ead2f0103331a87e"><div class="ttname"><a href="group___c_o_m_m_o_n_s.html#ga55b9404f7bc9d3a3ead2f0103331a87e">_str</a></div><div class="ttdeci">#define _str(__PTR)</div><div class="ttdoc">define true</div><div class="ttdef"><b>Definition:</b> <a href="n__common_8h_source.html#l00171">n_common.h:171</a></div></div>
+<div class="ttc" id="agroup___c_o_m_m_o_n_s_html_gacaf9e791d31308d5d43c0322b03ee322"><div class="ttname"><a href="group___c_o_m_m_o_n_s.html#gacaf9e791d31308d5d43c0322b03ee322">n_abort</a></div><div class="ttdeci">void n_abort(char const *format,...)</div><div class="ttdoc">void n_abort( char const *format , ... )</div><div class="ttdef"><b>Definition:</b> <a href="n__common_8c_source.html#l00039">n_common.c:39</a></div></div>
+<div class="ttc" id="agroup___c_o_m_m_o_n_s_html_gaf0e29edead3f943a4ac241c5724e1384"><div class="ttname"><a href="group___c_o_m_m_o_n_s.html#gaf0e29edead3f943a4ac241c5724e1384">_nstr</a></div><div class="ttdeci">#define _nstr(__PTR)</div><div class="ttdoc">N_STR or &quot;NULL&quot; string for logging purposes.</div><div class="ttdef"><b>Definition:</b> <a href="n__common_8h_source.html#l00177">n_common.h:177</a></div></div>
+<div class="ttc" id="agroup___h_a_s_h___t_a_b_l_e_html_ga072f117e6bd9fdde0d39776764b8784e"><div class="ttname"><a href="group___h_a_s_h___t_a_b_l_e.html#ga072f117e6bd9fdde0d39776764b8784e">ht_foreach</a></div><div class="ttdeci">#define ht_foreach(__ITEM_, __HASH_)</div><div class="ttdoc">ForEach macro helper (classic / old)</div><div class="ttdef"><b>Definition:</b> <a href="n__hash_8h_source.html#l00163">n_hash.h:163</a></div></div>
 <div class="ttc" id="agroup___h_a_s_h___t_a_b_l_e_html_ga2baa0497b21bdf86e3c64bb023124930"><div class="ttname"><a href="group___h_a_s_h___t_a_b_l_e.html#ga2baa0497b21bdf86e3c64bb023124930">ht_put_ptr</a></div><div class="ttdeci">int ht_put_ptr(HASH_TABLE *table, char *key, void *ptr, void(*destructor)(void *ptr))</div><div class="ttdoc">put a pointer to the string value with given key in the targeted hash table</div><div class="ttdef"><b>Definition:</b> <a href="n__hash_8c_source.html#l02138">n_hash.c:2138</a></div></div>
 <div class="ttc" id="agroup___h_a_s_h___t_a_b_l_e_html_ga8d8873be47a634ad8a386e61f12a1f53"><div class="ttname"><a href="group___h_a_s_h___t_a_b_l_e.html#ga8d8873be47a634ad8a386e61f12a1f53">ht_remove</a></div><div class="ttdeci">int ht_remove(HASH_TABLE *table, char *key)</div><div class="ttdoc">remove and delete node at key in table</div><div class="ttdef"><b>Definition:</b> <a href="n__hash_8c_source.html#l02185">n_hash.c:2185</a></div></div>
 <div class="ttc" id="agroup___h_a_s_h___t_a_b_l_e_html_gaa2d879c1afd3c71a0917bbe2c0766664"><div class="ttname"><a href="group___h_a_s_h___t_a_b_l_e.html#gaa2d879c1afd3c71a0917bbe2c0766664">new_ht</a></div><div class="ttdeci">HASH_TABLE * new_ht(unsigned long int size)</div><div class="ttdoc">Create a hash table with the given size.</div><div class="ttdef"><b>Definition:</b> <a href="n__hash_8c_source.html#l01958">n_hash.c:1958</a></div></div>
 <div class="ttc" id="agroup___h_a_s_h___t_a_b_l_e_html_gae34a331ccbda86f7e5b2319f1852d6ca"><div class="ttname"><a href="group___h_a_s_h___t_a_b_l_e.html#gae34a331ccbda86f7e5b2319f1852d6ca">ht_get_ptr</a></div><div class="ttdeci">int ht_get_ptr(HASH_TABLE *table, char *key, void **val)</div><div class="ttdoc">get pointer at 'key' from 'table'</div><div class="ttdef"><b>Definition:</b> <a href="n__hash_8c_source.html#l02073">n_hash.c:2073</a></div></div>
-<div class="ttc" id="agroup___h_a_s_h___t_a_b_l_e_html_gaeb031d4f0f896b1802b9c27e62f28d14"><div class="ttname"><a href="group___h_a_s_h___t_a_b_l_e.html#gaeb031d4f0f896b1802b9c27e62f28d14">hash_val</a></div><div class="ttdeci">#define hash_val(node, type)</div><div class="ttdef"><b>Definition:</b> <a href="n__hash_8h_source.html#l00159">n_hash.h:159</a></div></div>
+<div class="ttc" id="agroup___h_a_s_h___t_a_b_l_e_html_gaeb031d4f0f896b1802b9c27e62f28d14"><div class="ttname"><a href="group___h_a_s_h___t_a_b_l_e.html#gaeb031d4f0f896b1802b9c27e62f28d14">hash_val</a></div><div class="ttdeci">#define hash_val(node, type)</div><div class="ttdoc">Cast a HASH_NODE element.</div><div class="ttdef"><b>Definition:</b> <a href="n__hash_8h_source.html#l00159">n_hash.h:159</a></div></div>
+<div class="ttc" id="agroup___h_a_s_h___t_a_b_l_e_html_struct_h_a_s_h___t_a_b_l_e"><div class="ttname"><a href="group___h_a_s_h___t_a_b_l_e.html#struct_h_a_s_h___t_a_b_l_e">HASH_TABLE</a></div><div class="ttdoc">structure of a hash table</div><div class="ttdef"><b>Definition:</b> <a href="n__hash_8h_source.html#l00108">n_hash.h:109</a></div></div>
 <div class="ttc" id="agroup___l_i_s_t_html_ga4eab319289a83524639ee5e9f0441fdf"><div class="ttname"><a href="group___l_i_s_t.html#ga4eab319289a83524639ee5e9f0441fdf">list_push</a></div><div class="ttdeci">int list_push(LIST *list, void *ptr, void(*destructor)(void *ptr))</div><div class="ttdoc">Add a pointer to the end of the list.</div><div class="ttdef"><b>Definition:</b> <a href="n__list_8c_source.html#l00121">n_list.c:121</a></div></div>
-<div class="ttc" id="agroup___l_i_s_t_html_ga55cdaac0dd0f4f4d687607e6679a4634"><div class="ttname"><a href="group___l_i_s_t.html#ga55cdaac0dd0f4f4d687607e6679a4634">list_foreach</a></div><div class="ttdeci">#define list_foreach(__ITEM_, __LIST_)</div><div class="ttdef"><b>Definition:</b> <a href="n__list_8h_source.html#l00070">n_list.h:70</a></div></div>
+<div class="ttc" id="agroup___l_i_s_t_html_ga55cdaac0dd0f4f4d687607e6679a4634"><div class="ttname"><a href="group___l_i_s_t.html#ga55cdaac0dd0f4f4d687607e6679a4634">list_foreach</a></div><div class="ttdeci">#define list_foreach(__ITEM_, __LIST_)</div><div class="ttdoc">ForEach macro helper.</div><div class="ttdef"><b>Definition:</b> <a href="n__list_8h_source.html#l00070">n_list.h:70</a></div></div>
 <div class="ttc" id="agroup___l_i_s_t_html_gada615e3b144e97bcff147dfe89f6fef6"><div class="ttname"><a href="group___l_i_s_t.html#gada615e3b144e97bcff147dfe89f6fef6">new_generic_list</a></div><div class="ttdeci">LIST * new_generic_list(int max_items)</div><div class="ttdoc">Initialiaze a generic list container to max_items pointers.</div><div class="ttdef"><b>Definition:</b> <a href="n__list_8c_source.html#l00020">n_list.c:20</a></div></div>
-<div class="ttc" id="agroup___l_i_s_t_html_struct_l_i_s_t"><div class="ttname"><a href="group___l_i_s_t.html#struct_l_i_s_t">LIST</a></div><div class="ttdef"><b>Definition:</b> <a href="n__list_8h_source.html#l00044">n_list.h:45</a></div></div>
-<div class="ttc" id="agroup___l_o_g_html_ga61355655c6d490cdf201afdfc340df4b"><div class="ttname"><a href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a></div><div class="ttdeci">#define n_log(__LEVEL__,...)</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00074">n_log.h:74</a></div></div>
-<div class="ttc" id="agroup___l_o_g_html_ga6ff63e8955665c4a58b1598f2b07c51a"><div class="ttname"><a href="group___l_o_g.html#ga6ff63e8955665c4a58b1598f2b07c51a">LOG_DEBUG</a></div><div class="ttdeci">#define LOG_DEBUG</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00066">n_log.h:66</a></div></div>
-<div class="ttc" id="agroup___l_o_g_html_ga96fad55b3f5adf08c39e4c877cf185e3"><div class="ttname"><a href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a></div><div class="ttdeci">#define LOG_ERR</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00058">n_log.h:58</a></div></div>
+<div class="ttc" id="agroup___l_i_s_t_html_struct_l_i_s_t"><div class="ttname"><a href="group___l_i_s_t.html#struct_l_i_s_t">LIST</a></div><div class="ttdoc">Structure of a generic LIST container.</div><div class="ttdef"><b>Definition:</b> <a href="n__list_8h_source.html#l00044">n_list.h:45</a></div></div>
+<div class="ttc" id="agroup___l_o_g_html_ga61355655c6d490cdf201afdfc340df4b"><div class="ttname"><a href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a></div><div class="ttdeci">#define n_log(__LEVEL__,...)</div><div class="ttdoc">Logging function wrapper to get line and func.</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00074">n_log.h:74</a></div></div>
+<div class="ttc" id="agroup___l_o_g_html_ga6ff63e8955665c4a58b1598f2b07c51a"><div class="ttname"><a href="group___l_o_g.html#ga6ff63e8955665c4a58b1598f2b07c51a">LOG_DEBUG</a></div><div class="ttdeci">#define LOG_DEBUG</div><div class="ttdoc">debug-level messages</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00066">n_log.h:66</a></div></div>
+<div class="ttc" id="agroup___l_o_g_html_ga96fad55b3f5adf08c39e4c877cf185e3"><div class="ttname"><a href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a></div><div class="ttdeci">#define LOG_ERR</div><div class="ttdoc">error conditions</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00058">n_log.h:58</a></div></div>
 <div class="ttc" id="agroup___l_o_g_html_gacad9b2d55788f46ddde811c986ead9ae"><div class="ttname"><a href="group___l_o_g.html#gacad9b2d55788f46ddde811c986ead9ae">set_log_level</a></div><div class="ttdeci">void set_log_level(const int log_level)</div><div class="ttdoc">Set the global log level value ( static int LOG_LEVEL )</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8c_source.html#l00097">n_log.c:97</a></div></div>
-<div class="ttc" id="agroup___l_o_g_html_gad89ee324d180cdcd7defcc709ff9ca42"><div class="ttname"><a href="group___l_o_g.html#gad89ee324d180cdcd7defcc709ff9ca42">LOG_NOTICE</a></div><div class="ttdeci">#define LOG_NOTICE</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00062">n_log.h:62</a></div></div>
-<div class="ttc" id="agroup___l_o_g_html_gae3b3638575ad43aa2dba40543dcec45c"><div class="ttname"><a href="group___l_o_g.html#gae3b3638575ad43aa2dba40543dcec45c">LOG_NULL</a></div><div class="ttdeci">#define LOG_NULL</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00027">n_log.h:27</a></div></div>
-<div class="ttc" id="agroup___l_o_g_html_gaeb4f36db01bd128c7afeac5889dac311"><div class="ttname"><a href="group___l_o_g.html#gaeb4f36db01bd128c7afeac5889dac311">LOG_INFO</a></div><div class="ttdeci">#define LOG_INFO</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00064">n_log.h:64</a></div></div>
-<div class="ttc" id="agroup___n___s_t_r_html_ga113e906d03374ac38e441f1df44095fb"><div class="ttname"><a href="group___n___s_t_r.html#ga113e906d03374ac38e441f1df44095fb">free_nstr</a></div><div class="ttdeci">#define free_nstr(__ptr)</div><div class="ttdef"><b>Definition:</b> <a href="n__str_8h_source.html#l00200">n_str.h:200</a></div></div>
-<div class="ttc" id="agroup___n___s_t_r_html_ga1c1f4062c727970a68bfd932c3fabcd5"><div class="ttname"><a href="group___n___s_t_r.html#ga1c1f4062c727970a68bfd932c3fabcd5">nstrprintf</a></div><div class="ttdeci">#define nstrprintf(__nstr_var,...)</div><div class="ttdef"><b>Definition:</b> <a href="n__str_8h_source.html#l00097">n_str.h:97</a></div></div>
-<div class="ttc" id="agroup___n___s_t_r_html_ga69e5f2dbf75571a73e5a3332929642a4"><div class="ttname"><a href="group___n___s_t_r.html#ga69e5f2dbf75571a73e5a3332929642a4">char_to_nstr</a></div><div class="ttdeci">N_STR * char_to_nstr(const char *src)</div><div class="ttdoc">Convert a char into a N_STR, short version.</div><div class="ttdef"><b>Definition:</b> <a href="n__str_8c_source.html#l00268">n_str.c:268</a></div></div>
-<div class="ttc" id="agroup___n___s_t_r_html_ga873edbb1f8787d0a78a13ccbbed9b9f9"><div class="ttname"><a href="group___n___s_t_r.html#ga873edbb1f8787d0a78a13ccbbed9b9f9">new_nstr</a></div><div class="ttdeci">N_STR * new_nstr(NSTRBYTE size)</div><div class="ttdoc">create a new N_STR string</div><div class="ttdef"><b>Definition:</b> <a href="n__str_8c_source.html#l00209">n_str.c:209</a></div></div>
-<div class="ttc" id="agroup___n___s_t_r_html_struct_n___s_t_r"><div class="ttname"><a href="group___n___s_t_r.html#struct_n___s_t_r">N_STR</a></div><div class="ttdef"><b>Definition:</b> <a href="n__str_8h_source.html#l00150">n_str.h:151</a></div></div>
-<div class="ttc" id="agroup___n_e_t_w_o_r_k___m_s_g_html_ga0aba2c6691315fe2da60573c228da4ce"><div class="ttname"><a href="group___n_e_t_w_o_r_k___m_s_g.html#ga0aba2c6691315fe2da60573c228da4ce">NETMSG_IDENT_REQUEST</a></div><div class="ttdeci">#define NETMSG_IDENT_REQUEST</div><div class="ttdef"><b>Definition:</b> <a href="n__network__msg_8h_source.html#l00027">n_network_msg.h:27</a></div></div>
-<div class="ttc" id="agroup___n_e_t_w_o_r_k___m_s_g_html_ga241bf3b1ebc63dd986dfec1b0fe4998b"><div class="ttname"><a href="group___n_e_t_w_o_r_k___m_s_g.html#ga241bf3b1ebc63dd986dfec1b0fe4998b">netw_get_position</a></div><div class="ttdeci">int netw_get_position(N_STR *msg, int *id, double *X, double *Y, double *vx, double *vy, double *acc_x, double *acc_y, int *time_stamp)</div><div class="ttdoc">Retrieves position from netwmsg.</div><div class="ttdef"><b>Definition:</b> <a href="n__network__msg_8c_source.html#l00811">n_network_msg.c:811</a></div></div>
-<div class="ttc" id="agroup___n_e_t_w_o_r_k___m_s_g_html_ga2669f513eb1909d6f1940923f994eaf5"><div class="ttname"><a href="group___n_e_t_w_o_r_k___m_s_g.html#ga2669f513eb1909d6f1940923f994eaf5">NETMSG_PING_REQUEST</a></div><div class="ttdeci">#define NETMSG_PING_REQUEST</div><div class="ttdef"><b>Definition:</b> <a href="n__network__msg_8h_source.html#l00037">n_network_msg.h:37</a></div></div>
-<div class="ttc" id="agroup___n_e_t_w_o_r_k___m_s_g_html_ga2c234a6eeea5e8f2fe26573ba2053423"><div class="ttname"><a href="group___n_e_t_w_o_r_k___m_s_g.html#ga2c234a6eeea5e8f2fe26573ba2053423">NETMSG_IDENT_REPLY_NOK</a></div><div class="ttdeci">#define NETMSG_IDENT_REPLY_NOK</div><div class="ttdef"><b>Definition:</b> <a href="n__network__msg_8h_source.html#l00031">n_network_msg.h:31</a></div></div>
-<div class="ttc" id="agroup___n_e_t_w_o_r_k___m_s_g_html_ga2cd8d019ec9563557d35e165c7fd820f"><div class="ttname"><a href="group___n_e_t_w_o_r_k___m_s_g.html#ga2cd8d019ec9563557d35e165c7fd820f">NETMSG_STRING</a></div><div class="ttdeci">#define NETMSG_STRING</div><div class="ttdef"><b>Definition:</b> <a href="n__network__msg_8h_source.html#l00033">n_network_msg.h:33</a></div></div>
-<div class="ttc" id="agroup___n_e_t_w_o_r_k___m_s_g_html_ga322dcf158f5f222cb28df2736a533292"><div class="ttname"><a href="group___n_e_t_w_o_r_k___m_s_g.html#ga322dcf158f5f222cb28df2736a533292">NETMSG_PING_REPLY</a></div><div class="ttdeci">#define NETMSG_PING_REPLY</div><div class="ttdef"><b>Definition:</b> <a href="n__network__msg_8h_source.html#l00039">n_network_msg.h:39</a></div></div>
-<div class="ttc" id="agroup___n_e_t_w_o_r_k___m_s_g_html_ga5752ebf119504833871560aaff3142a3"><div class="ttname"><a href="group___n_e_t_w_o_r_k___m_s_g.html#ga5752ebf119504833871560aaff3142a3">NETMSG_QUIT</a></div><div class="ttdeci">#define NETMSG_QUIT</div><div class="ttdef"><b>Definition:</b> <a href="n__network__msg_8h_source.html#l00045">n_network_msg.h:45</a></div></div>
-<div class="ttc" id="agroup___n_e_t_w_o_r_k___m_s_g_html_ga6be40a0228eaffdc2591bd892801ad6f"><div class="ttname"><a href="group___n_e_t_w_o_r_k___m_s_g.html#ga6be40a0228eaffdc2591bd892801ad6f">NETMSG_POSITION</a></div><div class="ttdeci">#define NETMSG_POSITION</div><div class="ttdef"><b>Definition:</b> <a href="n__network__msg_8h_source.html#l00035">n_network_msg.h:35</a></div></div>
-<div class="ttc" id="agroup___n_e_t_w_o_r_k___m_s_g_html_ga70abef02e9578c21b5707eecb3750fef"><div class="ttname"><a href="group___n_e_t_w_o_r_k___m_s_g.html#ga70abef02e9578c21b5707eecb3750fef">netw_msg_get_type</a></div><div class="ttdeci">int netw_msg_get_type(N_STR *msg)</div><div class="ttdoc">Get the type of message without killing the first number. Use with netw_get_XXX.</div><div class="ttdef"><b>Definition:</b> <a href="n__network__msg_8c_source.html#l00739">n_network_msg.c:739</a></div></div>
-<div class="ttc" id="agroup___n_e_t_w_o_r_k___m_s_g_html_gaa4b51b1c41f36f6ee947958e7b2f461e"><div class="ttname"><a href="group___n_e_t_w_o_r_k___m_s_g.html#gaa4b51b1c41f36f6ee947958e7b2f461e">NETMSG_BOX</a></div><div class="ttdeci">#define NETMSG_BOX</div><div class="ttdef"><b>Definition:</b> <a href="n__network__msg_8h_source.html#l00043">n_network_msg.h:43</a></div></div>
-<div class="ttc" id="agroup___n_e_t_w_o_r_k___m_s_g_html_gab8dd7be31c5e0e263f81efa4962b38a6"><div class="ttname"><a href="group___n_e_t_w_o_r_k___m_s_g.html#gab8dd7be31c5e0e263f81efa4962b38a6">NETMSG_GET_BOX</a></div><div class="ttdeci">#define NETMSG_GET_BOX</div><div class="ttdef"><b>Definition:</b> <a href="n__network__msg_8h_source.html#l00041">n_network_msg.h:41</a></div></div>
-<div class="ttc" id="agroup___n_e_t_w_o_r_k___m_s_g_html_gacd87327bd5e06b2dbceee860fb93cc90"><div class="ttname"><a href="group___n_e_t_w_o_r_k___m_s_g.html#gacd87327bd5e06b2dbceee860fb93cc90">NETMSG_IDENT_REPLY_OK</a></div><div class="ttdeci">#define NETMSG_IDENT_REPLY_OK</div><div class="ttdef"><b>Definition:</b> <a href="n__network__msg_8h_source.html#l00029">n_network_msg.h:29</a></div></div>
-<div class="ttc" id="agroup___n_e_t_w_o_r_k___m_s_g_html_gace220d6339bd8085269ecee2b35126fb"><div class="ttname"><a href="group___n_e_t_w_o_r_k___m_s_g.html#gace220d6339bd8085269ecee2b35126fb">netw_get_string</a></div><div class="ttdeci">int netw_get_string(N_STR *msg, int *id, N_STR **name, N_STR **chan, N_STR **txt, int *color)</div><div class="ttdoc">Retrieves string from netwmsg.</div><div class="ttdef"><b>Definition:</b> <a href="n__network__msg_8c_source.html#l00858">n_network_msg.c:858</a></div></div>
-<div class="ttc" id="agroup___n_e_t_w_o_r_k___m_s_g_html_gaf2d84e34e50db7b3b7aca16c6bdb06f8"><div class="ttname"><a href="group___n_e_t_w_o_r_k___m_s_g.html#gaf2d84e34e50db7b3b7aca16c6bdb06f8">netw_get_ident</a></div><div class="ttdeci">int netw_get_ident(N_STR *msg, int *type, int *ident, N_STR **name, N_STR **passwd)</div><div class="ttdoc">Retrieves identification from netwmsg.</div><div class="ttdef"><b>Definition:</b> <a href="n__network__msg_8c_source.html#l00768">n_network_msg.c:768</a></div></div>
-<div class="ttc" id="agroup___n_e_t_w_o_r_k___m_s_g_html_gafb91c3ea7bfa93212141fa1fe074fb3d"><div class="ttname"><a href="group___n_e_t_w_o_r_k___m_s_g.html#gafb91c3ea7bfa93212141fa1fe074fb3d">netmsg_make_string_msg</a></div><div class="ttdeci">N_STR * netmsg_make_string_msg(int id_from, int id_to, N_STR *name, N_STR *chan, N_STR *txt, int color)</div><div class="ttdef"><b>Definition:</b> <a href="n__network__msg_8c_source.html#l00686">n_network_msg.c:686</a></div></div>
+<div class="ttc" id="agroup___l_o_g_html_gad89ee324d180cdcd7defcc709ff9ca42"><div class="ttname"><a href="group___l_o_g.html#gad89ee324d180cdcd7defcc709ff9ca42">LOG_NOTICE</a></div><div class="ttdeci">#define LOG_NOTICE</div><div class="ttdoc">normal but significant condition</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00062">n_log.h:62</a></div></div>
+<div class="ttc" id="agroup___l_o_g_html_gae3b3638575ad43aa2dba40543dcec45c"><div class="ttname"><a href="group___l_o_g.html#gae3b3638575ad43aa2dba40543dcec45c">LOG_NULL</a></div><div class="ttdeci">#define LOG_NULL</div><div class="ttdoc">no log output</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00027">n_log.h:27</a></div></div>
+<div class="ttc" id="agroup___l_o_g_html_gaeb4f36db01bd128c7afeac5889dac311"><div class="ttname"><a href="group___l_o_g.html#gaeb4f36db01bd128c7afeac5889dac311">LOG_INFO</a></div><div class="ttdeci">#define LOG_INFO</div><div class="ttdoc">informational</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00064">n_log.h:64</a></div></div>
+<div class="ttc" id="agroup___n___s_t_r_html_ga113e906d03374ac38e441f1df44095fb"><div class="ttname"><a href="group___n___s_t_r.html#ga113e906d03374ac38e441f1df44095fb">free_nstr</a></div><div class="ttdeci">#define free_nstr(__ptr)</div><div class="ttdoc">free a N_STR structure and set the pointer to NULL</div><div class="ttdef"><b>Definition:</b> <a href="n__str_8h_source.html#l00196">n_str.h:196</a></div></div>
+<div class="ttc" id="agroup___n___s_t_r_html_ga1c1f4062c727970a68bfd932c3fabcd5"><div class="ttname"><a href="group___n___s_t_r.html#ga1c1f4062c727970a68bfd932c3fabcd5">nstrprintf</a></div><div class="ttdeci">#define nstrprintf(__nstr_var,...)</div><div class="ttdoc">Macro to quickly allocate and sprintf to N_STR *.</div><div class="ttdef"><b>Definition:</b> <a href="n__str_8h_source.html#l00097">n_str.h:97</a></div></div>
+<div class="ttc" id="agroup___n___s_t_r_html_ga69e5f2dbf75571a73e5a3332929642a4"><div class="ttname"><a href="group___n___s_t_r.html#ga69e5f2dbf75571a73e5a3332929642a4">char_to_nstr</a></div><div class="ttdeci">N_STR * char_to_nstr(const char *src)</div><div class="ttdoc">Convert a char into a N_STR, short version.</div><div class="ttdef"><b>Definition:</b> <a href="n__str_8c_source.html#l00274">n_str.c:274</a></div></div>
+<div class="ttc" id="agroup___n___s_t_r_html_ga873edbb1f8787d0a78a13ccbbed9b9f9"><div class="ttname"><a href="group___n___s_t_r.html#ga873edbb1f8787d0a78a13ccbbed9b9f9">new_nstr</a></div><div class="ttdeci">N_STR * new_nstr(NSTRBYTE size)</div><div class="ttdoc">create a new N_STR string</div><div class="ttdef"><b>Definition:</b> <a href="n__str_8c_source.html#l00215">n_str.c:215</a></div></div>
+<div class="ttc" id="agroup___n___s_t_r_html_struct_n___s_t_r"><div class="ttname"><a href="group___n___s_t_r.html#struct_n___s_t_r">N_STR</a></div><div class="ttdoc">A box including a string and his lenght.</div><div class="ttdef"><b>Definition:</b> <a href="n__str_8h_source.html#l00150">n_str.h:151</a></div></div>
+<div class="ttc" id="agroup___n_e_t_w_o_r_k___m_s_g_html_ga0aba2c6691315fe2da60573c228da4ce"><div class="ttname"><a href="group___n_e_t_w_o_r_k___m_s_g.html#ga0aba2c6691315fe2da60573c228da4ce">NETMSG_IDENT_REQUEST</a></div><div class="ttdeci">#define NETMSG_IDENT_REQUEST</div><div class="ttdoc">Network Message is identification request: (int)type , (int)id , (N_STR *)name , (N_STR *)password.</div><div class="ttdef"><b>Definition:</b> <a href="n__network__msg_8h_source.html#l00027">n_network_msg.h:27</a></div></div>
+<div class="ttc" id="agroup___n_e_t_w_o_r_k___m_s_g_html_ga241bf3b1ebc63dd986dfec1b0fe4998b"><div class="ttname"><a href="group___n_e_t_w_o_r_k___m_s_g.html#ga241bf3b1ebc63dd986dfec1b0fe4998b">netw_get_position</a></div><div class="ttdeci">int netw_get_position(N_STR *msg, int *id, double *X, double *Y, double *vx, double *vy, double *acc_x, double *acc_y, int *time_stamp)</div><div class="ttdoc">Retrieves position from netwmsg.</div><div class="ttdef"><b>Definition:</b> <a href="n__network__msg_8c_source.html#l00839">n_network_msg.c:839</a></div></div>
+<div class="ttc" id="agroup___n_e_t_w_o_r_k___m_s_g_html_ga2669f513eb1909d6f1940923f994eaf5"><div class="ttname"><a href="group___n_e_t_w_o_r_k___m_s_g.html#ga2669f513eb1909d6f1940923f994eaf5">NETMSG_PING_REQUEST</a></div><div class="ttdeci">#define NETMSG_PING_REQUEST</div><div class="ttdoc">Network Message is ping request: (int)type , (int)id_from , (int)id_to.</div><div class="ttdef"><b>Definition:</b> <a href="n__network__msg_8h_source.html#l00037">n_network_msg.h:37</a></div></div>
+<div class="ttc" id="agroup___n_e_t_w_o_r_k___m_s_g_html_ga2c234a6eeea5e8f2fe26573ba2053423"><div class="ttname"><a href="group___n_e_t_w_o_r_k___m_s_g.html#ga2c234a6eeea5e8f2fe26573ba2053423">NETMSG_IDENT_REPLY_NOK</a></div><div class="ttdeci">#define NETMSG_IDENT_REPLY_NOK</div><div class="ttdoc">Network Message is identification reply NON OK: (int)type , (int)id , (N_STR *)name ,...</div><div class="ttdef"><b>Definition:</b> <a href="n__network__msg_8h_source.html#l00031">n_network_msg.h:31</a></div></div>
+<div class="ttc" id="agroup___n_e_t_w_o_r_k___m_s_g_html_ga2cd8d019ec9563557d35e165c7fd820f"><div class="ttname"><a href="group___n_e_t_w_o_r_k___m_s_g.html#ga2cd8d019ec9563557d35e165c7fd820f">NETMSG_STRING</a></div><div class="ttdeci">#define NETMSG_STRING</div><div class="ttdoc">Network Message is string: (int)type , (int)id , (N_STR *)name , (N_STR *)chan , (N_STR *)text ,...</div><div class="ttdef"><b>Definition:</b> <a href="n__network__msg_8h_source.html#l00033">n_network_msg.h:33</a></div></div>
+<div class="ttc" id="agroup___n_e_t_w_o_r_k___m_s_g_html_ga322dcf158f5f222cb28df2736a533292"><div class="ttname"><a href="group___n_e_t_w_o_r_k___m_s_g.html#ga322dcf158f5f222cb28df2736a533292">NETMSG_PING_REPLY</a></div><div class="ttdeci">#define NETMSG_PING_REPLY</div><div class="ttdoc">Network Message is ping reply: (int)type , (int)id_from , (int)id_to.</div><div class="ttdef"><b>Definition:</b> <a href="n__network__msg_8h_source.html#l00039">n_network_msg.h:39</a></div></div>
+<div class="ttc" id="agroup___n_e_t_w_o_r_k___m_s_g_html_ga5752ebf119504833871560aaff3142a3"><div class="ttname"><a href="group___n_e_t_w_o_r_k___m_s_g.html#ga5752ebf119504833871560aaff3142a3">NETMSG_QUIT</a></div><div class="ttdeci">#define NETMSG_QUIT</div><div class="ttdoc">Network asking for exit.</div><div class="ttdef"><b>Definition:</b> <a href="n__network__msg_8h_source.html#l00045">n_network_msg.h:45</a></div></div>
+<div class="ttc" id="agroup___n_e_t_w_o_r_k___m_s_g_html_ga6be40a0228eaffdc2591bd892801ad6f"><div class="ttname"><a href="group___n_e_t_w_o_r_k___m_s_g.html#ga6be40a0228eaffdc2591bd892801ad6f">NETMSG_POSITION</a></div><div class="ttdeci">#define NETMSG_POSITION</div><div class="ttdoc">Network Message position: (int)type , (int)id , (int)X , (int)Y , (int)x_shift , (int)y_shift ,...</div><div class="ttdef"><b>Definition:</b> <a href="n__network__msg_8h_source.html#l00035">n_network_msg.h:35</a></div></div>
+<div class="ttc" id="agroup___n_e_t_w_o_r_k___m_s_g_html_ga70abef02e9578c21b5707eecb3750fef"><div class="ttname"><a href="group___n_e_t_w_o_r_k___m_s_g.html#ga70abef02e9578c21b5707eecb3750fef">netw_msg_get_type</a></div><div class="ttdeci">int netw_msg_get_type(N_STR *msg)</div><div class="ttdoc">Get the type of message without killing the first number. Use with netw_get_XXX.</div><div class="ttdef"><b>Definition:</b> <a href="n__network__msg_8c_source.html#l00767">n_network_msg.c:767</a></div></div>
+<div class="ttc" id="agroup___n_e_t_w_o_r_k___m_s_g_html_gaa4b51b1c41f36f6ee947958e7b2f461e"><div class="ttname"><a href="group___n_e_t_w_o_r_k___m_s_g.html#gaa4b51b1c41f36f6ee947958e7b2f461e">NETMSG_BOX</a></div><div class="ttdeci">#define NETMSG_BOX</div><div class="ttdoc">Network Message is box retrieving reply: (int x , int y , int z , N_STR *data )</div><div class="ttdef"><b>Definition:</b> <a href="n__network__msg_8h_source.html#l00043">n_network_msg.h:43</a></div></div>
+<div class="ttc" id="agroup___n_e_t_w_o_r_k___m_s_g_html_gab8dd7be31c5e0e263f81efa4962b38a6"><div class="ttname"><a href="group___n_e_t_w_o_r_k___m_s_g.html#gab8dd7be31c5e0e263f81efa4962b38a6">NETMSG_GET_BOX</a></div><div class="ttdeci">#define NETMSG_GET_BOX</div><div class="ttdoc">Network Message is box retrieve: int x , int y , int z.</div><div class="ttdef"><b>Definition:</b> <a href="n__network__msg_8h_source.html#l00041">n_network_msg.h:41</a></div></div>
+<div class="ttc" id="agroup___n_e_t_w_o_r_k___m_s_g_html_gacd87327bd5e06b2dbceee860fb93cc90"><div class="ttname"><a href="group___n_e_t_w_o_r_k___m_s_g.html#gacd87327bd5e06b2dbceee860fb93cc90">NETMSG_IDENT_REPLY_OK</a></div><div class="ttdeci">#define NETMSG_IDENT_REPLY_OK</div><div class="ttdoc">Network Message is identification reply OK : (int)type , (int)id , (N_STR *)name ,...</div><div class="ttdef"><b>Definition:</b> <a href="n__network__msg_8h_source.html#l00029">n_network_msg.h:29</a></div></div>
+<div class="ttc" id="agroup___n_e_t_w_o_r_k___m_s_g_html_gace220d6339bd8085269ecee2b35126fb"><div class="ttname"><a href="group___n_e_t_w_o_r_k___m_s_g.html#gace220d6339bd8085269ecee2b35126fb">netw_get_string</a></div><div class="ttdeci">int netw_get_string(N_STR *msg, int *id, N_STR **name, N_STR **chan, N_STR **txt, int *color)</div><div class="ttdoc">Retrieves string from netwmsg.</div><div class="ttdef"><b>Definition:</b> <a href="n__network__msg_8c_source.html#l00886">n_network_msg.c:886</a></div></div>
+<div class="ttc" id="agroup___n_e_t_w_o_r_k___m_s_g_html_gaf2d84e34e50db7b3b7aca16c6bdb06f8"><div class="ttname"><a href="group___n_e_t_w_o_r_k___m_s_g.html#gaf2d84e34e50db7b3b7aca16c6bdb06f8">netw_get_ident</a></div><div class="ttdeci">int netw_get_ident(N_STR *msg, int *type, int *ident, N_STR **name, N_STR **passwd)</div><div class="ttdoc">Retrieves identification from netwmsg.</div><div class="ttdef"><b>Definition:</b> <a href="n__network__msg_8c_source.html#l00796">n_network_msg.c:796</a></div></div>
+<div class="ttc" id="agroup___n_e_t_w_o_r_k___m_s_g_html_gafb91c3ea7bfa93212141fa1fe074fb3d"><div class="ttname"><a href="group___n_e_t_w_o_r_k___m_s_g.html#gafb91c3ea7bfa93212141fa1fe074fb3d">netmsg_make_string_msg</a></div><div class="ttdeci">N_STR * netmsg_make_string_msg(int id_from, int id_to, N_STR *name, N_STR *chan, N_STR *txt, int color)</div><div class="ttdoc">make a network NETMSG_STRING message with given parameters</div><div class="ttdef"><b>Definition:</b> <a href="n__network__msg_8c_source.html#l00710">n_network_msg.c:710</a></div></div>
 <div class="ttc" id="agroup___n_e_t_w_o_r_k_i_n_g_html_ga0d0992b4eac986d7757ecddbc66e3b90"><div class="ttname"><a href="group___n_e_t_w_o_r_k_i_n_g.html#ga0d0992b4eac986d7757ecddbc66e3b90">netw_get_msg</a></div><div class="ttdeci">N_STR * netw_get_msg(NETWORK *netw)</div><div class="ttdoc">Get a message from aimed NETWORK.</div><div class="ttdef"><b>Definition:</b> <a href="n__network_8c_source.html#l02072">n_network.c:2072</a></div></div>
 <div class="ttc" id="agroup___n_e_t_w_o_r_k_i_n_g_html_ga10429a9fa106b61c38f28635242ce502"><div class="ttname"><a href="group___n_e_t_w_o_r_k_i_n_g.html#ga10429a9fa106b61c38f28635242ce502">netw_add_msg</a></div><div class="ttdeci">int netw_add_msg(NETWORK *netw, N_STR *msg)</div><div class="ttdoc">Add a message to send in aimed NETWORK.</div><div class="ttdef"><b>Definition:</b> <a href="n__network_8c_source.html#l01993">n_network.c:1993</a></div></div>
-<div class="ttc" id="agroup___n_e_t_w_o_r_k_i_n_g_html_ga3f93cb2837a5f8d836804f450415d7b8"><div class="ttname"><a href="group___n_e_t_w_o_r_k_i_n_g.html#ga3f93cb2837a5f8d836804f450415d7b8">NETWORK_IPV6</a></div><div class="ttdeci">#define NETWORK_IPV6</div><div class="ttdef"><b>Definition:</b> <a href="n__network_8h_source.html#l00031">n_network.h:31</a></div></div>
-<div class="ttc" id="agroup___n_e_t_w_o_r_k_i_n_g_html_ga5ba0555c5ccd261227c3c1216923d563"><div class="ttname"><a href="group___n_e_t_w_o_r_k_i_n_g.html#ga5ba0555c5ccd261227c3c1216923d563">netw_start_thr_engine</a></div><div class="ttdeci">int netw_start_thr_engine(NETWORK *netw)</div><div class="ttdoc">Start the NETWORK netw Threaded Engine. Create a sending &amp; receiving thread.</div><div class="ttdef"><b>Definition:</b> <a href="n__network_8c_source.html#l02160">n_network.c:2160</a></div></div>
-<div class="ttc" id="agroup___n_e_t_w_o_r_k_i_n_g_html_ga5f726a9a4d94caeeeff82e4449564d64"><div class="ttname"><a href="group___n_e_t_w_o_r_k_i_n_g.html#ga5f726a9a4d94caeeeff82e4449564d64">NETWORK_IPV4</a></div><div class="ttdeci">#define NETWORK_IPV4</div><div class="ttdef"><b>Definition:</b> <a href="n__network_8h_source.html#l00029">n_network.h:29</a></div></div>
-<div class="ttc" id="agroup___n_e_t_w_o_r_k_i_n_g_html_ga60beb772aa298f36d1443a28e3ec5ec8"><div class="ttname"><a href="group___n_e_t_w_o_r_k_i_n_g.html#ga60beb772aa298f36d1443a28e3ec5ec8">netw_wait_close</a></div><div class="ttdeci">int netw_wait_close(NETWORK **netw)</div><div class="ttdoc">Wait for peer closing a specified Network, destroy queues, free the structure. Default 30 seconds tim...</div><div class="ttdef"><b>Definition:</b> <a href="n__network_8c_source.html#l01602">n_network.c:1602</a></div></div>
-<div class="ttc" id="agroup___n_e_t_w_o_r_k_i_n_g_html_ga8c9c7f339ab7d4066257c92c1ce1d1ab"><div class="ttname"><a href="group___n_e_t_w_o_r_k_i_n_g.html#ga8c9c7f339ab7d4066257c92c1ce1d1ab">NETWORK_IPALL</a></div><div class="ttdeci">#define NETWORK_IPALL</div><div class="ttdef"><b>Definition:</b> <a href="n__network_8h_source.html#l00027">n_network.h:27</a></div></div>
+<div class="ttc" id="agroup___n_e_t_w_o_r_k_i_n_g_html_ga3f93cb2837a5f8d836804f450415d7b8"><div class="ttname"><a href="group___n_e_t_w_o_r_k_i_n_g.html#ga3f93cb2837a5f8d836804f450415d7b8">NETWORK_IPV6</a></div><div class="ttdeci">#define NETWORK_IPV6</div><div class="ttdoc">Flag to force IPV6</div><div class="ttdef"><b>Definition:</b> <a href="n__network_8h_source.html#l00031">n_network.h:31</a></div></div>
+<div class="ttc" id="agroup___n_e_t_w_o_r_k_i_n_g_html_ga5ba0555c5ccd261227c3c1216923d563"><div class="ttname"><a href="group___n_e_t_w_o_r_k_i_n_g.html#ga5ba0555c5ccd261227c3c1216923d563">netw_start_thr_engine</a></div><div class="ttdeci">int netw_start_thr_engine(NETWORK *netw)</div><div class="ttdoc">Start the NETWORK netw Threaded Engine.</div><div class="ttdef"><b>Definition:</b> <a href="n__network_8c_source.html#l02160">n_network.c:2160</a></div></div>
+<div class="ttc" id="agroup___n_e_t_w_o_r_k_i_n_g_html_ga5f726a9a4d94caeeeff82e4449564d64"><div class="ttname"><a href="group___n_e_t_w_o_r_k_i_n_g.html#ga5f726a9a4d94caeeeff82e4449564d64">NETWORK_IPV4</a></div><div class="ttdeci">#define NETWORK_IPV4</div><div class="ttdoc">Flag to force IPV4</div><div class="ttdef"><b>Definition:</b> <a href="n__network_8h_source.html#l00029">n_network.h:29</a></div></div>
+<div class="ttc" id="agroup___n_e_t_w_o_r_k_i_n_g_html_ga60beb772aa298f36d1443a28e3ec5ec8"><div class="ttname"><a href="group___n_e_t_w_o_r_k_i_n_g.html#ga60beb772aa298f36d1443a28e3ec5ec8">netw_wait_close</a></div><div class="ttdeci">int netw_wait_close(NETWORK **netw)</div><div class="ttdoc">Wait for peer closing a specified Network, destroy queues, free the structure.</div><div class="ttdef"><b>Definition:</b> <a href="n__network_8c_source.html#l01602">n_network.c:1602</a></div></div>
+<div class="ttc" id="agroup___n_e_t_w_o_r_k_i_n_g_html_ga8c9c7f339ab7d4066257c92c1ce1d1ab"><div class="ttname"><a href="group___n_e_t_w_o_r_k_i_n_g.html#ga8c9c7f339ab7d4066257c92c1ce1d1ab">NETWORK_IPALL</a></div><div class="ttdeci">#define NETWORK_IPALL</div><div class="ttdoc">Flag for auto detection by OS of ip version to use.</div><div class="ttdef"><b>Definition:</b> <a href="n__network_8h_source.html#l00027">n_network.h:27</a></div></div>
 <div class="ttc" id="agroup___n_e_t_w_o_r_k_i_n_g_html_gac8b30599c7a5c2cce35ee401d7b9d7f1"><div class="ttname"><a href="group___n_e_t_w_o_r_k_i_n_g.html#gac8b30599c7a5c2cce35ee401d7b9d7f1">netw_send_quit</a></div><div class="ttdeci">int netw_send_quit(NETWORK *netw)</div><div class="ttdoc">Add a formatted NETMSG_QUIT message to the specified network.</div><div class="ttdef"><b>Definition:</b> <a href="n__network_8c_source.html#l03211">n_network.c:3211</a></div></div>
 <div class="ttc" id="agroup___n_e_t_w_o_r_k_i_n_g_html_gae18d52a130063ba1fd0a4cf4b6a2da20"><div class="ttname"><a href="group___n_e_t_w_o_r_k_i_n_g.html#gae18d52a130063ba1fd0a4cf4b6a2da20">netw_connect</a></div><div class="ttdeci">int netw_connect(NETWORK **netw, char *host, char *port, int ip_version)</div><div class="ttdoc">Use this to connect a NETWORK to any listening one, unrestricted send/recv lists.</div><div class="ttdef"><b>Definition:</b> <a href="n__network_8c_source.html#l01389">n_network.c:1389</a></div></div>
 <div class="ttc" id="agroup___n_e_t_w_o_r_k_i_n_g_html_gae8345266fcf7a23c0e8ffe176b0e086f"><div class="ttname"><a href="group___n_e_t_w_o_r_k_i_n_g.html#gae8345266fcf7a23c0e8ffe176b0e086f">netw_send_ident</a></div><div class="ttdeci">int netw_send_ident(NETWORK *netw, int type, int id, N_STR *name, N_STR *passwd)</div><div class="ttdoc">Add a formatted NETWMSG_IDENT message to the specified network.</div><div class="ttdef"><b>Definition:</b> <a href="n__network_8c_source.html#l03117">n_network.c:3117</a></div></div>
 <div class="ttc" id="agroup___n_e_t_w_o_r_k_i_n_g_html_gafaf1202a5f56a9f2285fccfbcacb3a6c"><div class="ttname"><a href="group___n_e_t_w_o_r_k_i_n_g.html#gafaf1202a5f56a9f2285fccfbcacb3a6c">netw_send_position</a></div><div class="ttdeci">int netw_send_position(NETWORK *netw, int id, double X, double Y, double vx, double vy, double acc_x, double acc_y, int time_stamp)</div><div class="ttdoc">Add a formatted NETWMSG_IDENT message to the specified network.</div><div class="ttdef"><b>Definition:</b> <a href="n__network_8c_source.html#l03144">n_network.c:3144</a></div></div>
-<div class="ttc" id="agroup___n_e_t_w_o_r_k_i_n_g_html_struct_n_e_t_w_o_r_k"><div class="ttname"><a href="group___n_e_t_w_o_r_k_i_n_g.html#struct_n_e_t_w_o_r_k">NETWORK</a></div><div class="ttdef"><b>Definition:</b> <a href="n__network_8h_source.html#l00249">n_network.h:250</a></div></div>
-<div class="ttc" id="an__allegro5_8h_html"><div class="ttname"><a href="n__allegro5_8h.html">n_allegro5.h</a></div></div>
-<div class="ttc" id="an__common_8h_html"><div class="ttname"><a href="n__common_8h.html">n_common.h</a></div></div>
-<div class="ttc" id="an__hash_8h_html"><div class="ttname"><a href="n__hash_8h.html">n_hash.h</a></div></div>
-<div class="ttc" id="an__list_8h_html"><div class="ttname"><a href="n__list_8h.html">n_list.h</a></div></div>
+<div class="ttc" id="agroup___n_e_t_w_o_r_k_i_n_g_html_struct_n_e_t_w_o_r_k"><div class="ttname"><a href="group___n_e_t_w_o_r_k_i_n_g.html#struct_n_e_t_w_o_r_k">NETWORK</a></div><div class="ttdoc">Structure of a NETWORK.</div><div class="ttdef"><b>Definition:</b> <a href="n__network_8h_source.html#l00251">n_network.h:252</a></div></div>
+<div class="ttc" id="an__allegro5_8h_html"><div class="ttname"><a href="n__allegro5_8h.html">n_allegro5.h</a></div><div class="ttdoc">Allegro5 helpers.</div></div>
+<div class="ttc" id="an__common_8h_html"><div class="ttname"><a href="n__common_8h.html">n_common.h</a></div><div class="ttdoc">Common headers and low-level hugly functions &amp; define.</div></div>
+<div class="ttc" id="an__hash_8h_html"><div class="ttname"><a href="n__hash_8h.html">n_hash.h</a></div><div class="ttdoc">Hash functions and table.</div></div>
+<div class="ttc" id="an__list_8h_html"><div class="ttname"><a href="n__list_8h.html">n_list.h</a></div><div class="ttdoc">List structures and definitions.</div></div>
 <div class="ttc" id="an__network_8c_html_a6d493e1a8e3717c37b3186b2f63acbb2"><div class="ttname"><a href="n__network_8c.html#a6d493e1a8e3717c37b3186b2f63acbb2">netw_sigchld_handler</a></div><div class="ttdeci">void netw_sigchld_handler(int sig)</div><div class="ttdoc">signal handler to reap zombies when forking</div><div class="ttdef"><b>Definition:</b> <a href="n__network_8c_source.html#l00622">n_network.c:622</a></div></div>
-<div class="ttc" id="an__network_8h_html"><div class="ttname"><a href="n__network_8h.html">n_network.h</a></div></div>
-<div class="ttc" id="an__network__msg_8h_html"><div class="ttname"><a href="n__network__msg_8h.html">n_network_msg.h</a></div></div>
-<div class="ttc" id="an__str_8h_html"><div class="ttname"><a href="n__str_8h.html">n_str.h</a></div></div>
-<div class="ttc" id="astruct_h_a_s_h___t_a_b_l_e_html"><div class="ttname"><a href="struct_h_a_s_h___t_a_b_l_e.html">HASH_TABLE</a></div><div class="ttdef"><b>Definition:</b> <a href="n__hash_8h_source.html#l00108">n_hash.h:109</a></div></div>
+<div class="ttc" id="an__network_8h_html"><div class="ttname"><a href="n__network_8h.html">n_network.h</a></div><div class="ttdoc">Network Engine.</div></div>
+<div class="ttc" id="an__network__msg_8h_html"><div class="ttname"><a href="n__network__msg_8h.html">n_network_msg.h</a></div><div class="ttdoc">Network messages , serialization tools.</div></div>
+<div class="ttc" id="an__str_8h_html"><div class="ttname"><a href="n__str_8h.html">n_str.h</a></div><div class="ttdoc">N_STR and string function declaration.</div></div>
+<div class="ttc" id="astruct_p_e_e_r___o_b_j_e_c_t_html"><div class="ttname"><a href="struct_p_e_e_r___o_b_j_e_c_t.html">PEER_OBJECT</a></div><div class="ttdoc">a simple structure to hold objects positions / timeouts</div><div class="ttdef"><b>Definition:</b> <a href="ex__gui__netclient_8c_source.html#l00022">ex_gui_netclient.c:23</a></div></div>
+<div class="ttc" id="astruct_p_e_e_r___o_b_j_e_c_t_html_a588d82db1e4703aa363a8f866e99fc77"><div class="ttname"><a href="struct_p_e_e_r___o_b_j_e_c_t.html#a588d82db1e4703aa363a8f866e99fc77">PEER_OBJECT::life_time</a></div><div class="ttdeci">long int life_time</div><div class="ttdoc">current life time, updated when receiving a position from a peer.</div><div class="ttdef"><b>Definition:</b> <a href="ex__gui__netclient_8c_source.html#l00029">ex_gui_netclient.c:29</a></div></div>
+<div class="ttc" id="astruct_p_e_e_r___o_b_j_e_c_t_html_a762a558b9c9fa76e446e89cca3329209"><div class="ttname"><a href="struct_p_e_e_r___o_b_j_e_c_t.html#a762a558b9c9fa76e446e89cca3329209">PEER_OBJECT::id</a></div><div class="ttdeci">int id</div><div class="ttdoc">remote object id</div><div class="ttdef"><b>Definition:</b> <a href="ex__gui__netclient_8c_source.html#l00027">ex_gui_netclient.c:27</a></div></div>
+<div class="ttc" id="astruct_p_e_e_r___o_b_j_e_c_t_html_ab2c5d731fde94a1a4415fabe1aba1284"><div class="ttname"><a href="struct_p_e_e_r___o_b_j_e_c_t.html#ab2c5d731fde94a1a4415fabe1aba1284">PEER_OBJECT::position</a></div><div class="ttdeci">double position[3]</div><div class="ttdoc">last received object position</div><div class="ttdef"><b>Definition:</b> <a href="ex__gui__netclient_8c_source.html#l00025">ex_gui_netclient.c:25</a></div></div>
 </div><!-- fragment --> </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Feb 4 2022 17:12:03 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+    <li class="footer">Generated on Tue Feb 8 2022 14:10:25 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
   </ul>
 </div>
 </body>

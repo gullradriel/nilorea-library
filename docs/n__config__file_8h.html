@@ -24,9 +24,11 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="NiloreaStudio.png"/></td>
   <td id="projectalign">
    <div id="projectname">Nilorea Library
    </div>
+   <div id="projectbrief">C utilities for networking, threading, graphics</div>
   </td>
  </tr>
  </tbody>
@@ -89,6 +91,9 @@ $(document).ready(function(){initNavTree('n__config__file_8h.html',''); initResi
   <div class="headertitle"><div class="title">n_config_file.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Config file reading and writing.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="n__hash_8h_source.html">n_hash.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="n__str_8h_source.html">n_str.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="n__log_8h_source.html">n_log.h</a>&quot;</code><br />
@@ -99,20 +104,20 @@ $(document).ready(function(){initNavTree('n__config__file_8h.html',''); initResi
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="n__config__file_8h__incl.png" border="0" usemap="#ainclude_2nilorea_2n__config__file_8h" alt=""/></div>
 <map name="ainclude_2nilorea_2n__config__file_8h" id="ainclude_2nilorea_2n__config__file_8h">
-<area shape="rect" title=" " alt="" coords="702,5,860,47"/>
-<area shape="rect" href="n__hash_8h.html" title=" " alt="" coords="581,95,656,121"/>
-<area shape="rect" href="n__log_8h.html" title=" " alt="" coords="957,244,1064,271"/>
-<area shape="rect" href="n__str_8h.html" title=" " alt="" coords="888,95,951,121"/>
+<area shape="rect" title="Config file reading and writing." alt="" coords="702,5,860,47"/>
+<area shape="rect" href="n__hash_8h.html" title="Hash functions and table." alt="" coords="581,95,656,121"/>
+<area shape="rect" href="n__log_8h.html" title="Generic log system." alt="" coords="957,244,1064,271"/>
+<area shape="rect" href="n__str_8h.html" title="N_STR and string function declaration." alt="" coords="888,95,951,121"/>
 <area shape="rect" title=" " alt="" coords="128,319,194,345"/>
 <area shape="rect" title=" " alt="" coords="31,169,96,196"/>
-<area shape="rect" href="n__common_8h.html" title=" " alt="" coords="570,169,667,196"/>
-<area shape="rect" href="n__list_8h.html" title=" " alt="" coords="818,169,882,196"/>
+<area shape="rect" href="n__common_8h.html" title="Common headers and low&#45;level hugly functions &amp; define." alt="" coords="570,169,667,196"/>
+<area shape="rect" href="n__list_8h.html" title="List structures and definitions." alt="" coords="818,169,882,196"/>
 <area shape="rect" title=" " alt="" coords="417,244,508,271"/>
 <area shape="rect" title=" " alt="" coords="127,244,195,271"/>
 <area shape="rect" title=" " alt="" coords="757,319,821,345"/>
 <area shape="rect" title=" " alt="" coords="583,244,654,271"/>
 <area shape="rect" title=" " alt="" coords="678,244,740,271"/>
-<area shape="rect" href="n__enum_8h.html" title=" " alt="" coords="271,244,392,271"/>
+<area shape="rect" href="n__enum_8h.html" title="Macro to build enums and their tostring counterparts, a reduced version of https://github...." alt="" coords="271,244,392,271"/>
 <area shape="rect" title=" " alt="" coords="765,244,832,271"/>
 <area shape="rect" title=" " alt="" coords="1144,319,1205,345"/>
 <area shape="rect" title=" " alt="" coords="845,319,925,345"/>
@@ -132,11 +137,11 @@ $(document).ready(function(){initNavTree('n__config__file_8h.html',''); initResi
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="n__config__file_8h__dep__incl.png" border="0" usemap="#ainclude_2nilorea_2n__config__file_8hdep" alt=""/></div>
 <map name="ainclude_2nilorea_2n__config__file_8hdep" id="ainclude_2nilorea_2n__config__file_8hdep">
-<area shape="rect" title=" " alt="" coords="173,5,330,47"/>
-<area shape="rect" href="ex__configfile_8c.html" title=" " alt="" coords="5,95,169,121"/>
-<area shape="rect" href="nilorea_8h.html" title=" " alt="" coords="193,95,309,121"/>
-<area shape="rect" href="n__config__file_8c.html" title=" " alt="" coords="333,95,460,121"/>
-<area shape="rect" href="ex__monolith_8c.html" title=" " alt="" coords="170,169,333,196"/>
+<area shape="rect" title="Config file reading and writing." alt="" coords="173,5,330,47"/>
+<area shape="rect" href="ex__configfile_8c_source.html" title=" " alt="" coords="5,95,169,121"/>
+<area shape="rect" href="nilorea_8h.html" title="Header for a monolith use." alt="" coords="193,95,309,121"/>
+<area shape="rect" href="n__config__file_8c.html" title="common function" alt="" coords="333,95,460,121"/>
+<area shape="rect" href="ex__monolith_8c_source.html" title=" " alt="" coords="170,169,333,196"/>
 </map>
 </div>
 </div>
@@ -145,19 +150,25 @@ $(document).ready(function(){initNavTree('n__config__file_8h.html',''); initResi
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Data Structures</h2></td></tr>
 <tr class="memitem:struct_c_o_n_f_i_g___f_i_l_e"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___c_o_n_f_i_g_f_i_l_e.html#struct_c_o_n_f_i_g___f_i_l_e">CONFIG_FILE</a></td></tr>
+<tr class="memdesc:struct_c_o_n_f_i_g___f_i_l_e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure of a config file.  <a href="group___c_o_n_f_i_g_f_i_l_e.html#struct_c_o_n_f_i_g___f_i_l_e">More...</a><br /></td></tr>
 <tr class="separator:struct_c_o_n_f_i_g___f_i_l_e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:struct_c_o_n_f_i_g___f_i_l_e___s_e_c_t_i_o_n"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___c_o_n_f_i_g_f_i_l_e.html#struct_c_o_n_f_i_g___f_i_l_e___s_e_c_t_i_o_n">CONFIG_FILE_SECTION</a></td></tr>
+<tr class="memdesc:struct_c_o_n_f_i_g___f_i_l_e___s_e_c_t_i_o_n"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure of a config section.  <a href="group___c_o_n_f_i_g_f_i_l_e.html#struct_c_o_n_f_i_g___f_i_l_e___s_e_c_t_i_o_n">More...</a><br /></td></tr>
 <tr class="separator:struct_c_o_n_f_i_g___f_i_l_e___s_e_c_t_i_o_n"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:ga2d2b6213151d9b9c50149149cffea041"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___c_o_n_f_i_g_f_i_l_e.html#ga2d2b6213151d9b9c50149149cffea041">config_endfor</a></td></tr>
+<tr class="memdesc:ga2d2b6213151d9b9c50149149cffea041"><td class="mdescLeft">&#160;</td><td class="mdescRight">Foreach elements of <a class="el" href="group___c_o_n_f_i_g_f_i_l_e.html#struct_c_o_n_f_i_g___f_i_l_e" title="Structure of a config file.">CONFIG_FILE</a> macro END.  <a href="group___c_o_n_f_i_g_f_i_l_e.html#ga2d2b6213151d9b9c50149149cffea041">More...</a><br /></td></tr>
 <tr class="separator:ga2d2b6213151d9b9c50149149cffea041"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaa56fa5c30fab08e7145ab2640e12cde5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___c_o_n_f_i_g_f_i_l_e.html#gaa56fa5c30fab08e7145ab2640e12cde5">config_foreach</a>(__config,  __section_name,  __key,  __val)</td></tr>
+<tr class="memdesc:gaa56fa5c30fab08e7145ab2640e12cde5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Foreach elements of <a class="el" href="group___c_o_n_f_i_g_f_i_l_e.html#struct_c_o_n_f_i_g___f_i_l_e" title="Structure of a config file.">CONFIG_FILE</a> macro, i.e <a class="el" href="group___c_o_n_f_i_g_f_i_l_e.html#gaa56fa5c30fab08e7145ab2640e12cde5" title="Foreach elements of CONFIG_FILE macro, i.e config_foreach( config , section , key ,...">config_foreach( config , section , key , val )</a>; config_endfor;.  <a href="group___c_o_n_f_i_g_f_i_l_e.html#gaa56fa5c30fab08e7145ab2640e12cde5">More...</a><br /></td></tr>
 <tr class="separator:gaa56fa5c30fab08e7145ab2640e12cde5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga3ed215f5c5f97f94ae329eca4c35e7cd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___c_o_n_f_i_g_f_i_l_e.html#ga3ed215f5c5f97f94ae329eca4c35e7cd">CONFIG_SECTION_HASH_TABLE_LEN</a>&#160;&#160;&#160;16</td></tr>
+<tr class="memdesc:ga3ed215f5c5f97f94ae329eca4c35e7cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">size of the hash table of config sections entries  <a href="group___c_o_n_f_i_g_f_i_l_e.html#ga3ed215f5c5f97f94ae329eca4c35e7cd">More...</a><br /></td></tr>
 <tr class="separator:ga3ed215f5c5f97f94ae329eca4c35e7cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga7186273cd88640b740b6333cd98ae243"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___c_o_n_f_i_g_f_i_l_e.html#ga7186273cd88640b740b6333cd98ae243">MAX_CONFIG_LINE_LEN</a>&#160;&#160;&#160;1024</td></tr>
+<tr class="memdesc:ga7186273cd88640b740b6333cd98ae243"><td class="mdescLeft">&#160;</td><td class="mdescRight">maximum length of a single config line  <a href="group___c_o_n_f_i_g_f_i_l_e.html#ga7186273cd88640b740b6333cd98ae243">More...</a><br /></td></tr>
 <tr class="separator:ga7186273cd88640b740b6333cd98ae243"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
@@ -182,7 +193,8 @@ Functions</h2></td></tr>
 <tr class="separator:ga1b22438cb7d7a274b748d49e555f7f50"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >Config file reading and writing </p><dl class="section author"><dt>Author</dt><dd>Castagnier Mickael </dd></dl>
+<div class="textblock"><p >Config file reading and writing. </p>
+<dl class="section author"><dt>Author</dt><dd>Castagnier Mickael </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>1.0 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>24/03/05 </dd></dl>
 
@@ -193,7 +205,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_310dcdd4703e877a6b99d5dc3fc54d27.html">nilorea</a></li><li class="navelem"><a class="el" href="n__config__file_8h.html">n_config_file.h</a></li>
-    <li class="footer">Generated on Fri Feb 4 2022 17:12:04 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+    <li class="footer">Generated on Tue Feb 8 2022 14:10:25 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
   </ul>
 </div>
 </body>

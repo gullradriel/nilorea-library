@@ -10,21 +10,21 @@
 <area shape="rect" id="node11" href="$group___h_a_s_h___t_a_b_l_e.html#gaa2d879c1afd3c71a0917bbe2c0766664" title="Create a hash table with the given size." alt="" coords="197,819,260,846"/>
 <area shape="rect" id="node43" href="$group___p_c_r_e.html#gaf198eb0bc8c55ac41cc92af8e538ce04" title="Free a N_PCRE pointer." alt="" coords="361,1780,457,1807"/>
 <area shape="rect" id="node44" href="$group___p_c_r_e.html#ga605b60ef645cf217bd2b3dc548d1d6c2" title="Return TRUE if str matches regexp, and make captures up to max_cap." alt="" coords="180,971,277,998"/>
-<area shape="rect" id="node46" href="$group___p_c_r_e.html#ga54f913d2ee09d63de0f06fc1b9439d4a" title="create a compiled regex From pcre doc, the flag bits are: PCRE_ANCHORED Force pattern anchoring PCRE_..." alt="" coords="187,920,271,947"/>
-<area shape="rect" id="node47" href="$group___n___s_t_r.html#gae4317ddc09606fcca46265a53bfbfb8b" title="skip until &#39;toskip&#39; occurence is found from &#39;iterator&#39; to the next &#39;toskip&#39; value...." alt="" coords="202,1022,255,1048"/>
+<area shape="rect" id="node46" href="$group___p_c_r_e.html#ga54f913d2ee09d63de0f06fc1b9439d4a" title="From pcre doc, the flag bits are: PCRE_ANCHORED Force pattern anchoring PCRE_AUTO_CALLOUT Compile aut..." alt="" coords="187,920,271,947"/>
+<area shape="rect" id="node47" href="$group___n___s_t_r.html#gae4317ddc09606fcca46265a53bfbfb8b" title="skip until &#39;toskip&#39; occurence is found from &#39;iterator&#39; to the next &#39;toskip&#39; value." alt="" coords="202,1022,255,1048"/>
 <area shape="rect" id="node48" href="$group___n___s_t_r.html#ga194b81c0709d24aef9b6f7e8635d3966" title="Count split elements." alt="" coords="186,1072,271,1099"/>
 <area shape="rect" id="node49" href="$group___n___s_t_r.html#ga88e865dd8e64f3f3504a99d4d0961c37" title="Replace &quot;substr&quot; by &quot;replacement&quot; inside string taken from http://coding.debuntu.org/c&#45;implementing&#45;s..." alt="" coords="185,1123,272,1150"/>
 <area shape="rect" id="node50" href="$group___n___s_t_r.html#ga096b9e0a33d6e0f97e26c86b96415330" title="trim and zero end the string, WARNING: keep and original pointer to delete the string correctly" alt="" coords="182,1174,275,1200"/>
 <area shape="rect" id="node3" href="$group___h_a_s_h___t_a_b_l_e.html#ga22a943135dbcdb1611b40ce0547111ce" title="empty a table and destroy it" alt="" coords="367,87,450,114"/>
 <area shape="rect" id="node9" href="$group___l_i_s_t.html#ga678e828550efc8e64a836bb8c713c2f4" title="Allocate a new node to link in a list." alt="" coords="721,1236,825,1263"/>
 <area shape="rect" id="node12" href="$n__hash_8c.html#a0ee7e0fa87da033f857c04dae6f1586a" title="Free and set the table to NULL." alt="" coords="363,1071,454,1098"/>
-<area shape="rect" id="node13" href="$group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755" title="Empty and Free a list container. Call the destructor each time." alt="" coords="542,642,631,668"/>
+<area shape="rect" id="node13" href="$group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755" title="Empty and Free a list container." alt="" coords="542,642,631,668"/>
 <area shape="rect" id="node14" href="$n__hash_8c.html#a883490d95c386d9d82a7306663a6c2ce" title="Empty a hash table (CLASSIC mode)" alt="" coords="367,1172,450,1199"/>
-<area shape="rect" id="node16" href="$n__hash_8c.html#a7ce57bb0fb64ca5ff513c6ade7c26852" title="Retrieve a double value in the hash table, at the given key. Leave val untouched if key is not found." alt="" coords="353,1578,464,1604"/>
+<area shape="rect" id="node16" href="$n__hash_8c.html#a7ce57bb0fb64ca5ff513c6ade7c26852" title="Retrieve a double value in the hash table, at the given key." alt="" coords="353,1578,464,1604"/>
 <area shape="rect" id="node17" href="$n__hash_8c.html#a364dffbf42be500d3266410895694bd8" title="return the associated key&#39;s node inside the hash_table" alt="" coords="537,1451,637,1478"/>
-<area shape="rect" id="node20" href="$n__hash_8c.html#ae7c50bafbc80902f92c27e59d29ffd40" title="Retrieve an integral value in the hash table, at the given key. Leave val untouched if key is not fou..." alt="" coords="365,1628,452,1655"/>
-<area shape="rect" id="node21" href="$n__hash_8c.html#a0299747d5cd82effd51fdaec945e80ee" title="Retrieve a pointer value in the hash table, at the given key. Leave val untouched if key is not found..." alt="" coords="365,1679,452,1706"/>
-<area shape="rect" id="node22" href="$n__hash_8c.html#a524a224940bc3ceea122824ca3d4842b" title="Retrieve a char *string value in the hash table, at the given key. Leave val untouched if key is not ..." alt="" coords="357,1527,461,1554"/>
+<area shape="rect" id="node20" href="$n__hash_8c.html#ae7c50bafbc80902f92c27e59d29ffd40" title="Retrieve an integral value in the hash table, at the given key." alt="" coords="365,1628,452,1655"/>
+<area shape="rect" id="node21" href="$n__hash_8c.html#a0299747d5cd82effd51fdaec945e80ee" title="Retrieve a pointer value in the hash table, at the given key." alt="" coords="365,1679,452,1706"/>
+<area shape="rect" id="node22" href="$n__hash_8c.html#a524a224940bc3ceea122824ca3d4842b" title="Retrieve a char *string value in the hash table, at the given key." alt="" coords="357,1527,461,1554"/>
 <area shape="rect" id="node23" href="$n__hash_8c.html#a719f4d3d6315d1118478bf66bbf3d7d4" title="Generic print func call for classic hash tables." alt="" coords="373,1476,445,1503"/>
 <area shape="rect" id="node24" href="$n__hash_8c.html#a870d138d5408e20e8111c750cdc77d36" title="put a double value with given key in the targeted hash table" alt="" coords="353,1375,464,1402"/>
 <area shape="rect" id="node25" href="$n__hash_8c.html#a4713652203bc7965a2dda268ffa1e4d5" title="put an integral value with given key in the targeted hash table [CLASSIC HASH TABLE)" alt="" coords="365,1223,452,1250"/>
@@ -47,6 +47,6 @@
 <area shape="rect" id="node42" href="$group___h_a_s_h___t_a_b_l_e.html#ga16446a54727b375dfd0c92704dc39995" title="seach table for matching nodes" alt="" coords="369,1020,448,1047"/>
 <area shape="rect" id="node15" href="$n__hash_8c.html#a013153fa30199bbcaf5f92890ae97ba8" title="destroy a HASH_NODE by first calling the HASH_NODE destructor" alt="" coords="524,1311,649,1338"/>
 <area shape="rect" id="node19" href="$group___h_a_s_h___t_a_b_l_e.html#ga1392981a507905d028136bc0b92aa48b" title="get the type of a node , text version" alt="" coords="537,1400,637,1427"/>
-<area shape="rect" id="node18" href="$group___h_a_s_h___t_a_b_l_e.html#ga37412933f308bda727603640d9acefba" title=" " alt="" coords="697,1147,849,1174"/>
+<area shape="rect" id="node18" href="$group___h_a_s_h___t_a_b_l_e.html#ga37412933f308bda727603640d9acefba" title="MurmurHash3 was written by Austin Appleby, and is placed in the public domain." alt="" coords="697,1147,849,1174"/>
 <area shape="rect" id="node45" href="$group___p_c_r_e.html#ga89e67d2b218e2138a12aaecc2deab8fc" title="clean the match list of the last capture, if any" alt="" coords="341,1831,476,1858"/>
 </map>

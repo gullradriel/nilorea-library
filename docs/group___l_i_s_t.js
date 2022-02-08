@@ -6,11 +6,11 @@ var group___l_i_s_t =
       [ "nb_max_items", "group___l_i_s_t.html#af29cb936692783d93e2da27c357d5dfb", null ],
       [ "start", "group___l_i_s_t.html#aaaf4b83d5bfb568b4a840032ba46ead3", null ]
     ] ],
-    [ "LIST_NODE", "struct_l_i_s_t___n_o_d_e.html", [
-      [ "destroy_func", "struct_l_i_s_t___n_o_d_e.html#ac79aba60fed7fb7dcc4649e13e1b7a02", null ],
-      [ "next", "struct_l_i_s_t___n_o_d_e.html#ad6f2edb2e5026bbdff71604e5f9d8f3c", null ],
-      [ "prev", "struct_l_i_s_t___n_o_d_e.html#a97363c506efb3e5cc52dafc68e55f63a", null ],
-      [ "ptr", "struct_l_i_s_t___n_o_d_e.html#a3e3c8144183582d63ffad5fb3315ea69", null ]
+    [ "LIST_NODE", "group___l_i_s_t.html#struct_l_i_s_t___n_o_d_e", [
+      [ "destroy_func", "group___l_i_s_t.html#ac79aba60fed7fb7dcc4649e13e1b7a02", null ],
+      [ "next", "group___l_i_s_t.html#ad6f2edb2e5026bbdff71604e5f9d8f3c", null ],
+      [ "prev", "group___l_i_s_t.html#a97363c506efb3e5cc52dafc68e55f63a", null ],
+      [ "ptr", "group___l_i_s_t.html#a3e3c8144183582d63ffad5fb3315ea69", null ]
     ] ],
     [ "link_node", "group___l_i_s_t.html#ga720a8cd6c95044b33d3c952e5dadebc3", null ],
     [ "list_foreach", "group___l_i_s_t.html#ga55cdaac0dd0f4f4d687607e6679a4634", null ],

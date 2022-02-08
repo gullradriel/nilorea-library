@@ -1,20 +1,4 @@
 var searchData=
 [
-  ['ex_5fcommon_2ec_0',['ex_common.c',['../ex__common_8c.html',1,'']]],
-  ['ex_5fconfigfile_2ec_1',['ex_configfile.c',['../ex__configfile_8c.html',1,'']]],
-  ['ex_5fexceptions_2ec_2',['ex_exceptions.c',['../ex__exceptions_8c.html',1,'']]],
-  ['ex_5fgui_5fnetclient_2ec_3',['ex_gui_netclient.c',['../ex__gui__netclient_8c.html',1,'']]],
-  ['ex_5fgui_5fnetserver_2ec_4',['ex_gui_netserver.c',['../ex__gui__netserver_8c.html',1,'']]],
-  ['ex_5fgui_5fparticles_2ec_5',['ex_gui_particles.c',['../ex__gui__particles_8c.html',1,'']]],
-  ['ex_5fhash_2ec_6',['ex_hash.c',['../ex__hash_8c.html',1,'']]],
-  ['ex_5flist_2ec_7',['ex_list.c',['../ex__list_8c.html',1,'']]],
-  ['ex_5flog_2ec_8',['ex_log.c',['../ex__log_8c.html',1,'']]],
-  ['ex_5fmonolith_2ec_9',['ex_monolith.c',['../ex__monolith_8c.html',1,'']]],
-  ['ex_5fnetwork_2ec_10',['ex_network.c',['../ex__network_8c.html',1,'']]],
-  ['ex_5fnetwork_2eh_11',['ex_network.h',['../ex__network_8h.html',1,'']]],
-  ['ex_5fnstr_2ec_12',['ex_nstr.c',['../ex__nstr_8c.html',1,'']]],
-  ['ex_5fpcre_2ec_13',['ex_pcre.c',['../ex__pcre_8c.html',1,'']]],
-  ['ex_5fsignals_2ec_14',['ex_signals.c',['../ex__signals_8c.html',1,'']]],
-  ['ex_5fthreads_2ec_15',['ex_threads.c',['../ex__threads_8c.html',1,'']]],
-  ['ex_5fzlib_2ec_16',['ex_zlib.c',['../ex__zlib_8c.html',1,'']]]
+  ['ex_5fnetwork_2eh_0',['ex_network.h',['../ex__network_8h.html',1,'']]]
 ];

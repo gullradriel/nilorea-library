@@ -1,13 +1,10 @@
 var ex__gui__netclient_8c =
 [
-    [ "PEER_OBJECT", "ex__gui__netclient_8c.html#struct_p_e_e_r___o_b_j_e_c_t", [
-      [ "id", "ex__gui__netclient_8c.html#a762a558b9c9fa76e446e89cca3329209", null ],
-      [ "life_time", "ex__gui__netclient_8c.html#a588d82db1e4703aa363a8f866e99fc77", null ],
-      [ "position", "ex__gui__netclient_8c.html#ab2c5d731fde94a1a4415fabe1aba1284", null ]
-    ] ],
+    [ "PEER_OBJECT", "struct_p_e_e_r___o_b_j_e_c_t.html", "struct_p_e_e_r___o_b_j_e_c_t" ],
     [ "HAVE_ALLEGRO", "ex__gui__netclient_8c.html#a2f582b4ef87bbc7a714dd3995d1a509c", null ],
     [ "HEIGHT", "ex__gui__netclient_8c.html#aed89bd71aee8be823e8a20ec4e093c1e", null ],
     [ "WIDTH", "ex__gui__netclient_8c.html#a241aeeb764887ae5e3de58b98f04b16d", null ],
+    [ "PEER_OBJECT", "ex__gui__netclient_8c.html#a4f194ed643d69d9d899d75207826d56c", null ],
     [ "APP_KEYS", "ex__gui__netclient_8c.html#ad381705445518a234ef71c85cc7771a3", [
       [ "KEY_UP", "ex__gui__netclient_8c.html#ad381705445518a234ef71c85cc7771a3a0848a442d907968b211b97bc2bd88acd", null ],
       [ "KEY_DOWN", "ex__gui__netclient_8c.html#ad381705445518a234ef71c85cc7771a3aa9cdac7967bf7d88fdb761138a2a3416", null ],

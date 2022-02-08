@@ -10,7 +10,5 @@ var searchData=
   ['add_5fstrdup_5fto_5fmsg_7',['add_strdup_to_msg',['../group___n_e_t_w_o_r_k___m_s_g.html#ga35d5127628fc0ddafd5cde36296ce583',1,'add_strdup_to_msg(NETW_MSG *msg, char *str):&#160;n_network_msg.c'],['../group___n_e_t_w_o_r_k___m_s_g.html#ga35d5127628fc0ddafd5cde36296ce583',1,'add_strdup_to_msg(NETW_MSG *msg, char *str):&#160;n_network_msg.c']]],
   ['add_5fthreaded_5fprocess_8',['add_threaded_process',['../group___t_h_r_e_a_d_s.html#ga46497eb81066d0df83dfd07ad0a9f561',1,'add_threaded_process(THREAD_POOL *thread_pool, void *(*func_ptr)(void *param), void *param, int mode):&#160;n_thread_pool.c'],['../group___t_h_r_e_a_d_s.html#ga46497eb81066d0df83dfd07ad0a9f561',1,'add_threaded_process(THREAD_POOL *thread_pool, void *(*func_ptr)(void *param), void *param, int mode):&#160;n_thread_pool.c']]],
   ['addr2line_9',['addr2line',['../n__signals_8c.html#a303cb27f9c5239698d99891cd7341648',1,'n_signals.c']]],
-  ['all_5fexception_10',['all_exception',['../ex__exceptions_8c.html#a3426d37b450aaa52b36fbad5a789a931',1,'ex_exceptions.c']]],
-  ['array_5fexception_11',['array_exception',['../ex__exceptions_8c.html#a2b23d566f8a58894a2723fca1c4889c5',1,'ex_exceptions.c']]],
-  ['asprintf_12',['asprintf',['../n__log_8c.html#a6bf15f4f2f46c7238e58afb2ff61f1c4',1,'n_log.c']]]
+  ['asprintf_10',['asprintf',['../n__log_8c.html#a6bf15f4f2f46c7238e58afb2ff61f1c4',1,'n_log.c']]]
 ];

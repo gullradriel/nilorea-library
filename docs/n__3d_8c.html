@@ -24,9 +24,11 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="NiloreaStudio.png"/></td>
   <td id="projectalign">
    <div id="projectname">Nilorea Library
    </div>
+   <div id="projectbrief">C utilities for networking, threading, graphics</div>
   </td>
  </tr>
  </tbody>
@@ -87,6 +89,9 @@ $(document).ready(function(){initNavTree('n__3d_8c.html',''); initResizable(); }
   <div class="headertitle"><div class="title">n_3d.c File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>3D helpers, vector  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="n__3d_8h_source.html">nilorea/n_3d.h</a>&quot;</code><br />
 <code>#include &quot;math.h&quot;</code><br />
 </div><div class="textblock"><div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -96,11 +101,11 @@ $(document).ready(function(){initNavTree('n__3d_8c.html',''); initResizable(); }
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="n__3d_8c__incl.png" border="0" usemap="#asrc_2n__3d_8c" alt=""/></div>
 <map name="asrc_2n__3d_8c" id="asrc_2n__3d_8c">
-<area shape="rect" title=" " alt="" coords="457,5,540,32"/>
-<area shape="rect" href="n__3d_8h.html" title=" " alt="" coords="394,80,497,107"/>
+<area shape="rect" title="3D helpers, vector" alt="" coords="457,5,540,32"/>
+<area shape="rect" href="n__3d_8h.html" title="Simple 3D movement simulation." alt="" coords="394,80,497,107"/>
 <area shape="rect" title=" " alt="" coords="521,80,583,107"/>
-<area shape="rect" href="n__log_8h.html" title=" " alt="" coords="300,155,364,181"/>
-<area shape="rect" href="n__common_8h.html" title=" " alt="" coords="441,229,538,256"/>
+<area shape="rect" href="n__log_8h.html" title="Generic log system." alt="" coords="300,155,364,181"/>
+<area shape="rect" href="n__common_8h.html" title="Common headers and low&#45;level hugly functions &amp; define." alt="" coords="441,229,538,256"/>
 <area shape="rect" title=" " alt="" coords="483,155,565,181"/>
 <area shape="rect" title=" " alt="" coords="5,229,67,256"/>
 <area shape="rect" title=" " alt="" coords="72,304,136,331"/>
@@ -112,7 +117,7 @@ $(document).ready(function(){initNavTree('n__3d_8c.html',''); initResizable(); }
 <area shape="rect" title=" " alt="" coords="367,304,438,331"/>
 <area shape="rect" title=" " alt="" coords="462,304,525,331"/>
 <area shape="rect" title=" " alt="" coords="533,379,598,405"/>
-<area shape="rect" href="n__enum_8h.html" title=" " alt="" coords="601,304,722,331"/>
+<area shape="rect" href="n__enum_8h.html" title="Macro to build enums and their tostring counterparts, a reduced version of https://github...." alt="" coords="601,304,722,331"/>
 <area shape="rect" title=" " alt="" coords="747,304,813,331"/>
 <area shape="rect" title=" " alt="" coords="624,379,699,405"/>
 </map>
@@ -129,13 +134,13 @@ Functions</h2></td></tr>
 <tr class="memdesc:a6f56419ce39a4f1fcdfc2fe741f6670c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Quickly check if two walue are the same sign or not.  <a href="n__3d_8c.html#a6f56419ce39a4f1fcdfc2fe741f6670c">More...</a><br /></td></tr>
 <tr class="separator:a6f56419ce39a4f1fcdfc2fe741f6670c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gadc7a001ab64c72a43243175e56a86264"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___p_h_y_s_i_c_s.html#gadc7a001ab64c72a43243175e56a86264">update_physics_position</a> (<a class="el" href="group___p_h_y_s_i_c_s.html#struct_p_h_y_s_i_c_s">PHYSICS</a> *object, double delta_t)</td></tr>
-<tr class="memdesc:gadc7a001ab64c72a43243175e56a86264"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update object position, reversed. Wrapper of update_physics_position_reverse_nb to update each componants.  <a href="group___p_h_y_s_i_c_s.html#gadc7a001ab64c72a43243175e56a86264">More...</a><br /></td></tr>
+<tr class="memdesc:gadc7a001ab64c72a43243175e56a86264"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update object position, reversed.  <a href="group___p_h_y_s_i_c_s.html#gadc7a001ab64c72a43243175e56a86264">More...</a><br /></td></tr>
 <tr class="separator:gadc7a001ab64c72a43243175e56a86264"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga5a40d51963e17af619b6a3c36c687462"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___p_h_y_s_i_c_s.html#ga5a40d51963e17af619b6a3c36c687462">update_physics_position_nb</a> (<a class="el" href="group___p_h_y_s_i_c_s.html#struct_p_h_y_s_i_c_s">PHYSICS</a> *object, int it, double delta_t)</td></tr>
 <tr class="memdesc:ga5a40d51963e17af619b6a3c36c687462"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update object position componant.  <a href="group___p_h_y_s_i_c_s.html#ga5a40d51963e17af619b6a3c36c687462">More...</a><br /></td></tr>
 <tr class="separator:ga5a40d51963e17af619b6a3c36c687462"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga7644cdf589832471424103293b68f77b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___p_h_y_s_i_c_s.html#ga7644cdf589832471424103293b68f77b">update_physics_position_reverse</a> (<a class="el" href="group___p_h_y_s_i_c_s.html#struct_p_h_y_s_i_c_s">PHYSICS</a> *object, double delta_t)</td></tr>
-<tr class="memdesc:ga7644cdf589832471424103293b68f77b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update object position, reversed. Wrapper of update_physics_position_reverse_nb to update each componants.  <a href="group___p_h_y_s_i_c_s.html#ga7644cdf589832471424103293b68f77b">More...</a><br /></td></tr>
+<tr class="memdesc:ga7644cdf589832471424103293b68f77b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update object position, reversed.  <a href="group___p_h_y_s_i_c_s.html#ga7644cdf589832471424103293b68f77b">More...</a><br /></td></tr>
 <tr class="separator:ga7644cdf589832471424103293b68f77b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaa8021a03baa26410f81f6fcdf77da564"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___p_h_y_s_i_c_s.html#gaa8021a03baa26410f81f6fcdf77da564">update_physics_position_reverse_nb</a> (<a class="el" href="group___p_h_y_s_i_c_s.html#struct_p_h_y_s_i_c_s">PHYSICS</a> *object, int it, double delta_t)</td></tr>
 <tr class="memdesc:gaa8021a03baa26410f81f6fcdf77da564"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update object position componant, reversed.  <a href="group___p_h_y_s_i_c_s.html#gaa8021a03baa26410f81f6fcdf77da564">More...</a><br /></td></tr>
@@ -154,7 +159,8 @@ Functions</h2></td></tr>
 <tr class="separator:gab69467787b1b55290585366a20cf82cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >3D helpers, vector </p><dl class="section author"><dt>Author</dt><dd>Castagnier Mickael </dd></dl>
+<div class="textblock"><p >3D helpers, vector </p>
+<dl class="section author"><dt>Author</dt><dd>Castagnier Mickael </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>1.0 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>30/04/2014 </dd></dl>
 
@@ -227,7 +233,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="n__3d_8c.html">n_3d.c</a></li>
-    <li class="footer">Generated on Fri Feb 4 2022 17:12:04 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+    <li class="footer">Generated on Tue Feb 8 2022 14:10:26 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
   </ul>
 </div>
 </body>

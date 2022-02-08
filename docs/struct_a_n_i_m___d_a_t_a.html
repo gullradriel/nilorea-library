@@ -24,9 +24,11 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="NiloreaStudio.png"/></td>
   <td id="projectalign">
    <div id="projectname">Nilorea Library
    </div>
+   <div id="projectbrief">C utilities for networking, threading, graphics</div>
   </td>
  </tr>
  </tbody>
@@ -88,6 +90,9 @@ $(document).ready(function(){initNavTree('struct_a_n_i_m___d_a_t_a.html',''); in
 </div><!--header-->
 <div class="contents">
 
+<p>animation properties  
+ <a href="struct_a_n_i_m___d_a_t_a.html#details">More...</a></p>
+
 <p><code>#include &quot;<a class="el" href="n__anim_8h_source.html">n_anim.h</a>&quot;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for ANIM_DATA:</div>
@@ -96,11 +101,11 @@ $(document).ready(function(){initNavTree('struct_a_n_i_m___d_a_t_a.html',''); in
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="struct_a_n_i_m___d_a_t_a__coll__graph.png" border="0" usemap="#a_a_n_i_m___d_a_t_a_coll__map" alt="Collaboration graph"/></div>
 <map name="a_a_n_i_m___d_a_t_a_coll__map" id="a_a_n_i_m___d_a_t_a_coll__map">
-<area shape="rect" title=" " alt="" coords="48,653,143,731"/>
+<area shape="rect" title="animation properties" alt="" coords="48,653,143,731"/>
 <area shape="rect" title=" " alt="" coords="5,455,97,532"/>
-<area shape="rect" href="struct_a_n_i_m___l_i_b.html" title=" " alt="" coords="122,455,202,532"/>
-<area shape="rect" href="struct_a_n_i_m___g_f_x.html" title=" " alt="" coords="119,315,205,392"/>
-<area shape="rect" href="struct_a_n_i_m___f_r_a_m_e.html" title=" " alt="" coords="207,175,314,252"/>
+<area shape="rect" href="struct_a_n_i_m___l_i_b.html" title="structure of a library of gfxs" alt="" coords="122,455,202,532"/>
+<area shape="rect" href="struct_a_n_i_m___g_f_x.html" title="struct of an animation" alt="" coords="119,315,205,392"/>
+<area shape="rect" href="struct_a_n_i_m___f_r_a_m_e.html" title="struct of the properties of a frame in an animation" alt="" coords="207,175,314,252"/>
 <area shape="rect" title=" " alt="" coords="95,5,133,83"/>
 <area shape="rect" title=" " alt="" coords="338,175,485,252"/>
 <area shape="rect" title=" " alt="" coords="230,315,286,392"/>
@@ -110,21 +115,25 @@ $(document).ready(function(){initNavTree('struct_a_n_i_m___d_a_t_a.html',''); in
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Data Fields</h2></td></tr>
 <tr class="memitem:a5cdb4a3091358a089feb56c34c9ada89"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_a_n_i_m___d_a_t_a.html#a5cdb4a3091358a089feb56c34c9ada89">elapsed</a></td></tr>
+<tr class="memdesc:a5cdb4a3091358a089feb56c34c9ada89"><td class="mdescLeft">&#160;</td><td class="mdescRight">elapsed time since last frame change  <a href="struct_a_n_i_m___d_a_t_a.html#a5cdb4a3091358a089feb56c34c9ada89">More...</a><br /></td></tr>
 <tr class="separator:a5cdb4a3091358a089feb56c34c9ada89"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac24c219490c4c52abb9419a3cb78734a"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_a_n_i_m___d_a_t_a.html#ac24c219490c4c52abb9419a3cb78734a">frame</a></td></tr>
+<tr class="memdesc:ac24c219490c4c52abb9419a3cb78734a"><td class="mdescLeft">&#160;</td><td class="mdescRight">id of the current frame  <a href="struct_a_n_i_m___d_a_t_a.html#ac24c219490c4c52abb9419a3cb78734a">More...</a><br /></td></tr>
 <tr class="separator:ac24c219490c4c52abb9419a3cb78734a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a46bb8f47f76ddba7aa7c9d4daf1f7cee"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_a_n_i_m___d_a_t_a.html#a46bb8f47f76ddba7aa7c9d4daf1f7cee">id</a></td></tr>
 <tr class="separator:a46bb8f47f76ddba7aa7c9d4daf1f7cee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af28a6685e802d71d64f887998a72f6a2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_a_n_i_m___l_i_b.html">ANIM_LIB</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_a_n_i_m___d_a_t_a.html#af28a6685e802d71d64f887998a72f6a2">lib</a></td></tr>
+<tr class="memdesc:af28a6685e802d71d64f887998a72f6a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">pointer to an anim gfx library  <a href="struct_a_n_i_m___d_a_t_a.html#af28a6685e802d71d64f887998a72f6a2">More...</a><br /></td></tr>
 <tr class="separator:af28a6685e802d71d64f887998a72f6a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae7b17885f76beaaa4f367566103c2313"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_a_n_i_m___d_a_t_a.html#ae7b17885f76beaaa4f367566103c2313">x</a></td></tr>
+<tr class="memdesc:ae7b17885f76beaaa4f367566103c2313"><td class="mdescLeft">&#160;</td><td class="mdescRight">x coordinate of the animation  <a href="struct_a_n_i_m___d_a_t_a.html#ae7b17885f76beaaa4f367566103c2313">More...</a><br /></td></tr>
 <tr class="separator:ae7b17885f76beaaa4f367566103c2313"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9ae7208fc4e921f59b059e77daa3e8bf"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_a_n_i_m___d_a_t_a.html#a9ae7208fc4e921f59b059e77daa3e8bf">y</a></td></tr>
+<tr class="memdesc:a9ae7208fc4e921f59b059e77daa3e8bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">y coordinate of the animation  <a href="struct_a_n_i_m___d_a_t_a.html#a9ae7208fc4e921f59b059e77daa3e8bf">More...</a><br /></td></tr>
 <tr class="separator:a9ae7208fc4e921f59b059e77daa3e8bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >animation properties </p>
-
+<div class="textblock">
 <p class="definition">Definition at line <a class="el" href="n__anim_8h_source.html#l00066">66</a> of file <a class="el" href="n__anim_8h_source.html">n_anim.h</a>.</p>
 </div><h2 class="groupheader">Field Documentation</h2>
 <a id="a5cdb4a3091358a089feb56c34c9ada89" name="a5cdb4a3091358a089feb56c34c9ada89"></a>
@@ -138,7 +147,6 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >elapsed time since last frame change </p>
 
 <p class="definition">Definition at line <a class="el" href="n__anim_8h_source.html#l00076">76</a> of file <a class="el" href="n__anim_8h_source.html">n_anim.h</a>.</p>
 
@@ -155,7 +163,6 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >id of the current frame </p>
 
 <p class="definition">Definition at line <a class="el" href="n__anim_8h_source.html#l00074">74</a> of file <a class="el" href="n__anim_8h_source.html">n_anim.h</a>.</p>
 
@@ -188,7 +195,6 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >pointer to an anim gfx library </p>
 
 <p class="definition">Definition at line <a class="el" href="n__anim_8h_source.html#l00079">79</a> of file <a class="el" href="n__anim_8h_source.html">n_anim.h</a>.</p>
 
@@ -205,7 +211,6 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >x coordinate of the animation </p>
 
 <p class="definition">Definition at line <a class="el" href="n__anim_8h_source.html#l00070">70</a> of file <a class="el" href="n__anim_8h_source.html">n_anim.h</a>.</p>
 
@@ -222,7 +227,6 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >y coordinate of the animation </p>
 
 <p class="definition">Definition at line <a class="el" href="n__anim_8h_source.html#l00072">72</a> of file <a class="el" href="n__anim_8h_source.html">n_anim.h</a>.</p>
 
@@ -237,7 +241,7 @@ Data Fields</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="struct_a_n_i_m___d_a_t_a.html">ANIM_DATA</a></li>
-    <li class="footer">Generated on Fri Feb 4 2022 16:56:07 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+    <li class="footer">Generated on Tue Feb 8 2022 11:34:29 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
   </ul>
 </div>
 </body>
