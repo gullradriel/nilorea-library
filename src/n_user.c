@@ -18,7 +18,7 @@ N_USERLIST *userlist_new( int max )
     N_USERLIST *ulist = NULL ;
     Malloc( ulist, N_USERLIST, 1 );
     __n_assert( ulist, return NULL );
-    __n_assert( max > 0 , return NULL );
+    __n_assert( max > 0, return NULL );
 
     Malloc( ulist -> list, N_USER, max );
     __n_assert( ulist -> list, Free( ulist ) ; return NULL );
@@ -92,8 +92,8 @@ int userlist_set_position_behavior( N_USERLIST *ulist, int id, int nb_rec_pos, i
  */
 int userlist_add_user( N_USERLIST *ulist, NETWORK *netw )
 {
-    __n_assert( ulist , return -1 );
-    __n_assert( netw , return -1 );
+    __n_assert( ulist, return -1 );
+    __n_assert( netw, return -1 );
 
     int it = -1;
     write_lock( ulist -> user_rwbolt );
@@ -128,9 +128,8 @@ int userlist_del_user( N_USERLIST *ulist, int id )
     __n_assert( ulist , return FALSE );
     __n_assert( id >= 0 , return FALSE );
 
-
     write_lock( ulist -> user_rwbolt );
-    if( id >  ulist -> highter )
+    if( id >  ulist -> max )
     {
         unlock( ulist -> user_rwbolt );
         return FALSE ;
@@ -178,11 +177,10 @@ int userlist_del_user( N_USERLIST *ulist, int id )
  *\param id targeted user id to use (USERLIST_ONE) or to ignore (USERLIST_ALL_EXCEPT)
  *\return TRUE or FALSE
  */
- int userlist_add_msg_to_ex( N_USERLIST *ulist, N_STR *msg, int mode, int id )
+int userlist_add_msg_to_ex( N_USERLIST *ulist, N_STR *msg, int mode, int id )
 {
     __n_assert( ulist, return FALSE );
     __n_assert( msg, return FALSE );
-    __n_assert( id >= 0 , return FALSE );
 
     switch( mode )
     {
@@ -196,6 +194,7 @@ int userlist_del_user( N_USERLIST *ulist, int id )
         unlock( ulist -> user_rwbolt );
         break;
     case( USERLIST_ALL_EXCEPT ):
+        __n_assert( id >= 0, return FALSE );
         read_lock( ulist -> user_rwbolt );
         for( int it = 0 ; it <= ulist -> highter ; it ++ )
         {
@@ -208,6 +207,8 @@ int userlist_del_user( N_USERLIST *ulist, int id )
         break;
     default:
     case( USERLIST_ONE ):
+        __n_assert( id >= 0, return FALSE );
+
         read_lock( ulist -> user_rwbolt );
         netw_add_msg( ulist -> list[ id ] . netw, msg );
         unlock( ulist -> user_rwbolt );
@@ -225,7 +226,7 @@ int userlist_del_user( N_USERLIST *ulist, int id )
  *\param id targeted user id
  *\return TRUE or FALSE
  */
- int userlist_add_msg_to( N_USERLIST *ulist, N_STR *msg, int id )
+int userlist_add_msg_to( N_USERLIST *ulist, N_STR *msg, int id )
 {
     return userlist_add_msg_to_ex( ulist, msg, USERLIST_ONE, id );
 } /* userlist_add_msg_to() */
@@ -293,9 +294,9 @@ int userlist_destroy( N_USERLIST **ulist )
  */
 int userlist_user_add_waiting_msg( N_USERLIST *ulist, int id, N_STR *netmsg )
 {
-    __n_assert( ulist , return FALSE );
-    __n_assert( netmsg , return FALSE );
-    __n_assert( id >= 0 , return FALSE );
+    __n_assert( ulist, return FALSE );
+    __n_assert( netmsg, return FALSE );
+    __n_assert( id >= 0, return FALSE );
 
     int ret = FALSE ;
 
@@ -321,8 +322,8 @@ int userlist_user_add_waiting_msg( N_USERLIST *ulist, int id, N_STR *netmsg )
  */
 int userlist_user_send_waiting_msgs( N_USERLIST *ulist, int id )
 {
-    __n_assert( ulist , return FALSE );
-    __n_assert( id >= 0 , return FALSE );
+    __n_assert( ulist, return FALSE );
+    __n_assert( id >= 0, return FALSE );
 
     read_lock( ulist -> user_rwbolt );
     if( id <= ulist -> highter )
@@ -349,7 +350,7 @@ int userlist_user_send_waiting_msgs( N_USERLIST *ulist, int id )
  */
 int userlist_send_waiting_msgs( N_USERLIST *ulist )
 {
-    __n_assert( ulist , return FALSE );
+    __n_assert( ulist, return FALSE );
 
     read_lock( ulist -> user_rwbolt );
     for( int id = 0 ; id <= ulist -> highter ; id ++ )

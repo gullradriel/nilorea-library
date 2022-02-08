@@ -2277,7 +2277,7 @@ LIST *ht_get_completion_list( HASH_TABLE *table, char *keybud, uint32_t max_resu
     {
         int matching_nodes( HASH_NODE *node)
         {
-            if( strncasecmp( keybud , node -> key , strlen( keybud ) ) == 0 )
+            if( strncasecmp( keybud, node -> key, strlen( keybud ) ) == 0 )
                 return TRUE ;
             return FALSE ;
         }

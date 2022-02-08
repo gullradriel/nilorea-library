@@ -21,9 +21,9 @@
  *\param max_sprites maximum number of sprites used in the system. Set to zero or negative if there are no sprites used.
  *\return TRUE or FALSE
  */
- int init_particle_system( PARTICLE_SYSTEM **psys, int max, double x, double y, double z, int max_sprites )
+int init_particle_system( PARTICLE_SYSTEM **psys, int max, double x, double y, double z, int max_sprites )
 {
-    __n_assert( !(*psys) , n_log( LOG_ERR , "particle system %p already initialized" , (*psys) ); return FALSE );
+    __n_assert( !(*psys), n_log( LOG_ERR, "particle system %p already initialized", (*psys) ); return FALSE );
 
     Malloc( (*psys), PARTICLE_SYSTEM, 1 );
 
@@ -136,9 +136,9 @@ int add_particle_ex( PARTICLE_SYSTEM *psys, int spr, int mode, int off_x, int of
  *\param delta_t delta time to use, in msecs
  *\return TRUE or FALSE
  */
-int manage_particle_ex( PARTICLE_SYSTEM *psys , double delta_t )
+int manage_particle_ex( PARTICLE_SYSTEM *psys, double delta_t )
 {
-    __n_assert( psys , return FALSE );
+    __n_assert( psys, return FALSE );
 
     LIST_NODE *node = NULL ;
     PARTICLE *ptr = NULL ;
@@ -183,10 +183,10 @@ int manage_particle_ex( PARTICLE_SYSTEM *psys , double delta_t )
  */
 int manage_particle( PARTICLE_SYSTEM *psys )
 {
-    __n_assert( psys , return FALSE );
+    __n_assert( psys, return FALSE );
 
     double delta_t = get_usec( &psys -> timer );
-    return manage_particle_ex( psys , delta_t );
+    return manage_particle_ex( psys, delta_t );
 } /* manage_particle() */
 
 
@@ -203,7 +203,7 @@ int manage_particle( PARTICLE_SYSTEM *psys )
  */
 int draw_particle( PARTICLE_SYSTEM *psys, double xpos, double ypos, int w, int h, double range )
 {
-    __n_assert( psys , return FALSE );
+    __n_assert( psys, return FALSE );
 
     PARTICLE *ptr = NULL ;
     list_foreach( node , psys -> list )
@@ -226,7 +226,7 @@ int draw_particle( PARTICLE_SYSTEM *psys, double xpos, double ypos, int w, int h
                 ptr -> object . orientation[ it ] += 256.0 ;
 
             if( ptr -> object . orientation[ it ] >= 256.0 )
-                ptr -> object . orientation[ it ] = fmod(  ptr -> object . orientation[ it ] , 256.0 );
+                ptr -> object . orientation[ it ] = fmod(  ptr -> object . orientation[ it ], 256.0 );
         }
 
         if( ptr -> mode == SINUS_PART )
@@ -249,7 +249,7 @@ int draw_particle( PARTICLE_SYSTEM *psys, double xpos, double ypos, int w, int h
                 al_draw_rotated_bitmap( psys -> sprites[ ptr -> spr_id ], spr_w/2, spr_h/2, x - spr_w / 2, y - spr_h /2, al_ftofix( ptr -> object . orientation[ 2 ]), 0 );
             }
             else
-                al_draw_circle( x, y, ptr -> size , ptr -> color, 1 );
+                al_draw_circle( x, y, ptr -> size, ptr -> color, 1 );
         }
 
         if( ptr -> mode & NORMAL_PART )
@@ -259,17 +259,17 @@ int draw_particle( PARTICLE_SYSTEM *psys, double xpos, double ypos, int w, int h
                 int w = al_get_bitmap_width( psys -> sprites[ ptr -> spr_id ] );
                 int h = al_get_bitmap_height( psys -> sprites[ ptr -> spr_id ] );
 
-                al_draw_rotated_bitmap( psys -> sprites[ ptr -> spr_id ] , w/2 , h/2, x - w / 2, y - h /2, al_ftofix( ptr -> object . orientation[ 2 ]), 0 );
+                al_draw_rotated_bitmap( psys -> sprites[ ptr -> spr_id ], w/2, h/2, x - w / 2, y - h /2, al_ftofix( ptr -> object . orientation[ 2 ]), 0 );
             }
-             else
-                al_draw_circle( x, y, ptr -> size , ptr -> color, 1 );
+            else
+                al_draw_circle( x, y, ptr -> size, ptr -> color, 1 );
         }
         else if( ptr -> mode & PIXEL_PART )
         {
             al_draw_filled_rectangle( x - ptr -> size, y - ptr -> size, x + ptr -> size, y + ptr -> size, ptr -> color );
         }
         else
-            al_draw_circle( x, y, ptr -> size , ptr -> color, 1 );
+            al_draw_circle( x, y, ptr -> size, ptr -> color, 1 );
         node  = node -> next ;
     }
 
@@ -285,7 +285,7 @@ int draw_particle( PARTICLE_SYSTEM *psys, double xpos, double ypos, int w, int h
  */
 int free_particle_system( PARTICLE_SYSTEM **psys)
 {
-    __n_assert( (*psys) , return FALSE );
+    __n_assert( (*psys), return FALSE );
 
     PARTICLE *particle = NULL ;
     while( (*psys) -> list -> start )
@@ -310,7 +310,7 @@ int free_particle_system( PARTICLE_SYSTEM **psys)
  */
 int move_particles( PARTICLE_SYSTEM *psys, double vx, double vy, double vz )
 {
-    __n_assert( psys , return FALSE );
+    __n_assert( psys, return FALSE );
 
     LIST_NODE *node = NULL ;
     PARTICLE *ptr = NULL ;

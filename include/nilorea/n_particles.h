@@ -98,7 +98,7 @@ int add_particle_ex( PARTICLE_SYSTEM *psys, int spr, int mode, int off_x, int of
                      double vx, double vy, double vz,
                      double ax, double ay, double az );
 
-int manage_particle_ex( PARTICLE_SYSTEM *psys , double delta_t );
+int manage_particle_ex( PARTICLE_SYSTEM *psys, double delta_t );
 
 int manage_particle( PARTICLE_SYSTEM *psys);
 

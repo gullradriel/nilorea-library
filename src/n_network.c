@@ -1894,7 +1894,7 @@ NETWORK *netw_accept_from_ex( NETWORK *from, int send_list_limit, int recv_list_
             netw_close( &netw );
             return NULL;
         }
-        netw -> link . is_blocking = 1 ;
+        netw -> link . is_blocking = 0 ;
     }
     else if( non_blocking == -1 )
     {
@@ -1932,8 +1932,8 @@ NETWORK *netw_accept_from_ex( NETWORK *from, int send_list_limit, int recv_list_
             netw_close( &netw );
             return NULL;
         }
+        netw -> link . is_blocking = 1 ;
     }
-
     netw -> link . sock = tmp ;
     netw -> link . port = strdup( from -> link . port );
     Malloc( netw -> link . ip, char, 64 );
@@ -1951,6 +1951,8 @@ NETWORK *netw_accept_from_ex( NETWORK *from, int send_list_limit, int recv_list_
         FreeNoLog( errmsg );
     }
     netw_setsockopt( netw, SO_REUSEADDR, 1 );
+
+    netw_set_blocking( netw, 1 );
 
     netw_set( netw, NETW_SERVER|NETW_RUN|NETW_THR_ENGINE_STOPPED );
     n_log( LOG_DEBUG, "Connection accepted from %s:%s", netw-> link . ip, netw -> link . port );
