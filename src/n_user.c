@@ -24,7 +24,7 @@ N_USERLIST *userlist_new( int max )
     __n_assert( ulist -> list, Free( ulist ) ; return NULL );
 
     ulist -> max = max ;
-    ulist -> highter = 0;
+    ulist -> highter = -1;
     for( int it = 0; it < max ; it ++ )
     {
         ulist -> list[ it ] . state = 0 ;
@@ -125,8 +125,8 @@ int userlist_add_user( N_USERLIST *ulist, NETWORK *netw )
  */
 int userlist_del_user( N_USERLIST *ulist, int id )
 {
-    __n_assert( ulist , return FALSE );
-    __n_assert( id >= 0 , return FALSE );
+    __n_assert( ulist, return FALSE );
+    __n_assert( id >= 0, return FALSE );
 
     write_lock( ulist -> user_rwbolt );
     if( id >  ulist -> max )
@@ -134,7 +134,6 @@ int userlist_del_user( N_USERLIST *ulist, int id )
         unlock( ulist -> user_rwbolt );
         return FALSE ;
     }
-
     if( ulist -> list[ id ] . state == 0 )
     {
         unlock( ulist -> user_rwbolt );
@@ -144,15 +143,15 @@ int userlist_del_user( N_USERLIST *ulist, int id )
     ulist -> list[ id ] . nb_rec_pos = 1 ;
     ulist -> list[ id ] . only_last_pos = 1 ;
     ulist -> list[ id ] . id = -1 ;
-    Realloc(  ulist -> list[ id ] . last_positions, VECTOR3D, 10 );
+    Realloc(  ulist -> list[ id ] . last_positions, VECTOR3D, 1 );
     list_empty( ulist -> list[ id ] . netw_waitlist );
     memset( ulist -> list[ id ] . position, 0, 3 * sizeof( double ) );
     ulist -> list[ id ] . netw  = NULL ;
     memset( ulist -> list[ id ] . name, 0, 1024 );
 
-    if( id ==  ulist -> highter )
+    if( id >=  ulist -> highter )
     {
-        int it =  ulist -> highter - 1;
+        int it =  id ;
         while( it >= 0 )
         {
             if( ulist -> list[ it ] . state == 1 )
@@ -355,17 +354,14 @@ int userlist_send_waiting_msgs( N_USERLIST *ulist )
     read_lock( ulist -> user_rwbolt );
     for( int id = 0 ; id <= ulist -> highter ; id ++ )
     {
-        if( id <= ulist -> highter )
+        if( ulist -> list[ id ] . state == 1 )
         {
-            if( ulist -> list[ id ] . state == 1 )
+            list_foreach( node, ulist -> list[ id ] . netw_waitlist )
             {
-                list_foreach( node, ulist -> list[ id ] . netw_waitlist )
-                {
-                    N_STR *netmsg = (N_STR *)node -> ptr ;
-                    netw_add_msg( ulist -> list[ id ] . netw, netmsg );
-                }
-                list_empty( ulist -> list[ id ] . netw_waitlist );
+                N_STR *netmsg = (N_STR *)node -> ptr ;
+                netw_add_msg( ulist -> list[ id ] . netw, netmsg );
             }
+            list_empty( ulist -> list[ id ] . netw_waitlist );
         }
     }
     unlock( ulist -> user_rwbolt );

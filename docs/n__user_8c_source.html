@@ -184,8 +184,8 @@ $(document).ready(function(){initNavTree('n__user_8c_source.html',''); initResiz
 <div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span> </div>
 <div class="line"><a id="l00126" name="l00126"></a><span class="lineno"><a class="line" href="group___n___u_s_e_r.html#ga199e127e979f625ff75a01e45afe0d5b">  126</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="group___n___u_s_e_r.html#ga199e127e979f625ff75a01e45afe0d5b">userlist_del_user</a>( <a class="code hl_struct" href="group___n___u_s_e_r.html#struct_n___u_s_e_r_l_i_s_t">N_USERLIST</a> *ulist, <span class="keywordtype">int</span> <span class="keywordtype">id</span> )</div>
 <div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>{</div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    <a class="code hl_define" href="group___c_o_m_m_o_n_s.html#ga4ecf5d80299a4ca1dc13c3a19610db11">__n_assert</a>( ulist , <span class="keywordflow">return</span> FALSE );</div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    <a class="code hl_define" href="group___c_o_m_m_o_n_s.html#ga4ecf5d80299a4ca1dc13c3a19610db11">__n_assert</a>( <span class="keywordtype">id</span> &gt;= 0 , <span class="keywordflow">return</span> FALSE );</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    <a class="code hl_define" href="group___c_o_m_m_o_n_s.html#ga4ecf5d80299a4ca1dc13c3a19610db11">__n_assert</a>( ulist, <span class="keywordflow">return</span> FALSE );</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    <a class="code hl_define" href="group___c_o_m_m_o_n_s.html#ga4ecf5d80299a4ca1dc13c3a19610db11">__n_assert</a>( <span class="keywordtype">id</span> &gt;= 0, <span class="keywordflow">return</span> FALSE );</div>
 <div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span> </div>
 <div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    <a class="code hl_define" href="group___c_o_m_m_o_n_s.html#gabf9cebcdf845c2c9b879a608be4c9dce">write_lock</a>( ulist -&gt; user_rwbolt );</div>
 <div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    <span class="keywordflow">if</span>( <span class="keywordtype">id</span> &gt;  ulist -&gt; max )</div>
@@ -362,15 +362,15 @@ $(document).ready(function(){initNavTree('n__user_8c_source.html',''); initResiz
 <div class="line"><a id="l00354" name="l00354"></a><span class="lineno">  354</span>    <a class="code hl_define" href="group___c_o_m_m_o_n_s.html#gaeba0ec63ec0aa6803e9a601b645b5cbf">read_lock</a>( ulist -&gt; user_rwbolt );</div>
 <div class="line"><a id="l00355" name="l00355"></a><span class="lineno">  355</span>    <span class="keywordflow">for</span>( <span class="keywordtype">int</span> <span class="keywordtype">id</span> = 0 ; <span class="keywordtype">id</span> &lt;= ulist -&gt; highter ; <span class="keywordtype">id</span> ++ )</div>
 <div class="line"><a id="l00356" name="l00356"></a><span class="lineno">  356</span>    {</div>
-<div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span>            <span class="keywordflow">if</span>( ulist -&gt; list[ <span class="keywordtype">id</span> ] . state == 1 )</div>
-<div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span>            {</div>
-<div class="line"><a id="l00359" name="l00359"></a><span class="lineno">  359</span>                <a class="code hl_define" href="group___l_i_s_t.html#ga55cdaac0dd0f4f4d687607e6679a4634">list_foreach</a>( node, ulist -&gt; list[ <span class="keywordtype">id</span> ] . netw_waitlist )</div>
-<div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span>                {</div>
-<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span>                    <a class="code hl_struct" href="group___n___s_t_r.html#struct_n___s_t_r">N_STR</a> *netmsg = (<a class="code hl_struct" href="group___n___s_t_r.html#struct_n___s_t_r">N_STR</a> *)node -&gt; ptr ;</div>
-<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span>                    <a class="code hl_function" href="group___n_e_t_w_o_r_k_i_n_g.html#ga10429a9fa106b61c38f28635242ce502">netw_add_msg</a>( ulist -&gt; list[ <span class="keywordtype">id</span> ] . netw, netmsg );</div>
-<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span>                }</div>
-<div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span>                <a class="code hl_function" href="group___l_i_s_t.html#ga1dafe7a250ddad51fadd375f057287e7">list_empty</a>( ulist -&gt; list[ <span class="keywordtype">id</span> ] . netw_waitlist );</div>
-<div class="line"><a id="l00365" name="l00365"></a><span class="lineno">  365</span>            }</div>
+<div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span>        <span class="keywordflow">if</span>( ulist -&gt; list[ <span class="keywordtype">id</span> ] . state == 1 )</div>
+<div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span>        {</div>
+<div class="line"><a id="l00359" name="l00359"></a><span class="lineno">  359</span>            <a class="code hl_define" href="group___l_i_s_t.html#ga55cdaac0dd0f4f4d687607e6679a4634">list_foreach</a>( node, ulist -&gt; list[ <span class="keywordtype">id</span> ] . netw_waitlist )</div>
+<div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span>            {</div>
+<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span>                <a class="code hl_struct" href="group___n___s_t_r.html#struct_n___s_t_r">N_STR</a> *netmsg = (<a class="code hl_struct" href="group___n___s_t_r.html#struct_n___s_t_r">N_STR</a> *)node -&gt; ptr ;</div>
+<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span>                <a class="code hl_function" href="group___n_e_t_w_o_r_k_i_n_g.html#ga10429a9fa106b61c38f28635242ce502">netw_add_msg</a>( ulist -&gt; list[ <span class="keywordtype">id</span> ] . netw, netmsg );</div>
+<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span>            }</div>
+<div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span>            <a class="code hl_function" href="group___l_i_s_t.html#ga1dafe7a250ddad51fadd375f057287e7">list_empty</a>( ulist -&gt; list[ <span class="keywordtype">id</span> ] . netw_waitlist );</div>
+<div class="line"><a id="l00365" name="l00365"></a><span class="lineno">  365</span>        }</div>
 <div class="line"><a id="l00366" name="l00366"></a><span class="lineno">  366</span>    }</div>
 <div class="line"><a id="l00367" name="l00367"></a><span class="lineno">  367</span>    <a class="code hl_define" href="group___c_o_m_m_o_n_s.html#ga9bbd6f2ada0efec0afcdcaa60cc20474">unlock</a>( ulist -&gt; user_rwbolt );</div>
 <div class="line"><a id="l00368" name="l00368"></a><span class="lineno">  368</span>    <span class="keywordflow">return</span> TRUE ;</div>
@@ -417,7 +417,7 @@ $(document).ready(function(){initNavTree('n__user_8c_source.html',''); initResiz
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="n__user_8c.html">n_user.c</a></li>
-    <li class="footer">Generated on Tue Feb 8 2022 22:37:44 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+    <li class="footer">Generated on Tue Feb 8 2022 22:46:13 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
   </ul>
 </div>
 </body>

@@ -55,7 +55,7 @@ ANIM_LIB *create_anim_library( char *name, unsigned int size )
  */
 int destroy_anim_lib( ANIM_LIB **lib )
 {
-    __n_assert( (*lib) , return FALSE );
+    __n_assert( (*lib), return FALSE );
 
     for( uint32_t it = 0 ; it < (*lib) -> nb_max_gfxs ; it ++ )
     {

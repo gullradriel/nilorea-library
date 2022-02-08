@@ -2932,7 +2932,6 @@ void netw_pool_netw_close( void *netw_ptr )
 {
     NETWORK *netw = (NETWORK *)netw_ptr ;
     __n_assert( netw, return );
-    netw_close( &netw );
     n_log( LOG_DEBUG, "Network pool %p: network id %d still active !!", netw, netw -> link . sock );
     return ;
 } /* netw_pool_netw_close() */
@@ -2965,10 +2964,24 @@ int netw_pool_add( NETWORK_POOL *netw_pool, NETWORK *netw )
         unlock( netw_pool -> rwlock );
         return FALSE ;
     }
+    int retval = FALSE ;
     /* add it */
-    int retval = ht_put_ptr( netw_pool -> pool, _nstr( key ), netw, &netw_pool_netw_close );
+    if( ( retval = ht_put_ptr( netw_pool -> pool, _nstr( key ), netw, &netw_pool_netw_close ) ) == TRUE )
+    {
+        if( ( retval = list_push( netw -> pools, netw_pool, NULL ) ) == TRUE )
+        {
+            n_log( LOG_DEBUG, "added netw %d to pool %p", netw -> link . sock, netw_pool );
+        }
+        else
+        {
+            n_log( LOG_ERR, "could not add netw %d to pool %p", netw -> link . sock, netw_pool );
+        }
+    }
+    else
+    {
+        n_log( LOG_ERR, "could not add netw %d to pool %p", netw -> link . sock, netw_pool );
+    }
     free_nstr( &key );
-    list_push( netw -> pools, netw_pool, NULL );
 
     /* unlock the pool */
     unlock( netw_pool -> rwlock );

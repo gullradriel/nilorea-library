@@ -1239,10 +1239,7 @@ HASH_NODE *_ht_get_node( HASH_TABLE *table, char *key )
     MurmurHash3_x86_32( key, strlen( key ), table -> seed, &hash_value );
     index= (hash_value)%(table->size);
 
-    if( !table -> hash_table[ index ] -> start )
-    {
-        return NULL ;
-    }
+    __n_assert( table -> hash_table[ index ] -> start, return NULL );
 
     list_foreach( list_node, table -> hash_table[ index ] )
     {
@@ -1760,7 +1757,7 @@ int _ht_remove( HASH_TABLE *table, char *key )
     if( strlen( key ) == 0 )
         return FALSE ;
 
-    MurmurHash3_x86_32( key, strlen( key ), 42, &hash_value );
+    MurmurHash3_x86_32( key, strlen( key ), table -> seed, &hash_value );
     index= (hash_value)%(table->size) ;
 
     if( !table -> hash_table[ index ] -> start )
@@ -2241,6 +2238,172 @@ int destroy_ht( HASH_TABLE **table )
     __n_assert( (*table), return FALSE );
     return (*table)->destroy_ht( table );
 } /* destroy_ht(...) */
+
+/*!\fn HASH_NODE *ht_get_node_ex( HASH_TABLE *table , unsigned long int hash_value )
+ *\brief return the associated key's node inside the hash_table
+ *\param table Targeted hash table
+ *\param hash_value Associated hash_value
+ *\return The found node, or NULL
+ */
+HASH_NODE *ht_get_node_ex( HASH_TABLE *table, unsigned long int hash_value )
+{
+    __n_assert( table , return NULL );
+    __n_assert( table -> mode == HASH_CLASSIC , return NULL );
+
+    unsigned long int index = 0;
+    HASH_NODE *node_ptr = NULL ;
+
+    index= (hash_value)%(table->size) ;
+    if( !table -> hash_table[ index ] -> start )
+    {
+        return NULL ;
+    }
+
+    list_foreach( list_node, table -> hash_table[ index ] )
+    {
+        node_ptr = (HASH_NODE *)list_node -> ptr ;
+        if( node_ptr -> key_type == HASH_KEY_NUM && hash_value == node_ptr -> hash_value )
+        {
+            return node_ptr ;
+        }
+    }
+    return NULL ;
+} /* ht_get_node_ex() */
+
+
+
+/*!\fn int ht_get_ptr_ex( HASH_TABLE *table, unsigned long int hash_value , void  **val )
+ *\brief Retrieve a pointer value in the hash table, at the given key. Leave val untouched if key is not found.
+ *\param table Targeted hash table
+ *\param hash_value key pre computed numeric hash value
+ *\param val A pointer to an empty pointer store
+ *\return TRUE or FALSE.
+ */
+int ht_get_ptr_ex( HASH_TABLE *table, unsigned long int hash_value, void  **val )
+{
+    __n_assert( table, return FALSE );
+    __n_assert( table -> mode == HASH_CLASSIC , return FALSE );
+
+    HASH_NODE *node = ht_get_node_ex( table, hash_value );
+    if( !node )
+        return FALSE ;
+
+    if( node -> type != HASH_PTR )
+    {
+        n_log( LOG_ERR, "Can't get key[\"%lld\"] of type HASH_PTR, key is type %s", hash_value, ht_node_type( node ) );
+        return FALSE ;
+    }
+
+    (*val) = node -> data . ptr ;
+
+    return TRUE ;
+} /* ht_get_ptr_ex() */
+
+
+
+/*!\fn int ht_put_ptr_ex( HASH_TABLE *table, unsigned long int hash_value , void  *val, void (*destructor)( void *ptr ) )
+ *\brief put a pointer value with given key in the targeted hash table
+ *\param table Targeted hash table
+ *\param hash_value numerical hash key
+ *\param val pointer value to put
+ *\param destructor Pointer to the ptr type destructor function. Leave to NULL if there isn't
+ *\return TRUE or FALSE
+ */
+int ht_put_ptr_ex( HASH_TABLE *table, unsigned long int hash_value, void  *val, void (*destructor)( void *ptr ) )
+{
+    __n_assert( table, return FALSE );
+    __n_assert( table -> mode == HASH_CLASSIC , return FALSE );
+
+    unsigned long int index = 0;
+    HASH_NODE *new_hash_node = NULL ;
+    HASH_NODE *node_ptr = NULL ;
+
+    index = (hash_value)%(table->size) ;
+
+    /* we have some nodes here. Let's check if the key already exists */
+    list_foreach( list_node, table -> hash_table[ index ] )
+    {
+        node_ptr = (HASH_NODE *)list_node -> ptr ;
+        /* if we found the same key we just replace the value and return */
+        if( node_ptr -> key_type == HASH_KEY_NUM && hash_value == node_ptr -> hash_value )
+        {
+            /* let's check the key isn't already assigned with another data type */
+            if( node_ptr -> type == HASH_PTR )
+            {
+                if( list_node -> destroy_func )
+                {
+                    list_node -> destroy_func( node_ptr -> data . ptr );
+                    node_ptr -> data . ptr = val ;
+                    list_node -> destroy_func = destructor ;
+                }
+                return TRUE ;
+            }
+            n_log( LOG_ERR, "Can't add key[\"%s\"] with type HASH_PTR , key already exist with type %s", node_ptr -> key, ht_node_type( node_ptr ) );
+            return FALSE ; /* key registered with another data type */
+        }
+    }
+
+    Malloc( new_hash_node, HASH_NODE, 1 );
+    __n_assert( new_hash_node, n_log( LOG_ERR, "Could not allocate new_hash_node" ); return FALSE );
+
+    new_hash_node -> key = NULL ;
+    new_hash_node -> hash_value = hash_value ;
+    new_hash_node -> key_type = HASH_KEY_NUM ;
+    new_hash_node -> data . ptr = val ;
+    new_hash_node -> type = HASH_PTR ;
+    new_hash_node -> destroy_func = destructor ;
+
+    table -> nb_keys ++ ;
+
+    return list_push( table -> hash_table[ index ], new_hash_node, &_ht_node_destroy );
+}/* ht_put_ptr_ex() */
+
+
+
+/*!\fn int ht_remove_ex( HASH_TABLE *table , unsigned long int hash_value )
+ *\brief Remove a key from a hash table
+ *\param table Targeted hash table
+ *\param hash_value key pre computed numeric hash value
+ *\return TRUE or FALSE.
+ */
+int ht_remove_ex( HASH_TABLE *table, unsigned long int hash_value )
+{
+    __n_assert( table, return FALSE );
+    __n_assert( table -> mode == HASH_CLASSIC , return FALSE );
+
+    unsigned long int index = 0;
+    HASH_NODE *node_ptr = NULL ;
+    LIST_NODE *node_to_kill = NULL ;
+
+    index= (hash_value)%(table->size) ;
+    if( !table -> hash_table[ index ] -> start )
+    {
+        n_log( LOG_ERR, "Can't remove key[\"%d\"], table is empty", hash_value );
+        return FALSE ;
+    }
+
+    list_foreach( list_node, table -> hash_table[ index ] )
+    {
+        node_ptr = (HASH_NODE *)list_node -> ptr ;
+        /* if we found the same */
+        if( node_ptr -> key_type == HASH_KEY_NUM && hash_value == node_ptr -> hash_value )
+        {
+            node_to_kill = list_node ;
+            break ;
+        }
+    }
+    if( node_to_kill )
+    {
+        node_ptr = remove_list_node( table -> hash_table[ index ], node_to_kill, HASH_NODE );
+        _ht_node_destroy( node_ptr );
+
+        table -> nb_keys -- ;
+
+        return TRUE ;
+    }
+    n_log( LOG_ERR, "Can't delete key[\"%d\"]: inexisting key", hash_value );
+    return FALSE ;
+}/* ht_remove_ex() */
 
 
 

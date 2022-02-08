@@ -2794,16 +2794,16 @@ $(document).ready(function(){initNavTree('n__network_8c_source.html',''); initRe
 <div class="line"><a id="l02970" name="l02970"></a><span class="lineno"> 2970</span>    {</div>
 <div class="line"><a id="l02971" name="l02971"></a><span class="lineno"> 2971</span>        <span class="keywordflow">if</span>( ( retval = <a class="code hl_function" href="group___l_i_s_t.html#ga4eab319289a83524639ee5e9f0441fdf">list_push</a>( netw -&gt; pools, netw_pool, NULL ) ) == TRUE )</div>
 <div class="line"><a id="l02972" name="l02972"></a><span class="lineno"> 2972</span>        {</div>
-<div class="line"><a id="l02973" name="l02973"></a><span class="lineno"> 2973</span>            <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#ga6ff63e8955665c4a58b1598f2b07c51a">LOG_DEBUG</a> , <span class="stringliteral">&quot;added netw %d to pool %p&quot;</span> , netw -&gt; link . sock , netw_pool );</div>
+<div class="line"><a id="l02973" name="l02973"></a><span class="lineno"> 2973</span>            <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#ga6ff63e8955665c4a58b1598f2b07c51a">LOG_DEBUG</a>, <span class="stringliteral">&quot;added netw %d to pool %p&quot;</span>, netw -&gt; link . sock, netw_pool );</div>
 <div class="line"><a id="l02974" name="l02974"></a><span class="lineno"> 2974</span>        }</div>
 <div class="line"><a id="l02975" name="l02975"></a><span class="lineno"> 2975</span>        <span class="keywordflow">else</span></div>
 <div class="line"><a id="l02976" name="l02976"></a><span class="lineno"> 2976</span>        {</div>
-<div class="line"><a id="l02977" name="l02977"></a><span class="lineno"> 2977</span>            <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a> , <span class="stringliteral">&quot;could not add netw %d to pool %p&quot;</span> , netw -&gt; link . sock , netw_pool );</div>
+<div class="line"><a id="l02977" name="l02977"></a><span class="lineno"> 2977</span>            <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a>, <span class="stringliteral">&quot;could not add netw %d to pool %p&quot;</span>, netw -&gt; link . sock, netw_pool );</div>
 <div class="line"><a id="l02978" name="l02978"></a><span class="lineno"> 2978</span>        }</div>
 <div class="line"><a id="l02979" name="l02979"></a><span class="lineno"> 2979</span>    }</div>
 <div class="line"><a id="l02980" name="l02980"></a><span class="lineno"> 2980</span>    <span class="keywordflow">else</span></div>
 <div class="line"><a id="l02981" name="l02981"></a><span class="lineno"> 2981</span>    {</div>
-<div class="line"><a id="l02982" name="l02982"></a><span class="lineno"> 2982</span>            <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a> , <span class="stringliteral">&quot;could not add netw %d to pool %p&quot;</span> , netw -&gt; link . sock , netw_pool );</div>
+<div class="line"><a id="l02982" name="l02982"></a><span class="lineno"> 2982</span>        <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a>, <span class="stringliteral">&quot;could not add netw %d to pool %p&quot;</span>, netw -&gt; link . sock, netw_pool );</div>
 <div class="line"><a id="l02983" name="l02983"></a><span class="lineno"> 2983</span>    }</div>
 <div class="line"><a id="l02984" name="l02984"></a><span class="lineno"> 2984</span>    <a class="code hl_define" href="group___n___s_t_r.html#ga113e906d03374ac38e441f1df44095fb">free_nstr</a>( &amp;key );</div>
 <div class="line"><a id="l02985" name="l02985"></a><span class="lineno"> 2985</span> </div>
@@ -3097,7 +3097,7 @@ $(document).ready(function(){initNavTree('n__network_8c_source.html',''); initRe
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="n__network_8c.html">n_network.c</a></li>
-    <li class="footer">Generated on Tue Feb 8 2022 22:37:44 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+    <li class="footer">Generated on Tue Feb 8 2022 22:46:13 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
   </ul>
 </div>
 </body>

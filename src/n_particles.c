@@ -145,16 +145,12 @@ int manage_particle_ex( PARTICLE_SYSTEM *psys, double delta_t )
 
     node = psys -> list -> start ;
 
-    if( delta_t <= 0.0 ) delta_t = 1;
-
     while( node )
     {
         ptr = (PARTICLE *)node -> ptr ;
         if( ptr -> lifetime != -1 )
         {
             ptr -> lifetime -= delta_t / 1000.0 ;
-            if( ptr -> lifetime < 0 )
-                ptr -> lifetime = 0 ;
         }
 
         if( ptr -> lifetime > 0 || ptr -> lifetime == -1 )
@@ -205,8 +201,12 @@ int draw_particle( PARTICLE_SYSTEM *psys, double xpos, double ypos, int w, int h
 {
     __n_assert( psys, return FALSE );
 
+    LIST_NODE *node = NULL ;
     PARTICLE *ptr = NULL ;
-    list_foreach( node , psys -> list )
+
+    node  = psys -> list -> start ;
+
+    while( node )
     {
         double x = 0, y = 0 ;
 

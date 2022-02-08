@@ -161,10 +161,10 @@ int process_clients( NETWORK_POOL *netw_pool, N_USERLIST *userlist )
 
     /* write lock the pool */
     read_lock( netw_pool -> rwlock );
-    ht_foreach( node, netw_pool -> pool )
+    HT_FOREACH( node, netw_pool -> pool,
     {
         N_STR *netw_exchange = NULL ;
-        NETWORK *netw = hash_val( node, NETWORK );
+        NETWORK *netw = HASH_VAL( node, NETWORK );
         int state = -1 ;
         int thr_engine_status = -1 ;
         netw_get_state( netw, &state, &thr_engine_status );
@@ -226,7 +226,7 @@ int process_clients( NETWORK_POOL *netw_pool, N_USERLIST *userlist )
             }
             free_nstr( &netw_exchange );
         }
-    }
+    });
     unlock( netw_pool -> rwlock );
 
     NETWORK *netw = NULL ;
@@ -543,7 +543,6 @@ int main( int argc, char *argv[] )
                 if( id >= 0 )
                 {
                     netw_set_user_id( netw, id );
-
                 }
                 netw_start_thr_engine( netw );
                 netw_pool_add( netw_pool, netw );

@@ -335,6 +335,13 @@ LIST *ht_search( HASH_TABLE *table, int (*node_is_matching)( HASH_NODE *node ) )
 int empty_ht( HASH_TABLE *table );
 int destroy_ht( HASH_TABLE **table );
 
+/* put a a pointer, provided numerical hashed value */
+int ht_put_ptr_ex( HASH_TABLE *table, unsigned long int hash_value, void  *val, void (*destructor)( void *ptr ) );
+/* get a pointer from a key's node, provided numerical hashed value */
+int ht_get_ptr_ex( HASH_TABLE *table, unsigned long int hash_value, void  **val );
+/* remove given's hash_value from the table */
+int ht_remove_ex( HASH_TABLE *table, unsigned long int hash_value );
+
 /* completion search keys */
 LIST *ht_get_completion_list( HASH_TABLE *table, char *keybud, uint32_t max_results );
 
