@@ -13,7 +13,7 @@ extern "C"
 {
 #endif
 
-/**\defgroup NETWORKING NETWORKING: connect, accept, send and recv wrappers. Network Queue, thread-safe add/get message, ssl/tls secured communications
+/**\defgroup NETWORKING NETWORK ENGINE: connect, accept, send and recv wrappers. Network Queue, thread-safe add/get message, ssl/tls secured communications
   \addtogroup NETWORKING
   @{
   */

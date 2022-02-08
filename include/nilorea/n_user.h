@@ -20,13 +20,16 @@ extern "C"
 #include "nilorea/n_network.h"
 #include "nilorea/n_3d.h"
 
-/**\defgroup N_USER APPDEV: user handling
+/**\defgroup N_USER NETWORK USERS: server side network oriented user handling
   \addtogroup N_USER
   @{
   */
 
+/*! flag to target all users in the list */
 #define USERLIST_ALL 0
+/*! flag to target all users in the list except one */
 #define USERLIST_ALL_EXCEPT 1
+/*! flag to target one user in the list */
 #define USERLIST_ONE 2
 
 /*! USER management cell */

@@ -19,7 +19,7 @@ extern "C"
 #include <pcre.h>
 #endif
 
-/**\defgroup PCRE PCRE: regex matching helpers
+/**\defgroup PCRE PCREs: regex matching helpers
   \addtogroup PCRE
   @{
   */

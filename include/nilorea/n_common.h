@@ -13,7 +13,7 @@ extern "C"
 {
 #endif
 
-/**\defgroup COMMONS COMMONS AND MACROS: generally used headers, defines, timers, allocators,...
+/**\defgroup COMMONS COMMONS: macros, headers, defines, timers, allocators,...
   \addtogroup COMMONS
   @{
   */
@@ -262,7 +262,7 @@ typedef unsigned char uchar;
 #define __n_assert( __ptr , __ret ) \
     if( !(__ptr) ) \
     { \
-        n_log( LOG_DEBUG , "%s is NULL at line %d of %s" , #__ptr ,  __LINE__ , __FILE__ );\
+        n_log( LOG_DEBUG , "if( !(%s) ) assert at line %d of %s" , #__ptr , __LINE__ , __FILE__ ); \
         __ret ; \
     }
 

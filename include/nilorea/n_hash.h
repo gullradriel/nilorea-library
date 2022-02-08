@@ -12,7 +12,7 @@
 extern "C" {
 #endif
 
-/**\defgroup HASH_TABLE HASH TABLE: classic or trie tree hash_tables
+/**\defgroup HASH_TABLE HASH TABLES: classic or trie tree hash_tables
   \addtogroup HASH_TABLE
   @{
   */

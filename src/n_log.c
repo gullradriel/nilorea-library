@@ -163,8 +163,12 @@ FILE *get_log_file( void )
 } /*get_log_level() */
 
 #ifndef _vscprintf
-/* For some reason, MSVC fails to honour this #ifndef. */
-/* Hence function renamed to _vscprintf_so(). */
+/*!\fn int _vscprintf_so(const char * format, va_list pargs)
+ *\brief compute the size of a string made with format 'fmt' and arguments in the va_list 'ap', helper for vasprintf
+ *\param format format to pass to printf
+ *\param pargs va_list to use as printf parameter
+ *\return -1 or the size of the string
+ */
 int _vscprintf_so(const char * format, va_list pargs)
 {
     int retval;
@@ -177,6 +181,13 @@ int _vscprintf_so(const char * format, va_list pargs)
 #endif
 
 #ifndef vasprintf
+/*!\fn int vasprintf(char **strp, const char *fmt, va_list ap)
+ *\brief snprintf from a va_list, helper for asprintf
+ *\param strp string holding the result
+ *\param fmt format to pass to printf
+ *\param ap va_list to use as printf parameter
+ *\return -1 or the size of the string
+ */
 int vasprintf(char **strp, const char *fmt, va_list ap)
 {
     long long int len = _vscprintf_so(fmt, ap);
@@ -195,6 +206,13 @@ int vasprintf(char **strp, const char *fmt, va_list ap)
 #endif
 
 #ifndef asprintf
+/*!\fn int asprintf(char *strp[], const char *fmt, ...)
+ *\brief snprintf from a va_list
+ *\param strp string holding the result
+ *\param fmt format to pass to printf
+ *\param ... list of format parameters
+ *\return -1 or the size of the string
+ */
 int asprintf(char *strp[], const char *fmt, ...)
 {
     va_list ap;

@@ -56,7 +56,7 @@ extern "C" {
 /*! Structure of a single particle */
 typedef struct PARTICLE
 {
-    /*! particle mode: NORMAL_PART,SINUS_PART,TRANS_PART,SNOW_PART,FIRE_PART,STAR_PART,CIRCLE_PART,PIXEL_PART */
+    /*! particle mode: NORMAL_PART,SINUS_PART,PIXEL_PART */
     int mode,
         /*! lifetime */
         lifetime,
@@ -97,6 +97,8 @@ int add_particle( PARTICLE_SYSTEM *psys, int spr, int mode, int lifetime, int si
 int add_particle_ex( PARTICLE_SYSTEM *psys, int spr, int mode, int off_x, int off_y, int lifetime, int size, ALLEGRO_COLOR color,
                      double vx, double vy, double vz,
                      double ax, double ay, double az );
+
+int manage_particle_ex( PARTICLE_SYSTEM *psys , double delta_t );
 
 int manage_particle( PARTICLE_SYSTEM *psys);
 

@@ -24,7 +24,7 @@ extern "C"
 #include <sys/time.h>
 #endif
 
-/**\defgroup N_TIME TIMING: generally used headers, defines, timers, allocators,...
+/**\defgroup N_TIME TIMERS: generally used headers, defines, timers, allocators,...
   \addtogroup N_TIME
   @{
   */

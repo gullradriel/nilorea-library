@@ -13,7 +13,7 @@ extern "C"
 {
 #endif
 
-/**\defgroup ISOMETRIC_ENGINE GAMEDEV: isometric engine, maps, tiles, ...
+/**\defgroup ISOMETRIC_ENGINE GRAPHICS: isometric engine, maps, tiles, ...
    \addtogroup ISOMETRIC_ENGINE
   @{
 */

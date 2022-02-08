@@ -192,11 +192,7 @@ int nstr_to_fd( N_STR *str, FILE *out, int lock );
 /* Write a whole N_STR into a file */
 int nstr_to_file( N_STR *n_str, char *filename );
 
-/*!\fn int free_nstr( N_STR **ptr )
- *\brief Free a N_STR structure and set the pointer to NULL
- *\param ptr A N_STR *object to free
- *\return TRUE or FALSE
- */
+/*! free a N_STR structure and set the pointer to NULL */
 #define free_nstr( __ptr ) \
    { \
       if( (*__ptr ) ) \

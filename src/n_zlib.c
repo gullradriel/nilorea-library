@@ -146,6 +146,7 @@ int UncompressData( unsigned char *abSrc, unsigned int nLenSrc, unsigned char *a
 
 
 /*!\fn N_STR *zip_nstr( N_STR *src )
+ *\brief return a compressed version of src
  *\param src The source string
  *\return The compressed string or NULL
  */
@@ -195,6 +196,7 @@ N_STR *zip_nstr( N_STR *src )
 
 
 /*!\fn N_STR *unzip_nstr( N_STR *src )
+ *\brief return an uncompressed version of src
  *\param src The source string
  *\return The uncompressed string or NULL
  */

@@ -49,7 +49,7 @@ double htond( double value )
     ret = double_swap( value );
 #endif
     return ret ;
-}
+} /* htond() */
 
 
 
@@ -66,7 +66,7 @@ double ntohd( double value )
     ret = double_swap( value );
 #endif
     return ret ;
-}
+} /* ntohd() */
 
 
 
@@ -656,6 +656,19 @@ N_STR *netmsg_make_ident( int type, int id, N_STR *name, N_STR *passwd  )
 } /* netmsg_make_ident() */
 
 
+
+/*!\fn N_STR *netmsg_make_position_msg( int id, double X, double Y, double vx, double vy, double acc_x, double acc_y, int time_stamp )
+ *\brief make a network NETMSG_POSITION message with given parameters
+ *\param id The ID of the sending client
+ *\param X x position
+ *\param Y y position
+ *\param vx x speed
+ *\param vy y speed
+ *\param acc_x x acceleration
+ *\param acc_y y acceleration
+ *\param time_stamp time when the position were copier
+ *\return N_STR *netmsg or NULL
+ */
 N_STR *netmsg_make_position_msg( int id, double X, double Y, double vx, double vy, double acc_x, double acc_y, int time_stamp )
 {
 
@@ -683,6 +696,17 @@ N_STR *netmsg_make_position_msg( int id, double X, double Y, double vx, double v
 
 
 
+
+/*!\fn N_STR *netmsg_make_string_msg( int id_from, int id_to, N_STR *name, N_STR *chan, N_STR *txt, int color )
+ *\brief make a network NETMSG_STRING message with given parameters
+ *\param id_from The ID of the sending client
+ *\param id_to id of the destination
+ *\param name name of the user
+ *\param chan targeted channel
+ *\param txt text to send
+ *\param color color of the text
+ *\return N_STR *netmsg or NULL
+ */
 N_STR *netmsg_make_string_msg( int id_from, int id_to, N_STR *name, N_STR *chan, N_STR *txt, int color )
 {
     NETW_MSG *msg = NULL ;
@@ -713,6 +737,10 @@ N_STR *netmsg_make_string_msg( int id_from, int id_to, N_STR *name, N_STR *chan,
 
 
 
+/*!\fn N_STR *netmsg_make_quit_msg( void )
+ *\brief make a generic network NETMSG_QUIT message
+ *\return N_STR *netmsg or NULL
+ */
 N_STR *netmsg_make_quit_msg( void )
 {
     NETW_MSG *msg = NULL ;
@@ -897,10 +925,8 @@ int netw_get_string( N_STR *msg, int *id, N_STR **name, N_STR **chan, N_STR **tx
  *\param from Identifiant of the sender
  *\param to Targetted Identifiant, -1 for server ping
  *\param time The time it was when the ping was sended
- *
  *\return TRUE or FALSE
  */
-
 int netw_get_ping( N_STR *msg, int *type, int *from, int *to, int *time )
 {
     NETW_MSG *netmsg;
@@ -931,8 +957,9 @@ int netw_get_ping( N_STR *msg, int *type, int *from, int *to, int *time )
 
 
 
-/*!\fn int netw_send_quit( N_STR *msg )
+/*!\fn int netw_get_quit( N_STR *msg )
  *\brief get a formatted NETWMSG_QUIT message from the specified network
+ *\param msg The source string from which we are going to extract the data
  *\return TRUE or FALSE
  */
 int netw_get_quit( N_STR *msg )

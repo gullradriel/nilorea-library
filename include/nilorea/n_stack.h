@@ -13,7 +13,7 @@ extern "C"
 {
 #endif
 
-/**\defgroup STACK STACK: generic type stack
+/**\defgroup STACK STACKS: generic type stack
    \addtogroup STACK
   @{
 */

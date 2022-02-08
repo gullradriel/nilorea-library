@@ -26,6 +26,12 @@
 
 
 #ifdef __windows__
+/*!\fn const char *strcasestr(const char *s1, const char *s2)
+ *\brief string case insensitive search
+ *\param s1 haystack string
+ *\param s2 needle string
+ *\return NULL or a pointer to the position of s2 in s1
+ */
 const char *strcasestr(const char *s1, const char *s2)
 {
     __n_assert( s1, return NULL );
@@ -38,7 +44,7 @@ const char *strcasestr(const char *s1, const char *s2)
             return ( s1-1 );
     }
     return NULL ;
-}
+} /* strcasestr */
 #endif
 
 
@@ -156,7 +162,7 @@ char *trim(char *s)
 
 
 
-/*!\fn char *nfgets( char *buffer , int size , FILE *stream )
+/*!\fn char *nfgets( char *buffer, NSTRBYTE size, FILE *stream )
  *\brief try to fgets
  *\param buffer The string where to read the file
  *\param size Size of the string
@@ -479,7 +485,7 @@ int str_to_int_ex( const char *s, NSTRBYTE start, NSTRBYTE end, int *i, const in
 
 
 
-/*!\fn int str_to_int_nolog( const char *s , NSTRBYTE start , NSTRBYTE end , int *i, const int base , N_STR **infos )
+/*!\fn int str_to_int_nolog( const char *s, NSTRBYTE start, NSTRBYTE end, int *i, const int base, N_STR **infos )
  * \brief Helper for string[start to end] to integer. Automatically add /0 for
  conversion. Leave values untouched if any error occur. Work on a copy of the
  chunk.
@@ -625,10 +631,8 @@ int str_to_long_ex( const char *s, NSTRBYTE start, NSTRBYTE end, long int *i, co
 
 
 
-/*!\fn int str_to_long_long_ex( const char *s , NSTRBYTE start , NSTRBYTE end , long long int *i, const int base )
- * \brief Helper for string[start to end] to long long integer. Automatically add /0 for
- conversion. Leave values untouched if any error occur. Work on a copy of the
- chunk.
+/*!\fn int str_to_long_long_ex( const char *s, NSTRBYTE start, NSTRBYTE end, long long int *i, const int base )
+ * \brief Helper for string[start to end] to long long integer. Automatically add /0 for conversion. Leave values untouched if any error occur. Work on a copy of the chunk.
  * \param s String to convert
  * \param start Start position of the chunk
  * \param end End position of the chunk
@@ -719,7 +723,7 @@ int str_to_long( const char *s, long int *i, const int base )
 
 
 
-/*!\fn int str_to_long_long( const char *s , long int *i, const int base )
+/*!\fn int str_to_long_long( const char *s, long long int *i, const int base )
  * \brief Helper for string to integer
  * \param s String to convert
  * \param i A pointer to an integer variable which will receieve the value.
@@ -774,7 +778,7 @@ N_STR *nstrdup( N_STR *str )
 
 
 
-/*!\fn int skipw( char *string , char toskip , NSTRBYTE *iterator , NSTRBYTE inc )
+/*!\fn int skipw( char *string, char toskip, NSTRBYTE *iterator, int inc )
  *\brief skip while 'toskip' occurence is found from 'iterator' to the next non 'toskip' position.
  * The new iterator index is automatically stored, returning to it first value if an error append.
  *\param string a char *string to search in
@@ -828,7 +832,7 @@ int skipw( char *string, char toskip, NSTRBYTE *iterator, int inc )
 
 
 
-/*!\fn skipu( char *string , char toskip , NSTRBYTE *iterator , int inc )
+/*!\fn int skipu( char *string, char toskip, NSTRBYTE *iterator, int inc )
  *\brief skip until 'toskip' occurence is found from 'iterator' to the next 'toskip' value.
  * The new iterator index is automatically stored, returning to it first value if an error append.
  *\param string a char *stri:wqng to search in
@@ -973,7 +977,7 @@ int strcpy_u( char *from, char *to, NSTRBYTE to_size, char split, NSTRBYTE *it )
 
 
 
-/*!\fn char **split( char* str , const char* delim , int empty )
+/*!\fn char** split( const char* str, const char* delim, int empty )
  *\brief Split the strings into a an array of char *pointer	, ended by a NULL one. Max 256 splitted elements per call.
  *\param str The char *str to split
  *\param delim The delimiter, one or more characters
@@ -1220,6 +1224,7 @@ int nstrcat_bytes( N_STR *dest, void *data )
  *\param size The current size, will be updated if written + strlen( dest) > size
  *\param written the number of octet added
  *\param src The source string to add
+ *\param src_size The source string size
  *\param additional_padding In case the destination is reallocated, number of additional bytes that will be added (provisionning)
  *\return TRUE on success or FALSE on a realloc error
  */

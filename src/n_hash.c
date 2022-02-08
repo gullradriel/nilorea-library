@@ -953,7 +953,7 @@ static FORCE_INLINE uint32_t fmix32 ( uint32_t h )
 
 
 /*!\fn void MurmurHash3_x86_32 ( const void * key, int len, uint32_t seed, void * out )
- * brief MurmurHash3 was written by Austin Appleby, and is placed in the public
+ MurmurHash3 was written by Austin Appleby, and is placed in the public
  domain. The author hereby disclaims copyright to this source code.
  Note - The x86 and x64 versions do _not_ produce the same results, as the
  algorithms are optimized for their respective platforms. You can still
@@ -1023,7 +1023,7 @@ void MurmurHash3_x86_32 ( const void * key, int len, uint32_t seed, void * out )
 
 
 /*!\fn void MurmurHash3_x86_128( const void * key, int len, uint32_t seed, void * out )
- * brief MurmurHash3 was written by Austin Appleby, and is placed in the public
+ MurmurHash3 was written by Austin Appleby, and is placed in the public
  domain. The author hereby disclaims copyright to this source code.
  Note - The x86 and x64 versions do _not_ produce the same results, as the
  algorithms are optimized for their respective platforms. You can still
