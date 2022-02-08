@@ -184,11 +184,11 @@ $(document).ready(function(){initNavTree('n__user_8c_source.html',''); initResiz
 <div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span> </div>
 <div class="line"><a id="l00126" name="l00126"></a><span class="lineno"><a class="line" href="group___n___u_s_e_r.html#ga199e127e979f625ff75a01e45afe0d5b">  126</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="group___n___u_s_e_r.html#ga199e127e979f625ff75a01e45afe0d5b">userlist_del_user</a>( <a class="code hl_struct" href="group___n___u_s_e_r.html#struct_n___u_s_e_r_l_i_s_t">N_USERLIST</a> *ulist, <span class="keywordtype">int</span> <span class="keywordtype">id</span> )</div>
 <div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>{</div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    <a class="code hl_define" href="group___c_o_m_m_o_n_s.html#ga4ecf5d80299a4ca1dc13c3a19610db11">__n_assert</a>( ulist, <span class="keywordflow">return</span> FALSE );</div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    <a class="code hl_define" href="group___c_o_m_m_o_n_s.html#ga4ecf5d80299a4ca1dc13c3a19610db11">__n_assert</a>( <span class="keywordtype">id</span> &gt;= 0, <span class="keywordflow">return</span> FALSE );</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    <a class="code hl_define" href="group___c_o_m_m_o_n_s.html#ga4ecf5d80299a4ca1dc13c3a19610db11">__n_assert</a>( ulist , <span class="keywordflow">return</span> FALSE );</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    <a class="code hl_define" href="group___c_o_m_m_o_n_s.html#ga4ecf5d80299a4ca1dc13c3a19610db11">__n_assert</a>( <span class="keywordtype">id</span> &gt;= 0 , <span class="keywordflow">return</span> FALSE );</div>
 <div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span> </div>
 <div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    <a class="code hl_define" href="group___c_o_m_m_o_n_s.html#gabf9cebcdf845c2c9b879a608be4c9dce">write_lock</a>( ulist -&gt; user_rwbolt );</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    <span class="keywordflow">if</span>( <span class="keywordtype">id</span> &gt;  ulist -&gt; highter )</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    <span class="keywordflow">if</span>( <span class="keywordtype">id</span> &gt;  ulist -&gt; max )</div>
 <div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    {</div>
 <div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>        <a class="code hl_define" href="group___c_o_m_m_o_n_s.html#ga9bbd6f2ada0efec0afcdcaa60cc20474">unlock</a>( ulist -&gt; user_rwbolt );</div>
 <div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>        <span class="keywordflow">return</span> FALSE ;</div>
@@ -421,7 +421,7 @@ $(document).ready(function(){initNavTree('n__user_8c_source.html',''); initResiz
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="n__user_8c.html">n_user.c</a></li>
-    <li class="footer">Generated on Tue Feb 8 2022 16:01:40 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+    <li class="footer">Generated on Tue Feb 8 2022 16:27:52 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
   </ul>
 </div>
 </body>
