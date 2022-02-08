@@ -431,27 +431,27 @@ $(document).ready(function(){initNavTree('n__config__file_8c_source.html',''); i
 <div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span> </div>
 <div class="line"><a id="l00368" name="l00368"></a><span class="lineno"><a class="line" href="group___c_o_n_f_i_g_f_i_l_e.html#ga1b22438cb7d7a274b748d49e555f7f50">  368</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="group___c_o_n_f_i_g_f_i_l_e.html#ga1b22438cb7d7a274b748d49e555f7f50">write_config_file</a>( <a class="code hl_struct" href="group___c_o_n_f_i_g_f_i_l_e.html#struct_c_o_n_f_i_g___f_i_l_e">CONFIG_FILE</a> *cfg_file, <span class="keywordtype">char</span> *filename )</div>
 <div class="line"><a id="l00369" name="l00369"></a><span class="lineno">  369</span>{</div>
-<div class="line"><a id="l00370" name="l00370"></a><span class="lineno">  370</span>    <a class="code hl_define" href="group___c_o_m_m_o_n_s.html#ga4ecf5d80299a4ca1dc13c3a19610db11">__n_assert</a>( cfg_file , <span class="keywordflow">return</span> FALSE );</div>
-<div class="line"><a id="l00371" name="l00371"></a><span class="lineno">  371</span>    <a class="code hl_define" href="group___c_o_m_m_o_n_s.html#ga4ecf5d80299a4ca1dc13c3a19610db11">__n_assert</a>( filename , <span class="keywordflow">return</span> FALSE );</div>
+<div class="line"><a id="l00370" name="l00370"></a><span class="lineno">  370</span>    <a class="code hl_define" href="group___c_o_m_m_o_n_s.html#ga4ecf5d80299a4ca1dc13c3a19610db11">__n_assert</a>( cfg_file, <span class="keywordflow">return</span> FALSE );</div>
+<div class="line"><a id="l00371" name="l00371"></a><span class="lineno">  371</span>    <a class="code hl_define" href="group___c_o_m_m_o_n_s.html#ga4ecf5d80299a4ca1dc13c3a19610db11">__n_assert</a>( filename, <span class="keywordflow">return</span> FALSE );</div>
 <div class="line"><a id="l00372" name="l00372"></a><span class="lineno">  372</span> </div>
 <div class="line"><a id="l00373" name="l00373"></a><span class="lineno">  373</span>    FILE *out = NULL ;</div>
-<div class="line"><a id="l00374" name="l00374"></a><span class="lineno">  374</span>    out = fopen( filename , <span class="stringliteral">&quot;w&quot;</span> );</div>
+<div class="line"><a id="l00374" name="l00374"></a><span class="lineno">  374</span>    out = fopen( filename, <span class="stringliteral">&quot;w&quot;</span> );</div>
 <div class="line"><a id="l00375" name="l00375"></a><span class="lineno">  375</span>    <span class="keywordtype">int</span> error = errno ;</div>
-<div class="line"><a id="l00376" name="l00376"></a><span class="lineno">  376</span>    <a class="code hl_define" href="group___c_o_m_m_o_n_s.html#ga4ecf5d80299a4ca1dc13c3a19610db11">__n_assert</a>( out , <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a> , <span class="stringliteral">&quot;Could not open %s, %s&quot;</span> , filename , strerror( error ) ); <span class="keywordflow">return</span> FALSE );</div>
+<div class="line"><a id="l00376" name="l00376"></a><span class="lineno">  376</span>    <a class="code hl_define" href="group___c_o_m_m_o_n_s.html#ga4ecf5d80299a4ca1dc13c3a19610db11">__n_assert</a>( out, <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a>, <span class="stringliteral">&quot;Could not open %s, %s&quot;</span>, filename, strerror( error ) ); <span class="keywordflow">return</span> FALSE );</div>
 <div class="line"><a id="l00377" name="l00377"></a><span class="lineno">  377</span> </div>
 <div class="line"><a id="l00378" name="l00378"></a><span class="lineno">  378</span>    <span class="keywordtype">char</span> *last_section = NULL ;</div>
 <div class="line"><a id="l00379" name="l00379"></a><span class="lineno">  379</span>    <span class="keywordtype">char</span> *section = NULL, *key = NULL, *val = NULL ;</div>
 <div class="line"><a id="l00380" name="l00380"></a><span class="lineno">  380</span> </div>
-<div class="line"><a id="l00381" name="l00381"></a><span class="lineno">  381</span>    <a class="code hl_define" href="group___c_o_n_f_i_g_f_i_l_e.html#gaa56fa5c30fab08e7145ab2640e12cde5">config_foreach</a>( cfg_file , section , key , val )</div>
+<div class="line"><a id="l00381" name="l00381"></a><span class="lineno">  381</span>    <a class="code hl_define" href="group___c_o_n_f_i_g_f_i_l_e.html#gaa56fa5c30fab08e7145ab2640e12cde5">config_foreach</a>( cfg_file, section, key, val )</div>
 <div class="line"><a id="l00382" name="l00382"></a><span class="lineno">  382</span>    {</div>
 <div class="line"><a id="l00383" name="l00383"></a><span class="lineno">  383</span>        <span class="comment">/* write section name */</span></div>
-<div class="line"><a id="l00384" name="l00384"></a><span class="lineno">  384</span>        <span class="keywordflow">if</span>( !last_section || strcmp( last_section , section ) != 0 )</div>
+<div class="line"><a id="l00384" name="l00384"></a><span class="lineno">  384</span>        <span class="keywordflow">if</span>( !last_section || strcmp( last_section, section ) != 0 )</div>
 <div class="line"><a id="l00385" name="l00385"></a><span class="lineno">  385</span>        {</div>
-<div class="line"><a id="l00386" name="l00386"></a><span class="lineno">  386</span>            fprintf( out , <span class="stringliteral">&quot;[%s]\n&quot;</span> , section );</div>
+<div class="line"><a id="l00386" name="l00386"></a><span class="lineno">  386</span>            fprintf( out, <span class="stringliteral">&quot;[%s]\n&quot;</span>, section );</div>
 <div class="line"><a id="l00387" name="l00387"></a><span class="lineno">  387</span>            <a class="code hl_define" href="group___c_o_m_m_o_n_s.html#ga079dc7a6a7e7c54bb714d8bb2afdd022">FreeNoLog</a>( last_section );</div>
 <div class="line"><a id="l00388" name="l00388"></a><span class="lineno">  388</span>            last_section = strdup( section );</div>
 <div class="line"><a id="l00389" name="l00389"></a><span class="lineno">  389</span>        }</div>
-<div class="line"><a id="l00390" name="l00390"></a><span class="lineno">  390</span>        fprintf( out , <span class="stringliteral">&quot;%s=%s\n&quot;</span> , key , val );</div>
+<div class="line"><a id="l00390" name="l00390"></a><span class="lineno">  390</span>        fprintf( out, <span class="stringliteral">&quot;%s=%s\n&quot;</span>, key, val );</div>
 <div class="line"><a id="l00391" name="l00391"></a><span class="lineno">  391</span>    }</div>
 <div class="line"><a id="l00392" name="l00392"></a><span class="lineno">  392</span>    <a class="code hl_define" href="group___c_o_n_f_i_g_f_i_l_e.html#ga2d2b6213151d9b9c50149149cffea041">config_endfor</a>;</div>
 <div class="line"><a id="l00393" name="l00393"></a><span class="lineno">  393</span>    fclose( out );</div>
@@ -642,7 +642,7 @@ $(document).ready(function(){initNavTree('n__config__file_8c_source.html',''); i
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="n__config__file_8c.html">n_config_file.c</a></li>
-    <li class="footer">Generated on Tue Feb 8 2022 14:10:25 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+    <li class="footer">Generated on Tue Feb 8 2022 16:01:40 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
   </ul>
 </div>
 </body>
