@@ -124,27 +124,27 @@ typedef struct HASH_TABLE
     /*! hashing mode, murmurhash and classic HASH_MURMUR, or HASH_TRIE */
     unsigned int mode ;
     /*! get HASH_NODE at 'key' from table */
-    HASH_NODE *(*ht_get_node)( struct HASH_TABLE *table, char *key );
+    HASH_NODE *(*ht_get_node)( struct HASH_TABLE *table, const char *key );
     /*! put an integer */
-    int (*ht_put_int)( struct HASH_TABLE *table, char *key, int val );
+    int (*ht_put_int)( struct HASH_TABLE *table, const char *key, int val );
     /*! put a double */
-    int (*ht_put_double)( struct HASH_TABLE *table, char *key, double val );
+    int (*ht_put_double)( struct HASH_TABLE *table, const char *key, double val );
     /*! put a a pointer */
-    int (*ht_put_ptr)( struct HASH_TABLE *table, char *key, void  *ptr, void (*destructor)( void *ptr ) );
+    int (*ht_put_ptr)( struct HASH_TABLE *table, const char *key, void  *ptr, void (*destructor)( void *ptr ) );
     /*! put an char *string */
-    int (*ht_put_string)( struct HASH_TABLE *table, char *key, char  *val );
+    int (*ht_put_string)( struct HASH_TABLE *table, const char *key, char  *val );
     /*! put an char *string pointer */
-    int (*ht_put_string_ptr)( struct HASH_TABLE *table, char *key, char  *val );
+    int (*ht_put_string_ptr)( struct HASH_TABLE *table, const char *key, char  *val );
     /*! get an int from a key's node */
-    int (*ht_get_int)( struct HASH_TABLE *table, char *key, int *val );
+    int (*ht_get_int)( struct HASH_TABLE *table, const char *key, int *val );
     /*! get a double from a key's node */
-    int (*ht_get_double)( struct HASH_TABLE *table, char *key, double *val );
+    int (*ht_get_double)( struct HASH_TABLE *table, const char *key, double *val );
     /*! get a pointer from a key's node */
-    int (*ht_get_ptr)( struct HASH_TABLE *table, char *key, void  **val );
+    int (*ht_get_ptr)( struct HASH_TABLE *table, const char *key, void  **val );
     /*! get a char *string from a key's node */
-    int (*ht_get_string)( struct HASH_TABLE *table, char *key, char  **val );
+    int (*ht_get_string)( struct HASH_TABLE *table, const char *key, char  **val );
     /*! remove given's key node from the table */
-    int (*ht_remove)( struct HASH_TABLE *table, char *key );
+    int (*ht_remove)( struct HASH_TABLE *table, const char *key );
     /*! search elements given an expression */
     LIST *(*ht_search)( struct HASH_TABLE *table, int (*node_is_matching)( HASH_NODE *node ) );
     /*! empty a hash table. char *strings are also freed */
@@ -315,21 +315,21 @@ void MurmurHash3_x86_32  ( const void * key, int len, uint32_t seed, void * out 
 void MurmurHash3_x86_128 ( const void * key, int len, uint32_t seed, void * out );
 
 char *ht_node_type( HASH_NODE *node );
-HASH_NODE *ht_get_node( HASH_TABLE *table, char *key );
+HASH_NODE *ht_get_node( HASH_TABLE *table, const char *key );
 
 HASH_TABLE *new_ht( unsigned long int size );
 HASH_TABLE *new_ht_trie( unsigned int alphabet_size, unsigned int alphabet_offset );
 
-int ht_get_double( HASH_TABLE *table, char * key, double *val );
-int ht_get_int( HASH_TABLE *table, char *key, int *val );
-int ht_get_ptr( HASH_TABLE *table, char *key, void  **val );
-int ht_get_string( HASH_TABLE *table, char * key, char  **val );
-int ht_put_double( HASH_TABLE *table, char *key, double value );
-int ht_put_int( HASH_TABLE *table, char * key, int value );
-int ht_put_ptr( HASH_TABLE *table, char *key, void  *ptr, void (*destructor)(void *ptr ) );
-int ht_put_string( HASH_TABLE *table, char *key, char *string );
-int ht_put_string_ptr( HASH_TABLE *table, char *key, char *string );
-int ht_remove( HASH_TABLE *table, char *key );
+int ht_get_double( HASH_TABLE *table, const char *key, double *val );
+int ht_get_int( HASH_TABLE *table, const char *key, int *val );
+int ht_get_ptr( HASH_TABLE *table, const char *key, void  **val );
+int ht_get_string( HASH_TABLE *table, const char *key, char  **val );
+int ht_put_double( HASH_TABLE *table, const char *key, double value );
+int ht_put_int( HASH_TABLE *table, const char *key, int value );
+int ht_put_ptr( HASH_TABLE *table, const char *key, void  *ptr, void (*destructor)(void *ptr ) );
+int ht_put_string( HASH_TABLE *table, const char *key, char *string );
+int ht_put_string_ptr( HASH_TABLE *table, const char *key, char *string );
+int ht_remove( HASH_TABLE *table, const char *key );
 void ht_print( HASH_TABLE *table );
 LIST *ht_search( HASH_TABLE *table, int (*node_is_matching)( HASH_NODE *node ) );
 int empty_ht( HASH_TABLE *table );
@@ -343,7 +343,7 @@ int ht_get_ptr_ex( HASH_TABLE *table, unsigned long int hash_value, void  **val 
 int ht_remove_ex( HASH_TABLE *table, unsigned long int hash_value );
 
 /* completion search keys */
-LIST *ht_get_completion_list( HASH_TABLE *table, char *keybud, uint32_t max_results );
+LIST *ht_get_completion_list( HASH_TABLE *table, const char *keybud, uint32_t max_results );
 
 
 /**

@@ -3,6 +3,7 @@ var dir_d28a4824dc47e487b107a5db32ef43c4 =
     [ "ex_common.c", "ex__common_8c_source.html", null ],
     [ "ex_configfile.c", "ex__configfile_8c_source.html", null ],
     [ "ex_exceptions.c", "ex__exceptions_8c_source.html", null ],
+    [ "ex_gui_dictionary.c", "ex__gui__dictionary_8c_source.html", null ],
     [ "ex_gui_netclient.c", "ex__gui__netclient_8c_source.html", null ],
     [ "ex_gui_netserver.c", "ex__gui__netserver_8c_source.html", null ],
     [ "ex_gui_particles.c", "ex__gui__particles_8c_source.html", null ],

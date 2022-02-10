@@ -81,7 +81,7 @@ ifeq ($(HAVE_ALLEGRO),1)
 	#ALLEGRO_CLIBS=`pkg-config --cflags --libs allegro-5 allegro_acodec-5 allegro_audio-5 allegro_color-5 allegro_dialog-5 allegro_font-5 allegro_image-5 allegro_main-5 allegro_memfile-5 allegro_physfs-5 allegro_primitives-5 allegro_ttf-5` -lGL
 	#ALLEGRO_CLIBS=-lallegro_acodec -lallegro_audio -lallegro_color -lallegro_dialog -lallegro_image -lallegro_main -lallegro_memfile -lallegro_physfs -lallegro_primitives -lallegro_ttf -lallegro_font -lallegro
 	ALLEGRO_CLIBS=-lallegro_acodec -lallegro_audio -lallegro_color -lallegro_image -lallegro_main -lallegro_primitives -lallegro_ttf -lallegro_font -lallegro
-	TARGET+=ex_gui_particles$(EXT) ex_gui_netclient$(EXT) ex_gui_netserver$(EXT)
+	TARGET+=ex_gui_particles$(EXT) ex_gui_netclient$(EXT) ex_gui_netserver$(EXT) ex_gui_dictionary$(EXT)
 endif
 
 
@@ -121,6 +121,9 @@ ex_signals$(EXT): n_log.o n_list.o n_str.o n_common.o n_hash.o n_signals.o ex_si
 
 ex_gui_particles$(EXT): n_log.o n_list.o n_str.o n_common.o n_hash.o n_time.o n_particles.o n_3d.o ex_gui_particles.o
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ -L.. $(CLIBS) $(ALLEGRO_CLIBS)
+	
+ex_gui_dictionary$(EXT): n_log.o n_list.o n_str.o n_common.o n_hash.o n_time.o n_particles.o n_3d.o n_pcre.o n_allegro5.o ex_gui_dictionary.o
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ -L.. $(CLIBS) $(ALLEGRO_CLIBS) -lpcre
 
 ex_gui_netclient$(EXT): n_log.o n_list.o n_str.o n_common.o n_hash.o n_time.o n_network.o n_network_msg.o n_allegro5.o ex_gui_netclient.o
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ -L.. $(CLIBS) $(ALLEGRO_CLIBS)

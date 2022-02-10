@@ -3,6 +3,7 @@ var examples =
     [ "ex_common.c", "ex_common_8c-example.html", null ],
     [ "ex_configfile.c", "ex_configfile_8c-example.html", null ],
     [ "ex_exceptions.c", "ex_exceptions_8c-example.html", null ],
+    [ "ex_gui_dictionary.c", "ex_gui_dictionary_8c-example.html", null ],
     [ "ex_gui_netclient.c", "ex_gui_netclient_8c-example.html", null ],
     [ "ex_gui_netserver.c", "ex_gui_netserver_8c-example.html", null ],
     [ "ex_gui_particles.c", "ex_gui_particles_8c-example.html", null ],

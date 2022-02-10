@@ -1,0 +1,566 @@
+/**\example ex_gui_dictionary.c Nilorea Library gui particle api test
+ *\author Castagnier Mickael
+ *\version 1.0
+ *\date 10/02/2020
+ */
+
+#define WIDTH 1280
+#define HEIGHT 800
+
+#include "nilorea/n_common.h"
+#include "nilorea/n_particles.h"
+#include "nilorea/n_anim.h"
+#include "nilorea/n_list.h"
+#include "nilorea/n_hash.h"
+#include "nilorea/n_pcre.h"
+#include "nilorea/n_allegro5.h"
+//#include "nilorea/n_resources.h"
+//#include <allegro5/allegro_native_dialog.h>
+#include <allegro5/allegro_ttf.h>
+
+/* dictionnaries are from https://www.bragitoff.com/2016/03/english-dictionary-in-csv-format/ */
+
+ALLEGRO_DISPLAY *display  = NULL ;
+
+int		DONE = 0,                    /* Flag to check if we are always running */
+        getoptret = 0,				  /* launch parameter check */
+        log_level = LOG_ERR ;			 /* default LOG_LEVEL */
+
+ALLEGRO_BITMAP *scr_buf       = NULL ;
+
+ALLEGRO_TIMER *fps_timer = NULL ;
+ALLEGRO_TIMER *logic_timer = NULL ;
+LIST *active_object = NULL ;                      /* list of active objects */
+PARTICLE_SYSTEM *particle_system_effects=NULL ;
+
+//RESOURCES *resources = NULL ;
+
+int main( int argc, char *argv[] )
+{
+    set_log_level( LOG_NOTICE );
+
+    N_STR *log_file = NULL ;
+    nstrprintf( log_file, "%s.log", argv[ 0 ] ) ;
+    /*set_log_file( _nstr( log_file ) );*/
+    free_nstr( &log_file );
+
+    n_log( LOG_NOTICE, "%s is starting ...", argv[ 0 ] );
+
+
+    /* allegro 5 + addons loading */
+    if (!al_init())
+    {
+        n_abort("Could not init Allegro.\n");
+    }
+    if (!al_install_audio())
+    {
+        n_abort("Unable to initialize audio addon\n");
+    }
+    if (!al_init_acodec_addon())
+    {
+        n_abort("Unable to initialize acoded addon\n");
+    }
+    if (!al_init_image_addon())
+    {
+        n_abort("Unable to initialize image addon\n");
+    }
+    if (!al_init_primitives_addon() )
+    {
+        n_abort("Unable to initialize primitives addon\n");
+    }
+    if( !al_init_font_addon() )
+    {
+        n_abort("Unable to initialize font addon\n");
+    }
+    if( !al_init_ttf_addon() )
+    {
+        n_abort("Unable to initialize ttf_font addon\n");
+    }
+    if( !al_install_keyboard() )
+    {
+        n_abort("Unable to initialize keyboard handler\n");
+    }
+    if( !al_install_mouse())
+    {
+        n_abort("Unable to initialize mouse handler\n");
+    }
+    ALLEGRO_EVENT_QUEUE *event_queue = NULL;
+
+    event_queue = al_create_event_queue();
+    if(!event_queue)
+    {
+        fprintf(stderr, "failed to create event_queue!\n");
+        al_destroy_display(display);
+        return -1;
+    }
+
+    char ver_str[ 128 ] = "" ;
+    while( ( getoptret = getopt( argc, argv, "hvV:L:" ) ) != EOF )
+    {
+        switch( getoptret )
+        {
+            case 'h':
+                n_log( LOG_NOTICE, "\n    %s -h help -v version -V DEBUGLEVEL (NOLOG,VERBOSE,NOTICE,ERROR,DEBUG)\n", argv[ 0 ] );
+                exit( TRUE );
+            case 'v':
+                sprintf( ver_str, "%s %s", __DATE__, __TIME__ );
+                exit( TRUE );
+                break ;
+            case 'V':
+                if( !strncmp( "NOTICE", optarg, 6 ) )
+                {
+                    log_level = LOG_INFO ;
+                }
+                else
+                {
+                    if(  !strncmp( "VERBOSE", optarg, 7 ) )
+                    {
+                        log_level = LOG_NOTICE ;
+                    }
+                    else
+                    {
+                        if(  !strncmp( "ERROR", optarg, 5 ) )
+                        {
+                            log_level = LOG_ERR ;
+                        }
+                        else
+                        {
+                            if(  !strncmp( "DEBUG", optarg, 5 ) )
+                            {
+                                log_level = LOG_DEBUG ;
+                            }
+                            else
+                            {
+                                n_log( LOG_ERR, "%s is not a valid log level\n", optarg );
+                                exit( FALSE );
+                            }
+                        }
+                    }
+                }
+                n_log( LOG_NOTICE, "LOG LEVEL UP TO: %d\n", log_level );
+                set_log_level( log_level );
+                break;
+            case 'L' :
+                n_log( LOG_NOTICE, "LOG FILE: %s\n", optarg );
+                set_log_file( optarg );
+                break ;
+            case '?' :
+                {
+                    switch( optopt )
+                    {
+                        case 'V' :
+                            n_log( LOG_ERR, "\nPlease specify a log level after -V. \nAvailable values: NOLOG,VERBOSE,NOTICE,ERROR,DEBUG\n\n" );
+                            break;
+                        case 'L' :
+                            n_log( LOG_ERR, "\nPlease specify a log file after -L\n" );
+                        default:
+                            break;
+                    }
+                }
+                __attribute__ ((fallthrough));
+            default:
+                n_log( LOG_ERR, "\n    %s -h help -v version -V DEBUGLEVEL (NOLOG,VERBOSE,NOTICE,ERROR,DEBUG) -L logfile\n", argv[ 0 ] );
+                exit( FALSE );
+        }
+    }
+
+    fps_timer = al_create_timer( 1.0/30.0 );
+    logic_timer = al_create_timer( 1.0/50.0 );
+
+    al_set_new_display_flags( ALLEGRO_OPENGL|ALLEGRO_WINDOWED );
+    display = al_create_display( WIDTH, HEIGHT );
+    if( !display )
+    {
+        n_abort("Unable to create display\n");
+    }
+    al_set_window_title( display, argv[ 0 ] );
+
+    al_set_new_bitmap_flags( ALLEGRO_VIDEO_BITMAP );
+
+    DONE = 0 ;
+
+    active_object = new_generic_list( -1 );
+
+
+    enum APP_KEYS
+    {
+        KEY_UP, KEY_DOWN, KEY_LEFT, KEY_RIGHT, KEY_ESC, KEY_SPACE, KEY_CTRL , KEY_ENTER
+    };
+    int key[ 8 ] = {false,false,false,false,false,false,false,false};
+
+    al_register_event_source(event_queue, al_get_display_event_source(display));
+
+    al_start_timer( fps_timer );
+    al_start_timer( logic_timer );
+    al_register_event_source(event_queue, al_get_timer_event_source(fps_timer));
+    al_register_event_source(event_queue, al_get_timer_event_source(logic_timer));
+
+    al_register_event_source(event_queue, al_get_keyboard_event_source());
+    al_register_event_source(event_queue, al_get_mouse_event_source());
+
+    ALLEGRO_FONT *font = NULL ;
+    font = al_load_font( "2Dumb.ttf", 24 , 0 );
+    if (! font )
+    {
+        n_log( LOG_ERR, "Unable to load 2Dumb.ttf" );
+        exit( 1 );
+    }
+
+    ALLEGRO_BITMAP *scrbuf = al_create_bitmap( WIDTH, HEIGHT );
+
+    al_hide_mouse_cursor(display);
+
+    init_particle_system( &particle_system_effects, 10000, 0, 0, 0, 100 );
+
+    int mx = 0, my = 0, mouse_b1 = 0, mouse_b2 = 0 ;
+    int do_draw = 0, do_logic = 0 ;
+
+    /*! dictionary definition for DICTIONARY_ENTRY */
+    typedef struct DICTIONARY_DEFINITION
+    {
+        /*! type of definition (verb, noun,...) */
+        char *type ;
+        /*! content of definition */
+        char *definition ;
+    } DICTIONARY_DEFINITION;
+
+    /*! dictionary entry */
+    typedef struct DICTIONARY_ENTRY
+    {
+        /*! key of the entry */
+        char *key ;
+        /*! list of DICTIONARY_DEFINITION for that entry */
+        LIST *definitions ;
+    } DICTIONARY_ENTRY ;
+
+    void free_entry_def( void *entry_def )
+    {
+        DICTIONARY_DEFINITION *def = (DICTIONARY_DEFINITION *)entry_def;
+        FreeNoLog( def -> type );
+        FreeNoLog( def -> definition );
+        FreeNoLog( def );
+    }
+    void free_entry( void *entry_ptr )
+    {
+        DICTIONARY_ENTRY *entry = (DICTIONARY_ENTRY *)entry_ptr;
+        list_destroy( &entry -> definitions );
+        FreeNoLog( entry -> key );
+        FreeNoLog( entry );
+    }
+
+    /* Load dictionaries */
+    HASH_TABLE *dictionary = new_ht_trie( 256 - 32 , 32 );
+    FILE *dict_file = fopen( "dictionary.csv" , "r" );
+    char read_buf[ 16384 ] = "" ;
+    DICTIONARY_DEFINITION current_definition ;
+    char *entry_key = NULL ;
+    char *type = NULL ;
+    char *definition = NULL ;
+    N_PCRE *dico_regexp = npcre_new ( "\"(.*)\",\"(.*)\",\"(.*)\"" , 99 , 0 );
+
+    char lastletter = ' ' ;
+    while( fgets( read_buf , 16384 , dict_file ) )
+    {
+        if( npcre_match( read_buf , dico_regexp ) )
+        {
+            entry_key  = strdup( _str( dico_regexp -> match_list[ 1 ] ) );
+            type       = strdup( _str( dico_regexp -> match_list[ 2 ] ) );
+            definition = strdup( _str( dico_regexp -> match_list[ 3 ] ) );
+
+            //n_log( LOG_INFO , "matched %s , %s , %s" , entry_key , type , definition );
+
+            DICTIONARY_ENTRY *entry = NULL ;
+            DICTIONARY_DEFINITION *entry_def = NULL ;
+
+            if( lastletter != entry_key[ 0 ] )
+            {
+                lastletter = entry_key[ 0 ];  
+                n_log( LOG_INFO , "Progress: %c" , lastletter );
+            }
+
+            if( ht_get_ptr( dictionary , entry_key , (void **)&entry ) == TRUE )
+            {
+                Malloc( entry_def , DICTIONARY_DEFINITION , 1 );
+                entry_def -> type = strdup( type );
+                entry_def -> definition = strdup( definition );
+                list_push( entry -> definitions , entry_def , &free_entry_def );
+            }
+            else
+            {
+                Malloc( entry , DICTIONARY_ENTRY , 1 );
+
+                entry -> definitions = new_generic_list( 0 );
+                entry -> key = strdup( entry_key );
+
+                Malloc( entry_def , DICTIONARY_DEFINITION , 1 );
+
+                entry_def -> type = strdup( type );
+                entry_def -> definition = strdup( definition );
+
+                list_push( entry -> definitions , entry_def , &free_entry_def );
+
+                ht_put_ptr( dictionary  , entry_key , entry , &free_entry );
+            }
+            FreeNoLog( entry_key );
+            FreeNoLog( type );
+            FreeNoLog( definition );
+            npcre_clean_match( dico_regexp ); 
+        }
+    }
+    fclose( dict_file );
+
+    ALLEGRO_USTR *keyboard_buffer = al_ustr_new( "" );
+    int cur_key_pos = 0 ;
+    do
+    {
+        ALLEGRO_EVENT ev ;
+
+        al_wait_for_event(event_queue, &ev);
+
+        if(ev.type == ALLEGRO_EVENT_KEY_DOWN)
+        {
+            switch(ev.keyboard.keycode)
+            {
+                case ALLEGRO_KEY_UP:
+                    key[KEY_UP] = 1;
+                    break;
+                case ALLEGRO_KEY_DOWN:
+                    key[KEY_DOWN] = 1;
+                    break;
+                case ALLEGRO_KEY_LEFT:
+                    key[KEY_LEFT] = 1;
+                    break;
+                case ALLEGRO_KEY_RIGHT:
+                    key[KEY_RIGHT] = 1;
+                    break;
+                case ALLEGRO_KEY_ESCAPE:
+                    key[KEY_ESC] = 1 ;
+                    break;
+                case ALLEGRO_KEY_SPACE:
+                    key[KEY_SPACE] = 1 ;
+                    break;
+                case ALLEGRO_KEY_ENTER:
+                    key[KEY_ENTER] = 1 ;
+                    break;
+                case ALLEGRO_KEY_LCTRL:
+                case ALLEGRO_KEY_RCTRL:
+                    key[KEY_CTRL] = 1 ;
+                default:
+                    break;
+            }
+        }
+        else if(ev.type == ALLEGRO_EVENT_KEY_UP)
+        {
+            switch(ev.keyboard.keycode)
+            {
+                case ALLEGRO_KEY_UP:
+                    key[KEY_UP] = 0;
+                    break;
+                case ALLEGRO_KEY_DOWN:
+                    key[KEY_DOWN] = 0;
+                    break;
+                case ALLEGRO_KEY_LEFT:
+                    key[KEY_LEFT] = 0;
+                    break;
+                case ALLEGRO_KEY_RIGHT:
+                    key[KEY_RIGHT] =0;
+                    break;
+                case ALLEGRO_KEY_ESCAPE:
+                    key[KEY_ESC] = 0 ;
+                    break;
+                case ALLEGRO_KEY_SPACE:
+                    key[KEY_SPACE] = 0 ;
+                    break;
+                case ALLEGRO_KEY_ENTER:
+                    key[KEY_ENTER] = 1 ;
+                    break;
+                case ALLEGRO_KEY_LCTRL:
+                case ALLEGRO_KEY_RCTRL:
+                    key[KEY_CTRL] = 0 ;
+                default:
+                    break;
+            }
+        }
+        else if( ev.type == ALLEGRO_EVENT_TIMER )
+        {
+            if( al_get_timer_event_source( fps_timer ) == ev.any.source )
+            {
+                do_draw = 1 ;
+            }
+            else if( al_get_timer_event_source( logic_timer ) == ev.any.source )
+            {
+                do_logic = 1;
+            }
+        }
+        else if( ev.type == ALLEGRO_EVENT_MOUSE_AXES )
+        {
+            mx = ev.mouse.x;
+            my = ev.mouse.y;
+        }
+        else if( ev.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN )
+        {
+            if( ev.mouse.button == 1 )
+                mouse_b1 = 1 ;
+            if( ev.mouse.button == 2 )
+                mouse_b2 = 1 ;
+        }
+        else if( ev.type == ALLEGRO_EVENT_MOUSE_BUTTON_UP )
+        {
+            if( ev.mouse.button == 1 )
+                mouse_b1 = 0 ;
+            if( ev.mouse.button == 2 )
+                mouse_b2 = 0 ;
+        }
+        get_keyboard( keyboard_buffer ,ev );
+
+        /* Processing inputs */
+
+        /* dev mod: right click to temporary delete a block
+           left click to temporary add a block */
+        int mouse_button = -1 ;
+        if( mouse_b1==1 )
+            mouse_button = 1 ;
+        if( mouse_b2==1 )
+            mouse_button = 2 ;
+
+
+        if( key[ KEY_UP ] )
+        {
+        }
+        else
+        {
+        }
+
+
+        if( key[ KEY_DOWN ] )
+        {
+        }
+        else
+        {
+        }
+
+        if( key[ KEY_LEFT ] )
+        {
+        }
+        else
+        {
+        }
+
+
+        if( key[ KEY_RIGHT ] )
+        {
+        }
+        else
+        {
+        }
+
+
+        if( key[KEY_CTRL ] || mouse_button == 1 )
+        {
+
+        }
+        else
+        {
+
+        }
+
+        if( do_logic == 1 )
+        {
+            manage_particle( particle_system_effects );
+            if( mouse_button == 1 )
+            {
+                PHYSICS tmp_part ;
+                tmp_part . sz = 10 ;
+                for( int it = 0 ; it < 100 ; it ++ )
+                {
+                    VECTOR3D_SET( tmp_part . speed,
+                            500 - rand()%1000,
+                            500 - rand()%1000,
+                            0.0  );
+                    VECTOR3D_SET( tmp_part . position, mx, my, 0.0  );
+                    VECTOR3D_SET( tmp_part . acceleration, 0.0, 0.0, 0.0 );
+                    VECTOR3D_SET( tmp_part . orientation, 0.0, 0.0, 0.0 );
+                    add_particle( particle_system_effects, -1, PIXEL_PART, 1000 + rand()%10000, 1+rand()%3,
+                            al_map_rgba(   55 + rand()%200,  55 + rand()%200, 55 + rand()%200, 10 + rand()%245 ), tmp_part );
+
+                }
+            }
+            do_logic = 0 ;
+        }
+
+        if( do_draw == 1 )
+        {
+            static int last_time = 0 ;
+            static int cursor_blinking = 1 ;
+
+            al_acknowledge_resize( display );
+            int w = al_get_display_width(  display );
+            int h = al_get_display_height( display );
+
+            al_set_target_bitmap( scrbuf );
+            al_clear_to_color( al_map_rgba( 0, 0, 0, 255 ) );
+            draw_particle( particle_system_effects, 0, 0, w, h, 50 );
+
+            last_time -= 1000000/30.0 ;
+            static int length = 0 ;
+            if(  last_time < 0 )
+            {
+                last_time = 250000 ;
+            }
+            else
+            {
+                length = al_get_text_width( font , al_cstr( keyboard_buffer ) );
+                al_draw_filled_rectangle( WIDTH / 2 + ( length + 6 ) / 2      , 50 ,
+                                          WIDTH / 2 + ( length + 6 ) / 2 + 15 , 70 ,
+                                          al_map_rgb( 0 , 128 , 0 ) );
+            }
+            al_draw_text( font , al_map_rgb( 0 , 255 , 0 ) , WIDTH / 2 , 50 , ALLEGRO_ALIGN_CENTRE , al_cstr( keyboard_buffer ) );
+            LIST *completion = NULL ;
+            int max_results = 3 ;
+            if( al_ustr_length( keyboard_buffer ) > 0 )
+            {
+                completion = ht_get_completion_list( dictionary , al_cstr( keyboard_buffer ) , max_results );
+            }
+            if( completion )
+            {
+                int vertical_it = 0 ;
+                list_foreach( node , completion ) 
+                {
+                    char *key = (char *)node -> ptr ;
+                    al_draw_text( font , al_map_rgb( 0 , 255 , 0 ) , WIDTH / 2 + ( length + 6 ) / 2 + 50 , 50 + vertical_it , ALLEGRO_ALIGN_CENTRE , key );
+                    vertical_it += 35 ;
+                }
+                list_destroy( &completion );
+            }
+            DICTIONARY_ENTRY *entry = NULL ;
+            if( ht_get_ptr( dictionary , al_cstr( keyboard_buffer ) , (void **)&entry ) == TRUE )
+            {
+                int vertical_it = 0 ;
+                list_foreach( node , entry -> definitions ) 
+                {
+                    DICTIONARY_DEFINITION *definition = (DICTIONARY_DEFINITION *)node -> ptr ;
+                    al_draw_textf( font , al_map_rgb( 0 , 255 , 0 ) , WIDTH / 2 , 150 + vertical_it , ALLEGRO_ALIGN_CENTRE , "%s : %s" , definition -> type , definition -> definition );
+                    vertical_it += 35 ;
+                }
+            }
+
+            al_set_target_bitmap( al_get_backbuffer( display ) );
+            al_draw_bitmap( scrbuf, 0, 0, 0 );
+
+            /* mouse pointer */
+            al_draw_line( mx - 5, my, mx + 5, my, al_map_rgb( 255, 0, 0 ), 1 );
+            al_draw_line( mx, my + 5, mx, my - 5, al_map_rgb( 255, 0, 0 ), 1 );
+
+            al_flip_display();
+            do_draw = 0 ;
+        }
+
+    }
+    while( !key[KEY_ESC] && !DONE );
+
+    list_destroy( &active_object );
+    destroy_ht( &dictionary );
+
+    return 0;
+
+}
