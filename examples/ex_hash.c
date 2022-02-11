@@ -10,7 +10,7 @@
 #include "nilorea/n_list.h"
 #include "nilorea/n_hash.h"
 
-#define NB_ELEMENTS 16
+#define NB_ELEMENTS 24
 
 /*! string and int holder */
 typedef struct DATA
@@ -37,7 +37,7 @@ int main( void )
 
     set_log_level( LOG_DEBUG );
 
-    HASH_TABLE *htable = new_ht( NB_ELEMENTS );
+    HASH_TABLE *htable = new_ht( NB_ELEMENTS / 3 );
     LIST *keys_list = new_generic_list( NB_ELEMENTS + 1 );
     DATA *data = NULL ;
     char *str = NULL ;
@@ -89,6 +89,14 @@ int main( void )
     {
         n_log( LOG_INFO, "HT_FOREACH_R key:%s", _str( node -> key ) );
     } );
+
+    unsigned long int optimal_size = ht_get_optimal_size( htable );
+    n_log( LOG_INFO, "########" );
+    n_log( LOG_INFO, "collisions: %d %%" , ht_get_table_collision_percentage( htable ) );
+    n_log( LOG_INFO, "table size: %ld , table optimal size: %ld" , htable -> size , optimal_size );
+    n_log( LOG_INFO, "resizing to %ld returned %d" , optimal_size , ht_resize( &htable , optimal_size ) );
+    n_log( LOG_INFO, "collisions after resize: %d %%" , ht_get_table_collision_percentage( htable ) );
+    n_log( LOG_INFO, "########" );
 
 
     /*ht_print( htable );

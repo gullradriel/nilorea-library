@@ -54,10 +54,6 @@ extern "C" {
 #define HASH_PTR        8
 /*! value of unknow type inside the hash node */
 #define HASH_UNKNOWN    16
-/*! value of string key type inside the hash node */
-#define HASH_KEY_NUM    32
-/*! value of string key type inside the hash node */
-#define HASH_KEY_STRING 64
 /*! Murmur hash using hash key string, hash key numeric value, index table with lists of elements */
 #define HASH_CLASSIC    128
 /*! TRIE tree using hash key string */
@@ -87,8 +83,6 @@ typedef struct HASH_NODE
     char key_id ;
     /*! numeric key of the node if any, else < 0 */
     unsigned long int hash_value ;
-    /*! type of the key */
-    int key_type ;
     /*! type of the node */
     int type ;
     /*! data inside the node */
@@ -97,6 +91,8 @@ typedef struct HASH_NODE
     void (*destroy_func)( void *ptr );
     /*! HASH_TRIE mode: does it have a value */
     int is_leaf ;
+    /*! flag to mark a node for rehash */
+    int need_rehash ;
     /*! HASH_TRIE mode: pointers to children */
     struct HASH_NODE **children ;
     /*! HASH_TRIE mode: size of alphabet and so size of children allocated array */
@@ -335,16 +331,19 @@ LIST *ht_search( HASH_TABLE *table, int (*node_is_matching)( HASH_NODE *node ) )
 int empty_ht( HASH_TABLE *table );
 int destroy_ht( HASH_TABLE **table );
 
-/* put a a pointer, provided numerical hashed value */
+HASH_NODE *ht_get_node_ex( HASH_TABLE *table, unsigned long int hash_value );
 int ht_put_ptr_ex( HASH_TABLE *table, unsigned long int hash_value, void  *val, void (*destructor)( void *ptr ) );
-/* get a pointer from a key's node, provided numerical hashed value */
 int ht_get_ptr_ex( HASH_TABLE *table, unsigned long int hash_value, void  **val );
-/* remove given's hash_value from the table */
 int ht_remove_ex( HASH_TABLE *table, unsigned long int hash_value );
 
-/* completion search keys */
 LIST *ht_get_completion_list( HASH_TABLE *table, const char *keybud, uint32_t max_results );
 
+int is_prime( int nb );
+int next_prime( int nb );
+
+int ht_get_table_collision_percentage( HASH_TABLE *table );
+int ht_get_optimal_size( HASH_TABLE *table );
+int ht_resize( HASH_TABLE **table , unsigned int size );
 
 /**
   @}

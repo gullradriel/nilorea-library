@@ -44,6 +44,7 @@ HASH_NODE *_ht_new_node_trie( HASH_TABLE *table, const char key )
     new_hash_node -> destroy_func = NULL ;
     new_hash_node -> children = NULL ;
     new_hash_node -> is_leaf = 0 ;
+    new_hash_node -> need_rehash = 0 ;
     new_hash_node -> alphabet_length = table -> alphabet_length ;
 
     Malloc( new_hash_node -> children, HASH_NODE *, table -> alphabet_length );
@@ -768,21 +769,21 @@ void _ht_print_trie_helper( HASH_TABLE *table, HASH_NODE *node )
         printf( "key: %s, val: ", node -> key );
         switch( node -> type )
         {
-        case HASH_INT:
-            printf( "int: %d", node -> data . ival );
-            break;
-        case HASH_DOUBLE:
-            printf( "double: %f", node -> data . fval );
-            break;
-        case HASH_PTR:
-            printf( "ptr: %p", node -> data . ptr );
-            break;
-        case HASH_STRING:
-            printf( "%s", node -> data . string );
-            break;
-        default:
-            printf( "unknwow type %d", node -> type );
-            break;
+            case HASH_INT:
+                printf( "int: %d", node -> data . ival );
+                break;
+            case HASH_DOUBLE:
+                printf( "double: %f", node -> data . fval );
+                break;
+            case HASH_PTR:
+                printf( "ptr: %p", node -> data . ptr );
+                break;
+            case HASH_STRING:
+                printf( "%s", node -> data . string );
+                break;
+            default:
+                printf( "unknwow type %d", node -> type );
+                break;
         }
         printf( "\n" );
     }
@@ -953,12 +954,12 @@ static FORCE_INLINE uint32_t fmix32 ( uint32_t h )
 
 
 /*!\fn void MurmurHash3_x86_32 ( const void * key, int len, uint32_t seed, void * out )
- MurmurHash3 was written by Austin Appleby, and is placed in the public
- domain. The author hereby disclaims copyright to this source code.
- Note - The x86 and x64 versions do _not_ produce the same results, as the
- algorithms are optimized for their respective platforms. You can still
- compile and run any of them on any platform, but your performance with the
- non-native version will be less than optimal.
+  MurmurHash3 was written by Austin Appleby, and is placed in the public
+  domain. The author hereby disclaims copyright to this source code.
+  Note - The x86 and x64 versions do _not_ produce the same results, as the
+  algorithms are optimized for their respective platforms. You can still
+  compile and run any of them on any platform, but your performance with the
+  non-native version will be less than optimal.
  *\param key char *string as the key
  *\param len size of the key
  *\param seed seed value for murmur hash
@@ -998,20 +999,20 @@ void MurmurHash3_x86_32 ( const void * key, int len, uint32_t seed, void * out )
 
     switch(len & 3)
     {
-    case 3:
-        k1 ^= tail[2] << 16;
-        FALL_THROUGH ;
-    case 2:
-        k1 ^= tail[1] << 8;
-        FALL_THROUGH ;
-    case 1:
-        k1 ^= tail[0];
-        k1 *= c1;
-        k1 = ROTL32(k1,15);
-        k1 *= c2;
-        h1 ^= k1;
-    default:
-        break ;
+        case 3:
+            k1 ^= tail[2] << 16;
+            FALL_THROUGH ;
+        case 2:
+            k1 ^= tail[1] << 8;
+            FALL_THROUGH ;
+        case 1:
+            k1 ^= tail[0];
+            k1 *= c1;
+            k1 = ROTL32(k1,15);
+            k1 *= c2;
+            h1 ^= k1;
+        default:
+            break ;
     };
 
     /* finalization */
@@ -1023,12 +1024,12 @@ void MurmurHash3_x86_32 ( const void * key, int len, uint32_t seed, void * out )
 
 
 /*!\fn void MurmurHash3_x86_128( const void * key, int len, uint32_t seed, void * out )
- MurmurHash3 was written by Austin Appleby, and is placed in the public
- domain. The author hereby disclaims copyright to this source code.
- Note - The x86 and x64 versions do _not_ produce the same results, as the
- algorithms are optimized for their respective platforms. You can still
- compile and run any of them on any platform, but your performance with the
- non-native version will be less than optimal.
+  MurmurHash3 was written by Austin Appleby, and is placed in the public
+  domain. The author hereby disclaims copyright to this source code.
+  Note - The x86 and x64 versions do _not_ produce the same results, as the
+  algorithms are optimized for their respective platforms. You can still
+  compile and run any of them on any platform, but your performance with the
+  non-native version will be less than optimal.
  *\param key char *string as the key
  *\param len size of the key
  *\param seed seed value for murmur hash
@@ -1103,68 +1104,68 @@ void MurmurHash3_x86_128 ( const void * key, const int len, uint32_t seed, void 
 
     switch(len & 15)
     {
-    case 15:
-        k4 ^= tail[14] << 16;
-        FALL_THROUGH ;
-    case 14:
-        k4 ^= tail[13] << 8;
-        FALL_THROUGH ;
-    case 13:
-        k4 ^= tail[12] << 0;
-        k4 *= c4;
-        k4  = ROTL32(k4,18);
-        k4 *= c1;
-        h4 ^= k4;
-        FALL_THROUGH ;
-    case 12:
-        k3 ^= tail[11] << 24;
-        FALL_THROUGH ;
-    case 11:
-        k3 ^= tail[10] << 16;
-        FALL_THROUGH ;
-    case 10:
-        k3 ^= tail[ 9] << 8;
-        FALL_THROUGH ;
-    case  9:
-        k3 ^= tail[ 8] << 0;
-        k3 *= c3;
-        k3  = ROTL32(k3,17);
-        k3 *= c4;
-        h3 ^= k3;
-        FALL_THROUGH ;
-    case  8:
-        k2 ^= tail[ 7] << 24;
-        FALL_THROUGH ;
-    case  7:
-        k2 ^= tail[ 6] << 16;
-        FALL_THROUGH ;
-    case  6:
-        k2 ^= tail[ 5] << 8;
-        FALL_THROUGH ;
-    case  5:
-        k2 ^= tail[ 4] << 0;
-        k2 *= c2;
-        k2  = ROTL32(k2,16);
-        k2 *= c3;
-        h2 ^= k2;
-        FALL_THROUGH ;
-    case  4:
-        k1 ^= tail[ 3] << 24;
-        FALL_THROUGH ;
-    case  3:
-        k1 ^= tail[ 2] << 16;
-        FALL_THROUGH ;
-    case  2:
-        k1 ^= tail[ 1] << 8;
-        FALL_THROUGH ;
-    case  1:
-        k1 ^= tail[ 0] << 0;
-        k1 *= c1;
-        k1  = ROTL32(k1,15);
-        k1 *= c2;
-        h1 ^= k1;
-    default:
-        break ;
+        case 15:
+            k4 ^= tail[14] << 16;
+            FALL_THROUGH ;
+        case 14:
+            k4 ^= tail[13] << 8;
+            FALL_THROUGH ;
+        case 13:
+            k4 ^= tail[12] << 0;
+            k4 *= c4;
+            k4  = ROTL32(k4,18);
+            k4 *= c1;
+            h4 ^= k4;
+            FALL_THROUGH ;
+        case 12:
+            k3 ^= tail[11] << 24;
+            FALL_THROUGH ;
+        case 11:
+            k3 ^= tail[10] << 16;
+            FALL_THROUGH ;
+        case 10:
+            k3 ^= tail[ 9] << 8;
+            FALL_THROUGH ;
+        case  9:
+            k3 ^= tail[ 8] << 0;
+            k3 *= c3;
+            k3  = ROTL32(k3,17);
+            k3 *= c4;
+            h3 ^= k3;
+            FALL_THROUGH ;
+        case  8:
+            k2 ^= tail[ 7] << 24;
+            FALL_THROUGH ;
+        case  7:
+            k2 ^= tail[ 6] << 16;
+            FALL_THROUGH ;
+        case  6:
+            k2 ^= tail[ 5] << 8;
+            FALL_THROUGH ;
+        case  5:
+            k2 ^= tail[ 4] << 0;
+            k2 *= c2;
+            k2  = ROTL32(k2,16);
+            k2 *= c3;
+            h2 ^= k2;
+            FALL_THROUGH ;
+        case  4:
+            k1 ^= tail[ 3] << 24;
+            FALL_THROUGH ;
+        case  3:
+            k1 ^= tail[ 2] << 16;
+            FALL_THROUGH ;
+        case  2:
+            k1 ^= tail[ 1] << 8;
+            FALL_THROUGH ;
+        case  1:
+            k1 ^= tail[ 0] << 0;
+            k1 *= c1;
+            k1  = ROTL32(k1,15);
+            k1 *= c2;
+            h1 ^= k1;
+        default:
+            break ;
     };
     /* finalization */
     h1 ^= len;
@@ -1284,6 +1285,7 @@ HASH_NODE *_ht_new_node( HASH_TABLE *table, const char *key )
     new_hash_node -> destroy_func = NULL ;
     new_hash_node -> children = NULL ;
     new_hash_node -> is_leaf = 0 ;
+    new_hash_node -> need_rehash = 0 ;
     new_hash_node -> alphabet_length = 0 ;
 
     return new_hash_node ;
@@ -2240,7 +2242,7 @@ int destroy_ht( HASH_TABLE **table )
 } /* destroy_ht(...) */
 
 /*!\fn HASH_NODE *ht_get_node_ex( HASH_TABLE *table , unsigned long int hash_value )
- *\brief return the associated key's node inside the hash_table
+ *\brief return the associated key's node inside the hash_table (HASH_CLASSIC only) 
  *\param table Targeted hash table
  *\param hash_value Associated hash_value
  *\return The found node, or NULL
@@ -2262,7 +2264,7 @@ HASH_NODE *ht_get_node_ex( HASH_TABLE *table, unsigned long int hash_value )
     list_foreach( list_node, table -> hash_table[ index ] )
     {
         node_ptr = (HASH_NODE *)list_node -> ptr ;
-        if( node_ptr -> key_type == HASH_KEY_NUM && hash_value == node_ptr -> hash_value )
+        if( hash_value == node_ptr -> hash_value )
         {
             return node_ptr ;
         }
@@ -2273,7 +2275,7 @@ HASH_NODE *ht_get_node_ex( HASH_TABLE *table, unsigned long int hash_value )
 
 
 /*!\fn int ht_get_ptr_ex( HASH_TABLE *table, unsigned long int hash_value , void  **val )
- *\brief Retrieve a pointer value in the hash table, at the given key. Leave val untouched if key is not found.
+ *\brief Retrieve a pointer value in the hash table, at the given key. Leave val untouched if key is not found. (HASH_CLASSIC only) 
  *\param table Targeted hash table
  *\param hash_value key pre computed numeric hash value
  *\param val A pointer to an empty pointer store
@@ -2302,7 +2304,7 @@ int ht_get_ptr_ex( HASH_TABLE *table, unsigned long int hash_value, void  **val 
 
 
 /*!\fn int ht_put_ptr_ex( HASH_TABLE *table, unsigned long int hash_value , void  *val, void (*destructor)( void *ptr ) )
- *\brief put a pointer value with given key in the targeted hash table
+ *\brief put a pointer value with given key in the targeted hash table (HASH_CLASSIC only) 
  *\param table Targeted hash table
  *\param hash_value numerical hash key
  *\param val pointer value to put
@@ -2325,7 +2327,7 @@ int ht_put_ptr_ex( HASH_TABLE *table, unsigned long int hash_value, void  *val, 
     {
         node_ptr = (HASH_NODE *)list_node -> ptr ;
         /* if we found the same key we just replace the value and return */
-        if( node_ptr -> key_type == HASH_KEY_NUM && hash_value == node_ptr -> hash_value )
+        if( hash_value == node_ptr -> hash_value )
         {
             /* let's check the key isn't already assigned with another data type */
             if( node_ptr -> type == HASH_PTR )
@@ -2348,7 +2350,6 @@ int ht_put_ptr_ex( HASH_TABLE *table, unsigned long int hash_value, void  *val, 
 
     new_hash_node -> key = NULL ;
     new_hash_node -> hash_value = hash_value ;
-    new_hash_node -> key_type = HASH_KEY_NUM ;
     new_hash_node -> data . ptr = val ;
     new_hash_node -> type = HASH_PTR ;
     new_hash_node -> destroy_func = destructor ;
@@ -2361,7 +2362,7 @@ int ht_put_ptr_ex( HASH_TABLE *table, unsigned long int hash_value, void  *val, 
 
 
 /*!\fn int ht_remove_ex( HASH_TABLE *table , unsigned long int hash_value )
- *\brief Remove a key from a hash table
+ *\brief Remove a key from a hash table (HASH_CLASSIC only) 
  *\param table Targeted hash table
  *\param hash_value key pre computed numeric hash value
  *\return TRUE or FALSE.
@@ -2386,7 +2387,7 @@ int ht_remove_ex( HASH_TABLE *table, unsigned long int hash_value )
     {
         node_ptr = (HASH_NODE *)list_node -> ptr ;
         /* if we found the same */
-        if( node_ptr -> key_type == HASH_KEY_NUM && hash_value == node_ptr -> hash_value )
+        if( hash_value == node_ptr -> hash_value )
         {
             node_to_kill = list_node ;
             break ;
@@ -2453,3 +2454,176 @@ LIST *ht_get_completion_list( HASH_TABLE *table, const char *keybud, uint32_t ma
     }
     return results ;
 } /* ht_get_completion_list(...) */
+
+
+/*!\fn int is_prime( int nb )
+ *\brief test if number is a prime number or not
+ *\param nb number to test
+ *\return TRUE or FALSE
+ */
+int is_prime( int nb )
+{
+    /* quick test for first primes */
+    if( nb <= 1 ) return FALSE ;
+    if( nb <= 3 ) return TRUE ;
+
+    /* skip middle five numbers in below loop */
+    if( (nb%2 == 0) || (nb%3 == 0) )
+        return FALSE ;
+
+    /* looping */
+    for( int it = 5 ;  it*it <= nb ; it = it + 6 )
+    {
+        if( (nb%it == 0) || (nb%( it + 2 ) == 0) )
+            return FALSE ;
+    }
+    return TRUE ;
+} /*  is_prime() */
+
+
+/*!\fn int next_prime( int nb )
+ *\brief compute next prime number after nb
+ *\param nb number to test
+ *\return next prime number after nb or FALSE
+ */
+int next_prime( int nb )
+{
+    __n_assert( nb > 0 , return FALSE );
+
+    if( nb <= 1 )
+        return 2 ;
+
+    int next_prime = nb;
+    do
+    {
+        next_prime++;
+    }
+    while( is_prime( next_prime ) == FALSE );
+
+    return next_prime;
+} /* next_prime() */
+
+
+
+
+/*!\fn int ht_get_table_collision_percentage( HASH_TABLE *table )
+ *\brief get table collision percentage (HASH_CLASSIC mode only)
+ *\param table targeted table
+ *\return table collision percentage or FALSE 
+ */
+int ht_get_table_collision_percentage( HASH_TABLE *table )
+{
+    __n_assert( table , return FALSE );
+    __n_assert( table -> mode == HASH_CLASSIC , return FALSE );
+
+    if( table -> size == 0 ) return FALSE ;
+
+    int nb_collisionned_lists = 0 ;
+
+    for( unsigned long int hash_it = 0 ; hash_it < table -> size ; hash_it ++ ) 
+    {
+        if( table -> hash_table[ hash_it ] && table -> hash_table[ hash_it ] -> nb_items > 1 )
+        {
+            nb_collisionned_lists ++ ;
+        }
+    }
+    int collision_percentage = ( 100 * nb_collisionned_lists ) /  table -> size ; 
+    return collision_percentage ;
+} /* ht_get_table_collision_percentage() */
+
+
+
+/*!\fn int ht_get_optimal_size( HASH_TABLE *table )
+ *\brief get optimal array size based on nb=(number_of_key*1.3) && if( !isprime(nb) )nb=nextprime(nb) (HASH_CLASSIC mode only)
+ *\param table targeted table
+ *\return FALSE or optimal table size
+ */
+int ht_get_optimal_size( HASH_TABLE *table )
+{
+    __n_assert( table , return FALSE );
+
+    int optimum_size = (double)table -> nb_keys * 1.3 ;
+    if( is_prime( optimum_size ) != TRUE )
+        optimum_size = next_prime( optimum_size );
+
+    return optimum_size ;
+} /* ht_get_optimal_size() */
+
+
+
+
+/*!\fn int ht_resize( HASH_TABLE **table , unsigned int size )
+ *\brief rehash table according to size (HASH_CLASSIC mode only)
+ *\param table targeted table
+ *\param size new hash table size
+ *\return TRUE or FALSE
+ */
+int ht_resize( HASH_TABLE **table , unsigned int size )
+{
+    __n_assert( (*table) , return FALSE );
+    __n_assert( size > 1 , return FALSE );
+
+    HT_FOREACH( node , (*table) , { node -> need_rehash = 1 ; } ); 
+
+    if( size > (*table) -> size )
+    {
+        Realloc( (*table) -> hash_table , LIST * , size );
+        for( unsigned int it = (*table) -> size ; it < size ; it ++ )
+        {
+            (*table) -> hash_table[ it ] = new_generic_list( 0 );
+            // if no valid table then unroll previsouly created slots
+            if( !(*table) -> hash_table[ it ] )
+            {
+                n_log( LOG_ERR, "Can't allocate table -> hash_table[ %d ] !", it );
+                for( unsigned long int it_delete = 0 ; it_delete < it ; it_delete ++ )
+                {
+                    list_destroy( &(*table) -> hash_table[ it_delete ] );
+                }
+                Free( (*table) -> hash_table );
+                Free( (*table) );
+                return FALSE ;
+            }
+        }
+        for( unsigned int it = 0 ; it < size ; it ++ )
+        {
+            if( ( (*table) -> hash_table[ it ] ) )
+            {
+                while( (*table) -> hash_table[ it ] -> start )
+                {
+                    HASH_NODE *hash_node = (HASH_NODE *)(*table) -> hash_table[ it ] -> start -> ptr ;
+                    if( hash_node -> need_rehash == 0 )
+                        break ;
+                    hash_node -> need_rehash = 0 ;
+                    LIST_NODE *node = list_node_shift( (*table) -> hash_table[ it ] );
+                    node -> next = node -> prev = NULL ;
+                    unsigned int index= (hash_node -> hash_value)%(size);
+                    list_node_push( (*table) -> hash_table[ index ] , node );
+                }
+            }
+        }
+    }
+    else
+    {
+        for( unsigned int it = 0 ; it < (*table) -> size ; it ++ )
+        {
+            if( ( (*table) -> hash_table[ it ] ) )
+            {
+                while( (*table) -> hash_table[ it ] -> start )
+                {
+                    HASH_NODE *hash_node = (HASH_NODE *)(*table) -> hash_table[ it ] -> start -> ptr ;
+                    if( hash_node -> need_rehash == 0 )
+                        break ;
+                    LIST_NODE *node = list_node_shift( (*table) -> hash_table[ it ] );
+                    unsigned int index= (hash_node -> hash_value)%(size);
+                    list_node_push( (*table) -> hash_table[ index ] , node );
+                }
+            }
+        }
+        Realloc( (*table) -> hash_table , LIST * , size );
+    }
+    (*table) -> size = size ;
+
+    return TRUE ;
+} /* ht_resize() */
+
+
