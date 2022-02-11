@@ -111,6 +111,129 @@ void *remove_list_node_f( LIST *list, LIST_NODE *node )
 
 
 
+/*!\fn int list_node_push( LIST *list , LIST_NODE *node )
+ *\brief Add a filled node to the end of the list.
+ *\param list An initilized list container. A null value will cause an error and a _log message.
+ *\param node The node pointer you want to put in the list. A null value will cause an error and a _log message.
+ *\return TRUE or FALSE
+ */
+int list_node_push( LIST *list , LIST_NODE *node )
+{
+    __n_assert( list, n_log( LOG_ERR, "invalid list: NULL" ); return FALSE );
+
+    if( list -> nb_max_items > 0 && ( list -> nb_items >= list -> nb_max_items ) )
+    {
+        n_log( LOG_ERR, "list is full" );
+        return FALSE ;
+    }
+    if( list -> end )
+    {
+        list -> end -> next = node ;
+        node -> prev = list -> end ;
+        list -> end = node ;
+    }
+    else
+    {
+        list -> start = list -> end = node ;
+    }
+    list -> nb_items ++ ;
+    return TRUE ;
+} /* list_node_push() */
+
+
+
+/*!\fn LIST_NODE *list_node_pop( LIST *list )
+ *\brief Get a LIST_NODE pointer from the end of the list
+ *\param list An initilized list container. A null value will cause an error and a _log message.
+ *\return A LIST_NODE *node or NULL. Check error messages in DEBUG mode.
+ */
+LIST_NODE *list_node_pop( LIST *list )
+{
+    __n_assert( list, n_log( LOG_ERR, "invalid list: NULL" ); return NULL );
+
+    if( list -> nb_items == 0 || list -> end == NULL )
+        return NULL ;
+
+    LIST_NODE *nodeptr = NULL ;
+    
+    nodeptr = list -> end ;
+    if( list -> end -> prev )
+    {
+        list -> end = list -> end -> prev ;
+        list -> end -> next = NULL ;
+    }
+    list -> nb_items -- ;
+    if( list -> nb_items == 0 )
+        list -> start = list -> end = NULL ;
+
+    return nodeptr ;
+} /* list_node_pop() */
+
+
+
+/*!\fn LIST_NODE *list_node_shift( LIST *list )
+ *\brief Get a LIST_NODE pointer from the start of the list.
+ *\param list An initilized list container. A null value will cause an error and a _log message.
+ *\return A LIST_NODE *node or NULL. Check error messages in DEBUG mode.
+ */
+LIST_NODE *list_node_shift( LIST *list )
+{
+    __n_assert( list, n_log( LOG_ERR, "invalid list: NULL" ); return NULL );
+
+    if( list -> nb_items == 0 || list -> start == NULL )
+        return NULL ;
+
+    LIST_NODE *nodeptr = NULL ;
+    nodeptr = list -> start ;
+
+    if( list -> start -> next )
+    {
+        list -> start = list -> start -> next ;
+        list -> start -> prev = NULL ;
+    }
+    
+    list -> nb_items -- ;
+
+    if( list -> nb_items == 0 )
+        list -> start = list -> end = NULL ;
+
+
+    return nodeptr ;
+} /* list_node_shift() */
+
+
+
+/*!\fn int list_node_unshift( LIST *list , LIST_NODE *node )
+ *\brief Add a pointer at the start of the list.
+ *\param list An initilized list container. A null value will cause an error and a _log message.
+ *\param node The node pointer you wan to put in the list. A null value will cause an error and a _log message.
+ *\return TRUE or FALSE
+ */
+int list_node_unshift( LIST *list, LIST_NODE *node )
+{
+    __n_assert( list, n_log( LOG_ERR, "invalid list: NULL" ); return FALSE );
+
+    if( list -> nb_max_items > 0 && ( list -> nb_items >= list -> nb_max_items ) )
+    {
+        n_log( LOG_ERR, "list is full" );
+        return FALSE ;
+    }
+    if( list -> start )
+    {
+        link_node( node, list -> start );
+        list -> start = node ;
+    }
+    else
+    {
+        list -> start = list -> end = node ;
+    }
+    list -> nb_items ++ ;
+
+    return TRUE ;
+} /* list_node_unshift() */
+
+
+
 /*!\fn int list_push( LIST *list , void *ptr , void (*destructor)( void *ptr ) )
  *\brief Add a pointer to the end of the list.
  *\param list An initilized list container. A null value will cause an error and a _log message.

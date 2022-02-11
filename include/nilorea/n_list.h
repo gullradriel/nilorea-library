@@ -88,6 +88,10 @@ LIST *new_generic_list( int max_items );
 LIST_NODE *new_list_node( void *ptr, void (*destructor)( void *ptr ) );
 /* remove a node */
 void *remove_list_node_f( LIST *list, LIST_NODE *node );
+int list_node_push( LIST *list , LIST_NODE *node );
+LIST_NODE *list_node_pop( LIST *list );
+LIST_NODE *list_node_shift( LIST *list );
+int list_node_unshift( LIST *list, LIST_NODE *node );
 
 /* add a pointer at the end of the list */
 int list_push( LIST *list, void *ptr, void (*destructor)( void *ptr ) ) ;
@@ -105,7 +109,6 @@ void *list_shift_f( LIST *list );
 
 /* search ptr in list */
 LIST_NODE *list_search( LIST *list, void *ptr );
-
 /* search for data in list */
 LIST_NODE *list_search_with_f( LIST *list, int (*checkfunk)( void *ptr ) );
 
