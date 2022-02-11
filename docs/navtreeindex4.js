@@ -1,5 +1,12 @@
 var NAVTREEINDEX4 =
 {
+"n__nodup__log_8c.html#a369266c24eacffb87046522897a570d5":[3,0,2,13,0],
+"n__nodup__log_8c.html#a43e324b2382fb23043d7383063fa150f":[3,0,2,13,4],
+"n__nodup__log_8c.html#a7ced205f799238a352c2080c2af6b156":[3,0,2,13,9],
+"n__nodup__log_8c.html#aad87e98f27fbce43793143aaf562590d":[3,0,2,13,8],
+"n__nodup__log_8c.html#abd498f389d9af3ed61abe8a27d16c9ee":[3,0,2,13,3],
+"n__nodup__log_8c.html#ac3484044fe72c29480f013078bb34e51":[3,0,2,13,11],
+"n__nodup__log_8c_source.html":[3,0,2,13],
 "n__nodup__log_8h.html":[3,0,1,0,14],
 "n__nodup__log_8h_source.html":[3,0,1,0,14],
 "n__particles_8c.html":[3,0,2,14],

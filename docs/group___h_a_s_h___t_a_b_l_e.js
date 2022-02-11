@@ -9,7 +9,7 @@ var group___h_a_s_h___t_a_b_l_e =
       [ "is_leaf", "group___h_a_s_h___t_a_b_l_e.html#a3a39060513f4af39aedef416fec38296", null ],
       [ "key", "group___h_a_s_h___t_a_b_l_e.html#a2c219363728255e08c112ef10506fb68", null ],
       [ "key_id", "group___h_a_s_h___t_a_b_l_e.html#a242a1f7255fc836bb1395079e1c0016b", null ],
-      [ "key_type", "group___h_a_s_h___t_a_b_l_e.html#a1b488aad2fd7b94ebb4c09dc76cebcda", null ],
+      [ "need_rehash", "group___h_a_s_h___t_a_b_l_e.html#a1d03a2f41cf3097e781103abc6296079", null ],
       [ "type", "group___h_a_s_h___t_a_b_l_e.html#a5cd9a167ac8d507a9a98f34fee5577f2", null ]
     ] ],
     [ "HASH_TABLE", "group___h_a_s_h___t_a_b_l_e.html#struct_h_a_s_h___t_a_b_l_e", [
@@ -47,8 +47,6 @@ var group___h_a_s_h___t_a_b_l_e =
     [ "HASH_CLASSIC", "group___h_a_s_h___t_a_b_l_e.html#gaaf679be9dbe3da9e0b18126584fc276f", null ],
     [ "HASH_DOUBLE", "group___h_a_s_h___t_a_b_l_e.html#ga567061089afaa05f04d40a1e076a5705", null ],
     [ "HASH_INT", "group___h_a_s_h___t_a_b_l_e.html#gae5cab5caf80df2b545b79010e58c930e", null ],
-    [ "HASH_KEY_NUM", "group___h_a_s_h___t_a_b_l_e.html#ga03937f1bda9c901c6e206c569d8d0975", null ],
-    [ "HASH_KEY_STRING", "group___h_a_s_h___t_a_b_l_e.html#gaace734823fbd28f8d98e5a55db5348c7", null ],
     [ "HASH_PTR", "group___h_a_s_h___t_a_b_l_e.html#ga380f9944f2162350b1fc52f1e20cf47c", null ],
     [ "HASH_STRING", "group___h_a_s_h___t_a_b_l_e.html#ga610bced429f9d429f9b54d69135e9253", null ],
     [ "HASH_TRIE", "group___h_a_s_h___t_a_b_l_e.html#gac2850d8278af32c2e76e7ab856902bdc", null ],
@@ -66,9 +64,12 @@ var group___h_a_s_h___t_a_b_l_e =
     [ "ht_get_double", "group___h_a_s_h___t_a_b_l_e.html#ga502f7dbc79e94de757ef1cab4fb73559", null ],
     [ "ht_get_int", "group___h_a_s_h___t_a_b_l_e.html#ga0f010d92970501906058c686d705c541", null ],
     [ "ht_get_node", "group___h_a_s_h___t_a_b_l_e.html#gab06eec66b0398db0948d911383816277", null ],
+    [ "ht_get_node_ex", "group___h_a_s_h___t_a_b_l_e.html#gad422dab24bcb5726928fa8e9b2f1cb3b", null ],
+    [ "ht_get_optimal_size", "group___h_a_s_h___t_a_b_l_e.html#gaeea73f0197b24d2adebe77a6e043286d", null ],
     [ "ht_get_ptr", "group___h_a_s_h___t_a_b_l_e.html#ga009f66a508dcea120e0cd2b34805e5a2", null ],
     [ "ht_get_ptr_ex", "group___h_a_s_h___t_a_b_l_e.html#gaa59e04518c16487ce49460baac2627a3", null ],
     [ "ht_get_string", "group___h_a_s_h___t_a_b_l_e.html#ga833854027692b398d675388aa548e892", null ],
+    [ "ht_get_table_collision_percentage", "group___h_a_s_h___t_a_b_l_e.html#ga484b7c7f330914d21fafbf582713fc07", null ],
     [ "ht_node_type", "group___h_a_s_h___t_a_b_l_e.html#ga1392981a507905d028136bc0b92aa48b", null ],
     [ "ht_print", "group___h_a_s_h___t_a_b_l_e.html#ga62ef2a517efcbc464f0103995f28c3e8", null ],
     [ "ht_put_double", "group___h_a_s_h___t_a_b_l_e.html#ga6d77292f765050e2afc7735218ff242b", null ],
@@ -79,9 +80,12 @@ var group___h_a_s_h___t_a_b_l_e =
     [ "ht_put_string_ptr", "group___h_a_s_h___t_a_b_l_e.html#gaee367d5c4ee2479096ab943cacb1464e", null ],
     [ "ht_remove", "group___h_a_s_h___t_a_b_l_e.html#ga2dc87273d3e6b3492d88f2bd7288102e", null ],
     [ "ht_remove_ex", "group___h_a_s_h___t_a_b_l_e.html#ga68b271bba7497e9b93058cabf5c0bd88", null ],
+    [ "ht_resize", "group___h_a_s_h___t_a_b_l_e.html#gadbfb2646231f3ddf4bc4cc2cdf16583d", null ],
     [ "ht_search", "group___h_a_s_h___t_a_b_l_e.html#ga16446a54727b375dfd0c92704dc39995", null ],
+    [ "is_prime", "group___h_a_s_h___t_a_b_l_e.html#ga601b4d65a11b78f7ddcf3e28b278fff9", null ],
     [ "MurmurHash3_x86_128", "group___h_a_s_h___t_a_b_l_e.html#ga917618a4c922f524216381a5e5a43a60", null ],
     [ "MurmurHash3_x86_32", "group___h_a_s_h___t_a_b_l_e.html#ga37412933f308bda727603640d9acefba", null ],
     [ "new_ht", "group___h_a_s_h___t_a_b_l_e.html#gaa2d879c1afd3c71a0917bbe2c0766664", null ],
-    [ "new_ht_trie", "group___h_a_s_h___t_a_b_l_e.html#gab95fe0967850a3665d21837519ede6c8", null ]
+    [ "new_ht_trie", "group___h_a_s_h___t_a_b_l_e.html#gab95fe0967850a3665d21837519ede6c8", null ],
+    [ "next_prime", "group___h_a_s_h___t_a_b_l_e.html#ga55177b1d2e80a1ccca8f0048714109db", null ]
 ];

@@ -8,6 +8,6 @@ var group___h_a_s_h___t_a_b_l_e_struct_h_a_s_h___n_o_d_e =
     [ "is_leaf", "group___h_a_s_h___t_a_b_l_e.html#a3a39060513f4af39aedef416fec38296", null ],
     [ "key", "group___h_a_s_h___t_a_b_l_e.html#a2c219363728255e08c112ef10506fb68", null ],
     [ "key_id", "group___h_a_s_h___t_a_b_l_e.html#a242a1f7255fc836bb1395079e1c0016b", null ],
-    [ "key_type", "group___h_a_s_h___t_a_b_l_e.html#a1b488aad2fd7b94ebb4c09dc76cebcda", null ],
+    [ "need_rehash", "group___h_a_s_h___t_a_b_l_e.html#a1d03a2f41cf3097e781103abc6296079", null ],
     [ "type", "group___h_a_s_h___t_a_b_l_e.html#a5cd9a167ac8d507a9a98f34fee5577f2", null ]
 ];
