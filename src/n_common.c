@@ -9,7 +9,6 @@
 #include "nilorea/n_log.h"
 #include "nilorea/n_str.h"
 
-
 #include <limits.h>
 #include <stdio.h>
 #include <stdlib.h>

@@ -33,12 +33,16 @@ extern "C" {
 #include <stdlib.h>
 /*! compatibility with existing rot func */
 #define ROTL32(x,y)     _rotl(x,y)
+/*! compatibility with existing rot func */
+#define ROTL64(x,y)     _rotl64(x,y)
 /*! compatibility with existing func */
 #define BIG_CONSTANT(x) (x)
 #else
 /*! missing ROTL fix 32bit */
 #define ROTL32(x,y)     rotl32(x,y)
-/*! missing ROTL constant fix 64bit */
+/*! missing ROTL fix 64bit */
+#define ROTL64(x,y)     rotl64(x,y)
+/*! missing ROTL constant */
 #define BIG_CONSTANT(x) (x##LLU)
 #endif /* if defined MSVC ... */
 
@@ -309,6 +313,7 @@ typedef struct HASH_TABLE
 
 void MurmurHash3_x86_32  ( const void * key, int len, uint32_t seed, void * out );
 void MurmurHash3_x86_128 ( const void * key, int len, uint32_t seed, void * out );
+void MurmurHash3_x64_128 ( const void * key, int len, uint32_t seed, void * out );
 
 char *ht_node_type( HASH_NODE *node );
 HASH_NODE *ht_get_node( HASH_TABLE *table, const char *key );
