@@ -212,13 +212,17 @@ typedef unsigned char uchar;
 #define Realloc( __ptr, __struct , __size )  \
 { \
     int __n_errno = 0 ; \
-    __ptr  = (  __struct  *)realloc(  __ptr ,  __size  * sizeof(  __struct  ) ); \
+    void *__new_ptr  = (  __struct  *)realloc(  __ptr ,  __size  * sizeof(  __struct  ) ); \
     __n_errno = errno ; \
-    if( !__ptr || __n_errno == ENOMEM ) \
+    if( !__new_ptr || __n_errno == ENOMEM ) \
     { \
-        n_log( LOG_ERR , "( %s *)malloc( %s * sizeof( %d ) ) %s at line %d of %s \n", #__ptr , #__struct , __size , (__n_errno==0)?"realloc error":strerror( __n_errno ) , __LINE__ , __FILE__);\
-        __ptr = NULL;\
+        n_log( LOG_ERR , "( %s *)realloc( %s * sizeof( %d ) ) %s at line %d of %s \n", #__ptr , #__struct , __size , (__n_errno==0)?"realloc error":strerror( __n_errno ) , __LINE__ , __FILE__);\
     } \
+	else \
+	{ \
+		__ptr = __new_ptr ; \
+	} \
+	__new_ptr ; \
 }
 
 /*! Realloc + zero new memory zone Handler to get errors */
