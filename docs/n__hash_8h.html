@@ -173,7 +173,7 @@ Data Structures</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:ga8e0f90a6ea3d3db65033b8ace70cb65a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#ga8e0f90a6ea3d3db65033b8ace70cb65a">BIG_CONSTANT</a>(x)&#160;&#160;&#160;(x##LLU)</td></tr>
-<tr class="memdesc:ga8e0f90a6ea3d3db65033b8ace70cb65a"><td class="mdescLeft">&#160;</td><td class="mdescRight">missing ROTL constant fix 64bit  <a href="group___h_a_s_h___t_a_b_l_e.html#ga8e0f90a6ea3d3db65033b8ace70cb65a">More...</a><br /></td></tr>
+<tr class="memdesc:ga8e0f90a6ea3d3db65033b8ace70cb65a"><td class="mdescLeft">&#160;</td><td class="mdescRight">missing ROTL constant  <a href="group___h_a_s_h___t_a_b_l_e.html#ga8e0f90a6ea3d3db65033b8ace70cb65a">More...</a><br /></td></tr>
 <tr class="separator:ga8e0f90a6ea3d3db65033b8ace70cb65a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaaf679be9dbe3da9e0b18126584fc276f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#gaaf679be9dbe3da9e0b18126584fc276f">HASH_CLASSIC</a>&#160;&#160;&#160;128</td></tr>
 <tr class="memdesc:gaaf679be9dbe3da9e0b18126584fc276f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Murmur hash using hash key string, hash key numeric value, index table with lists of elements.  <a href="group___h_a_s_h___t_a_b_l_e.html#gaaf679be9dbe3da9e0b18126584fc276f">More...</a><br /></td></tr>
@@ -218,6 +218,9 @@ Macros</h2></td></tr>
 <tr class="memitem:gab32bb365c62dcb0da675e248b7e814a9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#gab32bb365c62dcb0da675e248b7e814a9">ROTL32</a>(x,  y)&#160;&#160;&#160;<a class="el" href="n__hash_8c.html#a324269020bad851cd569c40a23a862ef">rotl32</a>(x,y)</td></tr>
 <tr class="memdesc:gab32bb365c62dcb0da675e248b7e814a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">missing ROTL fix 32bit  <a href="group___h_a_s_h___t_a_b_l_e.html#gab32bb365c62dcb0da675e248b7e814a9">More...</a><br /></td></tr>
 <tr class="separator:gab32bb365c62dcb0da675e248b7e814a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga612c70207b96b27f06eff614e3b9ffd9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#ga612c70207b96b27f06eff614e3b9ffd9">ROTL64</a>(x,  y)&#160;&#160;&#160;<a class="el" href="n__hash_8c.html#ab521c3afbf287a5c740d348feba24b77">rotl64</a>(x,y)</td></tr>
+<tr class="memdesc:ga612c70207b96b27f06eff614e3b9ffd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">missing ROTL fix 64bit  <a href="group___h_a_s_h___t_a_b_l_e.html#ga612c70207b96b27f06eff614e3b9ffd9">More...</a><br /></td></tr>
+<tr class="separator:ga612c70207b96b27f06eff614e3b9ffd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -260,6 +263,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga1392981a507905d028136bc0b92aa48b"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#ga1392981a507905d028136bc0b92aa48b">ht_node_type</a> (<a class="el" href="group___h_a_s_h___t_a_b_l_e.html#struct_h_a_s_h___n_o_d_e">HASH_NODE</a> *node)</td></tr>
 <tr class="memdesc:ga1392981a507905d028136bc0b92aa48b"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the type of a node , text version  <a href="group___h_a_s_h___t_a_b_l_e.html#ga1392981a507905d028136bc0b92aa48b">More...</a><br /></td></tr>
 <tr class="separator:ga1392981a507905d028136bc0b92aa48b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadf9786c2b5844999ebb011ab56746047"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#gadf9786c2b5844999ebb011ab56746047">ht_optimize</a> (<a class="el" href="group___h_a_s_h___t_a_b_l_e.html#struct_h_a_s_h___t_a_b_l_e">HASH_TABLE</a> **table)</td></tr>
+<tr class="memdesc:gadf9786c2b5844999ebb011ab56746047"><td class="mdescLeft">&#160;</td><td class="mdescRight">try an automatic optimization of the table  <a href="group___h_a_s_h___t_a_b_l_e.html#gadf9786c2b5844999ebb011ab56746047">More...</a><br /></td></tr>
+<tr class="separator:gadf9786c2b5844999ebb011ab56746047"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga62ef2a517efcbc464f0103995f28c3e8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#ga62ef2a517efcbc464f0103995f28c3e8">ht_print</a> (<a class="el" href="group___h_a_s_h___t_a_b_l_e.html#struct_h_a_s_h___t_a_b_l_e">HASH_TABLE</a> *table)</td></tr>
 <tr class="memdesc:ga62ef2a517efcbc464f0103995f28c3e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">print contents of table  <a href="group___h_a_s_h___t_a_b_l_e.html#ga62ef2a517efcbc464f0103995f28c3e8">More...</a><br /></td></tr>
 <tr class="separator:ga62ef2a517efcbc464f0103995f28c3e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -296,6 +302,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga601b4d65a11b78f7ddcf3e28b278fff9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#ga601b4d65a11b78f7ddcf3e28b278fff9">is_prime</a> (int nb)</td></tr>
 <tr class="memdesc:ga601b4d65a11b78f7ddcf3e28b278fff9"><td class="mdescLeft">&#160;</td><td class="mdescRight">test if number is a prime number or not  <a href="group___h_a_s_h___t_a_b_l_e.html#ga601b4d65a11b78f7ddcf3e28b278fff9">More...</a><br /></td></tr>
 <tr class="separator:ga601b4d65a11b78f7ddcf3e28b278fff9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3297945557e1c9ba429829d67e8dd361"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#ga3297945557e1c9ba429829d67e8dd361">MurmurHash3_x64_128</a> (const void *key, int len, uint32_t seed, void *out)</td></tr>
+<tr class="memdesc:ga3297945557e1c9ba429829d67e8dd361"><td class="mdescLeft">&#160;</td><td class="mdescRight">MurmurHash3 was written by Austin Appleby, and is placed in the public domain.  <a href="group___h_a_s_h___t_a_b_l_e.html#ga3297945557e1c9ba429829d67e8dd361">More...</a><br /></td></tr>
+<tr class="separator:ga3297945557e1c9ba429829d67e8dd361"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga917618a4c922f524216381a5e5a43a60"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___h_a_s_h___t_a_b_l_e.html#ga917618a4c922f524216381a5e5a43a60">MurmurHash3_x86_128</a> (const void *key, int len, uint32_t seed, void *out)</td></tr>
 <tr class="memdesc:ga917618a4c922f524216381a5e5a43a60"><td class="mdescLeft">&#160;</td><td class="mdescRight">MurmurHash3 was written by Austin Appleby, and is placed in the public domain.  <a href="group___h_a_s_h___t_a_b_l_e.html#ga917618a4c922f524216381a5e5a43a60">More...</a><br /></td></tr>
 <tr class="separator:ga917618a4c922f524216381a5e5a43a60"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -325,7 +334,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_310dcdd4703e877a6b99d5dc3fc54d27.html">nilorea</a></li><li class="navelem"><a class="el" href="n__hash_8h.html">n_hash.h</a></li>
-    <li class="footer">Generated on Fri Feb 11 2022 16:10:21 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+    <li class="footer">Generated on Tue Feb 15 2022 14:52:51 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
   </ul>
 </div>
 </body>

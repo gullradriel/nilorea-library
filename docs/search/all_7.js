@@ -27,13 +27,14 @@ var searchData=
   ['get_5fusec_24',['get_usec',['../group___n___t_i_m_e.html#gaa26bb3d464f6def321b9919bf1e9d1f4',1,'get_usec(N_TIME *timer):&#160;n_time.c'],['../group___n___t_i_m_e.html#gaa26bb3d464f6def321b9919bf1e9d1f4',1,'get_usec(N_TIME *timer):&#160;n_time.c']]],
   ['get_5fvalue_25',['get_value',['../group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga2021990e7c7fa6c4589752a771aa48f3',1,'get_value(MAP *map, int type, int x, int y):&#160;n_iso_engine.c'],['../group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga2021990e7c7fa6c4589752a771aa48f3',1,'get_value(MAP *map, int type, int x, int y):&#160;n_iso_engine.c']]],
   ['getblock_26',['getblock',['../n__hash_8c.html#a6a1b75002afc7d08ccc3129f78b62c07',1,'n_hash.c']]],
-  ['getmaxcompressedlen_27',['GetMaxCompressedLen',['../group___z_l_i_b.html#ga316f6b6d89d35de431b48b72afb3cf30',1,'GetMaxCompressedLen(unsigned int nLenSrc):&#160;n_zlib.c'],['../group___z_l_i_b.html#ga316f6b6d89d35de431b48b72afb3cf30',1,'GetMaxCompressedLen(unsigned int nLenSrc):&#160;n_zlib.c']]],
-  ['gfx_5fconfig_5fmode_28',['GFX_CONFIG_MODE',['../group___g_a_m_e___e_n_v.html#ae060b9ab26fffddd68412a380b91e435',1,'GAME_ENV']]],
-  ['gfx_5fupdate_5frate_29',['GFX_UPDATE_RATE',['../group___g_a_m_e___e_n_v.html#a2ac7fb130a7a0055cca1b26d887d0cdb',1,'GAME_ENV']]],
-  ['gfxs_30',['gfxs',['../group___a_n_i_m___l_i_b.html#a66bbbae2d1b7cedfd09d2ed2108c8b1c',1,'ANIM_LIB']]],
-  ['graphics_3a_203d_20particles_20utilities_31',['GRAPHICS: 3D particles utilities',['../group___p_a_r_t_i_c_l_e_s.html',1,'']]],
-  ['graphics_3a_20animation_20library_2c_20loading_20structures_20and_20blit_20funcs_32',['GRAPHICS: animation library, loading structures and blit funcs',['../group___a_n_i_m___l_i_b.html',1,'']]],
-  ['graphics_3a_20isometric_20engine_2c_20maps_2c_20tiles_2c_20_2e_2e_2e_33',['GRAPHICS: isometric engine, maps, tiles, ...',['../group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html',1,'']]],
-  ['gravity_34',['gravity',['../group___p_h_y_s_i_c_s.html#a408717d7fc927cd37e24d5a67a26d331',1,'PHYSICS']]],
-  ['grid_35',['grid',['../group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#aa358962e9063fc034f305040b4ccc0bb',1,'MAP']]]
+  ['getblock64_27',['getblock64',['../n__hash_8c.html#a4d798ad42df355ea52d4188b18afe3bd',1,'n_hash.c']]],
+  ['getmaxcompressedlen_28',['GetMaxCompressedLen',['../group___z_l_i_b.html#ga316f6b6d89d35de431b48b72afb3cf30',1,'GetMaxCompressedLen(unsigned int nLenSrc):&#160;n_zlib.c'],['../group___z_l_i_b.html#ga316f6b6d89d35de431b48b72afb3cf30',1,'GetMaxCompressedLen(unsigned int nLenSrc):&#160;n_zlib.c']]],
+  ['gfx_5fconfig_5fmode_29',['GFX_CONFIG_MODE',['../group___g_a_m_e___e_n_v.html#ae060b9ab26fffddd68412a380b91e435',1,'GAME_ENV']]],
+  ['gfx_5fupdate_5frate_30',['GFX_UPDATE_RATE',['../group___g_a_m_e___e_n_v.html#a2ac7fb130a7a0055cca1b26d887d0cdb',1,'GAME_ENV']]],
+  ['gfxs_31',['gfxs',['../group___a_n_i_m___l_i_b.html#a66bbbae2d1b7cedfd09d2ed2108c8b1c',1,'ANIM_LIB']]],
+  ['graphics_3a_203d_20particles_20utilities_32',['GRAPHICS: 3D particles utilities',['../group___p_a_r_t_i_c_l_e_s.html',1,'']]],
+  ['graphics_3a_20animation_20library_2c_20loading_20structures_20and_20blit_20funcs_33',['GRAPHICS: animation library, loading structures and blit funcs',['../group___a_n_i_m___l_i_b.html',1,'']]],
+  ['graphics_3a_20isometric_20engine_2c_20maps_2c_20tiles_2c_20_2e_2e_2e_34',['GRAPHICS: isometric engine, maps, tiles, ...',['../group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html',1,'']]],
+  ['gravity_35',['gravity',['../group___p_h_y_s_i_c_s.html#a408717d7fc927cd37e24d5a67a26d331',1,'PHYSICS']]],
+  ['grid_36',['grid',['../group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#aa358962e9063fc034f305040b4ccc0bb',1,'MAP']]]
 ];
