@@ -108,6 +108,8 @@ int _ht_put_int_trie( HASH_TABLE *table, const char *key, int value )
     node -> data . ival = value ;
     node -> type = HASH_INT ;
 
+	table -> nb_keys ++ ;
+
     return TRUE;
 } /* _ht_put_int_trie(...) */
 
@@ -157,6 +159,8 @@ int _ht_put_double_trie( HASH_TABLE *table, const char *key, double value )
     /* Put the value */
     node -> data . fval = value ;
     node -> type = HASH_DOUBLE ;
+
+	table -> nb_keys ++ ;
 
     return TRUE;
 } /* _ht_put_double_trie(...) */
@@ -211,6 +215,8 @@ int _ht_put_string_trie( HASH_TABLE *table, const char *key, char *string )
         node -> data . string = NULL ;
 
     node -> type = HASH_STRING ;
+	
+	table -> nb_keys ++ ;
 
     return TRUE;
 } /* _ht_put_string_trie(...) */
@@ -261,6 +267,8 @@ int _ht_put_string_ptr_trie( HASH_TABLE *table, const char *key, char *string )
     /* Put the string */
     node -> data . string = string ;
     node -> type = HASH_STRING ;
+
+	table -> nb_keys ++ ;
 
     return TRUE;
 } /* _ht_put_string_ptr_trie(...) */
@@ -314,6 +322,8 @@ int _ht_put_ptr_trie( HASH_TABLE *table, const char *key, void *ptr, void (*dest
     if( destructor )
         node -> destroy_func = destructor ;
     node -> type = HASH_PTR ;
+	
+	table -> nb_keys ++ ;
 
     return TRUE;
 } /* _ht_put_ptr_trie(...) */
@@ -711,6 +721,9 @@ int _ht_remove_trie( HASH_TABLE *table, const char *key )
         }
     }
     Free( longest_prefix );
+
+	table -> nb_keys -- ;
+
     return TRUE ;
 } /* _ht_remove_trie(...) */
 
@@ -1393,7 +1406,7 @@ char *ht_node_type( HASH_NODE *node )
  */
 HASH_NODE *_ht_get_node( HASH_TABLE *table, const char *key )
 {
-    uint32_t hash_value = 0 ;
+    uint64_t hash_value = 0 ;
     unsigned long int index = 0;
 
     HASH_NODE *node_ptr = NULL ;
@@ -1407,7 +1420,8 @@ HASH_NODE *_ht_get_node( HASH_TABLE *table, const char *key )
     MurmurHash3_x64_128( key, strlen( key ), table -> seed, &hash_value );
     index= (hash_value)%(table->size);
 
-    __n_assert( table -> hash_table[ index ] -> start, return NULL );
+    if( ! table -> hash_table[ index ] -> start )
+		return NULL ;
 
     list_foreach( list_node, table -> hash_table[ index ] )
     {
@@ -1435,12 +1449,12 @@ HASH_NODE *_ht_new_node( HASH_TABLE *table, const char *key )
     __n_assert( key, return NULL );
 
     HASH_NODE *new_hash_node = NULL ;
-    uint32_t hash_value = 0 ;
+    uint64_t hash_value = 0 ;
 
     if( strlen( key ) == 0 )
         return NULL ;
 
-    MurmurHash3_x86_32( key, strlen( key ), table -> seed, &hash_value );
+    MurmurHash3_x64_128( key, strlen( key ), table -> seed, &hash_value );
 
     Malloc( new_hash_node, HASH_NODE, 1 );
     __n_assert( new_hash_node, n_log( LOG_ERR, "Could not allocate new_hash_node" ); return NULL );
@@ -1915,7 +1929,7 @@ int _ht_get_string( HASH_TABLE *table, const char *key, char  **val )
  */
 int _ht_remove( HASH_TABLE *table, const char *key )
 {
-    uint32_t hash_value = 0 ;
+    uint64_t hash_value = 0 ;
     unsigned long int index = 0;
 
     HASH_NODE *node_ptr = NULL ;
@@ -1926,7 +1940,7 @@ int _ht_remove( HASH_TABLE *table, const char *key )
     if( strlen( key ) == 0 )
         return FALSE ;
 
-    MurmurHash3_x86_32( key, strlen( key ), table -> seed, &hash_value );
+    MurmurHash3_x64_128( key, strlen( key ), table -> seed, &hash_value );
     index= (hash_value)%(table->size) ;
 
     if( !table -> hash_table[ index ] -> start )
@@ -2655,8 +2669,6 @@ int is_prime( int nb )
  */
 int next_prime( int nb )
 {
-    __n_assert( nb > 0 , return FALSE );
-
     if( nb <= 1 )
         return 2 ;
 
@@ -2728,8 +2740,12 @@ int ht_get_optimal_size( HASH_TABLE *table )
 int ht_resize( HASH_TABLE **table , unsigned int size )
 {
     __n_assert( (*table) , return FALSE );
-    __n_assert( size > 1 , return FALSE );
-
+    
+	if( size < 1 )
+	{
+		n_log( LOG_ERR , "invalid size %d for hash table %p" , size , (*table) );	
+		return FALSE ;
+	}
     HT_FOREACH( node , (*table) , { node -> need_rehash = 1 ; } ); 
 
     if( size > (*table) -> size )
@@ -2786,12 +2802,18 @@ int ht_resize( HASH_TABLE **table , unsigned int size )
                     HASH_NODE *hash_node = (HASH_NODE *)(*table) -> hash_table[ it ] -> start -> ptr ;
                     if( hash_node -> need_rehash == 0 )
                         break ;
+                    hash_node -> need_rehash = 0 ;
                     LIST_NODE *node = list_node_shift( (*table) -> hash_table[ it ] );
+                    node -> next = node -> prev = NULL ;
                     unsigned int index= (hash_node -> hash_value)%(size);
                     list_node_push( (*table) -> hash_table[ index ] , node );
                 }
             }
         }
+        for( unsigned int it = size ; it < (*table) -> size ; it ++ )
+        {
+			list_destroy( &(*table) -> hash_table[ it ] );
+		}
         if( !( Realloc( (*table) -> hash_table , LIST * , size ) ) )
         {
             n_log( LOG_ERR ,"Realloc did not reduce the resize the table !" );
@@ -2812,27 +2834,22 @@ int ht_resize( HASH_TABLE **table , unsigned int size )
 int ht_optimize( HASH_TABLE **table )
 {
     __n_assert( (*table) , return FALSE );
-
-    unsigned long int optimal_size = ht_get_optimal_size( (*table) );
+    
+	unsigned long int optimal_size = ht_get_optimal_size( (*table) );
     if( optimal_size == FALSE )
         return FALSE;
 
     int collision_percentage = ht_get_table_collision_percentage( (*table) );
     if( collision_percentage == FALSE )
         return FALSE ;
-    n_log( LOG_DEBUG, "########" );
-    n_log( LOG_DEBUG, "collisions: %d %%" , collision_percentage );
-    n_log( LOG_DEBUG, "table size: %ld , table optimal size: %ld" , (*table) -> size , optimal_size );
 
     int resize_result = ht_resize( &(*table) , optimal_size );
     if( resize_result == FALSE )
         return FALSE ;
-    n_log( LOG_DEBUG, "resizing to %ld returned %d" , optimal_size , resize_result );
-    collision_percentage = ht_get_table_collision_percentage( (*table) );
+    
+	collision_percentage = ht_get_table_collision_percentage( (*table) );
     if( collision_percentage == FALSE )
         return FALSE ;
-    n_log( LOG_DEBUG, "collisions after resize: %d %%" , collision_percentage );
-    n_log( LOG_DEBUG, "########" );
 
     return TRUE ;
 }/* ht_optimize() */
