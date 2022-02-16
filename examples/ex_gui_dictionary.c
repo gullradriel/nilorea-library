@@ -8,41 +8,30 @@
 #define HEIGHT 800
 
 #include "nilorea/n_common.h"
-#include "nilorea/n_particles.h"
-#include "nilorea/n_anim.h"
 #include "nilorea/n_list.h"
 #include "nilorea/n_hash.h"
 #include "nilorea/n_pcre.h"
+#include "nilorea/n_str.h"
 #include "nilorea/n_allegro5.h"
-//#include "nilorea/n_resources.h"
-//#include <allegro5/allegro_native_dialog.h>
 #include <allegro5/allegro_ttf.h>
 
 /* dictionnaries are from https://www.bragitoff.com/2016/03/english-dictionary-in-csv-format/ */
 
 ALLEGRO_DISPLAY *display  = NULL ;
 
-int		DONE = 0,                    /* Flag to check if we are always running */
-        getoptret = 0,				  /* launch parameter check */
-        log_level = LOG_ERR ;			 /* default LOG_LEVEL */
+int		DONE = 0,               /* Flag to check if we are always running */
+        getoptret = 0,		    /* launch parameter check */
+        log_level = LOG_INFO ;	/* default LOG_LEVEL */
 
 ALLEGRO_BITMAP *scr_buf       = NULL ;
 
 ALLEGRO_TIMER *fps_timer = NULL ;
 ALLEGRO_TIMER *logic_timer = NULL ;
-LIST *active_object = NULL ;                      /* list of active objects */
-PARTICLE_SYSTEM *particle_system_effects=NULL ;
 
-//RESOURCES *resources = NULL ;
 
 int main( int argc, char *argv[] )
 {
-    set_log_level( LOG_NOTICE );
-
-    N_STR *log_file = NULL ;
-    nstrprintf( log_file, "%s.log", argv[ 0 ] ) ;
-    /*set_log_file( _nstr( log_file ) );*/
-    free_nstr( &log_file );
+    set_log_level( log_level );
 
     n_log( LOG_NOTICE, "%s is starting ...", argv[ 0 ] );
 
@@ -51,14 +40,6 @@ int main( int argc, char *argv[] )
     if (!al_init())
     {
         n_abort("Could not init Allegro.\n");
-    }
-    if (!al_install_audio())
-    {
-        n_abort("Unable to initialize audio addon\n");
-    }
-    if (!al_init_acodec_addon())
-    {
-        n_abort("Unable to initialize acoded addon\n");
     }
     if (!al_init_image_addon())
     {
@@ -100,26 +81,26 @@ int main( int argc, char *argv[] )
         switch( getoptret )
         {
             case 'h':
-                n_log( LOG_NOTICE, "\n    %s -h help -v version -V DEBUGLEVEL (NOLOG,VERBOSE,NOTICE,ERROR,DEBUG)\n", argv[ 0 ] );
+                n_log( LOG_NOTICE, "\n    %s -h help -v version -V LOG_LEVEL (NOLOG,INFO,NOTICE,ERR,DEBUG) -L OPT_LOG_FILE\n", argv[ 0 ] );
                 exit( TRUE );
             case 'v':
                 sprintf( ver_str, "%s %s", __DATE__, __TIME__ );
                 exit( TRUE );
                 break ;
             case 'V':
-                if( !strncmp( "NOTICE", optarg, 6 ) )
+                if( !strncmp( "INFO", optarg, 6 ) )
                 {
                     log_level = LOG_INFO ;
                 }
                 else
                 {
-                    if(  !strncmp( "VERBOSE", optarg, 7 ) )
+                    if(  !strncmp( "NOTICE", optarg, 7 ) )
                     {
                         log_level = LOG_NOTICE ;
                     }
                     else
                     {
-                        if(  !strncmp( "ERROR", optarg, 5 ) )
+                        if(  !strncmp( "ERR", optarg, 5 ) )
                         {
                             log_level = LOG_ERR ;
                         }
@@ -164,8 +145,12 @@ int main( int argc, char *argv[] )
         }
     }
 
-    fps_timer = al_create_timer( 1.0/30.0 );
-    logic_timer = al_create_timer( 1.0/50.0 );
+    double fps = 60.0 ;
+    double fps_delta_time = 1.0 / fps ;
+    double logic_delta_time = 1.0 / (5.0 * fps);
+
+    fps_timer = al_create_timer( fps_delta_time );
+    logic_timer = al_create_timer( logic_delta_time );
 
     al_set_new_display_flags( ALLEGRO_OPENGL|ALLEGRO_WINDOWED );
     display = al_create_display( WIDTH, HEIGHT );
@@ -179,17 +164,13 @@ int main( int argc, char *argv[] )
 
     DONE = 0 ;
 
-    active_object = new_generic_list( -1 );
-
-
     enum APP_KEYS
     {
-        KEY_UP, KEY_DOWN, KEY_LEFT, KEY_RIGHT, KEY_ESC, KEY_SPACE, KEY_CTRL , KEY_ENTER
+        KEY_ESC
     };
-    int key[ 8 ] = {false,false,false,false,false,false,false,false};
+    int key[ 1 ] = {false};
 
     al_register_event_source(event_queue, al_get_display_event_source(display));
-
     al_start_timer( fps_timer );
     al_start_timer( logic_timer );
     al_register_event_source(event_queue, al_get_timer_event_source(fps_timer));
@@ -209,8 +190,6 @@ int main( int argc, char *argv[] )
     ALLEGRO_BITMAP *scrbuf = al_create_bitmap( WIDTH, HEIGHT );
 
     al_hide_mouse_cursor(display);
-
-    init_particle_system( &particle_system_effects, 10000, 0, 0, 0, 100 );
 
     int mx = 0, my = 0, mouse_b1 = 0, mouse_b2 = 0 ;
     int do_draw = 0, do_logic = 0 ;
@@ -249,7 +228,7 @@ int main( int argc, char *argv[] )
     }
 
     /* Load dictionaries */
-    HASH_TABLE *dictionary = new_ht_trie( 256 - 32 , 32 );
+    HASH_TABLE *dictionary = new_ht_trie( 256 , 32 );
     FILE *dict_file = fopen( "dictionary.csv" , "r" );
     char read_buf[ 16384 ] = "" ;
     DICTIONARY_DEFINITION current_definition ;
@@ -257,26 +236,40 @@ int main( int argc, char *argv[] )
     char *type = NULL ;
     char *definition = NULL ;
     N_PCRE *dico_regexp = npcre_new ( "\"(.*)\",\"(.*)\",\"(.*)\"" , 99 , 0 );
+    N_PCRE *nagios_regexp = npcre_new ( "(.*?);.*?;.*?;(.*?);(.*)" , 99 , 0 );
 
     char lastletter = ' ' ;
+    int match_type = 0 ; /* 0 dico 1 nagios */
     while( fgets( read_buf , 16384 , dict_file ) )
     {
+        match_type = -1 ;
         if( npcre_match( read_buf , dico_regexp ) )
-        {
-            entry_key  = strdup( _str( dico_regexp -> match_list[ 1 ] ) );
-            type       = strdup( _str( dico_regexp -> match_list[ 2 ] ) );
-            definition = strdup( _str( dico_regexp -> match_list[ 3 ] ) );
+            match_type = 0 ;
+        if( npcre_match( read_buf , nagios_regexp ) )
+            match_type = 1 ;
 
-            //n_log( LOG_INFO , "matched %s , %s , %s" , entry_key , type , definition );
+        if( match_type != -1 )
+        {
+            if( match_type == 0 )
+            {
+                entry_key  = strdup( _str( dico_regexp -> match_list[ 1 ] ) );
+                type       = strdup( _str( dico_regexp -> match_list[ 2 ] ) );
+                definition = strdup( _str( dico_regexp -> match_list[ 3 ] ) );
+            }
+            else
+            {
+                N_STR *tmpstr = NULL ;
+                nstrprintf( tmpstr , "%s-%s" , nagios_regexp -> match_list[ 1 ] , nagios_regexp -> match_list[ 2 ] );
+                entry_key  = _nstr( tmpstr );
+                Free( tmpstr );
+                type       = strdup( _str( nagios_regexp -> match_list[ 2 ] ) );
+                definition = strdup( _str( nagios_regexp -> match_list[ 3 ] ) );
+            }
+
+            n_log( LOG_DEBUG , "matched %s , %s , %s" , entry_key , type , definition );
 
             DICTIONARY_ENTRY *entry = NULL ;
             DICTIONARY_DEFINITION *entry_def = NULL ;
-
-            if( lastletter != entry_key[ 0 ] )
-            {
-                lastletter = entry_key[ 0 ];  
-                n_log( LOG_INFO , "Progress: %c" , lastletter );
-            }
 
             if( ht_get_ptr( dictionary , entry_key , (void **)&entry ) == TRUE )
             {
@@ -304,6 +297,7 @@ int main( int argc, char *argv[] )
             FreeNoLog( entry_key );
             FreeNoLog( type );
             FreeNoLog( definition );
+            npcre_clean_match( nagios_regexp ); 
             npcre_clean_match( dico_regexp ); 
         }
     }
@@ -311,180 +305,105 @@ int main( int argc, char *argv[] )
 
     ALLEGRO_USTR *keyboard_buffer = al_ustr_new( "" );
     int cur_key_pos = 0 ;
+    LIST *completion = NULL ;
+    int key_pressed = 0 ;
+    n_log( LOG_NOTICE , "Starting main loop" );
+
+    al_clear_keyboard_state();
+    al_flush_event_queue( event_queue );
     do
     {
-        ALLEGRO_EVENT ev ;
-
-        al_wait_for_event(event_queue, &ev);
-
-        if(ev.type == ALLEGRO_EVENT_KEY_DOWN)
+        do
         {
-            switch(ev.keyboard.keycode)
+            ALLEGRO_EVENT ev ;
+
+            al_wait_for_event(event_queue, &ev);
+
+            if(ev.type == ALLEGRO_EVENT_KEY_DOWN)
             {
-                case ALLEGRO_KEY_UP:
-                    key[KEY_UP] = 1;
-                    break;
-                case ALLEGRO_KEY_DOWN:
-                    key[KEY_DOWN] = 1;
-                    break;
-                case ALLEGRO_KEY_LEFT:
-                    key[KEY_LEFT] = 1;
-                    break;
-                case ALLEGRO_KEY_RIGHT:
-                    key[KEY_RIGHT] = 1;
-                    break;
-                case ALLEGRO_KEY_ESCAPE:
-                    key[KEY_ESC] = 1 ;
-                    break;
-                case ALLEGRO_KEY_SPACE:
-                    key[KEY_SPACE] = 1 ;
-                    break;
-                case ALLEGRO_KEY_ENTER:
-                    key[KEY_ENTER] = 1 ;
-                    break;
-                case ALLEGRO_KEY_LCTRL:
-                case ALLEGRO_KEY_RCTRL:
-                    key[KEY_CTRL] = 1 ;
-                default:
-                    break;
+                switch(ev.keyboard.keycode)
+                {
+                    case ALLEGRO_KEY_ESCAPE:
+                        key[KEY_ESC] = 1 ;
+                        break;
+                    default:
+                        break;
+                }
             }
-        }
-        else if(ev.type == ALLEGRO_EVENT_KEY_UP)
-        {
-            switch(ev.keyboard.keycode)
+            else if(ev.type == ALLEGRO_EVENT_KEY_UP)
             {
-                case ALLEGRO_KEY_UP:
-                    key[KEY_UP] = 0;
-                    break;
-                case ALLEGRO_KEY_DOWN:
-                    key[KEY_DOWN] = 0;
-                    break;
-                case ALLEGRO_KEY_LEFT:
-                    key[KEY_LEFT] = 0;
-                    break;
-                case ALLEGRO_KEY_RIGHT:
-                    key[KEY_RIGHT] =0;
-                    break;
-                case ALLEGRO_KEY_ESCAPE:
-                    key[KEY_ESC] = 0 ;
-                    break;
-                case ALLEGRO_KEY_SPACE:
-                    key[KEY_SPACE] = 0 ;
-                    break;
-                case ALLEGRO_KEY_ENTER:
-                    key[KEY_ENTER] = 1 ;
-                    break;
-                case ALLEGRO_KEY_LCTRL:
-                case ALLEGRO_KEY_RCTRL:
-                    key[KEY_CTRL] = 0 ;
-                default:
-                    break;
+                switch(ev.keyboard.keycode)
+                {
+                    case ALLEGRO_KEY_ESCAPE:
+                        key[KEY_ESC] = 0 ;
+                        break;
+                    default:
+                        break;
+                }
             }
-        }
-        else if( ev.type == ALLEGRO_EVENT_TIMER )
-        {
-            if( al_get_timer_event_source( fps_timer ) == ev.any.source )
+            else if( ev.type == ALLEGRO_EVENT_TIMER )
             {
-                do_draw = 1 ;
+                if( al_get_timer_event_source( fps_timer ) == ev.any.source )
+                {
+                    do_draw = 1 ;
+                }
+                else if( al_get_timer_event_source( logic_timer ) == ev.any.source )
+                {
+                    do_logic = 1;
+                }
             }
-            else if( al_get_timer_event_source( logic_timer ) == ev.any.source )
+            else if( ev.type == ALLEGRO_EVENT_MOUSE_AXES )
             {
-                do_logic = 1;
+                mx = ev.mouse.x;
+                my = ev.mouse.y;
             }
-        }
-        else if( ev.type == ALLEGRO_EVENT_MOUSE_AXES )
-        {
-            mx = ev.mouse.x;
-            my = ev.mouse.y;
-        }
-        else if( ev.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN )
-        {
-            if( ev.mouse.button == 1 )
-                mouse_b1 = 1 ;
-            if( ev.mouse.button == 2 )
-                mouse_b2 = 1 ;
-        }
-        else if( ev.type == ALLEGRO_EVENT_MOUSE_BUTTON_UP )
-        {
-            if( ev.mouse.button == 1 )
-                mouse_b1 = 0 ;
-            if( ev.mouse.button == 2 )
-                mouse_b2 = 0 ;
-        }
-        get_keyboard( keyboard_buffer ,ev );
-
-        /* Processing inputs */
-
-        /* dev mod: right click to temporary delete a block
-           left click to temporary add a block */
-        int mouse_button = -1 ;
-        if( mouse_b1==1 )
-            mouse_button = 1 ;
-        if( mouse_b2==1 )
-            mouse_button = 2 ;
-
-
-        if( key[ KEY_UP ] )
-        {
-        }
-        else
-        {
-        }
-
-
-        if( key[ KEY_DOWN ] )
-        {
-        }
-        else
-        {
-        }
-
-        if( key[ KEY_LEFT ] )
-        {
-        }
-        else
-        {
-        }
-
-
-        if( key[ KEY_RIGHT ] )
-        {
-        }
-        else
-        {
-        }
-
-
-        if( key[KEY_CTRL ] || mouse_button == 1 )
-        {
-
-        }
-        else
-        {
-
-        }
+            else if( ev.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN )
+            {
+                if( ev.mouse.button == 1 )
+                    mouse_b1 = 1 ;
+                if( ev.mouse.button == 2 )
+                    mouse_b2 = 1 ;
+            }
+            else if( ev.type == ALLEGRO_EVENT_MOUSE_BUTTON_UP )
+            {
+                if( ev.mouse.button == 1 )
+                    mouse_b1 = 0 ;
+                if( ev.mouse.button == 2 )
+                    mouse_b2 = 0 ;
+            }
+            else if( ev.type == ALLEGRO_EVENT_DISPLAY_SWITCH_IN || ev.type == ALLEGRO_EVENT_DISPLAY_SWITCH_OUT )
+            {
+                al_clear_keyboard_state();
+                al_flush_event_queue( event_queue );
+            }
+            else
+            {
+                /* Processing inputs */
+                key_pressed = 0 ;
+                if( get_keyboard( keyboard_buffer , ev ) == TRUE )
+                    key_pressed = 1 ;
+            }
+        }while( !al_is_event_queue_empty( event_queue) );
 
         if( do_logic == 1 )
         {
-            manage_particle( particle_system_effects );
-            if( mouse_button == 1 )
+            if( key_pressed == 1 )
             {
-                PHYSICS tmp_part ;
-                tmp_part . sz = 10 ;
-                for( int it = 0 ; it < 100 ; it ++ )
+                key_pressed = 0 ;
+                int max_results = 20 ;
+                if( completion )
                 {
-                    VECTOR3D_SET( tmp_part . speed,
-                            500 - rand()%1000,
-                            500 - rand()%1000,
-                            0.0  );
-                    VECTOR3D_SET( tmp_part . position, mx, my, 0.0  );
-                    VECTOR3D_SET( tmp_part . acceleration, 0.0, 0.0, 0.0 );
-                    VECTOR3D_SET( tmp_part . orientation, 0.0, 0.0, 0.0 );
-                    add_particle( particle_system_effects, -1, PIXEL_PART, 1000 + rand()%10000, 1+rand()%3,
-                            al_map_rgba(   55 + rand()%200,  55 + rand()%200, 55 + rand()%200, 10 + rand()%245 ), tmp_part );
-
+                    list_destroy( &completion );
                 }
+                completion = ht_get_completion_list( dictionary , al_cstr( keyboard_buffer ) , max_results );
             }
+
+            int mouse_button = -1 ;
+            if( mouse_b1==1 )
+                mouse_button = 1 ;
+            if( mouse_b2==1 )
+                mouse_button = 2 ;
+
             do_logic = 0 ;
         }
 
@@ -499,7 +418,6 @@ int main( int argc, char *argv[] )
 
             al_set_target_bitmap( scrbuf );
             al_clear_to_color( al_map_rgba( 0, 0, 0, 255 ) );
-            draw_particle( particle_system_effects, 0, 0, w, h, 50 );
 
             last_time -= 1000000/30.0 ;
             static int length = 0 ;
@@ -511,27 +429,11 @@ int main( int argc, char *argv[] )
             {
                 length = al_get_text_width( font , al_cstr( keyboard_buffer ) );
                 al_draw_filled_rectangle( WIDTH / 2 + ( length + 6 ) / 2      , 50 ,
-                                          WIDTH / 2 + ( length + 6 ) / 2 + 15 , 70 ,
-                                          al_map_rgb( 0 , 128 , 0 ) );
+                        WIDTH / 2 + ( length + 6 ) / 2 + 15 , 70 ,
+                        al_map_rgb( 0 , 128 , 0 ) );
             }
             al_draw_text( font , al_map_rgb( 0 , 255 , 0 ) , WIDTH / 2 , 50 , ALLEGRO_ALIGN_CENTRE , al_cstr( keyboard_buffer ) );
-            LIST *completion = NULL ;
-            int max_results = 3 ;
-            if( al_ustr_length( keyboard_buffer ) > 0 )
-            {
-                completion = ht_get_completion_list( dictionary , al_cstr( keyboard_buffer ) , max_results );
-            }
-            if( completion )
-            {
-                int vertical_it = 0 ;
-                list_foreach( node , completion ) 
-                {
-                    char *key = (char *)node -> ptr ;
-                    al_draw_text( font , al_map_rgb( 0 , 255 , 0 ) , WIDTH / 2 + ( length + 6 ) / 2 + 50 , 50 + vertical_it , ALLEGRO_ALIGN_CENTRE , key );
-                    vertical_it += 35 ;
-                }
-                list_destroy( &completion );
-            }
+
             DICTIONARY_ENTRY *entry = NULL ;
             if( ht_get_ptr( dictionary , al_cstr( keyboard_buffer ) , (void **)&entry ) == TRUE )
             {
@@ -541,6 +443,19 @@ int main( int argc, char *argv[] )
                     DICTIONARY_DEFINITION *definition = (DICTIONARY_DEFINITION *)node -> ptr ;
                     al_draw_textf( font , al_map_rgb( 0 , 255 , 0 ) , WIDTH / 2 , 150 + vertical_it , ALLEGRO_ALIGN_CENTRE , "%s : %s" , definition -> type , definition -> definition );
                     vertical_it += 35 ;
+                }
+            }
+            else
+            {
+                if( completion )
+                {
+                    int vertical_it = 0 ;
+                    list_foreach( node , completion ) 
+                    {
+                        char *key = (char *)node -> ptr ;
+                        al_draw_text( font , al_map_rgb( 0 , 255 , 0 ) , WIDTH / 2 , 100 + vertical_it , ALLEGRO_ALIGN_CENTRE , key );
+                        vertical_it += 35 ;
+                    }
                 }
             }
 
@@ -558,9 +473,7 @@ int main( int argc, char *argv[] )
     }
     while( !key[KEY_ESC] && !DONE );
 
-    list_destroy( &active_object );
     destroy_ht( &dictionary );
 
     return 0;
-
 }
