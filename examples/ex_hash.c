@@ -90,18 +90,20 @@ int main( void )
         n_log( LOG_INFO, "HT_FOREACH_R key:%s", _str( node -> key ) );
     } );
 
-    /*unsigned long int optimal_size = ht_get_optimal_size( htable );
+    unsigned long int optimal_size = ht_get_optimal_size( htable );
     n_log( LOG_INFO, "########" );
     n_log( LOG_INFO, "collisions: %d %%" , ht_get_table_collision_percentage( htable ) );
     n_log( LOG_INFO, "table size: %ld , table optimal size: %ld" , htable -> size , optimal_size );
     n_log( LOG_INFO, "resizing to %ld returned %d" , optimal_size , ht_resize( &htable , optimal_size ) );
     n_log( LOG_INFO, "collisions after resize: %d %%" , ht_get_table_collision_percentage( htable ) );
-    n_log( LOG_INFO, "########" );*/
+    n_log( LOG_INFO, "########" );
 
 	if( ht_optimize( &htable ) == FALSE )
 	{
 			n_log( LOG_ERR , "Error when optimizing table %p" , htable );
 	}
+    n_log( LOG_INFO, "collisions after ht_optimize: %d %%" , ht_get_table_collision_percentage( htable ) );
+    n_log( LOG_INFO, "########" );
 
     /*ht_print( htable );
       char input_key[ 1024 ] = "" ;
