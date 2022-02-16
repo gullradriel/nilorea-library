@@ -80,8 +80,8 @@ int _ht_put_int_trie( HASH_TABLE *table, const char *key, int value )
 
     for( uint32_t it = 0 ; key[ it ] != '\0' ; it++ )
     {
-        int index = (int)key[ it ] - table -> alphabet_offset ;
-        if( index < 0 || (unsigned)index >= table -> alphabet_length )
+        unsigned int index = (unsigned int)key[ it ] - table -> alphabet_offset ;
+        if( index >= table -> alphabet_length )
         {
             n_log( LOG_ERR, "Invalid value %d for charater at position %d of %s, set to 0", index, it, key );
             index = 0 ;
@@ -133,8 +133,8 @@ int _ht_put_double_trie( HASH_TABLE *table, const char *key, double value )
 
     for( uint32_t it = 0 ; key[ it ] != '\0' ; it++ )
     {
-        int index = (int)key[ it ] - table -> alphabet_offset ;
-        if( index < 0 || (unsigned)index >= table -> alphabet_length )
+        unsigned int index = (unsigned int)key[ it ] - table -> alphabet_offset ;
+        if( index >= table -> alphabet_length )
         {
             n_log( LOG_ERR, "Invalid value %d for charater at position %d of %s, set to 0", index, it, key );
             index = 0 ;
@@ -185,8 +185,8 @@ int _ht_put_string_trie( HASH_TABLE *table, const char *key, char *string )
 
     for( uint32_t it = 0 ; key[ it ] != '\0' ; it++ )
     {
-        int index = (int)key[ it ] - table -> alphabet_offset ;
-        if( index < 0 || (unsigned)index >= table -> alphabet_length )
+        unsigned int index = (unsigned int)key[ it ] - table -> alphabet_offset ;
+        if( index >= table -> alphabet_length )
         {
             n_log( LOG_ERR, "Invalid value %d for charater at position %d of %s, set to 0", index, it, key );
             index = 0 ;
@@ -241,8 +241,8 @@ int _ht_put_string_ptr_trie( HASH_TABLE *table, const char *key, char *string )
 
     for( uint32_t it = 0 ; key[ it ] != '\0' ; it++ )
     {
-        int index = (int)key[ it ] - table -> alphabet_offset ;
-        if( index < 0 || (unsigned)index >= table -> alphabet_length )
+        unsigned int index = (unsigned int)key[ it ] - table -> alphabet_offset ;
+        if( index >= table -> alphabet_length )
         {
             n_log( LOG_ERR, "Invalid value %d for charater at position %d of %s, set to 0", index, it, key );
             index = 0 ;
@@ -294,10 +294,10 @@ int _ht_put_ptr_trie( HASH_TABLE *table, const char *key, void *ptr, void (*dest
 
     for( uint32_t it = 0 ; key[ it ] != '\0' ; it++ )
     {
-        int index = (int)key[ it ] - table -> alphabet_offset ;
-        if( index < 0 || (unsigned)index >= table -> alphabet_length )
+        unsigned int index = ( (unsigned int)(key[ it ] - table -> alphabet_offset) ) % table -> alphabet_length;
+        if( index >= table -> alphabet_length )
         {
-            n_log( LOG_ERR, "Invalid value %d for charater at position %d of %s, set to 0", index, it, key );
+            n_log( LOG_ERR, "Invalid value %u for charater at position %d of %s, set to 0", index , it , key );
             index = 0 ;
         }
         if( node -> children[ index ] == NULL )
@@ -346,8 +346,8 @@ HASH_NODE *_ht_get_node_trie( HASH_TABLE *table, const char *key )
     HASH_NODE *node = table -> root;
     for( uint32_t it = 0 ; key[ it ] != '\0' ; it++ )
     {
-        int index = key[ it ] - table -> alphabet_offset ;
-        if( index < 0 || (unsigned)index >= table -> alphabet_length )
+        unsigned int index = (unsigned int)key[ it ] - table -> alphabet_offset ;
+        if( index >= table -> alphabet_length )
         {
             n_log( LOG_ERR, "Invalid value %d for charater at index %d of %s, set to 0", index, it, key );
             index = 0 ;
@@ -510,8 +510,8 @@ int _ht_check_trie_divergence( HASH_TABLE *table, const char *key )
     int last_index = 0;
     for( uint32_t it = 0 ; key[ it ] != '\0' ; it ++ )
     {
-        int index = key[ it ] - table -> alphabet_offset ;
-        if( index < 0 || (unsigned)index >= table -> alphabet_length )
+        unsigned int index = (unsigned int)key[ it ] - table -> alphabet_offset ;
+        if( index >= table -> alphabet_length )
         {
             n_log( LOG_ERR, "Invalid value %d for charater at position %d of %s, set to 0", index, it, key );
             index = 0 ;
@@ -592,8 +592,8 @@ int _ht_is_leaf_node_trie( HASH_TABLE *table, const char *key )
     HASH_NODE* node = table -> root;
     for( uint32_t it = 0 ; key[ it ] ; it++ )
     {
-        int index = (int)key[ it ] - table -> alphabet_offset ;
-        if( index < 0 || (unsigned)index >= table -> alphabet_length )
+        unsigned int index = (unsigned int)key[ it ] - table -> alphabet_offset ;
+        if( index >= table -> alphabet_length )
         {
             n_log( LOG_ERR, "Invalid value %d for charater at position %d of %s, set to 0", index, it, key );
             index = 0 ;
@@ -684,8 +684,8 @@ int _ht_remove_trie( HASH_TABLE *table, const char *key )
     uint32_t it = 0 ;
     for( it = 0 ; longest_prefix[ it ] != '\0'; it++ )
     {
-        int index = (int)longest_prefix[ it ] - table -> alphabet_offset ;
-        if( index < 0 || (unsigned)index >= table -> alphabet_length )
+        unsigned int index = (unsigned int)longest_prefix[ it ] - table -> alphabet_offset ;
+        if( index >= table -> alphabet_length )
         {
             n_log( LOG_ERR, "Invalid value %d for charater at position %d of %s, set to 0", index, it, key );
             index = 0 ;
@@ -706,8 +706,8 @@ int _ht_remove_trie( HASH_TABLE *table, const char *key )
     /* deleting the sequence corresponding to key */
     for( ; key[ it ] != '\0' ; it++ )
     {
-        int index = (int)key[ it ] - table -> alphabet_offset ;
-        if( index < 0 || (unsigned)index >= table -> alphabet_length )
+        unsigned int index = (unsigned int)key[ it ] - table -> alphabet_offset ;
+        if( index >= table -> alphabet_length )
         {
             n_log( LOG_ERR, "Invalid value %d for charater at position %d of %s, set to 0", index, it, key );
             index = 0 ;
@@ -2784,7 +2784,7 @@ int ht_resize( HASH_TABLE **table , unsigned int size )
                         hash_node -> need_rehash = 0 ;
                         LIST_NODE *node = list_node_shift( (*table) -> hash_table[ it ] );
                         node -> next = node -> prev = NULL ;
-                        unsigned int index= (hash_node -> hash_value)%(size);
+                        unsigned long int index= (hash_node -> hash_value)%(size);
                         list_node_push( (*table) -> hash_table[ index ] , node );
                     }
                 }
@@ -2805,7 +2805,7 @@ int ht_resize( HASH_TABLE **table , unsigned int size )
                     hash_node -> need_rehash = 0 ;
                     LIST_NODE *node = list_node_shift( (*table) -> hash_table[ it ] );
                     node -> next = node -> prev = NULL ;
-                    unsigned int index= (hash_node -> hash_value)%(size);
+                    unsigned long int index= (hash_node -> hash_value)%(size);
                     list_node_push( (*table) -> hash_table[ index ] , node );
                 }
             }
@@ -2837,7 +2837,9 @@ int ht_optimize( HASH_TABLE **table )
     
 	unsigned long int optimal_size = ht_get_optimal_size( (*table) );
     if( optimal_size == FALSE )
+    {
         return FALSE;
+    }
 
     int collision_percentage = ht_get_table_collision_percentage( (*table) );
     if( collision_percentage == FALSE )
@@ -2845,11 +2847,15 @@ int ht_optimize( HASH_TABLE **table )
 
     int resize_result = ht_resize( &(*table) , optimal_size );
     if( resize_result == FALSE )
+    {
         return FALSE ;
+    }
     
 	collision_percentage = ht_get_table_collision_percentage( (*table) );
     if( collision_percentage == FALSE )
+    {
         return FALSE ;
+    }
 
     return TRUE ;
 }/* ht_optimize() */
