@@ -144,8 +144,8 @@ $(document).ready(function(){initNavTree('n__hash_8c_source.html',''); initResiz
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <span class="keywordflow">for</span>( uint32_t it = 0 ; key[ it ] != <span class="charliteral">&#39;\0&#39;</span> ; it++ )</div>
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    {</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        <span class="keywordtype">int</span> index = (int)key[ it ] - table -&gt; alphabet_offset ;</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        <span class="keywordflow">if</span>( index &lt; 0 || (<span class="keywordtype">unsigned</span>)index &gt;= table -&gt; alphabet_length )</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> index = (<span class="keywordtype">unsigned</span> int)key[ it ] - table -&gt; alphabet_offset ;</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        <span class="keywordflow">if</span>( index &gt;= table -&gt; alphabet_length )</div>
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        {</div>
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>            <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a>, <span class="stringliteral">&quot;Invalid value %d for charater at position %d of %s, set to 0&quot;</span>, index, it, key );</div>
 <div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>            index = 0 ;</div>
@@ -188,8 +188,8 @@ $(document).ready(function(){initNavTree('n__hash_8c_source.html',''); initResiz
 <div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span> </div>
 <div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>    <span class="keywordflow">for</span>( uint32_t it = 0 ; key[ it ] != <span class="charliteral">&#39;\0&#39;</span> ; it++ )</div>
 <div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    {</div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>        <span class="keywordtype">int</span> index = (int)key[ it ] - table -&gt; alphabet_offset ;</div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>        <span class="keywordflow">if</span>( index &lt; 0 || (<span class="keywordtype">unsigned</span>)index &gt;= table -&gt; alphabet_length )</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> index = (<span class="keywordtype">unsigned</span> int)key[ it ] - table -&gt; alphabet_offset ;</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>        <span class="keywordflow">if</span>( index &gt;= table -&gt; alphabet_length )</div>
 <div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>        {</div>
 <div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>            <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a>, <span class="stringliteral">&quot;Invalid value %d for charater at position %d of %s, set to 0&quot;</span>, index, it, key );</div>
 <div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>            index = 0 ;</div>
@@ -231,8 +231,8 @@ $(document).ready(function(){initNavTree('n__hash_8c_source.html',''); initResiz
 <div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span> </div>
 <div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>    <span class="keywordflow">for</span>( uint32_t it = 0 ; key[ it ] != <span class="charliteral">&#39;\0&#39;</span> ; it++ )</div>
 <div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>    {</div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>        <span class="keywordtype">int</span> index = (int)key[ it ] - table -&gt; alphabet_offset ;</div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>        <span class="keywordflow">if</span>( index &lt; 0 || (<span class="keywordtype">unsigned</span>)index &gt;= table -&gt; alphabet_length )</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> index = (<span class="keywordtype">unsigned</span> int)key[ it ] - table -&gt; alphabet_offset ;</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>        <span class="keywordflow">if</span>( index &gt;= table -&gt; alphabet_length )</div>
 <div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>        {</div>
 <div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>            <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a>, <span class="stringliteral">&quot;Invalid value %d for charater at position %d of %s, set to 0&quot;</span>, index, it, key );</div>
 <div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>            index = 0 ;</div>
@@ -278,8 +278,8 @@ $(document).ready(function(){initNavTree('n__hash_8c_source.html',''); initResiz
 <div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span> </div>
 <div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>    <span class="keywordflow">for</span>( uint32_t it = 0 ; key[ it ] != <span class="charliteral">&#39;\0&#39;</span> ; it++ )</div>
 <div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>    {</div>
-<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>        <span class="keywordtype">int</span> index = (int)key[ it ] - table -&gt; alphabet_offset ;</div>
-<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>        <span class="keywordflow">if</span>( index &lt; 0 || (<span class="keywordtype">unsigned</span>)index &gt;= table -&gt; alphabet_length )</div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> index = (<span class="keywordtype">unsigned</span> int)key[ it ] - table -&gt; alphabet_offset ;</div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>        <span class="keywordflow">if</span>( index &gt;= table -&gt; alphabet_length )</div>
 <div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>        {</div>
 <div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>            <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a>, <span class="stringliteral">&quot;Invalid value %d for charater at position %d of %s, set to 0&quot;</span>, index, it, key );</div>
 <div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>            index = 0 ;</div>
@@ -321,10 +321,10 @@ $(document).ready(function(){initNavTree('n__hash_8c_source.html',''); initResiz
 <div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span> </div>
 <div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span>    <span class="keywordflow">for</span>( uint32_t it = 0 ; key[ it ] != <span class="charliteral">&#39;\0&#39;</span> ; it++ )</div>
 <div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span>    {</div>
-<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span>        <span class="keywordtype">int</span> index = (int)key[ it ] - table -&gt; alphabet_offset ;</div>
-<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span>        <span class="keywordflow">if</span>( index &lt; 0 || (<span class="keywordtype">unsigned</span>)index &gt;= table -&gt; alphabet_length )</div>
+<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span>        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> index = ( (<span class="keywordtype">unsigned</span> int)(key[ it ] - table -&gt; alphabet_offset) ) % table -&gt; alphabet_length;</div>
+<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span>        <span class="keywordflow">if</span>( index &gt;= table -&gt; alphabet_length )</div>
 <div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span>        {</div>
-<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span>            <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a>, <span class="stringliteral">&quot;Invalid value %d for charater at position %d of %s, set to 0&quot;</span>, index, it, key );</div>
+<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span>            <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a>, <span class="stringliteral">&quot;Invalid value %u for charater at position %d of %s, set to 0&quot;</span>, index , it , key );</div>
 <div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span>            index = 0 ;</div>
 <div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span>        }</div>
 <div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span>        <span class="keywordflow">if</span>( node -&gt; children[ index ] == NULL )</div>
@@ -365,8 +365,8 @@ $(document).ready(function(){initNavTree('n__hash_8c_source.html',''); initResiz
 <div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span>    <a class="code hl_struct" href="group___h_a_s_h___t_a_b_l_e.html#struct_h_a_s_h___n_o_d_e">HASH_NODE</a> *node = table -&gt; root;</div>
 <div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span>    <span class="keywordflow">for</span>( uint32_t it = 0 ; key[ it ] != <span class="charliteral">&#39;\0&#39;</span> ; it++ )</div>
 <div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span>    {</div>
-<div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span>        <span class="keywordtype">int</span> index = key[ it ] - table -&gt; alphabet_offset ;</div>
-<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span>        <span class="keywordflow">if</span>( index &lt; 0 || (<span class="keywordtype">unsigned</span>)index &gt;= table -&gt; alphabet_length )</div>
+<div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span>        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> index = (<span class="keywordtype">unsigned</span> int)key[ it ] - table -&gt; alphabet_offset ;</div>
+<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span>        <span class="keywordflow">if</span>( index &gt;= table -&gt; alphabet_length )</div>
 <div class="line"><a id="l00351" name="l00351"></a><span class="lineno">  351</span>        {</div>
 <div class="line"><a id="l00352" name="l00352"></a><span class="lineno">  352</span>            <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a>, <span class="stringliteral">&quot;Invalid value %d for charater at index %d of %s, set to 0&quot;</span>, index, it, key );</div>
 <div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span>            index = 0 ;</div>
@@ -493,8 +493,8 @@ $(document).ready(function(){initNavTree('n__hash_8c_source.html',''); initResiz
 <div class="line"><a id="l00510" name="l00510"></a><span class="lineno">  510</span>    <span class="keywordtype">int</span> last_index = 0;</div>
 <div class="line"><a id="l00511" name="l00511"></a><span class="lineno">  511</span>    <span class="keywordflow">for</span>( uint32_t it = 0 ; key[ it ] != <span class="charliteral">&#39;\0&#39;</span> ; it ++ )</div>
 <div class="line"><a id="l00512" name="l00512"></a><span class="lineno">  512</span>    {</div>
-<div class="line"><a id="l00513" name="l00513"></a><span class="lineno">  513</span>        <span class="keywordtype">int</span> index = key[ it ] - table -&gt; alphabet_offset ;</div>
-<div class="line"><a id="l00514" name="l00514"></a><span class="lineno">  514</span>        <span class="keywordflow">if</span>( index &lt; 0 || (<span class="keywordtype">unsigned</span>)index &gt;= table -&gt; alphabet_length )</div>
+<div class="line"><a id="l00513" name="l00513"></a><span class="lineno">  513</span>        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> index = (<span class="keywordtype">unsigned</span> int)key[ it ] - table -&gt; alphabet_offset ;</div>
+<div class="line"><a id="l00514" name="l00514"></a><span class="lineno">  514</span>        <span class="keywordflow">if</span>( index &gt;= table -&gt; alphabet_length )</div>
 <div class="line"><a id="l00515" name="l00515"></a><span class="lineno">  515</span>        {</div>
 <div class="line"><a id="l00516" name="l00516"></a><span class="lineno">  516</span>            <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a>, <span class="stringliteral">&quot;Invalid value %d for charater at position %d of %s, set to 0&quot;</span>, index, it, key );</div>
 <div class="line"><a id="l00517" name="l00517"></a><span class="lineno">  517</span>            index = 0 ;</div>
@@ -559,8 +559,8 @@ $(document).ready(function(){initNavTree('n__hash_8c_source.html',''); initResiz
 <div class="line"><a id="l00592" name="l00592"></a><span class="lineno">  592</span>    <a class="code hl_struct" href="group___h_a_s_h___t_a_b_l_e.html#struct_h_a_s_h___n_o_d_e">HASH_NODE</a>* node = table -&gt; root;</div>
 <div class="line"><a id="l00593" name="l00593"></a><span class="lineno">  593</span>    <span class="keywordflow">for</span>( uint32_t it = 0 ; key[ it ] ; it++ )</div>
 <div class="line"><a id="l00594" name="l00594"></a><span class="lineno">  594</span>    {</div>
-<div class="line"><a id="l00595" name="l00595"></a><span class="lineno">  595</span>        <span class="keywordtype">int</span> index = (int)key[ it ] - table -&gt; alphabet_offset ;</div>
-<div class="line"><a id="l00596" name="l00596"></a><span class="lineno">  596</span>        <span class="keywordflow">if</span>( index &lt; 0 || (<span class="keywordtype">unsigned</span>)index &gt;= table -&gt; alphabet_length )</div>
+<div class="line"><a id="l00595" name="l00595"></a><span class="lineno">  595</span>        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> index = (<span class="keywordtype">unsigned</span> int)key[ it ] - table -&gt; alphabet_offset ;</div>
+<div class="line"><a id="l00596" name="l00596"></a><span class="lineno">  596</span>        <span class="keywordflow">if</span>( index &gt;= table -&gt; alphabet_length )</div>
 <div class="line"><a id="l00597" name="l00597"></a><span class="lineno">  597</span>        {</div>
 <div class="line"><a id="l00598" name="l00598"></a><span class="lineno">  598</span>            <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a>, <span class="stringliteral">&quot;Invalid value %d for charater at position %d of %s, set to 0&quot;</span>, index, it, key );</div>
 <div class="line"><a id="l00599" name="l00599"></a><span class="lineno">  599</span>            index = 0 ;</div>
@@ -637,8 +637,8 @@ $(document).ready(function(){initNavTree('n__hash_8c_source.html',''); initResiz
 <div class="line"><a id="l00684" name="l00684"></a><span class="lineno">  684</span>    uint32_t it = 0 ;</div>
 <div class="line"><a id="l00685" name="l00685"></a><span class="lineno">  685</span>    <span class="keywordflow">for</span>( it = 0 ; longest_prefix[ it ] != <span class="charliteral">&#39;\0&#39;</span>; it++ )</div>
 <div class="line"><a id="l00686" name="l00686"></a><span class="lineno">  686</span>    {</div>
-<div class="line"><a id="l00687" name="l00687"></a><span class="lineno">  687</span>        <span class="keywordtype">int</span> index = (int)longest_prefix[ it ] - table -&gt; alphabet_offset ;</div>
-<div class="line"><a id="l00688" name="l00688"></a><span class="lineno">  688</span>        <span class="keywordflow">if</span>( index &lt; 0 || (<span class="keywordtype">unsigned</span>)index &gt;= table -&gt; alphabet_length )</div>
+<div class="line"><a id="l00687" name="l00687"></a><span class="lineno">  687</span>        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> index = (<span class="keywordtype">unsigned</span> int)longest_prefix[ it ] - table -&gt; alphabet_offset ;</div>
+<div class="line"><a id="l00688" name="l00688"></a><span class="lineno">  688</span>        <span class="keywordflow">if</span>( index &gt;= table -&gt; alphabet_length )</div>
 <div class="line"><a id="l00689" name="l00689"></a><span class="lineno">  689</span>        {</div>
 <div class="line"><a id="l00690" name="l00690"></a><span class="lineno">  690</span>            <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a>, <span class="stringliteral">&quot;Invalid value %d for charater at position %d of %s, set to 0&quot;</span>, index, it, key );</div>
 <div class="line"><a id="l00691" name="l00691"></a><span class="lineno">  691</span>            index = 0 ;</div>
@@ -659,8 +659,8 @@ $(document).ready(function(){initNavTree('n__hash_8c_source.html',''); initResiz
 <div class="line"><a id="l00706" name="l00706"></a><span class="lineno">  706</span>    <span class="comment">/* deleting the sequence corresponding to key */</span></div>
 <div class="line"><a id="l00707" name="l00707"></a><span class="lineno">  707</span>    <span class="keywordflow">for</span>( ; key[ it ] != <span class="charliteral">&#39;\0&#39;</span> ; it++ )</div>
 <div class="line"><a id="l00708" name="l00708"></a><span class="lineno">  708</span>    {</div>
-<div class="line"><a id="l00709" name="l00709"></a><span class="lineno">  709</span>        <span class="keywordtype">int</span> index = (int)key[ it ] - table -&gt; alphabet_offset ;</div>
-<div class="line"><a id="l00710" name="l00710"></a><span class="lineno">  710</span>        <span class="keywordflow">if</span>( index &lt; 0 || (<span class="keywordtype">unsigned</span>)index &gt;= table -&gt; alphabet_length )</div>
+<div class="line"><a id="l00709" name="l00709"></a><span class="lineno">  709</span>        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> index = (<span class="keywordtype">unsigned</span> int)key[ it ] - table -&gt; alphabet_offset ;</div>
+<div class="line"><a id="l00710" name="l00710"></a><span class="lineno">  710</span>        <span class="keywordflow">if</span>( index &gt;= table -&gt; alphabet_length )</div>
 <div class="line"><a id="l00711" name="l00711"></a><span class="lineno">  711</span>        {</div>
 <div class="line"><a id="l00712" name="l00712"></a><span class="lineno">  712</span>            <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a>, <span class="stringliteral">&quot;Invalid value %d for charater at position %d of %s, set to 0&quot;</span>, index, it, key );</div>
 <div class="line"><a id="l00713" name="l00713"></a><span class="lineno">  713</span>            index = 0 ;</div>
@@ -2278,7 +2278,7 @@ $(document).ready(function(){initNavTree('n__hash_8c_source.html',''); initResiz
 <div class="line"><a id="l02784" name="l02784"></a><span class="lineno"> 2784</span>                        hash_node -&gt; need_rehash = 0 ;</div>
 <div class="line"><a id="l02785" name="l02785"></a><span class="lineno"> 2785</span>                        <a class="code hl_struct" href="group___l_i_s_t.html#struct_l_i_s_t___n_o_d_e">LIST_NODE</a> *node = <a class="code hl_function" href="group___l_i_s_t.html#ga65791a797732c74dc66948a014479328">list_node_shift</a>( (*table) -&gt; hash_table[ it ] );</div>
 <div class="line"><a id="l02786" name="l02786"></a><span class="lineno"> 2786</span>                        node -&gt; next = node -&gt; prev = NULL ;</div>
-<div class="line"><a id="l02787" name="l02787"></a><span class="lineno"> 2787</span>                        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> index= (hash_node -&gt; hash_value)%(size);</div>
+<div class="line"><a id="l02787" name="l02787"></a><span class="lineno"> 2787</span>                        <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> index= (hash_node -&gt; hash_value)%(size);</div>
 <div class="line"><a id="l02788" name="l02788"></a><span class="lineno"> 2788</span>                        <a class="code hl_function" href="group___l_i_s_t.html#gafdc5e3efd8a9244161b52fcb24760b0e">list_node_push</a>( (*table) -&gt; hash_table[ index ] , node );</div>
 <div class="line"><a id="l02789" name="l02789"></a><span class="lineno"> 2789</span>                    }</div>
 <div class="line"><a id="l02790" name="l02790"></a><span class="lineno"> 2790</span>                }</div>
@@ -2299,7 +2299,7 @@ $(document).ready(function(){initNavTree('n__hash_8c_source.html',''); initResiz
 <div class="line"><a id="l02805" name="l02805"></a><span class="lineno"> 2805</span>                    hash_node -&gt; need_rehash = 0 ;</div>
 <div class="line"><a id="l02806" name="l02806"></a><span class="lineno"> 2806</span>                    <a class="code hl_struct" href="group___l_i_s_t.html#struct_l_i_s_t___n_o_d_e">LIST_NODE</a> *node = <a class="code hl_function" href="group___l_i_s_t.html#ga65791a797732c74dc66948a014479328">list_node_shift</a>( (*table) -&gt; hash_table[ it ] );</div>
 <div class="line"><a id="l02807" name="l02807"></a><span class="lineno"> 2807</span>                    node -&gt; next = node -&gt; prev = NULL ;</div>
-<div class="line"><a id="l02808" name="l02808"></a><span class="lineno"> 2808</span>                    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> index= (hash_node -&gt; hash_value)%(size);</div>
+<div class="line"><a id="l02808" name="l02808"></a><span class="lineno"> 2808</span>                    <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> index= (hash_node -&gt; hash_value)%(size);</div>
 <div class="line"><a id="l02809" name="l02809"></a><span class="lineno"> 2809</span>                    <a class="code hl_function" href="group___l_i_s_t.html#gafdc5e3efd8a9244161b52fcb24760b0e">list_node_push</a>( (*table) -&gt; hash_table[ index ] , node );</div>
 <div class="line"><a id="l02810" name="l02810"></a><span class="lineno"> 2810</span>                }</div>
 <div class="line"><a id="l02811" name="l02811"></a><span class="lineno"> 2811</span>            }</div>
@@ -2326,23 +2326,29 @@ $(document).ready(function(){initNavTree('n__hash_8c_source.html',''); initResiz
 <div class="line"><a id="l02837" name="l02837"></a><span class="lineno"> 2837</span>    </div>
 <div class="line"><a id="l02838" name="l02838"></a><span class="lineno"> 2838</span>                <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> optimal_size = <a class="code hl_function" href="group___h_a_s_h___t_a_b_l_e.html#gaeea73f0197b24d2adebe77a6e043286d">ht_get_optimal_size</a>( (*table) );</div>
 <div class="line"><a id="l02839" name="l02839"></a><span class="lineno"> 2839</span>    <span class="keywordflow">if</span>( optimal_size == FALSE )</div>
-<div class="line"><a id="l02840" name="l02840"></a><span class="lineno"> 2840</span>        <span class="keywordflow">return</span> FALSE;</div>
-<div class="line"><a id="l02841" name="l02841"></a><span class="lineno"> 2841</span> </div>
-<div class="line"><a id="l02842" name="l02842"></a><span class="lineno"> 2842</span>    <span class="keywordtype">int</span> collision_percentage = <a class="code hl_function" href="group___h_a_s_h___t_a_b_l_e.html#ga484b7c7f330914d21fafbf582713fc07">ht_get_table_collision_percentage</a>( (*table) );</div>
-<div class="line"><a id="l02843" name="l02843"></a><span class="lineno"> 2843</span>    <span class="keywordflow">if</span>( collision_percentage == FALSE )</div>
-<div class="line"><a id="l02844" name="l02844"></a><span class="lineno"> 2844</span>        <span class="keywordflow">return</span> FALSE ;</div>
-<div class="line"><a id="l02845" name="l02845"></a><span class="lineno"> 2845</span> </div>
-<div class="line"><a id="l02846" name="l02846"></a><span class="lineno"> 2846</span>    <span class="keywordtype">int</span> resize_result = <a class="code hl_function" href="group___h_a_s_h___t_a_b_l_e.html#gadbfb2646231f3ddf4bc4cc2cdf16583d">ht_resize</a>( &amp;(*table) , optimal_size );</div>
-<div class="line"><a id="l02847" name="l02847"></a><span class="lineno"> 2847</span>    <span class="keywordflow">if</span>( resize_result == FALSE )</div>
-<div class="line"><a id="l02848" name="l02848"></a><span class="lineno"> 2848</span>        <span class="keywordflow">return</span> FALSE ;</div>
-<div class="line"><a id="l02849" name="l02849"></a><span class="lineno"> 2849</span>    </div>
-<div class="line"><a id="l02850" name="l02850"></a><span class="lineno"> 2850</span>                collision_percentage = <a class="code hl_function" href="group___h_a_s_h___t_a_b_l_e.html#ga484b7c7f330914d21fafbf582713fc07">ht_get_table_collision_percentage</a>( (*table) );</div>
-<div class="line"><a id="l02851" name="l02851"></a><span class="lineno"> 2851</span>    <span class="keywordflow">if</span>( collision_percentage == FALSE )</div>
-<div class="line"><a id="l02852" name="l02852"></a><span class="lineno"> 2852</span>        <span class="keywordflow">return</span> FALSE ;</div>
-<div class="line"><a id="l02853" name="l02853"></a><span class="lineno"> 2853</span> </div>
-<div class="line"><a id="l02854" name="l02854"></a><span class="lineno"> 2854</span>    <span class="keywordflow">return</span> TRUE ;</div>
-<div class="line"><a id="l02855" name="l02855"></a><span class="lineno"> 2855</span>}<span class="comment">/* ht_optimize() */</span></div>
-<div class="line"><a id="l02856" name="l02856"></a><span class="lineno"> 2856</span> </div>
+<div class="line"><a id="l02840" name="l02840"></a><span class="lineno"> 2840</span>    {</div>
+<div class="line"><a id="l02841" name="l02841"></a><span class="lineno"> 2841</span>        <span class="keywordflow">return</span> FALSE;</div>
+<div class="line"><a id="l02842" name="l02842"></a><span class="lineno"> 2842</span>    }</div>
+<div class="line"><a id="l02843" name="l02843"></a><span class="lineno"> 2843</span> </div>
+<div class="line"><a id="l02844" name="l02844"></a><span class="lineno"> 2844</span>    <span class="keywordtype">int</span> collision_percentage = <a class="code hl_function" href="group___h_a_s_h___t_a_b_l_e.html#ga484b7c7f330914d21fafbf582713fc07">ht_get_table_collision_percentage</a>( (*table) );</div>
+<div class="line"><a id="l02845" name="l02845"></a><span class="lineno"> 2845</span>    <span class="keywordflow">if</span>( collision_percentage == FALSE )</div>
+<div class="line"><a id="l02846" name="l02846"></a><span class="lineno"> 2846</span>        <span class="keywordflow">return</span> FALSE ;</div>
+<div class="line"><a id="l02847" name="l02847"></a><span class="lineno"> 2847</span> </div>
+<div class="line"><a id="l02848" name="l02848"></a><span class="lineno"> 2848</span>    <span class="keywordtype">int</span> resize_result = <a class="code hl_function" href="group___h_a_s_h___t_a_b_l_e.html#gadbfb2646231f3ddf4bc4cc2cdf16583d">ht_resize</a>( &amp;(*table) , optimal_size );</div>
+<div class="line"><a id="l02849" name="l02849"></a><span class="lineno"> 2849</span>    <span class="keywordflow">if</span>( resize_result == FALSE )</div>
+<div class="line"><a id="l02850" name="l02850"></a><span class="lineno"> 2850</span>    {</div>
+<div class="line"><a id="l02851" name="l02851"></a><span class="lineno"> 2851</span>        <span class="keywordflow">return</span> FALSE ;</div>
+<div class="line"><a id="l02852" name="l02852"></a><span class="lineno"> 2852</span>    }</div>
+<div class="line"><a id="l02853" name="l02853"></a><span class="lineno"> 2853</span>    </div>
+<div class="line"><a id="l02854" name="l02854"></a><span class="lineno"> 2854</span>                collision_percentage = <a class="code hl_function" href="group___h_a_s_h___t_a_b_l_e.html#ga484b7c7f330914d21fafbf582713fc07">ht_get_table_collision_percentage</a>( (*table) );</div>
+<div class="line"><a id="l02855" name="l02855"></a><span class="lineno"> 2855</span>    <span class="keywordflow">if</span>( collision_percentage == FALSE )</div>
+<div class="line"><a id="l02856" name="l02856"></a><span class="lineno"> 2856</span>    {</div>
+<div class="line"><a id="l02857" name="l02857"></a><span class="lineno"> 2857</span>        <span class="keywordflow">return</span> FALSE ;</div>
+<div class="line"><a id="l02858" name="l02858"></a><span class="lineno"> 2858</span>    }</div>
+<div class="line"><a id="l02859" name="l02859"></a><span class="lineno"> 2859</span> </div>
+<div class="line"><a id="l02860" name="l02860"></a><span class="lineno"> 2860</span>    <span class="keywordflow">return</span> TRUE ;</div>
+<div class="line"><a id="l02861" name="l02861"></a><span class="lineno"> 2861</span>}<span class="comment">/* ht_optimize() */</span></div>
+<div class="line"><a id="l02862" name="l02862"></a><span class="lineno"> 2862</span> </div>
 <div class="ttc" id="agroup___c_o_m_m_o_n_s_html_ga079dc7a6a7e7c54bb714d8bb2afdd022"><div class="ttname"><a href="group___c_o_m_m_o_n_s.html#ga079dc7a6a7e7c54bb714d8bb2afdd022">FreeNoLog</a></div><div class="ttdeci">#define FreeNoLog(__ptr)</div><div class="ttdoc">Free Handler without log.</div><div class="ttdef"><b>Definition:</b> <a href="n__common_8h_source.html#l00258">n_common.h:258</a></div></div>
 <div class="ttc" id="agroup___c_o_m_m_o_n_s_html_ga38dadd06badcc5b7cca444a551604399"><div class="ttname"><a href="group___c_o_m_m_o_n_s.html#ga38dadd06badcc5b7cca444a551604399">FALL_THROUGH</a></div><div class="ttdeci">#define FALL_THROUGH</div><div class="ttdoc">set windows if true</div><div class="ttdef"><b>Definition:</b> <a href="n__common_8h_source.html#l00051">n_common.h:51</a></div></div>
 <div class="ttc" id="agroup___c_o_m_m_o_n_s_html_ga46bf052fc99248347a1dcf89bc0757c6"><div class="ttname"><a href="group___c_o_m_m_o_n_s.html#ga46bf052fc99248347a1dcf89bc0757c6">Malloc</a></div><div class="ttdeci">#define Malloc(__ptr, __struct, __size)</div><div class="ttdoc">Malloc Handler to get errors and set to 0.</div><div class="ttdef"><b>Definition:</b> <a href="n__common_8h_source.html#l00182">n_common.h:182</a></div></div>
@@ -2480,7 +2486,7 @@ $(document).ready(function(){initNavTree('n__hash_8c_source.html',''); initResiz
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="n__hash_8c.html">n_hash.c</a></li>
-    <li class="footer">Generated on Tue Feb 15 2022 20:41:28 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+    <li class="footer">Generated on Wed Feb 16 2022 18:09:30 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
   </ul>
 </div>
 </body>

@@ -96,57 +96,38 @@ $(document).ready(function(){initNavTree('ex_gui_dictionary_8c-example.html','')
 <div class="line"><span class="preprocessor">#define HEIGHT 800</span></div>
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#include &quot;<a class="code" href="n__common_8h.html">nilorea/n_common.h</a>&quot;</span></div>
-<div class="line"><span class="preprocessor">#include &quot;<a class="code" href="n__particles_8h.html">nilorea/n_particles.h</a>&quot;</span></div>
-<div class="line"><span class="preprocessor">#include &quot;<a class="code" href="n__anim_8h.html">nilorea/n_anim.h</a>&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;<a class="code" href="n__list_8h.html">nilorea/n_list.h</a>&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;<a class="code" href="n__hash_8h.html">nilorea/n_hash.h</a>&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;<a class="code" href="n__pcre_8h.html">nilorea/n_pcre.h</a>&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;<a class="code" href="n__str_8h.html">nilorea/n_str.h</a>&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;<a class="code" href="n__allegro5_8h.html">nilorea/n_allegro5.h</a>&quot;</span></div>
-<div class="line"><span class="comment">//#include &quot;nilorea/n_resources.h&quot;</span></div>
-<div class="line"><span class="comment">//#include &lt;allegro5/allegro_native_dialog.h&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;allegro5/allegro_ttf.h&gt;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="comment">/* dictionnaries are from https://www.bragitoff.com/2016/03/english-dictionary-in-csv-format/ */</span></div>
 <div class="line"> </div>
 <div class="line">ALLEGRO_DISPLAY *display  = NULL ;</div>
 <div class="line"> </div>
-<div class="line"><span class="keywordtype">int</span>                             DONE = 0,                    <span class="comment">/* Flag to check if we are always running */</span></div>
-<div class="line">        getoptret = 0,                                                            <span class="comment">/* launch parameter check */</span></div>
-<div class="line">        log_level = <a id="a0" name="a0"></a><a class="code hl_define" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a> ;                                    <span class="comment">/* default LOG_LEVEL */</span></div>
+<div class="line"><span class="keywordtype">int</span>                             DONE = 0,               <span class="comment">/* Flag to check if we are always running */</span></div>
+<div class="line">        getoptret = 0,                              <span class="comment">/* launch parameter check */</span></div>
+<div class="line">        log_level = <a id="a0" name="a0"></a><a class="code hl_define" href="group___l_o_g.html#gaeb4f36db01bd128c7afeac5889dac311">LOG_INFO</a> ;  <span class="comment">/* default LOG_LEVEL */</span></div>
 <div class="line"> </div>
 <div class="line">ALLEGRO_BITMAP *scr_buf       = NULL ;</div>
 <div class="line"> </div>
 <div class="line">ALLEGRO_TIMER *fps_timer = NULL ;</div>
 <div class="line">ALLEGRO_TIMER *logic_timer = NULL ;</div>
-<div class="line"><a id="_a1" name="_a1"></a><a class="code hl_struct" href="group___l_i_s_t.html#struct_l_i_s_t">LIST</a> *active_object = NULL ;                      <span class="comment">/* list of active objects */</span></div>
-<div class="line"><a id="_a2" name="_a2"></a><a class="code hl_struct" href="group___p_a_r_t_i_c_l_e_s.html#struct_p_a_r_t_i_c_l_e___s_y_s_t_e_m">PARTICLE_SYSTEM</a> *particle_system_effects=NULL ;</div>
 <div class="line"> </div>
-<div class="line"><span class="comment">//RESOURCES *resources = NULL ;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">int</span> main( <span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> *argv[] )</div>
 <div class="line">{</div>
-<div class="line">    <a id="a3" name="a3"></a><a class="code hl_function" href="group___l_o_g.html#gacad9b2d55788f46ddde811c986ead9ae">set_log_level</a>( <a id="a4" name="a4"></a><a class="code hl_define" href="group___l_o_g.html#gad89ee324d180cdcd7defcc709ff9ca42">LOG_NOTICE</a> );</div>
+<div class="line">    <a id="a1" name="a1"></a><a class="code hl_function" href="group___l_o_g.html#gacad9b2d55788f46ddde811c986ead9ae">set_log_level</a>( log_level );</div>
 <div class="line"> </div>
-<div class="line">    <a id="_a5" name="_a5"></a><a class="code hl_struct" href="group___n___s_t_r.html#struct_n___s_t_r">N_STR</a> *<a id="a6" name="a6"></a><a class="code hl_variable" href="n__log_8c.html#ab936051f5aaca44c6c3c41dee0d19c36">log_file</a> = NULL ;</div>
-<div class="line">    <a id="a7" name="a7"></a><a class="code hl_define" href="group___n___s_t_r.html#ga1c1f4062c727970a68bfd932c3fabcd5">nstrprintf</a>( <a class="code hl_variable" href="n__log_8c.html#ab936051f5aaca44c6c3c41dee0d19c36">log_file</a>, <span class="stringliteral">&quot;%s.log&quot;</span>, argv[ 0 ] ) ;</div>
-<div class="line">    <span class="comment">/*set_log_file( _nstr( log_file ) );*/</span></div>
-<div class="line">    <a id="a8" name="a8"></a><a class="code hl_define" href="group___n___s_t_r.html#ga113e906d03374ac38e441f1df44095fb">free_nstr</a>( &amp;<a class="code hl_variable" href="n__log_8c.html#ab936051f5aaca44c6c3c41dee0d19c36">log_file</a> );</div>
-<div class="line"> </div>
-<div class="line">    <a id="a9" name="a9"></a><a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#gad89ee324d180cdcd7defcc709ff9ca42">LOG_NOTICE</a>, <span class="stringliteral">&quot;%s is starting ...&quot;</span>, argv[ 0 ] );</div>
+<div class="line">    <a id="a2" name="a2"></a><a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a id="a3" name="a3"></a><a class="code hl_define" href="group___l_o_g.html#gad89ee324d180cdcd7defcc709ff9ca42">LOG_NOTICE</a>, <span class="stringliteral">&quot;%s is starting ...&quot;</span>, argv[ 0 ] );</div>
 <div class="line"> </div>
 <div class="line"> </div>
 <div class="line">    <span class="comment">/* allegro 5 + addons loading */</span></div>
 <div class="line">    <span class="keywordflow">if</span> (!al_init())</div>
 <div class="line">    {</div>
-<div class="line">        <a id="a10" name="a10"></a><a class="code hl_function" href="group___c_o_m_m_o_n_s.html#gacaf9e791d31308d5d43c0322b03ee322">n_abort</a>(<span class="stringliteral">&quot;Could not init Allegro.\n&quot;</span>);</div>
-<div class="line">    }</div>
-<div class="line">    <span class="keywordflow">if</span> (!al_install_audio())</div>
-<div class="line">    {</div>
-<div class="line">        <a class="code hl_function" href="group___c_o_m_m_o_n_s.html#gacaf9e791d31308d5d43c0322b03ee322">n_abort</a>(<span class="stringliteral">&quot;Unable to initialize audio addon\n&quot;</span>);</div>
-<div class="line">    }</div>
-<div class="line">    <span class="keywordflow">if</span> (!al_init_acodec_addon())</div>
-<div class="line">    {</div>
-<div class="line">        <a class="code hl_function" href="group___c_o_m_m_o_n_s.html#gacaf9e791d31308d5d43c0322b03ee322">n_abort</a>(<span class="stringliteral">&quot;Unable to initialize acoded addon\n&quot;</span>);</div>
+<div class="line">        <a id="a4" name="a4"></a><a class="code hl_function" href="group___c_o_m_m_o_n_s.html#gacaf9e791d31308d5d43c0322b03ee322">n_abort</a>(<span class="stringliteral">&quot;Could not init Allegro.\n&quot;</span>);</div>
 <div class="line">    }</div>
 <div class="line">    <span class="keywordflow">if</span> (!al_init_image_addon())</div>
 <div class="line">    {</div>
@@ -188,34 +169,34 @@ $(document).ready(function(){initNavTree('ex_gui_dictionary_8c-example.html','')
 <div class="line">        <span class="keywordflow">switch</span>( getoptret )</div>
 <div class="line">        {</div>
 <div class="line">            <span class="keywordflow">case</span> <span class="charliteral">&#39;h&#39;</span>:</div>
-<div class="line">                <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#gad89ee324d180cdcd7defcc709ff9ca42">LOG_NOTICE</a>, <span class="stringliteral">&quot;\n    %s -h help -v version -V DEBUGLEVEL (NOLOG,VERBOSE,NOTICE,ERROR,DEBUG)\n&quot;</span>, argv[ 0 ] );</div>
+<div class="line">                <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#gad89ee324d180cdcd7defcc709ff9ca42">LOG_NOTICE</a>, <span class="stringliteral">&quot;\n    %s -h help -v version -V LOG_LEVEL (NOLOG,INFO,NOTICE,ERR,DEBUG) -L OPT_LOG_FILE\n&quot;</span>, argv[ 0 ] );</div>
 <div class="line">                exit( TRUE );</div>
 <div class="line">            <span class="keywordflow">case</span> <span class="charliteral">&#39;v&#39;</span>:</div>
 <div class="line">                sprintf( ver_str, <span class="stringliteral">&quot;%s %s&quot;</span>, __DATE__, __TIME__ );</div>
 <div class="line">                exit( TRUE );</div>
 <div class="line">                break ;</div>
 <div class="line">            <span class="keywordflow">case</span> <span class="charliteral">&#39;V&#39;</span>:</div>
-<div class="line">                <span class="keywordflow">if</span>( !strncmp( <span class="stringliteral">&quot;NOTICE&quot;</span>, optarg, 6 ) )</div>
+<div class="line">                <span class="keywordflow">if</span>( !strncmp( <span class="stringliteral">&quot;INFO&quot;</span>, optarg, 6 ) )</div>
 <div class="line">                {</div>
-<div class="line">                    log_level = <a id="a11" name="a11"></a><a class="code hl_define" href="group___l_o_g.html#gaeb4f36db01bd128c7afeac5889dac311">LOG_INFO</a> ;</div>
+<div class="line">                    log_level = <a class="code hl_define" href="group___l_o_g.html#gaeb4f36db01bd128c7afeac5889dac311">LOG_INFO</a> ;</div>
 <div class="line">                }</div>
 <div class="line">                <span class="keywordflow">else</span></div>
 <div class="line">                {</div>
-<div class="line">                    <span class="keywordflow">if</span>(  !strncmp( <span class="stringliteral">&quot;VERBOSE&quot;</span>, optarg, 7 ) )</div>
+<div class="line">                    <span class="keywordflow">if</span>(  !strncmp( <span class="stringliteral">&quot;NOTICE&quot;</span>, optarg, 7 ) )</div>
 <div class="line">                    {</div>
 <div class="line">                        log_level = <a class="code hl_define" href="group___l_o_g.html#gad89ee324d180cdcd7defcc709ff9ca42">LOG_NOTICE</a> ;</div>
 <div class="line">                    }</div>
 <div class="line">                    <span class="keywordflow">else</span></div>
 <div class="line">                    {</div>
-<div class="line">                        <span class="keywordflow">if</span>(  !strncmp( <span class="stringliteral">&quot;ERROR&quot;</span>, optarg, 5 ) )</div>
+<div class="line">                        <span class="keywordflow">if</span>(  !strncmp( <span class="stringliteral">&quot;ERR&quot;</span>, optarg, 5 ) )</div>
 <div class="line">                        {</div>
-<div class="line">                            log_level = <a class="code hl_define" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a> ;</div>
+<div class="line">                            log_level = <a id="a5" name="a5"></a><a class="code hl_define" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a> ;</div>
 <div class="line">                        }</div>
 <div class="line">                        <span class="keywordflow">else</span></div>
 <div class="line">                        {</div>
 <div class="line">                            <span class="keywordflow">if</span>(  !strncmp( <span class="stringliteral">&quot;DEBUG&quot;</span>, optarg, 5 ) )</div>
 <div class="line">                            {</div>
-<div class="line">                                log_level = <a id="a12" name="a12"></a><a class="code hl_define" href="group___l_o_g.html#ga6ff63e8955665c4a58b1598f2b07c51a">LOG_DEBUG</a> ;</div>
+<div class="line">                                log_level = <a id="a6" name="a6"></a><a class="code hl_define" href="group___l_o_g.html#ga6ff63e8955665c4a58b1598f2b07c51a">LOG_DEBUG</a> ;</div>
 <div class="line">                            }</div>
 <div class="line">                            <span class="keywordflow">else</span></div>
 <div class="line">                            {</div>
@@ -230,7 +211,7 @@ $(document).ready(function(){initNavTree('ex_gui_dictionary_8c-example.html','')
 <div class="line">                <span class="keywordflow">break</span>;</div>
 <div class="line">            <span class="keywordflow">case</span> <span class="charliteral">&#39;L&#39;</span> :</div>
 <div class="line">                <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#gad89ee324d180cdcd7defcc709ff9ca42">LOG_NOTICE</a>, <span class="stringliteral">&quot;LOG FILE: %s\n&quot;</span>, optarg );</div>
-<div class="line">                <a id="a13" name="a13"></a><a class="code hl_function" href="group___l_o_g.html#gac83aa9829ddf0d169e2890ef63052b52">set_log_file</a>( optarg );</div>
+<div class="line">                <a id="a7" name="a7"></a><a class="code hl_function" href="group___l_o_g.html#gac83aa9829ddf0d169e2890ef63052b52">set_log_file</a>( optarg );</div>
 <div class="line">                break ;</div>
 <div class="line">            <span class="keywordflow">case</span> <span class="charliteral">&#39;?&#39;</span> :</div>
 <div class="line">                {</div>
@@ -252,8 +233,12 @@ $(document).ready(function(){initNavTree('ex_gui_dictionary_8c-example.html','')
 <div class="line">        }</div>
 <div class="line">    }</div>
 <div class="line"> </div>
-<div class="line">    fps_timer = al_create_timer( 1.0/30.0 );</div>
-<div class="line">    logic_timer = al_create_timer( 1.0/50.0 );</div>
+<div class="line">    <span class="keywordtype">double</span> fps = 60.0 ;</div>
+<div class="line">    <span class="keywordtype">double</span> fps_delta_time = 1.0 / fps ;</div>
+<div class="line">    <span class="keywordtype">double</span> logic_delta_time = 1.0 / (5.0 * fps);</div>
+<div class="line"> </div>
+<div class="line">    fps_timer = al_create_timer( fps_delta_time );</div>
+<div class="line">    logic_timer = al_create_timer( logic_delta_time );</div>
 <div class="line"> </div>
 <div class="line">    al_set_new_display_flags( ALLEGRO_OPENGL|ALLEGRO_WINDOWED );</div>
 <div class="line">    display = al_create_display( WIDTH, HEIGHT );</div>
@@ -267,17 +252,13 @@ $(document).ready(function(){initNavTree('ex_gui_dictionary_8c-example.html','')
 <div class="line"> </div>
 <div class="line">    DONE = 0 ;</div>
 <div class="line"> </div>
-<div class="line">    active_object = <a id="a14" name="a14"></a><a class="code hl_function" href="group___l_i_s_t.html#gada615e3b144e97bcff147dfe89f6fef6">new_generic_list</a>( -1 );</div>
-<div class="line"> </div>
-<div class="line"> </div>
 <div class="line">    <span class="keyword">enum</span> APP_KEYS</div>
 <div class="line">    {</div>
-<div class="line">        KEY_UP, KEY_DOWN, KEY_LEFT, KEY_RIGHT, KEY_ESC, KEY_SPACE, KEY_CTRL , KEY_ENTER</div>
+<div class="line">        KEY_ESC</div>
 <div class="line">    };</div>
-<div class="line">    <span class="keywordtype">int</span> key[ 8 ] = {<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>};</div>
+<div class="line">    <span class="keywordtype">int</span> key[ 1 ] = {<span class="keyword">false</span>};</div>
 <div class="line"> </div>
 <div class="line">    al_register_event_source(event_queue, al_get_display_event_source(display));</div>
-<div class="line"> </div>
 <div class="line">    al_start_timer( fps_timer );</div>
 <div class="line">    al_start_timer( logic_timer );</div>
 <div class="line">    al_register_event_source(event_queue, al_get_timer_event_source(fps_timer));</div>
@@ -298,8 +279,6 @@ $(document).ready(function(){initNavTree('ex_gui_dictionary_8c-example.html','')
 <div class="line"> </div>
 <div class="line">    al_hide_mouse_cursor(display);</div>
 <div class="line"> </div>
-<div class="line">    <a id="a15" name="a15"></a><a class="code hl_function" href="group___p_a_r_t_i_c_l_e_s.html#gaf00630a2c4eaa468e124fe4d9557c825">init_particle_system</a>( &amp;particle_system_effects, 10000, 0, 0, 0, 100 );</div>
-<div class="line"> </div>
 <div class="line">    <span class="keywordtype">int</span> mx = 0, my = 0, mouse_b1 = 0, mouse_b2 = 0 ;</div>
 <div class="line">    <span class="keywordtype">int</span> do_draw = 0, do_logic = 0 ;</div>
 <div class="line"> </div>
@@ -312,66 +291,80 @@ $(document).ready(function(){initNavTree('ex_gui_dictionary_8c-example.html','')
 <div class="line">    <span class="keyword">typedef</span> <span class="keyword">struct </span>DICTIONARY_ENTRY</div>
 <div class="line">    {</div>
 <div class="line">        <span class="keywordtype">char</span> *key ;</div>
-<div class="line">        <a class="code hl_struct" href="group___l_i_s_t.html#struct_l_i_s_t">LIST</a> *definitions ;</div>
+<div class="line">        <a id="_a8" name="_a8"></a><a class="code hl_struct" href="group___l_i_s_t.html#struct_l_i_s_t">LIST</a> *definitions ;</div>
 <div class="line">    } DICTIONARY_ENTRY ;</div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordtype">void</span> free_entry_def( <span class="keywordtype">void</span> *entry_def )</div>
 <div class="line">    {</div>
 <div class="line">        DICTIONARY_DEFINITION *def = (DICTIONARY_DEFINITION *)entry_def;</div>
-<div class="line">        <a id="a16" name="a16"></a><a class="code hl_define" href="group___c_o_m_m_o_n_s.html#ga079dc7a6a7e7c54bb714d8bb2afdd022">FreeNoLog</a>( def -&gt; type );</div>
+<div class="line">        <a id="a9" name="a9"></a><a class="code hl_define" href="group___c_o_m_m_o_n_s.html#ga079dc7a6a7e7c54bb714d8bb2afdd022">FreeNoLog</a>( def -&gt; type );</div>
 <div class="line">        <a class="code hl_define" href="group___c_o_m_m_o_n_s.html#ga079dc7a6a7e7c54bb714d8bb2afdd022">FreeNoLog</a>( def -&gt; definition );</div>
 <div class="line">        <a class="code hl_define" href="group___c_o_m_m_o_n_s.html#ga079dc7a6a7e7c54bb714d8bb2afdd022">FreeNoLog</a>( def );</div>
 <div class="line">    }</div>
 <div class="line">    <span class="keywordtype">void</span> free_entry( <span class="keywordtype">void</span> *entry_ptr )</div>
 <div class="line">    {</div>
 <div class="line">        DICTIONARY_ENTRY *entry = (DICTIONARY_ENTRY *)entry_ptr;</div>
-<div class="line">        <a id="a17" name="a17"></a><a class="code hl_function" href="group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755">list_destroy</a>( &amp;entry -&gt; definitions );</div>
+<div class="line">        <a id="a10" name="a10"></a><a class="code hl_function" href="group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755">list_destroy</a>( &amp;entry -&gt; definitions );</div>
 <div class="line">        <a class="code hl_define" href="group___c_o_m_m_o_n_s.html#ga079dc7a6a7e7c54bb714d8bb2afdd022">FreeNoLog</a>( entry -&gt; key );</div>
 <div class="line">        <a class="code hl_define" href="group___c_o_m_m_o_n_s.html#ga079dc7a6a7e7c54bb714d8bb2afdd022">FreeNoLog</a>( entry );</div>
 <div class="line">    }</div>
 <div class="line"> </div>
 <div class="line">    <span class="comment">/* Load dictionaries */</span></div>
-<div class="line">    <a id="_a18" name="_a18"></a><a class="code hl_struct" href="group___h_a_s_h___t_a_b_l_e.html#struct_h_a_s_h___t_a_b_l_e">HASH_TABLE</a> *dictionary = <a id="a19" name="a19"></a><a class="code hl_function" href="group___h_a_s_h___t_a_b_l_e.html#gab95fe0967850a3665d21837519ede6c8">new_ht_trie</a>( 256 - 32 , 32 );</div>
+<div class="line">    <a id="_a11" name="_a11"></a><a class="code hl_struct" href="group___h_a_s_h___t_a_b_l_e.html#struct_h_a_s_h___t_a_b_l_e">HASH_TABLE</a> *dictionary = <a id="a12" name="a12"></a><a class="code hl_function" href="group___h_a_s_h___t_a_b_l_e.html#gab95fe0967850a3665d21837519ede6c8">new_ht_trie</a>( 256 , 32 );</div>
 <div class="line">    FILE *dict_file = fopen( <span class="stringliteral">&quot;dictionary.csv&quot;</span> , <span class="stringliteral">&quot;r&quot;</span> );</div>
 <div class="line">    <span class="keywordtype">char</span> read_buf[ 16384 ] = <span class="stringliteral">&quot;&quot;</span> ;</div>
 <div class="line">    DICTIONARY_DEFINITION current_definition ;</div>
 <div class="line">    <span class="keywordtype">char</span> *entry_key = NULL ;</div>
 <div class="line">    <span class="keywordtype">char</span> *type = NULL ;</div>
 <div class="line">    <span class="keywordtype">char</span> *definition = NULL ;</div>
-<div class="line">    <a id="_a20" name="_a20"></a><a class="code hl_struct" href="group___p_c_r_e.html#struct_n___p_c_r_e">N_PCRE</a> *dico_regexp = <a id="a21" name="a21"></a><a class="code hl_function" href="group___p_c_r_e.html#ga54f913d2ee09d63de0f06fc1b9439d4a">npcre_new</a> ( <span class="stringliteral">&quot;\&quot;(.*)\&quot;,\&quot;(.*)\&quot;,\&quot;(.*)\&quot;&quot;</span> , 99 , 0 );</div>
+<div class="line">    <a id="_a13" name="_a13"></a><a class="code hl_struct" href="group___p_c_r_e.html#struct_n___p_c_r_e">N_PCRE</a> *dico_regexp = <a id="a14" name="a14"></a><a class="code hl_function" href="group___p_c_r_e.html#ga54f913d2ee09d63de0f06fc1b9439d4a">npcre_new</a> ( <span class="stringliteral">&quot;\&quot;(.*)\&quot;,\&quot;(.*)\&quot;,\&quot;(.*)\&quot;&quot;</span> , 99 , 0 );</div>
+<div class="line">    <a class="code hl_struct" href="group___p_c_r_e.html#struct_n___p_c_r_e">N_PCRE</a> *nagios_regexp = <a class="code hl_function" href="group___p_c_r_e.html#ga54f913d2ee09d63de0f06fc1b9439d4a">npcre_new</a> ( <span class="stringliteral">&quot;(.*?);.*?;.*?;(.*?);(.*)&quot;</span> , 99 , 0 );</div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordtype">char</span> lastletter = <span class="charliteral">&#39; &#39;</span> ;</div>
+<div class="line">    <span class="keywordtype">int</span> match_type = 0 ; <span class="comment">/* 0 dico 1 nagios */</span></div>
 <div class="line">    <span class="keywordflow">while</span>( fgets( read_buf , 16384 , dict_file ) )</div>
 <div class="line">    {</div>
-<div class="line">        <span class="keywordflow">if</span>( <a id="a22" name="a22"></a><a class="code hl_function" href="group___p_c_r_e.html#ga605b60ef645cf217bd2b3dc548d1d6c2">npcre_match</a>( read_buf , dico_regexp ) )</div>
-<div class="line">        {</div>
-<div class="line">            entry_key  = strdup( <a id="a23" name="a23"></a><a class="code hl_define" href="group___c_o_m_m_o_n_s.html#ga55b9404f7bc9d3a3ead2f0103331a87e">_str</a>( dico_regexp -&gt; match_list[ 1 ] ) );</div>
-<div class="line">            type       = strdup( <a class="code hl_define" href="group___c_o_m_m_o_n_s.html#ga55b9404f7bc9d3a3ead2f0103331a87e">_str</a>( dico_regexp -&gt; match_list[ 2 ] ) );</div>
-<div class="line">            definition = strdup( <a class="code hl_define" href="group___c_o_m_m_o_n_s.html#ga55b9404f7bc9d3a3ead2f0103331a87e">_str</a>( dico_regexp -&gt; match_list[ 3 ] ) );</div>
+<div class="line">        match_type = -1 ;</div>
+<div class="line">        <span class="keywordflow">if</span>( <a id="a15" name="a15"></a><a class="code hl_function" href="group___p_c_r_e.html#ga605b60ef645cf217bd2b3dc548d1d6c2">npcre_match</a>( read_buf , dico_regexp ) )</div>
+<div class="line">            match_type = 0 ;</div>
+<div class="line">        <span class="keywordflow">if</span>( <a class="code hl_function" href="group___p_c_r_e.html#ga605b60ef645cf217bd2b3dc548d1d6c2">npcre_match</a>( read_buf , nagios_regexp ) )</div>
+<div class="line">            match_type = 1 ;</div>
 <div class="line"> </div>
-<div class="line">            <span class="comment">//n_log( LOG_INFO , &quot;matched %s , %s , %s&quot; , entry_key , type , definition );</span></div>
+<div class="line">        <span class="keywordflow">if</span>( match_type != -1 )</div>
+<div class="line">        {</div>
+<div class="line">            <span class="keywordflow">if</span>( match_type == 0 )</div>
+<div class="line">            {</div>
+<div class="line">                entry_key  = strdup( <a id="a16" name="a16"></a><a class="code hl_define" href="group___c_o_m_m_o_n_s.html#ga55b9404f7bc9d3a3ead2f0103331a87e">_str</a>( dico_regexp -&gt; match_list[ 1 ] ) );</div>
+<div class="line">                type       = strdup( <a class="code hl_define" href="group___c_o_m_m_o_n_s.html#ga55b9404f7bc9d3a3ead2f0103331a87e">_str</a>( dico_regexp -&gt; match_list[ 2 ] ) );</div>
+<div class="line">                definition = strdup( <a class="code hl_define" href="group___c_o_m_m_o_n_s.html#ga55b9404f7bc9d3a3ead2f0103331a87e">_str</a>( dico_regexp -&gt; match_list[ 3 ] ) );</div>
+<div class="line">            }</div>
+<div class="line">            <span class="keywordflow">else</span></div>
+<div class="line">            {</div>
+<div class="line">                <a id="_a17" name="_a17"></a><a class="code hl_struct" href="group___n___s_t_r.html#struct_n___s_t_r">N_STR</a> *tmpstr = NULL ;</div>
+<div class="line">                <a id="a18" name="a18"></a><a class="code hl_define" href="group___n___s_t_r.html#ga1c1f4062c727970a68bfd932c3fabcd5">nstrprintf</a>( tmpstr , <span class="stringliteral">&quot;%s-%s&quot;</span> , nagios_regexp -&gt; match_list[ 1 ] , nagios_regexp -&gt; match_list[ 2 ] );</div>
+<div class="line">                entry_key  = <a id="a19" name="a19"></a><a class="code hl_define" href="group___c_o_m_m_o_n_s.html#gaf0e29edead3f943a4ac241c5724e1384">_nstr</a>( tmpstr );</div>
+<div class="line">                <a id="a20" name="a20"></a><a class="code hl_define" href="group___c_o_m_m_o_n_s.html#gae62e40d702e99a7760ba1de7451dff51">Free</a>( tmpstr );</div>
+<div class="line">                type       = strdup( <a class="code hl_define" href="group___c_o_m_m_o_n_s.html#ga55b9404f7bc9d3a3ead2f0103331a87e">_str</a>( nagios_regexp -&gt; match_list[ 2 ] ) );</div>
+<div class="line">                definition = strdup( <a class="code hl_define" href="group___c_o_m_m_o_n_s.html#ga55b9404f7bc9d3a3ead2f0103331a87e">_str</a>( nagios_regexp -&gt; match_list[ 3 ] ) );</div>
+<div class="line">            }</div>
+<div class="line"> </div>
+<div class="line">            <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#ga6ff63e8955665c4a58b1598f2b07c51a">LOG_DEBUG</a> , <span class="stringliteral">&quot;matched %s , %s , %s&quot;</span> , entry_key , type , definition );</div>
 <div class="line"> </div>
 <div class="line">            DICTIONARY_ENTRY *entry = NULL ;</div>
 <div class="line">            DICTIONARY_DEFINITION *entry_def = NULL ;</div>
 <div class="line"> </div>
-<div class="line">            <span class="keywordflow">if</span>( lastletter != entry_key[ 0 ] )</div>
+<div class="line">            <span class="keywordflow">if</span>( <a id="a21" name="a21"></a><a class="code hl_function" href="group___h_a_s_h___t_a_b_l_e.html#ga009f66a508dcea120e0cd2b34805e5a2">ht_get_ptr</a>( dictionary , entry_key , (<span class="keywordtype">void</span> **)&amp;entry ) == TRUE )</div>
 <div class="line">            {</div>
-<div class="line">                lastletter = entry_key[ 0 ];  </div>
-<div class="line">                <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#gaeb4f36db01bd128c7afeac5889dac311">LOG_INFO</a> , <span class="stringliteral">&quot;Progress: %c&quot;</span> , lastletter );</div>
-<div class="line">            }</div>
-<div class="line"> </div>
-<div class="line">            <span class="keywordflow">if</span>( <a id="a24" name="a24"></a><a class="code hl_function" href="group___h_a_s_h___t_a_b_l_e.html#ga009f66a508dcea120e0cd2b34805e5a2">ht_get_ptr</a>( dictionary , entry_key , (<span class="keywordtype">void</span> **)&amp;entry ) == TRUE )</div>
-<div class="line">            {</div>
-<div class="line">                <a id="a25" name="a25"></a><a class="code hl_define" href="group___c_o_m_m_o_n_s.html#ga46bf052fc99248347a1dcf89bc0757c6">Malloc</a>( entry_def , DICTIONARY_DEFINITION , 1 );</div>
+<div class="line">                <a id="a22" name="a22"></a><a class="code hl_define" href="group___c_o_m_m_o_n_s.html#ga46bf052fc99248347a1dcf89bc0757c6">Malloc</a>( entry_def , DICTIONARY_DEFINITION , 1 );</div>
 <div class="line">                entry_def -&gt; type = strdup( type );</div>
 <div class="line">                entry_def -&gt; definition = strdup( definition );</div>
-<div class="line">                <a id="a26" name="a26"></a><a class="code hl_function" href="group___l_i_s_t.html#ga4eab319289a83524639ee5e9f0441fdf">list_push</a>( entry -&gt; definitions , entry_def , &amp;free_entry_def );</div>
+<div class="line">                <a id="a23" name="a23"></a><a class="code hl_function" href="group___l_i_s_t.html#ga4eab319289a83524639ee5e9f0441fdf">list_push</a>( entry -&gt; definitions , entry_def , &amp;free_entry_def );</div>
 <div class="line">            }</div>
 <div class="line">            <span class="keywordflow">else</span></div>
 <div class="line">            {</div>
 <div class="line">                <a class="code hl_define" href="group___c_o_m_m_o_n_s.html#ga46bf052fc99248347a1dcf89bc0757c6">Malloc</a>( entry , DICTIONARY_ENTRY , 1 );</div>
 <div class="line"> </div>
-<div class="line">                entry -&gt; definitions = <a class="code hl_function" href="group___l_i_s_t.html#gada615e3b144e97bcff147dfe89f6fef6">new_generic_list</a>( 0 );</div>
+<div class="line">                entry -&gt; definitions = <a id="a24" name="a24"></a><a class="code hl_function" href="group___l_i_s_t.html#gada615e3b144e97bcff147dfe89f6fef6">new_generic_list</a>( 0 );</div>
 <div class="line">                entry -&gt; key = strdup( entry_key );</div>
 <div class="line"> </div>
 <div class="line">                <a class="code hl_define" href="group___c_o_m_m_o_n_s.html#ga46bf052fc99248347a1dcf89bc0757c6">Malloc</a>( entry_def , DICTIONARY_DEFINITION , 1 );</div>
@@ -381,192 +374,118 @@ $(document).ready(function(){initNavTree('ex_gui_dictionary_8c-example.html','')
 <div class="line"> </div>
 <div class="line">                <a class="code hl_function" href="group___l_i_s_t.html#ga4eab319289a83524639ee5e9f0441fdf">list_push</a>( entry -&gt; definitions , entry_def , &amp;free_entry_def );</div>
 <div class="line"> </div>
-<div class="line">                <a id="a27" name="a27"></a><a class="code hl_function" href="group___h_a_s_h___t_a_b_l_e.html#gacca20eb3be4375556ac43122405dceda">ht_put_ptr</a>( dictionary  , entry_key , entry , &amp;free_entry );</div>
+<div class="line">                <a id="a25" name="a25"></a><a class="code hl_function" href="group___h_a_s_h___t_a_b_l_e.html#gacca20eb3be4375556ac43122405dceda">ht_put_ptr</a>( dictionary  , entry_key , entry , &amp;free_entry );</div>
 <div class="line">            }</div>
 <div class="line">            <a class="code hl_define" href="group___c_o_m_m_o_n_s.html#ga079dc7a6a7e7c54bb714d8bb2afdd022">FreeNoLog</a>( entry_key );</div>
 <div class="line">            <a class="code hl_define" href="group___c_o_m_m_o_n_s.html#ga079dc7a6a7e7c54bb714d8bb2afdd022">FreeNoLog</a>( type );</div>
 <div class="line">            <a class="code hl_define" href="group___c_o_m_m_o_n_s.html#ga079dc7a6a7e7c54bb714d8bb2afdd022">FreeNoLog</a>( definition );</div>
-<div class="line">            <a id="a28" name="a28"></a><a class="code hl_function" href="group___p_c_r_e.html#ga89e67d2b218e2138a12aaecc2deab8fc">npcre_clean_match</a>( dico_regexp ); </div>
+<div class="line">            <a id="a26" name="a26"></a><a class="code hl_function" href="group___p_c_r_e.html#ga89e67d2b218e2138a12aaecc2deab8fc">npcre_clean_match</a>( nagios_regexp ); </div>
+<div class="line">            <a class="code hl_function" href="group___p_c_r_e.html#ga89e67d2b218e2138a12aaecc2deab8fc">npcre_clean_match</a>( dico_regexp ); </div>
 <div class="line">        }</div>
 <div class="line">    }</div>
 <div class="line">    fclose( dict_file );</div>
 <div class="line"> </div>
 <div class="line">    ALLEGRO_USTR *keyboard_buffer = al_ustr_new( <span class="stringliteral">&quot;&quot;</span> );</div>
 <div class="line">    <span class="keywordtype">int</span> cur_key_pos = 0 ;</div>
+<div class="line">    <a class="code hl_struct" href="group___l_i_s_t.html#struct_l_i_s_t">LIST</a> *completion = NULL ;</div>
+<div class="line">    <span class="keywordtype">int</span> key_pressed = 0 ;</div>
+<div class="line">    <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#gad89ee324d180cdcd7defcc709ff9ca42">LOG_NOTICE</a> , <span class="stringliteral">&quot;Starting main loop&quot;</span> );</div>
+<div class="line"> </div>
+<div class="line">    al_clear_keyboard_state( NULL );</div>
+<div class="line">    al_flush_event_queue( event_queue );</div>
 <div class="line">    <span class="keywordflow">do</span></div>
 <div class="line">    {</div>
-<div class="line">        ALLEGRO_EVENT ev ;</div>
-<div class="line"> </div>
-<div class="line">        al_wait_for_event(event_queue, &amp;ev);</div>
-<div class="line"> </div>
-<div class="line">        <span class="keywordflow">if</span>(ev.type == ALLEGRO_EVENT_KEY_DOWN)</div>
+<div class="line">        <span class="keywordflow">do</span></div>
 <div class="line">        {</div>
-<div class="line">            <span class="keywordflow">switch</span>(ev.keyboard.keycode)</div>
+<div class="line">            ALLEGRO_EVENT ev ;</div>
+<div class="line"> </div>
+<div class="line">            al_wait_for_event(event_queue, &amp;ev);</div>
+<div class="line"> </div>
+<div class="line">            <span class="keywordflow">if</span>(ev.type == ALLEGRO_EVENT_KEY_DOWN)</div>
 <div class="line">            {</div>
-<div class="line">                <span class="keywordflow">case</span> ALLEGRO_KEY_UP:</div>
-<div class="line">                    key[KEY_UP] = 1;</div>
-<div class="line">                    <span class="keywordflow">break</span>;</div>
-<div class="line">                <span class="keywordflow">case</span> ALLEGRO_KEY_DOWN:</div>
-<div class="line">                    key[KEY_DOWN] = 1;</div>
-<div class="line">                    <span class="keywordflow">break</span>;</div>
-<div class="line">                <span class="keywordflow">case</span> ALLEGRO_KEY_LEFT:</div>
-<div class="line">                    key[KEY_LEFT] = 1;</div>
-<div class="line">                    <span class="keywordflow">break</span>;</div>
-<div class="line">                <span class="keywordflow">case</span> ALLEGRO_KEY_RIGHT:</div>
-<div class="line">                    key[KEY_RIGHT] = 1;</div>
-<div class="line">                    <span class="keywordflow">break</span>;</div>
-<div class="line">                <span class="keywordflow">case</span> ALLEGRO_KEY_ESCAPE:</div>
-<div class="line">                    key[KEY_ESC] = 1 ;</div>
-<div class="line">                    <span class="keywordflow">break</span>;</div>
-<div class="line">                <span class="keywordflow">case</span> ALLEGRO_KEY_SPACE:</div>
-<div class="line">                    key[KEY_SPACE] = 1 ;</div>
-<div class="line">                    <span class="keywordflow">break</span>;</div>
-<div class="line">                <span class="keywordflow">case</span> ALLEGRO_KEY_ENTER:</div>
-<div class="line">                    key[KEY_ENTER] = 1 ;</div>
-<div class="line">                    <span class="keywordflow">break</span>;</div>
-<div class="line">                <span class="keywordflow">case</span> ALLEGRO_KEY_LCTRL:</div>
-<div class="line">                <span class="keywordflow">case</span> ALLEGRO_KEY_RCTRL:</div>
-<div class="line">                    key[KEY_CTRL] = 1 ;</div>
-<div class="line">                <span class="keywordflow">default</span>:</div>
-<div class="line">                    <span class="keywordflow">break</span>;</div>
+<div class="line">                <span class="keywordflow">switch</span>(ev.keyboard.keycode)</div>
+<div class="line">                {</div>
+<div class="line">                    <span class="keywordflow">case</span> ALLEGRO_KEY_ESCAPE:</div>
+<div class="line">                        key[KEY_ESC] = 1 ;</div>
+<div class="line">                        <span class="keywordflow">break</span>;</div>
+<div class="line">                    <span class="keywordflow">default</span>:</div>
+<div class="line">                        <span class="keywordflow">break</span>;</div>
+<div class="line">                }</div>
 <div class="line">            }</div>
-<div class="line">        }</div>
-<div class="line">        <span class="keywordflow">else</span> <span class="keywordflow">if</span>(ev.type == ALLEGRO_EVENT_KEY_UP)</div>
-<div class="line">        {</div>
-<div class="line">            <span class="keywordflow">switch</span>(ev.keyboard.keycode)</div>
+<div class="line">            <span class="keywordflow">else</span> <span class="keywordflow">if</span>(ev.type == ALLEGRO_EVENT_KEY_UP)</div>
 <div class="line">            {</div>
-<div class="line">                <span class="keywordflow">case</span> ALLEGRO_KEY_UP:</div>
-<div class="line">                    key[KEY_UP] = 0;</div>
-<div class="line">                    <span class="keywordflow">break</span>;</div>
-<div class="line">                <span class="keywordflow">case</span> ALLEGRO_KEY_DOWN:</div>
-<div class="line">                    key[KEY_DOWN] = 0;</div>
-<div class="line">                    <span class="keywordflow">break</span>;</div>
-<div class="line">                <span class="keywordflow">case</span> ALLEGRO_KEY_LEFT:</div>
-<div class="line">                    key[KEY_LEFT] = 0;</div>
-<div class="line">                    <span class="keywordflow">break</span>;</div>
-<div class="line">                <span class="keywordflow">case</span> ALLEGRO_KEY_RIGHT:</div>
-<div class="line">                    key[KEY_RIGHT] =0;</div>
-<div class="line">                    <span class="keywordflow">break</span>;</div>
-<div class="line">                <span class="keywordflow">case</span> ALLEGRO_KEY_ESCAPE:</div>
-<div class="line">                    key[KEY_ESC] = 0 ;</div>
-<div class="line">                    <span class="keywordflow">break</span>;</div>
-<div class="line">                <span class="keywordflow">case</span> ALLEGRO_KEY_SPACE:</div>
-<div class="line">                    key[KEY_SPACE] = 0 ;</div>
-<div class="line">                    <span class="keywordflow">break</span>;</div>
-<div class="line">                <span class="keywordflow">case</span> ALLEGRO_KEY_ENTER:</div>
-<div class="line">                    key[KEY_ENTER] = 1 ;</div>
-<div class="line">                    <span class="keywordflow">break</span>;</div>
-<div class="line">                <span class="keywordflow">case</span> ALLEGRO_KEY_LCTRL:</div>
-<div class="line">                <span class="keywordflow">case</span> ALLEGRO_KEY_RCTRL:</div>
-<div class="line">                    key[KEY_CTRL] = 0 ;</div>
-<div class="line">                <span class="keywordflow">default</span>:</div>
-<div class="line">                    <span class="keywordflow">break</span>;</div>
+<div class="line">                <span class="keywordflow">switch</span>(ev.keyboard.keycode)</div>
+<div class="line">                {</div>
+<div class="line">                    <span class="keywordflow">case</span> ALLEGRO_KEY_ESCAPE:</div>
+<div class="line">                        key[KEY_ESC] = 0 ;</div>
+<div class="line">                        <span class="keywordflow">break</span>;</div>
+<div class="line">                    <span class="keywordflow">default</span>:</div>
+<div class="line">                        <span class="keywordflow">break</span>;</div>
+<div class="line">                }</div>
 <div class="line">            }</div>
-<div class="line">        }</div>
-<div class="line">        <span class="keywordflow">else</span> <span class="keywordflow">if</span>( ev.type == ALLEGRO_EVENT_TIMER )</div>
-<div class="line">        {</div>
-<div class="line">            <span class="keywordflow">if</span>( al_get_timer_event_source( fps_timer ) == ev.any.source )</div>
+<div class="line">            <span class="keywordflow">else</span> <span class="keywordflow">if</span>( ev.type == ALLEGRO_EVENT_TIMER )</div>
 <div class="line">            {</div>
-<div class="line">                do_draw = 1 ;</div>
+<div class="line">                <span class="keywordflow">if</span>( al_get_timer_event_source( fps_timer ) == ev.any.source )</div>
+<div class="line">                {</div>
+<div class="line">                    do_draw = 1 ;</div>
+<div class="line">                }</div>
+<div class="line">                <span class="keywordflow">else</span> <span class="keywordflow">if</span>( al_get_timer_event_source( logic_timer ) == ev.any.source )</div>
+<div class="line">                {</div>
+<div class="line">                    do_logic = 1;</div>
+<div class="line">                }</div>
 <div class="line">            }</div>
-<div class="line">            <span class="keywordflow">else</span> <span class="keywordflow">if</span>( al_get_timer_event_source( logic_timer ) == ev.any.source )</div>
+<div class="line">            <span class="keywordflow">else</span> <span class="keywordflow">if</span>( ev.type == ALLEGRO_EVENT_MOUSE_AXES )</div>
 <div class="line">            {</div>
-<div class="line">                do_logic = 1;</div>
+<div class="line">                mx = ev.mouse.x;</div>
+<div class="line">                my = ev.mouse.y;</div>
 <div class="line">            }</div>
-<div class="line">        }</div>
-<div class="line">        <span class="keywordflow">else</span> <span class="keywordflow">if</span>( ev.type == ALLEGRO_EVENT_MOUSE_AXES )</div>
-<div class="line">        {</div>
-<div class="line">            mx = ev.mouse.x;</div>
-<div class="line">            my = ev.mouse.y;</div>
-<div class="line">        }</div>
-<div class="line">        <span class="keywordflow">else</span> <span class="keywordflow">if</span>( ev.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN )</div>
-<div class="line">        {</div>
-<div class="line">            <span class="keywordflow">if</span>( ev.mouse.button == 1 )</div>
-<div class="line">                mouse_b1 = 1 ;</div>
-<div class="line">            <span class="keywordflow">if</span>( ev.mouse.button == 2 )</div>
-<div class="line">                mouse_b2 = 1 ;</div>
-<div class="line">        }</div>
-<div class="line">        <span class="keywordflow">else</span> <span class="keywordflow">if</span>( ev.type == ALLEGRO_EVENT_MOUSE_BUTTON_UP )</div>
-<div class="line">        {</div>
-<div class="line">            <span class="keywordflow">if</span>( ev.mouse.button == 1 )</div>
-<div class="line">                mouse_b1 = 0 ;</div>
-<div class="line">            <span class="keywordflow">if</span>( ev.mouse.button == 2 )</div>
-<div class="line">                mouse_b2 = 0 ;</div>
-<div class="line">        }</div>
-<div class="line">        <a id="a29" name="a29"></a><a class="code hl_function" href="group___a_l_l_e_g_r_o5.html#ga89b632f62c41b87b68e83a086e302247">get_keyboard</a>( keyboard_buffer ,ev );</div>
-<div class="line"> </div>
-<div class="line">        <span class="comment">/* Processing inputs */</span></div>
-<div class="line"> </div>
-<div class="line">        <span class="comment">/* dev mod: right click to temporary delete a block</span></div>
-<div class="line"><span class="comment">           left click to temporary add a block */</span></div>
-<div class="line">        <span class="keywordtype">int</span> mouse_button = -1 ;</div>
-<div class="line">        <span class="keywordflow">if</span>( mouse_b1==1 )</div>
-<div class="line">            mouse_button = 1 ;</div>
-<div class="line">        <span class="keywordflow">if</span>( mouse_b2==1 )</div>
-<div class="line">            mouse_button = 2 ;</div>
-<div class="line"> </div>
-<div class="line"> </div>
-<div class="line">        <span class="keywordflow">if</span>( key[ KEY_UP ] )</div>
-<div class="line">        {</div>
-<div class="line">        }</div>
-<div class="line">        <span class="keywordflow">else</span></div>
-<div class="line">        {</div>
-<div class="line">        }</div>
-<div class="line"> </div>
-<div class="line"> </div>
-<div class="line">        <span class="keywordflow">if</span>( key[ KEY_DOWN ] )</div>
-<div class="line">        {</div>
-<div class="line">        }</div>
-<div class="line">        <span class="keywordflow">else</span></div>
-<div class="line">        {</div>
-<div class="line">        }</div>
-<div class="line"> </div>
-<div class="line">        <span class="keywordflow">if</span>( key[ KEY_LEFT ] )</div>
-<div class="line">        {</div>
-<div class="line">        }</div>
-<div class="line">        <span class="keywordflow">else</span></div>
-<div class="line">        {</div>
-<div class="line">        }</div>
-<div class="line"> </div>
-<div class="line"> </div>
-<div class="line">        <span class="keywordflow">if</span>( key[ KEY_RIGHT ] )</div>
-<div class="line">        {</div>
-<div class="line">        }</div>
-<div class="line">        <span class="keywordflow">else</span></div>
-<div class="line">        {</div>
-<div class="line">        }</div>
-<div class="line"> </div>
-<div class="line"> </div>
-<div class="line">        <span class="keywordflow">if</span>( key[KEY_CTRL ] || mouse_button == 1 )</div>
-<div class="line">        {</div>
-<div class="line"> </div>
-<div class="line">        }</div>
-<div class="line">        <span class="keywordflow">else</span></div>
-<div class="line">        {</div>
-<div class="line"> </div>
-<div class="line">        }</div>
+<div class="line">            <span class="keywordflow">else</span> <span class="keywordflow">if</span>( ev.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN )</div>
+<div class="line">            {</div>
+<div class="line">                <span class="keywordflow">if</span>( ev.mouse.button == 1 )</div>
+<div class="line">                    mouse_b1 = 1 ;</div>
+<div class="line">                <span class="keywordflow">if</span>( ev.mouse.button == 2 )</div>
+<div class="line">                    mouse_b2 = 1 ;</div>
+<div class="line">            }</div>
+<div class="line">            <span class="keywordflow">else</span> <span class="keywordflow">if</span>( ev.type == ALLEGRO_EVENT_MOUSE_BUTTON_UP )</div>
+<div class="line">            {</div>
+<div class="line">                <span class="keywordflow">if</span>( ev.mouse.button == 1 )</div>
+<div class="line">                    mouse_b1 = 0 ;</div>
+<div class="line">                <span class="keywordflow">if</span>( ev.mouse.button == 2 )</div>
+<div class="line">                    mouse_b2 = 0 ;</div>
+<div class="line">            }</div>
+<div class="line">            <span class="keywordflow">else</span> <span class="keywordflow">if</span>( ev.type == ALLEGRO_EVENT_DISPLAY_SWITCH_IN || ev.type == ALLEGRO_EVENT_DISPLAY_SWITCH_OUT )</div>
+<div class="line">            {</div>
+<div class="line">                al_clear_keyboard_state( display );</div>
+<div class="line">                al_flush_event_queue( event_queue );</div>
+<div class="line">            }</div>
+<div class="line">            <span class="keywordflow">else</span></div>
+<div class="line">            {</div>
+<div class="line">                <span class="comment">/* Processing inputs */</span></div>
+<div class="line">                key_pressed = 0 ;</div>
+<div class="line">                <span class="keywordflow">if</span>( <a id="a27" name="a27"></a><a class="code hl_function" href="group___a_l_l_e_g_r_o5.html#ga89b632f62c41b87b68e83a086e302247">get_keyboard</a>( keyboard_buffer , ev ) == TRUE )</div>
+<div class="line">                    key_pressed = 1 ;</div>
+<div class="line">            }</div>
+<div class="line">        }<span class="keywordflow">while</span>( !al_is_event_queue_empty( event_queue) );</div>
 <div class="line"> </div>
 <div class="line">        <span class="keywordflow">if</span>( do_logic == 1 )</div>
 <div class="line">        {</div>
-<div class="line">            <a id="a30" name="a30"></a><a class="code hl_function" href="group___p_a_r_t_i_c_l_e_s.html#ga8a92ddb62fe9f945d5baed9d22938a10">manage_particle</a>( particle_system_effects );</div>
-<div class="line">            <span class="keywordflow">if</span>( mouse_button == 1 )</div>
+<div class="line">            <span class="keywordflow">if</span>( key_pressed == 1 )</div>
 <div class="line">            {</div>
-<div class="line">                <a id="_a31" name="_a31"></a><a class="code hl_struct" href="group___p_h_y_s_i_c_s.html#struct_p_h_y_s_i_c_s">PHYSICS</a> tmp_part ;</div>
-<div class="line">                tmp_part . sz = 10 ;</div>
-<div class="line">                <span class="keywordflow">for</span>( <span class="keywordtype">int</span> it = 0 ; it &lt; 100 ; it ++ )</div>
+<div class="line">                key_pressed = 0 ;</div>
+<div class="line">                <span class="keywordtype">int</span> max_results = 20 ;</div>
+<div class="line">                <span class="keywordflow">if</span>( completion )</div>
 <div class="line">                {</div>
-<div class="line">                    <a id="a32" name="a32"></a><a class="code hl_define" href="group___p_h_y_s_i_c_s.html#ga0d342c376c3e3125c8fb97bcbe7f93c0">VECTOR3D_SET</a>( tmp_part . speed,</div>
-<div class="line">                            500 - rand()%1000,</div>
-<div class="line">                            500 - rand()%1000,</div>
-<div class="line">                            0.0  );</div>
-<div class="line">                    <a class="code hl_define" href="group___p_h_y_s_i_c_s.html#ga0d342c376c3e3125c8fb97bcbe7f93c0">VECTOR3D_SET</a>( tmp_part . position, mx, my, 0.0  );</div>
-<div class="line">                    <a class="code hl_define" href="group___p_h_y_s_i_c_s.html#ga0d342c376c3e3125c8fb97bcbe7f93c0">VECTOR3D_SET</a>( tmp_part . acceleration, 0.0, 0.0, 0.0 );</div>
-<div class="line">                    <a class="code hl_define" href="group___p_h_y_s_i_c_s.html#ga0d342c376c3e3125c8fb97bcbe7f93c0">VECTOR3D_SET</a>( tmp_part . orientation, 0.0, 0.0, 0.0 );</div>
-<div class="line">                    <a id="a33" name="a33"></a><a class="code hl_function" href="group___p_a_r_t_i_c_l_e_s.html#gae8252f1cd818ef45e20e7d4c54351d2e">add_particle</a>( particle_system_effects, -1, <a id="a34" name="a34"></a><a class="code hl_define" href="group___p_a_r_t_i_c_l_e_s.html#ga256f505114d27985957313a4a0b2d9f2">PIXEL_PART</a>, 1000 + rand()%10000, 1+rand()%3,</div>
-<div class="line">                            al_map_rgba(   55 + rand()%200,  55 + rand()%200, 55 + rand()%200, 10 + rand()%245 ), tmp_part );</div>
-<div class="line"> </div>
+<div class="line">                    <a class="code hl_function" href="group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755">list_destroy</a>( &amp;completion );</div>
 <div class="line">                }</div>
+<div class="line">                completion = <a id="a28" name="a28"></a><a class="code hl_function" href="group___h_a_s_h___t_a_b_l_e.html#gabbe9d654ebd4da38fd727932cf8764f6">ht_get_completion_list</a>( dictionary , al_cstr( keyboard_buffer ) , max_results );</div>
 <div class="line">            }</div>
+<div class="line"> </div>
+<div class="line">            <span class="keywordtype">int</span> mouse_button = -1 ;</div>
+<div class="line">            <span class="keywordflow">if</span>( mouse_b1==1 )</div>
+<div class="line">                mouse_button = 1 ;</div>
+<div class="line">            <span class="keywordflow">if</span>( mouse_b2==1 )</div>
+<div class="line">                mouse_button = 2 ;</div>
+<div class="line"> </div>
 <div class="line">            do_logic = 0 ;</div>
 <div class="line">        }</div>
 <div class="line"> </div>
@@ -581,7 +500,6 @@ $(document).ready(function(){initNavTree('ex_gui_dictionary_8c-example.html','')
 <div class="line"> </div>
 <div class="line">            al_set_target_bitmap( scrbuf );</div>
 <div class="line">            al_clear_to_color( al_map_rgba( 0, 0, 0, 255 ) );</div>
-<div class="line">            <a id="a35" name="a35"></a><a class="code hl_function" href="group___p_a_r_t_i_c_l_e_s.html#ga09e19e83e2251d87db737b6b702a7d70">draw_particle</a>( particle_system_effects, 0, 0, w, h, 50 );</div>
 <div class="line"> </div>
 <div class="line">            last_time -= 1000000/30.0 ;</div>
 <div class="line">            <span class="keyword">static</span> <span class="keywordtype">int</span> length = 0 ;</div>
@@ -593,36 +511,33 @@ $(document).ready(function(){initNavTree('ex_gui_dictionary_8c-example.html','')
 <div class="line">            {</div>
 <div class="line">                length = al_get_text_width( font , al_cstr( keyboard_buffer ) );</div>
 <div class="line">                al_draw_filled_rectangle( WIDTH / 2 + ( length + 6 ) / 2      , 50 ,</div>
-<div class="line">                                          WIDTH / 2 + ( length + 6 ) / 2 + 15 , 70 ,</div>
-<div class="line">                                          al_map_rgb( 0 , 128 , 0 ) );</div>
+<div class="line">                        WIDTH / 2 + ( length + 6 ) / 2 + 15 , 70 ,</div>
+<div class="line">                        al_map_rgb( 0 , 128 , 0 ) );</div>
 <div class="line">            }</div>
 <div class="line">            al_draw_text( font , al_map_rgb( 0 , 255 , 0 ) , WIDTH / 2 , 50 , ALLEGRO_ALIGN_CENTRE , al_cstr( keyboard_buffer ) );</div>
-<div class="line">            <a class="code hl_struct" href="group___l_i_s_t.html#struct_l_i_s_t">LIST</a> *completion = NULL ;</div>
-<div class="line">            <span class="keywordtype">int</span> max_results = 3 ;</div>
-<div class="line">            <span class="keywordflow">if</span>( al_ustr_length( keyboard_buffer ) &gt; 0 )</div>
-<div class="line">            {</div>
-<div class="line">                completion = <a id="a36" name="a36"></a><a class="code hl_function" href="group___h_a_s_h___t_a_b_l_e.html#gabbe9d654ebd4da38fd727932cf8764f6">ht_get_completion_list</a>( dictionary , al_cstr( keyboard_buffer ) , max_results );</div>
-<div class="line">            }</div>
-<div class="line">            <span class="keywordflow">if</span>( completion )</div>
-<div class="line">            {</div>
-<div class="line">                <span class="keywordtype">int</span> vertical_it = 0 ;</div>
-<div class="line">                <a id="a37" name="a37"></a><a class="code hl_define" href="group___l_i_s_t.html#ga55cdaac0dd0f4f4d687607e6679a4634">list_foreach</a>( node , completion ) </div>
-<div class="line">                {</div>
-<div class="line">                    <span class="keywordtype">char</span> *key = (<span class="keywordtype">char</span> *)node -&gt; ptr ;</div>
-<div class="line">                    al_draw_text( font , al_map_rgb( 0 , 255 , 0 ) , WIDTH / 2 + ( length + 6 ) / 2 + 50 , 50 + vertical_it , ALLEGRO_ALIGN_CENTRE , key );</div>
-<div class="line">                    vertical_it += 35 ;</div>
-<div class="line">                }</div>
-<div class="line">                <a class="code hl_function" href="group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755">list_destroy</a>( &amp;completion );</div>
-<div class="line">            }</div>
+<div class="line"> </div>
 <div class="line">            DICTIONARY_ENTRY *entry = NULL ;</div>
 <div class="line">            <span class="keywordflow">if</span>( <a class="code hl_function" href="group___h_a_s_h___t_a_b_l_e.html#ga009f66a508dcea120e0cd2b34805e5a2">ht_get_ptr</a>( dictionary , al_cstr( keyboard_buffer ) , (<span class="keywordtype">void</span> **)&amp;entry ) == TRUE )</div>
 <div class="line">            {</div>
 <div class="line">                <span class="keywordtype">int</span> vertical_it = 0 ;</div>
-<div class="line">                <a class="code hl_define" href="group___l_i_s_t.html#ga55cdaac0dd0f4f4d687607e6679a4634">list_foreach</a>( node , entry -&gt; definitions ) </div>
+<div class="line">                <a id="a29" name="a29"></a><a class="code hl_define" href="group___l_i_s_t.html#ga55cdaac0dd0f4f4d687607e6679a4634">list_foreach</a>( node , entry -&gt; definitions ) </div>
 <div class="line">                {</div>
 <div class="line">                    DICTIONARY_DEFINITION *definition = (DICTIONARY_DEFINITION *)node -&gt; ptr ;</div>
 <div class="line">                    al_draw_textf( font , al_map_rgb( 0 , 255 , 0 ) , WIDTH / 2 , 150 + vertical_it , ALLEGRO_ALIGN_CENTRE , <span class="stringliteral">&quot;%s : %s&quot;</span> , definition -&gt; type , definition -&gt; definition );</div>
 <div class="line">                    vertical_it += 35 ;</div>
+<div class="line">                }</div>
+<div class="line">            }</div>
+<div class="line">            <span class="keywordflow">else</span></div>
+<div class="line">            {</div>
+<div class="line">                <span class="keywordflow">if</span>( completion )</div>
+<div class="line">                {</div>
+<div class="line">                    <span class="keywordtype">int</span> vertical_it = 0 ;</div>
+<div class="line">                    <a class="code hl_define" href="group___l_i_s_t.html#ga55cdaac0dd0f4f4d687607e6679a4634">list_foreach</a>( node , completion ) </div>
+<div class="line">                    {</div>
+<div class="line">                        <span class="keywordtype">char</span> *key = (<span class="keywordtype">char</span> *)node -&gt; ptr ;</div>
+<div class="line">                        al_draw_text( font , al_map_rgb( 0 , 255 , 0 ) , WIDTH / 2 , 100 + vertical_it , ALLEGRO_ALIGN_CENTRE , key );</div>
+<div class="line">                        vertical_it += 35 ;</div>
+<div class="line">                    }</div>
 <div class="line">                }</div>
 <div class="line">            }</div>
 <div class="line"> </div>
@@ -640,17 +555,17 @@ $(document).ready(function(){initNavTree('ex_gui_dictionary_8c-example.html','')
 <div class="line">    }</div>
 <div class="line">    <span class="keywordflow">while</span>( !key[KEY_ESC] &amp;&amp; !DONE );</div>
 <div class="line"> </div>
-<div class="line">    <a class="code hl_function" href="group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755">list_destroy</a>( &amp;active_object );</div>
-<div class="line">    <a id="a38" name="a38"></a><a class="code hl_function" href="group___h_a_s_h___t_a_b_l_e.html#ga22a943135dbcdb1611b40ce0547111ce">destroy_ht</a>( &amp;dictionary );</div>
+<div class="line">    <a id="a30" name="a30"></a><a class="code hl_function" href="group___h_a_s_h___t_a_b_l_e.html#ga22a943135dbcdb1611b40ce0547111ce">destroy_ht</a>( &amp;dictionary );</div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">return</span> 0;</div>
-<div class="line"> </div>
 <div class="line">}</div>
 <div class="ttc" id="agroup___a_l_l_e_g_r_o5_html_ga89b632f62c41b87b68e83a086e302247"><div class="ttname"><a href="group___a_l_l_e_g_r_o5.html#ga89b632f62c41b87b68e83a086e302247">get_keyboard</a></div><div class="ttdeci">int get_keyboard(ALLEGRO_USTR *str, ALLEGRO_EVENT event)</div><div class="ttdoc">update a keyboard buffer from an event</div><div class="ttdef"><b>Definition:</b> <a href="n__allegro5_8c_source.html#l00019">n_allegro5.c:19</a></div></div>
 <div class="ttc" id="agroup___c_o_m_m_o_n_s_html_ga079dc7a6a7e7c54bb714d8bb2afdd022"><div class="ttname"><a href="group___c_o_m_m_o_n_s.html#ga079dc7a6a7e7c54bb714d8bb2afdd022">FreeNoLog</a></div><div class="ttdeci">#define FreeNoLog(__ptr)</div><div class="ttdoc">Free Handler without log.</div><div class="ttdef"><b>Definition:</b> <a href="n__common_8h_source.html#l00258">n_common.h:258</a></div></div>
 <div class="ttc" id="agroup___c_o_m_m_o_n_s_html_ga46bf052fc99248347a1dcf89bc0757c6"><div class="ttname"><a href="group___c_o_m_m_o_n_s.html#ga46bf052fc99248347a1dcf89bc0757c6">Malloc</a></div><div class="ttdeci">#define Malloc(__ptr, __struct, __size)</div><div class="ttdoc">Malloc Handler to get errors and set to 0.</div><div class="ttdef"><b>Definition:</b> <a href="n__common_8h_source.html#l00182">n_common.h:182</a></div></div>
 <div class="ttc" id="agroup___c_o_m_m_o_n_s_html_ga55b9404f7bc9d3a3ead2f0103331a87e"><div class="ttname"><a href="group___c_o_m_m_o_n_s.html#ga55b9404f7bc9d3a3ead2f0103331a87e">_str</a></div><div class="ttdeci">#define _str(__PTR)</div><div class="ttdoc">define true</div><div class="ttdef"><b>Definition:</b> <a href="n__common_8h_source.html#l00171">n_common.h:171</a></div></div>
 <div class="ttc" id="agroup___c_o_m_m_o_n_s_html_gacaf9e791d31308d5d43c0322b03ee322"><div class="ttname"><a href="group___c_o_m_m_o_n_s.html#gacaf9e791d31308d5d43c0322b03ee322">n_abort</a></div><div class="ttdeci">void n_abort(char const *format,...)</div><div class="ttdoc">void n_abort( char const *format , ... )</div><div class="ttdef"><b>Definition:</b> <a href="n__common_8c_source.html#l00038">n_common.c:38</a></div></div>
+<div class="ttc" id="agroup___c_o_m_m_o_n_s_html_gae62e40d702e99a7760ba1de7451dff51"><div class="ttname"><a href="group___c_o_m_m_o_n_s.html#gae62e40d702e99a7760ba1de7451dff51">Free</a></div><div class="ttdeci">#define Free(__ptr)</div><div class="ttdoc">Free Handler to get errors.</div><div class="ttdef"><b>Definition:</b> <a href="n__common_8h_source.html#l00246">n_common.h:246</a></div></div>
+<div class="ttc" id="agroup___c_o_m_m_o_n_s_html_gaf0e29edead3f943a4ac241c5724e1384"><div class="ttname"><a href="group___c_o_m_m_o_n_s.html#gaf0e29edead3f943a4ac241c5724e1384">_nstr</a></div><div class="ttdeci">#define _nstr(__PTR)</div><div class="ttdoc">N_STR or &quot;NULL&quot; string for logging purposes.</div><div class="ttdef"><b>Definition:</b> <a href="n__common_8h_source.html#l00177">n_common.h:177</a></div></div>
 <div class="ttc" id="agroup___h_a_s_h___t_a_b_l_e_html_ga009f66a508dcea120e0cd2b34805e5a2"><div class="ttname"><a href="group___h_a_s_h___t_a_b_l_e.html#ga009f66a508dcea120e0cd2b34805e5a2">ht_get_ptr</a></div><div class="ttdeci">int ht_get_ptr(HASH_TABLE *table, const char *key, void **val)</div><div class="ttdoc">get pointer at 'key' from 'table'</div><div class="ttdef"><b>Definition:</b> <a href="n__hash_8c_source.html#l02253">n_hash.c:2253</a></div></div>
 <div class="ttc" id="agroup___h_a_s_h___t_a_b_l_e_html_ga22a943135dbcdb1611b40ce0547111ce"><div class="ttname"><a href="group___h_a_s_h___t_a_b_l_e.html#ga22a943135dbcdb1611b40ce0547111ce">destroy_ht</a></div><div class="ttdeci">int destroy_ht(HASH_TABLE **table)</div><div class="ttdoc">empty a table and destroy it</div><div class="ttdef"><b>Definition:</b> <a href="n__hash_8c_source.html#l02419">n_hash.c:2419</a></div></div>
 <div class="ttc" id="agroup___h_a_s_h___t_a_b_l_e_html_gab95fe0967850a3665d21837519ede6c8"><div class="ttname"><a href="group___h_a_s_h___t_a_b_l_e.html#gab95fe0967850a3665d21837519ede6c8">new_ht_trie</a></div><div class="ttdeci">HASH_TABLE * new_ht_trie(unsigned int alphabet_length, unsigned int alphabet_offset)</div><div class="ttdoc">create a TRIE hash table with the alphabet_size, each key value beeing decreased by alphabet_offset</div><div class="ttdef"><b>Definition:</b> <a href="n__hash_8c_source.html#l02094">n_hash.c:2094</a></div></div>
@@ -669,35 +584,24 @@ $(document).ready(function(){initNavTree('ex_gui_dictionary_8c-example.html','')
 <div class="ttc" id="agroup___l_o_g_html_gacad9b2d55788f46ddde811c986ead9ae"><div class="ttname"><a href="group___l_o_g.html#gacad9b2d55788f46ddde811c986ead9ae">set_log_level</a></div><div class="ttdeci">void set_log_level(const int log_level)</div><div class="ttdoc">Set the global log level value ( static int LOG_LEVEL )</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8c_source.html#l00097">n_log.c:97</a></div></div>
 <div class="ttc" id="agroup___l_o_g_html_gad89ee324d180cdcd7defcc709ff9ca42"><div class="ttname"><a href="group___l_o_g.html#gad89ee324d180cdcd7defcc709ff9ca42">LOG_NOTICE</a></div><div class="ttdeci">#define LOG_NOTICE</div><div class="ttdoc">normal but significant condition</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00062">n_log.h:62</a></div></div>
 <div class="ttc" id="agroup___l_o_g_html_gaeb4f36db01bd128c7afeac5889dac311"><div class="ttname"><a href="group___l_o_g.html#gaeb4f36db01bd128c7afeac5889dac311">LOG_INFO</a></div><div class="ttdeci">#define LOG_INFO</div><div class="ttdoc">informational</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8h_source.html#l00064">n_log.h:64</a></div></div>
-<div class="ttc" id="agroup___n___s_t_r_html_ga113e906d03374ac38e441f1df44095fb"><div class="ttname"><a href="group___n___s_t_r.html#ga113e906d03374ac38e441f1df44095fb">free_nstr</a></div><div class="ttdeci">#define free_nstr(__ptr)</div><div class="ttdoc">free a N_STR structure and set the pointer to NULL</div><div class="ttdef"><b>Definition:</b> <a href="n__str_8h_source.html#l00196">n_str.h:196</a></div></div>
 <div class="ttc" id="agroup___n___s_t_r_html_ga1c1f4062c727970a68bfd932c3fabcd5"><div class="ttname"><a href="group___n___s_t_r.html#ga1c1f4062c727970a68bfd932c3fabcd5">nstrprintf</a></div><div class="ttdeci">#define nstrprintf(__nstr_var,...)</div><div class="ttdoc">Macro to quickly allocate and sprintf to N_STR *.</div><div class="ttdef"><b>Definition:</b> <a href="n__str_8h_source.html#l00097">n_str.h:97</a></div></div>
 <div class="ttc" id="agroup___n___s_t_r_html_struct_n___s_t_r"><div class="ttname"><a href="group___n___s_t_r.html#struct_n___s_t_r">N_STR</a></div><div class="ttdoc">A box including a string and his lenght.</div><div class="ttdef"><b>Definition:</b> <a href="n__str_8h_source.html#l00150">n_str.h:151</a></div></div>
-<div class="ttc" id="agroup___p_a_r_t_i_c_l_e_s_html_ga09e19e83e2251d87db737b6b702a7d70"><div class="ttname"><a href="group___p_a_r_t_i_c_l_e_s.html#ga09e19e83e2251d87db737b6b702a7d70">draw_particle</a></div><div class="ttdeci">int draw_particle(PARTICLE_SYSTEM *psys, double xpos, double ypos, int w, int h, double range)</div><div class="ttdoc">draw particles of a particle system</div><div class="ttdef"><b>Definition:</b> <a href="n__particles_8c_source.html#l00200">n_particles.c:200</a></div></div>
-<div class="ttc" id="agroup___p_a_r_t_i_c_l_e_s_html_ga256f505114d27985957313a4a0b2d9f2"><div class="ttname"><a href="group___p_a_r_t_i_c_l_e_s.html#ga256f505114d27985957313a4a0b2d9f2">PIXEL_PART</a></div><div class="ttdeci">#define PIXEL_PART</div><div class="ttdoc">pixel particle</div><div class="ttdef"><b>Definition:</b> <a href="n__particles_8h_source.html#l00049">n_particles.h:49</a></div></div>
-<div class="ttc" id="agroup___p_a_r_t_i_c_l_e_s_html_ga8a92ddb62fe9f945d5baed9d22938a10"><div class="ttname"><a href="group___p_a_r_t_i_c_l_e_s.html#ga8a92ddb62fe9f945d5baed9d22938a10">manage_particle</a></div><div class="ttdeci">int manage_particle(PARTICLE_SYSTEM *psys)</div><div class="ttdoc">update particles positions usting particle system internal timer</div><div class="ttdef"><b>Definition:</b> <a href="n__particles_8c_source.html#l00180">n_particles.c:180</a></div></div>
-<div class="ttc" id="agroup___p_a_r_t_i_c_l_e_s_html_gae8252f1cd818ef45e20e7d4c54351d2e"><div class="ttname"><a href="group___p_a_r_t_i_c_l_e_s.html#gae8252f1cd818ef45e20e7d4c54351d2e">add_particle</a></div><div class="ttdeci">int add_particle(PARTICLE_SYSTEM *psys, int spr, int mode, int lifetime, int size, ALLEGRO_COLOR color, PHYSICS object)</div><div class="ttdoc">add a particle to a particle system</div><div class="ttdef"><b>Definition:</b> <a href="n__particles_8c_source.html#l00059">n_particles.c:59</a></div></div>
-<div class="ttc" id="agroup___p_a_r_t_i_c_l_e_s_html_gaf00630a2c4eaa468e124fe4d9557c825"><div class="ttname"><a href="group___p_a_r_t_i_c_l_e_s.html#gaf00630a2c4eaa468e124fe4d9557c825">init_particle_system</a></div><div class="ttdeci">int init_particle_system(PARTICLE_SYSTEM **psys, int max, double x, double y, double z, int max_sprites)</div><div class="ttdoc">initialize a particle system</div><div class="ttdef"><b>Definition:</b> <a href="n__particles_8c_source.html#l00024">n_particles.c:24</a></div></div>
-<div class="ttc" id="agroup___p_a_r_t_i_c_l_e_s_html_struct_p_a_r_t_i_c_l_e___s_y_s_t_e_m"><div class="ttname"><a href="group___p_a_r_t_i_c_l_e_s.html#struct_p_a_r_t_i_c_l_e___s_y_s_t_e_m">PARTICLE_SYSTEM</a></div><div class="ttdoc">Structure of a particle system.</div><div class="ttdef"><b>Definition:</b> <a href="n__particles_8h_source.html#l00077">n_particles.h:78</a></div></div>
 <div class="ttc" id="agroup___p_c_r_e_html_ga54f913d2ee09d63de0f06fc1b9439d4a"><div class="ttname"><a href="group___p_c_r_e.html#ga54f913d2ee09d63de0f06fc1b9439d4a">npcre_new</a></div><div class="ttdeci">N_PCRE * npcre_new(char *str, int max_cap, int flags)</div><div class="ttdoc">From pcre doc, the flag bits are: PCRE_ANCHORED Force pattern anchoring PCRE_AUTO_CALLOUT Compile aut...</div><div class="ttdef"><b>Definition:</b> <a href="n__pcre_8c_source.html#l00059">n_pcre.c:59</a></div></div>
 <div class="ttc" id="agroup___p_c_r_e_html_ga605b60ef645cf217bd2b3dc548d1d6c2"><div class="ttname"><a href="group___p_c_r_e.html#ga605b60ef645cf217bd2b3dc548d1d6c2">npcre_match</a></div><div class="ttdeci">int npcre_match(char *str, N_PCRE *pcre)</div><div class="ttdoc">Return TRUE if str matches regexp, and make captures up to max_cap.</div><div class="ttdef"><b>Definition:</b> <a href="n__pcre_8c_source.html#l00165">n_pcre.c:165</a></div></div>
 <div class="ttc" id="agroup___p_c_r_e_html_ga89e67d2b218e2138a12aaecc2deab8fc"><div class="ttname"><a href="group___p_c_r_e.html#ga89e67d2b218e2138a12aaecc2deab8fc">npcre_clean_match</a></div><div class="ttdeci">int npcre_clean_match(N_PCRE *pcre)</div><div class="ttdoc">clean the match list of the last capture, if any</div><div class="ttdef"><b>Definition:</b> <a href="n__pcre_8c_source.html#l00144">n_pcre.c:144</a></div></div>
 <div class="ttc" id="agroup___p_c_r_e_html_struct_n___p_c_r_e"><div class="ttname"><a href="group___p_c_r_e.html#struct_n___p_c_r_e">N_PCRE</a></div><div class="ttdoc">N_PCRE structure.</div><div class="ttdef"><b>Definition:</b> <a href="n__pcre_8h_source.html#l00028">n_pcre.h:29</a></div></div>
-<div class="ttc" id="agroup___p_h_y_s_i_c_s_html_ga0d342c376c3e3125c8fb97bcbe7f93c0"><div class="ttname"><a href="group___p_h_y_s_i_c_s.html#ga0d342c376c3e3125c8fb97bcbe7f93c0">VECTOR3D_SET</a></div><div class="ttdeci">#define VECTOR3D_SET(VECTOR, X, Y, Z)</div><div class="ttdoc">helper to set a VECTOR3D position</div><div class="ttdef"><b>Definition:</b> <a href="n__3d_8h_source.html#l00043">n_3d.h:43</a></div></div>
-<div class="ttc" id="agroup___p_h_y_s_i_c_s_html_struct_p_h_y_s_i_c_s"><div class="ttname"><a href="group___p_h_y_s_i_c_s.html#struct_p_h_y_s_i_c_s">PHYSICS</a></div><div class="ttdoc">structure of the physics of an object</div><div class="ttdef"><b>Definition:</b> <a href="n__3d_8h_source.html#l00049">n_3d.h:50</a></div></div>
 <div class="ttc" id="an__allegro5_8h_html"><div class="ttname"><a href="n__allegro5_8h.html">n_allegro5.h</a></div><div class="ttdoc">Allegro5 helpers.</div></div>
-<div class="ttc" id="an__anim_8h_html"><div class="ttname"><a href="n__anim_8h.html">n_anim.h</a></div><div class="ttdoc">Animations graphics and animations parameters.</div></div>
 <div class="ttc" id="an__common_8h_html"><div class="ttname"><a href="n__common_8h.html">n_common.h</a></div><div class="ttdoc">Common headers and low-level hugly functions &amp; define.</div></div>
 <div class="ttc" id="an__hash_8h_html"><div class="ttname"><a href="n__hash_8h.html">n_hash.h</a></div><div class="ttdoc">Hash functions and table.</div></div>
 <div class="ttc" id="an__list_8h_html"><div class="ttname"><a href="n__list_8h.html">n_list.h</a></div><div class="ttdoc">List structures and definitions.</div></div>
-<div class="ttc" id="an__log_8c_html_ab936051f5aaca44c6c3c41dee0d19c36"><div class="ttname"><a href="n__log_8c.html#ab936051f5aaca44c6c3c41dee0d19c36">log_file</a></div><div class="ttdeci">static FILE * log_file</div><div class="ttdoc">static FILE handling if logging to file is enabled</div><div class="ttdef"><b>Definition:</b> <a href="n__log_8c_source.html#l00053">n_log.c:53</a></div></div>
-<div class="ttc" id="an__particles_8h_html"><div class="ttname"><a href="n__particles_8h.html">n_particles.h</a></div><div class="ttdoc">Particles management.</div></div>
 <div class="ttc" id="an__pcre_8h_html"><div class="ttname"><a href="n__pcre_8h.html">n_pcre.h</a></div><div class="ttdoc">PCRE helpers for regex matching.</div></div>
+<div class="ttc" id="an__str_8h_html"><div class="ttname"><a href="n__str_8h.html">n_str.h</a></div><div class="ttdoc">N_STR and string function declaration.</div></div>
 </div><!-- fragment --> </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Tue Feb 15 2022 20:41:28 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+    <li class="footer">Generated on Wed Feb 16 2022 18:09:29 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
   </ul>
 </div>
 </body>
