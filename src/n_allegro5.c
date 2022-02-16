@@ -24,17 +24,15 @@ int get_keyboard( ALLEGRO_USTR *str, ALLEGRO_EVENT event )
         if(event.keyboard.unichar >= 32)
         {
             al_ustr_append_chr(str, event.keyboard.unichar);
+            return TRUE ;
         }
         else if(event.keyboard.keycode == ALLEGRO_KEY_BACKSPACE)
         {
             int pos = (int)al_ustr_size(str);
             if(al_ustr_prev(str, &pos))
                 al_ustr_truncate(str, pos);
+            return TRUE ;
         }
     }
-    else
-    {
-        return FALSE ;
-    }
-    return TRUE ;
+    return FALSE ;
 }
