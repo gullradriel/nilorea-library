@@ -82,6 +82,7 @@ ifeq ($(HAVE_ALLEGRO),1)
 	#ALLEGRO_CLIBS=-lallegro_acodec -lallegro_audio -lallegro_color -lallegro_dialog -lallegro_image -lallegro_main -lallegro_memfile -lallegro_physfs -lallegro_primitives -lallegro_ttf -lallegro_font -lallegro
 	ALLEGRO_CLIBS=-lallegro_acodec -lallegro_audio -lallegro_color -lallegro_image -lallegro_main -lallegro_primitives -lallegro_ttf -lallegro_font -lallegro
 	TARGET+=ex_gui_particles$(EXT) ex_gui_netclient$(EXT) ex_gui_netserver$(EXT) ex_gui_dictionary$(EXT)
+	CFLAGS+= -DALLEGRO_UNSTABLE
 endif
 
 

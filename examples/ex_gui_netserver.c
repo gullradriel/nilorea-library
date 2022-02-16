@@ -407,6 +407,8 @@ int main( int argc, char *argv[] )
     int mx = 0, my = 0, mouse_b1 = 0, mouse_b2 = 0 ;
     int do_draw = 0, do_logic = 0, do_network = 0 ;
 
+    al_clear_keyboard_state( NULL );
+    al_flush_event_queue( event_queue );
     do
     {
 
@@ -509,7 +511,7 @@ int main( int argc, char *argv[] )
             }
             else if( ev.type == ALLEGRO_EVENT_DISPLAY_SWITCH_IN || ev.type == ALLEGRO_EVENT_DISPLAY_SWITCH_OUT )
             {
-                al_clear_keyboard_state();
+                al_clear_keyboard_state( display );
                 al_flush_event_queue( event_queue );
             }
             else

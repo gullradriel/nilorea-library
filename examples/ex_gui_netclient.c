@@ -435,6 +435,9 @@ int main( int argc, char *argv[] )
     n_log( LOG_NOTICE, "Id is:%d", ident );
     DONE = 0 ;
     QUIT_ASKED = 0 ;
+
+    al_clear_keyboard_state( NULL );
+    al_flush_event_queue( event_queue );
     do
     {
         do
@@ -552,7 +555,7 @@ int main( int argc, char *argv[] )
             }
             else if( ev.type == ALLEGRO_EVENT_DISPLAY_SWITCH_IN || ev.type == ALLEGRO_EVENT_DISPLAY_SWITCH_OUT )
             {
-                al_clear_keyboard_state();
+                al_clear_keyboard_state( display );
                 al_flush_event_queue( event_queue );
             }
             else

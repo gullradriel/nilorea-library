@@ -309,7 +309,7 @@ int main( int argc, char *argv[] )
     int key_pressed = 0 ;
     n_log( LOG_NOTICE , "Starting main loop" );
 
-    al_clear_keyboard_state();
+    al_clear_keyboard_state( NULL );
     al_flush_event_queue( event_queue );
     do
     {
@@ -373,7 +373,7 @@ int main( int argc, char *argv[] )
             }
             else if( ev.type == ALLEGRO_EVENT_DISPLAY_SWITCH_IN || ev.type == ALLEGRO_EVENT_DISPLAY_SWITCH_OUT )
             {
-                al_clear_keyboard_state();
+                al_clear_keyboard_state( display );
                 al_flush_event_queue( event_queue );
             }
             else

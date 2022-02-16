@@ -93,68 +93,68 @@ int main( int argc, char *argv[] )
     {
         switch( getoptret )
         {
-        case 'h':
-            n_log( LOG_NOTICE, "\n    %s -h help -v version -V DEBUGLEVEL (NOLOG,VERBOSE,NOTICE,ERROR,DEBUG)\n", argv[ 0 ] );
-            exit( TRUE );
-        case 'v':
-            sprintf( ver_str, "%s %s", __DATE__, __TIME__ );
-            exit( TRUE );
-            break ;
-        case 'V':
-            if( !strncmp( "NOTICE", optarg, 6 ) )
-            {
-                log_level = LOG_INFO ;
-            }
-            else
-            {
-                if(  !strncmp( "VERBOSE", optarg, 7 ) )
+            case 'h':
+                n_log( LOG_NOTICE, "\n    %s -h help -v version -V DEBUGLEVEL (NOLOG,VERBOSE,NOTICE,ERROR,DEBUG)\n", argv[ 0 ] );
+                exit( TRUE );
+            case 'v':
+                sprintf( ver_str, "%s %s", __DATE__, __TIME__ );
+                exit( TRUE );
+                break ;
+            case 'V':
+                if( !strncmp( "NOTICE", optarg, 6 ) )
                 {
-                    log_level = LOG_NOTICE ;
+                    log_level = LOG_INFO ;
                 }
                 else
                 {
-                    if(  !strncmp( "ERROR", optarg, 5 ) )
+                    if(  !strncmp( "VERBOSE", optarg, 7 ) )
                     {
-                        log_level = LOG_ERR ;
+                        log_level = LOG_NOTICE ;
                     }
                     else
                     {
-                        if(  !strncmp( "DEBUG", optarg, 5 ) )
+                        if(  !strncmp( "ERROR", optarg, 5 ) )
                         {
-                            log_level = LOG_DEBUG ;
+                            log_level = LOG_ERR ;
                         }
                         else
                         {
-                            n_log( LOG_ERR, "%s is not a valid log level\n", optarg );
-                            exit( FALSE );
+                            if(  !strncmp( "DEBUG", optarg, 5 ) )
+                            {
+                                log_level = LOG_DEBUG ;
+                            }
+                            else
+                            {
+                                n_log( LOG_ERR, "%s is not a valid log level\n", optarg );
+                                exit( FALSE );
+                            }
                         }
                     }
                 }
-            }
-            n_log( LOG_NOTICE, "LOG LEVEL UP TO: %d\n", log_level );
-            set_log_level( log_level );
-            break;
-        case 'L' :
-            n_log( LOG_NOTICE, "LOG FILE: %s\n", optarg );
-            set_log_file( optarg );
-            break ;
-        case '?' :
-        {
-            switch( optopt )
-            {
-            case 'V' :
-                n_log( LOG_ERR, "\nPlease specify a log level after -V. \nAvailable values: NOLOG,VERBOSE,NOTICE,ERROR,DEBUG\n\n" );
+                n_log( LOG_NOTICE, "LOG LEVEL UP TO: %d\n", log_level );
+                set_log_level( log_level );
                 break;
             case 'L' :
-                n_log( LOG_ERR, "\nPlease specify a log file after -L\n" );
+                n_log( LOG_NOTICE, "LOG FILE: %s\n", optarg );
+                set_log_file( optarg );
+                break ;
+            case '?' :
+                {
+                    switch( optopt )
+                    {
+                        case 'V' :
+                            n_log( LOG_ERR, "\nPlease specify a log level after -V. \nAvailable values: NOLOG,VERBOSE,NOTICE,ERROR,DEBUG\n\n" );
+                            break;
+                        case 'L' :
+                            n_log( LOG_ERR, "\nPlease specify a log file after -L\n" );
+                        default:
+                            break;
+                    }
+                }
+                __attribute__ ((fallthrough));
             default:
-                break;
-            }
-        }
-        __attribute__ ((fallthrough));
-        default:
-            n_log( LOG_ERR, "\n    %s -h help -v version -V DEBUGLEVEL (NOLOG,VERBOSE,NOTICE,ERROR,DEBUG) -L logfile\n", argv[ 0 ] );
-            exit( FALSE );
+                n_log( LOG_ERR, "\n    %s -h help -v version -V DEBUGLEVEL (NOLOG,VERBOSE,NOTICE,ERROR,DEBUG) -L logfile\n", argv[ 0 ] );
+                exit( FALSE );
         }
     }
 
@@ -200,104 +200,117 @@ int main( int argc, char *argv[] )
 
     int mx = 0, my = 0, mouse_b1 = 0, mouse_b2 = 0 ;
     int do_draw = 0, do_logic = 0 ;
-
+    
+    al_clear_keyboard_state( NULL );
+    al_flush_event_queue( event_queue );
     do
     {
-        ALLEGRO_EVENT ev ;
+        do
+        {
+            ALLEGRO_EVENT ev ;
 
-        al_wait_for_event(event_queue, &ev);
+            al_wait_for_event(event_queue, &ev);
 
-        if(ev.type == ALLEGRO_EVENT_KEY_DOWN)
-        {
-            switch(ev.keyboard.keycode)
+            if(ev.type == ALLEGRO_EVENT_KEY_DOWN)
             {
-            case ALLEGRO_KEY_UP:
-                key[KEY_UP] = 1;
-                break;
-            case ALLEGRO_KEY_DOWN:
-                key[KEY_DOWN] = 1;
-                break;
-            case ALLEGRO_KEY_LEFT:
-                key[KEY_LEFT] = 1;
-                break;
-            case ALLEGRO_KEY_RIGHT:
-                key[KEY_RIGHT] = 1;
-                break;
-            case ALLEGRO_KEY_ESCAPE:
-                key[KEY_ESC] = 1 ;
-                break;
-            case ALLEGRO_KEY_SPACE:
-                key[KEY_SPACE] = 1 ;
-                break;
-            case ALLEGRO_KEY_LCTRL:
-            case ALLEGRO_KEY_RCTRL:
-                key[KEY_CTRL] = 1 ;
-            default:
-                break;
+                switch(ev.keyboard.keycode)
+                {
+                    case ALLEGRO_KEY_UP:
+                        key[KEY_UP] = 1;
+                        break;
+                    case ALLEGRO_KEY_DOWN:
+                        key[KEY_DOWN] = 1;
+                        break;
+                    case ALLEGRO_KEY_LEFT:
+                        key[KEY_LEFT] = 1;
+                        break;
+                    case ALLEGRO_KEY_RIGHT:
+                        key[KEY_RIGHT] = 1;
+                        break;
+                    case ALLEGRO_KEY_ESCAPE:
+                        key[KEY_ESC] = 1 ;
+                        break;
+                    case ALLEGRO_KEY_SPACE:
+                        key[KEY_SPACE] = 1 ;
+                        break;
+                    case ALLEGRO_KEY_LCTRL:
+                    case ALLEGRO_KEY_RCTRL:
+                        key[KEY_CTRL] = 1 ;
+                    default:
+                        break;
+                }
             }
-        }
-        else if(ev.type == ALLEGRO_EVENT_KEY_UP)
-        {
-            switch(ev.keyboard.keycode)
+            else if(ev.type == ALLEGRO_EVENT_KEY_UP)
             {
-            case ALLEGRO_KEY_UP:
-                key[KEY_UP] = 0;
-                break;
-            case ALLEGRO_KEY_DOWN:
-                key[KEY_DOWN] = 0;
-                break;
-            case ALLEGRO_KEY_LEFT:
-                key[KEY_LEFT] = 0;
-                break;
-            case ALLEGRO_KEY_RIGHT:
-                key[KEY_RIGHT] =0;
-                break;
-            case ALLEGRO_KEY_ESCAPE:
-                key[KEY_ESC] = 0 ;
-                break;
-            case ALLEGRO_KEY_SPACE:
-                key[KEY_SPACE] = 0 ;
-                break;
-            case ALLEGRO_KEY_LCTRL:
-            case ALLEGRO_KEY_RCTRL:
-                key[KEY_CTRL] = 0 ;
-            default:
-                break;
+                switch(ev.keyboard.keycode)
+                {
+                    case ALLEGRO_KEY_UP:
+                        key[KEY_UP] = 0;
+                        break;
+                    case ALLEGRO_KEY_DOWN:
+                        key[KEY_DOWN] = 0;
+                        break;
+                    case ALLEGRO_KEY_LEFT:
+                        key[KEY_LEFT] = 0;
+                        break;
+                    case ALLEGRO_KEY_RIGHT:
+                        key[KEY_RIGHT] =0;
+                        break;
+                    case ALLEGRO_KEY_ESCAPE:
+                        key[KEY_ESC] = 0 ;
+                        break;
+                    case ALLEGRO_KEY_SPACE:
+                        key[KEY_SPACE] = 0 ;
+                        break;
+                    case ALLEGRO_KEY_LCTRL:
+                    case ALLEGRO_KEY_RCTRL:
+                        key[KEY_CTRL] = 0 ;
+                    default:
+                        break;
+                }
             }
-        }
-        else if( ev.type == ALLEGRO_EVENT_TIMER )
-        {
-            if( al_get_timer_event_source( fps_timer ) == ev.any.source )
+            else if( ev.type == ALLEGRO_EVENT_TIMER )
             {
-                do_draw = 1 ;
+                if( al_get_timer_event_source( fps_timer ) == ev.any.source )
+                {
+                    do_draw = 1 ;
+                }
+                else if( al_get_timer_event_source( logic_timer ) == ev.any.source )
+                {
+                    do_logic = 1;
+                }
             }
-            else if( al_get_timer_event_source( logic_timer ) == ev.any.source )
+            else if( ev.type == ALLEGRO_EVENT_MOUSE_AXES )
             {
-                do_logic = 1;
+                mx = ev.mouse.x;
+                my = ev.mouse.y;
             }
-        }
-        else if( ev.type == ALLEGRO_EVENT_MOUSE_AXES )
-        {
-            mx = ev.mouse.x;
-            my = ev.mouse.y;
-        }
-        else if( ev.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN )
-        {
-            if( ev.mouse.button == 1 )
-                mouse_b1 = 1 ;
-            if( ev.mouse.button == 2 )
-                mouse_b2 = 1 ;
-        }
-        else if( ev.type == ALLEGRO_EVENT_MOUSE_BUTTON_UP )
-        {
-            if( ev.mouse.button == 1 )
-                mouse_b1 = 0 ;
-            if( ev.mouse.button == 2 )
-                mouse_b2 = 0 ;
-        }
+            else if( ev.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN )
+            {
+                if( ev.mouse.button == 1 )
+                    mouse_b1 = 1 ;
+                if( ev.mouse.button == 2 )
+                    mouse_b2 = 1 ;
+            }
+            else if( ev.type == ALLEGRO_EVENT_MOUSE_BUTTON_UP )
+            {
+                if( ev.mouse.button == 1 )
+                    mouse_b1 = 0 ;
+                if( ev.mouse.button == 2 )
+                    mouse_b2 = 0 ;
+            }
+            else if( ev.type == ALLEGRO_EVENT_DISPLAY_SWITCH_IN || ev.type == ALLEGRO_EVENT_DISPLAY_SWITCH_OUT )
+            {
+                al_clear_keyboard_state( display );
+                al_flush_event_queue( event_queue );
+            }
+            else
+            {
+                /* Processing inputs */
+                // get_keyboard( chat_line , ev );
+            }
+        }while( !al_is_event_queue_empty( event_queue) );
 
-
-        /* Processing inputs */
 
         /* dev mod: right click to temporary delete a block
            left click to temporary add a block */
@@ -307,46 +320,6 @@ int main( int argc, char *argv[] )
         if( mouse_b2==1 )
             mouse_button = 2 ;
 
-
-        if( key[ KEY_UP ] )
-        {
-        }
-        else
-        {
-        }
-
-
-        if( key[ KEY_DOWN ] )
-        {
-        }
-        else
-        {
-        }
-
-        if( key[ KEY_LEFT ] )
-        {
-        }
-        else
-        {
-        }
-
-
-        if( key[ KEY_RIGHT ] )
-        {
-        }
-        else
-        {
-        }
-
-
-        if( key[KEY_CTRL ] || mouse_button == 1 )
-        {
-
-        }
-        else
-        {
-
-        }
 
         if( do_logic == 1 )
         {
@@ -358,14 +331,14 @@ int main( int argc, char *argv[] )
                 for( int it = 0 ; it < 100 ; it ++ )
                 {
                     VECTOR3D_SET( tmp_part . speed,
-                                  500 - rand()%1000,
-                                  500 - rand()%1000,
-                                  0.0  );
+                            500 - rand()%1000,
+                            500 - rand()%1000,
+                            0.0  );
                     VECTOR3D_SET( tmp_part . position, mx, my, 0.0  );
                     VECTOR3D_SET( tmp_part . acceleration, 0.0, 0.0, 0.0 );
                     VECTOR3D_SET( tmp_part . orientation, 0.0, 0.0, 0.0 );
                     add_particle( particle_system_effects, -1, PIXEL_PART, 1000 + rand()%10000, 1+rand()%3,
-                                  al_map_rgba(   55 + rand()%200,  55 + rand()%200, 55 + rand()%200, 10 + rand()%245 ), tmp_part );
+                            al_map_rgba(   55 + rand()%200,  55 + rand()%200, 55 + rand()%200, 10 + rand()%245 ), tmp_part );
 
                 }
             }
