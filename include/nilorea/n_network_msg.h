@@ -77,7 +77,7 @@ int add_nstrptr_to_msg( NETW_MSG *msg, N_STR *str );
 /* Add a string to the the message */
 int add_nstrdup_to_msg( NETW_MSG *msg, N_STR *str );
 /* Add a char *string to the the message */
-int add_strdup_to_msg( NETW_MSG *msg, char *str );
+int add_strdup_to_msg( NETW_MSG *msg, const char *str );
 /* Get an int from the message */
 int get_int_from_msg( NETW_MSG *msg, int *value );
 /* Get a float value from the message */

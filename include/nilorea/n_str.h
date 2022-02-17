@@ -244,9 +244,9 @@ int split_count( char **split_result );
 /* Free a char **tab and set it to NULL */
 int free_split_result( char ***tab );
 /* Write and fit bytes */
-int write_and_fit_ex( char **dest, NSTRBYTE *size, NSTRBYTE *written, char *src, NSTRBYTE src_size, NSTRBYTE additional_padding );
+int write_and_fit_ex( char **dest, NSTRBYTE *size, NSTRBYTE *written, const char *src, NSTRBYTE src_size, NSTRBYTE additional_padding );
 /* Write and fit into the char array */
-int write_and_fit( char **dest, NSTRBYTE *size, NSTRBYTE *written, char *src );
+int write_and_fit( char **dest, NSTRBYTE *size, NSTRBYTE *written, const char *src );
 /* get a list of the file in a directory */
 int scan_dir( const char *dir, LIST *result, const int recurse );
 /* get a list of the file in a directory, extented N_STR version */

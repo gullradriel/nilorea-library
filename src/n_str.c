@@ -1218,7 +1218,7 @@ int nstrcat_bytes( N_STR *dest, void *data )
 
 
 
-/*!\fn int write_and_fit_ex( char **dest, NSTRBYTE *size, NSTRBYTE *written, char *src , NSTRBYTE src_size , NSTRBYTE additional_padding )
+/*!\fn int write_and_fit_ex( char **dest, NSTRBYTE *size, NSTRBYTE *written, const char *src , NSTRBYTE src_size , NSTRBYTE additional_padding )
  *\brief concatenate a copy of src of size src_size to dest, starting at dest[ written ], updating written and size variable, allocation of new blocks of (needed size + additional_padding ) if resize is needed. If dest is NULL it will be allocated.
  *\param dest The dest string
  *\param size The current size, will be updated if written + strlen( dest) > size
@@ -1228,7 +1228,7 @@ int nstrcat_bytes( N_STR *dest, void *data )
  *\param additional_padding In case the destination is reallocated, number of additional bytes that will be added (provisionning)
  *\return TRUE on success or FALSE on a realloc error
  */
-int write_and_fit_ex( char **dest, NSTRBYTE *size, NSTRBYTE *written, char *src, NSTRBYTE src_size, NSTRBYTE additional_padding )
+int write_and_fit_ex( char **dest, NSTRBYTE *size, NSTRBYTE *written, const char *src, NSTRBYTE src_size, NSTRBYTE additional_padding )
 {
     char *ptr = NULL ;
     NSTRBYTE needed_size = (*written) + src_size + 1 ;
@@ -1259,7 +1259,7 @@ int write_and_fit_ex( char **dest, NSTRBYTE *size, NSTRBYTE *written, char *src,
 
 
 
-/*!\fn int write_and_fit( char **dest , NSTRBYTE *size , NSTRBYTE *written , char *src )
+/*!\fn int write_and_fit( char **dest , NSTRBYTE *size , NSTRBYTE *written , const char *src )
  *\brief concatenate a copy of src of size strlen( src ) to dest, starting at dest[ written ], updating written and size variable, allocation of new blocks of (needed size + 512) if resize is needed. If dest is NULL it will be allocated.
  *\param dest The dest string
  *\param size The current size, will be updated if written + strlen( dest) > size
@@ -1267,7 +1267,7 @@ int write_and_fit_ex( char **dest, NSTRBYTE *size, NSTRBYTE *written, char *src,
  *\param src The source string to add
  *\return TRUE on success or FALSE on a realloc error
  */
-int write_and_fit( char **dest, NSTRBYTE *size, NSTRBYTE *written, char *src )
+int write_and_fit( char **dest, NSTRBYTE *size, NSTRBYTE *written, const char *src )
 {
     return write_and_fit_ex( dest, size, written, src, strlen( src ), 512 );
 } /* write_and_fit( ...) */

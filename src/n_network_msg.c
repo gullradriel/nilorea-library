@@ -228,13 +228,13 @@ int add_nstrdup_to_msg( NETW_MSG *msg, N_STR *str )
 
 
 
-/*!\fn add_strdup_to_msg( NETW_MSG *msg , char *str)
+/*!\fn add_strdup_to_msg( NETW_MSG *msg , const char *str)
  *\brief Add a copy of char *str to the string list in the message
  *\param msg A NETW_MSG *object to complete with the string
  *\param str The string to add to the message
  *\return TRUE or FALSE
  */
-int add_strdup_to_msg( NETW_MSG *msg, char *str )
+int add_strdup_to_msg( NETW_MSG *msg, const char *str )
 {
     __n_assert( msg, return FALSE );
     __n_assert( str, return FALSE );
