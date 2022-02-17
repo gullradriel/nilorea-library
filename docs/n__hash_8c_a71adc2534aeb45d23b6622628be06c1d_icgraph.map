@@ -1,17 +1,16 @@
 <map id="_ht_new_node" name="_ht_new_node">
-<area shape="rect" id="node1" title="node creation, HASH_CLASSIC mode" alt="" coords="664,107,769,133"/>
-<area shape="rect" id="node2" href="$n__hash_8c.html#a16c585985d090707ce94a673307db36f" title="node creation, HASH_CLASSIC mode" alt="" coords="457,5,608,32"/>
-<area shape="rect" id="node8" href="$n__hash_8c.html#a4fdf768f98e74a4ba43497d60ec2edea" title="node creation, HASH_CLASSIC mode" alt="" coords="469,56,596,83"/>
-<area shape="rect" id="node10" href="$n__hash_8c.html#a636e3e3d341e0d97875601ffda9b5f7e" title="node creation, HASH_CLASSIC mode, pointer to string value" alt="" coords="469,107,596,133"/>
-<area shape="rect" id="node12" href="$n__hash_8c.html#af782f210f3269b1d595d9a12fffa9d58" title="node creation, HASH_CLASSIC mode, strdup of value" alt="" coords="461,157,605,184"/>
-<area shape="rect" id="node15" href="$n__hash_8c.html#a26853862f1fc9106bc7aa76f0a6eccb8" title="node creation, HASH_CLASSIC mode, pointer to string value" alt="" coords="449,208,616,235"/>
-<area shape="rect" id="node3" href="$n__hash_8c.html#a1baf8e5b33f28bf3edf73a2cb617d97c" title="put a double value with given key in the targeted hash table" alt="" coords="283,5,393,32"/>
-<area shape="rect" id="node4" href="$group___h_a_s_h___t_a_b_l_e.html#gaa2d879c1afd3c71a0917bbe2c0766664" title="Create a hash table with the given size." alt="" coords="164,107,227,133"/>
-<area shape="rect" id="node5" href="$group___l_o_g_n_o_d_u_p.html#gaf9c9b8e129263da15345f428cd73f19e" title="initialize the no duplicate logging system" alt="" coords="8,56,113,83"/>
-<area shape="rect" id="node6" href="$group___c_o_n_f_i_g_f_i_l_e.html#ga0206fadb78039ac602fc0696b27b85a6" title="load a config file" alt="" coords="5,107,116,133"/>
-<area shape="rect" id="node7" href="$group___n_e_t_w_o_r_k_i_n_g.html#gadb5284c7b187815cf3b286a5cd972876" title="return a new network pool of nb_min_element" alt="" coords="5,157,116,184"/>
-<area shape="rect" id="node9" href="$n__hash_8c.html#a322cacdf8f2abe3e1cd42656dc8fbdc5" title="put an integral value with given key in the targeted hash table [CLASSIC HASH TABLE)" alt="" coords="295,56,381,83"/>
-<area shape="rect" id="node11" href="$n__hash_8c.html#a7083cb547ab42760d285edf2108c2a2b" title="put a pointer value with given key in the targeted hash table" alt="" coords="295,107,381,133"/>
-<area shape="rect" id="node13" href="$n__hash_8c.html#a6317d7cd34532ec65997c3275aa379e1" title="put a null terminated char *string with given key in the targeted hash table (copy of string)" alt="" coords="286,157,390,184"/>
-<area shape="rect" id="node14" href="$n__hash_8c.html#aa173ffa5f20daee4f0178c97e4f01303" title="put a null terminated char *string with given key in the targeted hash table (pointer)" alt="" coords="275,208,401,235"/>
+<area shape="rect" id="node2" href="$n__hash_8c.html#a16c585985d090707ce94a673307db36f" title="node creation, HASH_CLASSIC mode " alt="" coords="177,5,343,32"/>
+<area shape="rect" id="node8" href="$n__hash_8c.html#a4fdf768f98e74a4ba43497d60ec2edea" title="node creation, HASH_CLASSIC mode " alt="" coords="191,56,329,83"/>
+<area shape="rect" id="node10" href="$n__hash_8c.html#a636e3e3d341e0d97875601ffda9b5f7e" title="node creation, HASH_CLASSIC mode, pointer to string value " alt="" coords="190,107,330,133"/>
+<area shape="rect" id="node12" href="$n__hash_8c.html#af782f210f3269b1d595d9a12fffa9d58" title="node creation, HASH_CLASSIC mode, strdup of value " alt="" coords="181,157,339,184"/>
+<area shape="rect" id="node15" href="$n__hash_8c.html#a26853862f1fc9106bc7aa76f0a6eccb8" title="node creation, HASH_CLASSIC mode, pointer to string value " alt="" coords="168,208,352,235"/>
+<area shape="rect" id="node3" href="$n__hash_8c.html#a1baf8e5b33f28bf3edf73a2cb617d97c" title="put a double value with given key in the targeted hash table " alt="" coords="409,5,530,32"/>
+<area shape="rect" id="node4" href="$group___h_a_s_h___t_a_b_l_e.html#gafaaa918c0e0480c5ab0d383bbd1d93ef" title="Create a hash table with the given size. " alt="" coords="587,107,656,133"/>
+<area shape="rect" id="node5" href="$group___c_o_n_f_i_g_f_i_l_e.html#ga8f4055f3439a5cb5a806f413b0d694bc" title="load a config file " alt="" coords="704,56,827,83"/>
+<area shape="rect" id="node6" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga817b624c75a82f4e1d0db734916bd921" title="return a new network pool of nb_min_element " alt="" coords="704,107,827,133"/>
+<area shape="rect" id="node7" href="$group___l_o_g_n_o_d_u_p.html#gaf9c9b8e129263da15345f428cd73f19e" title="initialize the no duplicate logging system " alt="" coords="707,157,824,184"/>
+<area shape="rect" id="node9" href="$n__hash_8c.html#a322cacdf8f2abe3e1cd42656dc8fbdc5" title="put an integral value with given key in the targeted hash table [CLASSIC HASH TABLE) ..." alt="" coords="422,56,517,83"/>
+<area shape="rect" id="node11" href="$n__hash_8c.html#a7083cb547ab42760d285edf2108c2a2b" title="put a pointer value with given key in the targeted hash table " alt="" coords="422,107,517,133"/>
+<area shape="rect" id="node13" href="$n__hash_8c.html#a6317d7cd34532ec65997c3275aa379e1" title="put a null terminated char *string with given key in the targeted hash table (copy of string) ..." alt="" coords="412,157,527,184"/>
+<area shape="rect" id="node14" href="$n__hash_8c.html#aa173ffa5f20daee4f0178c97e4f01303" title="put a null terminated char *string with given key in the targeted hash table (pointer) ..." alt="" coords="400,208,539,235"/>
 </map>
