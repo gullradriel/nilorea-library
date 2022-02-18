@@ -142,14 +142,14 @@ $(document).ready(function(){initNavTree('n__user_8c_source.html',''); initResiz
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    {</div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        <span class="keywordflow">if</span>( !( <a class="code hl_define" href="group___c_o_m_m_o_n_s.html#gad648c6926fba90c2f092a5dd93d16a77">Realloc</a>(  ulist -&gt; list[ <span class="keywordtype">id</span> ] . last_positions, <a class="code hl_typedef" href="group___p_h_y_s_i_c_s.html#ga4cbdd7084ea2076595f397a969feba63">VECTOR3D</a>, 1 ) ) )</div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        {</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>            <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a> , <span class="stringliteral">&quot;could not resize to only_last_pos VECTOR3D&quot;</span> );</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>            <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a>, <span class="stringliteral">&quot;could not resize to only_last_pos VECTOR3D&quot;</span> );</div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        }</div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    }</div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <span class="keywordflow">else</span></div>
 <div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    {</div>
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        <span class="keywordflow">if</span>( !( <a class="code hl_define" href="group___c_o_m_m_o_n_s.html#gad648c6926fba90c2f092a5dd93d16a77">Realloc</a>(  ulist -&gt; list[ <span class="keywordtype">id</span> ] . last_positions, <a class="code hl_typedef" href="group___p_h_y_s_i_c_s.html#ga4cbdd7084ea2076595f397a969feba63">VECTOR3D</a>, nb_rec_pos ) ) )</div>
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        {</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>            <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a> , <span class="stringliteral">&quot;could not resize to %d VECTOR3D&quot;</span> , nb_rec_pos );</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>            <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a>, <span class="stringliteral">&quot;could not resize to %d VECTOR3D&quot;</span>, nb_rec_pos );</div>
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        }</div>
 <div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        ulist -&gt; list[ id ] . nb_rec_pos = 1 ;</div>
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    }</div>
@@ -210,7 +210,7 @@ $(document).ready(function(){initNavTree('n__user_8c_source.html',''); initResiz
 <div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>    ulist -&gt; list[ id ] . <span class="keywordtype">id</span> = -1 ;</div>
 <div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>    <span class="keywordflow">if</span>( !( <a class="code hl_define" href="group___c_o_m_m_o_n_s.html#gad648c6926fba90c2f092a5dd93d16a77">Realloc</a>(  ulist -&gt; list[ <span class="keywordtype">id</span> ] . last_positions, <a class="code hl_typedef" href="group___p_h_y_s_i_c_s.html#ga4cbdd7084ea2076595f397a969feba63">VECTOR3D</a>, 1 ) ) )</div>
 <div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>    {</div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>        <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a> , <span class="stringliteral">&quot;couldn&#39;t resize to 1 element&quot;</span> );</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>        <a class="code hl_define" href="group___l_o_g.html#ga61355655c6d490cdf201afdfc340df4b">n_log</a>( <a class="code hl_define" href="group___l_o_g.html#ga96fad55b3f5adf08c39e4c877cf185e3">LOG_ERR</a>, <span class="stringliteral">&quot;couldn&#39;t resize to 1 element&quot;</span> );</div>
 <div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>    }</div>
 <div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>    <a class="code hl_function" href="group___l_i_s_t.html#ga1dafe7a250ddad51fadd375f057287e7">list_empty</a>( ulist -&gt; list[ <span class="keywordtype">id</span> ] . netw_waitlist );</div>
 <div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>    memset( ulist -&gt; list[ <span class="keywordtype">id</span> ] . position, 0, 3 * <span class="keyword">sizeof</span>( <span class="keywordtype">double</span> ) );</div>
@@ -428,7 +428,7 @@ $(document).ready(function(){initNavTree('n__user_8c_source.html',''); initResiz
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="n__user_8c.html">n_user.c</a></li>
-    <li class="footer">Generated on Fri Feb 18 2022 11:09:11 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+    <li class="footer">Generated on Fri Feb 18 2022 13:16:22 for Nilorea Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
   </ul>
 </div>
 </body>
