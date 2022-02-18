@@ -25,35 +25,35 @@ extern "C" {
 	/*! helper to build an N_ENUM */
 #define N_ENUM_ENTRY(class, method) class##_##method
 
-	/*!	\internal utils macro case value */
+	/*!	utils macro case value */
 #define __N_ENUM_MACRO_ENTRY_CASE(element_name) case element_name:
-/*!	\internal utils macros string compare */
+/*!	utils macros string compare */
 #define __N_ENUM_MACRO_ENTRY_COMPARE(element_name) if(!strcmp(#element_name, str_value))
-/*!	\internal utils macros string ex compare */
+/*!	utils macros string ex compare */
 #define __N_ENUM_MACRO_ENTRY_COMPARE_EX(element_name) if(!strcmp(#element_name + index, str_value))
-/*!	\internal utils macros unknown value */
+/*!	utils macros unknown value */
 #define __N_ENUM_MACRO_ENTRY_UNKNOWN_VALUE(enum_name) __##enum_name##_UNKNOWN_VALUE__
 
 
-/*! \internal: macro to convert N_ENUMS entry to a real ENUM element */
+/*! macro to convert N_ENUMS entry to a real ENUM element */
 #define __N_ENUM_MACRO_ENTRY_TO_ENUM_ELEMENT(element_name, element_value)\
 	element_name = element_value,
-/*! \internal: macro to test N_ENUMS entry */
+/*! macro to test N_ENUMS entry */
 #define __N_ENUM_MACRO_ENTRY_TO_ISVALID_CASE(element_name, element_value)\
 	__N_ENUM_MACRO_ENTRY_CASE(element_name) return true;
-/*! \internal: macro to convert N_ENUMS entry to a string element */
+/*! macro to convert N_ENUMS entry to a string element */
 #define __N_ENUM_MACRO_ENTRY_TO_TOSTRING_CASE(element_name, element_value)\
 	__N_ENUM_MACRO_ENTRY_CASE(element_name) return #element_name;
-/*! \internal: macro to convert string to N_ENUMS value*/
+/*! macro to convert string to N_ENUMS value*/
 #define __N_ENUM_MACRO_ENTRY_TO_FROMSTRING_COMPARE(element_name, element_value)\
 	 __N_ENUM_MACRO_ENTRY_COMPARE(element_name) return element_name;
-/*! \internal: macro to convert string to N_ENUMS value*/
+/*! macro to convert string to N_ENUMS value*/
 #define __N_ENUM_MACRO_ENTRY_TO_FROMSTRING_COMPARE_EX(element_name, element_value)\
 	 __N_ENUM_MACRO_ENTRY_COMPARE_EX(element_name) return element_name;
 /* MACROS FOR N_ENUMS MACRO ENTRIES (END) */
 
 /* MACRO FOR ENUM DECLARATION (START) */
-/*! \internal: macro for ENUM declaration */
+/*! macro for ENUM declaration */
 #define __N_ENUM_DECLARE_ENUM(MACRO_DEFINITION, enum_name)\
 	typedef enum enum_name\
 {\
@@ -64,24 +64,24 @@ enum_name;
 /* MACRO FOR ENUM DECLARATION (END) */
 
 /* MACRO FOR N_ENUMS FUNCTIONS * PREFIX : __N_ENUM_FUNCTION_ */
-/*! \internal: create a getter function */
+/*! create a getter function */
 #define __N_ENUM_DECLARE_FUNCTION(__N_ENUM_FUNCTION, enum_name) __N_ENUM_FUNCTION(enum_name); // MACRO for function declaration (just add ; after function)
-/*! \internal: create a test function */
+/*! create a test function */
 #define __N_ENUM_FUNCTION_ISVALID(enum_name)\
 	bool N_ENUM_ENTRY(enum_name, isValid)(enum_name value)
-/*! \internal: create a to string function */
+/*! create a to string function */
 #define __N_ENUM_FUNCTION_TOSTRING(enum_name)\
 	const char* N_ENUM_ENTRY(enum_name, toString)(enum_name value)
-/*! \internal: create a value from string function */
+/*! create a value from string function */
 #define __N_ENUM_FUNCTION_FROMSTRING(enum_name)\
 	enum_name N_ENUM_ENTRY(enum_name, fromString)(const char* str_value)
-/*! \internal: create a value from string function */
+/*! create a value from string function */
 #define __N_ENUM_FUNCTION_FROMSTRING_EX(enum_name)\
 	enum_name N_ENUM_ENTRY(enum_name, fromStringEx)(const char* str_value, int index)
 /* MACRO FOR N_ENUMS FUNCTIONS (END) */
 
 /* MACRO FOR N_ENUMS FUNCTIONS DEFINITIONS * PREFIX : __N_ENUM_DEFINE_FUNCTION_ */
-/*! \internal: create getter functions is_valid */
+/*! create getter functions is_valid */
 #define __N_ENUM_DEFINE_FUNCTION_ISVALID(MACRO_DEFINITION, enum_name)\
 	__N_ENUM_FUNCTION_ISVALID(enum_name)\
 {\
@@ -91,7 +91,7 @@ enum_name;
 		default: return false;\
 	}\
 }
-/*! \internal: create getter functions toString */
+/*! create getter functions toString */
 #define __N_ENUM_DEFINE_FUNCTION_TOSTRING(MACRO_DEFINITION, enum_name)\
 	__N_ENUM_FUNCTION_TOSTRING(enum_name)\
 {\
@@ -101,14 +101,14 @@ enum_name;
 		default: return 0;\
 	}\
 }
-/*! \internal: create getter functions fromString */
+/*! create getter functions fromString */
 #define __N_ENUM_DEFINE_FUNCTION_FROMSTRING(MACRO_DEFINITION, enum_name)\
 	__N_ENUM_FUNCTION_FROMSTRING(enum_name)\
 {\
 	MACRO_DEFINITION(__N_ENUM_MACRO_ENTRY_TO_FROMSTRING_COMPARE)\
 	return __N_ENUM_MACRO_ENTRY_UNKNOWN_VALUE(enum_name);\
 }
-/*! \internal: create getter functions fromStringEx */
+/*! create getter functions fromStringEx */
 #define __N_ENUM_DEFINE_FUNCTION_FROMSTRING_EX(MACRO_DEFINITION, enum_name)\
 	__N_ENUM_FUNCTION_FROMSTRING_EX(enum_name)\
 {\
