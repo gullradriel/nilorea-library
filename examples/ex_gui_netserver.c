@@ -26,11 +26,11 @@
 void usage(void)
 {
     fprintf( stderr, "     -v version\n"
-            "     -V log level: LOG_INFO, LOG_NOTICE, LOG_ERR, LOG_DEBUG\n"
-            "     -h help\n"
-            "     -a serveur address name/ip to bind (server mode)\n"
-            "     -p port\n"
-            "     -i [v4,v6] ip version (default support both ipv4 and ipv6 )\n" );
+             "     -V log level: LOG_INFO, LOG_NOTICE, LOG_ERR, LOG_DEBUG\n"
+             "     -h help\n"
+             "     -a serveur address name/ip to bind (server mode)\n"
+             "     -p port\n"
+             "     -i [v4,v6] ip version (default support both ipv4 and ipv6 )\n" );
 } /* usage() */
 
 
@@ -59,91 +59,91 @@ void process_args( int argc, char **argv, char **bind_addr, char **port, int *ip
     {
         switch( getoptret )
         {
-            case 'i' :
-                if( !strcmp( "v4", optarg ) )
+        case 'i' :
+            if( !strcmp( "v4", optarg ) )
+            {
+                (*ip_version) = NETWORK_IPV4 ;
+                n_log( LOG_NOTICE, "IPV4 selected" );
+            }
+            else if( !strcmp( "v6", optarg ) )
+            {
+                (*ip_version) = NETWORK_IPV6 ;
+                n_log( LOG_NOTICE, "IPV6 selected" );
+            }
+            else
+            {
+                n_log( LOG_NOTICE, "IPV4/6 selected" );
+            }
+            break;
+        case 'v' :
+            fprintf( stderr, "Date de compilation : %s a %s.\n", __DATE__, __TIME__ );
+            exit( 1 );
+        case 'V' :
+            if( !strncmp( "LOG_NULL", optarg, 8 ) )
+            {
+                log_level = LOG_NULL ;
+            }
+            else
+            {
+                if( !strncmp( "LOG_NOTICE", optarg, 10 ) )
                 {
-                    (*ip_version) = NETWORK_IPV4 ;
-                    n_log( LOG_NOTICE, "IPV4 selected" );
-                }
-                else if( !strcmp( "v6", optarg ) )
-                {
-                    (*ip_version) = NETWORK_IPV6 ;
-                    n_log( LOG_NOTICE, "IPV6 selected" );
+                    log_level = LOG_NOTICE;
                 }
                 else
                 {
-                    n_log( LOG_NOTICE, "IPV4/6 selected" );
-                }
-                break;
-            case 'v' :
-                fprintf( stderr, "Date de compilation : %s a %s.\n", __DATE__, __TIME__ );
-                exit( 1 );
-            case 'V' :
-                if( !strncmp( "LOG_NULL", optarg, 8 ) )
-                {
-                    log_level = LOG_NULL ;
-                }
-                else
-                {
-                    if( !strncmp( "LOG_NOTICE", optarg, 10 ) )
+                    if( !strncmp( "LOG_INFO", optarg, 8 ) )
                     {
-                        log_level = LOG_NOTICE;
+                        log_level = LOG_INFO;
                     }
                     else
                     {
-                        if( !strncmp( "LOG_INFO", optarg, 8 ) )
+                        if( !strncmp( "LOG_ERR", optarg, 7 ) )
                         {
-                            log_level = LOG_INFO;
+                            log_level = LOG_ERR;
                         }
                         else
                         {
-                            if( !strncmp( "LOG_ERR", optarg, 7 ) )
+                            if( !strncmp( "LOG_DEBUG", optarg, 9 ) )
                             {
-                                log_level = LOG_ERR;
+                                log_level = LOG_DEBUG;
                             }
                             else
                             {
-                                if( !strncmp( "LOG_DEBUG", optarg, 9 ) )
-                                {
-                                    log_level = LOG_DEBUG;
-                                }
-                                else
-                                {
-                                    fprintf( stderr, "%s n'est pas un niveau de log valide.\n", optarg );
-                                    exit( -1 );
-                                }
+                                fprintf( stderr, "%s n'est pas un niveau de log valide.\n", optarg );
+                                exit( -1 );
                             }
                         }
                     }
                 }
-                break;
-            case 'a' :
-                (*bind_addr) = strdup( optarg );
-                break ;
-            case 'p' :
-                (*port) = strdup( optarg );
-                break ;
-            default :
-            case '?' :
-                if( optopt == 'V' )
-                {
-                    fprintf( stderr, "\n      Missing log level\n" );
-                }
-                else if( optopt == 'p' )
-                {
-                    fprintf( stderr, "\n      Missing port\n" );
-                }
-                else if( optopt != 's' )
-                {
-                    fprintf( stderr, "\n      Unknow missing option %c\n", optopt );
-                }
-                usage();
-                exit( 1 );
-                break ;
-            case 'h' :
-                usage();
-                exit( 1 );
-                break ;
+            }
+            break;
+        case 'a' :
+            (*bind_addr) = strdup( optarg );
+            break ;
+        case 'p' :
+            (*port) = strdup( optarg );
+            break ;
+        default :
+        case '?' :
+            if( optopt == 'V' )
+            {
+                fprintf( stderr, "\n      Missing log level\n" );
+            }
+            else if( optopt == 'p' )
+            {
+                fprintf( stderr, "\n      Missing port\n" );
+            }
+            else if( optopt != 's' )
+            {
+                fprintf( stderr, "\n      Unknow missing option %c\n", optopt );
+            }
+            usage();
+            exit( 1 );
+            break ;
+        case 'h' :
+            usage();
+            exit( 1 );
+            break ;
         }
     }
     set_log_level( log_level );
@@ -162,29 +162,29 @@ int process_clients( NETWORK_POOL *netw_pool, N_USERLIST *userlist )
     /* write lock the pool */
     read_lock( netw_pool -> rwlock );
     HT_FOREACH( node, netw_pool -> pool,
-            {
-            N_STR *netw_exchange = NULL ;
-            NETWORK *netw = HASH_VAL( node, NETWORK );
-            int state = -1 ;
-            int thr_engine_status = -1 ;
-            netw_get_state( netw, &state, &thr_engine_status );
-            if( state != NETW_RUN || thr_engine_status != NETW_THR_ENGINE_STARTED )
+    {
+        N_STR *netw_exchange = NULL ;
+        NETWORK *netw = HASH_VAL( node, NETWORK );
+        int state = -1 ;
+        int thr_engine_status = -1 ;
+        netw_get_state( netw, &state, &thr_engine_status );
+        if( state != NETW_RUN || thr_engine_status != NETW_THR_ENGINE_STARTED )
             list_push( netw_to_close,  netw, NULL );
 
-            /* process all data sent by the client */
-            while( ( netw_exchange = netw_get_msg( netw ) ) )
-            {
+        /* process all data sent by the client */
+        while( ( netw_exchange = netw_get_msg( netw ) ) )
+        {
             int type =  netw_msg_get_type( netw_exchange ) ;
             switch( type )
             {
             case( NETMSG_POSITION ):
-            // add/update object with id at position
-            userlist_add_msg_to_all( userlist, netw_exchange );
-            break;
+                // add/update object with id at position
+                userlist_add_msg_to_all( userlist, netw_exchange );
+                break;
             case( NETMSG_STRING ):
-            // directly add text to chat
-            netw_pool_broadcast( netw_pool, NULL, netw_exchange );
-            break;
+                // directly add text to chat
+                netw_pool_broadcast( netw_pool, NULL, netw_exchange );
+                break;
             case( NETMSG_PING_REQUEST ):
             {
                 // directly send back reply
@@ -200,11 +200,11 @@ int process_clients( NETWORK_POOL *netw_pool, N_USERLIST *userlist )
                     userlist_add_msg_to( userlist, pingmsg, id_to );
                 }
             }
-            //netw_get_ping( )
+                //netw_get_ping( )
             break ;
             case( NETMSG_GET_BOX ):
-            // a world object at position X,Y,Z with associated datas, add/update local world cache
-            break;
+                // a world object at position X,Y,Z with associated datas, add/update local world cache
+                break;
             case( NETMSG_IDENT_REQUEST ):
             {
                 N_STR *name = NULL, *passwd = NULL ;
@@ -216,17 +216,17 @@ int process_clients( NETWORK_POOL *netw_pool, N_USERLIST *userlist )
             }
             break ;
             case( NETMSG_QUIT ):
-            n_log( LOG_INFO, "Client is asking us to quit" );
-            netw_send_quit( netw );
-            list_push( netw_to_close,  netw, NULL );
-            break ;
+                n_log( LOG_INFO, "Client is asking us to quit" );
+                netw_send_quit( netw );
+                list_push( netw_to_close,  netw, NULL );
+                break ;
             default:
-            n_log( LOG_ERR, "Unknow message type %d", type );
-            break ;
+                n_log( LOG_ERR, "Unknow message type %d", type );
+                break ;
             }
             free_nstr( &netw_exchange );
-            }
-            });
+        }
+    });
     unlock( netw_pool -> rwlock );
 
     NETWORK *netw = NULL ;
@@ -272,7 +272,7 @@ int main( int argc, char *argv[] )
     NETWORK_POOL *netw_pool = NULL ;
     N_USERLIST *userlist = NULL ;
     char *bind_addr = NULL,
-         *port = NULL ;
+          *port = NULL ;
 
     set_log_level( LOG_NOTICE );
 
@@ -412,7 +412,8 @@ int main( int argc, char *argv[] )
     do
     {
 
-        do{
+        do
+        {
             ALLEGRO_EVENT ev ;
 
             al_wait_for_event(event_queue, &ev);
@@ -421,58 +422,58 @@ int main( int argc, char *argv[] )
             {
                 switch(ev.keyboard.keycode)
                 {
-                    case ALLEGRO_KEY_UP:
-                        key[KEY_UP] = 1;
-                        break;
-                    case ALLEGRO_KEY_DOWN:
-                        key[KEY_DOWN] = 1;
-                        break;
-                    case ALLEGRO_KEY_LEFT:
-                        key[KEY_LEFT] = 1;
-                        break;
-                    case ALLEGRO_KEY_RIGHT:
-                        key[KEY_RIGHT] = 1;
-                        break;
-                    case ALLEGRO_KEY_ESCAPE:
-                        key[KEY_ESC] = 1 ;
-                        break;
-                    case ALLEGRO_KEY_SPACE:
-                        key[KEY_SPACE] = 1 ;
-                        break;
-                    case ALLEGRO_KEY_LCTRL:
-                    case ALLEGRO_KEY_RCTRL:
-                        key[KEY_CTRL] = 1 ;
-                    default:
-                        break;
+                case ALLEGRO_KEY_UP:
+                    key[KEY_UP] = 1;
+                    break;
+                case ALLEGRO_KEY_DOWN:
+                    key[KEY_DOWN] = 1;
+                    break;
+                case ALLEGRO_KEY_LEFT:
+                    key[KEY_LEFT] = 1;
+                    break;
+                case ALLEGRO_KEY_RIGHT:
+                    key[KEY_RIGHT] = 1;
+                    break;
+                case ALLEGRO_KEY_ESCAPE:
+                    key[KEY_ESC] = 1 ;
+                    break;
+                case ALLEGRO_KEY_SPACE:
+                    key[KEY_SPACE] = 1 ;
+                    break;
+                case ALLEGRO_KEY_LCTRL:
+                case ALLEGRO_KEY_RCTRL:
+                    key[KEY_CTRL] = 1 ;
+                default:
+                    break;
                 }
             }
             else if(ev.type == ALLEGRO_EVENT_KEY_UP)
             {
                 switch(ev.keyboard.keycode)
                 {
-                    case ALLEGRO_KEY_UP:
-                        key[KEY_UP] = 0;
-                        break;
-                    case ALLEGRO_KEY_DOWN:
-                        key[KEY_DOWN] = 0;
-                        break;
-                    case ALLEGRO_KEY_LEFT:
-                        key[KEY_LEFT] = 0;
-                        break;
-                    case ALLEGRO_KEY_RIGHT:
-                        key[KEY_RIGHT] =0;
-                        break;
-                    case ALLEGRO_KEY_ESCAPE:
-                        key[KEY_ESC] = 0 ;
-                        break;
-                    case ALLEGRO_KEY_SPACE:
-                        key[KEY_SPACE] = 0 ;
-                        break;
-                    case ALLEGRO_KEY_LCTRL:
-                    case ALLEGRO_KEY_RCTRL:
-                        key[KEY_CTRL] = 0 ;
-                    default:
-                        break;
+                case ALLEGRO_KEY_UP:
+                    key[KEY_UP] = 0;
+                    break;
+                case ALLEGRO_KEY_DOWN:
+                    key[KEY_DOWN] = 0;
+                    break;
+                case ALLEGRO_KEY_LEFT:
+                    key[KEY_LEFT] = 0;
+                    break;
+                case ALLEGRO_KEY_RIGHT:
+                    key[KEY_RIGHT] =0;
+                    break;
+                case ALLEGRO_KEY_ESCAPE:
+                    key[KEY_ESC] = 0 ;
+                    break;
+                case ALLEGRO_KEY_SPACE:
+                    key[KEY_SPACE] = 0 ;
+                    break;
+                case ALLEGRO_KEY_LCTRL:
+                case ALLEGRO_KEY_RCTRL:
+                    key[KEY_CTRL] = 0 ;
+                default:
+                    break;
                 }
             }
             else if( ev.type == ALLEGRO_EVENT_TIMER )
@@ -519,7 +520,8 @@ int main( int argc, char *argv[] )
                 /* Processing inputs */
                 // get_keyboard( chat_line , ev );
             }
-        }while( !al_is_event_queue_empty( event_queue) );
+        }
+        while( !al_is_event_queue_empty( event_queue) );
 
 
 
