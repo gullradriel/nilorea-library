@@ -1,17 +1,18 @@
 <map id="netw_get_ping" name="netw_get_ping">
-<area shape="rect" id="node2" href="$group___n_e_t_w_o_r_k___m_s_g.html#gadcc2854217553f3a4890973873bdf634" title="Delete a NETW_MSG *object. " alt="" coords="200,12,299,39"/>
-<area shape="rect" id="node5" href="$group___n_e_t_w_o_r_k___m_s_g.html#gafc6e48e4853310c09174f5ff3dfed85b" title="Get a number from a message number list. " alt="" coords="179,75,319,101"/>
-<area shape="rect" id="node6" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga0ff2638e1e094f9af393d0d63cbbab0d" title="Make a single message of the string. " alt="" coords="171,151,327,177"/>
-<area shape="rect" id="node3" href="$group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755" title="Empty and Free a list container. " alt="" coords="403,5,501,32"/>
-<area shape="rect" id="node4" href="$group___l_i_s_t.html#ga1dafe7a250ddad51fadd375f057287e7" title="Empty a LIST list of pointers. " alt="" coords="596,5,687,32"/>
-<area shape="rect" id="node7" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga62ae674d9de6171bcbd604e68a3b94a9" title="Create a NETW_MSG *object. " alt="" coords="403,56,501,83"/>
-<area shape="rect" id="node9" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga9aa63e987d00d99d9a21aec35efecf74" title="Add an int to the int list int the message. " alt="" coords="389,157,515,184"/>
-<area shape="rect" id="node12" href="$group___n_e_t_w_o_r_k___m_s_g.html#gaaed102598c4379bd1e0dc78f834972b0" title="If needed swap bytes for a double. " alt="" coords="423,259,481,285"/>
-<area shape="rect" id="node14" href="$group___n_e_t_w_o_r_k___m_s_g.html#gae7c4f1b2c58aabda4856a2f5c782b863" title="Add an float to the message. " alt="" coords="390,208,514,235"/>
-<area shape="rect" id="node15" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga53dfbdd3b5d1cfcf387d17b4465e5f3a" title="Add a string to the string list in the message. " alt="" coords="377,107,527,133"/>
-<area shape="rect" id="node8" href="$group___l_i_s_t.html#gaa82751b4d6a219771661843e61cefa2e" title="Initialiaze a generic list container to max_items pointers. " alt="" coords="576,56,707,83"/>
-<area shape="rect" id="node10" href="$group___l_i_s_t.html#ga4eab319289a83524639ee5e9f0441fdf" title="Add a pointer to the end of the list. " alt="" coords="601,157,681,184"/>
-<area shape="rect" id="node11" href="$group___l_i_s_t.html#ga6f57b62b796c1248014bc14a9bb0fc6c" title="Allocate a new node to link in a list. " alt="" coords="755,157,869,184"/>
-<area shape="rect" id="node13" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga4f7b627b47a1ee6976089dc4ab0a91b9" title="Swap bytes endiannes for a double. " alt="" coords="588,259,695,285"/>
-<area shape="rect" id="node16" href="$group___n___s_t_r.html#ga0a864a4ce4997389f2e5e2e16c51a30a" title="Free a N_STR pointer structure. " alt="" coords="589,107,694,133"/>
+<area shape="rect" id="node1" title="Retrieves a ping travel elapsed time." alt="" coords="5,69,111,96"/>
+<area shape="rect" id="node2" href="$group___n_e_t_w_o_r_k___m_s_g.html#gadcc2854217553f3a4890973873bdf634" title="Delete a NETW_MSG *object." alt="" coords="184,12,273,39"/>
+<area shape="rect" id="node5" href="$group___n_e_t_w_o_r_k___m_s_g.html#gafc6e48e4853310c09174f5ff3dfed85b" title="Get a number from a message number list." alt="" coords="166,69,291,96"/>
+<area shape="rect" id="node6" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga3fd01fccdf5fee20c2f0df7429ab3dd7" title="Make a single message of the string." alt="" coords="159,132,299,159"/>
+<area shape="rect" id="node3" href="$group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755" title="Empty and Free a list container." alt="" coords="371,5,460,32"/>
+<area shape="rect" id="node4" href="$group___l_i_s_t.html#ga1dafe7a250ddad51fadd375f057287e7" title="Empty a LIST list of pointers." alt="" coords="550,5,633,32"/>
+<area shape="rect" id="node7" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga9aa63e987d00d99d9a21aec35efecf74" title="Add an int to the int list int the message." alt="" coords="358,56,473,83"/>
+<area shape="rect" id="node10" href="$group___n_e_t_w_o_r_k___m_s_g.html#gae7c4f1b2c58aabda4856a2f5c782b863" title="Add an float to the message." alt="" coords="358,107,473,133"/>
+<area shape="rect" id="node11" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga53dfbdd3b5d1cfcf387d17b4465e5f3a" title="Add a string to the string list in the message." alt="" coords="347,157,484,184"/>
+<area shape="rect" id="node13" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga62ae674d9de6171bcbd604e68a3b94a9" title="Create a NETW_MSG *object." alt="" coords="370,208,461,235"/>
+<area shape="rect" id="node15" href="$group___n_e_t_w_o_r_k___m_s_g.html#gaaed102598c4379bd1e0dc78f834972b0" title="If needed swap bytes for a double." alt="" coords="388,259,443,285"/>
+<area shape="rect" id="node8" href="$group___l_i_s_t.html#ga4eab319289a83524639ee5e9f0441fdf" title="Add a pointer to the end of the list." alt="" coords="554,107,629,133"/>
+<area shape="rect" id="node9" href="$group___l_i_s_t.html#ga678e828550efc8e64a836bb8c713c2f4" title="Allocate a new node to link in a list." alt="" coords="699,107,803,133"/>
+<area shape="rect" id="node12" href="$group___n___s_t_r.html#ga0a864a4ce4997389f2e5e2e16c51a30a" title="Free a N_STR pointer structure." alt="" coords="544,157,639,184"/>
+<area shape="rect" id="node14" href="$group___l_i_s_t.html#gada615e3b144e97bcff147dfe89f6fef6" title="Initialiaze a generic list container to max_items pointers." alt="" coords="532,208,651,235"/>
+<area shape="rect" id="node16" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga4f7b627b47a1ee6976089dc4ab0a91b9" title="Swap bytes endiannes for a double." alt="" coords="543,259,640,285"/>
 </map>

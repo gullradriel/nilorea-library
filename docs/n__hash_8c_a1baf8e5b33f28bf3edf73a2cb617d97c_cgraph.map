@@ -1,12 +1,13 @@
 <map id="_ht_put_double" name="_ht_put_double">
-<area shape="rect" id="node2" href="$n__hash_8c.html#ab250f9a82c42e7eb223aa4056f145055" title="return the associated key&#39;s node inside the hash_table " alt="" coords="395,5,504,32"/>
-<area shape="rect" id="node6" href="$n__hash_8c.html#a16c585985d090707ce94a673307db36f" title="node creation, HASH_CLASSIC mode " alt="" coords="177,56,343,83"/>
-<area shape="rect" id="node8" href="$n__hash_8c.html#a013153fa30199bbcaf5f92890ae97ba8" title="destroy a HASH_NODE by first calling the HASH_NODE destructor " alt="" coords="191,107,329,133"/>
-<area shape="rect" id="node9" href="$group___h_a_s_h___t_a_b_l_e.html#ga49f19e01daabe0bb71e41713b562755d" title="get the type of a node , text version " alt="" coords="205,157,315,184"/>
-<area shape="rect" id="node10" href="$group___l_i_s_t.html#ga4eab319289a83524639ee5e9f0441fdf" title="Add a pointer to the end of the list. " alt="" coords="220,208,300,235"/>
-<area shape="rect" id="node3" href="$group___h_a_s_h___t_a_b_l_e.html#ga3297945557e1c9ba429829d67e8dd361" title="MurmurHash3 was written by Austin Appleby, and is placed in the public domain. " alt="" coords="555,31,730,57"/>
-<area shape="rect" id="node4" href="$n__hash_8c.html#a4d798ad42df355ea52d4188b18afe3bd" title="Block read &#45; (from murmur&#39;s author) if your platform needs to do endian&#45;swapping or can only handle a..." alt="" coords="779,5,874,32"/>
-<area shape="rect" id="node5" href="$n__hash_8c.html#a0d1801050074dbdab2f732505874afa9" title="Finalization mix &#45; force all bits of a hash block to avalanche (from murmur&#39;s author) ..." alt="" coords="793,56,861,83"/>
-<area shape="rect" id="node7" href="$n__hash_8c.html#a71adc2534aeb45d23b6622628be06c1d" title="node creation, HASH_CLASSIC mode " alt="" coords="392,56,507,83"/>
-<area shape="rect" id="node11" href="$group___l_i_s_t.html#ga6f57b62b796c1248014bc14a9bb0fc6c" title="Allocate a new node to link in a list. " alt="" coords="392,208,507,235"/>
+<area shape="rect" id="node1" title="put a double value with given key in the targeted hash table" alt="" coords="5,131,116,157"/>
+<area shape="rect" id="node2" href="$n__hash_8c.html#ab250f9a82c42e7eb223aa4056f145055" title="return the associated key&#39;s node inside the hash_table" alt="" coords="365,5,465,32"/>
+<area shape="rect" id="node6" href="$n__hash_8c.html#a16c585985d090707ce94a673307db36f" title="node creation, HASH_CLASSIC mode" alt="" coords="164,56,315,83"/>
+<area shape="rect" id="node8" href="$n__hash_8c.html#a013153fa30199bbcaf5f92890ae97ba8" title="destroy a HASH_NODE by first calling the HASH_NODE destructor" alt="" coords="177,131,302,157"/>
+<area shape="rect" id="node9" href="$group___h_a_s_h___t_a_b_l_e.html#ga1392981a507905d028136bc0b92aa48b" title="get the type of a node , text version" alt="" coords="189,181,289,208"/>
+<area shape="rect" id="node10" href="$group___l_i_s_t.html#ga4eab319289a83524639ee5e9f0441fdf" title="Add a pointer to the end of the list." alt="" coords="202,232,277,259"/>
+<area shape="rect" id="node3" href="$group___h_a_s_h___t_a_b_l_e.html#ga3297945557e1c9ba429829d67e8dd361" title="MurmurHash3 was written by Austin Appleby, and is placed in the public domain." alt="" coords="516,31,675,57"/>
+<area shape="rect" id="node4" href="$n__hash_8c.html#a0d1801050074dbdab2f732505874afa9" title="Finalization mix &#45; force all bits of a hash block to avalanche (from murmur&#39;s author)" alt="" coords="735,5,795,32"/>
+<area shape="rect" id="node5" href="$n__hash_8c.html#a4d798ad42df355ea52d4188b18afe3bd" title="Block read &#45; (from murmur&#39;s author) if your platform needs to do endian&#45;swapping or can only handle a..." alt="" coords="723,56,808,83"/>
+<area shape="rect" id="node7" href="$n__hash_8c.html#a71adc2534aeb45d23b6622628be06c1d" title="node creation, HASH_CLASSIC mode" alt="" coords="363,56,468,83"/>
+<area shape="rect" id="node11" href="$group___l_i_s_t.html#ga678e828550efc8e64a836bb8c713c2f4" title="Allocate a new node to link in a list." alt="" coords="363,232,467,259"/>
 </map>

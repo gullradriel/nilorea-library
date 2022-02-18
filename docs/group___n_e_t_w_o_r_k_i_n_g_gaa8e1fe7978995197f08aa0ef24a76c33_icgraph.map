@@ -1,18 +1,19 @@
 <map id="netw_set" name="netw_set">
-<area shape="rect" id="node2" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaea0a4d9c8822d25ed88e6554a88cb996" title="make a normal &#39;accept&#39; . " alt="" coords="789,411,955,437"/>
-<area shape="rect" id="node5" href="$group___n_e_t_w_o_r_k_i_n_g.html#gac345c1af1935cebb9ee33edd4c32267a" title="Closing a specified Network, destroy queues, free the structure. " alt="" coords="386,259,481,285"/>
-<area shape="rect" id="node6" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga4cef67bc400323306a3d1c1ed5cec17b" title="Use this to connect a NETWORK to any listening one. " alt="" coords="805,208,939,235"/>
-<area shape="rect" id="node8" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga52afd4f5662c9c8f334d224ae2cdbdf2" title="Make a NETWORK be a Listening network. " alt="" coords="791,309,953,336"/>
-<area shape="rect" id="node14" href="$group___n_e_t_w_o_r_k_i_n_g.html#gad67570728a69ce2788b8bc9dcaa7c392" title="To Thread Receiving function. " alt="" coords="157,56,281,83"/>
-<area shape="rect" id="node16" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaa3c12701bdb3cd2e1adaa00981ca3cc8" title="Thread send function. " alt="" coords="155,5,282,32"/>
-<area shape="rect" id="node17" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga29159184519b3129c0154b1a2c2a3e2f" title="Stop a NETWORK connection sending and receing thread. " alt="" coords="136,259,301,285"/>
-<area shape="rect" id="node3" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaf21b84460e80c7853bcb8321d7c53065" title="make a normal blocking &#39;accept&#39; . " alt="" coords="1035,436,1178,463"/>
-<area shape="rect" id="node4" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga45b053eef50f122d73a1c9b094b5a1d7" title="make a normal blocking &#39;accept&#39; . " alt="" coords="1003,385,1211,412"/>
-<area shape="rect" id="node9" href="$n__network_8c.html#a9caee75e3a67942e37ccb4de2c889105" title="Return an empty allocated network ready to be netw_closed. " alt="" coords="609,259,697,285"/>
-<area shape="rect" id="node10" href="$group___n_e_t_w_o_r_k_i_n_g.html#gad02f949dd057ae7dd382f03f9364cac0" title="Modify blocking socket mode. " alt="" coords="582,461,725,488"/>
-<area shape="rect" id="node11" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga995d9aaabaca026d79f15a9823eaebaf" title="Wait for peer closing a specified Network, destroy queues, free the structure. " alt="" coords="566,157,741,184"/>
-<area shape="rect" id="node7" href="$group___n_e_t_w_o_r_k_i_n_g.html#gae18d52a130063ba1fd0a4cf4b6a2da20" title="Use this to connect a NETWORK to any listening one, unrestricted send/recv lists. ..." alt="" coords="1051,208,1163,235"/>
-<area shape="rect" id="node12" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga60beb772aa298f36d1443a28e3ec5ec8" title="Wait for peer closing a specified Network, destroy queues, free the structure. " alt="" coords="807,132,937,159"/>
-<area shape="rect" id="node13" href="$ex__network_8h.html#a2af070d97fced1a0eadad90c6aa4903b" title="recv/send datas if any for the client " alt="" coords="1047,95,1166,121"/>
-<area shape="rect" id="node15" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga5ba0555c5ccd261227c3c1216923d563" title="Start the NETWORK netw Threaded Engine. " alt="" coords="350,56,517,83"/>
+<area shape="rect" id="node1" title="Restart or reset the specified network ability." alt="" coords="1033,208,1108,235"/>
+<area shape="rect" id="node2" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga80624fa0de793761e9ea5cebff424c68" title="make a normal &#39;accept&#39; ." alt="" coords="240,411,388,437"/>
+<area shape="rect" id="node5" href="$group___n_e_t_w_o_r_k_i_n_g.html#gac345c1af1935cebb9ee33edd4c32267a" title="Closing a specified Network, destroy queues, free the structure." alt="" coords="671,259,758,285"/>
+<area shape="rect" id="node6" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga4cef67bc400323306a3d1c1ed5cec17b" title="Use this to connect a NETWORK to any listening one." alt="" coords="253,208,375,235"/>
+<area shape="rect" id="node8" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga52afd4f5662c9c8f334d224ae2cdbdf2" title="Make a NETWORK be a Listening network." alt="" coords="243,309,385,336"/>
+<area shape="rect" id="node14" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga63e06c0450013078c54bb4951e9438ac" title="To Thread Receiving function." alt="" coords="856,56,967,83"/>
+<area shape="rect" id="node16" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga2ef0aab7ff9fb531466a536773b53683" title="Thread send function." alt="" coords="854,5,969,32"/>
+<area shape="rect" id="node17" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga29159184519b3129c0154b1a2c2a3e2f" title="Stop a NETWORK connection sending and receing thread." alt="" coords="837,259,985,285"/>
+<area shape="rect" id="node3" href="$group___n_e_t_w_o_r_k_i_n_g.html#gab99090cbf623f95556ea610e690b50d9" title="make a normal blocking &#39;accept&#39; ." alt="" coords="35,436,162,463"/>
+<area shape="rect" id="node4" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga32138772c399518190a14e81164fc469" title="make a normal blocking &#39;accept&#39; ." alt="" coords="5,385,192,412"/>
+<area shape="rect" id="node9" href="$n__network_8c.html#a9caee75e3a67942e37ccb4de2c889105" title="Return an empty allocated network ready to be netw_closed." alt="" coords="475,259,553,285"/>
+<area shape="rect" id="node10" href="$group___n_e_t_w_o_r_k_i_n_g.html#gad02f949dd057ae7dd382f03f9364cac0" title="Modify blocking socket mode." alt="" coords="449,461,579,488"/>
+<area shape="rect" id="node11" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga995d9aaabaca026d79f15a9823eaebaf" title="Wait for peer closing a specified Network, destroy queues, free the structure." alt="" coords="436,157,592,184"/>
+<area shape="rect" id="node7" href="$group___n_e_t_w_o_r_k_i_n_g.html#gae18d52a130063ba1fd0a4cf4b6a2da20" title="Use this to connect a NETWORK to any listening one, unrestricted send/recv lists." alt="" coords="47,208,150,235"/>
+<area shape="rect" id="node12" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga60beb772aa298f36d1443a28e3ec5ec8" title="Wait for peer closing a specified Network, destroy queues, free the structure." alt="" coords="255,132,373,159"/>
+<area shape="rect" id="node13" href="$ex__network_8h.html#a2af070d97fced1a0eadad90c6aa4903b" title="recv/send datas if any for the client" alt="" coords="45,107,152,133"/>
+<area shape="rect" id="node15" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga5ba0555c5ccd261227c3c1216923d563" title="Start the NETWORK netw Threaded Engine." alt="" coords="640,56,789,83"/>
 </map>
