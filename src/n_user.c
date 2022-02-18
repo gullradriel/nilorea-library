@@ -71,14 +71,14 @@ int userlist_set_position_behavior( N_USERLIST *ulist, int id, int nb_rec_pos, i
     {
         if( !( Realloc(  ulist -> list[ id ] . last_positions, VECTOR3D, 1 ) ) )
         {
-            n_log( LOG_ERR , "could not resize to only_last_pos VECTOR3D" );
+            n_log( LOG_ERR, "could not resize to only_last_pos VECTOR3D" );
         }
     }
     else
     {
         if( !( Realloc(  ulist -> list[ id ] . last_positions, VECTOR3D, nb_rec_pos ) ) )
         {
-            n_log( LOG_ERR , "could not resize to %d VECTOR3D" , nb_rec_pos );
+            n_log( LOG_ERR, "could not resize to %d VECTOR3D", nb_rec_pos );
         }
         ulist -> list[ id ] . nb_rec_pos = 1 ;
     }
@@ -151,7 +151,7 @@ int userlist_del_user( N_USERLIST *ulist, int id )
     ulist -> list[ id ] . id = -1 ;
     if( !( Realloc(  ulist -> list[ id ] . last_positions, VECTOR3D, 1 ) ) )
     {
-        n_log( LOG_ERR , "couldn't resize to 1 element" );
+        n_log( LOG_ERR, "couldn't resize to 1 element" );
     }
     list_empty( ulist -> list[ id ] . netw_waitlist );
     memset( ulist -> list[ id ] . position, 0, 3 * sizeof( double ) );

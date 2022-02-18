@@ -117,7 +117,7 @@ void *remove_list_node_f( LIST *list, LIST_NODE *node )
  *\param node The node pointer you want to put in the list. A null value will cause an error and a _log message.
  *\return TRUE or FALSE
  */
-int list_node_push( LIST *list , LIST_NODE *node )
+int list_node_push( LIST *list, LIST_NODE *node )
 {
     __n_assert( list, n_log( LOG_ERR, "invalid list: NULL" ); return FALSE );
 
@@ -155,7 +155,7 @@ LIST_NODE *list_node_pop( LIST *list )
         return NULL ;
 
     LIST_NODE *nodeptr = NULL ;
-    
+
     nodeptr = list -> end ;
     if( list -> end -> prev )
     {
@@ -191,7 +191,7 @@ LIST_NODE *list_node_shift( LIST *list )
         list -> start = list -> start -> next ;
         list -> start -> prev = NULL ;
     }
-    
+
     list -> nb_items -- ;
 
     if( list -> nb_items == 0 )

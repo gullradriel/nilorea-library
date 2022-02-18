@@ -108,7 +108,7 @@ int _ht_put_int_trie( HASH_TABLE *table, const char *key, int value )
     node -> data . ival = value ;
     node -> type = HASH_INT ;
 
-	table -> nb_keys ++ ;
+    table -> nb_keys ++ ;
 
     return TRUE;
 } /* _ht_put_int_trie(...) */
@@ -160,7 +160,7 @@ int _ht_put_double_trie( HASH_TABLE *table, const char *key, double value )
     node -> data . fval = value ;
     node -> type = HASH_DOUBLE ;
 
-	table -> nb_keys ++ ;
+    table -> nb_keys ++ ;
 
     return TRUE;
 } /* _ht_put_double_trie(...) */
@@ -216,7 +216,7 @@ int _ht_put_string_trie( HASH_TABLE *table, const char *key, char *string )
 
     node -> type = HASH_STRING ;
 
-	table -> nb_keys ++ ;
+    table -> nb_keys ++ ;
 
     return TRUE;
 } /* _ht_put_string_trie(...) */
@@ -268,7 +268,7 @@ int _ht_put_string_ptr_trie( HASH_TABLE *table, const char *key, char *string )
     node -> data . string = string ;
     node -> type = HASH_STRING ;
 
-	table -> nb_keys ++ ;
+    table -> nb_keys ++ ;
 
     return TRUE;
 } /* _ht_put_string_ptr_trie(...) */
@@ -297,7 +297,7 @@ int _ht_put_ptr_trie( HASH_TABLE *table, const char *key, void *ptr, void (*dest
         unsigned int index = ( (unsigned int)(key[ it ] - table -> alphabet_offset) ) % table -> alphabet_length;
         if( index >= table -> alphabet_length )
         {
-            n_log( LOG_ERR, "Invalid value %u for charater at position %d of %s, set to 0", index , it , key );
+            n_log( LOG_ERR, "Invalid value %u for charater at position %d of %s, set to 0", index, it, key );
             index = 0 ;
         }
         if( node -> children[ index ] == NULL )
@@ -323,7 +323,7 @@ int _ht_put_ptr_trie( HASH_TABLE *table, const char *key, void *ptr, void (*dest
         node -> destroy_func = destructor ;
     node -> type = HASH_PTR ;
 
-	table -> nb_keys ++ ;
+    table -> nb_keys ++ ;
 
     return TRUE;
 } /* _ht_put_ptr_trie(...) */
@@ -565,7 +565,7 @@ char* _ht_find_longest_prefix_trie( HASH_TABLE *table, const char *key )
         longest_prefix[ branch_index ] = '\0';
         if( !( Realloc( longest_prefix, char, (branch_index + 1) ) ) )
         {
-            n_log( LOG_ERR , "reallocation error, stopping find longest prefix" );
+            n_log( LOG_ERR, "reallocation error, stopping find longest prefix" );
             FreeNoLog( longest_prefix );
             return NULL ;
         }
@@ -722,7 +722,7 @@ int _ht_remove_trie( HASH_TABLE *table, const char *key )
     }
     Free( longest_prefix );
 
-	table -> nb_keys -- ;
+    table -> nb_keys -- ;
 
     return TRUE ;
 } /* _ht_remove_trie(...) */
@@ -787,21 +787,21 @@ void _ht_print_trie_helper( HASH_TABLE *table, HASH_NODE *node )
         printf( "key: %s, val: ", node -> key );
         switch( node -> type )
         {
-            case HASH_INT:
-                printf( "int: %d", node -> data . ival );
-                break;
-            case HASH_DOUBLE:
-                printf( "double: %f", node -> data . fval );
-                break;
-            case HASH_PTR:
-                printf( "ptr: %p", node -> data . ptr );
-                break;
-            case HASH_STRING:
-                printf( "%s", node -> data . string );
-                break;
-            default:
-                printf( "unknwow type %d", node -> type );
-                break;
+        case HASH_INT:
+            printf( "int: %d", node -> data . ival );
+            break;
+        case HASH_DOUBLE:
+            printf( "double: %f", node -> data . fval );
+            break;
+        case HASH_PTR:
+            printf( "ptr: %p", node -> data . ptr );
+            break;
+        case HASH_STRING:
+            printf( "%s", node -> data . string );
+            break;
+        default:
+            printf( "unknwow type %d", node -> type );
+            break;
         }
         printf( "\n" );
     }
@@ -1011,13 +1011,13 @@ static FORCE_INLINE uint32_t fmix32 ( uint32_t h )
  */
 static FORCE_INLINE uint64_t fmix64 ( uint64_t k )
 {
-  k ^= k >> 33;
-  k *= BIG_CONSTANT(0xff51afd7ed558ccd);
-  k ^= k >> 33;
-  k *= BIG_CONSTANT(0xc4ceb9fe1a85ec53);
-  k ^= k >> 33;
+    k ^= k >> 33;
+    k *= BIG_CONSTANT(0xff51afd7ed558ccd);
+    k ^= k >> 33;
+    k *= BIG_CONSTANT(0xc4ceb9fe1a85ec53);
+    k ^= k >> 33;
 
-  return k;
+    return k;
 }
 
 
@@ -1068,20 +1068,20 @@ void MurmurHash3_x86_32 ( const void * key, int len, uint32_t seed, void * out )
 
     switch(len & 3)
     {
-        case 3:
-            k1 ^= tail[2] << 16;
-            FALL_THROUGH ;
-        case 2:
-            k1 ^= tail[1] << 8;
-            FALL_THROUGH ;
-        case 1:
-            k1 ^= tail[0];
-            k1 *= c1;
-            k1 = ROTL32(k1,15);
-            k1 *= c2;
-            h1 ^= k1;
-        default:
-            break ;
+    case 3:
+        k1 ^= tail[2] << 16;
+        FALL_THROUGH ;
+    case 2:
+        k1 ^= tail[1] << 8;
+        FALL_THROUGH ;
+    case 1:
+        k1 ^= tail[0];
+        k1 *= c1;
+        k1 = ROTL32(k1,15);
+        k1 *= c2;
+        h1 ^= k1;
+    default:
+        break ;
     };
 
     /* finalization */
@@ -1173,68 +1173,68 @@ void MurmurHash3_x86_128 ( const void * key, const int len, uint32_t seed, void 
 
     switch(len & 15)
     {
-        case 15:
-            k4 ^= tail[14] << 16;
-            FALL_THROUGH ;
-        case 14:
-            k4 ^= tail[13] << 8;
-            FALL_THROUGH ;
-        case 13:
-            k4 ^= tail[12] << 0;
-            k4 *= c4;
-            k4  = ROTL32(k4,18);
-            k4 *= c1;
-            h4 ^= k4;
-            FALL_THROUGH ;
-        case 12:
-            k3 ^= tail[11] << 24;
-            FALL_THROUGH ;
-        case 11:
-            k3 ^= tail[10] << 16;
-            FALL_THROUGH ;
-        case 10:
-            k3 ^= tail[ 9] << 8;
-            FALL_THROUGH ;
-        case  9:
-            k3 ^= tail[ 8] << 0;
-            k3 *= c3;
-            k3  = ROTL32(k3,17);
-            k3 *= c4;
-            h3 ^= k3;
-            FALL_THROUGH ;
-        case  8:
-            k2 ^= tail[ 7] << 24;
-            FALL_THROUGH ;
-        case  7:
-            k2 ^= tail[ 6] << 16;
-            FALL_THROUGH ;
-        case  6:
-            k2 ^= tail[ 5] << 8;
-            FALL_THROUGH ;
-        case  5:
-            k2 ^= tail[ 4] << 0;
-            k2 *= c2;
-            k2  = ROTL32(k2,16);
-            k2 *= c3;
-            h2 ^= k2;
-            FALL_THROUGH ;
-        case  4:
-            k1 ^= tail[ 3] << 24;
-            FALL_THROUGH ;
-        case  3:
-            k1 ^= tail[ 2] << 16;
-            FALL_THROUGH ;
-        case  2:
-            k1 ^= tail[ 1] << 8;
-            FALL_THROUGH ;
-        case  1:
-            k1 ^= tail[ 0] << 0;
-            k1 *= c1;
-            k1  = ROTL32(k1,15);
-            k1 *= c2;
-            h1 ^= k1;
-        default:
-            break ;
+    case 15:
+        k4 ^= tail[14] << 16;
+        FALL_THROUGH ;
+    case 14:
+        k4 ^= tail[13] << 8;
+        FALL_THROUGH ;
+    case 13:
+        k4 ^= tail[12] << 0;
+        k4 *= c4;
+        k4  = ROTL32(k4,18);
+        k4 *= c1;
+        h4 ^= k4;
+        FALL_THROUGH ;
+    case 12:
+        k3 ^= tail[11] << 24;
+        FALL_THROUGH ;
+    case 11:
+        k3 ^= tail[10] << 16;
+        FALL_THROUGH ;
+    case 10:
+        k3 ^= tail[ 9] << 8;
+        FALL_THROUGH ;
+    case  9:
+        k3 ^= tail[ 8] << 0;
+        k3 *= c3;
+        k3  = ROTL32(k3,17);
+        k3 *= c4;
+        h3 ^= k3;
+        FALL_THROUGH ;
+    case  8:
+        k2 ^= tail[ 7] << 24;
+        FALL_THROUGH ;
+    case  7:
+        k2 ^= tail[ 6] << 16;
+        FALL_THROUGH ;
+    case  6:
+        k2 ^= tail[ 5] << 8;
+        FALL_THROUGH ;
+    case  5:
+        k2 ^= tail[ 4] << 0;
+        k2 *= c2;
+        k2  = ROTL32(k2,16);
+        k2 *= c3;
+        h2 ^= k2;
+        FALL_THROUGH ;
+    case  4:
+        k1 ^= tail[ 3] << 24;
+        FALL_THROUGH ;
+    case  3:
+        k1 ^= tail[ 2] << 16;
+        FALL_THROUGH ;
+    case  2:
+        k1 ^= tail[ 1] << 8;
+        FALL_THROUGH ;
+    case  1:
+        k1 ^= tail[ 0] << 0;
+        k1 *= c1;
+        k1  = ROTL32(k1,15);
+        k1 *= c2;
+        h1 ^= k1;
+    default:
+        break ;
     };
     /* finalization */
     h1 ^= len;
@@ -1301,13 +1301,23 @@ void MurmurHash3_x64_128 ( const void * key, const int len, const uint32_t seed,
         uint64_t k1 = getblock64(blocks,i*2+0);
         uint64_t k2 = getblock64(blocks,i*2+1);
 
-        k1 *= c1; k1  = ROTL64(k1,31); k1 *= c2; h1 ^= k1;
+        k1 *= c1;
+        k1  = ROTL64(k1,31);
+        k1 *= c2;
+        h1 ^= k1;
 
-        h1 = ROTL64(h1,27); h1 += h2; h1 = h1*5+0x52dce729;
+        h1 = ROTL64(h1,27);
+        h1 += h2;
+        h1 = h1*5+0x52dce729;
 
-        k2 *= c2; k2  = ROTL64(k2,33); k2 *= c1; h2 ^= k2;
+        k2 *= c2;
+        k2  = ROTL64(k2,33);
+        k2 *= c1;
+        h2 ^= k2;
 
-        h2 = ROTL64(h2,31); h2 += h1; h2 = h2*5+0x38495ab5;
+        h2 = ROTL64(h2,31);
+        h2 += h1;
+        h2 = h2*5+0x38495ab5;
     }
 
     /* tail */
@@ -1319,46 +1329,68 @@ void MurmurHash3_x64_128 ( const void * key, const int len, const uint32_t seed,
 
     switch(len & 15)
     {
-        case 15: k2 ^= ((uint64_t)tail[14]) << 48;
-                 FALL_THROUGH ;
-        case 14: k2 ^= ((uint64_t)tail[13]) << 40;
-                 FALL_THROUGH ;
-        case 13: k2 ^= ((uint64_t)tail[12]) << 32;
-                 FALL_THROUGH ;
-        case 12: k2 ^= ((uint64_t)tail[11]) << 24;
-                 FALL_THROUGH ;
-        case 11: k2 ^= ((uint64_t)tail[10]) << 16;
-                 FALL_THROUGH ;
-        case 10: k2 ^= ((uint64_t)tail[ 9]) << 8;
-                 FALL_THROUGH ;
-        case  9: k2 ^= ((uint64_t)tail[ 8]) << 0;
-                 k2 *= c2; k2  = ROTL64(k2,33); k2 *= c1; h2 ^= k2;
-                 FALL_THROUGH ;
+    case 15:
+        k2 ^= ((uint64_t)tail[14]) << 48;
+        FALL_THROUGH ;
+    case 14:
+        k2 ^= ((uint64_t)tail[13]) << 40;
+        FALL_THROUGH ;
+    case 13:
+        k2 ^= ((uint64_t)tail[12]) << 32;
+        FALL_THROUGH ;
+    case 12:
+        k2 ^= ((uint64_t)tail[11]) << 24;
+        FALL_THROUGH ;
+    case 11:
+        k2 ^= ((uint64_t)tail[10]) << 16;
+        FALL_THROUGH ;
+    case 10:
+        k2 ^= ((uint64_t)tail[ 9]) << 8;
+        FALL_THROUGH ;
+    case  9:
+        k2 ^= ((uint64_t)tail[ 8]) << 0;
+        k2 *= c2;
+        k2  = ROTL64(k2,33);
+        k2 *= c1;
+        h2 ^= k2;
+        FALL_THROUGH ;
 
-        case  8: k1 ^= ((uint64_t)tail[ 7]) << 56;
-                 FALL_THROUGH ;
-        case  7: k1 ^= ((uint64_t)tail[ 6]) << 48;
-                 FALL_THROUGH ;
-        case  6: k1 ^= ((uint64_t)tail[ 5]) << 40;
-                 FALL_THROUGH ;
-        case  5: k1 ^= ((uint64_t)tail[ 4]) << 32;
-                 FALL_THROUGH ;
-        case  4: k1 ^= ((uint64_t)tail[ 3]) << 24;
-                 FALL_THROUGH ;
-        case  3: k1 ^= ((uint64_t)tail[ 2]) << 16;
-                 FALL_THROUGH ;
-        case  2: k1 ^= ((uint64_t)tail[ 1]) << 8;
-                 FALL_THROUGH ;
-        case  1: k1 ^= ((uint64_t)tail[ 0]) << 0;
-                 k1 *= c1; k1  = ROTL64(k1,31); k1 *= c2; h1 ^= k1;
-                 FALL_THROUGH ;
-        default:
-                 break;
+    case  8:
+        k1 ^= ((uint64_t)tail[ 7]) << 56;
+        FALL_THROUGH ;
+    case  7:
+        k1 ^= ((uint64_t)tail[ 6]) << 48;
+        FALL_THROUGH ;
+    case  6:
+        k1 ^= ((uint64_t)tail[ 5]) << 40;
+        FALL_THROUGH ;
+    case  5:
+        k1 ^= ((uint64_t)tail[ 4]) << 32;
+        FALL_THROUGH ;
+    case  4:
+        k1 ^= ((uint64_t)tail[ 3]) << 24;
+        FALL_THROUGH ;
+    case  3:
+        k1 ^= ((uint64_t)tail[ 2]) << 16;
+        FALL_THROUGH ;
+    case  2:
+        k1 ^= ((uint64_t)tail[ 1]) << 8;
+        FALL_THROUGH ;
+    case  1:
+        k1 ^= ((uint64_t)tail[ 0]) << 0;
+        k1 *= c1;
+        k1  = ROTL64(k1,31);
+        k1 *= c2;
+        h1 ^= k1;
+        FALL_THROUGH ;
+    default:
+        break;
     };
 
     /* finalization */
 
-    h1 ^= len; h2 ^= len;
+    h1 ^= len;
+    h2 ^= len;
 
     h1 += h2;
     h2 += h1;
@@ -1417,7 +1449,7 @@ HASH_NODE *_ht_get_node( HASH_TABLE *table, const char *key )
     index= (hash_value)%(table->size);
 
     if( ! table -> hash_table[ index ] -> start )
-		return NULL ;
+        return NULL ;
 
     list_foreach( list_node, table -> hash_table[ index ] )
     {
@@ -2420,8 +2452,8 @@ int destroy_ht( HASH_TABLE **table )
  */
 HASH_NODE *ht_get_node_ex( HASH_TABLE *table, unsigned long int hash_value )
 {
-    __n_assert( table , return NULL );
-    __n_assert( table -> mode == HASH_CLASSIC , return NULL );
+    __n_assert( table, return NULL );
+    __n_assert( table -> mode == HASH_CLASSIC, return NULL );
 
     unsigned long int index = 0;
     HASH_NODE *node_ptr = NULL ;
@@ -2455,7 +2487,7 @@ HASH_NODE *ht_get_node_ex( HASH_TABLE *table, unsigned long int hash_value )
 int ht_get_ptr_ex( HASH_TABLE *table, unsigned long int hash_value, void  **val )
 {
     __n_assert( table, return FALSE );
-    __n_assert( table -> mode == HASH_CLASSIC , return FALSE );
+    __n_assert( table -> mode == HASH_CLASSIC, return FALSE );
 
     HASH_NODE *node = ht_get_node_ex( table, hash_value );
     if( !node )
@@ -2485,7 +2517,7 @@ int ht_get_ptr_ex( HASH_TABLE *table, unsigned long int hash_value, void  **val 
 int ht_put_ptr_ex( HASH_TABLE *table, unsigned long int hash_value, void  *val, void (*destructor)( void *ptr ) )
 {
     __n_assert( table, return FALSE );
-    __n_assert( table -> mode == HASH_CLASSIC , return FALSE );
+    __n_assert( table -> mode == HASH_CLASSIC, return FALSE );
 
     unsigned long int index = 0;
     HASH_NODE *new_hash_node = NULL ;
@@ -2541,7 +2573,7 @@ int ht_put_ptr_ex( HASH_TABLE *table, unsigned long int hash_value, void  *val, 
 int ht_remove_ex( HASH_TABLE *table, unsigned long int hash_value )
 {
     __n_assert( table, return FALSE );
-    __n_assert( table -> mode == HASH_CLASSIC , return FALSE );
+    __n_assert( table -> mode == HASH_CLASSIC, return FALSE );
 
     unsigned long int index = 0;
     HASH_NODE *node_ptr = NULL ;
@@ -2682,8 +2714,8 @@ int next_prime( int nb )
  */
 int ht_get_table_collision_percentage( HASH_TABLE *table )
 {
-    __n_assert( table , return FALSE );
-    __n_assert( table -> mode == HASH_CLASSIC , return FALSE );
+    __n_assert( table, return FALSE );
+    __n_assert( table -> mode == HASH_CLASSIC, return FALSE );
 
     if( table -> size == 0 ) return FALSE ;
 
@@ -2709,7 +2741,7 @@ int ht_get_table_collision_percentage( HASH_TABLE *table )
  */
 int ht_get_optimal_size( HASH_TABLE *table )
 {
-    __n_assert( table , return FALSE );
+    __n_assert( table, return FALSE );
 
     int optimum_size = (double)table -> nb_keys * 1.3 ;
     if( is_prime( optimum_size ) != TRUE )
@@ -2727,22 +2759,22 @@ int ht_get_optimal_size( HASH_TABLE *table )
  *\param size new hash table size
  *\return TRUE or FALSE
  */
-int ht_resize( HASH_TABLE **table , unsigned int size )
+int ht_resize( HASH_TABLE **table, unsigned int size )
 {
-    __n_assert( (*table) , return FALSE );
+    __n_assert( (*table), return FALSE );
 
-	if( size < 1 )
-	{
-		n_log( LOG_ERR , "invalid size %d for hash table %p" , size , (*table) );
-		return FALSE ;
-	}
-    HT_FOREACH( node , (*table) , { node -> need_rehash = 1 ; } );
+    if( size < 1 )
+    {
+        n_log( LOG_ERR, "invalid size %d for hash table %p", size, (*table) );
+        return FALSE ;
+    }
+    HT_FOREACH( node, (*table), { node -> need_rehash = 1 ; } );
 
     if( size > (*table) -> size )
     {
-        if( !( Realloc( (*table) -> hash_table , LIST * , size ) ) )
+        if( !( Realloc( (*table) -> hash_table, LIST *, size ) ) )
         {
-            n_log( LOG_ERR ,"Realloc did not augment the size the table !" );
+            n_log( LOG_ERR,"Realloc did not augment the size the table !" );
         }
         else
         {
@@ -2775,7 +2807,7 @@ int ht_resize( HASH_TABLE **table , unsigned int size )
                         LIST_NODE *node = list_node_shift( (*table) -> hash_table[ it ] );
                         node -> next = node -> prev = NULL ;
                         unsigned long int index= (hash_node -> hash_value)%(size);
-                        list_node_push( (*table) -> hash_table[ index ] , node );
+                        list_node_push( (*table) -> hash_table[ index ], node );
                     }
                 }
             }
@@ -2796,17 +2828,17 @@ int ht_resize( HASH_TABLE **table , unsigned int size )
                     LIST_NODE *node = list_node_shift( (*table) -> hash_table[ it ] );
                     node -> next = node -> prev = NULL ;
                     unsigned long int index= (hash_node -> hash_value)%(size);
-                    list_node_push( (*table) -> hash_table[ index ] , node );
+                    list_node_push( (*table) -> hash_table[ index ], node );
                 }
             }
         }
         for( unsigned int it = size ; it < (*table) -> size ; it ++ )
         {
-			list_destroy( &(*table) -> hash_table[ it ] );
-		}
-        if( !( Realloc( (*table) -> hash_table , LIST * , size ) ) )
+            list_destroy( &(*table) -> hash_table[ it ] );
+        }
+        if( !( Realloc( (*table) -> hash_table, LIST *, size ) ) )
         {
-            n_log( LOG_ERR ,"Realloc did not reduce the resize the table !" );
+            n_log( LOG_ERR,"Realloc did not reduce the resize the table !" );
         }
     }
     (*table) -> size = size ;
@@ -2823,9 +2855,9 @@ int ht_resize( HASH_TABLE **table , unsigned int size )
  */
 int ht_optimize( HASH_TABLE **table )
 {
-    __n_assert( (*table) , return FALSE );
+    __n_assert( (*table), return FALSE );
 
-	unsigned long int optimal_size = ht_get_optimal_size( (*table) );
+    unsigned long int optimal_size = ht_get_optimal_size( (*table) );
     if( optimal_size == FALSE )
     {
         return FALSE;
@@ -2835,13 +2867,13 @@ int ht_optimize( HASH_TABLE **table )
     if( collision_percentage == FALSE )
         return FALSE ;
 
-    int resize_result = ht_resize( &(*table) , optimal_size );
+    int resize_result = ht_resize( &(*table), optimal_size );
     if( resize_result == FALSE )
     {
         return FALSE ;
     }
 
-	collision_percentage = ht_get_table_collision_percentage( (*table) );
+    collision_percentage = ht_get_table_collision_percentage( (*table) );
     if( collision_percentage == FALSE )
     {
         return FALSE ;

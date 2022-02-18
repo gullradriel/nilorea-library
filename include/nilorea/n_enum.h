@@ -22,10 +22,10 @@ extern "C" {
 
 /* MACROS FOR N_ENUMS MACRO ENTRIES (START) */
 
-	/*! helper to build an N_ENUM */
+/*! helper to build an N_ENUM */
 #define N_ENUM_ENTRY(class, method) class##_##method
 
-	/*!	utils macro case value */
+/*!	utils macro case value */
 #define __N_ENUM_MACRO_ENTRY_CASE(element_name) case element_name:
 /*!	utils macros string compare */
 #define __N_ENUM_MACRO_ENTRY_COMPARE(element_name) if(!strcmp(#element_name, str_value))

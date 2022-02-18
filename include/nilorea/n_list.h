@@ -88,7 +88,7 @@ LIST *new_generic_list( int max_items );
 LIST_NODE *new_list_node( void *ptr, void (*destructor)( void *ptr ) );
 /* remove a node */
 void *remove_list_node_f( LIST *list, LIST_NODE *node );
-int list_node_push( LIST *list , LIST_NODE *node );
+int list_node_push( LIST *list, LIST_NODE *node );
 LIST_NODE *list_node_pop( LIST *list );
 LIST_NODE *list_node_shift( LIST *list );
 int list_node_unshift( LIST *list, LIST_NODE *node );

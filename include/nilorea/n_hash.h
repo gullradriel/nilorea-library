@@ -348,7 +348,7 @@ int next_prime( int nb );
 
 int ht_get_table_collision_percentage( HASH_TABLE *table );
 int ht_get_optimal_size( HASH_TABLE *table );
-int ht_resize( HASH_TABLE **table , unsigned int size );
+int ht_resize( HASH_TABLE **table, unsigned int size );
 int ht_optimize( HASH_TABLE **table );
 
 /**
