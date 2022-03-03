@@ -1240,7 +1240,7 @@ int write_and_fit_ex( char **dest, NSTRBYTE *size, NSTRBYTE *written, const char
 
         // +1 for the \0 , + additional padding for eventual futur concatenation space
         Reallocz( (*dest), char, (*size), needed_size + additional_padding );
-        (*size) = needed_size + additional_padding ;
+        (*size) = needed_size + additional_padding;
         if( !(*dest) )
         {
             n_log(  LOG_ERR, "reallocation error !!!!" );
@@ -1269,7 +1269,7 @@ int write_and_fit_ex( char **dest, NSTRBYTE *size, NSTRBYTE *written, const char
  */
 int write_and_fit( char **dest, NSTRBYTE *size, NSTRBYTE *written, const char *src )
 {
-    return write_and_fit_ex( dest, size, written, src, strlen( src ), 512 );
+    return write_and_fit_ex( dest, size, written, src, strlen( src ), 8 );
 } /* write_and_fit( ...) */
 
 
