@@ -1135,6 +1135,7 @@ int nstrcat_ex( N_STR *dest, void *src, NSTRBYTE size, NSTRBYTE blk_size, int re
         return FALSE ;
     }
 
+	NSTRBYTE previous_length =  dest -> length ;
     while( ( dest -> written + size ) >= dest -> length )
     {
         dest -> length += blk_size ;
@@ -1143,7 +1144,7 @@ int nstrcat_ex( N_STR *dest, void *src, NSTRBYTE size, NSTRBYTE blk_size, int re
 
     if( realloc_flag == 1 )
     {
-        Reallocz( dest -> data, char, dest -> written, dest -> length );
+        Reallocz( dest -> data, char, previous_length , dest -> length );
         __n_assert( dest -> data, Free( dest ); return FALSE );
     }
 
