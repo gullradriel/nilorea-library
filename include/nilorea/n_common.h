@@ -222,23 +222,15 @@ typedef unsigned char uchar;
         { \
             __ptr = __new_ptr ; \
         } \
-        __new_ptr ; \
     }
 
 /*! Realloc + zero new memory zone Handler to get errors */
 #define Reallocz( __ptr, __struct , __old_size , __size )  \
     { \
-        int __n_errno = 0 ; \
-        __ptr  = (  __struct  *)realloc(  __ptr , __size  * sizeof(  __struct  ) ); \
-        __n_errno = errno ; \
-        if( !__ptr || __n_errno == ENOMEM )\
+		Realloc( __ptr , __struct , __size ); \
+        if( __ptr ) \
         {\
-            n_log( LOG_ERR , "( %s *)malloc( %s * sizeof( %d ) ) Error at line %d of %s \n", #__ptr , #__struct , __size , (__n_errno==0)?"reallocz error":strerror( __n_errno ) , __LINE__ , __FILE__);\
-            __ptr = NULL;\
-        }\
-        else\
-        {\
-            if( __size > __old_size )memset( ( __ptr + __old_size ) , 0 , __size - __old_size );\
+            if( __size > __old_size ) memset( ( __ptr + __old_size ) , 0 , __size - __old_size ); \
         } \
     }
 

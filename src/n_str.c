@@ -1232,27 +1232,28 @@ int nstrcat_bytes( N_STR *dest, void *data )
 int write_and_fit_ex( char **dest, NSTRBYTE *size, NSTRBYTE *written, const char *src, NSTRBYTE src_size, NSTRBYTE additional_padding )
 {
     char *ptr = NULL ;
-    NSTRBYTE needed_size = (*written) + src_size + 1 ;
+    NSTRBYTE needed_size = (*written) + src_size + additional_padding  + 1 ;
 
     // realloc if needed , also if destination is not allocated
-    if( needed_size > (*size) || !(*dest) )
+    if( ( needed_size >= (*size) ) || !(*dest) )
     {
-        n_log( LOG_DEBUG, "dest will grow from %d to %d", (*size), needed_size + additional_padding );
-
-        // +1 for the \0 , + additional padding for eventual futur concatenation space
-        Reallocz( (*dest), char, (*size), needed_size + additional_padding );
-        (*size) = needed_size + additional_padding;
+		if( !(*dest) )
+		{
+			(*written) = 0 ;
+			(*size) = 0 ;
+		}
+        n_log( LOG_DEBUG, "dest will grow from %d to %d", (*size), needed_size );
+        Reallocz( (*dest), char, (*size), needed_size );
+        (*size) = needed_size ;
         if( !(*dest) )
         {
             n_log(  LOG_ERR, "reallocation error !!!!" );
             return FALSE ;
         }
     }
-
     ptr = (*dest) + (*written) ;
     memcpy( ptr, src, src_size );
     (*written) += src_size ;
-
     (*dest)[ (*written) ] = '\0' ;
 
     return TRUE ;

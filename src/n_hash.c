@@ -563,10 +563,10 @@ char* _ht_find_longest_prefix_trie( HASH_TABLE *table, const char *key )
     {
         /* there is branching, update the position to the longest match and update the longest prefix by the branch index length */
         longest_prefix[ branch_index ] = '\0';
-        if( !( Realloc( longest_prefix, char, (branch_index + 1) ) ) )
+        Realloc( longest_prefix, char, (branch_index + 1) );
+        if( !longest_prefix )
         {
             n_log( LOG_ERR, "reallocation error, stopping find longest prefix" );
-            FreeNoLog( longest_prefix );
             return NULL ;
         }
         __n_assert( longest_prefix, return NULL );
@@ -2772,7 +2772,8 @@ int ht_resize( HASH_TABLE **table, unsigned int size )
 
     if( size > (*table) -> size )
     {
-        if( !( Realloc( (*table) -> hash_table, LIST *, size ) ) )
+        Realloc( (*table) -> hash_table, LIST *, size );
+        if( !(*table) -> hash_table )
         {
             n_log( LOG_ERR,"Realloc did not augment the size the table !" );
         }
@@ -2836,7 +2837,8 @@ int ht_resize( HASH_TABLE **table, unsigned int size )
         {
             list_destroy( &(*table) -> hash_table[ it ] );
         }
-        if( !( Realloc( (*table) -> hash_table, LIST *, size ) ) )
+        Realloc( (*table) -> hash_table, LIST *, size );
+        if( !(*table) -> hash_table )
         {
             n_log( LOG_ERR,"Realloc did not reduce the resize the table !" );
         }
