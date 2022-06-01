@@ -162,6 +162,14 @@ int main(int argc, char **argv)
     iftrue (TRUE) endif ;
     checkerror();
 error:
+	if( get_errors() )
+	{
+		n_log( LOG_INFO , "got an error while processing test" );
+	}
+	else
+	{
+		n_log( LOG_INFO , "All tests for checkerror() are OK" );
+	}
 
     if( file_exist( argv[ 0 ] ) )
     {
