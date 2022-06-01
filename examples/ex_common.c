@@ -162,7 +162,7 @@ int main(int argc, char **argv)
     iftrue (TRUE) endif ;
     checkerror();
 error:
-	if( get_errors() )
+	if( get_error() )
 	{
 		n_log( LOG_INFO , "got an error while processing test" );
 	}

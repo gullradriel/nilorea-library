@@ -316,6 +316,10 @@ goto error ; \
 /*! close a ifwhatever block */
 #define endif ){ ___error__check_flag = TRUE ; n_log( LOG_ERR , "First err was at line %d of %s" , __LINE__ , __FILE__ );}
 
+/*! pop up errors if any */
+#define get_error() \
+(___error__check_flag == TRUE)
+
 /*! if( a , condition, b ) then a = b */
 #define equal_if( __a , __cond , __b ) if( (__a) __cond (__b) ){ __a = __b ; }
 
