@@ -1241,7 +1241,6 @@ int write_and_fit_ex( char **dest, NSTRBYTE *size, NSTRBYTE *written, const char
 			(*written) = 0 ;
 			(*size) = 0 ;
 		}
-        n_log( LOG_DEBUG, "dest will grow from %d to %d", (*size), needed_size );
         Reallocz( (*dest), char, (*size), needed_size );
         (*size) = needed_size ;
         if( !(*dest) )

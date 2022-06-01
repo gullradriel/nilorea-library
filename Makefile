@@ -10,7 +10,7 @@ EXT=
 VPATH=src
 CFLAGS=
 SRC= n_common.c n_config_file.c n_exceptions.c n_hash.c n_list.c n_log.c n_network.c n_network_msg.c n_nodup_log.c n_pcre.c n_stack.c n_str.c n_thread_pool.c n_time.c n_zlib.c n_user.c
-OPT=-D_XOPEN_SOURCE=600 -D_XOPEN_SOURCE_EXTENTED -fPIC -g -ggdb3 -W -Wall -Wextra -Wcast-align -Wcast-qual -Wdisabled-optimization -Wformat=1 -Winit-self -Wlogical-op -Wmissing-include-dirs -Wredundant-decls -Wstrict-overflow=5 -Wswitch-default -Wundef -std=c99 -Wl,-dead_strip
+OPT=-D_REENTRANT -D_XOPEN_SOURCE=600 -D_XOPEN_SOURCE_EXTENTED -std=c11 -g -Wall -Wextra 
 OUTPUT=libnilorea
 LIB=-lnilorea
 PROJECT_NAME= NILOREA_LIBRARY

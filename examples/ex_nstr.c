@@ -96,6 +96,22 @@ int main( void )
     free_nstr( &nstr2 );
     free_nstr( &nstr3 );
 
+	nstr = new_nstr( 128 );
+	char data[1048576]="";
+
+	for( int it = 0 ; it < 1048575 ; it ++ )
+	{
+		data[ it ] = 32 + rand()%63 ;
+	}
+	data[1048574]='\0';
+
+	for( int it = 0 ; it < 100 ; it ++ )
+	{
+		write_and_fit( &nstr -> data , &nstr -> length , &nstr -> written , data );
+	}
+
+	free_nstr( &nstr );
+
     exit( 0 );
 }
 

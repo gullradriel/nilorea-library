@@ -162,7 +162,6 @@ int main(int argc, char **argv)
     iftrue (TRUE) endif ;
     checkerror();
 error:
-    get_error();
 
     if( file_exist( argv[ 0 ] ) )
     {

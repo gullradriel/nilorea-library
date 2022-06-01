@@ -11,8 +11,6 @@
 #include "nilorea/n_log.h"
 #include "nilorea/n_thread_pool.h"
 
-static pthread_t netw_thr ;
-
 void usage(void)
 {
     fprintf( stderr, "     -v version\n"

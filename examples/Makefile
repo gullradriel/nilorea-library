@@ -1,7 +1,7 @@
 HAVE_OPENSSL=0
 HAVE_ALLEGRO=0
 RM=rm -f
-OPT=-D_XOPEN_SOURCE=600 -D_XOPEN_SOURCE_EXTENTED -g -W -Wall -Wextra -Wcast-align -Wcast-qual -Wdisabled-optimization -Wformat=1 -Winit-self -Wlogical-op -Wmissing-include-dirs -Wredundant-decls -Wstrict-overflow=5 -Wswitch-default -Wundef -Wno-unused
+OPT=-D_REENTRANT -D_XOPEN_SOURCE=600 -D_XOPEN_SOURCE_EXTENTED -std=c11 -g -Wall -Wextra 
 OPT+= -I../include
 VPATH=../src/
 CC=gcc
