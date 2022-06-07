@@ -1101,19 +1101,17 @@ int free_split_result( char ***tab )
 
 
 
-/*!\fn int nstrcat_ex( N_STR *dest , void *src , NSTRBYTE size , NSTRBYTE blk_size , int resize_flag )
+/*!\fn int nstrcat_ex( N_STR *dest , void *src , NSTRBYTE size , int resize_flag )
  *\brief Append data into N_STR using internal N_STR size and cursor position.
  *\param dest The N_STR *destination (accumulator)
  *\param src The data to append
  *\param size The number of octet of data we want to append in dest
- *\param blk_size In case of resizing, this is the increment which will be used to reach ( dest -> written + size )
  *\param resize_flag Set it to a positive non zero value to allow resizing, or to zero to forbid resizing
  *\return TRUE or FALSE
  */
-int nstrcat_ex( N_STR *dest, void *src, NSTRBYTE size, NSTRBYTE blk_size, int resize_flag )
+int nstrcat_ex( N_STR *dest, void *src, NSTRBYTE size, int resize_flag )
 {
     char *ptr = NULL ;
-    int realloc_flag = 0 ;
 
     if( !src )
     {
@@ -1135,14 +1133,9 @@ int nstrcat_ex( N_STR *dest, void *src, NSTRBYTE size, NSTRBYTE blk_size, int re
         return FALSE ;
     }
 
-    while( ( dest -> written + size ) >= dest -> length )
-    {
-        dest -> length += blk_size ;
-        realloc_flag = 1 ;
-    }
-
-    if( realloc_flag == 1 )
-    {
+	if( dest -> length < dest -> written + size + 1 )
+	{
+		dest -> length = dest -> written + size + 1 ;
         Reallocz( dest -> data, char, dest -> written , dest -> length );
         __n_assert( dest -> data, Free( dest ); return FALSE );
     }
@@ -1166,7 +1159,7 @@ int nstrcat_ex( N_STR *dest, void *src, NSTRBYTE size, NSTRBYTE blk_size, int re
  */
 int nstrcat( N_STR *dst, N_STR *src )
 {
-    return nstrcat_ex( dst, src -> data, src -> written, src -> written + 64, 1 );
+    return nstrcat_ex( dst, src -> data, src -> written, 1 );
 } /* nstrcat( ... ) */
 
 
@@ -1189,7 +1182,7 @@ int nstrcat_bytes_ex( N_STR *dest, void *data, NSTRBYTE size )
         return FALSE ;
     }
 
-    return nstrcat_ex( dest, data, size, size + 64, 1 );
+    return nstrcat_ex( dest, data, size, 1 );
 } /* nstrcat_bytes_ex( ... )*/
 
 
@@ -1231,17 +1224,17 @@ int nstrcat_bytes( N_STR *dest, void *data )
 int write_and_fit_ex( char **dest, NSTRBYTE *size, NSTRBYTE *written, const char *src, NSTRBYTE src_size, NSTRBYTE additional_padding )
 {
     char *ptr = NULL ;
-    NSTRBYTE needed_size = (*written) + src_size + additional_padding  + 1 ;
+    NSTRBYTE needed_size = (*written) + src_size ;
 
     // realloc if needed , also if destination is not allocated
-    if( ( needed_size >= (*size) ) || !(*dest) )
+    if( ( needed_size >= (*size) + 1 ) || !(*dest) )
     {
 		if( !(*dest) )
 		{
 			(*written) = 0 ;
 			(*size) = 0 ;
 		}
-        Reallocz( (*dest), char, (*size), needed_size );
+        Reallocz( (*dest), char, (*size), needed_size + 1 + additional_padding );
         (*size) = needed_size ;
         if( !(*dest) )
         {
@@ -1269,7 +1262,7 @@ int write_and_fit_ex( char **dest, NSTRBYTE *size, NSTRBYTE *written, const char
  */
 int write_and_fit( char **dest, NSTRBYTE *size, NSTRBYTE *written, const char *src )
 {
-    return write_and_fit_ex( dest, size, written, src, strlen( src ), 8 );
+    return write_and_fit_ex( dest, size, written , src, strlen( src ) , 8 );
 } /* write_and_fit( ...) */
 
 

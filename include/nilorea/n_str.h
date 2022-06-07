@@ -178,7 +178,7 @@ int char_to_nstr_ex( const char *from, NSTRBYTE nboct, N_STR **to );
 /* Convert a char into a N_STR, shorter version */
 N_STR *char_to_nstr( const char *src );
 /* cat data inside a N8STR */
-int nstrcat_ex( N_STR *dest, void *src, NSTRBYTE size, NSTRBYTE blk_size,int resize_flag );
+int nstrcat_ex( N_STR *dest, void *src, NSTRBYTE size ,int resize_flag );
 /* Wrapper to nstrcat_ex to concatenate N_STR *datas */
 int nstrcat( N_STR *dst, N_STR *src );
 /* Wrapper to nstrcat_ex to concatenate void *data */
