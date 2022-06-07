@@ -1121,7 +1121,7 @@ int nstrcat_ex( N_STR *dest, void *src, NSTRBYTE size, int resize_flag )
 
     if( dest )
     {
-        if( ( dest -> written + size ) >= dest -> length  && resize_flag == 0 )
+        if( ( dest -> written + size  + 1 ) > dest -> length  && resize_flag == 0 )
         {
             n_log( LOG_ERR, "%p to %p: not enough space. Resize forbidden. %lld needed, %lld available", dest, src,  dest -> written + size + 1, dest -> length );
             return FALSE ;
@@ -1224,17 +1224,17 @@ int nstrcat_bytes( N_STR *dest, void *data )
 int write_and_fit_ex( char **dest, NSTRBYTE *size, NSTRBYTE *written, const char *src, NSTRBYTE src_size, NSTRBYTE additional_padding )
 {
     char *ptr = NULL ;
-    NSTRBYTE needed_size = (*written) + src_size ;
+    NSTRBYTE needed_size = (*written) + src_size + 1 ;
 
     // realloc if needed , also if destination is not allocated
-    if( ( needed_size >= (*size) + 1 ) || !(*dest) )
+    if( ( needed_size >= (*size) ) || !(*dest) )
     {
 		if( !(*dest) )
 		{
 			(*written) = 0 ;
 			(*size) = 0 ;
 		}
-        Reallocz( (*dest), char, (*size), needed_size + 1 + additional_padding );
+        Reallocz( (*dest), char, (*size), needed_size + additional_padding );
         (*size) = needed_size ;
         if( !(*dest) )
         {
