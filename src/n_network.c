@@ -2142,7 +2142,7 @@ N_STR *netw_wait_msg( NETWORK *netw, long refresh, long timeout )
 
     if( state != NETW_RUN )
     {
-        n_log( LOG_ERR, "netw %d exited with state %s (%d)", netw -> link . sock, N_ENUM_ENTRY(__netw_code_type,toString)(state), state, timeout );
+        n_log( LOG_ERR, "netw %d not running, state: %s timeout: %d", netw -> link . sock, N_ENUM_ENTRY(__netw_code_type,toString)(state), state, timeout );
     }
 
     return NULL ;
