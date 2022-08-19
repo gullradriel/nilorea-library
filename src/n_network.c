@@ -2124,8 +2124,8 @@ N_STR *netw_wait_msg( NETWORK *netw, long refresh, long timeout )
 
         if( timed > 0 )
         {
-            timeout -= refresh ;
-            if( timeout < 0 )
+            timed -= refresh ;
+            if( timed <= 0 )
             {
                 n_log( LOG_ERR, "timed out for netw %d (%s)", netw -> link . sock, _str( netw -> link . ip ) );
                 break ;
@@ -2140,11 +2140,7 @@ N_STR *netw_wait_msg( NETWORK *netw, long refresh, long timeout )
     }
     while( state == NETW_RUN );
 
-    if( timed > 0 && timeout <= 0 )
-    {
-        n_log( LOG_ERR, "netw %d state %s (%d): no message after waiting %ds", netw -> link . sock, N_ENUM_ENTRY(__netw_code_type,toString)(state), state, timeout );
-    }
-    else
+    if( state != NETW_RUN )
     {
         n_log( LOG_ERR, "netw %d exited with state %s (%d)", netw -> link . sock, N_ENUM_ENTRY(__netw_code_type,toString)(state), state, timeout );
     }
