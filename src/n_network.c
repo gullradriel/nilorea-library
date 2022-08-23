@@ -821,7 +821,6 @@ int netw_set_blocking( NETWORK *netw, unsigned long int is_blocking )
     int error = 0 ;
     char *errmsg = NULL ;
 
-
 #if defined(__linux__) || defined(__sun)
     int flags = fcntl( netw -> link . sock, F_GETFL, 0 );
     if ( (flags &O_NONBLOCK) && !is_blocking )
@@ -831,7 +830,7 @@ int netw_set_blocking( NETWORK *netw, unsigned long int is_blocking )
         netw -> link. is_blocking = 0 ;
         return TRUE;
     }
-    if (!(flags &O_NONBLOCK) &&  is_blocking )
+    if (!(flags &O_NONBLOCK) && is_blocking )
     {
         /* in case we missed it, let's update the link mode */
         netw -> link. is_blocking = 1 ;
@@ -846,9 +845,7 @@ int netw_set_blocking( NETWORK *netw, unsigned long int is_blocking )
         FreeNoLog( errmsg );
         return FALSE ;
     }
-#endif
-
-#if !defined(__linux__) && !defined(__sun)
+#else
     unsigned long int blocking = 1 - is_blocking ;
     int res = ioctlsocket( netw -> link . sock, FIONBIO, &blocking );
     error = neterrno ;
@@ -1920,14 +1917,14 @@ NETWORK *netw_accept_from_ex( NETWORK *from, int send_list_limit, int recv_list_
         if( from -> link . is_blocking  == 0 )
         {
             netw_set_blocking( from, 1 );
-            n_log( LOG_DEBUG, "changed to blocking accept call on %d", from -> link . sock );
+            n_log( LOG_DEBUG, "(default) blocking accept call on socket %d", from -> link . sock );
         }
         tmp = accept( from -> link . sock, (struct sockaddr *)&netw -> link . raddr, &sin_size );
         if ( tmp < 0 )
         {
             error = neterrno ;
             errmsg = netstrerror( error );
-            n_log( LOG_ERR, "error accepting on %d, %s", netw -> link . sock, _str( errmsg ) );
+            n_log( LOG_ERR, "error accepting on socket %d, %s", netw -> link . sock, _str( errmsg ) );
             FreeNoLog( errmsg );
             netw_close( &netw );
             return NULL;
@@ -1952,10 +1949,8 @@ NETWORK *netw_accept_from_ex( NETWORK *from, int send_list_limit, int recv_list_
     }
     netw_setsockopt( netw, SO_REUSEADDR, 1 );
 
-    netw_set_blocking( netw, 1 );
-
     netw_set( netw, NETW_SERVER|NETW_RUN|NETW_THR_ENGINE_STOPPED );
-    n_log( LOG_DEBUG, "Connection accepted from %s:%s", netw-> link . ip, netw -> link . port );
+    n_log( LOG_DEBUG, "Connection accepted from %s:%s socket %d", netw-> link . ip, netw -> link . port , netw -> link . sock );
 
     return netw;
 } /* netw_accept_from_ex(...) */
