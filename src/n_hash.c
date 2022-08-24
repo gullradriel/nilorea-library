@@ -2642,15 +2642,13 @@ LIST *ht_get_completion_list( HASH_TABLE *table, const char *keybud, uint32_t ma
     }
     else if( table -> mode == HASH_CLASSIC )
     {
-		{
-			int matching_nodes( HASH_NODE *node)
+        int matching_nodes( HASH_NODE *node)
         {
             if( strncasecmp( keybud, node -> key, strlen( keybud ) ) == 0 )
                 return TRUE ;
             return FALSE ;
         }
         results = ht_search( table, &matching_nodes );
-		}
     }
     else
     {
