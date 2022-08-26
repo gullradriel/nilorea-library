@@ -2642,7 +2642,13 @@ LIST *ht_get_completion_list( HASH_TABLE *table, const char *keybud, uint32_t ma
     }
     else if( table -> mode == HASH_CLASSIC )
     {
-        n_log( LOG_ERR, "unsupported mode %d", table -> mode );
+        int matching_nodes( HASH_NODE *node)
+        {
+            if( strncasecmp( keybud, node -> key, strlen( keybud ) ) == 0 )
+                return TRUE ;
+            return FALSE ;
+        }
+        results = ht_search( table, &matching_nodes );
     }
     else
     {
@@ -2762,7 +2768,7 @@ int ht_resize( HASH_TABLE **table, unsigned int size )
         n_log( LOG_ERR, "invalid size %d for hash table %p", size, (*table) );
         return FALSE ;
     }
-    HT_FOREACH( node, (*table), node -> need_rehash = 1 ; );
+    HT_FOREACH( node, (*table), { node -> need_rehash = 1 ; } );
 
     if( size > (*table) -> size )
     {
