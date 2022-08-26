@@ -63,10 +63,10 @@ else
 		CFLAGS+= -DLINUX -I./include/ $(OPT)
 	endif
 	ifeq ($(UNAME_S),SunOS)
-		#CC=cc
-		#CFLAGS+= -DSOLARIS -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -g -v -xc99 -I./include/ -mt -lpcre
-		CC=gcc
-		CFLAGS+= -DSOLARIS -I./include/ $(OPT)
+        CC=cc
+        CFLAGS+= -DSOLARIS -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -g -v -std=c11 -m64 -I./include/ -mt -lpcre
+        #CC=gcc
+        #CFLAGS+= -DSOLARIS -I./include/ $(OPT)
 	endif
 	ifeq "$(shell printf '\#include <allegro5/allegro.h>\nint main(){return 0;}' | $(CC) -x c -Wall -O -o tmp_test_allegro5.obj - > /dev/null 2> /dev/null && echo $$? )" "0"
   		HAVE_ALLEGRO=1
