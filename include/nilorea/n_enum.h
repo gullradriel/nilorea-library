@@ -50,6 +50,8 @@ extern "C" {
 /*! macro to convert string to N_ENUMS value*/
 #define __N_ENUM_MACRO_ENTRY_TO_FROMSTRING_COMPARE_EX(element_name, element_value)\
 	 __N_ENUM_MACRO_ENTRY_COMPARE_EX(element_name) return element_name;
+#define __N_ENUM_MACRO_ENTRY_TO_ISSTRINGVALID_COMPARE(element_name, element_value)\
+    __N_ENUM_MACRO_ENTRY_COMPARE(element_name) return true;
 /* MACROS FOR N_ENUMS MACRO ENTRIES (END) */
 
 /* MACRO FOR ENUM DECLARATION (START) */
@@ -72,6 +74,9 @@ enum_name;
 /*! create a to string function */
 #define __N_ENUM_FUNCTION_TOSTRING(enum_name)\
 	const char* N_ENUM_ENTRY(enum_name, toString)(enum_name value)
+/*! create a is string valid function */
+#define __N_ENUM_FUNCTION_ISSTRINGVALID(enum_name)\
+	bool N_ENUM_ENTRY(enum_name, isStringValid)(const char* str_value)
 /*! create a value from string function */
 #define __N_ENUM_FUNCTION_FROMSTRING(enum_name)\
 	enum_name N_ENUM_ENTRY(enum_name, fromString)(const char* str_value)
@@ -101,6 +106,13 @@ enum_name;
 		default: return 0;\
 	}\
 }
+/*! create getter for function isStringValue */
+#define __N_ENUM_DEFINE_FUNCTION_ISSTRINGVALID(MACRO_DEFINITION, enum_name)\
+	__N_ENUM_FUNCTION_ISSTRINGVALID(enum_name)\
+{\
+	MACRO_DEFINITION(__N_ENUM_MACRO_ENTRY_TO_ISSTRINGVALID_COMPARE)\
+	return false;\
+}
 /*! create getter functions fromString */
 #define __N_ENUM_DEFINE_FUNCTION_FROMSTRING(MACRO_DEFINITION, enum_name)\
 	__N_ENUM_FUNCTION_FROMSTRING(enum_name)\
@@ -122,6 +134,7 @@ enum_name;
 #define N_ENUM_DECLARE(MACRO_DEFINITION, enum_name)\
 	__N_ENUM_DECLARE_ENUM(MACRO_DEFINITION, enum_name)\
 	__N_ENUM_DECLARE_FUNCTION(__N_ENUM_FUNCTION_ISVALID, enum_name)\
+	__N_ENUM_DECLARE_FUNCTION(__N_ENUM_FUNCTION_ISSTRINGVALID, enum_name)\
 	__N_ENUM_DECLARE_FUNCTION(__N_ENUM_FUNCTION_TOSTRING, enum_name)\
 	__N_ENUM_DECLARE_FUNCTION(__N_ENUM_FUNCTION_FROMSTRING, enum_name)\
 	__N_ENUM_DECLARE_FUNCTION(__N_ENUM_FUNCTION_FROMSTRING_EX, enum_name)
@@ -131,6 +144,7 @@ enum_name;
 /*! Macro to define an N_ENUM */
 #define N_ENUM_DEFINE(MACRO_DEFINITION, enum_name)\
 	__N_ENUM_DEFINE_FUNCTION_ISVALID(MACRO_DEFINITION, enum_name)\
+	__N_ENUM_DEFINE_FUNCTION_ISSTRINGVALID(MACRO_DEFINITION, enum_name)\
 	__N_ENUM_DEFINE_FUNCTION_TOSTRING(MACRO_DEFINITION, enum_name)\
 	__N_ENUM_DEFINE_FUNCTION_FROMSTRING(MACRO_DEFINITION, enum_name)\
 	__N_ENUM_DEFINE_FUNCTION_FROMSTRING_EX(MACRO_DEFINITION, enum_name)
