@@ -19,7 +19,7 @@ jobs:
           ~/apt-cache 
     - name: install dependencies
       run: |
-        export APT_CACHE_DIR=`pwd`/apt-cache && mkdir -pv $APT_CACHE_DIR
+        export APT_CACHE_DIR=~/apt-cache && mkdir -pv $APT_CACHE_DIR
         sudo apt-get update -yq && sudo apt-get -o dir::cache::archives="$APT_CACHE_DIR" install -y liballegro5-dev valgrind
     - name: make library
       run: make
