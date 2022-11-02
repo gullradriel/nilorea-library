@@ -24,6 +24,7 @@ extern "C"
 #include <malloc.h>
 #include <errno.h>
 #include <string.h>
+#include <stdint.h>
 #include <nilorea/n_log.h>
 #include <nilorea/n_enum.h>
 
