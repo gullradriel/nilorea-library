@@ -27,7 +27,8 @@ cmake_build/*
 cmake_build/*.*
 html/*
 html/*.*
-doxygen/
+doxygen/*
+docs/*
 libnilorea*
 *.layout
 *.depend
