@@ -342,23 +342,32 @@ HASH_NODE *_ht_get_node_trie( HASH_TABLE *table, const char *key )
 {
     __n_assert( table, return NULL );
     __n_assert( key, return NULL );
+	
+	HASH_NODE *node = NULL ;
 
-    HASH_NODE *node = table -> root;
-    for( uint32_t it = 0 ; key[ it ] != '\0' ; it++ )
-    {
-        unsigned int index = (unsigned int)key[ it ] - table -> alphabet_offset ;
-        if( index >= table -> alphabet_length )
-        {
-            n_log( LOG_ERR, "Invalid value %d for charater at index %d of %s, set to 0", index, it, key );
-            index = 0 ;
-        }
-        if( node -> children[ index ] == NULL )
-        {
-            /* not found */
-            return NULL;
-        }
-        node = node -> children[ index ];
-    }
+    if( key[ 0 ] != '\0' )
+	{
+		node = table -> root;
+		for( uint32_t it = 0 ; key[ it ] != '\0' ; it++ )
+		{
+			unsigned int index = (unsigned int)key[ it ] - table -> alphabet_offset ;
+			if( index >= table -> alphabet_length )
+			{
+				n_log( LOG_DEBUG, "Invalid value %d for charater at index %d of %s, set to 0", index, it, key );
+				return NULL;
+			}
+			if( node -> children[ index ] == NULL )
+			{
+				/* not found */
+				return NULL;
+			}
+			node = node -> children[ index ];
+		}
+	}
+	else
+	{
+		node = NULL ;
+	}
     return node ;
 } /* _ht_get_node_trie(...) */
 
@@ -2637,6 +2646,20 @@ LIST *ht_get_completion_list( HASH_TABLE *table, const char *keybud, uint32_t ma
                 _ht_depth_first_search( node, results );
             }
         }
+		else
+		{
+			node = table -> root ;
+			for( uint32_t it = 0 ; it <  table -> alphabet_length ; it++ )
+			{
+				if( node -> children[ it ] )
+				{
+					char keybud[ 3 ] = "" ;
+					keybud[ 0 ] = it + table -> alphabet_offset ;
+					list_push( results , strdup( keybud ), &free );
+					found = TRUE ;
+				}
+			}
+		}
         if( found == FALSE )
             list_destroy( &results );
     }

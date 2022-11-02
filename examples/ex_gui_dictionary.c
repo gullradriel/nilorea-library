@@ -191,7 +191,8 @@ int main( int argc, char *argv[] )
 
     al_hide_mouse_cursor(display);
 
-    int mx = 0, my = 0, mouse_b1 = 0, mouse_b2 = 0 ;
+    int mx = 0, my = 0, mz = 0 ;
+	int mouse_b1 = 0, mouse_b2 = 0 ;
     int do_draw = 0, do_logic = 0 ;
 
     /*! dictionary definition for DICTIONARY_ENTRY */
@@ -236,36 +237,15 @@ int main( int argc, char *argv[] )
     char *type = NULL ;
     char *definition = NULL ;
     N_PCRE *dico_regexp = npcre_new ( "\"(.*)\",\"(.*)\",\"(.*)\"" , 99 , 0 );
-    N_PCRE *nagios_regexp = npcre_new ( "(.*?);.*?;.*?;(.*?);(.*)" , 99 , 0 );
-
-    char lastletter = ' ' ;
-    int match_type = 0 ; /* 0 dico 1 nagios */
-    while( fgets( read_buf , 16384 , dict_file ) )
+   
+	while( fgets( read_buf , 16384 , dict_file ) )
     {
-        match_type = -1 ;
-        if( npcre_match( read_buf , dico_regexp ) )
-            match_type = 0 ;
-        if( npcre_match( read_buf , nagios_regexp ) )
-            match_type = 1 ;
-
-        if( match_type != -1 )
-        {
-            if( match_type == 0 )
-            {
-                entry_key  = strdup( _str( dico_regexp -> match_list[ 1 ] ) );
-                type       = strdup( _str( dico_regexp -> match_list[ 2 ] ) );
-                definition = strdup( _str( dico_regexp -> match_list[ 3 ] ) );
-            }
-            else
-            {
-                N_STR *tmpstr = NULL ;
-                nstrprintf( tmpstr , "%s-%s" , nagios_regexp -> match_list[ 1 ] , nagios_regexp -> match_list[ 2 ] );
-                entry_key  = _nstr( tmpstr );
-                Free( tmpstr );
-                type       = strdup( _str( nagios_regexp -> match_list[ 2 ] ) );
-                definition = strdup( _str( nagios_regexp -> match_list[ 3 ] ) );
-            }
-
+       if( npcre_match( read_buf , dico_regexp ) )
+	   {
+			entry_key  = strdup( _str( dico_regexp -> match_list[ 1 ] ) );
+            type       = strdup( _str( dico_regexp -> match_list[ 2 ] ) );
+            definition = strdup( _str( dico_regexp -> match_list[ 3 ] ) );
+            
             n_log( LOG_DEBUG , "matched %s , %s , %s" , entry_key , type , definition );
 
             DICTIONARY_ENTRY *entry = NULL ;
@@ -297,7 +277,7 @@ int main( int argc, char *argv[] )
             FreeNoLog( entry_key );
             FreeNoLog( type );
             FreeNoLog( definition );
-            npcre_clean_match( nagios_regexp ); 
+            
             npcre_clean_match( dico_regexp ); 
         }
     }
@@ -311,6 +291,10 @@ int main( int argc, char *argv[] )
 
     al_clear_keyboard_state( NULL );
     al_flush_event_queue( event_queue );
+	
+	int max_results = 100 ;
+	completion = ht_get_completion_list( dictionary , al_cstr( keyboard_buffer ) , max_results );
+	
     do
     {
         do
@@ -356,6 +340,8 @@ int main( int argc, char *argv[] )
             {
                 mx = ev.mouse.x;
                 my = ev.mouse.y;
+				mz -= ev.mouse.dz;
+				if( mz < 0 ) mz = 0 ;
             }
             else if( ev.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN )
             {
@@ -379,7 +365,6 @@ int main( int argc, char *argv[] )
             else
             {
                 /* Processing inputs */
-                key_pressed = 0 ;
                 if( get_keyboard( keyboard_buffer , ev ) == TRUE )
                     key_pressed = 1 ;
             }
@@ -390,7 +375,7 @@ int main( int argc, char *argv[] )
             if( key_pressed == 1 )
             {
                 key_pressed = 0 ;
-                int max_results = 20 ;
+				mz = 0 ;
                 if( completion )
                 {
                     list_destroy( &completion );
@@ -398,11 +383,44 @@ int main( int argc, char *argv[] )
                 completion = ht_get_completion_list( dictionary , al_cstr( keyboard_buffer ) , max_results );
             }
 
-            int mouse_button = -1 ;
             if( mouse_b1==1 )
-                mouse_button = 1 ;
+			{
+				if( completion )
+				{
+					int skip_entry = mz ;
+					if( skip_entry >= completion -> nb_items )
+					{
+						skip_entry = completion -> nb_items - 1 ;
+						mz = skip_entry ;
+					}
+					char *key = NULL ;
+					list_foreach( node , completion ) 
+					{
+						skip_entry -- ;
+						key = (char *)node -> ptr ;
+						
+						if( skip_entry < 0 )
+						{
+							break ;
+						}						
+					}
+					al_ustr_free( keyboard_buffer );
+					keyboard_buffer = al_ustr_new( key );
+				}
+				completion = ht_get_completion_list( dictionary , al_cstr( keyboard_buffer ) , max_results );
+				mz = 0 ;
+                mouse_b1 = 0 ;
+			}
             if( mouse_b2==1 )
-                mouse_button = 2 ;
+			{
+				int pos = (int)al_ustr_size( keyboard_buffer );
+				if( al_ustr_prev( keyboard_buffer , &pos ) )
+				{
+					al_ustr_truncate( keyboard_buffer , pos );
+				}
+				completion = ht_get_completion_list( dictionary , al_cstr( keyboard_buffer ) , max_results );
+			    mouse_b2 = 0 ;
+			}
 
             do_logic = 0 ;
         }
@@ -432,30 +450,43 @@ int main( int argc, char *argv[] )
                         WIDTH / 2 + ( length + 6 ) / 2 + 15 , 70 ,
                         al_map_rgb( 0 , 128 , 0 ) );
             }
-            al_draw_text( font , al_map_rgb( 0 , 255 , 0 ) , WIDTH / 2 , 50 , ALLEGRO_ALIGN_CENTRE , al_cstr( keyboard_buffer ) );
+			int input_size = al_get_text_width( font , al_cstr( keyboard_buffer ) );
+            al_draw_text( font , al_map_rgb( 0 , 255 , 0 ) , (WIDTH / 2) - (input_size / 2), 50 , ALLEGRO_ALIGN_LEFT , al_cstr( keyboard_buffer ) );
 
             DICTIONARY_ENTRY *entry = NULL ;
-            if( ht_get_ptr( dictionary , al_cstr( keyboard_buffer ) , (void **)&entry ) == TRUE )
+          
+            if( completion )
+            {
+				int pos_x = (WIDTH / 2) + (input_size / 2) + 50 ;
+                int pos_y = 50 ;
+				int skip_entry = mz ;
+				if( skip_entry >= completion -> nb_items )
+				{
+					skip_entry = completion -> nb_items - 1 ;
+					mz = skip_entry ;
+				}
+				
+				list_foreach( node , completion ) 
+				{
+					if( skip_entry > 0 )
+					{
+						skip_entry -- ;
+						continue ;
+					}
+					char *key = (char *)node -> ptr ;
+					al_draw_text( font , al_map_rgb( 230 , 230 , 0 ) , pos_x , pos_y , ALLEGRO_ALIGN_LEFT , key );
+					pos_y += 35 ;
+				}
+			}
+            
+			if( ht_get_ptr( dictionary , al_cstr( keyboard_buffer ) , (void **)&entry ) == TRUE )
             {
                 int vertical_it = 0 ;
                 list_foreach( node , entry -> definitions ) 
                 {
                     DICTIONARY_DEFINITION *definition = (DICTIONARY_DEFINITION *)node -> ptr ;
-                    al_draw_textf( font , al_map_rgb( 0 , 255 , 0 ) , WIDTH / 2 , 150 + vertical_it , ALLEGRO_ALIGN_CENTRE , "%s : %s" , definition -> type , definition -> definition );
-                    vertical_it += 35 ;
-                }
-            }
-            else
-            {
-                if( completion )
-                {
-                    int vertical_it = 0 ;
-                    list_foreach( node , completion ) 
-                    {
-                        char *key = (char *)node -> ptr ;
-                        al_draw_text( font , al_map_rgb( 0 , 255 , 0 ) , WIDTH / 2 , 100 + vertical_it , ALLEGRO_ALIGN_CENTRE , key );
-                        vertical_it += 35 ;
-                    }
+                    al_draw_multiline_textf( font , al_map_rgb( 0 , 255 , 0 ) , 10 , 100 + vertical_it , WIDTH - 10 , 20 , ALLEGRO_ALIGN_LEFT , "%s : %s" , definition -> type , definition -> definition );
+                    vertical_it += 50 ;
                 }
             }
 
