@@ -10,7 +10,7 @@ EXT=
 ALLEGRO_CLIBS=
 DEBUGLIB=
 DISABLED_TARGET=ex_monolith$(EXT)
-TARGET=ex_list$(EXT) ex_nstr$(EXT) ex_exceptions$(EXT) ex_hash$(EXT) ex_network$(EXT) ex_configfile$(EXT) ex_pcre$(EXT) ex_threads$(EXT) ex_log$(EXT) ex_common$(EXT) ex_signals$(EXT)
+TARGET=ex_base64_encode$(EXT) ex_list$(EXT) ex_nstr$(EXT) ex_exceptions$(EXT) ex_hash$(EXT) ex_network$(EXT) ex_configfile$(EXT) ex_pcre$(EXT) ex_threads$(EXT) ex_log$(EXT) ex_common$(EXT) ex_signals$(EXT)
 CLIBS=
 
 # -D__USE_MINGW_ANSI_STDIO
@@ -100,6 +100,9 @@ ex_nstr$(EXT): n_log.o n_list.o n_str.o ex_nstr.o
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(CLIBS)
 
 ex_exceptions$(EXT): n_log.o n_exceptions.o ex_exceptions.o
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(CLIBS)
+
+ex_base64_encode$(EXT): n_log.o n_list.o n_str.o n_base64.o ex_base64.o
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(CLIBS)
 
 ex_list$(EXT): n_log.o n_list.o n_str.o ex_list.o
