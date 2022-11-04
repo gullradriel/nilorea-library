@@ -152,9 +152,9 @@ typedef struct N_STR
     /*! the string */
     char *data;
     /*! length of string (in case we wanna keep information after the 0 end of string value) */
-    NSTRBYTE length ;
+    size_t length ;
     /*! size of the written data inside the string */
-    NSTRBYTE written ;
+    size_t written ;
 } N_STR;
 
 #ifdef __windows__
@@ -177,6 +177,10 @@ N_STR *nstrdup( N_STR *msg );
 int char_to_nstr_ex( const char *from, NSTRBYTE nboct, N_STR **to );
 /* Convert a char into a N_STR, shorter version */
 N_STR *char_to_nstr( const char *src );
+/* Convert a char into a N_STR */
+int char_to_nstr_nocopy_ex( char *from, NSTRBYTE nboct, N_STR **to );
+/* Convert a char into a N_STR, shorter version */
+N_STR *char_to_nstr_nocopy( char *src );
 /* cat data inside a N8STR */
 int nstrcat_ex( N_STR *dest, void *src, NSTRBYTE size ,int resize_flag );
 /* Wrapper to nstrcat_ex to concatenate N_STR *datas */

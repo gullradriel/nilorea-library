@@ -279,6 +279,49 @@ N_STR *char_to_nstr( const char *src )
 } /* char_to_str(...) */
 
 
+/*!\fn char_to_nstr_nocopy_ex( char *from , NSTRBYTE nboct , N_STR **to )
+ *\brief Convert a char into a N_STR, direct use of linked source pointer, extended version
+ *\param from A char *string to convert
+ *\param nboct  The size to copy, from 1 octet to nboctet (ustrsizez( from ) )
+ *\param to A N_STR pointer who will be Malloced
+ *\return True on success, FALSE on failure ( to will be set to NULL )
+ */
+int char_to_nstr_nocopy_ex( char *from, NSTRBYTE nboct, N_STR **to )
+{
+    if( (*to) )
+    {
+        n_log( LOG_ERR, "destination N_STR **str is not NULL (%p), it contain (%s). You must provide an empty destination.", (*to), ((*to)&&(*to)->data)?(*to)->data:"DATA_IS_NULL" );
+        n_log( LOG_ERR, "Data to copy: %s", _str( from ) );
+        return FALSE ;
+    };
+
+    (*to) = new_nstr( nboct + 1 );
+
+    __n_assert( to&&(*to), return FALSE );
+    /* added a sizeof( void * ) to add a consistant and secure padding at the end */
+    __n_assert( (*to) -> data, Free( (*to) ); return FALSE );
+    
+    (*to) -> data = from ;
+    
+    (*to) -> written = nboct ;
+
+    return TRUE;
+} /* char_to_nstr_nocopy_ex(...) */
+
+
+
+/*!\fn N_STR *char_to_nstr_nocopy( char *src )
+ *\brief Convert a char into a N_STR, direct use of linked source pointer, short version
+ *\param src A char *string to convert
+ *\return A N_STR copy of src or NULL
+ */
+N_STR *char_to_nstr_nocopy( char *src )
+{
+    N_STR *strptr = NULL ;
+    char_to_nstr_nocopy_ex( src, strlen( src ), &strptr ) ;
+    return strptr ;
+} /* char_to_str_nocopy(...) */
+
 
 
 /*!\fn N_STR *file_to_nstr( char *filename )
@@ -316,7 +359,7 @@ N_STR *file_to_nstr( char *filename )
         return NULL ;
     }
 
-    n_log( LOG_DEBUG, "%s file size is: %lld", filename, filestat . st_size );
+    n_log( LOG_DEBUG, "%s file size is: %lld", filename, (long long unsigned int)filestat . st_size );
 
     in = fopen( filename, "rb" );
     __n_assert( in, n_log( LOG_ERR, "Unable to open %s", filename ); return NULL );
