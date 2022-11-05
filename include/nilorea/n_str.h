@@ -139,13 +139,10 @@ extern "C"
     } )
 
 
-#ifndef __windows__
 #include <inttypes.h>
 /*! N_STR base unit */
-typedef int32_t NSTRBYTE;
-#else
-typedef __int32 NSTRBYTE;
-#endif
+typedef size_t NSTRBYTE;
+
 /*! A box including a string and his lenght */
 typedef struct N_STR
 {

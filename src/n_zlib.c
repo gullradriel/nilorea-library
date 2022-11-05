@@ -104,12 +104,12 @@ int UncompressData( unsigned char *abSrc, unsigned int nLenSrc, unsigned char *a
     if( nLenSrc == 0 )
     {
         n_log( LOG_ERR, "nLenSrc (%d) <= 0", nLenSrc );
-        return -1 ;
+        return 0 ;
     }
     if( nLenDst == 0 )
     {
         n_log( LOG_ERR, "nLenDst (%d) <= 0", nLenDst );
-        return -1 ;
+        return 0 ;
     }
 
     z_stream zInfo ;
@@ -119,7 +119,7 @@ int UncompressData( unsigned char *abSrc, unsigned int nLenSrc, unsigned char *a
     zInfo.next_in= (unsigned char *)abSrc;
     zInfo.next_out= abDst;
 
-    int nErr, nRet= -1;
+    int nErr, nRet= 0 ;
     nErr= inflateInit( &zInfo );               // zlib function
     switch( nErr )
     {
@@ -128,7 +128,7 @@ int UncompressData( unsigned char *abSrc, unsigned int nLenSrc, unsigned char *a
         break ;
     default:
         n_log( LOG_ERR, "%s on string %p size %d", zError( nErr ), abSrc, nLenSrc );
-        return -1 ;
+        return 0 ;
     }
     nErr= inflate( &zInfo, Z_FINISH );     // zlib function
     if( nErr == Z_STREAM_END )
@@ -231,7 +231,7 @@ N_STR *unzip_nstr( N_STR *src )
 
     /* copying size */
     unzipped -> written = UncompressData( ((unsigned char *)src -> data) + 4, src -> written, (unsigned char *)unzipped -> data, original_size );
-    if( unzipped -> written == -1 )
+    if( unzipped -> written == 0 )
     {
         n_log( LOG_ERR, "unable to unzip string %p  %d/%d bytes", unzipped -> data, unzipped -> written, unzipped -> length );
         free_nstr( &unzipped );

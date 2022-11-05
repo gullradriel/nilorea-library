@@ -2197,7 +2197,7 @@ void *netw_send_func( void *NET )
         state = 0,
         net_status = 0 ;
 
-    NSTRBYTE nboctet = 0 ;
+    int32_t nboctet = 0 ;
 
     char nboct[ 5 ] = "" ;
 
@@ -2229,9 +2229,9 @@ void *netw_send_func( void *NET )
                 DONE = 100 ;
                 /* sending state */
                 nboctet = htonl( NETW_EXIT_ASKED );
-                memcpy( nboct, &nboctet, sizeof( NSTRBYTE ) );
+                memcpy( nboct, &nboctet, sizeof( int32_t ) );
                 n_log( LOG_DEBUG, "%d Sending Quit !", netw -> link . sock );
-                net_status = netw->send_data( netw -> link . sock, nboct, sizeof( NSTRBYTE ) );
+                net_status = netw->send_data( netw -> link . sock, nboct, sizeof( int32_t ) );
                 if( net_status < 0 )
                     DONE = 4 ;
                 n_log( LOG_DEBUG, "%d Quit sent!", netw -> link . sock );
@@ -2247,11 +2247,11 @@ void *netw_send_func( void *NET )
 
                     /* sending state */
                     nboctet = htonl( state );
-                    memcpy( nboct, &nboctet, sizeof( NSTRBYTE ) );
+                    memcpy( nboct, &nboctet, sizeof( int32_t ) );
                     /* sending state */
                     if ( !DONE )
                     {
-                        net_status = netw->send_data( netw -> link . sock, nboct, sizeof( NSTRBYTE ) );
+                        net_status = netw->send_data( netw -> link . sock, nboct, sizeof( int32_t ) );
                         if( net_status < 0 )
                             DONE = 1 ;
                     }
@@ -2259,9 +2259,9 @@ void *netw_send_func( void *NET )
                     {
                         /* sending number of octet */
                         nboctet = htonl( ptr -> written );
-                        memcpy( nboct, &nboctet, sizeof( NSTRBYTE ) );
+                        memcpy( nboct, &nboctet, sizeof( int32_t ) );
                         /* sending the number of octet to receive on next message */
-                        net_status = netw->send_data( netw -> link . sock, nboct, sizeof( NSTRBYTE ) );
+                        net_status = netw->send_data( netw -> link . sock, nboct, sizeof( int32_t ) );
                         if( net_status < 0 )
                             DONE = 2 ;
                     }
@@ -2329,7 +2329,7 @@ void *netw_recv_func( void *NET )
         tmpstate = 0,
         net_status = 0 ;
 
-    NSTRBYTE nboctet = 0 ;
+    int32_t nboctet = 0 ;
 
     char nboct[ 5 ]= "" ;
 
@@ -2357,14 +2357,14 @@ void *netw_recv_func( void *NET )
             if( !DONE )
             {
                 /* receiving state */
-                net_status = netw->recv_data( netw -> link . sock, nboct, sizeof( NSTRBYTE ) );
+                net_status = netw->recv_data( netw -> link . sock, nboct, sizeof( int32_t ) );
                 if( net_status < 0 )
                 {
                     DONE = 1 ;
                 }
                 else
                 {
-                    memcpy( &nboctet, nboct, sizeof( NSTRBYTE ) );
+                    memcpy( &nboctet, nboct, sizeof( int32_t ) );
                     tmpstate = ntohl( nboctet );
                     nboctet = tmpstate ;
                     if( tmpstate==NETW_EXIT_ASKED )
@@ -2376,14 +2376,14 @@ void *netw_recv_func( void *NET )
                     else
                     {
                         /* receiving nboctet */
-                        net_status = netw->recv_data( netw -> link . sock, nboct, sizeof( NSTRBYTE ) );
+                        net_status = netw->recv_data( netw -> link . sock, nboct, sizeof( int32_t ) );
                         if( net_status < 0 )
                         {
                             DONE = 2 ;
                         }
                         else
                         {
-                            memcpy( &nboctet, nboct, sizeof( NSTRBYTE ) );
+                            memcpy( &nboctet, nboct, sizeof( int32_t ) );
                             tmpstate = ntohl( nboctet );
                             nboctet = tmpstate ;
 

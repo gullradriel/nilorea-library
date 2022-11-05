@@ -157,7 +157,7 @@ int n_popen( char *cmd, int read_buf_size, void **nstr_output, int *ret )
     int status = 0 ;
     char read_buf[ read_buf_size ] ;
 
-    fp = popen( cmd, "w" );
+    fp = popen( cmd, "r" );
     int err = errno ;
     if (fp == NULL)
     {

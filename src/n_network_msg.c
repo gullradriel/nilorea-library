@@ -373,14 +373,14 @@ N_STR *make_str_from_msg( NETW_MSG *msg )
     /* the first thing to do is to computer the resulting string size
        the first 12 octets are for the number of ints , floats, strings in the message
        */
-    str_length = 3 * sizeof( NSTRBYTE ) + ( msg -> tabint -> nb_items * sizeof( NSTRBYTE ) ) + ( msg -> tabflt -> nb_items * sizeof( double ) ) ;
+    str_length = 3 * sizeof( int32_t ) + ( msg -> tabint -> nb_items * sizeof( int32_t ) ) + ( msg -> tabflt -> nb_items * sizeof( double ) ) ;
 
     /* let's count the eventual string blocks */
     node = msg -> tabstr -> start ;
     while( node )
     {
         strptr = (N_STR *)node -> ptr ;
-        str_length += sizeof( NSTRBYTE ) + sizeof( NSTRBYTE ) + strptr -> written ;
+        str_length += sizeof( int32_t ) + sizeof( int32_t ) + strptr -> written ;
         node = node -> next ;
     }
 
@@ -403,14 +403,14 @@ N_STR *make_str_from_msg( NETW_MSG *msg )
     msg -> tabstr -> nb_items = htonl( msg -> tabstr -> nb_items );
 
     /* number of ints inside the message */
-    memcpy ( charptr, &msg -> tabint -> nb_items, sizeof( NSTRBYTE ) );
-    charptr += sizeof( NSTRBYTE ) ;
+    memcpy ( charptr, &msg -> tabint -> nb_items, sizeof( int32_t ) );
+    charptr += sizeof( int32_t ) ;
     /* number of doubles inside the message */
-    memcpy ( charptr, &msg -> tabflt -> nb_items, sizeof( NSTRBYTE ) );
-    charptr += sizeof( NSTRBYTE ) ;
+    memcpy ( charptr, &msg -> tabflt -> nb_items, sizeof( int32_t ) );
+    charptr += sizeof( int32_t ) ;
     /* number of string inside the message */
-    memcpy ( charptr, &msg -> tabstr -> nb_items, sizeof( NSTRBYTE ) );
-    charptr += sizeof( NSTRBYTE ) ;
+    memcpy ( charptr, &msg -> tabstr -> nb_items, sizeof( int32_t ) );
+    charptr += sizeof( int32_t ) ;
 
     /*reversing byte order to default host order */
     msg -> tabint -> nb_items = ntohl( msg -> tabint -> nb_items );
@@ -421,10 +421,10 @@ N_STR *make_str_from_msg( NETW_MSG *msg )
     node = msg -> tabint -> start ;
     while( node )
     {
-        NSTRBYTE *nbptr = (NSTRBYTE *)node -> ptr ;
-        int val = htonl( nbptr[ 0 ] );
-        memcpy( charptr, &val, sizeof( NSTRBYTE ) );
-        charptr += sizeof( NSTRBYTE ) ;
+        int32_t *nbptr = (int32_t *)node -> ptr ;
+        int32_t val = htonl( nbptr[ 0 ] );
+        memcpy( charptr, &val, sizeof( int32_t ) );
+        charptr += sizeof( int32_t ) ;
         node = node -> next ;
     }
 
@@ -448,13 +448,13 @@ N_STR *make_str_from_msg( NETW_MSG *msg )
             strptr = (N_STR *)node -> ptr ;
 
             strptr -> length = htonl( strptr -> length );
-            memcpy( charptr, &strptr -> length, sizeof( NSTRBYTE ) );
-            charptr += sizeof( NSTRBYTE );
+            memcpy( charptr, &strptr -> length, sizeof( int32_t ) );
+            charptr += sizeof( int32_t );
             strptr -> length = ntohl( strptr -> length );
 
             strptr -> written = htonl( strptr -> written );
-            memcpy( charptr, &strptr -> written, sizeof( NSTRBYTE ) );
-            charptr += sizeof( NSTRBYTE );
+            memcpy( charptr, &strptr -> written, sizeof( int32_t ) );
+            charptr += sizeof( int32_t );
             strptr -> written = ntohl( strptr -> written );
 
             memcpy( charptr, strptr -> data, strptr -> written );
@@ -481,7 +481,7 @@ NETW_MSG *make_msg_from_str( N_STR *str )
 
     char     *charptr = NULL;
 
-    NSTRBYTE it,
+    int32_t it,
              nb_int = 0,
              nb_flt = 0,
              nb_str = 0,
@@ -497,25 +497,25 @@ NETW_MSG *make_msg_from_str( N_STR *str )
 
     __n_assert( generated_msg, return NULL );
 
-    memcpy( &nb_int, charptr, sizeof( NSTRBYTE ) );
-    charptr += sizeof( NSTRBYTE ) ;
+    memcpy( &nb_int, charptr, sizeof( int32_t ) );
+    charptr += sizeof( int32_t ) ;
     nb_int = ntohl( nb_int );
 
-    memcpy( &nb_flt, charptr, sizeof( NSTRBYTE ) );
-    charptr += sizeof( NSTRBYTE ) ;
+    memcpy( &nb_flt, charptr, sizeof( int32_t ) );
+    charptr += sizeof( int32_t ) ;
     nb_flt = ntohl( nb_flt );
 
-    memcpy( &nb_str, charptr, sizeof( NSTRBYTE ) );
-    charptr += sizeof( NSTRBYTE ) ;
+    memcpy( &nb_str, charptr, sizeof( int32_t ) );
+    charptr += sizeof( int32_t ) ;
     nb_str = ntohl( nb_str );
 
     if( nb_int > 0 )
     {
         for( it = 0 ; it < nb_int ; it ++ )
         {
-            memcpy( &tmpnb, charptr, sizeof( NSTRBYTE ) ) ;
+            memcpy( &tmpnb, charptr, sizeof( int32_t ) ) ;
             tmpnb = ntohl( tmpnb );
-            charptr += sizeof( NSTRBYTE ) ;
+            charptr += sizeof( int32_t ) ;
             add_int_to_msg( generated_msg, tmpnb );
         }
     }
@@ -540,10 +540,10 @@ NETW_MSG *make_msg_from_str( N_STR *str )
             Malloc( tmpstr, N_STR, 1 );
             __n_assert( tmpstr, return NULL );
 
-            memcpy( &tmpstr -> length, charptr, sizeof( NSTRBYTE ) );
-            charptr += sizeof( NSTRBYTE ) ;
-            memcpy( &tmpstr -> written, charptr, sizeof( NSTRBYTE ) );
-            charptr += sizeof( NSTRBYTE ) ;
+            memcpy( &tmpstr -> length, charptr, sizeof( int32_t ) );
+            charptr += sizeof( int32_t ) ;
+            memcpy( &tmpstr -> written, charptr, sizeof( int32_t ) );
+            charptr += sizeof( int32_t ) ;
 
             tmpstr -> length  = ntohl( tmpstr -> length );
             tmpstr -> written = ntohl( tmpstr -> written );
@@ -766,7 +766,7 @@ N_STR *netmsg_make_quit_msg( void )
  */
 int netw_msg_get_type( N_STR *msg )
 {
-    NSTRBYTE tmpnb = 0 ;
+    int32_t tmpnb = 0 ;
     char *charptr = NULL ;
 
     __n_assert( msg, return FALSE );
@@ -775,8 +775,8 @@ int netw_msg_get_type( N_STR *msg )
 
     /* here we bypass the number of int, numebr of flt, number of str, (4+4+4) to get the
      * first number which should be type */
-    charptr += 3 * sizeof( NSTRBYTE );
-    memcpy( &tmpnb, charptr, sizeof( NSTRBYTE ) ) ;
+    charptr += 3 * sizeof( int32_t );
+    memcpy( &tmpnb, charptr, sizeof( int32_t ) ) ;
     tmpnb = ntohl( tmpnb );
 
     return tmpnb;

@@ -236,7 +236,7 @@ typedef unsigned char uchar;
 #define Reallocz( __ptr, __struct , __old_size , __size )  \
     { \
         int __n_errno = 0 ; \
-		int64_t __byte_size = __size * sizeof( __struct ); \
+		size_t __byte_size = __size * sizeof( __struct ); \
 		if( __byte_size <= 0 ) __byte_size = 16 ; \
 		errno= 0 ;\
         void *__new_ptr  = (  __struct  *)realloc( __ptr , __byte_size ); \
