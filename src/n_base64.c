@@ -49,7 +49,7 @@ N_STR *n_base64_decode( N_STR *bufcoded )
     bufin = (const unsigned char *) bufcoded -> data ;
     while (pr2six[*(bufin++)] <= 63);
     nprbytes = (bufin - (const unsigned char *) bufcoded -> data) - 1;
-    nbytesdecoded = ( ( (nprbytes + 3) / 4) * 3 ) + 1 ;
+    nbytesdecoded = ( ( (nprbytes + 3) / 4) * 3 ) ;
 
     N_STR *bufplain = new_nstr( nbytesdecoded );
 
@@ -130,6 +130,8 @@ N_STR *n_base64_encode( N_STR *input )
     }
 
     *p++ = '\0';
+    
     encoded -> written = p - encoded -> data ;
+    
     return encoded ;
 }
