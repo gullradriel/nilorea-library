@@ -15,7 +15,6 @@ int main( int argc , char *argv[] )
 {
     set_log_level( LOG_DEBUG );
 
-
     N_STR *EXAMPLE_TEXT = char_to_nstr( "This is an example of base64 encode/decode, with a newline:\nThis is the end of the testing test." );
     EXAMPLE_TEXT -> written= 0 ;
     while( EXAMPLE_TEXT -> data[ EXAMPLE_TEXT -> written ] != '\0' )

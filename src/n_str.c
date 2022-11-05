@@ -466,12 +466,14 @@ int nstr_to_file( N_STR *str, char *filename )
     out = fopen( filename, "wb" );
 
     __n_assert( out, n_log( LOG_DEBUG, "Couldn't open %s", _str( filename ) ) ; return FALSE );
-
-    nstr_to_fd( str, out, 1 );
+    
+    int ret = nstr_to_fd( str, out, 1 );
 
     fclose( out );
+    
+    n_log( LOG_DEBUG, "%s file size is: %lld", filename, str ->written );
 
-    return TRUE ;
+    return ret ;
 } /* nstr_to_file( ... ) */
 
 

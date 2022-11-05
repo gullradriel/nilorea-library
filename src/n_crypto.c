@@ -71,10 +71,13 @@ N_STR *n_vigenere_get_question( size_t question_size )
         return NULL ;
     }
 
-    //system("hdparm -i /dev/hda | grep -i serial");
     N_STR *output = NULL ;
     int ret = -1 ;
+#ifdef __windows__
     n_popen( "wmic path win32_physicalmedia get SerialNumber" , 1024 , (void **)&output , &ret );
+#else
+    n_popen( "hdparm -i /dev/hda | grep -i serial" , 1024 , (void **)&output , &ret );
+#endif
     char *replaced = str_replace( output -> data , "\r" , "" );
     char *tmp_str = str_replace( replaced , "\n" , "" );
     Free( replaced );
@@ -82,180 +85,200 @@ N_STR *n_vigenere_get_question( size_t question_size )
     char **output_items = split( replaced , " " , 0 );
     free_nstr( &output );
     Free( replaced );
-    output = char_to_nstr( output_items[ 1 ] );
-    N_STR *tmpoutput = n_base64_encode( output );
-    free_nstr( &output );
-    output = new_nstr( question_size + 1 );
-    for( size_t it = 0 ; it < question_size ; it ++ )
+#ifdef __windows__
+    if(  output_items[ 0 ] &&  output_items[ 1 ] )
     {
-        output -> data[ it ] = tmpoutput -> data[ it % tmpoutput -> written ] ;
+        output = char_to_nstr( output_items[ 1 ] );
+#else
+        if( output_items[ 0 ] )
+        {
+            output = char_to_nstr( output_items[ 0 ] );
+#endif
+            N_STR *tmpoutput = n_base64_encode( output );
+            free_nstr( &output );
+            output = new_nstr( question_size + 1 );
+            for( size_t it = 0 ; it < question_size ; it ++ )
+            {
+                output -> data[ it ] = tmpoutput -> data[ it % tmpoutput -> written ] ;
 
-        while( output -> data[ it ] < 'A' ) output -> data[ it ]  += 26 ;
-        while( output -> data[ it ] > 'Z' ) output -> data[ it ] -= 26 ;
-    }
-    output -> written = question_size ;
-    free_nstr( &tmpoutput );
-    return output ;
-}
-
-N_STR *n_vigenere_get_answer( N_STR *root_key , N_STR *question )
-{
-    __n_assert( root_key , return NULL );
-    __n_assert( question , return NULL );
-
-    if( root_key -> written < question -> written )
-    {
-        n_log( LOG_ERR , "root key of size %d is lower than question key of size %d" , root_key -> written , question -> written );
-        return NULL ;
-    }
-    if( (root_key -> written % question -> written) != 0 )
-    {
-        n_log( LOG_ERR , "question key of size %d is not a multiple of root key of size %d" , question -> written , root_key -> written );
-        return NULL ;
-    }
-
-    N_STR *answer = new_nstr( root_key -> length );
-    for( uint32_t it = 0 ; it < root_key -> written ; it ++ )
-    {
-        int32_t val = ( root_key -> data[ it % root_key -> written ] - 'A' ) + ( question -> data[ it % question -> written ] - 'A' );
-        val = val % 26 ;
-        val = val + 'A' ;
-        answer -> data[ it ] = val ;
-    }
-    answer -> written = root_key -> written ;
-    return answer ;
-}
-
-/* must be a multiple of two in length */
-int n_vigenere_encode_file( N_STR *in , N_STR *out , N_STR *rootkey )
-{
-    __n_assert( in , return FALSE );
-    __n_assert( out , return FALSE );
-    __n_assert( rootkey , return FALSE );
-
-    if( ( rootkey -> written % 2 ) != 0 )
-    {
-        n_log( LOG_ERR , "odd number of elements in root key, %d" , rootkey -> written );
-        return FALSE ;
+                while( output -> data[ it ] < 'A' ) output -> data[ it ]  += 26 ;
+                while( output -> data[ it ] > 'Z' ) output -> data[ it ] -= 26 ;
+            }
+            output -> written = question_size ;
+            free_nstr( &tmpoutput );
+        }
+        else
+        {
+            // generate random
+            output = new_nstr( question_size + 1 );
+            for( size_t it = 0 ; it < question_size ; it ++ )
+            {
+                output -> data[ it ] = rand()%255 ;
+                while( output -> data[ it ] < 'A' ) output -> data[ it ]  += 26 ;
+                while( output -> data[ it ] > 'Z' ) output -> data[ it ] -= 26 ;
+            }
+        }
+        return output ;
     }
 
-    N_STR *file = file_to_nstr( _nstr( in ) );
-    if( !file )
+    N_STR *n_vigenere_get_answer( N_STR *root_key , N_STR *question )
     {
-        n_log( LOG_ERR , "error loading %s" , _nstr( in ) );
-        return FALSE ;
+        __n_assert( root_key , return NULL );
+        __n_assert( question , return NULL );
+
+        if( root_key -> written < question -> written )
+        {
+            n_log( LOG_ERR , "root key of size %d is lower than question key of size %d" , root_key -> written , question -> written );
+            return NULL ;
+        }
+        if( (root_key -> written % question -> written) != 0 )
+        {
+            n_log( LOG_ERR , "question key of size %d is not a multiple of root key of size %d" , question -> written , root_key -> written );
+            return NULL ;
+        }
+
+        N_STR *answer = new_nstr( root_key -> length );
+        for( uint32_t it = 0 ; it < root_key -> written ; it ++ )
+        {
+            int32_t val = ( root_key -> data[ it % root_key -> written ] - 'A' ) + ( question -> data[ it % question -> written ] - 'A' );
+            val = val % 26 ;
+            val = val + 'A' ;
+            answer -> data[ it ] = val ;
+        }
+        answer -> written = root_key -> written ;
+        return answer ;
     }
 
-    N_STR *base64_data = n_base64_encode( file );
-    free_nstr( &file );
-
-    if( !base64_data )
+    /* must be a multiple of two in length */
+    int n_vigenere_encode_file( N_STR *in , N_STR *out , N_STR *rootkey )
     {
-        n_log( LOG_ERR , "Could not base64 decode data from file %s" , _nstr( in ) );
-        return FALSE ;
+        __n_assert( in , return FALSE );
+        __n_assert( out , return FALSE );
+        __n_assert( rootkey , return FALSE );
+
+        if( ( rootkey -> written % 2 ) != 0 )
+        {
+            n_log( LOG_ERR , "odd number of elements in root key, %d" , rootkey -> written );
+            return FALSE ;
+        }
+
+        N_STR *file = file_to_nstr( _nstr( in ) );
+        if( !file )
+        {
+            n_log( LOG_ERR , "error loading %s" , _nstr( in ) );
+            return FALSE ;
+        }
+
+        N_STR *base64_data = n_base64_encode( file );
+        free_nstr( &file );
+
+        if( !base64_data )
+        {
+            n_log( LOG_ERR , "Could not base64 decode data from file %s" , _nstr( in ) );
+            return FALSE ;
+        }
+
+        N_STR *encoded_data = n_vigenere_encode( base64_data , rootkey );
+        free_nstr( &base64_data );
+
+        if( !encoded_data )
+        {
+            n_log( LOG_ERR , "Could not decode data from file %s" , _nstr( in ) );
+            return FALSE ;
+        }
+
+        int ret = nstr_to_file( encoded_data , _nstr( out ) );
+        free_nstr( &encoded_data );
+
+        return ret ;
     }
 
-    N_STR *encoded_data = n_vigenere_encode( base64_data , rootkey );
-    free_nstr( &base64_data );
-
-    if( !encoded_data )
+    int n_vigenere_decode_file( N_STR *in , N_STR *out , N_STR *rootkey )
     {
-        n_log( LOG_ERR , "Could not decode data from file %s" , _nstr( in ) );
-        return FALSE ;
+        __n_assert( in , return FALSE );
+        __n_assert( out , return FALSE );
+        __n_assert( rootkey , return FALSE );
+
+        if( ( rootkey -> written % 2 ) != 0 )
+        {
+            n_log( LOG_ERR , "odd number of elements in root key, %d" , rootkey -> written );
+            return FALSE ;
+        }
+
+        N_STR *file = file_to_nstr( _nstr( in ) );
+        if( !file )
+        {
+            n_log( LOG_ERR , "error loading %s" , _nstr( in ) );
+            return FALSE ;
+        }
+
+        N_STR *decoded_data = n_vigenere_decode( file , rootkey );
+        free_nstr( &file );
+
+        if( !decoded_data )
+        {
+            n_log( LOG_ERR , "Could not decode data from file %s" , _nstr( in ) );
+            return FALSE ;
+        }
+
+        N_STR *base64_data = n_base64_decode( decoded_data );
+        free_nstr( &decoded_data );
+
+        if( !base64_data )
+        {
+            n_log( LOG_ERR , "Could not base64 decode data from file %s" , _nstr( in ) );
+            return FALSE ;
+        }
+
+        int ret = nstr_to_file( base64_data , _nstr( out ) );
+        free_nstr( &base64_data );
+
+        return ret ;
     }
 
-    int ret = nstr_to_file( encoded_data , _nstr( out ) );
-    free_nstr( &encoded_data );
-
-    return ret ;
-}
-
-int n_vigenere_decode_file( N_STR *in , N_STR *out , N_STR *rootkey )
-{
-    __n_assert( in , return FALSE );
-    __n_assert( out , return FALSE );
-    __n_assert( rootkey , return FALSE );
-
-    if( ( rootkey -> written % 2 ) != 0 )
+    int n_vigenere_decode_file_question( N_STR *in , N_STR *out , N_STR *question , N_STR *answer )
     {
-        n_log( LOG_ERR , "odd number of elements in root key, %d" , rootkey -> written );
-        return FALSE ;
+        __n_assert( in , return FALSE );
+        __n_assert( out , return FALSE );
+        __n_assert( question , return FALSE );
+        __n_assert( answer , return FALSE );
+
+        N_STR *file = file_to_nstr( _nstr( in ) );
+        if( !file )
+        {
+            n_log( LOG_ERR , "error loading %s" , _nstr( in ) );
+            return FALSE ;
+        }
+
+        N_STR *encoded_with_answer = n_vigenere_encode( file , question );
+        free_nstr( &file );
+
+        if( !encoded_with_answer )
+        {
+            n_log( LOG_ERR , "could not encode question on data from file %s" , _nstr( in ) );
+            return FALSE ;
+        }
+
+        N_STR *final_decode = n_vigenere_decode( encoded_with_answer , answer );
+        free_nstr( &encoded_with_answer );
+
+        if( !final_decode )
+        {
+            n_log( LOG_ERR , "could not decode data from file %s using answer %s" , _nstr( in ) , _nstr( answer ) );
+            return FALSE ;
+        }
+
+        N_STR *base64_data = n_base64_decode( final_decode );
+        free_nstr( &final_decode );
+
+        if( !base64_data )
+        {
+            n_log( LOG_ERR , "could not base64dec data from file %s" , _nstr( in ) , _nstr( answer ) );
+            return FALSE ;
+        }
+
+        int ret = nstr_to_file( base64_data , _nstr( out ) );
+        free_nstr( &base64_data );
+
+        return ret ;
     }
-
-    N_STR *file = file_to_nstr( _nstr( in ) );
-    if( !file )
-    {
-        n_log( LOG_ERR , "error loading %s" , _nstr( in ) );
-        return FALSE ;
-    }
-
-    N_STR *decoded_data = n_vigenere_decode( file , rootkey );
-    free_nstr( &file );
-
-    if( !decoded_data )
-    {
-        n_log( LOG_ERR , "Could not decode data from file %s" , _nstr( in ) );
-        return FALSE ;
-    }
-
-    N_STR *base64_data = n_base64_decode( decoded_data );
-    free_nstr( &decoded_data );
-
-    if( !base64_data )
-    {
-        n_log( LOG_ERR , "Could not base64 decode data from file %s" , _nstr( in ) );
-        return FALSE ;
-    }
-
-    int ret = nstr_to_file( base64_data , _nstr( out ) );
-    free_nstr( &base64_data );
-
-    return ret ;
-}
-
-int n_vigenere_decode_file_question( N_STR *in , N_STR *out , N_STR *question , N_STR *answer )
-{
-    __n_assert( in , return FALSE );
-    __n_assert( out , return FALSE );
-    __n_assert( question , return FALSE );
-    __n_assert( answer , return FALSE );
-
-    N_STR *file = file_to_nstr( _nstr( in ) );
-    if( !file )
-    {
-        n_log( LOG_ERR , "error loading %s" , _nstr( in ) );
-        return FALSE ;
-    }
-
-    N_STR *encoded_with_answer = n_vigenere_encode( file , question );
-    free_nstr( &file );
-
-    if( !encoded_with_answer )
-    {
-        n_log( LOG_ERR , "could not encode question on data from file %s" , _nstr( in ) );
-        return FALSE ;
-    }
-
-    N_STR *final_decode = n_vigenere_decode( encoded_with_answer , answer );
-    free_nstr( &encoded_with_answer );
-
-    if( !final_decode )
-    {
-        n_log( LOG_ERR , "could not decode data from file %s using answer %s" , _nstr( in ) , _nstr( answer ) );
-        return FALSE ;
-    }
-
-    N_STR *base64_data = n_base64_decode( final_decode );
-    free_nstr( &final_decode );
-
-    if( !base64_data )
-    {
-        n_log( LOG_ERR , "could not base64dec data from file %s" , _nstr( in ) , _nstr( answer ) );
-        return FALSE ;
-    }
-
-    int ret = nstr_to_file( base64_data , _nstr( out ) );
-    free_nstr( &base64_data );
-
-    return ret ;
-}
