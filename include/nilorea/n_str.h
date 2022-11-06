@@ -135,9 +135,29 @@ extern "C"
     nstrprintf( __nstr_var , __VA_ARGS__ ); \
     } \
     } \
-    __nstr_var ; \
+       __nstr_var ; \
     } )
 
+
+#define n_remove_ending_cr( __nstr_var ) \
+    if( __nstr_var && __nstr_var -> data && __nstr_var -> data[ __nstr_var -> written ] == '\r' ) \
+    { \
+         __nstr_var -> data[ __nstr_var -> written ] = '\0' ; \
+         __nstr_var -> written -- ; \
+    }
+
+#define n_replace_cr( __nstr_var , __replacement ) \
+    if( __nstr_var && __nstr_var -> data && __nstr_var -> written > 0 ) \
+    { \
+        char *__replaced = str_replace( __nstr_var -> data , "\r" , __replacement ); \
+        if( __replaced ) \
+        { \
+            Free( __nstr_var -> data ); \
+            __nstr_var -> data = __replaced ; \
+            __nstr_var -> written = strlen(  __nstr_var -> data ); \
+            __nstr_var -> length = __nstr_var -> written + 1 ; \
+        } \
+    }
 
 #include <inttypes.h>
 /*! N_STR base unit */

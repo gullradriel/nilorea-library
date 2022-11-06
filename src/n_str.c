@@ -274,7 +274,8 @@ int char_to_nstr_ex( const char *from, NSTRBYTE nboct, N_STR **to )
 N_STR *char_to_nstr( const char *src )
 {
     N_STR *strptr = NULL ;
-    char_to_nstr_ex( src, strlen( src ), &strptr ) ;
+    size_t length = strlen( src );
+    char_to_nstr_ex( src, length, &strptr ) ;
     return strptr ;
 } /* char_to_str(...) */
 
