@@ -1,0 +1,55 @@
+image: gcc
+cache:
+  key: apt-cache
+  paths:
+    - apt-cache/
+before_script:
+  - if [ "$USE_PROXY" == "1" ] && [ -d "/etc/apt/apt.conf.d/" ] ; then echo "$APT_PROXY" > /etc/apt/apt.conf.d/proxy.conf
+    ; export http_proxy="$http_proxy" ; export https_proxy="$https_proxy" ; export ftp_proxy="$ftp_proxy"
+    ; git config --global http.proxy "$http_proxy"  
+    ; fi
+    ; export APT_CACHE_DIR=`pwd`/apt-cache && mkdir -pv $APT_CACHE_DIR
+    ; apt-get update -yq && apt-get -o dir::cache::archives="$APT_CACHE_DIR" install -y liballegro5-dev valgrind libpcre3-dev
+stages:
+  - build
+  - tests
+  - test
+build_lib:
+  stage: build
+  script:
+    - make -j 6
+  cache:
+    key: apt-cache
+    paths:
+      - apt-cache/
+  artifacts:
+    paths:
+      - libnilorea.a
+    expire_in: 1 week
+build_examples:
+  stage: build
+  script:
+    - make -j 6 examples
+  cache:
+    key: apt-cache
+    paths:
+      - apt-cache/
+  artifacts:
+    paths:
+      - examples/ex_*
+      - libnilorea.a
+      - libnilorea.so
+    expire_in: 1 week
+tests:
+  stage: tests
+  script:
+    - make examples ; cd examples ; chmod +Xx valgrind.sh ; ./valgrind.sh
+  cache:
+    key: apt-cache
+    paths:
+      - apt-cache/  
+sast:
+  stage: test
+include:
+  - template: Security/SAST.gitlab-ci.yml
+  - template: Security/Secret-Detection.gitlab-ci.yml
