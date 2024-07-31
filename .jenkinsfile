@@ -1,0 +1,3 @@
+@Library('JenkinsSharedLibrary@feature/TU_API')_
+AssemblyJobFactory p = new AssemblyJobFactory(this)
+p.executeCurrentJob()
