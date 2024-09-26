@@ -4,7 +4,6 @@
 
 .PHONY: clean clean-tmp examples default all release debug main show-detected-option doc copy-libs download-and-build download-dep distclean
 
-
 ifeq ($(FORCE_NO_ALLEGRO),)
     FORCE_NO_ALLEGRO=0
 endif
@@ -14,25 +13,26 @@ endif
 ifeq ($(FORCE_NO_KAFKA),)
     FORCE_NO_KAFKA=0
 endif
+ifeq ($(FORCE_NO_PCRE),)
+    FORCE_NO_PCRE=0
+endif
+ifeq ($(FORCE_NO_CJSON),)
+    FORCE_NO_CJSON=0
+endif
 
 DEBUGLIB=
-
 HAVE_OPENSSL=0
 HAVE_ALLEGRO=0
 HAVE_KAFKA=0
-
+HAVE_CJSON=0
+HAVE_PCRE=0
 KAFKA_CFLAGS=
 KAFKA_CLIBS=
-
 OPENSSL_CLIBS=
-
 CJSON_CFLAGS=
-
+PCRE_CLIBS=
 ALLEGRO_CFLAGS=
 ALLEGRO_CLIBS=
-
-NUKLEAR_CFLAGS=
-
 NILOREA_CFLAGS=-I$(shell realpath ./include) -I$(shell realpath ./src)
 
 RM=rm -f
@@ -46,7 +46,7 @@ CFLAGS=-g -W -Wall -Wextra -fPIC -O3 -fstack-protector \
        -D_FORTIFY_SOURCE=1 -D_REENTRANT -D_XOPEN_SOURCE=600 -D_XOPEN_SOURCE_EXTENTED \
        -static-libgcc -static-libstdc++
 
-SRC=n_common.c n_base64.c n_crypto.c n_config_file.c n_exceptions.c n_hash.c n_list.c n_log.c n_network.c n_network_msg.c n_nodup_log.c n_pcre.c n_stack.c n_str.c n_thread_pool.c n_time.c n_zlib.c n_user.c n_files.c n_aabb.c n_trees.c
+SRC=n_common.c n_base64.c n_crypto.c n_config_file.c n_exceptions.c n_hash.c n_list.c n_log.c n_network.c n_network_msg.c n_nodup_log.c n_stack.c n_str.c n_thread_pool.c n_time.c n_zlib.c n_user.c n_files.c n_aabb.c n_trees.c
 
 OUTPUT=libnilorea
 LIB=-lnilorea
@@ -58,7 +58,7 @@ ifeq ($(OS),Windows_NT)
     CFLAGS+= -std=c17 -D__USE_MINGW_ANSI_STDIO
     RM=rm -f
     CC= gcc
-    CLIBS= -lpthread -lws2_32 -lm -lpcre -lz
+    CLIBS= -lpthread -lws2_32 -lm -lz
     DEBUGLIB=-limagehlp
     ifeq ($(MSYSTEM),MINGW32)
         RM=rm -f
@@ -90,12 +90,12 @@ else
     ifeq ($(UNAME_S),Linux)
         LDFLAGS+= -z noexecstack
         CFLAGS+= -std=c17 
-        CLIBS=-lpthread -lm -lpcre -lz
+        CLIBS=-lpthread -lm -lz
     endif
     ifeq ($(UNAME_S),SunOS)
         CC=gcc
         CFLAGS+= -m64 
-        CLIBS=-lm -lsocket -lnsl -lpcre -lrt -lz
+        CLIBS=-lm -lsocket -lnsl -lrt -lz
     endif
 endif
 
@@ -112,10 +112,21 @@ else
     HAVE_KAFKA=0
     KAFKA_CFLAGS=
 endif
-ifeq "$(shell $(CC) $(KAFKA_CFLAGS) -c test_openssl.c -Wall -o $(TMP_OBJ) 1>/dev/null 2>/dev/null && echo $$? )" "0"
+ifeq "$(shell $(CC) $(CFLAGS) -c test_openssl.c -Wall -o $(TMP_OBJ) 1>/dev/null 2>/dev/null && echo $$? )" "0"
     HAVE_OPENSSL=1
 else
     HAVE_OPENSSL=0
+endif
+CJSON_CFLAGS=-I$(shell realpath ./external/cJSON/)
+ifeq "$(shell $(CC) $(CJSON_CFLAGS) -c test_cjson.c -Wall -o $(TMP_OBJ) 1>/dev/null 2>/dev/null && echo $$? )" "0"
+    HAVE_CJSON=1
+else
+    HAVE_CJSON=0
+endif
+ifeq "$(shell $(CC) -c test_pcre.c -Wall -o $(TMP_OBJ) 1>/dev/null 2>/dev/null && echo $$? )" "0"
+    HAVE_PCRE=1
+else
+    HAVE_PCRE=0
 endif
 
 obj/%.o: src/%.c
@@ -132,8 +143,6 @@ EXAMPLES=examples/ex_base64_encode$(EXT) $\
          examples/ex_exceptions$(EXT) $\
          examples/ex_hash$(EXT) $\
          examples/ex_network$(EXT) $\
-         examples/ex_configfile$(EXT) $\
-         examples/ex_pcre$(EXT) $\
          examples/ex_threads$(EXT) $\
          examples/ex_log$(EXT) $\
          examples/ex_common$(EXT) $\
@@ -146,25 +155,37 @@ ifeq ($(HAVE_ALLEGRO),1)
         SRC+= n_3d.c n_anim.c n_particles.c n_gui.c
         EXAMPLES+= examples/ex_gui_particles$(EXT) $\
                   examples/ex_gui_dictionary$(EXT) $\
-                  examples/ex_fluid$(EXT) $\
                   examples/ex_gui$(EXT)
         ALLEGRO_CLIBS=-lallegro_acodec -lallegro_audio -lallegro_color -lallegro_image -lallegro_main -lallegro_primitives -lallegro_ttf -lallegro_font -lallegro
         ALLEGRO_CFLAGS=-DALLEGRO_UNSTABLE -DHAVE_ALLEGRO
-        NUKLEAR_CFLAGS=-I$(shell realpath ./external/nuklear) -I$(shell realpath ./external/nuklear/demo/allegro5)
         CFLAGS+= -DHAVE_ALLEGRO
     endif
 endif
 
-ifeq ($(HAVE_KAFKA),1)
-    ifeq ($(FORCE_NO_KAFKA),0)
-        SRC+= n_kafka.c 
-        EXAMPLES+= examples/ex_kafka$(EXT)
-        KAFKA_CLIBS= -lcurl -lsasl2 -lssl -lcrypto -ldl -L$(shell realpath ./external/librdkafka/src) -lrdkafka
-        CSON_CFLAGS=-I$(shell realpath ./external/cJSON)
-        CFLAGS+= $(CJSON_CFLAGS) $(KAFKA_CFLAGS) -DHAVE_KAFKA
-    else
-        KAFKA_CFLAGS=
-        KAFKA_CLIBS=
+ifeq ($(HAVE_CJSON),1)
+    ifeq ($(FORCE_NO_CJSON),0)
+		CJSON_CFLAGS=-I$(shell realpath ./external/cJSON)
+        CFLAGS+= -DHAVE_CJSON
+        ifeq ($(HAVE_ALLEGRO),1) 
+            ifeq ($(FORCE_NO_ALLEGRO),0)
+                EXAMPLES+= examples/ex_fluid$(EXT) 
+            endif
+        endif
+        ifeq ($(HAVE_PCRE),1)
+            ifeq ($(FORCE_NO_PCRE),0)
+                ifeq ($(HAVE_KAFKA),1)
+                    ifeq ($(FORCE_NO_KAFKA),0)
+                        SRC+= n_kafka.c
+                        EXAMPLES+= examples/ex_kafka$(EXT)
+                        KAFKA_CLIBS= -lcurl -lsasl2 -lssl -lcrypto -ldl -L$(shell realpath ./external/librdkafka/src) -lrdkafka
+                        CFLAGS+= $(CJSON_CFLAGS) $(KAFKA_CFLAGS) 
+                    else
+                        KAFKA_CFLAGS=
+                        KAFKA_CLIBS=
+                    endif
+                endif
+            endif
+        endif
     endif
 endif
 
@@ -173,6 +194,16 @@ ifeq ($(HAVE_OPENSSL),1)
         EXAMPLES+= examples/ex_network_ssl$(EXT)
         CFLAGS+= -DHAVE_OPENSSL
         OPENSSL_CLIBS= -lssl -lcrypto
+    endif
+endif
+
+ifeq ($(HAVE_PCRE),1)
+    ifeq ($(FORCE_NO_PCRE),0)
+        SRC+= n_pcre.c
+        EXAMPLES+= examples/ex_pcre$(EXT) $\
+                  examples/ex_configfile$(EXT)
+        CFLAGS+= -DHAVE_PCRE
+        PCRE_CLIBS= -lpcre
     endif
 endif
 
@@ -187,7 +218,8 @@ debug: all
 all: main examples
 
 show-detected-option:
-	@echo "HAVE_ALLEGRO: $(HAVE_ALLEGRO), HAVE_KAFKA: $(HAVE_KAFKA), HAVE_OPENSSL: $(HAVE_OPENSSL)"
+	@echo "HAVE_ALLEGRO: $(HAVE_ALLEGRO), HAVE_KAFKA: $(HAVE_KAFKA), HAVE_OPENSSL: $(HAVE_OPENSSL), HAVE_CJSON: $(HAVE_CJSON), HAVE_PCRE: $(HAVE_PCRE)"
+	@echo "FORCE_NO_ALLEGRO: $(FORCE_NO_ALLEGRO), FORCE_NO_KAFKA: $(FORCE_NO_KAFKA), FORCE_NO_OPENSSL: $(FORCE_NO_OPENSSL), FORCE_NO_CJSON: $(FORCE_NO_CJSON), FORCE_NO_PCRE: $(FORCE_NO_PCRE)"
 
 doc:
 	doxygen Doxyfile
@@ -251,20 +283,20 @@ examples/ex_crypto$(EXT): obj/n_common.o obj/n_base64.o obj/n_log.o obj/n_list.o
 examples/ex_list$(EXT): obj/n_log.o obj/n_list.o obj/n_str.o examples/ex_list.o
 	$(CC) $(CFLAGS) -o $@ $^ $(CLIBS)
 
-examples/ex_hash$(EXT): obj/n_log.o obj/n_list.o obj/n_str.o obj/n_hash.o obj/n_pcre.o examples/ex_hash.o
-	$(CC) $(CFLAGS) -o $@ $^ $(CLIBS) -lpcre
+examples/ex_hash$(EXT): obj/n_log.o obj/n_list.o obj/n_str.o obj/n_hash.o examples/ex_hash.o
+	$(CC) $(CFLAGS) -o $@ $^ $(CLIBS)
 
-examples/ex_network$(EXT): obj/n_common.o obj/n_log.o obj/n_list.o obj/n_str.o obj/n_network_msg.o obj/n_time.o obj/n_thread_pool.o obj/n_hash.o obj/n_pcre.o obj/n_network.o examples/ex_network.o
-	$(CC) $(CFLAGS) -o $@ $^ $(CLIBS) -lpcre $(OPENSSL_CLIBS)
+examples/ex_network$(EXT): obj/n_common.o obj/n_log.o obj/n_list.o obj/n_str.o obj/n_network_msg.o obj/n_time.o obj/n_thread_pool.o obj/n_hash.o obj/n_network.o examples/ex_network.o
+	$(CC) $(CFLAGS) -o $@ $^ $(CLIBS) $(OPENSSL_CLIBS) 
 
-examples/ex_network_ssl$(EXT): obj/n_common.o obj/n_log.o obj/n_list.o obj/n_str.o obj/n_network_msg.o obj/n_time.o obj/n_thread_pool.o obj/n_hash.o obj/n_pcre.o obj/n_network.o examples/ex_network_ssl.o
-	$(CC) $(CFLAGS) -o $@ $^ $(CLIBS) -lpcre $(OPENSSL_CLIBS)
+examples/ex_network_ssl$(EXT): obj/n_common.o obj/n_log.o obj/n_list.o obj/n_str.o obj/n_network_msg.o obj/n_time.o obj/n_thread_pool.o obj/n_hash.o obj/n_network.o examples/ex_network_ssl.o
+	$(CC) $(CFLAGS) -o $@ $^ $(CLIBS) $(OPENSSL_CLIBS) $(PCRE_CLIBS)
 
 examples/ex_monolith$(EXT): ex_monolith.o
-	$(CC) $(CFLAGS) $(ALLEGRO_CFLAGS) -o $@ $^ -L.. $(LIBNILOREA) $(CLIBS) $(ALLEGRO_CLIBS) -lpcre -lz
+	$(CC) $(CFLAGS) $(ALLEGRO_CFLAGS) -o $@ $^ -L.. $(LIBNILOREA) $(CLIBS) $(ALLEGRO_CLIBS) $(PCRE_CLIBS) 
 
 examples/ex_configfile$(EXT): obj/n_log.o obj/n_list.o obj/n_str.o obj/n_hash.o obj/n_pcre.o obj/n_config_file.o examples/ex_configfile.o
-	$(CC) $(CFLAGS) -o $@ $^ $(CLIBS) -lpcre
+	$(CC) $(CFLAGS) -o $@ $^ $(CLIBS) $(PCRE_CLIBS)
 
 examples/ex_signals$(EXT): obj/n_log.o obj/n_list.o obj/n_str.o obj/n_common.o obj/n_hash.o obj/n_signals.o examples/ex_signals.o
 	$(CC) $(CFLAGS) -o $@ $^ $(CLIBS) $(DEBUGLIB) 
@@ -272,17 +304,17 @@ examples/ex_signals$(EXT): obj/n_log.o obj/n_list.o obj/n_str.o obj/n_common.o o
 examples/ex_gui$(EXT): obj/n_log.o obj/n_list.o obj/n_str.o obj/n_common.o obj/n_hash.o obj/n_time.o obj/n_gui.o examples/ex_gui.o
 	$(CC) $(CFLAGS) $(ALLEGRO_CFLAGS) -o $@ $^ -L.. $(CLIBS) $(ALLEGRO_CLIBS)
 
-examples/ex_gui_dictionary$(EXT): obj/n_log.o obj/n_list.o obj/n_str.o obj/n_common.o obj/n_hash.o obj/n_time.o obj/n_particles.o obj/n_3d.o obj/n_pcre.o obj/n_allegro5.o examples/ex_gui_dictionary.o
-	$(CC) $(CFLAGS) $(ALLEGRO_CFLAGS) -o $@ $^ -L.. $(CLIBS) $(ALLEGRO_CLIBS) -lpcre
+examples/ex_gui_dictionary$(EXT): obj/n_log.o obj/n_list.o obj/n_str.o obj/n_common.o obj/n_hash.o obj/n_time.o obj/n_particles.o obj/n_3d.o obj/n_allegro5.o obj/n_pcre.o examples/ex_gui_dictionary.o
+	$(CC) $(CFLAGS) $(ALLEGRO_CFLAGS) -o $@ $^ -L.. $(CLIBS) $(ALLEGRO_CLIBS) $(PCRE_CLIBS)
 
 examples/ex_gui_particles$(EXT): obj/n_log.o obj/n_list.o obj/n_str.o obj/n_common.o obj/n_hash.o obj/n_time.o obj/n_particles.o obj/n_3d.o examples/ex_gui_particles.o
 	$(CC) $(CFLAGS) $(ALLEGRO_CFLAGS) -o $@ $^ -L.. $(CLIBS) $(ALLEGRO_CLIBS)
 
-examples/ex_fluid$(EXT): obj/n_common.o obj/n_log.o obj/n_str.o obj/n_list.o obj/n_time.o obj/n_thread_pool.o obj/n_hash.o obj/n_pcre.o obj/n_config_file.o examples/ex_fluid_config.o obj/n_fluids.o examples/ex_fluid.o
-	$(CC) $(CFLAGS) $(ALLEGRO_CFLAGS) -o $@ $^ -L.. $(CLIBS) $(ALLEGRO_CLIBS) -lpcre
+examples/ex_fluid$(EXT): obj/n_common.o obj/n_log.o obj/n_str.o obj/n_list.o obj/n_time.o obj/n_thread_pool.o obj/n_hash.o obj/n_pcre.o obj/n_config_file.o examples/ex_fluid_config.o obj/n_fluids.o examples/cJSON.o examples/ex_fluid.o
+	$(CC) $(CFLAGS) $(ALLEGRO_CFLAGS) -o $@ $^ -L.. $(CLIBS) $(ALLEGRO_CLIBS) $(PCRE_CLIBS)
 
 examples/ex_pcre$(EXT): obj/n_log.o obj/n_pcre.o examples/ex_pcre.o
-	$(CC) $(CFLAGS) -o $@ $^ $(CLIBS) -lpcre
+	$(CC) $(CFLAGS) -o $@ $^ $(CLIBS) $(PCRE_CLIBS)
 
 examples/ex_threads$(EXT): obj/n_log.o obj/n_list.o obj/n_time.o obj/n_thread_pool.o examples/ex_threads.o
 	$(CC) $(CFLAGS) -o $@ $^ $(CLIBS)
@@ -290,5 +322,5 @@ examples/ex_threads$(EXT): obj/n_log.o obj/n_list.o obj/n_time.o obj/n_thread_po
 examples/ex_log$(EXT): obj/n_str.o obj/n_hash.o obj/n_log.o obj/n_nodup_log.o obj/n_list.o obj/n_time.o examples/ex_log.o
 	$(CC) $(CFLAGS) -o $@ $^ $(CLIBS)
 
-examples/ex_kafka$(EXT): obj/n_common.o obj/n_list.o obj/n_log.o obj/n_str.o obj/n_hash.o obj/n_signals.o obj/n_zlib.o obj/n_time.o obj/n_network.o obj/n_network_msg.o obj/n_thread_pool.o obj/n_pcre.o obj/n_config_file.o examples/cJSON.o obj/n_base64.o obj/n_kafka.o obj/n_files.o examples/ex_kafka.o
-	$(CC) $(CFLAGS) $(KAFKA_CFLAGS) -o $@ $^ $(CLIBS) $(KAFKA_CLIBS)
+examples/ex_kafka$(EXT): obj/n_common.o obj/n_list.o obj/n_log.o obj/n_str.o obj/n_hash.o obj/n_signals.o obj/n_zlib.o obj/n_time.o obj/n_network.o obj/n_network_msg.o obj/n_thread_pool.o obj/n_config_file.o examples/cJSON.o obj/n_base64.o obj/n_kafka.o obj/n_files.o obj/n_pcre.o examples/ex_kafka.o
+	$(CC) $(CFLAGS) $(KAFKA_CFLAGS) -o $@ $^ $(CLIBS) $(KAFKA_CLIBS) $(PCRE_CLIBS)

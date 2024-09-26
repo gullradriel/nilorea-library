@@ -2,7 +2,7 @@
 
 ## Features
 - various helping macros and typedefs
--  logging system
+- logging system
 - strings
 - hash tables
 - linked lists
@@ -15,12 +15,14 @@
 - usable as a monolith library or a collection of files
 
 ## Dependencies
-Most of the core modules can be compiled without additional libraries. That said, you'll need the following dependencies installed if you want all the modules to compile:
+Most of the core modules can be compiled without additional libraries. 
+
+That said, you'll need the following dependencies installed if you want all the modules to compile:
 - libpcre (install from your package manager) 
 - allegro5 (https://github.com/liballeg/allegro5) (install from your package manager)
 - cjson (https://github.com/DaveGamble/cJSON) (included in submodules as we only need to get the .h and .c  from it)
 - librdkafka (https://github.com/confluentinc/librdkafka)  (included in submodules as the system version may be too old in a lots of cases)
--  nuklear (https://github.com/Immediate-Mode-UI/Nuklear) (WIP dialog manager, not used ATM, header only library)
+- nuklear (https://github.com/Immediate-Mode-UI/Nuklear) (included in submodules WIP dialog manager, not used ATM, header only library)
 
 ## Building
 
