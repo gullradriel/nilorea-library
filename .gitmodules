@@ -1,0 +1,9 @@
+[submodule "external/nuklear"]
+	path = external/nuklear
+	url = https://github.com/Immediate-Mode-UI/Nuklear.git
+[submodule "external/cJSON"]
+	path = external/cJSON
+	url = https://github.com/DaveGamble/cJSON.git
+[submodule "external/librdkafka"]
+	path = external/librdkafka
+	url = https://github.com/confluentinc/librdkafka.git
