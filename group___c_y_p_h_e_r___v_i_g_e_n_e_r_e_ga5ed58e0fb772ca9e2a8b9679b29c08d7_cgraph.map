@@ -1,0 +1,36 @@
+<map id="n_vigenere_encode_file_qa" name="n_vigenere_encode_file_qa">
+<area shape="rect" id="node1" title="directly vigenere encode a file using question and answer" alt="" coords="5,688,204,715"/>
+<area shape="rect" id="node2" href="$group___n___s_t_r.html#gac4df24f1f827403f17016f5eea77ed80" title="Load a whole file into a N_STR." alt="" coords="949,676,1044,703"/>
+<area shape="rect" id="node4" href="$group___c_y_p_h_e_r___v_i_g_e_n_e_r_e.html#ga586f550546e3eaf44d869ca68e06a4c1" title="directly vigenere encode a file using key" alt="" coords="252,485,423,512"/>
+<area shape="rect" id="node33" href="$group___n___s_t_r.html#ga287229f34095426806d36c86be764d12" title="Write a N_STR content into a file." alt="" coords="290,739,385,765"/>
+<area shape="rect" id="node3" href="$group___n___s_t_r.html#ga8a95056dbf0c077a75318fa57c51c964" title="create a new N_STR string" alt="" coords="1407,585,1489,612"/>
+<area shape="rect" id="node5" href="$group___c_y_p_h_e_r___b_a_s_e64.html#ga5a4c99c34f62cfa721d37460cad8363f" title="encode a N_STR *string" alt="" coords="497,587,635,613"/>
+<area shape="rect" id="node7" href="$n__crypto_8c.html#a45f11e66b126e59b4fda77b3f08ddb6f" title="decode input using vigenere cypher and key" alt="" coords="709,318,876,359"/>
+<area shape="rect" id="node27" href="$n__crypto_8c.html#acbbe612210363e374f1509679a83b47f" title="encode string in place using vigenere cypher and key" alt="" coords="483,398,649,439"/>
+<area shape="rect" id="node28" href="$group___c_y_p_h_e_r___v_i_g_e_n_e_r_e.html#ga9755e87a92cd1c8d1b688e196a6bb219" title="quick decode data" alt="" coords="471,485,661,512"/>
+<area shape="rect" id="node6" href="$n__base64_8c.html#aba24b7f11efe3aa9ea8b5ab7d0785102" title="get the length of string if it was base64 encoded" alt="" coords="710,637,875,664"/>
+<area shape="rect" id="node8" href="$n__crypto_8c.html#a1a84fce40cac83636b8ea3779ebef792" title="encode or decode input using vigenere cypher" alt="" coords="924,327,1069,353"/>
+<area shape="rect" id="node9" href="$group___t_h_r_e_a_d_s.html#ga46497eb81066d0df83dfd07ad0a9f561" title="add a function and params to a thread pool" alt="" coords="1784,52,1952,79"/>
+<area shape="rect" id="node12" href="$group___t_h_r_e_a_d_s.html#ga12ce28c2aaa5a5a1a05abe11071dd83f" title="delete a thread_pool, exit the threads and free the structs" alt="" coords="1129,328,1300,355"/>
+<area shape="rect" id="node16" href="$n__crypto_8c.html#a3fa3c9bd1472d82c4f6552a632f11aaf" title="encode or decode threaded func using params from ptr" alt="" coords="1117,384,1312,411"/>
+<area shape="rect" id="node21" href="$group___t_h_r_e_a_d_s.html#ga0e3dcfbda5e68e14399b18f994060c97" title="Create a new pool of nbmaxthr threads." alt="" coords="1148,172,1281,199"/>
+<area shape="rect" id="node24" href="$group___t_h_r_e_a_d_s.html#ga5d9ce1747e4b7cb58ce3767f7e56cd8b" title="try to add some waiting DIRECT_PROCs on some free thread slots, else do nothing" alt="" coords="1584,132,1736,159"/>
+<area shape="rect" id="node25" href="$group___n___s_t_r.html#gab9f1902d941f4f847a1063fd6fedd1f2" title="Duplicate a N_STR." alt="" coords="1179,435,1250,461"/>
+<area shape="rect" id="node26" href="$group___t_h_r_e_a_d_s.html#ga992fc2a67a2d66733ccd10f7d9e2ead3" title="Wait for all the launched process in the thread pool to terminate." alt="" coords="1127,277,1302,304"/>
+<area shape="rect" id="node10" href="$group___l_i_s_t.html#ga4eab319289a83524639ee5e9f0441fdf" title="Add a pointer to the end of the list." alt="" coords="2000,52,2080,79"/>
+<area shape="rect" id="node11" href="$group___l_i_s_t.html#ga6f57b62b796c1248014bc14a9bb0fc6c" title="Allocate a new node to link in a list." alt="" coords="2128,52,2243,79"/>
+<area shape="rect" id="node13" href="$group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755" title="Empty and Free a list container." alt="" coords="1399,332,1497,359"/>
+<area shape="rect" id="node15" href="$group___n___t_i_m_e.html#ga690f12dde1a446d47b8bf5f959493003" title="wrapper around usleep for API consistency" alt="" coords="1412,281,1484,308"/>
+<area shape="rect" id="node14" href="$group___l_i_s_t.html#ga1dafe7a250ddad51fadd375f057287e7" title="Empty a LIST list of pointers." alt="" coords="1615,332,1705,359"/>
+<area shape="rect" id="node17" href="$group___c_y_p_h_e_r___b_a_s_e64.html#ga4754b8b773a929548fe2aad386859bb5" title="test if char c is lowercase" alt="" coords="1406,383,1490,409"/>
+<area shape="rect" id="node18" href="$group___c_y_p_h_e_r___b_a_s_e64.html#ga2fd423ac5899e997358227574358a42e" title="test if char c is uppercase" alt="" coords="1405,433,1491,460"/>
+<area shape="rect" id="node19" href="$group___c_y_p_h_e_r___b_a_s_e64.html#ga06f46dcc4684717a4fcc1b3aa0d43c57" title="is_alpha" alt="" coords="1405,484,1491,511"/>
+<area shape="rect" id="node20" href="$group___c_y_p_h_e_r___b_a_s_e64.html#ga39ec073874feeaf9f85384015acd8a58" title="is_alpha" alt="" coords="1405,535,1491,561"/>
+<area shape="rect" id="node22" href="$group___l_i_s_t.html#gaa82751b4d6a219771661843e61cefa2e" title="Initialiaze a generic list container to max_items pointers." alt="" coords="1383,113,1513,140"/>
+<area shape="rect" id="node23" href="$n__thread__pool_8c.html#abd0649708787bc15e1bc1ee59d64fd1f" title="Internal thread pool processing function." alt="" coords="1360,165,1536,206"/>
+<area shape="rect" id="node29" href="$group___n___s_t_r.html#ga84304406352b745b93eb17a12e81c749" title="Convert a char into a N_STR, short version." alt="" coords="741,536,844,563"/>
+<area shape="rect" id="node31" href="$group___c_y_p_h_e_r___b_a_s_e64.html#ga6e49a1f978a4e0721abfcb835a7eccd8" title="decode a N_STR *string" alt="" coords="927,485,1066,512"/>
+<area shape="rect" id="node32" href="$group___c_y_p_h_e_r___v_i_g_e_n_e_r_e.html#ga7dd0b69e2f8342bf43100644ed5d3c8e" title="decode input using vigenere cypher and key" alt="" coords="719,435,867,461"/>
+<area shape="rect" id="node30" href="$group___n___s_t_r.html#gac4314e9f0ada88300a09d66405d541a8" title="Convert a char into a N_STR, extended version." alt="" coords="934,536,1059,563"/>
+<area shape="rect" id="node34" href="$group___n___s_t_r.html#gaf1ad6fe037290fd52fb91b89dd978b1f" title="Write a N_STR content into a file." alt="" coords="523,739,609,765"/>
+</map>

@@ -1,0 +1,18 @@
+<map id="n_kafka_poll" name="n_kafka_poll">
+<area shape="rect" id="node1" title="Poll kafka handle in producer or consumer mode." alt="" coords="5,187,108,213"/>
+<area shape="rect" id="node2" href="$group___n___s_t_r.html#ga0a864a4ce4997389f2e5e2e16c51a30a" title="Free a N_STR pointer structure." alt="" coords="215,5,320,32"/>
+<area shape="rect" id="node3" href="$group___l_i_s_t.html#ga4eab319289a83524639ee5e9f0441fdf" title="Add a pointer to the end of the list." alt="" coords="227,56,307,83"/>
+<area shape="rect" id="node5" href="$group___n___k_a_f_k_a.html#ga7a0a6d08bd00098b411d243c65534aa6" title="destroy a kafka event and set it&#39;s pointer to NULL" alt="" coords="181,107,353,133"/>
+<area shape="rect" id="node6" href="$group___n___k_a_f_k_a.html#ga84613bb586cff1a0584656556b5ad267" title="festroy a kafka event" alt="" coords="427,132,624,159"/>
+<area shape="rect" id="node9" href="$group___n___k_a_f_k_a.html#gab21424947e9b6e88a8adcd0488449899" title="get a schema from the first 4 bytes of a N_STR *string, returning ntohl of the value" alt="" coords="188,209,347,250"/>
+<area shape="rect" id="node11" href="$group___n___k_a_f_k_a.html#gabf981c70a03cf18e088ff6d740931f0b" title="make a new event from a char *string" alt="" coords="156,275,379,301"/>
+<area shape="rect" id="node15" href="$n__kafka_8c.html#abfb87a1648bdc33d2112bc2080342ec3" title="produce an event on a N_KAFKA *kafka handle" alt="" coords="190,325,345,352"/>
+<area shape="rect" id="node16" href="$group___l_i_s_t.html#gaa82751b4d6a219771661843e61cefa2e" title="Initialiaze a generic list container to max_items pointers." alt="" coords="202,376,333,403"/>
+<area shape="rect" id="node4" href="$group___l_i_s_t.html#ga6f57b62b796c1248014bc14a9bb0fc6c" title="Allocate a new node to link in a list." alt="" coords="468,56,583,83"/>
+<area shape="rect" id="node7" href="$group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755" title="Empty and Free a list container." alt="" coords="702,132,801,159"/>
+<area shape="rect" id="node8" href="$group___l_i_s_t.html#ga1dafe7a250ddad51fadd375f057287e7" title="Empty a LIST list of pointers." alt="" coords="879,132,969,159"/>
+<area shape="rect" id="node10" href="$group___n___k_a_f_k_a.html#ga2bc6a0682f46b656bba51e8ee29b43b9" title="get a schema from the first 4 bytes of a char *string, returning ntohl of the value" alt="" coords="446,209,605,250"/>
+<area shape="rect" id="node12" href="$group___n___k_a_f_k_a.html#ga5cb6a2214109417c198534a4e8c77cbb" title="create a new empty event" alt="" coords="450,275,601,301"/>
+<area shape="rect" id="node13" href="$group___n___k_a_f_k_a.html#ga365ccb4d2d1601cd9d7c11fcf4acc1c9" title="put a htonl schema id into the first 4 bytes of a N_STR *string" alt="" coords="446,326,605,367"/>
+<area shape="rect" id="node14" href="$group___n___k_a_f_k_a.html#ga6167f6e8b0e9d485797bc524162cbf3f" title="put a htonl schema id into the first 4 bytes of a char *string" alt="" coords="672,326,831,367"/>
+</map>

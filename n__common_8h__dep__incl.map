@@ -1,0 +1,82 @@
+<map id="include/nilorea/n_common.h" name="include/nilorea/n_common.h">
+<area shape="rect" id="node1" title="Common headers and low&#45;level hugly functions &amp; define." alt="" coords="5532,5,5739,32"/>
+<area shape="rect" id="node2" href="$n__aabb_8c.html" title="AABB3D functions." alt="" coords="6169,251,6272,278"/>
+<area shape="rect" id="node3" href="$n__allegro5_8c.html" title="allegro5 helpers" alt="" coords="9023,80,9147,107"/>
+<area shape="rect" id="node4" href="$n__common_8c.html" title="common function" alt="" coords="3403,162,3531,189"/>
+<area shape="rect" id="node5" href="$n__config__file_8c.html" title="common function" alt="" coords="432,251,569,278"/>
+<area shape="rect" id="node6" href="$n__crypto_8c.html" title="vigenere encode decode function" alt="" coords="1206,251,1318,278"/>
+<area shape="rect" id="node7" href="$n__exceptions_8c.html" title="ExceptionContextList management for C." alt="" coords="6960,162,7103,189"/>
+<area shape="rect" id="node8" href="$n__fluids_8c.html" title="fluid management functions , ported from https://www.youtube.com/watch?v=iKAVRgIrUOU&amp;t=522s" alt="" coords="9171,80,9278,107"/>
+<area shape="rect" id="node9" href="$n__gui_8c.html" title="GUI functions." alt="" coords="1478,408,1569,435"/>
+<area shape="rect" id="node10" href="$n__hash_8c.html" title="Hash functions and table." alt="" coords="1152,162,1255,189"/>
+<area shape="rect" id="node11" href="$n__kafka_8c.html" title="generic kafka consume and produce event functions" alt="" coords="1286,333,1393,360"/>
+<area shape="rect" id="node12" href="$n__list_8c.html" title="Pointer list functions definitions." alt="" coords="7127,162,7218,189"/>
+<area shape="rect" id="node13" href="$n__log_8c.html" title="generic logging system" alt="" coords="7242,162,7333,189"/>
+<area shape="rect" id="node14" href="$n__network__msg_8c.html" title="network messages function Network Engine" alt="" coords="5291,333,5449,360"/>
+<area shape="rect" id="node15" href="$n__nodup__log_8c.html" title="generic no duplicate logging system" alt="" coords="3175,251,3314,278"/>
+<area shape="rect" id="node16" href="$n__str_8c.html" title="string function Everything you need to use string is here" alt="" coords="3556,162,3643,189"/>
+<area shape="rect" id="node17" href="$n__thread__pool_8c.html" title="Thread pool functions." alt="" coords="8289,162,8437,189"/>
+<area shape="rect" id="node18" href="$n__trees_8c.html" title="tree functions" alt="" coords="697,333,801,360"/>
+<area shape="rect" id="node19" href="$n__3d_8h.html" title="Simple 3D movement simulation." alt="" coords="6461,162,6626,189"/>
+<area shape="rect" id="node23" href="$nilorea_8h.html" title="Header for a monolith use." alt="" coords="5474,333,5605,360"/>
+<area shape="rect" id="node25" href="$ex__network_8h.html" title="Nilorea Library n_network api test." alt="" coords="5641,333,5819,360"/>
+<area shape="rect" id="node27" href="$n__particles_8h.html" title="Particles management." alt="" coords="8530,251,8735,278"/>
+<area shape="rect" id="node29" href="$ex__gui__particles_8c_source.html" title=" " alt="" coords="8433,333,8640,360"/>
+<area shape="rect" id="node30" href="$n__trees_8h.html" title="trees module headers" alt="" coords="593,251,776,278"/>
+<area shape="rect" id="node31" href="$n__gui_8h.html" title="GUI headers." alt="" coords="5,333,175,360"/>
+<area shape="rect" id="node33" href="$ex__trees_8c_source.html" title=" " alt="" coords="415,333,573,360"/>
+<area shape="rect" id="node34" href="$n__user_8h.html" title="USERS handling for tiny game apps." alt="" coords="5607,251,5783,278"/>
+<area shape="rect" id="node36" href="$n__aabb_8h.html" title="AABB3D module headers." alt="" coords="5978,162,6159,189"/>
+<area shape="rect" id="node37" href="$n__anim_8h.html" title="Animations graphics and animations parameters." alt="" coords="6701,162,6884,189"/>
+<area shape="rect" id="node39" href="$n__games_8h.html" title="Games helpers functions." alt="" coords="7873,162,8067,189"/>
+<area shape="rect" id="node41" href="$n__hash_8h.html" title="Hash functions and table." alt="" coords="955,80,1135,107"/>
+<area shape="rect" id="node45" href="$n__network_8h.html" title="Network Engine." alt="" coords="874,162,1077,189"/>
+<area shape="rect" id="node49" href="$n__nodup__log_8h.html" title="Generic No Dup Log system." alt="" coords="3049,155,3227,196"/>
+<area shape="rect" id="node51" href="$ex__gui__dictionary_8c_source.html" title=" " alt="" coords="635,162,849,189"/>
+<area shape="rect" id="node53" href="$n__iso__engine_8h.html" title="Map loading, saving, with objects, animations, ..." alt="" coords="7693,155,7849,196"/>
+<area shape="rect" id="node55" href="$n__log_8h.html" title="Generic log system." alt="" coords="5117,80,5287,107"/>
+<area shape="rect" id="node62" href="$ex__common_8c_source.html" title=" " alt="" coords="4007,162,4189,189"/>
+<area shape="rect" id="node65" href="$ex__fluid_8c_source.html" title=" " alt="" coords="4405,162,4557,189"/>
+<area shape="rect" id="node70" href="$ex__stack_8c_source.html" title=" " alt="" coords="7357,162,7516,189"/>
+<area shape="rect" id="node72" href="$n__stack_8h_source.html" title=" " alt="" coords="8451,80,8635,107"/>
+<area shape="rect" id="node74" href="$n__str_8h.html" title="N_STR and string function declaration." alt="" coords="2605,80,2770,107"/>
+<area shape="rect" id="node79" href="$n__time_8h.html" title="Timing utilities." alt="" coords="8169,80,8347,107"/>
+<area shape="rect" id="node20" href="$n__3d_8c.html" title="3D helpers, vector" alt="" coords="6500,251,6587,278"/>
+<area shape="rect" id="node21" href="$n__network__msg_8h.html" title="Network messages , serialization tools." alt="" coords="5341,244,5532,285"/>
+<area shape="rect" id="node22" href="$n__network_8c.html" title="Network Engine." alt="" coords="1417,333,1541,360"/>
+<area shape="rect" id="node24" href="$ex__monolith_8c_source.html" title=" " alt="" coords="5441,408,5624,435"/>
+<area shape="rect" id="node26" href="$ex__network_8c_source.html" title=" " alt="" coords="5648,408,5825,435"/>
+<area shape="rect" id="node28" href="$n__particles_8c.html" title="particle function file for SantaHack 2012" alt="" coords="8664,333,8791,360"/>
+<area shape="rect" id="node32" href="$ex__gui_8c_source.html" title=" " alt="" coords="18,408,162,435"/>
+<area shape="rect" id="node35" href="$n__user_8c.html" title="USERS fonctions." alt="" coords="5843,333,5942,360"/>
+<area shape="rect" id="node38" href="$n__anim_8c.html" title="anim functions" alt="" coords="6741,251,6845,278"/>
+<area shape="rect" id="node40" href="$n__games_8c.html" title="Games helpers functions." alt="" coords="7862,251,7977,278"/>
+<area shape="rect" id="node42" href="$n__config__file_8h.html" title="Config file reading and writing." alt="" coords="2198,155,2374,196"/>
+<area shape="rect" id="node52" href="$ex__hash_8c_source.html" title=" " alt="" coords="1279,162,1434,189"/>
+<area shape="rect" id="node43" href="$ex__configfile_8c_source.html" title=" " alt="" coords="2129,251,2312,278"/>
+<area shape="rect" id="node44" href="$ex__fluid__config_8c_source.html" title=" " alt="" coords="2387,251,2585,278"/>
+<area shape="rect" id="node46" href="$n__kafka_8h.html" title="kafka generic produce and consume event header" alt="" coords="1537,251,1721,278"/>
+<area shape="rect" id="node47" href="$ex__kafka_8c_source.html" title=" " alt="" coords="1565,333,1724,360"/>
+<area shape="rect" id="node48" href="$ex__network__ssl_8c_source.html" title=" " alt="" coords="2609,244,2776,285"/>
+<area shape="rect" id="node50" href="$ex__log_8c_source.html" title=" " alt="" coords="4478,251,4622,278"/>
+<area shape="rect" id="node54" href="$n__iso__engine_8c.html" title="Map loading, saving, with objects, animations, ..." alt="" coords="7697,251,7838,278"/>
+<area shape="rect" id="node56" href="$n__pcre_8c.html" title="PCRE helpers for regex matching." alt="" coords="5637,162,5735,189"/>
+<area shape="rect" id="node57" href="$n__signals_8c.html" title="signals general handling with stack printing" alt="" coords="4263,162,4381,189"/>
+<area shape="rect" id="node58" href="$n__zlib_8c.html" title="ZLIB compression handler." alt="" coords="3679,251,3773,278"/>
+<area shape="rect" id="node59" href="$n__files_8h.html" title="files configuration header" alt="" coords="2798,162,2974,189"/>
+<area shape="rect" id="node61" href="$ex__base64_8c_source.html" title=" " alt="" coords="1934,251,2105,278"/>
+<area shape="rect" id="node63" href="$ex__crypto_8c_source.html" title=" " alt="" coords="1745,251,1910,278"/>
+<area shape="rect" id="node64" href="$ex__exceptions_8c_source.html" title=" " alt="" coords="5759,162,5954,189"/>
+<area shape="rect" id="node66" href="$ex__list_8c_source.html" title=" " alt="" coords="3839,162,3983,189"/>
+<area shape="rect" id="node67" href="$ex__nstr_8c_source.html" title=" " alt="" coords="3667,162,3815,189"/>
+<area shape="rect" id="node68" href="$ex__pcre_8c_source.html" title=" " alt="" coords="6183,162,6335,189"/>
+<area shape="rect" id="node69" href="$ex__signals_8c_source.html" title=" " alt="" coords="5442,162,5613,189"/>
+<area shape="rect" id="node71" href="$ex__threads_8c_source.html" title=" " alt="" coords="8091,162,8265,189"/>
+<area shape="rect" id="node60" href="$n__files_8c.html" title="files main source file" alt="" coords="2953,251,3051,278"/>
+<area shape="rect" id="node73" href="$n__stack_8c.html" title="Stack functions definitions." alt="" coords="8689,162,8795,189"/>
+<area shape="rect" id="node75" href="$n__base64_8h.html" title="base64 encoding and decoding functions using N_STR" alt="" coords="1876,162,2072,189"/>
+<area shape="rect" id="node77" href="$n__crypto_8h.html" title="vigenere encoding and decoding functions using N_STR/files" alt="" coords="1661,162,1852,189"/>
+<area shape="rect" id="node78" href="$n__zlib_8h.html" title="ZLIB compression handler." alt="" coords="2601,162,2773,189"/>
+<area shape="rect" id="node76" href="$n__base64_8c.html" title="base64 encode decode function, adapted from https://opensource.apple.com/source/QuickTimeStreamingSer..." alt="" coords="1393,251,1512,278"/>
+<area shape="rect" id="node80" href="$n__time_8c.html" title="common time function" alt="" coords="8513,162,8614,189"/>
+</map>

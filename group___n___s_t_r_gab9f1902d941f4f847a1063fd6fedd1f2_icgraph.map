@@ -1,0 +1,31 @@
+<map id="nstrdup" name="nstrdup">
+<area shape="rect" id="node1" title="Duplicate a N_STR." alt="" coords="1192,355,1263,381"/>
+<area shape="rect" id="node2" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga84f36b52e6d9dfe9ca6186c3177f5472" title="Add a copy of str to the string list in the message." alt="" coords="976,113,1133,140"/>
+<area shape="rect" id="node5" href="$group___n_e_t_w_o_r_k___m_s_g.html#gad714a62771873d9468240143db9e5746" title="make a network NETMSG_STRING message with given parameters" alt="" coords="724,151,917,177"/>
+<area shape="rect" id="node10" href="$n__crypto_8c.html#a1a84fce40cac83636b8ea3779ebef792" title="encode or decode input using vigenere cypher" alt="" coords="982,355,1127,381"/>
+<area shape="rect" id="node25" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga06115ed18a658114104ca6b6823f5d79" title="add net_msg to all network in netork pool" alt="" coords="975,405,1135,432"/>
+<area shape="rect" id="node26" href="$group___n___u_s_e_r.html#ga2f336886f3d5e909c397f1660419701d" title="add a N_STR *message to user list" alt="" coords="965,532,1144,559"/>
+<area shape="rect" id="node3" href="$group___n_e_t_w_o_r_k___m_s_g.html#gacbebab8f754ea1a2e225dee3a164e2d8" title="Add a formatted NETWMSG_IDENT message to the specified network." alt="" coords="743,12,898,39"/>
+<area shape="rect" id="node8" href="$ex__network_8h.html#a97064904e9c2be2094c349413ff348fc" title="send data to specified network" alt="" coords="759,75,883,101"/>
+<area shape="rect" id="node4" href="$group___n_e_t_w_o_r_k_i_n_g.html#gae8345266fcf7a23c0e8ffe176b0e086f" title="Add a formatted NETWMSG_IDENT message to the specified network." alt="" coords="515,5,647,32"/>
+<area shape="rect" id="node6" href="$group___n_e_t_w_o_r_k_i_n_g.html#gad3b590da2eb8b594c75d1d5f46ba7b45" title="Add a string to the network, aiming a specific user." alt="" coords="503,157,659,184"/>
+<area shape="rect" id="node7" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga02b35de5d3b84e79c4fecbf4cebce603" title="Add a string to the network, aiming all server&#45;side users." alt="" coords="491,107,670,133"/>
+<area shape="rect" id="node9" href="$ex__network_8h.html#a2af070d97fced1a0eadad90c6aa4903b" title="recv/send datas if any for the client" alt="" coords="521,56,640,83"/>
+<area shape="rect" id="node11" href="$group___c_y_p_h_e_r___v_i_g_e_n_e_r_e.html#ga7dd0b69e2f8342bf43100644ed5d3c8e" title="decode input using vigenere cypher and key" alt="" coords="747,456,895,483"/>
+<area shape="rect" id="node18" href="$n__crypto_8c.html#a45f11e66b126e59b4fda77b3f08ddb6f" title="decode input using vigenere cypher and key" alt="" coords="497,361,664,402"/>
+<area shape="rect" id="node20" href="$group___c_y_p_h_e_r___v_i_g_e_n_e_r_e.html#gab115db3fef73d772184201445ef48f52" title="encode input using vigenere cypher and key" alt="" coords="507,427,655,453"/>
+<area shape="rect" id="node21" href="$n__crypto_8c.html#acbbe612210363e374f1509679a83b47f" title="encode string in place using vigenere cypher and key" alt="" coords="737,263,904,305"/>
+<area shape="rect" id="node12" href="$group___c_y_p_h_e_r___v_i_g_e_n_e_r_e.html#ga9755e87a92cd1c8d1b688e196a6bb219" title="quick decode data" alt="" coords="485,477,676,504"/>
+<area shape="rect" id="node13" href="$group___c_y_p_h_e_r___v_i_g_e_n_e_r_e.html#gae233a0022a167c993a63136014d96cc2" title="directly vigenere decode a file using key" alt="" coords="259,427,430,453"/>
+<area shape="rect" id="node15" href="$group___c_y_p_h_e_r___v_i_g_e_n_e_r_e.html#ga586f550546e3eaf44d869ca68e06a4c1" title="directly vigenere encode a file using key" alt="" coords="259,321,430,348"/>
+<area shape="rect" id="node17" href="$group___c_y_p_h_e_r___v_i_g_e_n_e_r_e.html#ga317d1306a2eee7e602e1ceeeaaa9df27" title="get an answer from a root key and a question" alt="" coords="257,477,433,504"/>
+<area shape="rect" id="node14" href="$group___c_y_p_h_e_r___v_i_g_e_n_e_r_e.html#ga1be4bd0f3b4410ebe4cd4240b804338c" title="directly vigenere decode a file using question and answer" alt="" coords="5,427,204,453"/>
+<area shape="rect" id="node16" href="$group___c_y_p_h_e_r___v_i_g_e_n_e_r_e.html#ga5ed58e0fb772ca9e2a8b9679b29c08d7" title="directly vigenere encode a file using question and answer" alt="" coords="5,321,204,348"/>
+<area shape="rect" id="node19" href="$group___c_y_p_h_e_r___v_i_g_e_n_e_r_e.html#gaad821764c722b2e469ab5c54278c6023" title="directly vigenere decode a file using key" alt="" coords="257,372,432,399"/>
+<area shape="rect" id="node22" href="$group___c_y_p_h_e_r___v_i_g_e_n_e_r_e.html#ga95f517e677af864def2a14af9196d596" title="directly vigenere encode a file using key" alt="" coords="493,309,668,336"/>
+<area shape="rect" id="node23" href="$group___c_y_p_h_e_r___v_i_g_e_n_e_r_e.html#gafc58e1ab0d3c621cae831577dc25787b" title="quick encode data" alt="" coords="485,208,676,235"/>
+<area shape="rect" id="node24" href="$group___c_y_p_h_e_r___v_i_g_e_n_e_r_e.html#gae1d824f2d203c5d2b3dfa39df2906798" title="get a question generated from the current machine hardware (disk&amp;cpu)" alt="" coords="252,208,437,235"/>
+<area shape="rect" id="node27" href="$group___n___u_s_e_r.html#ga25d7254e2bc5d4c6d4e89dadef9c67cd" title="add a N_STR *message to user list (USERLIST_ONE)" alt="" coords="743,507,899,533"/>
+<area shape="rect" id="node28" href="$group___n___u_s_e_r.html#gaaf1860e26c4355764ad00e1016547b2c" title="add a N_STR *message to user list (USERLIST_ALL)" alt="" coords="731,557,910,584"/>
+<area shape="rect" id="node29" href="$group___n___u_s_e_r.html#gaec87d76c70852173c2187e4eceb707ee" title="add a N_STR *message to user list except user &#39;id&#39; (USERLIST_ALL_EXCEPT)" alt="" coords="743,609,899,650"/>
+</map>

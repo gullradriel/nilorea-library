@@ -1,0 +1,43 @@
+<map id="manage_client" name="manage_client">
+<area shape="rect" id="node1" title="recv/send datas if any for the client" alt="" coords="5,584,124,610"/>
+<area shape="rect" id="node2" href="$ex__network_8h.html#a6f950bd6cd1d0314572ecae401ac1883" title="decode data we got from network" alt="" coords="403,406,518,433"/>
+<area shape="rect" id="node19" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga926ed3ffe3f89e679b412b059e20e1f1" title="Get a message from aimed NETWORK." alt="" coords="190,710,307,737"/>
+<area shape="rect" id="node20" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaf25c0f462f174092815b0c5d019441db" title="Get the state of a network." alt="" coords="1028,685,1151,712"/>
+<area shape="rect" id="node21" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga70abef02e9578c21b5707eecb3750fef" title="Get the type of message without killing the first number. Use with netw_get_XXX." alt="" coords="172,761,325,788"/>
+<area shape="rect" id="node22" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga5ba0555c5ccd261227c3c1216923d563" title="Start the NETWORK netw Threaded Engine." alt="" coords="596,558,763,585"/>
+<area shape="rect" id="node26" href="$group___n___t_i_m_e.html#ga690f12dde1a446d47b8bf5f959493003" title="wrapper around usleep for API consistency" alt="" coords="1053,558,1125,585"/>
+<area shape="rect" id="node27" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga60beb772aa298f36d1443a28e3ec5ec8" title="Wait for peer closing a specified Network, destroy queues, free the structure." alt="" coords="183,660,314,686"/>
+<area shape="rect" id="node35" href="$ex__network_8h.html#a97064904e9c2be2094c349413ff348fc" title="send data to specified network" alt="" coords="617,204,741,230"/>
+<area shape="rect" id="node3" href="$group___n_e_t_w_o_r_k___m_s_g.html#gadcc2854217553f3a4890973873bdf634" title="Delete a NETW_MSG *object." alt="" coords="844,457,943,484"/>
+<area shape="rect" id="node6" href="$group___n_e_t_w_o_r_k___m_s_g.html#gafc6e48e4853310c09174f5ff3dfed85b" title="Get a number from a message number list." alt="" coords="609,356,749,382"/>
+<area shape="rect" id="node7" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga73be780021c7c875f476ef4e02d2bc1c" title="Get a string from a message string list." alt="" coords="605,457,753,484"/>
+<area shape="rect" id="node8" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga0ff2638e1e094f9af393d0d63cbbab0d" title="Make a single message of the string." alt="" coords="602,305,757,332"/>
+<area shape="rect" id="node4" href="$group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755" title="Empty and Free a list container." alt="" coords="1211,786,1309,813"/>
+<area shape="rect" id="node5" href="$group___l_i_s_t.html#ga1dafe7a250ddad51fadd375f057287e7" title="Empty a LIST list of pointers." alt="" coords="1365,761,1456,788"/>
+<area shape="rect" id="node9" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga9aa63e987d00d99d9a21aec35efecf74" title="Add an int to the int list int the message." alt="" coords="831,254,956,281"/>
+<area shape="rect" id="node12" href="$group___n_e_t_w_o_r_k___m_s_g.html#gae7c4f1b2c58aabda4856a2f5c782b863" title="Add an float to the message." alt="" coords="831,356,955,382"/>
+<area shape="rect" id="node13" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga53dfbdd3b5d1cfcf387d17b4465e5f3a" title="Add a string to the string list in the message." alt="" coords="818,204,969,230"/>
+<area shape="rect" id="node15" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga62ae674d9de6171bcbd604e68a3b94a9" title="Create a NETW_MSG *object." alt="" coords="844,305,943,332"/>
+<area shape="rect" id="node17" href="$group___n_e_t_w_o_r_k___m_s_g.html#gaaed102598c4379bd1e0dc78f834972b0" title="If needed swap bytes for a double." alt="" coords="1060,406,1119,433"/>
+<area shape="rect" id="node10" href="$group___l_i_s_t.html#ga4eab319289a83524639ee5e9f0441fdf" title="Add a pointer to the end of the list." alt="" coords="1049,241,1129,268"/>
+<area shape="rect" id="node11" href="$group___l_i_s_t.html#ga6f57b62b796c1248014bc14a9bb0fc6c" title="Allocate a new node to link in a list." alt="" coords="1203,241,1317,268"/>
+<area shape="rect" id="node14" href="$group___n___s_t_r.html#ga0a864a4ce4997389f2e5e2e16c51a30a" title="Free a N_STR pointer structure." alt="" coords="1037,165,1142,192"/>
+<area shape="rect" id="node16" href="$group___l_i_s_t.html#gaa82751b4d6a219771661843e61cefa2e" title="Initialiaze a generic list container to max_items pointers." alt="" coords="1024,305,1155,332"/>
+<area shape="rect" id="node18" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga4f7b627b47a1ee6976089dc4ab0a91b9" title="Swap bytes endiannes for a double." alt="" coords="1207,349,1313,376"/>
+<area shape="rect" id="node23" href="$group___n_e_t_w_o_r_k_i_n_g.html#gad67570728a69ce2788b8bc9dcaa7c392" title="To Thread Receiving function." alt="" coords="831,558,955,585"/>
+<area shape="rect" id="node25" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaa3c12701bdb3cd2e1adaa00981ca3cc8" title="Thread send function." alt="" coords="830,609,957,636"/>
+<area shape="rect" id="node24" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaa8e1fe7978995197f08aa0ef24a76c33" title="Restart or reset the specified network ability." alt="" coords="1049,761,1130,788"/>
+<area shape="rect" id="node28" href="$group___n_e_t_w_o_r_k_i_n_g.html#gafdb52b29977b9345158068cc28102d94" title="Wait for peer closing a specified Network, destroy queues, free the structure." alt="" coords="373,685,548,712"/>
+<area shape="rect" id="node29" href="$n__network_8c.html#a1faf7fb8ea77a33208c35a2ddb087629" title="wait until the socket is empty or timeout, checking each 100 msec." alt="" coords="602,660,757,686"/>
+<area shape="rect" id="node30" href="$group___n_e_t_w_o_r_k_i_n_g.html#gac345c1af1935cebb9ee33edd4c32267a" title="Closing a specified Network, destroy queues, free the structure." alt="" coords="632,837,727,864"/>
+<area shape="rect" id="node31" href="$group___n_e_t_w_o_r_k_i_n_g.html#gafc7a91b4be2a997710a2b54037c25168" title="remove a NETWORK *netw to a NETWORK_POOL *pool" alt="" coords="820,964,967,990"/>
+<area shape="rect" id="node34" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga29159184519b3129c0154b1a2c2a3e2f" title="Stop a NETWORK connection sending and receing thread." alt="" coords="811,812,976,838"/>
+<area shape="rect" id="node32" href="$group___h_a_s_h___t_a_b_l_e.html#ga2dc87273d3e6b3492d88f2bd7288102e" title="remove and delete node at key in table" alt="" coords="1043,964,1135,990"/>
+<area shape="rect" id="node33" href="$group___l_i_s_t.html#ga9be40eafc3444fd2443cc940634af163" title="search ptr in list" alt="" coords="1043,1014,1135,1041"/>
+<area shape="rect" id="node36" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga84f36b52e6d9dfe9ca6186c3177f5472" title="Add a copy of str to the string list in the message." alt="" coords="815,102,972,129"/>
+<area shape="rect" id="node38" href="$group___n___s_t_r.html#ga8a95056dbf0c077a75318fa57c51c964" title="create a new N_STR string" alt="" coords="1219,52,1301,78"/>
+<area shape="rect" id="node39" href="$group___n_e_t_w_o_r_k___m_s_g.html#gafe20cb69ca45b0b1d91a0fd591a399cd" title="Make a single string of the message." alt="" coords="816,52,971,78"/>
+<area shape="rect" id="node41" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga10429a9fa106b61c38f28635242ce502" title="Add a message to send in aimed NETWORK." alt="" coords="833,153,953,180"/>
+<area shape="rect" id="node37" href="$group___n___s_t_r.html#gab9f1902d941f4f847a1063fd6fedd1f2" title="Duplicate a N_STR." alt="" coords="1054,102,1125,129"/>
+<area shape="rect" id="node40" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga0cf26e3b1e26847bbd66fbd4b4a1a67c" title="If needed swap bytes for a double." alt="" coords="1060,52,1119,78"/>
+</map>
