@@ -1,0 +1,39 @@
+<map id="free_nstr_ptr" name="free_nstr_ptr">
+<area shape="rect" id="node1" title="Free a N_STR pointer structure." alt="" coords="932,699,1037,725"/>
+<area shape="rect" id="node2" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga84f36b52e6d9dfe9ca6186c3177f5472" title="Add a copy of str to the string list in the message." alt="" coords="727,281,884,308"/>
+<area shape="rect" id="node10" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga53dfbdd3b5d1cfcf387d17b4465e5f3a" title="Add a string to the string list in the message." alt="" coords="730,623,881,649"/>
+<area shape="rect" id="node18" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga196134389f2e0b1493154c73a7133df0" title="Add a copy of char *str to the string list in the message." alt="" coords="731,724,880,751"/>
+<area shape="rect" id="node19" href="$group___n___k_a_f_k_a.html#ga6553559587621a3667ed71565db20926" title="Poll kafka handle in producer or consumer mode." alt="" coords="754,775,857,801"/>
+<area shape="rect" id="node22" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga10429a9fa106b61c38f28635242ce502" title="Add a message to send in aimed NETWORK." alt="" coords="522,284,642,311"/>
+<area shape="rect" id="node33" href="$group___n_e_t_w_o_r_k_i_n_g.html#gafd17b2ed695976a31b4cdee5091e0ef7" title="Add a message to send in aimed NETWORK." alt="" coords="734,825,877,852"/>
+<area shape="rect" id="node34" href="$group___n_e_t_w_o_r_k_i_n_g.html#gad67570728a69ce2788b8bc9dcaa7c392" title="To Thread Receiving function." alt="" coords="743,673,867,700"/>
+<area shape="rect" id="node36" href="$group___n___s_t_r.html#ga3257ab0fdf5a36d0dfca480a161d9fbf" title="Scan a list of directory and return a list of char *file." alt="" coords="756,876,855,903"/>
+<area shape="rect" id="node3" href="$group___n_e_t_w_o_r_k___m_s_g.html#gacbebab8f754ea1a2e225dee3a164e2d8" title="Add a formatted NETWMSG_IDENT message to the specified network." alt="" coords="505,31,659,57"/>
+<area shape="rect" id="node5" href="$group___n_e_t_w_o_r_k___m_s_g.html#gad714a62771873d9468240143db9e5746" title="make a network NETMSG_STRING message with given parameters" alt="" coords="485,107,679,133"/>
+<area shape="rect" id="node8" href="$ex__network_8h.html#a97064904e9c2be2094c349413ff348fc" title="send data to specified network" alt="" coords="273,528,397,555"/>
+<area shape="rect" id="node4" href="$group___n_e_t_w_o_r_k_i_n_g.html#gae8345266fcf7a23c0e8ffe176b0e086f" title="Add a formatted NETWMSG_IDENT message to the specified network." alt="" coords="269,5,401,32"/>
+<area shape="rect" id="node6" href="$group___n_e_t_w_o_r_k_i_n_g.html#gad3b590da2eb8b594c75d1d5f46ba7b45" title="Add a string to the network, aiming a specific user." alt="" coords="257,56,413,83"/>
+<area shape="rect" id="node7" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga02b35de5d3b84e79c4fecbf4cebce603" title="Add a string to the network, aiming all server&#45;side users." alt="" coords="245,107,424,133"/>
+<area shape="rect" id="node9" href="$ex__network_8h.html#a2af070d97fced1a0eadad90c6aa4903b" title="recv/send datas if any for the client" alt="" coords="35,832,154,859"/>
+<area shape="rect" id="node11" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga0ff2638e1e094f9af393d0d63cbbab0d" title="Make a single message of the string." alt="" coords="505,680,659,707"/>
+<area shape="rect" id="node12" href="$ex__network_8h.html#a6f950bd6cd1d0314572ecae401ac1883" title="decode data we got from network" alt="" coords="277,832,392,859"/>
+<area shape="rect" id="node13" href="$group___n_e_t_w_o_r_k___m_s_g.html#gaf2d84e34e50db7b3b7aca16c6bdb06f8" title="Retrieves identification from netwmsg." alt="" coords="273,731,396,757"/>
+<area shape="rect" id="node14" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga525ee81a12f526d55b2b380d9338424e" title="Retrieves a ping travel elapsed time." alt="" coords="276,781,393,808"/>
+<area shape="rect" id="node15" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga241bf3b1ebc63dd986dfec1b0fe4998b" title="Retrieves position from netwmsg." alt="" coords="264,579,405,605"/>
+<area shape="rect" id="node16" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga601ef18cfe3570caaa81cc43c09004c2" title="get a formatted NETWMSG_QUIT message from the specified network" alt="" coords="277,629,392,656"/>
+<area shape="rect" id="node17" href="$group___n_e_t_w_o_r_k___m_s_g.html#gace220d6339bd8085269ecee2b35126fb" title="Retrieves string from netwmsg." alt="" coords="271,680,398,707"/>
+<area shape="rect" id="node20" href="$n__kafka_8c.html#a2e5d21cfda507e07123f9961434131dc" title="kafka produce or consume pooling thread function" alt="" coords="494,800,670,827"/>
+<area shape="rect" id="node21" href="$group___n___k_a_f_k_a.html#gab5930c8ff78f4a853b5a5c140414aec0" title="start the pooling thread of a kafka handle" alt="" coords="253,934,417,975"/>
+<area shape="rect" id="node23" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga06115ed18a658114104ca6b6823f5d79" title="add net_msg to all network in netork pool" alt="" coords="255,427,415,453"/>
+<area shape="rect" id="node24" href="$group___n_e_t_w_o_r_k_i_n_g.html#gad9588cf27263ecf40f57d3923ccf721a" title="Add a ping reply to the network." alt="" coords="271,477,398,504"/>
+<area shape="rect" id="node25" href="$group___n_e_t_w_o_r_k_i_n_g.html#gafaf1202a5f56a9f2285fccfbcacb3a6c" title="Add a formatted NETWMSG_IDENT message to the specified network." alt="" coords="259,157,410,184"/>
+<area shape="rect" id="node26" href="$group___n_e_t_w_o_r_k_i_n_g.html#gac8b30599c7a5c2cce35ee401d7b9d7f1" title="Add a formatted NETMSG_QUIT message to the specified network." alt="" coords="273,208,397,235"/>
+<area shape="rect" id="node27" href="$group___n___u_s_e_r.html#ga2f336886f3d5e909c397f1660419701d" title="add a N_STR *message to user list" alt="" coords="245,259,424,285"/>
+<area shape="rect" id="node31" href="$group___n___u_s_e_r.html#gac33945e0ace7b69815c92c2e9ba248a1" title="send all waiting messages ofr each user of the lsit" alt="" coords="232,309,437,336"/>
+<area shape="rect" id="node32" href="$group___n___u_s_e_r.html#ga7b395e123b45d9d9215ea4318d5ff2cc" title="send all waiting messages in user &#39;id&#39; waiting list" alt="" coords="263,361,406,402"/>
+<area shape="rect" id="node28" href="$group___n___u_s_e_r.html#ga25d7254e2bc5d4c6d4e89dadef9c67cd" title="add a N_STR *message to user list (USERLIST_ONE)" alt="" coords="17,317,173,344"/>
+<area shape="rect" id="node29" href="$group___n___u_s_e_r.html#gaaf1860e26c4355764ad00e1016547b2c" title="add a N_STR *message to user list (USERLIST_ALL)" alt="" coords="5,200,184,227"/>
+<area shape="rect" id="node30" href="$group___n___u_s_e_r.html#gaec87d76c70852173c2187e4eceb707ee" title="add a N_STR *message to user list except user &#39;id&#39; (USERLIST_ALL_EXCEPT)" alt="" coords="17,251,173,293"/>
+<area shape="rect" id="node35" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga5ba0555c5ccd261227c3c1216923d563" title="Start the NETWORK netw Threaded Engine." alt="" coords="499,737,665,764"/>
+<area shape="rect" id="node37" href="$group___n___s_t_r.html#gaa3becc1e523b47d5d53bbbf6b1603520" title="Scan a list of directory and return a list of char *file." alt="" coords="544,876,620,903"/>
+</map>

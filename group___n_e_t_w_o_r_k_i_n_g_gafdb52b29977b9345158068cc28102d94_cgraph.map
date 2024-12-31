@@ -1,0 +1,13 @@
+<map id="netw_wait_close_timed" name="netw_wait_close_timed">
+<area shape="rect" id="node1" title="Wait for peer closing a specified Network, destroy queues, free the structure." alt="" coords="5,139,180,166"/>
+<area shape="rect" id="node2" href="$n__network_8c.html#a1faf7fb8ea77a33208c35a2ddb087629" title="wait until the socket is empty or timeout, checking each 100 msec." alt="" coords="228,89,383,115"/>
+<area shape="rect" id="node3" href="$group___n_e_t_w_o_r_k_i_n_g.html#gac345c1af1935cebb9ee33edd4c32267a" title="Closing a specified Network, destroy queues, free the structure." alt="" coords="258,139,353,166"/>
+<area shape="rect" id="node6" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaf25c0f462f174092815b0c5d019441db" title="Get the state of a network." alt="" coords="644,215,767,242"/>
+<area shape="rect" id="node4" href="$group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755" title="Empty and Free a list container." alt="" coords="815,114,913,141"/>
+<area shape="rect" id="node7" href="$group___n_e_t_w_o_r_k_i_n_g.html#gafc7a91b4be2a997710a2b54037c25168" title="remove a NETWORK *netw to a NETWORK_POOL *pool" alt="" coords="440,63,587,90"/>
+<area shape="rect" id="node10" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaa8e1fe7978995197f08aa0ef24a76c33" title="Restart or reset the specified network ability." alt="" coords="665,165,746,191"/>
+<area shape="rect" id="node11" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga29159184519b3129c0154b1a2c2a3e2f" title="Stop a NETWORK connection sending and receing thread." alt="" coords="431,165,596,191"/>
+<area shape="rect" id="node5" href="$group___l_i_s_t.html#ga1dafe7a250ddad51fadd375f057287e7" title="Empty a LIST list of pointers." alt="" coords="961,139,1052,166"/>
+<area shape="rect" id="node8" href="$group___h_a_s_h___t_a_b_l_e.html#ga2dc87273d3e6b3492d88f2bd7288102e" title="remove and delete node at key in table" alt="" coords="659,114,751,141"/>
+<area shape="rect" id="node9" href="$group___l_i_s_t.html#ga9be40eafc3444fd2443cc940634af163" title="search ptr in list" alt="" coords="659,63,751,90"/>
+</map>

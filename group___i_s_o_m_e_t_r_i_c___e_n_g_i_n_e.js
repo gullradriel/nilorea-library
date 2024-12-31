@@ -1,0 +1,46 @@
+var group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e =
+[
+    [ "CELL", "group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#struct_c_e_l_l", [
+      [ "ability", "group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#a3eba2670b3a8632e18de3fb7f19dc6d9", null ],
+      [ "music", "group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#acd30658812d6260ff554b45d6c50aa25", null ],
+      [ "objectnumber", "group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ad7c5b510f5914c694133dc2be0d19a15", null ],
+      [ "tilenumber", "group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#a6273847e0559e755eaac94323f1def98", null ]
+    ] ],
+    [ "MAP", "group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#struct_m_a_p", [
+      [ "anim_group_names", "group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#acc28b5353975b1eecc04feaada8e0e6d", null ],
+      [ "bgcolor", "group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ad03f029a461547062edfd9fe6e6b8629", null ],
+      [ "colortile", "group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#a858b3594d985a1e8d8b3140d73f39db7", null ],
+      [ "grid", "group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#aa358962e9063fc034f305040b4ccc0bb", null ],
+      [ "mousemap", "group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#af4bf0e727bac8c5b1aa0e80f04eb57d1", null ],
+      [ "name", "group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#a6e4ab9656865f6b08cf08cb1ec7b7f6f", null ],
+      [ "object_group_names", "group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#a994b026a2594ab38ba844dd6c101fa33", null ],
+      [ "ptanchorX", "group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#a7ee606fd309f1e469290814e3c17036f", null ],
+      [ "ptanchorY", "group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#a74066517862f256df00d1e930de9d2f8", null ],
+      [ "quests_group_names", "group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#a0415021e8033dd4004ea933bbad228d8", null ],
+      [ "sounds_group_names", "group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#a1fc1a98c11ee64e76f5ad6d204e024bd", null ],
+      [ "TILEH", "group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#a95707556190c6c8041048aa182fdeea2", null ],
+      [ "TILEW", "group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#a215b5540e1867e1a7c1aa8ec31394df9", null ],
+      [ "wirecolor", "group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#a797d9aeaa70901ea56b5053cd298eec0", null ],
+      [ "X", "group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#a1717fd32c721e12a0e83e03c53b1b7a6", null ],
+      [ "XSIZE", "group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#abba4c269619477240afe1978dd5520d3", null ],
+      [ "Y", "group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#af0ab2d5eec93cb4a514274b5f0db3f09", null ],
+      [ "YSIZE", "group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ab729e7d08a8a24ab3a5e5cb38f52366b", null ]
+    ] ],
+    [ "BLCK", "group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#gae0863acc1b854b0f522caf85f9651f13", null ],
+    [ "N_ABILITY", "group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#gac3020f81c4af6587694d3068728560db", null ],
+    [ "N_MUSIC", "group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga86e6af08f2c7a754c9ad414fd17a6e40", null ],
+    [ "N_OBJECT", "group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga7300ffd75554bf5829e66684e9d66841", null ],
+    [ "N_TILE", "group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga942503317c8fd73c07f63baff1f41fa6", null ],
+    [ "SWIM", "group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga154a04fc36112a0bbaf49752569165e9", null ],
+    [ "WALK", "group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga4083fcbe80d42575b0336ddbf4ebc622", null ],
+    [ "camera_to_map", "group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga525e12d4a6810091df368bebfead7432", null ],
+    [ "camera_to_scr", "group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga78d7a5ad73f85f937963b3619f65b0d7", null ],
+    [ "create_empty_map", "group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#gafbd6e8d63e4a9bffb9bae939e6f33d95", null ],
+    [ "draw_map", "group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#gadbfcc4dbd27990aa04aa68b3434480ef", null ],
+    [ "free_map", "group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#gafa40b1cd0683fd3a0088d759b8f4a57b", null ],
+    [ "get_value", "group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga2021990e7c7fa6c4589752a771aa48f3", null ],
+    [ "load_map", "group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga4d6c75959391f3afd98d81a1773ffe84", null ],
+    [ "save_map", "group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga045b27c2f11572951f654b62ede9baa0", null ],
+    [ "ScreenToMap", "group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#gadfbec14d5cfbe60a7034d59022a97cb3", null ],
+    [ "set_value", "group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga8366c42e9ace1872eaad8efda0e9a244", null ]
+];
