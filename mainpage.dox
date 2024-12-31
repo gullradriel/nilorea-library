@@ -1,0 +1,53 @@
+/**
+\mainpage Nilorea C Library
+
+\section contents Table Of Contents:
+<ul>  <li> \ref aboutlib </li>
+	<li> \ref require </li>
+	<li> \ref install </li>
+	<li> \ref end </li>
+</ul>
+
+\section aboutlib About Nilorea Library
+
+C tools that are usable as a collection of .c .h or a shared library/dll :
+
+Logging helpers, strings, linked lists, hash tables, thread pools, networking, ...
+
+The name is coming from one of my first project, which I failed over the time. The unfinished game gave birth to a usable library. The opposite may happen one of these days.
+
+See the modules sections for more informations
+
+
+\section require Requirements
+
+If using graphical/audio modules:
+
+- Allegro   5.0.0 or better http://alleg.sf.net/
+
+Mainly for thread and network module:
+
+- The socket libs (winsock or socket)
+
+- Pthread lib (posix pthread for windows or linux)
+
+- OpenSSL libs
+
+- PCRE library for pattern matching in various places
+
+\section install Installation
+Just type make and use the library or put the right files in your LIB and INCLUDE directory, link them with your code and let's go !
+Don't forget to define FLAGS for parts you don't need, it can save you memory and compilation time.
+
+
+\section end Closing Words
+
+Nilorea is a 'make life easier' library, you're welcome using it.
+
+Everything inside is free or under GPL license, read it at http://www.gnu.org/license/gpl.html
+
+You can join me at coder at nilorea.net
+
+More informations on the website: https://www.nilorea.net
+
+*/
