@@ -1,0 +1,23 @@
+<map id="char_to_nstr_ex" name="char_to_nstr_ex">
+<area shape="rect" id="Node000001" title="Convert a char into a N_STR, extended version." alt="" coords="875,68,1000,93"/>
+<area shape="rect" id="Node000002" href="$group___n___s_t_r.html#ga69e5f2dbf75571a73e5a3332929642a4" title="Convert a char into a N_STR, short version." alt="" coords="724,68,827,93"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="861,83,827,83,827,78,861,78"/>
+<area shape="rect" id="Node000003" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga196134389f2e0b1493154c73a7133df0" title="Add a copy of char *str to the string list in the message." alt="" coords="506,19,655,44"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="711,67,675,58,631,47,632,41,677,53,712,62"/>
+<area shape="rect" id="Node000004" href="$group___c_y_p_h_e_r___v_i_g_e_n_e_r_e.html#gaf9f2b64e60dd5e79279cc32ac7ff8886" title="quick decode data" alt="" coords="485,68,676,93"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="710,83,676,83,676,78,710,78"/>
+<area shape="rect" id="Node000010" href="$group___c_y_p_h_e_r___v_i_g_e_n_e_r_e.html#ga26872672f67b7c89b6fa9fa01d59ac00" title="quick encode data" alt="" coords="485,129,676,155"/>
+<area shape="poly" id="edge9_Node000002_Node000010" title=" " alt="" coords="722,100,623,132,621,127,720,95"/>
+<area shape="rect" id="Node000005" href="$group___c_y_p_h_e_r___v_i_g_e_n_e_r_e.html#ga6c11d1e142ec3b1617128d1425f46174" title="directly vigenere decode a file using key" alt="" coords="259,5,430,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="518,67,485,58,437,45,394,33,396,28,438,39,486,53,520,62"/>
+<area shape="rect" id="Node000007" href="$group___c_y_p_h_e_r___v_i_g_e_n_e_r_e.html#ga08551983c3b919de08ad1c35e0819d28" title="directly vigenere encode a file using key" alt="" coords="259,55,430,80"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="472,77,430,75,430,69,472,72"/>
+<area shape="rect" id="Node000009" href="$group___c_y_p_h_e_r___v_i_g_e_n_e_r_e.html#ga39a0e0c7d46e5adece091d682fcc87bd" title="get an answer from a root key and a question" alt="" coords="257,104,433,129"/>
+<area shape="poly" id="edge8_Node000004_Node000009" title=" " alt="" coords="484,98,429,107,428,101,483,93"/>
+<area shape="rect" id="Node000006" href="$group___c_y_p_h_e_r___v_i_g_e_n_e_r_e.html#ga1be4bd0f3b4410ebe4cd4240b804338c" title="directly vigenere decode a file using question and answer" alt="" coords="5,5,204,31"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="246,21,204,21,204,15,246,15"/>
+<area shape="rect" id="Node000008" href="$group___c_y_p_h_e_r___v_i_g_e_n_e_r_e.html#ga5ed58e0fb772ca9e2a8b9679b29c08d7" title="directly vigenere encode a file using question and answer" alt="" coords="5,55,204,80"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="246,70,204,70,204,65,246,65"/>
+<area shape="rect" id="Node000011" href="$group___c_y_p_h_e_r___v_i_g_e_n_e_r_e.html#gae9d3c2b1247c0c79267521bcfcaf9079" title="get a question generated from the current machine hardware (disk&amp;cpu)" alt="" coords="252,153,437,179"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="472,156,438,159,437,154,471,150"/>
+</map>

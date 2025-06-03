@@ -1,0 +1,42 @@
+<map id="delete_msg" name="delete_msg">
+<area shape="rect" id="Node000001" title="Delete a NETW_MSG *object." alt="" coords="488,277,587,303"/>
+<area shape="rect" id="Node000002" href="$ex__network_8h.html#a6f950bd6cd1d0314572ecae401ac1883" title="decode data we got from network" alt="" coords="279,252,393,277"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="474,285,393,274,394,269,475,280"/>
+<area shape="rect" id="Node000004" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga7bae3c3de53204413c7663007ec4a4d7" title="Add a formatted NETWMSG_IDENT message to the specified network." alt="" coords="259,5,413,31"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="531,263,523,216,507,156,480,95,461,68,438,44,412,29,415,25,442,40,465,65,484,93,512,154,529,215,536,263"/>
+<area shape="rect" id="Node000006" href="$group___n_e_t_w_o_r_k___m_s_g.html#gaeb5e94070c0ee79ff2d11a707d225c3a" title="Make a ping message to send to a network." alt="" coords="261,55,411,80"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="528,264,518,226,500,179,474,132,458,112,438,94,410,78,412,74,442,89,461,108,479,130,505,177,523,224,533,263"/>
+<area shape="rect" id="Node000008" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga6d469c5cbc4fdfa266be68a35d10a904" title="make a network NETMSG_POSITION message with given parameters" alt="" coords="232,104,440,129"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="524,266,493,203,468,170,438,143,418,132,420,127,442,138,472,167,497,200,529,263"/>
+<area shape="rect" id="Node000010" href="$group___n_e_t_w_o_r_k___m_s_g.html#gaea4cc09810479665c6c7e689dfaecff7" title="make a generic network NETMSG_QUIT message" alt="" coords="245,153,427,179"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="518,268,484,229,463,209,439,192,413,181,415,176,441,188,466,205,488,225,522,265"/>
+<area shape="rect" id="Node000012" href="$group___n_e_t_w_o_r_k___m_s_g.html#gafb91c3ea7bfa93212141fa1fe074fb3d" title="make a network NETMSG_STRING message with given parameters" alt="" coords="239,203,433,228"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="503,273,439,242,402,231,404,226,441,237,505,268"/>
+<area shape="rect" id="Node000015" href="$group___n_e_t_w_o_r_k___m_s_g.html#gaf2d84e34e50db7b3b7aca16c6bdb06f8" title="Retrieves identification from netwmsg." alt="" coords="275,301,397,327"/>
+<area shape="poly" id="edge14_Node000001_Node000015" title=" " alt="" coords="475,300,398,309,397,304,474,295"/>
+<area shape="rect" id="Node000016" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga525ee81a12f526d55b2b380d9338424e" title="Retrieves a ping travel elapsed time." alt="" coords="277,351,395,376"/>
+<area shape="poly" id="edge15_Node000001_Node000016" title=" " alt="" coords="504,312,441,342,396,355,394,350,439,337,502,307"/>
+<area shape="rect" id="Node000017" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga241bf3b1ebc63dd986dfec1b0fe4998b" title="Retrieves position from netwmsg." alt="" coords="265,400,407,425"/>
+<area shape="poly" id="edge16_Node000001_Node000017" title=" " alt="" coords="521,315,488,355,466,374,441,391,408,405,406,400,439,386,462,370,484,351,517,312"/>
+<area shape="rect" id="Node000018" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga601ef18cfe3570caaa81cc43c09004c2" title="get a formatted NETWMSG_QUIT message from the specified network" alt="" coords="279,449,393,475"/>
+<area shape="poly" id="edge17_Node000001_Node000018" title=" " alt="" coords="529,317,497,379,472,412,442,440,419,452,395,459,393,454,417,447,438,436,468,409,492,377,524,315"/>
+<area shape="rect" id="Node000019" href="$group___n_e_t_w_o_r_k___m_s_g.html#gace220d6339bd8085269ecee2b35126fb" title="Retrieves string from netwmsg." alt="" coords="273,499,399,524"/>
+<area shape="poly" id="edge18_Node000001_Node000019" title=" " alt="" coords="533,317,523,356,505,402,478,449,461,471,442,489,422,501,400,509,399,503,420,496,438,485,457,467,474,446,500,400,518,354,528,316"/>
+<area shape="rect" id="Node000020" href="$ex__network_8h.html#a97064904e9c2be2094c349413ff348fc" title="send data to specified network" alt="" coords="274,548,398,573"/>
+<area shape="poly" id="edge19_Node000001_Node000020" title=" " alt="" coords="536,317,528,365,512,425,484,486,465,514,442,539,422,551,399,559,398,554,419,547,438,535,461,511,480,484,507,423,523,364,531,316"/>
+<area shape="rect" id="Node000003" href="$ex__network_8h.html#a2af070d97fced1a0eadad90c6aa4903b" title="recv/send datas if any for the client" alt="" coords="35,425,154,451"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="266,277,233,291,191,323,154,361,106,427,102,424,150,358,187,319,231,286,264,272"/>
+<area shape="rect" id="Node000005" href="$group___n_e_t_w_o_r_k_i_n_g.html#gae8345266fcf7a23c0e8ffe176b0e086f" title="Add a formatted NETWMSG_IDENT message to the specified network." alt="" coords="29,5,161,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="245,21,161,21,161,15,245,15"/>
+<area shape="rect" id="Node000007" href="$group___n_e_t_w_o_r_k_i_n_g.html#gad9588cf27263ecf40f57d3923ccf721a" title="Add a ping reply to the network." alt="" coords="31,55,158,80"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="248,70,158,70,158,65,248,65"/>
+<area shape="rect" id="Node000009" href="$group___n_e_t_w_o_r_k_i_n_g.html#gafaf1202a5f56a9f2285fccfbcacb3a6c" title="Add a formatted NETWMSG_IDENT message to the specified network." alt="" coords="19,104,170,129"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="218,119,170,119,170,114,218,114"/>
+<area shape="rect" id="Node000011" href="$group___n_e_t_w_o_r_k_i_n_g.html#gac8b30599c7a5c2cce35ee401d7b9d7f1" title="Add a formatted NETMSG_QUIT message to the specified network." alt="" coords="33,153,157,179"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="231,169,157,169,157,163,231,163"/>
+<area shape="rect" id="Node000013" href="$group___n_e_t_w_o_r_k_i_n_g.html#gad3b590da2eb8b594c75d1d5f46ba7b45" title="Add a string to the network, aiming a specific user." alt="" coords="17,252,173,277"/>
+<area shape="poly" id="edge12_Node000012_Node000013" title=" " alt="" coords="260,233,158,255,157,249,259,228"/>
+<area shape="rect" id="Node000014" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga02b35de5d3b84e79c4fecbf4cebce603" title="Add a string to the network, aiming all server&#45;side users." alt="" coords="5,203,184,228"/>
+<area shape="poly" id="edge13_Node000012_Node000014" title=" " alt="" coords="226,218,184,218,184,213,226,213"/>
+<area shape="poly" id="edge20_Node000020_Node000003" title=" " alt="" coords="259,550,231,539,194,519,159,495,108,453,111,449,162,491,197,514,233,534,261,545"/>
+</map>
