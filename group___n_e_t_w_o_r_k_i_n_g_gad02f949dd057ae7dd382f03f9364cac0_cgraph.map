@@ -1,0 +1,27 @@
+<map id="netw_set_blocking" name="netw_set_blocking">
+<area shape="rect" id="Node000001" title="Modify blocking socket mode." alt="" coords="5,132,148,157"/>
+<area shape="rect" id="Node000002" href="$group___n_e_t_w_o_r_k_i_n_g.html#gac345c1af1935cebb9ee33edd4c32267a" title="Closing a specified Network, destroy queues, free the structure." alt="" coords="196,132,291,157"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="148,142,182,142,182,147,148,147"/>
+<area shape="rect" id="Node000003" href="$group___n_e_t_w_o_r_k_i_n_g.html#gab7f9fd903744c66d570b868df5b3a551" title="wait until the socket is empty or timeout, checking each 100 msec." alt="" coords="344,5,499,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="252,130,287,90,337,48,364,34,367,38,340,52,291,94,256,134"/>
+<area shape="rect" id="Node000004" href="$group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755" title="Empty and Free a list container." alt="" coords="723,204,821,229"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="261,129,295,109,338,91,433,67,510,53,548,53,586,59,629,71,676,92,705,112,729,138,762,190,757,193,725,141,702,116,673,96,627,76,585,64,547,58,511,58,434,72,339,97,298,113,264,134"/>
+<area shape="rect" id="Node000006" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaaacd43329a330a29b5a93cce28c068e5" title="Get the state of a network." alt="" coords="552,205,675,231"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="291,151,539,201,538,206,290,156"/>
+<area shape="rect" id="Node000007" href="$group___n_e_t_w_o_r_k_i_n_g.html#gafc7a91b4be2a997710a2b54037c25168" title="remove a NETWORK *netw to a NETWORK_POOL *pool" alt="" coords="348,107,495,132"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="290,135,334,129,335,134,291,141"/>
+<area shape="rect" id="Node000010" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaa8e1fe7978995197f08aa0ef24a76c33" title="Restart or reset the specified network ability." alt="" coords="573,255,654,280"/>
+<area shape="poly" id="edge9_Node000002_Node000010" title=" " alt="" coords="254,156,287,201,311,225,340,244,395,263,454,272,510,274,559,272,559,277,510,279,454,277,394,268,337,248,308,229,283,204,250,159"/>
+<area shape="rect" id="Node000011" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga29159184519b3129c0154b1a2c2a3e2f" title="Stop a NETWORK connection sending and receing thread." alt="" coords="339,208,504,233"/>
+<area shape="poly" id="edge12_Node000002_Node000011" title=" " alt="" coords="272,155,340,186,375,201,373,205,338,191,270,160"/>
+<area shape="rect" id="Node000005" href="$group___l_i_s_t.html#ga1dafe7a250ddad51fadd375f057287e7" title="Empty a LIST list of pointers." alt="" coords="869,229,960,255"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="822,223,857,229,856,234,821,228"/>
+<area shape="rect" id="Node000008" href="$group___h_a_s_h___t_a_b_l_e.html#ga2dc87273d3e6b3492d88f2bd7288102e" title="remove and delete node at key in table" alt="" coords="567,107,659,132"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="495,117,553,117,553,122,495,122"/>
+<area shape="rect" id="Node000009" href="$group___l_i_s_t.html#gae009d6d3c835a2affb99071ea8457803" title="search ptr in list" alt="" coords="567,156,659,181"/>
+<area shape="poly" id="edge8_Node000007_Node000009" title=" " alt="" coords="472,129,555,151,554,156,471,135"/>
+<area shape="poly" id="edge10_Node000010_Node000004" title=" " alt="" coords="653,252,718,231,719,236,655,257"/>
+<area shape="poly" id="edge11_Node000010_Node000005" title=" " alt="" coords="654,261,855,244,856,250,655,267"/>
+<area shape="poly" id="edge13_Node000011_Node000006" title=" " alt="" coords="504,217,538,216,538,222,504,222"/>
+<area shape="poly" id="edge14_Node000011_Node000010" title=" " alt="" coords="475,231,560,252,558,257,474,236"/>
+</map>

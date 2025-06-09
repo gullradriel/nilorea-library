@@ -1,0 +1,17 @@
+<map id="n_kafka_new_event_from_file" name="n_kafka_new_event_from_file">
+<area shape="rect" id="Node000001" title="make a new event from a N_STR *string" alt="" coords="5,35,220,60"/>
+<area shape="rect" id="Node000002" href="$group___n___s_t_r.html#gad2c9b27509a55615e57ef8efd2ca3a02" title="Load a whole file into a N_STR." alt="" coords="315,5,409,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="220,32,300,22,301,28,220,37"/>
+<area shape="rect" id="Node000004" href="$group___n___k_a_f_k_a.html#gaff933a80c25dd942e8363ea19edcf551" title="make a new event from a N_STR *string" alt="" coords="268,55,456,95"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="220,57,255,61,254,66,220,62"/>
+<area shape="rect" id="Node000003" href="$group___n___s_t_r.html#ga873edbb1f8787d0a78a13ccbbed9b9f9" title="create a new N_STR string" alt="" coords="575,5,656,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="410,15,560,15,560,21,410,21"/>
+<area shape="rect" id="Node000005" href="$group___n___k_a_f_k_a.html#gaaf3a94133f843704a780b74aa03ed7ca" title="make a new event from a char *string" alt="" coords="504,63,727,88"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="456,73,490,73,490,78,456,78"/>
+<area shape="rect" id="Node000006" href="$group___n___k_a_f_k_a.html#gac903845a2fb184abee410a713c3890f9" title="create a new empty event" alt="" coords="779,33,929,59"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="718,60,765,54,765,60,719,65"/>
+<area shape="rect" id="Node000007" href="$group___n___k_a_f_k_a.html#ga365ccb4d2d1601cd9d7c11fcf4acc1c9" title="put a htonl schema id into the first 4 bytes of a N_STR *string" alt="" coords="775,83,933,123"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="724,85,761,90,760,95,723,91"/>
+<area shape="rect" id="Node000008" href="$group___n___k_a_f_k_a.html#ga6167f6e8b0e9d485797bc524162cbf3f" title="put a htonl schema id into the first 4 bytes of a char *string" alt="" coords="981,83,1140,123"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="934,101,968,101,968,106,934,106"/>
+</map>

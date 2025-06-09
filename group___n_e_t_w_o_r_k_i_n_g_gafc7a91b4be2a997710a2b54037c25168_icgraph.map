@@ -1,0 +1,22 @@
+<map id="netw_pool_remove" name="netw_pool_remove">
+<area shape="rect" id="Node000001" title="remove a NETWORK *netw to a NETWORK_POOL *pool" alt="" coords="808,107,955,132"/>
+<area shape="rect" id="Node000002" href="$group___n_e_t_w_o_r_k_i_n_g.html#gac345c1af1935cebb9ee33edd4c32267a" title="Closing a specified Network, destroy queues, free the structure." alt="" coords="665,107,760,132"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="794,122,760,122,760,117,794,117"/>
+<area shape="rect" id="Node000003" href="$ex__network_8h.html#a2af070d97fced1a0eadad90c6aa4903b" title="recv/send datas if any for the client" alt="" coords="487,5,605,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="684,100,616,52,578,33,580,28,619,48,687,96"/>
+<area shape="rect" id="Node000004" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga87057932b1901f9a91c4db49224087e2" title="make a normal &#39;accept&#39; ." alt="" coords="261,107,427,132"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="660,106,617,97,546,91,475,97,398,109,397,104,474,91,546,86,618,91,661,100"/>
+<area shape="rect" id="Node000007" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga52afd4f5662c9c8f334d224ae2cdbdf2" title="Make a NETWORK be a Listening network." alt="" coords="264,181,424,207"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="693,144,660,173,618,196,567,209,515,214,464,213,418,209,418,204,464,208,514,209,566,204,616,192,657,169,689,140"/>
+<area shape="rect" id="Node000008" href="$n__network_8c.html#a8ad9fbb10c0881b9e14bb098ffd42210" title="Return an empty allocated network ready to be netw_closed." alt="" coords="502,156,590,181"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="657,139,591,158,589,153,655,133"/>
+<area shape="rect" id="Node000009" href="$group___n_e_t_w_o_r_k_i_n_g.html#gad02f949dd057ae7dd382f03f9364cac0" title="Modify blocking socket mode." alt="" coords="475,107,617,132"/>
+<area shape="poly" id="edge10_Node000002_Node000009" title=" " alt="" coords="652,122,618,122,618,117,652,117"/>
+<area shape="rect" id="Node000005" href="$group___n_e_t_w_o_r_k_i_n_g.html#gab99090cbf623f95556ea610e690b50d9" title="make a normal blocking &#39;accept&#39; ." alt="" coords="38,81,181,107"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="247,112,181,104,181,99,248,106"/>
+<area shape="rect" id="Node000006" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga32138772c399518190a14e81164fc469" title="make a normal blocking &#39;accept&#39; ." alt="" coords="5,131,213,156"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="248,132,214,135,213,130,247,127"/>
+<area shape="poly" id="edge8_Node000008_Node000004" title=" " alt="" coords="488,157,396,135,398,129,489,152"/>
+<area shape="poly" id="edge9_Node000008_Node000007" title=" " alt="" coords="489,178,425,187,424,181,488,173"/>
+<area shape="poly" id="edge11_Node000009_Node000004" title=" " alt="" coords="461,122,427,122,427,117,461,117"/>
+</map>

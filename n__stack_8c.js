@@ -1,0 +1,28 @@
+var n__stack_8c =
+[
+    [ "__stack_pop", "n__stack_8c.html#a683249259f859428011c1dc93529dd45", null ],
+    [ "__stack_push", "n__stack_8c.html#a526b57208b6511c1b5147a0f9ad6e55d", null ],
+    [ "delete_stack", "group___s_t_a_c_k.html#gae10ed44c0747bbb61ff7a4f4fb861a7a", null ],
+    [ "new_stack", "group___s_t_a_c_k.html#gaeb9766b80862cfed07804b00e02ca3d9", null ],
+    [ "stack_is_empty", "group___s_t_a_c_k.html#ga262da05db5ed393ca1af9adee0046315", null ],
+    [ "stack_is_full", "group___s_t_a_c_k.html#ga4aec6e9c9b01255d1131a3f3cc6c2886", null ],
+    [ "stack_peek", "group___s_t_a_c_k.html#ga3fd77da7de03d2d18cdb3600f24db24b", null ],
+    [ "stack_pop_b", "group___s_t_a_c_k.html#ga2fb95be3f5f644f46d6d071365ecc8e1", null ],
+    [ "stack_pop_c", "group___s_t_a_c_k.html#ga581a47ccfc1da063f2b668a5fc73b315", null ],
+    [ "stack_pop_d", "group___s_t_a_c_k.html#ga280e4798f9624d97531a3e5ed3f78fa2", null ],
+    [ "stack_pop_f", "group___s_t_a_c_k.html#ga722c00b84620d10288d65675179c33cd", null ],
+    [ "stack_pop_i32", "group___s_t_a_c_k.html#gada4b159b3c4dcde56905cd49ac04dcb8", null ],
+    [ "stack_pop_i8", "group___s_t_a_c_k.html#ga53e34b97087a1177c96c0ce32966cfb3", null ],
+    [ "stack_pop_p", "group___s_t_a_c_k.html#gaf3a5086088b5bb511ba8dc265adfeb39", null ],
+    [ "stack_pop_ui32", "group___s_t_a_c_k.html#gab62facdfc1a162b989d78c8caf915bc6", null ],
+    [ "stack_pop_ui8", "group___s_t_a_c_k.html#ga78a9be2f76ff4e306bfe2d8d1bc08494", null ],
+    [ "stack_push_b", "group___s_t_a_c_k.html#gaba2d8fcb66acaca628b1be6c575e8541", null ],
+    [ "stack_push_c", "group___s_t_a_c_k.html#ga7d9f28e18faf348fd4ab97ea47621ac7", null ],
+    [ "stack_push_d", "group___s_t_a_c_k.html#ga3458d26b4af8bbceb20d52afab6c4734", null ],
+    [ "stack_push_f", "group___s_t_a_c_k.html#ga19db9b4bae7a2236355982f518cc8d20", null ],
+    [ "stack_push_i32", "group___s_t_a_c_k.html#gada2ba939444a901d6f801d0399375e43", null ],
+    [ "stack_push_i8", "group___s_t_a_c_k.html#gae22319d96be347b2d38d02bdb2af7f34", null ],
+    [ "stack_push_p", "group___s_t_a_c_k.html#gaf38d5759fa73e191542a6d95781ce7c0", null ],
+    [ "stack_push_ui32", "group___s_t_a_c_k.html#ga4e555ba13b94ea3cb7453adc54d6067b", null ],
+    [ "stack_push_ui8", "group___s_t_a_c_k.html#ga35cabbd51b1ee323eef2e068747fd8f7", null ]
+];

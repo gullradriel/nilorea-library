@@ -1,0 +1,28 @@
+var searchData=
+[
+  ['w_0',['w',['../group___g_u_i.html#ab2d5899259c4901fa68ffdebe59f0000',1,'N_GUI_WIDGET::w'],['../group___a_n_i_m___l_i_b.html#a2af34142394cac7ad42b58495ed7c4fe',1,'ANIM_GFX::w']]],
+  ['w_5fname_1',['w_name',['../n__log_8c.html#abe396fe7169ae2341fdbfee87ecf389d',1,'LOG_LEVELS']]],
+  ['wait_5fclose_5ftimeout_2',['wait_close_timeout',['../group___n_e_t_w_o_r_k_i_n_g.html#afb81ff9b8578eac129e6d9047b32708d',1,'NETWORK']]],
+  ['wait_5ffor_5fslowing_5fdown_5fcpu_3',['wait_for_slowing_down_cpu',['../group___g_a_m_e___e_n_v.html#aa8b57b5162ab0145a1a369436caa5f02',1,'GAME_ENV']]],
+  ['wait_5ffor_5fsynced_5fthreaded_5fpool_4',['wait_for_synced_threaded_pool',['../group___t_h_r_e_a_d_s.html#ga8207010787895dfc3bf7ba0b94974c26',1,'wait_for_synced_threaded_pool(THREAD_POOL *thread_pool):&#160;n_thread_pool.c'],['../group___t_h_r_e_a_d_s.html#ga8207010787895dfc3bf7ba0b94974c26',1,'wait_for_synced_threaded_pool(THREAD_POOL *thread_pool):&#160;n_thread_pool.c']]],
+  ['wait_5ffor_5fthreaded_5fpool_5',['wait_for_threaded_pool',['../group___t_h_r_e_a_d_s.html#ga91ced7902ded69f1cdb0a625dbb5f4e9',1,'wait_for_threaded_pool(THREAD_POOL *thread_pool, unsigned int delay):&#160;n_thread_pool.c'],['../group___t_h_r_e_a_d_s.html#ga91ced7902ded69f1cdb0a625dbb5f4e9',1,'wait_for_threaded_pool(THREAD_POOL *thread_pool, unsigned int delay):&#160;n_thread_pool.c']]],
+  ['waiting_5flist_6',['waiting_list',['../group___t_h_r_e_a_d_s.html#a86b5f24f3379eb4659ac2e6e06e8835d',1,'THREAD_POOL']]],
+  ['waiting_5fproc_7',['WAITING_PROC',['../group___t_h_r_e_a_d_s.html#gad1478c0e8f6772bb9673116dd0902e56',1,'n_thread_pool.h']]],
+  ['walk_8',['WALK',['../group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga4083fcbe80d42575b0336ddbf4ebc622',1,'n_iso_engine.h']]],
+  ['wildmat_9',['wildmat',['../group___n___s_t_r.html#gabcfef0711183d5a9eb5ccb9c72ccaf85',1,'wildmat(register const char *text, register const char *p):&#160;n_str.c'],['../group___n___s_t_r.html#gabcfef0711183d5a9eb5ccb9c72ccaf85',1,'wildmat(register const char *text, register const char *p):&#160;n_str.c']]],
+  ['wildmat_5fabort_10',['WILDMAT_ABORT',['../group___n___s_t_r.html#ga79fa44855e34ba816359656e8bfd841f',1,'n_str.h']]],
+  ['wildmat_5fnegate_5fclass_11',['WILDMAT_NEGATE_CLASS',['../group___n___s_t_r.html#ga868c667912754efcf68370278b0aaee1',1,'n_str.h']]],
+  ['wildmatcase_12',['wildmatcase',['../group___n___s_t_r.html#ga83b7c5c99476048f972ead97468ab7c2',1,'wildmatcase(register const char *text, register const char *p):&#160;n_str.c'],['../group___n___s_t_r.html#ga83b7c5c99476048f972ead97468ab7c2',1,'wildmatcase(register const char *text, register const char *p):&#160;n_str.c']]],
+  ['wirecolor_13',['wirecolor',['../group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#a797d9aeaa70901ea56b5053cd298eec0',1,'MAP']]],
+  ['with_20a_20root_20key_20or_20a_20combination_20of_20a_20question_20and_20an_20answer_14',['CYPHERS: VIGENERE (encode / decode) a (N_STR / file) with a root key or a combination of a question and an answer',['../group___c_y_p_h_e_r___v_i_g_e_n_e_r_e.html',1,'']]],
+  ['with_20dynamic_20resizing_20and_20boundary_20checking_15',['STRINGS: replacement to char *strings with dynamic resizing and boundary checking',['../group___n___s_t_r.html',1,'']]],
+  ['with_20generic_20support_16',['TREE: various tree with generic support',['../group___t_r_e_e.html',1,'']]],
+  ['words_17',['Closing Words',['../index.html#end',1,'']]],
+  ['wrappers_20network_20queue_20thread_20safe_20add_20get_20message_20ssl_20tls_20secured_20communications_18',['NETWORK ENGINE: connect, accept, send and recv wrappers. Network Queue, thread-safe add/get message, ssl/tls secured communications',['../group___n_e_t_w_o_r_k_i_n_g.html',1,'']]],
+  ['write_5fand_5ffit_19',['write_and_fit',['../group___n___s_t_r.html#ga4d201326b0adb27713e86af775b3dd35',1,'write_and_fit(char **dest, NSTRBYTE *size, NSTRBYTE *written, const char *src):&#160;n_str.c'],['../group___n___s_t_r.html#ga4d201326b0adb27713e86af775b3dd35',1,'write_and_fit(char **dest, NSTRBYTE *size, NSTRBYTE *written, const char *src):&#160;n_str.c']]],
+  ['write_5fand_5ffit_5fex_20',['write_and_fit_ex',['../group___n___s_t_r.html#gacc3740a4b0816c80170ba6d6b0ae9eea',1,'write_and_fit_ex(char **dest, NSTRBYTE *size, NSTRBYTE *written, const char *src, NSTRBYTE src_size, NSTRBYTE additional_padding):&#160;n_str.c'],['../group___n___s_t_r.html#gacc3740a4b0816c80170ba6d6b0ae9eea',1,'write_and_fit_ex(char **dest, NSTRBYTE *size, NSTRBYTE *written, const char *src, NSTRBYTE src_size, NSTRBYTE additional_padding):&#160;n_str.c']]],
+  ['write_5fconfig_5ffile_21',['write_config_file',['../group___c_o_n_f_i_g_f_i_l_e.html#ga1b22438cb7d7a274b748d49e555f7f50',1,'write_config_file(CONFIG_FILE *cfg_file, char *filename):&#160;n_config_file.c'],['../group___c_o_n_f_i_g_f_i_l_e.html#ga1b22438cb7d7a274b748d49e555f7f50',1,'write_config_file(CONFIG_FILE *cfg_file, char *filename):&#160;n_config_file.c']]],
+  ['write_5flock_22',['write_lock',['../group___c_o_m_m_o_n_s.html#gabf9cebcdf845c2c9b879a608be4c9dce',1,'n_common.h']]],
+  ['write_5fsafe_5flog_23',['write_safe_log',['../group___l_o_g.html#ga4351d7c5fb7f3464480aebb763b70d69',1,'write_safe_log(TS_LOG *log, char *pat,...):&#160;n_log.c'],['../group___l_o_g.html#ga4351d7c5fb7f3464480aebb763b70d69',1,'write_safe_log(TS_LOG *log, char *pat,...):&#160;n_log.c']]],
+  ['written_24',['written',['../group___n___s_t_r.html#a2e4024234a273fe51fbdf71aeeb43c7c',1,'N_STR']]]
+];

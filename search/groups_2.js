@@ -1,0 +1,28 @@
+var searchData=
+[
+  ['a_20n_5fstr_20file_20with_20a_20root_20key_20or_20a_20combination_20of_20a_20question_20and_20an_20answer_0',['CYPHERS: VIGENERE (encode / decode) a (N_STR / file) with a root key or a combination of a question and an answer',['../group___c_y_p_h_e_r___v_i_g_e_n_e_r_e.html',1,'']]],
+  ['a_20n_5fstr_20string_1',['CYPHERS: BASE64 (encode / decode) (from / to) a N_STR *string',['../group___c_y_p_h_e_r___b_a_s_e64.html',1,'']]],
+  ['a_20single_20n_5fstr_20message_2',['NETWORK MESSAGES: tools to serialize integers, double, N_STR from and back to a single N_STR *message',['../group___n_e_t_w_o_r_k___m_s_g.html',1,'']]],
+  ['a_20thread_20pool_3',['THREADS: tools to create and manage a thread pool',['../group___t_h_r_e_a_d_s.html',1,'']]],
+  ['aabb3d_3a_20simple_20space_20area_20management_20api_4',['AABB3D: simple space area management API',['../group___a_a_b_b3_d.html',1,'']]],
+  ['accept_20send_20and_20recv_20wrappers_20network_20queue_20thread_20safe_20add_20get_20message_20ssl_20tls_20secured_20communications_5',['NETWORK ENGINE: connect, accept, send and recv wrappers. Network Queue, thread-safe add/get message, ssl/tls secured communications',['../group___n_e_t_w_o_r_k_i_n_g.html',1,'']]],
+  ['add_20get_20message_20ssl_20tls_20secured_20communications_6',['NETWORK ENGINE: connect, accept, send and recv wrappers. Network Queue, thread-safe add/get message, ssl/tls secured communications',['../group___n_e_t_w_o_r_k_i_n_g.html',1,'']]],
+  ['allegro_205_20helpers_20user_20input_7',['ALLEGRO5: allegro 5 helpers (user input,...)',['../group___a_l_l_e_g_r_o5.html',1,'']]],
+  ['allegro5_3a_20allegro_205_20helpers_20user_20input_8',['ALLEGRO5: allegro 5 helpers (user input,...)',['../group___a_l_l_e_g_r_o5.html',1,'']]],
+  ['allocators_9',['allocators',['../group___c_o_m_m_o_n_s.html',1,'COMMONS: macros, headers, defines, timers, allocators,...'],['../group___g_u_i.html',1,'GUI: macros, headers, defines, timers, allocators,...'],['../group___n___t_i_m_e.html',1,'TIMERS: generally used headers, defines, timers, allocators,...']]],
+  ['an_20answer_10',['CYPHERS: VIGENERE (encode / decode) a (N_STR / file) with a root key or a combination of a question and an answer',['../group___c_y_p_h_e_r___v_i_g_e_n_e_r_e.html',1,'']]],
+  ['and_20an_20answer_11',['CYPHERS: VIGENERE (encode / decode) a (N_STR / file) with a root key or a combination of a question and an answer',['../group___c_y_p_h_e_r___v_i_g_e_n_e_r_e.html',1,'']]],
+  ['and_20back_20to_20a_20single_20n_5fstr_20message_12',['NETWORK MESSAGES: tools to serialize integers, double, N_STR from and back to a single N_STR *message',['../group___n_e_t_w_o_r_k___m_s_g.html',1,'']]],
+  ['and_20blit_20funcs_13',['GRAPHICS: animation library, loading structures and blit funcs',['../group___a_n_i_m___l_i_b.html',1,'']]],
+  ['and_20boundary_20checking_14',['STRINGS: replacement to char *strings with dynamic resizing and boundary checking',['../group___n___s_t_r.html',1,'']]],
+  ['and_20clean_20enum_20macro_20set_15',['ENUMERATIONS: quick and clean enum macro set',['../group___e_n_u_m_s.html',1,'']]],
+  ['and_20consumer_20functions_16',['KAFKA: generic event producer and consumer functions',['../group___n___k_a_f_k_a.html',1,'']]],
+  ['and_20manage_20a_20thread_20pool_17',['THREADS: tools to create and manage a thread pool',['../group___t_h_r_e_a_d_s.html',1,'']]],
+  ['and_20recv_20wrappers_20network_20queue_20thread_20safe_20add_20get_20message_20ssl_20tls_20secured_20communications_18',['NETWORK ENGINE: connect, accept, send and recv wrappers. Network Queue, thread-safe add/get message, ssl/tls secured communications',['../group___n_e_t_w_o_r_k_i_n_g.html',1,'']]],
+  ['and_20stack_20printing_19',['SIGNALS: signals handling and stack printing',['../group___s_i_g_n_a_l_s.html',1,'']]],
+  ['animation_20library_20loading_20structures_20and_20blit_20funcs_20',['GRAPHICS: animation library, loading structures and blit funcs',['../group___a_n_i_m___l_i_b.html',1,'']]],
+  ['answer_21',['CYPHERS: VIGENERE (encode / decode) a (N_STR / file) with a root key or a combination of a question and an answer',['../group___c_y_p_h_e_r___v_i_g_e_n_e_r_e.html',1,'']]],
+  ['api_22',['AABB3D: simple space area management API',['../group___a_a_b_b3_d.html',1,'']]],
+  ['apps_3a_20game_20environment_20management_20utilities_23',['GAME APPS: game environment management utilities',['../group___g_a_m_e___e_n_v.html',1,'']]],
+  ['area_20management_20api_24',['AABB3D: simple space area management API',['../group___a_a_b_b3_d.html',1,'']]]
+];

@@ -1,0 +1,9 @@
+<map id="n_kafka_new_event_from_char" name="n_kafka_new_event_from_char">
+<area shape="rect" id="Node000001" title="make a new event from a char *string" alt="" coords="5,35,228,60"/>
+<area shape="rect" id="Node000002" href="$group___n___k_a_f_k_a.html#gac903845a2fb184abee410a713c3890f9" title="create a new empty event" alt="" coords="280,5,431,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="220,32,266,26,267,32,220,37"/>
+<area shape="rect" id="Node000003" href="$group___n___k_a_f_k_a.html#ga365ccb4d2d1601cd9d7c11fcf4acc1c9" title="put a htonl schema id into the first 4 bytes of a N_STR *string" alt="" coords="276,55,435,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="225,57,262,62,262,67,225,63"/>
+<area shape="rect" id="Node000004" href="$group___n___k_a_f_k_a.html#ga6167f6e8b0e9d485797bc524162cbf3f" title="put a htonl schema id into the first 4 bytes of a char *string" alt="" coords="483,55,641,95"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="435,73,469,73,469,78,435,78"/>
+</map>

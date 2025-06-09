@@ -1,0 +1,26 @@
+var examples =
+[
+    [ "ex_base64.c", "ex_base64_8c-example.html", null ],
+    [ "ex_common.c", "ex_common_8c-example.html", null ],
+    [ "ex_configfile.c", "ex_configfile_8c-example.html", null ],
+    [ "ex_crypto.c", "ex_crypto_8c-example.html", null ],
+    [ "ex_exceptions.c", "ex_exceptions_8c-example.html", null ],
+    [ "ex_fluid.c", "ex_fluid_8c-example.html", null ],
+    [ "ex_fluid_config.c", "ex_fluid_config_8c-example.html", null ],
+    [ "ex_fluid_config.h", "ex_fluid_config_8h-example.html", null ],
+    [ "ex_gui.c", "ex_gui_8c-example.html", null ],
+    [ "ex_gui_dictionary.c", "ex_gui_dictionary_8c-example.html", null ],
+    [ "ex_gui_particles.c", "ex_gui_particles_8c-example.html", null ],
+    [ "ex_hash.c", "ex_hash_8c-example.html", null ],
+    [ "ex_list.c", "ex_list_8c-example.html", null ],
+    [ "ex_log.c", "ex_log_8c-example.html", null ],
+    [ "ex_monolith.c", "ex_monolith_8c-example.html", null ],
+    [ "ex_network.c", "ex_network_8c-example.html", null ],
+    [ "ex_network_ssl.c", "ex_network_ssl_8c-example.html", null ],
+    [ "ex_nstr.c", "ex_nstr_8c-example.html", null ],
+    [ "ex_pcre.c", "ex_pcre_8c-example.html", null ],
+    [ "ex_signals.c", "ex_signals_8c-example.html", null ],
+    [ "ex_stack.c", "ex_stack_8c-example.html", null ],
+    [ "ex_threads.c", "ex_threads_8c-example.html", null ],
+    [ "ex_trees.c", "ex_trees_8c-example.html", null ]
+];

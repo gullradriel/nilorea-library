@@ -1,0 +1,50 @@
+<map id="src/n_exceptions.c" name="src/n_exceptions.c">
+<area shape="rect" id="Node000001" title="ExceptionContextList management for C." alt="" coords="267,5,409,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="108,225,192,251"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="296,33,251,50,201,75,154,109,134,130,118,153,114,168,116,184,133,214,128,216,111,185,108,168,113,151,130,126,150,105,198,70,249,45,294,28"/>
+<area shape="rect" id="Node000003" href="$n__common_8h.html" title="Common headers and low&#45;level hugly functions &amp; define." alt="" coords="735,79,890,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="410,27,723,74,722,79,409,33"/>
+<area shape="rect" id="Node000012" href="$n__log_8h.html" title="Generic log system." alt="" coords="321,152,440,177"/>
+<area shape="poly" id="edge23_Node000001_Node000012" title=" " alt="" coords="344,30,376,138,371,139,339,32"/>
+<area shape="rect" id="Node000020" href="$n__exceptions_8h.html" title="Exception management for C." alt="" coords="128,152,297,177"/>
+<area shape="poly" id="edge24_Node000001_Node000020" title=" " alt="" coords="330,33,234,143,230,140,326,29"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="710,152,806,177"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="806,106,777,143,773,140,802,103"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="830,152,905,177"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="824,103,852,140,848,143,820,106"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="308,225,379,251"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="792,107,648,180,580,199,524,209,466,216,393,228,392,223,465,211,523,204,578,194,646,175,789,102"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="929,152,1008,177"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="839,102,932,144,930,149,837,106"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="1032,152,1100,177"/>
+<area shape="poly" id="edge7_Node000003_Node000008" title=" " alt="" coords="854,101,1019,148,1018,153,853,107"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="1104,225,1175,251"/>
+<area shape="poly" id="edge8_Node000003_Node000009" title=" " alt="" coords="891,96,1019,115,1076,130,1098,139,1114,150,1126,163,1133,179,1141,211,1135,212,1128,181,1121,166,1111,154,1096,144,1074,135,1018,120,890,102"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="1335,152,1413,177"/>
+<area shape="poly" id="edge9_Node000003_Node000010" title=" " alt="" coords="890,96,1082,116,1321,149,1320,154,1082,121,890,102"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="1437,152,1508,177"/>
+<area shape="poly" id="edge10_Node000003_Node000011" title=" " alt="" coords="890,94,1125,112,1273,128,1424,149,1423,154,1272,133,1125,117,890,99"/>
+<area shape="poly" id="edge11_Node000003_Node000012" title=" " alt="" coords="737,107,454,153,453,148,736,101"/>
+<area shape="rect" id="Node000016" href="$n__enum_8h.html" title="Macro to build enums and their tostring counterparts, a reduced version of https://github...." alt="" coords="1176,152,1311,177"/>
+<area shape="poly" id="edge18_Node000003_Node000016" title=" " alt="" coords="882,101,1163,147,1162,153,881,107"/>
+<area shape="rect" id="Node000018" title=" " alt="" coords="464,152,537,177"/>
+<area shape="poly" id="edge21_Node000003_Node000018" title=" " alt="" coords="762,107,551,154,550,149,761,101"/>
+<area shape="rect" id="Node000019" title=" " alt="" coords="561,152,635,177"/>
+<area shape="poly" id="edge22_Node000003_Node000019" title=" " alt="" coords="779,107,647,150,645,145,777,101"/>
+<area shape="poly" id="edge15_Node000012_Node000002" title=" " alt="" coords="344,180,201,224,199,219,343,175"/>
+<area shape="poly" id="edge16_Node000012_Node000003" title=" " alt="" coords="440,152,736,104,737,109,440,157"/>
+<area shape="poly" id="edge13_Node000012_Node000006" title=" " alt="" coords="377,179,358,215,353,212,372,176"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="217,225,283,251"/>
+<area shape="poly" id="edge12_Node000012_Node000013" title=" " alt="" coords="361,180,284,221,282,216,358,175"/>
+<area shape="rect" id="Node000014" title=" " alt="" coords="403,225,489,251"/>
+<area shape="poly" id="edge14_Node000012_Node000014" title=" " alt="" coords="393,176,428,213,424,217,389,179"/>
+<area shape="rect" id="Node000015" title=" " alt="" coords="513,225,587,251"/>
+<area shape="poly" id="edge17_Node000012_Node000015" title=" " alt="" coords="409,175,511,217,509,222,407,180"/>
+<area shape="poly" id="edge19_Node000016_Node000009" title=" " alt="" coords="1228,180,1169,219,1166,215,1225,175"/>
+<area shape="rect" id="Node000017" title=" " alt="" coords="1202,225,1285,251"/>
+<area shape="poly" id="edge20_Node000016_Node000017" title=" " alt="" coords="1246,178,1246,212,1241,212,1241,178"/>
+<area shape="poly" id="edge26_Node000020_Node000006" title=" " alt="" coords="235,175,311,216,309,221,232,180"/>
+<area shape="poly" id="edge25_Node000020_Node000013" title=" " alt="" coords="221,176,240,212,235,215,216,179"/>
+<area shape="rect" id="Node000021" title=" " alt="" coords="5,225,84,251"/>
+<area shape="poly" id="edge27_Node000020_Node000021" title=" " alt="" coords="187,180,86,222,84,217,185,175"/>
+</map>

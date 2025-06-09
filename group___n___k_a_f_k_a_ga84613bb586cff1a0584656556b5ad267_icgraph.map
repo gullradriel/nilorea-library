@@ -1,0 +1,14 @@
+<map id="n_kafka_event_destroy_ptr" name="n_kafka_event_destroy_ptr">
+<area shape="rect" id="Node000001" title="festroy a kafka event" alt="" coords="812,56,1009,81"/>
+<area shape="rect" id="Node000002" href="$group___n___k_a_f_k_a.html#ga7a0a6d08bd00098b411d243c65534aa6" title="destroy a kafka event and set it&#39;s pointer to NULL" alt="" coords="592,5,764,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="838,56,736,33,738,28,839,50"/>
+<area shape="rect" id="Node000003" href="$group___n___k_a_f_k_a.html#ga6553559587621a3667ed71565db20926" title="Poll kafka handle in producer or consumer mode." alt="" coords="441,31,544,56"/>
+<area shape="poly" id="edge5_Node000001_Node000003" title=" " alt="" coords="798,65,544,49,544,44,799,59"/>
+<area shape="rect" id="Node000006" href="$group___n___k_a_f_k_a.html#gaad8abd310e8055d6f99dacc841e5bde8" title="put an event in the events_to_send list" alt="" coords="613,107,743,132"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="839,87,738,109,736,104,838,82"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="579,34,545,39,544,34,578,29"/>
+<area shape="rect" id="Node000004" href="$n__kafka_8c.html#a2e5d21cfda507e07123f9961434131dc" title="kafka produce or consume pooling thread function" alt="" coords="217,31,393,56"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="427,46,394,46,394,41,427,41"/>
+<area shape="rect" id="Node000005" href="$group___n___k_a_f_k_a.html#gab5930c8ff78f4a853b5a5c140414aec0" title="start the pooling thread of a kafka handle" alt="" coords="5,23,169,63"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="204,46,169,46,169,41,204,41"/>
+</map>
