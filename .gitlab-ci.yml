@@ -1,0 +1,74 @@
+image: gcc:bookworm
+
+cache:
+  key: apt-cache
+  paths:
+    - $CI_PROJECT_DIR/.apt
+    
+stages:
+  - build
+  - tests
+
+.initialize: &initialize
+  - |
+    if [ "$USE_PROXY" == "1" ] 
+    then 
+      echo "$APT_PROXY" > /etc/apt/apt.conf.d/proxy.conf
+      export http_proxy="$http_proxy" 
+      export https_proxy="$https_proxy"
+      export ftp_proxy="$ftp_proxy"
+      git config --global http.proxy "$http_proxy"  
+      git config --global http.proxyAuthMethod 'basic'
+    fi
+    # set apt conf
+    export APT_DIR=.apt
+    export APT_STATE_LISTS=$APT_DIR/lists
+    export APT_CACHE_ARCHIVES=$APT_DIR/archives
+    mkdir -p $APT_CACHE_ARCHIVES/partial $APT_STATE_LISTS
+    rm -f /etc/apt/apt.conf.d/docker-clean
+    #apt install and update deps
+    apt-get -o Dir::Cache::archives="$APT_CACHE_ARCHIVES" -o Dir::State::lists="$APT_STATE_LISTS" update -yq 
+    apt-get -o Dir::Cache::archives="$APT_CACHE_ARCHIVES" -o Dir::State::lists="$APT_STATE_LISTS" install -y liballegro5-dev valgrind libpcre3-dev libsasl2-dev doxygen graphviz
+    make download-dep
+
+.make_lib: &make_lib
+  - make -j 6   
+
+.make_examples: &make_examples
+  - make -j 6 examples
+
+.make_tests: &make_tests
+  - cd "${CI_PROJECT_DIR}"
+  - make -j 6 examples
+  - cd examples
+  - chmod +Xx valgrind.sh
+  - ./valgrind.sh
+
+build_lib:
+  stage: build
+  script:
+    - *initialize
+    - *make_lib
+  artifacts:
+    paths:
+      - ${CI_PROJECT_DIR}/libnilorea.a
+    expire_in: 1 week
+
+build_examples:
+  stage: build
+  script:
+    - *initialize
+    - *make_lib
+    - *make_examples
+  artifacts:
+    paths:
+      - ${CI_PROJECT_DIR}/examples/ex_*
+      - ${CI_PROJECT_DIR}/libnilorea.a
+      - ${CI_PROJECT_DIR}/libnilorea.so
+    expire_in: 1 week
+ 
+tests:
+  stage: tests
+  script:
+    - *initialize
+    - *make_tests

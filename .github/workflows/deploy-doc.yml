@@ -1,0 +1,39 @@
+name: Deploy Documentation
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+on:
+  push:
+    branches:
+      - master  # Trigger when pushing to the main branch (or specify another branch)
+
+jobs:
+  generate-docs:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Doxygen
+      run: sudo apt-get install -y doxygen graphviz
+
+    - name: Generate Documentation
+      run: doxygen Doxyfile
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@3d89180362e3532382eb8c5e7cfd4fb1b279a2c0  # Pin to a commit SHA
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./docs  # Directory where Doxygen outputs the documentation
+        force_orphan: true   # This creates a clean `gh-pages` branch
