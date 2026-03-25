@@ -186,6 +186,7 @@ void n_kafka_delete(N_KAFKA* kafka) {
 
     FreeNoLog(kafka->topic);
     free_split_result(&kafka->topics);
+    FreeNoLog(kafka->event_cmd);
     FreeNoLog(kafka->groupid);
 
     n_kafka_stop_polling_thread(kafka);
@@ -256,6 +257,7 @@ N_KAFKA* n_kafka_new(int32_t poll_timeout, int32_t poll_interval, size_t errstr_
     kafka->configuration = NULL;
     kafka->groupid = NULL;
     kafka->topics = NULL;
+    kafka->event_cmd = NULL;
     kafka->subscription = NULL;
     kafka->topic = NULL;
     kafka->mode = -1;
@@ -336,6 +338,7 @@ N_KAFKA* n_kafka_load_config(char* config_file, int mode) {
             // if it's not one of the optionnal parameters not managed by kafka, then we can use rd_kafka_conf_set on them
             if (strcmp("topic", entry->string) != 0 &&
                 strcmp("topics", entry->string) != 0 &&
+                strcmp("event_cmd", entry->string) != 0 &&
                 strcmp("value.schema.id", entry->string) != 0 &&
                 strcmp("value.schema.type", entry->string) != 0 &&
                 strcmp("poll.interval", entry->string) != 0 &&
@@ -388,6 +391,15 @@ N_KAFKA* n_kafka_load_config(char* config_file, int mode) {
             return NULL;
         }
     }
+
+    // eventual consumer custom event_cmd
+    jstr = cJSON_GetObjectItem(json, "event_cmd");
+    if (jstr && jstr->valuestring) {
+        kafka->event_cmd = strdup(jstr->valuestring);
+        n_log(LOG_DEBUG, "kafka consumer event_cmd: %s", jstr->valuestring);
+    }
+
+    // schema id if any
     jstr = cJSON_GetObjectItem(json, "value.schema.id");
     if (jstr && jstr->valuestring) {
         int schem_v = atoi(jstr->valuestring);
@@ -401,25 +413,28 @@ N_KAFKA* n_kafka_load_config(char* config_file, int mode) {
         kafka->schema_id = schem_v;
     }
 
+    // kafka broker poll interval
     jstr = cJSON_GetObjectItem(json, "poll.interval");
     if (jstr && jstr->valuestring) {
         kafka->poll_interval = atoi(jstr->valuestring);
         n_log(LOG_DEBUG, "kafka poll interval: %d", kafka->poll_interval);
     }
 
+    // kafka broker poll timeout
     jstr = cJSON_GetObjectItem(json, "poll.timeout");
     if (jstr && jstr->valuestring) {
         kafka->poll_timeout = atoi(jstr->valuestring);
         n_log(LOG_DEBUG, "kafka poll timeout: %d", kafka->poll_timeout);
     }
 
+    // local directory poll interval
     jstr = cJSON_GetObjectItem(json, "monitored.directory.interval");
     if (jstr && jstr->valuestring) {
         kafka->monitored_directory_interval = atoi(jstr->valuestring);
         n_log(LOG_DEBUG, "kafka monitored directory interval: %d", kafka->monitored_directory_interval);
     }
 
-    // saving bootstrap servers in struct
+    // bootstrap servers
     jstr = cJSON_GetObjectItem(json, "bootstrap.servers");
     if (jstr && jstr->valuestring) {
         kafka->bootstrap_servers = strdup(jstr->valuestring);

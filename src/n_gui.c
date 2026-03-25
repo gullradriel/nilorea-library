@@ -909,7 +909,7 @@ static void _window_update_content_size(N_GUI_WINDOW* win, ALLEGRO_FONT* default
             if (lb && lb->text[0] && lb->align != N_GUI_ALIGN_JUSTIFIED) {
                 ALLEGRO_FONT* font = wgt->font ? wgt->font : default_font;
                 if (font) {
-                    float tw = _text_w(font,lb->text);
+                    float tw = _text_w(font, lb->text);
                     float text_r = wgt->x + tw + 8.0f; /* small padding */
                     if (text_r > r) r = text_r;
                 }
@@ -2475,13 +2475,13 @@ static void _set_clipping_rect_transformed(int wx, int wy, int ww, int wh) {
  *  If the text is wider than max_w, it is clipped and "..." is appended. */
 static void _draw_text_truncated(ALLEGRO_FONT* font, ALLEGRO_COLOR color, float x, float y, float max_w, const char* text) {
     if (!font || !text || !text[0]) return;
-    float tw = _text_w(font,text);
+    float tw = _text_w(font, text);
     if (tw <= max_w) {
         al_draw_text(font, color, x, y, 0, text);
         return;
     }
     /* find how many chars fit + "..." */
-    float ellipsis_w = _text_w(font,"...");
+    float ellipsis_w = _text_w(font, "...");
     float avail = max_w - ellipsis_w;
     if (avail < 0) avail = 0;
     size_t len = strlen(text);
@@ -2490,7 +2490,7 @@ static void _draw_text_truncated(ALLEGRO_FONT* font, ALLEGRO_COLOR color, float 
     for (size_t i = 0; i < len && i < (size_t)(N_GUI_TEXT_MAX - 5); i++) {
         buf[i] = text[i];
         buf[i + 1] = '\0';
-        float cw = _text_w(font,buf);
+        float cw = _text_w(font, buf);
         if (cw > avail) break;
         fit = i + 1;
     }
@@ -2518,7 +2518,7 @@ static void _draw_text_justified(ALLEGRO_FONT* font, ALLEGRO_COLOR color, float 
     char* tok = strtok(buf, " \t");
     while (tok && nwords < 256) {
         words[nwords] = tok;
-        word_widths[nwords] = _text_w(font,tok);
+        word_widths[nwords] = _text_w(font, tok);
         nwords++;
         tok = strtok(NULL, " \t");
     }
@@ -2529,7 +2529,7 @@ static void _draw_text_justified(ALLEGRO_FONT* font, ALLEGRO_COLOR color, float 
     }
 
     float fh = (float)al_get_font_line_height(font);
-    float space_w = _text_w(font," ");
+    float space_w = _text_w(font, " ");
     float cy = y;
     int line_start = 0;
 
@@ -2611,7 +2611,7 @@ static float _textarea_content_height(N_GUI_TEXTAREA_DATA* td, ALLEGRO_FONT* fon
         char ch[5];
         memcpy(ch, &td->text[i], (size_t)clen);
         ch[clen] = '\0';
-        float cw = _text_w(font,ch);
+        float cw = _text_w(font, ch);
         if (cx + cw > widget_w - pad * 2) {
             cx = 0;
             cy += fh;
@@ -2652,13 +2652,13 @@ static int _justified_char_at_pos(const char* text, ALLEGRO_FONT* font, float ma
         char tmp[N_GUI_TEXT_MAX];
         memcpy(tmp, &text[ws], (size_t)wlen);
         tmp[wlen] = '\0';
-        word_widths[nwords] = _text_w(font,tmp);
+        word_widths[nwords] = _text_w(font, tmp);
         nwords++;
     }
     if (nwords == 0) return 0;
 
     float fh = (float)al_get_font_line_height(font);
-    float space_w = _text_w(font," ");
+    float space_w = _text_w(font, " ");
     float cy = text_y - scroll_y;
     float click_y_content = click_my;
 
@@ -2708,7 +2708,7 @@ static int _justified_char_at_pos(const char* text, ALLEGRO_FONT* font, float ma
                         char ch[5];
                         memcpy(ch, &text[word_starts[j] + k], (size_t)clen);
                         ch[clen] = '\0';
-                        float cw = _text_w(font,ch);
+                        float cw = _text_w(font, ch);
                         wx += cw;
                         float dist = (click_x_rel - cx) - wx;
                         if (dist < 0) dist = -dist;
@@ -2768,13 +2768,13 @@ static void _draw_justified_selection(ALLEGRO_FONT* font, float x, float y, floa
         char tmp[N_GUI_TEXT_MAX];
         memcpy(tmp, &text[ws], (size_t)wlen);
         tmp[wlen] = '\0';
-        word_widths[nwords] = _text_w(font,tmp);
+        word_widths[nwords] = _text_w(font, tmp);
         nwords++;
     }
     if (nwords == 0) return;
 
     float fh = (float)al_get_font_line_height(font);
-    float space_w = _text_w(font," ");
+    float space_w = _text_w(font, " ");
     float cy = y;
     int line_start = 0;
 
@@ -2815,14 +2815,14 @@ static void _draw_justified_selection(ALLEGRO_FONT* font, float x, float y, floa
                     int off = slo - ws2;
                     memcpy(tmp2, &text[ws2], (size_t)off);
                     tmp2[off] = '\0';
-                    sx1 = _text_w(font,tmp2);
+                    sx1 = _text_w(font, tmp2);
                 }
                 if (shi < we) {
                     char tmp2[N_GUI_TEXT_MAX];
                     int off = shi - ws2;
                     memcpy(tmp2, &text[ws2], (size_t)off);
                     tmp2[off] = '\0';
-                    sx2 = _text_w(font,tmp2);
+                    sx2 = _text_w(font, tmp2);
                 }
                 al_draw_filled_rectangle(cx + sx1, cy, cx + sx2, cy + fh, sel_color);
             }
@@ -2848,7 +2848,7 @@ static void _draw_justified_selection(ALLEGRO_FONT* font, float x, float y, floa
 static float _label_content_height(const char* text, ALLEGRO_FONT* font, float max_w) {
     if (!font || !text || !text[0]) return 0;
     float fh = (float)al_get_font_line_height(font);
-    float space_w = _text_w(font," ");
+    float space_w = _text_w(font, " ");
 
     char buf[N_GUI_TEXT_MAX];
     snprintf(buf, N_GUI_TEXT_MAX, "%s", text);
@@ -2857,7 +2857,7 @@ static float _label_content_height(const char* text, ALLEGRO_FONT* font, float m
     int nwords = 0;
     char* tok = strtok(buf, " \t");
     while (tok && nwords < 256) {
-        word_widths[nwords] = _text_w(font,tok);
+        word_widths[nwords] = _text_w(font, tok);
         nwords++;
         tok = strtok(NULL, " \t");
     }
@@ -3155,7 +3155,7 @@ static size_t _textarea_pos_from_mouse(N_GUI_TEXTAREA_DATA* td, ALLEGRO_FONT* fo
             size_t pos = ci + (size_t)clen;
             memcpy(ctmp, display, pos);
             ctmp[pos] = '\0';
-            float tw = _text_w(font,ctmp);
+            float tw = _text_w(font, ctmp);
             float dist = click_x - tw;
             if (dist < 0) dist = -dist;
             if (dist < best_dist) {
@@ -3206,7 +3206,7 @@ static size_t _textarea_pos_from_mouse(N_GUI_TEXTAREA_DATA* td, ALLEGRO_FONT* fo
         char ch2[5];
         memcpy(ch2, &td->text[ci], (size_t)clen);
         ch2[clen] = '\0';
-        float cw = _text_w(font,ch2);
+        float cw = _text_w(font, ch2);
         if (cur_cx + cw > avail_w) {
             if (cur_line == target_line) break;
             cur_cx = 0;
@@ -3309,7 +3309,7 @@ static void _draw_textarea(N_GUI_WIDGET* wgt, float ox, float oy, ALLEGRO_FONT* 
                 char ch[5];
                 memcpy(ch, &td->text[i], (size_t)clen);
                 ch[clen] = '\0';
-                float cw2 = _text_w(font,ch);
+                float cw2 = _text_w(font, ch);
                 if (cur_cx + cw2 > text_area_w - pad * 2) {
                     cur_cx = 0;
                     cur_cy += fh;
@@ -3360,7 +3360,7 @@ static void _draw_textarea(N_GUI_WIDGET* wgt, float ox, float oy, ALLEGRO_FONT* 
             if (td->text[i] == '\n') {
                 /* draw selection highlight on newline (small rect at end of line) */
                 if (has_sel && i >= sel_lo && i < sel_hi && cy + fh > ay && cy < ay + wgt->h) {
-                    float space_w = _text_w(font," ");
+                    float space_w = _text_w(font, " ");
                     al_draw_filled_rectangle(cx, cy, cx + space_w, cy + fh, sel_bg);
                 }
                 cx = ax + pad;
@@ -3373,7 +3373,7 @@ static void _draw_textarea(N_GUI_WIDGET* wgt, float ox, float oy, ALLEGRO_FONT* 
             char ch[5];
             memcpy(ch, &td->text[i], (size_t)clen);
             ch[clen] = '\0';
-            float cw = _text_w(font,ch);
+            float cw = _text_w(font, ch);
             if (cx + cw > ax + text_area_w - pad) {
                 cx = ax + pad;
                 cy += fh;
@@ -3437,7 +3437,7 @@ static void _draw_textarea(N_GUI_WIDGET* wgt, float ox, float oy, ALLEGRO_FONT* 
         if (cpos > td->text_len) cpos = td->text_len;
         memcpy(tmp, display_text, cpos);
         tmp[cpos] = '\0';
-        float cursor_px = _text_w(font,tmp);
+        float cursor_px = _text_w(font, tmp);
 
         /* adjust scroll_x so cursor stays visible within the inner area */
         if (cursor_px - td->scroll_x < 0) {
@@ -3459,10 +3459,10 @@ static void _draw_textarea(N_GUI_WIDGET* wgt, float ox, float oy, ALLEGRO_FONT* 
             char stmp[N_GUI_TEXT_MAX];
             memcpy(stmp, display_text, sl);
             stmp[sl] = '\0';
-            float sel_x1 = _text_w(font,stmp);
+            float sel_x1 = _text_w(font, stmp);
             memcpy(stmp, display_text, sh);
             stmp[sh] = '\0';
-            float sel_x2 = _text_w(font,stmp);
+            float sel_x2 = _text_w(font, stmp);
             float sx1 = ax + pad + sel_x1 - td->scroll_x;
             float sx2 = ax + pad + sel_x2 - td->scroll_x;
             al_draw_filled_rectangle(sx1, ty, sx2, ty + fh, wgt->theme.selection_color);
@@ -4031,7 +4031,7 @@ static int _label_char_at_x(N_GUI_LABEL_DATA* lb, ALLEGRO_FONT* font, float clic
         size_t pos = i + (size_t)clen;
         memcpy(tmp, lb->text, pos);
         tmp[pos] = '\0';
-        float tw = _text_w(font,tmp);
+        float tw = _text_w(font, tmp);
         float dist = click_x - tw;
         if (dist < 0) dist = -dist;
         if (dist < best_dist) {
@@ -4197,10 +4197,10 @@ static void _draw_label(N_GUI_WIDGET* wgt, float ox, float oy, ALLEGRO_FONT* def
         char stmp[N_GUI_TEXT_MAX];
         memcpy(stmp, lb->text, (size_t)slo);
         stmp[slo] = '\0';
-        float sx1 = _text_w(font,stmp);
+        float sx1 = _text_w(font, stmp);
         memcpy(stmp, lb->text, (size_t)shi);
         stmp[shi] = '\0';
-        float sx2 = _text_w(font,stmp);
+        float sx2 = _text_w(font, stmp);
         al_draw_filled_rectangle(tx + sx1, ty, tx + sx2, ty + fh, wgt->theme.selection_color);
     }
 
@@ -5144,7 +5144,7 @@ static int _textarea_handle_key(N_GUI_WIDGET* wgt, ALLEGRO_EVENT* ev, ALLEGRO_FO
             char ch[5];
             memcpy(ch, &td->text[i], (size_t)clen);
             ch[clen] = '\0';
-            float cw = _text_w(font,ch);
+            float cw = _text_w(font, ch);
             if (cx + cw > wrap_w) {
                 cx = 0;
                 line++;
@@ -5211,7 +5211,7 @@ static int _textarea_handle_key(N_GUI_WIDGET* wgt, ALLEGRO_EVENT* ev, ALLEGRO_FO
             char ch[5];
             memcpy(ch, &td->text[i], (size_t)clen);
             ch[clen] = '\0';
-            float cw = _text_w(font,ch);
+            float cw = _text_w(font, ch);
             if (cx + cw > wrap_w) {
                 if (line >= target_line) break;
                 cx = 0;
@@ -6260,14 +6260,29 @@ int n_gui_process_event(N_GUI_CTX* ctx, ALLEGRO_EVENT event) {
                 int handled = 0;
 
                 if (sd->orientation == N_GUI_SLIDER_H) {
-                    if (kc == ALLEGRO_KEY_RIGHT) { new_val += step; handled = 1; }
-                    else if (kc == ALLEGRO_KEY_LEFT) { new_val -= step; handled = 1; }
+                    if (kc == ALLEGRO_KEY_RIGHT) {
+                        new_val += step;
+                        handled = 1;
+                    } else if (kc == ALLEGRO_KEY_LEFT) {
+                        new_val -= step;
+                        handled = 1;
+                    }
                 } else {
-                    if (kc == ALLEGRO_KEY_UP) { new_val += step; handled = 1; }
-                    else if (kc == ALLEGRO_KEY_DOWN) { new_val -= step; handled = 1; }
+                    if (kc == ALLEGRO_KEY_UP) {
+                        new_val += step;
+                        handled = 1;
+                    } else if (kc == ALLEGRO_KEY_DOWN) {
+                        new_val -= step;
+                        handled = 1;
+                    }
                 }
-                if (kc == ALLEGRO_KEY_HOME) { new_val = sd->min_val; handled = 1; }
-                else if (kc == ALLEGRO_KEY_END) { new_val = sd->max_val; handled = 1; }
+                if (kc == ALLEGRO_KEY_HOME) {
+                    new_val = sd->min_val;
+                    handled = 1;
+                } else if (kc == ALLEGRO_KEY_END) {
+                    new_val = sd->max_val;
+                    handled = 1;
+                }
 
                 if (handled) {
                     if (sd->step > 0.0)
@@ -6291,15 +6306,29 @@ int n_gui_process_event(N_GUI_CTX* ctx, ALLEGRO_EVENT event) {
                     int cur_sel = -1;
                     if (ld->selection_mode == N_GUI_SELECT_SINGLE) {
                         for (size_t i = 0; i < ld->nb_items; i++) {
-                            if (ld->items[i].selected) { cur_sel = (int)i; break; }
+                            if (ld->items[i].selected) {
+                                cur_sel = (int)i;
+                                break;
+                            }
                         }
                     }
                     int new_sel = cur_sel;
-                    if (kc == ALLEGRO_KEY_UP && cur_sel > 0) { new_sel = cur_sel - 1; handled = 1; }
-                    else if (kc == ALLEGRO_KEY_DOWN && cur_sel < (int)ld->nb_items - 1) { new_sel = cur_sel + 1; handled = 1; }
-                    else if (kc == ALLEGRO_KEY_DOWN && cur_sel < 0) { new_sel = 0; handled = 1; }
-                    else if (kc == ALLEGRO_KEY_HOME) { new_sel = 0; handled = 1; }
-                    else if (kc == ALLEGRO_KEY_END) { new_sel = (int)ld->nb_items - 1; handled = 1; }
+                    if (kc == ALLEGRO_KEY_UP && cur_sel > 0) {
+                        new_sel = cur_sel - 1;
+                        handled = 1;
+                    } else if (kc == ALLEGRO_KEY_DOWN && cur_sel < (int)ld->nb_items - 1) {
+                        new_sel = cur_sel + 1;
+                        handled = 1;
+                    } else if (kc == ALLEGRO_KEY_DOWN && cur_sel < 0) {
+                        new_sel = 0;
+                        handled = 1;
+                    } else if (kc == ALLEGRO_KEY_HOME) {
+                        new_sel = 0;
+                        handled = 1;
+                    } else if (kc == ALLEGRO_KEY_END) {
+                        new_sel = (int)ld->nb_items - 1;
+                        handled = 1;
+                    }
 
                     if (handled && ld->selection_mode == N_GUI_SELECT_SINGLE && new_sel != cur_sel) {
                         for (size_t i = 0; i < ld->nb_items; i++) ld->items[i].selected = 0;
@@ -6324,11 +6353,22 @@ int n_gui_process_event(N_GUI_CTX* ctx, ALLEGRO_EVENT event) {
                     int cur_sel = rd->selected_index;
                     int new_sel = cur_sel;
                     int handled = 0;
-                    if (kc == ALLEGRO_KEY_UP && cur_sel > 0) { new_sel = cur_sel - 1; handled = 1; }
-                    else if (kc == ALLEGRO_KEY_DOWN && cur_sel < (int)rd->nb_items - 1) { new_sel = cur_sel + 1; handled = 1; }
-                    else if (kc == ALLEGRO_KEY_DOWN && cur_sel < 0) { new_sel = 0; handled = 1; }
-                    else if (kc == ALLEGRO_KEY_HOME) { new_sel = 0; handled = 1; }
-                    else if (kc == ALLEGRO_KEY_END) { new_sel = (int)rd->nb_items - 1; handled = 1; }
+                    if (kc == ALLEGRO_KEY_UP && cur_sel > 0) {
+                        new_sel = cur_sel - 1;
+                        handled = 1;
+                    } else if (kc == ALLEGRO_KEY_DOWN && cur_sel < (int)rd->nb_items - 1) {
+                        new_sel = cur_sel + 1;
+                        handled = 1;
+                    } else if (kc == ALLEGRO_KEY_DOWN && cur_sel < 0) {
+                        new_sel = 0;
+                        handled = 1;
+                    } else if (kc == ALLEGRO_KEY_HOME) {
+                        new_sel = 0;
+                        handled = 1;
+                    } else if (kc == ALLEGRO_KEY_END) {
+                        new_sel = (int)rd->nb_items - 1;
+                        handled = 1;
+                    }
 
                     if (handled && new_sel != cur_sel) {
                         rd->selected_index = new_sel;
@@ -6352,11 +6392,22 @@ int n_gui_process_event(N_GUI_CTX* ctx, ALLEGRO_EVENT event) {
                     int cur_sel = cd->selected_index;
                     int new_sel = cur_sel;
                     int handled = 0;
-                    if (kc == ALLEGRO_KEY_UP && cur_sel > 0) { new_sel = cur_sel - 1; handled = 1; }
-                    else if (kc == ALLEGRO_KEY_DOWN && cur_sel < (int)cd->nb_items - 1) { new_sel = cur_sel + 1; handled = 1; }
-                    else if (kc == ALLEGRO_KEY_DOWN && cur_sel < 0) { new_sel = 0; handled = 1; }
-                    else if (kc == ALLEGRO_KEY_HOME) { new_sel = 0; handled = 1; }
-                    else if (kc == ALLEGRO_KEY_END) { new_sel = (int)cd->nb_items - 1; handled = 1; }
+                    if (kc == ALLEGRO_KEY_UP && cur_sel > 0) {
+                        new_sel = cur_sel - 1;
+                        handled = 1;
+                    } else if (kc == ALLEGRO_KEY_DOWN && cur_sel < (int)cd->nb_items - 1) {
+                        new_sel = cur_sel + 1;
+                        handled = 1;
+                    } else if (kc == ALLEGRO_KEY_DOWN && cur_sel < 0) {
+                        new_sel = 0;
+                        handled = 1;
+                    } else if (kc == ALLEGRO_KEY_HOME) {
+                        new_sel = 0;
+                        handled = 1;
+                    } else if (kc == ALLEGRO_KEY_END) {
+                        new_sel = (int)cd->nb_items - 1;
+                        handled = 1;
+                    }
 
                     if (handled && new_sel != cur_sel) {
                         cd->selected_index = new_sel;
@@ -6376,14 +6427,29 @@ int n_gui_process_event(N_GUI_CTX* ctx, ALLEGRO_EVENT event) {
                     double new_pos = sb->scroll_pos;
                     int handled = 0;
                     if (sb->orientation == N_GUI_SCROLLBAR_V) {
-                        if (kc == ALLEGRO_KEY_UP) { new_pos -= step; handled = 1; }
-                        else if (kc == ALLEGRO_KEY_DOWN) { new_pos += step; handled = 1; }
+                        if (kc == ALLEGRO_KEY_UP) {
+                            new_pos -= step;
+                            handled = 1;
+                        } else if (kc == ALLEGRO_KEY_DOWN) {
+                            new_pos += step;
+                            handled = 1;
+                        }
                     } else {
-                        if (kc == ALLEGRO_KEY_LEFT) { new_pos -= step; handled = 1; }
-                        else if (kc == ALLEGRO_KEY_RIGHT) { new_pos += step; handled = 1; }
+                        if (kc == ALLEGRO_KEY_LEFT) {
+                            new_pos -= step;
+                            handled = 1;
+                        } else if (kc == ALLEGRO_KEY_RIGHT) {
+                            new_pos += step;
+                            handled = 1;
+                        }
                     }
-                    if (kc == ALLEGRO_KEY_HOME) { new_pos = 0; handled = 1; }
-                    else if (kc == ALLEGRO_KEY_END) { new_pos = max_scroll; handled = 1; }
+                    if (kc == ALLEGRO_KEY_HOME) {
+                        new_pos = 0;
+                        handled = 1;
+                    } else if (kc == ALLEGRO_KEY_END) {
+                        new_pos = max_scroll;
+                        handled = 1;
+                    }
 
                     if (handled) {
                         if (new_pos < 0) new_pos = 0;

@@ -91,6 +91,8 @@ typedef struct N_KAFKA {
     char* groupid;
     /*! list of topics to subscribe to */
     char** topics;
+    /*! eventual custom event_cmd */
+    char* event_cmd;
     /*! subscribed topics */
     rd_kafka_topic_partition_list_t* subscription;
     /*! kafka structure handle */
