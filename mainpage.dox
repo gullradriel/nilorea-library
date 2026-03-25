@@ -1,0 +1,203 @@
+/**
+\mainpage Nilorea C Library
+
+\section toc Table Of Contents
+<ul>
+    <li>\ref aboutlib</li>
+    <li>\ref api_overview</li>
+    <li>\ref core_modules</li>
+    <li>\ref data_structures</li>
+    <li>\ref string_crypto</li>
+    <li>\ref network_modules</li>
+    <li>\ref threading_time</li>
+    <li>\ref game_simulation</li>
+    <li>\ref graphics_modules</li>
+    <li>\ref data_interchange</li>
+    <li>\ref optional_modules</li>
+    <li>\ref require</li>
+    <li>\ref buildflags</li>
+    <li>\ref install</li>
+    <li>\ref end</li>
+</ul>
+
+\section aboutlib About Nilorea Library
+
+Nilorea is a portable C utility library providing a broad set of tools for systems programming, networking, game development, and more. It can be used as a collection of individual .c/.h files or built as a shared library (.so / .dll).
+
+The library covers logging, dynamic strings, linked lists, hash tables, stacks, trees, thread pools, TCP/UDP networking with optional SSL/TLS, message serialization, configuration file parsing, regex matching, cryptography, pathfinding, fluid simulation, isometric tile engines, GUI widgets, and particle systems.
+
+The name comes from one of the author's earliest projects: an unfinished game that gave birth to a reusable library. The opposite may happen one of these days.
+
+See the \ref api_overview "API Overview" section for detailed API documentation of each component.
+
+\section api_overview API Overview
+
+The library is organized into the following module categories:
+
+| Category | Modules |
+|----------|---------|
+| Core & Utilities | \ref COMMONS, \ref LOG, \ref LOGNODUP, \ref SIGNALS, \ref ENUMS, \ref EXCEPTIONS, \ref N_FILES |
+| Data Structures | \ref LIST, \ref HASH_TABLE, \ref STACK, \ref TREE |
+| Strings & Cyphers | \ref N_STR, \ref CYPHER_BASE64, \ref CYPHER_VIGENERE, \ref ZLIB |
+| Networking | \ref NETWORKING, \ref NETWORK_MSG, \ref ACCEPT_POOL, \ref N_USER, \ref CLOCK_SYNC |
+| Threading & Timers | \ref THREADS, \ref N_TIME |
+| Game & Simulation | \ref PHYSICS, \ref AABB3D, \ref ASTAR, \ref DEAD_RECKONING, \ref TRAJECTORY, \ref N_FLUIDS, \ref GAME_ENV, \ref ISOMETRIC_ENGINE |
+| Graphics (Allegro 5) | \ref ALLEGRO5, \ref ANIM_LIB, \ref PARTICLES, \ref GUI |
+| Data Interchange | \ref AVRO |
+| Optional Integrations | \ref PCRE, \ref CONFIGFILE, \ref N_KAFKA |
+
+\section core_modules Core & Utility Modules
+
+- \ref COMMONS — Common macros, headers, defines, timers, memory allocators, process daemonization, and environment utilities. The foundation included by most other modules.
+- \ref LOG — Configurable logging system supporting output to console, files, syslog (Linux), and Windows event log. Supports multiple log levels (DEBUG, INFO, NOTICE, ERROR, etc.).
+- \ref LOGNODUP — No-duplicate logging extension. Filters repeated log messages using an internal hash table so each unique message is emitted only once per session.
+- \ref SIGNALS — Signal handling and stack trace printing. Installs backtrace handlers for crash diagnostics.
+- \ref ENUMS — Macro system to define enumerations together with their automatic to-string conversion functions. Based on a reduced version of SmartEnum.
+- \ref EXCEPTIONS — C++ style exception handling for C using try/catch/throw semantics built on setjmp/longjmp.
+- \ref N_FILES — File system utilities: directory scanning, file information retrieval, and helper functions for file operations.
+
+\section data_structures Data Structure Modules
+
+- \ref LIST — Generic doubly-linked list with iterator macros. Supports typed node data, sorting, and traversal in both directions.
+- \ref HASH_TABLE — Hash table implementation supporting both classic (array + chaining with MurmurHash3) and trie-tree modes. Stores integers, doubles, strings, and arbitrary pointers. Includes key-prefix completion, collision statistics, resizing, optimization, and duplication.
+- \ref STACK — Generic stack (LIFO) built on top of the list module.
+- \ref TREE — Generic tree structures supporting various tree operations with arbitrary node data types.
+
+\section string_crypto String & Cypher Modules
+
+- \ref N_STR — Dynamic string type (N_STR) replacing raw char* with automatic resizing and boundary checking. Provides creation, duplication, concatenation, printf-style formatting (nstrprintf), trimming, search/replace, case conversion, tokenization, and file I/O. The core string type used throughout the library.
+- \ref CYPHER_BASE64 — Base64 encoding and decoding operating on N_STR strings.
+- \ref CYPHER_VIGENERE — Vigenere cipher for encoding/decoding N_STR strings and files. Supports root key, question/answer key derivation, and quick encode/decode with auto-generated keys.
+- \ref ZLIB — Compression and decompression shortcuts using zlib, operating on N_STR strings.
+
+\section network_modules Network Modules
+
+- \ref NETWORKING — Full-featured network engine for TCP and UDP. Provides connection management, accept/connect wrappers, send/recv with buffering, a thread-safe network message queue, and optional SSL/TLS encrypted communications via OpenSSL. Supports both client and server modes. See `SSL_SECURITY.md` for a security audit and the `ex_network_ssl_hardened` example for TLS 1.2+ enforcement, strong cipher suites, security headers (HSTS, CSP, X-Frame-Options), path traversal protection, and connection timeouts.
+- \ref NETWORK_MSG — Message serialization and deserialization tools. Pack integers, doubles, and N_STR strings into a single N_STR message for network transmission. Includes ready-made message types for ping, identification, position updates, string messages, and quit signals. Handles byte order conversion for cross-platform compatibility.
+- \ref ACCEPT_POOL — Parallel accept pool for high-performance connection handling (nginx-style). Multiple threads call accept() on a shared listening socket and invoke a user callback for each connection. Supports three server architectures: single-inline (serialized accept+handle), single-pool (serialized accept, parallel handling via thread pool), and pooled (parallel accept and handling). The pooled mode benefits scenarios with high connection rates over real networks, SSL/TLS handshakes in the accept path, or multi-socket NUMA systems. See the \ref accept_pool_modes "mode comparison" for guidance on choosing the right architecture.
+- \ref N_USER — Server-side user management for networked applications. Tracks connected users with their associated network connections, supports per-user message queues, broadcast/unicast messaging, and position recording.
+- \ref CLOCK_SYNC — Clock synchronization estimator for networked games. Estimates the time offset between a local clock and a remote clock using periodic sync request/response pairs. Uses a median filter over recent samples to reject outliers caused by network jitter.
+
+\section threading_time Threading & Timer Modules
+
+- \ref THREADS — Thread pool implementation for managing concurrent work. Create pools of worker threads, submit tasks, and synchronize completion. Built on POSIX pthreads.
+- \ref N_TIME — Timer utilities, high-resolution timing, and time-related helpers used throughout the library.
+
+\section game_simulation Game & Simulation Modules
+
+- \ref PHYSICS — Simple 3D movement simulation with position, velocity, and acceleration vectors.
+- \ref AABB3D — Axis-Aligned Bounding Box (AABB) management for 3D space partitioning and collision detection.
+- \ref ASTAR — A* pathfinding algorithm for 2D and 3D grid-based maps. Supports customizable heuristics and movement costs.
+- \ref DEAD_RECKONING — Dead reckoning for latency hiding in networked games. Uses extrapolation and convergence blending to smooth remote entity movement.
+- \ref TRAJECTORY — Cubic Hermite spline interpolation for dead reckoning and movement simulation in 2D/3D networked environments.
+- \ref N_FLUIDS — Eulerian fluid simulation. A port of "How to write an Eulerian fluid simulator with 200 lines of code" by Ten Minute Physics.
+- \ref GAME_ENV — Game environment management utilities for application setup and lifecycle.
+- \ref ISOMETRIC_ENGINE — Isometric/axonometric tile engine with height maps, per-tile height segments (bridges, floating structures), configurable axonometric projections (classic, isometric, military, staggered), terrain transition bitmasks (edge + corner), depth-sorted object rendering with occlusion detection and transparent overlay, 2D camera with zoom/scroll/follow, segment-sorted draw order, height border edge visibility, and chunk-based binary map save/load.
+
+\section graphics_modules Graphics Modules (Allegro 5)
+
+These modules require the Allegro 5 library and are only compiled when Allegro 5 is detected (or can be excluded with FORCE_NO_ALLEGRO=1):
+
+- \ref ALLEGRO5 — Allegro 5 helper functions for user input handling and display management.
+- \ref ANIM_LIB — Animation library providing sprite loading, animation parameter management, and blit functions.
+- \ref PARTICLES — 3D particle system utilities for visual effects.
+- \ref GUI — Widget system built on Allegro 5, providing buttons, sliders (with configurable step, mouse scroll, and keyboard support), text areas, checkboxes, scrollbars, listboxes, radio lists, combo boxes, dropdown menus (with scrollbar), labels, images, and pseudo-window management with z-order support (always-on-top, always-behind, fixed z-value), frameless windows, auto-scrollbar windows, resizable windows, and disabled/hidden widget states. All scrollable widgets use unified thumb-aware scrollbar positioning with click-and-drag support. Tab/Shift+Tab focus navigation cycles between widgets. Arrow keys, Home, and End provide keyboard control for sliders, lists, scrollbars, and checkboxes. Text dimensions use al_get_text_dimensions for accurate bounding-box measurement.
+
+\section data_interchange Data Interchange Modules
+
+- \ref AVRO — Avro binary format encoding and decoding with JSON conversion. Implements the Avro specification from scratch (zig-zag varint, IEEE 754 floats, Object Container File format with magic bytes, metadata, sync markers, data blocks). Supports all Avro types: null, boolean, int, long, float, double, bytes, string, record, enum, array, map, union, fixed. Provides file-level (JSON file + schema file → Avro file and back), in-memory container (cJSON + AVRO_SCHEMA → N_STR), and N_STR-based (schema N_STR + JSON N_STR → Avro N_STR) conversion APIs. (Requires: cJSON)
+
+\section optional_modules Optional Integration Modules
+
+These modules are compiled only when their respective dependencies are detected:
+
+- \ref PCRE — PCRE2 regex matching helpers. Provides simplified wrappers around the PCRE2 library for pattern matching operations. Required by the configuration file and Kafka modules. (Requires: libpcre2-8)
+- \ref CONFIGFILE — Configuration file loading and saving using a classic key=value format with section support. Parses config files into hash table structures for easy access. (Requires: PCRE)
+- \ref N_KAFKA — Apache Kafka event producer and consumer integration. Generic functions for producing and consuming Kafka messages with configuration support. (Requires: librdkafka, PCRE, cJSON, OpenSSL)
+
+\section require Requirements
+
+<b>Core library (no optional dependencies):</b>
+- GCC with C17 support (gnu17)
+- POSIX threads (pthread)
+- zlib (compression)
+- Standard math library
+
+<b>For SSL/TLS network encryption:</b>
+- OpenSSL (libssl, libcrypto)
+
+<b>For regex and configuration file support:</b>
+- PCRE2 library (libpcre2-8)
+
+<b>For graphical/audio modules:</b>
+- Allegro 5.0.0 or later — http://alleg.sf.net/
+
+<b>For Kafka integration:</b>
+- librdkafka (bundled as git subtree in external/librdkafka)
+- cJSON (bundled as git subtree in external/cJSON)
+- OpenSSL
+- PCRE2
+- libsasl2
+
+<b>Platform-specific:</b>
+- Linux: standard POSIX environment
+- Windows: MinGW (32 or 64-bit), Winsock2
+- SunOS/Solaris: socket, nsl, rt libraries
+
+\section buildflags Build Flags
+
+The build system auto-detects available optional dependencies. You can force-disable specific features using environment variables:
+
+| Flag | Effect |
+|------|--------|
+| FORCE_NO_ALLEGRO=1 | Disable Allegro 5 graphics modules |
+| FORCE_NO_OPENSSL=1 | Disable OpenSSL/TLS support |
+| FORCE_NO_KAFKA=1 | Disable Kafka integration |
+| FORCE_NO_PCRE=1 | Disable PCRE2 regex and config file support |
+| FORCE_NO_CJSON=1 | Disable cJSON support |
+| DEBUG=1 | Enable debug build with sanitizers |
+| DEBUG_THREADS=1 | Use ThreadSanitizer instead of AddressSanitizer (with DEBUG=1) |
+| ALL_AS_ERROR=1 | Treat all warnings as errors (with DEBUG=1) |
+
+<b>LeakSanitizer suppressions for GPU/display drivers:</b>
+
+GPU drivers (Mesa, DRM, X11) may report small fixed-size leaks via LeakSanitizer
+in DEBUG=1 builds. These are not caused by Nilorea code. Suppress them with:
+\code
+LSAN_OPTIONS=suppressions=examples/lsan-suppressions.cfg ./examples/ex_gui
+\endcode
+
+\section install Installation
+
+Build the library:
+\code
+make                    # auto-detects dependencies and builds static + shared library
+make DEBUG=1            # debug build with AddressSanitizer and UndefinedBehaviorSanitizer
+make all                # build library and all examples
+make doc                # generate this documentation with Doxygen
+make show-detected-option  # display which optional dependencies were found
+\endcode
+
+For Kafka support, first build the bundled librdkafka:
+\code
+make integrate-deps     # build and integrate external dependencies
+\endcode
+
+Link against the library:
+\code
+gcc your_code.c -I/path/to/include -L/path/to/lib -lnilorea -lpthread -lm -lz
+\endcode
+
+Add optional link flags as needed: -lssl -lcrypto (OpenSSL), -lpcre2-8 (PCRE2), -lallegro ... (Allegro 5).
+
+\section end Closing Words
+
+Nilorea is a "make life easier" library. You are welcome to use it.
+
+Everything inside is licensed under the GNU General Public License v3.0 or later. Read it at https://www.gnu.org/licenses/gpl-3.0.html
+
+You can reach the author at coder at nilorea.net
+
+More information on the website: https://www.nilorea.net
+
+*/

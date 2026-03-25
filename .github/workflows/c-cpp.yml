@@ -1,0 +1,41 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ main , next ]
+  pull_request:
+    branches: [ main , next ]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        submodules: recursive
+    - name: Cache packages
+      uses: actions/cache@v4
+      with:
+        key: nilorea-library-cache
+        path: |
+          ~/apt-cache
+    - name: Install dependencies
+      run: |
+        export APT_CACHE_DIR=~/apt-cache && mkdir -pv $APT_CACHE_DIR
+        sudo apt-get update -yq && sudo apt-get -o dir::cache::archives="$APT_CACHE_DIR" install -y liballegro5-dev libpcre2-dev
+        sudo rm -rf $APT_CACHE_DIR/lock $APT_CACHE_DIR/partial
+    - name: Build library and dependencies
+      run: |
+        make integrate-deps
+        make DEBUG=1 -j $(nproc)
+    - name: Build examples
+      run: make DEBUG=1 -j $(nproc) examples
+    - name: Run tests
+      run: |
+        cd examples
+        chmod +x run_tests.sh
+        ./run_tests.sh
+        cd ..
