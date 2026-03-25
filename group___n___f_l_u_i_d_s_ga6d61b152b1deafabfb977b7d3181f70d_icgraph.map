@@ -1,0 +1,14 @@
+<map id="n_fluid_avgU" name="n_fluid_avgU">
+<area shape="rect" id="Node000001" title="compute average U velocity at cell" alt="" coords="569,31,676,56"/>
+<area shape="rect" id="Node000002" href="$group___n___f_l_u_i_d_s.html#gafb7618eec92414d3d74933b4e982fc62" title="non threaded version of add velocities function" alt="" coords="368,5,504,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="555,37,504,30,505,25,556,32"/>
+<area shape="rect" id="Node000005" href="$n__fluids_8c.html#a84a742c3442bc602d59619e8cfbc550a" title="ready to be threaded add velocities function" alt="" coords="351,55,521,80"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="556,55,522,59,521,54,555,49"/>
+<area shape="rect" id="Node000003" href="$group___n___f_l_u_i_d_s.html#ga690a4558c5b3d5eafdf1d7b64af5858f" title="non threaded version of N_FLUID global processing function" alt="" coords="141,5,270,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="354,21,270,21,270,15,354,15"/>
+<area shape="rect" id="Node000004" href="$ex__fluid_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,31,60,56"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="127,32,61,42,60,37,126,27"/>
+<area shape="rect" id="Node000006" href="$group___n___f_l_u_i_d_s.html#ga580ecc1e497035ce47b272309fcf22c8" title="a threaded version of N_FLUID global processing function" alt="" coords="108,55,303,80"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="337,70,303,70,303,65,337,65"/>
+<area shape="poly" id="edge6_Node000006_Node000004" title=" " alt="" coords="100,55,60,50,61,44,101,50"/>
+</map>

@@ -1,0 +1,16 @@
+<map id="iso_is_in_diamond" name="iso_is_in_diamond">
+<area shape="rect" id="Node000001" title="test if pixel (px,py) is inside the isometric diamond of size tile_w x tile_h" alt="" coords="363,95,505,121"/>
+<area shape="rect" id="Node000002" href="$group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#gabf67484ba3b17ed149c24f0b3e8d888b" title="Generate the 32 procedural transition alpha masks (16 edge + 16 corner)." alt="" coords="124,5,299,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="392,92,314,60,279,48,281,43,316,55,394,87"/>
+<area shape="rect" id="Node000004" href="$group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga62119c8221a8e0b0be16537af474d6e8" title="Mask a tile bitmap to the isometric diamond shape." alt="" coords="113,70,309,95"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="349,101,309,96,310,91,349,96"/>
+<area shape="rect" id="Node000005" href="$group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#gaef27f22e3b24819ee04c113d14aa9c83" title="Height&#45;aware screen&#45;to&#45;map conversion with diamond hit testing." alt="" coords="114,119,309,145"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="349,120,309,124,308,119,349,114"/>
+<area shape="rect" id="Node000006" href="$group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#gaef210d196c5ddfeccfbf73348c593edd" title="Height&#45;aware screen&#45;to&#45;map conversion returning fractional tile coordinates." alt="" coords="108,169,315,194"/>
+<area shape="poly" id="edge7_Node000001_Node000006" title=" " alt="" coords="393,129,316,159,271,171,270,166,314,153,391,124"/>
+<area shape="rect" id="Node000003" href="$ex__gui__isometric_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,95,60,121"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="125,53,109,60,78,78,51,97,48,93,75,74,107,55,123,48"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="108,100,61,107,60,102,107,95"/>
+<area shape="poly" id="edge6_Node000005_Node000003" title=" " alt="" coords="103,120,60,114,61,109,104,115"/>
+<area shape="poly" id="edge8_Node000006_Node000003" title=" " alt="" coords="131,167,107,158,75,141,49,123,52,119,78,137,109,154,133,162"/>
+</map>

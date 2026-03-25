@@ -1,0 +1,30 @@
+<map id="_destroy_window" name="_destroy_window">
+<area shape="rect" id="Node000001" title="helper: destroy a single window (called by list destructor)" alt="" coords="1005,80,1140,105"/>
+<area shape="rect" id="Node000002" href="$n__gui_8c.html#a7354743de2c4caf5256deb698f147d1b" title="Sort windows list by z&#45;order: ALWAYS_BEHIND first, then FIXED (by z_value), then NORMAL,..." alt="" coords="768,55,957,80"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="991,86,957,81,958,76,992,80"/>
+<area shape="rect" id="Node000003" href="$group___g_u_i.html#ga2962234ca33f51143809c7aff1201373" title="Lower a window to the bottom of the draw order." alt="" coords="547,5,704,31"/>
+<area shape="poly" id="edge16_Node000001_Node000003" title=" " alt="" coords="1036,76,998,59,957,45,891,32,824,24,704,19,704,13,824,18,892,26,958,39,1000,54,1038,71"/>
+<area shape="rect" id="Node000004" href="$group___g_u_i.html#ga1120f75ce5258701a97af2d33c09f40a" title="Bring a window to the front (top of draw order)." alt="" coords="549,104,702,129"/>
+<area shape="poly" id="edge17_Node000001_Node000004" title=" " alt="" coords="992,100,702,115,702,110,991,94"/>
+<area shape="rect" id="Node000010" href="$group___g_u_i.html#ga9734754ec210aac972dc415403f61fc0" title="Add a new pseudo&#45;window to the context." alt="" coords="337,193,483,219"/>
+<area shape="poly" id="edge11_Node000001_Node000010" title=" " alt="" coords="997,111,958,118,483,197,483,192,957,113,996,105"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="787,54,687,33,688,28,788,49"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="788,85,688,107,687,101,787,80"/>
+<area shape="rect" id="Node000009" href="$group___g_u_i.html#ga5640dd48db367d39c3a97b8df4f2a9ff" title="Set window z&#45;order mode and value." alt="" coords="531,55,720,80"/>
+<area shape="poly" id="edge10_Node000002_Node000009" title=" " alt="" coords="755,70,720,70,720,65,755,65"/>
+<area shape="rect" id="Node000005" href="$group___g_u_i.html#ga3971ceb17b0fcf5d893c5c61f24c5269" title="Process an allegro event through the GUI system." alt="" coords="119,53,278,79"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="546,104,482,94,278,74,278,68,483,89,547,99"/>
+<area shape="rect" id="Node000008" href="$group___g_u_i.html#ga5fd53b3d67957f2cb93bd9d4f9c27e3f" title="Set keyboard focus to a specific widget." alt="" coords="347,104,473,129"/>
+<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="535,119,473,119,473,114,535,114"/>
+<area shape="rect" id="Node000006" href="$ex__gui__network_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,105,60,131"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="145,85,61,112,59,107,144,80"/>
+<area shape="rect" id="Node000007" href="$ex__gui_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,155,60,180"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="139,86,110,100,49,156,45,152,106,96,137,81"/>
+<area shape="poly" id="edge9_Node000008_Node000005" title=" " alt="" coords="342,103,252,81,253,76,344,98"/>
+<area shape="poly" id="edge8_Node000008_Node000007" title=" " alt="" coords="333,130,61,166,60,161,332,124"/>
+<area shape="poly" id="edge12_Node000010_Node000006" title=" " alt="" coords="340,193,60,127,61,122,342,188"/>
+<area shape="poly" id="edge13_Node000010_Node000007" title=" " alt="" coords="323,207,220,201,108,189,60,178,61,173,108,183,220,196,324,202"/>
+<area shape="rect" id="Node000011" href="$group___g_u_i.html#ga49d5bd2553848e545c1cdf310c2db0c1" title="Add a window with automatic sizing (use n_gui_window_autosize after adding widgets)" alt="" coords="108,256,289,281"/>
+<area shape="poly" id="edge14_Node000010_Node000011" title=" " alt="" coords="354,225,243,258,242,253,353,220"/>
+<area shape="poly" id="edge15_Node000011_Node000007" title=" " alt="" coords="137,254,107,239,70,210,43,182,47,178,74,206,109,234,139,249"/>
+</map>

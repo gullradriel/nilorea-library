@@ -1,0 +1,13 @@
+<map id="dr_entity_compute" name="dr_entity_compute">
+<area shape="rect" id="Node000001" title="compute the dead reckoned display position at a given time" alt="" coords="5,55,149,80"/>
+<area shape="rect" id="Node000002" href="$n__dead__reckoning_8c.html#a4d690f68b53474ae649dc6855f325466" title="Evaluate a cubic Bezier curve at parameter t in [0, 1]." alt="" coords="227,5,330,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="129,52,213,31,215,36,130,57"/>
+<area shape="rect" id="Node000003" href="$group___d_e_a_d___r_e_c_k_o_n_i_n_g.html#gaf708b8537516093292ba8c44c253c994" title="Extrapolate a kinematic state forward by dt seconds." alt="" coords="197,55,360,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="150,65,184,65,184,70,150,70"/>
+<area shape="rect" id="Node000006" href="$group___d_e_a_d___r_e_c_k_o_n_i_n_g.html#ga2cba279e9161e59cbe5f700f3b872f1b" title="Linear interpolation: a + (b &#45; a) * t." alt="" coords="226,104,331,129"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="130,77,213,98,212,103,129,83"/>
+<area shape="rect" id="Node000004" href="$group___d_e_a_d___r_e_c_k_o_n_i_n_g.html#gad237b9d05cef7166e75a5b25f8b7007b" title="Vector addition: a + b." alt="" coords="413,31,517,56"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="360,54,399,49,400,54,361,60"/>
+<area shape="rect" id="Node000005" href="$group___d_e_a_d___r_e_c_k_o_n_i_n_g.html#ga1aab2e9d8913738e1a604898bf7cfa21" title="Scalar multiplication: v * s." alt="" coords="408,80,523,105"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="361,76,395,80,394,86,360,81"/>
+</map>

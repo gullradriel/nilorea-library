@@ -1,0 +1,49 @@
+<map id="main" name="main">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,381,60,407"/>
+<area shape="rect" id="Node000002" href="$group___s_t_a_c_k.html#gae10ed44c0747bbb61ff7a4f4fb861a7a" title="delete a STACK *stack" alt="" coords="117,5,222,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="32,381,40,311,54,210,76,109,90,68,106,40,109,37,113,41,110,44,95,71,81,110,59,211,45,312,38,381"/>
+<area shape="rect" id="Node000003" href="$group___s_t_a_c_k.html#gaeb9766b80862cfed07804b00e02ca3d9" title="allocate a new STACK" alt="" coords="124,55,215,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="31,381,33,331,42,257,51,216,64,174,82,134,106,98,119,85,123,89,110,101,87,137,69,176,56,217,47,258,38,331,36,381"/>
+<area shape="rect" id="Node000004" href="$ex__common_8c.html#aefcb3f70374ff9b6256aac6e12870399" title=" " alt="" coords="116,156,223,181"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="33,381,40,346,53,298,74,246,106,199,120,186,124,190,110,202,79,249,58,300,45,347,38,382"/>
+<area shape="rect" id="Node000005" href="$group___l_o_g.html#gacad9b2d55788f46ddde811c986ead9ae" title="Set the global log level value ( static int LOG_LEVEL )" alt="" coords="287,107,395,132"/>
+<area shape="poly" id="edge6_Node000001_Node000005" title=" " alt="" coords="31,381,31,335,39,269,49,234,62,200,81,168,106,141,145,119,188,107,232,103,273,105,273,111,232,109,189,112,147,124,110,145,85,171,67,202,54,236,45,270,36,335,36,381"/>
+<area shape="rect" id="Node000007" href="$group___s_t_a_c_k.html#ga262da05db5ed393ca1af9adee0046315" title="test if the stack is empty" alt="" coords="279,257,403,283"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="33,380,40,351,53,312,74,273,89,256,107,242,130,231,156,225,208,224,259,235,301,249,299,254,257,240,208,230,156,230,132,236,109,247,93,260,79,276,58,314,45,352,38,382"/>
+<area shape="rect" id="Node000008" href="$group___s_t_a_c_k.html#ga4aec6e9c9b01255d1131a3f3cc6c2886" title="test if the stack is full" alt="" coords="118,257,221,283"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="38,380,64,337,84,313,106,292,113,287,116,292,110,296,88,317,69,340,43,383"/>
+<area shape="rect" id="Node000009" href="$group___s_t_a_c_k.html#ga3fd77da7de03d2d18cdb3600f24db24b" title="peek in the stack without removing the stack item" alt="" coords="121,307,217,332"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="49,379,107,341,119,335,121,340,109,346,52,383"/>
+<area shape="rect" id="Node000010" href="$group___s_t_a_c_k.html#ga2fb95be3f5f644f46d6d071365ecc8e1" title="helper to pop a bool" alt="" coords="118,356,221,381"/>
+<area shape="poly" id="edge11_Node000001_Node000010" title=" " alt="" coords="60,386,104,378,105,383,61,392"/>
+<area shape="rect" id="Node000012" href="$group___s_t_a_c_k.html#ga581a47ccfc1da063f2b668a5fc73b315" title="helper to pop a char" alt="" coords="118,405,221,431"/>
+<area shape="poly" id="edge13_Node000001_Node000012" title=" " alt="" coords="61,396,105,404,104,409,60,401"/>
+<area shape="rect" id="Node000013" href="$group___s_t_a_c_k.html#ga280e4798f9624d97531a3e5ed3f78fa2" title="helper to pop a double" alt="" coords="118,455,221,480"/>
+<area shape="poly" id="edge15_Node000001_Node000013" title=" " alt="" coords="53,404,109,440,123,446,121,451,107,444,50,409"/>
+<area shape="rect" id="Node000014" href="$group___s_t_a_c_k.html#ga722c00b84620d10288d65675179c33cd" title="helper to pop a float" alt="" coords="119,504,219,529"/>
+<area shape="poly" id="edge17_Node000001_Node000014" title=" " alt="" coords="43,406,69,446,88,469,110,489,119,496,116,500,106,493,84,473,65,449,39,409"/>
+<area shape="rect" id="Node000015" href="$group___s_t_a_c_k.html#gada4b159b3c4dcde56905cd49ac04dcb8" title="helper to pop a int32_t" alt="" coords="112,553,227,579"/>
+<area shape="poly" id="edge19_Node000001_Node000015" title=" " alt="" coords="40,406,62,469,83,506,110,539,117,544,113,548,106,543,78,509,57,471,35,408"/>
+<area shape="rect" id="Node000016" href="$group___s_t_a_c_k.html#ga53e34b97087a1177c96c0ce32966cfb3" title="helper to pop a int8_t" alt="" coords="116,603,223,628"/>
+<area shape="poly" id="edge21_Node000001_Node000016" title=" " alt="" coords="38,406,44,442,56,490,78,542,92,566,110,588,116,593,112,597,106,592,88,569,73,545,51,492,39,443,33,407"/>
+<area shape="rect" id="Node000017" href="$group___s_t_a_c_k.html#gaf3a5086088b5bb511ba8dc265adfeb39" title="helper to pop a pointer" alt="" coords="118,652,221,677"/>
+<area shape="poly" id="edge23_Node000001_Node000017" title=" " alt="" coords="37,407,40,450,51,511,73,578,89,609,110,638,115,642,111,646,106,641,85,612,68,580,45,512,35,451,32,407"/>
+<area shape="rect" id="Node000018" href="$group___s_t_a_c_k.html#gab62facdfc1a162b989d78c8caf915bc6" title="helper to pop a uint32_t" alt="" coords="108,701,231,727"/>
+<area shape="poly" id="edge25_Node000001_Node000018" title=" " alt="" coords="36,407,37,458,45,532,54,573,67,613,86,652,110,687,115,692,111,696,106,690,81,655,62,615,49,574,40,533,31,458,31,407"/>
+<area shape="rect" id="Node000019" href="$group___s_t_a_c_k.html#ga78a9be2f76ff4e306bfe2d8d1bc08494" title="helper to pop a uint8_t" alt="" coords="112,751,227,776"/>
+<area shape="poly" id="edge27_Node000001_Node000019" title=" " alt="" coords="38,406,45,475,60,574,81,672,95,711,110,738,113,740,109,744,106,741,90,713,76,674,54,575,40,475,32,407"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="213,153,281,134,283,139,215,159"/>
+<area shape="rect" id="Node000006" href="$ex__accept__pool__client_8c.html#ad96d407a911fbb914fa8e4cfbf2faf0f" title=" " alt="" coords="310,156,371,181"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="223,166,296,166,296,171,223,171"/>
+<area shape="poly" id="edge10_Node000009_Node000007" title=" " alt="" coords="213,304,281,284,283,289,215,309"/>
+<area shape="rect" id="Node000011" href="$n__stack_8c.html#a683249259f859428011c1dc93529dd45" title="helper for stack_pop." alt="" coords="289,553,392,579"/>
+<area shape="poly" id="edge12_Node000010_Node000011" title=" " alt="" coords="214,379,232,391,267,426,295,467,332,539,327,542,290,469,263,430,229,395,211,384"/>
+<area shape="poly" id="edge14_Node000012_Node000011" title=" " alt="" coords="211,428,232,440,261,463,287,490,325,540,321,543,282,494,257,467,229,444,209,433"/>
+<area shape="poly" id="edge16_Node000013_Node000011" title=" " alt="" coords="207,478,232,489,276,516,314,543,311,547,273,520,229,494,205,482"/>
+<area shape="poly" id="edge18_Node000014_Node000011" title=" " alt="" coords="215,527,283,547,281,552,213,532"/>
+<area shape="poly" id="edge20_Node000015_Node000011" title=" " alt="" coords="227,563,275,563,275,569,227,569"/>
+<area shape="poly" id="edge22_Node000016_Node000011" title=" " alt="" coords="213,600,281,580,283,585,215,605"/>
+<area shape="poly" id="edge24_Node000017_Node000011" title=" " alt="" coords="203,649,229,637,310,585,313,589,232,642,205,654"/>
+<area shape="poly" id="edge26_Node000018_Node000011" title=" " alt="" coords="207,699,229,686,257,663,282,637,321,588,325,592,286,641,261,667,232,691,210,704"/>
+<area shape="poly" id="edge28_Node000019_Node000011" title=" " alt="" coords="211,748,229,737,263,702,290,663,327,590,332,593,295,665,267,706,232,741,214,753"/>
+</map>

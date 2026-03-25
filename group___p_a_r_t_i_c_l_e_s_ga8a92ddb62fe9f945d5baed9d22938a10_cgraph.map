@@ -1,0 +1,25 @@
+<map id="manage_particle" name="manage_particle">
+<area shape="rect" id="Node000001" title="manage particles using internal timer" alt="" coords="5,105,136,131"/>
+<area shape="rect" id="Node000002" href="$group___n___t_i_m_e.html#gaa26bb3d464f6def321b9919bf1e9d1f4" title="Poll any N_TIME HiTimer, returning usec, and moving currentTime to startTime." alt="" coords="221,80,301,105"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="136,107,208,97,208,102,137,112"/>
+<area shape="rect" id="Node000003" href="$group___p_a_r_t_i_c_l_e_s.html#ga3bd6b6f5b679348fb4d24e0524be4edf" title="update particles positions using provided delta time" alt="" coords="184,129,339,155"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="137,124,171,128,170,133,136,129"/>
+<area shape="rect" id="Node000004" href="$n__particles_8c.html#a789b50715c6ef07f1046c5bc3a7aefc1" title="helper to linearly interpolate a color" alt="" coords="431,5,525,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="315,127,337,115,353,97,360,78,368,59,385,40,417,24,419,29,388,44,372,61,365,80,357,99,340,119,318,132"/>
+<area shape="rect" id="Node000005" href="$n__particles_8c.html#ade83bb20240d0c5632d6b9a8c99981f1" title="compute shape&#45;offset spawn position for an emitter" alt="" coords="395,55,561,80"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="304,127,338,114,361,101,386,89,407,81,409,86,388,94,364,106,340,119,306,132"/>
+<area shape="rect" id="Node000006" href="$n__particles_8c.html#a0ad160c4f51cf2218d946fe5ad020653" title="helper to generate a random double between min and max" alt="" coords="399,104,557,129"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="338,130,385,125,385,130,339,136"/>
+<area shape="rect" id="Node000007" href="$n__particles_8c.html#ae19bdc7749390ce4cd2c439828f6135d" title="helper to generate a random int between min and max (inclusive)" alt="" coords="393,153,563,179"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="339,148,380,152,379,158,338,153"/>
+<area shape="rect" id="Node000008" href="$group___p_a_r_t_i_c_l_e_s.html#ga19e45a8a5e5a08b50a3ce24a6c3e7181" title="add a particle at an absolute world position (not relative to psys&#45;&gt;source)" alt="" coords="417,203,539,228"/>
+<area shape="poly" id="edge7_Node000003_Node000008" title=" " alt="" coords="294,152,388,187,416,196,415,201,386,193,293,157"/>
+<area shape="rect" id="Node000011" href="$group___p_h_y_s_i_c_s.html#gadc7a001ab64c72a43243175e56a86264" title="Update object position." alt="" coords="387,252,569,277"/>
+<area shape="poly" id="edge10_Node000003_Node000011" title=" " alt="" coords="277,153,323,195,354,218,388,238,404,245,401,250,385,243,351,223,320,199,273,157"/>
+<area shape="rect" id="Node000009" href="$group___l_i_s_t.html#ga4eab319289a83524639ee5e9f0441fdf" title="Add a pointer to the end of the list." alt="" coords="680,203,760,228"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="540,213,666,213,666,218,540,218"/>
+<area shape="rect" id="Node000010" href="$group___l_i_s_t.html#ga678e828550efc8e64a836bb8c713c2f4" title="Allocate a new node to link in a list." alt="" coords="871,203,985,228"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="760,213,857,213,857,218,760,218"/>
+<area shape="rect" id="Node000012" href="$group___p_h_y_s_i_c_s.html#ga5a40d51963e17af619b6a3c36c687462" title="Update object position component." alt="" coords="617,252,823,277"/>
+<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="569,262,604,262,604,267,569,267"/>
+</map>

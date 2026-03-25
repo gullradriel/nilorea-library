@@ -1,0 +1,15 @@
+<map id="trajectory_get_speed" name="trajectory_get_speed">
+<area shape="rect" id="Node000001" title="compute only speed at given time, stores result in out" alt="" coords="5,104,164,129"/>
+<area shape="rect" id="Node000002" href="$n__trajectory_8c.html#a67925259bdb9a7e064ee8aae9336cb37" title="First derivative of h00: dh00/ds = 6s^2 &#45; 6s." alt="" coords="248,5,360,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="102,102,150,71,211,40,234,31,236,36,213,44,153,75,105,106"/>
+<area shape="rect" id="Node000003" href="$n__trajectory_8c.html#afefa9fd990460d63e947ce4e7851c993" title="First derivative of h01: dh01/ds = &#45;6s^2 + 6s." alt="" coords="248,55,360,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="141,101,234,80,235,85,142,107"/>
+<area shape="rect" id="Node000004" href="$n__trajectory_8c.html#aa67fb0b0e90521dbff903e9ed96887fd" title="First derivative of h10: dh10/ds = 3s^2 &#45; 4s + 1." alt="" coords="248,104,360,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="164,114,234,114,234,119,164,119"/>
+<area shape="rect" id="Node000005" href="$n__trajectory_8c.html#a872914d50d230f6f97b91d790107c476" title="First derivative of h11: dh11/ds = 3s^2 &#45; 2s." alt="" coords="248,153,360,179"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="142,127,235,148,234,153,141,132"/>
+<area shape="rect" id="Node000006" href="$n__trajectory_8c.html#afecdaca1aba2c24d9417ce63e384e6a6" title="Load the correct spline segment for a given time when using multi&#45;point paths." alt="" coords="212,203,396,228"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="106,127,153,157,213,188,236,196,234,201,211,192,151,162,103,132"/>
+<area shape="rect" id="Node000007" href="$n__trajectory_8c.html#a7b7db2b132cf0c88f49ce83c2796b614" title="Recompute the Hermite tangent vectors from current start/end states." alt="" coords="444,195,593,235"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="396,213,430,213,430,218,396,218"/>
+</map>

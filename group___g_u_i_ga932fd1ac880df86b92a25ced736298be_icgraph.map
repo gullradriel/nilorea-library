@@ -1,0 +1,107 @@
+<map id="n_gui_get_window" name="n_gui_get_window">
+<area shape="rect" id="Node000001" title="get a window by id" alt="" coords="824,895,967,921"/>
+<area shape="rect" id="Node000002" href="$group___g_u_i.html#gaf8589312b4f03f600026c4ca1dda1c3a" title="Add a button widget to a window." alt="" coords="368,422,505,447"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="888,882,878,824,857,749,824,668,801,631,774,596,743,567,709,541,633,499,559,469,494,450,496,445,560,464,636,495,712,537,747,563,778,593,805,627,828,666,862,747,883,823,893,881"/>
+<area shape="rect" id="Node000007" href="$group___g_u_i.html#gaf39096eb8b4eb9e33c6f413f3ee4a6bc" title="Add a checkbox widget." alt="" coords="125,929,282,954"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="810,915,283,940,282,935,810,909"/>
+<area shape="rect" id="Node000008" href="$group___g_u_i.html#ga66334b664b0729fbf7e4128e7788102a" title="Add a combo box widget (dropdown selector)" alt="" coords="122,978,285,1003"/>
+<area shape="poly" id="edge9_Node000001_Node000008" title=" " alt="" coords="816,926,776,932,507,965,285,986,285,981,506,960,776,927,815,920"/>
+<area shape="rect" id="Node000009" href="$group___g_u_i.html#gaf5be7ebef10ad2da30b66e0e7bc345ac" title="Add a dropdown menu widget." alt="" coords="123,1027,284,1053"/>
+<area shape="poly" id="edge11_Node000001_Node000009" title=" " alt="" coords="859,929,820,947,777,962,643,994,508,1016,384,1030,284,1038,284,1033,384,1025,507,1011,642,989,775,957,818,942,857,925"/>
+<area shape="rect" id="Node000010" href="$group___g_u_i.html#ga76b92f05ee8362c67ce8784fc061891f" title="Add an image display widget." alt="" coords="135,1077,271,1102"/>
+<area shape="poly" id="edge13_Node000001_Node000010" title=" " alt="" coords="876,933,834,975,807,995,777,1012,711,1037,642,1057,571,1072,502,1083,373,1093,271,1094,271,1089,373,1088,501,1077,570,1067,640,1052,709,1032,775,1007,804,991,830,970,872,929"/>
+<area shape="rect" id="Node000011" href="$group___g_u_i.html#ga3bd8d09d1c36b84bd374870169a52790" title="Add a static text label." alt="" coords="373,542,500,567"/>
+<area shape="poly" id="edge15_Node000001_Node000011" title=" " alt="" coords="887,883,874,835,853,774,820,711,799,683,774,658,743,635,709,615,635,587,563,570,500,561,500,556,564,564,637,582,711,611,746,630,778,654,803,679,824,709,858,772,880,833,892,881"/>
+<area shape="rect" id="Node000013" href="$group___g_u_i.html#ga2b1fa951e32207312e14af8a7599460d" title="Add a listbox widget." alt="" coords="367,625,506,650"/>
+<area shape="poly" id="edge20_Node000001_Node000013" title=" " alt="" coords="884,883,869,844,847,797,815,749,796,728,774,710,743,691,710,675,638,654,568,643,506,639,507,633,569,637,639,649,711,670,746,686,778,706,800,724,819,746,851,794,874,842,889,881"/>
+<area shape="rect" id="Node000014" href="$group___g_u_i.html#ga3cba240d12792ee907e2ea777f1a9ac4" title="Add a radio list widget (single selection with radio bullets)" alt="" coords="129,1126,277,1151"/>
+<area shape="poly" id="edge23_Node000001_Node000014" title=" " alt="" coords="886,935,870,968,847,1007,816,1045,777,1076,715,1106,648,1128,580,1143,511,1153,444,1157,382,1157,278,1151,278,1145,382,1152,444,1151,510,1147,579,1138,647,1123,713,1101,775,1071,812,1041,842,1004,866,965,882,932"/>
+<area shape="rect" id="Node000015" href="$group___g_u_i.html#gaaee6828e27eba1b79e429004775d147a" title="Add a scrollbar widget." alt="" coords="361,1177,512,1202"/>
+<area shape="poly" id="edge25_Node000001_Node000015" title=" " alt="" coords="893,935,882,984,861,1046,846,1078,827,1109,804,1136,778,1159,747,1177,713,1191,643,1206,573,1209,512,1205,512,1199,574,1203,642,1200,712,1186,744,1173,774,1155,801,1133,823,1106,841,1076,856,1044,877,983,888,934"/>
+<area shape="rect" id="Node000016" href="$group___g_u_i.html#ga14dd1d7071be4ea56477621139cead7b" title="Add a slider widget." alt="" coords="371,18,502,43"/>
+<area shape="poly" id="edge27_Node000001_Node000016" title=" " alt="" coords="892,882,891,715,887,596,879,467,865,339,843,222,830,171,814,127,795,91,774,64,743,41,709,25,671,15,632,10,555,11,490,20,490,15,555,6,632,5,672,10,710,20,746,37,778,61,800,88,818,125,835,169,849,221,870,338,884,466,892,596,896,715,897,881"/>
+<area shape="rect" id="Node000018" href="$group___g_u_i.html#gaeec35133da3aab9eef6507e063bd3482" title="Add a text area widget." alt="" coords="361,674,512,699"/>
+<area shape="poly" id="edge31_Node000001_Node000018" title=" " alt="" coords="879,885,838,821,809,788,775,761,710,729,640,709,572,697,512,691,513,685,573,691,642,704,712,725,777,756,813,784,843,818,884,882"/>
+<area shape="rect" id="Node000019" href="$group___g_u_i.html#ga3dc7027a9116b671a0a62fbe1d3e7763" title="Close (hide) a window." alt="" coords="598,1277,753,1302"/>
+<area shape="poly" id="edge34_Node000001_Node000019" title=" " alt="" coords="896,934,890,1001,873,1090,858,1138,837,1185,811,1228,778,1266,754,1281,752,1276,774,1262,807,1225,833,1182,853,1136,868,1089,885,1000,891,934"/>
+<area shape="rect" id="Node000022" href="$group___g_u_i.html#ga39a53bd9b84eeadccbdce6a81e4535b8" title="Minimise a window (show title bar only)" alt="" coords="584,1326,767,1351"/>
+<area shape="poly" id="edge37_Node000001_Node000022" title=" " alt="" coords="897,935,895,1010,880,1113,865,1168,844,1222,815,1272,778,1317,761,1328,758,1324,774,1313,811,1269,839,1220,860,1166,874,1112,889,1009,892,934"/>
+<area shape="rect" id="Node000023" href="$group___g_u_i.html#gac0146dd46f69d1df6c56b64703ad2b4f" title="Open (show) a window." alt="" coords="599,1227,752,1253"/>
+<area shape="poly" id="edge38_Node000001_Node000023" title=" " alt="" coords="894,935,884,991,864,1065,849,1104,830,1142,806,1178,778,1210,746,1229,743,1225,774,1206,802,1175,825,1140,844,1102,859,1063,879,990,889,934"/>
+<area shape="rect" id="Node000024" href="$group___g_u_i.html#ga3971ceb17b0fcf5d893c5c61f24c5269" title="Process an allegro event through the GUI system." alt="" coords="357,723,516,749"/>
+<area shape="poly" id="edge41_Node000001_Node000024" title=" " alt="" coords="872,887,830,845,803,825,775,808,710,781,641,763,575,750,516,743,516,738,575,745,642,758,711,776,777,803,806,820,833,841,876,883"/>
+<area shape="rect" id="Node000025" href="$group___g_u_i.html#ga0c9601402dd13b2b280dd64eac532c5d" title="Toggle window visibility (show if hidden, hide if shown)" alt="" coords="594,119,757,145"/>
+<area shape="poly" id="edge44_Node000001_Node000025" title=" " alt="" coords="891,882,884,735,867,520,852,409,832,307,806,223,791,190,774,166,748,147,751,143,778,162,795,188,811,221,837,306,857,408,872,519,890,734,896,881"/>
+<area shape="rect" id="Node000028" href="$group___g_u_i.html#ga156f7a8087b85f8d540406079f751160" title="Trigger auto&#45;fit recalculation for a window." alt="" coords="597,859,754,899"/>
+<area shape="poly" id="edge48_Node000001_Node000028" title=" " alt="" coords="810,899,754,892,754,886,811,894"/>
+<area shape="rect" id="Node000030" href="$group___g_u_i.html#ga5cf1714078ed589321ec158c52883db1" title="Recompute and apply minimum&#45;fit size for a window based on its current widgets." alt="" coords="115,169,291,194"/>
+<area shape="poly" id="edge53_Node000001_Node000030" title=" " alt="" coords="891,882,884,748,866,556,851,458,831,369,806,297,791,270,774,250,740,229,691,213,630,200,561,192,418,183,291,182,291,177,418,178,562,186,631,195,692,207,743,224,778,246,795,267,810,295,836,368,856,457,871,556,889,748,896,881"/>
+<area shape="rect" id="Node000031" href="$group___g_u_i.html#ga3992d0aad628aad19c55837b2d560f54" title="Get feature flags of a window." alt="" coords="585,1375,765,1401"/>
+<area shape="poly" id="edge55_Node000001_Node000031" title=" " alt="" coords="893,935,879,1030,855,1160,839,1225,821,1284,801,1333,778,1366,762,1377,759,1373,774,1362,796,1330,816,1282,834,1223,850,1158,874,1029,888,934"/>
+<area shape="rect" id="Node000032" href="$group___g_u_i.html#ga7f7e53cf0ba63a9032a7f6e8c44e6b8d" title="Get window z&#45;order mode." alt="" coords="580,1425,771,1450"/>
+<area shape="poly" id="edge56_Node000001_Node000032" title=" " alt="" coords="894,934,882,1039,859,1183,843,1256,824,1323,803,1378,778,1415,763,1426,760,1422,774,1411,798,1375,819,1321,838,1255,853,1182,876,1038,889,934"/>
+<area shape="rect" id="Node000033" href="$group___g_u_i.html#gac03cf2c12e2b7284a445e947e2d7f9fc" title="Get window z&#45;value (for N_GUI_ZORDER_FIXED mode)." alt="" coords="579,1474,771,1499"/>
+<area shape="poly" id="edge57_Node000001_Node000033" title=" " alt="" coords="895,935,884,1049,862,1208,846,1289,827,1362,805,1423,792,1446,778,1464,763,1476,760,1472,774,1461,787,1444,800,1421,822,1361,841,1287,857,1207,878,1048,889,935"/>
+<area shape="rect" id="Node000034" href="$group___g_u_i.html#ga8c31de44a2242ce867740181211afd46" title="Check if a window is currently visible." alt="" coords="351,69,522,94"/>
+<area shape="poly" id="edge58_Node000001_Node000034" title=" " alt="" coords="892,881,890,722,885,609,876,487,862,366,841,256,828,208,812,167,794,133,774,109,742,85,707,70,668,60,628,56,550,60,485,71,484,66,550,54,628,51,669,55,708,65,745,81,778,105,799,130,817,165,833,207,846,255,867,365,882,487,891,609,895,722,897,881"/>
+<area shape="rect" id="Node000035" href="$group___g_u_i.html#gafc37495abd543f63c7f63d111a1e9bbc" title="Configure auto&#45;fit behavior for a dialog window." alt="" coords="580,261,771,286"/>
+<area shape="poly" id="edge60_Node000001_Node000035" title=" " alt="" coords="890,882,884,794,866,666,851,594,831,520,805,447,774,379,755,351,734,326,692,288,695,284,737,322,760,348,778,376,810,445,836,518,856,593,871,665,889,794,896,882"/>
+<area shape="rect" id="Node000036" href="$group___g_u_i.html#ga20c26bb1a26c6e00a71236acd8c4aee3" title="Set optional bitmap overlays on a window&#39;s body and titlebar." alt="" coords="575,390,776,415"/>
+<area shape="poly" id="edge62_Node000001_Node000036" title=" " alt="" coords="890,882,883,806,865,701,850,643,830,585,805,529,774,476,758,458,740,442,702,418,705,413,743,437,762,454,778,473,810,526,835,583,855,642,870,700,888,806,895,881"/>
+<area shape="rect" id="Node000037" href="$group___g_u_i.html#gae1084732ad0c5253df336aae8b63c282" title="Set feature flags on a window." alt="" coords="347,773,526,798"/>
+<area shape="poly" id="edge64_Node000001_Node000037" title=" " alt="" coords="861,890,821,869,775,849,711,830,646,816,526,797,527,791,647,810,713,825,777,844,823,864,863,886"/>
+<area shape="rect" id="Node000038" href="$group___g_u_i.html#ga5640dd48db367d39c3a97b8df4f2a9ff" title="Set window z&#45;order mode and value." alt="" coords="581,1523,770,1549"/>
+<area shape="poly" id="edge67_Node000001_Node000038" title=" " alt="" coords="895,935,886,1057,865,1231,850,1320,830,1401,807,1468,793,1494,778,1514,763,1525,760,1521,774,1510,788,1491,802,1466,825,1400,844,1319,860,1230,880,1057,890,934"/>
+<area shape="rect" id="Node000003" href="$ex__gui__network_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="176,625,231,650"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="414,459,300,562,223,626,219,622,297,558,410,455"/>
+<area shape="rect" id="Node000004" href="$ex__gui_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,625,60,650"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="395,419,335,398,259,382,220,379,181,383,143,393,110,411,86,434,68,461,55,491,46,522,37,582,36,625,31,624,32,581,41,521,50,489,64,458,82,430,106,407,141,388,180,377,220,374,260,376,336,393,397,414"/>
+<area shape="rect" id="Node000005" href="$group___g_u_i.html#gaa0c7d68f5646bc9b238688e076997383" title="Add a bitmap&#45;based button." alt="" coords="108,321,299,346"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="399,418,298,368,245,349,247,344,300,363,402,413"/>
+<area shape="rect" id="Node000006" href="$group___g_u_i.html#ga6c497401ac74e6c74a5b4bf8b786d83b" title="Add a toggle button widget (stays clicked/unclicked on single click)" alt="" coords="111,422,296,447"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="355,437,296,437,296,432,355,432"/>
+<area shape="poly" id="edge6_Node000006_Node000004" title=" " alt="" coords="129,455,110,469,79,507,58,551,45,594,39,625,33,624,40,592,53,550,75,504,106,465,126,451"/>
+<area shape="poly" id="edge8_Node000007_Node000004" title=" " alt="" coords="123,924,106,911,82,879,63,843,50,806,41,767,32,698,31,650,36,650,37,698,46,766,55,804,68,841,86,876,110,907,126,920"/>
+<area shape="poly" id="edge10_Node000008_Node000004" title=" " alt="" coords="112,972,106,967,90,942,76,905,54,811,40,716,33,651,38,650,45,716,59,810,81,903,95,939,110,964,115,968"/>
+<area shape="poly" id="edge12_Node000009_Node000004" title=" " alt="" coords="111,1021,106,1016,88,987,73,944,51,835,38,725,32,650,37,650,43,724,56,834,78,942,93,984,110,1013,115,1018"/>
+<area shape="poly" id="edge14_Node000010_Node000004" title=" " alt="" coords="121,1078,106,1066,86,1032,70,982,57,923,48,858,36,733,32,650,37,650,41,733,53,857,63,922,75,981,91,1030,110,1062,124,1073"/>
+<area shape="poly" id="edge16_Node000011_Node000003" title=" " alt="" coords="388,574,232,630,230,625,386,569"/>
+<area shape="poly" id="edge17_Node000011_Node000004" title=" " alt="" coords="398,538,339,514,264,495,225,490,184,490,146,498,109,513,81,537,61,568,47,600,39,625,34,624,42,598,56,566,77,533,107,508,144,492,184,485,225,484,265,489,341,509,400,534"/>
+<area shape="rect" id="Node000012" href="$group___g_u_i.html#ga708e191a6f8d6007d54a0c5a17af505c" title="Add a static text label with hyperlink." alt="" coords="124,523,283,549"/>
+<area shape="poly" id="edge18_Node000011_Node000012" title=" " alt="" coords="359,551,283,545,283,540,360,546"/>
+<area shape="poly" id="edge19_Node000012_Node000004" title=" " alt="" coords="140,555,109,570,74,598,47,626,43,622,70,594,107,566,138,551"/>
+<area shape="poly" id="edge21_Node000013_Node000003" title=" " alt="" coords="353,640,231,640,231,635,353,635"/>
+<area shape="poly" id="edge22_Node000013_Node000004" title=" " alt="" coords="366,625,298,615,203,606,161,608,109,615,61,628,59,623,107,609,161,602,203,601,299,609,367,619"/>
+<area shape="poly" id="edge24_Node000014_Node000004" title=" " alt="" coords="115,1123,106,1115,84,1077,67,1021,54,954,45,881,35,742,32,650,37,650,40,741,50,880,60,953,72,1020,89,1075,110,1112,119,1119"/>
+<area shape="poly" id="edge26_Node000015_Node000004" title=" " alt="" coords="374,1207,311,1216,240,1217,203,1212,168,1202,135,1186,106,1164,92,1147,80,1124,61,1063,48,988,39,907,31,751,31,650,36,650,37,751,44,907,53,988,66,1062,85,1122,97,1144,110,1161,138,1182,170,1197,204,1206,240,1211,311,1211,373,1202"/>
+<area shape="poly" id="edge28_Node000016_Node000004" title=" " alt="" coords="358,47,205,77,142,94,110,109,98,126,87,149,69,211,55,286,46,368,38,524,37,624,31,624,33,524,41,367,50,285,63,210,82,148,93,123,106,105,140,89,204,72,357,41"/>
+<area shape="rect" id="Node000017" href="$group___g_u_i.html#ga1fd95f021e5995bbdedf3f1db1913b8c" title="Add a vertical slider widget." alt="" coords="134,18,273,43"/>
+<area shape="poly" id="edge29_Node000016_Node000017" title=" " alt="" coords="358,33,273,33,273,28,358,28"/>
+<area shape="poly" id="edge30_Node000017_Node000004" title=" " alt="" coords="124,52,110,64,97,84,86,110,68,178,55,260,46,349,38,517,37,624,31,624,32,517,41,348,49,259,63,177,81,109,93,82,106,61,120,48"/>
+<area shape="poly" id="edge32_Node000018_Node000003" title=" " alt="" coords="362,674,231,646,232,640,363,668"/>
+<area shape="poly" id="edge33_Node000018_Node000004" title=" " alt="" coords="347,688,233,681,107,664,60,650,61,645,109,659,233,676,348,683"/>
+<area shape="rect" id="Node000020" href="$ex__gui__isometric_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="409,1277,464,1302"/>
+<area shape="poly" id="edge35_Node000019_Node000020" title=" " alt="" coords="584,1292,464,1292,464,1287,584,1287"/>
+<area shape="rect" id="Node000021" href="$ex__gui__isometric_8c.html#a9a171fc3f1e0c68094bddacc6681d309" title=" " alt="" coords="372,1227,501,1253"/>
+<area shape="poly" id="edge36_Node000019_Node000021" title=" " alt="" coords="600,1276,498,1255,500,1250,601,1271"/>
+<area shape="poly" id="edge39_Node000023_Node000020" title=" " alt="" coords="600,1258,465,1286,464,1281,599,1253"/>
+<area shape="poly" id="edge40_Node000023_Node000021" title=" " alt="" coords="585,1243,502,1243,502,1237,585,1237"/>
+<area shape="poly" id="edge42_Node000024_Node000003" title=" " alt="" coords="370,722,346,713,279,682,225,652,227,648,281,677,348,708,372,717"/>
+<area shape="poly" id="edge43_Node000024_Node000004" title=" " alt="" coords="343,737,229,724,167,711,107,692,73,673,46,652,50,648,76,669,109,687,168,706,230,719,344,732"/>
+<area shape="rect" id="Node000026" href="$ex__gui_8c.html#a2e846427663a35487510a2e36e6efcd8" title=" " alt="" coords="347,118,527,143"/>
+<area shape="poly" id="edge45_Node000025_Node000026" title=" " alt="" coords="580,134,527,134,527,128,580,129"/>
+<area shape="rect" id="Node000027" href="$ex__gui_8c.html#a5d09e7436c53d8b940c551fb62e262e9" title=" " alt="" coords="111,119,296,145"/>
+<area shape="poly" id="edge46_Node000026_Node000027" title=" " alt="" coords="333,134,296,134,296,129,333,129"/>
+<area shape="poly" id="edge47_Node000027_Node000004" title=" " alt="" coords="113,155,110,158,89,195,72,250,59,318,50,391,40,532,37,624,31,624,34,532,44,391,54,317,67,249,84,193,106,154,109,151"/>
+<area shape="poly" id="edge49_Node000028_Node000004" title=" " alt="" coords="583,889,460,895,320,896,253,892,193,884,143,872,106,854,84,832,66,806,53,777,44,747,34,691,31,650,37,650,39,691,49,746,58,775,71,803,88,829,110,850,144,867,194,879,253,887,320,891,459,890,583,884"/>
+<area shape="rect" id="Node000029" href="$group___g_u_i.html#ga79a4d0355cd36e55260b0c245a526503" title="Draw all visible windows and their widgets." alt="" coords="389,822,485,847"/>
+<area shape="poly" id="edge50_Node000028_Node000029" title=" " alt="" coords="582,864,484,846,485,841,583,859"/>
+<area shape="poly" id="edge51_Node000029_Node000003" title=" " alt="" coords="374,825,345,811,298,773,259,727,229,684,209,652,214,649,233,681,263,724,302,769,348,807,377,820"/>
+<area shape="poly" id="edge52_Node000029_Node000004" title=" " alt="" coords="375,846,314,849,244,845,172,829,138,814,106,795,89,780,74,762,53,721,40,681,33,651,38,649,45,679,58,719,79,759,93,776,110,791,140,810,174,823,245,839,315,844,375,840"/>
+<area shape="poly" id="edge54_Node000030_Node000004" title=" " alt="" coords="125,203,110,215,92,248,76,296,64,355,54,419,42,542,37,624,32,624,37,542,49,418,59,354,71,295,87,246,106,212,121,198"/>
+<area shape="poly" id="edge59_Node000034_Node000027" title=" " alt="" coords="365,100,263,122,262,117,363,94"/>
+<area shape="poly" id="edge61_Node000035_Node000004" title=" " alt="" coords="586,261,462,245,321,234,253,234,193,238,144,249,110,266,91,292,75,332,63,383,53,439,42,549,37,624,32,624,36,549,48,439,58,382,70,331,86,289,106,262,142,244,192,233,253,228,321,229,462,240,586,256"/>
+<area shape="poly" id="edge63_Node000036_Node000004" title=" " alt="" coords="642,385,542,331,475,302,402,277,325,262,286,258,248,259,211,264,175,274,141,289,110,310,93,332,78,368,56,461,43,557,37,625,32,624,38,557,51,460,73,366,88,330,106,306,139,284,173,269,210,259,248,254,286,253,325,256,403,272,477,297,545,326,644,380"/>
+<area shape="poly" id="edge65_Node000037_Node000003" title=" " alt="" coords="363,770,345,762,304,736,267,705,214,652,218,648,271,701,307,731,348,758,366,766"/>
+<area shape="poly" id="edge66_Node000037_Node000004" title=" " alt="" coords="334,792,279,789,220,780,161,764,107,738,82,719,62,695,37,651,42,649,67,692,86,715,109,734,163,759,221,775,280,783,334,787"/>
+</map>

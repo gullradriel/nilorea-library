@@ -1,0 +1,45 @@
+<map id="demo_astar_standalone" name="demo_astar_standalone">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,260,184,285"/>
+<area shape="rect" id="Node000002" href="$group___a_s_t_a_r.html#ga2602944466279691d9f10e119705360d" title="Find a path using A* search." alt="" coords="244,235,381,260"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="184,260,230,254,230,260,185,265"/>
+<area shape="rect" id="Node000014" href="$group___a_s_t_a_r.html#ga52f0f5d62fc463bd4376e1febba52520" title="Free a grid and all its internal data." alt="" coords="245,284,380,309"/>
+<area shape="poly" id="edge15_Node000001_Node000014" title=" " alt="" coords="185,280,232,285,231,290,184,285"/>
+<area shape="rect" id="Node000015" href="$group___a_s_t_a_r.html#ga37f7754ffc1f9b47329d693cd4a535e4" title="Get a cell&#39;s walkability." alt="" coords="441,5,636,31"/>
+<area shape="poly" id="edge16_Node000001_Node000015" title=" " alt="" coords="101,258,149,188,187,145,230,109,280,81,334,59,387,43,438,31,439,36,389,48,336,64,283,86,234,114,190,149,153,191,106,261"/>
+<area shape="rect" id="Node000016" href="$group___a_s_t_a_r.html#gaeadd33d2055a10e29e2b836aab287e2a" title="Create a new grid for A* pathfinding." alt="" coords="245,333,381,359"/>
+<area shape="poly" id="edge19_Node000001_Node000016" title=" " alt="" coords="132,283,233,318,258,326,257,332,231,323,130,288"/>
+<area shape="rect" id="Node000017" href="$group___a_s_t_a_r.html#ga95b21a316f4dc774c1ada1a20617005d" title="Set a rectangular region as blocked (wall)" alt="" coords="232,123,393,163"/>
+<area shape="poly" id="edge20_Node000001_Node000017" title=" " alt="" coords="116,258,265,168,267,173,119,262"/>
+<area shape="rect" id="Node000019" href="$group___a_s_t_a_r.html#gaa1115e322b9f14487c484941d5d9b278" title="Free a path returned by n_astar_find_path." alt="" coords="243,383,382,408"/>
+<area shape="poly" id="edge24_Node000001_Node000019" title=" " alt="" coords="112,283,164,324,233,368,251,376,249,380,231,372,161,328,109,288"/>
+<area shape="rect" id="Node000003" href="$n__astar_8c.html#a3f532b064eed13503ad3cf50146b6cac" title="Convert 3D coordinates to flat array index." alt="" coords="686,132,777,157"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="340,232,386,212,441,193,564,165,672,148,673,154,565,170,442,198,388,217,342,237"/>
+<area shape="rect" id="Node000004" href="$n__astar_8c.html#a3e7945ee0ed40af791e14afe587df51d" title=" " alt="" coords="495,208,582,233"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="381,237,482,225,482,230,382,242"/>
+<area shape="rect" id="Node000005" href="$n__astar_8c.html#a7a023b0e68cf5a855766fe6d453a6e67" title=" " alt="" coords="495,257,583,283"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="382,252,481,262,481,267,381,257"/>
+<area shape="rect" id="Node000006" href="$n__astar_8c.html#ac6e4e75e70dd3c352917545de91635f9" title=" " alt="" coords="496,405,581,431"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="378,258,395,269,408,285,415,301,420,332,424,362,431,377,443,391,462,403,483,410,481,415,459,407,440,395,426,379,419,364,414,333,410,302,404,288,392,273,375,262"/>
+<area shape="rect" id="Node000008" href="$n__astar_8c.html#a96c24d8e16a8139f3867d98eaa1a3476" title=" " alt="" coords="493,455,585,480"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="380,258,395,269,411,291,419,314,420,357,421,399,428,420,443,440,460,452,480,460,478,465,458,457,439,444,423,422,415,400,414,357,414,314,407,294,391,273,376,262"/>
+<area shape="rect" id="Node000010" href="$n__astar_8c.html#af892e33cbfc6e1e2adf822bb414e309e" title="Check if coordinates are within grid bounds." alt="" coords="687,56,775,81"/>
+<area shape="poly" id="edge10_Node000002_Node000010" title=" " alt="" coords="329,232,360,206,391,174,405,151,411,130,420,110,440,92,468,77,498,66,560,55,621,53,674,57,673,62,621,58,561,60,499,71,470,82,443,96,425,113,416,132,409,153,395,177,363,210,333,236"/>
+<area shape="rect" id="Node000011" href="$group___a_s_t_a_r.html#ga91a46117d664f475e747f78cb3b6bf45" title="Compute heuristic distance between two 3D points." alt="" coords="472,356,605,381"/>
+<area shape="poly" id="edge11_Node000002_Node000011" title=" " alt="" coords="374,258,395,269,412,288,420,307,427,324,443,341,461,351,458,356,440,345,423,327,415,309,407,291,392,273,372,262"/>
+<area shape="rect" id="Node000013" href="$n__astar_8c.html#ac46fe238afc0b72f0e2defbf8187cc08" title="Build path from goal back to start following parent pointers." alt="" coords="473,307,604,332"/>
+<area shape="poly" id="edge13_Node000002_Node000013" title=" " alt="" coords="361,258,394,269,442,292,469,300,468,305,440,296,392,274,359,263"/>
+<area shape="rect" id="Node000007" href="$n__astar_8c.html#a2c8113eac96dd6408440350ca7e30680" title=" " alt="" coords="684,405,779,431"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="582,415,670,415,670,421,582,421"/>
+<area shape="poly" id="edge9_Node000008_Node000007" title=" " alt="" coords="584,453,670,431,671,436,586,458"/>
+<area shape="rect" id="Node000009" href="$n__astar_8c.html#a35c7b8a8be321909727b495bb6d6dfc2" title=" " alt="" coords="685,455,778,480"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="585,465,671,465,671,470,585,470"/>
+<area shape="rect" id="Node000012" href="$n__astar_8c.html#a4babf03dc0acc64a64b503b999aa3493" title="Absolute value for integers." alt="" coords="707,356,756,381"/>
+<area shape="poly" id="edge12_Node000011_Node000012" title=" " alt="" coords="605,366,693,366,693,371,605,371"/>
+<area shape="poly" id="edge14_Node000013_Node000003" title=" " alt="" coords="603,307,634,292,664,264,687,231,719,169,723,171,692,234,668,268,638,296,606,312"/>
+<area shape="poly" id="edge17_Node000015_Node000003" title=" " alt="" coords="561,29,701,122,698,126,558,33"/>
+<area shape="poly" id="edge18_Node000015_Node000010" title=" " alt="" coords="589,28,675,51,674,56,587,33"/>
+<area shape="rect" id="Node000018" href="$group___a_s_t_a_r.html#gae9e30fb986f00b71a42e4d9e6d4b0f80" title="Set a cell&#39;s walkability." alt="" coords="441,107,636,132"/>
+<area shape="poly" id="edge21_Node000017_Node000018" title=" " alt="" coords="393,132,427,128,428,134,394,137"/>
+<area shape="poly" id="edge22_Node000018_Node000003" title=" " alt="" coords="636,129,673,134,672,140,635,135"/>
+<area shape="poly" id="edge23_Node000018_Node000010" title=" " alt="" coords="587,104,674,81,675,86,589,109"/>
+</map>

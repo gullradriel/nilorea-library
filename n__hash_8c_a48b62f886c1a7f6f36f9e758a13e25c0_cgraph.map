@@ -1,0 +1,16 @@
+<map id="_ht_put_int_trie" name="_ht_put_int_trie">
+<area shape="rect" id="Node000001" title="put an integral value with given key in the targeted hash table [TRIE HASH TABLE)" alt="" coords="5,31,128,56"/>
+<area shape="rect" id="Node000002" href="$n__hash_8c.html#a346ab250b00afe7a47d183a4547725de" title="node creation, HASH_CLASSIC mode" alt="" coords="176,5,320,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="128,32,162,27,163,33,129,37"/>
+<area shape="rect" id="Node000003" href="$n__hash_8c.html#ae478eab90d1a7baded6516c7739cfc9b" title="Remove a key from a trie table and destroy the node." alt="" coords="184,55,312,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="129,49,171,54,170,60,128,54"/>
+<area shape="rect" id="Node000004" href="$n__hash_8c.html#a7334b7b4bcc0b3ce98219def7a057117" title="find the longest prefix string that is not the current key" alt="" coords="368,5,569,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="305,52,397,31,398,36,306,57"/>
+<area shape="rect" id="Node000006" href="$n__hash_8c.html#a9b32982367d5bb9b83281b582e8c62df" title="Search a key and tell if it&#39;s holding a value (leaf)" alt="" coords="389,55,549,80"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="312,65,375,65,375,70,312,70"/>
+<area shape="rect" id="Node000007" href="$n__hash_8c.html#a013153fa30199bbcaf5f92890ae97ba8" title="destroy a HASH_NODE by first calling the HASH_NODE destructor" alt="" coords="400,128,537,153"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="288,78,417,121,416,126,286,83"/>
+<area shape="rect" id="Node000005" href="$n__hash_8c.html#aac9aa1a3b0f78ff6499e0ffc5659f704" title="check and return branching index in key if any" alt="" coords="617,5,812,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="570,15,603,15,603,21,570,21"/>
+<area shape="poly" id="edge7_Node000007_Node000007" title=" " alt="" coords="433,130,425,120,429,110,444,104,469,101,499,105,511,114,508,118,497,110,469,107,445,109,433,114,430,119,437,126"/>
+</map>

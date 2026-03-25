@@ -1,0 +1,26 @@
+<map id="iso_map_get_terrain" name="iso_map_get_terrain">
+<area shape="rect" id="Node000001" title="get terrain type for a cell (bounds&#45;checked)" alt="" coords="555,183,709,208"/>
+<area shape="rect" id="Node000002" href="$n__iso__engine_8c.html#a2fe6c6ec248152f94a6575f8afcda914" title="Draw cliff side faces for a single segment {seg_bottom..seg_top}." alt="" coords="316,5,483,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="614,172,570,112,540,80,505,52,463,33,465,28,508,48,543,76,574,109,618,169"/>
+<area shape="rect" id="Node000003" href="$group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga7fb670195f7cb827fa7d59a86fb014e6" title="Draw the full ISO_MAP with segment&#45;sorted rendering." alt="" coords="118,81,234,107"/>
+<area shape="poly" id="edge10_Node000001_Node000003" title=" " alt="" coords="610,174,565,132,537,112,506,97,435,80,361,75,292,78,234,85,234,80,292,73,361,69,436,74,508,91,540,107,569,128,613,170"/>
+<area shape="rect" id="Node000004" href="$ex__gui__isometric_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,120,60,145"/>
+<area shape="poly" id="edge12_Node000001_Node000004" title=" " alt="" coords="541,189,60,138,61,133,541,183"/>
+<area shape="rect" id="Node000005" href="$ex__iso__astar_8c.html#a3a2cf9a1bf56a8e5a4b364cda98a05e4" title=" " alt="" coords="108,259,244,284"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="542,210,292,249,232,261,231,256,292,243,541,204"/>
+<area shape="rect" id="Node000007" href="$group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga868df6c4aed38b8f1a030f54fd54ab8c" title="Compute terrain transition bitmasks for a cell (Article 934)." alt="" coords="306,259,493,284"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="584,215,507,242,445,261,444,256,506,237,582,210"/>
+<area shape="rect" id="Node000008" href="$group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga79123fea1f1162f22e811249dbbe1b3c" title="Compute per&#45;terrain transition bitmasks with height filtering." alt="" coords="292,107,507,132"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="582,180,506,154,444,135,445,130,507,149,584,175"/>
+<area shape="rect" id="Node000009" href="$group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga6bad740217edd49b3cef705dc822c5a9" title="Check if terrain blending should occur between two adjacent cells." alt="" coords="301,308,497,333"/>
+<area shape="poly" id="edge11_Node000001_Node000009" title=" " alt="" coords="611,220,566,260,538,280,508,298,474,310,472,305,506,293,535,276,563,256,607,216"/>
+<area shape="rect" id="Node000010" href="$ex__iso__astar_8c.html#adea6a913ed693cd06b54a13d438c976c" title=" " alt="" coords="113,333,239,359"/>
+<area shape="poly" id="edge13_Node000001_Node000010" title=" " alt="" coords="621,222,604,253,579,288,547,322,508,348,472,362,435,371,358,376,286,371,227,361,228,356,287,366,358,371,434,365,471,357,505,344,543,318,575,285,599,250,617,219"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="341,37,293,53,210,84,208,79,291,47,340,32"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="116,113,61,128,60,123,114,108"/>
+<area shape="rect" id="Node000006" href="$ex__iso__astar_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,283,60,308"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="95,288,61,293,60,288,94,282"/>
+<area shape="poly" id="edge7_Node000007_Node000005" title=" " alt="" coords="292,274,244,274,244,269,292,269"/>
+<area shape="poly" id="edge9_Node000008_Node000003" title=" " alt="" coords="278,108,234,103,234,98,278,103"/>
+<area shape="poly" id="edge14_Node000010_Node000006" title=" " alt="" coords="126,331,59,307,61,302,127,326"/>
+</map>

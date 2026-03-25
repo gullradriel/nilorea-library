@@ -1,0 +1,17 @@
+<map id="dr_entity_check_threshold" name="dr_entity_check_threshold">
+<area shape="rect" id="Node000001" title="check if the owner&#39;s true state has diverged beyond the threshold" alt="" coords="5,80,199,105"/>
+<area shape="rect" id="Node000002" href="$group___d_e_a_d___r_e_c_k_o_n_i_n_g.html#gaf708b8537516093292ba8c44c253c994" title="Extrapolate a kinematic state forward by dt seconds." alt="" coords="247,55,409,80"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="198,79,232,75,233,81,199,84"/>
+<area shape="rect" id="Node000005" href="$group___d_e_a_d___r_e_c_k_o_n_i_n_g.html#gad9ff43e79a1fc96ad19f18020479e6bc" title="Distance between two points." alt="" coords="261,104,395,129"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="199,100,247,105,247,111,198,106"/>
+<area shape="rect" id="Node000003" href="$group___d_e_a_d___r_e_c_k_o_n_i_n_g.html#gad237b9d05cef7166e75a5b25f8b7007b" title="Vector addition: a + b." alt="" coords="466,5,570,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="377,52,454,32,455,37,378,57"/>
+<area shape="rect" id="Node000004" href="$group___d_e_a_d___r_e_c_k_o_n_i_n_g.html#ga1aab2e9d8913738e1a604898bf7cfa21" title="Scalar multiplication: v * s." alt="" coords="461,55,575,80"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="410,65,447,65,447,70,410,70"/>
+<area shape="rect" id="Node000006" href="$group___d_e_a_d___r_e_c_k_o_n_i_n_g.html#gadd54c634defc17c91c881413daa093e3" title="Length of vector." alt="" coords="457,104,579,129"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="395,114,443,114,443,119,395,119"/>
+<area shape="rect" id="Node000008" href="$group___d_e_a_d___r_e_c_k_o_n_i_n_g.html#ga890f898111845ac82f57209aea99fe8d" title="Vector subtraction: a &#45; b." alt="" coords="467,153,569,179"/>
+<area shape="poly" id="edge7_Node000005_Node000008" title=" " alt="" coords="378,127,455,147,454,152,377,132"/>
+<area shape="rect" id="Node000007" href="$group___d_e_a_d___r_e_c_k_o_n_i_n_g.html#ga9a94032b163997b45cac0e4e64a7c620" title="Squared length of vector." alt="" coords="627,104,769,129"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="579,114,613,114,613,119,579,119"/>
+</map>

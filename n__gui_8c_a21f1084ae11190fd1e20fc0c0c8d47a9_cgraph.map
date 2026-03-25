@@ -1,0 +1,21 @@
+<map id="_draw_textarea" name="_draw_textarea">
+<area shape="rect" id="Node000001" title="draw a textarea widget" alt="" coords="5,195,128,220"/>
+<area shape="rect" id="Node000002" href="$n__gui_8c.html#a6c6ce7da9d78e918c1564cf51d004e0a" title="helper: draw a mini vertical scrollbar inside a widget." alt="" coords="179,5,361,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="70,193,84,162,105,120,136,77,174,40,183,34,186,39,178,44,140,80,110,123,88,164,75,195"/>
+<area shape="rect" id="Node000003" href="$n__gui_8c.html#a56df6f9f84315d11c03bf0d72fbad44f" title="helper: compute minimum line thickness so it stays &gt;= 1 physical pixel." alt="" coords="209,55,331,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="74,193,113,143,142,115,175,90,194,81,196,86,177,95,145,119,117,147,79,196"/>
+<area shape="rect" id="Node000004" href="$n__gui_8c.html#a402c8d72de68b316c1d44f70de9e08c2" title="helper: set clipping rectangle in world space, transforming to screen space." alt="" coords="201,105,339,145"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="98,192,206,148,208,153,100,197"/>
+<area shape="rect" id="Node000005" href="$n__gui_8c.html#a072626f322d270a8afabbf6cb32f3501" title="helper: get the bounding box width of text using al_get_text_dimensions." alt="" coords="434,196,507,221"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="128,204,364,205,420,205,420,211,364,210,128,210"/>
+<area shape="rect" id="Node000006" href="$n__gui_8c.html#af08fc507030057ed9d53b478121c74af" title="helper: compute the total content height of multiline textarea text (with line&#45;wrap),..." alt="" coords="176,220,364,245"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="129,212,163,217,162,222,128,218"/>
+<area shape="rect" id="Node000007" href="$n__gui_8c.html#ae67b1e41a2b5bd3c65cc660f7d0652ad" title="return the byte length of a UTF&#45;8 character from its lead byte" alt="" coords="412,245,529,271"/>
+<area shape="poly" id="edge10_Node000001_Node000007" title=" " alt="" coords="89,218,129,239,177,255,234,264,293,268,398,264,398,269,293,273,233,270,175,261,127,243,87,222"/>
+<area shape="rect" id="Node000008" href="$n__gui_8c.html#a48c35d6e44cf3c345646c2af95784b82" title="return 1 if the textarea has an active selection" alt="" coords="180,321,360,347"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="81,218,121,258,177,300,209,314,207,319,175,304,118,262,78,222"/>
+<area shape="rect" id="Node000009" href="$n__gui_8c.html#a3dc0d9da2ee8ea41d6b82d0bc9a34310" title="get the ordered selection range (lo, hi)" alt="" coords="193,371,347,396"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="76,219,112,286,141,324,178,357,187,363,184,367,174,361,137,328,107,288,71,222"/>
+<area shape="poly" id="edge6_Node000006_Node000005" title=" " alt="" coords="364,219,420,212,421,217,365,224"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="365,242,398,246,398,252,364,247"/>
+</map>

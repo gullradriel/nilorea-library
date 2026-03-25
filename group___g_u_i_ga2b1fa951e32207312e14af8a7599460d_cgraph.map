@@ -1,0 +1,19 @@
+<map id="n_gui_add_listbox" name="n_gui_add_listbox">
+<area shape="rect" id="Node000001" title="add a listbox widget" alt="" coords="5,104,144,129"/>
+<area shape="rect" id="Node000002" href="$n__gui_8c.html#a933ef0d2dde83dca8035599d27f8c65c" title="helper: destroy a single widget (called by list destructor)" alt="" coords="199,5,328,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="91,102,135,71,191,40,206,33,208,38,193,44,138,76,94,106"/>
+<area shape="rect" id="Node000003" href="$n__gui_8c.html#aa8f98017db6e47e1cc7856ebe0f2f25f" title="helper: allocate and initialise a base widget" alt="" coords="210,55,317,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="123,101,200,81,201,86,125,107"/>
+<area shape="rect" id="Node000004" href="$n__gui_8c.html#a0e1fb16564fb288c37b1834ceb466127" title="helper: register a widget in the hash table" alt="" coords="198,104,329,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="144,114,184,114,184,119,144,119"/>
+<area shape="rect" id="Node000006" href="$group___l_i_s_t.html#ga4eab319289a83524639ee5e9f0441fdf" title="Add a pointer to the end of the list." alt="" coords="223,153,303,179"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="125,127,211,150,209,155,123,132"/>
+<area shape="rect" id="Node000008" href="$group___g_u_i.html#ga932fd1ac880df86b92a25ced736298be" title="Get a window pointer by id." alt="" coords="192,203,335,228"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="95,127,139,157,193,188,210,195,208,200,191,192,136,161,92,132"/>
+<area shape="rect" id="Node000005" href="$group___h_a_s_h___t_a_b_l_e.html#ga7aebf871db9a69deb5d971b67d532a91" title="put an arbitrary pointer value with given key in the targeted hash table" alt="" coords="413,104,501,129"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="329,114,400,114,400,119,329,119"/>
+<area shape="rect" id="Node000007" href="$group___l_i_s_t.html#ga678e828550efc8e64a836bb8c713c2f4" title="Allocate a new node to link in a list." alt="" coords="400,153,515,179"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="303,163,386,163,386,169,303,169"/>
+<area shape="rect" id="Node000009" href="$n__gui_8c.html#ac4c3cab227dd7eabfc2e94f8f8d6d1ae" title="helper: find a window node in the context list by id" alt="" coords="383,203,532,228"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="335,213,369,213,369,218,335,218"/>
+</map>

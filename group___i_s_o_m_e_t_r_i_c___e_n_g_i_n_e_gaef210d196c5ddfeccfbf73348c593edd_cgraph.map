@@ -1,0 +1,12 @@
+<map id="iso_screen_to_map_height_f" name="iso_screen_to_map_height_f">
+<area shape="rect" id="Node000001" title="height&#45;aware screen&#45;to&#45;map conversion returning fractional tile coordinates." alt="" coords="5,85,212,111"/>
+<area shape="rect" id="Node000002" href="$group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga9aeb301c43e69a8373b0c603ccce0ca6" title="Test if pixel (px,py) is inside the isometric diamond." alt="" coords="266,5,409,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="145,83,287,33,288,38,147,88"/>
+<area shape="rect" id="Node000003" href="$group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#gad9d6b576d64c47ccce399401e8a483be" title="Get the height at a cell." alt="" coords="463,85,616,111"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="212,92,260,91,415,91,449,92,449,97,415,97,260,97,212,98"/>
+<area shape="rect" id="Node000004" href="$group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#gada043a1ec9606bba33ec50ecc71051b1" title="Bilinear height interpolation at fractional map coordinates." alt="" coords="260,106,415,146"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="213,108,247,112,246,118,212,113"/>
+<area shape="rect" id="Node000005" href="$group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga860f3bc390d7440031617e3583313fd2" title="Convert map tile coordinates to screen pixel coordinates." alt="" coords="264,171,411,196"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="141,108,261,156,284,164,283,169,259,160,139,113"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="415,113,448,108,449,113,416,118"/>
+</map>

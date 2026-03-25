@@ -1,0 +1,97 @@
+<map id="init_nodup_log" name="init_nodup_log">
+<area shape="rect" id="Node000001" title="init the nodup log internal hash table" alt="" coords="5,404,123,429"/>
+<area shape="rect" id="Node000002" href="$group___h_a_s_h___t_a_b_l_e.html#ga3890b11d41766a859d4e55976ec02acb" title="Create a hash table with the given size." alt="" coords="171,404,240,429"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="123,414,157,414,157,419,123,419"/>
+<area shape="rect" id="Node000003" href="$n__hash_8c.html#a0ee7e0fa87da033f857c04dae6f1586a" title="Free and set the table to NULL." alt="" coords="308,5,407,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="205,404,214,332,231,226,255,121,269,78,286,48,300,36,304,39,290,52,274,80,260,122,236,227,219,333,211,404"/>
+<area shape="rect" id="Node000004" href="$group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755" title="Empty and Free a list container." alt="" coords="517,56,616,81"/>
+<area shape="poly" id="edge64_Node000002_Node000004" title=" " alt="" coords="206,404,214,341,231,251,255,164,269,130,286,107,310,89,337,76,394,60,452,55,504,57,504,62,452,60,395,65,339,81,313,94,290,111,274,132,260,165,236,252,220,342,211,404"/>
+<area shape="rect" id="Node000006" href="$n__hash_8c.html#a883490d95c386d9d82a7306663a6c2ce" title="Empty a hash table (CLASSIC mode)" alt="" coords="312,207,403,232"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="207,403,215,371,230,328,253,282,286,241,298,233,301,237,290,245,258,285,235,330,220,372,212,404"/>
+<area shape="rect" id="Node000008" href="$n__hash_8c.html#a13fc7fe04372ccba413005ec04eb3ade" title="Retrieve a double value in the hash table, at the given key." alt="" coords="297,700,418,725"/>
+<area shape="poly" id="edge8_Node000002_Node000008" title=" " alt="" coords="209,429,212,477,223,546,233,583,247,621,266,656,290,687,294,690,290,694,286,690,261,659,242,623,228,585,218,547,207,477,204,430"/>
+<area shape="rect" id="Node000009" href="$n__hash_8c.html#ab250f9a82c42e7eb223aa4056f145055" title="return the associated key&#39;s node inside the hash_table" alt="" coords="512,601,621,627"/>
+<area shape="poly" id="edge14_Node000002_Node000009" title=" " alt="" coords="210,429,218,495,234,589,257,680,273,714,290,736,323,755,354,758,387,750,426,736,463,716,497,689,546,636,550,639,500,693,466,720,428,740,388,755,354,763,321,760,286,740,268,717,252,682,228,590,213,495,205,430"/>
+<area shape="rect" id="Node000011" href="$n__hash_8c.html#a0c07447a8b130e9a7c64e2f2f8358ceb" title="Retrieve an integral value in the hash table, at the given key." alt="" coords="310,552,405,577"/>
+<area shape="poly" id="edge11_Node000002_Node000011" title=" " alt="" coords="214,428,241,482,263,512,290,539,299,545,296,549,286,543,259,516,237,484,209,431"/>
+<area shape="rect" id="Node000012" href="$n__hash_8c.html#a334f88b1e7a0eba784c010d5d2a66018" title="Retrieve a pointer value in the hash table, at the given key." alt="" coords="310,601,405,627"/>
+<area shape="poly" id="edge15_Node000002_Node000012" title=" " alt="" coords="212,429,220,461,235,504,258,549,290,588,299,595,296,599,286,592,253,552,230,506,215,462,207,430"/>
+<area shape="rect" id="Node000013" href="$n__hash_8c.html#a7feb60889c5c212a63410df760502d79" title="Retrieve a char *string value in the hash table, at the given key." alt="" coords="300,651,415,676"/>
+<area shape="poly" id="edge18_Node000002_Node000013" title=" " alt="" coords="210,429,216,469,229,525,252,585,269,613,290,637,294,641,291,645,286,641,265,616,248,587,224,527,210,470,205,430"/>
+<area shape="rect" id="Node000014" href="$n__hash_8c.html#a719f4d3d6315d1118478bf66bbf3d7d4" title="Generic print func call for classic hash tables." alt="" coords="318,801,397,827"/>
+<area shape="poly" id="edge21_Node000002_Node000014" title=" " alt="" coords="211,429,219,501,236,606,260,710,274,752,290,780,307,795,304,799,286,784,269,754,255,712,231,607,214,502,205,430"/>
+<area shape="rect" id="Node000015" href="$n__hash_8c.html#a1baf8e5b33f28bf3edf73a2cb617d97c" title="put a double value with given key in the targeted hash table" alt="" coords="297,305,418,331"/>
+<area shape="poly" id="edge22_Node000002_Node000015" title=" " alt="" coords="216,402,246,372,287,341,300,334,303,338,289,346,250,376,220,406"/>
+<area shape="rect" id="Node000020" href="$n__hash_8c.html#ae3292f96fd9a76fda7fa2aa296e70068" title="put an integral value with given key in the targeted hash table [CLASSIC HASH TABLE)" alt="" coords="310,355,405,380"/>
+<area shape="poly" id="edge30_Node000002_Node000020" title=" " alt="" coords="239,403,304,382,305,387,241,408"/>
+<area shape="rect" id="Node000022" href="$n__hash_8c.html#a04372f9652b6a82369254591a6c861fe" title="put a pointer value with given key in the targeted hash table" alt="" coords="310,404,405,429"/>
+<area shape="poly" id="edge37_Node000002_Node000022" title=" " alt="" coords="240,414,296,414,296,419,240,419"/>
+<area shape="rect" id="Node000024" href="$n__hash_8c.html#a6317d7cd34532ec65997c3275aa379e1" title="put a null terminated char *string with given key in the targeted hash table (copy of string)" alt="" coords="300,453,415,479"/>
+<area shape="poly" id="edge44_Node000002_Node000024" title=" " alt="" coords="241,425,305,446,304,452,239,430"/>
+<area shape="rect" id="Node000026" href="$n__hash_8c.html#aa173ffa5f20daee4f0178c97e4f01303" title="put a null terminated char *string with given key in the targeted hash table (pointer)" alt="" coords="288,503,427,528"/>
+<area shape="poly" id="edge51_Node000002_Node000026" title=" " alt="" coords="219,428,249,458,289,489,300,495,298,500,287,494,246,462,216,431"/>
+<area shape="rect" id="Node000028" href="$n__hash_8c.html#ad1652edf0584ab710e365d589e05646d" title="Remove a key from a hash table." alt="" coords="308,256,407,281"/>
+<area shape="poly" id="edge58_Node000002_Node000028" title=" " alt="" coords="209,403,237,350,259,319,286,292,296,285,299,290,290,296,263,322,242,353,214,405"/>
+<area shape="rect" id="Node000029" href="$n__hash_8c.html#af5e4567a16f469d013410e8cf675a28c" title="Search hash table&#39;s keys and apply a matching func to put results in the list." alt="" coords="311,157,403,183"/>
+<area shape="poly" id="edge60_Node000002_Node000029" title=" " alt="" coords="205,403,210,363,224,307,248,246,265,217,286,192,297,184,300,188,290,196,269,220,252,248,229,308,216,364,210,404"/>
+<area shape="rect" id="Node000030" href="$group___l_i_s_t.html#gae4b8e915bc22e7993d2849152ec1c3ac" title="Initialiaze a generic list container to max_items pointers." alt="" coords="501,120,632,145"/>
+<area shape="poly" id="edge65_Node000002_Node000030" title=" " alt="" coords="203,404,203,353,212,281,222,243,237,205,258,171,286,143,311,127,339,116,397,106,455,107,507,114,506,120,455,112,398,111,340,121,314,132,290,147,262,174,242,208,227,244,217,282,209,354,209,404"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="408,27,505,51,503,56,406,32"/>
+<area shape="rect" id="Node000005" href="$group___l_i_s_t.html#ga1dafe7a250ddad51fadd375f057287e7" title="Empty a LIST list of pointers." alt="" coords="719,56,809,81"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="616,66,705,66,705,71,616,71"/>
+<area shape="rect" id="Node000007" href="$n__hash_8c.html#a013153fa30199bbcaf5f92890ae97ba8" title="destroy a HASH_NODE by first calling the HASH_NODE destructor" alt="" coords="498,256,635,281"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="404,227,499,250,498,255,402,233"/>
+<area shape="poly" id="edge7_Node000007_Node000007" title=" " alt="" coords="534,257,527,248,531,238,544,232,567,229,594,233,605,242,602,246,592,238,567,235,546,237,535,241,532,247,538,254"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="397,697,426,686,531,631,534,636,428,691,399,702"/>
+<area shape="rect" id="Node000010" href="$group___h_a_s_h___t_a_b_l_e.html#ga1392981a507905d028136bc0b92aa48b" title="get the type of a node , text version" alt="" coords="511,552,622,577"/>
+<area shape="poly" id="edge10_Node000008_Node000010" title=" " alt="" coords="408,698,425,687,435,675,442,663,448,638,454,613,461,600,473,588,497,574,500,579,476,592,465,603,459,615,453,640,447,665,440,678,428,691,411,702"/>
+<area shape="poly" id="edge12_Node000011_Node000009" title=" " alt="" coords="406,573,500,596,498,601,404,578"/>
+<area shape="poly" id="edge13_Node000011_Node000010" title=" " alt="" coords="405,562,498,562,498,567,405,567"/>
+<area shape="poly" id="edge16_Node000012_Node000009" title=" " alt="" coords="405,611,498,611,498,617,405,617"/>
+<area shape="poly" id="edge17_Node000012_Node000010" title=" " alt="" coords="404,600,498,578,500,583,406,606"/>
+<area shape="poly" id="edge19_Node000013_Node000009" title=" " alt="" coords="411,648,498,627,500,632,413,653"/>
+<area shape="poly" id="edge20_Node000013_Node000010" title=" " alt="" coords="403,648,425,637,439,625,448,613,458,600,473,588,497,577,499,581,476,592,462,604,453,616,443,629,428,642,405,653"/>
+<area shape="poly" id="edge26_Node000015_Node000007" title=" " alt="" coords="411,303,498,282,500,287,413,308"/>
+<area shape="poly" id="edge23_Node000015_Node000009" title=" " alt="" coords="412,329,429,342,449,374,457,406,456,438,452,468,448,499,448,529,456,558,477,588,500,604,497,608,473,592,451,561,442,529,442,498,446,468,451,437,451,407,444,376,425,345,409,333"/>
+<area shape="poly" id="edge27_Node000015_Node000010" title=" " alt="" coords="412,329,429,342,446,367,453,393,454,418,452,443,450,468,452,492,459,515,476,539,499,554,497,558,473,543,455,518,446,493,445,468,447,443,449,418,448,394,441,370,425,345,408,333"/>
+<area shape="rect" id="Node000016" href="$n__hash_8c.html#a16c585985d090707ce94a673307db36f" title="node creation, HASH_CLASSIC mode" alt="" coords="483,183,650,208"/>
+<area shape="poly" id="edge24_Node000015_Node000016" title=" " alt="" coords="406,303,425,292,440,274,448,255,456,236,473,217,482,212,485,216,476,221,460,239,453,257,445,277,428,296,409,308"/>
+<area shape="rect" id="Node000018" href="$group___l_i_s_t.html#ga4eab319289a83524639ee5e9f0441fdf" title="Add a pointer to the end of the list." alt="" coords="527,305,607,331"/>
+<area shape="poly" id="edge28_Node000015_Node000018" title=" " alt="" coords="418,315,513,315,513,321,418,321"/>
+<area shape="rect" id="Node000017" href="$n__hash_8c.html#a71adc2534aeb45d23b6622628be06c1d" title="node creation, HASH_CLASSIC mode" alt="" coords="707,404,821,429"/>
+<area shape="poly" id="edge25_Node000016_Node000017" title=" " alt="" coords="643,206,660,217,674,232,683,247,691,276,696,307,709,342,744,392,740,395,704,345,691,308,686,277,678,249,670,235,657,221,640,210"/>
+<area shape="rect" id="Node000019" href="$group___l_i_s_t.html#ga678e828550efc8e64a836bb8c713c2f4" title="Allocate a new node to link in a list." alt="" coords="707,305,821,331"/>
+<area shape="poly" id="edge29_Node000018_Node000019" title=" " alt="" coords="607,315,693,315,693,321,607,321"/>
+<area shape="poly" id="edge34_Node000020_Node000007" title=" " alt="" coords="403,352,425,341,439,329,448,317,458,304,473,292,489,284,491,289,476,296,462,308,453,320,443,333,428,346,405,357"/>
+<area shape="poly" id="edge31_Node000020_Node000009" title=" " alt="" coords="406,375,429,391,446,417,453,442,454,468,452,493,450,517,452,541,459,565,476,588,501,603,498,608,473,592,455,567,446,542,445,517,447,492,449,468,448,443,441,419,425,395,403,380"/>
+<area shape="poly" id="edge35_Node000020_Node000010" title=" " alt="" coords="406,376,429,391,443,410,450,430,452,467,455,504,462,521,476,539,500,553,497,557,473,543,458,524,450,505,447,468,445,431,438,413,425,395,403,380"/>
+<area shape="poly" id="edge36_Node000020_Node000018" title=" " alt="" coords="404,354,513,328,514,333,406,359"/>
+<area shape="rect" id="Node000021" href="$n__hash_8c.html#a361870c1564ad8997b619e030d8e011b" title="node creation, HASH_CLASSIC mode" alt="" coords="497,355,636,380"/>
+<area shape="poly" id="edge32_Node000020_Node000021" title=" " alt="" coords="405,365,484,365,484,370,405,370"/>
+<area shape="poly" id="edge33_Node000021_Node000017" title=" " alt="" coords="619,377,700,398,699,403,617,383"/>
+<area shape="poly" id="edge41_Node000022_Node000007" title=" " alt="" coords="404,404,425,391,435,379,442,367,448,342,454,317,461,304,473,292,484,284,487,289,476,296,465,307,459,319,453,344,447,369,440,382,428,395,406,408"/>
+<area shape="poly" id="edge38_Node000022_Node000009" title=" " alt="" coords="406,425,429,440,443,459,450,479,452,517,455,553,462,571,476,588,500,602,497,607,473,592,458,573,450,554,447,517,445,480,438,462,425,444,403,430"/>
+<area shape="poly" id="edge42_Node000022_Node000010" title=" " alt="" coords="406,426,428,440,440,453,447,466,453,491,459,516,465,527,476,539,499,552,496,556,473,543,461,530,454,518,447,493,442,468,435,456,425,444,404,431"/>
+<area shape="poly" id="edge43_Node000022_Node000018" title=" " alt="" coords="403,402,425,390,439,378,448,366,458,353,473,341,513,325,515,330,476,346,462,357,453,369,443,382,428,395,405,406"/>
+<area shape="rect" id="Node000023" href="$n__hash_8c.html#a3d0de2245fe080ad533dfbc5a41acc4a" title="node creation, HASH_CLASSIC mode, pointer to string value" alt="" coords="497,404,637,429"/>
+<area shape="poly" id="edge39_Node000022_Node000023" title=" " alt="" coords="405,414,483,414,483,419,405,419"/>
+<area shape="poly" id="edge40_Node000023_Node000017" title=" " alt="" coords="637,414,693,414,693,419,637,419"/>
+<area shape="poly" id="edge48_Node000024_Node000007" title=" " alt="" coords="410,451,425,440,438,422,445,404,447,367,450,330,458,311,473,292,484,283,488,288,477,296,463,313,456,331,453,368,450,405,443,425,429,444,413,455"/>
+<area shape="poly" id="edge45_Node000024_Node000009" title=" " alt="" coords="408,476,428,489,440,502,447,515,453,541,459,565,465,577,476,588,500,601,498,606,473,592,461,580,454,567,447,542,442,517,435,505,425,493,406,481"/>
+<area shape="poly" id="edge49_Node000024_Node000010" title=" " alt="" coords="403,476,428,489,443,502,453,515,462,527,476,538,499,549,497,554,473,543,458,531,448,518,439,506,425,494,401,481"/>
+<area shape="poly" id="edge50_Node000024_Node000018" title=" " alt="" coords="408,451,425,440,435,428,442,416,448,392,454,366,461,354,473,341,492,330,512,322,514,327,494,334,476,345,465,357,459,368,453,393,447,418,440,431,428,444,411,456"/>
+<area shape="rect" id="Node000025" href="$n__hash_8c.html#af782f210f3269b1d595d9a12fffa9d58" title="node creation, HASH_CLASSIC mode, strdup of value" alt="" coords="487,453,646,479"/>
+<area shape="poly" id="edge46_Node000024_Node000025" title=" " alt="" coords="415,463,474,463,474,469,415,469"/>
+<area shape="poly" id="edge47_Node000025_Node000017" title=" " alt="" coords="617,451,699,430,700,435,619,456"/>
+<area shape="poly" id="edge55_Node000026_Node000007" title=" " alt="" coords="410,500,425,490,441,465,448,441,449,417,447,392,445,367,447,342,455,317,473,292,484,283,488,287,477,296,459,320,452,343,451,367,452,392,455,417,454,442,446,467,429,493,414,505"/>
+<area shape="poly" id="edge52_Node000026_Node000009" title=" " alt="" coords="403,526,428,538,443,551,453,564,462,576,476,588,500,598,497,603,473,592,458,580,448,567,439,555,425,543,401,530"/>
+<area shape="poly" id="edge56_Node000026_Node000010" title=" " alt="" coords="413,525,500,546,498,551,411,531"/>
+<area shape="poly" id="edge57_Node000026_Node000018" title=" " alt="" coords="410,500,425,489,438,471,445,453,447,417,450,379,458,360,473,341,491,329,512,321,514,326,494,333,476,345,463,363,456,380,453,417,450,455,443,474,429,493,413,505"/>
+<area shape="rect" id="Node000027" href="$n__hash_8c.html#a26853862f1fc9106bc7aa76f0a6eccb8" title="node creation, HASH_CLASSIC mode, pointer to string value" alt="" coords="475,503,659,528"/>
+<area shape="poly" id="edge53_Node000026_Node000027" title=" " alt="" coords="427,513,461,513,461,518,427,518"/>
+<area shape="poly" id="edge54_Node000027_Node000017" title=" " alt="" coords="628,500,658,489,700,464,736,437,739,441,703,468,660,494,630,505"/>
+<area shape="poly" id="edge59_Node000028_Node000007" title=" " alt="" coords="407,266,484,266,484,271,407,271"/>
+<area shape="poly" id="edge61_Node000029_Node000004" title=" " alt="" coords="380,155,473,105,520,84,522,89,476,110,382,159"/>
+<area shape="poly" id="edge62_Node000029_Node000018" title=" " alt="" coords="405,178,428,192,440,205,447,218,453,244,459,269,465,280,476,292,494,303,514,310,512,315,492,308,473,296,461,284,454,271,448,245,442,220,436,208,425,196,402,182"/>
+<area shape="poly" id="edge63_Node000029_Node000030" title=" " alt="" coords="403,159,487,144,488,149,404,165"/>
+</map>

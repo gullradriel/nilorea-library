@@ -1,0 +1,81 @@
+<map id="new_ht_trie" name="new_ht_trie">
+<area shape="rect" id="Node000001" title="create a new trie hash table with the given alphabet size and offset" alt="" coords="5,351,104,376"/>
+<area shape="rect" id="Node000002" href="$n__hash_8c.html#ab9d1b16f848c310836772818278a4014" title="Free and set the table to NULL (TRIE mode)" alt="" coords="389,28,516,53"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="55,350,66,284,86,189,114,97,131,62,150,39,180,21,212,10,245,4,280,3,346,9,402,22,401,27,345,14,280,8,246,10,213,15,182,26,154,43,136,64,119,99,91,190,71,285,60,351"/>
+<area shape="rect" id="Node000004" href="$n__hash_8c.html#abfa263c3762bcc52625fc3d33ba20014" title="Empty a TRIE hash table." alt="" coords="176,300,296,325"/>
+<area shape="poly" id="edge4_Node000001_Node000004" title=" " alt="" coords="100,348,176,327,177,332,102,353"/>
+<area shape="rect" id="Node000005" href="$n__hash_8c.html#a346ab250b00afe7a47d183a4547725de" title="node creation, HASH_CLASSIC mode" alt="" coords="381,451,525,476"/>
+<area shape="poly" id="edge19_Node000001_Node000005" title=" " alt="" coords="105,359,205,364,264,372,321,386,378,411,425,440,422,445,375,416,319,391,263,377,205,369,104,365"/>
+<area shape="rect" id="Node000006" href="$n__hash_8c.html#aca7fef9e0001642327f8325350af577e" title="Retrieve an double value in the hash table, at the given key." alt="" coords="161,53,311,79"/>
+<area shape="poly" id="edge7_Node000001_Node000006" title=" " alt="" coords="54,350,59,301,73,231,85,193,102,155,123,119,150,88,155,84,158,88,154,92,128,122,107,157,90,195,78,232,64,302,59,351"/>
+<area shape="rect" id="Node000009" href="$n__hash_8c.html#a14e19d052c5a131d9c89976f00c4cb14" title="Retrieve an integral value in the hash table, at the given key." alt="" coords="175,103,297,128"/>
+<area shape="poly" id="edge10_Node000001_Node000009" title=" " alt="" coords="55,350,63,309,79,252,108,191,127,162,150,137,161,130,164,134,154,141,131,166,112,193,84,254,68,310,60,351"/>
+<area shape="rect" id="Node000010" href="$n__hash_8c.html#a77e51ca7379cfcc84c8385bb5634d79d" title="Retrieve a pointer value in the hash table, at the given key." alt="" coords="174,152,298,177"/>
+<area shape="poly" id="edge13_Node000001_Node000010" title=" " alt="" coords="57,350,67,317,86,273,113,227,150,187,160,180,163,184,154,191,118,230,91,275,72,319,62,351"/>
+<area shape="rect" id="Node000011" href="$n__hash_8c.html#a4013f978ea8aa0adc818bf75e2fbd33b" title="Retrieve an char *string value in the hash table, at the given key." alt="" coords="165,201,307,227"/>
+<area shape="poly" id="edge16_Node000001_Node000011" title=" " alt="" coords="60,349,93,295,119,263,150,236,160,230,163,235,154,240,123,267,98,298,65,352"/>
+<area shape="rect" id="Node000012" href="$n__hash_8c.html#a3ea3a506fda15848cf7c87b847851294" title="Generic print func call for trie trees." alt="" coords="182,251,290,276"/>
+<area shape="poly" id="edge20_Node000001_Node000012" title=" " alt="" coords="67,348,103,317,151,285,168,277,170,282,153,290,106,321,71,352"/>
+<area shape="rect" id="Node000014" href="$n__hash_8c.html#aad082d031aea568f9fd10b87969d7253" title="put a double value with given key in the targeted hash table [TRIE HASH TABLE)" alt="" coords="161,500,311,525"/>
+<area shape="poly" id="edge23_Node000001_Node000014" title=" " alt="" coords="65,375,98,429,123,460,154,487,163,492,160,497,150,491,119,464,93,432,60,378"/>
+<area shape="rect" id="Node000015" href="$n__hash_8c.html#ae478eab90d1a7baded6516c7739cfc9b" title="Remove a key from a trie table and destroy the node." alt="" coords="389,500,517,525"/>
+<area shape="poly" id="edge42_Node000001_Node000015" title=" " alt="" coords="58,376,61,427,73,499,85,537,102,574,124,608,154,635,195,656,233,661,272,652,319,634,355,615,386,588,433,535,437,538,390,592,358,619,321,639,274,657,233,666,193,661,150,639,120,611,97,577,80,539,68,500,56,427,53,376"/>
+<area shape="rect" id="Node000019" href="$n__hash_8c.html#a48b62f886c1a7f6f36f9e758a13e25c0" title="put an integral value with given key in the targeted hash table [TRIE HASH TABLE)" alt="" coords="175,549,297,575"/>
+<area shape="poly" id="edge30_Node000001_Node000019" title=" " alt="" coords="62,375,72,408,91,451,118,497,154,536,164,543,161,547,150,540,113,500,86,454,67,410,57,377"/>
+<area shape="rect" id="Node000020" href="$n__hash_8c.html#a4a57aabd7aaa84c7f5018257b7656f10" title="put a pointer to the string value with given key in the targeted hash table [TRIE HASH TABLE)" alt="" coords="174,599,298,624"/>
+<area shape="poly" id="edge33_Node000001_Node000020" title=" " alt="" coords="60,376,68,416,84,473,112,534,131,561,154,585,163,592,160,597,150,589,127,565,108,536,79,475,63,418,55,377"/>
+<area shape="rect" id="Node000021" href="$n__hash_8c.html#a6ff4db1b912c1c4b396f925b5a63d2ea" title="put a pointer to the string value with given key in the targeted hash table [TRIE HASH TABLE)" alt="" coords="152,401,320,427"/>
+<area shape="poly" id="edge36_Node000001_Node000021" title=" " alt="" coords="102,374,177,395,176,400,100,379"/>
+<area shape="rect" id="Node000022" href="$n__hash_8c.html#a2bbc773501f85aabc6ad67973943342a" title="put a duplicate of the string value with given key in the targeted hash table [TRIE HASH TABLE)" alt="" coords="165,451,307,476"/>
+<area shape="poly" id="edge39_Node000001_Node000022" title=" " alt="" coords="71,374,107,405,153,436,171,444,169,449,151,440,103,409,67,378"/>
+<area shape="rect" id="Node000023" href="$n__hash_8c.html#aa80d786e98105e52ebc7246fc91ff33f" title="Search tree&#39;s keys and apply a matching func to put results in the list." alt="" coords="175,700,297,725"/>
+<area shape="poly" id="edge43_Node000001_Node000023" title=" " alt="" coords="59,376,62,430,75,511,87,556,104,600,126,642,154,679,170,692,167,696,150,683,121,645,99,602,82,557,70,512,57,431,53,376"/>
+<area shape="rect" id="Node000003" href="$n__hash_8c.html#a013153fa30199bbcaf5f92890ae97ba8" title="destroy a HASH_NODE by first calling the HASH_NODE destructor" alt="" coords="617,301,755,327"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="484,51,512,67,539,88,584,139,623,194,675,288,671,290,619,197,580,142,536,92,509,72,481,56"/>
+<area shape="poly" id="edge3_Node000003_Node000003" title=" " alt="" coords="648,303,640,293,644,283,660,277,686,275,719,279,731,288,728,292,717,284,686,280,661,282,648,287,645,292,652,300"/>
+<area shape="poly" id="edge6_Node000004_Node000003" title=" " alt="" coords="296,310,603,311,603,317,296,316"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="280,323,321,342,385,391,433,439,429,442,381,395,319,347,278,328"/>
+<area shape="rect" id="Node000007" href="$n__hash_8c.html#a53aa7d8ce768fab934f0dcad3d4bb8a4" title="retrieve a HASH_NODE at key from table" alt="" coords="383,152,522,177"/>
+<area shape="poly" id="edge8_Node000006_Node000007" title=" " alt="" coords="297,76,321,88,337,100,346,113,355,125,369,137,384,145,381,149,367,142,351,129,342,116,333,104,319,92,294,81"/>
+<area shape="rect" id="Node000008" href="$group___h_a_s_h___t_a_b_l_e.html#ga1392981a507905d028136bc0b92aa48b" title="get the type of a node , text version" alt="" coords="397,103,508,128"/>
+<area shape="poly" id="edge9_Node000006_Node000008" title=" " alt="" coords="293,76,385,97,383,102,292,81"/>
+<area shape="poly" id="edge11_Node000009_Node000007" title=" " alt="" coords="293,126,384,146,382,152,292,131"/>
+<area shape="poly" id="edge12_Node000009_Node000008" title=" " alt="" coords="298,113,383,113,383,118,298,118"/>
+<area shape="poly" id="edge14_Node000010_Node000007" title=" " alt="" coords="298,162,370,162,370,167,298,167"/>
+<area shape="poly" id="edge15_Node000010_Node000008" title=" " alt="" coords="292,149,383,128,385,134,293,155"/>
+<area shape="poly" id="edge17_Node000011_Node000007" title=" " alt="" coords="292,199,382,178,384,183,293,204"/>
+<area shape="poly" id="edge18_Node000011_Node000008" title=" " alt="" coords="292,199,319,187,333,175,342,162,351,150,367,137,383,129,386,134,369,142,355,153,346,166,337,178,321,191,294,204"/>
+<area shape="rect" id="Node000013" href="$n__hash_8c.html#a4bd19fa8c4204b765b769c88bddfc0bc" title="Recursive function to print trie tree&#39;s keys and values." alt="" coords="375,251,531,276"/>
+<area shape="poly" id="edge21_Node000012_Node000013" title=" " alt="" coords="290,261,361,261,361,266,290,266"/>
+<area shape="poly" id="edge22_Node000013_Node000013" title=" " alt="" coords="417,252,410,242,414,232,428,226,453,224,483,228,495,237,491,241,481,233,453,229,430,231,417,236,415,242,421,249"/>
+<area shape="poly" id="edge24_Node000014_Node000005" title=" " alt="" coords="292,497,382,477,384,482,293,503"/>
+<area shape="poly" id="edge25_Node000014_Node000015" title=" " alt="" coords="312,510,375,510,375,515,312,515"/>
+<area shape="poly" id="edge29_Node000015_Node000003" title=" " alt="" coords="513,498,536,487,579,452,616,411,668,337,673,340,620,415,582,456,539,491,516,502"/>
+<area shape="rect" id="Node000016" href="$n__hash_8c.html#a7334b7b4bcc0b3ce98219def7a057117" title="find the longest prefix string that is not the current key" alt="" coords="585,525,787,551"/>
+<area shape="poly" id="edge26_Node000015_Node000016" title=" " alt="" coords="517,517,572,523,571,528,517,522"/>
+<area shape="rect" id="Node000018" href="$n__hash_8c.html#a9b32982367d5bb9b83281b582e8c62df" title="Search a key and tell if it&#39;s holding a value (leaf)" alt="" coords="606,476,766,501"/>
+<area shape="poly" id="edge28_Node000015_Node000018" title=" " alt="" coords="517,504,592,496,592,501,517,509"/>
+<area shape="rect" id="Node000017" href="$n__hash_8c.html#aac9aa1a3b0f78ff6499e0ffc5659f704" title="check and return branching index in key if any" alt="" coords="835,525,1029,551"/>
+<area shape="poly" id="edge27_Node000016_Node000017" title=" " alt="" coords="787,535,821,535,821,541,787,541"/>
+<area shape="poly" id="edge31_Node000019_Node000005" title=" " alt="" coords="294,547,319,536,333,524,342,512,351,499,367,487,381,479,384,484,369,491,355,503,346,515,337,528,321,540,297,552"/>
+<area shape="poly" id="edge32_Node000019_Node000015" title=" " alt="" coords="292,547,382,526,384,531,293,552"/>
+<area shape="poly" id="edge34_Node000020_Node000005" title=" " alt="" coords="297,598,318,585,329,574,336,562,341,538,348,512,355,499,366,487,375,480,378,485,370,491,359,502,353,514,347,539,341,564,333,577,322,590,299,603"/>
+<area shape="poly" id="edge35_Node000020_Node000015" title=" " alt="" coords="287,596,319,585,373,558,419,531,422,535,375,563,321,590,289,601"/>
+<area shape="poly" id="edge37_Node000021_Node000005" title=" " alt="" coords="293,424,384,445,382,450,292,429"/>
+<area shape="poly" id="edge38_Node000021_Node000015" title=" " alt="" coords="297,424,321,436,337,449,346,462,355,475,369,487,381,493,379,497,367,491,351,478,342,465,333,452,319,440,295,429"/>
+<area shape="poly" id="edge40_Node000022_Node000005" title=" " alt="" coords="307,461,367,461,367,466,307,466"/>
+<area shape="poly" id="edge41_Node000022_Node000015" title=" " alt="" coords="293,474,384,494,382,500,292,479"/>
+<area shape="rect" id="Node000024" href="$n__hash_8c.html#af9f6e937f781df402b5ec4ac788f6f6e" title="Recursive function to search tree&#39;s keys and apply a matching func to put results in the list." alt="" coords="368,651,537,676"/>
+<area shape="poly" id="edge44_Node000023_Node000024" title=" " alt="" coords="292,697,382,677,384,682,293,703"/>
+<area shape="rect" id="Node000027" href="$group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755" title="Empty and Free a list container." alt="" coords="403,700,502,725"/>
+<area shape="poly" id="edge48_Node000023_Node000027" title=" " alt="" coords="297,710,390,710,390,715,297,715"/>
+<area shape="rect" id="Node000029" href="$group___l_i_s_t.html#gae4b8e915bc22e7993d2849152ec1c3ac" title="Initialiaze a generic list container to max_items pointers." alt="" coords="387,749,518,775"/>
+<area shape="poly" id="edge50_Node000023_Node000029" title=" " alt="" coords="293,723,384,744,382,749,292,728"/>
+<area shape="poly" id="edge45_Node000024_Node000024" title=" " alt="" coords="417,652,410,642,414,632,428,626,453,624,483,628,495,637,491,641,481,633,453,629,430,631,417,636,415,642,421,649"/>
+<area shape="rect" id="Node000025" href="$group___l_i_s_t.html#ga4eab319289a83524639ee5e9f0441fdf" title="Add a pointer to the end of the list." alt="" coords="646,651,726,676"/>
+<area shape="poly" id="edge46_Node000024_Node000025" title=" " alt="" coords="538,661,632,661,632,666,538,666"/>
+<area shape="rect" id="Node000026" href="$group___l_i_s_t.html#ga678e828550efc8e64a836bb8c713c2f4" title="Allocate a new node to link in a list." alt="" coords="875,651,989,676"/>
+<area shape="poly" id="edge47_Node000025_Node000026" title=" " alt="" coords="726,661,861,661,861,666,726,666"/>
+<area shape="rect" id="Node000028" href="$group___l_i_s_t.html#ga1dafe7a250ddad51fadd375f057287e7" title="Empty a LIST list of pointers." alt="" coords="641,700,731,725"/>
+<area shape="poly" id="edge49_Node000027_Node000028" title=" " alt="" coords="502,710,627,710,627,715,502,715"/>
+</map>

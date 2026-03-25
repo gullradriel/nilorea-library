@@ -1,0 +1,22 @@
+<map id="n_scan_dir" name="n_scan_dir">
+<area shape="rect" id="Node000001" title="scan a directory and store file information in the result list" alt="" coords="5,155,96,180"/>
+<area shape="poly" id="edge10_Node000001_Node000001" title=" " alt="" coords="22,156,16,146,19,137,31,130,51,128,75,132,85,140,81,144,72,136,51,133,32,135,23,140,21,146,26,153"/>
+<area shape="rect" id="Node000002" href="$group___l_i_s_t.html#gae582df4f7b31ccc5a6a026ffd8ea9555" title="Add a pointer sorted in the list , starting by the end of the list." alt="" coords="162,56,290,81"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="63,152,98,122,143,92,160,84,162,89,145,96,101,126,67,156"/>
+<area shape="rect" id="Node000006" href="$n__files_8c.html#af78bcfafefcb6c5bec598fac84c41ac2" title="Comparison function for sorting N_FILE_INFO by time (oldest first)." alt="" coords="160,105,292,131"/>
+<area shape="poly" id="edge7_Node000001_Node000006" title=" " alt="" coords="95,152,166,132,168,137,97,157"/>
+<area shape="rect" id="Node000007" href="$group___n___f_i_l_e_s.html#gaba9ea91ca9b32e1690af2345a0bc1391" title="Cross&#45;platform directory scanning (Linux / Solaris / Windows via MinGW) WITHOUT chdir()." alt="" coords="165,155,287,180"/>
+<area shape="poly" id="edge8_Node000001_Node000007" title=" " alt="" coords="96,165,151,165,151,170,96,170"/>
+<area shape="rect" id="Node000008" href="$n__files_8c.html#a65fbf4ad45730fc9a680a0f0c89b81e5" title="Build &quot;dir + &#39;/&#39; + name&quot; (or without extra slash if dir already ends with &#39;/&#39; or &#39;\&#39;)." alt="" coords="177,204,275,229"/>
+<area shape="poly" id="edge9_Node000001_Node000008" title=" " alt="" coords="97,177,168,198,166,203,95,182"/>
+<area shape="rect" id="Node000009" href="$n__files_8c.html#a2c2aa10c21c077b8a7e47e1165218ed5" title="Fill filetime and filetime_nsec from a struct stat (mtime)." alt="" coords="144,253,308,279"/>
+<area shape="poly" id="edge11_Node000001_Node000009" title=" " alt="" coords="66,178,100,209,145,240,160,246,157,251,143,244,97,213,63,182"/>
+<area shape="rect" id="Node000003" href="$group___l_i_s_t.html#ga4eab319289a83524639ee5e9f0441fdf" title="Add a pointer to the end of the list." alt="" coords="363,5,443,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="270,53,349,31,350,36,272,58"/>
+<area shape="rect" id="Node000004" href="$group___l_i_s_t.html#ga678e828550efc8e64a836bb8c713c2f4" title="Allocate a new node to link in a list." alt="" coords="497,56,612,81"/>
+<area shape="poly" id="edge6_Node000002_Node000004" title=" " alt="" coords="290,66,484,66,484,71,290,71"/>
+<area shape="rect" id="Node000005" href="$group___l_i_s_t.html#ga65687bd547104e185bad1b7da5cb0d98" title="Add a pointer at the start of the list." alt="" coords="356,107,449,132"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="272,79,345,100,344,105,270,84"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="443,28,504,49,502,54,441,33"/>
+<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="441,104,502,83,504,88,443,109"/>
+</map>

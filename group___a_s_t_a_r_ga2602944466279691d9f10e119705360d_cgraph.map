@@ -1,0 +1,27 @@
+<map id="n_astar_find_path" name="n_astar_find_path">
+<area shape="rect" id="Node000001" title="find a path using A* search, returns NULL if no path exists" alt="" coords="5,161,143,187"/>
+<area shape="rect" id="Node000002" href="$n__astar_8c.html#a3f532b064eed13503ad3cf50146b6cac" title="Convert 3D coordinates to flat array index." alt="" coords="374,124,465,149"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="78,160,92,130,116,91,148,52,168,35,189,22,226,7,257,3,289,8,325,22,353,40,376,63,408,110,403,113,372,66,349,44,323,27,287,13,257,8,227,13,192,27,171,40,152,56,120,94,97,132,83,162"/>
+<area shape="rect" id="Node000003" href="$n__astar_8c.html#a3e7945ee0ed40af791e14afe587df51d" title=" " alt="" coords="214,37,301,63"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="85,159,128,117,158,93,189,72,201,66,203,70,192,76,161,97,132,121,89,163"/>
+<area shape="rect" id="Node000004" href="$n__astar_8c.html#a7a023b0e68cf5a855766fe6d453a6e67" title=" " alt="" coords="213,87,301,112"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="102,159,190,121,206,114,208,119,192,126,104,164"/>
+<area shape="rect" id="Node000005" href="$n__astar_8c.html#ac6e4e75e70dd3c352917545de91635f9" title=" " alt="" coords="215,185,300,211"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="143,180,202,188,201,193,143,186"/>
+<area shape="rect" id="Node000007" href="$n__astar_8c.html#a96c24d8e16a8139f3867d98eaa1a3476" title=" " alt="" coords="211,284,303,309"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="90,185,133,225,192,269,206,276,203,281,189,274,129,229,86,189"/>
+<area shape="rect" id="Node000009" href="$n__astar_8c.html#af892e33cbfc6e1e2adf822bb414e309e" title="Check if coordinates are within grid bounds." alt="" coords="213,235,301,260"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="107,184,192,219,211,227,209,232,190,224,105,189"/>
+<area shape="rect" id="Node000010" href="$group___a_s_t_a_r.html#ga91a46117d664f475e747f78cb3b6bf45" title="Compute heuristic distance between two 3D points." alt="" coords="191,333,324,359"/>
+<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="84,186,125,249,156,287,192,320,200,325,197,329,189,324,152,291,120,252,80,188"/>
+<area shape="rect" id="Node000012" href="$n__astar_8c.html#ac46fe238afc0b72f0e2defbf8187cc08" title="Build path from goal back to start following parent pointers." alt="" coords="192,136,323,161"/>
+<area shape="poly" id="edge12_Node000001_Node000012" title=" " alt="" coords="143,162,178,157,178,162,143,167"/>
+<area shape="rect" id="Node000006" href="$n__astar_8c.html#a2c8113eac96dd6408440350ca7e30680" title=" " alt="" coords="372,197,467,223"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="300,198,358,203,358,208,300,204"/>
+<area shape="poly" id="edge8_Node000007_Node000006" title=" " alt="" coords="294,281,323,269,388,228,391,233,325,274,297,286"/>
+<area shape="rect" id="Node000008" href="$n__astar_8c.html#a35c7b8a8be321909727b495bb6d6dfc2" title=" " alt="" coords="373,284,466,309"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="303,294,359,294,359,299,303,299"/>
+<area shape="rect" id="Node000011" href="$n__astar_8c.html#a4babf03dc0acc64a64b503b999aa3493" title="Absolute value for integers." alt="" coords="395,333,444,359"/>
+<area shape="poly" id="edge11_Node000010_Node000011" title=" " alt="" coords="324,343,381,343,381,349,324,349"/>
+<area shape="poly" id="edge13_Node000012_Node000002" title=" " alt="" coords="323,141,360,138,361,144,323,146"/>
+</map>

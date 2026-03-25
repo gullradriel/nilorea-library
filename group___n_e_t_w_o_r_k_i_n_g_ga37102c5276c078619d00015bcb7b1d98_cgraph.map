@@ -1,0 +1,15 @@
+<map id="netw_set_crypto_chain_pem" name="netw_set_crypto_chain_pem">
+<area shape="rect" id="Node000001" title="set SSL certificate chain from PEM strings in memory" alt="" coords="5,80,212,105"/>
+<area shape="rect" id="Node000002" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga1dd6b8f246d9aabb4d788b6583ba95a9" title="activate SSL encryption using PEM&#45;formatted key and certificate strings loaded from memory" alt="" coords="260,80,425,105"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="212,90,246,90,246,95,212,95"/>
+<area shape="rect" id="Node000003" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga515a427865426bc13b289628217465ce" title="Do not directly use, internal api." alt="" coords="485,5,623,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="374,77,472,39,494,32,496,37,474,45,376,82"/>
+<area shape="rect" id="Node000005" href="$n__network_8c.html#a58874f3139c1eec6c3ffb855f9d0a214" title="print OpenSSL errors for a given socket" alt="" coords="473,55,635,80"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="426,80,459,76,460,81,426,85"/>
+<area shape="rect" id="Node000006" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga528356d4a8e132a230ec7d8df6c4c5b0" title="recv data from the socket" alt="" coords="499,104,609,129"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="426,99,486,106,485,112,426,105"/>
+<area shape="rect" id="Node000007" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga14b6d4d15dc2b0422098f0211bc95117" title="send data onto the socket" alt="" coords="497,153,611,179"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="378,103,474,138,499,147,498,152,472,143,376,108"/>
+<area shape="rect" id="Node000004" href="$n__network_8c.html#a37b864767e182743c4e041353e6f78a5" title=" " alt="" coords="683,5,805,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="623,15,669,15,669,21,623,21"/>
+</map>

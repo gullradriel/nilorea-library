@@ -1,0 +1,18 @@
+<map id="n_kafka_event_destroy_ptr" name="n_kafka_event_destroy_ptr">
+<area shape="rect" id="Node000001" title="destroy a kafka event (void pointer version for list destructor)" alt="" coords="935,61,1132,87"/>
+<area shape="rect" id="Node000002" href="$group___n___k_a_f_k_a.html#ga7a0a6d08bd00098b411d243c65534aa6" title="destroy a kafka event and set it&#39;s pointer to NULL" alt="" coords="715,11,887,36"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="960,61,859,38,860,33,961,56"/>
+<area shape="rect" id="Node000004" href="$group___n___k_a_f_k_a.html#ga6553559587621a3667ed71565db20926" title="Poll kafka handle in producer or consumer mode." alt="" coords="550,60,653,85"/>
+<area shape="poly" id="edge7_Node000001_Node000004" title=" " alt="" coords="921,76,653,75,653,70,921,71"/>
+<area shape="rect" id="Node000007" href="$group___n___k_a_f_k_a.html#gaad8abd310e8055d6f99dacc841e5bde8" title="put an event in the events_to_send list" alt="" coords="536,116,667,141"/>
+<area shape="poly" id="edge8_Node000001_Node000007" title=" " alt="" coords="921,91,667,123,667,118,921,85"/>
+<area shape="rect" id="Node000003" href="$ex__kafka_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,60,60,85"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="701,17,580,10,432,9,269,18,188,29,109,43,58,62,56,57,107,38,187,23,269,13,431,4,580,5,701,11"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="736,42,653,63,652,57,735,37"/>
+<area shape="rect" id="Node000005" href="$n__kafka_8c.html#ab05db332177eda2f42685ac3f6628439" title="kafka produce or consume polling thread function" alt="" coords="316,60,488,85"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="536,75,488,75,488,70,536,70"/>
+<area shape="rect" id="Node000006" href="$group___n___k_a_f_k_a.html#ga70caa3c51507e5c9e917253c70e8bb67" title="start the polling thread of a kafka handle" alt="" coords="108,53,268,93"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="303,75,268,75,268,70,303,70"/>
+<area shape="poly" id="edge6_Node000006_Node000003" title=" " alt="" coords="94,75,60,75,60,70,94,70"/>
+<area shape="poly" id="edge9_Node000007_Node000003" title=" " alt="" coords="522,136,436,138,332,136,219,126,107,107,57,88,59,83,109,102,220,121,332,130,436,132,522,131"/>
+</map>

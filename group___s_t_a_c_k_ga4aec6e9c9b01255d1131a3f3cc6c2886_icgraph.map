@@ -1,0 +1,27 @@
+<map id="stack_is_full" name="stack_is_full">
+<area shape="rect" id="Node000001" title="check if the stack is full" alt="" coords="552,228,655,253"/>
+<area shape="rect" id="Node000002" href="$n__stack_8c.html#a526b57208b6511c1b5147a0f9ad6e55d" title="helper for stack_push." alt="" coords="395,203,504,228"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="538,233,504,227,505,222,539,227"/>
+<area shape="rect" id="Node000013" href="$ex__stack_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="422,252,477,277"/>
+<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="538,253,477,263,477,258,537,248"/>
+<area shape="rect" id="Node000003" href="$group___s_t_a_c_k.html#gaba2d8fcb66acaca628b1be6c575e8541" title="helper to push a bool" alt="" coords="226,5,337,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="437,191,404,118,377,79,345,44,327,33,330,29,348,40,382,75,408,116,442,189"/>
+<area shape="rect" id="Node000004" href="$group___s_t_a_c_k.html#ga7d9f28e18faf348fd4ab97ea47621ac7" title="helper to push a char" alt="" coords="227,55,336,80"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="431,192,396,143,372,116,345,94,325,82,328,78,348,89,376,113,400,139,436,189"/>
+<area shape="rect" id="Node000005" href="$group___s_t_a_c_k.html#ga3458d26b4af8bbceb20d52afab6c4734" title="helper to push a double" alt="" coords="226,104,337,129"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="421,196,386,169,345,143,321,132,323,127,348,138,389,164,424,191"/>
+<area shape="rect" id="Node000006" href="$group___s_t_a_c_k.html#ga19db9b4bae7a2236355982f518cc8d20" title="helper to push a float" alt="" coords="228,153,335,179"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="392,201,325,181,326,176,393,196"/>
+<area shape="rect" id="Node000007" href="$group___s_t_a_c_k.html#gada2ba939444a901d6f801d0399375e43" title="helper to push an int32_t" alt="" coords="220,203,343,228"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="381,218,343,218,343,213,381,213"/>
+<area shape="rect" id="Node000008" href="$group___s_t_a_c_k.html#gae22319d96be347b2d38d02bdb2af7f34" title="helper to push an int8_t" alt="" coords="224,252,339,277"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="393,235,326,254,325,249,392,229"/>
+<area shape="rect" id="Node000009" href="$group___s_t_a_c_k.html#gaf38d5759fa73e191542a6d95781ce7c0" title="helper to push a pointer" alt="" coords="226,301,337,327"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="404,237,396,241,382,254,373,266,363,278,348,291,324,304,321,299,345,286,359,274,369,263,378,250,393,237,401,232"/>
+<area shape="rect" id="Node000011" href="$group___s_t_a_c_k.html#ga4e555ba13b94ea3cb7453adc54d6067b" title="helper to push an uint32_t" alt="" coords="216,351,347,376"/>
+<area shape="poly" id="edge10_Node000002_Node000011" title=" " alt="" coords="400,238,397,241,380,266,374,290,367,315,349,340,329,353,326,348,345,336,362,312,368,288,375,263,393,238,397,234"/>
+<area shape="rect" id="Node000012" href="$group___s_t_a_c_k.html#ga35cabbd51b1ee323eef2e068747fd8f7" title="helper to push an uint8_t" alt="" coords="220,400,343,425"/>
+<area shape="poly" id="edge11_Node000002_Node000012" title=" " alt="" coords="400,238,397,241,384,260,377,278,374,314,370,351,363,370,349,389,331,402,328,398,345,385,358,367,365,350,368,313,372,277,379,257,393,238,396,234"/>
+<area shape="rect" id="Node000010" href="$group___s_t_a_c_k.html#gafc38fb5dbe5ed8c6374b1f6caea3a2a1" title="helper to push a pointer with a default p_type of 0" alt="" coords="5,301,168,327"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="212,317,168,317,168,311,212,311"/>
+</map>

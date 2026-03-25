@@ -1,0 +1,55 @@
+<map id="examples/ex_signals.c" name="examples/ex_signals.c">
+<area shape="rect" id="Node000001" title=" " alt="" coords="500,5,671,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="244,152,311,177"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="562,33,315,149,313,144,560,28"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="1040,225,1110,251"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="612,28,1038,217,1035,222,610,33"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="191,299,274,324"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="500,22,432,27,354,37,273,54,195,81,132,108,85,135,65,151,47,170,13,226,8,248,15,265,31,278,55,289,115,302,177,307,177,312,114,307,53,294,28,283,11,268,3,248,8,224,43,167,62,147,82,130,130,104,193,76,271,49,353,31,431,21,500,17"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="24,225,94,251"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="500,24,441,29,374,39,305,56,240,81,190,111,145,148,79,216,75,213,141,144,187,107,238,76,304,51,373,34,440,24,500,18"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="966,299,1037,324"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="671,20,799,27,940,38,1061,54,1102,65,1125,77,1141,98,1153,119,1159,141,1160,162,1150,205,1125,252,1110,270,1092,284,1051,302,1049,297,1089,279,1107,266,1121,249,1145,204,1155,161,1153,141,1148,121,1137,101,1121,81,1100,70,1060,60,940,43,798,32,671,25"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="118,225,186,251"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="500,22,447,27,389,38,331,55,276,81,239,111,208,147,183,183,166,214,161,212,179,180,204,143,236,107,274,76,329,50,388,32,446,22,500,17"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="210,225,284,251"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="501,27,432,39,357,61,322,78,288,98,259,124,235,153,229,167,229,182,237,212,232,214,223,183,224,166,230,151,255,120,285,94,319,73,356,56,430,33,500,22"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="868,79,943,104"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="638,28,855,76,854,81,636,33"/>
+<area shape="rect" id="Node000010" href="$n__signals_8h.html" title="Signals general handling with stack printing, from https://gist.github.com/jvranish/4441299." alt="" coords="967,79,1111,104"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="659,28,954,74,953,79,658,33"/>
+<area shape="rect" id="Node000011" href="$n__log_8h.html" title="Generic log system." alt="" coords="526,79,645,104"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="588,31,588,65,583,65,583,31"/>
+<area shape="rect" id="Node000022" title=" " alt="" coords="1186,79,1260,104"/>
+<area shape="poly" id="edge31_Node000001_Node000022" title=" " alt="" coords="671,23,896,43,1167,76,1172,77,1171,82,1167,81,896,48,671,28"/>
+<area shape="poly" id="edge11_Node000011_Node000002" title=" " alt="" coords="535,107,325,155,324,155,323,149,324,149,534,101"/>
+<area shape="poly" id="edge12_Node000011_Node000003" title=" " alt="" coords="626,102,772,150,829,175,934,205,1026,225,1025,230,933,210,827,180,770,154,625,107"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="543,152,628,177"/>
+<area shape="poly" id="edge13_Node000011_Node000012" title=" " alt="" coords="588,104,588,138,583,138,583,104"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="336,152,420,177"/>
+<area shape="poly" id="edge14_Node000011_Node000013" title=" " alt="" coords="553,107,425,150,423,145,551,101"/>
+<area shape="rect" id="Node000014" href="$n__common_8h.html" title="Common headers and low&#45;level functions &amp; define." alt="" coords="652,152,759,177"/>
+<area shape="poly" id="edge15_Node000011_Node000014" title=" " alt="" coords="599,102,669,143,666,148,597,106"/>
+<area shape="rect" id="Node000021" title=" " alt="" coords="444,152,519,177"/>
+<area shape="poly" id="edge30_Node000011_Node000021" title=" " alt="" coords="570,106,512,146,509,142,567,102"/>
+<area shape="poly" id="edge18_Node000014_Node000003" title=" " alt="" coords="760,173,1021,223,1026,224,1025,229,1020,228,759,178"/>
+<area shape="poly" id="edge23_Node000014_Node000005" title=" " alt="" coords="653,178,641,180,492,195,375,201,258,209,108,228,107,223,257,203,375,196,492,190,640,175,652,173"/>
+<area shape="poly" id="edge21_Node000014_Node000006" title=" " alt="" coords="760,172,890,197,947,210,978,223,989,237,996,253,1003,284,998,285,991,254,984,240,975,227,945,216,889,202,759,177"/>
+<area shape="poly" id="edge20_Node000014_Node000007" title=" " alt="" coords="653,178,641,180,518,194,422,201,324,210,200,228,200,223,324,205,421,196,518,189,640,175,652,173"/>
+<area shape="poly" id="edge29_Node000014_Node000008" title=" " alt="" coords="653,178,641,180,471,202,298,228,297,223,470,197,640,175,652,173"/>
+<area shape="poly" id="edge24_Node000014_Node000011" title=" " alt="" coords="691,154,622,113,625,108,694,149"/>
+<area shape="rect" id="Node000015" title=" " alt="" coords="770,225,866,251"/>
+<area shape="poly" id="edge16_Node000014_Node000015" title=" " alt="" coords="725,175,789,215,786,220,722,180"/>
+<area shape="rect" id="Node000016" title=" " alt="" coords="890,225,964,251"/>
+<area shape="poly" id="edge17_Node000014_Node000016" title=" " alt="" coords="742,175,879,219,877,224,740,180"/>
+<area shape="rect" id="Node000017" title=" " alt="" coords="308,225,386,251"/>
+<area shape="poly" id="edge19_Node000014_Node000017" title=" " alt="" coords="652,179,401,228,400,222,651,173"/>
+<area shape="rect" id="Node000018" title=" " alt="" coords="569,225,648,251"/>
+<area shape="poly" id="edge22_Node000014_Node000018" title=" " alt="" coords="692,180,637,219,634,215,688,175"/>
+<area shape="rect" id="Node000019" href="$n__enum_8h.html" title="Macro to build enums and their tostring counterparts, a reduced version of https://github...." alt="" coords="410,225,545,251"/>
+<area shape="poly" id="edge25_Node000014_Node000019" title=" " alt="" coords="670,180,528,224,527,219,668,175"/>
+<area shape="rect" id="Node000020" title=" " alt="" coords="672,225,745,251"/>
+<area shape="poly" id="edge28_Node000014_Node000020" title=" " alt="" coords="709,178,710,212,705,212,703,178"/>
+<area shape="poly" id="edge27_Node000019_Node000004" title=" " alt="" coords="439,253,286,297,284,292,437,248"/>
+<area shape="poly" id="edge26_Node000019_Node000006" title=" " alt="" coords="546,246,558,248,953,301,952,306,557,253,545,252"/>
+</map>

@@ -1,0 +1,62 @@
+<map id="netw_add_msg" name="netw_add_msg">
+<area shape="rect" id="Node000001" title="Add a message to send in aimed NETWORK." alt="" coords="999,355,1119,380"/>
+<area shape="rect" id="Node000002" href="$ex__accept__pool__client_8c.html#aab312f9d63dc3375f09457ffaeebdb5f" title="Echo mode: connect, send a message, receive echo, close." alt="" coords="775,5,921,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1052,341,1043,286,1025,214,994,138,974,102,949,69,922,48,892,33,894,28,925,43,953,65,978,99,999,135,1030,213,1048,285,1057,340"/>
+<area shape="rect" id="Node000004" href="$ex__accept__pool__server_8c.html#a9f1e605378332fab69215137fcc79a4c" title="Handle a single client: read one message, echo it back, close." alt="" coords="793,80,903,105"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="1051,342,1040,296,1021,238,991,178,972,151,949,127,927,112,902,103,904,98,929,108,952,123,976,147,996,175,1026,236,1045,294,1056,341"/>
+<area shape="rect" id="Node000010" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga06115ed18a658114104ca6b6823f5d79" title="add net_msg to all network in netork pool" alt="" coords="768,181,928,207"/>
+<area shape="poly" id="edge11_Node000001_Node000010" title=" " alt="" coords="1044,344,1008,281,981,248,949,220,927,209,929,204,952,216,985,244,1012,278,1049,341"/>
+<area shape="rect" id="Node000011" href="$ex__gui__network_8c.html#aa4647d913424019eee5e62085e66a1c7" title="send button callback" alt="" coords="551,156,665,181"/>
+<area shape="poly" id="edge22_Node000001_Node000011" title=" " alt="" coords="1050,342,1038,302,1019,254,990,207,971,187,949,171,912,154,873,143,832,138,791,137,713,145,651,159,650,153,713,140,791,132,832,132,874,138,914,149,952,166,975,183,994,204,1024,251,1043,300,1055,340"/>
+<area shape="rect" id="Node000014" href="$group___n_e_t_w_o_r_k_i_n_g.html#gae8345266fcf7a23c0e8ffe176b0e086f" title="Add a formatted NETWMSG_IDENT message to the specified network." alt="" coords="782,231,914,256"/>
+<area shape="poly" id="edge16_Node000001_Node000014" title=" " alt="" coords="1036,345,999,306,975,286,949,270,913,256,915,251,952,265,978,282,1002,302,1040,342"/>
+<area shape="rect" id="Node000015" href="$group___n_e_t_w_o_r_k_i_n_g.html#gad9588cf27263ecf40f57d3923ccf721a" title="Add a ping reply to the network." alt="" coords="785,280,911,305"/>
+<area shape="poly" id="edge17_Node000001_Node000015" title=" " alt="" coords="1021,351,950,319,911,308,912,303,952,314,1023,346"/>
+<area shape="rect" id="Node000016" href="$group___n_e_t_w_o_r_k_i_n_g.html#gafaf1202a5f56a9f2285fccfbcacb3a6c" title="Add a formatted NETWMSG_IDENT message to the specified network." alt="" coords="773,329,923,355"/>
+<area shape="poly" id="edge18_Node000001_Node000016" title=" " alt="" coords="985,361,923,354,924,348,985,356"/>
+<area shape="rect" id="Node000017" href="$group___n_e_t_w_o_r_k_i_n_g.html#gac8b30599c7a5c2cce35ee401d7b9d7f1" title="Add a formatted NETMSG_QUIT message to the specified network." alt="" coords="786,379,910,404"/>
+<area shape="poly" id="edge19_Node000001_Node000017" title=" " alt="" coords="985,378,911,387,910,382,984,373"/>
+<area shape="rect" id="Node000018" href="$group___n_e_t_w_o_r_k_i_n_g.html#gad3b590da2eb8b594c75d1d5f46ba7b45" title="Add a string to the network, aiming a specific user." alt="" coords="770,428,926,453"/>
+<area shape="poly" id="edge20_Node000001_Node000018" title=" " alt="" coords="1021,389,952,418,908,431,907,425,950,413,1019,384"/>
+<area shape="rect" id="Node000019" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga02b35de5d3b84e79c4fecbf4cebce603" title="Add a string to the network, aiming all server&#45;side users." alt="" coords="759,477,937,503"/>
+<area shape="poly" id="edge21_Node000001_Node000019" title=" " alt="" coords="1040,393,1002,431,952,467,921,480,919,475,949,462,998,427,1036,389"/>
+<area shape="rect" id="Node000020" href="$ex__network_8h.html#a97064904e9c2be2094c349413ff348fc" title="send data to specified network" alt="" coords="786,527,910,552"/>
+<area shape="poly" id="edge23_Node000001_Node000020" title=" " alt="" coords="1048,394,1012,456,985,488,952,516,932,527,911,534,909,529,930,522,949,512,981,485,1007,452,1044,391"/>
+<area shape="rect" id="Node000023" href="$group___n___u_s_e_r.html#ga2f336886f3d5e909c397f1660419701d" title="add a N_STR *message to user list" alt="" coords="759,576,937,601"/>
+<area shape="poly" id="edge27_Node000001_Node000023" title=" " alt="" coords="1053,394,1040,433,1020,479,991,526,952,565,930,578,927,573,949,561,986,522,1015,476,1035,431,1048,392"/>
+<area shape="rect" id="Node000027" href="$group___n___u_s_e_r.html#gac33945e0ace7b69815c92c2e9ba248a1" title="send all waiting messages for each user of the list" alt="" coords="745,625,951,651"/>
+<area shape="poly" id="edge31_Node000001_Node000027" title=" " alt="" coords="1056,395,1046,443,1027,503,997,564,977,592,952,616,934,628,931,623,949,612,973,588,992,561,1022,501,1041,441,1051,394"/>
+<area shape="rect" id="Node000028" href="$group___n___u_s_e_r.html#ga7b395e123b45d9d9215ea4318d5ff2cc" title="send all waiting messages in user &#39;id&#39; waiting list" alt="" coords="777,675,919,715"/>
+<area shape="poly" id="edge32_Node000001_Node000028" title=" " alt="" coords="1058,394,1050,450,1033,522,1019,561,1002,599,980,634,952,665,921,685,918,680,949,661,975,631,997,596,1014,559,1028,521,1045,449,1053,393"/>
+<area shape="rect" id="Node000003" href="$ex__accept__pool__client_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="581,5,635,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="761,21,636,21,636,15,761,15"/>
+<area shape="rect" id="Node000005" href="$ex__accept__pool__server_8c.html#a73a7d88f2444d68248cd25268a69143f" title="Handle client inline in the accept thread and update counter." alt="" coords="108,56,291,81"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="780,93,291,75,291,69,780,88"/>
+<area shape="rect" id="Node000007" href="$ex__accept__pool__server_8c.html#a1e7c91172714ca8969b9adac492a5423" title="Worker thread function: handles a client and updates counter." alt="" coords="528,107,688,132"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="780,103,688,113,688,108,779,98"/>
+<area shape="rect" id="Node000006" href="$ex__accept__pool__server_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,107,60,132"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="145,88,61,114,60,109,143,83"/>
+<area shape="rect" id="Node000008" href="$ex__accept__pool__server_8c.html#adfc860fe73ab259d7dda6ff742320ae2" title="Dispatch a client to the thread pool for handling." alt="" coords="339,107,471,132"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="515,122,471,122,471,117,515,117"/>
+<area shape="poly" id="edge8_Node000008_Node000006" title=" " alt="" coords="325,122,60,122,60,117,325,117"/>
+<area shape="rect" id="Node000009" href="$ex__accept__pool__server_8c.html#a82ea734a9b6fe91cfaf50c8d5784d0e4" title="Accept pool callback: dispatches to thread pool." alt="" coords="130,157,269,183"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="340,138,252,160,251,155,338,133"/>
+<area shape="poly" id="edge10_Node000009_Node000006" title=" " alt="" coords="143,156,60,130,61,125,145,151"/>
+<area shape="poly" id="edge12_Node000010_Node000011" title=" " alt="" coords="754,187,665,177,665,172,754,181"/>
+<area shape="rect" id="Node000013" href="$ex__gui__network_8c.html#a39687dab37f65aa14a11ae8efa363f30" title="process incoming messages on a single network connection" alt="" coords="534,205,682,231"/>
+<area shape="poly" id="edge14_Node000010_Node000013" title=" " alt="" coords="754,206,682,213,682,208,754,201"/>
+<area shape="rect" id="Node000012" href="$ex__gui__network_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="377,181,432,207"/>
+<area shape="poly" id="edge13_Node000011_Node000012" title=" " alt="" coords="538,180,433,193,432,188,537,175"/>
+<area shape="poly" id="edge15_Node000013_Node000012" title=" " alt="" coords="520,210,432,200,433,194,520,205"/>
+<area shape="rect" id="Node000021" href="$ex__network_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="377,501,432,527"/>
+<area shape="poly" id="edge24_Node000020_Node000021" title=" " alt="" coords="772,527,697,517,547,512,432,515,432,510,547,507,698,511,773,522"/>
+<area shape="rect" id="Node000022" href="$ex__network_8h.html#a2af070d97fced1a0eadad90c6aa4903b" title="recv/send datas if any for the client" alt="" coords="549,527,667,552"/>
+<area shape="poly" id="edge25_Node000020_Node000022" title=" " alt="" coords="772,542,667,542,667,537,772,537"/>
+<area shape="poly" id="edge26_Node000022_Node000021" title=" " alt="" coords="535,533,432,520,433,515,536,528"/>
+<area shape="rect" id="Node000024" href="$group___n___u_s_e_r.html#ga25d7254e2bc5d4c6d4e89dadef9c67cd" title="add a N_STR *message to user list (USERLIST_ONE)" alt="" coords="530,576,686,601"/>
+<area shape="poly" id="edge28_Node000023_Node000024" title=" " alt="" coords="745,591,686,591,686,586,745,586"/>
+<area shape="rect" id="Node000025" href="$group___n___u_s_e_r.html#gaaf1860e26c4355764ad00e1016547b2c" title="add a N_STR *message to user list (USERLIST_ALL)" alt="" coords="519,625,697,651"/>
+<area shape="poly" id="edge29_Node000023_Node000025" title=" " alt="" coords="773,607,671,628,670,623,772,602"/>
+<area shape="rect" id="Node000026" href="$group___n___u_s_e_r.html#gaec87d76c70852173c2187e4eceb707ee" title="add a N_STR *message to user list except user &#39;id&#39; (USERLIST_ALL_EXCEPT)" alt="" coords="530,675,686,715"/>
+<area shape="poly" id="edge30_Node000023_Node000026" title=" " alt="" coords="763,608,747,616,732,628,723,640,714,653,699,666,676,678,674,673,696,661,710,649,719,637,728,624,744,612,761,604"/>
+</map>

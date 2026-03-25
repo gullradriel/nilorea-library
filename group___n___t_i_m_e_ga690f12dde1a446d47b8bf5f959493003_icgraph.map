@@ -1,0 +1,99 @@
+<map id="u_sleep" name="u_sleep">
+<area shape="rect" id="Node000001" title="sleep for the given number of microseconds" alt="" coords="1513,789,1585,815"/>
+<area shape="rect" id="Node000002" href="$group___t_h_r_e_a_d_s.html#ga7c1bc4b2165196ae865a5f11a6867a20" title="delete a thread_pool, exit the threads and free the structs" alt="" coords="1269,517,1439,543"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1539,777,1513,697,1492,650,1463,608,1444,588,1423,571,1381,545,1384,541,1426,567,1448,584,1467,604,1496,648,1518,695,1545,775"/>
+<area shape="rect" id="Node000021" href="$ex__accept__pool__server_8c.html#a9f1e605378332fab69215137fcc79a4c" title="Handle a single client: read one message, echo it back, close." alt="" coords="851,964,961,989"/>
+<area shape="poly" id="edge34_Node000001_Node000021" title=" " alt="" coords="1534,828,1505,861,1467,890,1405,917,1351,934,1302,943,1254,946,1154,946,1096,950,1028,958,961,970,960,964,1028,953,1095,944,1154,941,1254,940,1301,937,1350,929,1403,912,1464,885,1501,857,1530,824"/>
+<area shape="rect" id="Node000023" href="$ex__accept__pool__server_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,788,60,813"/>
+<area shape="poly" id="edge42_Node000001_Node000023" title=" " alt="" coords="1536,778,1509,725,1489,699,1464,678,1417,651,1375,634,1336,625,1298,621,1216,623,1113,627,449,627,349,623,269,620,232,623,194,633,154,650,110,676,83,702,62,733,40,789,35,787,58,730,79,698,106,672,152,645,192,628,231,618,268,615,349,618,449,622,1113,622,1216,618,1298,615,1337,619,1377,629,1420,646,1467,673,1493,695,1514,722,1541,775"/>
+<area shape="rect" id="Node000027" href="$ex__network_8h.html#a2af070d97fced1a0eadad90c6aa4903b" title="recv/send datas if any for the client" alt="" coords="847,764,965,789"/>
+<area shape="poly" id="edge43_Node000001_Node000027" title=" " alt="" coords="1499,803,966,782,966,776,1500,797"/>
+<area shape="rect" id="Node000029" href="$n__network__accept__pool_8c.html#a35a4d840540d74b6ef0b016583c15333" title="Thread function for accept pool workers." alt="" coords="1243,688,1465,713"/>
+<area shape="poly" id="edge45_Node000001_Node000029" title=" " alt="" coords="1511,785,1464,760,1379,716,1381,711,1467,756,1513,780"/>
+<area shape="rect" id="Node000031" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga2ef0aab7ff9fb531466a536773b53683" title="Thread send function." alt="" coords="1291,815,1417,840"/>
+<area shape="poly" id="edge48_Node000001_Node000031" title=" " alt="" coords="1500,811,1418,822,1417,816,1499,806"/>
+<area shape="rect" id="Node000035" href="$group___n_e_t_w_o_r_k_i_n_g.html#gad1fea8e8ab4bcce2085bcbceb90bc60c" title="Wait a message from aimed NETWORK." alt="" coords="1049,865,1173,891"/>
+<area shape="poly" id="edge55_Node000001_Node000035" title=" " alt="" coords="1522,825,1496,841,1466,854,1389,872,1310,882,1236,885,1174,884,1174,879,1235,880,1309,877,1388,867,1464,849,1493,836,1519,821"/>
+<area shape="rect" id="Node000036" href="$ex__clock__sync_8c.html#a5b2c2a899dba8a75335b67543f275e41" title=" " alt="" coords="1311,967,1397,992"/>
+<area shape="poly" id="edge59_Node000001_Node000036" title=" " alt="" coords="1542,829,1516,889,1494,922,1467,949,1433,968,1398,977,1397,972,1431,963,1464,945,1490,918,1511,887,1538,827"/>
+<area shape="rect" id="Node000003" href="$ex__accept__pool__client_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="661,713,716,739"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="1298,549,717,721,715,716,1296,544"/>
+<area shape="rect" id="Node000004" href="$ex__network__ssl_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="1084,396,1139,421"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="1323,512,1265,473,1194,435,1138,417,1140,412,1196,430,1267,469,1326,507"/>
+<area shape="rect" id="Node000005" href="$n__crypto_8c.html#a1a84fce40cac83636b8ea3779ebef792" title="encode or decode input using vigenere cypher" alt="" coords="1039,445,1184,471"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="1297,516,1154,473,1156,468,1298,511"/>
+<area shape="rect" id="Node000006" href="$group___c_y_p_h_e_r___v_i_g_e_n_e_r_e.html#ga2e26b8c1f8bdf96057904eaa1c7bc92c" title="decode input using vigenere cypher and key" alt="" coords="832,359,980,384"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="1050,444,1027,435,973,410,928,386,931,382,976,406,1029,430,1052,439"/>
+<area shape="rect" id="Node000014" href="$n__crypto_8c.html#a45f11e66b126e59b4fda77b3f08ddb6f" title="decode input using vigenere cypher and key" alt="" coords="605,409,772,449"/>
+<area shape="poly" id="edge18_Node000005_Node000014" title=" " alt="" coords="1025,455,772,437,772,432,1025,449"/>
+<area shape="rect" id="Node000016" href="$group___c_y_p_h_e_r___v_i_g_e_n_e_r_e.html#ga91ad0ccfda4700a5bc1a7a85488d60b2" title="encode input using vigenere cypher and key" alt="" coords="615,473,763,499"/>
+<area shape="poly" id="edge23_Node000005_Node000016" title=" " alt="" coords="1025,466,763,484,763,478,1025,461"/>
+<area shape="rect" id="Node000017" href="$n__crypto_8c.html#acbbe612210363e374f1509679a83b47f" title="encode string in place using vigenere cypher and key" alt="" coords="605,158,772,198"/>
+<area shape="poly" id="edge26_Node000005_Node000017" title=" " alt="" coords="1036,441,1026,435,1008,413,1000,392,993,370,978,348,921,299,857,258,795,225,741,200,743,196,797,220,860,253,924,295,982,344,998,368,1005,390,1013,410,1030,431,1039,437"/>
+<area shape="rect" id="Node000007" href="$ex__crypto_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,257,60,283"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="818,379,649,386,443,387,340,384,246,377,167,365,107,347,85,334,66,317,40,285,44,281,70,314,88,330,109,342,168,359,247,371,341,378,443,382,649,380,818,374"/>
+<area shape="rect" id="Node000008" href="$group___c_y_p_h_e_r___v_i_g_e_n_e_r_e.html#gaf9f2b64e60dd5e79279cc32ac7ff8886" title="quick decode data" alt="" coords="593,283,784,308"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="855,357,725,311,727,306,857,352"/>
+<area shape="poly" id="edge8_Node000008_Node000007" title=" " alt="" coords="661,276,610,240,578,223,545,210,480,194,424,184,374,181,327,184,280,192,230,204,109,238,58,260,56,255,107,233,228,199,279,187,326,179,374,176,425,179,481,188,546,205,580,218,612,235,664,272"/>
+<area shape="rect" id="Node000009" href="$group___c_y_p_h_e_r___v_i_g_e_n_e_r_e.html#ga6c11d1e142ec3b1617128d1425f46174" title="directly vigenere decode a file using key" alt="" coords="365,460,535,485"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="668,320,547,448,516,462,513,457,544,444,664,317"/>
+<area shape="rect" id="Node000011" href="$group___c_y_p_h_e_r___v_i_g_e_n_e_r_e.html#ga08551983c3b919de08ad1c35e0819d28" title="directly vigenere encode a file using key" alt="" coords="365,283,535,308"/>
+<area shape="poly" id="edge13_Node000008_Node000011" title=" " alt="" coords="580,298,536,298,536,293,580,293"/>
+<area shape="rect" id="Node000013" href="$group___c_y_p_h_e_r___v_i_g_e_n_e_r_e.html#ga39a0e0c7d46e5adece091d682fcc87bd" title="get an answer from a root key and a question" alt="" coords="362,220,538,245"/>
+<area shape="poly" id="edge16_Node000008_Node000013" title=" " alt="" coords="626,282,499,248,500,243,627,277"/>
+<area shape="poly" id="edge10_Node000009_Node000007" title=" " alt="" coords="410,493,346,515,267,531,225,534,183,530,143,519,106,499,82,476,64,449,51,418,41,386,32,327,31,283,36,283,38,326,46,385,56,416,69,446,86,473,110,495,145,514,184,525,225,528,266,526,345,510,408,488"/>
+<area shape="rect" id="Node000010" href="$group___c_y_p_h_e_r___v_i_g_e_n_e_r_e.html#ga1be4bd0f3b4410ebe4cd4240b804338c" title="directly vigenere decode a file using question and answer" alt="" coords="108,460,307,485"/>
+<area shape="poly" id="edge11_Node000009_Node000010" title=" " alt="" coords="351,475,307,475,307,470,351,470"/>
+<area shape="poly" id="edge12_Node000010_Node000007" title=" " alt="" coords="127,457,106,443,75,403,53,358,40,315,33,283,38,282,45,314,58,356,79,400,110,439,130,452"/>
+<area shape="poly" id="edge14_Node000011_Node000007" title=" " alt="" coords="350,292,60,274,61,269,351,287"/>
+<area shape="rect" id="Node000012" href="$group___c_y_p_h_e_r___v_i_g_e_n_e_r_e.html#ga5ed58e0fb772ca9e2a8b9679b29c08d7" title="directly vigenere encode a file using question and answer" alt="" coords="108,308,307,333"/>
+<area shape="poly" id="edge15_Node000011_Node000012" title=" " alt="" coords="351,308,307,313,306,308,351,303"/>
+<area shape="poly" id="edge17_Node000013_Node000007" title=" " alt="" coords="348,243,108,265,60,270,60,264,108,259,348,238"/>
+<area shape="poly" id="edge21_Node000014_Node000009" title=" " alt="" coords="592,449,520,463,519,457,591,444"/>
+<area shape="poly" id="edge22_Node000014_Node000011" title=" " alt="" coords="638,404,473,310,475,306,641,399"/>
+<area shape="rect" id="Node000015" href="$group___c_y_p_h_e_r___v_i_g_e_n_e_r_e.html#gaad821764c722b2e469ab5c54278c6023" title="directly vigenere decode a file using key" alt="" coords="363,409,537,435"/>
+<area shape="poly" id="edge19_Node000014_Node000015" title=" " alt="" coords="591,429,537,427,538,422,591,423"/>
+<area shape="poly" id="edge20_Node000015_Node000007" title=" " alt="" coords="349,438,291,439,228,434,165,419,107,392,79,368,58,338,35,284,40,282,63,335,83,364,109,388,167,414,229,428,291,434,349,432"/>
+<area shape="poly" id="edge24_Node000016_Node000007" title=" " alt="" coords="651,507,548,550,480,571,405,588,327,597,249,594,211,587,174,576,139,560,106,539,91,520,77,491,56,417,41,339,33,283,38,282,46,338,61,415,82,489,95,517,110,535,142,555,176,571,212,582,249,589,326,592,404,583,478,566,546,545,649,502"/>
+<area shape="poly" id="edge25_Node000016_Node000009" title=" " alt="" coords="601,484,535,480,536,475,601,478"/>
+<area shape="poly" id="edge29_Node000017_Node000011" title=" " alt="" coords="643,207,546,259,486,285,484,280,544,254,641,203"/>
+<area shape="rect" id="Node000018" href="$group___c_y_p_h_e_r___v_i_g_e_n_e_r_e.html#ga95f517e677af864def2a14af9196d596" title="directly vigenere encode a file using key" alt="" coords="120,5,295,31"/>
+<area shape="poly" id="edge27_Node000017_Node000018" title=" " alt="" coords="647,152,599,122,544,95,481,73,415,55,294,32,295,27,416,50,482,68,546,90,602,118,650,148"/>
+<area shape="rect" id="Node000019" href="$group___c_y_p_h_e_r___v_i_g_e_n_e_r_e.html#ga26872672f67b7c89b6fa9fa01d59ac00" title="quick encode data" alt="" coords="355,105,545,131"/>
+<area shape="poly" id="edge30_Node000017_Node000019" title=" " alt="" coords="594,157,501,133,502,128,596,152"/>
+<area shape="poly" id="edge28_Node000018_Node000007" title=" " alt="" coords="114,40,110,44,89,68,72,96,50,158,40,216,37,257,31,257,34,215,45,157,67,94,84,65,106,40,111,36"/>
+<area shape="poly" id="edge31_Node000019_Node000007" title=" " alt="" coords="342,107,285,107,225,112,165,127,109,152,83,176,63,205,40,258,35,256,58,202,79,172,107,148,163,122,224,107,285,101,342,102"/>
+<area shape="rect" id="Node000020" href="$group___c_y_p_h_e_r___v_i_g_e_n_e_r_e.html#gae9d3c2b1247c0c79267521bcfcaf9079" title="get a question generated from the current machine hardware (disk&amp;cpu)" alt="" coords="115,55,300,80"/>
+<area shape="poly" id="edge32_Node000019_Node000020" title=" " alt="" coords="374,105,268,83,269,77,375,100"/>
+<area shape="poly" id="edge33_Node000020_Node000007" title=" " alt="" coords="130,88,110,101,79,140,58,184,45,226,38,258,33,257,40,225,53,182,75,137,106,97,127,83"/>
+<area shape="rect" id="Node000022" href="$ex__accept__pool__server_8c.html#a73a7d88f2444d68248cd25268a69143f" title="Handle client inline in the accept thread and update counter." alt="" coords="116,888,299,913"/>
+<area shape="poly" id="edge35_Node000021_Node000022" title=" " alt="" coords="837,972,298,913,299,908,838,967"/>
+<area shape="rect" id="Node000024" href="$ex__accept__pool__server_8c.html#a1e7c91172714ca8969b9adac492a5423" title="Worker thread function: handles a client and updates counter." alt="" coords="609,863,769,888"/>
+<area shape="poly" id="edge37_Node000021_Node000024" title=" " alt="" coords="861,961,831,947,714,891,717,886,833,942,864,956"/>
+<area shape="poly" id="edge36_Node000022_Node000023" title=" " alt="" coords="123,886,107,878,68,847,41,816,45,812,72,843,109,873,126,881"/>
+<area shape="rect" id="Node000025" href="$ex__accept__pool__server_8c.html#adfc860fe73ab259d7dda6ff742320ae2" title="Dispatch a client to the thread pool for handling." alt="" coords="384,839,516,864"/>
+<area shape="poly" id="edge38_Node000024_Node000025" title=" " alt="" coords="594,869,516,861,517,855,595,863"/>
+<area shape="poly" id="edge39_Node000025_Node000023" title=" " alt="" coords="370,839,306,829,167,813,60,805,60,800,168,808,307,823,371,834"/>
+<area shape="rect" id="Node000026" href="$ex__accept__pool__server_8c.html#a82ea734a9b6fe91cfaf50c8d5784d0e4" title="Accept pool callback: dispatches to thread pool." alt="" coords="138,839,277,864"/>
+<area shape="poly" id="edge40_Node000025_Node000026" title=" " alt="" coords="370,854,277,854,277,849,370,849"/>
+<area shape="poly" id="edge41_Node000026_Node000023" title=" " alt="" coords="149,837,59,811,61,806,150,832"/>
+<area shape="rect" id="Node000028" href="$ex__network_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="661,788,716,813"/>
+<area shape="poly" id="edge44_Node000027_Node000028" title=" " alt="" coords="834,787,717,800,716,795,833,782"/>
+<area shape="rect" id="Node000030" href="$group___a_c_c_e_p_t___p_o_o_l.html#gad643e047ac230afd775d19a679443fab" title="Start the accept pool (launches accept threads)" alt="" coords="119,687,295,712"/>
+<area shape="poly" id="edge46_Node000029_Node000030" title=" " alt="" coords="1229,693,1075,683,907,678,687,678,476,684,296,695,295,690,476,679,687,673,907,673,1076,677,1229,687"/>
+<area shape="poly" id="edge47_Node000030_Node000023" title=" " alt="" coords="174,721,57,790,54,786,171,717"/>
+<area shape="rect" id="Node000032" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga5ba0555c5ccd261227c3c1216923d563" title="Start the NETWORK netw Threaded Engine." alt="" coords="1028,815,1195,840"/>
+<area shape="poly" id="edge49_Node000031_Node000032" title=" " alt="" coords="1277,830,1195,830,1195,825,1277,825"/>
+<area shape="poly" id="edge52_Node000032_Node000021" title=" " alt="" coords="1044,848,1030,855,922,966,918,962,1026,851,1041,843"/>
+<area shape="poly" id="edge54_Node000032_Node000027" title=" " alt="" coords="1045,814,957,792,959,787,1046,809"/>
+<area shape="rect" id="Node000033" href="$ex__accept__pool__client_8c.html#aab312f9d63dc3375f09457ffaeebdb5f" title="Echo mode: connect, send a message, receive echo, close." alt="" coords="833,863,979,888"/>
+<area shape="poly" id="edge50_Node000032_Node000033" title=" " alt="" coords="1044,846,962,865,960,860,1042,841"/>
+<area shape="rect" id="Node000034" href="$ex__gui__network_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="879,813,933,839"/>
+<area shape="poly" id="edge53_Node000032_Node000034" title=" " alt="" coords="1014,829,934,829,934,824,1014,824"/>
+<area shape="poly" id="edge51_Node000033_Node000003" title=" " alt="" coords="840,859,830,852,813,833,805,815,797,796,782,777,749,754,715,738,717,733,752,749,786,773,802,793,810,812,818,830,834,848,843,854"/>
+<area shape="poly" id="edge57_Node000035_Node000021" title=" " alt="" coords="1060,898,1029,912,1005,929,981,947,941,966,939,962,979,942,1002,925,1027,908,1058,893"/>
+<area shape="poly" id="edge58_Node000035_Node000028" title=" " alt="" coords="1064,897,1014,910,955,919,892,919,861,913,831,903,814,892,804,879,796,866,782,852,748,830,715,814,717,809,751,826,786,848,800,862,809,876,818,888,833,898,862,908,892,913,954,914,1013,905,1062,892"/>
+<area shape="poly" id="edge56_Node000035_Node000033" title=" " alt="" coords="1035,880,979,879,980,874,1036,874"/>
+<area shape="rect" id="Node000037" href="$ex__clock__sync_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="1084,967,1139,992"/>
+<area shape="poly" id="edge60_Node000036_Node000037" title=" " alt="" coords="1297,982,1139,982,1139,977,1297,977"/>
+</map>

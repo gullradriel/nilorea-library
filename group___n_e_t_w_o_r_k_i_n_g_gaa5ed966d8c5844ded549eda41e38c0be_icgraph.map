@@ -1,0 +1,32 @@
+<map id="netw_setsockopt" name="netw_setsockopt">
+<area shape="rect" id="Node000001" title="Set common socket options (disable naggle, send/recv buf, reuse addr)" alt="" coords="816,228,947,253"/>
+<area shape="rect" id="Node000002" href="$ex__network_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="169,277,223,303"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="802,249,224,291,223,285,802,244"/>
+<area shape="rect" id="Node000003" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga87057932b1901f9a91c4db49224087e2" title="make a normal &#39;accept&#39; ." alt="" coords="603,153,768,179"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="833,225,719,181,720,176,835,220"/>
+<area shape="rect" id="Node000010" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga196fad82fb3bb277bca80c4a41a0305e" title="Create a UDP bound socket for receiving datagrams." alt="" coords="625,328,745,353"/>
+<area shape="poly" id="edge11_Node000001_Node000010" title=" " alt="" coords="851,263,769,311,724,330,722,325,767,306,849,258"/>
+<area shape="rect" id="Node000013" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga52afd4f5662c9c8f334d224ae2cdbdf2" title="Make a NETWORK be a Listening network." alt="" coords="605,27,765,52"/>
+<area shape="poly" id="edge15_Node000001_Node000013" title=" " alt="" coords="856,219,697,54,701,50,860,216"/>
+<area shape="rect" id="Node000004" href="$ex__accept__pool__server_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,77,60,103"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="645,150,602,132,554,118,483,105,410,96,267,88,144,88,60,91,60,86,144,82,267,82,410,91,484,100,555,113,604,127,647,145"/>
+<area shape="rect" id="Node000005" href="$ex__network__ssl_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="416,27,471,52"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="658,146,611,109,553,74,510,57,470,47,472,42,512,52,556,69,614,105,661,142"/>
+<area shape="rect" id="Node000006" href="$group___n_e_t_w_o_r_k_i_n_g.html#gab99090cbf623f95556ea610e690b50d9" title="make a normal blocking &#39;accept&#39; ." alt="" coords="372,227,515,252"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="641,186,555,216,507,229,505,224,554,211,639,181"/>
+<area shape="rect" id="Node000007" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga32138772c399518190a14e81164fc469" title="make a normal blocking &#39;accept&#39; ." alt="" coords="339,177,547,203"/>
+<area shape="poly" id="edge7_Node000003_Node000007" title=" " alt="" coords="589,178,548,182,547,177,589,173"/>
+<area shape="rect" id="Node000008" href="$n__network__accept__pool_8c.html#a35a4d840540d74b6ef0b016583c15333" title="Thread function for accept pool workers." alt="" coords="332,128,555,153"/>
+<area shape="poly" id="edge8_Node000003_Node000008" title=" " alt="" coords="589,158,555,155,555,150,589,153"/>
+<area shape="poly" id="edge6_Node000006_Node000002" title=" " alt="" coords="367,257,224,287,223,282,366,252"/>
+<area shape="rect" id="Node000009" href="$group___a_c_c_e_p_t___p_o_o_l.html#gad643e047ac230afd775d19a679443fab" title="Start the accept pool (launches accept threads)" alt="" coords="108,128,284,153"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="318,143,284,143,284,138,318,138"/>
+<area shape="poly" id="edge10_Node000009_Node000004" title=" " alt="" coords="140,126,60,101,61,96,142,121"/>
+<area shape="poly" id="edge12_Node000010_Node000002" title=" " alt="" coords="611,338,332,311,223,297,224,291,332,306,611,332"/>
+<area shape="rect" id="Node000011" href="$ex__clock__sync_8c.html#a204e401539b33237e934bc9e45258cf9" title=" " alt="" coords="398,379,489,404"/>
+<area shape="poly" id="edge13_Node000010_Node000011" title=" " alt="" coords="612,358,489,384,488,379,611,353"/>
+<area shape="rect" id="Node000012" href="$ex__clock__sync_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="169,379,223,404"/>
+<area shape="poly" id="edge14_Node000011_Node000012" title=" " alt="" coords="384,394,224,394,224,389,384,389"/>
+<area shape="poly" id="edge16_Node000013_Node000004" title=" " alt="" coords="617,26,554,17,443,8,332,17,254,30,178,48,61,83,60,78,176,43,253,25,332,11,443,3,555,11,618,21"/>
+<area shape="poly" id="edge17_Node000013_Node000005" title=" " alt="" coords="591,42,471,42,471,37,591,37"/>
+</map>

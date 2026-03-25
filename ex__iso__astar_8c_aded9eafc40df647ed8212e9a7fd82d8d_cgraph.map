@@ -1,0 +1,81 @@
+<map id="demo_dead_reckoning" name="demo_dead_reckoning">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,481,173,507"/>
+<area shape="rect" id="Node000002" href="$group___d_e_a_d___r_e_c_k_o_n_i_n_g.html#ga8a69db4e63c58cb8d3953e02411cfc8b" title="Check whether the owner&#39;s true state has diverged from the dead reckoned prediction beyond the config..." alt="" coords="221,157,415,183"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="90,480,99,427,121,349,138,306,160,264,187,226,220,192,225,188,229,192,223,196,191,229,165,267,143,309,127,351,105,428,95,481"/>
+<area shape="rect" id="Node000010" href="$group___d_e_a_d___r_e_c_k_o_n_i_n_g.html#ga445849e14540560606cf516ff7cf219e" title="Compute the dead reckoned display position at a given time." alt="" coords="246,256,390,281"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="93,480,110,444,137,396,174,344,220,299,244,284,247,289,223,303,178,347,141,398,115,447,98,482"/>
+<area shape="rect" id="Node000013" href="$group___d_e_a_d___r_e_c_k_o_n_i_n_g.html#ga44aaa866f92ad20bb7851c89330c70c7" title="Create a new dead reckoning entity." alt="" coords="254,357,382,383"/>
+<area shape="poly" id="edge13_Node000001_Node000013" title=" " alt="" coords="102,479,151,436,184,412,220,392,240,384,242,389,223,396,187,417,154,440,105,483"/>
+<area shape="rect" id="Node000014" href="$group___d_e_a_d___r_e_c_k_o_n_i_n_g.html#gac07bf9a830f76d294cc09eed2431948c" title="Zero vector." alt="" coords="501,357,609,383"/>
+<area shape="poly" id="edge25_Node000001_Node000014" title=" " alt="" coords="95,480,112,450,139,411,175,372,197,355,220,342,272,326,315,326,360,334,415,342,487,353,486,358,414,347,359,339,315,331,273,331,222,347,200,360,179,376,143,414,116,452,99,482"/>
+<area shape="rect" id="Node000015" href="$group___d_e_a_d___r_e_c_k_o_n_i_n_g.html#ga21558c8a86578a623b310d0e5a60581e" title="Destroy a dead reckoning entity and set the pointer to NULL." alt="" coords="250,456,386,481"/>
+<area shape="poly" id="edge15_Node000001_Node000015" title=" " alt="" coords="173,482,236,475,236,480,174,487"/>
+<area shape="rect" id="Node000016" href="$group___d_e_a_d___r_e_c_k_o_n_i_n_g.html#gae3ec8bd73cc85eb9ee15c40b64d2fe72" title="Receive a new authoritative state update from the network." alt="" coords="231,207,405,232"/>
+<area shape="poly" id="edge16_Node000001_Node000016" title=" " alt="" coords="91,481,103,435,128,370,166,301,191,269,220,241,227,236,230,241,223,245,195,272,170,304,132,372,108,437,96,482"/>
+<area shape="rect" id="Node000017" href="$group___d_e_a_d___r_e_c_k_o_n_i_n_g.html#gaf34ff0fc8fe70d8a19969457811804a0" title="Force&#45;set entity position without triggering convergence blending." alt="" coords="235,407,401,432"/>
+<area shape="poly" id="edge22_Node000001_Node000017" title=" " alt="" coords="119,479,220,441,247,433,249,438,222,446,121,484"/>
+<area shape="rect" id="Node000018" href="$group___d_e_a_d___r_e_c_k_o_n_i_n_g.html#ga2f29c6be402eb8efd0a5be6d217438b6" title="Create a DR_VEC3 from components." alt="" coords="281,505,355,531"/>
+<area shape="poly" id="edge24_Node000001_Node000018" title=" " alt="" coords="174,500,268,510,267,515,173,505"/>
+<area shape="rect" id="Node000019" href="$group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#gada043a1ec9606bba33ec50ecc71051b1" title="Bilinear height interpolation at fractional map coordinates." alt="" coords="241,555,395,595"/>
+<area shape="poly" id="edge26_Node000001_Node000019" title=" " alt="" coords="126,504,222,539,247,548,245,553,220,545,124,509"/>
+<area shape="rect" id="Node000021" href="$group___t_r_a_j_e_c_t_o_r_y.html#ga756c63abab78d610953d56bc99846a02" title="Add a waypoint to the multi&#45;point trajectory path." alt="" coords="240,669,396,695"/>
+<area shape="poly" id="edge28_Node000001_Node000021" title=" " alt="" coords="100,506,117,536,144,577,180,619,223,654,236,662,233,666,220,659,176,623,140,580,113,539,95,508"/>
+<area shape="rect" id="Node000024" href="$group___t_r_a_j_e_c_t_o_r_y.html#ga4f5fa4dabe9a781ec60b9a8c8177cb91" title="Free a TRAJECTORY and set the pointer to NULL." alt="" coords="251,768,385,793"/>
+<area shape="poly" id="edge31_Node000001_Node000024" title=" " alt="" coords="96,507,108,554,132,621,149,657,169,692,194,725,223,753,240,764,237,768,220,757,190,729,165,695,144,659,127,623,103,555,91,508"/>
+<area shape="rect" id="Node000025" href="$group___t_r_a_j_e_c_t_o_r_y.html#ga03c2c8a8e327927a0d188ff505150769" title="Compute position at a given time." alt="" coords="232,620,404,645"/>
+<area shape="poly" id="edge32_Node000001_Node000025" title=" " alt="" coords="104,505,152,554,186,581,223,605,241,613,238,618,220,610,183,586,149,558,100,509"/>
+<area shape="rect" id="Node000030" href="$group___t_r_a_j_e_c_t_o_r_y.html#gaaba206f931856d8d6b84c4a03c452ef1" title="Compute velocity at a given time." alt="" coords="239,719,397,744"/>
+<area shape="poly" id="edge38_Node000001_Node000030" title=" " alt="" coords="97,506,112,545,138,599,175,656,197,682,223,704,234,711,231,715,220,708,194,685,170,659,133,601,107,547,92,508"/>
+<area shape="rect" id="Node000035" href="$group___t_r_a_j_e_c_t_o_r_y.html#ga1bcb1589837770c31e020f6ed4308b07" title="Allocate and initialize a new TRAJECTORY." alt="" coords="259,817,377,843"/>
+<area shape="poly" id="edge44_Node000001_Node000035" title=" " alt="" coords="95,507,104,562,125,642,142,686,163,729,190,769,223,804,247,818,244,822,220,808,186,773,159,732,137,688,120,644,98,563,89,507"/>
+<area shape="rect" id="Node000003" href="$group___d_e_a_d___r_e_c_k_o_n_i_n_g.html#gaf708b8537516093292ba8c44c253c994" title="Extrapolate a kinematic state forward by dt seconds." alt="" coords="473,157,636,183"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="415,167,460,167,460,173,415,173"/>
+<area shape="rect" id="Node000006" href="$group___d_e_a_d___r_e_c_k_o_n_i_n_g.html#gad9ff43e79a1fc96ad19f18020479e6bc" title="Distance between two points." alt="" coords="487,5,622,31"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="330,155,384,104,421,74,461,48,493,33,496,38,464,52,424,79,387,108,333,159"/>
+<area shape="rect" id="Node000004" href="$group___d_e_a_d___r_e_c_k_o_n_i_n_g.html#gad237b9d05cef7166e75a5b25f8b7007b" title="Vector addition: a + b." alt="" coords="717,132,821,157"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="636,158,703,150,704,155,636,163"/>
+<area shape="rect" id="Node000005" href="$group___d_e_a_d___r_e_c_k_o_n_i_n_g.html#ga1aab2e9d8913738e1a604898bf7cfa21" title="Scalar multiplication: v * s." alt="" coords="712,195,827,220"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="629,180,699,192,698,198,628,185"/>
+<area shape="rect" id="Node000007" href="$group___d_e_a_d___r_e_c_k_o_n_i_n_g.html#gadd54c634defc17c91c881413daa093e3" title="Length of vector." alt="" coords="709,5,830,31"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="622,15,695,15,695,21,622,21"/>
+<area shape="rect" id="Node000009" href="$group___d_e_a_d___r_e_c_k_o_n_i_n_g.html#ga890f898111845ac82f57209aea99fe8d" title="Vector subtraction: a &#45; b." alt="" coords="718,56,821,81"/>
+<area shape="poly" id="edge8_Node000006_Node000009" title=" " alt="" coords="610,28,705,51,704,56,609,33"/>
+<area shape="rect" id="Node000008" href="$group___d_e_a_d___r_e_c_k_o_n_i_n_g.html#ga9a94032b163997b45cac0e4e64a7c620" title="Squared length of vector." alt="" coords="892,5,1035,31"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="830,15,878,15,878,21,830,21"/>
+<area shape="poly" id="edge11_Node000010_Node000003" title=" " alt="" coords="375,253,414,241,471,215,520,187,523,192,473,219,416,246,377,258"/>
+<area shape="rect" id="Node000011" href="$n__dead__reckoning_8c.html#a4d690f68b53474ae649dc6855f325466" title="Evaluate a cubic Bezier curve at parameter t in [0, 1]." alt="" coords="503,259,606,284"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="390,267,490,268,489,273,390,272"/>
+<area shape="rect" id="Node000012" href="$group___d_e_a_d___r_e_c_k_o_n_i_n_g.html#ga2cba279e9161e59cbe5f700f3b872f1b" title="Linear interpolation: a + (b &#45; a) * t." alt="" coords="502,308,607,333"/>
+<area shape="poly" id="edge12_Node000010_Node000012" title=" " alt="" coords="377,279,489,304,488,309,376,284"/>
+<area shape="poly" id="edge14_Node000013_Node000014" title=" " alt="" coords="382,367,487,367,487,373,382,373"/>
+<area shape="poly" id="edge17_Node000016_Node000003" title=" " alt="" coords="379,204,479,183,480,188,380,209"/>
+<area shape="poly" id="edge18_Node000016_Node000004" title=" " alt="" coords="385,204,413,192,427,180,436,167,445,153,462,142,524,124,588,119,650,121,704,128,703,133,650,126,588,124,525,130,464,147,449,157,440,169,431,183,416,196,387,209"/>
+<area shape="poly" id="edge19_Node000016_Node000005" title=" " alt="" coords="406,214,698,207,698,212,406,220"/>
+<area shape="poly" id="edge20_Node000016_Node000009" title=" " alt="" coords="391,204,413,192,429,173,436,153,443,132,461,113,490,97,521,84,586,68,649,61,705,61,705,66,649,67,587,73,523,89,492,102,464,117,448,135,441,155,434,176,416,196,393,209"/>
+<area shape="poly" id="edge21_Node000016_Node000014" title=" " alt="" coords="398,230,416,241,428,254,436,267,441,293,447,319,453,331,464,343,488,356,486,361,461,347,449,334,442,321,436,294,431,269,424,257,413,245,395,234"/>
+<area shape="poly" id="edge23_Node000017_Node000014" title=" " alt="" coords="379,404,487,381,488,387,380,409"/>
+<area shape="rect" id="Node000020" href="$group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#gad9d6b576d64c47ccce399401e8a483be" title="Get the height at a cell." alt="" coords="478,423,631,448"/>
+<area shape="poly" id="edge27_Node000019_Node000020" title=" " alt="" coords="393,553,413,540,429,520,436,499,443,478,461,457,469,452,472,456,464,461,448,481,441,501,434,523,416,544,395,557"/>
+<area shape="rect" id="Node000022" href="$n__trajectory_8c.html#afecdaca1aba2c24d9417ce63e384e6a6" title="Load the correct spline segment for a given time when using multi&#45;point paths." alt="" coords="463,669,647,695"/>
+<area shape="poly" id="edge29_Node000021_Node000022" title=" " alt="" coords="397,679,449,679,449,685,397,685"/>
+<area shape="rect" id="Node000023" href="$n__trajectory_8c.html#a7b7db2b132cf0c88f49ce83c2796b614" title="Recompute the Hermite tangent vectors from current start/end states." alt="" coords="695,662,844,702"/>
+<area shape="poly" id="edge30_Node000022_Node000023" title=" " alt="" coords="647,679,681,679,681,685,647,685"/>
+<area shape="poly" id="edge37_Node000025_Node000022" title=" " alt="" coords="380,643,480,664,479,669,379,648"/>
+<area shape="rect" id="Node000026" href="$n__trajectory_8c.html#a666e72a0af63173609bb4a54177aa654" title="Hermite basis function h00: weights the start position." alt="" coords="503,620,607,645"/>
+<area shape="poly" id="edge33_Node000025_Node000026" title=" " alt="" coords="404,630,489,630,489,635,404,635"/>
+<area shape="rect" id="Node000027" href="$n__trajectory_8c.html#ae7069e17e6e88f2f763ca89592608dca" title="Hermite basis function h01: weights the end position." alt="" coords="503,472,607,497"/>
+<area shape="poly" id="edge34_Node000025_Node000027" title=" " alt="" coords="392,618,413,605,424,594,430,582,436,557,442,532,449,519,461,507,488,492,490,497,464,511,453,522,447,534,441,559,435,584,428,597,416,609,395,622"/>
+<area shape="rect" id="Node000028" href="$n__trajectory_8c.html#a6bad0cbbd150cb987c0a2c2874d0070c" title="Hermite basis function h10: weights the start tangent." alt="" coords="503,521,607,547"/>
+<area shape="poly" id="edge35_Node000025_Node000028" title=" " alt="" coords="385,618,413,605,428,593,436,581,446,568,461,556,489,544,491,549,464,560,450,572,441,584,432,597,416,610,387,622"/>
+<area shape="rect" id="Node000029" href="$n__trajectory_8c.html#a7a50439f21760c60a343d4bc6d1293cb" title="Hermite basis function h11: weights the end tangent." alt="" coords="503,571,607,596"/>
+<area shape="poly" id="edge36_Node000025_Node000029" title=" " alt="" coords="379,617,489,594,490,599,380,623"/>
+<area shape="poly" id="edge43_Node000030_Node000022" title=" " alt="" coords="379,716,479,695,480,700,380,721"/>
+<area shape="rect" id="Node000031" href="$n__trajectory_8c.html#a67925259bdb9a7e064ee8aae9336cb37" title="First derivative of h00: dh00/ds = 6s^2 &#45; 6s." alt="" coords="499,817,611,843"/>
+<area shape="poly" id="edge39_Node000030_Node000031" title=" " alt="" coords="390,742,416,753,432,766,441,779,450,792,464,804,487,814,485,819,461,808,446,795,437,782,428,769,413,758,388,746"/>
+<area shape="rect" id="Node000032" href="$n__trajectory_8c.html#afefa9fd990460d63e947ce4e7851c993" title="First derivative of h01: dh01/ds = &#45;6s^2 + 6s." alt="" coords="499,867,611,892"/>
+<area shape="poly" id="edge40_Node000030_Node000032" title=" " alt="" coords="398,742,416,753,428,766,435,779,441,805,447,830,453,842,464,853,487,866,484,871,461,857,449,845,442,832,436,806,430,781,424,769,413,757,395,746"/>
+<area shape="rect" id="Node000033" href="$n__trajectory_8c.html#aa67fb0b0e90521dbff903e9ed96887fd" title="First derivative of h10: dh10/ds = 3s^2 &#45; 4s + 1." alt="" coords="499,719,611,744"/>
+<area shape="poly" id="edge41_Node000030_Node000033" title=" " alt="" coords="398,729,485,729,485,734,398,734"/>
+<area shape="rect" id="Node000034" href="$n__trajectory_8c.html#a872914d50d230f6f97b91d790107c476" title="First derivative of h11: dh11/ds = 3s^2 &#45; 2s." alt="" coords="499,768,611,793"/>
+<area shape="poly" id="edge42_Node000030_Node000034" title=" " alt="" coords="380,741,486,764,485,769,379,747"/>
+</map>

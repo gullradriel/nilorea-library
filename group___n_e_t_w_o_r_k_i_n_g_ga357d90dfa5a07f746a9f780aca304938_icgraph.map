@@ -1,0 +1,23 @@
+<map id="netw_set_crypto" name="netw_set_crypto">
+<area shape="rect" id="Node000001" title="set SSL" alt="" coords="707,43,836,68"/>
+<area shape="rect" id="Node000002" href="$ex__network__ssl_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="344,5,399,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="709,42,658,33,585,25,512,21,399,20,399,15,512,16,585,20,659,27,710,37"/>
+<area shape="rect" id="Node000003" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga8b9b1d2625a6c5d28c40399d6fdf3794" title="Use this to connect a NETWORK to any listening one." alt="" coords="506,92,641,117"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="707,74,626,95,624,89,706,69"/>
+<area shape="rect" id="Node000010" href="$group___n_e_t_w_o_r_k_i_n_g.html#gacdbdf8300fa6152476d4ed0bae0099a2" title="activate SSL encryption using key/certificate files and a CA file for chain verification" alt="" coords="488,43,659,68"/>
+<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="693,58,659,58,659,53,693,53"/>
+<area shape="rect" id="Node000004" href="$group___n_e_t_w_o_r_k_i_n_g.html#gae18d52a130063ba1fd0a4cf4b6a2da20" title="Use this to connect a NETWORK to any listening one, unrestricted send/recv lists." alt="" coords="315,67,427,92"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="492,97,427,89,428,84,493,92"/>
+<area shape="rect" id="Node000009" href="$group___n_e_t_w_o_r_k_i_n_g.html#gada1d9596f77d9467ebe72657a5b04103" title="Use this to connect a NETWORK to any listening one, unrestricted send/recv lists." alt="" coords="303,116,440,141"/>
+<area shape="poly" id="edge9_Node000003_Node000009" title=" " alt="" coords="492,117,440,123,440,118,492,112"/>
+<area shape="rect" id="Node000005" href="$ex__accept__pool__client_8c.html#aab312f9d63dc3375f09457ffaeebdb5f" title="Echo mode: connect, send a message, receive echo, close." alt="" coords="108,17,255,43"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="308,66,231,45,232,40,309,61"/>
+<area shape="rect" id="Node000007" href="$ex__accept__pool__client_8c.html#aa17ddefadc32335b6c539c97fa1a917e" title="Fast mode: connect and immediately close (measures pure accept throughput)" alt="" coords="111,67,252,92"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="301,82,252,82,252,77,301,77"/>
+<area shape="rect" id="Node000008" href="$ex__gui__network_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="154,116,209,141"/>
+<area shape="poly" id="edge8_Node000004_Node000008" title=" " alt="" coords="309,98,209,124,208,119,308,93"/>
+<area shape="rect" id="Node000006" href="$ex__accept__pool__client_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,43,60,68"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="95,47,61,53,60,48,94,42"/>
+<area shape="poly" id="edge7_Node000007_Node000006" title=" " alt="" coords="97,68,60,62,61,57,97,63"/>
+<area shape="poly" id="edge11_Node000010_Node000002" title=" " alt="" coords="490,43,398,26,399,20,491,37"/>
+</map>

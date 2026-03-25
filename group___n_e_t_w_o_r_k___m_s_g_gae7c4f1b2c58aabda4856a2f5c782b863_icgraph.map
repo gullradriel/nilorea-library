@@ -1,0 +1,32 @@
+<map id="add_nb_to_msg" name="add_nb_to_msg">
+<area shape="rect" id="Node000001" title="add a float/double to the message" alt="" coords="759,255,883,280"/>
+<area shape="rect" id="Node000002" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga3fd01fccdf5fee20c2f0df7429ab3dd7" title="Make a single message of the string." alt="" coords="529,180,684,205"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="769,252,643,208,645,203,771,247"/>
+<area shape="rect" id="Node000014" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga6d469c5cbc4fdfa266be68a35d10a904" title="make a network NETMSG_POSITION message with given parameters" alt="" coords="503,279,711,304"/>
+<area shape="poly" id="edge14_Node000001_Node000014" title=" " alt="" coords="745,278,711,282,710,277,744,273"/>
+<area shape="rect" id="Node000003" href="$ex__gui__network_8c.html#afd9f0c037678860fe486eed7345fa5f0" title="decode a received chat message" alt="" coords="310,5,449,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="585,171,530,109,494,75,453,46,427,33,429,28,456,41,497,71,534,105,589,167"/>
+<area shape="rect" id="Node000006" href="$ex__network_8h.html#a6f950bd6cd1d0314572ecae401ac1883" title="decode data we got from network" alt="" coords="322,56,437,81"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="577,173,521,134,454,95,425,84,427,79,456,90,524,130,580,169"/>
+<area shape="rect" id="Node000009" href="$group___n_e_t_w_o_r_k___m_s_g.html#gaf2d84e34e50db7b3b7aca16c6bdb06f8" title="Retrieves identification from netwmsg." alt="" coords="318,105,441,131"/>
+<area shape="poly" id="edge9_Node000002_Node000009" title=" " alt="" coords="553,178,418,133,420,128,555,173"/>
+<area shape="rect" id="Node000010" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga525ee81a12f526d55b2b380d9338424e" title="Retrieves a ping travel elapsed time." alt="" coords="321,155,438,180"/>
+<area shape="poly" id="edge10_Node000002_Node000010" title=" " alt="" coords="515,185,438,176,438,171,516,180"/>
+<area shape="rect" id="Node000011" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga241bf3b1ebc63dd986dfec1b0fe4998b" title="Retrieves position from netwmsg." alt="" coords="309,204,450,229"/>
+<area shape="poly" id="edge11_Node000002_Node000011" title=" " alt="" coords="516,205,451,212,450,207,516,200"/>
+<area shape="rect" id="Node000012" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga601ef18cfe3570caaa81cc43c09004c2" title="get a formatted NETWMSG_QUIT message from the specified network" alt="" coords="322,253,437,279"/>
+<area shape="poly" id="edge12_Node000002_Node000012" title=" " alt="" coords="554,212,455,245,421,256,419,251,454,239,553,207"/>
+<area shape="rect" id="Node000013" href="$group___n_e_t_w_o_r_k___m_s_g.html#gace220d6339bd8085269ecee2b35126fb" title="Retrieves string from netwmsg." alt="" coords="316,303,443,328"/>
+<area shape="poly" id="edge13_Node000002_Node000013" title=" " alt="" coords="580,216,524,255,456,294,427,305,425,300,454,289,521,250,577,212"/>
+<area shape="rect" id="Node000004" href="$ex__gui__network_8c.html#a39687dab37f65aa14a11ae8efa363f30" title="process incoming messages on a single network connection" alt="" coords="108,5,256,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="296,21,256,21,256,15,296,15"/>
+<area shape="rect" id="Node000005" href="$ex__gui__network_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,5,60,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="94,21,60,21,60,15,94,15"/>
+<area shape="rect" id="Node000007" href="$ex__network_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,81,60,107"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="309,76,60,95,60,89,308,71"/>
+<area shape="rect" id="Node000008" href="$ex__network_8h.html#a2af070d97fced1a0eadad90c6aa4903b" title="recv/send datas if any for the client" alt="" coords="123,107,241,132"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="317,87,233,109,231,104,315,82"/>
+<area shape="poly" id="edge8_Node000008_Node000007" title=" " alt="" coords="109,110,60,101,61,96,109,104"/>
+<area shape="rect" id="Node000015" href="$group___n_e_t_w_o_r_k_i_n_g.html#gafaf1202a5f56a9f2285fccfbcacb3a6c" title="Add a formatted NETWMSG_IDENT message to the specified network." alt="" coords="304,352,455,377"/>
+<area shape="poly" id="edge15_Node000014_Node000015" title=" " alt="" coords="554,311,455,343,421,355,419,349,454,338,553,306"/>
+</map>

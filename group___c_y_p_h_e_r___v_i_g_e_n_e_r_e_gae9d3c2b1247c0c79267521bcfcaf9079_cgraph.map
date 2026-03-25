@@ -1,0 +1,70 @@
+<map id="n_vigenere_get_question" name="n_vigenere_get_question">
+<area shape="rect" id="Node000001" title="generate a random question of given size" alt="" coords="5,146,191,171"/>
+<area shape="rect" id="Node000002" href="$group___c_y_p_h_e_r___b_a_s_e64.html#ga8bf1d83b3f1c485357a9ddc6ee5eb7c4" title="encode a N_STR *string" alt="" coords="491,146,630,171"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="191,156,478,156,478,161,191,161"/>
+<area shape="rect" id="Node000004" href="$group___n___s_t_r.html#ga873edbb1f8787d0a78a13ccbbed9b9f9" title="create a new N_STR string" alt="" coords="1195,171,1277,197"/>
+<area shape="poly" id="edge38_Node000001_Node000004" title=" " alt="" coords="145,143,223,124,325,104,441,87,559,80,776,80,835,82,894,89,1009,111,1111,139,1189,164,1187,169,1110,144,1008,116,893,94,834,88,776,85,559,85,442,92,326,109,224,130,146,149"/>
+<area shape="rect" id="Node000005" href="$n__crypto_8c.html#adb8f84a50c4f25cbfb39be00c5c5d49f" title="get the CPU id" alt="" coords="281,246,387,271"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="121,169,174,200,240,231,268,241,266,246,238,236,171,204,119,174"/>
+<area shape="rect" id="Node000006" href="$n__crypto_8c.html#a85708bfc639247dc451c8b2d03b2356b" title="get the serial of the current running dir hosting disk" alt="" coords="255,5,413,45"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="114,144,168,105,237,62,265,48,267,53,240,66,171,109,117,148"/>
+<area shape="rect" id="Node000008" href="$group___c_y_p_h_e_r___v_i_g_e_n_e_r_e.html#ga26872672f67b7c89b6fa9fa01d59ac00" title="quick encode data" alt="" coords="239,197,429,222"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="159,169,262,191,260,196,158,174"/>
+<area shape="rect" id="Node000003" href="$n__base64_8c.html#a972f44cc605efe9ead5745c16de817da" title="get the length of string if it was base64 encoded" alt="" coords="692,121,857,146"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="630,148,678,142,679,147,630,153"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="630,159,1182,179,1182,185,630,164"/>
+<area shape="rect" id="Node000007" href="$group___c_o_m_m_o_n_s.html#gaf507d3bc1c0e33f849a46c42c272cd27" title="launch a command and return output and status" alt="" coords="736,15,813,41"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="414,23,723,25,723,30,414,28"/>
+<area shape="poly" id="edge7_Node000007_Node000004" title=" " alt="" coords="813,22,871,21,944,24,1024,37,1063,47,1101,62,1137,82,1170,108,1218,159,1214,162,1166,112,1134,87,1099,66,1062,52,1023,42,944,30,871,26,813,28"/>
+<area shape="poly" id="edge12_Node000008_Node000002" title=" " alt="" coords="391,194,489,172,491,177,392,199"/>
+<area shape="rect" id="Node000009" href="$group___n___s_t_r.html#ga69e5f2dbf75571a73e5a3332929642a4" title="Convert a char into a N_STR, short version." alt="" coords="509,209,612,234"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="430,212,496,215,495,221,430,217"/>
+<area shape="rect" id="Node000011" href="$n__crypto_8c.html#acbbe612210363e374f1509679a83b47f" title="encode string in place using vigenere cypher and key" alt="" coords="477,360,644,400"/>
+<area shape="poly" id="edge13_Node000008_Node000011" title=" " alt="" coords="406,220,431,231,465,257,496,288,542,347,538,350,492,291,462,261,428,236,404,224"/>
+<area shape="rect" id="Node000010" href="$group___n___s_t_r.html#gac4314e9f0ada88300a09d66405d541a8" title="Convert a char into a N_STR, extended version." alt="" coords="712,222,837,247"/>
+<area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="612,222,699,227,698,233,612,227"/>
+<area shape="poly" id="edge11_Node000010_Node000004" title=" " alt="" coords="837,227,1100,200,1182,189,1182,194,1100,205,838,232"/>
+<area shape="rect" id="Node000012" href="$n__crypto_8c.html#a1a84fce40cac83636b8ea3779ebef792" title="encode or decode input using vigenere cypher" alt="" coords="702,463,847,489"/>
+<area shape="poly" id="edge14_Node000011_Node000012" title=" " alt="" coords="607,398,734,455,732,460,605,403"/>
+<area shape="rect" id="Node000013" href="$group___t_h_r_e_a_d_s.html#ga46497eb81066d0df83dfd07ad0a9f561" title="add a function and params to a thread pool" alt="" coords="1572,555,1740,581"/>
+<area shape="poly" id="edge15_Node000012_Node000013" title=" " alt="" coords="799,461,885,420,945,397,1015,375,1090,357,1168,346,1247,346,1325,359,1373,375,1420,396,1508,447,1581,500,1632,544,1629,548,1578,504,1505,451,1418,401,1371,380,1323,364,1247,351,1168,352,1091,362,1016,380,947,402,887,425,801,466"/>
+<area shape="rect" id="Node000016" href="$group___t_h_r_e_a_d_s.html#ga7c1bc4b2165196ae865a5f11a6867a20" title="delete a thread_pool, exit the threads and free the structs" alt="" coords="917,489,1088,514"/>
+<area shape="poly" id="edge18_Node000012_Node000016" title=" " alt="" coords="848,481,904,488,903,493,848,487"/>
+<area shape="rect" id="Node000020" href="$n__crypto_8c.html#a3fa3c9bd1472d82c4f6552a632f11aaf" title="encode or decode threaded func using params from ptr" alt="" coords="905,637,1100,662"/>
+<area shape="poly" id="edge22_Node000012_Node000020" title=" " alt="" coords="794,487,975,626,972,630,791,491"/>
+<area shape="rect" id="Node000025" href="$group___t_h_r_e_a_d_s.html#ga06425285000fa305a3e9eb7d8affa32f" title="Create a new pool of nbmaxthr threads." alt="" coords="936,435,1069,461"/>
+<area shape="poly" id="edge27_Node000012_Node000025" title=" " alt="" coords="848,464,922,455,923,460,848,470"/>
+<area shape="rect" id="Node000028" href="$group___t_h_r_e_a_d_s.html#ga5d9ce1747e4b7cb58ce3767f7e56cd8b" title="try to add some waiting DIRECT_PROCs on some free thread slots, else do nothing" alt="" coords="1372,662,1524,687"/>
+<area shape="poly" id="edge35_Node000012_Node000028" title=" " alt="" coords="780,489,788,543,808,621,825,663,846,704,873,741,907,771,961,806,1011,830,1059,844,1107,849,1155,845,1206,834,1262,816,1323,792,1356,773,1386,749,1429,697,1433,701,1389,752,1359,778,1325,797,1264,821,1208,839,1156,850,1107,854,1058,849,1009,835,958,811,904,775,869,744,842,707,820,665,803,623,783,544,774,489"/>
+<area shape="rect" id="Node000029" href="$group___n___s_t_r.html#ga3e30a18ec42d0f4cd8651c442bf62651" title="Duplicate a N_STR." alt="" coords="967,273,1038,298"/>
+<area shape="poly" id="edge33_Node000012_Node000029" title=" " alt="" coords="781,462,826,393,862,351,904,315,928,302,953,293,955,298,930,307,907,320,866,355,830,396,785,465"/>
+<area shape="rect" id="Node000030" href="$group___t_h_r_e_a_d_s.html#ga7605668b360c87d9fedd4ee600de42de" title="Wait for the thread pool to become idle (no active threads, empty waiting list), blocking without pol..." alt="" coords="915,735,1090,761"/>
+<area shape="poly" id="edge36_Node000012_Node000030" title=" " alt="" coords="785,488,831,570,866,623,907,673,939,702,971,725,967,730,935,706,903,676,862,626,827,573,780,490"/>
+<area shape="rect" id="Node000014" href="$group___l_i_s_t.html#ga4eab319289a83524639ee5e9f0441fdf" title="Add a pointer to the end of the list." alt="" coords="1788,555,1868,581"/>
+<area shape="poly" id="edge16_Node000013_Node000014" title=" " alt="" coords="1740,565,1774,565,1774,571,1740,571"/>
+<area shape="rect" id="Node000015" href="$group___l_i_s_t.html#ga678e828550efc8e64a836bb8c713c2f4" title="Allocate a new node to link in a list." alt="" coords="1916,555,2031,581"/>
+<area shape="poly" id="edge17_Node000014_Node000015" title=" " alt="" coords="1868,565,1902,565,1902,571,1868,571"/>
+<area shape="rect" id="Node000017" href="$group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755" title="Empty and Free a list container." alt="" coords="1187,489,1285,514"/>
+<area shape="poly" id="edge19_Node000016_Node000017" title=" " alt="" coords="1089,499,1173,499,1173,504,1089,504"/>
+<area shape="rect" id="Node000019" href="$group___n___t_i_m_e.html#ga690f12dde1a446d47b8bf5f959493003" title="wrapper around usleep for API consistency" alt="" coords="1200,538,1272,563"/>
+<area shape="poly" id="edge21_Node000016_Node000019" title=" " alt="" coords="1064,511,1187,538,1186,543,1063,517"/>
+<area shape="rect" id="Node000018" href="$group___l_i_s_t.html#ga1dafe7a250ddad51fadd375f057287e7" title="Empty a LIST list of pointers." alt="" coords="1403,489,1493,514"/>
+<area shape="poly" id="edge20_Node000017_Node000018" title=" " alt="" coords="1285,499,1389,499,1389,504,1285,504"/>
+<area shape="rect" id="Node000021" href="$group___c_y_p_h_e_r___b_a_s_e64.html#ga4754b8b773a929548fe2aad386859bb5" title="test if char c is lowercase" alt="" coords="1194,587,1278,613"/>
+<area shape="poly" id="edge23_Node000020_Node000021" title=" " alt="" coords="1063,634,1180,609,1181,614,1064,639"/>
+<area shape="rect" id="Node000022" href="$group___c_y_p_h_e_r___b_a_s_e64.html#ga2fd423ac5899e997358227574358a42e" title="test if char c is uppercase" alt="" coords="1193,637,1279,662"/>
+<area shape="poly" id="edge24_Node000020_Node000022" title=" " alt="" coords="1100,647,1180,647,1180,652,1100,652"/>
+<area shape="rect" id="Node000023" href="$group___c_y_p_h_e_r___b_a_s_e64.html#ga06f46dcc4684717a4fcc1b3aa0d43c57" title="convert char to lower case" alt="" coords="1193,686,1279,711"/>
+<area shape="poly" id="edge25_Node000020_Node000023" title=" " alt="" coords="1064,659,1180,684,1179,689,1063,665"/>
+<area shape="rect" id="Node000024" href="$group___c_y_p_h_e_r___b_a_s_e64.html#ga39ec073874feeaf9f85384015acd8a58" title="convert char to upper case" alt="" coords="1193,735,1279,761"/>
+<area shape="poly" id="edge26_Node000020_Node000024" title=" " alt="" coords="1027,660,1081,690,1149,722,1180,732,1179,737,1147,726,1079,695,1024,665"/>
+<area shape="poly" id="edge28_Node000025_Node000017" title=" " alt="" coords="1060,458,1174,485,1173,490,1059,463"/>
+<area shape="rect" id="Node000026" href="$group___l_i_s_t.html#gae4b8e915bc22e7993d2849152ec1c3ac" title="Initialiaze a generic list container to max_items pointers." alt="" coords="1171,374,1301,399"/>
+<area shape="poly" id="edge29_Node000025_Node000026" title=" " alt="" coords="1051,433,1173,400,1175,405,1052,438"/>
+<area shape="rect" id="Node000027" href="$n__thread__pool_8c.html#abd0649708787bc15e1bc1ee59d64fd1f" title="Internal thread pool processing function." alt="" coords="1148,424,1324,464"/>
+<area shape="poly" id="edge30_Node000025_Node000027" title=" " alt="" coords="1069,444,1134,443,1134,448,1070,450"/>
+<area shape="poly" id="edge31_Node000027_Node000028" title=" " alt="" coords="1307,462,1326,474,1366,516,1399,563,1423,610,1440,648,1435,650,1418,612,1394,566,1362,519,1322,478,1304,466"/>
+<area shape="poly" id="edge32_Node000028_Node000013" title=" " alt="" coords="1473,659,1617,585,1619,590,1475,664"/>
+<area shape="poly" id="edge34_Node000029_Node000004" title=" " alt="" coords="1037,273,1099,251,1199,201,1202,206,1101,256,1039,278"/>
+<area shape="poly" id="edge37_Node000030_Node000028" title=" " alt="" coords="1042,758,1099,773,1170,784,1247,786,1286,781,1323,771,1354,756,1382,737,1425,696,1429,700,1385,741,1356,761,1325,776,1287,786,1248,791,1169,789,1097,778,1041,763"/>
+</map>

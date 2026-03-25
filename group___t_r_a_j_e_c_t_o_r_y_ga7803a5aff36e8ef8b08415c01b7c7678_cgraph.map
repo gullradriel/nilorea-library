@@ -1,0 +1,15 @@
+<map id="trajectory_get_acceleration" name="trajectory_get_acceleration">
+<area shape="rect" id="Node000001" title="compute only acceleration at given time, stores result in out" alt="" coords="5,104,205,129"/>
+<area shape="rect" id="Node000002" href="$n__trajectory_8c.html#a7b7b1b8c9042940e2c13d70437bdbfaa" title="Second derivative of h00: d2h00/ds2 = 12s &#45; 6." alt="" coords="285,5,405,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="127,101,183,71,252,40,274,32,276,37,254,44,185,76,130,106"/>
+<area shape="rect" id="Node000003" href="$n__trajectory_8c.html#a52c1dbccb354dce9ea3b662f172c7c79" title="Second derivative of h01: d2h01/ds2 = &#45;12s + 6." alt="" coords="285,55,405,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="167,101,271,80,272,85,168,107"/>
+<area shape="rect" id="Node000004" href="$n__trajectory_8c.html#a8a4c399ce09afdf7d9adc77585905f7e" title="Second derivative of h10: d2h10/ds2 = 6s &#45; 4." alt="" coords="285,104,405,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="206,114,272,114,272,119,206,119"/>
+<area shape="rect" id="Node000005" href="$n__trajectory_8c.html#afa3e015d076d097d51499201c86264a6" title="Second derivative of h11: d2h11/ds2 = 6s &#45; 2." alt="" coords="285,153,405,179"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="168,127,272,148,271,154,167,132"/>
+<area shape="rect" id="Node000006" href="$n__trajectory_8c.html#afecdaca1aba2c24d9417ce63e384e6a6" title="Load the correct spline segment for a given time when using multi&#45;point paths." alt="" coords="253,203,437,228"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="130,127,186,157,254,188,279,196,278,201,252,192,183,161,128,132"/>
+<area shape="rect" id="Node000007" href="$n__trajectory_8c.html#a7b7db2b132cf0c88f49ce83c2796b614" title="Recompute the Hermite tangent vectors from current start/end states." alt="" coords="485,195,635,235"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="438,213,471,213,471,218,438,218"/>
+</map>

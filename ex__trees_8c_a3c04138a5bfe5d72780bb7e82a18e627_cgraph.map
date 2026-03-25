@@ -1,0 +1,79 @@
+<map id="main" name="main">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,643,60,668"/>
+<area shape="rect" id="Node000002" href="$group___t_r_e_e.html#gaf84bd52723c263a7393dbe58e26ae4c4" title="function to create a new quad tree node" alt="" coords="313,439,415,464"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="33,642,42,590,57,518,79,449,92,422,106,405,134,390,163,383,194,383,225,388,284,406,332,429,329,434,282,411,224,393,194,388,164,389,136,395,110,409,96,425,84,451,62,519,47,591,38,643"/>
+<area shape="rect" id="Node000003" href="$group___t_r_e_e.html#gab863b9db45fb9ad7b4a1f4b6a0fa4ed4" title="Create a new OCTREE with a specified coordinate type." alt="" coords="120,269,231,295"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="32,642,40,573,54,472,76,372,90,332,106,304,109,301,113,305,110,308,94,334,81,373,59,473,45,574,38,643"/>
+<area shape="rect" id="Node000004" href="$group___t_r_e_e.html#gaab241e76ec7f58148636b94588632478" title="create and OCTREE node" alt="" coords="485,376,636,401"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="60,657,132,663,230,662,284,655,338,643,389,623,436,596,458,577,478,554,511,504,534,455,549,414,554,416,539,457,515,507,482,557,462,580,439,600,391,628,339,648,285,660,231,667,132,669,60,662"/>
+<area shape="rect" id="Node000005" href="$group___t_r_e_e.html#gadbc22319421ed2ae3643e46b713d72a7" title="Function to create a new quad tree." alt="" coords="111,153,239,179"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="32,642,35,580,46,483,68,369,85,311,106,256,127,218,150,188,155,191,131,221,110,258,90,313,74,370,52,484,41,581,37,642"/>
+<area shape="rect" id="Node000012" href="$group___t_r_e_e.html#ga8fe1d2b26c64c6e6a903686add0859ba" title="free the OCTREE" alt="" coords="127,493,223,519"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="36,641,60,587,80,556,106,528,114,523,117,527,110,532,85,559,65,590,41,643"/>
+<area shape="rect" id="Node000013" href="$group___t_r_e_e.html#ga11959698cee9597fd1876b32b3c4aea4" title="recursive function to free an OCTREE node and its children" alt="" coords="297,561,431,587"/>
+<area shape="poly" id="edge14_Node000001_Node000013" title=" " alt="" coords="60,646,298,587,299,593,61,651"/>
+<area shape="rect" id="Node000014" href="$group___t_r_e_e.html#ga2f00ef1f3055c5dda01588a36ec8bbec" title="Function to free the quad tree." alt="" coords="119,567,232,592"/>
+<area shape="poly" id="edge15_Node000001_Node000014" title=" " alt="" coords="53,640,107,609,133,596,135,600,109,614,56,645"/>
+<area shape="rect" id="Node000015" href="$group___t_r_e_e.html#gac97d67a9c1e410abfa21c96252151295" title="Function to insert a point into the quad tree." alt="" coords="146,444,205,469"/>
+<area shape="poly" id="edge17_Node000001_Node000015" title=" " alt="" coords="33,642,40,609,53,566,75,520,106,479,131,464,134,468,110,483,79,522,58,568,45,611,38,643"/>
+<area shape="rect" id="Node000016" href="$group___t_r_e_e.html#ga1fe46d075a192493c755b332a6217660" title="Insert a point into the OCTREE." alt="" coords="122,319,229,344"/>
+<area shape="poly" id="edge20_Node000001_Node000016" title=" " alt="" coords="31,643,32,593,41,519,50,478,64,437,82,397,106,362,120,349,124,353,110,365,87,400,69,439,56,479,46,520,38,593,36,643"/>
+<area shape="rect" id="Node000019" href="$group___t_r_e_e.html#ga49421b368bbf90d858aace6abf08b093" title="create a new TREE" alt="" coords="134,719,217,744"/>
+<area shape="poly" id="edge26_Node000001_Node000019" title=" " alt="" coords="56,666,109,697,135,710,133,715,107,702,53,670"/>
+<area shape="rect" id="Node000020" href="$ex__common_8c.html#aefcb3f70374ff9b6256aac6e12870399" title=" " alt="" coords="122,768,229,793"/>
+<area shape="poly" id="edge27_Node000001_Node000020" title=" " alt="" coords="43,667,69,709,87,733,110,753,119,760,117,764,106,757,84,736,64,712,38,670"/>
+<area shape="rect" id="Node000023" href="$group___t_r_e_e.html#ga7c0b07a6c3fdbbce8c43090ca197cf52" title="Function to search for a point in the quad tree." alt="" coords="143,841,208,867"/>
+<area shape="poly" id="edge30_Node000001_Node000023" title=" " alt="" coords="41,667,65,729,85,767,110,803,142,831,139,835,106,806,81,770,60,731,36,669"/>
+<area shape="rect" id="Node000024" href="$group___t_r_e_e.html#ga548b5e1126a451d166a3892c7761ee93" title="create a TREE node" alt="" coords="108,992,243,1017"/>
+<area shape="poly" id="edge32_Node000001_Node000024" title=" " alt="" coords="38,668,46,733,60,826,82,918,95,954,110,979,113,982,109,986,106,982,90,957,77,920,55,827,40,733,33,668"/>
+<area shape="rect" id="Node000026" href="$group___t_r_e_e.html#gac6fd5dd947cc80b699600bc734ffb114" title="delete a TREE node" alt="" coords="297,917,431,943"/>
+<area shape="poly" id="edge34_Node000001_Node000026" title=" " alt="" coords="37,668,40,709,50,766,72,826,88,854,110,877,149,903,193,919,239,928,283,931,283,937,238,933,192,924,146,908,106,881,84,857,67,829,45,768,34,710,31,669"/>
+<area shape="rect" id="Node000030" href="$group___t_r_e_e.html#gaa2e35447dc7c9b0b6e54aef8d688924e" title="destroy a TREE" alt="" coords="123,943,227,968"/>
+<area shape="poly" id="edge39_Node000001_Node000030" title=" " alt="" coords="37,668,39,714,49,781,71,855,88,890,110,922,124,934,120,938,106,925,84,893,66,857,44,782,34,715,31,668"/>
+<area shape="rect" id="Node000031" href="$group___t_r_e_e.html#ga2a7ac2ac073243ab157638c8d3c8a6cb" title="insert a child node into the parent node" alt="" coords="110,1041,241,1067"/>
+<area shape="poly" id="edge41_Node000001_Node000031" title=" " alt="" coords="38,668,44,742,58,850,79,957,94,1000,110,1028,113,1031,109,1035,106,1032,89,1002,74,959,52,851,39,742,32,669"/>
+<area shape="rect" id="Node000006" href="$n__trees_8c.html#aa648ca3451da73170a9314eb97aec89d" title="double comparison functions" alt="" coords="299,252,429,277"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="195,177,238,206,292,237,310,245,308,250,289,242,235,211,192,181"/>
+<area shape="rect" id="Node000007" href="$n__trees_8c.html#a841fe8d311b2c51f1080f7bcc620b653" title="float comparison function" alt="" coords="307,5,421,31"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="183,151,224,98,255,67,289,40,300,34,302,39,292,44,258,71,228,102,187,155"/>
+<area shape="rect" id="Node000008" href="$n__trees_8c.html#af93500658bfd23b089f9bc628c287574" title="int comparison function" alt="" coords="313,55,415,80"/>
+<area shape="poly" id="edge7_Node000005_Node000008" title=" " alt="" coords="192,151,235,121,289,89,305,82,307,87,292,94,238,125,195,155"/>
+<area shape="rect" id="Node000009" href="$n__trees_8c.html#aeec8b8e60ec8bd9c62113c591c7ed536" title="print double function" alt="" coords="313,104,415,129"/>
+<area shape="poly" id="edge8_Node000005_Node000009" title=" " alt="" coords="224,151,301,130,302,136,225,156"/>
+<area shape="rect" id="Node000010" href="$n__trees_8c.html#afb5df6da1a08f43b69e54a5bb683cd85" title="print float function" alt="" coords="320,153,408,179"/>
+<area shape="poly" id="edge9_Node000005_Node000010" title=" " alt="" coords="240,163,306,163,306,169,240,169"/>
+<area shape="rect" id="Node000011" href="$n__trees_8c.html#a6f27972de1d8729bd844c51658d5ec48" title="print int function" alt="" coords="326,203,402,228"/>
+<area shape="poly" id="edge10_Node000005_Node000011" title=" " alt="" coords="225,176,313,199,312,205,224,181"/>
+<area shape="poly" id="edge12_Node000012_Node000013" title=" " alt="" coords="213,516,244,527,316,554,314,559,242,533,211,521"/>
+<area shape="poly" id="edge13_Node000013_Node000013" title=" " alt="" coords="333,563,327,553,330,543,343,537,364,535,390,538,400,547,397,551,388,543,364,540,344,542,334,547,332,552,337,560"/>
+<area shape="poly" id="edge16_Node000014_Node000014" title=" " alt="" coords="151,568,146,558,149,549,159,542,175,540,195,544,203,552,200,556,192,548,175,545,161,547,153,552,152,558,156,565"/>
+<area shape="poly" id="edge18_Node000015_Node000002" title=" " alt="" coords="205,453,299,450,299,456,205,459"/>
+<area shape="poly" id="edge19_Node000015_Node000015" title=" " alt="" coords="151,445,146,436,149,426,159,420,175,417,195,421,203,429,200,433,192,426,175,423,161,425,153,429,152,435,156,443"/>
+<area shape="poly" id="edge21_Node000016_Node000004" title=" " alt="" coords="218,341,291,359,384,373,472,381,472,386,384,378,290,365,217,347"/>
+<area shape="rect" id="Node000017" href="$n__trees_8c.html#a5bc550e0722713aaaaf078e5b8055d0c" title="recursive function to insert a point into the OCTREE" alt="" coords="291,325,437,351"/>
+<area shape="poly" id="edge22_Node000016_Node000017" title=" " alt="" coords="229,331,277,332,277,338,229,336"/>
+<area shape="poly" id="edge23_Node000017_Node000004" title=" " alt="" coords="415,348,498,370,497,375,414,353"/>
+<area shape="poly" id="edge25_Node000017_Node000017" title=" " alt="" coords="333,327,327,317,330,307,343,301,364,299,390,302,400,311,397,315,388,307,364,304,344,306,334,311,332,316,337,324"/>
+<area shape="rect" id="Node000018" href="$n__trees_8c.html#a51f3935c500540ae60c1998ddec207f0" title="function to determine the octant for the given point relative to the node" alt="" coords="492,325,629,351"/>
+<area shape="poly" id="edge24_Node000017_Node000018" title=" " alt="" coords="438,335,478,335,478,341,438,341"/>
+<area shape="rect" id="Node000021" href="$group___l_o_g.html#gacad9b2d55788f46ddde811c986ead9ae" title="Set the global log level value ( static int LOG_LEVEL )" alt="" coords="310,792,418,817"/>
+<area shape="poly" id="edge28_Node000020_Node000021" title=" " alt="" coords="229,785,296,793,296,799,229,790"/>
+<area shape="rect" id="Node000022" href="$ex__accept__pool__client_8c.html#ad96d407a911fbb914fa8e4cfbf2faf0f" title=" " alt="" coords="333,743,395,768"/>
+<area shape="poly" id="edge29_Node000020_Node000022" title=" " alt="" coords="229,771,320,759,320,764,229,776"/>
+<area shape="poly" id="edge31_Node000023_Node000023" title=" " alt="" coords="151,842,146,833,149,823,159,817,175,815,195,818,203,827,200,830,192,823,175,820,161,822,153,827,152,832,156,840"/>
+<area shape="rect" id="Node000025" href="$group___l_i_s_t.html#gae4b8e915bc22e7993d2849152ec1c3ac" title="Initialiaze a generic list container to max_items pointers." alt="" coords="299,992,429,1017"/>
+<area shape="poly" id="edge33_Node000024_Node000025" title=" " alt="" coords="243,1002,285,1002,285,1007,243,1007"/>
+<area shape="poly" id="edge38_Node000026_Node000026" title=" " alt="" coords="333,919,327,909,330,899,343,893,364,891,390,894,400,903,397,907,388,899,364,896,344,898,334,903,332,908,337,916"/>
+<area shape="rect" id="Node000027" href="$group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755" title="Empty and Free a list container." alt="" coords="511,892,610,917"/>
+<area shape="poly" id="edge35_Node000026_Node000027" title=" " alt="" coords="431,919,497,910,498,915,432,924"/>
+<area shape="rect" id="Node000029" href="$group___l_i_s_t.html#gabd7f04c5a1cd8307c0f289dcccdb5a41" title="Internal function called each time we need to get a node out of a list." alt="" coords="485,941,636,967"/>
+<area shape="poly" id="edge37_Node000026_Node000029" title=" " alt="" coords="432,936,472,941,471,946,431,941"/>
+<area shape="rect" id="Node000028" href="$group___l_i_s_t.html#ga1dafe7a250ddad51fadd375f057287e7" title="Empty a LIST list of pointers." alt="" coords="684,892,775,917"/>
+<area shape="poly" id="edge36_Node000027_Node000028" title=" " alt="" coords="610,902,670,902,670,907,610,907"/>
+<area shape="poly" id="edge40_Node000030_Node000026" title=" " alt="" coords="227,946,283,938,283,943,228,951"/>
+<area shape="poly" id="edge43_Node000031_Node000025" title=" " alt="" coords="224,1039,301,1018,302,1024,225,1044"/>
+<area shape="rect" id="Node000032" href="$group___l_i_s_t.html#gafdc5e3efd8a9244161b52fcb24760b0e" title="Add a filled node to the end of the list." alt="" coords="305,1091,423,1116"/>
+<area shape="poly" id="edge42_Node000031_Node000032" title=" " alt="" coords="225,1064,302,1084,301,1090,224,1069"/>
+<area shape="rect" id="Node000033" href="$group___l_i_s_t.html#ga678e828550efc8e64a836bb8c713c2f4" title="Allocate a new node to link in a list." alt="" coords="307,1041,421,1067"/>
+<area shape="poly" id="edge44_Node000031_Node000033" title=" " alt="" coords="241,1051,293,1051,293,1057,241,1057"/>
+</map>

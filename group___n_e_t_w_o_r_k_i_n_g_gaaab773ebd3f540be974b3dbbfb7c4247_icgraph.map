@@ -1,0 +1,19 @@
+<map id="recv_udp_data" name="recv_udp_data">
+<area shape="rect" id="Node000001" title="UDP recv data from socket." alt="" coords="437,81,555,107"/>
+<area shape="rect" id="Node000002" href="$ex__network_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="126,56,181,81"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="423,91,181,73,181,68,424,86"/>
+<area shape="rect" id="Node000003" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga196fad82fb3bb277bca80c4a41a0305e" title="Create a UDP bound socket for receiving datagrams." alt="" coords="258,5,378,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="452,78,348,33,350,28,454,73"/>
+<area shape="rect" id="Node000006" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaed4a680b79d0612febaf9015f1a4cf5f" title="Connect a UDP socket to a remote host." alt="" coords="247,107,389,132"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="424,107,390,112,389,107,423,102"/>
+<area shape="rect" id="Node000007" href="$ex__clock__sync_8c.html#a5b2c2a899dba8a75335b67543f275e41" title=" " alt="" coords="110,107,197,132"/>
+<area shape="poly" id="edge10_Node000001_Node000007" title=" " alt="" coords="465,116,430,134,390,147,350,154,318,156,246,147,191,135,192,129,247,142,318,150,350,149,389,142,428,129,462,111"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="263,37,182,63,180,58,262,32"/>
+<area shape="rect" id="Node000004" href="$ex__clock__sync_8c.html#a204e401539b33237e934bc9e45258cf9" title=" " alt="" coords="108,7,199,32"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="244,21,199,22,199,16,244,16"/>
+<area shape="rect" id="Node000005" href="$ex__clock__sync_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,57,60,83"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="111,40,61,61,59,56,108,35"/>
+<area shape="poly" id="edge7_Node000006_Node000002" title=" " alt="" coords="262,105,180,79,182,74,263,100"/>
+<area shape="poly" id="edge8_Node000006_Node000007" title=" " alt="" coords="233,122,197,122,197,117,233,117"/>
+<area shape="poly" id="edge9_Node000007_Node000005" title=" " alt="" coords="108,104,59,83,61,79,110,99"/>
+</map>

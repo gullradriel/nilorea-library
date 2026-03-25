@@ -1,0 +1,55 @@
+<map id="netw_ssl_connect" name="netw_ssl_connect">
+<area shape="rect" id="Node000001" title="connect ssl helper" alt="" coords="5,184,143,209"/>
+<area shape="rect" id="Node000002" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga8b9b1d2625a6c5d28c40399d6fdf3794" title="Use this to connect a NETWORK to any listening one." alt="" coords="191,184,325,209"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="143,194,177,194,177,199,143,199"/>
+<area shape="rect" id="Node000003" href="$n__network_8c.html#ab995208f051c8975b80f13ff2cfeae32" title="get sockaddr, IPv4 or IPv6" alt="" coords="389,5,487,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="264,182,305,120,336,82,372,48,391,35,394,39,375,52,340,86,310,123,269,185"/>
+<area shape="rect" id="Node000004" href="$group___n_e_t_w_o_r_k_i_n_g.html#gac345c1af1935cebb9ee33edd4c32267a" title="Closing a specified Network, destroy queues, free the structure." alt="" coords="584,184,679,209"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="326,194,570,194,570,199,326,199"/>
+<area shape="rect" id="Node000012" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaa8e1fe7978995197f08aa0ef24a76c33" title="Restart or reset the specified network ability." alt="" coords="994,157,1075,183"/>
+<area shape="poly" id="edge23_Node000002_Node000012" title=" " alt="" coords="297,181,405,151,479,134,561,119,650,108,742,103,835,106,926,119,966,132,1001,148,999,153,964,137,925,125,835,112,742,109,651,114,562,125,480,140,407,156,298,186"/>
+<area shape="rect" id="Node000014" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga22bc4dd5d80c2229c3c43f6d6705dece" title="Do not directly use, internal api." alt="" coords="381,209,495,235"/>
+<area shape="poly" id="edge17_Node000002_Node000014" title=" " alt="" coords="326,203,367,209,367,215,325,209"/>
+<area shape="rect" id="Node000015" href="$n__network_8c.html#a8ad9fbb10c0881b9e14bb098ffd42210" title="Return an empty allocated network ready to be netw_closed." alt="" coords="394,259,482,284"/>
+<area shape="poly" id="edge18_Node000002_Node000015" title=" " alt="" coords="289,207,374,244,393,251,391,256,372,248,287,212"/>
+<area shape="rect" id="Node000019" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga357d90dfa5a07f746a9f780aca304938" title="activate SSL encryption on selected network, using key and certificate" alt="" coords="373,431,503,456"/>
+<area shape="poly" id="edge24_Node000002_Node000019" title=" " alt="" coords="271,208,422,418,417,421,266,211"/>
+<area shape="rect" id="Node000005" href="$group___n_e_t_w_o_r_k_i_n_g.html#gab7f9fd903744c66d570b868df5b3a551" title="wait until the socket is empty or timeout, checking each 100 msec." alt="" coords="765,157,920,183"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="679,188,752,179,752,184,679,193"/>
+<area shape="rect" id="Node000006" href="$group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755" title="Empty and Free a list container." alt="" coords="1144,208,1243,233"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="680,205,713,218,728,229,737,241,747,251,761,260,851,288,889,294,926,296,1001,287,1095,266,1130,254,1160,238,1163,243,1132,259,1097,271,1002,292,926,301,889,300,850,293,759,264,743,255,733,244,724,233,711,223,678,210"/>
+<area shape="rect" id="Node000008" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaaacd43329a330a29b5a93cce28c068e5" title="Get the state of a network." alt="" coords="973,232,1096,257"/>
+<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="680,207,713,218,737,231,761,241,812,249,864,253,960,250,960,256,864,258,811,254,759,246,734,236,711,223,678,212"/>
+<area shape="rect" id="Node000009" href="$group___n_e_t_w_o_r_k_i_n_g.html#gafc7a91b4be2a997710a2b54037c25168" title="remove a NETWORK *netw to a NETWORK_POOL *pool" alt="" coords="769,359,916,384"/>
+<area shape="poly" id="edge8_Node000004_Node000009" title=" " alt="" coords="680,201,698,208,714,219,727,234,734,249,739,279,744,309,750,323,762,337,780,350,776,355,758,341,746,326,739,310,734,280,729,251,722,237,710,223,695,213,678,206"/>
+<area shape="poly" id="edge11_Node000004_Node000012" title=" " alt="" coords="655,181,702,160,759,142,806,135,842,134,926,142,981,152,980,158,925,147,842,139,806,140,761,147,704,165,657,186"/>
+<area shape="rect" id="Node000013" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga29159184519b3129c0154b1a2c2a3e2f" title="Stop a NETWORK connection sending and receing thread." alt="" coords="760,207,925,232"/>
+<area shape="poly" id="edge14_Node000004_Node000013" title=" " alt="" coords="679,199,746,206,746,212,679,204"/>
+<area shape="rect" id="Node000007" href="$group___l_i_s_t.html#ga1dafe7a250ddad51fadd375f057287e7" title="Empty a LIST list of pointers." alt="" coords="1291,183,1381,208"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="1242,209,1277,203,1278,208,1243,215"/>
+<area shape="rect" id="Node000010" href="$group___h_a_s_h___t_a_b_l_e.html#ga2dc87273d3e6b3492d88f2bd7288102e" title="remove and delete node at key in table" alt="" coords="989,408,1081,433"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="893,381,976,403,975,408,892,387"/>
+<area shape="rect" id="Node000011" href="$group___l_i_s_t.html#gae009d6d3c835a2affb99071ea8457803" title="search ptr in list" alt="" coords="989,359,1081,384"/>
+<area shape="poly" id="edge10_Node000009_Node000011" title=" " alt="" coords="916,369,975,369,975,374,916,374"/>
+<area shape="poly" id="edge12_Node000012_Node000006" title=" " alt="" coords="1076,180,1141,201,1139,206,1075,185"/>
+<area shape="poly" id="edge13_Node000012_Node000007" title=" " alt="" coords="1076,171,1277,188,1277,193,1075,176"/>
+<area shape="poly" id="edge15_Node000013_Node000008" title=" " alt="" coords="926,228,960,232,959,237,925,233"/>
+<area shape="poly" id="edge16_Node000013_Node000012" title=" " alt="" coords="892,204,980,181,981,186,893,209"/>
+<area shape="poly" id="edge19_Node000015_Node000004" title=" " alt="" coords="472,256,502,244,550,218,570,211,572,216,552,223,504,248,474,261"/>
+<area shape="rect" id="Node000016" href="$group___l_i_s_t.html#gae4b8e915bc22e7993d2849152ec1c3ac" title="Initialiaze a generic list container to max_items pointers." alt="" coords="566,233,697,259"/>
+<area shape="poly" id="edge20_Node000015_Node000016" title=" " alt="" coords="482,263,552,254,553,259,482,268"/>
+<area shape="rect" id="Node000017" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga4e2fbd39980f3a1cb7258ec4382f29f7" title="recv data from the socket" alt="" coords="588,283,675,308"/>
+<area shape="poly" id="edge21_Node000015_Node000017" title=" " alt="" coords="482,274,574,286,574,291,482,279"/>
+<area shape="rect" id="Node000018" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaa99961114daea113b78c7fc5e545d592" title="send data onto the socket" alt="" coords="587,332,676,357"/>
+<area shape="poly" id="edge22_Node000015_Node000018" title=" " alt="" coords="468,282,552,317,575,325,573,330,550,322,466,287"/>
+<area shape="rect" id="Node000020" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga515a427865426bc13b289628217465ce" title="Do not directly use, internal api." alt="" coords="562,431,701,456"/>
+<area shape="poly" id="edge25_Node000019_Node000020" title=" " alt="" coords="503,441,548,441,548,446,503,446"/>
+<area shape="rect" id="Node000022" href="$n__network_8c.html#a58874f3139c1eec6c3ffb855f9d0a214" title="print OpenSSL errors for a given socket" alt="" coords="551,480,712,505"/>
+<area shape="poly" id="edge27_Node000019_Node000022" title=" " alt="" coords="489,453,568,474,567,479,488,459"/>
+<area shape="rect" id="Node000023" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga528356d4a8e132a230ec7d8df6c4c5b0" title="recv data from the socket" alt="" coords="576,529,687,555"/>
+<area shape="poly" id="edge28_Node000019_Node000023" title=" " alt="" coords="457,454,498,484,552,516,568,522,566,527,549,520,495,489,453,458"/>
+<area shape="rect" id="Node000024" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga14b6d4d15dc2b0422098f0211bc95117" title="send data onto the socket" alt="" coords="574,381,689,407"/>
+<area shape="poly" id="edge29_Node000019_Node000024" title=" " alt="" coords="488,428,567,408,568,413,489,433"/>
+<area shape="rect" id="Node000021" href="$n__network_8c.html#a37b864767e182743c4e041353e6f78a5" title=" " alt="" coords="781,431,904,456"/>
+<area shape="poly" id="edge26_Node000020_Node000021" title=" " alt="" coords="701,441,767,441,767,446,701,446"/>
+</map>

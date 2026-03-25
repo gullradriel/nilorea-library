@@ -1,0 +1,21 @@
+<map id="iso_map_to_screen" name="iso_map_to_screen">
+<area shape="rect" id="Node000001" title="convert map tile coordinates to screen pixel coordinates" alt="" coords="607,132,753,157"/>
+<area shape="rect" id="Node000002" href="$n__iso__engine_8c.html#a19e742ed41af8eb96e9baf760749c257" title="Check if an object is occluded by tiles drawn in front of it." alt="" coords="351,5,559,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="654,124,611,88,557,52,509,33,511,28,560,48,614,83,657,120"/>
+<area shape="rect" id="Node000003" href="$group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga7fb670195f7cb827fa7d59a86fb014e6" title="Draw the full ISO_MAP with segment&#45;sorted rendering." alt="" coords="147,56,263,81"/>
+<area shape="poly" id="edge6_Node000001_Node000003" title=" " alt="" coords="637,129,558,103,479,89,399,80,263,72,264,67,399,74,480,84,559,98,638,124"/>
+<area shape="rect" id="Node000004" href="$ex__gui__isometric_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,157,60,183"/>
+<area shape="poly" id="edge11_Node000001_Node000004" title=" " alt="" coords="593,139,494,133,372,131,240,135,109,149,61,162,60,157,107,143,240,129,372,125,494,128,593,134"/>
+<area shape="rect" id="Node000005" href="$ex__iso__astar_8c.html#a3a2cf9a1bf56a8e5a4b364cda98a05e4" title=" " alt="" coords="387,157,523,183"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="593,157,523,165,523,160,593,152"/>
+<area shape="rect" id="Node000007" href="$group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#gaef27f22e3b24819ee04c113d14aa9c83" title="Height&#45;aware screen&#45;to&#45;map conversion with diamond hit testing." alt="" coords="108,207,303,232"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="644,166,604,183,559,198,493,210,426,218,303,224,303,219,425,213,493,205,558,193,602,178,642,161"/>
+<area shape="rect" id="Node000008" href="$group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#gaef210d196c5ddfeccfbf73348c593edd" title="Height&#45;aware screen&#45;to&#45;map conversion returning fractional tile coordinates." alt="" coords="351,259,558,284"/>
+<area shape="poly" id="edge9_Node000001_Node000008" title=" " alt="" coords="657,169,614,206,560,242,511,261,509,256,557,237,611,202,654,165"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="378,36,264,60,263,54,377,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="141,88,109,103,74,131,47,159,43,155,70,127,107,98,139,83"/>
+<area shape="rect" id="Node000006" href="$ex__iso__astar_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="178,157,233,183"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="373,173,233,173,233,167,373,167"/>
+<area shape="poly" id="edge8_Node000007_Node000004" title=" " alt="" coords="136,206,107,198,59,182,61,177,109,193,137,201"/>
+<area shape="poly" id="edge10_Node000008_Node000004" title=" " alt="" coords="337,285,282,284,223,279,163,267,107,247,85,234,67,217,40,184,44,181,70,213,89,230,109,242,165,262,224,274,282,279,338,279"/>
+</map>

@@ -1,0 +1,17 @@
+<map id="n_gui_add_window_auto" name="n_gui_add_window_auto">
+<area shape="rect" id="Node000001" title="add a window that sizes itself automatically to fit its widgets (call n_gui_window_autosize after add..." alt="" coords="5,55,187,80"/>
+<area shape="rect" id="Node000002" href="$group___g_u_i.html#ga9734754ec210aac972dc415403f61fc0" title="Add a new pseudo&#45;window to the context." alt="" coords="235,55,380,80"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="187,65,221,65,221,70,187,70"/>
+<area shape="rect" id="Node000003" href="$n__gui_8c.html#ae2bd627c7fe020e9c2683c9e1d3fb86e" title="helper: destroy a single window (called by list destructor)" alt="" coords="428,5,563,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="356,52,432,32,433,37,357,57"/>
+<area shape="rect" id="Node000006" href="$group___l_i_s_t.html#ga4eab319289a83524639ee5e9f0441fdf" title="Add a pointer to the end of the list." alt="" coords="455,55,535,80"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="380,65,441,65,441,70,380,70"/>
+<area shape="rect" id="Node000008" href="$group___l_i_s_t.html#gae4b8e915bc22e7993d2849152ec1c3ac" title="Initialiaze a generic list container to max_items pointers." alt="" coords="430,104,561,129"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="357,77,433,98,432,103,356,83"/>
+<area shape="rect" id="Node000004" href="$group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755" title="Empty and Free a list container." alt="" coords="619,5,717,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="563,15,605,15,605,21,563,21"/>
+<area shape="rect" id="Node000005" href="$group___l_i_s_t.html#ga1dafe7a250ddad51fadd375f057287e7" title="Empty a LIST list of pointers." alt="" coords="773,5,864,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="717,15,759,15,759,21,717,21"/>
+<area shape="rect" id="Node000007" href="$group___l_i_s_t.html#ga678e828550efc8e64a836bb8c713c2f4" title="Allocate a new node to link in a list." alt="" coords="611,55,725,80"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="536,65,597,65,597,70,536,70"/>
+</map>

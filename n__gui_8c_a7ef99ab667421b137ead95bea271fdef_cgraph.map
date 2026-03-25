@@ -1,0 +1,28 @@
+<map id="_textarea_handle_key" name="_textarea_handle_key">
+<area shape="rect" id="Node000001" title="handle textarea key input." alt="" coords="5,202,171,227"/>
+<area shape="rect" id="Node000002" href="$n__gui_8c.html#a072626f322d270a8afabbf6cb32f3501" title="helper: get the bounding box width of text using al_get_text_dimensions." alt="" coords="534,24,607,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="92,200,107,165,133,118,169,71,192,51,217,35,256,19,296,9,338,4,379,3,457,9,521,21,520,26,457,14,379,8,338,9,297,14,258,24,220,39,195,55,173,75,137,121,112,167,96,202"/>
+<area shape="rect" id="Node000003" href="$n__gui_8c.html#a5c9959a8b62d3485e5c2fee3154d742f" title="clear the selection (set both anchors to cursor_pos)" alt="" coords="476,176,665,202"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="166,199,218,193,345,186,462,185,462,190,345,192,219,198,166,204"/>
+<area shape="rect" id="Node000004" href="$n__gui_8c.html#af08fc507030057ed9d53b478121c74af" title="helper: compute the total content height of multiline textarea text (with line&#45;wrap),..." alt="" coords="229,50,417,75"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="98,200,146,148,180,118,217,92,251,77,253,82,220,97,183,122,149,152,102,203"/>
+<area shape="rect" id="Node000005" href="$n__gui_8c.html#ae67b1e41a2b5bd3c65cc660f7d0652ad" title="return the byte length of a UTF&#45;8 character from its lead byte" alt="" coords="512,87,629,112"/>
+<area shape="poly" id="edge15_Node000001_Node000005" title=" " alt="" coords="127,199,218,172,367,137,498,110,499,115,369,142,219,177,128,204"/>
+<area shape="rect" id="Node000006" href="$n__gui_8c.html#accb804e7b68d4b9da2c1f29449b48340" title="copy selected text to clipboard." alt="" coords="219,302,428,327"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="109,225,158,256,220,286,246,295,244,300,218,291,155,260,106,229"/>
+<area shape="rect" id="Node000007" href="$n__gui_8c.html#a48c35d6e44cf3c345646c2af95784b82" title="return 1 if the textarea has an active selection" alt="" coords="481,252,661,278"/>
+<area shape="poly" id="edge13_Node000001_Node000007" title=" " alt="" coords="171,215,293,223,428,237,493,247,493,252,428,242,292,229,171,221"/>
+<area shape="rect" id="Node000008" href="$n__gui_8c.html#a3dc0d9da2ee8ea41d6b82d0bc9a34310" title="get the ordered selection range (lo, hi)" alt="" coords="493,302,648,327"/>
+<area shape="poly" id="edge14_Node000001_Node000008" title=" " alt="" coords="100,225,118,251,145,283,180,314,220,337,258,349,299,356,340,358,381,356,457,344,520,328,521,334,458,350,381,361,340,363,298,361,257,354,218,342,176,318,141,287,114,254,95,229"/>
+<area shape="rect" id="Node000009" href="$n__gui_8c.html#aa0693e099de67e45aa866be8001d884e" title="delete the currently selected text, move cursor to selection start" alt="" coords="224,252,423,278"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="149,224,251,247,250,252,147,230"/>
+<area shape="rect" id="Node000010" href="$n__gui_8c.html#aff029415aa4899ed7173ad2c40851d7c" title="encode a Unicode code point into UTF&#45;8, return the number of bytes written (0 on error)" alt="" coords="269,403,378,428"/>
+<area shape="poly" id="edge16_Node000001_Node000010" title=" " alt="" coords="98,226,115,257,142,299,177,343,220,381,257,399,254,404,217,386,174,347,138,302,110,260,93,228"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="417,50,520,39,520,45,418,55"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="408,72,499,86,498,91,407,78"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="387,299,492,278,493,283,388,304"/>
+<area shape="poly" id="edge8_Node000006_Node000008" title=" " alt="" coords="428,312,479,312,479,317,428,317"/>
+<area shape="poly" id="edge10_Node000009_Node000003" title=" " alt="" coords="365,250,515,203,516,208,366,255"/>
+<area shape="poly" id="edge11_Node000009_Node000007" title=" " alt="" coords="423,262,467,262,467,268,423,268"/>
+<area shape="poly" id="edge12_Node000009_Node000008" title=" " alt="" coords="388,275,493,296,492,301,387,280"/>
+</map>

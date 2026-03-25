@@ -1,0 +1,19 @@
+<map id="_draw_dropmenu_panel" name="_draw_dropmenu_panel">
+<area shape="rect" id="Node000001" title="draw the dropdown menu panel overlay (called after all windows)" alt="" coords="5,104,183,129"/>
+<area shape="rect" id="Node000002" href="$n__gui_8c.html#a16a2d462bcc3ffc64068f3709d690a89" title="helper: draw text truncated to a maximum pixel width." alt="" coords="231,5,393,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="114,102,165,71,230,40,248,32,250,37,232,44,168,76,117,106"/>
+<area shape="rect" id="Node000004" href="$n__gui_8c.html#a315da0d6b22484d73c61bedc44c39ccc" title="helper: find the parent window of a widget by id, returning the window&#39;s content origin (accounting f..." alt="" coords="231,55,393,80"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="150,101,241,80,242,86,151,107"/>
+<area shape="rect" id="Node000006" href="$n__gui_8c.html#a56df6f9f84315d11c03bf0d72fbad44f" title="helper: compute minimum line thickness so it stays &gt;= 1 physical pixel." alt="" coords="251,104,373,129"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="183,114,237,114,237,119,183,119"/>
+<area shape="rect" id="Node000007" href="$n__gui_8c.html#a967dbb34187c67e013263ae181ae596b" title="helper: test if point is inside a rectangle" alt="" coords="255,153,369,179"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="151,127,242,148,241,153,150,132"/>
+<area shape="rect" id="Node000008" href="$group___g_u_i.html#ga9072d6f6b2708518c4c3d5d21849f11e" title="Get a widget pointer by id." alt="" coords="244,203,380,228"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="117,127,168,156,232,188,253,196,251,201,230,192,166,161,114,132"/>
+<area shape="rect" id="Node000003" href="$n__gui_8c.html#a072626f322d270a8afabbf6cb32f3501" title="helper: get the bounding box width of text using al_get_text_dimensions." alt="" coords="449,5,522,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="394,15,435,15,435,21,394,21"/>
+<area shape="rect" id="Node000005" href="$n__gui_8c.html#aa763a71739bd34eb44f3b77adacd374b" title="helper: effective title bar height (0 for frameless windows)" alt="" coords="445,55,525,80"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="393,65,432,65,432,70,393,70"/>
+<area shape="rect" id="Node000009" href="$group___h_a_s_h___t_a_b_l_e.html#ga009f66a508dcea120e0cd2b34805e5a2" title="get pointer at &#39;key&#39; from &#39;table&#39;" alt="" coords="441,203,529,228"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="380,213,428,213,428,218,380,218"/>
+</map>

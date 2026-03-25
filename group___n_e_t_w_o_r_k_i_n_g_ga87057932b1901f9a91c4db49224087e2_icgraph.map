@@ -1,0 +1,18 @@
+<map id="netw_accept_from_ex" name="netw_accept_from_ex">
+<area shape="rect" id="Node000001" title="Accepting routine extended." alt="" coords="603,83,768,109"/>
+<area shape="rect" id="Node000002" href="$ex__accept__pool__server_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,82,60,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="656,77,610,48,583,34,554,24,483,11,410,9,338,14,268,25,145,57,61,86,60,81,143,51,267,20,337,9,410,3,484,6,555,19,585,29,613,43,659,73"/>
+<area shape="rect" id="Node000003" href="$ex__network__ssl_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="416,34,471,59"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="608,83,470,55,472,50,609,78"/>
+<area shape="rect" id="Node000004" href="$group___n_e_t_w_o_r_k_i_n_g.html#gab99090cbf623f95556ea610e690b50d9" title="make a normal blocking &#39;accept&#39; ." alt="" coords="372,83,515,109"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="589,99,515,99,515,93,589,93"/>
+<area shape="rect" id="Node000006" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga32138772c399518190a14e81164fc469" title="make a normal blocking &#39;accept&#39; ." alt="" coords="339,133,547,158"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="610,114,507,135,506,130,609,109"/>
+<area shape="rect" id="Node000007" href="$n__network__accept__pool_8c.html#a35a4d840540d74b6ef0b016583c15333" title="Thread function for accept pool workers." alt="" coords="332,182,555,207"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="656,119,610,147,556,173,519,185,518,179,554,168,608,142,653,114"/>
+<area shape="rect" id="Node000005" href="$ex__network_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="169,83,223,109"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="358,99,224,99,224,93,358,93"/>
+<area shape="rect" id="Node000008" href="$group___a_c_c_e_p_t___p_o_o_l.html#gad643e047ac230afd775d19a679443fab" title="Start the accept pool (launches accept threads)" alt="" coords="108,157,284,182"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="318,185,284,181,284,176,319,179"/>
+<area shape="poly" id="edge8_Node000008_Node000002" title=" " alt="" coords="154,153,59,109,61,105,156,148"/>
+</map>

@@ -1,0 +1,40 @@
+<map id="n_kafka_load_config" name="n_kafka_load_config">
+<area shape="rect" id="Node000001" title="load kafka configuration from file" alt="" coords="5,189,159,214"/>
+<area shape="rect" id="Node000002" href="$group___n___s_t_r.html#gad2c9b27509a55615e57ef8efd2ca3a02" title="Load a whole file into a N_STR." alt="" coords="259,41,353,66"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="90,187,135,133,168,102,205,75,244,60,246,65,208,80,171,106,139,136,94,190"/>
+<area shape="rect" id="Node000003" href="$group___n___s_t_r.html#ga873edbb1f8787d0a78a13ccbbed9b9f9" title="create a new N_STR string" alt="" coords="478,41,559,66"/>
+<area shape="poly" id="edge20_Node000001_Node000003" title=" " alt="" coords="85,188,100,153,124,108,159,62,181,42,205,26,240,12,276,5,312,3,349,5,418,17,474,34,473,39,417,22,349,10,312,8,276,10,241,17,208,31,184,46,163,65,129,110,104,156,90,190"/>
+<area shape="rect" id="Node000004" href="$group___c_o_m_m_o_n_s.html#ga67485891fad679694c6c74285c47c246" title="get the computer name" alt="" coords="228,90,384,116"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="99,186,146,155,206,124,227,117,228,122,208,129,149,160,102,191"/>
+<area shape="rect" id="Node000005" href="$group___n___s_t_r.html#gacdeb6b4760b1e4b22188993f0cd5222f" title="join the array into a string" alt="" coords="283,140,329,165"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="140,186,269,157,270,163,141,191"/>
+<area shape="rect" id="Node000006" href="$group___n___k_a_f_k_a.html#gafe936c186c71e469556dcdb352d94697" title="delete a N_KAFKA handle" alt="" coords="459,240,579,265"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="143,212,207,223,333,237,445,246,445,251,332,242,206,228,142,217"/>
+<area shape="rect" id="Node000012" href="$n__kafka_8c.html#a52d4abf5391647f88c510ac1c1fd7c35" title="Message delivery report callback." alt="" coords="207,340,405,380"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="96,213,141,263,173,293,208,319,232,332,229,337,205,324,170,297,138,267,92,216"/>
+<area shape="rect" id="Node000013" href="$group___n___s_t_r.html#gab731024d29b0937615c1cdddeb8d4875" title="split the strings into a an array of char *pointer , ended by a NULL one." alt="" coords="493,293,544,318"/>
+<area shape="poly" id="edge21_Node000001_Node000013" title=" " alt="" coords="112,212,156,231,207,248,282,267,358,281,480,299,479,304,357,287,281,272,206,253,154,236,110,217"/>
+<area shape="rect" id="Node000014" href="$group___n___s_t_r.html#ga194b81c0709d24aef9b6f7e8635d3966" title="Count split elements." alt="" coords="472,400,565,425"/>
+<area shape="poly" id="edge22_Node000001_Node000014" title=" " alt="" coords="90,213,103,250,127,300,162,350,183,372,208,390,238,405,270,415,337,426,402,426,458,421,458,426,402,431,336,431,269,420,236,409,205,395,180,376,158,354,122,302,98,252,85,215"/>
+<area shape="rect" id="Node000015" href="$group___n___k_a_f_k_a.html#gae796b012ddfdfdbf059b9a9b53a277af" title="allocate a new kafka handle" alt="" coords="253,189,359,214"/>
+<area shape="poly" id="edge16_Node000001_Node000015" title=" " alt="" coords="159,199,239,199,239,204,159,204"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="353,51,464,51,464,56,353,56"/>
+<area shape="rect" id="Node000007" href="$group___n___s_t_r.html#gad53cff99261e509872a2a4128b1265cf" title="Free a split result allocated array." alt="" coords="648,293,775,318"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="566,262,652,287,651,292,565,268"/>
+<area shape="rect" id="Node000008" href="$group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755" title="Empty and Free a list container." alt="" coords="662,241,761,266"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="579,250,648,250,648,256,579,255"/>
+<area shape="rect" id="Node000010" href="$group___n___k_a_f_k_a.html#ga193fd9505a7f8993647fa9d25bd2f1a6" title="stop the polling thread of a kafka handle" alt="" coords="632,176,791,216"/>
+<area shape="poly" id="edge9_Node000006_Node000010" title=" " alt="" coords="562,237,628,218,630,223,564,242"/>
+<area shape="rect" id="Node000009" href="$group___l_i_s_t.html#ga1dafe7a250ddad51fadd375f057287e7" title="Empty a LIST list of pointers." alt="" coords="879,241,969,266"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="761,251,865,251,865,256,761,256"/>
+<area shape="rect" id="Node000011" href="$group___n___k_a_f_k_a.html#ga43de86577188a48cf9b4724591b7bbde" title="disable event consumption" alt="" coords="839,176,1009,216"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="791,194,825,194,825,199,791,199"/>
+<area shape="poly" id="edge12_Node000012_Node000007" title=" " alt="" coords="405,349,584,328,639,318,640,324,584,334,406,355"/>
+<area shape="poly" id="edge13_Node000012_Node000013" title=" " alt="" coords="384,338,479,313,480,318,385,343"/>
+<area shape="poly" id="edge15_Node000012_Node000014" title=" " alt="" coords="389,378,459,395,458,400,388,383"/>
+<area shape="poly" id="edge14_Node000013_Node000007" title=" " alt="" coords="544,303,634,303,634,308,544,308"/>
+<area shape="poly" id="edge19_Node000015_Node000003" title=" " alt="" coords="359,191,382,184,404,174,434,152,460,126,500,76,504,79,464,130,437,156,407,179,384,189,360,197"/>
+<area shape="poly" id="edge17_Node000015_Node000006" title=" " alt="" coords="360,212,452,234,451,239,359,217"/>
+<area shape="rect" id="Node000016" href="$group___l_i_s_t.html#gae4b8e915bc22e7993d2849152ec1c3ac" title="Initialiaze a generic list container to max_items pointers." alt="" coords="453,189,584,214"/>
+<area shape="poly" id="edge18_Node000015_Node000016" title=" " alt="" coords="360,199,440,199,440,204,360,204"/>
+</map>

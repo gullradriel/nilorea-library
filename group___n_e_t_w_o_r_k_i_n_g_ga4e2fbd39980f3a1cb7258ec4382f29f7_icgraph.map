@@ -1,0 +1,54 @@
+<map id="recv_data" name="recv_data">
+<area shape="rect" id="Node000001" title="Reading from a socket." alt="" coords="952,303,1039,328"/>
+<area shape="rect" id="Node000002" href="$n__network_8c.html#a8ad9fbb10c0881b9e14bb098ffd42210" title="Return an empty allocated network ready to be netw_closed." alt="" coords="816,303,904,328"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="938,318,904,318,904,313,938,313"/>
+<area shape="rect" id="Node000003" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga87057932b1901f9a91c4db49224087e2" title="make a normal &#39;accept&#39; ." alt="" coords="603,153,768,179"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="832,296,700,181,703,177,835,292"/>
+<area shape="rect" id="Node000011" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga196fad82fb3bb277bca80c4a41a0305e" title="Create a UDP bound socket for receiving datagrams." alt="" coords="625,303,745,328"/>
+<area shape="poly" id="edge11_Node000002_Node000011" title=" " alt="" coords="802,318,746,318,746,313,802,313"/>
+<area shape="rect" id="Node000014" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga8b9b1d2625a6c5d28c40399d6fdf3794" title="Use this to connect a NETWORK to any listening one." alt="" coords="618,479,753,504"/>
+<area shape="poly" id="edge15_Node000002_Node000014" title=" " alt="" coords="841,340,770,418,703,480,700,476,766,415,837,337"/>
+<area shape="rect" id="Node000021" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaed4a680b79d0612febaf9015f1a4cf5f" title="Connect a UDP socket to a remote host." alt="" coords="614,379,757,404"/>
+<area shape="poly" id="edge23_Node000002_Node000021" title=" " alt="" coords="819,336,717,381,714,376,816,331"/>
+<area shape="rect" id="Node000023" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga52afd4f5662c9c8f334d224ae2cdbdf2" title="Make a NETWORK be a Listening network." alt="" coords="605,27,765,52"/>
+<area shape="poly" id="edge27_Node000002_Node000023" title=" " alt="" coords="845,291,812,222,766,142,729,93,697,54,701,51,733,89,770,139,816,220,850,289"/>
+<area shape="rect" id="Node000004" href="$ex__accept__pool__server_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,77,60,103"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="645,150,602,132,554,118,483,105,410,96,267,88,144,88,60,91,60,86,144,82,267,82,410,91,484,100,555,113,604,127,647,145"/>
+<area shape="rect" id="Node000005" href="$ex__network__ssl_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="416,27,471,52"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="658,146,611,109,553,74,510,57,470,47,472,42,512,52,556,69,614,105,661,142"/>
+<area shape="rect" id="Node000006" href="$group___n_e_t_w_o_r_k_i_n_g.html#gab99090cbf623f95556ea610e690b50d9" title="make a normal blocking &#39;accept&#39; ." alt="" coords="372,227,515,252"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="641,186,555,216,507,229,505,224,554,211,639,181"/>
+<area shape="rect" id="Node000008" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga32138772c399518190a14e81164fc469" title="make a normal blocking &#39;accept&#39; ." alt="" coords="339,128,547,153"/>
+<area shape="poly" id="edge7_Node000003_Node000008" title=" " alt="" coords="589,158,547,154,548,149,589,153"/>
+<area shape="rect" id="Node000009" href="$n__network__accept__pool_8c.html#a35a4d840540d74b6ef0b016583c15333" title="Thread function for accept pool workers." alt="" coords="332,177,555,203"/>
+<area shape="poly" id="edge8_Node000003_Node000009" title=" " alt="" coords="589,178,555,181,555,176,589,173"/>
+<area shape="rect" id="Node000007" href="$ex__network_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="169,277,223,303"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="367,257,224,287,223,282,366,252"/>
+<area shape="rect" id="Node000010" href="$group___a_c_c_e_p_t___p_o_o_l.html#gad643e047ac230afd775d19a679443fab" title="Start the accept pool (launches accept threads)" alt="" coords="108,153,284,179"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="318,180,284,177,284,172,319,175"/>
+<area shape="poly" id="edge10_Node000010_Node000004" title=" " alt="" coords="154,150,59,105,62,100,157,145"/>
+<area shape="poly" id="edge12_Node000011_Node000007" title=" " alt="" coords="612,314,223,294,224,289,612,309"/>
+<area shape="rect" id="Node000012" href="$ex__clock__sync_8c.html#a204e401539b33237e934bc9e45258cf9" title=" " alt="" coords="398,328,489,353"/>
+<area shape="poly" id="edge13_Node000011_Node000012" title=" " alt="" coords="611,326,489,339,489,333,611,320"/>
+<area shape="rect" id="Node000013" href="$ex__clock__sync_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="169,379,223,404"/>
+<area shape="poly" id="edge14_Node000012_Node000013" title=" " alt="" coords="385,355,224,388,223,383,384,350"/>
+<area shape="rect" id="Node000015" href="$group___n_e_t_w_o_r_k_i_n_g.html#gae18d52a130063ba1fd0a4cf4b6a2da20" title="Use this to connect a NETWORK to any listening one, unrestricted send/recv lists." alt="" coords="387,528,499,553"/>
+<area shape="poly" id="edge16_Node000014_Node000015" title=" " alt="" coords="610,509,500,532,499,527,609,504"/>
+<area shape="rect" id="Node000020" href="$group___n_e_t_w_o_r_k_i_n_g.html#gada1d9596f77d9467ebe72657a5b04103" title="Use this to connect a NETWORK to any listening one, unrestricted send/recv lists." alt="" coords="375,479,512,504"/>
+<area shape="poly" id="edge22_Node000014_Node000020" title=" " alt="" coords="605,494,512,494,512,489,605,489"/>
+<area shape="rect" id="Node000016" href="$ex__accept__pool__client_8c.html#aab312f9d63dc3375f09457ffaeebdb5f" title="Echo mode: connect, send a message, receive echo, close." alt="" coords="123,577,269,603"/>
+<area shape="poly" id="edge17_Node000015_Node000016" title=" " alt="" coords="374,557,261,580,260,575,373,552"/>
+<area shape="rect" id="Node000018" href="$ex__accept__pool__client_8c.html#aa17ddefadc32335b6c539c97fa1a917e" title="Fast mode: connect and immediately close (measures pure accept throughput)" alt="" coords="125,479,267,504"/>
+<area shape="poly" id="edge19_Node000015_Node000018" title=" " alt="" coords="373,529,260,507,261,501,374,524"/>
+<area shape="rect" id="Node000019" href="$ex__gui__network_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="169,528,223,553"/>
+<area shape="poly" id="edge21_Node000015_Node000019" title=" " alt="" coords="373,543,224,543,224,538,373,538"/>
+<area shape="rect" id="Node000017" href="$ex__accept__pool__client_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,528,60,553"/>
+<area shape="poly" id="edge18_Node000016_Node000017" title=" " alt="" coords="133,576,107,568,59,552,61,547,109,563,134,571"/>
+<area shape="poly" id="edge20_Node000018_Node000017" title=" " alt="" coords="138,510,109,519,61,534,59,529,107,514,136,505"/>
+<area shape="poly" id="edge24_Node000021_Node000007" title=" " alt="" coords="600,397,472,393,401,383,331,367,297,354,264,337,213,305,216,300,267,333,299,349,333,362,402,378,473,387,600,392"/>
+<area shape="rect" id="Node000022" href="$ex__clock__sync_8c.html#a5b2c2a899dba8a75335b67543f275e41" title=" " alt="" coords="400,429,487,455"/>
+<area shape="poly" id="edge25_Node000021_Node000022" title=" " alt="" coords="611,409,487,436,486,430,610,404"/>
+<area shape="poly" id="edge26_Node000022_Node000013" title=" " alt="" coords="386,433,223,399,224,394,387,428"/>
+<area shape="poly" id="edge28_Node000023_Node000004" title=" " alt="" coords="617,26,554,17,443,8,332,17,254,30,178,48,61,83,60,78,176,43,253,25,332,11,443,3,555,11,618,21"/>
+<area shape="poly" id="edge29_Node000023_Node000005" title=" " alt="" coords="591,42,471,42,471,37,591,37"/>
+</map>
