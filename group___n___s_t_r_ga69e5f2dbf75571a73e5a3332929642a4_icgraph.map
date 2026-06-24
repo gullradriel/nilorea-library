@@ -1,0 +1,84 @@
+<map id="char_to_nstr" name="char_to_nstr">
+<area shape="rect" id="Node000001" title="convert a char into a N_STR, shorter version" alt="" coords="847,403,949,428"/>
+<area shape="rect" id="Node000002" href="$n__network_8c.html#a7c2582ea07c5f4ee88130773b219e9ae" title="Parse a raw HTTP request buffer into an N_HTTP_REQUEST." alt="" coords="607,727,785,752"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="898,443,892,498,876,569,864,607,847,644,827,679,800,709,770,729,767,724,797,705,822,675,843,641,859,605,871,568,887,497,893,442"/>
+<area shape="rect" id="Node000006" href="$group___n_e_t_w_o_r_k___m_s_g.html#ga196134389f2e0b1493154c73a7133df0" title="Add a copy of char *str to the string list in the message." alt="" coords="621,29,771,55"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="895,389,893,324,881,237,868,191,851,146,827,104,797,68,769,52,772,47,800,64,832,101,856,144,874,189,886,236,898,324,900,389"/>
+<area shape="rect" id="Node000011" href="$group___a_v_r_o.html#ga1f884095803d2adbb4b5663fe7667f8d" title="Read an Avro object container file and produce a JSON file using a schema file." alt="" coords="630,128,762,153"/>
+<area shape="poly" id="edge11_Node000001_Node000011" title=" " alt="" coords="891,390,882,344,865,286,837,226,819,199,797,175,780,163,761,154,764,150,783,158,800,171,823,195,842,223,870,284,887,342,896,389"/>
+<area shape="rect" id="Node000012" href="$ex__avro_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="423,128,477,153"/>
+<area shape="poly" id="edge21_Node000001_Node000012" title=" " alt="" coords="889,390,878,351,860,304,833,258,816,237,797,219,748,201,656,181,477,148,478,142,658,176,749,196,800,214,820,233,838,255,865,302,883,349,894,388"/>
+<area shape="rect" id="Node000013" href="$group___a_v_r_o.html#gacfc165b0e6a73dc5f2e9c7e2c1f1ed0a" title="Convert Avro N_STR to JSON N_STR using schema N_STR (all in&#45;memory)" alt="" coords="609,79,783,104"/>
+<area shape="poly" id="edge13_Node000001_Node000013" title=" " alt="" coords="894,389,889,332,874,258,862,220,845,182,824,147,797,117,781,106,784,102,800,113,828,144,850,180,867,218,879,257,894,331,899,388"/>
+<area shape="rect" id="Node000014" href="$ex__accept__pool__client_8c.html#aab312f9d63dc3375f09457ffaeebdb5f" title="Echo mode: connect, send a message, receive echo, close." alt="" coords="623,229,769,255"/>
+<area shape="poly" id="edge15_Node000001_Node000014" title=" " alt="" coords="885,391,852,328,827,296,797,268,768,254,771,249,800,264,831,292,857,326,889,389"/>
+<area shape="rect" id="Node000016" href="$ex__network__ssl_8c.html#ad5b895a56a61fbde8a26d1a142777fff" title=" " alt="" coords="635,279,757,304"/>
+<area shape="poly" id="edge17_Node000001_Node000016" title=" " alt="" coords="878,393,843,354,821,334,797,318,757,302,759,297,800,313,825,330,847,350,882,390"/>
+<area shape="rect" id="Node000019" href="$ex__common_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="669,377,723,403"/>
+<area shape="poly" id="edge20_Node000001_Node000019" title=" " alt="" coords="833,410,723,396,724,391,833,405"/>
+<area shape="rect" id="Node000020" href="$ex__nstr_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="669,427,723,452"/>
+<area shape="poly" id="edge22_Node000001_Node000020" title=" " alt="" coords="833,426,724,439,723,434,832,420"/>
+<area shape="rect" id="Node000021" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga85a7b045847a1152b8f20159ab761e42" title="Open a TCP connection through an HTTP proxy using CONNECT tunneling." alt="" coords="606,476,786,501"/>
+<area shape="poly" id="edge23_Node000001_Node000021" title=" " alt="" coords="863,437,800,466,758,479,756,473,798,461,861,432"/>
+<area shape="rect" id="Node000022" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga6462c9e76995ce75cdac810fe872c0f8" title="Open a TCP connection through an HTTPS proxy using CONNECT tunneling." alt="" coords="593,525,799,551"/>
+<area shape="poly" id="edge24_Node000001_Node000022" title=" " alt="" coords="881,441,847,479,824,499,800,515,770,528,768,523,797,510,821,494,843,475,877,437"/>
+<area shape="rect" id="Node000023" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaab69390194fc9d0b8aed9fa6ecb396a2" title="Connect to an SSE endpoint and start reading events." alt="" coords="637,328,755,353"/>
+<area shape="poly" id="edge25_Node000001_Node000023" title=" " alt="" coords="862,398,798,367,754,354,756,349,800,362,865,393"/>
+<area shape="rect" id="Node000025" href="$group___c_y_p_h_e_r___v_i_g_e_n_e_r_e.html#gaf9f2b64e60dd5e79279cc32ac7ff8886" title="quick decode data" alt="" coords="601,575,791,600"/>
+<area shape="poly" id="edge27_Node000001_Node000025" title=" " alt="" coords="889,442,856,504,831,537,800,564,775,577,773,572,797,560,827,533,851,501,884,440"/>
+<area shape="rect" id="Node000032" href="$group___c_y_p_h_e_r___v_i_g_e_n_e_r_e.html#ga26872672f67b7c89b6fa9fa01d59ac00" title="quick encode data" alt="" coords="355,681,545,707"/>
+<area shape="poly" id="edge38_Node000001_Node000032" title=" " alt="" coords="894,442,883,480,864,527,837,574,820,595,800,614,760,630,686,648,519,684,517,679,685,643,758,624,797,609,816,591,833,571,859,525,878,479,889,441"/>
+<area shape="rect" id="Node000034" href="$ex__network__mock_8c.html#a61d293f92b078d4ccef399604d78eb8d" title="Request handler: returns JSON for GET /api/test, 404 otherwise." alt="" coords="403,781,497,807"/>
+<area shape="poly" id="edge42_Node000001_Node000034" title=" " alt="" coords="897,442,890,492,873,554,845,618,825,647,800,672,774,690,750,700,726,705,702,705,652,704,625,708,594,716,525,750,471,783,468,779,522,745,592,712,624,702,652,699,702,700,725,699,748,695,772,686,797,668,821,643,840,615,868,552,884,490,892,441"/>
+<area shape="rect" id="Node000036" href="$ex__network__reactor_8c.html#accbae40b6dec2c320bfa9f3284f7f17e" title="Client&#45;side: connect, send one message, wait for the echo, close." alt="" coords="653,776,739,801"/>
+<area shape="poly" id="edge46_Node000001_Node000036" title=" " alt="" coords="900,442,898,507,886,595,874,641,856,687,832,729,800,767,772,784,740,791,739,786,770,779,797,763,827,726,851,685,868,640,881,594,893,507,895,441"/>
+<area shape="rect" id="Node000003" href="$group___n_e_t_w_o_r_k_i_n_g.html#gac5bcf7695b0df7bf207b3b2fd97cc5c3" title="Run the mock server accept loop." alt="" coords="375,856,525,881"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="610,759,595,767,580,779,571,792,562,806,547,821,515,842,483,858,481,854,512,838,544,817,558,803,566,789,576,776,592,762,607,755"/>
+<area shape="rect" id="Node000004" href="$ex__network__mock_8c.html#a3308271a59ff5ad3e513ae0bf55ccd45" title="Thread function that runs the server accept loop." alt="" coords="151,883,263,908"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="362,881,264,892,263,887,361,876"/>
+<area shape="rect" id="Node000005" href="$ex__network__mock_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,832,60,857"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="149,881,59,855,61,850,150,876"/>
+<area shape="rect" id="Node000007" href="$ex__gui__network_8c.html#a07d8343e4e2c78a97a306d45b9663d61" title="build a chat network message" alt="" coords="388,29,512,55"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="607,45,512,45,512,39,607,39"/>
+<area shape="rect" id="Node000008" href="$ex__gui__network_8c.html#aa4647d913424019eee5e62085e66a1c7" title="send button callback" alt="" coords="151,5,264,31"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="373,37,264,26,265,21,374,32"/>
+<area shape="rect" id="Node000010" href="$ex__gui__network_8c.html#a39687dab37f65aa14a11ae8efa363f30" title="process incoming messages on a single network connection" alt="" coords="133,55,281,80"/>
+<area shape="poly" id="edge9_Node000007_Node000010" title=" " alt="" coords="374,53,282,62,281,57,374,47"/>
+<area shape="rect" id="Node000009" href="$ex__gui__network_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,31,60,56"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="138,31,61,42,60,37,137,25"/>
+<area shape="poly" id="edge10_Node000010_Node000009" title=" " alt="" coords="119,58,60,50,61,44,120,53"/>
+<area shape="poly" id="edge12_Node000011_Node000012" title=" " alt="" coords="616,143,478,143,478,138,616,138"/>
+<area shape="poly" id="edge14_Node000013_Node000012" title=" " alt="" coords="619,109,478,138,477,133,618,104"/>
+<area shape="rect" id="Node000015" href="$ex__accept__pool__client_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="423,229,477,255"/>
+<area shape="poly" id="edge16_Node000014_Node000015" title=" " alt="" coords="609,245,478,245,478,239,609,239"/>
+<area shape="rect" id="Node000017" href="$ex__network__ssl_8c.html#a95ec77b084a3ee573c833b9bfbf33ca7" title=" " alt="" coords="375,279,525,304"/>
+<area shape="poly" id="edge18_Node000016_Node000017" title=" " alt="" coords="621,294,525,294,525,289,621,289"/>
+<area shape="rect" id="Node000018" href="$ex__network__ssl_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="180,279,235,304"/>
+<area shape="poly" id="edge19_Node000017_Node000018" title=" " alt="" coords="361,294,235,294,235,289,361,289"/>
+<area shape="rect" id="Node000024" href="$ex__network__sse_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="423,328,477,353"/>
+<area shape="poly" id="edge26_Node000023_Node000024" title=" " alt="" coords="624,343,478,343,478,338,624,338"/>
+<area shape="rect" id="Node000026" href="$ex__crypto_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,531,60,556"/>
+<area shape="poly" id="edge28_Node000025_Node000026" title=" " alt="" coords="602,571,592,564,580,552,573,540,567,514,562,490,555,480,544,469,513,451,485,441,459,436,433,435,377,440,307,442,249,434,203,425,160,424,136,430,109,442,84,460,65,485,41,532,36,529,60,482,81,457,107,437,135,425,159,419,204,420,250,429,307,437,376,435,433,430,460,431,487,435,515,446,547,465,559,476,566,488,573,513,578,538,584,549,595,560,605,566"/>
+<area shape="rect" id="Node000027" href="$group___c_y_p_h_e_r___v_i_g_e_n_e_r_e.html#ga6c11d1e142ec3b1617128d1425f46174" title="directly vigenere decode a file using key" alt="" coords="365,480,535,505"/>
+<area shape="poly" id="edge29_Node000025_Node000027" title=" " alt="" coords="621,574,592,564,526,536,473,508,475,503,529,531,594,560,623,569"/>
+<area shape="rect" id="Node000029" href="$group___c_y_p_h_e_r___v_i_g_e_n_e_r_e.html#ga08551983c3b919de08ad1c35e0819d28" title="directly vigenere encode a file using key" alt="" coords="365,575,535,600"/>
+<area shape="poly" id="edge33_Node000025_Node000029" title=" " alt="" coords="587,590,536,590,536,585,587,585"/>
+<area shape="rect" id="Node000031" href="$group___c_y_p_h_e_r___v_i_g_e_n_e_r_e.html#ga39a0e0c7d46e5adece091d682fcc87bd" title="get an answer from a root key and a question" alt="" coords="119,631,295,656"/>
+<area shape="poly" id="edge36_Node000025_Node000031" title=" " alt="" coords="609,605,546,614,296,639,295,634,545,609,608,600"/>
+<area shape="poly" id="edge30_Node000027_Node000026" title=" " alt="" coords="400,478,340,462,265,451,226,449,186,451,146,458,109,470,88,482,70,499,44,532,40,529,66,495,85,478,107,465,145,452,185,446,226,444,266,446,341,457,402,473"/>
+<area shape="rect" id="Node000028" href="$group___c_y_p_h_e_r___v_i_g_e_n_e_r_e.html#ga1be4bd0f3b4410ebe4cd4240b804338c" title="directly vigenere decode a file using question and answer" alt="" coords="108,480,307,505"/>
+<area shape="poly" id="edge31_Node000027_Node000028" title=" " alt="" coords="351,495,307,495,307,490,351,490"/>
+<area shape="poly" id="edge32_Node000028_Node000026" title=" " alt="" coords="150,512,61,538,59,533,149,507"/>
+<area shape="poly" id="edge34_Node000029_Node000026" title=" " alt="" coords="351,577,306,571,60,548,61,543,307,566,351,571"/>
+<area shape="rect" id="Node000030" href="$group___c_y_p_h_e_r___v_i_g_e_n_e_r_e.html#ga5ed58e0fb772ca9e2a8b9679b29c08d7" title="directly vigenere encode a file using question and answer" alt="" coords="108,581,307,607"/>
+<area shape="poly" id="edge35_Node000029_Node000030" title=" " alt="" coords="351,593,307,594,307,589,351,587"/>
+<area shape="poly" id="edge37_Node000031_Node000026" title=" " alt="" coords="123,628,107,620,68,590,41,558,45,555,72,586,109,616,126,624"/>
+<area shape="poly" id="edge39_Node000032_Node000026" title=" " alt="" coords="362,711,302,714,236,711,169,697,137,685,106,670,78,644,58,613,43,582,35,557,40,555,48,580,62,611,82,641,110,665,139,680,170,692,236,705,302,709,361,705"/>
+<area shape="rect" id="Node000033" href="$group___c_y_p_h_e_r___v_i_g_e_n_e_r_e.html#gae9d3c2b1247c0c79267521bcfcaf9079" title="get a question generated from the current machine hardware (disk&amp;cpu)" alt="" coords="115,732,300,757"/>
+<area shape="poly" id="edge40_Node000032_Node000033" title=" " alt="" coords="375,712,269,735,268,729,374,707"/>
+<area shape="poly" id="edge41_Node000033_Node000026" title=" " alt="" coords="127,728,106,715,75,675,53,631,40,588,33,557,39,555,45,587,58,629,79,673,110,711,130,724"/>
+<area shape="poly" id="edge43_Node000034_Node000005" title=" " alt="" coords="389,808,307,822,168,837,60,846,60,840,167,832,306,817,389,803"/>
+<area shape="rect" id="Node000035" href="$group___n_e_t_w_o_r_k_i_n_g.html#gae1b10a2b71c314ac0e09ec09b1eb815b" title="Start a mock HTTP server: set up listener and return immediately." alt="" coords="128,781,287,807"/>
+<area shape="poly" id="edge44_Node000034_Node000035" title=" " alt="" coords="389,797,287,797,287,791,389,791"/>
+<area shape="poly" id="edge45_Node000035_Node000005" title=" " alt="" coords="150,813,61,839,59,834,149,808"/>
+</map>

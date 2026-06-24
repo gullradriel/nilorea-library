@@ -1,0 +1,13 @@
+<map id="netw_make_listening" name="netw_make_listening">
+<area shape="rect" id="Node000001" title="Listening network." alt="" coords="315,80,475,105"/>
+<area shape="rect" id="Node000002" href="$ex__accept__pool__server_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="160,5,215,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="350,77,266,45,214,28,216,23,268,39,352,72"/>
+<area shape="rect" id="Node000003" href="$ex__network__ssl_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="160,55,215,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="301,84,215,73,215,68,301,79"/>
+<area shape="rect" id="Node000004" href="$group___n_e_t_w_o_r_k_i_n_g.html#gae1b10a2b71c314ac0e09ec09b1eb815b" title="Start a mock HTTP server: set up listener and return immediately." alt="" coords="108,104,267,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="301,106,267,110,267,105,300,101"/>
+<area shape="rect" id="Node000006" href="$ex__network__reactor_8c.html#a7867af46d6399e59ed1eac5cd45f4177" title="Server&#45;side: accept up to target connections into the reactor, echo one message back per client,..." alt="" coords="142,153,233,179"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="349,113,268,143,230,156,228,151,266,138,347,108"/>
+<area shape="rect" id="Node000005" href="$ex__network__mock_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,104,60,129"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="94,119,60,119,60,114,94,114"/>
+</map>

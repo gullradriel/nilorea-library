@@ -1,0 +1,60 @@
+<map id="n_gui_kvtable_add_row" name="n_gui_kvtable_add_row">
+<area shape="rect" id="Node000001" title="add a row to the KV table" alt="" coords="5,155,180,181"/>
+<area shape="rect" id="Node000002" href="$n__gui_8c.html#a43d66c5d43331495bba1b0a9af099085" title=" " alt="" coords="725,83,903,109"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="180,160,403,142,673,115,722,108,723,114,674,120,404,147,180,165"/>
+<area shape="rect" id="Node000008" href="$n__gui_8c.html#af0aa62098ad8f912d3784636ade2b5ad" title=" " alt="" coords="228,79,424,105"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="132,153,272,107,274,112,133,158"/>
+<area shape="rect" id="Node000011" href="$group___g_u_i.html#gaf8589312b4f03f600026c4ca1dda1c3a" title="Add a button widget to a window." alt="" coords="745,182,883,207"/>
+<area shape="poly" id="edge12_Node000001_Node000011" title=" " alt="" coords="180,169,732,189,732,194,180,174"/>
+<area shape="rect" id="Node000018" href="$group___g_u_i.html#gaf39096eb8b4eb9e33c6f413f3ee4a6bc" title="Add a checkbox widget." alt="" coords="735,231,893,257"/>
+<area shape="poly" id="edge21_Node000001_Node000018" title=" " alt="" coords="180,177,228,183,722,233,721,238,228,188,180,182"/>
+<area shape="rect" id="Node000019" href="$group___g_u_i.html#gaeec35133da3aab9eef6507e063bd3482" title="Add a text area widget." alt="" coords="739,281,889,306"/>
+<area shape="poly" id="edge28_Node000001_Node000019" title=" " alt="" coords="130,178,229,208,363,235,499,256,725,283,725,288,498,262,362,240,227,213,128,184"/>
+<area shape="rect" id="Node000020" href="$group___g_u_i.html#ga18c61c70b505d58c108cb56f352cdd37" title="set the text content of a textarea widget" alt="" coords="237,30,415,55"/>
+<area shape="poly" id="edge35_Node000001_Node000020" title=" " alt="" coords="106,153,156,111,190,86,227,66,248,57,250,62,229,71,193,91,160,115,109,157"/>
+<area shape="rect" id="Node000003" href="$n__gui_8c.html#adf6ce1b72400daecc1031525d7934ec8" title="capture normalized coords for a single widget relative to its parent window" alt="" coords="955,76,1125,116"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="904,93,941,93,941,99,904,99"/>
+<area shape="rect" id="Node000004" href="$group___g_u_i.html#ga9072d6f6b2708518c4c3d5d21849f11e" title="Get a widget pointer by id." alt="" coords="972,26,1108,51"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="864,81,976,52,977,57,866,86"/>
+<area shape="rect" id="Node000006" href="$group___g_u_i.html#ga932fd1ac880df86b92a25ced736298be" title="Get a window pointer by id." alt="" coords="969,141,1111,166"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="866,106,977,135,976,140,864,111"/>
+<area shape="rect" id="Node000005" href="$group___h_a_s_h___t_a_b_l_e.html#ga009f66a508dcea120e0cd2b34805e5a2" title="get pointer at &#39;key&#39; from &#39;table&#39;" alt="" coords="1204,26,1292,51"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="1109,36,1190,36,1190,41,1109,41"/>
+<area shape="rect" id="Node000007" href="$n__gui_8c.html#ac4c3cab227dd7eabfc2e94f8f8d6d1ae" title="helper: find a window node in the context list by id" alt="" coords="1173,141,1323,166"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="1111,151,1160,151,1160,156,1111,156"/>
+<area shape="rect" id="Node000009" href="$group___g_u_i.html#ga6fe818a0fe575fd78979005c11a75f9e" title="remove a row by index (hides widgets, marks inactive)" alt="" coords="472,79,673,105"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="424,89,458,89,458,95,424,95"/>
+<area shape="poly" id="edge9_Node000009_Node000002" title=" " alt="" coords="674,91,711,92,711,97,673,96"/>
+<area shape="rect" id="Node000010" href="$group___g_u_i.html#gae44ff35f5ed481842d2169227718fbf9" title="Show or hide a widget." alt="" coords="721,30,907,55"/>
+<area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="635,77,737,56,738,61,636,82"/>
+<area shape="poly" id="edge11_Node000010_Node000004" title=" " alt="" coords="907,39,958,38,958,43,907,44"/>
+<area shape="poly" id="edge14_Node000011_Node000003" title=" " alt="" coords="840,180,954,127,973,119,975,124,956,132,842,184"/>
+<area shape="poly" id="edge20_Node000011_Node000006" title=" " alt="" coords="882,180,956,166,957,171,883,185"/>
+<area shape="rect" id="Node000012" href="$n__gui_8c.html#a933ef0d2dde83dca8035599d27f8c65c" title="helper: destroy a single widget (called by list destructor)" alt="" coords="975,289,1105,314"/>
+<area shape="poly" id="edge13_Node000011_Node000012" title=" " alt="" coords="881,205,908,218,924,232,933,247,941,262,956,275,966,281,964,286,953,280,937,265,928,250,920,236,905,222,879,210"/>
+<area shape="rect" id="Node000013" href="$n__gui_8c.html#aa8f98017db6e47e1cc7856ebe0f2f25f" title="helper: allocate and initialise a base widget" alt="" coords="987,338,1093,363"/>
+<area shape="poly" id="edge15_Node000011_Node000013" title=" " alt="" coords="884,204,908,218,921,232,928,245,933,273,939,300,945,312,956,325,975,336,972,341,953,329,941,315,934,301,928,274,923,247,916,235,905,222,882,209"/>
+<area shape="rect" id="Node000014" href="$n__gui_8c.html#a0e1fb16564fb288c37b1834ceb466127" title="helper: register a widget in the hash table" alt="" coords="975,190,1105,215"/>
+<area shape="poly" id="edge16_Node000011_Node000014" title=" " alt="" coords="883,195,961,197,961,203,883,200"/>
+<area shape="rect" id="Node000016" href="$group___l_i_s_t.html#ga4eab319289a83524639ee5e9f0441fdf" title="Add a pointer to the end of the list." alt="" coords="1000,239,1080,265"/>
+<area shape="poly" id="edge18_Node000011_Node000016" title=" " alt="" coords="866,205,988,236,986,241,864,210"/>
+<area shape="rect" id="Node000015" href="$group___h_a_s_h___t_a_b_l_e.html#ga7aebf871db9a69deb5d971b67d532a91" title="put an arbitrary pointer value with given key in the targeted hash table" alt="" coords="1204,190,1292,215"/>
+<area shape="poly" id="edge17_Node000014_Node000015" title=" " alt="" coords="1106,200,1190,200,1190,205,1106,205"/>
+<area shape="rect" id="Node000017" href="$group___l_i_s_t.html#ga678e828550efc8e64a836bb8c713c2f4" title="Allocate a new node to link in a list." alt="" coords="1191,239,1305,265"/>
+<area shape="poly" id="edge19_Node000016_Node000017" title=" " alt="" coords="1080,249,1177,249,1177,255,1080,255"/>
+<area shape="poly" id="edge23_Node000018_Node000003" title=" " alt="" coords="886,229,905,218,922,197,929,175,935,151,953,128,960,122,964,126,957,131,940,154,934,176,927,200,908,222,889,234"/>
+<area shape="poly" id="edge27_Node000018_Node000006" title=" " alt="" coords="878,229,905,218,919,208,929,198,938,187,953,177,970,168,973,173,956,181,942,191,933,201,923,212,908,222,880,234"/>
+<area shape="poly" id="edge22_Node000018_Node000012" title=" " alt="" coords="866,254,977,283,976,288,864,259"/>
+<area shape="poly" id="edge24_Node000018_Node000013" title=" " alt="" coords="881,254,908,267,924,282,933,297,941,311,956,325,975,334,972,339,953,329,937,314,928,299,920,285,905,272,879,259"/>
+<area shape="poly" id="edge25_Node000018_Node000014" title=" " alt="" coords="884,229,961,214,962,220,885,234"/>
+<area shape="poly" id="edge26_Node000018_Node000016" title=" " alt="" coords="893,244,986,248,986,253,893,250"/>
+<area shape="poly" id="edge30_Node000019_Node000003" title=" " alt="" coords="888,279,905,268,918,251,926,235,929,200,932,165,939,146,953,128,959,122,962,126,957,131,944,149,937,166,934,201,931,236,923,254,908,271,891,283"/>
+<area shape="poly" id="edge34_Node000019_Node000006" title=" " alt="" coords="886,278,905,267,922,246,928,224,935,200,953,177,962,170,965,175,957,181,940,202,933,225,927,249,908,271,889,283"/>
+<area shape="poly" id="edge29_Node000019_Node000012" title=" " alt="" coords="890,293,962,296,962,301,890,299"/>
+<area shape="poly" id="edge31_Node000019_Node000013" title=" " alt="" coords="866,304,977,332,976,337,864,309"/>
+<area shape="poly" id="edge32_Node000019_Node000014" title=" " alt="" coords="878,278,905,267,919,257,929,247,938,236,953,226,970,218,973,223,956,230,942,240,933,251,923,261,908,272,880,283"/>
+<area shape="poly" id="edge33_Node000019_Node000016" title=" " alt="" coords="884,278,986,259,987,264,885,283"/>
+<area shape="poly" id="edge37_Node000020_Node000004" title=" " alt="" coords="386,27,472,15,594,6,689,3,785,6,907,15,960,21,959,27,906,20,784,11,689,8,594,11,472,20,387,33"/>
+<area shape="rect" id="Node000021" href="$n__gui_8c.html#a24a87063938ac69c2c8f176c638cb04e" title="helper: strip CR from a string in&#45;place, normalizing CRLF to LF." alt="" coords="511,30,634,55"/>
+<area shape="poly" id="edge36_Node000020_Node000021" title=" " alt="" coords="415,40,498,40,498,45,415,45"/>
+</map>

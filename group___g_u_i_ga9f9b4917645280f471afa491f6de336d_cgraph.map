@@ -1,0 +1,56 @@
+<map id="n_gui_tree_create" name="n_gui_tree_create">
+<area shape="rect" id="Node000001" title="create a tree view in an existing window" alt="" coords="5,300,144,325"/>
+<area shape="rect" id="Node000002" href="$n__gui_8c.html#a168c9d10776346acb4705b9309c2ae6e" title=" " alt="" coords="192,210,340,250"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="104,297,205,253,207,258,106,302"/>
+<area shape="rect" id="Node000016" href="$group___g_u_i.html#ga2b1fa951e32207312e14af8a7599460d" title="Add a listbox widget." alt="" coords="197,328,335,353"/>
+<area shape="poly" id="edge20_Node000001_Node000016" title=" " alt="" coords="145,320,184,326,183,331,144,325"/>
+<area shape="rect" id="Node000003" href="$group___g_u_i.html#gaa5e43a9fa89ee739639261f463bbdd46" title="toggle expand/collapse of a node" alt="" coords="388,164,581,189"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="340,209,418,190,419,195,341,215"/>
+<area shape="rect" id="Node000004" href="$group___g_u_i.html#ga6223450c846ae4c7a7600b6e0eddf3ce" title="rebuild the listbox to reflect current tree state" alt="" coords="633,164,775,189"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="582,174,619,174,619,179,582,179"/>
+<area shape="rect" id="Node000005" href="$n__gui_8c.html#a409e5643c05f493861e75e62da8db774" title=" " alt="" coords="832,9,1019,35"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="711,162,755,105,787,72,825,44,838,37,841,42,828,48,791,76,759,108,715,166"/>
+<area shape="rect" id="Node000006" href="$group___g_u_i.html#ga4f31177d90db65f46adc8f2a9ac3a7db" title="add an item to a listbox widget" alt="" coords="837,59,1013,84"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="723,162,768,133,826,102,867,86,869,91,828,107,771,137,725,166"/>
+<area shape="rect" id="Node000010" href="$group___g_u_i.html#gaac067d395edb43d7cd0414442d30afea" title="remove all items from a listbox widget" alt="" coords="1098,107,1245,132"/>
+<area shape="poly" id="edge9_Node000004_Node000010" title=" " alt="" coords="775,163,826,155,1084,125,1084,131,827,161,776,168"/>
+<area shape="rect" id="Node000011" href="$group___g_u_i.html#ga069c3121b216d562b6c5085fb4715f0f" title="get the current scroll offset (in items)" alt="" coords="1082,157,1261,197"/>
+<area shape="poly" id="edge11_Node000004_Node000011" title=" " alt="" coords="775,174,1069,174,1069,179,775,179"/>
+<area shape="rect" id="Node000012" href="$group___g_u_i.html#gabd455453e0cb4a8925105287bb36383a" title="set the scroll offset (in items), clamps to valid range" alt="" coords="1083,221,1260,261"/>
+<area shape="poly" id="edge13_Node000004_Node000012" title=" " alt="" coords="776,184,1069,224,1069,229,775,189"/>
+<area shape="rect" id="Node000013" href="$group___g_u_i.html#ga484a9169267d9aceb78b016b9fba5c53" title="set the selection state of a listbox item" alt="" coords="827,279,1024,304"/>
+<area shape="poly" id="edge15_Node000004_Node000013" title=" " alt="" coords="725,187,771,218,828,250,876,271,874,276,825,255,768,222,722,192"/>
+<area shape="rect" id="Node000014" href="$group___g_u_i.html#ga84ff1d0b8cb061d3424a124a65eb1823" title="get the index of the currently selected node, or &#45;1 when nothing is selected or the selection points ..." alt="" coords="833,328,1017,353"/>
+<area shape="poly" id="edge17_Node000004_Node000014" title=" " alt="" coords="715,188,758,249,790,284,828,313,842,321,840,325,825,318,787,288,754,252,711,191"/>
+<area shape="rect" id="Node000007" href="$n__gui_8c.html#a89f9b7469455caceee639652cf4bd6ce" title="helper: ensure items array has room for one more, returns 1 on success" alt="" coords="1119,5,1224,31"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="984,56,1105,30,1106,35,986,61"/>
+<area shape="rect" id="Node000008" href="$group___g_u_i.html#ga9072d6f6b2708518c4c3d5d21849f11e" title="Get a widget pointer by id." alt="" coords="1319,196,1455,221"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="1013,58,1073,56,1139,59,1207,70,1272,92,1303,110,1331,134,1371,183,1367,186,1327,138,1300,115,1270,96,1206,75,1138,64,1073,61,1014,63"/>
+<area shape="rect" id="Node000009" href="$group___h_a_s_h___t_a_b_l_e.html#ga009f66a508dcea120e0cd2b34805e5a2" title="get pointer at &#39;key&#39; from &#39;table&#39;" alt="" coords="1503,196,1591,221"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="1455,206,1489,206,1489,211,1455,211"/>
+<area shape="poly" id="edge10_Node000010_Node000008" title=" " alt="" coords="1233,130,1272,142,1317,164,1356,186,1353,191,1314,168,1270,147,1231,135"/>
+<area shape="poly" id="edge12_Node000011_Node000008" title=" " alt="" coords="1261,187,1305,194,1304,199,1261,193"/>
+<area shape="poly" id="edge14_Node000012_Node000008" title=" " alt="" coords="1260,225,1305,218,1306,223,1261,230"/>
+<area shape="poly" id="edge16_Node000013_Node000008" title=" " alt="" coords="1024,295,1143,292,1207,284,1270,270,1316,251,1356,227,1358,232,1319,256,1271,275,1208,289,1144,297,1024,300"/>
+<area shape="rect" id="Node000015" href="$group___g_u_i.html#ga75f653e37bfaa036434b4606efda9089" title="get the index of the first selected item in a listbox" alt="" coords="1072,336,1271,361"/>
+<area shape="poly" id="edge18_Node000014_Node000015" title=" " alt="" coords="1018,341,1058,342,1058,348,1018,346"/>
+<area shape="poly" id="edge19_Node000015_Node000008" title=" " alt="" coords="1225,334,1269,314,1323,273,1364,230,1368,234,1326,277,1272,319,1227,338"/>
+<area shape="rect" id="Node000017" href="$n__gui_8c.html#a933ef0d2dde83dca8035599d27f8c65c" title="helper: destroy a single widget (called by list destructor)" alt="" coords="420,213,549,239"/>
+<area shape="poly" id="edge21_Node000016_Node000017" title=" " alt="" coords="279,326,325,288,387,249,408,240,410,245,389,254,328,292,283,330"/>
+<area shape="rect" id="Node000018" href="$n__gui_8c.html#adf6ce1b72400daecc1031525d7934ec8" title="capture normalized coords for a single widget relative to its parent window" alt="" coords="399,263,570,303"/>
+<area shape="poly" id="edge22_Node000016_Node000018" title=" " alt="" coords="315,325,394,304,395,309,316,331"/>
+<area shape="rect" id="Node000019" href="$n__gui_8c.html#aa8f98017db6e47e1cc7856ebe0f2f25f" title="helper: allocate and initialise a base widget" alt="" coords="431,328,538,353"/>
+<area shape="poly" id="edge23_Node000016_Node000019" title=" " alt="" coords="336,338,418,338,418,343,336,343"/>
+<area shape="rect" id="Node000020" href="$n__gui_8c.html#a0e1fb16564fb288c37b1834ceb466127" title="helper: register a widget in the hash table" alt="" coords="419,377,550,403"/>
+<area shape="poly" id="edge24_Node000016_Node000020" title=" " alt="" coords="324,351,415,372,414,377,322,356"/>
+<area shape="rect" id="Node000022" href="$group___l_i_s_t.html#ga4eab319289a83524639ee5e9f0441fdf" title="Add a pointer to the end of the list." alt="" coords="445,427,525,452"/>
+<area shape="poly" id="edge26_Node000016_Node000022" title=" " alt="" coords="286,351,331,382,389,413,432,427,430,432,387,418,328,387,283,356"/>
+<area shape="rect" id="Node000024" href="$group___g_u_i.html#ga932fd1ac880df86b92a25ced736298be" title="Get a window pointer by id." alt="" coords="413,476,556,501"/>
+<area shape="poly" id="edge28_Node000016_Node000024" title=" " alt="" coords="278,352,322,406,353,436,389,462,402,469,400,473,387,467,350,441,318,409,274,355"/>
+<area shape="rect" id="Node000021" href="$group___h_a_s_h___t_a_b_l_e.html#ga7aebf871db9a69deb5d971b67d532a91" title="put an arbitrary pointer value with given key in the targeted hash table" alt="" coords="660,377,748,403"/>
+<area shape="poly" id="edge25_Node000020_Node000021" title=" " alt="" coords="550,387,646,387,646,393,550,393"/>
+<area shape="rect" id="Node000023" href="$group___l_i_s_t.html#ga678e828550efc8e64a836bb8c713c2f4" title="Allocate a new node to link in a list." alt="" coords="647,427,761,452"/>
+<area shape="poly" id="edge27_Node000022_Node000023" title=" " alt="" coords="525,437,633,437,633,442,525,442"/>
+<area shape="rect" id="Node000025" href="$n__gui_8c.html#ac4c3cab227dd7eabfc2e94f8f8d6d1ae" title="helper: find a window node in the context list by id" alt="" coords="629,476,779,501"/>
+<area shape="poly" id="edge29_Node000024_Node000025" title=" " alt="" coords="556,486,616,486,616,491,556,491"/>
+</map>

@@ -1,0 +1,44 @@
+<map id="n_gui_listbox_add_item" name="n_gui_listbox_add_item">
+<area shape="rect" id="Node000001" title="add an item to a listbox" alt="" coords="824,200,1000,225"/>
+<area shape="rect" id="Node000002" href="$ex__gui__network_8c.html#ac6afbec2a7163a494c9003ec5cdf78b1" title="add a line to the chat log listbox" alt="" coords="649,52,757,77"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="880,194,721,79,724,75,883,189"/>
+<area shape="rect" id="Node000006" href="$ex__gui_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="675,174,730,200"/>
+<area shape="poly" id="edge7_Node000001_Node000006" title=" " alt="" coords="810,203,730,193,730,188,810,197"/>
+<area shape="rect" id="Node000007" href="$group___g_u_i.html#ga6223450c846ae4c7a7600b6e0eddf3ce" title="rebuild the listbox to reflect current tree state" alt="" coords="631,224,774,249"/>
+<area shape="poly" id="edge8_Node000001_Node000007" title=" " alt="" coords="811,227,774,231,774,226,810,221"/>
+<area shape="rect" id="Node000015" href="$ex__gui__dictionary_8c.html#ac2b4710926072989f7b35c6385c3ea67" title=" " alt="" coords="629,424,776,449"/>
+<area shape="poly" id="edge16_Node000001_Node000015" title=" " alt="" coords="892,237,718,425,714,421,888,233"/>
+<area shape="rect" id="Node000003" href="$ex__gui__network_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="239,26,293,52"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="666,48,626,30,581,16,541,10,500,8,419,12,347,23,294,35,293,29,346,18,418,7,500,3,541,5,582,11,628,25,668,43"/>
+<area shape="rect" id="Node000004" href="$ex__gui__network_8c.html#aa4647d913424019eee5e62085e66a1c7" title="send button callback" alt="" coords="428,26,541,52"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="635,59,541,48,542,43,636,54"/>
+<area shape="rect" id="Node000005" href="$ex__gui__network_8c.html#a39687dab37f65aa14a11ae8efa363f30" title="process incoming messages on a single network connection" alt="" coords="411,76,559,101"/>
+<area shape="poly" id="edge5_Node000002_Node000005" title=" " alt="" coords="636,74,559,83,559,78,635,69"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="414,42,293,42,293,36,414,36"/>
+<area shape="poly" id="edge6_Node000005_Node000003" title=" " alt="" coords="414,75,293,48,294,42,415,70"/>
+<area shape="rect" id="Node000008" href="$group___g_u_i.html#gac4c105a89d5abf98f854d2226b06a7ff" title="add a node to the tree" alt="" coords="405,125,565,150"/>
+<area shape="poly" id="edge9_Node000007_Node000008" title=" " alt="" coords="641,221,628,213,613,200,603,187,594,175,580,164,555,153,557,148,583,159,598,172,608,184,617,197,631,209,644,216"/>
+<area shape="rect" id="Node000009" href="$group___g_u_i.html#gad4cae4fb862fff562644a77d71b81b6a" title="remove a node and its entire subtree; remaining node indices are compacted (callers holding indices a..." alt="" coords="391,174,578,200"/>
+<area shape="poly" id="edge10_Node000007_Node000009" title=" " alt="" coords="632,223,541,202,542,197,633,218"/>
+<area shape="rect" id="Node000010" href="$group___g_u_i.html#ga1f74980b7b6d0dd3fafab4b3a60620ff" title="change the display label of a node" alt="" coords="407,224,563,249"/>
+<area shape="poly" id="edge11_Node000007_Node000010" title=" " alt="" coords="617,239,563,239,563,234,617,234"/>
+<area shape="rect" id="Node000011" href="$group___g_u_i.html#ga7ce23044a63ed1d4fab1eb29241d529a" title="programmatically select a node; ancestors are expanded so the node is visible, and the listbox scroll..." alt="" coords="393,273,576,298"/>
+<area shape="poly" id="edge12_Node000007_Node000011" title=" " alt="" coords="633,255,542,276,541,270,632,249"/>
+<area shape="rect" id="Node000012" href="$group___g_u_i.html#gaa5e43a9fa89ee739639261f463bbdd46" title="toggle expand/collapse of a node" alt="" coords="388,322,581,348"/>
+<area shape="poly" id="edge13_Node000007_Node000012" title=" " alt="" coords="674,259,632,286,582,312,546,325,544,320,580,307,629,282,671,255"/>
+<area shape="rect" id="Node000013" href="$n__gui_8c.html#a168c9d10776346acb4705b9309c2ae6e" title=" " alt="" coords="192,315,340,355"/>
+<area shape="poly" id="edge14_Node000012_Node000013" title=" " alt="" coords="374,338,340,338,340,332,374,332"/>
+<area shape="rect" id="Node000014" href="$group___g_u_i.html#ga9f9b4917645280f471afa491f6de336d" title="create a tree view in an existing window" alt="" coords="5,322,144,348"/>
+<area shape="poly" id="edge15_Node000013_Node000014" title=" " alt="" coords="178,338,144,338,144,332,178,332"/>
+<area shape="rect" id="Node000016" href="$ex__gui__dictionary_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="239,448,293,473"/>
+<area shape="poly" id="edge17_Node000015_Node000016" title=" " alt="" coords="639,423,581,414,484,404,442,405,389,414,336,430,292,450,290,445,334,425,387,408,442,400,484,399,582,408,640,418"/>
+<area shape="rect" id="Node000017" href="$ex__gui__dictionary_8c.html#a5fb04328bdb8a1813cdadbae3fd4d206" title=" " alt="" coords="427,424,542,449"/>
+<area shape="poly" id="edge18_Node000015_Node000017" title=" " alt="" coords="616,439,542,439,542,434,616,434"/>
+<area shape="rect" id="Node000018" href="$ex__gui__dictionary_8c.html#a69e5413dc851879f0de61528b69bf58a" title=" " alt="" coords="403,473,567,498"/>
+<area shape="poly" id="edge20_Node000015_Node000018" title=" " alt="" coords="633,455,542,476,541,470,632,449"/>
+<area shape="rect" id="Node000019" href="$ex__gui__dictionary_8c.html#a45618a3fb4de622def3bb5b9babef017" title=" " alt="" coords="413,522,556,548"/>
+<area shape="poly" id="edge22_Node000015_Node000019" title=" " alt="" coords="675,460,632,487,582,513,549,525,548,520,580,509,630,483,672,455"/>
+<area shape="poly" id="edge19_Node000017_Node000016" title=" " alt="" coords="414,447,294,460,293,455,413,441"/>
+<area shape="poly" id="edge21_Node000018_Node000016" title=" " alt="" coords="389,477,293,466,294,461,389,472"/>
+<area shape="poly" id="edge23_Node000019_Node000016" title=" " alt="" coords="413,521,387,514,293,475,295,470,389,508,414,516"/>
+</map>

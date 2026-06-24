@@ -1,0 +1,19 @@
+<map id="ISO_MAP" name="ISO_MAP">
+<area shape="rect" id="Node000001" title="Height&#45;aware isometric map with terrain and height layers, per&#45;cell height values,..." alt="" coords="207,691,392,1016"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="227,5,258,71"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="228,53,184,89,126,144,69,215,46,255,28,297,12,352,9,398,14,443,28,501,39,539,55,576,97,646,146,709,197,762,193,766,142,712,92,649,51,578,34,541,22,502,9,444,3,398,7,352,23,295,41,253,65,212,122,141,181,85,225,49"/>
+<area shape="rect" id="Node000003" href="$group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#struct_i_s_o___t_i_l_e___s_e_g_m_e_n_t_s" title="Per&#45;tile height segments." alt="" coords="102,544,252,609"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="229,72,204,134,184,207,173,295,170,383,175,528,170,528,164,383,167,295,178,206,199,132,225,70"/>
+<area shape="rect" id="Node000004" href="$group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#struct_i_s_o___t_i_l_e___s_e_g_m_e_n_t" title="Single vertical segment of a tile: solid matter from bottom to top." alt="" coords="245,207,386,272"/>
+<area shape="poly" id="edge5_Node000004_Node000002" title=" " alt="" coords="257,70,301,190,296,191,252,72"/>
+<area shape="rect" id="Node000007" href="$group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#struct_i_s_o___d_r_a_w___e_n_t_r_y" title="Draw order entry for segment&#45;sorted rendering." alt="" coords="318,366,450,431"/>
+<area shape="poly" id="edge10_Node000007_Node000002" title=" " alt="" coords="259,38,285,43,318,53,351,69,379,93,398,123,410,155,417,190,419,225,414,293,401,350,396,349,409,292,414,225,412,190,405,157,393,125,375,96,348,73,316,58,284,48,258,44"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="186,609,204,666,207,674,202,676,199,668,181,611"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="280,274,262,297,233,356,211,419,196,478,186,529,181,528,191,477,206,417,228,354,257,295,276,271"/>
+<area shape="rect" id="Node000005" href="$group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#struct_i_s_o___p_r_o_j_e_c_t_i_o_n" title="Axonometric projection parameters." alt="" coords="617,544,740,609"/>
+<area shape="poly" id="edge6_Node000001_Node000005" title=" " alt="" coords="637,612,408,777,404,773,633,607"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="474,207,517,272"/>
+<area shape="poly" id="edge8_Node000001_Node000006" title=" " alt="" coords="501,272,503,338,501,429,489,529,478,580,462,629,437,684,404,735,400,732,432,681,457,627,472,579,483,529,495,428,498,338,496,272"/>
+<area shape="poly" id="edge7_Node000005_Node000006" title=" " alt="" coords="515,271,656,528,651,531,511,273"/>
+<area shape="poly" id="edge9_Node000001_Node000007" title=" " alt="" coords="365,433,341,476,321,526,306,599,299,674,294,674,301,599,316,525,336,474,360,430"/>
+</map>

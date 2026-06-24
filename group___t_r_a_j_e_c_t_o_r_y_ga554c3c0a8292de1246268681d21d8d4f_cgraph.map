@@ -1,0 +1,15 @@
+<map id="trajectory_get_orientation" name="trajectory_get_orientation">
+<area shape="rect" id="Node000001" title="compute only orientation at given time, stores result in out" alt="" coords="5,104,196,129"/>
+<area shape="rect" id="Node000002" href="$n__trajectory_8c.html#a666e72a0af63173609bb4a54177aa654" title="Hermite basis function h00: weights the start position." alt="" coords="284,5,388,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="122,101,176,71,243,40,270,31,271,36,245,44,178,76,124,106"/>
+<area shape="rect" id="Node000003" href="$n__trajectory_8c.html#ae7069e17e6e88f2f763ca89592608dca" title="Hermite basis function h01: weights the end position." alt="" coords="284,55,388,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="161,101,270,78,271,84,162,107"/>
+<area shape="rect" id="Node000004" href="$n__trajectory_8c.html#a6bad0cbbd150cb987c0a2c2874d0070c" title="Hermite basis function h10: weights the start tangent." alt="" coords="284,104,388,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="196,114,270,114,270,119,196,119"/>
+<area shape="rect" id="Node000005" href="$n__trajectory_8c.html#a7a50439f21760c60a343d4bc6d1293cb" title="Hermite basis function h11: weights the end tangent." alt="" coords="284,153,388,179"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="162,127,271,150,270,155,161,132"/>
+<area shape="rect" id="Node000006" href="$n__trajectory_8c.html#afecdaca1aba2c24d9417ce63e384e6a6" title="Load the correct spline segment for a given time when using multi&#45;point paths." alt="" coords="244,203,428,228"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="125,127,179,157,245,188,270,196,268,201,243,192,176,162,122,132"/>
+<area shape="rect" id="Node000007" href="$n__trajectory_8c.html#a7b7db2b132cf0c88f49ce83c2796b614" title="Recompute the Hermite tangent vectors from current start/end states." alt="" coords="476,195,625,235"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="428,213,462,213,462,218,428,218"/>
+</map>

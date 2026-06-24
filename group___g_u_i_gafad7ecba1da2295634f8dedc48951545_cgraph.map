@@ -1,0 +1,15 @@
+<map id="n_gui_tree_tick" name="n_gui_tree_tick">
+<area shape="rect" id="Node000001" title="per&#45;frame poll: reads ctx&#45;&gt;mouse_* to track drag state and fires the on_drop callback on release." alt="" coords="5,31,127,56"/>
+<area shape="rect" id="Node000002" href="$n__gui_8c.html#a02f11ce2584093be689ff25e72a44511" title="Hit&#45;test the mouse against the listbox&#39;s visible rows and fill the out params." alt="" coords="175,31,327,56"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="127,41,161,41,161,46,127,46"/>
+<area shape="rect" id="Node000003" href="$n__gui_8c.html#a9cfcc1f50d1df9c721e0bdba78e93530" title="Return the listbox&#39;s absolute (screen&#45;space) bounds and geometry via out params." alt="" coords="375,23,523,63"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="327,41,361,41,361,46,327,46"/>
+<area shape="rect" id="Node000004" href="$group___g_u_i.html#ga9072d6f6b2708518c4c3d5d21849f11e" title="Get a widget pointer by id." alt="" coords="574,5,710,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="523,31,560,26,561,31,524,36"/>
+<area shape="rect" id="Node000006" href="$group___g_u_i.html#ga932fd1ac880df86b92a25ced736298be" title="Get a window pointer by id." alt="" coords="571,55,713,80"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="524,50,557,54,557,59,523,55"/>
+<area shape="rect" id="Node000005" href="$group___h_a_s_h___t_a_b_l_e.html#ga009f66a508dcea120e0cd2b34805e5a2" title="get pointer at &#39;key&#39; from &#39;table&#39;" alt="" coords="792,5,880,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="710,15,778,15,778,21,710,21"/>
+<area shape="rect" id="Node000007" href="$n__gui_8c.html#ac4c3cab227dd7eabfc2e94f8f8d6d1ae" title="helper: find a window node in the context list by id" alt="" coords="761,55,911,80"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="713,65,748,65,748,70,713,70"/>
+</map>

@@ -1,0 +1,21 @@
+<map id="n_gui_add_dropmenu" name="n_gui_add_dropmenu">
+<area shape="rect" id="Node000001" title="add a dropdown menu widget (button that opens a menu panel with entries)" alt="" coords="5,145,167,171"/>
+<area shape="rect" id="Node000002" href="$n__gui_8c.html#a933ef0d2dde83dca8035599d27f8c65c" title="helper: destroy a single widget (called by list destructor)" alt="" coords="235,5,365,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="96,143,144,94,177,66,213,41,230,33,232,38,216,46,180,70,147,98,100,147"/>
+<area shape="rect" id="Node000003" href="$n__gui_8c.html#adf6ce1b72400daecc1031525d7934ec8" title="capture normalized coords for a single widget relative to its parent window" alt="" coords="215,55,385,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="118,143,214,105,232,98,234,103,216,110,120,148"/>
+<area shape="rect" id="Node000004" href="$n__gui_8c.html#aa8f98017db6e47e1cc7856ebe0f2f25f" title="helper: allocate and initialise a base widget" alt="" coords="247,120,353,145"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="167,146,233,138,233,143,168,151"/>
+<area shape="rect" id="Node000005" href="$n__gui_8c.html#a0e1fb16564fb288c37b1834ceb466127" title="helper: register a widget in the hash table" alt="" coords="235,169,365,195"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="168,164,221,170,220,176,167,170"/>
+<area shape="rect" id="Node000007" href="$group___l_i_s_t.html#ga4eab319289a83524639ee5e9f0441fdf" title="Add a pointer to the end of the list." alt="" coords="260,219,340,244"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="120,168,216,203,247,214,246,219,214,209,119,173"/>
+<area shape="rect" id="Node000009" href="$group___g_u_i.html#ga932fd1ac880df86b92a25ced736298be" title="Get a window pointer by id." alt="" coords="229,268,371,293"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="102,169,150,211,182,234,216,254,231,261,229,266,213,259,179,239,147,215,99,173"/>
+<area shape="rect" id="Node000006" href="$group___h_a_s_h___t_a_b_l_e.html#ga7aebf871db9a69deb5d971b67d532a91" title="put an arbitrary pointer value with given key in the targeted hash table" alt="" coords="464,169,552,195"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="366,179,450,179,450,185,366,185"/>
+<area shape="rect" id="Node000008" href="$group___l_i_s_t.html#ga678e828550efc8e64a836bb8c713c2f4" title="Allocate a new node to link in a list." alt="" coords="451,219,565,244"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="340,229,437,229,437,234,340,234"/>
+<area shape="rect" id="Node000010" href="$n__gui_8c.html#ac4c3cab227dd7eabfc2e94f8f8d6d1ae" title="helper: find a window node in the context list by id" alt="" coords="433,268,583,293"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="371,278,420,278,420,283,371,283"/>
+</map>

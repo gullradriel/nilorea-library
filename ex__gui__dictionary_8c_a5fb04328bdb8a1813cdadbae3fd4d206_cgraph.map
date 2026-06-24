@@ -1,0 +1,47 @@
+<map id="on_clear_click" name="on_clear_click">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,85,120,110"/>
+<area shape="rect" id="Node000002" href="$group___g_u_i.html#ga18c61c70b505d58c108cb56f352cdd37" title="set the text content of a textarea widget" alt="" coords="363,83,541,109"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="120,94,349,94,349,99,120,100"/>
+<area shape="rect" id="Node000006" href="$ex__gui__dictionary_8c.html#ac2b4710926072989f7b35c6385c3ea67" title=" " alt="" coords="168,182,315,207"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="88,108,206,173,204,178,86,112"/>
+<area shape="rect" id="Node000018" href="$ex__gui__dictionary_8c.html#addf7d335322d3d0b720609240952af16" title=" " alt="" coords="170,34,313,59"/>
+<area shape="poly" id="edge22_Node000001_Node000018" title=" " alt="" coords="108,82,182,61,183,66,109,87"/>
+<area shape="rect" id="Node000003" href="$n__gui_8c.html#a24a87063938ac69c2c8f176c638cb04e" title="helper: strip CR from a string in&#45;place, normalizing CRLF to LF." alt="" coords="612,34,735,59"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="509,81,602,60,603,65,510,86"/>
+<area shape="rect" id="Node000004" href="$group___g_u_i.html#ga9072d6f6b2708518c4c3d5d21849f11e" title="Get a widget pointer by id." alt="" coords="605,83,741,109"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="542,93,592,93,592,99,542,99"/>
+<area shape="rect" id="Node000005" href="$group___h_a_s_h___t_a_b_l_e.html#ga009f66a508dcea120e0cd2b34805e5a2" title="get pointer at &#39;key&#39; from &#39;table&#39;" alt="" coords="807,34,895,59"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="719,81,792,60,794,65,720,86"/>
+<area shape="rect" id="Node000007" href="$group___h_a_s_h___t_a_b_l_e.html#ga65d64120ef6c7fc1a08e6870b00996db" title="get next matching keys in table tree" alt="" coords="367,318,537,343"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="264,205,421,308,418,313,261,210"/>
+<area shape="rect" id="Node000012" href="$group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755" title="Empty and Free a list container." alt="" coords="624,231,723,257"/>
+<area shape="poly" id="edge16_Node000006_Node000012" title=" " alt="" coords="300,205,363,216,495,230,610,238,610,244,495,236,362,221,299,210"/>
+<area shape="rect" id="Node000015" href="$group___g_u_i.html#ga4f31177d90db65f46adc8f2a9ac3a7db" title="add an item to a listbox widget" alt="" coords="364,182,540,207"/>
+<area shape="poly" id="edge17_Node000006_Node000015" title=" " alt="" coords="315,192,350,192,350,197,315,197"/>
+<area shape="rect" id="Node000017" href="$group___g_u_i.html#gaac067d395edb43d7cd0414442d30afea" title="remove all items from a listbox widget" alt="" coords="379,133,525,158"/>
+<area shape="poly" id="edge20_Node000006_Node000017" title=" " alt="" coords="296,179,383,159,384,164,297,185"/>
+<area shape="rect" id="Node000008" href="$n__hash_8c.html#a35d5a23776c64cb68260bbd0c4138ee2" title="recursive, helper for ht_get_completion_list, get the list of leaf starting from node" alt="" coords="589,354,757,379"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="531,341,582,349,581,354,530,346"/>
+<area shape="rect" id="Node000009" href="$group___l_i_s_t.html#ga4eab319289a83524639ee5e9f0441fdf" title="Add a pointer to the end of the list." alt="" coords="811,403,891,429"/>
+<area shape="poly" id="edge14_Node000007_Node000009" title=" " alt="" coords="466,342,515,392,551,419,590,439,645,450,702,450,755,442,801,430,802,435,756,447,702,455,645,455,588,444,548,423,512,396,462,345"/>
+<area shape="rect" id="Node000011" href="$n__hash_8c.html#a53aa7d8ce768fab934f0dcad3d4bb8a4" title="retrieve a HASH_NODE at key from table" alt="" coords="604,281,743,306"/>
+<area shape="poly" id="edge11_Node000007_Node000011" title=" " alt="" coords="528,315,590,305,591,310,528,321"/>
+<area shape="poly" id="edge12_Node000007_Node000012" title=" " alt="" coords="478,315,588,267,613,258,615,263,590,272,480,320"/>
+<area shape="rect" id="Node000014" href="$group___l_i_s_t.html#gae4b8e915bc22e7993d2849152ec1c3ac" title="Initialiaze a generic list container to max_items pointers." alt="" coords="608,403,739,429"/>
+<area shape="poly" id="edge15_Node000007_Node000014" title=" " alt="" coords="480,341,590,389,612,397,610,402,588,394,478,346"/>
+<area shape="poly" id="edge8_Node000008_Node000008" title=" " alt="" coords="644,355,638,346,641,336,653,330,673,327,698,331,708,340,704,344,695,336,673,333,655,335,645,339,643,345,648,352"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="720,377,798,399,797,404,719,382"/>
+<area shape="rect" id="Node000010" href="$group___l_i_s_t.html#ga678e828550efc8e64a836bb8c713c2f4" title="Allocate a new node to link in a list." alt="" coords="944,403,1059,429"/>
+<area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="891,413,930,413,930,419,891,419"/>
+<area shape="rect" id="Node000013" href="$group___l_i_s_t.html#ga1dafe7a250ddad51fadd375f057287e7" title="Empty a LIST list of pointers." alt="" coords="805,231,896,257"/>
+<area shape="poly" id="edge13_Node000012_Node000013" title=" " alt="" coords="723,241,791,241,791,247,723,247"/>
+<area shape="poly" id="edge19_Node000015_Node000004" title=" " alt="" coords="504,179,540,167,594,141,640,114,642,118,596,145,542,172,506,184"/>
+<area shape="rect" id="Node000016" href="$n__gui_8c.html#a89f9b7469455caceee639652cf4bd6ce" title="helper: ensure items array has room for one more, returns 1 on success" alt="" coords="621,182,726,207"/>
+<area shape="poly" id="edge18_Node000015_Node000016" title=" " alt="" coords="540,192,607,192,607,197,540,197"/>
+<area shape="poly" id="edge21_Node000017_Node000004" title=" " alt="" coords="509,130,602,109,603,114,510,135"/>
+<area shape="poly" id="edge23_Node000018_Node000005" title=" " alt="" coords="291,31,362,19,473,8,560,3,647,6,758,19,800,28,799,33,757,24,647,11,560,8,474,13,363,24,292,37"/>
+<area shape="rect" id="Node000019" href="$group___g_u_i.html#ga29eeace96f8b79bac7575b83b38d7b90" title="set the text of a label widget" alt="" coords="374,34,530,59"/>
+<area shape="poly" id="edge24_Node000018_Node000019" title=" " alt="" coords="313,44,360,44,360,49,313,49"/>
+<area shape="poly" id="edge25_Node000019_Node000003" title=" " alt="" coords="530,44,598,44,598,49,530,49"/>
+<area shape="poly" id="edge26_Node000019_Node000004" title=" " alt="" coords="510,57,603,78,602,83,509,62"/>
+</map>

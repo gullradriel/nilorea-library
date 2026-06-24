@@ -1,0 +1,9 @@
+<map id="n_clock_sync_seed" name="n_clock_sync_seed">
+<area shape="rect" id="Node000001" title="Inject a synthetic (offset, rtt) sample, e.g." alt="" coords="5,5,152,31"/>
+<area shape="rect" id="Node000002" href="$group___c_l_o_c_k___s_y_n_c.html#gac45f9989c4e028691596302d0276979f" title="store one (offset, rtt) sample and recompute the estimates." alt="" coords="200,5,388,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="153,15,186,15,186,21,153,21"/>
+<area shape="rect" id="Node000003" href="$group___c_l_o_c_k___s_y_n_c.html#gad4587683aed3b60cb72a2f67433da6a5" title="compute the median of an array of doubles" alt="" coords="436,5,527,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="388,15,422,15,422,21,388,21"/>
+<area shape="rect" id="Node000004" href="$group___c_l_o_c_k___s_y_n_c.html#ga388caadb5b269f83e0fb792e2994c65a" title="comparison function for qsort on doubles" alt="" coords="575,5,676,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="527,15,561,15,561,21,527,21"/>
+</map>

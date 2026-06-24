@@ -1,0 +1,64 @@
+<map id="_n_git_log_error" name="_n_git_log_error">
+<area shape="rect" id="Node000001" title="Log the last libgit2 error." alt="" coords="535,535,661,560"/>
+<area shape="rect" id="Node000002" href="$group___g_i_t.html#gaa62a2b86f35fcdf25b4efd6e66181890" title="Count commits ahead and behind relative to the remote tracking branch." alt="" coords="109,259,261,284"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="590,521,580,474,561,416,530,357,509,332,485,310,460,294,433,282,374,268,315,263,262,264,262,259,316,257,375,262,434,277,462,290,488,306,513,328,534,354,566,414,585,473,596,520"/>
+<area shape="rect" id="Node000003" href="$group___g_i_t.html#gac5b202b61718846e630e4af4ef839bfd" title="Checkout a specific commit (detached HEAD)." alt="" coords="311,55,487,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="591,522,578,429,555,303,523,181,505,134,485,101,472,91,457,83,460,78,475,86,489,98,510,131,528,180,560,302,583,428,596,521"/>
+<area shape="rect" id="Node000004" href="$group___g_i_t.html#ga425ceaeedf8a63fbf67336cc2e3e5491" title="Restore a single file from HEAD (discard working directory changes)." alt="" coords="108,954,263,979"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="596,575,583,661,561,774,546,831,529,882,510,923,488,950,459,969,427,981,394,989,359,993,292,991,236,982,236,976,293,985,359,988,393,984,426,976,457,964,485,946,506,920,524,880,541,829,556,773,578,660,591,574"/>
+<area shape="rect" id="Node000006" href="$group___g_i_t.html#gacd7e1425d01c1ddca7645871c34a9c5d" title="Create a commit from the current index." alt="" coords="130,31,241,56"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="592,521,584,415,564,269,550,196,532,130,511,78,498,58,485,44,455,26,421,14,385,9,348,9,278,18,222,34,221,28,277,13,348,3,385,4,422,9,457,21,488,40,502,55,515,75,537,129,555,195,570,268,589,414,598,521"/>
+<area shape="rect" id="Node000007" href="$group___g_i_t.html#gaaa0b9c375178e95e7b9f9be8573549d9" title="Create a new branch from HEAD." alt="" coords="109,107,262,132"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="595,522,592,452,579,358,565,308,545,260,519,215,485,176,461,158,434,144,376,125,317,117,262,116,262,110,317,111,377,120,436,139,464,154,488,172,523,212,550,257,570,306,584,357,598,451,600,521"/>
+<area shape="rect" id="Node000008" href="$group___g_i_t.html#gaba53c3a4517fb48ecd0dd29b61dc46d2" title="Get the name of the current branch." alt="" coords="319,359,478,384"/>
+<area shape="poly" id="edge9_Node000001_Node000008" title=" " alt="" coords="581,524,543,465,516,433,485,406,448,387,450,382,488,402,520,430,547,462,586,521"/>
+<area shape="rect" id="Node000009" href="$group___g_i_t.html#ga3396cc3e34ee70737b0f4fb476cfddb9" title="Fetch from &quot;origin&quot; and fast&#45;forward merge the current branch." alt="" coords="143,308,228,334"/>
+<area shape="poly" id="edge28_Node000001_Node000009" title=" " alt="" coords="588,522,576,482,555,434,525,387,507,367,485,350,454,333,421,322,351,310,284,310,229,316,228,311,284,305,351,305,422,317,456,329,488,345,510,363,530,384,560,432,581,480,593,521"/>
+<area shape="rect" id="Node000010" href="$group___g_i_t.html#ga2f3b8e81096fbd71836b5d80794aa5b4" title="Push the current branch to the &quot;origin&quot; remote." alt="" coords="139,410,231,435"/>
+<area shape="poly" id="edge29_Node000001_Node000010" title=" " alt="" coords="577,526,538,486,513,467,486,451,419,431,350,421,285,418,232,420,231,415,285,413,350,415,420,425,488,447,516,462,541,482,581,523"/>
+<area shape="rect" id="Node000011" href="$group___g_i_t.html#gaf40ecd5db5c4ce7f6da536b1ccc3e707" title="Delete a local branch." alt="" coords="109,158,262,183"/>
+<area shape="poly" id="edge14_Node000001_Node000011" title=" " alt="" coords="594,522,589,460,573,378,559,335,540,294,516,256,485,223,461,206,434,192,376,174,316,166,262,166,262,160,317,161,377,169,436,187,463,201,488,219,520,252,545,291,564,333,578,377,594,459,599,521"/>
+<area shape="rect" id="Node000012" href="$group___g_i_t.html#ga1188ae2b5fc15f100e80c026cdaa5509" title="Get a diff between two commits identified by hash." alt="" coords="325,460,472,486"/>
+<area shape="poly" id="edge16_Node000001_Node000012" title=" " alt="" coords="558,532,486,501,447,488,449,483,488,496,560,527"/>
+<area shape="rect" id="Node000013" href="$group___g_i_t.html#gadcb21aa14931461cd2fb20479c975121" title="Get a diff of the working directory against the index." alt="" coords="116,208,255,234"/>
+<area shape="poly" id="edge17_Node000001_Node000013" title=" " alt="" coords="592,521,584,467,566,397,553,361,535,327,512,295,485,268,459,251,431,238,371,221,310,215,255,216,255,210,310,210,372,216,433,233,462,247,488,264,516,292,539,324,557,359,572,396,590,466,597,520"/>
+<area shape="rect" id="Node000014" href="$group___g_i_t.html#ga1f4ee8d080352aa2f522e84b24c6e53f" title="Fetch from the &quot;origin&quot; remote without merging." alt="" coords="351,559,446,584"/>
+<area shape="poly" id="edge19_Node000001_Node000014" title=" " alt="" coords="521,560,447,569,446,563,521,554"/>
+<area shape="rect" id="Node000015" href="$group___g_i_t.html#ga9abc3d37b72a09b5ef9a4cf4abaf24b4" title="Initialize a new Git repository with a custom initial branch name." alt="" coords="346,510,451,535"/>
+<area shape="poly" id="edge20_Node000001_Node000015" title=" " alt="" coords="521,541,452,532,452,526,521,535"/>
+<area shape="rect" id="Node000017" href="$group___g_i_t.html#ga5b8c33648f75db26f4cdc6dbe6e285b8" title="List all local branch names." alt="" coords="112,566,259,591"/>
+<area shape="poly" id="edge23_Node000001_Node000017" title=" " alt="" coords="564,570,528,587,487,600,423,608,357,608,296,602,244,594,245,588,297,597,357,602,422,603,486,594,526,582,562,565"/>
+<area shape="rect" id="Node000018" href="$group___g_i_t.html#ga857ea909f78f255b6813ea60fa044cc7" title="Retrieve commit log entries starting from HEAD." alt="" coords="145,627,226,652"/>
+<area shape="poly" id="edge25_Node000001_Node000018" title=" " alt="" coords="569,571,532,594,488,613,417,630,345,639,226,644,226,638,344,634,416,625,486,608,529,589,567,566"/>
+<area shape="rect" id="Node000019" href="$group___g_i_t.html#gacf4129fc3fedf9f851d595451f346997" title="Open an existing Git repository." alt="" coords="352,762,445,787"/>
+<area shape="poly" id="edge27_Node000001_Node000019" title=" " alt="" coords="591,574,577,612,555,657,526,704,488,744,468,758,447,767,444,762,466,753,485,740,522,701,551,655,572,610,586,573"/>
+<area shape="rect" id="Node000020" href="$group___g_i_t.html#ga3282fbe1d95dee87cd63457d10579e8c" title="Ensure a remote named &quot;origin&quot; exists with the given URL." alt="" coords="319,811,478,836"/>
+<area shape="poly" id="edge30_Node000001_Node000020" title=" " alt="" coords="595,574,585,623,565,684,534,747,513,776,488,802,471,813,468,809,485,798,509,773,529,744,560,682,580,621,590,573"/>
+<area shape="rect" id="Node000021" href="$group___g_i_t.html#gaa1bba95fa353d175319681b76b8a2b7e" title="Stage a file or directory by path." alt="" coords="137,702,234,727"/>
+<area shape="poly" id="edge31_Node000001_Node000021" title=" " alt="" coords="578,573,539,611,488,646,422,674,353,693,288,706,235,713,234,708,288,700,352,688,420,669,485,641,536,607,575,569"/>
+<area shape="rect" id="Node000022" href="$group___g_i_t.html#ga9d2dd67817a8b8572bccf9ef12862415" title="Stage all modified and untracked files." alt="" coords="339,910,459,935"/>
+<area shape="poly" id="edge33_Node000001_Node000022" title=" " alt="" coords="599,574,594,640,579,727,565,774,545,820,520,863,488,900,460,917,457,912,485,896,516,860,541,817,560,772,573,726,589,639,594,574"/>
+<area shape="rect" id="Node000023" href="$group___g_i_t.html#ga5fe6c443184a261818182dbb8ed9940e" title="Get the status of all files in the working directory." alt="" coords="348,860,449,886"/>
+<area shape="poly" id="edge34_Node000001_Node000023" title=" " alt="" coords="598,574,590,632,572,706,558,745,540,784,517,820,488,851,470,863,450,870,449,865,468,858,485,847,512,816,535,781,553,743,567,704,585,631,592,574"/>
+<area shape="rect" id="Node000024" href="$group___g_i_t.html#ga329069b603719bb59dcbded5f7323b80" title="Switch to an existing local branch." alt="" coords="321,1011,476,1036"/>
+<area shape="poly" id="edge36_Node000001_Node000024" title=" " alt="" coords="596,574,583,667,560,792,528,912,509,960,489,993,475,1005,460,1013,457,1009,472,1001,485,990,505,958,523,911,555,790,577,666,591,573"/>
+<area shape="rect" id="Node000025" href="$group___g_i_t.html#ga6fbc82170166565d2cb615d12b1b71d9" title="Unstage a single file (reset from HEAD)." alt="" coords="342,1060,455,1086"/>
+<area shape="poly" id="edge37_Node000001_Node000025" title=" " alt="" coords="597,575,586,678,565,821,550,893,533,959,512,1014,489,1051,474,1062,457,1069,455,1065,471,1058,485,1047,508,1011,528,958,545,892,560,820,581,678,592,574"/>
+<area shape="rect" id="Node000005" href="$ex__git_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,510,60,535"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="165,944,135,895,106,835,76,748,55,660,33,536,38,535,60,659,81,746,110,833,139,892,170,941"/>
+<area shape="poly" id="edge6_Node000006_Node000005" title=" " alt="" coords="144,65,125,79,110,96,94,131,80,181,58,305,44,428,38,510,32,509,39,428,53,305,75,180,89,129,106,93,122,75,141,61"/>
+<area shape="poly" id="edge8_Node000007_Node000005" title=" " alt="" coords="115,142,110,147,93,176,79,218,57,327,44,436,37,510,32,509,38,435,52,326,74,217,88,173,106,143,111,138"/>
+<area shape="poly" id="edge11_Node000008_Node000002" title=" " alt="" coords="365,354,317,326,262,298,231,287,233,282,264,293,320,321,368,349"/>
+<area shape="poly" id="edge10_Node000008_Node000005" title=" " alt="" coords="305,362,257,362,206,367,156,379,109,401,83,425,62,455,40,510,35,508,58,453,79,421,107,396,154,374,205,361,257,357,305,357"/>
+<area shape="poly" id="edge12_Node000008_Node000009" title=" " alt="" coords="331,358,228,334,229,328,332,353"/>
+<area shape="poly" id="edge13_Node000008_Node000010" title=" " alt="" coords="332,390,232,414,231,409,331,385"/>
+<area shape="poly" id="edge15_Node000011_Node000005" title=" " alt="" coords="115,193,110,197,95,222,82,258,60,351,45,445,38,510,33,509,40,444,55,350,77,257,90,220,106,194,111,189"/>
+<area shape="poly" id="edge18_Node000013_Node000005" title=" " alt="" coords="116,243,110,248,86,280,68,315,55,353,46,391,37,461,36,509,31,509,32,461,40,390,49,351,63,313,82,277,106,245,112,239"/>
+<area shape="rect" id="Node000016" href="$group___g_i_t.html#gaf30a0562d2545b0dc500475804cba693" title="Initialize a new Git repository." alt="" coords="144,510,227,535"/>
+<area shape="poly" id="edge21_Node000015_Node000016" title=" " alt="" coords="332,525,227,525,227,520,332,520"/>
+<area shape="poly" id="edge22_Node000016_Node000005" title=" " alt="" coords="130,525,60,525,60,520,130,520"/>
+<area shape="poly" id="edge24_Node000017_Node000005" title=" " alt="" coords="136,563,60,535,61,530,138,558"/>
+<area shape="poly" id="edge26_Node000018_Node000005" title=" " alt="" coords="136,624,106,606,68,570,41,537,45,534,72,567,110,602,139,619"/>
+<area shape="poly" id="edge32_Node000021_Node000005" title=" " alt="" coords="144,697,106,667,81,633,60,596,36,536,41,534,65,594,85,630,110,663,148,693"/>
+<area shape="poly" id="edge35_Node000023_Node000005" title=" " alt="" coords="334,863,279,847,217,822,157,788,130,766,106,741,87,716,72,687,50,628,38,574,32,536,38,535,43,573,55,626,77,685,92,713,110,738,134,762,160,783,220,817,280,842,335,858"/>
+</map>

@@ -1,0 +1,32 @@
+<map id="n_gui_tree_remove_node" name="n_gui_tree_remove_node">
+<area shape="rect" id="Node000001" title="remove a node and its entire subtree; remaining node indices are compacted (callers holding indices a..." alt="" coords="5,164,192,189"/>
+<area shape="rect" id="Node000002" href="$group___g_u_i.html#ga6223450c846ae4c7a7600b6e0eddf3ce" title="rebuild the listbox to reflect current tree state" alt="" coords="240,164,383,189"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="192,174,226,174,226,179,192,179"/>
+<area shape="rect" id="Node000003" href="$n__gui_8c.html#a409e5643c05f493861e75e62da8db774" title=" " alt="" coords="436,9,623,35"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="318,162,360,105,392,72,429,44,441,37,444,42,432,48,396,76,364,108,322,166"/>
+<area shape="rect" id="Node000004" href="$group___g_u_i.html#ga4f31177d90db65f46adc8f2a9ac3a7db" title="add an item to a listbox widget" alt="" coords="441,59,617,84"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="329,162,374,133,430,102,470,86,472,91,432,107,377,137,332,166"/>
+<area shape="rect" id="Node000008" href="$group___g_u_i.html#gaac067d395edb43d7cd0414442d30afea" title="remove all items from a listbox widget" alt="" coords="702,107,849,132"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="383,162,430,155,688,125,688,131,431,161,383,168"/>
+<area shape="rect" id="Node000009" href="$group___g_u_i.html#ga069c3121b216d562b6c5085fb4715f0f" title="get the current scroll offset (in items)" alt="" coords="686,157,865,197"/>
+<area shape="poly" id="edge9_Node000002_Node000009" title=" " alt="" coords="383,174,672,174,672,179,383,179"/>
+<area shape="rect" id="Node000010" href="$group___g_u_i.html#gabd455453e0cb4a8925105287bb36383a" title="set the scroll offset (in items), clamps to valid range" alt="" coords="687,221,864,261"/>
+<area shape="poly" id="edge11_Node000002_Node000010" title=" " alt="" coords="383,184,673,224,673,229,382,189"/>
+<area shape="rect" id="Node000011" href="$group___g_u_i.html#ga484a9169267d9aceb78b016b9fba5c53" title="set the selection state of a listbox item" alt="" coords="431,283,628,308"/>
+<area shape="poly" id="edge13_Node000002_Node000011" title=" " alt="" coords="332,187,377,217,432,250,484,275,481,280,429,255,374,222,329,192"/>
+<area shape="rect" id="Node000012" href="$group___g_u_i.html#ga84ff1d0b8cb061d3424a124a65eb1823" title="get the index of the currently selected node, or &#45;1 when nothing is selected or the selection points ..." alt="" coords="437,332,621,357"/>
+<area shape="poly" id="edge15_Node000002_Node000012" title=" " alt="" coords="322,188,362,251,394,288,432,318,443,324,440,329,429,323,391,291,358,254,317,191"/>
+<area shape="rect" id="Node000005" href="$n__gui_8c.html#a89f9b7469455caceee639652cf4bd6ce" title="helper: ensure items array has room for one more, returns 1 on success" alt="" coords="723,5,828,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="588,56,709,30,710,35,590,61"/>
+<area shape="rect" id="Node000006" href="$group___g_u_i.html#ga9072d6f6b2708518c4c3d5d21849f11e" title="Get a widget pointer by id." alt="" coords="923,196,1059,221"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="617,58,677,56,743,59,811,70,876,92,907,110,935,134,975,183,971,186,931,138,904,115,874,96,810,75,742,64,677,61,618,63"/>
+<area shape="rect" id="Node000007" href="$group___h_a_s_h___t_a_b_l_e.html#ga009f66a508dcea120e0cd2b34805e5a2" title="get pointer at &#39;key&#39; from &#39;table&#39;" alt="" coords="1107,196,1195,221"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="1059,206,1093,206,1093,211,1059,211"/>
+<area shape="poly" id="edge8_Node000008_Node000006" title=" " alt="" coords="837,130,876,142,921,164,960,186,957,191,918,168,874,147,835,135"/>
+<area shape="poly" id="edge10_Node000009_Node000006" title=" " alt="" coords="865,187,909,194,908,199,865,193"/>
+<area shape="poly" id="edge12_Node000010_Node000006" title=" " alt="" coords="864,225,909,218,910,223,865,230"/>
+<area shape="poly" id="edge14_Node000011_Node000006" title=" " alt="" coords="628,298,747,293,812,285,874,270,920,251,960,227,962,232,922,255,875,275,812,290,748,298,628,303"/>
+<area shape="rect" id="Node000013" href="$group___g_u_i.html#ga75f653e37bfaa036434b4606efda9089" title="get the index of the first selected item in a listbox" alt="" coords="676,336,875,361"/>
+<area shape="poly" id="edge16_Node000012_Node000013" title=" " alt="" coords="622,343,662,344,662,349,622,349"/>
+<area shape="poly" id="edge17_Node000013_Node000006" title=" " alt="" coords="829,334,873,314,927,273,968,230,972,234,930,277,876,319,831,338"/>
+</map>

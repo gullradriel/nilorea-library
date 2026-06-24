@@ -1,0 +1,27 @@
+<map id="n_gui_set_widget_visible" name="n_gui_set_widget_visible">
+<area shape="rect" id="Node000001" title="set widget visibility" alt="" coords="1252,107,1437,132"/>
+<area shape="rect" id="Node000002" href="$ex__gui_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="1076,57,1131,83"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1268,106,1130,78,1131,73,1269,101"/>
+<area shape="rect" id="Node000003" href="$group___g_u_i.html#ga6fe818a0fe575fd78979005c11a75f9e" title="remove a row by index (hides widgets, marks inactive)" alt="" coords="1003,107,1204,132"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="1238,122,1204,122,1204,117,1238,117"/>
+<area shape="rect" id="Node000009" href="$group___g_u_i.html#gaf3a0ae0cb7bd6d07b7c1bfd9a971acb2" title="re&#45;stack all sections from y0 by current fold state: hide folded members, show and reposition expande..." alt="" coords="1007,164,1199,189"/>
+<area shape="poly" id="edge10_Node000001_Node000009" title=" " alt="" coords="1278,138,1158,167,1157,161,1276,133"/>
+<area shape="rect" id="Node000004" href="$n__gui_8c.html#af0aa62098ad8f912d3784636ade2b5ad" title=" " alt="" coords="759,56,955,81"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="1026,106,919,84,920,79,1028,101"/>
+<area shape="rect" id="Node000008" href="$ex__gui__kvtable_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,56,60,81"/>
+<area shape="poly" id="edge9_Node000003_Node000008" title=" " alt="" coords="989,122,625,122,401,122,302,117,204,105,60,77,61,72,205,99,302,112,401,117,625,117,989,117"/>
+<area shape="rect" id="Node000005" href="$group___g_u_i.html#gabad9a1d97005f61abfe2245797af31a7" title="add a row to the KV table" alt="" coords="536,56,711,81"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="745,71,711,71,711,66,745,66"/>
+<area shape="rect" id="Node000006" href="$n__gui_8c.html#ab08932fdd1278b1897bc2e8a7b276b62" title=" " alt="" coords="317,5,488,31"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="553,55,458,33,459,28,554,50"/>
+<area shape="poly" id="edge8_Node000005_Node000008" title=" " alt="" coords="522,71,60,71,60,66,522,66"/>
+<area shape="rect" id="Node000007" href="$group___g_u_i.html#ga1fcecdaee4bd79c714ecc3c081aa6176" title="create a KV table in an existing window" alt="" coords="108,5,269,31"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="304,21,269,21,269,15,304,15"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="137,38,61,63,59,57,135,32"/>
+<area shape="rect" id="Node000010" href="$n__gui_8c.html#a0dfd20051f29eefbfcd8d461d00d5166" title=" " alt="" coords="787,157,926,197"/>
+<area shape="poly" id="edge11_Node000009_Node000010" title=" " alt="" coords="994,179,926,179,926,174,994,174"/>
+<area shape="rect" id="Node000012" href="$group___g_u_i.html#ga08e179b5f94087b5741faa0f87bece50" title="set a section&#39;s folded state and relayout; does NOT fire on_toggle (for programmatic restore)" alt="" coords="777,221,936,261"/>
+<area shape="poly" id="edge13_Node000009_Node000012" title=" " alt="" coords="1041,196,935,223,934,218,1039,190"/>
+<area shape="rect" id="Node000011" href="$group___g_u_i.html#gac356ab1506fde88b29467a27f5fd43ed" title="add a section with a header button at header_y (members added next are captured relative to it); retu..." alt="" coords="542,157,705,197"/>
+<area shape="poly" id="edge12_Node000010_Node000011" title=" " alt="" coords="773,179,705,179,705,174,773,174"/>
+</map>

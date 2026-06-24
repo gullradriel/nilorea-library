@@ -1,0 +1,22 @@
+<map id="dr_vec3_add" name="dr_vec3_add">
+<area shape="rect" id="Node000001" title="Vector addition: a + b." alt="" coords="776,79,880,104"/>
+<area shape="rect" id="Node000002" href="$group___d_e_a_d___r_e_c_k_o_n_i_n_g.html#gaf708b8537516093292ba8c44c253c994" title="Extrapolate a kinematic state forward by dt seconds." alt="" coords="565,53,728,79"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="762,85,728,80,729,75,763,80"/>
+<area shape="rect" id="Node000008" href="$group___d_e_a_d___r_e_c_k_o_n_i_n_g.html#gae3ec8bd73cc85eb9ee15c40b64d2fe72" title="Receive a new authoritative state update from the network." alt="" coords="333,104,508,129"/>
+<area shape="poly" id="edge12_Node000001_Node000008" title=" " alt="" coords="762,98,509,114,508,109,762,93"/>
+<area shape="rect" id="Node000003" href="$group___d_e_a_d___r_e_c_k_o_n_i_n_g.html#ga8a69db4e63c58cb8d3953e02411cfc8b" title="Check whether the owner&#39;s true state has diverged from the dead reckoned prediction beyond the config..." alt="" coords="324,55,517,80"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="551,69,517,69,517,64,551,64"/>
+<area shape="rect" id="Node000007" href="$group___d_e_a_d___r_e_c_k_o_n_i_n_g.html#ga445849e14540560606cf516ff7cf219e" title="Compute the dead reckoned display position at a given time." alt="" coords="349,5,493,31"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="572,53,481,33,482,28,573,48"/>
+<area shape="poly" id="edge9_Node000002_Node000008" title=" " alt="" coords="576,84,479,107,477,101,575,79"/>
+<area shape="rect" id="Node000004" href="$ex__iso__astar_8c.html#aded9eafc40df647ed8212e9a7fd82d8d" title=" " alt="" coords="108,31,276,56"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="310,58,276,55,276,49,310,53"/>
+<area shape="rect" id="Node000006" href="$ex__gui__isometric_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="165,80,219,105"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="310,82,220,92,219,87,310,77"/>
+<area shape="rect" id="Node000005" href="$ex__iso__astar_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,31,60,56"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="94,46,60,46,60,41,94,41"/>
+<area shape="poly" id="edge7_Node000007_Node000004" title=" " alt="" coords="335,30,277,37,276,31,334,25"/>
+<area shape="poly" id="edge8_Node000007_Node000006" title=" " alt="" coords="348,37,325,44,301,57,277,70,220,89,219,83,275,65,299,52,323,40,346,32"/>
+<area shape="poly" id="edge10_Node000008_Node000004" title=" " alt="" coords="346,103,323,95,299,83,275,70,242,59,244,54,277,65,301,78,325,90,348,98"/>
+<area shape="poly" id="edge11_Node000008_Node000006" title=" " alt="" coords="320,109,219,98,220,93,320,103"/>
+</map>

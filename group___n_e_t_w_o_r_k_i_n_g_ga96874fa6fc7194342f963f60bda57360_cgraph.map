@@ -1,0 +1,19 @@
+<map id="netw_pool_broadcast" name="netw_pool_broadcast">
+<area shape="rect" id="Node000001" title="broadcast message to pool" alt="" coords="5,153,165,179"/>
+<area shape="rect" id="Node000002" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga10429a9fa106b61c38f28635242ce502" title="Add a message to send in aimed NETWORK." alt="" coords="213,104,333,129"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="134,151,210,130,211,136,135,156"/>
+<area shape="rect" id="Node000008" href="$group___n___s_t_r.html#ga3e30a18ec42d0f4cd8651c442bf62651" title="Duplicate a N_STR." alt="" coords="238,177,309,203"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="166,174,225,181,224,186,165,179"/>
+<area shape="rect" id="Node000003" href="$n__network_8c.html#add7707017912cae7d9e4756824b96cb9" title="capture an error into a NETWORK handle&#39;s ring buffer" alt="" coords="387,5,541,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="288,102,328,71,380,40,396,33,398,38,383,44,331,75,291,106"/>
+<area shape="rect" id="Node000004" href="$group___n___s_t_r.html#ga0a864a4ce4997389f2e5e2e16c51a30a" title="Free a N_STR pointer structure." alt="" coords="411,55,517,80"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="322,101,400,81,401,86,324,107"/>
+<area shape="rect" id="Node000005" href="$group___l_i_s_t.html#ga4eab319289a83524639ee5e9f0441fdf" title="Add a pointer to the end of the list." alt="" coords="424,104,504,129"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="334,114,410,114,410,119,334,119"/>
+<area shape="rect" id="Node000007" href="$n__reactor_8c.html#ab094d0f4f7f61cc7dcd4ab858ca0a668" title="Producer&#45;side wake&#45;up after a netw_add_msg." alt="" coords="381,153,547,179"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="324,127,401,147,400,152,322,132"/>
+<area shape="rect" id="Node000006" href="$group___l_i_s_t.html#ga678e828550efc8e64a836bb8c713c2f4" title="Allocate a new node to link in a list." alt="" coords="595,104,709,129"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="504,114,581,114,581,119,504,119"/>
+<area shape="rect" id="Node000009" href="$group___n___s_t_r.html#ga873edbb1f8787d0a78a13ccbbed9b9f9" title="create a new N_STR string" alt="" coords="423,203,505,228"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="309,192,410,206,409,211,308,197"/>
+</map>

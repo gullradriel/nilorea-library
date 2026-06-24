@@ -1,0 +1,20 @@
+<map id="n_proxy_connect_tunnel_ssl" name="n_proxy_connect_tunnel_ssl">
+<area shape="rect" id="Node000001" title="Open a TCP connection through an HTTPS proxy using CONNECT tunneling." alt="" coords="5,80,211,105"/>
+<area shape="rect" id="Node000002" href="$n__network_8c.html#a916f6d293acb6045de09f252a1608c50" title="Helper: connect a plain TCP socket to host:port." alt="" coords="259,5,409,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="146,77,258,39,279,32,281,37,260,45,148,82"/>
+<area shape="rect" id="Node000003" href="$group___n___s_t_r.html#ga69e5f2dbf75571a73e5a3332929642a4" title="Convert a char into a N_STR, short version." alt="" coords="283,55,385,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="211,78,269,72,269,77,211,84"/>
+<area shape="rect" id="Node000006" href="$group___c_y_p_h_e_r___b_a_s_e64.html#ga8bf1d83b3f1c485357a9ddc6ee5eb7c4" title="encode a N_STR *string" alt="" coords="265,104,403,129"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="211,101,251,105,250,110,211,106"/>
+<area shape="rect" id="Node000008" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga515a427865426bc13b289628217465ce" title="Do not directly use, internal api." alt="" coords="265,165,403,191"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="144,103,288,158,286,163,142,108"/>
+<area shape="rect" id="Node000004" href="$group___n___s_t_r.html#gac4314e9f0ada88300a09d66405d541a8" title="Convert a char into a N_STR, extended version." alt="" coords="477,40,603,65"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="385,61,463,55,464,61,386,66"/>
+<area shape="rect" id="Node000005" href="$group___n___s_t_r.html#ga873edbb1f8787d0a78a13ccbbed9b9f9" title="create a new N_STR string" alt="" coords="671,65,752,91"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="603,59,658,67,657,73,602,65"/>
+<area shape="poly" id="edge7_Node000006_Node000005" title=" " alt="" coords="403,107,657,81,657,86,404,112"/>
+<area shape="rect" id="Node000007" href="$n__base64_8c.html#abc5b7d34cd592682f5ea372cb053cb27" title="get the length of string if it was base64 encoded" alt="" coords="457,141,623,167"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="404,127,457,136,456,142,403,132"/>
+<area shape="rect" id="Node000009" href="$n__network_8c.html#a37b864767e182743c4e041353e6f78a5" title=" " alt="" coords="479,191,601,216"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="404,184,465,191,465,197,403,189"/>
+</map>

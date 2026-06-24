@@ -1,0 +1,15 @@
+<map id="handle_client" name="handle_client">
+<area shape="rect" id="Node000001" title="Handle a single client: read one message, echo it back, close." alt="" coords="733,31,843,56"/>
+<area shape="rect" id="Node000002" href="$ex__accept__pool__server_8c.html#a73a7d88f2444d68248cd25268a69143f" title="Handle client inline in the accept thread and update counter." alt="" coords="295,5,477,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="719,42,477,26,478,21,720,36"/>
+<area shape="rect" id="Node000004" href="$ex__accept__pool__server_8c.html#a1e7c91172714ca8969b9adac492a5423" title="Worker thread function: handles a client and updates counter." alt="" coords="525,56,685,81"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="720,55,686,60,685,55,719,50"/>
+<area shape="rect" id="Node000003" href="$ex__accept__pool__server_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,56,60,81"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="281,29,197,39,109,53,61,64,60,59,107,47,196,34,281,24"/>
+<area shape="rect" id="Node000005" href="$ex__accept__pool__server_8c.html#adfc860fe73ab259d7dda6ff742320ae2" title="Dispatch a client to the thread pool for handling." alt="" coords="320,56,452,81"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="512,71,452,71,452,66,512,66"/>
+<area shape="poly" id="edge5_Node000005_Node000003" title=" " alt="" coords="306,71,60,71,60,66,306,66"/>
+<area shape="rect" id="Node000006" href="$ex__accept__pool__server_8c.html#a82ea734a9b6fe91cfaf50c8d5784d0e4" title="Accept pool callback: dispatches to thread pool." alt="" coords="108,107,247,132"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="320,87,231,109,230,104,319,82"/>
+<area shape="poly" id="edge7_Node000006_Node000003" title=" " alt="" coords="127,105,60,81,61,76,128,99"/>
+</map>

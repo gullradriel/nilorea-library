@@ -1,0 +1,37 @@
+<map id="n_kafka_poll" name="n_kafka_poll">
+<area shape="rect" id="Node000001" title="poll kafka for events" alt="" coords="5,205,108,231"/>
+<area shape="rect" id="Node000002" href="$group___n___s_t_r.html#ga0a864a4ce4997389f2e5e2e16c51a30a" title="Free a N_STR pointer structure." alt="" coords="215,5,320,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="59,204,69,171,88,126,116,79,134,58,154,40,177,28,201,20,202,25,179,33,158,44,138,62,120,82,93,128,74,172,64,206"/>
+<area shape="rect" id="Node000003" href="$group___l_i_s_t.html#ga4eab319289a83524639ee5e9f0441fdf" title="Add a pointer to the end of the list." alt="" coords="227,55,307,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="62,204,95,148,122,116,155,89,183,76,213,69,214,74,185,81,157,94,126,120,100,151,66,207"/>
+<area shape="rect" id="Node000005" href="$group___n___k_a_f_k_a.html#ga7a0a6d08bd00098b411d243c65534aa6" title="destroy a kafka event and set it&#39;s pointer to NULL" alt="" coords="181,104,353,129"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="71,203,108,175,155,146,195,131,197,136,157,151,111,179,75,207"/>
+<area shape="rect" id="Node000006" href="$group___n___k_a_f_k_a.html#ga84613bb586cff1a0584656556b5ad267" title="festroy a kafka event" alt="" coords="427,129,624,155"/>
+<area shape="poly" id="edge8_Node000001_Node000006" title=" " alt="" coords="108,207,432,154,433,160,109,212"/>
+<area shape="rect" id="Node000009" href="$n__kafka_8c.html#ae25ad5db70fa723a1cad7a74f5b27142" title="return a &quot; (file: ...)&quot; log fragment naming the source file(s) of an event" alt="" coords="446,231,605,256"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="108,218,432,236,432,241,108,223"/>
+<area shape="rect" id="Node000010" href="$group___n___k_a_f_k_a.html#ga23b4739a6d38c310417678c7f2334894" title="get a schema from the first 4 bytes of a N_STR *string, returning ntohl of the value" alt="" coords="188,306,347,346"/>
+<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="73,229,110,259,157,290,176,299,174,304,155,295,106,264,70,233"/>
+<area shape="rect" id="Node000012" href="$group___n___k_a_f_k_a.html#ga737def8531a12e84de1d5a47e6eb8b47" title="make a new event from a char *string" alt="" coords="156,371,379,396"/>
+<area shape="poly" id="edge12_Node000001_Node000012" title=" " alt="" coords="65,230,98,291,124,326,158,356,170,363,167,367,154,360,121,330,93,294,61,232"/>
+<area shape="rect" id="Node000016" href="$n__kafka_8c.html#abfb87a1648bdc33d2112bc2080342ec3" title="produce an event on a N_KAFKA *kafka handle" alt="" coords="190,256,345,281"/>
+<area shape="poly" id="edge16_Node000001_Node000016" title=" " alt="" coords="109,228,201,250,200,255,108,233"/>
+<area shape="rect" id="Node000017" href="$group___l_i_s_t.html#gae4b8e915bc22e7993d2849152ec1c3ac" title="Initialiaze a generic list container to max_items pointers." alt="" coords="202,420,333,445"/>
+<area shape="poly" id="edge18_Node000001_Node000017" title=" " alt="" coords="63,230,73,266,91,313,119,363,137,386,158,405,190,422,188,426,154,410,133,390,114,366,86,316,68,267,58,232"/>
+<area shape="rect" id="Node000004" href="$group___l_i_s_t.html#ga678e828550efc8e64a836bb8c713c2f4" title="Allocate a new node to link in a list." alt="" coords="468,55,583,80"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="307,65,454,65,454,70,307,70"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="354,122,413,128,412,134,353,128"/>
+<area shape="rect" id="Node000007" href="$group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755" title="Empty and Free a list container." alt="" coords="702,129,801,155"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="625,139,688,139,688,145,625,145"/>
+<area shape="rect" id="Node000008" href="$group___l_i_s_t.html#ga1dafe7a250ddad51fadd375f057287e7" title="Empty a LIST list of pointers." alt="" coords="879,129,969,155"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="801,139,864,139,864,145,801,145"/>
+<area shape="rect" id="Node000011" href="$group___n___k_a_f_k_a.html#ga977f8a4cde2cb0133453a89360c9ed67" title="get a schema from the first 4 bytes of a char *string, returning ntohl of the value" alt="" coords="446,306,605,346"/>
+<area shape="poly" id="edge11_Node000010_Node000011" title=" " alt="" coords="347,323,432,323,432,329,347,329"/>
+<area shape="rect" id="Node000013" href="$group___n___k_a_f_k_a.html#gac903845a2fb184abee410a713c3890f9" title="create a new empty event" alt="" coords="450,371,601,396"/>
+<area shape="poly" id="edge13_Node000012_Node000013" title=" " alt="" coords="379,381,436,381,436,386,379,386"/>
+<area shape="rect" id="Node000014" href="$group___n___k_a_f_k_a.html#ga365ccb4d2d1601cd9d7c11fcf4acc1c9" title="put a htonl schema id into the first 4 bytes of a N_STR *string" alt="" coords="446,421,605,461"/>
+<area shape="poly" id="edge14_Node000012_Node000014" title=" " alt="" coords="328,393,379,405,433,417,432,422,378,410,327,399"/>
+<area shape="rect" id="Node000015" href="$group___n___k_a_f_k_a.html#ga6167f6e8b0e9d485797bc524162cbf3f" title="put a htonl schema id into the first 4 bytes of a char *string" alt="" coords="672,421,831,461"/>
+<area shape="poly" id="edge15_Node000014_Node000015" title=" " alt="" coords="605,438,658,438,658,443,605,443"/>
+<area shape="poly" id="edge17_Node000016_Node000009" title=" " alt="" coords="345,258,432,250,433,255,345,264"/>
+</map>

@@ -1,0 +1,16 @@
+<map id="_ws_write" name="_ws_write">
+<area shape="rect" id="Node000001" title="write bytes to a WebSocket connection (SSL or plain)" alt="" coords="729,31,816,56"/>
+<area shape="rect" id="Node000002" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga6842dd9d835a0c54959f7d7d8b042e21" title="Connect to a WebSocket server (ws:// or wss://)." alt="" coords="108,5,221,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="716,44,221,23,222,18,716,38"/>
+<area shape="rect" id="Node000004" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaf6653363a969fb5e515cbd58abf124ad" title="Send a WebSocket frame (client always masks)." alt="" coords="588,56,681,81"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="717,56,682,63,681,58,716,51"/>
+<area shape="rect" id="Node000003" href="$ex__network__ws_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,56,60,81"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="119,38,61,61,59,56,117,33"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="583,88,540,97,470,103,399,105,260,100,141,88,60,76,61,71,142,83,260,95,399,100,470,98,540,91,582,82"/>
+<area shape="rect" id="Node000005" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga2a3f1281f3834055477cb9ed50528696" title="Send close frame and close the connection." alt="" coords="444,56,540,81"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="574,71,540,71,540,66,574,66"/>
+<area shape="rect" id="Node000006" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaea7382e265d584a3e0d9ea3f2b20762e" title="Free a WebSocket connection structure." alt="" coords="269,56,396,81"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="430,71,396,71,396,66,430,66"/>
+<area shape="poly" id="edge8_Node000006_Node000002" title=" " alt="" coords="276,55,207,33,208,28,278,49"/>
+<area shape="poly" id="edge7_Node000006_Node000003" title=" " alt="" coords="255,71,60,71,60,66,255,66"/>
+</map>

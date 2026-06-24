@@ -1,0 +1,82 @@
+<map id="main" name="main">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,397,60,423"/>
+<area shape="rect" id="Node000002" href="$ex__git_8c.html#ac67f0c580aa89678ac5074e26fe0ecac" title="Remove a directory tree recursively (simple rm &#45;rf via system)." alt="" coords="137,12,234,37"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="32,397,39,325,52,220,74,117,89,75,106,47,122,35,125,39,110,50,94,78,80,118,58,221,44,326,38,397"/>
+<area shape="rect" id="Node000003" href="$group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755" title="Empty and Free a list container." alt="" coords="136,61,235,87"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="33,397,41,334,56,244,77,155,91,120,106,96,122,84,125,88,110,100,95,123,82,157,61,245,46,335,38,397"/>
+<area shape="rect" id="Node000005" href="$group___g_i_t.html#ga425ceaeedf8a63fbf67336cc2e3e5491" title="Restore a single file from HEAD (discard working directory changes)." alt="" coords="108,160,263,185"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="32,397,36,358,48,304,70,246,86,219,106,195,111,191,114,195,110,199,90,222,75,248,53,305,42,358,37,397"/>
+<area shape="rect" id="Node000008" href="$group___g_i_t.html#ga016fc78515b8cea8fea8b73154319110" title="Close a Git repository and free resources." alt="" coords="138,897,233,923"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="37,423,40,513,51,652,61,724,73,791,90,846,110,883,127,896,124,900,106,886,85,848,68,792,55,725,46,652,35,514,32,423"/>
+<area shape="rect" id="Node000009" href="$group___g_i_t.html#gacd7e1425d01c1ddca7645871c34a9c5d" title="Create a commit from the current index." alt="" coords="130,209,241,235"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="34,397,41,366,54,325,75,282,106,244,116,237,119,241,110,248,80,285,59,327,46,367,39,398"/>
+<area shape="rect" id="Node000010" href="$group___g_i_t.html#gaaa0b9c375178e95e7b9f9be8573549d9" title="Create a new branch from HEAD." alt="" coords="109,259,262,284"/>
+<area shape="poly" id="edge11_Node000001_Node000010" title=" " alt="" coords="36,396,61,346,81,318,106,293,114,288,117,292,110,297,85,321,66,349,41,398"/>
+<area shape="rect" id="Node000011" href="$group___g_i_t.html#gaba53c3a4517fb48ecd0dd29b61dc46d2" title="Get the name of the current branch." alt="" coords="312,359,471,384"/>
+<area shape="poly" id="edge14_Node000001_Node000011" title=" " alt="" coords="60,405,298,379,299,384,60,410"/>
+<area shape="rect" id="Node000012" href="$group___g_i_t.html#gaf40ecd5db5c4ce7f6da536b1ccc3e707" title="Delete a local branch." alt="" coords="315,559,468,584"/>
+<area shape="poly" id="edge16_Node000001_Node000012" title=" " alt="" coords="46,421,72,452,109,482,156,507,206,526,302,553,301,558,204,531,154,512,107,487,69,456,42,425"/>
+<area shape="rect" id="Node000013" href="$group___g_i_t.html#gadcb21aa14931461cd2fb20479c975121" title="Get a diff of the working directory against the index." alt="" coords="116,448,255,473"/>
+<area shape="poly" id="edge18_Node000001_Node000013" title=" " alt="" coords="61,416,134,441,133,446,59,421"/>
+<area shape="rect" id="Node000016" href="$group___g_i_t.html#gaf30a0562d2545b0dc500475804cba693" title="Initialize a new Git repository." alt="" coords="144,111,227,136"/>
+<area shape="poly" id="edge22_Node000001_Node000016" title=" " alt="" coords="31,397,32,350,42,283,51,246,64,210,82,176,106,145,130,130,132,135,110,149,87,179,69,212,56,248,47,284,38,351,36,397"/>
+<area shape="rect" id="Node000019" href="$group___g_i_t.html#ga5b8c33648f75db26f4cdc6dbe6e285b8" title="List all local branch names." alt="" coords="112,773,259,799"/>
+<area shape="poly" id="edge26_Node000001_Node000019" title=" " alt="" coords="37,423,42,472,54,544,76,628,91,670,110,709,132,738,157,762,154,766,128,742,106,711,86,672,71,630,49,546,37,472,32,423"/>
+<area shape="rect" id="Node000024" href="$group___g_i_t.html#ga857ea909f78f255b6813ea60fa044cc7" title="Retrieve commit log entries starting from HEAD." alt="" coords="145,673,226,699"/>
+<area shape="poly" id="edge32_Node000001_Node000024" title=" " alt="" coords="43,422,110,553,172,660,167,663,106,555,38,424"/>
+<area shape="rect" id="Node000026" href="$group___g_i_t.html#gaa1bba95fa353d175319681b76b8a2b7e" title="Stage a file or directory by path." alt="" coords="137,308,234,333"/>
+<area shape="poly" id="edge37_Node000001_Node000026" title=" " alt="" coords="54,395,150,338,152,343,57,399"/>
+<area shape="rect" id="Node000027" href="$group___g_i_t.html#ga5fe6c443184a261818182dbb8ed9940e" title="Get the status of all files in the working directory." alt="" coords="135,848,236,873"/>
+<area shape="poly" id="edge40_Node000001_Node000027" title=" " alt="" coords="38,423,45,499,60,614,81,729,95,776,110,809,125,825,144,839,141,843,122,829,106,811,90,778,76,731,54,615,40,500,32,423"/>
+<area shape="rect" id="Node000029" href="$ex__common_8c.html#aefcb3f70374ff9b6256aac6e12870399" title=" " alt="" coords="132,1005,239,1031"/>
+<area shape="poly" id="edge45_Node000001_Node000029" title=" " alt="" coords="37,423,45,519,59,669,81,824,95,887,110,933,133,967,159,994,155,998,128,970,106,935,90,888,76,825,54,670,39,520,32,423"/>
+<area shape="rect" id="Node000032" href="$ex__git_8c.html#a84eb2426f4e256131684d1f7a6c59a13" title="Write a file inside the repo with given content." alt="" coords="144,1055,227,1080"/>
+<area shape="poly" id="edge48_Node000001_Node000032" title=" " alt="" coords="36,423,36,540,43,726,51,824,65,914,84,989,96,1018,110,1040,132,1056,129,1060,106,1044,91,1021,79,991,59,915,46,824,37,726,31,540,31,423"/>
+<area shape="rect" id="Node000004" href="$group___l_i_s_t.html#ga1dafe7a250ddad51fadd375f057287e7" title="Empty a LIST list of pointers." alt="" coords="346,5,437,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="232,59,332,31,333,36,234,64"/>
+<area shape="rect" id="Node000006" href="$n__git_8c.html#a8ca4c319d81fe9d3612f6da57a19b186" title="Log the last libgit2 error." alt="" coords="527,359,653,384"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="225,157,277,145,341,138,376,138,409,142,442,151,473,165,497,182,518,204,551,253,572,303,585,345,580,346,567,305,546,255,514,207,494,186,471,170,441,156,408,148,375,144,342,143,278,151,226,163"/>
+<area shape="rect" id="Node000007" href="$n__git_8c.html#abd45ac28db3211a2d02e62daad6aa774" title="Set the last_status message on a repo handle." alt="" coords="324,207,459,232"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="243,183,322,201,321,206,242,188"/>
+<area shape="poly" id="edge9_Node000009_Node000006" title=" " alt="" coords="231,207,310,191,357,183,394,176,431,176,473,192,495,206,514,224,546,265,568,308,583,345,578,347,564,310,541,268,510,227,492,210,471,196,430,181,395,181,358,188,311,197,232,212"/>
+<area shape="poly" id="edge10_Node000009_Node000007" title=" " alt="" coords="241,219,310,218,310,223,241,224"/>
+<area shape="poly" id="edge12_Node000010_Node000006" title=" " alt="" coords="263,276,363,291,473,317,515,332,554,350,551,355,513,337,471,322,362,296,262,281"/>
+<area shape="poly" id="edge13_Node000010_Node000007" title=" " alt="" coords="236,256,327,233,328,238,237,261"/>
+<area shape="poly" id="edge15_Node000011_Node000006" title=" " alt="" coords="471,369,513,369,513,374,471,374"/>
+<area shape="poly" id="edge17_Node000012_Node000006" title=" " alt="" coords="448,556,470,544,507,509,537,469,560,429,576,395,581,397,565,431,541,472,511,513,474,548,450,561"/>
+<area shape="poly" id="edge20_Node000013_Node000006" title=" " alt="" coords="243,445,517,384,519,390,244,451"/>
+<area shape="rect" id="Node000014" href="$n__git_8c.html#ac7e79f281ff405ed64ede44c073593d9" title="Callback for git_diff_print, appends each line to an N_STR." alt="" coords="317,460,465,485"/>
+<area shape="poly" id="edge19_Node000013_Node000014" title=" " alt="" coords="255,462,304,465,303,470,255,467"/>
+<area shape="rect" id="Node000015" href="$group___n___s_t_r.html#ga873edbb1f8787d0a78a13ccbbed9b9f9" title="create a new N_STR string" alt="" coords="351,509,432,535"/>
+<area shape="poly" id="edge21_Node000013_Node000015" title=" " alt="" coords="230,471,338,504,337,509,228,476"/>
+<area shape="rect" id="Node000017" href="$group___g_i_t.html#ga9abc3d37b72a09b5ef9a4cf4abaf24b4" title="Initialize a new Git repository with a custom initial branch name." alt="" coords="339,55,444,80"/>
+<area shape="poly" id="edge23_Node000016_Node000017" title=" " alt="" coords="226,110,330,81,332,86,228,115"/>
+<area shape="poly" id="edge25_Node000017_Node000006" title=" " alt="" coords="443,78,474,97,499,126,521,159,554,228,575,294,587,345,582,346,570,295,549,230,516,161,495,130,470,101,440,82"/>
+<area shape="rect" id="Node000018" href="$n__git_8c.html#a8d8fd4dfec88e53ed8e7add471c0c466" title="Ensure libgit2 is initialized (idempotent)." alt="" coords="520,55,660,80"/>
+<area shape="poly" id="edge24_Node000017_Node000018" title=" " alt="" coords="444,65,506,65,506,70,444,70"/>
+<area shape="poly" id="edge27_Node000019_Node000006" title=" " alt="" coords="214,796,266,817,334,833,370,836,406,834,440,825,470,808,493,780,514,735,532,679,548,617,571,491,583,398,588,398,576,492,553,618,537,681,519,737,498,782,474,812,442,830,407,840,370,842,333,839,265,822,212,801"/>
+<area shape="rect" id="Node000020" href="$n__git_8c.html#a702864e33380d47dd8387359ff6d6922" title="Destructor for char* branch name strings used by LIST." alt="" coords="311,773,472,799"/>
+<area shape="poly" id="edge28_Node000019_Node000020" title=" " alt="" coords="259,783,297,783,297,789,259,789"/>
+<area shape="rect" id="Node000021" href="$group___l_i_s_t.html#ga4eab319289a83524639ee5e9f0441fdf" title="Add a pointer to the end of the list." alt="" coords="351,875,431,900"/>
+<area shape="poly" id="edge29_Node000019_Node000021" title=" " alt="" coords="209,797,312,853,344,867,342,872,309,858,206,801"/>
+<area shape="rect" id="Node000023" href="$group___l_i_s_t.html#gae4b8e915bc22e7993d2849152ec1c3ac" title="Initialiaze a generic list container to max_items pointers." alt="" coords="326,724,457,749"/>
+<area shape="poly" id="edge31_Node000019_Node000023" title=" " alt="" coords="238,771,324,750,325,755,240,776"/>
+<area shape="rect" id="Node000022" href="$group___l_i_s_t.html#ga678e828550efc8e64a836bb8c713c2f4" title="Allocate a new node to link in a list." alt="" coords="533,875,647,900"/>
+<area shape="poly" id="edge30_Node000021_Node000022" title=" " alt="" coords="431,885,519,885,519,890,431,890"/>
+<area shape="poly" id="edge34_Node000024_Node000006" title=" " alt="" coords="227,692,280,698,344,699,378,695,411,688,442,676,470,659,500,632,524,599,543,564,557,526,576,454,584,398,589,398,581,455,562,528,547,566,528,602,504,635,474,663,444,680,412,693,378,700,344,704,279,704,226,697"/>
+<area shape="poly" id="edge35_Node000024_Node000021" title=" " alt="" coords="202,697,265,759,313,808,368,863,365,867,309,812,261,763,198,701"/>
+<area shape="poly" id="edge36_Node000024_Node000023" title=" " alt="" coords="227,693,326,718,325,723,226,698"/>
+<area shape="rect" id="Node000025" href="$n__git_8c.html#ab63db0dc52cdbe57e635cd67d75484e1" title="Destructor for N_GIT_COMMIT_INFO used by LIST." alt="" coords="316,609,467,649"/>
+<area shape="poly" id="edge33_Node000024_Node000025" title=" " alt="" coords="226,672,305,650,307,655,227,677"/>
+<area shape="poly" id="edge38_Node000026_Node000006" title=" " alt="" coords="235,320,344,328,472,343,524,353,523,358,472,349,343,334,234,326"/>
+<area shape="poly" id="edge39_Node000026_Node000007" title=" " alt="" coords="229,305,262,293,314,265,359,238,361,242,316,270,264,298,231,310"/>
+<area shape="poly" id="edge41_Node000027_Node000006" title=" " alt="" coords="233,871,264,882,288,897,312,909,358,923,397,932,415,933,432,930,451,923,470,909,485,894,498,873,521,816,540,746,555,667,575,511,585,398,590,398,581,511,561,668,545,747,526,818,503,876,489,897,474,913,453,927,434,935,415,939,396,938,357,928,310,914,285,902,261,887,231,876"/>
+<area shape="poly" id="edge43_Node000027_Node000021" title=" " alt="" coords="237,865,338,878,337,883,236,870"/>
+<area shape="poly" id="edge44_Node000027_Node000023" title=" " alt="" coords="207,846,261,808,284,782,294,770,309,758,321,752,324,757,312,763,297,774,288,786,264,812,210,850"/>
+<area shape="rect" id="Node000028" href="$n__git_8c.html#a521bad7571a06c5161e781cccea4127b" title="Destructor for N_GIT_STATUS_ENTRY used by LIST." alt="" coords="317,975,466,1015"/>
+<area shape="poly" id="edge42_Node000027_Node000028" title=" " alt="" coords="237,869,264,883,281,901,290,919,298,937,312,955,328,966,325,971,309,959,293,939,285,921,277,904,261,887,235,873"/>
+<area shape="rect" id="Node000030" href="$group___l_o_g.html#gacad9b2d55788f46ddde811c986ead9ae" title="Set the global log level value ( static int LOG_LEVEL )" alt="" coords="337,1040,445,1065"/>
+<area shape="poly" id="edge46_Node000029_Node000030" title=" " alt="" coords="239,1024,324,1039,324,1044,239,1030"/>
+<area shape="rect" id="Node000031" href="$ex__accept__pool__client_8c.html#ad96d407a911fbb914fa8e4cfbf2faf0f" title=" " alt="" coords="361,1089,422,1115"/>
+<area shape="poly" id="edge47_Node000029_Node000031" title=" " alt="" coords="236,1028,264,1040,288,1057,312,1074,349,1089,347,1094,309,1079,285,1061,261,1044,234,1033"/>
+</map>

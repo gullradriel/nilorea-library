@@ -1,0 +1,94 @@
+<map id="netw_accept_nonblock_from" name="netw_accept_nonblock_from">
+<area shape="rect" id="Node000001" title="Accepting routine." alt="" coords="5,648,213,673"/>
+<area shape="rect" id="Node000002" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga87057932b1901f9a91c4db49224087e2" title="make a normal &#39;accept&#39; ." alt="" coords="261,648,427,673"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="213,658,248,658,248,663,213,663"/>
+<area shape="rect" id="Node000003" href="$n__network_8c.html#add7707017912cae7d9e4756824b96cb9" title="capture an error into a NETWORK handle&#39;s ring buffer" alt="" coords="1132,636,1287,661"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="351,646,397,584,432,547,473,517,528,491,574,479,684,469,799,452,891,440,935,440,981,447,1030,463,1085,489,1124,517,1156,553,1181,590,1199,622,1194,625,1177,593,1152,557,1121,521,1083,494,1028,468,980,453,935,445,892,445,799,457,684,474,575,484,530,496,476,522,436,551,401,587,355,649"/>
+<area shape="rect" id="Node000004" href="$n__network_8c.html#ab995208f051c8975b80f13ff2cfeae32" title="get sockaddr, IPv4 or IPv6" alt="" coords="506,332,605,357"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="345,647,357,598,380,525,418,446,443,408,473,375,492,361,495,366,476,379,447,411,423,448,385,527,362,599,350,649"/>
+<area shape="rect" id="Node000005" href="$n__network_8c.html#a020269518d0b6ff2be8e22e3d1306a1c" title="BSD style errno string NO WORKING ON REDHAT." alt="" coords="939,739,1029,764"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="365,671,418,704,495,746,587,788,636,806,685,819,727,828,761,832,794,830,835,819,849,813,859,806,883,788,931,766,933,771,885,792,862,810,852,818,837,825,795,835,760,838,726,834,683,825,634,811,585,793,492,751,415,708,363,676"/>
+<area shape="rect" id="Node000006" href="$group___n_e_t_w_o_r_k_i_n_g.html#gac345c1af1935cebb9ee33edd4c32267a" title="Closing a specified Network, destroy queues, free the structure." alt="" coords="713,333,807,359"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="346,647,360,604,385,545,422,481,446,451,473,425,513,404,572,385,698,355,699,360,573,390,515,409,476,430,450,455,426,484,389,547,365,606,351,649"/>
+<area shape="rect" id="Node000015" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaa8e1fe7978995197f08aa0ef24a76c33" title="Restart or reset the specified network ability." alt="" coords="1169,157,1250,183"/>
+<area shape="poly" id="edge39_Node000002_Node000015" title=" " alt="" coords="344,647,353,589,375,502,391,454,413,405,440,359,473,318,522,269,567,233,612,206,657,186,704,171,756,159,884,133,939,123,984,121,1084,133,1160,151,1159,156,1084,138,983,126,940,128,884,138,758,164,706,176,658,191,614,211,570,237,525,273,477,321,444,362,418,408,396,456,380,504,358,590,349,648"/>
+<area shape="rect" id="Node000017" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga22bc4dd5d80c2229c3c43f6d6705dece" title="Do not directly use, internal api." alt="" coords="498,573,613,599"/>
+<area shape="poly" id="edge23_Node000002_Node000017" title=" " alt="" coords="375,645,474,607,496,600,497,605,476,613,377,650"/>
+<area shape="rect" id="Node000018" href="$n__network_8c.html#a8ad9fbb10c0881b9e14bb098ffd42210" title="Return an empty allocated network ready to be netw_closed." alt="" coords="511,672,599,697"/>
+<area shape="poly" id="edge24_Node000002_Node000018" title=" " alt="" coords="428,667,497,675,497,681,427,673"/>
+<area shape="rect" id="Node000024" href="$group___n_e_t_w_o_r_k_i_n_g.html#gad02f949dd057ae7dd382f03f9364cac0" title="Modify blocking socket mode." alt="" coords="484,623,627,648"/>
+<area shape="poly" id="edge40_Node000002_Node000024" title=" " alt="" coords="427,648,470,643,471,648,428,653"/>
+<area shape="rect" id="Node000025" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaa5ed966d8c5844ded549eda41e38c0be" title="Modify common socket options on the given netw." alt="" coords="695,936,825,961"/>
+<area shape="poly" id="edge44_Node000002_Node000025" title=" " alt="" coords="350,673,361,721,383,789,400,825,421,860,446,891,476,917,525,941,578,954,631,959,681,957,681,962,631,964,577,959,523,946,473,922,442,895,416,863,395,827,378,791,355,723,345,674"/>
+<area shape="rect" id="Node000026" href="$n__network_8c.html#a58874f3139c1eec6c3ffb855f9d0a214" title="print OpenSSL errors for a given socket" alt="" coords="475,881,636,907"/>
+<area shape="poly" id="edge47_Node000002_Node000026" title=" " alt="" coords="353,672,369,709,395,759,431,813,476,860,498,873,495,878,473,864,427,816,390,762,364,711,348,675"/>
+<area shape="rect" id="Node000027" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga528356d4a8e132a230ec7d8df6c4c5b0" title="recv data from the socket" alt="" coords="705,1084,815,1109"/>
+<area shape="poly" id="edge48_Node000002_Node000027" title=" " alt="" coords="348,673,349,744,354,795,364,851,380,910,403,967,434,1020,476,1064,500,1080,526,1092,582,1106,639,1109,691,1106,691,1111,639,1114,581,1111,524,1097,497,1085,473,1068,430,1023,398,970,375,912,359,853,349,796,344,744,342,674"/>
+<area shape="rect" id="Node000029" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga1f4abbfd77b826d36a0912e15d0cc4d7" title="single&#45;attempt TLS recv for non&#45;blocking sockets (reactor use)." alt="" coords="685,985,835,1011"/>
+<area shape="poly" id="edge52_Node000002_Node000029" title=" " alt="" coords="349,674,357,729,377,809,394,852,415,894,442,932,476,964,521,988,572,1002,623,1008,671,1007,671,1012,623,1013,571,1007,519,993,473,968,438,936,411,897,389,854,372,811,352,730,344,674"/>
+<area shape="rect" id="Node000030" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga14b6d4d15dc2b0422098f0211bc95117" title="send data onto the socket" alt="" coords="703,1035,817,1060"/>
+<area shape="poly" id="edge55_Node000002_Node000030" title=" " alt="" coords="348,673,353,736,370,830,387,881,409,930,438,975,476,1013,500,1029,526,1040,582,1054,638,1058,689,1056,689,1061,638,1064,581,1060,524,1046,497,1033,473,1017,434,979,404,933,382,882,365,831,348,737,343,674"/>
+<area shape="rect" id="Node000031" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga042c5ee66de80b513228a49c39a23cff" title="single&#45;attempt TLS send for non&#45;blocking sockets (reactor use)." alt="" coords="684,484,836,509"/>
+<area shape="poly" id="edge59_Node000002_Node000031" title=" " alt="" coords="356,646,405,603,438,579,474,558,522,539,573,523,669,504,670,509,574,529,524,544,476,563,441,583,408,607,360,650"/>
+<area shape="poly" id="edge10_Node000006_Node000005" title=" " alt="" coords="771,357,838,470,916,614,972,725,968,727,911,616,834,473,767,360"/>
+<area shape="rect" id="Node000007" href="$group___n_e_t_w_o_r_k_i_n_g.html#gab7f9fd903744c66d570b868df5b3a551" title="wait until the socket is empty or timeout, checking each 100 msec." alt="" coords="907,333,1061,359"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="808,343,893,343,893,349,808,349"/>
+<area shape="rect" id="Node000008" href="$group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755" title="Empty and Free a list container." alt="" coords="1335,208,1433,233"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="807,334,883,318,1085,280,1286,241,1321,233,1322,238,1287,246,1086,286,885,323,808,339"/>
+<area shape="rect" id="Node000010" href="$n__reactor_8c.html#ac924ef09b89abdcff1a48256b85179eb" title="Synchronously close a reactor&#45;registered NETWORK from the game thread." alt="" coords="884,383,1084,408"/>
+<area shape="poly" id="edge9_Node000006_Node000010" title=" " alt="" coords="808,354,913,377,912,382,807,359"/>
+<area shape="rect" id="Node000011" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaaacd43329a330a29b5a93cce28c068e5" title="Get the state of a network." alt="" coords="1148,207,1271,232"/>
+<area shape="poly" id="edge11_Node000006_Node000011" title=" " alt="" coords="778,331,824,302,883,274,948,254,1015,240,1134,223,1135,228,1016,245,949,260,885,279,827,307,781,335"/>
+<area shape="rect" id="Node000012" href="$group___n_e_t_w_o_r_k_i_n_g.html#gafc7a91b4be2a997710a2b54037c25168" title="remove a NETWORK *netw to a NETWORK_POOL *pool" alt="" coords="911,29,1057,55"/>
+<area shape="poly" id="edge12_Node000006_Node000012" title=" " alt="" coords="764,332,807,241,841,180,882,123,916,88,951,61,954,65,920,92,886,126,845,183,811,243,769,334"/>
+<area shape="poly" id="edge16_Node000006_Node000015" title=" " alt="" coords="763,332,777,297,801,250,836,203,858,183,883,166,917,152,953,143,1027,137,1097,142,1156,153,1155,158,1096,147,1027,142,954,148,919,157,885,171,861,187,840,206,806,253,782,299,768,334"/>
+<area shape="rect" id="Node000016" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga29159184519b3129c0154b1a2c2a3e2f" title="Stop a NETWORK connection sending and receing thread." alt="" coords="901,181,1067,207"/>
+<area shape="poly" id="edge19_Node000006_Node000016" title=" " alt="" coords="769,331,814,280,847,250,883,224,914,209,916,214,885,228,850,254,818,283,773,335"/>
+<area shape="rect" id="Node000009" href="$group___l_i_s_t.html#ga1dafe7a250ddad51fadd375f057287e7" title="Empty a LIST list of pointers." alt="" coords="1481,183,1572,208"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="1433,209,1468,203,1469,208,1434,215"/>
+<area shape="poly" id="edge13_Node000012_Node000003" title=" " alt="" coords="1000,53,1043,101,1066,133,1086,167,1114,230,1138,296,1173,428,1196,542,1208,622,1202,623,1191,543,1168,429,1133,298,1109,232,1082,170,1062,136,1038,104,996,57"/>
+<area shape="rect" id="Node000013" href="$group___h_a_s_h___t_a_b_l_e.html#ga2dc87273d3e6b3492d88f2bd7288102e" title="remove and delete node at key in table" alt="" coords="1163,5,1255,31"/>
+<area shape="poly" id="edge14_Node000012_Node000013" title=" " alt="" coords="1057,32,1150,22,1150,27,1058,37"/>
+<area shape="rect" id="Node000014" href="$group___l_i_s_t.html#ga2d102883c4134950097840f84763b383" title="search ptr in list" alt="" coords="1163,55,1255,80"/>
+<area shape="poly" id="edge15_Node000012_Node000014" title=" " alt="" coords="1058,48,1150,58,1150,63,1057,53"/>
+<area shape="poly" id="edge17_Node000015_Node000008" title=" " alt="" coords="1251,179,1327,201,1325,207,1249,184"/>
+<area shape="poly" id="edge18_Node000015_Node000009" title=" " alt="" coords="1251,171,1468,188,1467,193,1250,176"/>
+<area shape="poly" id="edge20_Node000016_Node000003" title=" " alt="" coords="999,205,1041,253,1086,319,1127,403,1161,489,1204,622,1199,623,1156,491,1123,405,1082,322,1037,256,995,208"/>
+<area shape="poly" id="edge21_Node000016_Node000011" title=" " alt="" coords="1067,201,1134,208,1134,214,1067,206"/>
+<area shape="poly" id="edge22_Node000016_Node000015" title=" " alt="" coords="1067,183,1154,173,1155,178,1067,188"/>
+<area shape="poly" id="edge25_Node000018_Node000006" title=" " alt="" coords="599,677,618,669,634,657,651,635,661,614,666,593,667,572,668,525,672,499,682,470,710,414,739,368,744,371,715,417,686,472,677,500,674,526,672,572,671,594,666,616,656,638,638,661,621,674,601,682"/>
+<area shape="rect" id="Node000019" href="$group___l_i_s_t.html#gae4b8e915bc22e7993d2849152ec1c3ac" title="Initialiaze a generic list container to max_items pointers." alt="" coords="695,785,825,811"/>
+<area shape="poly" id="edge26_Node000018_Node000019" title=" " alt="" coords="576,695,625,728,685,764,714,777,712,782,683,768,622,732,573,700"/>
+<area shape="rect" id="Node000020" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga4e2fbd39980f3a1cb7258ec4382f29f7" title="recv data from the socket" alt="" coords="717,684,803,709"/>
+<area shape="poly" id="edge27_Node000018_Node000020" title=" " alt="" coords="600,685,703,691,703,696,599,690"/>
+<area shape="rect" id="Node000021" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga3f4bdfbde3308d4108e419032b2f9fe3" title="single&#45;attempt recv for non&#45;blocking sockets (reactor use)." alt="" coords="698,887,822,912"/>
+<area shape="poly" id="edge30_Node000018_Node000021" title=" " alt="" coords="570,696,686,820,738,875,735,878,682,824,567,699"/>
+<area shape="rect" id="Node000022" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaa99961114daea113b78c7fc5e545d592" title="send data onto the socket" alt="" coords="715,585,805,611"/>
+<area shape="poly" id="edge33_Node000018_Node000022" title=" " alt="" coords="598,672,635,657,658,639,683,620,701,611,703,616,685,624,662,643,637,662,600,677"/>
+<area shape="rect" id="Node000023" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga483e88f9c307e0b78da12d4110954a78" title="single&#45;attempt send for non&#45;blocking sockets (reactor use)." alt="" coords="697,635,823,660"/>
+<area shape="poly" id="edge36_Node000018_Node000023" title=" " alt="" coords="599,674,683,659,684,664,600,679"/>
+<area shape="poly" id="edge28_Node000020_Node000003" title=" " alt="" coords="803,689,1118,656,1118,661,804,695"/>
+<area shape="poly" id="edge29_Node000020_Node000005" title=" " alt="" coords="804,704,926,735,925,740,803,710"/>
+<area shape="poly" id="edge31_Node000021_Node000003" title=" " alt="" coords="791,884,835,865,883,840,940,820,986,811,1030,799,1083,773,1115,749,1144,722,1189,670,1193,674,1148,726,1118,754,1085,778,1032,804,987,816,941,826,885,844,837,870,794,889"/>
+<area shape="poly" id="edge32_Node000021_Node000005" title=" " alt="" coords="802,884,834,865,850,845,857,825,865,805,882,784,903,771,925,761,927,766,905,775,886,788,870,807,862,827,855,848,838,869,805,889"/>
+<area shape="poly" id="edge34_Node000022_Node000003" title=" " alt="" coords="805,599,1084,627,1118,632,1118,637,1084,633,804,604"/>
+<area shape="poly" id="edge35_Node000022_Node000005" title=" " alt="" coords="806,606,837,620,875,645,910,673,964,727,961,730,907,677,872,649,835,624,804,611"/>
+<area shape="poly" id="edge37_Node000023_Node000003" title=" " alt="" coords="823,645,1118,646,1118,651,823,650"/>
+<area shape="poly" id="edge38_Node000023_Node000005" title=" " alt="" coords="807,658,837,669,899,699,952,729,949,734,896,704,835,674,805,663"/>
+<area shape="poly" id="edge41_Node000024_Node000003" title=" " alt="" coords="605,620,635,608,648,598,657,588,668,578,683,570,750,554,820,549,890,552,958,562,1022,577,1080,594,1169,628,1167,633,1078,599,1020,582,957,568,889,557,820,554,751,559,685,575,671,583,661,592,652,602,637,612,607,625"/>
+<area shape="poly" id="edge42_Node000024_Node000005" title=" " alt="" coords="615,646,638,657,653,673,662,690,670,705,685,718,714,732,745,742,809,754,871,758,925,756,925,761,871,763,809,759,744,747,712,737,683,723,666,708,657,692,649,676,634,661,613,650"/>
+<area shape="poly" id="edge43_Node000024_Node000006" title=" " alt="" coords="616,620,634,608,648,592,657,576,665,545,669,511,682,470,711,415,740,369,745,372,716,418,686,472,674,512,670,546,662,578,653,595,638,612,619,625"/>
+<area shape="poly" id="edge45_Node000025_Node000003" title=" " alt="" coords="803,933,835,922,883,901,941,885,988,879,1033,868,1056,857,1082,840,1122,801,1155,756,1179,711,1196,674,1201,676,1184,713,1159,759,1126,805,1086,844,1059,862,1035,873,989,884,942,891,885,906,837,927,804,939"/>
+<area shape="poly" id="edge46_Node000025_Node000005" title=" " alt="" coords="816,934,834,923,851,904,860,885,868,864,882,840,918,802,953,771,957,775,921,806,886,844,872,866,865,887,856,907,838,927,818,938"/>
+<area shape="poly" id="edge49_Node000027_Node000003" title=" " alt="" coords="816,1107,877,1115,947,1116,984,1111,1019,1103,1052,1089,1082,1069,1105,1042,1125,999,1144,945,1160,885,1186,765,1202,675,1207,676,1192,766,1166,886,1149,946,1130,1001,1109,1044,1086,1073,1055,1094,1021,1108,985,1117,948,1121,876,1120,815,1112"/>
+<area shape="poly" id="edge50_Node000027_Node000005" title=" " alt="" coords="814,1083,834,1071,866,1037,893,999,916,958,935,916,961,837,975,777,981,778,966,839,940,918,921,961,898,1002,870,1041,838,1075,817,1087"/>
+<area shape="rect" id="Node000028" href="$group___n___t_i_m_e.html#ga690f12dde1a446d47b8bf5f959493003" title="wrapper around usleep for API consistency" alt="" coords="948,1033,1020,1059"/>
+<area shape="poly" id="edge51_Node000027_Node000028" title=" " alt="" coords="815,1082,934,1054,935,1060,816,1087"/>
+<area shape="poly" id="edge53_Node000029_Node000003" title=" " alt="" coords="826,983,971,948,1038,925,1082,901,1108,876,1129,847,1164,784,1187,723,1200,674,1205,675,1192,724,1169,786,1134,850,1112,880,1086,905,1040,930,972,953,827,988"/>
+<area shape="poly" id="edge54_Node000029_Node000005" title=" " alt="" coords="815,983,834,972,965,774,969,777,838,976,817,988"/>
+<area shape="poly" id="edge56_Node000030_Node000003" title=" " alt="" coords="817,1033,982,997,1083,973,1114,940,1139,902,1160,860,1175,817,1195,736,1204,674,1209,675,1200,737,1180,819,1164,862,1144,904,1118,944,1085,978,984,1002,818,1038"/>
+<area shape="poly" id="edge57_Node000030_Node000005" title=" " alt="" coords="816,1032,834,1021,863,994,888,962,928,894,956,828,973,776,978,778,961,830,933,896,892,965,867,997,838,1025,819,1037"/>
+<area shape="poly" id="edge58_Node000030_Node000028" title=" " alt="" coords="818,1044,934,1044,934,1049,818,1050"/>
+<area shape="poly" id="edge60_Node000031_Node000003" title=" " alt="" coords="836,488,892,488,956,492,1022,504,1085,526,1119,547,1149,572,1193,623,1189,626,1145,576,1116,551,1083,531,1021,510,956,498,892,493,836,493"/>
+<area shape="poly" id="edge61_Node000031_Node000005" title=" " alt="" coords="777,508,838,571,910,655,966,726,962,729,906,659,834,574,773,512"/>
+</map>

@@ -1,0 +1,17 @@
+<map id="trajectory_distance" name="trajectory_distance">
+<area shape="rect" id="Node000001" title="distance along the trajectory between two times" alt="" coords="5,104,152,129"/>
+<area shape="rect" id="Node000002" href="$group___t_r_a_j_e_c_t_o_r_y.html#ga03c2c8a8e327927a0d188ff505150769" title="Compute position at a given time." alt="" coords="200,104,372,129"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="152,114,186,114,186,119,152,119"/>
+<area shape="rect" id="Node000003" href="$n__trajectory_8c.html#a666e72a0af63173609bb4a54177aa654" title="Hermite basis function h00: weights the start position." alt="" coords="460,5,564,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="305,102,355,71,419,40,446,30,447,35,421,44,358,76,308,106"/>
+<area shape="rect" id="Node000004" href="$n__trajectory_8c.html#ae7069e17e6e88f2f763ca89592608dca" title="Hermite basis function h01: weights the end position." alt="" coords="460,55,564,80"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="344,101,446,79,447,84,345,107"/>
+<area shape="rect" id="Node000005" href="$n__trajectory_8c.html#a6bad0cbbd150cb987c0a2c2874d0070c" title="Hermite basis function h10: weights the start tangent." alt="" coords="460,104,564,129"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="372,114,446,114,446,119,372,119"/>
+<area shape="rect" id="Node000006" href="$n__trajectory_8c.html#a7a50439f21760c60a343d4bc6d1293cb" title="Hermite basis function h11: weights the end tangent." alt="" coords="460,153,564,179"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="345,127,447,149,446,154,344,132"/>
+<area shape="rect" id="Node000007" href="$n__trajectory_8c.html#afecdaca1aba2c24d9417ce63e384e6a6" title="Load the correct spline segment for a given time when using multi&#45;point paths." alt="" coords="420,203,604,228"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="308,127,358,157,421,188,445,196,443,201,419,192,356,162,305,132"/>
+<area shape="rect" id="Node000008" href="$n__trajectory_8c.html#a7b7db2b132cf0c88f49ce83c2796b614" title="Recompute the Hermite tangent vectors from current start/end states." alt="" coords="652,195,801,235"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="604,213,638,213,638,218,604,218"/>
+</map>

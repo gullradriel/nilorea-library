@@ -1,0 +1,13 @@
+<map id="avro_decode_container" name="avro_decode_container">
+<area shape="rect" id="Node000001" title="Decode an Avro container format N_STR into a cJSON array of records." alt="" coords="5,21,179,47"/>
+<area shape="rect" id="Node000002" href="$n__avro_8c.html#aded97f8db4daf0a86e765676211b0dd3" title="helper: read raw bytes with length prefix" alt="" coords="429,27,608,52"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="179,32,415,35,415,41,179,38"/>
+<area shape="rect" id="Node000003" href="$group___a_v_r_o.html#ga8cd182ae3bb766b2117fdac130b5f4ba" title="Decode a zig&#45;zag varint from reader into a 64&#45;bit signed integer." alt="" coords="656,27,796,52"/>
+<area shape="poly" id="edge7_Node000001_Node000003" title=" " alt="" coords="179,20,226,15,417,3,501,4,608,13,661,21,660,26,608,18,501,10,418,9,227,21,179,25"/>
+<area shape="rect" id="Node000004" href="$group___a_v_r_o.html#gac64ccae2ac899c85bed89c6c40e241f6" title="Decode an Avro binary datum into cJSON according to schema." alt="" coords="227,96,381,121"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="130,44,255,89,253,94,128,49"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="609,37,642,37,642,42,609,42"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="343,93,465,54,466,59,345,99"/>
+<area shape="poly" id="edge6_Node000004_Node000003" title=" " alt="" coords="381,96,608,62,656,52,657,58,608,67,382,102"/>
+<area shape="poly" id="edge5_Node000004_Node000004" title=" " alt="" coords="269,98,262,88,266,78,280,72,304,69,333,73,345,82,342,86,331,78,304,75,282,77,270,82,267,87,274,94"/>
+</map>

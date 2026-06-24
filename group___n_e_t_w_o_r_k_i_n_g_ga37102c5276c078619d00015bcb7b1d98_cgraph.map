@@ -1,0 +1,32 @@
+<map id="netw_set_crypto_chain_pem" name="netw_set_crypto_chain_pem">
+<area shape="rect" id="Node000001" title="set SSL certificate chain from PEM strings in memory" alt="" coords="5,129,212,155"/>
+<area shape="rect" id="Node000002" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga1dd6b8f246d9aabb4d788b6583ba95a9" title="activate SSL encryption using PEM&#45;formatted key and certificate strings loaded from memory" alt="" coords="260,129,425,155"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="212,139,246,139,246,145,212,145"/>
+<area shape="rect" id="Node000003" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga515a427865426bc13b289628217465ce" title="Do not directly use, internal api." alt="" coords="485,5,623,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="355,127,404,85,437,61,472,40,487,33,489,38,475,44,440,65,408,89,359,131"/>
+<area shape="rect" id="Node000005" href="$n__network_8c.html#a58874f3139c1eec6c3ffb855f9d0a214" title="print OpenSSL errors for a given socket" alt="" coords="473,55,635,80"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="374,127,472,89,494,82,496,87,474,94,376,132"/>
+<area shape="rect" id="Node000006" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga528356d4a8e132a230ec7d8df6c4c5b0" title="recv data from the socket" alt="" coords="499,203,609,228"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="378,152,474,187,499,196,498,201,472,193,376,157"/>
+<area shape="rect" id="Node000010" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga1f4abbfd77b826d36a0912e15d0cc4d7" title="single&#45;attempt TLS recv for non&#45;blocking sockets (reactor use)." alt="" coords="479,104,629,129"/>
+<area shape="poly" id="edge9_Node000002_Node000010" title=" " alt="" coords="426,129,465,125,466,130,426,135"/>
+<area shape="rect" id="Node000011" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga14b6d4d15dc2b0422098f0211bc95117" title="send data onto the socket" alt="" coords="497,252,611,277"/>
+<area shape="poly" id="edge12_Node000002_Node000011" title=" " alt="" coords="359,153,408,194,475,237,492,245,490,250,472,242,405,198,356,157"/>
+<area shape="rect" id="Node000012" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga042c5ee66de80b513228a49c39a23cff" title="single&#45;attempt TLS send for non&#45;blocking sockets (reactor use)." alt="" coords="478,153,630,179"/>
+<area shape="poly" id="edge16_Node000002_Node000012" title=" " alt="" coords="426,149,465,153,464,158,426,154"/>
+<area shape="rect" id="Node000004" href="$n__network_8c.html#a37b864767e182743c4e041353e6f78a5" title=" " alt="" coords="699,5,821,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="624,15,685,15,685,21,624,21"/>
+<area shape="rect" id="Node000007" href="$n__network_8c.html#add7707017912cae7d9e4756824b96cb9" title="capture an error into a NETWORK handle&#39;s ring buffer" alt="" coords="683,153,837,179"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="607,200,692,179,694,185,608,205"/>
+<area shape="rect" id="Node000008" href="$n__network_8c.html#a020269518d0b6ff2be8e22e3d1306a1c" title="BSD style errno string NO WORKING ON REDHAT." alt="" coords="715,203,805,228"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="610,213,701,213,701,218,610,218"/>
+<area shape="rect" id="Node000009" href="$group___n___t_i_m_e.html#ga690f12dde1a446d47b8bf5f959493003" title="wrapper around usleep for API consistency" alt="" coords="724,252,796,277"/>
+<area shape="poly" id="edge8_Node000006_Node000009" title=" " alt="" coords="608,225,711,250,710,256,607,231"/>
+<area shape="poly" id="edge10_Node000010_Node000007" title=" " alt="" coords="608,127,694,147,692,153,607,132"/>
+<area shape="poly" id="edge11_Node000010_Node000008" title=" " alt="" coords="612,127,636,138,651,151,661,164,670,176,684,188,703,197,700,202,681,192,666,179,657,167,648,155,633,143,610,132"/>
+<area shape="poly" id="edge13_Node000011_Node000007" title=" " alt="" coords="607,250,633,237,648,225,657,213,666,200,681,188,693,182,695,186,684,192,670,204,661,216,651,229,636,242,609,254"/>
+<area shape="poly" id="edge14_Node000011_Node000008" title=" " alt="" coords="607,249,701,227,702,232,608,255"/>
+<area shape="poly" id="edge15_Node000011_Node000009" title=" " alt="" coords="611,262,710,262,710,267,611,267"/>
+<area shape="poly" id="edge17_Node000012_Node000007" title=" " alt="" coords="630,163,669,163,669,169,630,169"/>
+<area shape="poly" id="edge18_Node000012_Node000008" title=" " alt="" coords="608,176,702,199,701,204,607,181"/>
+</map>

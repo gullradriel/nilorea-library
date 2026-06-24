@@ -1,0 +1,35 @@
+<map id="demo_iso_engine" name="demo_iso_engine">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,265,141,291"/>
+<area shape="rect" id="Node000002" href="$group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga868df6c4aed38b8f1a030f54fd54ab8c" title="Compute terrain transition bitmasks for a cell (Article 934)." alt="" coords="189,51,376,76"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="77,264,91,231,114,185,146,136,188,93,211,79,214,84,191,98,150,139,119,187,96,233,82,266"/>
+<area shape="rect" id="Node000003" href="$group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga78c269e7d2c55ad50677347b557b4d01" title="Get the terrain type at a cell." alt="" coords="424,25,579,51"/>
+<area shape="poly" id="edge8_Node000001_Node000003" title=" " alt="" coords="74,265,82,219,101,155,116,121,135,88,159,59,188,36,219,20,253,10,287,4,323,3,390,8,447,19,446,25,389,13,323,8,288,10,254,15,221,25,191,40,163,63,139,91,121,123,106,157,87,220,79,266"/>
+<area shape="rect" id="Node000004" href="$group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#gaf24dac3d2843c336f4b18d65ac3176c7" title="Compute average corner heights for smooth tile rendering (Article 2026)." alt="" coords="193,216,373,241"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="127,263,214,242,216,247,129,268"/>
+<area shape="rect" id="Node000005" href="$group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#gad9d6b576d64c47ccce399401e8a483be" title="Get the height at a cell." alt="" coords="425,159,578,184"/>
+<area shape="poly" id="edge7_Node000001_Node000005" title=" " alt="" coords="78,264,93,236,117,200,149,164,188,137,223,125,260,118,297,117,334,120,403,133,459,151,457,156,401,138,333,125,297,122,260,124,224,130,191,142,152,168,121,203,98,239,83,267"/>
+<area shape="rect" id="Node000006" href="$group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga98421af931d6eb53d8c081ef5b265477" title="Free an ISO_MAP and set the pointer to NULL." alt="" coords="446,316,557,341"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="129,288,190,299,319,314,433,323,432,328,318,320,189,305,128,293"/>
+<area shape="rect" id="Node000007" href="$group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga7f50c7b54c145335028a4b964116a811" title="Get the ability at a cell." alt="" coords="206,265,359,291"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="142,275,192,275,192,281,142,281"/>
+<area shape="rect" id="Node000008" href="$group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#gada043a1ec9606bba33ec50ecc71051b1" title="Bilinear height interpolation at fractional map coordinates." alt="" coords="205,151,360,191"/>
+<area shape="poly" id="edge9_Node000001_Node000008" title=" " alt="" coords="90,263,133,233,188,201,204,194,206,199,191,206,136,237,93,268"/>
+<area shape="rect" id="Node000009" href="$group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga65b7a698d01f36c5d11c7e059d783988" title="Load ISO_MAP from a binary file." alt="" coords="227,367,339,392"/>
+<area shape="poly" id="edge11_Node000001_Node000009" title=" " alt="" coords="95,289,138,316,190,345,227,360,225,365,188,350,135,321,92,293"/>
+<area shape="rect" id="Node000013" href="$group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga35a86e0fe0e3577232abb27fd3d67cba" title="Save ISO_MAP to a binary file." alt="" coords="225,416,340,441"/>
+<area shape="poly" id="edge16_Node000001_Node000013" title=" " alt="" coords="85,290,126,345,156,376,191,402,214,413,211,418,188,407,152,380,122,348,81,293"/>
+<area shape="rect" id="Node000014" href="$group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga860f3bc390d7440031617e3583313fd2" title="Convert map tile coordinates to screen pixel coordinates." alt="" coords="209,465,356,491"/>
+<area shape="poly" id="edge17_Node000001_Node000014" title=" " alt="" coords="82,290,96,323,118,367,150,413,191,452,199,457,197,462,188,456,146,417,114,370,91,325,77,292"/>
+<area shape="rect" id="Node000015" href="$group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#gabcfc9c8e2873e4323a9b81dbf39a9481" title="Convert screen pixel coordinates to map tile coordinates." alt="" coords="209,515,356,540"/>
+<area shape="poly" id="edge18_Node000001_Node000015" title=" " alt="" coords="80,290,91,332,112,389,145,450,166,477,191,501,198,507,195,511,188,505,162,481,140,453,107,391,86,333,75,292"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="376,50,410,46,410,51,377,55"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="331,213,438,185,440,190,333,219"/>
+<area shape="poly" id="edge10_Node000008_Node000005" title=" " alt="" coords="360,169,411,169,411,174,360,174"/>
+<area shape="poly" id="edge12_Node000009_Node000006" title=" " alt="" coords="338,364,432,342,433,347,339,369"/>
+<area shape="rect" id="Node000010" href="$group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga2054b507d4e102ea555ee41244074f78" title="Create a new height&#45;aware isometric map." alt="" coords="446,367,557,392"/>
+<area shape="poly" id="edge13_Node000009_Node000010" title=" " alt="" coords="339,377,432,377,432,382,339,382"/>
+<area shape="rect" id="Node000011" href="$group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga8d03b07b29de386ffd1c7f4c3e6f46a3" title="Set projection parameters from a preset and tile width." alt="" coords="627,367,803,392"/>
+<area shape="poly" id="edge14_Node000010_Node000011" title=" " alt="" coords="557,377,613,377,613,382,557,382"/>
+<area shape="rect" id="Node000012" href="$n__iso__engine_8c.html#a39c2ad8243b6593af043c35d80fac87e" title="Get the angle in degrees for a projection preset." alt="" coords="851,367,989,392"/>
+<area shape="poly" id="edge15_Node000011_Node000012" title=" " alt="" coords="803,377,837,377,837,382,803,382"/>
+</map>

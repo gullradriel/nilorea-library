@@ -1,0 +1,32 @@
+<map id="avro_nstr_avro_to_json" name="avro_nstr_avro_to_json">
+<area shape="rect" id="Node000001" title="Convert Avro N_STR to JSON N_STR using schema N_STR (all in&#45;memory)" alt="" coords="5,186,179,212"/>
+<area shape="rect" id="Node000002" href="$group___a_v_r_o.html#gabf6cfcbee3502e9284ff8786d8769eeb" title="Decode an Avro container format N_STR into a cJSON array of records." alt="" coords="227,85,400,110"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="120,184,271,114,273,118,122,188"/>
+<area shape="rect" id="Node000006" href="$group___a_v_r_o.html#gad2f9187913feb45998533c562c05b7fb" title="Free an Avro schema." alt="" coords="702,185,845,210"/>
+<area shape="poly" id="edge9_Node000001_Node000006" title=" " alt="" coords="179,196,688,195,688,200,179,201"/>
+<area shape="rect" id="Node000007" href="$group___a_v_r_o.html#ga5f74933a87f8b56fdfcff06174707237" title="Parse an Avro schema from a JSON string." alt="" coords="237,224,389,249"/>
+<area shape="poly" id="edge11_Node000001_Node000007" title=" " alt="" coords="168,209,225,219,224,224,168,214"/>
+<area shape="rect" id="Node000010" href="$group___n___s_t_r.html#ga69e5f2dbf75571a73e5a3332929642a4" title="Convert a char into a N_STR, short version." alt="" coords="262,273,365,298"/>
+<area shape="poly" id="edge16_Node000001_Node000010" title=" " alt="" coords="119,209,168,234,228,259,249,266,248,272,226,264,166,239,116,214"/>
+<area shape="rect" id="Node000003" href="$n__avro_8c.html#aded97f8db4daf0a86e765676211b0dd3" title="helper: read raw bytes with length prefix" alt="" coords="684,9,863,34"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="330,82,380,49,413,33,447,20,504,9,562,4,670,6,670,12,562,10,505,15,449,25,415,38,383,54,333,87"/>
+<area shape="rect" id="Node000004" href="$group___a_v_r_o.html#ga8cd182ae3bb766b2117fdac130b5f4ba" title="Decode a zig&#45;zag varint from reader into a 64&#45;bit signed integer." alt="" coords="911,60,1051,85"/>
+<area shape="poly" id="edge8_Node000002_Node000004" title=" " alt="" coords="400,96,636,94,897,77,897,82,636,99,400,101"/>
+<area shape="rect" id="Node000005" href="$group___a_v_r_o.html#gac64ccae2ac899c85bed89c6c40e241f6" title="Decode an Avro binary datum into cJSON according to schema." alt="" coords="465,60,619,85"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="400,85,451,80,451,85,400,91"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="827,32,916,54,914,59,826,37"/>
+<area shape="poly" id="edge5_Node000005_Node000003" title=" " alt="" coords="600,57,701,35,702,40,602,62"/>
+<area shape="poly" id="edge7_Node000005_Node000004" title=" " alt="" coords="620,70,897,70,897,75,620,75"/>
+<area shape="poly" id="edge6_Node000005_Node000005" title=" " alt="" coords="505,61,497,51,501,41,517,35,542,33,574,37,586,46,583,50,572,42,542,38,518,40,505,45,502,50,509,58"/>
+<area shape="poly" id="edge10_Node000006_Node000006" title=" " alt="" coords="740,186,732,177,736,167,750,160,773,158,802,162,813,171,810,175,800,167,773,164,751,166,740,170,738,176,744,183"/>
+<area shape="rect" id="Node000008" href="$group___a_v_r_o.html#ga3f3875bfc81135d5bf1e9e7e75899610" title="Parse an Avro schema from a cJSON object." alt="" coords="448,236,636,261"/>
+<area shape="poly" id="edge12_Node000007_Node000008" title=" " alt="" coords="390,238,434,240,434,245,390,243"/>
+<area shape="poly" id="edge13_Node000008_Node000006" title=" " alt="" coords="600,233,701,211,702,216,602,238"/>
+<area shape="poly" id="edge14_Node000008_Node000008" title=" " alt="" coords="505,237,497,227,501,217,517,211,542,209,574,213,586,222,583,226,572,218,542,214,518,216,505,221,502,226,509,234"/>
+<area shape="rect" id="Node000009" href="$n__avro_8c.html#a7a57e30ef5bd9230a7d74b8cb13de266" title="helper to get AVRO_TYPE from a type name string" alt="" coords="689,236,858,261"/>
+<area shape="poly" id="edge15_Node000008_Node000009" title=" " alt="" coords="636,246,675,246,675,251,636,251"/>
+<area shape="rect" id="Node000011" href="$group___n___s_t_r.html#gac4314e9f0ada88300a09d66405d541a8" title="Convert a char into a N_STR, extended version." alt="" coords="479,285,605,310"/>
+<area shape="poly" id="edge17_Node000010_Node000011" title=" " alt="" coords="365,286,466,291,465,296,365,291"/>
+<area shape="rect" id="Node000012" href="$group___n___s_t_r.html#ga873edbb1f8787d0a78a13ccbbed9b9f9" title="create a new N_STR string" alt="" coords="733,285,814,310"/>
+<area shape="poly" id="edge18_Node000011_Node000012" title=" " alt="" coords="605,295,719,295,719,300,605,300"/>
+</map>

@@ -1,0 +1,65 @@
+<map id="iso_map_draw" name="iso_map_draw">
+<area shape="rect" id="Node000001" title="Draw the full ISO_MAP with height, transitions, overlays, cliff walls, hover, and grid." alt="" coords="5,490,121,515"/>
+<area shape="rect" id="Node000002" href="$n__iso__engine_8c.html#a94144034e6524a894066cda63a520751" title=" " alt="" coords="205,145,348,170"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="62,489,66,433,80,351,94,306,112,261,136,220,168,183,191,168,194,172,171,187,141,223,117,264,99,308,86,352,71,434,67,490"/>
+<area shape="rect" id="Node000004" href="$n__iso__engine_8c.html#a92ac9fcd90edb4de93ef7f539799d249" title="Draw black border outlines on the diamond edges of an elevated tile." alt="" coords="194,77,359,102"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="62,490,64,427,77,332,90,279,109,226,134,175,167,130,184,116,203,105,206,110,187,120,171,134,139,178,114,228,95,281,82,333,70,428,67,490"/>
+<area shape="rect" id="Node000008" href="$group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#gad9d6b576d64c47ccce399401e8a483be" title="Get the height at a cell." alt="" coords="902,277,1055,302"/>
+<area shape="poly" id="edge31_Node000001_Node000008" title=" " alt="" coords="72,514,85,543,106,579,134,615,171,643,235,673,292,691,345,699,396,699,448,692,503,681,637,652,700,640,748,628,793,607,841,569,868,539,891,506,929,435,954,367,969,315,974,316,959,369,934,437,896,509,872,543,844,573,795,612,750,633,701,646,638,657,504,686,448,698,396,704,344,704,291,696,233,678,168,648,131,619,101,582,80,545,67,517"/>
+<area shape="rect" id="Node000010" href="$n__iso__engine_8c.html#a2fe6c6ec248152f94a6575f8afcda914" title="Draw cliff side faces for a single segment {seg_bottom..seg_top}." alt="" coords="193,198,360,223"/>
+<area shape="poly" id="edge11_Node000001_Node000010" title=" " alt="" coords="65,489,77,449,97,394,127,332,167,276,199,248,233,227,235,232,202,252,171,279,132,335,102,396,82,451,70,490"/>
+<area shape="rect" id="Node000011" href="$group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga78c269e7d2c55ad50677347b557b4d01" title="Get the terrain type at a cell." alt="" coords="687,389,841,414"/>
+<area shape="poly" id="edge32_Node000001_Node000011" title=" " alt="" coords="71,488,109,443,136,418,168,400,238,378,311,364,384,357,457,356,591,366,696,383,695,389,591,371,457,361,385,362,311,369,239,383,170,405,139,423,112,446,75,491"/>
+<area shape="rect" id="Node000012" href="$n__iso__engine_8c.html#ad4cab394a4e58273c0d8bfabb3a3ca49" title="Draw the underside face of a floating segment at 65% brightness." alt="" coords="179,415,375,441"/>
+<area shape="poly" id="edge16_Node000001_Node000012" title=" " alt="" coords="86,487,124,468,168,449,195,441,196,447,170,455,126,473,89,492"/>
+<area shape="rect" id="Node000013" href="$n__iso__engine_8c.html#aa932d3ee2d7e90da67f9a99923ddd244" title="Draw a tile bitmap warped to 4 pre&#45;computed screen vertices." alt="" coords="205,465,349,490"/>
+<area shape="poly" id="edge17_Node000001_Node000013" title=" " alt="" coords="121,493,191,485,191,490,122,498"/>
+<area shape="rect" id="Node000014" href="$n__iso__engine_8c.html#abe24c2f27d04d4d3dbbfd66fe37bedd3" title="Project a tile corner to screen coordinates (canonical formula)." alt="" coords="451,617,618,642"/>
+<area shape="poly" id="edge18_Node000001_Node000014" title=" " alt="" coords="76,514,113,558,140,582,170,600,237,622,307,634,376,638,438,637,438,642,376,643,307,639,236,628,168,605,137,586,109,562,71,517"/>
+<area shape="rect" id="Node000015" href="$n__iso__engine_8c.html#a461a6ea3e434580637fb4ae393e55367" title="Check if an object is occluded by tiles drawn in front of it." alt="" coords="173,566,381,591"/>
+<area shape="poly" id="edge19_Node000001_Node000015" title=" " alt="" coords="90,513,170,548,208,560,206,565,168,553,88,518"/>
+<area shape="rect" id="Node000016" href="$group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga69c76ea3f92cc55c76ec3311e0ff5b92" title="Build the draw order for segment&#45;sorted rendering." alt="" coords="199,717,354,757"/>
+<area shape="poly" id="edge22_Node000001_Node000016" title=" " alt="" coords="71,515,82,551,102,599,132,651,150,675,171,697,188,709,185,713,168,701,146,679,127,654,97,602,77,553,66,517"/>
+<area shape="rect" id="Node000018" href="$group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga79123fea1f1162f22e811249dbbe1b3c" title="Compute per&#45;terrain transition bitmasks with height filtering." alt="" coords="169,514,384,539"/>
+<area shape="poly" id="edge24_Node000001_Node000018" title=" " alt="" coords="122,507,156,510,155,516,121,512"/>
+<area shape="rect" id="Node000022" href="$group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga139a368414f6b25a2bc0da10799252aa" title="Compute smooth corner heights with slope clamping." alt="" coords="444,248,625,288"/>
+<area shape="poly" id="edge33_Node000001_Node000022" title=" " alt="" coords="68,489,103,424,132,387,168,355,231,321,299,297,367,281,430,272,430,277,368,286,301,302,233,326,171,360,136,391,107,427,72,491"/>
+<area shape="rect" id="Node000024" href="$group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga860f3bc390d7440031617e3583313fd2" title="Convert map tile coordinates to screen pixel coordinates." alt="" coords="203,782,350,807"/>
+<area shape="poly" id="edge37_Node000001_Node000024" title=" " alt="" coords="68,515,75,563,91,632,105,669,122,705,144,738,171,767,191,780,189,785,168,771,140,742,117,707,100,671,86,633,70,564,63,516"/>
+<area shape="rect" id="Node000025" href="$group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga948424ece1b85f9f9e3a0abbfde00694" title="Convert map coordinates to screen coordinates (float version)." alt="" coords="197,831,356,857"/>
+<area shape="poly" id="edge38_Node000001_Node000025" title=" " alt="" coords="67,516,71,572,85,654,98,698,116,742,140,783,171,818,186,828,183,833,168,822,136,786,111,745,93,700,80,655,66,572,62,516"/>
+<area shape="rect" id="Node000003" href="$group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga3b5f7e53852e0ba04b87e7a1a43c8a97" title=" " alt="" coords="459,133,610,173"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="348,154,445,152,446,157,348,159"/>
+<area shape="rect" id="Node000005" href="$group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#gaf95437f1e6015e1cf960e92a524a83f2" title=" " alt="" coords="458,69,611,109"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="359,87,444,87,444,92,359,92"/>
+<area shape="rect" id="Node000006" href="$group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga713aea74dd144786e82de02ddd9c72f3" title="Per&#45;segment edge visibility with adjacency + occlusion." alt="" coords="457,5,612,45"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="328,74,443,45,444,50,330,79"/>
+<area shape="rect" id="Node000007" href="$n__iso__engine_8c.html#ae1a4509af8ad93f097bba4733295e53f" title="Check if a tile has geometry covering height level z." alt="" coords="690,63,838,89"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="613,40,693,58,692,63,612,45"/>
+<area shape="poly" id="edge9_Node000006_Node000008" title=" " alt="" coords="613,43,639,55,664,76,687,98,729,126,764,145,844,190,951,266,948,270,841,194,762,150,727,131,684,102,660,80,636,60,611,48"/>
+<area shape="rect" id="Node000009" href="$group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#gad97e266ee3f383441e521b0ef2c50a30" title="get per&#45;tile segments." alt="" coords="891,38,1067,63"/>
+<area shape="poly" id="edge10_Node000006_Node000009" title=" " alt="" coords="613,27,877,42,877,48,612,32"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="792,86,818,102,844,122,881,158,914,197,964,264,959,267,910,200,877,162,841,126,815,107,789,91"/>
+<area shape="poly" id="edge8_Node000007_Node000009" title=" " alt="" coords="838,65,877,60,877,65,839,70"/>
+<area shape="poly" id="edge13_Node000010_Node000003" title=" " alt="" coords="334,195,445,170,446,176,335,201"/>
+<area shape="poly" id="edge12_Node000010_Node000005" title=" " alt="" coords="347,195,383,179,397,165,406,150,415,135,430,119,444,111,447,115,434,123,419,138,410,153,402,168,385,184,350,200"/>
+<area shape="poly" id="edge14_Node000010_Node000008" title=" " alt="" coords="360,212,579,227,711,240,843,259,908,271,907,276,842,264,711,246,579,232,360,217"/>
+<area shape="poly" id="edge15_Node000010_Node000011" title=" " alt="" coords="298,221,357,258,433,298,489,318,534,329,580,339,638,355,716,381,714,386,637,360,579,344,533,334,487,323,431,302,354,263,295,226"/>
+<area shape="poly" id="edge21_Node000015_Node000008" title=" " alt="" coords="381,578,503,576,638,569,759,552,807,539,841,523,868,502,891,476,928,419,953,361,968,314,973,316,958,363,932,421,895,480,871,506,844,528,809,544,760,557,638,574,503,582,381,583"/>
+<area shape="poly" id="edge20_Node000015_Node000014" title=" " alt="" coords="343,589,456,611,455,617,342,594"/>
+<area shape="rect" id="Node000017" href="$n__iso__engine_8c.html#afe7e011163209e9c2a56e768b2568c4c" title=" " alt="" coords="466,725,603,750"/>
+<area shape="poly" id="edge23_Node000016_Node000017" title=" " alt="" coords="354,735,452,735,452,740,354,740"/>
+<area shape="poly" id="edge30_Node000018_Node000011" title=" " alt="" coords="356,511,488,486,637,448,721,417,723,422,638,453,489,491,357,517"/>
+<area shape="rect" id="Node000019" href="$n__iso__engine_8c.html#a9465712f8fcf4204bdcbf6c7cd2f3dc3" title=" " alt="" coords="432,515,637,541"/>
+<area shape="poly" id="edge25_Node000018_Node000019" title=" " alt="" coords="384,525,418,525,418,530,384,530"/>
+<area shape="rect" id="Node000021" href="$n__iso__engine_8c.html#a05c34df2ce58f3676982a7469e9cf683" title="Edge&#45;aware terrain lookup for chunked rendering." alt="" coords="457,414,613,439"/>
+<area shape="poly" id="edge28_Node000018_Node000021" title=" " alt="" coords="351,511,383,499,397,489,406,479,416,467,431,456,464,441,467,446,433,461,419,471,410,482,400,493,385,504,353,516"/>
+<area shape="rect" id="Node000020" href="$n__iso__engine_8c.html#a88b4204bd90fc04be2aa3a8b91d3a924" title=" " alt="" coords="687,489,841,514"/>
+<area shape="poly" id="edge26_Node000019_Node000020" title=" " alt="" coords="637,513,673,509,673,515,638,519"/>
+<area shape="poly" id="edge27_Node000020_Node000008" title=" " alt="" coords="777,487,841,423,953,310,957,314,845,427,780,490"/>
+<area shape="poly" id="edge29_Node000021_Node000011" title=" " alt="" coords="612,415,673,409,673,414,613,421"/>
+<area shape="poly" id="edge36_Node000022_Node000008" title=" " alt="" coords="626,270,889,282,888,288,626,275"/>
+<area shape="rect" id="Node000023" href="$n__iso__engine_8c.html#a2b0b04764821d793bbd1e9dc3294c8ca" title="Helper: clamp neighbor height for smooth slope rendering." alt="" coords="685,302,843,327"/>
+<area shape="poly" id="edge34_Node000022_Node000023" title=" " alt="" coords="626,284,688,297,687,302,625,289"/>
+<area shape="poly" id="edge35_Node000023_Node000008" title=" " alt="" coords="843,303,888,297,888,303,843,308"/>
+</map>

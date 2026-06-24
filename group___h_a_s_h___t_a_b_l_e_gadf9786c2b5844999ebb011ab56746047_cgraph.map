@@ -1,0 +1,25 @@
+<map id="ht_optimize" name="ht_optimize">
+<area shape="rect" id="Node000001" title="optimize a hash table by resizing to the optimal size" alt="" coords="5,101,104,127"/>
+<area shape="rect" id="Node000002" href="$group___h_a_s_h___t_a_b_l_e.html#ga77abac901ee0e46a85c45c4203a2e44b" title="get optimal array size based on nb=(number_of_key*1.3) &amp;&amp; if( !isprime(nb) )nb=nextprime(nb) (HASH_CL..." alt="" coords="157,44,311,69"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="93,99,151,79,178,71,180,76,153,84,95,104"/>
+<area shape="rect" id="Node000005" href="$group___h_a_s_h___t_a_b_l_e.html#ga484b7c7f330914d21fafbf582713fc07" title="get table collision percentage (HASH_CLASSIC mode only)" alt="" coords="152,94,316,134"/>
+<area shape="poly" id="edge6_Node000001_Node000005" title=" " alt="" coords="104,111,138,111,138,117,104,117"/>
+<area shape="rect" id="Node000006" href="$group___h_a_s_h___t_a_b_l_e.html#ga941824c3bad16549d062908475ff36a6" title="rehash table according to size (HASH_CLASSIC mode only)" alt="" coords="193,159,275,184"/>
+<area shape="poly" id="edge7_Node000001_Node000006" title=" " alt="" coords="95,124,153,143,181,152,179,157,151,148,93,129"/>
+<area shape="rect" id="Node000003" href="$group___h_a_s_h___t_a_b_l_e.html#ga88f04a57411af8d3d1d7597078707b0b" title="test if number is a prime number or not" alt="" coords="549,11,627,36"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="262,41,309,23,364,9,429,3,495,9,535,13,535,18,494,14,429,9,364,14,310,28,264,46"/>
+<area shape="rect" id="Node000004" href="$group___h_a_s_h___t_a_b_l_e.html#ga8d5b781bef3c496e371f9a11f46f0cec" title="compute next prime number after nb" alt="" coords="381,48,477,73"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="311,55,367,57,367,62,311,61"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="477,47,535,33,536,38,478,52"/>
+<area shape="poly" id="edge5_Node000004_Node000004" title=" " alt="" coords="403,49,397,39,400,30,411,23,429,21,451,25,460,33,457,37,449,29,429,27,413,28,404,33,403,39,407,46"/>
+<area shape="rect" id="Node000007" href="$group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755" title="Empty and Free a list container." alt="" coords="380,105,479,131"/>
+<area shape="poly" id="edge8_Node000006_Node000007" title=" " alt="" coords="274,158,368,132,370,137,275,163"/>
+<area shape="rect" id="Node000009" href="$group___l_i_s_t.html#gafdc5e3efd8a9244161b52fcb24760b0e" title="Add a filled node to the end of the list." alt="" coords="370,155,489,180"/>
+<area shape="poly" id="edge10_Node000006_Node000009" title=" " alt="" coords="275,168,356,166,356,171,275,173"/>
+<area shape="rect" id="Node000010" href="$group___l_i_s_t.html#ga65791a797732c74dc66948a014479328" title="Get a LIST_NODE pointer from the start of the list." alt="" coords="371,204,487,229"/>
+<area shape="poly" id="edge11_Node000006_Node000010" title=" " alt="" coords="275,178,361,198,360,203,274,183"/>
+<area shape="rect" id="Node000011" href="$group___l_i_s_t.html#gae4b8e915bc22e7993d2849152ec1c3ac" title="Initialiaze a generic list container to max_items pointers." alt="" coords="364,253,495,279"/>
+<area shape="poly" id="edge12_Node000006_Node000011" title=" " alt="" coords="258,182,365,238,382,246,380,250,363,243,256,186"/>
+<area shape="rect" id="Node000008" href="$group___l_i_s_t.html#ga1dafe7a250ddad51fadd375f057287e7" title="Empty a LIST list of pointers." alt="" coords="543,105,633,131"/>
+<area shape="poly" id="edge9_Node000007_Node000008" title=" " alt="" coords="479,115,529,115,529,121,479,121"/>
+</map>

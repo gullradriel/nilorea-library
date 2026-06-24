@@ -1,0 +1,14 @@
+<map id="get_nstr_from_msg" name="get_nstr_from_msg">
+<area shape="rect" id="Node000001" title="get a N_STR string from the message" alt="" coords="449,55,597,80"/>
+<area shape="rect" id="Node000002" href="$ex__network_8h.html#a6f950bd6cd1d0314572ecae401ac1883" title="decode data we got from network" alt="" coords="281,5,395,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="461,54,386,33,388,28,463,49"/>
+<area shape="rect" id="Node000005" href="$group___n_e_t_w_o_r_k___m_s_g.html#gaf2d84e34e50db7b3b7aca16c6bdb06f8" title="Retrieves identification from netwmsg." alt="" coords="277,55,399,80"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="436,70,399,70,399,65,436,65"/>
+<area shape="rect" id="Node000006" href="$group___n_e_t_w_o_r_k___m_s_g.html#gace220d6339bd8085269ecee2b35126fb" title="Retrieves string from netwmsg." alt="" coords="275,104,401,129"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="463,86,388,106,386,101,461,81"/>
+<area shape="rect" id="Node000003" href="$ex__network_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,5,60,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="267,21,60,21,60,15,267,15"/>
+<area shape="rect" id="Node000004" href="$ex__network_8h.html#a2af070d97fced1a0eadad90c6aa4903b" title="recv/send datas if any for the client" alt="" coords="108,31,227,56"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="267,31,227,37,227,32,266,26"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="94,32,60,26,61,20,95,27"/>
+</map>

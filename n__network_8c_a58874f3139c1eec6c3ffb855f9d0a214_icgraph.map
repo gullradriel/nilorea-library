@@ -1,0 +1,81 @@
+<map id="netw_ssl_print_errors" name="netw_ssl_print_errors">
+<area shape="rect" id="Node000001" title="print OpenSSL errors for a given socket" alt="" coords="1279,484,1440,509"/>
+<area shape="rect" id="Node000002" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga87057932b1901f9a91c4db49224087e2" title="make a normal &#39;accept&#39; ." alt="" coords="1057,156,1223,181"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1340,474,1148,183,1152,180,1344,471"/>
+<area shape="rect" id="Node000013" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga357d90dfa5a07f746a9f780aca304938" title="activate SSL encryption on selected network, using key and certificate" alt="" coords="1075,396,1205,421"/>
+<area shape="poly" id="edge13_Node000001_Node000013" title=" " alt="" coords="1313,481,1172,424,1174,419,1315,476"/>
+<area shape="rect" id="Node000028" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga9abe4bf9682b4b3675d84e0a83580582" title="Connect as an SSL client without providing a client certificate." alt="" coords="531,459,731,484"/>
+<area shape="poly" id="edge39_Node000001_Node000028" title=" " alt="" coords="1265,496,731,477,731,472,1265,491"/>
+<area shape="rect" id="Node000030" href="$group___n_e_t_w_o_r_k_i_n_g.html#gacdbdf8300fa6152476d4ed0bae0099a2" title="activate SSL encryption using key/certificate files and a CA file for chain verification" alt="" coords="805,307,975,332"/>
+<area shape="poly" id="edge36_Node000001_Node000030" title=" " alt="" coords="1337,475,1291,429,1261,406,1229,387,1166,362,1099,344,1034,332,975,326,976,321,1034,327,1100,339,1167,357,1232,382,1264,402,1294,425,1341,472"/>
+<area shape="rect" id="Node000031" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga1dd6b8f246d9aabb4d788b6583ba95a9" title="activate SSL encryption using PEM&#45;formatted key and certificate strings loaded from memory" alt="" coords="1057,509,1223,535"/>
+<area shape="poly" id="edge37_Node000001_Node000031" title=" " alt="" coords="1266,510,1223,515,1223,510,1265,505"/>
+<area shape="rect" id="Node000033" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga54d5ba9974151369573934df07b82041" title="Complete the SSL handshake on an already&#45;connected NETWORK." alt="" coords="303,532,482,557"/>
+<area shape="poly" id="edge40_Node000001_Node000033" title=" " alt="" coords="1323,518,1280,536,1231,550,1128,566,1022,575,916,580,813,580,626,572,482,559,483,553,627,566,814,575,916,575,1022,570,1127,561,1230,545,1278,531,1321,513"/>
+<area shape="rect" id="Node000034" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga3dcd1f7e409c7c91448f4c82f7cf4b9d" title="set custom CA verify location for SSL context" alt="" coords="1076,611,1204,636"/>
+<area shape="poly" id="edge43_Node000001_Node000034" title=" " alt="" coords="1335,520,1289,557,1232,594,1186,613,1184,608,1229,589,1286,553,1332,516"/>
+<area shape="rect" id="Node000035" href="$group___n_e_t_w_o_r_k_i_n_g.html#gae99b420fd2fd26af615cc073526036c3" title="load a client certificate and private key for mTLS" alt="" coords="1049,660,1231,685"/>
+<area shape="poly" id="edge44_Node000001_Node000035" title=" " alt="" coords="1346,523,1301,587,1269,622,1232,651,1208,662,1206,658,1229,646,1266,618,1297,584,1342,520"/>
+<area shape="rect" id="Node000003" href="$ex__accept__pool__server_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="365,107,420,132"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="1109,150,1060,120,1031,107,1001,97,917,81,830,73,744,73,661,78,516,97,421,116,419,110,516,91,660,73,744,68,830,68,917,75,1002,91,1033,102,1063,116,1112,146"/>
+<area shape="rect" id="Node000004" href="$ex__network__ssl_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="603,307,658,332"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="1109,191,1060,219,1002,245,932,264,834,285,659,317,658,312,833,280,930,259,1000,239,1057,214,1106,186"/>
+<area shape="rect" id="Node000005" href="$group___n_e_t_w_o_r_k_i_n_g.html#gac5bcf7695b0df7bf207b3b2fd97cc5c3" title="Run the mock server accept loop." alt="" coords="815,5,965,31"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="1117,148,1066,100,1034,74,1000,52,952,33,954,28,1003,48,1037,70,1070,96,1120,144"/>
+<area shape="rect" id="Node000008" href="$group___n_e_t_w_o_r_k_i_n_g.html#gab99090cbf623f95556ea610e690b50d9" title="make a normal blocking &#39;accept&#39; ." alt="" coords="819,107,961,132"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="1061,156,955,135,956,129,1062,151"/>
+<area shape="rect" id="Node000010" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga32138772c399518190a14e81164fc469" title="make a normal blocking &#39;accept&#39; ." alt="" coords="786,205,994,231"/>
+<area shape="poly" id="edge9_Node000002_Node000010" title=" " alt="" coords="1062,187,956,208,955,203,1061,181"/>
+<area shape="rect" id="Node000011" href="$n__network__accept__pool_8c.html#a35a4d840540d74b6ef0b016583c15333" title="Thread function for accept pool workers." alt="" coords="779,156,1001,181"/>
+<area shape="poly" id="edge10_Node000002_Node000011" title=" " alt="" coords="1043,171,1002,171,1002,166,1043,166"/>
+<area shape="rect" id="Node000006" href="$ex__network__mock_8c.html#a3308271a59ff5ad3e513ae0bf55ccd45" title="Thread function that runs the server accept loop." alt="" coords="575,5,687,31"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="801,21,687,21,687,15,801,15"/>
+<area shape="rect" id="Node000007" href="$ex__network__mock_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="365,5,420,31"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="561,21,421,21,421,15,561,15"/>
+<area shape="rect" id="Node000009" href="$ex__network_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="603,107,658,132"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="805,122,658,122,658,117,805,117"/>
+<area shape="rect" id="Node000012" href="$group___a_c_c_e_p_t___p_o_o_l.html#gad643e047ac230afd775d19a679443fab" title="Start the accept pool (launches accept threads)" alt="" coords="543,156,719,181"/>
+<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="765,171,719,171,719,166,765,166"/>
+<area shape="poly" id="edge12_Node000012_Node000003" title=" " alt="" coords="555,156,420,127,421,122,556,151"/>
+<area shape="poly" id="edge14_Node000013_Node000004" title=" " alt="" coords="1061,398,658,327,659,321,1062,392"/>
+<area shape="rect" id="Node000014" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga447293d93ac5360bf8e0582abbb3121c" title="Use this to connect a NETWORK to any listening one." alt="" coords="813,408,967,433"/>
+<area shape="poly" id="edge15_Node000013_Node000014" title=" " alt="" coords="1062,415,968,420,967,414,1061,410"/>
+<area shape="poly" id="edge34_Node000013_Node000030" title=" " alt="" coords="1097,393,1000,354,939,335,940,329,1002,349,1099,388"/>
+<area shape="rect" id="Node000015" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga8b9b1d2625a6c5d28c40399d6fdf3794" title="Use this to connect a NETWORK to any listening one." alt="" coords="563,408,698,433"/>
+<area shape="poly" id="edge16_Node000014_Node000015" title=" " alt="" coords="799,423,698,423,698,418,799,418"/>
+<area shape="rect" id="Node000027" href="$group___n_e_t_w_o_r_k_i_n_g.html#gae5e9ed05e89dbf2c2672ee42f558ea2d" title="Connect a NETWORK with a bounded connection&#45;establishment time." alt="" coords="565,359,697,384"/>
+<area shape="poly" id="edge29_Node000014_Node000027" title=" " alt="" coords="809,408,696,386,697,381,810,403"/>
+<area shape="poly" id="edge30_Node000014_Node000028" title=" " alt="" coords="811,439,697,461,696,456,810,433"/>
+<area shape="rect" id="Node000016" href="$group___n_e_t_w_o_r_k_i_n_g.html#gae18d52a130063ba1fd0a4cf4b6a2da20" title="Use this to connect a NETWORK to any listening one, unrestricted send/recv lists." alt="" coords="337,384,449,409"/>
+<area shape="poly" id="edge17_Node000015_Node000016" title=" " alt="" coords="549,415,449,405,449,400,550,410"/>
+<area shape="rect" id="Node000026" href="$group___n_e_t_w_o_r_k_i_n_g.html#gada1d9596f77d9467ebe72657a5b04103" title="Use this to connect a NETWORK to any listening one, unrestricted send/recv lists." alt="" coords="324,433,461,459"/>
+<area shape="poly" id="edge28_Node000015_Node000026" title=" " alt="" coords="550,432,462,441,461,436,550,427"/>
+<area shape="rect" id="Node000017" href="$ex__accept__pool__client_8c.html#aab312f9d63dc3375f09457ffaeebdb5f" title="Echo mode: connect, send a message, receive echo, close." alt="" coords="108,384,255,409"/>
+<area shape="poly" id="edge18_Node000016_Node000017" title=" " alt="" coords="323,399,255,399,255,394,323,394"/>
+<area shape="rect" id="Node000019" href="$ex__accept__pool__client_8c.html#aa17ddefadc32335b6c539c97fa1a917e" title="Fast mode: connect and immediately close (measures pure accept throughput)" alt="" coords="111,433,252,459"/>
+<area shape="poly" id="edge20_Node000016_Node000019" title=" " alt="" coords="325,415,237,436,236,431,324,410"/>
+<area shape="rect" id="Node000020" href="$ex__gui__network_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="154,285,209,311"/>
+<area shape="poly" id="edge22_Node000016_Node000020" title=" " alt="" coords="357,380,254,326,208,309,210,304,256,321,360,375"/>
+<area shape="rect" id="Node000021" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaab69390194fc9d0b8aed9fa6ecb396a2" title="Connect to an SSE endpoint and start reading events." alt="" coords="123,483,240,508"/>
+<area shape="poly" id="edge23_Node000016_Node000021" title=" " alt="" coords="325,414,304,424,290,436,281,448,271,461,256,474,233,485,230,480,253,469,267,457,276,445,286,432,301,420,322,410"/>
+<area shape="rect" id="Node000023" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga6842dd9d835a0c54959f7d7d8b042e21" title="Connect to a WebSocket server (ws:// or wss://)." alt="" coords="125,532,238,557"/>
+<area shape="poly" id="edge25_Node000016_Node000023" title=" " alt="" coords="325,412,304,424,294,436,287,447,281,472,275,497,268,510,256,523,239,534,236,530,253,519,264,507,270,495,276,470,282,445,289,432,301,420,322,407"/>
+<area shape="rect" id="Node000025" href="$ex__network__reactor_8c.html#accbae40b6dec2c320bfa9f3284f7f17e" title="Client&#45;side: connect, send one message, wait for the echo, close." alt="" coords="138,335,225,360"/>
+<area shape="poly" id="edge27_Node000016_Node000025" title=" " alt="" coords="324,383,224,360,225,355,325,378"/>
+<area shape="rect" id="Node000018" href="$ex__accept__pool__client_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,409,60,435"/>
+<area shape="poly" id="edge19_Node000017_Node000018" title=" " alt="" coords="95,414,61,420,60,415,94,409"/>
+<area shape="poly" id="edge21_Node000019_Node000018" title=" " alt="" coords="97,435,60,429,61,424,97,430"/>
+<area shape="rect" id="Node000022" href="$ex__network__sse_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,483,60,508"/>
+<area shape="poly" id="edge24_Node000021_Node000022" title=" " alt="" coords="109,498,60,498,60,493,109,493"/>
+<area shape="rect" id="Node000024" href="$ex__network__ws_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,532,60,557"/>
+<area shape="poly" id="edge26_Node000023_Node000024" title=" " alt="" coords="111,547,60,547,60,542,111,542"/>
+<area shape="rect" id="Node000029" href="$group___n_e_t_w_o_r_k_i_n_g.html#gacc4043b22971cbc5cab0ae0e2b95ea96" title="Connect as an SSL client without providing a client certificate." alt="" coords="303,483,483,508"/>
+<area shape="poly" id="edge31_Node000028_Node000029" title=" " alt="" coords="517,485,483,489,483,484,517,480"/>
+<area shape="poly" id="edge32_Node000029_Node000021" title=" " alt="" coords="289,498,240,498,240,493,289,493"/>
+<area shape="poly" id="edge33_Node000029_Node000023" title=" " alt="" coords="325,514,237,535,236,529,324,509"/>
+<area shape="poly" id="edge35_Node000030_Node000004" title=" " alt="" coords="791,322,658,322,658,317,791,317"/>
+<area shape="rect" id="Node000032" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga37102c5276c078619d00015bcb7b1d98" title="activate SSL encryption using PEM strings for key, certificate, and CA" alt="" coords="787,509,993,535"/>
+<area shape="poly" id="edge38_Node000031_Node000032" title=" " alt="" coords="1043,525,994,525,994,519,1043,519"/>
+<area shape="poly" id="edge41_Node000033_Node000021" title=" " alt="" coords="324,531,236,511,237,505,325,526"/>
+<area shape="poly" id="edge42_Node000033_Node000023" title=" " alt="" coords="289,547,238,547,238,542,289,542"/>
+</map>

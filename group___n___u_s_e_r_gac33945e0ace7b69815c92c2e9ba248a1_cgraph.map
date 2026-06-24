@@ -1,0 +1,17 @@
+<map id="userlist_send_waiting_msgs" name="userlist_send_waiting_msgs">
+<area shape="rect" id="Node000001" title="send all waiting messages for all users in the list" alt="" coords="5,56,211,81"/>
+<area shape="rect" id="Node000002" href="$group___l_i_s_t.html#ga1dafe7a250ddad51fadd375f057287e7" title="Empty a LIST list of pointers." alt="" coords="273,31,364,56"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="211,54,259,48,260,53,211,59"/>
+<area shape="rect" id="Node000003" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga10429a9fa106b61c38f28635242ce502" title="Add a message to send in aimed NETWORK." alt="" coords="259,80,379,105"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="211,78,245,82,245,87,211,83"/>
+<area shape="rect" id="Node000004" href="$n__network_8c.html#add7707017912cae7d9e4756824b96cb9" title="capture an error into a NETWORK handle&#39;s ring buffer" alt="" coords="432,5,587,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="350,78,377,65,426,40,445,32,447,37,428,44,380,70,352,82"/>
+<area shape="rect" id="Node000005" href="$group___n___s_t_r.html#ga0a864a4ce4997389f2e5e2e16c51a30a" title="Free a N_STR pointer structure." alt="" coords="457,55,562,80"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="379,82,443,73,443,79,379,87"/>
+<area shape="rect" id="Node000006" href="$group___l_i_s_t.html#ga4eab319289a83524639ee5e9f0441fdf" title="Add a pointer to the end of the list." alt="" coords="469,104,549,129"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="379,98,456,107,455,113,379,103"/>
+<area shape="rect" id="Node000008" href="$n__reactor_8c.html#ab094d0f4f7f61cc7dcd4ab858ca0a668" title="Producer&#45;side wake&#45;up after a netw_add_msg." alt="" coords="427,153,592,179"/>
+<area shape="poly" id="edge7_Node000003_Node000008" title=" " alt="" coords="347,103,428,138,452,147,450,152,426,143,345,108"/>
+<area shape="rect" id="Node000007" href="$group___l_i_s_t.html#ga678e828550efc8e64a836bb8c713c2f4" title="Allocate a new node to link in a list." alt="" coords="640,104,755,129"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="550,114,627,114,627,119,550,119"/>
+</map>
