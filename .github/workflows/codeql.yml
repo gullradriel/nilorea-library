@@ -1,0 +1,60 @@
+name: "CodeQL"
+
+on:
+  push:
+    branches: [ main, next ]
+  pull_request:
+    branches: [ main, next ]
+  schedule:
+    - cron: '0 6 * * 1'
+
+permissions:
+  actions: read
+  contents: read
+  security-events: write
+
+jobs:
+  analyze:
+    name: Analyze
+    if: ${{ github.event.repository.visibility == 'public' }}
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        language: [ 'c-cpp' ]
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        submodules: recursive
+
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v3
+      with:
+        languages: ${{ matrix.language }}
+        queries: security-extended
+
+    - name: Cache packages
+      uses: actions/cache@v4
+      with:
+        key: nilorea-library-codeql-cache
+        path: |
+          ~/apt-cache
+
+    - name: Install dependencies
+      run: |
+        export APT_CACHE_DIR=~/apt-cache && mkdir -pv $APT_CACHE_DIR
+        sudo apt-get update -yq && sudo apt-get -o dir::cache::archives="$APT_CACHE_DIR" install -y liballegro5-dev libpcre2-dev libssl-dev zlib1g-dev
+        sudo rm -rf $APT_CACHE_DIR/lock $APT_CACHE_DIR/partial
+
+    - name: Build
+      run: |
+        make integrate-deps
+        make -j $(nproc)
+
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v3
+      with:
+        category: "/language:${{ matrix.language }}"

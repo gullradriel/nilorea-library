@@ -1,0 +1,195 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ main , next ]
+  pull_request:
+    branches: [ main , next ]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        submodules: recursive
+    - name: Cache packages
+      uses: actions/cache@v4
+      with:
+        key: nilorea-library-cache
+        path: |
+          ~/apt-cache
+    - name: Install dependencies
+      run: |
+        export APT_CACHE_DIR=~/apt-cache && mkdir -pv $APT_CACHE_DIR
+        sudo apt-get update -yq && sudo apt-get -o dir::cache::archives="$APT_CACHE_DIR" install -y liballegro5-dev libpcre2-dev
+        sudo rm -rf $APT_CACHE_DIR/lock $APT_CACHE_DIR/partial
+    - name: Build library and dependencies
+      run: |
+        make integrate-deps
+        make DEBUG=1 -j $(nproc)
+    - name: Build examples
+      run: make DEBUG=1 -j $(nproc) examples
+    - name: Upload build output
+      uses: actions/upload-artifact@v4
+      with:
+        name: linux-debug-build
+        path: |
+          examples/ex_*
+          !examples/ex_*.c
+          !examples/ex_*.h
+          !examples/ex_*.o
+          examples/libnilorea.so
+          examples/librdkafka.so*
+          libnilorea.a
+          libnilorea.so
+        retention-days: 1
+        if-no-files-found: error
+
+  test:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        submodules: recursive
+    - name: Cache packages
+      uses: actions/cache@v4
+      with:
+        key: nilorea-library-cache
+        path: |
+          ~/apt-cache
+    - name: Install dependencies
+      run: |
+        export APT_CACHE_DIR=~/apt-cache && mkdir -pv $APT_CACHE_DIR
+        sudo apt-get update -yq && sudo apt-get -o dir::cache::archives="$APT_CACHE_DIR" install -y liballegro5-dev libpcre2-dev
+        sudo rm -rf $APT_CACHE_DIR/lock $APT_CACHE_DIR/partial
+    - name: Download build output
+      uses: actions/download-artifact@v4
+      with:
+        name: linux-debug-build
+    - name: Run tests
+      run: |
+        chmod +x examples/ex_* examples/run_tests.sh
+        cd examples
+        ./run_tests.sh
+
+  build-tsan:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        submodules: recursive
+    - name: Cache packages
+      uses: actions/cache@v4
+      with:
+        key: nilorea-library-cache
+        path: |
+          ~/apt-cache
+    - name: Install dependencies
+      run: |
+        export APT_CACHE_DIR=~/apt-cache && mkdir -pv $APT_CACHE_DIR
+        sudo apt-get update -yq && sudo apt-get -o dir::cache::archives="$APT_CACHE_DIR" install -y liballegro5-dev libpcre2-dev
+        sudo rm -rf $APT_CACHE_DIR/lock $APT_CACHE_DIR/partial
+    - name: Build library and dependencies (TSan)
+      run: |
+        make integrate-deps
+        make DEBUG=1 DEBUG_THREADS=1 -j $(nproc)
+    - name: Build examples (TSan)
+      run: make DEBUG=1 DEBUG_THREADS=1 -j $(nproc) examples
+    - name: Upload build output
+      uses: actions/upload-artifact@v4
+      with:
+        name: linux-tsan-build
+        path: |
+          examples/ex_*
+          !examples/ex_*.c
+          !examples/ex_*.h
+          !examples/ex_*.o
+          examples/libnilorea.so
+          examples/librdkafka.so*
+          libnilorea.a
+          libnilorea.so
+        retention-days: 1
+        if-no-files-found: error
+
+  test-tsan:
+    runs-on: ubuntu-latest
+    needs: build-tsan
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        submodules: recursive
+    - name: Cache packages
+      uses: actions/cache@v4
+      with:
+        key: nilorea-library-cache
+        path: |
+          ~/apt-cache
+    - name: Install dependencies
+      run: |
+        export APT_CACHE_DIR=~/apt-cache && mkdir -pv $APT_CACHE_DIR
+        sudo apt-get update -yq && sudo apt-get -o dir::cache::archives="$APT_CACHE_DIR" install -y liballegro5-dev libpcre2-dev
+        sudo rm -rf $APT_CACHE_DIR/lock $APT_CACHE_DIR/partial
+    - name: Download build output
+      uses: actions/download-artifact@v4
+      with:
+        name: linux-tsan-build
+    - name: Run tests
+      run: |
+        chmod +x examples/ex_* examples/run_tests.sh
+        cd examples
+        ./run_tests.sh
+
+  check:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        submodules: recursive
+    - name: Cache packages
+      uses: actions/cache@v4
+      with:
+        key: nilorea-library-cache
+        path: |
+          ~/apt-cache
+    - name: Install dependencies
+      run: |
+        export APT_CACHE_DIR=~/apt-cache && mkdir -pv $APT_CACHE_DIR
+        sudo apt-get update -yq && sudo apt-get -o dir::cache::archives="$APT_CACHE_DIR" install -y liballegro5-dev libpcre2-dev cppcheck clang-tools
+        sudo rm -rf $APT_CACHE_DIR/lock $APT_CACHE_DIR/partial
+    - name: Build vendored deps
+      run: make integrate-deps
+    - name: Static analysis (cppcheck + scan-build)
+      run: make check SCAN_BUILD_STATUS_BUGS=1
+
+  build-mingw64:
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: msys2 {0}
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        submodules: recursive
+    - name: Set up MSYS2 / MinGW64
+      uses: msys2/setup-msys2@v2
+      with:
+        msystem: MINGW64
+        update: true
+        install: >-
+          base-devel
+          mingw-w64-x86_64-toolchain
+          mingw-w64-x86_64-allegro
+          mingw-w64-x86_64-pcre2
+          mingw-w64-x86_64-openssl
+          mingw-w64-x86_64-libgit2
+    - name: Show detected options
+      run: make show-detected-option
+    - name: Build library
+      run: make DEBUG=1 -j $(nproc)
+    - name: Build examples
+      run: make DEBUG=1 -j $(nproc) examples
