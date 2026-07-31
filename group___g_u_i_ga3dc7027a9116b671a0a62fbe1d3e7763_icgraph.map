@@ -1,0 +1,39 @@
+<map id="n_gui_close_window" name="n_gui_close_window">
+<area shape="rect" id="Node000001" title="close (hide) a window" alt="" coords="720,329,875,355"/>
+<area shape="rect" id="Node000002" href="$n__gui_8c.html#a31b9caae16e57118b2dea20bba9af795" title="Dispatch a titlebar button action, invoke the user callback if set, otherwise fall back to the built&#45;..." alt="" coords="523,153,662,179"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="769,322,607,181,611,177,772,318"/>
+<area shape="rect" id="Node000007" href="$ex__gui__multiwin_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,104,60,129"/>
+<area shape="poly" id="edge11_Node000001_Node000007" title=" " alt="" coords="758,326,717,308,671,294,586,280,511,279,443,286,379,296,316,301,251,298,218,291,182,280,146,264,106,241,79,217,58,186,35,130,40,128,63,183,83,213,110,237,148,259,184,275,219,286,252,293,316,296,378,290,442,281,511,274,587,275,673,289,718,303,760,321"/>
+<area shape="rect" id="Node000011" href="$ex__gui__isometric_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="565,304,620,329"/>
+<area shape="poly" id="edge12_Node000001_Node000011" title=" " alt="" coords="706,333,620,323,620,317,707,328"/>
+<area shape="rect" id="Node000012" href="$group___g_u_i.html#ga694c3e836bb6c56fb905ca040892205e" title="set the active tab (toggles buttons, opens/closes content windows)" alt="" coords="513,353,672,379"/>
+<area shape="poly" id="edge13_Node000001_Node000012" title=" " alt="" coords="707,355,672,359,672,354,706,350"/>
+<area shape="rect" id="Node000015" href="$ex__gui__isometric_8c.html#a9a171fc3f1e0c68094bddacc6681d309" title=" " alt="" coords="528,403,657,428"/>
+<area shape="poly" id="edge16_Node000001_Node000015" title=" " alt="" coords="753,362,673,393,635,405,634,400,671,387,751,357"/>
+<area shape="rect" id="Node000016" href="$ex__gui__detach_8c.html#a0410f90b56e9d2375eb9871c037393e7" title="A native window&#39;s close button (the window manager&#39;s, or N_GUI&#39;s own when the panel keeps its chrome)..." alt="" coords="531,452,654,477"/>
+<area shape="poly" id="edge17_Node000001_Node000016" title=" " alt="" coords="776,366,730,405,673,443,646,454,644,450,671,438,727,401,772,362"/>
+<area shape="rect" id="Node000003" href="$group___g_u_i.html#ga3971ceb17b0fcf5d893c5c61f24c5269" title="Process an allegro event through the GUI system." alt="" coords="289,129,448,155"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="509,160,448,153,448,148,510,154"/>
+<area shape="rect" id="Node000004" href="$ex__gui__zorder_8c.html#a64050cbb6488168c233556098a07d558" title=" " alt="" coords="130,5,202,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="339,123,286,84,223,44,200,33,202,28,225,40,289,80,342,119"/>
+<area shape="rect" id="Node000006" href="$ex__gui__multiwin_8c.html#ad839a0743f54aea901cbfe2a9b0d51c6" title=" " alt="" coords="129,55,203,80"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="319,127,200,82,202,78,321,122"/>
+<area shape="rect" id="Node000008" href="$ex__gui__multiwin_8c.html#a694a65a900d61122d006bccf1e462c07" title=" " alt="" coords="129,104,203,129"/>
+<area shape="poly" id="edge7_Node000003_Node000008" title=" " alt="" coords="275,133,202,124,203,119,276,128"/>
+<area shape="rect" id="Node000009" href="$ex__gui__bench_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="139,153,193,179"/>
+<area shape="poly" id="edge9_Node000003_Node000009" title=" " alt="" coords="276,156,194,165,193,160,275,150"/>
+<area shape="rect" id="Node000010" href="$ex__gui_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="139,203,193,228"/>
+<area shape="poly" id="edge10_Node000003_Node000010" title=" " alt="" coords="321,162,194,208,193,203,319,157"/>
+<area shape="rect" id="Node000005" href="$ex__gui__zorder_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,5,60,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="117,21,60,21,60,15,117,15"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="119,87,61,109,59,104,117,82"/>
+<area shape="poly" id="edge8_Node000008_Node000007" title=" " alt="" coords="115,119,60,119,60,114,115,114"/>
+<area shape="rect" id="Node000013" href="$n__gui_8c.html#ab2f75284d5cc5eff5671469ea6d1273b" title=" " alt="" coords="272,353,465,379"/>
+<area shape="poly" id="edge14_Node000012_Node000013" title=" " alt="" coords="500,369,466,369,466,363,500,363"/>
+<area shape="rect" id="Node000014" href="$group___g_u_i.html#ga7e68e81d85f60ee486123ad0d2cc9b40" title="add a tab to the panel, returns tab index" alt="" coords="108,353,224,379"/>
+<area shape="poly" id="edge15_Node000013_Node000014" title=" " alt="" coords="258,369,225,369,225,363,258,363"/>
+<area shape="rect" id="Node000017" href="$ex__gui__detach_8c.html#aa8cd4132bf173b8583d128c6f4ef2026" title="build one demo panel: a few ordinary widgets plus its detach button" alt="" coords="320,452,417,477"/>
+<area shape="poly" id="edge18_Node000016_Node000017" title=" " alt="" coords="517,467,417,467,417,462,517,462"/>
+<area shape="rect" id="Node000018" href="$ex__gui__detach_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="139,452,193,477"/>
+<area shape="poly" id="edge19_Node000017_Node000018" title=" " alt="" coords="306,467,194,467,194,462,306,462"/>
+</map>

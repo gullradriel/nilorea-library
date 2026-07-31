@@ -1,0 +1,25 @@
+<map id="netw_send_func" name="netw_send_func">
+<area shape="rect" id="Node000001" title="Thread Sending management function." alt="" coords="5,104,132,129"/>
+<area shape="rect" id="Node000002" href="$n__network_8c.html#add7707017912cae7d9e4756824b96cb9" title="capture an error into a NETWORK handle&#39;s ring buffer" alt="" coords="180,5,335,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="84,102,125,71,179,40,194,33,196,38,181,44,128,76,87,106"/>
+<area shape="rect" id="Node000003" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaa8e1fe7978995197f08aa0ef24a76c33" title="Restart or reset the specified network ability." alt="" coords="217,55,298,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="117,101,203,79,204,84,119,107"/>
+<area shape="rect" id="Node000006" href="$group___n___t_i_m_e.html#ga690f12dde1a446d47b8bf5f959493003" title="wrapper around usleep for API consistency" alt="" coords="221,104,293,129"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="132,114,207,114,207,119,132,119"/>
+<area shape="rect" id="Node000007" href="$group___l_z4.html#ga372f33da9d5028324c9bc2a489da5452" title="Compress src with LZ4 block format." alt="" coords="217,153,298,179"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="119,127,204,149,203,155,117,132"/>
+<area shape="rect" id="Node000009" href="$group___z_l_i_b.html#gae1e033816ab406b33b403c687c2d7dea" title="return a compressed version of src" alt="" coords="221,203,294,228"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="88,127,129,157,181,188,208,199,206,204,179,192,126,161,85,132"/>
+<area shape="rect" id="Node000004" href="$group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755" title="Empty and Free a list container." alt="" coords="422,28,521,53"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="298,60,408,46,409,51,299,65"/>
+<area shape="rect" id="Node000005" href="$group___l_i_s_t.html#ga1dafe7a250ddad51fadd375f057287e7" title="Empty a LIST list of pointers." alt="" coords="608,53,699,79"/>
+<area shape="poly" id="edge5_Node000003_Node000005" title=" " alt="" coords="298,65,594,64,594,69,298,70"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="521,45,594,55,594,60,520,50"/>
+<area shape="rect" id="Node000008" href="$group___n___s_t_r.html#ga873edbb1f8787d0a78a13ccbbed9b9f9" title="create a new N_STR string" alt="" coords="431,153,512,179"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="298,163,417,163,417,169,298,169"/>
+<area shape="poly" id="edge12_Node000009_Node000008" title=" " alt="" coords="293,204,417,176,418,181,295,210"/>
+<area shape="rect" id="Node000010" href="$group___z_l_i_b.html#ga2f936272d8791026df0a436558b73761" title="Compress a string to another." alt="" coords="412,203,531,228"/>
+<area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="294,213,398,213,398,218,294,218"/>
+<area shape="rect" id="Node000011" href="$group___z_l_i_b.html#ga2b236630816c04de9fae5aa1ac9d2027" title="Return the maximum compressed size." alt="" coords="383,252,560,277"/>
+<area shape="poly" id="edge11_Node000009_Node000011" title=" " alt="" coords="295,221,403,246,401,251,293,226"/>
+</map>

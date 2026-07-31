@@ -1,0 +1,19 @@
+<map id="_out_indent" name="_out_indent">
+<area shape="rect" id="Node000001" title="append depth * PRETTY_INDENT_STEP spaces, TRUE on success" alt="" coords="573,81,672,107"/>
+<area shape="rect" id="Node000002" href="$n__pretty_8c.html#a8f0588623ca6db50c12f4be0b380152e" title="emit one indented line holding n raw bytes of s" alt="" coords="435,56,525,81"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="559,85,525,79,526,74,560,80"/>
+<area shape="rect" id="Node000006" href="$n__pretty_8c.html#ac8f4ccf323ccd5cf91e718e1639b7960" title="emit the indent or the collapsed space before a token, as appropriate" alt="" coords="443,105,517,131"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="560,107,518,114,517,109,559,102"/>
+<area shape="rect" id="Node000003" href="$n__pretty_8c.html#a07acbd7614836deb55b8319e2a99417c" title="emit s trimmed of leading/trailing whitespace as one indented line; empty&#45;after&#45;trim runs are skipped" alt="" coords="264,5,387,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="427,54,364,33,366,28,428,49"/>
+<area shape="rect" id="Node000004" href="$group___n___p_r_e_t_t_y.html#ga30462a103551c0652c1eed5b73b93098" title="Re&#45;indent an XML or HTML document (one tag or text run per line)." alt="" coords="108,56,216,81"/>
+<area shape="poly" id="edge5_Node000002_Node000004" title=" " alt="" coords="421,71,216,71,216,66,421,66"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="271,37,205,58,203,53,270,32"/>
+<area shape="rect" id="Node000005" href="$ex__pretty_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,81,60,107"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="95,85,61,91,60,86,94,79"/>
+<area shape="rect" id="Node000007" href="$n__pretty_8c.html#a1f7532e3a3545c84fe12104b9a42ebb6" title="emit a raw token of n bytes with leading indent/space handling" alt="" coords="284,107,367,132"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="429,121,367,122,367,116,429,116"/>
+<area shape="rect" id="Node000008" href="$group___n___p_r_e_t_t_y.html#ga4174339a344ceb722526c9c9534b2c75" title="Conservatively re&#45;indent JavaScript (newlines at top&#45;level braces and semicolons, two&#45;space indent by..." alt="" coords="115,105,209,131"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="270,122,210,121,210,116,270,116"/>
+<area shape="poly" id="edge9_Node000008_Node000005" title=" " alt="" coords="101,109,60,102,61,96,102,104"/>
+</map>

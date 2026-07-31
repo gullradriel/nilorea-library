@@ -1,0 +1,15 @@
+<map id="_emit_trimmed" name="_emit_trimmed">
+<area shape="rect" id="Node000001" title="emit s trimmed of leading/trailing whitespace as one indented line; empty&#45;after&#45;trim runs are skipped" alt="" coords="5,56,128,81"/>
+<area shape="rect" id="Node000002" href="$n__pretty_8c.html#a8f0588623ca6db50c12f4be0b380152e" title="emit one indented line holding n raw bytes of s" alt="" coords="176,56,267,81"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="128,66,162,66,162,71,128,71"/>
+<area shape="rect" id="Node000003" href="$n__pretty_8c.html#ae35fd7dc84d25de598f9582ab2c6456c" title="append a single character to the output, TRUE on success" alt="" coords="328,5,400,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="257,53,314,33,316,38,259,58"/>
+<area shape="rect" id="Node000004" href="$n__pretty_8c.html#a999e877bfc9297236124001bafdc412a" title="append n bytes of s to the output, TRUE on success" alt="" coords="461,56,552,81"/>
+<area shape="poly" id="edge7_Node000002_Node000004" title=" " alt="" coords="267,66,448,66,448,71,267,71"/>
+<area shape="rect" id="Node000006" href="$n__pretty_8c.html#adf000ab022e0f596b2cb08c81f3babfd" title="append depth * PRETTY_INDENT_STEP spaces, TRUE on success" alt="" coords="315,107,413,132"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="259,79,315,99,313,104,257,84"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="401,28,459,49,457,54,399,33"/>
+<area shape="rect" id="Node000005" href="$group___n___s_t_r.html#gacc3740a4b0816c80170ba6d6b0ae9eea" title="Append src_size bytes from src to *dest, updating size/written, growing the buffer if needed." alt="" coords="600,56,729,81"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="552,66,586,66,586,71,552,71"/>
+<area shape="poly" id="edge6_Node000006_Node000004" title=" " alt="" coords="400,104,456,84,458,89,402,109"/>
+</map>

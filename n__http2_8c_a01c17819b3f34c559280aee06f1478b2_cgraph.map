@@ -1,0 +1,21 @@
+<map id="n_http2_hpack_decode" name="n_http2_hpack_decode">
+<area shape="rect" id="Node000001" title="decode an HPACK header block into out[] (owned name/value strings)." alt="" coords="5,132,176,157"/>
+<area shape="rect" id="Node000002" href="$n__http2_8c.html#a0d401afaada66047a3e2f316525c84b4" title="insert (name, value) at the front of the dynamic table, evicting as needed; both strings are copied." alt="" coords="267,5,390,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="105,130,155,90,223,48,260,32,262,37,225,52,158,94,108,134"/>
+<area shape="rect" id="Node000003" href="$n__http2_8c.html#ac6e6071910050fa3ea6febef3a52b3b5" title="drop the oldest dynamic entries until the table fits max_size" alt="" coords="505,31,605,56"/>
+<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="149,129,491,54,492,60,151,135"/>
+<area shape="rect" id="Node000004" href="$n__http2_8c.html#aba573f4ec2c24b097d27932f7d5f7443" title="decode an HPACK integer with an N&#45;bit prefix; advances *pos" alt="" coords="485,132,624,157"/>
+<area shape="poly" id="edge4_Node000001_Node000004" title=" " alt="" coords="176,142,472,142,472,147,176,147"/>
+<area shape="rect" id="Node000005" href="$n__http2_8c.html#aa7832e89c6e27e625fc699bfe7e74ede" title="resolve a table index to its name/value (const, not owned)." alt="" coords="273,157,384,183"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="177,151,260,160,259,165,176,156"/>
+<area shape="rect" id="Node000006" href="$n__http2_8c.html#a83a5324fb41d70963bf96417c4c04e54" title="decode an HPACK string (Huffman or literal); allocates *out" alt="" coords="259,207,398,232"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="123,155,225,193,254,201,252,206,223,198,121,160"/>
+<area shape="rect" id="Node000009" href="$n__http2_8c.html#a5c0f70d043c62d5a308266863f95b914" title="free the owned name/value strings of a decoded header array (does not free the array itself)" alt="" coords="224,256,433,281"/>
+<area shape="poly" id="edge10_Node000001_Node000009" title=" " alt="" coords="107,156,156,199,189,222,225,242,243,249,241,254,223,247,187,227,153,203,103,160"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="391,22,491,34,491,39,390,28"/>
+<area shape="poly" id="edge9_Node000006_Node000004" title=" " alt="" coords="392,204,432,193,513,161,515,166,434,198,393,209"/>
+<area shape="rect" id="Node000007" href="$n__http2_8c.html#a9e5678e2e3ac1fcf960d0492eb09608a" title="decode a Huffman&#45;coded string of len bytes into a fresh C string" alt="" coords="481,207,628,232"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="398,217,468,217,468,222,398,222"/>
+<area shape="rect" id="Node000008" href="$n__http2_8c.html#a98ff530c16c3edaa695d400afbc97831" title="find the Huffman symbol for an accumulated code of nbits bits, or &#45;1" alt="" coords="676,207,819,232"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="628,217,662,217,662,222,628,222"/>
+</map>

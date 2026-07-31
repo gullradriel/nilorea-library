@@ -1,0 +1,19 @@
+<map id="on_load_layout_click" name="on_load_layout_click">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,55,164,80"/>
+<area shape="rect" id="Node000002" href="$group___g_u_i.html#gad5ad339fe8b1231dc7dab350f4667245" title="load a JSON window layout file and apply it to matching windows" alt="" coords="212,55,387,80"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="164,65,198,65,198,70,164,70"/>
+<area shape="rect" id="Node000003" href="$n__gui_8c.html#a11496ef2298ab5a373066fe68b315c53" title="helper: read a float from JSON, return fallback if missing" alt="" coords="457,5,577,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="356,52,447,31,448,36,357,57"/>
+<area shape="rect" id="Node000004" href="$n__gui_8c.html#aa08eab9e91f7cbcd5755f78d771c6c7a" title="helper: read an int from JSON, return fallback if missing" alt="" coords="463,55,571,80"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="387,65,449,65,449,70,387,70"/>
+<area shape="rect" id="Node000005" href="$group___g_u_i.html#ga1a52c8fa983061bee43fdcb4b9e9c56c" title="Promote a pop&#45;up window to a native OS window." alt="" coords="435,104,600,129"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="357,77,448,98,447,104,356,83"/>
+<area shape="rect" id="Node000006" href="$n__gui_8c.html#adf6ce1b72400daecc1031525d7934ec8" title="capture normalized coords for a single widget relative to its parent window" alt="" coords="648,39,819,79"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="565,101,644,80,645,85,567,107"/>
+<area shape="rect" id="Node000007" href="$n__gui_8c.html#ad69070337d54549ba52daa8b1d17a580" title="helper: effective title bar height (0 for frameless windows)" alt="" coords="693,104,773,129"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="601,114,680,114,680,119,601,119"/>
+<area shape="rect" id="Node000008" href="$group___g_u_i.html#ga932fd1ac880df86b92a25ced736298be" title="Get a window pointer by id." alt="" coords="662,153,805,179"/>
+<area shape="poly" id="edge7_Node000005_Node000008" title=" " alt="" coords="574,127,664,148,663,153,573,132"/>
+<area shape="rect" id="Node000009" href="$n__gui_8c.html#ac4c3cab227dd7eabfc2e94f8f8d6d1ae" title="helper: find a window node in the context list by id" alt="" coords="867,153,1016,179"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="805,163,853,163,853,169,805,169"/>
+</map>

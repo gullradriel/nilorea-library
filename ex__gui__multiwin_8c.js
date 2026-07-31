@@ -1,0 +1,27 @@
+var ex__gui__multiwin_8c =
+[
+    [ "ALLEGRO_UNSTABLE", "ex__gui__multiwin_8c.html#ac32238d28b3479be2920bb762611d6fe", null ],
+    [ "MAIN_H", "ex__gui__multiwin_8c.html#a4e49a7df873f0586e76b47049917d3be", null ],
+    [ "MAIN_W", "ex__gui__multiwin_8c.html#a1b11a8cc0aa3fe42c74801f40c484b6e", null ],
+    [ "POPUP_H", "ex__gui__multiwin_8c.html#ab93e30c71743d2274f991fad298f32cd", null ],
+    [ "POPUP_W", "ex__gui__multiwin_8c.html#ac8b30491537741981bc80dcd389712ad", null ],
+    [ "check_shared_resources", "ex__gui__multiwin_8c.html#ab76c90c25067e8cd124ad33fe2882eff", null ],
+    [ "click_on", "ex__gui__multiwin_8c.html#ad839a0743f54aea901cbfe2a9b0d51c6", null ],
+    [ "count_pixels_differing", "ex__gui__multiwin_8c.html#aa65e28d2e5a5823ff1d8c6471e4a7acb", null ],
+    [ "ctrl_key", "ex__gui__multiwin_8c.html#a694a65a900d61122d006bccf1e462c07", null ],
+    [ "expect_eq_float", "ex__gui__multiwin_8c.html#a0c755d33de84ddb4f582b917863f1b44", null ],
+    [ "expect_eq_int", "ex__gui__multiwin_8c.html#ab0c2415e0e48bf43e75e99afdc8e7437", null ],
+    [ "expect_true", "ex__gui__multiwin_8c.html#ac7d17c8808ac0b36c76b2963467af2b9", null ],
+    [ "main", "ex__gui__multiwin_8c.html#a3c04138a5bfe5d72780bb7e82a18e627", null ],
+    [ "on_main_click", "ex__gui__multiwin_8c.html#a0166ba5a9e480778d18b48d15d373ab7", null ],
+    [ "on_popup_click", "ex__gui__multiwin_8c.html#a0e0e32a94f597cbd4a8a059119839270", null ],
+    [ "on_popup_close", "ex__gui__multiwin_8c.html#aca0fe0017ae00c5d05c1c4f0c6739318", null ],
+    [ "process_args", "ex__gui__multiwin_8c.html#ac2b563c6332d2c19727fc678461a92e6", null ],
+    [ "sample_chrome_titlebar", "ex__gui__multiwin_8c.html#ac84da8b017ee30aa65975f1f111f7dff", null ],
+    [ "failures", "ex__gui__multiwin_8c.html#a5c7ba59d434acf5dafb8ec5fd28e9a1e", null ],
+    [ "g_chrome_titlebar_lit", "ex__gui__multiwin_8c.html#a02d3f042ea9c398d638e597e42dd7786", null ],
+    [ "g_closed_id", "ex__gui__multiwin_8c.html#a85d0ef2d86466185598c2a0fd22f555a", null ],
+    [ "g_main_clicks", "ex__gui__multiwin_8c.html#a205809326c4b0689cf57d5258a7c09f1", null ],
+    [ "g_popup_clicks", "ex__gui__multiwin_8c.html#abba4be77cc93674a3b720be1b1f9942a", null ],
+    [ "log_level", "ex__gui__multiwin_8c.html#ab5a71c2541c377b3d5b34fdb35964c2e", null ]
+];

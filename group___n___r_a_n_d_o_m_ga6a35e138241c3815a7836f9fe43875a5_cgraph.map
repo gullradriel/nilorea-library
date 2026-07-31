@@ -1,0 +1,11 @@
+<map id="n_random_hex_token" name="n_random_hex_token">
+<area shape="rect" id="Node000001" title="generate nbytes secure random bytes and return them as a lowercase hex N_STR (2*nbytes characters); f..." alt="" coords="5,31,167,56"/>
+<area shape="rect" id="Node000002" href="$group___n___h_e_x.html#gae7b29117b1ba18cb66cf45415cd84c6f" title="encode len bytes of data as a lowercase hex N_STR (2*len characters); free with free_nstr." alt="" coords="223,5,337,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="166,30,209,25,209,30,167,35"/>
+<area shape="rect" id="Node000004" href="$group___n___r_a_n_d_o_m.html#ga04b54908d89e2230965dbaadb0202f38" title="fill buf with n cryptographically secure random bytes (getrandom(2) when available,..." alt="" coords="215,55,345,80"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="167,51,201,55,200,60,166,56"/>
+<area shape="rect" id="Node000003" href="$group___n___s_t_r.html#ga873edbb1f8787d0a78a13ccbbed9b9f9" title="create a new N_STR string" alt="" coords="448,5,529,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="338,15,434,15,434,21,338,21"/>
+<area shape="rect" id="Node000005" href="$n__random_8c.html#a2d3c69836bb34d51d88da4c8377026b1" title=" " alt="" coords="393,55,584,80"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="345,65,379,65,379,70,345,70"/>
+</map>

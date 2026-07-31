@@ -1,0 +1,21 @@
+<map id="userlist_add_msg_to_all_except" name="userlist_add_msg_to_all_except">
+<area shape="rect" id="Node000001" title="add a message to all users except the one with the given id" alt="" coords="5,146,161,186"/>
+<area shape="rect" id="Node000002" href="$group___n___u_s_e_r.html#ga2f336886f3d5e909c397f1660419701d" title="add a N_STR *message to user list" alt="" coords="209,153,388,179"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="161,163,196,163,196,169,161,169"/>
+<area shape="rect" id="Node000003" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga10429a9fa106b61c38f28635242ce502" title="Add a message to send in aimed NETWORK." alt="" coords="436,104,556,129"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="349,151,431,130,432,135,351,156"/>
+<area shape="rect" id="Node000009" href="$group___n___s_t_r.html#ga3e30a18ec42d0f4cd8651c442bf62651" title="Duplicate a N_STR." alt="" coords="461,177,531,203"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="389,174,447,181,446,187,388,180"/>
+<area shape="rect" id="Node000004" href="$n__network_8c.html#add7707017912cae7d9e4756824b96cb9" title="capture an error into a NETWORK handle&#39;s ring buffer" alt="" coords="609,5,764,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="511,102,551,71,603,40,619,33,621,38,605,44,554,75,514,106"/>
+<area shape="rect" id="Node000005" href="$group___n___s_t_r.html#ga0a864a4ce4997389f2e5e2e16c51a30a" title="Free a N_STR pointer structure." alt="" coords="634,55,739,80"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="545,101,623,81,624,86,546,107"/>
+<area shape="rect" id="Node000006" href="$group___l_i_s_t.html#ga4eab319289a83524639ee5e9f0441fdf" title="Add a pointer to the end of the list." alt="" coords="647,104,727,129"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="556,114,633,114,633,119,556,119"/>
+<area shape="rect" id="Node000008" href="$n__reactor_8c.html#ab094d0f4f7f61cc7dcd4ab858ca0a668" title="Producer&#45;side wake&#45;up after a netw_add_msg." alt="" coords="604,153,769,179"/>
+<area shape="poly" id="edge7_Node000003_Node000008" title=" " alt="" coords="546,127,624,147,623,152,545,132"/>
+<area shape="rect" id="Node000007" href="$group___l_i_s_t.html#ga678e828550efc8e64a836bb8c713c2f4" title="Allocate a new node to link in a list." alt="" coords="817,104,932,129"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="727,114,804,114,804,119,727,119"/>
+<area shape="rect" id="Node000010" href="$group___n___s_t_r.html#ga873edbb1f8787d0a78a13ccbbed9b9f9" title="create a new N_STR string" alt="" coords="646,203,727,228"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="532,192,633,206,632,211,531,197"/>
+</map>

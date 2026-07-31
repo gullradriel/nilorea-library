@@ -1,0 +1,16 @@
+<map id="n_proxy_connect_tunnel" name="n_proxy_connect_tunnel">
+<area shape="rect" id="Node000001" title="Open a TCP connection through an HTTP proxy using CONNECT tunneling." alt="" coords="5,55,185,80"/>
+<area shape="rect" id="Node000002" href="$n__network_8c.html#a916f6d293acb6045de09f252a1608c50" title="Helper: connect a plain TCP socket to host:port." alt="" coords="233,5,384,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="150,52,239,31,240,36,152,57"/>
+<area shape="rect" id="Node000003" href="$group___n___s_t_r.html#ga69e5f2dbf75571a73e5a3332929642a4" title="Convert a char into a N_STR, short version." alt="" coords="257,55,360,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="185,65,244,65,244,70,185,70"/>
+<area shape="rect" id="Node000006" href="$group___c_y_p_h_e_r___b_a_s_e64.html#ga8bf1d83b3f1c485357a9ddc6ee5eb7c4" title="encode a N_STR *string" alt="" coords="239,104,378,129"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="152,77,240,98,239,103,150,83"/>
+<area shape="rect" id="Node000004" href="$group___n___s_t_r.html#gac4314e9f0ada88300a09d66405d541a8" title="Convert a char into a N_STR, extended version." alt="" coords="452,53,577,79"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="360,64,438,64,438,69,360,70"/>
+<area shape="rect" id="Node000005" href="$group___n___s_t_r.html#ga873edbb1f8787d0a78a13ccbbed9b9f9" title="create a new N_STR string" alt="" coords="645,79,727,104"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="578,73,632,81,631,86,577,78"/>
+<area shape="poly" id="edge7_Node000006_Node000005" title=" " alt="" coords="378,109,631,92,632,98,378,115"/>
+<area shape="rect" id="Node000007" href="$n__base64_8c.html#abc5b7d34cd592682f5ea372cb053cb27" title="get the length of string if it was base64 encoded" alt="" coords="432,155,597,180"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="362,127,450,149,449,154,361,132"/>
+</map>

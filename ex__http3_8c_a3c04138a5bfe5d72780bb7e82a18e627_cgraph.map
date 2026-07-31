@@ -1,0 +1,25 @@
+<map id="main" name="main">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,157,60,183"/>
+<area shape="rect" id="Node000002" href="$group___n___h_t_t_p3.html#gad2851d95f49958e9ffab1989a6786cc3" title="Report whether HTTP/3 support was compiled into the library." alt="" coords="116,5,255,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="36,156,61,105,81,75,106,48,127,34,130,39,110,52,86,78,66,107,41,158"/>
+<area shape="rect" id="Node000003" href="$group___n___h_t_t_p3.html#gaa4dfa936a5f9f06f8a1bb1b6249c8f5f" title="Convenience wrapper: HTTP/3 GET of url." alt="" coords="347,232,445,257"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="44,181,70,214,88,231,109,244,166,260,225,265,282,263,333,256,333,261,283,268,225,270,165,265,107,248,85,235,66,218,40,184"/>
+<area shape="rect" id="Node000005" href="$group___n___h_t_t_p3.html#ga4b16e1ee8dbe035caa916efd6a6ea734" title="Perform one blocking HTTP/3 request, with request flags." alt="" coords="321,56,471,81"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="40,155,67,122,85,105,107,92,156,74,208,63,260,59,307,58,307,64,260,64,209,69,158,79,109,96,89,109,70,126,44,159"/>
+<area shape="rect" id="Node000006" href="$group___n___h_t_t_p3.html#gafbecfcf547ec50fd0656429cbc02c560" title="Free the heap buffers held by r and zero the struct (safe on NULL / zeroed)." alt="" coords="311,157,481,183"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="61,167,297,167,297,173,61,173"/>
+<area shape="rect" id="Node000007" href="$group___l_o_g.html#gacad9b2d55788f46ddde811c986ead9ae" title="Set the global log level value ( static int LOG_LEVEL )" alt="" coords="131,208,239,233"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="61,176,134,201,133,206,59,181"/>
+<area shape="rect" id="Node000008" href="$ex__http3_8c.html#aa768cdd0afe41be5ab0425b7f3acaf0d" title="exercise the pure URL parser (runs in every build)" alt="" coords="128,309,243,335"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="41,182,66,233,86,262,110,288,130,301,127,306,106,292,81,265,61,235,36,184"/>
+<area shape="rect" id="Node000010" href="$ex__http3_8c.html#af07469cd6159f2afeb3f7d553cbf99db" title="exercise the request entry points&#39; guards + delegation (deterministic, no network)" alt="" coords="108,107,263,132"/>
+<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="59,159,133,134,134,139,61,164"/>
+<area shape="rect" id="Node000004" href="$group___n___h_t_t_p3.html#gaaab00a59ff12d3326622a9bd9f1069c0" title="Perform one blocking HTTP/3 request over a fresh QUIC connection." alt="" coords="529,107,656,132"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="418,230,480,192,561,138,564,142,483,196,421,234"/>
+<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="447,79,530,101,529,106,446,84"/>
+<area shape="rect" id="Node000009" href="$group___n___h_t_t_p3.html#ga0d5d79fed9c38d027f92b81060c7a5af" title="Split an https URL into host, port and path (pure; available in every build)." alt="" coords="327,309,465,335"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="243,319,313,319,313,325,243,325"/>
+<area shape="poly" id="edge11_Node000010_Node000004" title=" " alt="" coords="263,117,515,117,515,122,263,122"/>
+<area shape="poly" id="edge12_Node000010_Node000005" title=" " alt="" coords="239,104,329,82,330,87,240,109"/>
+<area shape="poly" id="edge13_Node000010_Node000006" title=" " alt="" coords="240,130,330,152,329,157,239,135"/>
+</map>

@@ -1,0 +1,31 @@
+<map id="_draw_label" name="_draw_label">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,236,105,261"/>
+<area shape="rect" id="Node000002" href="$n__gui_8c.html#a00a03fb4fa2bc0a07b639eb06bfd2dad" title="helper: draw selection highlight rectangles over justified/wrapped text." alt="" coords="384,8,571,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="56,235,64,198,81,147,110,94,129,70,152,51,178,35,206,23,265,9,324,3,380,4,379,10,324,9,266,14,207,28,180,40,155,55,133,74,114,97,86,149,70,199,61,237"/>
+<area shape="rect" id="Node000003" href="$n__gui_8c.html#a072626f322d270a8afabbf6cb32f3501" title="helper: get the advance width of text." alt="" coords="629,135,703,160"/>
+<area shape="poly" id="edge17_Node000001_Node000003" title=" " alt="" coords="58,235,68,204,87,165,115,125,132,108,152,94,214,69,280,57,348,56,415,64,478,77,536,93,626,127,624,132,535,98,477,82,414,69,348,62,281,63,216,74,155,99,135,112,119,129,92,168,73,206,63,237"/>
+<area shape="rect" id="Node000005" href="$n__gui_8c.html#ac502610083b3dd91f119c8c15b7212b9" title="helper: draw justified text within a given width, with multi&#45;line word wrapping." alt="" coords="168,109,321,135"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="65,234,100,194,125,172,152,152,181,137,184,142,155,156,128,176,104,198,69,238"/>
+<area shape="rect" id="Node000006" href="$n__gui_8c.html#a16a2d462bcc3ffc64068f3709d690a89" title="helper: draw text truncated to a maximum pixel width." alt="" coords="396,160,559,185"/>
+<area shape="poly" id="edge8_Node000001_Node000006" title=" " alt="" coords="74,234,109,213,153,196,211,182,271,174,382,168,382,173,272,179,212,187,154,201,112,218,77,238"/>
+<area shape="rect" id="Node000007" href="$n__gui_8c.html#a6c6ce7da9d78e918c1564cf51d004e0a" title="helper: draw a mini vertical scrollbar inside a widget." alt="" coords="153,211,336,236"/>
+<area shape="poly" id="edge9_Node000001_Node000007" title=" " alt="" coords="105,239,139,235,140,240,106,245"/>
+<area shape="rect" id="Node000008" href="$n__gui_8c.html#a2ec290b2ec6ee48daaf8a839502df4b6" title="helper: compute the total content height of justified/wrapped label text, in pixels." alt="" coords="395,235,560,260"/>
+<area shape="poly" id="edge10_Node000001_Node000008" title=" " alt="" coords="106,246,381,245,381,250,106,251"/>
+<area shape="rect" id="Node000009" href="$n__gui_8c.html#a56df6f9f84315d11c03bf0d72fbad44f" title="helper: compute minimum line thickness so it stays &gt;= 1 physical pixel." alt="" coords="183,312,306,337"/>
+<area shape="poly" id="edge12_Node000001_Node000009" title=" " alt="" coords="84,259,154,290,194,305,192,310,152,295,82,264"/>
+<area shape="rect" id="Node000010" href="$n__gui_8c.html#a402c8d72de68b316c1d44f70de9e08c2" title="helper: set clipping rectangle in world space, transforming to screen space." alt="" coords="175,362,314,402"/>
+<area shape="poly" id="edge13_Node000001_Node000010" title=" " alt="" coords="68,260,103,303,127,327,155,348,165,354,162,358,152,352,124,331,99,306,64,263"/>
+<area shape="rect" id="Node000011" href="$n__gui_8c.html#aec9db9e2409d7e50a684b5bc101bde90" title="helper: memoized al_get_text_dimensions (bounding box x/y/w/h)." alt="" coords="619,292,713,317"/>
+<area shape="poly" id="edge14_Node000001_Node000011" title=" " alt="" coords="62,261,72,294,90,336,117,379,134,397,155,412,186,427,218,437,252,443,286,444,355,438,424,422,488,398,546,372,633,323,636,327,549,377,490,403,425,427,356,444,286,450,251,448,217,442,184,432,152,416,131,401,113,382,85,339,67,296,57,263"/>
+<area shape="rect" id="Node000012" href="$n__gui_8c.html#a9684c4b5fdddd55b3a00d723a1cb8a13" title=" " alt="" coords="185,477,305,503"/>
+<area shape="poly" id="edge16_Node000001_Node000012" title=" " alt="" coords="62,261,71,299,88,351,116,407,134,433,155,456,175,469,172,474,152,460,130,437,111,410,83,353,66,300,56,262"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="529,31,572,51,615,86,649,122,645,126,612,89,569,55,527,36"/>
+<area shape="rect" id="Node000004" href="$n__gui_8c.html#a7be222e4f3ab2bca7a8164d8e68fa0eb" title="find (or claim) the cache slot for (font, text[len])." alt="" coords="761,268,892,293"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="684,158,801,257,798,261,681,162"/>
+<area shape="poly" id="edge7_Node000005_Node000003" title=" " alt="" coords="322,124,616,142,615,147,322,129"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="305,132,406,155,405,160,303,137"/>
+<area shape="poly" id="edge6_Node000006_Node000003" title=" " alt="" coords="559,159,615,151,616,157,560,164"/>
+<area shape="poly" id="edge11_Node000008_Node000003" title=" " alt="" coords="501,232,628,164,630,169,504,237"/>
+<area shape="poly" id="edge15_Node000011_Node000004" title=" " alt="" coords="713,295,748,290,748,295,714,300"/>
+</map>

@@ -1,0 +1,25 @@
+<map id="n_gui_tab_set_active" name="n_gui_tab_set_active">
+<area shape="rect" id="Node000001" title="set the active tab (toggles buttons, opens/closes content windows)" alt="" coords="5,56,164,81"/>
+<area shape="rect" id="Node000002" href="$group___g_u_i.html#ga66d4c5ff0354546acc4f6a4b8efbe5dc" title="Set the toggle state of a button." alt="" coords="212,5,401,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="141,53,236,31,238,36,142,58"/>
+<area shape="rect" id="Node000005" href="$group___g_u_i.html#ga3dc7027a9116b671a0a62fbe1d3e7763" title="Close (hide) a window." alt="" coords="455,56,609,81"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="164,66,441,66,441,71,164,71"/>
+<area shape="rect" id="Node000008" href="$group___g_u_i.html#gac0146dd46f69d1df6c56b64703ad2b4f" title="Open (show) a window." alt="" coords="230,107,383,132"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="142,79,238,101,236,106,141,84"/>
+<area shape="rect" id="Node000003" href="$group___g_u_i.html#ga9072d6f6b2708518c4c3d5d21849f11e" title="Get a widget pointer by id." alt="" coords="464,5,600,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="402,15,450,15,450,21,402,21"/>
+<area shape="rect" id="Node000004" href="$group___h_a_s_h___t_a_b_l_e.html#ga009f66a508dcea120e0cd2b34805e5a2" title="get pointer at &#39;key&#39; from &#39;table&#39;" alt="" coords="704,5,792,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="600,15,690,15,690,21,600,21"/>
+<area shape="rect" id="Node000006" href="$group___g_u_i.html#ga932fd1ac880df86b92a25ced736298be" title="Get a window pointer by id." alt="" coords="677,100,819,125"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="596,79,672,95,671,100,594,84"/>
+<area shape="rect" id="Node000007" href="$n__gui_8c.html#ac4c3cab227dd7eabfc2e94f8f8d6d1ae" title="helper: find a window node in the context list by id" alt="" coords="881,100,1031,125"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="819,110,868,110,868,115,819,115"/>
+<area shape="poly" id="edge8_Node000008_Node000006" title=" " alt="" coords="383,116,663,111,663,117,383,121"/>
+<area shape="rect" id="Node000009" href="$group___g_u_i.html#ga1a52c8fa983061bee43fdcb4b9e9c56c" title="Promote a pop&#45;up window to a native OS window." alt="" coords="449,157,615,183"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="365,130,462,152,461,157,364,135"/>
+<area shape="poly" id="edge12_Node000009_Node000006" title=" " alt="" coords="580,155,686,126,687,131,581,160"/>
+<area shape="rect" id="Node000010" href="$n__gui_8c.html#adf6ce1b72400daecc1031525d7934ec8" title="capture normalized coords for a single widget relative to its parent window" alt="" coords="663,150,833,190"/>
+<area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="615,167,649,167,649,173,615,173"/>
+<area shape="rect" id="Node000011" href="$n__gui_8c.html#ad69070337d54549ba52daa8b1d17a580" title="helper: effective title bar height (0 for frameless windows)" alt="" coords="708,215,788,240"/>
+<area shape="poly" id="edge11_Node000009_Node000011" title=" " alt="" coords="581,180,695,211,694,216,580,185"/>
+</map>

@@ -1,0 +1,28 @@
+<map id="_tb_button_action" name="_tb_button_action">
+<area shape="rect" id="Node000001" title="Dispatch a titlebar button action, invoke the user callback if set, otherwise fall back to the built&#45;..." alt="" coords="5,197,144,222"/>
+<area shape="rect" id="Node000002" href="$n__gui_8c.html#a4c85290d49236def02b62ad69c45e55a" title="helper: whether a window is detached AND keeps drawing its own chrome (N_GUI_DETACH_OWN_CHROME)." alt="" coords="664,171,824,197"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="144,204,650,185,650,190,144,209"/>
+<area shape="rect" id="Node000003" href="$group___g_u_i.html#ga3dc7027a9116b671a0a62fbe1d3e7763" title="Close (hide) a window." alt="" coords="208,271,363,297"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="103,220,193,257,217,265,216,270,191,263,101,225"/>
+<area shape="rect" id="Node000006" href="$group___g_u_i.html#ga3e4a5c6a6c636860e06a4c8d4137bc80" title="Toggle maximised state (full display or restore to previous size)." alt="" coords="192,121,379,146"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="108,194,191,163,233,148,235,153,193,168,110,199"/>
+<area shape="rect" id="Node000011" href="$group___g_u_i.html#ga39a53bd9b84eeadccbdce6a81e4535b8" title="Minimise a window (show title bar only)" alt="" coords="194,222,377,247"/>
+<area shape="poly" id="edge13_Node000001_Node000011" title=" " alt="" coords="144,215,181,219,180,225,144,220"/>
+<area shape="rect" id="Node000004" href="$group___g_u_i.html#ga932fd1ac880df86b92a25ced736298be" title="Get a window pointer by id." alt="" coords="450,271,593,297"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="363,281,436,281,436,287,363,287"/>
+<area shape="rect" id="Node000005" href="$n__gui_8c.html#ac4c3cab227dd7eabfc2e94f8f8d6d1ae" title="helper: find a window node in the context list by id" alt="" coords="669,271,819,297"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="593,281,656,281,656,287,593,287"/>
+<area shape="poly" id="edge11_Node000006_Node000002" title=" " alt="" coords="379,138,616,163,651,167,650,172,616,168,378,144"/>
+<area shape="poly" id="edge12_Node000006_Node000004" title=" " alt="" coords="305,144,381,207,403,235,413,246,428,258,441,264,438,269,425,262,409,250,399,238,377,211,302,148"/>
+<area shape="rect" id="Node000007" href="$n__gui_8c.html#a4ec1e6f7ca4bbad50a99b702ba1c683b" title="capture normalized coords for a window and its widgets from current absolutes" alt="" coords="433,5,610,45"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="306,118,359,88,426,55,443,48,445,53,428,60,362,93,309,123"/>
+<area shape="rect" id="Node000008" href="$n__gui_8c.html#ae85837b70185249171a1f31f59b3ce07" title="helper: mirror an own&#45;chrome window&#39;s minimised state onto its OS window by shrinking the display to ..." alt="" coords="427,222,616,247"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="317,144,479,214,477,219,315,149"/>
+<area shape="rect" id="Node000010" href="$n__gui_8c.html#a19fe770da4cfc1b94c35f9beebf463b0" title="helper: the monitor rectangle a native window sits on." alt="" coords="441,70,601,95"/>
+<area shape="poly" id="edge10_Node000006_Node000010" title=" " alt="" coords="345,118,448,96,449,101,346,123"/>
+<area shape="poly" id="edge8_Node000008_Node000002" title=" " alt="" coords="578,219,674,197,675,202,579,224"/>
+<area shape="rect" id="Node000009" href="$n__gui_8c.html#ad69070337d54549ba52daa8b1d17a580" title="helper: effective title bar height (0 for frameless windows)" alt="" coords="704,222,784,247"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="617,232,690,232,690,237,617,237"/>
+<area shape="poly" id="edge15_Node000011_Node000004" title=" " alt="" coords="347,245,447,266,446,271,346,250"/>
+<area shape="poly" id="edge14_Node000011_Node000008" title=" " alt="" coords="377,232,413,232,413,237,377,237"/>
+</map>

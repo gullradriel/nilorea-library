@@ -1,0 +1,8 @@
+<map id="on_request" name="on_request">
+<area shape="rect" id="Node000001" title="Request handler: returns JSON for GET /api/test, 404 otherwise." alt="" coords="315,5,409,31"/>
+<area shape="rect" id="Node000002" href="$ex__network__mock_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,5,60,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="301,21,60,21,60,15,301,15"/>
+<area shape="rect" id="Node000003" href="$group___n_e_t_w_o_r_k_i_n_g.html#gae1b10a2b71c314ac0e09ec09b1eb815b" title="Start a mock HTTP server: set up listener and return immediately." alt="" coords="108,31,267,56"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="302,29,267,34,266,29,301,24"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="96,31,60,25,61,20,97,26"/>
+</map>

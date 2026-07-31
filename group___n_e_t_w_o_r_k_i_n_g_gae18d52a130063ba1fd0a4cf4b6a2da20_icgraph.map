@@ -1,0 +1,22 @@
+<map id="netw_connect" name="netw_connect">
+<area shape="rect" id="Node000001" title="Connecting." alt="" coords="303,129,415,155"/>
+<area shape="rect" id="Node000002" href="$ex__accept__pool__client_8c.html#aab312f9d63dc3375f09457ffaeebdb5f" title="Echo mode: connect, send a message, receive echo, close." alt="" coords="108,5,255,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="337,120,300,81,253,44,230,33,232,28,256,40,304,77,341,117"/>
+<area shape="rect" id="Node000004" href="$ex__accept__pool__client_8c.html#aa17ddefadc32335b6c539c97fa1a917e" title="Fast mode: connect and immediately close (measures pure accept throughput)" alt="" coords="111,55,252,80"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="321,125,254,94,223,83,225,78,256,89,323,121"/>
+<area shape="rect" id="Node000005" href="$ex__gui__network_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="154,104,209,129"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="289,135,209,123,209,118,289,129"/>
+<area shape="rect" id="Node000006" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaab69390194fc9d0b8aed9fa6ecb396a2" title="Connect to an SSE endpoint and start reading events." alt="" coords="123,153,240,179"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="290,154,241,161,240,155,289,149"/>
+<area shape="rect" id="Node000008" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga6842dd9d835a0c54959f7d7d8b042e21" title="Connect to a WebSocket server (ws:// or wss://)." alt="" coords="125,203,238,228"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="321,163,256,192,222,205,220,200,254,188,318,158"/>
+<area shape="rect" id="Node000010" href="$ex__network__reactor_8c.html#accbae40b6dec2c320bfa9f3284f7f17e" title="Client&#45;side: connect, send one message, wait for the echo, close." alt="" coords="138,252,225,277"/>
+<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="340,167,303,205,256,242,226,256,224,251,253,237,300,201,336,164"/>
+<area shape="rect" id="Node000003" href="$ex__accept__pool__client_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,31,60,56"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="95,35,61,41,60,36,94,30"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="97,56,60,50,61,45,97,51"/>
+<area shape="rect" id="Node000007" href="$ex__network__sse_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,153,60,179"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="109,169,60,169,60,163,109,163"/>
+<area shape="rect" id="Node000009" href="$ex__network__ws_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,203,60,228"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="111,218,60,218,60,213,111,213"/>
+</map>

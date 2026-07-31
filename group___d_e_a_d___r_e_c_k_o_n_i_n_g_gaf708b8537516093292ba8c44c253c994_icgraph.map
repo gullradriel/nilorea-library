@@ -1,0 +1,19 @@
+<map id="dr_entity_extrapolate" name="dr_entity_extrapolate">
+<area shape="rect" id="Node000001" title="extrapolate a kinematic state forward by dt seconds" alt="" coords="565,55,728,80"/>
+<area shape="rect" id="Node000002" href="$group___d_e_a_d___r_e_c_k_o_n_i_n_g.html#ga8a69db4e63c58cb8d3953e02411cfc8b" title="Check whether the owner&#39;s true state has diverged from the dead reckoned prediction beyond the config..." alt="" coords="324,5,517,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="574,54,479,33,480,28,575,49"/>
+<area shape="rect" id="Node000006" href="$group___d_e_a_d___r_e_c_k_o_n_i_n_g.html#ga445849e14540560606cf516ff7cf219e" title="Compute the dead reckoned display position at a given time." alt="" coords="349,55,493,80"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="551,70,493,70,493,65,551,65"/>
+<area shape="rect" id="Node000007" href="$group___d_e_a_d___r_e_c_k_o_n_i_n_g.html#gae3ec8bd73cc85eb9ee15c40b64d2fe72" title="Receive a new authoritative state update from the network." alt="" coords="333,104,508,129"/>
+<area shape="poly" id="edge8_Node000001_Node000007" title=" " alt="" coords="575,86,480,107,479,101,574,80"/>
+<area shape="rect" id="Node000003" href="$ex__iso__astar_8c.html#aded9eafc40df647ed8212e9a7fd82d8d" title=" " alt="" coords="108,31,276,56"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="310,33,276,37,276,31,310,28"/>
+<area shape="rect" id="Node000005" href="$ex__gui__isometric_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="165,80,219,105"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="346,37,325,44,301,58,277,71,220,89,219,84,275,66,299,53,323,40,345,32"/>
+<area shape="rect" id="Node000004" href="$ex__iso__astar_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,31,60,56"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="94,46,60,46,60,41,94,41"/>
+<area shape="poly" id="edge6_Node000006_Node000003" title=" " alt="" coords="334,61,276,55,277,49,335,56"/>
+<area shape="poly" id="edge7_Node000006_Node000005" title=" " alt="" coords="335,79,220,92,219,87,335,74"/>
+<area shape="poly" id="edge9_Node000007_Node000003" title=" " alt="" coords="346,103,323,95,275,71,239,59,241,54,277,66,325,90,348,98"/>
+<area shape="poly" id="edge10_Node000007_Node000005" title=" " alt="" coords="320,109,219,98,220,93,320,103"/>
+</map>

@@ -1,0 +1,20 @@
+<map id="n_http_status_class" name="n_http_status_class">
+<area shape="rect" id="Node000001" title="leading digit of an HTTP status code (1..5), or 0 when outside 100..599" alt="" coords="379,139,529,164"/>
+<area shape="rect" id="Node000002" href="$ex__url_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,139,60,164"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="434,129,391,81,362,57,330,40,269,18,217,8,193,9,167,15,109,39,83,61,63,88,40,140,35,138,59,85,79,57,107,35,166,9,192,4,218,3,270,12,332,35,365,53,395,77,438,126"/>
+<area shape="rect" id="Node000003" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga716610fbb3b9d3d9189cc519914486ee" title="1 when status_code is a client error (4xx), else 0" alt="" coords="134,49,305,89"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="411,136,330,104,293,92,295,87,332,99,413,131"/>
+<area shape="rect" id="Node000004" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaad6207a6b03a23fc49372d2d72cba7ee" title="1 when status_code is informational (1xx), else 0" alt="" coords="108,114,331,139"/>
+<area shape="poly" id="edge4_Node000001_Node000004" title=" " alt="" coords="365,145,330,141,331,136,365,140"/>
+<area shape="rect" id="Node000005" href="$group___n_e_t_w_o_r_k_i_n_g.html#gad20d39574e0d50286af8ea3c8090b4b3" title="1 when status_code is a redirect (3xx), else 0" alt="" coords="127,163,312,188"/>
+<area shape="poly" id="edge6_Node000001_Node000005" title=" " alt="" coords="365,163,313,169,312,164,365,158"/>
+<area shape="rect" id="Node000006" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga6878b7072421c253026d76e229651cda" title="1 when status_code is a server error (5xx), else 0" alt="" coords="131,213,307,253"/>
+<area shape="poly" id="edge8_Node000001_Node000006" title=" " alt="" coords="410,172,332,202,291,215,289,210,330,197,408,167"/>
+<area shape="rect" id="Node000007" href="$group___n_e_t_w_o_r_k_i_n_g.html#gac404615d599356970ef4a105c55aa690" title="1 when status_code is success (2xx), else 0" alt="" coords="126,278,313,303"/>
+<area shape="poly" id="edge10_Node000001_Node000007" title=" " alt="" coords="436,177,392,223,363,247,332,267,300,280,298,275,329,263,360,243,388,219,432,173"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="126,96,109,103,78,122,51,141,48,137,75,117,107,99,124,91"/>
+<area shape="poly" id="edge5_Node000004_Node000002" title=" " alt="" coords="112,144,61,151,60,146,112,138"/>
+<area shape="poly" id="edge7_Node000005_Node000002" title=" " alt="" coords="113,165,60,158,61,153,113,159"/>
+<area shape="poly" id="edge9_Node000006_Node000002" title=" " alt="" coords="128,211,107,202,49,167,52,162,109,197,130,206"/>
+<area shape="poly" id="edge11_Node000007_Node000002" title=" " alt="" coords="119,275,106,267,81,244,61,215,36,166,41,163,65,213,85,240,110,263,121,270"/>
+</map>

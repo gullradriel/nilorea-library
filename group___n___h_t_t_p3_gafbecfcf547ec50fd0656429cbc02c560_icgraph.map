@@ -1,0 +1,8 @@
+<map id="n_http3_response_free" name="n_http3_response_free">
+<area shape="rect" id="Node000001" title="Free the heap buffers held by r and zero the struct (safe on NULL / zeroed)." alt="" coords="311,5,481,31"/>
+<area shape="rect" id="Node000002" href="$ex__http3_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,5,60,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="297,21,60,21,60,15,297,15"/>
+<area shape="rect" id="Node000003" href="$ex__http3_8c.html#af07469cd6159f2afeb3f7d553cbf99db" title="exercise the request entry points&#39; guards + delegation (deterministic, no network)" alt="" coords="108,31,263,56"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="298,33,263,37,263,31,297,27"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="95,31,60,25,61,20,96,26"/>
+</map>

@@ -1,0 +1,26 @@
+<map id="_draw_syntaxview" name="_draw_syntaxview">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,104,148,129"/>
+<area shape="rect" id="Node000002" href="$n__gui_8c.html#a0a9feabbfb4c3bd32d5ef38ae57f8375" title="draw a row&#45;indexed vertical scrollbar (shared by hexview, syntaxview and datagrid) at the right edge ..." alt="" coords="196,5,359,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="93,102,138,71,195,40,212,33,214,38,197,44,141,76,96,106"/>
+<area shape="rect" id="Node000003" href="$n__gui_8c.html#a56df6f9f84315d11c03bf0d72fbad44f" title="helper: compute minimum line thickness so it stays &gt;= 1 physical pixel." alt="" coords="216,55,339,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="128,101,211,81,212,86,130,107"/>
+<area shape="rect" id="Node000004" href="$n__gui_8c.html#ae6bd1fc0c952617e1238ea9b7e09688e" title="draw one text line with mode&#45;specific highlighting starting at (x,y)" alt="" coords="206,104,349,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="148,114,192,114,192,119,148,119"/>
+<area shape="rect" id="Node000011" href="$n__gui_8c.html#abf3c021c06555fc0b6e2182845659f00" title="pixel width of the first n bytes of s in font (bounded copy)." alt="" coords="437,203,572,228"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="133,127,436,197,434,202,132,132"/>
+<area shape="rect" id="Node000012" href="$n__gui_8c.html#ae85b1e51a9fac7d14c4f065f1344f275" title="forward declaration: (re)build a syntaxview&#39;s cached line count and headers&#45;end index when stale." alt="" coords="200,205,355,245"/>
+<area shape="poly" id="edge12_Node000001_Node000012" title=" " alt="" coords="100,127,197,184,222,196,220,201,195,188,97,132"/>
+<area shape="rect" id="Node000005" href="$n__gui_8c.html#af556c5459fda488d42d800a504eb1a73" title="whether the n bytes at s form a JavaScript keyword or literal name" alt="" coords="428,5,581,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="331,101,357,89,371,77,380,65,390,52,405,40,418,33,421,38,408,44,394,56,385,68,375,81,360,94,333,106"/>
+<area shape="rect" id="Node000006" href="$n__gui_8c.html#a5c925b407ee602b0a8b1042653d5523e" title="whether the n bytes at s are a keyword after which an expression (and therefore a regex literal) can ..." alt="" coords="424,55,585,80"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="336,101,431,80,433,86,337,107"/>
+<area shape="rect" id="Node000007" href="$n__gui_8c.html#a2f1322e4e6284a4a71e56a1fdadebe8f" title="whether a &#39;/&#39; may start a regex literal after last significant char c (start of line,..." alt="" coords="407,104,603,129"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="349,114,393,114,393,119,349,119"/>
+<area shape="rect" id="Node000008" href="$n__gui_8c.html#a1aba717b73fe668a4ceef721b489f6b5" title="draw a run of text and advance the pen x by its width" alt="" coords="454,153,555,179"/>
+<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="337,127,441,150,440,155,336,132"/>
+<area shape="rect" id="Node000009" href="$n__gui_8c.html#a072626f322d270a8afabbf6cb32f3501" title="helper: get the advance width of text." alt="" coords="651,179,724,204"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="556,170,637,182,636,187,555,176"/>
+<area shape="rect" id="Node000010" href="$n__gui_8c.html#a7be222e4f3ab2bca7a8164d8e68fa0eb" title="find (or claim) the cache slot for (font, text[len])." alt="" coords="772,179,903,204"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="724,189,758,189,758,194,724,194"/>
+<area shape="poly" id="edge11_Node000011_Node000009" title=" " alt="" coords="572,204,637,195,637,201,572,209"/>
+</map>

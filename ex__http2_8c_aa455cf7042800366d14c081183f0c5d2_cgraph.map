@@ -1,0 +1,27 @@
+<map id="test_hpack_guards" name="test_hpack_guards">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,181,149,207"/>
+<area shape="rect" id="Node000002" href="$n__http2_8c.html#a01c17819b3f34c559280aee06f1478b2" title="decode an HPACK header block into out[] (owned name/value strings)." alt="" coords="197,132,368,157"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="130,179,215,158,216,163,131,184"/>
+<area shape="rect" id="Node000011" href="$n__http2_8c.html#a4db0e7bbe9744a0df160931ff92b9b58" title="free an HPACK codec context and NULL the caller&#39;s pointer" alt="" coords="207,181,358,207"/>
+<area shape="poly" id="edge12_Node000001_Node000011" title=" " alt="" coords="150,191,194,191,194,197,150,197"/>
+<area shape="rect" id="Node000012" href="$n__http2_8c.html#a29f12f56e3af60112cffeee5dcd5f31b" title="create an HPACK codec context with the given dynamic table size limit (0 uses N_H2_HPACK_DEFAULT_TABL..." alt="" coords="207,231,358,256"/>
+<area shape="poly" id="edge13_Node000001_Node000012" title=" " alt="" coords="131,204,216,225,215,230,130,209"/>
+<area shape="rect" id="Node000003" href="$n__http2_8c.html#a0d401afaada66047a3e2f316525c84b4" title="insert (name, value) at the front of the dynamic table, evicting as needed; both strings are copied." alt="" coords="459,5,582,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="297,130,347,90,415,48,452,32,454,37,417,52,350,94,300,134"/>
+<area shape="rect" id="Node000004" href="$n__http2_8c.html#ac6e6071910050fa3ea6febef3a52b3b5" title="drop the oldest dynamic entries until the table fits max_size" alt="" coords="697,31,797,56"/>
+<area shape="poly" id="edge4_Node000002_Node000004" title=" " alt="" coords="341,129,683,54,684,60,343,135"/>
+<area shape="rect" id="Node000005" href="$n__http2_8c.html#aba573f4ec2c24b097d27932f7d5f7443" title="decode an HPACK integer with an N&#45;bit prefix; advances *pos" alt="" coords="677,132,816,157"/>
+<area shape="poly" id="edge5_Node000002_Node000005" title=" " alt="" coords="368,142,664,142,664,147,368,147"/>
+<area shape="rect" id="Node000006" href="$n__http2_8c.html#aa7832e89c6e27e625fc699bfe7e74ede" title="resolve a table index to its name/value (const, not owned)." alt="" coords="465,157,576,183"/>
+<area shape="poly" id="edge6_Node000002_Node000006" title=" " alt="" coords="369,151,452,160,451,165,368,156"/>
+<area shape="rect" id="Node000007" href="$n__http2_8c.html#a83a5324fb41d70963bf96417c4c04e54" title="decode an HPACK string (Huffman or literal); allocates *out" alt="" coords="451,207,590,232"/>
+<area shape="poly" id="edge7_Node000002_Node000007" title=" " alt="" coords="337,155,369,166,393,180,417,193,440,201,438,206,415,198,391,185,367,171,335,160"/>
+<area shape="rect" id="Node000010" href="$n__http2_8c.html#a5c0f70d043c62d5a308266863f95b914" title="free the owned name/value strings of a decoded header array (does not free the array itself)" alt="" coords="416,256,625,281"/>
+<area shape="poly" id="edge11_Node000002_Node000010" title=" " alt="" coords="349,155,370,167,387,186,394,206,402,225,418,243,426,248,423,252,414,247,397,228,389,208,382,189,366,171,347,160"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="583,22,683,34,683,39,582,28"/>
+<area shape="poly" id="edge10_Node000007_Node000005" title=" " alt="" coords="584,204,624,193,705,161,707,166,626,198,585,209"/>
+<area shape="rect" id="Node000008" href="$n__http2_8c.html#a9e5678e2e3ac1fcf960d0492eb09608a" title="decode a Huffman&#45;coded string of len bytes into a fresh C string" alt="" coords="673,207,820,232"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="590,217,660,217,660,222,590,222"/>
+<area shape="rect" id="Node000009" href="$n__http2_8c.html#a98ff530c16c3edaa695d400afbc97831" title="find the Huffman symbol for an accumulated code of nbits bits, or &#45;1" alt="" coords="868,207,1011,232"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="820,217,854,217,854,222,820,222"/>
+</map>

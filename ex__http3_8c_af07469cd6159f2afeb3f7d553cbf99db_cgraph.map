@@ -1,0 +1,10 @@
+<map id="test_request_guards" name="test_request_guards">
+<area shape="rect" id="Node000001" title="exercise the request entry points&#39; guards + delegation (deterministic, no network)" alt="" coords="5,31,160,56"/>
+<area shape="rect" id="Node000002" href="$group___n___h_t_t_p3.html#gaaab00a59ff12d3326622a9bd9f1069c0" title="Perform one blocking HTTP/3 request over a fresh QUIC connection." alt="" coords="427,5,553,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="134,28,208,15,315,10,413,11,413,17,315,15,208,21,135,33"/>
+<area shape="rect" id="Node000003" href="$group___n___h_t_t_p3.html#ga4b16e1ee8dbe035caa916efd6a6ea734" title="Perform one blocking HTTP/3 request, with request flags." alt="" coords="218,31,369,56"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="160,41,204,41,204,46,160,46"/>
+<area shape="rect" id="Node000004" href="$group___n___h_t_t_p3.html#gafbecfcf547ec50fd0656429cbc02c560" title="Free the heap buffers held by r and zero the struct (safe on NULL / zeroed)." alt="" coords="208,80,379,105"/>
+<area shape="poly" id="edge4_Node000001_Node000004" title=" " alt="" coords="138,53,226,74,225,79,137,59"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="369,31,412,25,413,31,369,36"/>
+</map>

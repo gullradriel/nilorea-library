@@ -1,0 +1,34 @@
+<map id="n_gui_add_button" name="n_gui_add_button">
+<area shape="rect" id="Node000001" title="add a button widget" alt="" coords="775,208,912,233"/>
+<area shape="rect" id="Node000002" href="$ex__gui__detach_8c.html#aa8cd4132bf173b8583d128c6f4ef2026" title="build one demo panel: a few ordinary widgets plus its detach button" alt="" coords="583,5,680,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="829,197,790,125,760,86,725,52,703,39,679,30,681,25,705,34,728,48,764,82,794,122,834,194"/>
+<area shape="rect" id="Node000003" href="$ex__gui__detach_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="375,31,430,56"/>
+<area shape="poly" id="edge5_Node000001_Node000003" title=" " alt="" coords="825,198,785,145,757,118,725,96,687,79,646,66,562,50,487,44,430,44,430,39,487,39,563,44,647,60,689,74,728,92,760,114,789,141,829,195"/>
+<area shape="rect" id="Node000004" href="$ex__gui__bench_8c.html#a62d67ce73c3359522147c41f9cfc1366" title=" " alt="" coords="547,107,716,132"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="811,202,771,178,726,154,676,135,677,130,728,149,773,173,813,198"/>
+<area shape="rect" id="Node000006" href="$ex__gui_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="375,181,430,207"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="781,208,726,198,642,192,558,191,430,195,430,190,558,185,642,187,727,193,782,202"/>
+<area shape="rect" id="Node000007" href="$group___g_u_i.html#gaa0c7d68f5646bc9b238688e076997383" title="Add a bitmap&#45;based button." alt="" coords="536,208,727,233"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="761,223,727,223,727,218,761,218"/>
+<area shape="rect" id="Node000008" href="$group___g_u_i.html#ga6c497401ac74e6c74a5b4bf8b786d83b" title="Add a toggle button widget (stays clicked/unclicked on single click)" alt="" coords="539,257,724,283"/>
+<area shape="poly" id="edge9_Node000001_Node000008" title=" " alt="" coords="776,239,687,260,686,255,774,234"/>
+<area shape="rect" id="Node000010" href="$group___g_u_i.html#gabad9a1d97005f61abfe2245797af31a7" title="add a row to the KV table" alt="" coords="544,307,719,332"/>
+<area shape="poly" id="edge12_Node000001_Node000010" title=" " alt="" coords="816,244,776,271,728,296,692,309,690,304,726,292,773,266,813,239"/>
+<area shape="rect" id="Node000012" href="$group___g_u_i.html#ga1fcecdaee4bd79c714ecc3c081aa6176" title="create a KV table in an existing window" alt="" coords="108,332,269,357"/>
+<area shape="poly" id="edge17_Node000001_Node000012" title=" " alt="" coords="829,247,788,298,760,325,728,346,663,371,594,386,525,393,455,393,390,388,329,380,235,360,236,355,330,374,390,383,456,388,524,388,594,381,661,366,725,341,757,321,784,295,825,243"/>
+<area shape="rect" id="Node000014" href="$group___g_u_i.html#gac356ab1506fde88b29467a27f5fd43ed" title="add a section with a header button at header_y (members added next are captured relative to it); retu..." alt="" coords="550,433,713,473"/>
+<area shape="poly" id="edge18_Node000001_Node000014" title=" " alt="" coords="835,247,820,284,797,329,766,375,728,416,699,435,696,430,725,412,762,372,792,326,815,282,831,245"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="569,27,430,43,430,38,569,22"/>
+<area shape="rect" id="Node000005" href="$ex__gui__bench_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="375,107,430,132"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="533,122,430,122,430,117,533,117"/>
+<area shape="poly" id="edge8_Node000007_Node000006" title=" " alt="" coords="522,211,430,200,431,194,522,205"/>
+<area shape="poly" id="edge10_Node000008_Node000006" title=" " alt="" coords="560,256,535,247,511,234,487,220,429,202,431,197,489,216,513,229,537,242,561,251"/>
+<area shape="rect" id="Node000009" href="$group___g_u_i.html#ga7e68e81d85f60ee486123ad0d2cc9b40" title="add a tab to the panel, returns tab index" alt="" coords="345,231,461,256"/>
+<area shape="poly" id="edge11_Node000008_Node000009" title=" " alt="" coords="524,260,460,253,461,247,525,255"/>
+<area shape="rect" id="Node000011" href="$n__gui_8c.html#ab08932fdd1278b1897bc2e8a7b276b62" title=" " alt="" coords="317,332,488,357"/>
+<area shape="poly" id="edge13_Node000010_Node000011" title=" " alt="" coords="531,333,489,338,488,333,530,328"/>
+<area shape="rect" id="Node000013" href="$ex__gui__kvtable_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,307,60,332"/>
+<area shape="poly" id="edge16_Node000010_Node000013" title=" " alt="" coords="530,322,60,322,60,317,530,317"/>
+<area shape="poly" id="edge14_Node000011_Node000012" title=" " alt="" coords="304,347,269,347,269,342,304,342"/>
+<area shape="poly" id="edge15_Node000012_Node000013" title=" " alt="" coords="96,332,60,326,61,321,97,327"/>
+</map>

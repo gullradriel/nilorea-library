@@ -1,0 +1,5 @@
+<map id="n_http_status_is_redirect" name="n_http_status_is_redirect">
+<area shape="rect" id="Node000001" title="1 when status_code is a redirect (3xx), else 0" alt="" coords="5,5,191,31"/>
+<area shape="rect" id="Node000002" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga2b7aacc85c129535f2e5ce28fc1e074f" title="leading digit of an HTTP status code (1..5), or 0 when outside 100..599" alt="" coords="239,5,389,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="191,15,225,15,225,21,191,21"/>
+</map>

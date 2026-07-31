@@ -1,0 +1,27 @@
+<map id="netw_recv_func" name="netw_recv_func">
+<area shape="rect" id="Node000001" title="Thread Receiving management function." alt="" coords="5,129,129,155"/>
+<area shape="rect" id="Node000002" href="$n__network_8c.html#add7707017912cae7d9e4756824b96cb9" title="capture an error into a NETWORK handle&#39;s ring buffer" alt="" coords="177,5,332,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="77,127,118,85,146,61,176,40,188,33,191,38,179,44,149,65,121,88,81,131"/>
+<area shape="rect" id="Node000003" href="$group___n___s_t_r.html#ga0a864a4ce4997389f2e5e2e16c51a30a" title="Free a N_STR pointer structure." alt="" coords="202,55,307,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="93,127,176,89,196,82,198,87,178,94,95,132"/>
+<area shape="rect" id="Node000004" href="$group___l_i_s_t.html#ga4eab319289a83524639ee5e9f0441fdf" title="Add a pointer to the end of the list." alt="" coords="215,104,295,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="129,131,201,121,202,126,130,136"/>
+<area shape="rect" id="Node000006" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaa8e1fe7978995197f08aa0ef24a76c33" title="Restart or reset the specified network ability." alt="" coords="214,153,295,179"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="130,147,201,157,200,162,129,153"/>
+<area shape="rect" id="Node000009" href="$group___l_z4.html#ga52db4ddd93fb3860acd5ce3671b4dd23" title="Decompress an N_STR produced by zip4_nstr." alt="" coords="206,203,303,228"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="97,152,178,188,201,196,199,201,176,192,95,157"/>
+<area shape="rect" id="Node000011" href="$group___z_l_i_b.html#gab434f8d8cbd741ecffd35be2125b66fe" title="return an uncompressed version of src" alt="" coords="210,252,299,277"/>
+<area shape="poly" id="edge11_Node000001_Node000011" title=" " alt="" coords="82,153,122,194,149,217,179,237,198,246,196,251,176,242,146,221,119,198,78,157"/>
+<area shape="rect" id="Node000005" href="$group___l_i_s_t.html#ga678e828550efc8e64a836bb8c713c2f4" title="Allocate a new node to link in a list." alt="" coords="390,77,505,103"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="295,109,376,97,377,102,295,114"/>
+<area shape="rect" id="Node000007" href="$group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755" title="Empty and Free a list container." alt="" coords="398,127,497,152"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="295,158,384,145,385,151,296,163"/>
+<area shape="rect" id="Node000008" href="$group___l_i_s_t.html#ga1dafe7a250ddad51fadd375f057287e7" title="Empty a LIST list of pointers." alt="" coords="563,152,653,177"/>
+<area shape="poly" id="edge8_Node000006_Node000008" title=" " alt="" coords="296,163,549,162,549,168,296,169"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="497,144,550,153,549,158,497,150"/>
+<area shape="rect" id="Node000010" href="$group___n___s_t_r.html#ga873edbb1f8787d0a78a13ccbbed9b9f9" title="create a new N_STR string" alt="" coords="407,228,488,253"/>
+<area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="304,219,393,231,393,236,303,224"/>
+<area shape="poly" id="edge12_Node000011_Node000010" title=" " alt="" coords="299,257,393,245,393,250,300,262"/>
+<area shape="rect" id="Node000012" href="$group___z_l_i_b.html#ga8d9cc906bc624d1a259f305aeca1b24f" title="Uncompress a string to another." alt="" coords="380,277,515,303"/>
+<area shape="poly" id="edge13_Node000011_Node000012" title=" " alt="" coords="300,268,367,277,366,282,299,273"/>
+</map>

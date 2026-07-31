@@ -1,0 +1,15 @@
+<map id="n_url_resolve" name="n_url_resolve">
+<area shape="rect" id="Node000001" title="resolve a (possibly relative) reference against an absolute base URL (RFC 3986 section 5)" alt="" coords="5,104,115,129"/>
+<area shape="rect" id="Node000002" href="$n__network_8c.html#acd1619084553dd6c118dbe8f3cd1418a" title="test whether a reference string begins with its own URI scheme" alt="" coords="173,5,322,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="74,102,112,71,161,40,177,33,179,38,164,44,115,75,77,106"/>
+<area shape="rect" id="Node000003" href="$n__network_8c.html#a1090ef41ce4b5e686e796d3f5714189a" title="normalize a path by removing &quot;.&quot; and &quot;..&quot; segments (RFC 3986 style)" alt="" coords="163,55,332,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="108,101,184,81,186,86,110,107"/>
+<area shape="rect" id="Node000004" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga5d6f1c27eba9cf52052a1ba2842f9f94" title="free a N_URL and all its members" alt="" coords="204,104,291,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="115,114,190,114,190,119,115,119"/>
+<area shape="rect" id="Node000005" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaad0b9ffe6afab6116be05ea06cee041f" title="parse a URL string into components" alt="" coords="199,153,296,179"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="110,127,186,147,185,152,108,132"/>
+<area shape="rect" id="Node000007" href="$group___n___s_t_r.html#ga873edbb1f8787d0a78a13ccbbed9b9f9" title="create a new N_STR string" alt="" coords="207,203,288,228"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="78,128,115,158,164,188,194,200,192,205,161,192,112,162,74,132"/>
+<area shape="rect" id="Node000006" href="$n__network_8c.html#a7812f42d29cf576b505f94368ef41d3d" title=" " alt="" coords="380,153,560,179"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="296,163,366,163,366,169,296,169"/>
+</map>

@@ -1,0 +1,37 @@
+<map id="n_gui_widget_set_persist_key" name="n_gui_widget_set_persist_key">
+<area shape="rect" id="Node000001" title="Give a widget a stable key so its user&#45;adjustable state (a splitpane&#39;s divider ratio,..." alt="" coords="5,363,221,389"/>
+<area shape="rect" id="Node000002" href="$n__gui_8c.html#ae91948fd8844f145587038fd679c50d2" title=" " alt="" coords="269,285,444,310"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="153,361,303,312,305,317,155,366"/>
+<area shape="rect" id="Node000006" href="$group___g_u_i.html#ga9072d6f6b2708518c4c3d5d21849f11e" title="Get a widget pointer by id." alt="" coords="1147,306,1283,331"/>
+<area shape="poly" id="edge20_Node000001_Node000006" title=" " alt="" coords="222,373,585,373,815,373,958,369,1098,348,1161,333,1162,338,1099,353,958,375,815,379,585,379,222,379"/>
+<area shape="rect" id="Node000014" href="$n__gui_8c.html#a315da0d6b22484d73c61bedc44c39ccc" title="helper: find the parent window of a widget by id, returning the window&#39;s content origin (accounting f..." alt="" coords="276,414,437,439"/>
+<area shape="poly" id="edge18_Node000001_Node000014" title=" " alt="" coords="176,386,282,409,281,414,175,391"/>
+<area shape="rect" id="Node000003" href="$n__gui_8c.html#a9155f5e3fb703c3300189c3438c5c1db" title=" " alt="" coords="492,141,680,166"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="377,282,551,171,554,176,380,287"/>
+<area shape="rect" id="Node000012" href="$group___g_u_i.html#ga2aefa96c02b49fa762e04f7711f907ce" title="number of columns in a data grid (physical), or 0" alt="" coords="513,248,659,288"/>
+<area shape="poly" id="edge14_Node000002_Node000012" title=" " alt="" coords="444,284,499,276,499,282,445,289"/>
+<area shape="rect" id="Node000013" href="$group___g_u_i.html#gace9ad494c58b4fb4598e1f82d0d6055b" title="set the divider ratio of a split pane (clamped to its min/max)" alt="" coords="948,299,1099,339"/>
+<area shape="poly" id="edge16_Node000002_Node000013" title=" " alt="" coords="444,297,934,313,934,319,444,303"/>
+<area shape="rect" id="Node000004" href="$group___g_u_i.html#gaa2edf5de92c392aab7bdfb9c2e9a54cb" title="physical column shown at display position display_pos, or &#45;1 if out of range" alt="" coords="728,5,900,45"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="602,138,656,99,727,55,740,48,743,53,729,60,659,103,605,143"/>
+<area shape="rect" id="Node000009" href="$group___g_u_i.html#ga825d9b3dc859cdc94d736c4fd4446d0f" title="move the column at display position from to display position to, shifting the columns in between (reo..." alt="" coords="733,69,895,109"/>
+<area shape="poly" id="edge8_Node000003_Node000009" title=" " alt="" coords="632,138,728,110,730,116,633,143"/>
+<area shape="rect" id="Node000010" href="$group___g_u_i.html#gadda60e1823f2ce654662a6a85c1099b8" title="show (1) or hide (0) physical column col; hidden columns keep their cells but are skipped in the head..." alt="" coords="741,133,887,173"/>
+<area shape="poly" id="edge10_Node000003_Node000010" title=" " alt="" coords="680,151,728,151,728,156,680,156"/>
+<area shape="rect" id="Node000011" href="$group___g_u_i.html#gada25e8cbaf14f7210b43a64944c7c656" title="set the pixel width of physical column col (clamped to a small minimum)" alt="" coords="741,197,887,237"/>
+<area shape="poly" id="edge12_Node000003_Node000011" title=" " alt="" coords="633,164,730,191,728,196,632,169"/>
+<area shape="rect" id="Node000005" href="$n__gui_8c.html#ab332b3dbcbe7837f8335a8663ea86c54" title="fetch a data grid&#39;s column table for an API call, or NULL on a bad id." alt="" coords="964,173,1083,198"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="880,43,901,55,934,80,963,108,1007,160,1003,164,959,112,930,84,899,60,877,48"/>
+<area shape="rect" id="Node000008" href="$n__gui_8c.html#a955b78a06c0dbb01cb7559e9a548c3d3" title="physical column index shown at display position dp (identity when no order)." alt="" coords="963,13,1084,38"/>
+<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="901,23,949,23,949,28,901,28"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="1044,196,1185,296,1182,300,1041,200"/>
+<area shape="rect" id="Node000007" href="$group___h_a_s_h___t_a_b_l_e.html#ga009f66a508dcea120e0cd2b34805e5a2" title="get pointer at &#39;key&#39; from &#39;table&#39;" alt="" coords="1331,306,1419,331"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="1283,316,1317,316,1317,321,1283,321"/>
+<area shape="poly" id="edge9_Node000009_Node000005" title=" " alt="" coords="872,107,901,119,989,164,987,168,899,124,870,112"/>
+<area shape="poly" id="edge11_Node000010_Node000005" title=" " alt="" coords="887,162,951,172,950,177,887,167"/>
+<area shape="poly" id="edge13_Node000011_Node000005" title=" " alt="" coords="887,204,950,194,951,199,887,209"/>
+<area shape="poly" id="edge15_Node000012_Node000005" title=" " alt="" coords="659,270,774,267,837,260,899,247,949,227,991,203,994,208,951,232,901,252,838,265,774,272,660,275"/>
+<area shape="poly" id="edge17_Node000013_Node000006" title=" " alt="" coords="1099,316,1133,316,1133,321,1099,321"/>
+<area shape="rect" id="Node000015" href="$n__gui_8c.html#ad69070337d54549ba52daa8b1d17a580" title="helper: effective title bar height (0 for frameless windows)" alt="" coords="546,414,626,439"/>
+<area shape="poly" id="edge19_Node000014_Node000015" title=" " alt="" coords="438,424,532,424,532,429,438,429"/>
+</map>

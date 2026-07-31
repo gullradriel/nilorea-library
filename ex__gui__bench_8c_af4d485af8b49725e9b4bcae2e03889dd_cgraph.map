@@ -1,0 +1,55 @@
+<map id="build_datagrid_window" name="build_datagrid_window">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,524,177,549"/>
+<area shape="rect" id="Node000002" href="$group___g_u_i.html#gaf7859814d566ddc54dd2fa342897fd1b" title="Add a sortable data grid widget." alt="" coords="241,169,390,195"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="99,522,297,205,301,208,103,525"/>
+<area shape="rect" id="Node000012" href="$group___g_u_i.html#ga9734754ec210aac972dc415403f61fc0" title="Add a new pseudo&#45;window to the context." alt="" coords="243,445,388,471"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="128,521,265,473,266,478,130,526"/>
+<area shape="rect" id="Node000021" href="$group___g_u_i.html#ga5fbdbf64b81dbfb8a7aceb37481d1465" title="append a column with a header title and pixel width; returns the column index or &#45;1" alt="" coords="241,574,390,614"/>
+<area shape="poly" id="edge23_Node000001_Node000021" title=" " alt="" coords="142,547,228,569,227,574,141,552"/>
+<area shape="rect" id="Node000024" href="$group___g_u_i.html#gad5dc1a001f91dbe8ab814602d1b44804" title="append a row of cell strings (values must have one entry per column); returns the row index or &#45;1" alt="" coords="225,524,405,549"/>
+<area shape="poly" id="edge26_Node000001_Node000024" title=" " alt="" coords="178,534,212,534,212,539,178,539"/>
+<area shape="rect" id="Node000025" href="$ex__gui__bench_8c.html#a04fe9041c6bbef0838b76a0c091ad5a4" title=" " alt="" coords="238,639,393,664"/>
+<area shape="poly" id="edge28_Node000001_Node000025" title=" " alt="" coords="110,547,160,585,227,624,247,632,245,637,224,628,157,589,106,552"/>
+<area shape="rect" id="Node000003" href="$n__gui_8c.html#a933ef0d2dde83dca8035599d27f8c65c" title=" " alt="" coords="483,5,613,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="324,167,373,107,410,71,452,41,469,33,471,38,455,46,413,75,377,110,328,171"/>
+<area shape="rect" id="Node000004" href="$n__gui_8c.html#adf6ce1b72400daecc1031525d7934ec8" title="capture normalized coords for a single widget relative to its parent window" alt="" coords="463,55,633,95"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="336,167,388,137,452,105,469,98,472,103,454,110,391,142,339,172"/>
+<area shape="rect" id="Node000005" href="$n__gui_8c.html#aa8f98017db6e47e1cc7856ebe0f2f25f" title="helper: allocate and initialise a base widget" alt="" coords="495,120,601,145"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="375,167,480,144,482,149,376,172"/>
+<area shape="rect" id="Node000006" href="$n__gui_8c.html#a0e1fb16564fb288c37b1834ceb466127" title="helper: register a widget in the hash table" alt="" coords="483,169,613,195"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="390,179,469,179,469,185,390,185"/>
+<area shape="rect" id="Node000008" href="$group___l_i_s_t.html#ga4eab319289a83524639ee5e9f0441fdf" title="Add a pointer to the end of the list." alt="" coords="726,320,806,345"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="338,193,390,222,454,253,523,276,593,295,713,321,712,326,592,301,521,281,452,258,387,227,335,197"/>
+<area shape="rect" id="Node000010" href="$group___g_u_i.html#ga932fd1ac880df86b92a25ced736298be" title="Get a window pointer by id." alt="" coords="477,219,619,244"/>
+<area shape="poly" id="edge9_Node000002_Node000010" title=" " alt="" coords="376,192,475,213,473,218,375,197"/>
+<area shape="rect" id="Node000007" href="$group___h_a_s_h___t_a_b_l_e.html#ga7aebf871db9a69deb5d971b67d532a91" title="put an arbitrary pointer value with given key in the targeted hash table" alt="" coords="722,169,810,195"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="613,179,708,179,708,185,613,185"/>
+<area shape="rect" id="Node000009" href="$group___l_i_s_t.html#ga678e828550efc8e64a836bb8c713c2f4" title="Allocate a new node to link in a list." alt="" coords="889,320,1004,345"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="806,330,876,330,876,335,806,335"/>
+<area shape="rect" id="Node000011" href="$n__gui_8c.html#ac4c3cab227dd7eabfc2e94f8f8d6d1ae" title="helper: find a window node in the context list by id" alt="" coords="691,219,841,244"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="620,229,677,229,677,234,620,234"/>
+<area shape="poly" id="edge21_Node000012_Node000008" title=" " alt="" coords="327,443,379,399,414,375,452,357,521,338,591,328,657,325,712,326,712,331,657,331,592,334,522,343,454,362,417,380,382,403,331,447"/>
+<area shape="rect" id="Node000013" href="$n__gui_8c.html#ae2bd627c7fe020e9c2683c9e1d3fb86e" title="helper: destroy a single window (called by list destructor)" alt="" coords="699,469,833,495"/>
+<area shape="poly" id="edge12_Node000012_Node000013" title=" " alt="" coords="388,459,685,475,685,480,388,464"/>
+<area shape="rect" id="Node000016" href="$n__gui_8c.html#a4ec1e6f7ca4bbad50a99b702ba1c683b" title="capture normalized coords for a window and its widgets from current absolutes" alt="" coords="459,521,637,561"/>
+<area shape="poly" id="edge15_Node000012_Node000016" title=" " alt="" coords="353,468,478,513,477,518,351,473"/>
+<area shape="rect" id="Node000017" href="$n__gui_8c.html#a7354743de2c4caf5256deb698f147d1b" title="Sort windows list by z&#45;order: ALWAYS_BEHIND first, then FIXED (by z_value), then NORMAL,..." alt="" coords="453,420,643,445"/>
+<area shape="poly" id="edge16_Node000012_Node000017" title=" " alt="" coords="388,447,440,442,440,447,388,453"/>
+<area shape="rect" id="Node000020" href="$group___l_i_s_t.html#gae4b8e915bc22e7993d2849152ec1c3ac" title="Initialiaze a generic list container to max_items pointers." alt="" coords="483,371,613,396"/>
+<area shape="poly" id="edge22_Node000012_Node000020" title=" " alt="" coords="349,443,453,406,483,397,484,402,454,411,350,448"/>
+<area shape="rect" id="Node000014" href="$group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755" title="Empty and Free a list container." alt="" coords="897,469,996,495"/>
+<area shape="poly" id="edge13_Node000013_Node000014" title=" " alt="" coords="834,479,883,479,883,485,834,485"/>
+<area shape="rect" id="Node000015" href="$group___l_i_s_t.html#ga1dafe7a250ddad51fadd375f057287e7" title="Empty a LIST list of pointers." alt="" coords="1052,469,1143,495"/>
+<area shape="poly" id="edge14_Node000014_Node000015" title=" " alt="" coords="996,479,1038,479,1038,485,996,485"/>
+<area shape="poly" id="edge19_Node000017_Node000008" title=" " alt="" coords="616,417,641,406,656,395,665,383,674,370,689,357,712,346,714,350,692,362,678,374,669,386,660,399,644,411,618,422"/>
+<area shape="poly" id="edge17_Node000017_Node000013" title=" " alt="" coords="605,443,696,464,695,469,604,448"/>
+<area shape="rect" id="Node000018" href="$n__gui_8c.html#a2a7c959510e3b7a6da943d522731730d" title=" " alt="" coords="709,420,823,445"/>
+<area shape="poly" id="edge18_Node000017_Node000018" title=" " alt="" coords="643,430,695,430,695,435,643,435"/>
+<area shape="rect" id="Node000019" href="$group___l_i_s_t.html#gabd7f04c5a1cd8307c0f289dcccdb5a41" title="Internal function called each time we need to get a node out of a list." alt="" coords="691,371,841,396"/>
+<area shape="poly" id="edge20_Node000017_Node000019" title=" " alt="" coords="604,417,695,396,696,402,605,423"/>
+<area shape="rect" id="Node000022" href="$group___g_u_i.html#ga9072d6f6b2708518c4c3d5d21849f11e" title="Get a widget pointer by id." alt="" coords="480,585,616,611"/>
+<area shape="poly" id="edge24_Node000021_Node000022" title=" " alt="" coords="390,593,466,594,466,599,390,598"/>
+<area shape="rect" id="Node000023" href="$group___h_a_s_h___t_a_b_l_e.html#ga009f66a508dcea120e0cd2b34805e5a2" title="get pointer at &#39;key&#39; from &#39;table&#39;" alt="" coords="722,585,810,611"/>
+<area shape="poly" id="edge25_Node000022_Node000023" title=" " alt="" coords="616,595,708,595,708,601,616,601"/>
+<area shape="poly" id="edge27_Node000024_Node000022" title=" " alt="" coords="365,547,487,579,485,584,364,552"/>
+</map>

@@ -1,0 +1,84 @@
+<map id="iso_map_get_height" name="iso_map_get_height">
+<area shape="rect" id="Node000001" title="get height for a cell (bounds&#45;checked, clamped)" alt="" coords="1112,552,1265,577"/>
+<area shape="rect" id="Node000002" href="$n__iso__engine_8c.html#a2fe6c6ec248152f94a6575f8afcda914" title="Draw cliff side faces for a single segment {seg_bottom..seg_top}." alt="" coords="375,222,541,248"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1183,538,1174,480,1154,405,1139,366,1118,330,1093,297,1063,269,1023,251,968,238,901,230,827,225,673,225,542,232,542,226,673,220,827,220,901,224,969,233,1025,246,1065,265,1097,293,1123,327,1143,364,1159,403,1179,479,1188,537"/>
+<area shape="rect" id="Node000003" href="$group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga7fb670195f7cb827fa7d59a86fb014e6" title="Draw the full ISO_MAP with segment&#45;sorted rendering." alt="" coords="147,273,263,298"/>
+<area shape="poly" id="edge27_Node000001_Node000003" title=" " alt="" coords="1180,539,1168,490,1146,431,1130,401,1111,372,1089,346,1063,325,1034,311,998,299,907,281,797,271,678,268,441,273,264,284,263,278,441,267,678,262,797,266,907,276,999,293,1036,306,1065,321,1093,342,1116,369,1135,398,1151,429,1173,489,1185,537"/>
+<area shape="rect" id="Node000004" href="$ex__gui__isometric_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,854,60,880"/>
+<area shape="poly" id="edge43_Node000001_Node000004" title=" " alt="" coords="1182,538,1170,432,1147,286,1130,213,1111,147,1088,94,1076,74,1062,60,1020,30,981,14,943,9,905,10,821,25,773,32,718,35,457,35,411,43,358,65,304,96,250,134,158,210,110,262,90,314,73,387,61,475,51,568,40,744,37,854,32,854,35,744,46,568,55,474,68,387,85,312,106,259,154,206,246,129,301,92,356,60,409,38,456,30,718,30,772,27,820,20,904,5,944,3,983,9,1023,26,1066,56,1080,71,1093,91,1116,145,1135,212,1152,285,1175,431,1188,537"/>
+<area shape="rect" id="Node000005" href="$n__iso__engine_8c.html#a461a6ea3e434580637fb4ae393e55367" title="Check if an object is occluded by tiles drawn in front of it." alt="" coords="354,401,562,426"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="1148,548,1063,516,929,483,794,458,562,426,563,421,795,453,931,478,1065,511,1150,543"/>
+<area shape="rect" id="Node000006" href="$n__iso__engine_8c.html#a88b4204bd90fc04be2aa3a8b91d3a924" title=" " alt="" coords="889,70,1043,96"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="1185,538,1183,457,1177,403,1168,345,1152,284,1130,223,1101,167,1062,117,1033,98,1036,93,1066,113,1105,164,1135,221,1157,282,1173,344,1183,403,1188,457,1191,538"/>
+<area shape="rect" id="Node000009" href="$n__iso__engine_8c.html#a2b0b04764821d793bbd1e9dc3294c8ca" title="Helper: clamp neighbor height for smooth slope rendering." alt="" coords="887,172,1045,197"/>
+<area shape="poly" id="edge10_Node000001_Node000009" title=" " alt="" coords="1183,538,1175,474,1155,388,1140,342,1119,297,1094,255,1062,218,1032,199,1035,195,1066,214,1098,252,1124,295,1145,340,1160,387,1180,473,1188,538"/>
+<area shape="rect" id="Node000010" href="$group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga139a368414f6b25a2bc0da10799252aa" title="Compute smooth corner heights with slope clamping." alt="" coords="626,158,807,198"/>
+<area shape="poly" id="edge39_Node000001_Node000010" title=" " alt="" coords="1181,539,1166,451,1140,336,1124,279,1105,227,1084,187,1062,161,1028,142,990,130,950,125,909,126,831,140,767,160,765,155,830,135,909,121,950,120,991,125,1030,137,1066,157,1089,184,1110,225,1129,277,1145,335,1171,450,1186,538"/>
+<area shape="rect" id="Node000011" href="$n__iso__engine_8c.html#ae1a4509af8ad93f097bba4733295e53f" title="Check if a tile has geometry covering height level z." alt="" coords="892,374,1040,400"/>
+<area shape="poly" id="edge13_Node000001_Node000011" title=" " alt="" coords="1171,542,1127,481,1097,449,1063,421,1022,402,1024,397,1065,417,1100,445,1131,478,1175,538"/>
+<area shape="rect" id="Node000012" href="$group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga713aea74dd144786e82de02ddd9c72f3" title="Per&#45;segment edge visibility with adjacency + occlusion." alt="" coords="639,323,794,363"/>
+<area shape="poly" id="edge29_Node000001_Node000012" title=" " alt="" coords="1178,539,1163,499,1140,450,1106,402,1086,381,1063,364,1031,348,997,337,926,325,856,324,794,330,794,325,856,319,926,320,998,332,1033,343,1065,359,1089,377,1111,398,1144,447,1168,496,1183,538"/>
+<area shape="rect" id="Node000014" href="$ex__iso__astar_8c.html#a0e3deaf3945eaeaf6859a4d83cf67fa2" title=" " alt="" coords="667,501,766,526"/>
+<area shape="poly" id="edge17_Node000001_Node000014" title=" " alt="" coords="1106,552,1064,546,900,529,766,519,766,514,901,523,1064,540,1107,547"/>
+<area shape="rect" id="Node000016" href="$ex__iso__astar_8c.html#a3a2cf9a1bf56a8e5a4b364cda98a05e4" title=" " alt="" coords="649,577,785,602"/>
+<area shape="poly" id="edge19_Node000001_Node000016" title=" " alt="" coords="1098,564,988,563,868,568,784,580,783,574,868,563,988,558,1098,558"/>
+<area shape="rect" id="Node000017" href="$ex__gui__isometric_8c.html#a09066062286df01d88dfa60a74d82245" title=" " alt="" coords="387,799,529,839"/>
+<area shape="poly" id="edge21_Node000001_Node000017" title=" " alt="" coords="1185,591,1172,638,1149,695,1114,751,1092,776,1065,796,1022,814,964,826,893,833,816,836,659,834,529,827,529,822,659,829,816,831,893,827,963,820,1021,809,1063,791,1088,772,1110,748,1144,692,1167,636,1179,590"/>
+<area shape="rect" id="Node000019" href="$group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#gaf24dac3d2843c336f4b18d65ac3176c7" title="Compute average corner heights for smooth tile rendering (Article 2026)." alt="" coords="876,577,1056,602"/>
+<area shape="poly" id="edge25_Node000001_Node000019" title=" " alt="" coords="1098,577,1056,582,1056,577,1098,572"/>
+<area shape="rect" id="Node000020" href="$group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga62e8efe6c54a6fd9d718810b1907cc6f" title="Compute which diamond edges of tile (mx,my) need a height border." alt="" coords="889,678,1043,718"/>
+<area shape="poly" id="edge28_Node000001_Node000020" title=" " alt="" coords="1165,588,1120,625,1065,661,1026,680,1024,675,1063,657,1117,620,1161,584"/>
+<area shape="rect" id="Node000021" href="$group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#gada043a1ec9606bba33ec50ecc71051b1" title="Bilinear height interpolation at fractional map coordinates." alt="" coords="889,742,1043,782"/>
+<area shape="poly" id="edge30_Node000001_Node000021" title=" " alt="" coords="1177,591,1134,660,1103,699,1066,732,1045,744,1042,739,1062,727,1099,695,1130,657,1173,588"/>
+<area shape="rect" id="Node000024" href="$group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#gaef210d196c5ddfeccfbf73348c593edd" title="Height&#45;aware screen&#45;to&#45;map conversion returning fractional tile coordinates." alt="" coords="613,905,820,930"/>
+<area shape="poly" id="edge42_Node000001_Node000024" title=" " alt="" coords="1190,591,1184,658,1167,747,1151,793,1130,837,1101,877,1066,910,1029,931,989,945,947,952,904,954,824,947,759,933,761,928,825,941,904,948,946,946,987,940,1027,927,1062,906,1097,874,1125,835,1146,791,1162,745,1179,657,1184,591"/>
+<area shape="rect" id="Node000025" href="$group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga3d0f9ac54c3b89605f37635780f36eee" title="Check if terrain transition should render between two cells (height&#45;aware)." alt="" coords="868,856,1064,896"/>
+<area shape="poly" id="edge38_Node000001_Node000025" title=" " alt="" coords="1185,591,1172,642,1149,708,1114,778,1092,811,1066,840,1038,858,1035,854,1062,836,1088,807,1110,775,1144,706,1167,641,1180,590"/>
+<area shape="rect" id="Node000026" href="$group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#gaef27f22e3b24819ee04c113d14aa9c83" title="Height&#45;aware screen&#45;to&#45;map conversion with diamond hit testing." alt="" coords="108,965,303,990"/>
+<area shape="poly" id="edge40_Node000001_Node000026" title=" " alt="" coords="1188,591,1175,695,1152,838,1136,910,1116,975,1093,1027,1080,1047,1066,1061,1037,1077,1000,1089,956,1096,907,1099,794,1095,671,1080,547,1059,430,1035,254,993,255,988,431,1030,548,1054,672,1075,795,1089,906,1093,956,1090,999,1084,1035,1073,1062,1057,1076,1043,1088,1024,1111,973,1131,909,1147,837,1170,695,1182,590"/>
+<area shape="rect" id="Node000027" href="$ex__gui__isometric_8c.html#a9a171fc3f1e0c68094bddacc6681d309" title=" " alt="" coords="901,972,1031,997"/>
+<area shape="poly" id="edge44_Node000001_Node000027" title=" " alt="" coords="1189,591,1183,662,1165,759,1150,811,1128,863,1101,911,1066,954,1050,966,1032,975,1030,970,1047,962,1062,950,1096,908,1124,861,1145,810,1160,758,1178,661,1184,590"/>
+<area shape="rect" id="Node000028" href="$ex__gui__isometric_8c.html#a328735d7ecba803f9be501fd06bfe396" title=" " alt="" coords="899,1021,1033,1046"/>
+<area shape="poly" id="edge45_Node000001_Node000028" title=" " alt="" coords="1186,591,1171,685,1145,811,1128,874,1109,932,1089,979,1066,1012,1051,1022,1035,1030,1032,1025,1049,1018,1062,1008,1084,977,1104,930,1123,873,1139,810,1165,684,1181,590"/>
+<area shape="rect" id="Node000029" href="$ex__iso__astar_8c.html#adea6a913ed693cd06b54a13d438c976c" title=" " alt="" coords="654,626,779,652"/>
+<area shape="poly" id="edge46_Node000001_Node000029" title=" " alt="" coords="1152,585,1111,603,1065,618,989,631,912,639,780,643,779,638,911,634,988,626,1063,612,1109,598,1150,581"/>
+<area shape="rect" id="Node000030" href="$ex__gui__isometric_8c.html#a4ad2b932c2189a8793b7ca4fe117685b" title=" " alt="" coords="395,1122,521,1148"/>
+<area shape="poly" id="edge48_Node000001_Node000030" title=" " alt="" coords="1188,591,1177,703,1154,859,1138,938,1118,1009,1094,1067,1081,1089,1066,1105,1033,1129,998,1149,961,1164,922,1176,841,1189,760,1192,682,1186,610,1176,500,1150,501,1145,611,1171,683,1181,760,1186,841,1184,921,1170,959,1159,995,1144,1030,1125,1062,1101,1076,1086,1090,1064,1113,1008,1133,937,1149,858,1172,703,1183,591"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="381,253,264,277,263,271,380,248"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="199,312,40,855,35,853,194,310"/>
+<area shape="poly" id="edge5_Node000005_Node000003" title=" " alt="" coords="415,397,349,365,229,301,231,296,352,361,418,393"/>
+<area shape="rect" id="Node000007" href="$n__iso__engine_8c.html#a9465712f8fcf4204bdcbf6c7cd2f3dc3" title=" " alt="" coords="614,81,819,106"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="875,90,820,92,820,87,875,84"/>
+<area shape="rect" id="Node000008" href="$group___i_s_o_m_e_t_r_i_c___e_n_g_i_n_e.html#ga79123fea1f1162f22e811249dbbe1b3c" title="Compute per&#45;terrain transition bitmasks with height filtering." alt="" coords="351,93,565,118"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="600,102,566,103,565,98,600,96"/>
+<area shape="poly" id="edge9_Node000008_Node000003" title=" " alt="" coords="418,127,352,164,276,224,221,275,218,271,273,220,349,159,415,122"/>
+<area shape="poly" id="edge11_Node000009_Node000010" title=" " alt="" coords="873,185,808,183,808,177,873,179"/>
+<area shape="poly" id="edge12_Node000010_Node000003" title=" " alt="" coords="612,179,486,186,418,197,351,212,315,225,281,242,227,275,224,270,278,238,313,221,350,207,417,191,486,181,612,173"/>
+<area shape="poly" id="edge14_Node000011_Node000012" title=" " alt="" coords="879,374,794,359,795,354,880,369"/>
+<area shape="rect" id="Node000013" href="$n__iso__engine_8c.html#a92ac9fcd90edb4de93ef7f539799d249" title="Draw black border outlines on the diamond edges of an elevated tile." alt="" coords="375,326,541,352"/>
+<area shape="poly" id="edge15_Node000012_Node000013" title=" " alt="" coords="625,344,541,343,541,338,626,339"/>
+<area shape="poly" id="edge16_Node000013_Node000003" title=" " alt="" coords="383,326,263,300,264,295,384,321"/>
+<area shape="rect" id="Node000015" href="$ex__iso__astar_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="431,602,485,628"/>
+<area shape="poly" id="edge18_Node000014_Node000015" title=" " alt="" coords="671,534,487,607,485,602,669,529"/>
+<area shape="poly" id="edge20_Node000016_Node000015" title=" " alt="" coords="635,600,486,615,486,610,634,595"/>
+<area shape="poly" id="edge24_Node000017_Node000004" title=" " alt="" coords="374,835,303,844,61,868,60,862,302,839,373,829"/>
+<area shape="rect" id="Node000018" href="$ex__gui__isometric_8c.html#a4505a9955f4d3e5a4a4b5dcf42bd2d15" title=" " alt="" coords="131,804,280,829"/>
+<area shape="poly" id="edge22_Node000017_Node000018" title=" " alt="" coords="373,821,280,820,280,814,373,815"/>
+<area shape="poly" id="edge23_Node000018_Node000004" title=" " alt="" coords="149,836,61,862,60,857,147,830"/>
+<area shape="poly" id="edge26_Node000019_Node000016" title=" " alt="" coords="862,592,785,592,785,587,862,587"/>
+<area shape="poly" id="edge33_Node000021_Node000016" title=" " alt="" coords="875,738,866,732,854,717,847,702,842,672,837,644,830,630,818,617,802,607,784,599,786,594,805,602,822,613,835,627,842,642,847,671,852,700,858,714,870,728,878,734"/>
+<area shape="rect" id="Node000022" href="$ex__iso__astar_8c.html#aded9eafc40df647ed8212e9a7fd82d8d" title=" " alt="" coords="633,686,801,712"/>
+<area shape="poly" id="edge31_Node000021_Node000022" title=" " alt="" coords="875,742,767,714,769,709,876,736"/>
+<area shape="rect" id="Node000023" href="$ex__gui__isometric_8c.html#afa680d14732fd317ed1d935bbdcccf5a" title=" " alt="" coords="125,750,286,776"/>
+<area shape="poly" id="edge34_Node000021_Node000023" title=" " alt="" coords="875,764,286,766,286,760,875,759"/>
+<area shape="poly" id="edge36_Node000021_Node000024" title=" " alt="" coords="923,791,740,907,737,903,920,787"/>
+<area shape="poly" id="edge32_Node000022_Node000015" title=" " alt="" coords="663,685,485,626,486,621,665,680"/>
+<area shape="poly" id="edge35_Node000023_Node000004" title=" " alt="" coords="134,783,109,795,72,825,46,856,42,852,69,821,107,790,132,778"/>
+<area shape="poly" id="edge37_Node000024_Node000004" title=" " alt="" coords="600,912,60,872,60,866,600,906"/>
+<area shape="poly" id="edge41_Node000026_Node000004" title=" " alt="" coords="153,962,107,939,71,910,44,882,47,878,74,906,109,934,155,958"/>
+<area shape="poly" id="edge47_Node000029_Node000015" title=" " alt="" coords="640,635,485,620,486,615,640,629"/>
+<area shape="poly" id="edge49_Node000030_Node000004" title=" " alt="" coords="381,1144,316,1143,244,1133,207,1124,171,1111,137,1094,106,1072,86,1050,69,1025,47,970,36,918,32,880,37,880,41,917,52,969,74,1022,90,1047,110,1068,140,1089,173,1106,208,1119,245,1128,317,1137,381,1138"/>
+<area shape="rect" id="Node000031" href="$ex__gui__isometric_8c.html#a13aaedad958c7b4ee85ae444bfd0cc0f" title=" " alt="" coords="148,1032,263,1057"/>
+<area shape="poly" id="edge50_Node000030_Node000031" title=" " alt="" coords="397,1121,350,1105,235,1060,237,1055,352,1100,399,1116"/>
+<area shape="poly" id="edge51_Node000031_Node000004" title=" " alt="" coords="144,1029,106,1005,80,974,59,939,35,881,40,879,64,937,84,971,110,1001,147,1024"/>
+</map>

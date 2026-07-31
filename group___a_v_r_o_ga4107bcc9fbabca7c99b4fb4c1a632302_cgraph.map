@@ -1,0 +1,17 @@
+<map id="avro_encode_datum" name="avro_encode_datum">
+<area shape="rect" id="Node000001" title="Encode a cJSON value as Avro binary according to schema." alt="" coords="5,81,160,107"/>
+<area shape="poly" id="edge6_Node000001_Node000001" title=" " alt="" coords="48,83,40,73,44,63,59,57,83,55,112,58,124,67,121,72,110,63,83,60,60,62,48,67,45,72,52,80"/>
+<area shape="rect" id="Node000002" href="$n__avro_8c.html#a58257b892bef92ce1298d7664c2aae6f" title="helper: encode raw bytes with length prefix" alt="" coords="208,56,387,81"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="160,82,194,78,195,83,161,88"/>
+<area shape="rect" id="Node000003" href="$group___a_v_r_o.html#gad5634cf767304cdf9b68ac15e4a9a94a" title="Encode a 64&#45;bit signed integer as zig&#45;zag varint into N_STR." alt="" coords="435,5,575,31"/>
+<area shape="poly" id="edge7_Node000001_Node000003" title=" " alt="" coords="108,79,153,59,207,41,262,30,318,23,421,16,421,21,319,28,263,35,209,46,155,63,110,84"/>
+<area shape="rect" id="Node000004" href="$group___n___s_t_r.html#ga48b084404f0093f725cee8a7efd5b5d2" title="Append data into N_STR using internal N_STR size and cursor position." alt="" coords="623,56,713,81"/>
+<area shape="poly" id="edge9_Node000001_Node000004" title=" " alt="" coords="161,93,387,90,609,72,610,78,387,95,161,98"/>
+<area shape="rect" id="Node000006" href="$n__avro_8c.html#ae7a0dd17765aeee437449ec914861e7b" title="helper: find which union branch matches a cJSON value" alt="" coords="209,157,385,183"/>
+<area shape="poly" id="edge8_Node000001_Node000006" title=" " alt="" coords="120,104,249,150,247,155,119,109"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="350,53,438,31,440,37,351,58"/>
+<area shape="poly" id="edge5_Node000002_Node000004" title=" " alt="" coords="387,66,609,66,609,71,387,71"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="547,28,614,49,612,54,546,33"/>
+<area shape="rect" id="Node000005" href="$group___n___s_t_r.html#ga873edbb1f8787d0a78a13ccbbed9b9f9" title="create a new N_STR string" alt="" coords="761,56,843,81"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="713,66,748,66,748,71,713,71"/>
+</map>

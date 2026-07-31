@@ -1,0 +1,11 @@
+<map id="n_clock_sync_process_response" name="n_clock_sync_process_response">
+<area shape="rect" id="Node000001" title="record a sync response: client_send_time is the local time the request was sent, server_time is the s..." alt="" coords="5,35,171,75"/>
+<area shape="rect" id="Node000002" href="$group___c_l_o_c_k___s_y_n_c.html#gafb24cbbe42c5ac4d7c19e7956df0d1dd" title="store one (offset, rtt) sample and recompute the estimates." alt="" coords="219,42,407,67"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="171,52,205,52,205,57,171,57"/>
+<area shape="rect" id="Node000003" href="$group___c_l_o_c_k___s_y_n_c.html#ga64d9e9bda36ae5de419a74c8e0193757" title="effective (slewed) offset at local_now — pure function of the stored state so the const getter needs ..." alt="" coords="455,5,612,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="407,39,441,35,441,40,407,45"/>
+<area shape="rect" id="Node000004" href="$group___c_l_o_c_k___s_y_n_c.html#gad4587683aed3b60cb72a2f67433da6a5" title="compute the median of an array of doubles" alt="" coords="488,70,579,95"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="407,64,474,73,474,78,407,69"/>
+<area shape="rect" id="Node000005" href="$group___c_l_o_c_k___s_y_n_c.html#ga388caadb5b269f83e0fb792e2994c65a" title="comparison function for qsort on doubles" alt="" coords="660,70,761,95"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="579,80,646,80,646,85,579,85"/>
+</map>

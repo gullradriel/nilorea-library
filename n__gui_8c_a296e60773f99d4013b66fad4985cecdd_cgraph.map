@@ -1,0 +1,15 @@
+<map id="_draw_slider" name="_draw_slider">
+<area shape="rect" id="Node000001" title="draw a slider widget (horizontal or vertical)" alt="" coords="5,104,109,129"/>
+<area shape="rect" id="Node000002" href="$n__gui_8c.html#a132191f5b5131cd1f97b0ae9f42fe3a7" title="helper: pick colour based on widget state" alt="" coords="183,5,293,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="71,102,108,71,156,40,171,33,173,38,159,44,111,75,74,106"/>
+<area shape="rect" id="Node000003" href="$n__gui_8c.html#abc4974e28eef52e7923f726b6017b968" title=" " alt="" coords="170,55,306,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="104,101,176,81,178,86,105,107"/>
+<area shape="rect" id="Node000004" href="$n__gui_8c.html#a56df6f9f84315d11c03bf0d72fbad44f" title="helper: compute minimum line thickness so it stays &gt;= 1 physical pixel." alt="" coords="177,104,299,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="110,114,163,114,163,119,110,119"/>
+<area shape="rect" id="Node000005" href="$n__gui_8c.html#a325fd26bfc2c01b365ab311913c31440" title="helper: select per&#45;state bitmap with fallback chain." alt="" coords="157,153,319,179"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="105,127,178,147,176,152,104,132"/>
+<area shape="rect" id="Node000006" href="$n__gui_8c.html#aec9db9e2409d7e50a684b5bc101bde90" title="helper: memoized al_get_text_dimensions (bounding box x/y/w/h)." alt="" coords="191,203,285,228"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="75,128,111,157,159,188,179,196,177,201,156,192,108,162,71,132"/>
+<area shape="rect" id="Node000007" href="$n__gui_8c.html#a7be222e4f3ab2bca7a8164d8e68fa0eb" title="find (or claim) the cache slot for (font, text[len])." alt="" coords="367,203,497,228"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="286,213,352,213,352,218,286,218"/>
+</map>

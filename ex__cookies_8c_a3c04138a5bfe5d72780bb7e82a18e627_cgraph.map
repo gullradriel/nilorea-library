@@ -1,0 +1,45 @@
+<map id="main" name="main">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,260,60,285"/>
+<area shape="rect" id="Node000002" href="$ex__cookies_8c.html#a47f4e92d5f09b8dad3da5fd13cd30a71" title=" " alt="" coords="165,47,239,72"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="32,259,38,224,50,176,72,125,87,102,106,81,127,68,151,61,152,66,130,73,110,85,91,105,76,128,55,178,43,225,38,260"/>
+<area shape="rect" id="Node000003" href="$group___n___c_o_o_k_i_e_s.html#ga613af2b473e20459af688ab4c1cc4ade" title="parse one Set&#45;Cookie value (without the &quot;Set&#45;Cookie:&quot; name) and store it; request_domain/path supply ..." alt="" coords="119,146,285,186"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="42,258,69,227,106,196,118,189,120,194,110,200,72,231,46,262"/>
+<area shape="rect" id="Node000007" href="$group___n___c_o_o_k_i_e_s.html#ga8792884ac1e8c4828098ee94e5b6ea72" title="build a &quot;name=value; name2=value2&quot; Cookie header value for a request (domain/path/secure/expiry match..." alt="" coords="108,96,296,121"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="35,259,57,198,78,162,106,132,116,125,119,130,110,136,82,166,62,200,40,261"/>
+<area shape="rect" id="Node000011" href="$group___n___c_o_o_k_i_e_s.html#gaa3c639fae17b3d58e82f8887d7feb6cc" title="drop every stored cookie" alt="" coords="134,211,270,236"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="59,261,107,245,135,237,136,242,109,250,61,266"/>
+<area shape="rect" id="Node000013" href="$group___n___c_o_o_k_i_e_s.html#gafa44994235044094ee690ebc2140554b" title="number of cookies currently stored" alt="" coords="132,260,272,285"/>
+<area shape="poly" id="edge13_Node000001_Node000013" title=" " alt="" coords="60,270,118,270,118,275,60,275"/>
+<area shape="rect" id="Node000014" href="$group___n___c_o_o_k_i_e_s.html#ga0185a609b60bafb1879b5cea265a9597" title="free a cookie jar and all its cookies, then NULL the pointer" alt="" coords="137,309,267,335"/>
+<area shape="poly" id="edge14_Node000001_Node000014" title=" " alt="" coords="61,279,109,294,140,303,139,308,107,299,59,284"/>
+<area shape="rect" id="Node000017" href="$group___n___c_o_o_k_i_e_s.html#ga9dd66bd66ef5534f11fc84cf6c57167c" title="create an empty cookie jar; free with n_cookiejar_free." alt="" coords="137,359,267,384"/>
+<area shape="poly" id="edge17_Node000001_Node000017" title=" " alt="" coords="45,284,72,315,109,345,125,353,123,357,107,350,68,319,41,288"/>
+<area shape="rect" id="Node000019" href="$ex__common_8c.html#aefcb3f70374ff9b6256aac6e12870399" title=" " alt="" coords="149,460,255,485"/>
+<area shape="poly" id="edge19_Node000001_Node000019" title=" " alt="" coords="39,285,46,316,59,357,80,401,110,439,137,456,135,460,106,443,75,404,54,359,40,318,33,286"/>
+<area shape="rect" id="Node000020" href="$group___l_o_g.html#gacad9b2d55788f46ddde811c986ead9ae" title="Set the global log level value ( static int LOG_LEVEL )" alt="" coords="389,409,497,435"/>
+<area shape="poly" id="edge22_Node000001_Node000020" title=" " alt="" coords="40,285,48,309,62,340,82,370,110,394,141,411,175,422,246,435,315,436,375,431,376,437,315,442,245,440,173,428,139,416,106,399,78,374,58,343,43,311,35,287"/>
+<area shape="rect" id="Node000004" href="$group___l_i_s_t.html#ga4eab319289a83524639ee5e9f0441fdf" title="Add a pointer to the end of the list." alt="" coords="403,153,483,179"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="285,163,390,163,390,169,285,169"/>
+<area shape="rect" id="Node000006" href="$n__cookies_8c.html#a717fdf8d2fa5308fdd2722e1afcdba5e" title=" " alt="" coords="387,203,500,228"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="286,180,374,199,373,204,285,186"/>
+<area shape="rect" id="Node000005" href="$group___l_i_s_t.html#ga678e828550efc8e64a836bb8c713c2f4" title="Allocate a new node to link in a list." alt="" coords="591,153,705,179"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="484,163,577,163,577,169,484,169"/>
+<area shape="rect" id="Node000008" href="$n__cookies_8c.html#a5f796ca614cd7ce2b8eb18b8f6bd1231" title=" " alt="" coords="344,104,543,129"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="296,109,331,110,330,116,296,114"/>
+<area shape="rect" id="Node000009" href="$n__cookies_8c.html#a6f072361d422ed6f3c3377195438ba76" title=" " alt="" coords="354,5,533,31"/>
+<area shape="poly" id="edge8_Node000007_Node000009" title=" " alt="" coords="264,93,295,81,309,71,318,61,328,50,343,40,359,33,361,38,345,44,331,54,322,64,312,75,297,86,266,98"/>
+<area shape="rect" id="Node000010" href="$group___n___s_t_r.html#ga873edbb1f8787d0a78a13ccbbed9b9f9" title="create a new N_STR string" alt="" coords="403,55,484,80"/>
+<area shape="poly" id="edge9_Node000007_Node000010" title=" " alt="" coords="276,93,388,74,389,79,277,99"/>
+<area shape="poly" id="edge11_Node000011_Node000006" title=" " alt="" coords="270,218,373,215,373,220,271,224"/>
+<area shape="rect" id="Node000012" href="$group___l_i_s_t.html#gabd7f04c5a1cd8307c0f289dcccdb5a41" title="Internal function called each time we need to get a node out of a list." alt="" coords="368,252,519,277"/>
+<area shape="poly" id="edge12_Node000011_Node000012" title=" " alt="" coords="271,232,356,247,355,252,270,238"/>
+<area shape="rect" id="Node000015" href="$group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755" title="Empty and Free a list container." alt="" coords="394,309,493,335"/>
+<area shape="poly" id="edge15_Node000014_Node000015" title=" " alt="" coords="268,319,380,319,380,325,268,325"/>
+<area shape="rect" id="Node000016" href="$group___l_i_s_t.html#ga1dafe7a250ddad51fadd375f057287e7" title="Empty a LIST list of pointers." alt="" coords="603,309,693,335"/>
+<area shape="poly" id="edge16_Node000015_Node000016" title=" " alt="" coords="493,319,589,319,589,325,493,325"/>
+<area shape="rect" id="Node000018" href="$group___l_i_s_t.html#gae4b8e915bc22e7993d2849152ec1c3ac" title="Initialiaze a generic list container to max_items pointers." alt="" coords="378,359,509,384"/>
+<area shape="poly" id="edge18_Node000017_Node000018" title=" " alt="" coords="268,369,364,369,364,374,268,374"/>
+<area shape="poly" id="edge20_Node000019_Node000020" title=" " alt="" coords="255,459,375,434,376,439,256,464"/>
+<area shape="rect" id="Node000021" href="$ex__accept__pool__client_8c.html#ad96d407a911fbb914fa8e4cfbf2faf0f" title=" " alt="" coords="413,460,474,485"/>
+<area shape="poly" id="edge21_Node000019_Node000021" title=" " alt="" coords="256,470,399,470,399,475,256,475"/>
+</map>

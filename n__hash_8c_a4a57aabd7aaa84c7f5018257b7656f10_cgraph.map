@@ -1,0 +1,16 @@
+<map id="_ht_put_ptr_trie" name="_ht_put_ptr_trie">
+<area shape="rect" id="Node000001" title="put a pointer to the string value with given key in the targeted hash table [TRIE HASH TABLE)" alt="" coords="5,31,129,56"/>
+<area shape="rect" id="Node000002" href="$n__hash_8c.html#a346ab250b00afe7a47d183a4547725de" title="node creation, HASH_CLASSIC mode" alt="" coords="177,5,321,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="129,32,163,27,164,33,130,37"/>
+<area shape="rect" id="Node000003" href="$n__hash_8c.html#ae478eab90d1a7baded6516c7739cfc9b" title="Remove a key from a trie table and destroy the node." alt="" coords="185,55,313,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="130,49,172,54,171,60,129,54"/>
+<area shape="rect" id="Node000004" href="$n__hash_8c.html#a7334b7b4bcc0b3ce98219def7a057117" title="find the longest prefix string that is not the current key" alt="" coords="369,5,571,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="306,52,398,31,400,36,307,57"/>
+<area shape="rect" id="Node000006" href="$n__hash_8c.html#a9b32982367d5bb9b83281b582e8c62df" title="Search a key and tell if it&#39;s holding a value (leaf)" alt="" coords="390,55,550,80"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="314,65,376,65,376,70,314,70"/>
+<area shape="rect" id="Node000007" href="$n__hash_8c.html#a013153fa30199bbcaf5f92890ae97ba8" title="destroy a HASH_NODE by first calling the HASH_NODE destructor" alt="" coords="401,128,539,153"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="289,78,419,121,417,126,288,83"/>
+<area shape="rect" id="Node000005" href="$n__hash_8c.html#aac9aa1a3b0f78ff6499e0ffc5659f704" title="check and return branching index in key if any" alt="" coords="619,5,813,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="571,15,605,15,605,21,571,21"/>
+<area shape="poly" id="edge7_Node000007_Node000007" title=" " alt="" coords="434,130,427,120,431,110,445,104,470,101,500,105,512,114,509,118,498,110,470,107,447,109,434,114,432,119,438,126"/>
+</map>

@@ -1,0 +1,45 @@
+<map id="_find_widget_window" name="_find_widget_window">
+<area shape="rect" id="Node000001" title="helper: find the parent window of a widget by id, returning the window&#39;s content origin (accounting f..." alt="" coords="705,104,867,129"/>
+<area shape="rect" id="Node000002" href="$n__gui_8c.html#aafd5cdabecbc50f2bd456e5b06c75a0c" title=" " alt="" coords="446,5,653,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="754,99,709,70,656,44,621,33,622,28,658,40,712,66,757,94"/>
+<area shape="rect" id="Node000008" href="$n__gui_8c.html#a4572ecc6fbefc6445ef39bd2105c1b87" title="draw the dropdown menu panel overlay (called after all windows)" alt="" coords="461,55,638,80"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="710,104,611,83,612,77,712,99"/>
+<area shape="rect" id="Node000009" href="$n__gui_8c.html#a9153024032c8bb912933f1a0ff4f425c" title="helper: draw the hover&#45;tooltip bubble for the currently armed tooltip widget, but ONLY in the render ..." alt="" coords="494,104,605,129"/>
+<area shape="poly" id="edge10_Node000001_Node000009" title=" " alt="" coords="691,119,605,119,605,114,691,114"/>
+<area shape="rect" id="Node000010" href="$group___g_u_i.html#ga3971ceb17b0fcf5d893c5c61f24c5269" title="Process an allegro event through the GUI system." alt="" coords="233,153,391,179"/>
+<area shape="poly" id="edge13_Node000001_Node000010" title=" " alt="" coords="712,135,658,143,517,158,392,165,391,160,516,152,657,138,711,129"/>
+<area shape="rect" id="Node000016" href="$group___g_u_i.html#ga7714ee662cbb12b3edeaa981e2f1616e" title="Give a widget a stable key so its user&#45;adjustable state (a splitpane&#39;s divider ratio,..." alt="" coords="441,251,657,276"/>
+<area shape="poly" id="edge22_Node000001_Node000016" title=" " alt="" coords="754,139,573,253,570,248,751,134"/>
+<area shape="rect" id="Node000003" href="$group___g_u_i.html#ga79a4d0355cd36e55260b0c245a526503" title="Draw all visible windows and their widgets." alt="" coords="264,55,360,80"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="475,36,361,60,360,55,474,31"/>
+<area shape="rect" id="Node000006" href="$group___g_u_i.html#ga9aa697556d33563e6eb0c4f29b87e209" title="Render and flip every detached window, and release the ones whose native window was closed." alt="" coords="231,5,393,31"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="432,21,393,21,393,15,432,15"/>
+<area shape="rect" id="Node000004" href="$ex__gui__bench_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="118,55,173,80"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="250,70,173,70,173,65,250,65"/>
+<area shape="rect" id="Node000005" href="$ex__gui_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="118,104,173,129"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="256,86,174,111,172,106,255,81"/>
+<area shape="rect" id="Node000007" href="$ex__gui__detach_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="118,5,173,31"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="217,21,173,21,173,15,217,15"/>
+<area shape="poly" id="edge8_Node000008_Node000003" title=" " alt="" coords="447,70,361,70,361,65,447,65"/>
+<area shape="poly" id="edge9_Node000008_Node000006" title=" " alt="" coords="474,54,373,33,375,28,475,49"/>
+<area shape="poly" id="edge11_Node000009_Node000003" title=" " alt="" coords="480,105,360,80,361,75,481,100"/>
+<area shape="poly" id="edge12_Node000009_Node000006" title=" " alt="" coords="479,109,440,94,424,81,415,69,406,56,392,44,368,33,370,28,395,40,410,52,419,65,428,78,443,89,481,104"/>
+<area shape="poly" id="edge20_Node000010_Node000004" title=" " alt="" coords="277,149,167,83,170,78,279,144"/>
+<area shape="poly" id="edge21_Node000010_Node000005" title=" " alt="" coords="255,152,172,127,174,122,256,147"/>
+<area shape="rect" id="Node000011" href="$ex__gui__zorder_8c.html#a64050cbb6488168c233556098a07d558" title=" " alt="" coords="109,153,181,179"/>
+<area shape="poly" id="edge14_Node000010_Node000011" title=" " alt="" coords="219,169,182,169,182,163,219,163"/>
+<area shape="rect" id="Node000013" href="$ex__gui__multiwin_8c.html#ad839a0743f54aea901cbfe2a9b0d51c6" title=" " alt="" coords="108,252,183,277"/>
+<area shape="poly" id="edge16_Node000010_Node000013" title=" " alt="" coords="279,188,170,254,167,249,277,183"/>
+<area shape="rect" id="Node000015" href="$ex__gui__multiwin_8c.html#a694a65a900d61122d006bccf1e462c07" title=" " alt="" coords="109,203,182,228"/>
+<area shape="poly" id="edge18_Node000010_Node000015" title=" " alt="" coords="256,185,183,207,181,202,255,180"/>
+<area shape="rect" id="Node000012" href="$ex__gui__zorder_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,153,60,179"/>
+<area shape="poly" id="edge15_Node000011_Node000012" title=" " alt="" coords="96,169,60,169,60,163,96,163"/>
+<area shape="rect" id="Node000014" href="$ex__gui__multiwin_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,227,60,252"/>
+<area shape="poly" id="edge17_Node000013_Node000014" title=" " alt="" coords="94,256,60,248,61,243,95,251"/>
+<area shape="poly" id="edge19_Node000015_Node000014" title=" " alt="" coords="96,229,61,236,60,231,95,223"/>
+<area shape="rect" id="Node000017" href="$ex__gui__layout__persist_8c.html#ae22c1a3932314db492d498c56fdd8f92" title=" " alt="" coords="257,301,367,327"/>
+<area shape="poly" id="edge23_Node000016_Node000017" title=" " alt="" coords="476,282,368,305,367,300,475,276"/>
+<area shape="rect" id="Node000018" href="$ex__gui__layout__persist_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="118,301,173,327"/>
+<area shape="poly" id="edge25_Node000016_Node000018" title=" " alt="" coords="428,271,331,279,231,293,174,308,172,303,230,287,331,273,427,265"/>
+<area shape="poly" id="edge24_Node000017_Node000018" title=" " alt="" coords="243,317,173,317,173,311,243,311"/>
+</map>

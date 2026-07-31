@@ -1,0 +1,36 @@
+var ex__gui__detach_8c =
+[
+    [ "DEMO_PANEL", "ex__gui__detach_8c.html#struct_d_e_m_o___p_a_n_e_l", [
+      [ "btn", "ex__gui__detach_8c.html#addabef0b62161126de3159726f1a52a2", null ],
+      [ "detach_flags", "ex__gui__detach_8c.html#ada34c37d37f6e75f059e330b9e63d4dc", null ],
+      [ "name", "ex__gui__detach_8c.html#a9cd650a050b3cdb479e3817006fc6db9", null ],
+      [ "win", "ex__gui__detach_8c.html#aeaa43d8dda4e5a73fb9dff0d967a6f1a", null ]
+    ] ],
+    [ "ALLEGRO_UNSTABLE", "ex__gui__detach_8c.html#ac32238d28b3479be2920bb762611d6fe", null ],
+    [ "HEIGHT", "ex__gui__detach_8c.html#aed89bd71aee8be823e8a20ec4e093c1e", null ],
+    [ "LAYOUT_FILE", "ex__gui__detach_8c.html#a0b490ed533237f313ae7802fa9f2ce81", null ],
+    [ "WIDTH", "ex__gui__detach_8c.html#a241aeeb764887ae5e3de58b98f04b16d", null ],
+    [ "build_panel", "ex__gui__detach_8c.html#aa8cd4132bf173b8583d128c6f4ef2026", null ],
+    [ "main", "ex__gui__detach_8c.html#a3c04138a5bfe5d72780bb7e82a18e627", null ],
+    [ "on_attach_all", "ex__gui__detach_8c.html#a93cff40f54eb50e1005a2389314ca804", null ],
+    [ "on_detach_all", "ex__gui__detach_8c.html#ac5f964d1a12bcb8c85e53576a7ce2f71", null ],
+    [ "on_load_layout", "ex__gui__detach_8c.html#aea6b45e1ef41ef08b25b5330bb6be4bd", null ],
+    [ "on_panel_close", "ex__gui__detach_8c.html#a0410f90b56e9d2375eb9871c037393e7", null ],
+    [ "on_save_layout", "ex__gui__detach_8c.html#a2f7d8f306fb495558692fc86c402d37b", null ],
+    [ "on_show_all", "ex__gui__detach_8c.html#a7607bb6bbfec19df2b5eb3e0008edeec", null ],
+    [ "on_slider_change", "ex__gui__detach_8c.html#ab595b64add11afe73fb2eb9d2f374dba", null ],
+    [ "on_toggle_detach", "ex__gui__detach_8c.html#a79063a5bf7a59107bf27a2fb9e3d6768", null ],
+    [ "panel_of", "ex__gui__detach_8c.html#a97e286afd67cc88be5a17acf825fb528", null ],
+    [ "process_args", "ex__gui__detach_8c.html#ada5511c08fdd104690965262b708ca50", null ],
+    [ "refresh_buttons", "ex__gui__detach_8c.html#a4668f5dd304016f125588bdf03b7bd0d", null ],
+    [ "auto_detach", "ex__gui__detach_8c.html#a5bbc1888f552f89dd3fb1666b4076487", null ],
+    [ "DONE", "ex__gui__detach_8c.html#a5819e6b9d2ee24c8e96d702de02421a0", null ],
+    [ "gui", "ex__gui__detach_8c.html#a2ed5b8bd2c84724bb724ff4b1b206707", null ],
+    [ "lbl_hint", "ex__gui__detach_8c.html#a1bf3e797a717b218b4870ac0d5c6e5bc", null ],
+    [ "lbl_status", "ex__gui__detach_8c.html#a6bb99d5e7ff3af8e39f747140d463a4d", null ],
+    [ "log_level", "ex__gui__detach_8c.html#ab5a71c2541c377b3d5b34fdb35964c2e", null ],
+    [ "nb_panels", "ex__gui__detach_8c.html#affb61f46b9aef511850ce1ca432055d7", null ],
+    [ "notes_txt", "ex__gui__detach_8c.html#aedc69b15537b2177629ad16f3bd3de6f", null ],
+    [ "panels", "ex__gui__detach_8c.html#ab472e0bfd0bd7fe48e835543612e7da9", null ],
+    [ "quit_after", "ex__gui__detach_8c.html#a1022790d97b8c7ecb97420825a9cd493", null ]
+];

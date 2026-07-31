@@ -1,0 +1,72 @@
+<map id="main" name="main">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,240,60,265"/>
+<area shape="rect" id="Node000002" href="$ex__pretty_8c.html#a9872b4cb20a2286bc03e0f442c3bdea1" title=" " alt="" coords="108,92,236,117"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="36,239,60,186,81,154,106,127,113,122,116,126,110,131,85,158,65,188,41,241"/>
+<area shape="rect" id="Node000003" href="$ex__gui__custom_8c.html#ac7d17c8808ac0b36c76b2963467af2b9" title=" " alt="" coords="123,141,221,167"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="42,238,69,208,106,176,116,170,119,175,110,180,73,211,46,242"/>
+<area shape="rect" id="Node000004" href="$group___n___p_r_e_t_t_y.html#ga4174339a344ceb722526c9c9534b2c75" title="Conservatively re&#45;indent JavaScript (newlines at top&#45;level braces and semicolons, two&#45;space indent by..." alt="" coords="125,515,219,540"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="43,265,160,501,156,503,38,267"/>
+<area shape="rect" id="Node000020" href="$group___n___p_r_e_t_t_y.html#ga466d91341a177839eac58b2c7778fd89" title="Reformat a JSON document with cJSON (parse + print)." alt="" coords="117,191,227,216"/>
+<area shape="poly" id="edge23_Node000001_Node000020" title=" " alt="" coords="59,241,122,218,123,223,61,246"/>
+<area shape="rect" id="Node000021" href="$group___n___p_r_e_t_t_y.html#ga30462a103551c0652c1eed5b73b93098" title="Re&#45;indent an XML or HTML document (one tag or text run per line)." alt="" coords="118,240,226,265"/>
+<area shape="poly" id="edge25_Node000001_Node000021" title=" " alt="" coords="60,250,104,250,104,255,60,255"/>
+<area shape="rect" id="Node000028" href="$ex__common_8c.html#aefcb3f70374ff9b6256aac6e12870399" title=" " alt="" coords="119,788,225,813"/>
+<area shape="poly" id="edge37_Node000001_Node000028" title=" " alt="" coords="38,265,57,429,79,549,111,669,134,727,159,775,154,777,129,729,105,671,74,550,52,430,32,266"/>
+<area shape="rect" id="Node000029" href="$group___l_o_g.html#gacad9b2d55788f46ddde811c986ead9ae" title="Set the global log level value ( static int LOG_LEVEL )" alt="" coords="303,788,411,813"/>
+<area shape="poly" id="edge40_Node000001_Node000029" title=" " alt="" coords="38,266,44,314,57,386,79,469,110,550,147,623,180,677,223,723,286,773,297,780,294,785,282,778,219,727,176,680,142,625,106,553,74,470,52,387,39,315,33,266"/>
+<area shape="rect" id="Node000005" href="$n__pretty_8c.html#a4ffbbc84c5bda53b2a700aa50d013427" title="terminate the current line unless already at a line start" alt="" coords="507,489,606,515"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="219,522,493,504,494,509,220,527"/>
+<area shape="rect" id="Node000006" href="$n__pretty_8c.html#ae35fd7dc84d25de598f9582ab2c6456c" title="append a single character to the output, TRUE on success" alt="" coords="696,388,768,413"/>
+<area shape="poly" id="edge19_Node000004_Node000006" title=" " alt="" coords="220,537,302,554,408,564,465,563,523,557,580,545,633,524,662,504,686,478,718,424,722,427,690,481,666,508,636,529,582,550,524,563,466,569,408,569,301,559,219,543"/>
+<area shape="rect" id="Node000009" href="$n__pretty_8c.html#ac376b6471b8ce5e86315b6d3895a8847" title="whether the n bytes at s are a keyword after which an expression (and therefore a regex literal) can ..." alt="" coords="284,689,431,715"/>
+<area shape="poly" id="edge8_Node000004_Node000009" title=" " alt="" coords="182,539,220,603,250,642,286,675,296,681,293,686,282,679,246,645,215,606,177,542"/>
+<area shape="rect" id="Node000010" href="$n__pretty_8c.html#a0e0320b3f2111dfd5059fcdf68de409d" title="length of the regex literal starting at s (slash to closing slash, escapes and character classes hono..." alt="" coords="302,739,413,764"/>
+<area shape="poly" id="edge9_Node000004_Node000010" title=" " alt="" coords="184,539,238,632,251,659,258,682,267,703,286,724,294,730,291,734,282,728,263,706,253,684,246,661,234,634,179,542"/>
+<area shape="rect" id="Node000011" href="$n__pretty_8c.html#aaf300b576ead4369d4adacd2c183b1bb" title="whether a &#39;/&#39; may start a regex literal after last significant char c (start of input,..." alt="" coords="285,439,430,464"/>
+<area shape="poly" id="edge10_Node000004_Node000011" title=" " alt="" coords="203,512,312,467,314,472,205,517"/>
+<area shape="rect" id="Node000012" href="$n__pretty_8c.html#a0815d12883f0b10563ad08decdbe7c7d" title="length of the string literal starting at s (quote to closing quote, escapes honored,..." alt="" coords="302,591,413,616"/>
+<area shape="poly" id="edge11_Node000004_Node000012" title=" " alt="" coords="205,538,314,583,312,588,203,543"/>
+<area shape="rect" id="Node000013" href="$n__pretty_8c.html#a163194e77b5a5085742940fd29bd94ab" title="length of the template literal starting at s (backtick to backtick, escapes honored,..." alt="" coords="291,640,424,665"/>
+<area shape="poly" id="edge12_Node000004_Node000013" title=" " alt="" coords="186,538,227,581,255,604,285,625,300,633,297,637,283,630,252,609,224,584,182,542"/>
+<area shape="rect" id="Node000014" href="$n__pretty_8c.html#a1f7532e3a3545c84fe12104b9a42ebb6" title="emit a raw token of n bytes with leading indent/space handling" alt="" coords="316,389,399,415"/>
+<area shape="poly" id="edge13_Node000004_Node000014" title=" " alt="" coords="182,513,223,470,252,445,283,424,302,415,304,419,285,428,255,450,227,474,186,517"/>
+<area shape="rect" id="Node000017" href="$n__pretty_8c.html#a7a76f39d922d4f8cdedf8e4e76941ff0" title="hand the buffer over to a new N_STR (no copy); the PRETTY_OUT is emptied" alt="" coords="311,291,403,316"/>
+<area shape="poly" id="edge20_Node000004_Node000017" title=" " alt="" coords="174,514,187,477,208,426,240,373,260,347,282,325,297,316,300,320,286,330,264,351,244,376,213,429,192,479,179,515"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="579,487,696,418,698,423,581,492"/>
+<area shape="rect" id="Node000007" href="$n__pretty_8c.html#a999e877bfc9297236124001bafdc412a" title="append n bytes of s to the output, TRUE on success" alt="" coords="829,364,920,389"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="768,392,816,384,816,389,769,397"/>
+<area shape="rect" id="Node000008" href="$group___n___s_t_r.html#gacc3740a4b0816c80170ba6d6b0ae9eea" title="Append src_size bytes from src to *dest, updating size/written, growing the buffer if needed." alt="" coords="968,364,1097,389"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="920,374,954,374,954,379,920,379"/>
+<area shape="poly" id="edge18_Node000014_Node000007" title=" " alt="" coords="400,409,472,423,567,435,674,437,728,432,781,422,813,410,843,395,845,399,815,415,782,427,729,437,675,442,567,440,471,428,399,415"/>
+<area shape="rect" id="Node000015" href="$n__pretty_8c.html#ac8f4ccf323ccd5cf91e718e1639b7960" title="emit the indent or the collapsed space before a token, as appropriate" alt="" coords="519,388,594,413"/>
+<area shape="poly" id="edge14_Node000014_Node000015" title=" " alt="" coords="399,399,506,398,506,404,399,405"/>
+<area shape="poly" id="edge15_Node000015_Node000006" title=" " alt="" coords="594,398,682,398,682,403,594,403"/>
+<area shape="rect" id="Node000016" href="$n__pretty_8c.html#adf000ab022e0f596b2cb08c81f3babfd" title="append depth * PRETTY_INDENT_STEP spaces, TRUE on success" alt="" coords="683,339,781,364"/>
+<area shape="poly" id="edge16_Node000015_Node000016" title=" " alt="" coords="593,388,672,365,673,371,595,393"/>
+<area shape="poly" id="edge17_Node000016_Node000007" title=" " alt="" coords="782,358,817,364,816,369,781,363"/>
+<area shape="rect" id="Node000018" href="$group___n___s_t_r.html#gac8a6d1b664609215ee950c105658d86c" title="Convert a char into a N_STR, direct use of linked source pointer." alt="" coords="479,115,635,140"/>
+<area shape="poly" id="edge21_Node000017_Node000018" title=" " alt="" coords="372,288,529,147,533,151,375,292"/>
+<area shape="rect" id="Node000019" href="$group___n___s_t_r.html#ga873edbb1f8787d0a78a13ccbbed9b9f9" title="create a new N_STR string" alt="" coords="691,115,773,140"/>
+<area shape="poly" id="edge22_Node000018_Node000019" title=" " alt="" coords="635,125,678,125,678,130,635,130"/>
+<area shape="poly" id="edge24_Node000020_Node000018" title=" " alt="" coords="217,189,234,176,247,158,253,139,254,100,257,62,266,43,282,27,320,7,354,4,390,12,432,26,463,41,492,61,537,103,534,106,489,65,461,46,430,31,388,17,354,9,321,12,286,31,270,46,262,63,259,100,258,139,252,160,238,180,220,193"/>
+<area shape="poly" id="edge34_Node000021_Node000017" title=" " alt="" coords="220,263,299,285,298,290,219,268"/>
+<area shape="rect" id="Node000022" href="$n__pretty_8c.html#a8f0588623ca6db50c12f4be0b380152e" title="emit one indented line holding n raw bytes of s" alt="" coords="511,339,602,364"/>
+<area shape="poly" id="edge26_Node000021_Node000022" title=" " alt="" coords="227,249,323,254,378,262,432,276,485,300,530,329,527,333,483,305,430,281,377,267,323,259,226,254"/>
+<area shape="rect" id="Node000023" href="$n__pretty_8c.html#a07acbd7614836deb55b8319e2a99417c" title="emit s trimmed of leading/trailing whitespace as one indented line; empty&#45;after&#45;trim runs are skipped" alt="" coords="296,340,419,365"/>
+<area shape="poly" id="edge30_Node000021_Node000023" title=" " alt="" coords="191,263,233,294,285,325,302,333,300,338,283,330,230,298,188,268"/>
+<area shape="rect" id="Node000024" href="$n__pretty_8c.html#a5ef5b89bdea47080347e3c174c5f03d8" title="find the &#39;&gt;&#39; closing a tag starting at p, honoring quoted attribute values; returns NULL when the tag..." alt="" coords="301,91,413,116"/>
+<area shape="poly" id="edge32_Node000021_Node000024" title=" " alt="" coords="215,238,234,226,251,201,257,176,264,151,282,126,288,121,291,125,286,129,268,153,262,178,256,203,238,229,218,242"/>
+<area shape="rect" id="Node000025" href="$n__pretty_8c.html#af70cc394a754811a9a76fe7f6257cff8" title="whether lowercase element name is in a NULL&#45;terminated list" alt="" coords="301,140,413,165"/>
+<area shape="poly" id="edge33_Node000021_Node000025" title=" " alt="" coords="211,238,234,225,249,213,258,200,267,187,282,175,293,169,296,173,286,179,271,191,262,203,253,216,238,230,214,242"/>
+<area shape="rect" id="Node000026" href="$n__pretty_8c.html#ac0fcab67cd33b2a9ffb6f78d7db0c04b" title="case&#45;insensitive search for needle in haystack" alt="" coords="324,189,391,215"/>
+<area shape="poly" id="edge35_Node000021_Node000026" title=" " alt="" coords="219,237,310,212,311,217,220,243"/>
+<area shape="rect" id="Node000027" href="$n__pretty_8c.html#affbe8db94637f5875e14f1ff1252e1c8" title="extract the lowercased element name from a tag starting at p (&quot;&lt;name&quot; or &quot;&lt;/name&quot;)" alt="" coords="310,41,405,67"/>
+<area shape="poly" id="edge36_Node000021_Node000027" title=" " alt="" coords="217,238,234,226,247,207,254,189,257,152,260,115,267,95,282,76,296,66,299,70,286,80,272,98,265,116,262,152,259,190,252,210,238,229,220,242"/>
+<area shape="poly" id="edge27_Node000022_Node000006" title=" " alt="" coords="603,362,684,385,682,390,601,367"/>
+<area shape="poly" id="edge29_Node000022_Node000007" title=" " alt="" coords="596,336,635,326,682,319,732,317,782,324,816,337,846,354,844,359,814,342,781,329,732,322,682,324,636,332,597,341"/>
+<area shape="poly" id="edge28_Node000022_Node000016" title=" " alt="" coords="602,349,669,349,669,354,602,354"/>
+<area shape="poly" id="edge31_Node000023_Node000022" title=" " alt="" coords="419,350,498,349,498,355,419,355"/>
+<area shape="poly" id="edge38_Node000028_Node000029" title=" " alt="" coords="226,798,290,798,290,803,226,803"/>
+<area shape="rect" id="Node000030" href="$ex__accept__pool__client_8c.html#ad96d407a911fbb914fa8e4cfbf2faf0f" title=" " alt="" coords="327,837,388,863"/>
+<area shape="poly" id="edge39_Node000028_Node000030" title=" " alt="" coords="221,811,314,836,313,841,220,816"/>
+</map>

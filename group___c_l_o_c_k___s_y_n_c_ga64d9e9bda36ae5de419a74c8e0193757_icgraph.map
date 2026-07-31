@@ -1,0 +1,18 @@
+<map id="clock_sync_effective_offset" name="clock_sync_effective_offset">
+<area shape="rect" id="Node000001" title="effective (slewed) offset at local_now — pure function of the stored state so the const getter needs ..." alt="" coords="697,88,855,128"/>
+<area shape="rect" id="Node000002" href="$group___c_l_o_c_k___s_y_n_c.html#gafb24cbbe42c5ac4d7c19e7956df0d1dd" title="store one (offset, rtt) sample and recompute the estimates." alt="" coords="459,70,647,95"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="683,100,647,96,647,91,684,95"/>
+<area shape="rect" id="Node000008" href="$group___c_l_o_c_k___s_y_n_c.html#ga449fe73aa99d43dd8eb1718faf539eb0" title="get estimated server time given a local time value." alt="" coords="456,119,649,145"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="684,121,650,124,649,119,683,115"/>
+<area shape="rect" id="Node000003" href="$group___c_l_o_c_k___s_y_n_c.html#gac151080c4e6685b5ef721a62f3c67f58" title="record a sync response: client_send_time is the local time the request was sent, server_time is the s..." alt="" coords="243,5,408,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="488,69,404,48,406,43,489,64"/>
+<area shape="rect" id="Node000007" href="$group___c_l_o_c_k___s_y_n_c.html#ga457eb8574b8b5a1ac1eb3db13b57cde2" title="Inject a synthetic (offset, rtt) sample, e.g." alt="" coords="252,70,399,95"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="445,85,399,85,399,80,445,80"/>
+<area shape="rect" id="Node000004" href="$ex__clock__sync_8c.html#a5b2c2a899dba8a75335b67543f275e41" title=" " alt="" coords="108,67,195,93"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="249,52,193,70,192,65,247,47"/>
+<area shape="rect" id="Node000005" href="$ex__network__reactor_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,42,60,67"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="94,70,59,63,61,58,95,65"/>
+<area shape="rect" id="Node000006" href="$ex__clock__sync_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,91,60,117"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="95,94,61,101,59,96,94,89"/>
+<area shape="poly" id="edge8_Node000008_Node000004" title=" " alt="" coords="442,132,344,125,242,111,187,95,188,90,243,105,345,120,442,127"/>
+</map>

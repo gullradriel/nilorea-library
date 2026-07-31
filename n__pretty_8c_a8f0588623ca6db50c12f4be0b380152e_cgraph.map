@@ -1,0 +1,13 @@
+<map id="_emit_line" name="_emit_line">
+<area shape="rect" id="Node000001" title="emit one indented line holding n raw bytes of s" alt="" coords="5,56,96,81"/>
+<area shape="rect" id="Node000002" href="$n__pretty_8c.html#ae35fd7dc84d25de598f9582ab2c6456c" title="append a single character to the output, TRUE on success" alt="" coords="157,5,229,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="86,53,143,33,145,38,88,58"/>
+<area shape="rect" id="Node000003" href="$n__pretty_8c.html#a999e877bfc9297236124001bafdc412a" title="append n bytes of s to the output, TRUE on success" alt="" coords="291,56,381,81"/>
+<area shape="poly" id="edge6_Node000001_Node000003" title=" " alt="" coords="96,66,277,66,277,71,96,71"/>
+<area shape="rect" id="Node000005" href="$n__pretty_8c.html#adf000ab022e0f596b2cb08c81f3babfd" title="append depth * PRETTY_INDENT_STEP spaces, TRUE on success" alt="" coords="144,107,243,132"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="88,79,145,99,143,104,86,84"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="231,28,288,49,286,54,229,33"/>
+<area shape="rect" id="Node000004" href="$group___n___s_t_r.html#gacc3740a4b0816c80170ba6d6b0ae9eea" title="Append src_size bytes from src to *dest, updating size/written, growing the buffer if needed." alt="" coords="429,56,559,81"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="381,66,416,66,416,71,381,71"/>
+<area shape="poly" id="edge5_Node000005_Node000003" title=" " alt="" coords="229,104,285,84,287,89,231,109"/>
+</map>

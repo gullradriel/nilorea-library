@@ -1,0 +1,13 @@
+<map id="n_ws_send" name="n_ws_send">
+<area shape="rect" id="Node000001" title="send a WebSocket frame (client always masks)" alt="" coords="588,5,681,31"/>
+<area shape="rect" id="Node000002" href="$ex__network__ws_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,31,60,56"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="574,17,484,12,367,11,238,15,108,27,61,38,60,33,108,22,238,10,367,6,484,7,574,11"/>
+<area shape="rect" id="Node000003" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga2a3f1281f3834055477cb9ed50528696" title="Send close frame and close the connection." alt="" coords="444,31,540,56"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="575,31,541,37,540,32,574,26"/>
+<area shape="rect" id="Node000004" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaea7382e265d584a3e0d9ea3f2b20762e" title="Free a WebSocket connection structure." alt="" coords="269,31,396,56"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="430,46,396,46,396,41,430,41"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="255,46,60,46,60,41,255,41"/>
+<area shape="rect" id="Node000005" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga6842dd9d835a0c54959f7d7d8b042e21" title="Connect to a WebSocket server (ws:// or wss://)." alt="" coords="108,81,221,107"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="278,63,208,84,207,79,276,57"/>
+<area shape="poly" id="edge6_Node000005_Node000002" title=" " alt="" coords="117,79,59,56,61,51,119,74"/>
+</map>

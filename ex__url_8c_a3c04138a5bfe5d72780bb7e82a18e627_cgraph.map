@@ -1,0 +1,108 @@
+<map id="main" name="main">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,645,60,671"/>
+<area shape="rect" id="Node000002" href="$group___n___s_t_r.html#ga69e5f2dbf75571a73e5a3332929642a4" title="Convert a char into a N_STR, short version." alt="" coords="168,331,271,356"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="31,645,34,599,44,533,66,459,84,424,106,392,128,373,154,359,157,364,131,377,110,396,88,427,71,461,49,534,39,600,37,645"/>
+<area shape="rect" id="Node000005" href="$ex__url_8c.html#abbfee725c191c02245c6501df52d1b5a" title=" " alt="" coords="163,97,275,123"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="31,645,34,547,43,396,52,317,65,244,83,184,94,160,106,142,126,126,149,115,151,120,128,130,110,145,98,162,88,185,71,245,58,318,49,397,39,548,37,645"/>
+<area shape="rect" id="Node000006" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga46ae71080df870ef41281e5861ab6e4c" title="parse and canonicalize a URL string in one call" alt="" coords="383,89,525,129"/>
+<area shape="poly" id="edge58_Node000001_Node000006" title=" " alt="" coords="31,645,34,555,45,417,54,345,67,279,84,224,106,187,202,162,369,124,370,129,203,167,110,191,89,226,72,280,59,346,50,418,40,555,37,645"/>
+<area shape="rect" id="Node000012" href="$ex__url_8c.html#afea0c5eef2fab585d3a76186301627b0" title=" " alt="" coords="159,201,280,227"/>
+<area shape="poly" id="edge12_Node000001_Node000012" title=" " alt="" coords="32,645,36,564,48,442,58,379,70,321,86,273,106,240,124,226,144,218,147,223,127,231,110,244,91,275,76,322,63,380,54,443,42,564,37,645"/>
+<area shape="rect" id="Node000015" href="$ex__url_8c.html#af37186866480ea371f41fbfd34281b97" title=" " alt="" coords="166,407,273,432"/>
+<area shape="poly" id="edge19_Node000001_Node000015" title=" " alt="" coords="35,644,58,576,79,534,106,494,141,461,178,437,181,441,144,465,110,497,83,536,63,578,40,646"/>
+<area shape="rect" id="Node000016" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga0de183895d64dd6aa60ba81c2353fb57" title="build a multipart/form&#45;data body from a LIST of N_HTTP_MULTIPART_PART* using boundary (without &quot;&#45;&#45;&quot;);..." alt="" coords="135,508,304,533"/>
+<area shape="poly" id="edge21_Node000001_Node000016" title=" " alt="" coords="38,644,64,601,83,577,106,556,145,536,148,540,110,560,87,581,68,604,42,647"/>
+<area shape="rect" id="Node000020" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga9a0d738b6f2bb2c87de1e990e670d18b" title="decompress an HTTP body per its Content&#45;Encoding (&quot;gzip&quot;/&quot;deflate&quot;; identity/NULL/unknown copies thro..." alt="" coords="125,255,313,280"/>
+<area shape="poly" id="edge27_Node000001_Node000020" title=" " alt="" coords="33,645,40,578,55,480,77,383,91,344,106,316,127,297,152,283,155,288,130,301,110,320,95,346,82,384,61,481,46,578,38,645"/>
+<area shape="rect" id="Node000023" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaa6f1d740a92bf739b291baf9e7ee0ec1" title="copy the boundary token from a Content&#45;Type value into out (without the leading &quot;&#45;&#45;&quot;)." alt="" coords="120,571,319,596"/>
+<area shape="poly" id="edge32_Node000001_Node000023" title=" " alt="" coords="47,643,74,623,107,605,127,597,129,602,109,610,77,628,50,647"/>
+<area shape="rect" id="Node000024" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga434fdde5384cf7818877f5e26e224017" title="free a LIST returned by n_http_parse_multipart and NULL the pointer" alt="" coords="138,669,301,695"/>
+<area shape="poly" id="edge33_Node000001_Node000024" title=" " alt="" coords="61,659,124,667,124,672,60,664"/>
+<area shape="rect" id="Node000027" href="$group___n_e_t_w_o_r_k_i_n_g.html#gad31e51f876d09ca0a6b3fdec1ab9d055" title="parse a multipart body (boundary given without &quot;&#45;&#45;&quot;) into a LIST of N_HTTP_MULTIPART_PART*; free with..." alt="" coords="133,620,306,645"/>
+<area shape="poly" id="edge36_Node000001_Node000027" title=" " alt="" coords="60,652,119,644,119,649,61,657"/>
+<area shape="rect" id="Node000036" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga2b7aacc85c129535f2e5ce28fc1e074f" title="leading digit of an HTTP status code (1..5), or 0 when outside 100..599" alt="" coords="379,955,529,980"/>
+<area shape="poly" id="edge47_Node000001_Node000036" title=" " alt="" coords="52,669,78,687,109,704,142,714,172,718,227,718,253,718,279,723,305,735,333,756,350,779,358,802,360,826,358,849,358,895,365,918,381,940,386,945,383,949,377,944,360,920,353,896,353,849,355,826,353,803,345,782,329,760,303,739,278,728,253,724,227,723,172,724,141,719,107,708,75,691,49,673"/>
+<area shape="rect" id="Node000037" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga716610fbb3b9d3d9189cc519914486ee" title="1 when status_code is a client error (4xx), else 0" alt="" coords="134,770,305,810"/>
+<area shape="poly" id="edge48_Node000001_Node000037" title=" " alt="" coords="43,669,69,709,88,730,110,749,131,762,129,767,106,753,84,734,65,712,39,672"/>
+<area shape="rect" id="Node000038" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaad6207a6b03a23fc49372d2d72cba7ee" title="1 when status_code is informational (1xx), else 0" alt="" coords="108,835,331,860"/>
+<area shape="poly" id="edge50_Node000001_Node000038" title=" " alt="" coords="39,670,45,701,58,742,79,784,93,804,110,820,118,826,115,830,106,824,89,807,75,787,53,744,40,703,33,672"/>
+<area shape="rect" id="Node000039" href="$group___n_e_t_w_o_r_k_i_n_g.html#gad20d39574e0d50286af8ea3c8090b4b3" title="1 when status_code is a redirect (3xx), else 0" alt="" coords="127,884,312,909"/>
+<area shape="poly" id="edge52_Node000001_Node000039" title=" " alt="" coords="37,671,41,710,51,764,73,821,89,847,110,869,117,875,114,879,106,873,85,850,69,823,46,765,35,711,32,671"/>
+<area shape="rect" id="Node000040" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga6878b7072421c253026d76e229651cda" title="1 when status_code is a server error (5xx), else 0" alt="" coords="131,934,307,974"/>
+<area shape="poly" id="edge54_Node000001_Node000040" title=" " alt="" coords="36,671,38,718,47,784,56,820,69,856,87,889,110,919,121,928,117,932,106,923,82,892,64,858,51,822,41,785,32,718,31,671"/>
+<area shape="rect" id="Node000041" href="$group___n_e_t_w_o_r_k_i_n_g.html#gac404615d599356970ef4a105c55aa690" title="1 when status_code is success (2xx), else 0" alt="" coords="126,999,313,1024"/>
+<area shape="poly" id="edge56_Node000001_Node000041" title=" " alt="" coords="38,671,45,737,59,831,81,924,94,960,110,984,116,990,112,994,106,988,90,963,75,926,54,832,40,737,32,671"/>
+<area shape="rect" id="Node000042" href="$ex__common_8c.html#aefcb3f70374ff9b6256aac6e12870399" title=" " alt="" coords="166,1100,273,1125"/>
+<area shape="poly" id="edge59_Node000001_Node000042" title=" " alt="" coords="37,671,42,753,54,876,63,940,76,999,91,1047,110,1079,130,1094,153,1104,151,1109,127,1099,106,1082,86,1049,71,1000,58,941,48,877,36,754,32,671"/>
+<area shape="rect" id="Node000043" href="$group___l_o_g.html#gacad9b2d55788f46ddde811c986ead9ae" title="Set the global log level value ( static int LOG_LEVEL )" alt="" coords="400,1049,508,1075"/>
+<area shape="poly" id="edge62_Node000001_Node000043" title=" " alt="" coords="37,671,42,746,54,857,63,914,76,965,91,1007,110,1033,129,1045,156,1053,229,1063,311,1065,386,1063,386,1069,311,1070,229,1068,155,1058,127,1049,106,1037,86,1009,71,967,58,915,49,858,37,747,32,671"/>
+<area shape="rect" id="Node000003" href="$group___n___s_t_r.html#gac4314e9f0ada88300a09d66405d541a8" title="Convert a char into a N_STR, extended version." alt="" coords="589,356,715,381"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="271,340,389,340,530,347,576,353,576,358,529,353,389,346,271,345"/>
+<area shape="rect" id="Node000004" href="$group___n___s_t_r.html#ga873edbb1f8787d0a78a13ccbbed9b9f9" title="create a new N_STR string" alt="" coords="824,307,905,332"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="707,353,809,329,811,334,708,359"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="276,107,369,106,369,112,276,112"/>
+<area shape="rect" id="Node000007" href="$group___n_e_t_w_o_r_k_i_n_g.html#gabda92e9e611a87e18ea80718521449a0" title="produce a canonical URL string for deduplication" alt="" coords="581,55,723,80"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="525,91,577,80,578,85,526,96"/>
+<area shape="rect" id="Node000009" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga5d6f1c27eba9cf52052a1ba2842f9f94" title="free a N_URL and all its members" alt="" coords="609,104,695,129"/>
+<area shape="poly" id="edge9_Node000006_Node000009" title=" " alt="" coords="526,109,595,112,594,117,526,114"/>
+<area shape="rect" id="Node000010" href="$group___n_e_t_w_o_r_k_i_n_g.html#gaad0b9ffe6afab6116be05ea06cee041f" title="parse a URL string into components" alt="" coords="603,5,701,31"/>
+<area shape="poly" id="edge10_Node000006_Node000010" title=" " alt="" coords="487,86,576,40,593,33,595,38,578,44,489,91"/>
+<area shape="poly" id="edge8_Node000007_Node000004" title=" " alt="" coords="709,78,728,89,760,126,795,182,854,293,849,296,790,185,755,129,725,93,706,82"/>
+<area shape="rect" id="Node000008" href="$n__network_8c.html#a1090ef41ce4b5e686e796d3f5714189a" title="normalize a path by removing &quot;.&quot; and &quot;..&quot; segments (RFC 3986 style)" alt="" coords="780,105,949,131"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="707,78,798,100,797,105,706,83"/>
+<area shape="rect" id="Node000011" href="$n__network_8c.html#a7812f42d29cf576b505f94368ef41d3d" title=" " alt="" coords="775,5,955,31"/>
+<area shape="poly" id="edge11_Node000010_Node000011" title=" " alt="" coords="701,15,761,15,761,21,701,21"/>
+<area shape="rect" id="Node000013" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga4719ba29cbaac6236fef11d2b4388ac8" title="resolve a (possibly relative) URL reference against an absolute base" alt="" coords="399,153,509,179"/>
+<area shape="poly" id="edge13_Node000012_Node000013" title=" " alt="" coords="280,199,385,177,386,182,281,204"/>
+<area shape="poly" id="edge18_Node000013_Node000004" title=" " alt="" coords="474,177,520,208,578,240,639,263,702,282,811,307,810,312,700,287,638,268,576,244,517,212,471,181"/>
+<area shape="poly" id="edge15_Node000013_Node000008" title=" " alt="" coords="509,159,726,138,779,130,780,135,727,143,509,165"/>
+<area shape="poly" id="edge16_Node000013_Node000009" title=" " alt="" coords="505,151,594,128,596,133,506,156"/>
+<area shape="poly" id="edge17_Node000013_Node000010" title=" " alt="" coords="507,151,528,139,538,127,545,115,551,91,557,65,564,53,576,40,589,31,592,35,579,44,568,56,562,67,556,92,550,117,543,130,531,143,510,156"/>
+<area shape="rect" id="Node000014" href="$n__network_8c.html#acd1619084553dd6c118dbe8f3cd1418a" title="test whether a reference string begins with its own URI scheme" alt="" coords="577,205,727,231"/>
+<area shape="poly" id="edge14_Node000013_Node000014" title=" " alt="" coords="504,176,591,199,589,204,502,181"/>
+<area shape="poly" id="edge20_Node000015_Node000003" title=" " alt="" coords="273,410,378,398,575,375,576,380,379,403,273,416"/>
+<area shape="poly" id="edge22_Node000016_Node000003" title=" " alt="" coords="246,505,378,449,489,412,589,383,590,388,491,417,380,454,248,510"/>
+<area shape="rect" id="Node000017" href="$n__network_8c.html#a9b4b68443db7a0f3fa59e3a134a34a3f" title=" " alt="" coords="414,508,494,533"/>
+<area shape="poly" id="edge23_Node000016_Node000017" title=" " alt="" coords="304,518,400,518,400,523,304,523"/>
+<area shape="rect" id="Node000018" href="$n__network_8c.html#a2b996f0bc9e4ee555a414e20a81c8451" title=" " alt="" coords="829,533,900,559"/>
+<area shape="poly" id="edge24_Node000017_Node000018" title=" " alt="" coords="494,520,815,540,815,546,494,526"/>
+<area shape="rect" id="Node000019" href="$n__network_8c.html#ae2afdd5f8e04e7409f46378a44835e51" title=" " alt="" coords="613,559,691,584"/>
+<area shape="poly" id="edge25_Node000017_Node000019" title=" " alt="" coords="495,528,600,555,599,561,494,533"/>
+<area shape="poly" id="edge26_Node000019_Node000018" title=" " alt="" coords="691,564,815,549,816,554,692,569"/>
+<area shape="rect" id="Node000021" href="$n__network_8c.html#a9f457ac3a39dd379399b1099afec4f64" title=" " alt="" coords="399,255,509,280"/>
+<area shape="poly" id="edge28_Node000020_Node000021" title=" " alt="" coords="313,265,385,265,385,270,313,270"/>
+<area shape="rect" id="Node000022" href="$group___n___s_t_r.html#ga3e30a18ec42d0f4cd8651c442bf62651" title="Duplicate a N_STR." alt="" coords="617,307,687,332"/>
+<area shape="poly" id="edge30_Node000020_Node000022" title=" " alt="" coords="289,252,422,234,485,232,530,239,547,249,556,261,565,273,579,285,605,300,603,304,576,290,561,277,552,264,543,253,528,245,485,238,423,240,290,257"/>
+<area shape="poly" id="edge29_Node000021_Node000003" title=" " alt="" coords="492,278,531,297,555,320,565,330,579,341,593,348,591,353,576,346,561,334,551,324,528,302,490,282"/>
+<area shape="poly" id="edge31_Node000022_Node000004" title=" " alt="" coords="688,317,810,317,810,322,688,322"/>
+<area shape="rect" id="Node000025" href="$group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755" title="Empty and Free a list container." alt="" coords="405,905,503,931"/>
+<area shape="poly" id="edge34_Node000024_Node000025" title=" " alt="" coords="302,692,332,712,349,735,357,758,358,803,358,847,365,869,381,891,394,901,391,905,377,895,360,871,353,848,353,803,352,759,345,737,329,716,299,697"/>
+<area shape="rect" id="Node000026" href="$group___l_i_s_t.html#ga1dafe7a250ddad51fadd375f057287e7" title="Empty a LIST list of pointers." alt="" coords="607,905,697,931"/>
+<area shape="poly" id="edge35_Node000025_Node000026" title=" " alt="" coords="504,915,593,915,593,921,504,921"/>
+<area shape="poly" id="edge46_Node000027_Node000004" title=" " alt="" coords="305,619,329,605,341,592,347,579,352,551,357,522,364,508,377,493,414,469,448,461,485,457,529,449,628,423,672,410,726,390,781,364,830,337,832,341,784,368,728,395,673,415,630,428,530,454,485,463,449,466,416,474,380,497,369,511,362,524,358,552,353,581,345,596,332,609,308,624"/>
+<area shape="rect" id="Node000028" href="$group___l_i_s_t.html#ga4eab319289a83524639ee5e9f0441fdf" title="Add a pointer to the end of the list." alt="" coords="414,856,494,881"/>
+<area shape="poly" id="edge37_Node000027_Node000028" title=" " alt="" coords="307,639,332,655,350,678,359,702,360,725,359,749,358,796,365,819,381,841,403,856,400,861,377,845,360,821,353,796,353,749,355,725,353,703,346,680,329,659,305,643"/>
+<area shape="rect" id="Node000030" href="$n__network_8c.html#acfc66ca8002160c98ac819300c8e832e" title=" " alt="" coords="391,807,517,832"/>
+<area shape="poly" id="edge39_Node000027_Node000030" title=" " alt="" coords="307,640,332,655,347,672,355,689,358,724,361,759,368,775,381,792,387,797,383,801,377,796,363,778,356,760,353,725,350,690,342,674,329,659,305,644"/>
+<area shape="rect" id="Node000031" href="$n__network_8c.html#a18c5c4d6d81f8dc43a901b6e2a977d86" title=" " alt="" coords="603,732,701,757"/>
+<area shape="poly" id="edge44_Node000027_Node000031" title=" " alt="" coords="305,643,413,663,530,693,612,724,610,729,529,698,412,668,304,648"/>
+<area shape="rect" id="Node000032" href="$n__network_8c.html#ab540d6c72cc65078c1f029b71638aa38" title=" " alt="" coords="417,557,491,583"/>
+<area shape="poly" id="edge41_Node000027_Node000032" title=" " alt="" coords="279,617,330,605,403,583,404,588,331,610,280,622"/>
+<area shape="rect" id="Node000033" href="$n__network_8c.html#abca2eadb73f3cfe97069d2aa0a13fddd" title=" " alt="" coords="385,607,523,632"/>
+<area shape="poly" id="edge42_Node000027_Node000033" title=" " alt="" coords="306,625,371,621,371,627,307,630"/>
+<area shape="rect" id="Node000034" href="$n__network_8c.html#aada586daa0a2f7f8c25378e23ade6261" title=" " alt="" coords="399,708,509,733"/>
+<area shape="poly" id="edge43_Node000027_Node000034" title=" " alt="" coords="298,643,332,654,357,670,380,686,408,700,406,705,377,691,354,674,330,659,296,648"/>
+<area shape="rect" id="Node000035" href="$group___l_i_s_t.html#gae4b8e915bc22e7993d2849152ec1c3ac" title="Initialiaze a generic list container to max_items pointers." alt="" coords="389,757,519,783"/>
+<area shape="poly" id="edge45_Node000027_Node000035" title=" " alt="" coords="307,641,332,655,351,676,358,699,364,721,381,743,389,749,386,753,377,747,359,724,353,701,346,679,329,659,305,646"/>
+<area shape="rect" id="Node000029" href="$group___l_i_s_t.html#ga678e828550efc8e64a836bb8c713c2f4" title="Allocate a new node to link in a list." alt="" coords="595,856,709,881"/>
+<area shape="poly" id="edge38_Node000028_Node000029" title=" " alt="" coords="494,866,581,866,581,871,494,871"/>
+<area shape="poly" id="edge40_Node000030_Node000031" title=" " alt="" coords="493,804,528,792,607,760,609,765,530,796,495,809"/>
+<area shape="poly" id="edge49_Node000037_Node000036" title=" " alt="" coords="306,803,332,820,345,835,353,851,358,881,362,911,369,926,381,940,387,946,384,950,377,944,364,928,357,913,352,882,348,852,341,838,329,824,303,808"/>
+<area shape="poly" id="edge51_Node000038_Node000036" title=" " alt="" coords="310,858,332,869,349,887,358,905,365,923,380,940,391,947,388,951,377,944,361,926,353,907,345,890,329,873,308,863"/>
+<area shape="poly" id="edge53_Node000039_Node000036" title=" " alt="" coords="285,907,332,919,380,940,402,948,401,953,378,944,330,925,284,912"/>
+<area shape="poly" id="edge55_Node000040_Node000036" title=" " alt="" coords="308,956,365,960,365,965,308,962"/>
+<area shape="poly" id="edge57_Node000041_Node000036" title=" " alt="" coords="287,996,372,980,373,985,288,1001"/>
+<area shape="poly" id="edge60_Node000042_Node000043" title=" " alt="" coords="272,1099,386,1074,387,1079,273,1104"/>
+<area shape="rect" id="Node000044" href="$ex__accept__pool__client_8c.html#ad96d407a911fbb914fa8e4cfbf2faf0f" title=" " alt="" coords="423,1100,485,1125"/>
+<area shape="poly" id="edge61_Node000042_Node000044" title=" " alt="" coords="273,1110,409,1110,409,1115,273,1115"/>
+</map>

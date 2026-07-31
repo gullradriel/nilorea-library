@@ -1,0 +1,31 @@
+<map id="n_base64_encode_len" name="n_base64_encode_len">
+<area shape="rect" id="Node000001" title="get the length of string if it was base64 encoded" alt="" coords="795,180,960,205"/>
+<area shape="rect" id="Node000002" href="$group___c_y_p_h_e_r___b_a_s_e64.html#ga8bf1d83b3f1c485357a9ddc6ee5eb7c4" title="encode a N_STR *string" alt="" coords="608,180,747,205"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="781,195,747,195,747,190,781,190"/>
+<area shape="rect" id="Node000003" href="$ex__base64_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="430,5,485,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="662,169,622,106,593,72,559,44,521,29,484,22,485,17,523,23,561,40,596,68,626,103,666,166"/>
+<area shape="rect" id="Node000004" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga85a7b045847a1152b8f20159ab761e42" title="Open a TCP connection through an HTTP proxy using CONNECT tunneling." alt="" coords="367,55,547,80"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="654,171,613,131,587,111,559,94,531,83,533,78,561,89,590,106,616,127,658,168"/>
+<area shape="rect" id="Node000005" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga6462c9e76995ce75cdac810fe872c0f8" title="Open a TCP connection through an HTTPS proxy using CONNECT tunneling." alt="" coords="355,104,560,129"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="630,177,559,151,500,132,502,127,561,146,632,172"/>
+<area shape="rect" id="Node000006" href="$group___c_y_p_h_e_r___v_i_g_e_n_e_r_e.html#ga95f517e677af864def2a14af9196d596" title="directly vigenere encode a file using key" alt="" coords="120,105,295,131"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="594,182,288,133,289,128,595,177"/>
+<area shape="rect" id="Node000008" href="$group___c_y_p_h_e_r___v_i_g_e_n_e_r_e.html#ga08551983c3b919de08ad1c35e0819d28" title="directly vigenere encode a file using key" alt="" coords="372,205,543,231"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="595,205,543,211,543,206,594,200"/>
+<area shape="rect" id="Node000010" href="$group___c_y_p_h_e_r___v_i_g_e_n_e_r_e.html#gae9d3c2b1247c0c79267521bcfcaf9079" title="get a question generated from the current machine hardware (disk&amp;cpu)" alt="" coords="115,256,300,281"/>
+<area shape="poly" id="edge10_Node000002_Node000010" title=" " alt="" coords="641,214,603,231,561,245,493,258,425,266,300,272,300,267,424,261,493,252,559,239,601,226,639,209"/>
+<area shape="rect" id="Node000011" href="$group___c_y_p_h_e_r___v_i_g_e_n_e_r_e.html#ga26872672f67b7c89b6fa9fa01d59ac00" title="quick encode data" alt="" coords="362,307,553,332"/>
+<area shape="poly" id="edge12_Node000002_Node000011" title=" " alt="" coords="656,217,614,254,561,290,513,309,511,304,559,285,611,250,652,213"/>
+<area shape="rect" id="Node000012" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga6842dd9d835a0c54959f7d7d8b042e21" title="Connect to a WebSocket server (ws:// or wss://)." alt="" coords="401,356,514,381"/>
+<area shape="poly" id="edge15_Node000002_Node000012" title=" " alt="" coords="666,219,626,284,596,318,561,347,539,358,515,365,513,360,537,353,559,342,593,314,622,280,662,216"/>
+<area shape="rect" id="Node000007" href="$ex__crypto_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,207,60,232"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="141,138,109,152,73,180,47,208,43,204,70,176,107,148,139,133"/>
+<area shape="poly" id="edge8_Node000008_Node000007" title=" " alt="" coords="382,206,322,197,253,191,181,190,109,197,61,211,59,205,107,191,180,184,254,185,323,192,382,200"/>
+<area shape="rect" id="Node000009" href="$group___c_y_p_h_e_r___v_i_g_e_n_e_r_e.html#ga5ed58e0fb772ca9e2a8b9679b29c08d7" title="directly vigenere encode a file using question and answer" alt="" coords="108,207,307,232"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="359,221,307,221,307,216,359,216"/>
+<area shape="poly" id="edge11_Node000010_Node000007" title=" " alt="" coords="141,255,107,246,59,231,61,226,109,241,142,250"/>
+<area shape="poly" id="edge13_Node000011_Node000007" title=" " alt="" coords="348,332,291,333,229,328,167,316,107,295,86,282,67,266,41,234,45,231,71,262,89,278,109,290,168,311,230,322,291,327,348,327"/>
+<area shape="poly" id="edge14_Node000011_Node000010" title=" " alt="" coords="380,306,270,284,271,279,381,301"/>
+<area shape="rect" id="Node000013" href="$ex__network__ws_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="180,357,235,383"/>
+<area shape="poly" id="edge16_Node000012_Node000013" title=" " alt="" coords="387,372,235,373,235,367,387,366"/>
+</map>

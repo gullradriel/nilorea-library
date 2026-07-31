@@ -1,0 +1,23 @@
+<map id="_out_ch" name="_out_ch">
+<area shape="rect" id="Node000001" title="append a single character to the output, TRUE on success" alt="" coords="573,132,645,157"/>
+<area shape="rect" id="Node000002" href="$n__pretty_8c.html#a8f0588623ca6db50c12f4be0b380152e" title="emit one indented line holding n raw bytes of s" alt="" coords="435,56,525,81"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="575,127,524,96,502,84,505,79,527,92,577,122"/>
+<area shape="rect" id="Node000006" href="$n__pretty_8c.html#ac8f4ccf323ccd5cf91e718e1639b7960" title="emit the indent or the collapsed space before a token, as appropriate" alt="" coords="443,107,517,132"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="559,138,517,129,518,124,560,132"/>
+<area shape="rect" id="Node000008" href="$group___n___p_r_e_t_t_y.html#ga4174339a344ceb722526c9c9534b2c75" title="Conservatively re&#45;indent JavaScript (newlines at top&#45;level braces and semicolons, two&#45;space indent by..." alt="" coords="115,132,209,157"/>
+<area shape="poly" id="edge12_Node000001_Node000008" title=" " alt="" coords="560,147,209,147,209,142,560,142"/>
+<area shape="rect" id="Node000009" href="$n__pretty_8c.html#a4ffbbc84c5bda53b2a700aa50d013427" title="terminate the current line unless already at a line start" alt="" coords="276,208,375,233"/>
+<area shape="poly" id="edge10_Node000001_Node000009" title=" " alt="" coords="578,167,526,191,447,210,375,220,374,215,446,205,524,186,576,162"/>
+<area shape="rect" id="Node000003" href="$n__pretty_8c.html#a07acbd7614836deb55b8319e2a99417c" title="emit s trimmed of leading/trailing whitespace as one indented line; empty&#45;after&#45;trim runs are skipped" alt="" coords="264,5,387,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="427,54,364,33,366,28,428,49"/>
+<area shape="rect" id="Node000004" href="$group___n___p_r_e_t_t_y.html#ga30462a103551c0652c1eed5b73b93098" title="Re&#45;indent an XML or HTML document (one tag or text run per line)." alt="" coords="108,56,216,81"/>
+<area shape="poly" id="edge5_Node000002_Node000004" title=" " alt="" coords="421,71,216,71,216,66,421,66"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="271,37,205,58,203,53,270,32"/>
+<area shape="rect" id="Node000005" href="$ex__pretty_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,107,60,132"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="117,89,61,111,59,106,115,84"/>
+<area shape="rect" id="Node000007" href="$n__pretty_8c.html#a1f7532e3a3545c84fe12104b9a42ebb6" title="emit a raw token of n bytes with leading indent/space handling" alt="" coords="284,107,367,132"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="429,122,367,122,367,117,429,117"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="271,130,210,140,209,135,270,125"/>
+<area shape="poly" id="edge9_Node000008_Node000005" title=" " alt="" coords="101,135,60,127,61,122,102,130"/>
+<area shape="poly" id="edge11_Node000009_Node000008" title=" " alt="" coords="284,205,189,160,191,155,286,200"/>
+</map>

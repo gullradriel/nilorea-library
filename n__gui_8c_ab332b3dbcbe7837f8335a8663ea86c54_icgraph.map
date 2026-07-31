@@ -1,0 +1,60 @@
+<map id="_datagrid_data" name="_datagrid_data">
+<area shape="rect" id="Node000001" title="fetch a data grid&#39;s column table for an API call, or NULL on a bad id." alt="" coords="1209,269,1328,294"/>
+<area shape="rect" id="Node000002" href="$group___g_u_i.html#gaa2edf5de92c392aab7bdfb9c2e9a54cb" title="physical column shown at display position display_pos, or &#45;1 if out of range" alt="" coords="989,261,1161,301"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1195,284,1162,284,1162,279,1195,279"/>
+<area shape="rect" id="Node000014" href="$group___g_u_i.html#ga2aefa96c02b49fa762e04f7711f907ce" title="number of columns in a data grid (physical), or 0" alt="" coords="1002,517,1149,557"/>
+<area shape="poly" id="edge15_Node000001_Node000014" title=" " alt="" coords="1264,308,1252,351,1232,404,1203,459,1184,485,1163,507,1146,519,1143,515,1160,503,1180,481,1198,456,1227,402,1247,349,1259,307"/>
+<area shape="rect" id="Node000015" href="$group___g_u_i.html#gaa77105381fa207ace7c02bfd3a161b8a" title="header title of physical column col, or &quot;&quot; if out of range" alt="" coords="1002,325,1149,365"/>
+<area shape="poly" id="edge19_Node000001_Node000015" title=" " alt="" coords="1217,301,1137,328,1136,323,1216,296"/>
+<area shape="rect" id="Node000016" href="$group___g_u_i.html#gaf4b547bf7ec47c7d0214a1c0d847c3ef" title="whether physical column col is visible (1) or hidden (0); 0 if out of range" alt="" coords="1002,389,1149,429"/>
+<area shape="poly" id="edge21_Node000001_Node000016" title=" " alt="" coords="1249,306,1211,343,1163,380,1139,392,1137,387,1160,375,1207,339,1245,302"/>
+<area shape="rect" id="Node000017" href="$group___g_u_i.html#gaa4a87f481d56a0835dba691e7f4bc4b1" title="current pixel width of physical column col, or 0 if out of range" alt="" coords="1002,453,1149,493"/>
+<area shape="poly" id="edge24_Node000001_Node000017" title=" " alt="" coords="1259,308,1223,374,1196,411,1163,443,1144,455,1141,451,1160,439,1192,408,1218,372,1254,305"/>
+<area shape="rect" id="Node000018" href="$group___g_u_i.html#ga825d9b3dc859cdc94d736c4fd4446d0f" title="move the column at display position from to display position to, shifting the columns in between (reo..." alt="" coords="994,5,1157,45"/>
+<area shape="poly" id="edge27_Node000001_Node000018" title=" " alt="" coords="1259,256,1247,213,1227,161,1198,106,1180,82,1160,59,1143,48,1146,43,1163,55,1184,78,1203,104,1232,158,1252,212,1264,254"/>
+<area shape="rect" id="Node000019" href="$group___g_u_i.html#gadda60e1823f2ce654662a6a85c1099b8" title="show (1) or hide (0) physical column col; hidden columns keep their cells but are skipped in the head..." alt="" coords="1003,69,1148,109"/>
+<area shape="poly" id="edge30_Node000001_Node000019" title=" " alt="" coords="1254,258,1218,191,1192,155,1160,123,1141,112,1144,107,1163,119,1196,151,1223,188,1259,255"/>
+<area shape="rect" id="Node000020" href="$group___g_u_i.html#gada25e8cbaf14f7210b43a64944c7c656" title="set the pixel width of physical column col (clamped to a small minimum)" alt="" coords="1003,133,1148,173"/>
+<area shape="poly" id="edge33_Node000001_Node000020" title=" " alt="" coords="1245,260,1207,223,1160,188,1137,176,1139,171,1163,183,1211,219,1249,256"/>
+<area shape="rect" id="Node000021" href="$group___g_u_i.html#ga0d9135c73fa2e7eec670666a5f2c0ff8" title="set the callback fired after the user drags a column border to resize it, so the host can persist the..." alt="" coords="991,197,1160,237"/>
+<area shape="poly" id="edge36_Node000001_Node000021" title=" " alt="" coords="1216,267,1136,240,1137,235,1217,262"/>
+<area shape="rect" id="Node000003" href="$n__gui_8c.html#a9155f5e3fb703c3300189c3438c5c1db" title=" " alt="" coords="753,141,941,166"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="1002,258,988,252,917,208,863,168,866,164,920,204,991,247,1004,254"/>
+<area shape="rect" id="Node000008" href="$ex__gui__datagrid_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="820,269,875,294"/>
+<area shape="poly" id="edge8_Node000002_Node000008" title=" " alt="" coords="975,284,875,284,875,279,975,279"/>
+<area shape="rect" id="Node000009" href="$group___g_u_i.html#ga18eb95b41c97a5bc2352254709acde0b" title="save the geometry + persistent state of every window to a JSON file" alt="" coords="759,429,936,454"/>
+<area shape="poly" id="edge9_Node000002_Node000009" title=" " alt="" coords="1002,310,991,316,951,344,914,376,862,430,858,426,911,372,948,340,988,311,999,305"/>
+<area shape="rect" id="Node000004" href="$n__gui_8c.html#ae91948fd8844f145587038fd679c50d2" title=" " alt="" coords="531,302,705,327"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="818,176,639,304,636,300,815,172"/>
+<area shape="rect" id="Node000005" href="$group___g_u_i.html#ga7714ee662cbb12b3edeaa981e2f1616e" title="Give a widget a stable key so its user&#45;adjustable state (a splitpane&#39;s divider ratio,..." alt="" coords="267,302,483,327"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="517,317,483,317,483,312,517,312"/>
+<area shape="rect" id="Node000006" href="$ex__gui__layout__persist_8c.html#ae22c1a3932314db492d498c56fdd8f92" title=" " alt="" coords="108,277,219,302"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="255,303,219,299,219,293,255,298"/>
+<area shape="rect" id="Node000007" href="$ex__gui__layout__persist_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,327,60,353"/>
+<area shape="poly" id="edge7_Node000005_Node000007" title=" " alt="" coords="253,326,60,341,60,335,253,321"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="118,310,61,332,59,327,116,305"/>
+<area shape="poly" id="edge10_Node000009_Node000007" title=" " alt="" coords="762,429,705,420,322,372,60,345,61,340,323,367,706,415,763,424"/>
+<area shape="rect" id="Node000010" href="$ex__gui__detach_8c.html#a2f7d8f306fb495558692fc86c402d37b" title=" " alt="" coords="556,429,680,454"/>
+<area shape="poly" id="edge11_Node000009_Node000010" title=" " alt="" coords="745,444,680,444,680,439,745,439"/>
+<area shape="rect" id="Node000012" href="$ex__gui_8c.html#a6dcd3735ee955a61b739f2baac02560a" title=" " alt="" coords="537,478,699,503"/>
+<area shape="poly" id="edge13_Node000009_Node000012" title=" " alt="" coords="775,460,678,481,677,475,774,454"/>
+<area shape="rect" id="Node000011" href="$ex__gui__detach_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="347,429,402,454"/>
+<area shape="poly" id="edge12_Node000010_Node000011" title=" " alt="" coords="542,444,402,444,402,439,542,439"/>
+<area shape="rect" id="Node000013" href="$ex__gui_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="347,478,402,503"/>
+<area shape="poly" id="edge14_Node000012_Node000013" title=" " alt="" coords="524,493,402,493,402,488,524,488"/>
+<area shape="poly" id="edge16_Node000014_Node000004" title=" " alt="" coords="988,536,933,528,872,516,810,496,752,469,695,409,628,329,632,326,699,405,755,465,812,492,873,511,933,523,989,530"/>
+<area shape="poly" id="edge17_Node000014_Node000008" title=" " alt="" coords="993,512,987,507,969,486,959,466,951,444,939,419,856,296,860,293,944,416,956,442,964,464,973,483,991,503,997,508"/>
+<area shape="poly" id="edge18_Node000014_Node000009" title=" " alt="" coords="1004,515,988,508,940,482,880,456,882,452,942,478,990,503,1006,510"/>
+<area shape="poly" id="edge20_Node000015_Node000008" title=" " alt="" coords="990,324,874,291,876,286,991,319"/>
+<area shape="poly" id="edge22_Node000016_Node000008" title=" " alt="" coords="1002,386,988,380,917,336,863,296,866,292,920,332,991,375,1004,382"/>
+<area shape="poly" id="edge23_Node000016_Node000009" title=" " alt="" coords="988,424,936,432,936,426,988,419"/>
+<area shape="poly" id="edge25_Node000017_Node000008" title=" " alt="" coords="997,449,988,443,944,406,905,365,854,296,859,292,909,361,947,403,991,439,1000,445"/>
+<area shape="poly" id="edge26_Node000017_Node000009" title=" " alt="" coords="988,464,936,456,936,451,988,458"/>
+<area shape="poly" id="edge28_Node000018_Node000003" title=" " alt="" coords="1004,53,991,60,920,103,866,143,863,138,917,99,988,55,1002,48"/>
+<area shape="poly" id="edge29_Node000018_Node000008" title=" " alt="" coords="996,55,991,59,971,87,964,115,958,144,944,179,903,231,865,270,861,267,899,228,939,176,953,143,959,114,966,85,987,56,992,51"/>
+<area shape="poly" id="edge31_Node000019_Node000003" title=" " alt="" coords="991,116,894,143,893,138,990,110"/>
+<area shape="poly" id="edge32_Node000019_Node000008" title=" " alt="" coords="1000,118,991,123,975,136,965,149,943,179,862,270,858,267,939,176,961,146,972,133,988,119,997,113"/>
+<area shape="poly" id="edge34_Node000020_Node000003" title=" " alt="" coords="988,156,942,156,942,151,988,151"/>
+<area shape="poly" id="edge35_Node000020_Node000008" title=" " alt="" coords="1004,181,991,188,920,231,866,271,863,266,917,227,988,183,1002,176"/>
+<area shape="poly" id="edge37_Node000021_Node000008" title=" " alt="" coords="991,244,876,276,874,271,990,239"/>
+</map>

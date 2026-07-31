@@ -1,0 +1,11 @@
+<map id="n_digest_sha256_hex" name="n_digest_sha256_hex">
+<area shape="rect" id="Node000001" title="compute the SHA&#45;256 digest of data and return it as a lowercase hex N_STR; free with free_nstr." alt="" coords="5,31,168,56"/>
+<area shape="rect" id="Node000002" href="$group___n___d_i_g_e_s_t.html#ga0e7da034a4bfa32c726759f428f2a43a" title="compute the SHA&#45;256 digest of len bytes of data into out (N_DIGEST_SHA256_LEN bytes)." alt="" coords="216,5,347,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="168,30,202,26,203,31,169,35"/>
+<area shape="rect" id="Node000004" href="$group___n___h_e_x.html#gae7b29117b1ba18cb66cf45415cd84c6f" title="encode len bytes of data as a lowercase hex N_STR (2*len characters); free with free_nstr." alt="" coords="224,55,339,80"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="169,51,211,56,210,61,168,56"/>
+<area shape="rect" id="Node000003" href="$n__digest_8c.html#a56468aadf23da3de6cf1885553025b29" title=" " alt="" coords="395,5,531,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="347,15,381,15,381,21,347,21"/>
+<area shape="rect" id="Node000005" href="$group___n___s_t_r.html#ga873edbb1f8787d0a78a13ccbbed9b9f9" title="create a new N_STR string" alt="" coords="422,55,503,80"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="339,65,408,65,408,70,339,70"/>
+</map>

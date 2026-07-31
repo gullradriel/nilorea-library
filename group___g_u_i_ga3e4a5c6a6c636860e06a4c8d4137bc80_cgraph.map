@@ -1,0 +1,18 @@
+<map id="n_gui_maximize_window" name="n_gui_maximize_window">
+<area shape="rect" id="Node000001" title="toggle maximised state (full display or restore to previous size)" alt="" coords="5,121,192,146"/>
+<area shape="rect" id="Node000002" href="$n__gui_8c.html#a4ec1e6f7ca4bbad50a99b702ba1c683b" title="capture normalized coords for a window and its widgets from current absolutes" alt="" coords="246,5,423,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="123,118,239,62,270,48,272,53,241,66,126,123"/>
+<area shape="rect" id="Node000003" href="$n__gui_8c.html#ae85837b70185249171a1f31f59b3ce07" title="helper: mirror an own&#45;chrome window&#39;s minimised state onto its OS window by shrinking the display to ..." alt="" coords="240,121,429,146"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="192,131,227,131,227,136,192,136"/>
+<area shape="rect" id="Node000004" href="$n__gui_8c.html#a4c85290d49236def02b62ad69c45e55a" title="helper: whether a window is detached AND keeps drawing its own chrome (N_GUI_DETACH_OWN_CHROME)." alt="" coords="477,71,637,97"/>
+<area shape="poly" id="edge6_Node000001_Node000004" title=" " alt="" coords="162,118,240,105,356,93,463,86,464,91,357,99,240,111,163,123"/>
+<area shape="rect" id="Node000006" href="$n__gui_8c.html#a19fe770da4cfc1b94c35f9beebf463b0" title="helper: the monitor rectangle a native window sits on." alt="" coords="255,170,415,195"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="161,143,260,164,259,170,160,149"/>
+<area shape="rect" id="Node000007" href="$group___g_u_i.html#ga932fd1ac880df86b92a25ced736298be" title="Get a window pointer by id." alt="" coords="263,219,406,245"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="121,144,175,174,241,206,262,213,261,218,239,210,172,179,119,148"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="392,118,486,97,487,102,393,123"/>
+<area shape="rect" id="Node000005" href="$n__gui_8c.html#ad69070337d54549ba52daa8b1d17a580" title="helper: effective title bar height (0 for frameless windows)" alt="" coords="517,121,597,146"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="430,131,503,131,503,136,430,136"/>
+<area shape="rect" id="Node000008" href="$n__gui_8c.html#ac4c3cab227dd7eabfc2e94f8f8d6d1ae" title="helper: find a window node in the context list by id" alt="" coords="483,219,632,245"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="406,229,469,229,469,235,406,235"/>
+</map>

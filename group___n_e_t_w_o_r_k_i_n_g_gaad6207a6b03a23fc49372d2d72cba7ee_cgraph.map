@@ -1,0 +1,5 @@
+<map id="n_http_status_is_informational" name="n_http_status_is_informational">
+<area shape="rect" id="Node000001" title="1 when status_code is informational (1xx), else 0" alt="" coords="5,5,228,31"/>
+<area shape="rect" id="Node000002" href="$group___n_e_t_w_o_r_k_i_n_g.html#ga2b7aacc85c129535f2e5ce28fc1e074f" title="leading digit of an HTTP status code (1..5), or 0 when outside 100..599" alt="" coords="276,5,427,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="228,15,262,15,262,21,228,21"/>
+</map>

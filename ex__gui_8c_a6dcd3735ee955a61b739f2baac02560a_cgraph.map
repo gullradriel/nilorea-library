@@ -1,0 +1,26 @@
+<map id="on_save_layout_click" name="on_save_layout_click">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,127,167,152"/>
+<area shape="rect" id="Node000002" href="$group___g_u_i.html#ga18eb95b41c97a5bc2352254709acde0b" title="save the geometry + persistent state of every window to a JSON file" alt="" coords="215,127,392,152"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="167,137,201,137,201,142,167,142"/>
+<area shape="rect" id="Node000003" href="$n__gui_8c.html#a6b9fde0480896e66209f2683de516c19" title=" " alt="" coords="459,5,593,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="318,124,369,84,439,41,458,33,460,38,441,46,372,88,321,128"/>
+<area shape="rect" id="Node000004" href="$group___g_u_i.html#gaa2edf5de92c392aab7bdfb9c2e9a54cb" title="physical column shown at display position display_pos, or &#45;1 if out of range" alt="" coords="440,55,612,95"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="348,124,442,97,443,102,349,129"/>
+<area shape="rect" id="Node000009" href="$group___g_u_i.html#ga2aefa96c02b49fa762e04f7711f907ce" title="number of columns in a data grid (physical), or 0" alt="" coords="453,119,599,159"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="392,137,439,137,439,142,392,142"/>
+<area shape="rect" id="Node000010" href="$group___g_u_i.html#gaf4b547bf7ec47c7d0214a1c0d847c3ef" title="whether physical column col is visible (1) or hidden (0); 0 if out of range" alt="" coords="453,183,599,223"/>
+<area shape="poly" id="edge10_Node000002_Node000010" title=" " alt="" coords="349,150,443,177,442,182,348,155"/>
+<area shape="rect" id="Node000011" href="$group___g_u_i.html#gaa4a87f481d56a0835dba691e7f4bc4b1" title="current pixel width of physical column col, or 0 if out of range" alt="" coords="453,247,599,287"/>
+<area shape="poly" id="edge12_Node000002_Node000011" title=" " alt="" coords="322,150,373,190,441,233,454,239,452,244,439,238,370,194,318,154"/>
+<area shape="rect" id="Node000005" href="$n__gui_8c.html#ab332b3dbcbe7837f8335a8663ea86c54" title="fetch a data grid&#39;s column table for an API call, or NULL on a bad id." alt="" coords="661,159,780,184"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="586,93,613,105,690,149,687,153,611,110,584,98"/>
+<area shape="rect" id="Node000008" href="$n__gui_8c.html#a955b78a06c0dbb01cb7559e9a548c3d3" title="physical column index shown at display position dp (identity when no order)." alt="" coords="660,63,781,88"/>
+<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="612,73,646,73,646,78,612,78"/>
+<area shape="rect" id="Node000006" href="$group___g_u_i.html#ga9072d6f6b2708518c4c3d5d21849f11e" title="Get a widget pointer by id." alt="" coords="829,159,965,184"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="780,169,815,169,815,174,780,174"/>
+<area shape="rect" id="Node000007" href="$group___h_a_s_h___t_a_b_l_e.html#ga009f66a508dcea120e0cd2b34805e5a2" title="get pointer at &#39;key&#39; from &#39;table&#39;" alt="" coords="1013,159,1101,184"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="965,169,999,169,999,174,965,174"/>
+<area shape="poly" id="edge9_Node000009_Node000005" title=" " alt="" coords="600,149,648,157,647,162,599,154"/>
+<area shape="poly" id="edge11_Node000010_Node000005" title=" " alt="" coords="599,189,647,181,648,186,600,194"/>
+<area shape="poly" id="edge13_Node000011_Node000005" title=" " alt="" coords="584,245,611,233,687,189,690,194,613,238,586,250"/>
+</map>

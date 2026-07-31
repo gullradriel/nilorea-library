@@ -1,0 +1,62 @@
+<map id="_textarea_handle_key" name="_textarea_handle_key">
+<area shape="rect" id="Node000001" title="handle textarea key input." alt="" coords="5,625,171,651"/>
+<area shape="rect" id="Node000002" href="$n__gui_8c.html#a4d1b86fc557edb24b72345947e0edb0e" title="helper: the display to use for clipboard and mouse&#45;cursor calls." alt="" coords="514,107,637,132"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="88,625,96,564,117,472,133,420,155,369,183,320,217,276,248,247,282,221,357,180,433,151,500,132,501,137,434,156,359,185,285,226,251,251,221,280,187,323,160,371,138,422,122,473,101,565,93,625"/>
+<area shape="rect" id="Node000003" href="$n__gui_8c.html#a7353e4f99b30202343ed567a014c1130" title=" " alt="" coords="266,56,381,81"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="88,625,98,554,121,441,159,308,185,241,216,178,254,128,293,89,297,93,258,131,221,181,190,243,164,310,126,442,103,555,93,625"/>
+<area shape="rect" id="Node000006" href="$n__gui_8c.html#a846e26253bb8b3ad249f081856af2160" title="publish the active text selection (syntax view, label, or focused textarea) to the X11 PRIMARY select..." alt="" coords="239,290,408,330"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="93,624,141,534,176,475,217,416,252,374,288,338,292,342,256,378,221,420,181,478,145,537,98,626"/>
+<area shape="rect" id="Node000009" href="$n__gui_8c.html#ab61ce7b0a883f62fd432ad035c47fc5e" title="return 1 if the textarea has an active selection" alt="" coords="727,727,907,752"/>
+<area shape="poly" id="edge31_Node000001_Node000009" title=" " alt="" coords="117,648,164,668,219,685,351,710,485,725,610,734,714,737,714,742,609,739,485,731,351,715,218,690,163,673,115,653"/>
+<area shape="rect" id="Node000010" href="$n__gui_8c.html#a6336f7588d9eebfbad38d55070e2a745" title="get the ordered selection range (lo, hi)" alt="" coords="740,449,895,475"/>
+<area shape="poly" id="edge36_Node000001_Node000010" title=" " alt="" coords="93,624,110,594,137,554,173,515,217,484,285,456,357,437,430,427,502,423,572,424,638,429,745,444,744,449,637,434,572,430,502,428,430,432,358,443,287,461,220,488,177,519,142,558,115,597,98,627"/>
+<area shape="rect" id="Node000014" href="$n__gui_8c.html#a072626f322d270a8afabbf6cb32f3501" title="helper: get the advance width of text." alt="" coords="539,627,612,652"/>
+<area shape="poly" id="edge17_Node000001_Node000014" title=" " alt="" coords="141,623,218,610,323,603,428,610,526,625,525,631,428,615,323,609,219,615,142,628"/>
+<area shape="rect" id="Node000016" href="$n__gui_8c.html#a5c9959a8b62d3485e5c2fee3154d742f" title="clear the selection (set both anchors to cursor_pos)" alt="" coords="723,879,912,904"/>
+<area shape="poly" id="edge19_Node000001_Node000016" title=" " alt="" coords="95,650,107,693,131,753,147,784,168,815,192,842,220,864,287,897,358,918,433,930,507,933,579,931,646,924,755,904,755,910,647,929,580,936,507,939,432,935,357,924,285,902,217,868,188,846,163,818,143,787,126,755,102,695,90,651"/>
+<area shape="rect" id="Node000017" href="$n__gui_8c.html#a7ae7970cce751045af0305403d46b2a2" title="helper: compute the total content height of multiline textarea text (with line&#45;wrap),..." alt="" coords="229,625,417,651"/>
+<area shape="poly" id="edge20_Node000001_Node000017" title=" " alt="" coords="171,635,215,635,215,641,171,641"/>
+<area shape="rect" id="Node000018" href="$n__gui_8c.html#ae67b1e41a2b5bd3c65cc660f7d0652ad" title="return the byte length of a UTF&#45;8 character from its lead byte" alt="" coords="517,676,634,701"/>
+<area shape="poly" id="edge37_Node000001_Node000018" title=" " alt="" coords="151,648,219,659,371,675,503,683,503,688,371,680,218,665,150,653"/>
+<area shape="rect" id="Node000019" href="$n__gui_8c.html#acb9a6b6ee3ab0f63df1a5e214e9da980" title="copy selected text to clipboard." alt="" coords="219,499,428,524"/>
+<area shape="poly" id="edge23_Node000001_Node000019" title=" " alt="" coords="112,623,285,528,288,533,114,627"/>
+<area shape="rect" id="Node000020" href="$n__gui_8c.html#aa0693e099de67e45aa866be8001d884e" title="delete the currently selected text, move cursor to selection start" alt="" coords="476,777,675,803"/>
+<area shape="poly" id="edge27_Node000001_Node000020" title=" " alt="" coords="101,649,147,703,181,732,220,756,279,776,342,789,404,794,462,795,462,801,404,800,342,794,278,781,218,760,178,737,143,707,97,653"/>
+<area shape="rect" id="Node000021" href="$n__gui_8c.html#aca31db3dfbd007632e643cb7027232dd" title="insert clipboard text at the cursor, replacing any selection." alt="" coords="245,828,402,853"/>
+<area shape="poly" id="edge32_Node000001_Node000021" title=" " alt="" coords="98,650,115,681,142,724,177,768,220,806,247,821,245,825,217,811,174,772,138,727,110,684,93,652"/>
+<area shape="rect" id="Node000022" href="$n__gui_8c.html#aff029415aa4899ed7173ad2c40851d7c" title="encode a Unicode code point into UTF&#45;8, return the number of bytes written (0 on error)" alt="" coords="269,980,378,1005"/>
+<area shape="poly" id="edge38_Node000001_Node000022" title=" " alt="" coords="93,651,102,707,123,790,140,835,161,880,188,922,220,959,237,971,257,979,255,984,235,975,217,963,184,925,156,883,135,838,118,792,97,708,88,652"/>
+<area shape="rect" id="Node000004" href="$n__clipboard_8c.html#a620a80669610be12db00eb8c7fcb8d30" title="Whether a real clipboard backend (X11 or Win32) is active on this platform." alt="" coords="735,272,899,297"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="379,53,445,44,523,43,563,47,603,56,641,71,676,92,691,107,700,122,705,154,709,188,714,204,725,222,749,245,777,263,774,268,746,249,721,225,709,207,703,189,700,155,695,124,687,110,673,96,639,76,602,61,563,52,523,48,445,50,380,59"/>
+<area shape="rect" id="Node000005" href="$n__clipboard_8c.html#a96db90cfe86c7bd3ad098d90f9f74455" title="Fetch the current text of which selection from its owner." alt="" coords="513,5,638,31"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="381,55,498,31,499,36,382,60"/>
+<area shape="poly" id="edge6_Node000006_Node000002" title=" " alt="" coords="348,288,386,255,426,215,439,197,448,181,458,165,474,149,501,135,504,139,478,153,462,168,452,183,444,200,430,218,390,259,352,292"/>
+<area shape="poly" id="edge12_Node000006_Node000004" title=" " alt="" coords="408,303,721,287,722,292,408,308"/>
+<area shape="rect" id="Node000007" href="$n__gui_8c.html#ac1681456c953820494b09dd59476555b" title=" " alt="" coords="518,323,633,348"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="408,316,505,326,504,331,408,321"/>
+<area shape="poly" id="edge10_Node000006_Node000009" title=" " alt="" coords="353,328,478,421,536,459,583,486,628,517,677,566,693,591,702,614,709,637,725,662,754,692,786,717,783,721,751,696,721,665,705,639,697,616,689,594,673,569,625,521,580,491,533,464,474,426,350,332"/>
+<area shape="poly" id="edge11_Node000006_Node000010" title=" " alt="" coords="386,328,477,357,675,415,764,443,762,448,674,421,475,362,384,333"/>
+<area shape="rect" id="Node000011" href="$group___g_u_i.html#ga9072d6f6b2708518c4c3d5d21849f11e" title="Get a widget pointer by id." alt="" coords="749,187,885,212"/>
+<area shape="poly" id="edge13_Node000006_Node000011" title=" " alt="" coords="341,288,397,237,434,212,475,193,544,177,614,172,682,175,741,182,740,187,681,180,614,178,545,182,477,198,437,216,400,241,345,292"/>
+<area shape="rect" id="Node000013" href="$group___g_u_i.html#ga8b9e30f574a01d77bdf06cccc04e62f3" title="get a copy of the currently selected text in a syntax view" alt="" coords="492,207,659,247"/>
+<area shape="poly" id="edge15_Node000006_Node000013" title=" " alt="" coords="384,287,500,249,501,254,386,293"/>
+<area shape="poly" id="edge8_Node000007_Node000004" title=" " alt="" coords="632,321,742,298,743,303,633,326"/>
+<area shape="rect" id="Node000008" href="$n__clipboard_8c.html#a43ee598ea6e25d07058b6e0b9e81651b" title="Own which selection and serve text to any app that requests it." alt="" coords="755,323,879,348"/>
+<area shape="poly" id="edge9_Node000007_Node000008" title=" " alt="" coords="633,333,742,333,742,338,633,338"/>
+<area shape="rect" id="Node000012" href="$group___h_a_s_h___t_a_b_l_e.html#ga009f66a508dcea120e0cd2b34805e5a2" title="get pointer at &#39;key&#39; from &#39;table&#39;" alt="" coords="960,187,1048,212"/>
+<area shape="poly" id="edge14_Node000011_Node000012" title=" " alt="" coords="886,197,946,197,946,202,886,202"/>
+<area shape="poly" id="edge16_Node000013_Node000011" title=" " alt="" coords="658,215,735,206,736,211,659,220"/>
+<area shape="rect" id="Node000015" href="$n__gui_8c.html#a7be222e4f3ab2bca7a8164d8e68fa0eb" title="find (or claim) the cache slot for (font, text[len])." alt="" coords="752,627,883,652"/>
+<area shape="poly" id="edge18_Node000014_Node000015" title=" " alt="" coords="612,637,739,637,739,642,612,642"/>
+<area shape="poly" id="edge21_Node000017_Node000014" title=" " alt="" coords="418,636,525,636,525,642,417,641"/>
+<area shape="poly" id="edge22_Node000017_Node000018" title=" " alt="" coords="388,648,504,672,503,677,387,653"/>
+<area shape="poly" id="edge24_Node000019_Node000007" title=" " alt="" coords="341,496,543,354,546,358,345,501"/>
+<area shape="poly" id="edge25_Node000019_Node000009" title=" " alt="" coords="368,522,477,554,534,567,579,575,624,586,676,612,692,623,702,635,725,661,790,716,786,720,721,665,698,639,688,627,673,616,622,591,578,580,533,573,475,559,366,527"/>
+<area shape="poly" id="edge26_Node000019_Node000010" title=" " alt="" coords="428,498,726,468,726,474,429,504"/>
+<area shape="poly" id="edge29_Node000020_Node000009" title=" " alt="" coords="637,775,742,752,743,757,638,780"/>
+<area shape="poly" id="edge30_Node000020_Node000010" title=" " alt="" coords="597,775,635,749,673,712,690,687,699,665,707,641,720,613,798,485,803,487,725,615,712,643,704,667,694,690,677,716,638,753,600,779"/>
+<area shape="poly" id="edge28_Node000020_Node000016" title=" " alt="" coords="608,800,774,871,772,876,606,805"/>
+<area shape="poly" id="edge35_Node000021_Node000009" title=" " alt="" coords="402,842,531,837,603,829,674,813,735,787,786,757,789,762,737,792,675,818,604,834,531,843,402,847"/>
+<area shape="poly" id="edge33_Node000021_Node000016" title=" " alt="" coords="403,848,476,857,709,879,709,885,476,862,402,853"/>
+<area shape="poly" id="edge34_Node000021_Node000020" title=" " alt="" coords="387,825,498,803,499,808,388,830"/>
+</map>

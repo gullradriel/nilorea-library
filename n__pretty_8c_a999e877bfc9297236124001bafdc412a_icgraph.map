@@ -1,0 +1,31 @@
+<map id="_out_mem" name="_out_mem">
+<area shape="rect" id="Node000001" title="append n bytes of s to the output, TRUE on success" alt="" coords="720,80,811,105"/>
+<area shape="rect" id="Node000002" href="$n__pretty_8c.html#a8f0588623ca6db50c12f4be0b380152e" title="emit one indented line holding n raw bytes of s" alt="" coords="435,5,525,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="732,75,703,59,671,46,595,29,525,22,526,17,596,24,673,41,706,54,735,70"/>
+<area shape="rect" id="Node000006" href="$n__pretty_8c.html#a1f7532e3a3545c84fe12104b9a42ebb6" title="emit a raw token of n bytes with leading indent/space handling" alt="" coords="284,105,367,131"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="706,99,367,118,367,113,706,93"/>
+<area shape="rect" id="Node000008" href="$n__pretty_8c.html#ae35fd7dc84d25de598f9582ab2c6456c" title="append a single character to the output, TRUE on success" alt="" coords="587,156,659,181"/>
+<area shape="poly" id="edge9_Node000001_Node000008" title=" " alt="" coords="730,114,649,158,646,154,727,110"/>
+<area shape="rect" id="Node000011" href="$n__pretty_8c.html#adf000ab022e0f596b2cb08c81f3babfd" title="append depth * PRETTY_INDENT_STEP spaces, TRUE on success" alt="" coords="573,55,672,80"/>
+<area shape="poly" id="edge16_Node000001_Node000011" title=" " alt="" coords="706,85,672,79,673,73,707,80"/>
+<area shape="rect" id="Node000003" href="$n__pretty_8c.html#a07acbd7614836deb55b8319e2a99417c" title="emit s trimmed of leading/trailing whitespace as one indented line; empty&#45;after&#45;trim runs are skipped" alt="" coords="264,56,387,81"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="428,38,366,58,364,53,427,33"/>
+<area shape="rect" id="Node000004" href="$group___n___p_r_e_t_t_y.html#ga30462a103551c0652c1eed5b73b93098" title="Re&#45;indent an XML or HTML document (one tag or text run per line)." alt="" coords="108,56,216,81"/>
+<area shape="poly" id="edge5_Node000002_Node000004" title=" " alt="" coords="421,26,264,47,212,59,211,53,264,42,421,21"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="250,71,216,71,216,66,250,66"/>
+<area shape="rect" id="Node000005" href="$ex__pretty_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,93,60,119"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="105,88,61,101,59,96,104,83"/>
+<area shape="rect" id="Node000007" href="$group___n___p_r_e_t_t_y.html#ga4174339a344ceb722526c9c9534b2c75" title="Conservatively re&#45;indent JavaScript (newlines at top&#45;level braces and semicolons, two&#45;space indent by..." alt="" coords="115,129,209,155"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="271,129,210,138,209,132,270,123"/>
+<area shape="poly" id="edge8_Node000007_Node000005" title=" " alt="" coords="102,128,59,116,61,111,104,123"/>
+<area shape="poly" id="edge10_Node000008_Node000002" title=" " alt="" coords="605,146,571,97,524,45,506,33,509,29,527,41,575,93,609,143"/>
+<area shape="poly" id="edge15_Node000008_Node000007" title=" " alt="" coords="574,183,511,195,433,205,348,207,305,203,263,195,218,178,181,157,183,152,220,173,265,190,306,198,348,201,433,200,511,190,573,178"/>
+<area shape="rect" id="Node000009" href="$n__pretty_8c.html#ac8f4ccf323ccd5cf91e718e1639b7960" title="emit the indent or the collapsed space before a token, as appropriate" alt="" coords="443,55,517,80"/>
+<area shape="poly" id="edge11_Node000008_Node000009" title=" " alt="" coords="591,150,497,82,500,78,594,146"/>
+<area shape="rect" id="Node000010" href="$n__pretty_8c.html#a4ffbbc84c5bda53b2a700aa50d013427" title="terminate the current line unless already at a line start" alt="" coords="276,155,375,180"/>
+<area shape="poly" id="edge13_Node000008_Node000010" title=" " alt="" coords="573,171,375,170,375,165,573,166"/>
+<area shape="poly" id="edge12_Node000009_Node000006" title=" " alt="" coords="430,86,366,108,364,103,429,81"/>
+<area shape="poly" id="edge14_Node000010_Node000007" title=" " alt="" coords="262,160,209,152,210,147,263,155"/>
+<area shape="poly" id="edge17_Node000011_Node000002" title=" " alt="" coords="572,53,517,33,519,28,573,48"/>
+<area shape="poly" id="edge18_Node000011_Node000009" title=" " alt="" coords="560,70,518,70,518,65,560,65"/>
+</map>

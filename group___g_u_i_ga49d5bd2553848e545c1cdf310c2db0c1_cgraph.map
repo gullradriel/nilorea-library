@@ -1,0 +1,27 @@
+<map id="n_gui_add_window_auto" name="n_gui_add_window_auto">
+<area shape="rect" id="Node000001" title="add a window that sizes itself automatically to fit its widgets (call n_gui_window_autosize after add..." alt="" coords="5,111,187,136"/>
+<area shape="rect" id="Node000002" href="$group___g_u_i.html#ga9734754ec210aac972dc415403f61fc0" title="Add a new pseudo&#45;window to the context." alt="" coords="235,111,380,136"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="187,121,221,121,221,126,187,126"/>
+<area shape="rect" id="Node000003" href="$n__gui_8c.html#ae2bd627c7fe020e9c2683c9e1d3fb86e" title="helper: destroy a single window (called by list destructor)" alt="" coords="673,5,808,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="319,109,363,69,394,48,427,32,486,16,547,7,607,5,660,7,659,12,607,11,548,13,487,21,429,36,396,52,366,73,322,113"/>
+<area shape="rect" id="Node000006" href="$n__gui_8c.html#a4ec1e6f7ca4bbad50a99b702ba1c683b" title="capture normalized coords for a window and its widgets from current absolutes" alt="" coords="434,46,611,86"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="355,108,433,87,435,92,357,113"/>
+<area shape="rect" id="Node000007" href="$n__gui_8c.html#a7354743de2c4caf5256deb698f147d1b" title="Sort windows list by z&#45;order: ALWAYS_BEHIND first, then FIXED (by z_value), then NORMAL,..." alt="" coords="428,111,617,136"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="380,121,414,121,414,126,380,126"/>
+<area shape="rect" id="Node000009" href="$group___l_i_s_t.html#ga4eab319289a83524639ee5e9f0441fdf" title="Add a pointer to the end of the list." alt="" coords="701,161,781,187"/>
+<area shape="poly" id="edge12_Node000002_Node000009" title=" " alt="" coords="362,133,428,146,568,161,687,169,686,174,568,167,428,151,361,139"/>
+<area shape="rect" id="Node000012" href="$group___l_i_s_t.html#gae4b8e915bc22e7993d2849152ec1c3ac" title="Initialiaze a generic list container to max_items pointers." alt="" coords="457,212,588,237"/>
+<area shape="poly" id="edge13_Node000002_Node000012" title=" " alt="" coords="329,134,374,161,429,190,467,205,465,210,427,195,371,166,326,138"/>
+<area shape="rect" id="Node000004" href="$group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755" title="Empty and Free a list container." alt="" coords="872,5,971,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="808,15,858,15,858,21,808,21"/>
+<area shape="rect" id="Node000005" href="$group___l_i_s_t.html#ga1dafe7a250ddad51fadd375f057287e7" title="Empty a LIST list of pointers." alt="" coords="1027,5,1117,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="971,15,1013,15,1013,21,971,21"/>
+<area shape="poly" id="edge7_Node000007_Node000003" title=" " alt="" coords="587,108,616,96,630,85,640,73,649,61,664,48,689,34,691,38,667,52,653,64,644,76,634,88,619,100,590,113"/>
+<area shape="rect" id="Node000008" href="$n__gui_8c.html#a2a7c959510e3b7a6da943d522731730d" title=" " alt="" coords="683,63,798,88"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="581,108,669,88,670,93,582,113"/>
+<area shape="poly" id="edge9_Node000007_Node000009" title=" " alt="" coords="579,134,688,159,687,164,578,139"/>
+<area shape="rect" id="Node000011" href="$group___l_i_s_t.html#gabd7f04c5a1cd8307c0f289dcccdb5a41" title="Internal function called each time we need to get a node out of a list." alt="" coords="665,112,816,137"/>
+<area shape="poly" id="edge11_Node000007_Node000011" title=" " alt="" coords="618,121,652,121,652,127,618,127"/>
+<area shape="rect" id="Node000010" href="$group___l_i_s_t.html#ga678e828550efc8e64a836bb8c713c2f4" title="Allocate a new node to link in a list." alt="" coords="864,161,979,187"/>
+<area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="781,171,850,171,850,177,781,177"/>
+</map>

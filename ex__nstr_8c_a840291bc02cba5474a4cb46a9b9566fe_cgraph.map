@@ -1,0 +1,98 @@
+<map id="main" name="main">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,758,60,783"/>
+<area shape="rect" id="Node000002" href="$group___n___s_t_r.html#ga69e5f2dbf75571a73e5a3332929642a4" title="Convert a char into a N_STR, short version." alt="" coords="122,56,225,82"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="32,757,39,624,54,412,77,207,90,133,106,92,109,88,113,92,110,94,95,134,82,208,60,413,45,624,37,758"/>
+<area shape="rect" id="Node000004" href="$group___n___s_t_r.html#ga873edbb1f8787d0a78a13ccbbed9b9f9" title="create a new N_STR string" alt="" coords="499,156,580,182"/>
+<area shape="poly" id="edge14_Node000001_Node000004" title=" " alt="" coords="32,757,39,640,54,460,77,287,90,226,98,205,106,193,134,176,174,165,223,158,278,155,390,156,485,162,485,167,390,161,278,160,224,164,175,170,136,181,110,196,103,208,95,227,82,288,60,460,45,640,37,757"/>
+<area shape="rect" id="Node000005" href="$group___n___s_t_r.html#ga7b1c84d10757d1886ed29938f1f65973" title="empty a N_STR string" alt="" coords="125,106,221,131"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="31,757,33,643,41,462,50,366,63,277,82,202,93,172,106,149,118,136,122,140,110,152,98,174,87,203,69,278,55,367,46,462,38,643,37,757"/>
+<area shape="rect" id="Node000006" href="$group___n___s_t_r.html#gad2c9b27509a55615e57ef8efd2ca3a02" title="Load a whole file into a N_STR." alt="" coords="315,282,410,307"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="32,758,36,674,47,550,57,485,69,426,85,377,106,343,120,333,139,325,189,311,301,296,302,301,190,317,141,330,122,338,110,347,90,379,74,427,62,486,52,550,41,675,37,758"/>
+<area shape="rect" id="Node000007" href="$group___n___s_t_r.html#gad53cff99261e509872a2a4128b1265cf" title="Free a split result allocated array." alt="" coords="299,556,426,582"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="36,756,60,702,80,671,106,644,138,627,184,611,289,582,290,587,186,616,140,632,110,649,84,675,64,705,41,759"/>
+<area shape="rect" id="Node000008" href="$group___n___s_t_r.html#ga38dd6684b5098220ea870d8e6902ca5f" title="join the array into a string" alt="" coords="150,256,197,282"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="32,757,37,668,49,532,58,461,71,394,87,339,106,300,120,286,136,277,138,282,123,291,110,303,91,341,76,396,64,461,54,533,42,669,37,758"/>
+<area shape="rect" id="Node000009" href="$group___l_i_s_t.html#ga90d32fef68ce6f3ec0a7b4085690c755" title="Empty and Free a list container." alt="" coords="124,207,223,232"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="31,757,34,658,44,504,53,423,66,348,83,286,106,242,110,237,114,241,110,245,88,288,71,349,58,424,49,504,39,658,37,757"/>
+<area shape="rect" id="Node000011" href="$group___n___s_t_r.html#ga0e6bd7785382ac2391df476b2379dfed" title="Percent&#45;encode a C string per RFC 3986 (unreserved set kept as&#45;is)." alt="" coords="297,432,429,458"/>
+<area shape="poly" id="edge11_Node000001_Node000011" title=" " alt="" coords="33,757,57,621,78,544,91,514,106,494,136,478,180,465,283,449,283,454,181,470,138,483,110,498,96,517,83,546,62,623,38,758"/>
+<area shape="rect" id="Node000012" href="$group___l_i_s_t.html#gae4b8e915bc22e7993d2849152ec1c3ac" title="Initialiaze a generic list container to max_items pointers." alt="" coords="108,407,239,432"/>
+<area shape="poly" id="edge13_Node000001_Node000012" title=" " alt="" coords="31,757,31,703,39,623,48,578,61,533,80,490,106,450,120,437,123,441,110,454,85,492,66,535,53,579,44,624,36,703,36,757"/>
+<area shape="rect" id="Node000013" href="$group___n___s_t_r.html#ga287229f34095426806d36c86be764d12" title="Write a N_STR content into a file." alt="" coords="126,358,221,383"/>
+<area shape="poly" id="edge15_Node000001_Node000013" title=" " alt="" coords="32,758,39,684,52,575,74,466,89,423,106,393,112,387,116,391,110,396,94,425,79,468,58,576,44,684,38,758"/>
+<area shape="rect" id="Node000015" href="$group___n___s_t_r.html#ga3e30a18ec42d0f4cd8651c442bf62651" title="Duplicate a N_STR." alt="" coords="327,19,398,44"/>
+<area shape="poly" id="edge17_Node000001_Node000015" title=" " alt="" coords="32,758,37,614,49,385,59,267,71,163,87,85,96,58,106,42,129,25,154,13,182,7,210,4,266,6,315,15,314,20,265,11,210,9,183,12,156,18,132,30,110,46,101,60,92,86,77,164,64,268,54,385,42,614,37,758"/>
+<area shape="rect" id="Node000016" href="$group___n___s_t_r.html#ga640c39561bbd3ba017d57dbfee6c7c5c" title="reallocate a nstr internal buffer." alt="" coords="127,558,220,583"/>
+<area shape="poly" id="edge19_Node000001_Node000016" title=" " alt="" coords="34,757,56,685,77,641,106,601,122,588,125,592,110,604,81,643,61,687,39,758"/>
+<area shape="rect" id="Node000017" href="$group___n___s_t_r.html#gaa3becc1e523b47d5d53bbbf6b1603520" title="Scan a list of directory and return a list of char *file." alt="" coords="135,659,211,684"/>
+<area shape="poly" id="edge20_Node000001_Node000017" title=" " alt="" coords="42,756,69,725,106,694,121,686,124,690,110,698,73,729,46,759"/>
+<area shape="rect" id="Node000022" href="$group___n___s_t_r.html#ga83b7c5c99476048f972ead97468ab7c2" title="Written by Rich Salz rsalz at osf.org, refurbished by me." alt="" coords="487,814,592,839"/>
+<area shape="poly" id="edge50_Node000001_Node000022" title=" " alt="" coords="44,782,70,814,88,829,109,841,157,857,208,866,260,869,311,868,406,857,482,840,484,845,407,862,311,874,260,875,208,871,156,862,107,846,85,834,66,817,40,785"/>
+<area shape="rect" id="Node000023" href="$group___l_o_g.html#gacad9b2d55788f46ddde811c986ead9ae" title="Set the global log level value ( static int LOG_LEVEL )" alt="" coords="119,708,227,734"/>
+<area shape="poly" id="edge28_Node000001_Node000023" title=" " alt="" coords="60,758,122,736,124,741,62,763"/>
+<area shape="rect" id="Node000024" href="$group___n___s_t_r.html#ga6e6f2d0f2c54651ff9475f61df3797cf" title="skip until &#39;toskip&#39; occurence is found from &#39;iterator&#39; to the next &#39;toskip&#39; value." alt="" coords="145,758,202,783"/>
+<area shape="poly" id="edge29_Node000001_Node000024" title=" " alt="" coords="61,768,131,768,131,773,61,773"/>
+<area shape="rect" id="Node000025" href="$group___n___s_t_r.html#ga9113548c6342229cdbceba4d85f7b319" title="skip while &#39;toskip&#39; occurence is found from &#39;iterator&#39; to the next non &#39;toskip&#39; position." alt="" coords="143,807,203,832"/>
+<area shape="poly" id="edge30_Node000001_Node000025" title=" " alt="" coords="62,777,131,802,129,807,60,782"/>
+<area shape="rect" id="Node000026" href="$group___n___s_t_r.html#gab731024d29b0937615c1cdddeb8d4875" title="split the strings into a an array of char *pointer , ended by a NULL one." alt="" coords="148,508,199,534"/>
+<area shape="poly" id="edge31_Node000001_Node000026" title=" " alt="" coords="32,757,36,716,47,660,69,598,86,569,106,543,119,533,134,526,136,531,122,538,110,547,90,572,74,600,52,661,41,717,37,758"/>
+<area shape="rect" id="Node000027" href="$group___n___s_t_r.html#ga194b81c0709d24aef9b6f7e8635d3966" title="Count split elements." alt="" coords="127,908,220,934"/>
+<area shape="poly" id="edge33_Node000001_Node000027" title=" " alt="" coords="42,782,67,832,86,861,110,887,127,900,124,904,106,891,82,864,62,835,37,785"/>
+<area shape="rect" id="Node000028" href="$group___n___s_t_r.html#ga88e865dd8e64f3f3504a99d4d0961c37" title="Replace &quot;substr&quot; by &quot;replacement&quot; inside string taken from http://coding.debuntu.org/c&#45;implementing&#45;s..." alt="" coords="126,958,221,983"/>
+<area shape="poly" id="edge34_Node000001_Node000028" title=" " alt="" coords="39,783,45,815,59,858,80,903,110,943,117,949,113,953,106,947,75,906,54,860,40,816,33,784"/>
+<area shape="rect" id="Node000029" href="$group___n___s_t_r.html#gaaf432cb6330353e306e51ed3d6e9f417" title="clean a string by replacing evil characteres" alt="" coords="125,1007,222,1032"/>
+<area shape="poly" id="edge35_Node000001_Node000029" title=" " alt="" coords="37,783,41,823,53,879,74,939,90,967,110,993,115,997,111,1001,106,996,86,970,70,942,47,880,36,824,32,784"/>
+<area shape="rect" id="Node000031" href="$group___n___s_t_r.html#gae2c2238ae654a58f23570ce58e4d0eb8" title="Helper for string to integer." alt="" coords="132,1056,215,1082"/>
+<area shape="poly" id="edge37_Node000001_Node000031" title=" " alt="" coords="36,783,38,831,47,899,56,937,69,975,87,1010,110,1042,121,1051,118,1056,106,1046,82,1013,64,977,51,939,42,900,33,831,31,783"/>
+<area shape="rect" id="Node000033" href="$group___n___s_t_r.html#gabe0231d30f0adca6678adba9ffca328a" title="Helper for string to integer." alt="" coords="126,1106,221,1131"/>
+<area shape="poly" id="edge39_Node000001_Node000033" title=" " alt="" coords="38,783,46,848,61,940,83,1031,96,1067,110,1091,116,1097,112,1101,106,1095,91,1069,77,1033,56,941,41,848,33,784"/>
+<area shape="rect" id="Node000035" href="$group___n___s_t_r.html#ga04812d120313b73e6e22493cad0ec75d" title="Helper for string to integer." alt="" coords="109,1155,238,1180"/>
+<area shape="poly" id="edge41_Node000001_Node000035" title=" " alt="" coords="38,783,44,856,58,963,80,1070,94,1112,110,1141,114,1145,110,1149,106,1144,89,1114,75,1071,53,964,39,857,32,784"/>
+<area shape="rect" id="Node000037" href="$group___n___s_t_r.html#ga3e67ab2a87089025dc3e9e6c5cbded19" title="Lower case a string." alt="" coords="148,1204,199,1230"/>
+<area shape="poly" id="edge43_Node000001_Node000037" title=" " alt="" coords="37,783,43,865,55,987,77,1109,92,1157,110,1190,122,1200,136,1207,134,1212,119,1205,106,1193,87,1159,72,1110,50,987,37,865,32,784"/>
+<area shape="rect" id="Node000038" href="$group___n___s_t_r.html#gaf87a1c75c745938da8e8a57f493e7961" title="Upper case a string." alt="" coords="146,1254,201,1279"/>
+<area shape="poly" id="edge44_Node000001_Node000038" title=" " alt="" coords="37,783,41,873,53,1010,62,1082,75,1148,90,1202,110,1239,121,1249,134,1256,132,1261,118,1253,106,1243,86,1204,69,1149,57,1082,47,1011,36,874,32,784"/>
+<area shape="rect" id="Node000039" href="$group___n___s_t_r.html#ga8d6eb2781bd520d699441f6de1d5421b" title="trim and put a \0 at the end, return new char *" alt="" coords="149,1355,198,1380"/>
+<area shape="poly" id="edge45_Node000001_Node000039" title=" " alt="" coords="37,783,39,888,49,1053,58,1140,71,1220,88,1288,110,1334,122,1346,137,1355,134,1359,119,1350,106,1337,83,1289,66,1221,53,1140,44,1053,34,889,31,783"/>
+<area shape="rect" id="Node000040" href="$group___n___s_t_r.html#ga096b9e0a33d6e0f97e26c86b96415330" title="trim and zero end the string, WARNING: keep and original pointer to delete the string correctly" alt="" coords="311,1330,414,1355"/>
+<area shape="poly" id="edge47_Node000001_Node000040" title=" " alt="" coords="37,784,38,883,47,1036,56,1115,69,1189,87,1249,98,1272,110,1289,122,1298,140,1306,188,1319,298,1335,297,1340,187,1324,138,1311,119,1302,106,1292,93,1274,82,1251,64,1190,50,1116,41,1036,33,883,31,784"/>
+<area shape="rect" id="Node000041" href="$group___n___s_t_r.html#gabcfef0711183d5a9eb5ccb9c72ccaf85" title="Written by Rich Salz rsalz at osf.org, refurbished by me." alt="" coords="136,1428,211,1454"/>
+<area shape="poly" id="edge48_Node000001_Node000041" title=" " alt="" coords="37,783,40,896,51,1076,60,1172,73,1261,90,1337,110,1390,122,1406,137,1419,134,1423,118,1409,106,1393,85,1338,68,1262,55,1172,46,1077,35,897,32,784"/>
+<area shape="rect" id="Node000042" href="$group___n___s_t_r.html#ga4d201326b0adb27713e86af775b3dd35" title="Append src to *dest." alt="" coords="120,1530,227,1555"/>
+<area shape="poly" id="edge51_Node000001_Node000042" title=" " alt="" coords="37,783,44,927,59,1158,82,1383,95,1464,110,1509,121,1520,117,1524,106,1512,90,1466,76,1384,54,1159,39,928,32,783"/>
+<area shape="rect" id="Node000043" href="$group___n___s_t_r.html#gacc3740a4b0816c80170ba6d6b0ae9eea" title="Append src_size bytes from src to *dest, updating size/written, growing the buffer if needed." alt="" coords="298,1504,427,1530"/>
+<area shape="poly" id="edge53_Node000001_Node000043" title=" " alt="" coords="37,783,43,920,57,1138,79,1349,94,1424,102,1449,110,1463,137,1480,181,1493,284,1508,283,1514,179,1498,135,1485,106,1467,97,1451,89,1425,74,1349,52,1138,38,921,32,783"/>
+<area shape="rect" id="Node000003" href="$group___n___s_t_r.html#gac4314e9f0ada88300a09d66405d541a8" title="Convert a char into a N_STR, extended version." alt="" coords="300,82,425,107"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="225,73,287,82,286,87,224,79"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="395,105,497,149,495,154,393,110"/>
+<area shape="poly" id="edge6_Node000006_Node000004" title=" " alt="" coords="382,279,437,242,509,188,512,192,440,246,385,284"/>
+<area shape="rect" id="Node000010" href="$group___l_i_s_t.html#ga1dafe7a250ddad51fadd375f057287e7" title="Empty a LIST list of pointers." alt="" coords="317,207,408,232"/>
+<area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="223,217,304,217,304,222,223,222"/>
+<area shape="poly" id="edge12_Node000011_Node000004" title=" " alt="" coords="388,430,414,414,437,393,471,342,497,288,517,236,529,195,534,196,522,238,502,290,475,345,441,396,417,418,391,435"/>
+<area shape="rect" id="Node000014" href="$group___n___s_t_r.html#gaf1ad6fe037290fd52fb91b89dd978b1f" title="Write a N_STR content into a file." alt="" coords="319,358,406,383"/>
+<area shape="poly" id="edge16_Node000013_Node000014" title=" " alt="" coords="221,368,305,368,305,373,221,373"/>
+<area shape="poly" id="edge18_Node000015_Node000004" title=" " alt="" coords="396,42,440,67,485,106,521,144,517,148,481,110,437,71,394,47"/>
+<area shape="rect" id="Node000018" href="$group___n___s_t_r.html#ga3257ab0fdf5a36d0dfca480a161d9fbf" title="Scan a list of directory and return a list of char *file." alt="" coords="313,678,412,703"/>
+<area shape="poly" id="edge21_Node000017_Node000018" title=" " alt="" coords="212,673,300,682,299,687,211,678"/>
+<area shape="poly" id="edge25_Node000018_Node000018" title=" " alt="" coords="333,679,327,669,330,660,343,653,363,651,387,655,397,664,394,668,385,660,363,656,344,658,334,663,332,669,338,676"/>
+<area shape="rect" id="Node000019" href="$group___n___s_t_r.html#ga0a864a4ce4997389f2e5e2e16c51a30a" title="Free a N_STR pointer structure." alt="" coords="487,654,592,679"/>
+<area shape="poly" id="edge22_Node000018_Node000019" title=" " alt="" coords="412,681,472,673,473,678,412,686"/>
+<area shape="rect" id="Node000020" href="$group___l_i_s_t.html#ga4eab319289a83524639ee5e9f0441fdf" title="Add a pointer to the end of the list." alt="" coords="499,703,579,728"/>
+<area shape="poly" id="edge23_Node000018_Node000020" title=" " alt="" coords="412,695,486,706,485,711,412,700"/>
+<area shape="poly" id="edge26_Node000018_Node000022" title=" " alt="" coords="382,701,512,803,509,807,379,706"/>
+<area shape="rect" id="Node000021" href="$group___l_i_s_t.html#ga678e828550efc8e64a836bb8c713c2f4" title="Allocate a new node to link in a list." alt="" coords="640,703,755,728"/>
+<area shape="poly" id="edge24_Node000020_Node000021" title=" " alt="" coords="579,713,626,713,626,718,579,718"/>
+<area shape="poly" id="edge27_Node000022_Node000022" title=" " alt="" coords="513,815,507,805,510,796,521,789,539,787,561,791,570,799,567,803,559,795,539,792,523,794,514,799,513,805,517,812"/>
+<area shape="poly" id="edge32_Node000026_Node000007" title=" " alt="" coords="199,525,299,550,298,556,198,530"/>
+<area shape="rect" id="Node000030" href="$group___n___s_t_r.html#ga2386f438e79df60930987a6102e87934" title="clean a string by replacing evil characteres" alt="" coords="303,1007,423,1032"/>
+<area shape="poly" id="edge36_Node000029_Node000030" title=" " alt="" coords="222,1017,289,1017,289,1022,222,1022"/>
+<area shape="rect" id="Node000032" href="$group___n___s_t_r.html#ga55fdc7d1a7bd05f3e3925486e7fc9b9d" title="Helper for string[start to end] to integer." alt="" coords="309,1056,416,1082"/>
+<area shape="poly" id="edge38_Node000031_Node000032" title=" " alt="" coords="215,1066,296,1066,296,1072,215,1072"/>
+<area shape="rect" id="Node000034" href="$group___n___s_t_r.html#gaf2fb09488bdaa0e8662f639ea899627e" title="Helper for string[start to end] to long integer." alt="" coords="304,1106,421,1131"/>
+<area shape="poly" id="edge40_Node000033_Node000034" title=" " alt="" coords="221,1116,290,1116,290,1121,221,1121"/>
+<area shape="rect" id="Node000036" href="$group___n___s_t_r.html#ga342bfee6550085fdf64e3db3cdd3ecb3" title="Helper for string[start to end] to long long integer." alt="" coords="287,1155,439,1180"/>
+<area shape="poly" id="edge42_Node000035_Node000036" title=" " alt="" coords="238,1165,273,1165,273,1170,238,1170"/>
+<area shape="poly" id="edge46_Node000039_Node000040" title=" " alt="" coords="198,1362,298,1348,298,1354,199,1367"/>
+<area shape="poly" id="edge49_Node000041_Node000041" title=" " alt="" coords="150,1430,145,1420,147,1410,157,1404,173,1402,193,1405,201,1414,197,1418,190,1410,173,1407,159,1409,152,1414,150,1419,154,1427"/>
+<area shape="poly" id="edge52_Node000042_Node000043" title=" " alt="" coords="227,1533,284,1525,285,1530,228,1538"/>
+</map>

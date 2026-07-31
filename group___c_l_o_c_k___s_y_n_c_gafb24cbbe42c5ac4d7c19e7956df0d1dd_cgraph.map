@@ -1,0 +1,9 @@
+<map id="clock_sync_store_sample" name="clock_sync_store_sample">
+<area shape="rect" id="Node000001" title="store one (offset, rtt) sample and recompute the estimates." alt="" coords="5,42,193,67"/>
+<area shape="rect" id="Node000002" href="$group___c_l_o_c_k___s_y_n_c.html#ga64d9e9bda36ae5de419a74c8e0193757" title="effective (slewed) offset at local_now — pure function of the stored state so the const getter needs ..." alt="" coords="241,5,399,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="193,39,227,35,228,40,194,45"/>
+<area shape="rect" id="Node000003" href="$group___c_l_o_c_k___s_y_n_c.html#gad4587683aed3b60cb72a2f67433da6a5" title="compute the median of an array of doubles" alt="" coords="275,70,365,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="194,64,261,73,260,78,193,69"/>
+<area shape="rect" id="Node000004" href="$group___c_l_o_c_k___s_y_n_c.html#ga388caadb5b269f83e0fb792e2994c65a" title="comparison function for qsort on doubles" alt="" coords="447,70,548,95"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="365,80,433,80,433,85,365,85"/>
+</map>

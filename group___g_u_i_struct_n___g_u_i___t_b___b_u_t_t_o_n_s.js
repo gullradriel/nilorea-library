@@ -1,0 +1,26 @@
+var group___g_u_i_struct_n___g_u_i___t_b___b_u_t_t_o_n_s =
+[
+    [ "btn_theme", "group___g_u_i.html#ab053d420e19edf8fe93f820756bb5d77", null ],
+    [ "close_active_bitmap", "group___g_u_i.html#aa34ad1a47979f9fa01bd086afcac0fa0", null ],
+    [ "close_bitmap", "group___g_u_i.html#a842c1a245698f25a6d90969b3fffd3cd", null ],
+    [ "close_hover_bitmap", "group___g_u_i.html#a4e382014fe3e8290c13eaa5835ee2856", null ],
+    [ "close_theme", "group___g_u_i.html#a58bce232fe8548cc558193ec1cf6348b", null ],
+    [ "hovered", "group___g_u_i.html#abe7018eb5fb18a050d2be78e7a6c9841", null ],
+    [ "maximize_active_bitmap", "group___g_u_i.html#a9aa1ff8a21aa2842664441c655a71a7f", null ],
+    [ "maximize_bitmap", "group___g_u_i.html#a4884bdde7d16a2edd4c2bf050048773a", null ],
+    [ "maximize_hover_bitmap", "group___g_u_i.html#ab972312be4c997b39faf4c554bc4a6e9", null ],
+    [ "minimize_active_bitmap", "group___g_u_i.html#a0f9d51998cd0e0999a5e4129136f892e", null ],
+    [ "minimize_bitmap", "group___g_u_i.html#ad4a319ba3386aa042f76ac7cd5b061df", null ],
+    [ "minimize_hover_bitmap", "group___g_u_i.html#a8d57628bca638ca2fe93cec987b6fd01", null ],
+    [ "on_close", "group___g_u_i.html#a66db2423ca3cb5eb7eb705ad4765b509", null ],
+    [ "on_close_user_data", "group___g_u_i.html#a865f6464ebb2bc59a20603fe8a2cee55", null ],
+    [ "on_maximize", "group___g_u_i.html#af1030ec414aa776f3726b12216ceea62", null ],
+    [ "on_maximize_user_data", "group___g_u_i.html#a31d0dba12633087ad91d49aa766da0b1", null ],
+    [ "on_minimize", "group___g_u_i.html#ad147c5bf3154b65b9619066b7c2f50ee", null ],
+    [ "on_minimize_user_data", "group___g_u_i.html#ae8a0f52477a2475e0174786644af647d", null ],
+    [ "pressed", "group___g_u_i.html#a319f99205aaa8dbc1aa98c2d4ca0c0ad", null ],
+    [ "restore_h", "group___g_u_i.html#a9e4a6e463d749ab49cf77421152faa4d", null ],
+    [ "restore_w", "group___g_u_i.html#ab3dd2c6b7e8d90dc7c706a5f1971ad5e", null ],
+    [ "restore_x", "group___g_u_i.html#a5a787005469160c976a4dd45465e8996", null ],
+    [ "restore_y", "group___g_u_i.html#ae174891afbac1f76532cc47bbe836663", null ]
+];

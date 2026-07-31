@@ -1,0 +1,20 @@
+<map id="avro_decode_long" name="avro_decode_long">
+<area shape="rect" id="Node000001" title="Decode a zig&#45;zag varint from reader into a 64&#45;bit signed integer." alt="" coords="980,56,1120,81"/>
+<area shape="rect" id="Node000002" href="$n__avro_8c.html#aded97f8db4daf0a86e765676211b0dd3" title="helper: read raw bytes with length prefix" alt="" coords="753,5,932,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="983,55,895,33,896,28,984,50"/>
+<area shape="rect" id="Node000003" href="$group___a_v_r_o.html#gabf6cfcbee3502e9284ff8786d8769eeb" title="Decode an Avro container format N_STR into a cJSON array of records." alt="" coords="329,56,503,81"/>
+<area shape="poly" id="edge10_Node000001_Node000003" title=" " alt="" coords="966,82,776,98,663,100,550,95,475,84,476,79,551,90,663,95,776,93,966,77"/>
+<area shape="rect" id="Node000007" href="$group___a_v_r_o.html#gac64ccae2ac899c85bed89c6c40e241f6" title="Decode an Avro binary datum into cJSON according to schema." alt="" coords="551,56,705,81"/>
+<area shape="poly" id="edge11_Node000001_Node000007" title=" " alt="" coords="966,71,706,71,706,66,966,66"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="739,12,647,12,551,22,493,38,445,58,443,53,492,33,550,17,647,7,739,7"/>
+<area shape="poly" id="edge7_Node000002_Node000007" title=" " alt="" coords="775,37,683,59,682,53,774,31"/>
+<area shape="rect" id="Node000004" href="$group___a_v_r_o.html#ga1f884095803d2adbb4b5663fe7667f8d" title="Read an Avro object container file and produce a JSON file using a schema file." alt="" coords="129,31,261,56"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="315,60,261,54,261,48,316,55"/>
+<area shape="rect" id="Node000006" href="$group___a_v_r_o.html#gacfc165b0e6a73dc5f2e9c7e2c1f1ed0a" title="Convert Avro N_STR to JSON N_STR using schema N_STR (all in&#45;memory)" alt="" coords="108,80,281,105"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="316,82,282,86,281,81,315,77"/>
+<area shape="rect" id="Node000005" href="$ex__avro_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,56,60,81"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="115,58,61,67,60,62,114,53"/>
+<area shape="poly" id="edge6_Node000006_Node000005" title=" " alt="" coords="95,81,60,75,61,70,96,75"/>
+<area shape="poly" id="edge8_Node000007_Node000003" title=" " alt="" coords="537,71,503,71,503,66,537,66"/>
+<area shape="poly" id="edge9_Node000007_Node000007" title=" " alt="" coords="666,46,655,38,628,35,606,37,594,41,591,47,598,54,593,58,586,48,590,38,604,32,628,29,657,33,669,42"/>
+</map>

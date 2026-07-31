@@ -1,0 +1,9 @@
+<map id="hpack_str_decode" name="hpack_str_decode">
+<area shape="rect" id="Node000001" title="decode an HPACK string (Huffman or literal); allocates *out" alt="" coords="5,31,144,56"/>
+<area shape="rect" id="Node000002" href="$n__http2_8c.html#a9e5678e2e3ac1fcf960d0492eb09608a" title="decode a Huffman&#45;coded string of len bytes into a fresh C string" alt="" coords="192,5,339,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="144,31,178,27,179,32,145,37"/>
+<area shape="rect" id="Node000004" href="$n__http2_8c.html#aba573f4ec2c24b097d27932f7d5f7443" title="decode an HPACK integer with an N&#45;bit prefix; advances *pos" alt="" coords="196,55,335,80"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="145,49,183,54,182,60,144,55"/>
+<area shape="rect" id="Node000003" href="$n__http2_8c.html#a98ff530c16c3edaa695d400afbc97831" title="find the Huffman symbol for an accumulated code of nbits bits, or &#45;1" alt="" coords="387,5,529,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="339,15,373,15,373,21,339,21"/>
+</map>

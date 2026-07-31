@@ -1,0 +1,37 @@
+<map id="update_3d_logic" name="update_3d_logic">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,252,133,277"/>
+<area shape="rect" id="Node000002" href="$ex__trajectory_8c.html#a87be2b92d88818274c65d895ba0596e8" title=" " alt="" coords="211,203,301,228"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="117,249,197,228,198,233,119,255"/>
+<area shape="rect" id="Node000003" href="$ex__trajectory_8c.html#a4fc3e18b0da67d6845f95aab713d2dd5" title=" " alt="" coords="201,252,311,277"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="133,262,187,262,187,267,133,267"/>
+<area shape="rect" id="Node000004" href="$group___t_r_a_j_e_c_t_o_r_y.html#ga837278485575d3cecd747ce8151f481b" title="Compute the full state (position, speed, acceleration, orientation, angular_speed) at a given time us..." alt="" coords="181,301,331,327"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="119,275,195,295,193,300,117,280"/>
+<area shape="rect" id="Node000005" href="$n__trajectory_8c.html#a7b7b1b8c9042940e2c13d70437bdbfaa" title="Second derivative of h00: d2h00/ds2 = 12s &#45; 6." alt="" coords="411,5,531,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="313,299,329,287,348,256,356,226,355,195,351,165,347,134,347,103,355,71,377,40,396,26,399,31,381,44,360,74,352,103,352,133,356,164,361,195,361,226,353,258,333,290,316,303"/>
+<area shape="rect" id="Node000006" href="$n__trajectory_8c.html#a52c1dbccb354dce9ea3b662f172c7c79" title="Second derivative of h01: d2h01/ds2 = &#45;12s + 6." alt="" coords="411,55,531,80"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="312,299,329,287,345,263,352,238,353,214,351,189,349,165,350,139,359,114,377,89,396,76,399,80,381,93,363,117,356,140,354,164,356,189,359,214,358,239,350,265,333,291,315,303"/>
+<area shape="rect" id="Node000007" href="$n__trajectory_8c.html#a8a4c399ce09afdf7d9adc77585905f7e" title="Second derivative of h10: d2h10/ds2 = 6s &#45; 4." alt="" coords="411,104,531,129"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="311,299,329,287,342,269,349,251,351,214,354,176,362,157,377,139,396,126,399,130,380,143,366,160,359,178,357,214,354,252,347,271,333,291,314,303"/>
+<area shape="rect" id="Node000008" href="$n__trajectory_8c.html#afa3e015d076d097d51499201c86264a6" title="Second derivative of h11: d2h11/ds2 = 6s &#45; 2." alt="" coords="411,153,531,179"/>
+<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="309,299,329,287,339,275,346,263,352,238,358,213,365,200,377,188,397,176,399,181,380,192,369,203,363,215,357,239,351,265,344,278,332,291,312,304"/>
+<area shape="rect" id="Node000009" href="$n__trajectory_8c.html#a67925259bdb9a7e064ee8aae9336cb37" title="First derivative of h00: dh00/ds = 6s^2 &#45; 6s." alt="" coords="415,203,527,228"/>
+<area shape="poly" id="edge8_Node000004_Node000009" title=" " alt="" coords="303,299,329,286,343,274,352,262,362,249,377,237,400,227,402,232,380,242,366,253,357,265,347,278,332,291,306,304"/>
+<area shape="rect" id="Node000010" href="$n__trajectory_8c.html#afefa9fd990460d63e947ce4e7851c993" title="First derivative of h01: dh01/ds = &#45;6s^2 + 6s." alt="" coords="415,252,527,277"/>
+<area shape="poly" id="edge9_Node000004_Node000010" title=" " alt="" coords="311,299,401,278,402,283,313,304"/>
+<area shape="rect" id="Node000011" href="$n__trajectory_8c.html#aa67fb0b0e90521dbff903e9ed96887fd" title="First derivative of h10: dh10/ds = 3s^2 &#45; 4s + 1." alt="" coords="415,301,527,327"/>
+<area shape="poly" id="edge10_Node000004_Node000011" title=" " alt="" coords="331,311,401,311,401,317,331,317"/>
+<area shape="rect" id="Node000012" href="$n__trajectory_8c.html#a872914d50d230f6f97b91d790107c476" title="First derivative of h11: dh11/ds = 3s^2 &#45; 2s." alt="" coords="415,351,527,376"/>
+<area shape="poly" id="edge11_Node000004_Node000012" title=" " alt="" coords="313,324,402,345,401,350,311,329"/>
+<area shape="rect" id="Node000013" href="$n__trajectory_8c.html#a666e72a0af63173609bb4a54177aa654" title="Hermite basis function h00: weights the start position." alt="" coords="419,400,523,425"/>
+<area shape="poly" id="edge12_Node000004_Node000013" title=" " alt="" coords="276,325,322,354,380,385,406,395,404,400,378,390,319,359,274,329"/>
+<area shape="rect" id="Node000014" href="$n__trajectory_8c.html#ae7069e17e6e88f2f763ca89592608dca" title="Hermite basis function h01: weights the end position." alt="" coords="419,449,523,475"/>
+<area shape="poly" id="edge13_Node000004_Node000014" title=" " alt="" coords="268,325,313,378,344,409,380,434,407,446,405,451,377,439,341,413,309,382,264,329"/>
+<area shape="rect" id="Node000015" href="$n__trajectory_8c.html#a6bad0cbbd150cb987c0a2c2874d0070c" title="Hermite basis function h10: weights the start tangent." alt="" coords="419,499,523,524"/>
+<area shape="poly" id="edge14_Node000004_Node000015" title=" " alt="" coords="265,326,281,358,305,401,339,446,380,484,407,497,404,502,377,488,335,449,301,404,276,361,260,328"/>
+<area shape="rect" id="Node000016" href="$n__trajectory_8c.html#a7a50439f21760c60a343d4bc6d1293cb" title="Hermite basis function h11: weights the end tangent." alt="" coords="419,548,523,573"/>
+<area shape="poly" id="edge15_Node000004_Node000016" title=" " alt="" coords="263,326,276,366,299,423,333,482,355,510,380,533,407,547,404,552,377,537,351,513,329,485,294,425,271,368,258,328"/>
+<area shape="rect" id="Node000017" href="$n__trajectory_8c.html#afecdaca1aba2c24d9417ce63e384e6a6" title="Load the correct spline segment for a given time when using multi&#45;point paths." alt="" coords="379,597,563,623"/>
+<area shape="poly" id="edge16_Node000004_Node000017" title=" " alt="" coords="262,327,272,375,293,444,308,482,328,519,352,553,380,583,389,589,385,593,377,587,348,556,323,521,303,484,288,446,266,376,257,328"/>
+<area shape="rect" id="Node000018" href="$n__trajectory_8c.html#a7b7db2b132cf0c88f49ce83c2796b614" title="Recompute the Hermite tangent vectors from current start/end states." alt="" coords="611,590,760,630"/>
+<area shape="poly" id="edge17_Node000017_Node000018" title=" " alt="" coords="563,607,597,607,597,613,563,613"/>
+</map>

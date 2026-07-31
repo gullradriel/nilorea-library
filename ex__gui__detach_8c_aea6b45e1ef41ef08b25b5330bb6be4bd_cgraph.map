@@ -1,0 +1,37 @@
+<map id="on_load_layout" name="on_load_layout">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,181,127,207"/>
+<area shape="rect" id="Node000002" href="$group___g_u_i.html#gad5ad339fe8b1231dc7dab350f4667245" title="load a JSON window layout file and apply it to matching windows" alt="" coords="175,108,349,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="100,179,213,136,215,141,102,184"/>
+<area shape="rect" id="Node000010" href="$ex__gui__detach_8c.html#a4668f5dd304016f125588bdf03b7bd0d" title="keep each panel&#39;s button label in sync with what it will do next" alt="" coords="200,231,324,256"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="118,204,198,225,197,230,116,209"/>
+<area shape="rect" id="Node000003" href="$n__gui_8c.html#a11496ef2298ab5a373066fe68b315c53" title="helper: read a float from JSON, return fallback if missing" alt="" coords="437,83,557,108"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="349,109,423,101,423,106,350,114"/>
+<area shape="rect" id="Node000004" href="$n__gui_8c.html#aa08eab9e91f7cbcd5755f78d771c6c7a" title="helper: read an int from JSON, return fallback if missing" alt="" coords="443,132,551,157"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="350,127,430,135,429,140,349,132"/>
+<area shape="rect" id="Node000005" href="$group___g_u_i.html#ga1a52c8fa983061bee43fdcb4b9e9c56c" title="Promote a pop&#45;up window to a native OS window." alt="" coords="414,33,579,59"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="293,105,397,67,424,60,426,65,398,73,295,110"/>
+<area shape="rect" id="Node000006" href="$n__gui_8c.html#adf6ce1b72400daecc1031525d7934ec8" title="capture normalized coords for a single widget relative to its parent window" alt="" coords="644,55,815,95"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="580,54,631,60,630,66,579,59"/>
+<area shape="rect" id="Node000007" href="$n__gui_8c.html#ad69070337d54549ba52daa8b1d17a580" title="helper: effective title bar height (0 for frameless windows)" alt="" coords="689,5,769,31"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="579,33,675,22,676,27,580,39"/>
+<area shape="rect" id="Node000008" href="$group___g_u_i.html#ga932fd1ac880df86b92a25ced736298be" title="Get a window pointer by id." alt="" coords="658,189,801,215"/>
+<area shape="poly" id="edge7_Node000005_Node000008" title=" " alt="" coords="571,56,597,68,622,86,652,115,709,177,706,180,648,119,618,90,595,72,569,61"/>
+<area shape="rect" id="Node000009" href="$n__gui_8c.html#ac4c3cab227dd7eabfc2e94f8f8d6d1ae" title="helper: find a window node in the context list by id" alt="" coords="863,189,1012,215"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="801,199,849,199,849,205,801,205"/>
+<area shape="rect" id="Node000011" href="$group___g_u_i.html#ga57fdb6371dc5a7d04fe9450a362f582a" title="Replace the label text drawn on a button." alt="" coords="411,329,583,355"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="284,254,335,284,398,314,424,323,423,328,396,319,332,288,282,258"/>
+<area shape="rect" id="Node000014" href="$group___g_u_i.html#gaca6e73f0adc3ee1976dbc40bcd899496" title="Count the windows currently detached into native OS windows." alt="" coords="413,181,580,207"/>
+<area shape="poly" id="edge13_Node000010_Node000014" title=" " alt="" coords="323,228,422,207,423,212,324,233"/>
+<area shape="rect" id="Node000015" href="$group___g_u_i.html#ga29eeace96f8b79bac7575b83b38d7b90" title="set the text of a label widget" alt="" coords="419,280,575,305"/>
+<area shape="poly" id="edge14_Node000010_Node000015" title=" " alt="" coords="324,253,423,274,422,280,323,259"/>
+<area shape="rect" id="Node000017" href="$group___g_u_i.html#ga6ab00672535a74a72865f2a2aa7d1b8e" title="Check whether a window currently lives in a native OS window." alt="" coords="397,231,596,256"/>
+<area shape="poly" id="edge17_Node000010_Node000017" title=" " alt="" coords="324,241,384,241,384,246,324,246"/>
+<area shape="rect" id="Node000012" href="$group___g_u_i.html#ga9072d6f6b2708518c4c3d5d21849f11e" title="Get a widget pointer by id." alt="" coords="661,329,797,355"/>
+<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="583,339,648,339,648,345,583,345"/>
+<area shape="rect" id="Node000013" href="$group___h_a_s_h___t_a_b_l_e.html#ga009f66a508dcea120e0cd2b34805e5a2" title="get pointer at &#39;key&#39; from &#39;table&#39;" alt="" coords="893,329,981,355"/>
+<area shape="poly" id="edge12_Node000012_Node000013" title=" " alt="" coords="798,339,880,339,880,345,798,345"/>
+<area shape="poly" id="edge16_Node000015_Node000012" title=" " alt="" coords="558,303,656,324,655,329,557,308"/>
+<area shape="rect" id="Node000016" href="$n__gui_8c.html#a24a87063938ac69c2c8f176c638cb04e" title="helper: strip CR from a string in&#45;place, normalizing CRLF to LF." alt="" coords="668,280,791,305"/>
+<area shape="poly" id="edge15_Node000015_Node000016" title=" " alt="" coords="575,290,654,290,654,295,575,295"/>
+<area shape="poly" id="edge18_Node000017_Node000008" title=" " alt="" coords="568,228,644,214,645,220,569,233"/>
+</map>

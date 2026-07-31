@@ -1,0 +1,28 @@
+var group___g_u_i_struct_n___g_u_i___d_a_t_a_g_r_i_d___d_a_t_a =
+[
+    [ "anchor_row", "group___g_u_i.html#adf32b4db7bc1c4e9f10a1979223ed232", null ],
+    [ "cells", "group___g_u_i.html#a1d63cd0bd4d8eaf3365037e2d28ea46f", null ],
+    [ "col_order", "group___g_u_i.html#a0478052d37fd5132c0dd40f3f0aca62d", null ],
+    [ "col_resize_col", "group___g_u_i.html#af2dd9676d271e6b7af4599fb5faf81c0", null ],
+    [ "col_resize_w0", "group___g_u_i.html#afc04ea1ac6730260068defd93a655bcd", null ],
+    [ "col_resize_x0", "group___g_u_i.html#aaeea46615822d3d653a2c2825dcee516", null ],
+    [ "cols", "group___g_u_i.html#a8ab4c1cb563124994af34a24bb6488a1", null ],
+    [ "cols_cap", "group___g_u_i.html#a3723dd4d02a50a4972bf3448d56109d7", null ],
+    [ "h_scroll", "group___g_u_i.html#ac2515090ddd4f33031375f2699c56984", null ],
+    [ "h_scroll_dragging", "group___g_u_i.html#a3b5c11e0e80b4461dc12c667392afe85", null ],
+    [ "multiselect", "group___g_u_i.html#a24e3c6e2deeabc1e4c21daf067d0313d", null ],
+    [ "nb_cols", "group___g_u_i.html#aba18f2e46e5794477f371f180a9e1704", null ],
+    [ "nb_rows", "group___g_u_i.html#af0929f46954671c0785c82eb7b61199d", null ],
+    [ "on_columns_changed", "group___g_u_i.html#a99e63af6da8252362a797872b2cf3deb", null ],
+    [ "on_context", "group___g_u_i.html#ad31183143ad076a1504ae5fa3384b682", null ],
+    [ "on_select", "group___g_u_i.html#ae45f35d4103a9398013c80ea5dabba92", null ],
+    [ "row_color", "group___g_u_i.html#af7c23931f9f64ca07a3b1d8a84d35006", null ],
+    [ "row_has_color", "group___g_u_i.html#a83ced6271421cdda5d3dee6f2fcd895d", null ],
+    [ "row_sel", "group___g_u_i.html#a7ba7fa65dd4a81521393c06dfe5428a0", null ],
+    [ "rows_cap", "group___g_u_i.html#a259c3d9eb2863a968ef406c58214c111", null ],
+    [ "scroll_offset", "group___g_u_i.html#ae2f0574e7b5203579dc20416d68eb278", null ],
+    [ "selected_row", "group___g_u_i.html#a14617639b7db4e99c62d77b9d1a13bfa", null ],
+    [ "sort_col", "group___g_u_i.html#a104aaa643699da393361fa22cf2d3457", null ],
+    [ "sort_dir", "group___g_u_i.html#a51b93570639e22fd2a36464ecdb4cf25", null ],
+    [ "user_data", "group___g_u_i.html#ab9d30894140ddf89f5f83de93720a768", null ]
+];
