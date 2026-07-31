@@ -1,0 +1,73 @@
+Nilorea Library
+Copyright (c) 2005-2026 Castagnier Mickael
+
+This product includes software developed by Castagnier Mickael.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+
+Third-party components
+----------------------
+
+This repository vendors third-party code under the external/ directory.
+Those components are NOT covered by the Apache License, Version 2.0, and
+remain under their own upstream licenses:
+
+  external/zlib/
+      zlib license.
+      Copyright (C) 1995-2022 Jean-loup Gailly and Mark Adler.
+      See external/zlib/LICENSE.
+
+  external/lz4/
+      Dual licensed. The block codec built into this library
+      (external/lz4/lib/lz4.c) is BSD 2-Clause.
+      Copyright (c) 2011-2020, Yann Collet.
+      See external/lz4/lib/LICENSE.
+      The external/lz4/programs/, external/lz4/examples/ and
+      external/lz4/tests/ directories are GPL-2.0-or-later. They are
+      redistributed here as part of the upstream import but are not
+      compiled into, or linked against, this library.
+      See external/lz4/LICENSE and the COPYING file in each directory.
+
+  external/cJSON/ and examples/cJSON.c, examples/cJSON.h
+      MIT license.
+      Copyright (c) 2009-2017 Dave Gamble and cJSON contributors.
+      See external/cJSON/LICENSE.
+      The bundled test framework external/cJSON/tests/unity/ is MIT,
+      Copyright (c) 2007-14 Mike Karlesky, Mark VanderVoord, Greg Williams.
+
+  external/librdkafka/
+      BSD 2-Clause.
+      Copyright (c) 2012-2022, Magnus Edenhill; 2023, Confluent Inc.
+      See external/librdkafka/LICENSE. This component bundles further
+      third-party code under additional licenses; the full list is in
+      external/librdkafka/LICENSES.txt.
+
+examples/valgrind-suppressions.cfg is derived from the MySQL/glibc valgrind
+suppression set and remains under the GNU Library General Public License,
+version 2.
+      Copyright (c) 2005, 2011, Oracle and/or its affiliates.
+      Copyright (c) 2008-2011, Monty Program Ab.
+It is a diagnostic configuration file for valgrind. It is not compiled into,
+linked against, or distributed as part of this library.
+
+src/n_hash.c contains MurmurHash3, written by Austin Appleby and placed in
+the public domain by its author.
+
+src/n_network.c incorporates small, separately licensed routines that
+retain their original notices in place: the inet_pton / inet_ntop
+fallbacks used on MinGW, under the ISC license (Copyright (c) 2004 by
+Internet Systems Consortium, Inc.; Copyright (c) 1996-1999 by Internet
+Software Consortium), a routine derived from curl (Copyright (C) 1998 -
+2019, Daniel Stenberg, et al.), and a strlcpy implementation (Copyright
+(c) 1998 Todd C. Miller). Those notices are kept verbatim in place.

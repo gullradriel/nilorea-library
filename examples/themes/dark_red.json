@@ -1,0 +1,86 @@
+{
+    "theme": {
+        "bg_normal":      [60, 20, 20, 235],
+        "bg_hover":       [90, 30, 30, 245],
+        "bg_active":      [130, 40, 40, 255],
+        "border_normal":  [160, 60, 60, 255],
+        "border_hover":   [200, 80, 80, 255],
+        "border_active":  [240, 100, 100, 255],
+        "text_normal":    [230, 200, 200, 255],
+        "text_hover":     [255, 230, 230, 255],
+        "text_active":    [255, 255, 255, 255],
+        "border_thickness": 1.5,
+        "corner_rx": 6.0,
+        "corner_ry": 6.0
+    },
+    "style": {
+        "titlebar_h": 30.0,
+        "min_win_w": 120.0,
+        "min_win_h": 60.0,
+        "title_padding": 10.0,
+        "title_max_w_reserve": 16.0,
+
+        "scrollbar_size": 14.0,
+        "scrollbar_thumb_min": 18.0,
+        "scrollbar_thumb_padding": 2.0,
+        "scrollbar_thumb_corner_r": 4.0,
+        "scrollbar_track_color": [50, 15, 15, 200],
+        "scrollbar_thumb_color": [140, 50, 50, 220],
+
+        "global_scrollbar_size": 14.0,
+        "global_scrollbar_thumb_min": 20.0,
+        "global_scrollbar_thumb_padding": 2.0,
+        "global_scrollbar_thumb_corner_r": 4.0,
+        "global_scrollbar_border_thickness": 1.0,
+        "global_scrollbar_track_color": [40, 10, 10, 200],
+        "global_scrollbar_thumb_color": [120, 40, 40, 220],
+        "global_scrollbar_thumb_border_color": [170, 60, 60, 255],
+
+        "grip_size": 12.0,
+        "grip_line_thickness": 1.0,
+        "grip_color": [180, 80, 80, 200],
+
+        "slider_track_size": 6.0,
+        "slider_track_corner_r": 3.0,
+        "slider_track_border_thickness": 1.0,
+        "slider_handle_min_r": 5.0,
+        "slider_handle_edge_offset": 2.0,
+        "slider_handle_border_thickness": 1.5,
+        "slider_value_label_offset": 8.0,
+
+        "textarea_padding": 5.0,
+
+        "checkbox_max_size": 20.0,
+        "checkbox_mark_margin": 4.0,
+        "checkbox_mark_thickness": 2.5,
+        "checkbox_label_gap": 10.0,
+        "checkbox_label_offset": 6.0,
+
+        "radio_circle_min_r": 4.0,
+        "radio_circle_border_thickness": 1.5,
+        "radio_inner_offset": 3.0,
+        "radio_label_gap": 6.0,
+
+        "listbox_default_item_height": 22.0,
+        "radiolist_default_item_height": 24.0,
+        "combobox_max_visible": 6,
+        "dropmenu_max_visible": 12,
+        "item_text_padding": 6.0,
+        "item_selection_inset": 1.0,
+        "item_height_pad": 4.0,
+
+        "dropdown_arrow_reserve": 16.0,
+        "dropdown_arrow_thickness": 1.5,
+        "dropdown_arrow_half_h": 3.0,
+        "dropdown_arrow_half_w": 5.0,
+        "dropdown_border_thickness": 1.0,
+
+        "label_padding": 4.0,
+        "link_underline_thickness": 1.5,
+        "link_color_normal": [220, 100, 100, 255],
+        "link_color_hover": [255, 140, 140, 255],
+
+        "scroll_step": 20.0,
+        "global_scroll_step": 30.0
+    }
+}
