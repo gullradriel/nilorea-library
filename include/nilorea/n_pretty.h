@@ -52,7 +52,13 @@ extern "C" {
  *   `if (x) /re/.test(y)`) is lexed as division, which can only
  *   mis-break lines, never corrupt the text.
  * - n_pretty_json() needs the vendored cJSON (HAVE_CJSON); without it the
- *   function logs an error and returns NULL.
+ *   function logs an error and returns NULL. It parses, so it reformats
+ *   valid documents only: use n_pretty_json_lenient() for the rest.
+ * - n_pretty_json_lenient() re-indents by punctuation without parsing, so
+ *   it also breaks up a document cJSON rejects (a truncated body, a
+ *   trailing comma, NDJSON). It cannot report that the input was invalid
+ *   and it does not normalise anything, so prefer n_pretty_json() first
+ *   and label what the fallback produces as approximate.
  *
  * All functions return a freshly allocated N_STR the caller must release
  * with free_nstr(), or NULL when the input is NULL, empty, or does not
@@ -68,6 +74,14 @@ extern "C" {
  *@param text The JSON text. NULL, empty, or non-JSON input returns NULL.
  *@return A new indented N_STR (free with free_nstr), or NULL. */
 N_STR* n_pretty_json(const char* text);
+
+/*!@brief Re-indent a JSON document by punctuation alone, without parsing it.
+ *       String literals are copied verbatim, containers open and close a level,
+ *       and each comma ends a line, so a document cJSON rejects (truncated,
+ *       trailing comma, concatenated values) still becomes readable.
+ *@param text The JSON text. NULL or empty input returns NULL.
+ *@return A new indented N_STR (free with free_nstr), or NULL. */
+N_STR* n_pretty_json_lenient(const char* text);
 
 /*!@brief Re-indent an XML or HTML document (one tag or text run per line).
  *@param text The markup text. NULL, empty, or input whose first

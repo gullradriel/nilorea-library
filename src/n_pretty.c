@@ -106,6 +106,108 @@ N_STR* n_pretty_json(const char* text) {
 #endif
 }
 
+/*! emit the pending indent of a lenient JSON line, TRUE on success */
+static int _jsonl_lead(PRETTY_OUT* o, int depth, int* at_line_start) {
+    if (!*at_line_start) return TRUE;
+    *at_line_start = 0;
+    return _out_indent(o, depth);
+}
+
+/*! end the current lenient JSON line unless it is still empty, TRUE on success */
+static int _jsonl_newline(PRETTY_OUT* o, int* at_line_start) {
+    if (*at_line_start) return TRUE;
+    *at_line_start = 1;
+    return _out_ch(o, '\n');
+}
+
+N_STR* n_pretty_json_lenient(const char* text) {
+    PRETTY_OUT o;
+    const char* p = text;
+    int depth = 0;
+    int at_line_start = 1;
+    int ok = TRUE;
+
+    __n_assert(text, return NULL);
+    if (!text[0]) return NULL;
+    memset(&o, 0, sizeof(o));
+
+    while (*p && ok) {
+        char c = *p;
+        if (isspace((unsigned char)c)) {
+            p++;
+            continue;
+        }
+        if (c == '"') {
+            /* copied verbatim, so a brace or a comma inside a string cannot
+               break the line; an unterminated one runs to the end of input */
+            size_t n = 1;
+            while (p[n]) {
+                if (p[n] == '\\' && p[n + 1]) {
+                    n += 2;
+                    continue;
+                }
+                if (p[n] == '"') {
+                    n++;
+                    break;
+                }
+                n++;
+            }
+            ok = _jsonl_lead(&o, depth, &at_line_start) && _out_mem(&o, p, n);
+            p += n;
+            continue;
+        }
+        if (c == '{' || c == '[') {
+            char close = (c == '{') ? '}' : ']';
+            const char* q = p + 1;
+            while (*q && isspace((unsigned char)*q)) q++;
+            ok = _jsonl_lead(&o, depth, &at_line_start) && _out_ch(&o, c);
+            if (*q == close) {
+                /* an empty container reads better kept on its line */
+                ok = ok && _out_ch(&o, close);
+                p = q + 1;
+                continue;
+            }
+            depth++;
+            ok = ok && _jsonl_newline(&o, &at_line_start);
+            p++;
+            continue;
+        }
+        if (c == '}' || c == ']') {
+            if (depth > 0) depth--;
+            ok = _jsonl_newline(&o, &at_line_start) &&
+                 _jsonl_lead(&o, depth, &at_line_start) && _out_ch(&o, c);
+            p++;
+            continue;
+        }
+        if (c == ',') {
+            ok = _jsonl_lead(&o, depth, &at_line_start) && _out_ch(&o, c) &&
+                 _jsonl_newline(&o, &at_line_start);
+            p++;
+            continue;
+        }
+        if (c == ':') {
+            ok = _jsonl_lead(&o, depth, &at_line_start) && _out_mem(&o, ": ", 2);
+            p++;
+            continue;
+        }
+        {
+            /* numbers, true/false/null, and whatever else a malformed or
+               truncated document left behind: passed through as one token */
+            size_t n = 0;
+            while (p[n] && !strchr("\"{}[],:", p[n]) && !isspace((unsigned char)p[n])) n++;
+            if (n == 0) n = 1;
+            ok = _jsonl_lead(&o, depth, &at_line_start) && _out_mem(&o, p, n);
+            p += n;
+        }
+    }
+    if (ok) ok = _jsonl_newline(&o, &at_line_start);
+    if (!ok) {
+        Free(o.buf);
+        return NULL;
+    }
+    return _out_finish(&o);
+}
+
 /*! HTML elements that never have content or a closing tag */
 static const char* PRETTY_VOID_ELEMENTS[] = {
     "area", "base", "br", "col", "embed", "hr", "img", "input",

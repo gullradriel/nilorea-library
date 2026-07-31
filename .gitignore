@@ -54,6 +54,8 @@ examples/ex_gui_datagrid
 examples/ex_gui_bench
 examples/ex_gui_hexview
 examples/ex_gui_splitpane
+examples/ex_gui_window_rect
+examples/ex_gui_glyph
 examples/ex_gui_syntaxview
 examples/ex_html
 examples/ex_http2
@@ -113,8 +115,11 @@ examples/ssl_test_certs/
 *.csr
 *.pem
 examples/ex_pretty
+examples/ex_diff
 examples/ex_http3
 examples/ex_gui_layout_persist
 examples/ex_gui_multiwin
 examples/ex_gui_detach
 examples/ex_gui_detach_layout.json
+examples/ex_gui_listbox
+examples/ex_gui_tree_state

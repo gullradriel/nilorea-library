@@ -1375,6 +1375,18 @@ int netw_unload_openssl(void) {
     return TRUE;
 } /*netw_unload_openssl(...)*/
 
+/* Release the half-built SSL context left by a failed netw_set_crypto() or
+ * netw_set_crypto_pem(). Those functions only set crypto_algo once the whole
+ * setup succeeded, so netw_close() would not recognise the ctx as owned and it
+ * would leak. Call this on every failure path taken after SSL_CTX_new(). */
+static void _netw_crypto_setup_failed(NETWORK* netw) {
+    __n_assert(netw, return);
+    if (netw->ctx) {
+        SSL_CTX_free(netw->ctx);
+        netw->ctx = NULL;
+    }
+}
+
 /**
  * @brief activate SSL encryption on selected network, using key and certificate
  * @param netw the NETWORK instance to configure
@@ -1452,15 +1464,18 @@ int netw_set_crypto(NETWORK* netw, char* key, char* certificate) {
         // Load default system certs
         if (SSL_CTX_load_verify_locations(netw->ctx, NULL, "/etc/ssl/certs/") != 1) {
             netw_ssl_print_errors(netw->link.sock);
+            _netw_crypto_setup_failed(netw);
             return FALSE;
         }
 
         if (SSL_CTX_use_certificate_file(netw->ctx, certificate, SSL_FILETYPE_PEM) <= 0) {
             netw_ssl_print_errors(netw->link.sock);
+            _netw_crypto_setup_failed(netw);
             return FALSE;
         }
         if (SSL_CTX_use_PrivateKey_file(netw->ctx, key, SSL_FILETYPE_PEM) <= 0) {
             netw_ssl_print_errors(netw->link.sock);
+            _netw_crypto_setup_failed(netw);
             return FALSE;
         }
 
@@ -1518,6 +1533,7 @@ int netw_set_crypto_pem(NETWORK* netw, const char* key_pem, const char* cert_pem
     BIO* cert_bio = BIO_new_mem_buf(cert_pem, -1);
     if (!cert_bio) {
         n_log(LOG_ERR, "Failed to create BIO for certificate PEM");
+        _netw_crypto_setup_failed(netw);
         return FALSE;
     }
     X509* cert = PEM_read_bio_X509(cert_bio, NULL, NULL, NULL);
@@ -1525,11 +1541,13 @@ int netw_set_crypto_pem(NETWORK* netw, const char* key_pem, const char* cert_pem
     if (!cert) {
         n_log(LOG_ERR, "Failed to parse certificate PEM");
         netw_ssl_print_errors(netw->link.sock);
+        _netw_crypto_setup_failed(netw);
         return FALSE;
     }
     if (SSL_CTX_use_certificate(netw->ctx, cert) <= 0) {
         X509_free(cert);
         netw_ssl_print_errors(netw->link.sock);
+        _netw_crypto_setup_failed(netw);
         return FALSE;
     }
     X509_free(cert);
@@ -1538,6 +1556,7 @@ int netw_set_crypto_pem(NETWORK* netw, const char* key_pem, const char* cert_pem
     BIO* key_bio = BIO_new_mem_buf(key_pem, -1);
     if (!key_bio) {
         n_log(LOG_ERR, "Failed to create BIO for key PEM");
+        _netw_crypto_setup_failed(netw);
         return FALSE;
     }
     EVP_PKEY* pkey = PEM_read_bio_PrivateKey(key_bio, NULL, NULL, NULL);
@@ -1545,11 +1564,13 @@ int netw_set_crypto_pem(NETWORK* netw, const char* key_pem, const char* cert_pem
     if (!pkey) {
         n_log(LOG_ERR, "Failed to parse private key PEM");
         netw_ssl_print_errors(netw->link.sock);
+        _netw_crypto_setup_failed(netw);
         return FALSE;
     }
     if (SSL_CTX_use_PrivateKey(netw->ctx, pkey) <= 0) {
         EVP_PKEY_free(pkey);
         netw_ssl_print_errors(netw->link.sock);
+        _netw_crypto_setup_failed(netw);
         return FALSE;
     }
     EVP_PKEY_free(pkey);
@@ -1557,6 +1578,7 @@ int netw_set_crypto_pem(NETWORK* netw, const char* key_pem, const char* cert_pem
     /* Verify that key matches certificate */
     if (!SSL_CTX_check_private_key(netw->ctx)) {
         n_log(LOG_ERR, "Private key does not match the certificate");
+        _netw_crypto_setup_failed(netw);
         return FALSE;
     }
 
@@ -1932,7 +1954,7 @@ int netw_ssl_get_verify_result(NETWORK* netw, const char* expected_host, char* e
     __n_assert(netw, return FALSE);
     __n_assert(netw->ssl, return FALSE);
 
-    cert = SSL_get_peer_certificate(netw->ssl);
+    cert = SSL_get1_peer_certificate(netw->ssl);
     if (!cert) {
         if (errbuf && errsz > 0)
             snprintf(errbuf, errsz, "no peer certificate");

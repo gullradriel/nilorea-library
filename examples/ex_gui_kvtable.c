@@ -316,6 +316,122 @@ int main(int argc, char** argv) {
         }
     }
 
+    /* Per-row actions: move up / move down / duplicate. Row slots are stable
+       (widgets are bound to them, freed slots are reused), so the operations
+       move the CONTENT and everything that walks the rows in slot order sees
+       the new order. */
+    {
+        int win3 = n_gui_add_window(gui, "ActionPanel", 0.0f, 0.0f, 800.0f, 300.0f);
+        N_GUI_KVTABLE* kv3 = n_gui_kvtable_create(gui, win3, 24.0f, 8.0f, NULL, NULL);
+        expect_true("actions table created", kv3 != NULL);
+        if (kv3) {
+            expect_true("actions off by default", kv3->show_actions == 0);
+            n_gui_kvtable_set_row_actions(kv3, 1);
+            expect_true("actions enabled", kv3->show_actions == 1);
+            expect_true("add button drawn as a glyph",
+                        n_gui_button_get_glyph(gui, kv3->btn_add) == N_GUI_GLYPH_PLUS);
+
+            n_gui_kvtable_add_row(kv3, "a", "1", "first", 1);
+            n_gui_kvtable_add_row(kv3, "b", "2", "second", 0);
+            n_gui_kvtable_add_row(kv3, "c", "3", "third", 1);
+            expect_true("three rows", n_gui_kvtable_get_count(kv3) == 3);
+
+            /* the action buttons are laid out inside the row, left of remove */
+            {
+                N_GUI_WIDGET* up = n_gui_get_widget(gui, kv3->rows[0].up_id);
+                N_GUI_WIDGET* dn = n_gui_get_widget(gui, kv3->rows[0].down_id);
+                N_GUI_WIDGET* dp = n_gui_get_widget(gui, kv3->rows[0].dup_id);
+                N_GUI_WIDGET* rm = n_gui_get_widget(gui, kv3->rows[0].remove_id);
+                expect_true("action widgets exist", up && dn && dp && rm);
+                if (up && dn && dp && rm) {
+                    expect_true("actions visible", up->visible && dn->visible && dp->visible);
+                    expect_true("actions ordered up, down, duplicate, remove",
+                                up->x < dn->x && dn->x < dp->x && dp->x < rm->x);
+                    expect_true("actions stay inside the window", rm->x + rm->w <= 800.0f);
+                    expect_true("actions share the row",
+                                up->y == rm->y && dn->y == rm->y && dp->y == rm->y);
+                }
+                /* first row cannot move up, last cannot move down */
+                expect_true("first row up disabled",
+                            !n_gui_is_widget_enabled(gui, kv3->rows[0].up_id));
+                expect_true("first row down enabled",
+                            n_gui_is_widget_enabled(gui, kv3->rows[0].down_id));
+                expect_true("last row down disabled",
+                            !n_gui_is_widget_enabled(gui, kv3->rows[2].down_id));
+            }
+
+            /* move "c" up: rows read a, c, b */
+            expect_true("move up returns the target slot",
+                        n_gui_kvtable_move_row(kv3, 2, -1) == 1);
+            expect_true("row 1 is now c",
+                        strcmp(n_gui_textarea_get_text(gui, kv3->rows[1].key_id), "c") == 0);
+            expect_true("row 2 is now b",
+                        strcmp(n_gui_textarea_get_text(gui, kv3->rows[2].key_id), "b") == 0);
+            expect_true("the enabled flag travels with the row",
+                        n_gui_checkbox_is_checked(gui, kv3->rows[2].enabled_id) == 0);
+
+            /* edges refuse to move */
+            expect_true("first row cannot move up", n_gui_kvtable_move_row(kv3, 0, -1) == -1);
+            expect_true("last row cannot move down", n_gui_kvtable_move_row(kv3, 2, 1) == -1);
+
+            /* duplicate row 0 ("a"): rows read a, a, c, b */
+            expect_true("duplicate lands right after the source",
+                        n_gui_kvtable_duplicate_row(kv3, 0) == 1);
+            expect_true("four rows after duplicate", n_gui_kvtable_get_count(kv3) == 4);
+            expect_true("copy holds the source key",
+                        strcmp(n_gui_textarea_get_text(gui, kv3->rows[1].key_id), "a") == 0);
+            expect_true("copy holds the source value",
+                        strcmp(n_gui_textarea_get_text(gui, kv3->rows[1].value_id), "1") == 0);
+            expect_true("copy holds the source description",
+                        strcmp(n_gui_textarea_get_text(gui, kv3->rows[1].desc_id), "first") == 0);
+            expect_true("source is untouched",
+                        strcmp(n_gui_textarea_get_text(gui, kv3->rows[0].key_id), "a") == 0);
+            expect_true("rows after the copy shifted down",
+                        strcmp(n_gui_textarea_get_text(gui, kv3->rows[2].key_id), "c") == 0 &&
+                            strcmp(n_gui_textarea_get_text(gui, kv3->rows[3].key_id), "b") == 0);
+
+            /* a removed slot in the middle is reused, and the copy still lands
+               next to its source rather than in whatever slot came free */
+            n_gui_kvtable_remove_row(kv3, 1);
+            expect_true("three rows after remove", n_gui_kvtable_get_count(kv3) == 3);
+            expect_true("duplicate of the last row appends",
+                        n_gui_kvtable_duplicate_row(kv3, 3) >= 0);
+            {
+                int order[8], n = 0;
+                for (int i = 0; i < kv3->nb_rows && n < 8; i++) {
+                    if (kv3->rows[i].active) order[n++] = i;
+                }
+                expect_true("four rows again", n == 4);
+                if (n == 4) {
+                    expect_true("order is a, c, b, b",
+                                strcmp(n_gui_textarea_get_text(gui, kv3->rows[order[0]].key_id), "a") == 0 &&
+                                    strcmp(n_gui_textarea_get_text(gui, kv3->rows[order[1]].key_id), "c") == 0 &&
+                                    strcmp(n_gui_textarea_get_text(gui, kv3->rows[order[2]].key_id), "b") == 0 &&
+                                    strcmp(n_gui_textarea_get_text(gui, kv3->rows[order[3]].key_id), "b") == 0);
+                }
+            }
+
+            /* turning the actions off hides the buttons and restores the plain
+               three-column layout, remove button included */
+            {
+                n_gui_kvtable_set_row_actions(kv3, 0);
+                N_GUI_WIDGET* up = n_gui_get_widget(gui, kv3->rows[0].up_id);
+                N_GUI_WIDGET* dn = n_gui_get_widget(gui, kv3->rows[0].down_id);
+                N_GUI_WIDGET* dp = n_gui_get_widget(gui, kv3->rows[0].dup_id);
+                N_GUI_WIDGET* rm = n_gui_get_widget(gui, kv3->rows[0].remove_id);
+                expect_true("actions hidden", up && dn && dp && !up->visible && !dn->visible && !dp->visible);
+                expect_true("remove button stays", rm && rm->visible);
+                expect_true("row still fits the window", rm && rm->x + rm->w <= 800.0f);
+                expect_true("remove button back to its label",
+                            n_gui_button_get_glyph(gui, kv3->rows[0].remove_id) == N_GUI_GLYPH_NONE);
+                expect_true("add button back to its label",
+                            n_gui_button_get_glyph(gui, kv3->btn_add) == N_GUI_GLYPH_NONE);
+            }
+
+            n_gui_kvtable_free(&kv3);
+        }
+    }
+
     n_gui_kvtable_free(&kv);
     n_gui_destroy_ctx(&gui);
     al_destroy_font(font);

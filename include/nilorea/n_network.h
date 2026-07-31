@@ -227,6 +227,16 @@ typedef int SOCKET;
 #include <openssl/err.h>
 #include <openssl/ssl.h>
 #include <openssl/crypto.h>
+/* OpenSSL 3.0 renamed SSL_get_peer_certificate() to SSL_get1_peer_certificate()
+ * and deprecated the old spelling. Both hand back a certificate whose reference
+ * count is already incremented, so the caller X509_free()s it either way. Use
+ * the 3.0 name everywhere and map it back on OpenSSL 1.x and LibreSSL, which
+ * report an OPENSSL_VERSION_NUMBER below 0x30000000L. */
+#if OPENSSL_VERSION_NUMBER < 0x30000000L
+#ifndef SSL_get1_peer_certificate
+#define SSL_get1_peer_certificate(ssl) SSL_get_peer_certificate(ssl)
+#endif
+#endif
 #endif
 
 /*! Network codes definition */

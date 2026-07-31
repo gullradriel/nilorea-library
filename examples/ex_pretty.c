@@ -102,6 +102,36 @@ int main(int argc, char** argv) {
         free_nstr(&out);
     }
 
+    /* JSON, lenient: what the parsing printer refuses still has to become
+       readable, since a body cut at a size limit is the common case */
+    {
+        N_STR* out = n_pretty_json_lenient("{\"a\":1,\"b\":[true,null],\"c\":\"x\"}");
+        expect_true("lenient valid returns output", out != NULL);
+        expect_contains("lenient indents members", out, "\n  \"a\": 1,\n");
+        expect_contains("lenient indents nested values", out, "\n    true,\n");
+        expect_contains("lenient closes at depth", out, "\n}\n");
+        free_nstr(&out);
+
+        out = n_pretty_json_lenient("{\"a\":1,\"b\":{\"c\":\"trunca");
+        expect_true("lenient truncated returns output", out != NULL);
+        expect_contains("lenient keeps the cut string", out, "\"trunca");
+        expect_contains("lenient still broke the line", out, "\n");
+        free_nstr(&out);
+
+        /* punctuation inside a string must not break the line */
+        out = n_pretty_json_lenient("{\"a\":\"x,y{z}\"}");
+        expect_true("lenient string returns output", out != NULL);
+        expect_contains("lenient copies a string verbatim", out, "\"x,y{z}\"");
+        free_nstr(&out);
+
+        /* an empty container stays on its line rather than opening a level */
+        out = n_pretty_json_lenient("{\"a\":[],\"b\":{ }}");
+        expect_true("lenient empty container returns output", out != NULL);
+        expect_contains("lenient keeps [] together", out, "\"a\": [],");
+        expect_contains("lenient keeps {} together", out, "\"b\": {}");
+        free_nstr(&out);
+    }
+
     /* XML / HTML */
     {
         N_STR* out = n_pretty_xml("<root><a x=\"1\"><b>hi</b></a></root>");
@@ -191,6 +221,8 @@ int main(int argc, char** argv) {
 
     /* NULL / empty inputs */
     expect_true("json NULL returns NULL", n_pretty_json(NULL) == NULL);
+    expect_true("lenient NULL returns NULL", n_pretty_json_lenient(NULL) == NULL);
+    expect_true("lenient empty returns NULL", n_pretty_json_lenient("") == NULL);
     expect_true("xml NULL returns NULL", n_pretty_xml(NULL) == NULL);
     expect_true("js NULL returns NULL", n_pretty_js(NULL) == NULL);
     expect_true("xml empty returns NULL", n_pretty_xml("") == NULL);

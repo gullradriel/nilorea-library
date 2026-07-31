@@ -41,11 +41,65 @@
 #include <string.h>
 
 #include <openssl/bn.h>
+#include <openssl/err.h>
 #include <openssl/evp.h>
 #include <openssl/pem.h>
 #include <openssl/rsa.h>
 #include <openssl/x509.h>
 #include <openssl/x509v3.h>
+
+/* Compatibility shims for OpenSSL 1.0.2 (RHEL 7 and friends). Everything below
+ * was introduced in 1.1.0: the BN_rand top/bottom named constants, the
+ * X509_getm_notBefore()/X509_getm_notAfter() mutable accessors, and the const
+ * qualifier on the value argument of X509V3_EXT_conf_nid(). LibreSSL reports
+ * OPENSSL_VERSION_NUMBER as 0x20000000L and already provides all of them, so it
+ * takes the modern path. */
+#if OPENSSL_VERSION_NUMBER < 0x10100000L
+#ifndef BN_RAND_TOP_ANY
+/*! BN_rand(): leave the most significant bit unconstrained */
+#define BN_RAND_TOP_ANY (-1)
+#endif
+#ifndef BN_RAND_BOTTOM_ANY
+/*! BN_rand(): leave the least significant bit unconstrained */
+#define BN_RAND_BOTTOM_ANY 0
+#endif
+#ifndef X509_getm_notBefore
+/*! pre-1.1.0 spelling of the mutable notBefore accessor */
+#define X509_getm_notBefore(x) X509_get_notBefore(x)
+#endif
+#ifndef X509_getm_notAfter
+/*! pre-1.1.0 spelling of the mutable notAfter accessor */
+#define X509_getm_notAfter(x) X509_get_notAfter(x)
+#endif
+/*! pre-1.1.0 X509V3_EXT_conf_nid() declares value as char*, it does not write to it */
+#define N_X509_EXT_VALUE(v) ((char*)(uintptr_t)(v))
+#else
+/*! 1.1.0 and later accept a const value directly */
+#define N_X509_EXT_VALUE(v) (v)
+#endif
+
+#if OPENSSL_VERSION_NUMBER < 0x10100000L
+/* OpenSSL 1.1.0 initialises itself on first use. Before that the EVP algorithm
+ * table starts out empty, and while signing still works (X509_sign() is handed
+ * the EVP_MD directly) anything that later VERIFIES the certificate has to look
+ * the signature algorithm up by OID, which fails: X509_verify_cert() reports
+ * "certificate signature failure" and ASN1_item_verify() sets "unknown message
+ * digest algorithm". Populate the table once so a caller that uses n_x509 on
+ * its own, without n_network and therefore without netw_init_openssl(), still
+ * gets certificates that verify. */
+static pthread_once_t n_x509_once = PTHREAD_ONCE_INIT;
+
+static void n_x509_init_openssl(void) {
+    OpenSSL_add_all_algorithms();
+    ERR_load_crypto_strings();
+}
+
+/*! populate the EVP algorithm table once, no-op from 1.1.0 on */
+#define N_X509_INIT() ((void)pthread_once(&n_x509_once, n_x509_init_openssl))
+#else
+/*! 1.1.0 and later initialise themselves on first use */
+#define N_X509_INIT() ((void)0)
+#endif
 
 /*! RSA modulus size in bits used for the CA and leaf keys */
 #define N_X509_KEY_BITS 2048
@@ -113,7 +167,7 @@ static int add_ext(X509* issuer, X509* subject, int nid, const char* value) {
     int rc = -1;
     X509V3_set_ctx_nodb(&ctx);
     X509V3_set_ctx(&ctx, issuer, subject, NULL, NULL, 0);
-    ext = X509V3_EXT_conf_nid(NULL, &ctx, nid, value);
+    ext = X509V3_EXT_conf_nid(NULL, &ctx, nid, N_X509_EXT_VALUE(value));
     if (ext) {
         if (X509_add_ext(subject, ext, -1) == 1)
             rc = 0;
@@ -156,6 +210,7 @@ int n_x509_keypair_pem(int bits, N_STR** key_pem) {
     EVP_PKEY* pkey;
     int rc;
     __n_assert(key_pem, return -1);
+    N_X509_INIT();
     if (bits <= 0)
         bits = N_X509_KEY_BITS;
     pkey = gen_rsa(bits);
@@ -176,6 +231,7 @@ int n_x509_generate_ca(const char* cn, int days, N_STR** ca_cert_pem, N_STR** ca
     __n_assert(cn, return -1);
     __n_assert(ca_cert_pem, return -1);
     __n_assert(ca_key_pem, return -1);
+    N_X509_INIT();
     if (days <= 0)
         days = 3650;
 
@@ -241,6 +297,7 @@ int n_x509_mint_host_cert(const char* host, const N_STR* ca_cert_pem, const N_ST
     __n_assert(ca_key_pem && ca_key_pem->data, return -1);
     __n_assert(leaf_cert_pem, return -1);
     __n_assert(leaf_key_pem, return -1);
+    N_X509_INIT();
     if (days <= 0)
         days = 825;
 

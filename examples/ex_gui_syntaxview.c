@@ -163,6 +163,30 @@ int main(int argc, char** argv) {
     n_gui_syntaxview_set_text(gui, sv, "function f() {\n  return 1; // done\n}\n");
     expect_true("js line count is 4", n_gui_syntaxview_get_line_count(gui, sv) == 4);
 
+    /* unified diff, as n_diff_to_unified writes it: hunk header, context,
+       removed and added lines */
+    n_gui_syntaxview_set_mode(gui, sv, N_GUI_SYNTAX_DIFF);
+    n_gui_syntaxview_set_text(gui, sv, "@@ -1,3 +1,3 @@\n a\n-b\n+B\n c\n");
+    expect_true("diff line count is 6", n_gui_syntaxview_get_line_count(gui, sv) == 6);
+    {
+        const char* got = n_gui_syntaxview_get_text(gui, sv);
+        expect_true("diff text round-trips", got && strstr(got, "-b\n+B\n") != NULL);
+    }
+    /* a line longer than the draw buffer must survive set_text/get_text intact;
+       drawing it is chunked rather than cut short */
+    {
+        char big[2048];
+        size_t pos = 0;
+        big[pos++] = '+';
+        while (pos < sizeof(big) - 2) big[pos++] = 'x';
+        big[pos++] = '\n';
+        big[pos] = '\0';
+        n_gui_syntaxview_set_text(gui, sv, big);
+        expect_true("long diff line kept whole",
+                    n_gui_syntaxview_get_text(gui, sv) != NULL &&
+                        strlen(n_gui_syntaxview_get_text(gui, sv)) == strlen(big));
+    }
+
     /* scroll_to_offset centers the line holding the byte offset */
     {
         char big[4096];
@@ -189,6 +213,42 @@ int main(int argc, char** argv) {
                         yd->scroll_offset > 0 &&
                             yd->scroll_offset < n_gui_syntaxview_get_line_count(gui, sv));
         }
+    }
+
+    /* horizontal scrolling: a line wider than the widget is reached by panning,
+       since the view does not wrap */
+    {
+        char wide[1024];
+        size_t pos = 0;
+        int long_line_offset;
+        while (pos < sizeof(wide) - 16) wide[pos++] = 'x';
+        wide[pos++] = '\n';
+        long_line_offset = (int)pos - 4; /* near the end of the long line */
+        pos += (size_t)snprintf(wide + pos, sizeof(wide) - pos, "short\n");
+        wide[pos] = '\0';
+        n_gui_syntaxview_set_mode(gui, sv, N_GUI_SYNTAX_PLAIN);
+        n_gui_syntaxview_set_text(gui, sv, wide);
+        expect_true("content wider than the widget",
+                    n_gui_syntaxview_content_width(gui, sv) > 600.0f);
+        expect_true("set_text resets the pan",
+                    n_gui_syntaxview_get_h_scroll(gui, sv) == 0.0f);
+        n_gui_syntaxview_set_h_scroll(gui, sv, 120.0f);
+        expect_true("h scroll round-trips",
+                    n_gui_syntaxview_get_h_scroll(gui, sv) == 120.0f);
+        n_gui_syntaxview_set_h_scroll(gui, sv, -5.0f);
+        expect_true("negative h scroll clamps to zero",
+                    n_gui_syntaxview_get_h_scroll(gui, sv) == 0.0f);
+        /* an offset past the right edge pans the view to it */
+        n_gui_syntaxview_scroll_to_offset(gui, sv, long_line_offset);
+        expect_true("scroll_to_offset pans to a far column",
+                    n_gui_syntaxview_get_h_scroll(gui, sv) > 0.0f);
+        /* one on the first screen leaves the pan where it is useful again */
+        n_gui_syntaxview_scroll_to_offset(gui, sv, 0);
+        expect_true("scroll_to_offset comes back to column zero",
+                    n_gui_syntaxview_get_h_scroll(gui, sv) == 0.0f);
+        n_gui_syntaxview_set_text(gui, sv, "short line\n");
+        expect_true("narrow content needs no pan",
+                    n_gui_syntaxview_content_width(gui, sv) < 600.0f);
     }
 
     n_gui_syntaxview_set_text(gui, sv, NULL);

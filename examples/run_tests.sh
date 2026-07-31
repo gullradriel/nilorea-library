@@ -169,6 +169,7 @@ asan_test "ex_exceptions"
 asan_test "ex_list"
 asan_test "ex_hash"
 asan_test "ex_nstr"
+asan_test "ex_diff"
 asan_test "ex_stack"
 asan_test "ex_trees"
 asan_test "ex_iso_astar"
@@ -241,6 +242,18 @@ fi
 # data grid). Each exercises its accessors with a builtin font and no display.
 if [ -f ./ex_gui_splitpane ]; then
     asan_test "ex_gui_splitpane"
+fi
+if [ -f ./ex_gui_window_rect ]; then
+    asan_test "ex_gui_window_rect"
+fi
+if [ -f ./ex_gui_glyph ]; then
+    asan_test "ex_gui_glyph"
+fi
+if [ -f ./ex_gui_listbox ]; then
+    asan_test "ex_gui_listbox"
+fi
+if [ -f ./ex_gui_tree_state ]; then
+    asan_test "ex_gui_tree_state"
 fi
 if [ -f ./ex_gui_hexview ]; then
     asan_test "ex_gui_hexview"

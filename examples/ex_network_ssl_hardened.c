@@ -439,10 +439,14 @@ void handle_request(NETWORK* netw_ptr, LIST* routes_ptr) {
     char* http_url = NULL;
     N_STR* dynamic_request_answer = NULL;
 
+    /* the caller (ssl_network_thread) owns netw_ptr and closes it, closing it
+     * here too would leave it with a dangling pointer to close a second time */
+    __n_assert(netw_ptr->ssl, n_log(LOG_ERR, "no SSL session on socket %d", netw_ptr->link.sock); return);
+
     /* Heap allocation instead of stack alloca to prevent stack overflow */
     char* http_buffer = NULL;
     Malloc(http_buffer, char, (size_t)(max_http_request_size + 1));
-    __n_assert(http_buffer, netw_close(&netw_ptr); return);
+    __n_assert(http_buffer, return);
 
     /* Set socket timeout to prevent slow-loris attacks */
     set_socket_timeout(netw_ptr->link.sock, CONNECTION_TIMEOUT_SECONDS);
@@ -461,7 +465,6 @@ void handle_request(NETWORK* netw_ptr, LIST* routes_ptr) {
             n_log(LOG_ERR, "SSL_read failed with SSL error %d", ssl_error);
         }
         Free(http_buffer);
-        netw_close(&netw_ptr);
         return;
     }
     http_buffer[ssl_read_ret] = '\0';
@@ -652,6 +655,7 @@ void* ssl_network_thread(void* params) {
 
 int main(int argc, char* argv[]) {
     int exit_code = 0;
+    int crypto_ok = FALSE;
     THREAD_POOL* thread_pool = NULL;
     routes = new_generic_list(MAX_LIST_ITEMS);
     __n_assert(routes, n_log(LOG_ERR, "could not allocate list !"); exit(1));
@@ -703,11 +707,18 @@ int main(int argc, char* argv[]) {
         exit(-1);
     }
 
+    /* an unreadable or malformed key/cert leaves the listener in plaintext,
+     * which then fails every client handshake, so treat it as fatal here */
     if (ca_file) {
         n_log(LOG_INFO, "Using SSL with certificate chain verification (CA: %s)", ca_file);
-        netw_set_crypto_chain(server, key, cert, ca_file);
+        crypto_ok = netw_set_crypto_chain(server, key, cert, ca_file);
     } else {
-        netw_set_crypto(server, key, cert);
+        crypto_ok = netw_set_crypto(server, key, cert);
+    }
+    if (crypto_ok == FALSE) {
+        n_log(LOG_ERR, "Could not load key '%s' and certificate '%s'. Exiting.", _str(key), _str(cert));
+        exit_code = 1;
+        goto clean_and_exit;
     }
 
     /* Harden the SSL context after crypto setup */

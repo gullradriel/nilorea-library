@@ -175,7 +175,7 @@ else
     CFLAGS += -O3
 endif
 
-SRC=n_common.c n_base64.c n_crypto.c n_exceptions.c n_hash.c n_list.c n_log.c n_network.c n_network_msg.c n_network_accept_pool.c n_nodup_log.c n_signals.c n_stack.c n_str.c n_thread_pool.c n_time.c n_zlib.c n_lz4.c n_user.c n_files.c n_aabb.c n_trees.c n_trajectory.c n_dead_reckoning.c n_astar.c n_iso_engine.c n_clock_sync.c n_x509.c n_html.c n_hex.c n_digest.c n_random.c n_cookies.c n_entropy.c n_http2.c n_dns.c n_http3.c n_pretty.c n_clipboard.c
+SRC=n_common.c n_base64.c n_crypto.c n_exceptions.c n_hash.c n_list.c n_log.c n_network.c n_network_msg.c n_network_accept_pool.c n_nodup_log.c n_signals.c n_stack.c n_str.c n_thread_pool.c n_time.c n_zlib.c n_lz4.c n_user.c n_files.c n_aabb.c n_trees.c n_trajectory.c n_dead_reckoning.c n_astar.c n_iso_engine.c n_clock_sync.c n_x509.c n_html.c n_hex.c n_digest.c n_random.c n_cookies.c n_entropy.c n_http2.c n_dns.c n_http3.c n_pretty.c n_diff.c n_clipboard.c
 
 # Reactor module is Linux/Android-only (see HAVE_REACTOR detection above).
 # REACTOR_OBJ expands to the per-example dependency token: it is
@@ -357,6 +357,7 @@ examples/%.o: examples/%.c
 # $ \ is for concatenation without a new line
 EXAMPLES=examples/ex_base64_encode$(EXT) $\
          examples/ex_clipboard$(EXT) $\
+         examples/ex_diff$(EXT) $\
          examples/ex_crypto$(EXT) $\
          examples/ex_list$(EXT) $\
          examples/ex_nstr$(EXT) $\
@@ -406,6 +407,10 @@ ifeq ($(HAVE_ALLEGRO),1)
                   examples/ex_gui_kvtable$(EXT) $\
                   examples/ex_gui_reentrant$(EXT) $\
                   examples/ex_gui_splitpane$(EXT) $\
+                  examples/ex_gui_window_rect$(EXT) $\
+                  examples/ex_gui_glyph$(EXT) $\
+                  examples/ex_gui_listbox$(EXT) $\
+                  examples/ex_gui_tree_state$(EXT) $\
                   examples/ex_gui_hexview$(EXT) $\
                   examples/ex_gui_syntaxview$(EXT) $\
                   examples/ex_gui_dropmenu$(EXT) $\
@@ -794,6 +799,18 @@ examples/ex_gui_reentrant$(EXT): obj/n_log.o obj/n_list.o obj/n_hash.o obj/n_str
 examples/ex_gui_splitpane$(EXT): obj/n_log.o obj/n_list.o obj/n_hash.o obj/n_str.o obj/n_common.o obj/n_hash.o obj/n_time.o examples/cJSON.o obj/n_clipboard.o obj/n_gui.o examples/ex_gui_splitpane.o
 	$(CC) $(CFLAGS) $(ALLEGRO_CFLAGS) -o $@ $^ $(CLIBS) $(ALLEGRO_CLIBS) $(EXE_LDFLAGS)
 
+examples/ex_gui_tree_state$(EXT): obj/n_log.o obj/n_list.o obj/n_hash.o obj/n_str.o obj/n_common.o obj/n_hash.o obj/n_time.o examples/cJSON.o obj/n_clipboard.o obj/n_gui.o examples/ex_gui_tree_state.o
+	$(CC) $(CFLAGS) $(ALLEGRO_CFLAGS) -o $@ $^ $(CLIBS) $(ALLEGRO_CLIBS) $(EXE_LDFLAGS)
+
+examples/ex_gui_listbox$(EXT): obj/n_log.o obj/n_list.o obj/n_hash.o obj/n_str.o obj/n_common.o obj/n_hash.o obj/n_time.o examples/cJSON.o obj/n_clipboard.o obj/n_gui.o examples/ex_gui_listbox.o
+	$(CC) $(CFLAGS) $(ALLEGRO_CFLAGS) -o $@ $^ $(CLIBS) $(ALLEGRO_CLIBS) $(EXE_LDFLAGS)
+
+examples/ex_gui_glyph$(EXT): obj/n_log.o obj/n_list.o obj/n_hash.o obj/n_str.o obj/n_common.o obj/n_hash.o obj/n_time.o examples/cJSON.o obj/n_clipboard.o obj/n_gui.o examples/ex_gui_glyph.o
+	$(CC) $(CFLAGS) $(ALLEGRO_CFLAGS) -o $@ $^ $(CLIBS) $(ALLEGRO_CLIBS) $(EXE_LDFLAGS)
+
+examples/ex_gui_window_rect$(EXT): obj/n_log.o obj/n_list.o obj/n_hash.o obj/n_str.o obj/n_common.o obj/n_hash.o obj/n_time.o examples/cJSON.o obj/n_clipboard.o obj/n_gui.o examples/ex_gui_window_rect.o
+	$(CC) $(CFLAGS) $(ALLEGRO_CFLAGS) -o $@ $^ $(CLIBS) $(ALLEGRO_CLIBS) $(EXE_LDFLAGS)
+
 examples/ex_gui_hexview$(EXT): obj/n_log.o obj/n_list.o obj/n_hash.o obj/n_str.o obj/n_common.o obj/n_hash.o obj/n_time.o examples/cJSON.o obj/n_clipboard.o obj/n_gui.o examples/ex_gui_hexview.o
 	$(CC) $(CFLAGS) $(ALLEGRO_CFLAGS) -o $@ $^ $(CLIBS) $(ALLEGRO_CLIBS) $(EXE_LDFLAGS)
 
@@ -882,6 +899,9 @@ examples/ex_json$(EXT): obj/n_common.o obj/n_log.o obj/n_list.o obj/n_hash.o obj
 	$(CC) $(CFLAGS) -o $@ $^ $(CLIBS) $(EXE_LDFLAGS)
 
 examples/ex_pretty$(EXT): obj/n_common.o obj/n_log.o obj/n_list.o obj/n_hash.o obj/n_str.o obj/n_pretty.o examples/cJSON.o examples/ex_pretty.o
+	$(CC) $(CFLAGS) -o $@ $^ $(CLIBS) $(EXE_LDFLAGS)
+
+examples/ex_diff$(EXT): obj/n_common.o obj/n_log.o obj/n_list.o obj/n_hash.o obj/n_str.o obj/n_diff.o examples/ex_diff.o
 	$(CC) $(CFLAGS) -o $@ $^ $(CLIBS) $(EXE_LDFLAGS)
 
 examples/ex_git$(EXT): obj/n_common.o obj/n_log.o obj/n_list.o obj/n_hash.o obj/n_str.o obj/n_git.o examples/ex_git.o

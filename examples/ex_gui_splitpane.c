@@ -79,6 +79,30 @@ static void expect_true(const char* label, int cond) {
     }
 }
 
+static int clicks = 0;
+
+static void on_button_click(int widget_id, void* user_data) {
+    (void)widget_id;
+    (void)user_data;
+    clicks++;
+}
+
+/* Feed one synthetic mouse button event to the GUI. */
+static void mouse_button(N_GUI_CTX* gui, int down, float x, float y) {
+    ALLEGRO_EVENT ev;
+    memset(&ev, 0, sizeof(ev));
+    ev.type = down ? ALLEGRO_EVENT_MOUSE_BUTTON_DOWN : ALLEGRO_EVENT_MOUSE_BUTTON_UP;
+    ev.mouse.button = 1;
+    ev.mouse.x = (int)x;
+    ev.mouse.y = (int)y;
+    n_gui_process_event(gui, ev);
+}
+
+static void click_at(N_GUI_CTX* gui, float x, float y) {
+    mouse_button(gui, 1, x, y);
+    mouse_button(gui, 0, x, y);
+}
+
 int main(int argc, char** argv) {
     set_log_level(LOG_ERR);
     if (process_args(argc, argv) != 0) {
@@ -125,6 +149,47 @@ int main(int argc, char** argv) {
     expect_close("ratio pulled to new min", n_gui_splitpane_get_ratio(gui, sp), 0.2f, 0.001f);
     n_gui_splitpane_set_ratio(gui, sp, 0.9f);
     expect_close("clamp to new max 0.7", n_gui_splitpane_get_ratio(gui, sp), 0.7f, 0.001f);
+
+    /* Click routing. A split pane spans the whole region it splits, so a press
+       that misses the divider band must fall through to whatever sits beneath
+       it: two crossing panes stay independently draggable and the widgets in
+       the panes keep receiving their clicks. */
+    {
+        int win2 = n_gui_add_window(gui, "Panes", 0.0f, 0.0f, 400.0f, 400.0f);
+        int sp_v = -1, sp_h = -1, btn = -1;
+        expect_true("second window created", win2 >= 0);
+        n_gui_window_set_flags(gui, win2, N_GUI_WIN_FRAMELESS | N_GUI_WIN_FIXED_POSITION);
+
+        sp_v = n_gui_add_splitpane(gui, win2, 0.0f, 0.0f, 400.0f, 400.0f, N_GUI_SPLIT_VERTICAL, 0.5f, NULL, NULL);
+        sp_h = n_gui_add_splitpane(gui, win2, 0.0f, 0.0f, 400.0f, 400.0f, N_GUI_SPLIT_HORIZONTAL, 0.25f, NULL, NULL);
+        btn = n_gui_add_button(gui, win2, "B", 300.0f, 300.0f, 60.0f, 24.0f,
+                               N_GUI_SHAPE_RECT, on_button_click, NULL);
+        expect_true("panes and button created", sp_v >= 0 && sp_h >= 0 && btn >= 0);
+
+        /* vertical divider sits at x = 200, horizontal one at y = 100 */
+        mouse_button(gui, 1, 200.0f, 300.0f);
+        expect_true("press on vertical divider starts its drag",
+                    gui->scrollbar_drag_widget_id == sp_v);
+        mouse_button(gui, 0, 200.0f, 300.0f);
+
+        /* the horizontal pane was added last (drawn on top), yet the vertical
+           one is still reachable: neither swallows the other's band */
+        mouse_button(gui, 1, 60.0f, 100.0f);
+        expect_true("press on horizontal divider starts its drag",
+                    gui->scrollbar_drag_widget_id == sp_h);
+        mouse_button(gui, 0, 60.0f, 100.0f);
+
+        /* a press over the panes but off both bands drags nothing */
+        mouse_button(gui, 1, 60.0f, 250.0f);
+        expect_true("press off both bands starts no drag",
+                    gui->scrollbar_drag_widget_id == -1);
+        mouse_button(gui, 0, 60.0f, 250.0f);
+
+        /* and a widget under the panes still gets its click */
+        clicks = 0;
+        click_at(gui, 320.0f, 310.0f);
+        expect_true("button beneath the panes still receives its click", clicks == 1);
+    }
 
     n_gui_destroy_ctx(&gui);
     al_destroy_font(font);

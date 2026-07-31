@@ -141,6 +141,11 @@ extern "C" {
 #define N_GUI_SYNTAX_YAML 4
 /*! syntax view: JavaScript highlighting (keywords, strings, numbers, comments) */
 #define N_GUI_SYNTAX_JS 5
+/*! syntax view: unified diff highlighting (added, removed and hunk header
+ *  lines, as produced by n_diff_to_unified). Added and removed are semantic
+ *  the way a status colour is, so they are fixed instead of theme derived and
+ *  read the same on a light or a dark background. */
+#define N_GUI_SYNTAX_DIFF 6
 
 /* shape flags */
 /*! rectangle shape (default) */
@@ -367,6 +372,31 @@ typedef struct N_GUI_THEME {
     ALLEGRO_COLOR selection_color;
 } N_GUI_THEME;
 
+/* button glyphs: small icons drawn with primitives in the button's text colour,
+ * for square buttons where a text label would not fit or would read poorly
+ * (a row of "move up / move down / duplicate" actions, a toolbar of arrows).
+ * They cost no assets, follow the theme, and stay crisp at any size. */
+/*! no glyph: the button draws its text label (default) */
+#define N_GUI_GLYPH_NONE 0
+/*! filled triangle pointing up */
+#define N_GUI_GLYPH_ARROW_UP 1
+/*! filled triangle pointing down */
+#define N_GUI_GLYPH_ARROW_DOWN 2
+/*! filled triangle pointing left */
+#define N_GUI_GLYPH_ARROW_LEFT 3
+/*! filled triangle pointing right */
+#define N_GUI_GLYPH_ARROW_RIGHT 4
+/*! plus sign */
+#define N_GUI_GLYPH_PLUS 5
+/*! minus sign */
+#define N_GUI_GLYPH_MINUS 6
+/*! diagonal cross */
+#define N_GUI_GLYPH_CROSS 7
+/*! two offset sheets: duplicate / copy */
+#define N_GUI_GLYPH_COPY 8
+/*! number of defined glyphs, for range checks */
+#define N_GUI_GLYPH_COUNT 9
+
 /* button key modifier flags (use with n_gui_button_set_keycode) */
 /*! mask of supported modifier flags for button keybind matching */
 #define N_GUI_KEY_MOD_MASK (ALLEGRO_KEYMOD_SHIFT | ALLEGRO_KEYMOD_CTRL | ALLEGRO_KEYMOD_ALT | ALLEGRO_KEYMOD_ALTGR)
@@ -388,6 +418,11 @@ typedef struct N_GUI_BUTTON_DATA {
     ALLEGRO_BITMAP* bitmap_active;
     /*! shape type: N_GUI_SHAPE_RECT, N_GUI_SHAPE_ROUNDED, N_GUI_SHAPE_BITMAP */
     int shape;
+    /*! N_GUI_GLYPH_* icon drawn centred in the button's text colour instead of
+     *  the label (N_GUI_GLYPH_NONE, the default, draws the label). Set with
+     *  n_gui_button_set_glyph. The label is kept and is still a good place for
+     *  a tooltip-free accessible name. */
+    int glyph;
     /*! toggle mode: 0 = momentary (default), 1 = toggle (stays clicked/unclicked) */
     int toggle_mode;
     /*! toggle state: 0 = off/unclicked, 1 = on/clicked (only used when toggle_mode=1) */
@@ -561,6 +596,15 @@ typedef struct N_GUI_LISTBOX_DATA {
     int selection_mode;
     /*! scroll offset in items */
     int scroll_offset;
+    /*! horizontal scroll offset in pixels: how far the item text is scrolled to
+     *  the left when the widest item is wider than the widget. 0 = leftmost.
+     *  A horizontal scrollbar is drawn (and the text stops being truncated with
+     *  an ellipsis) only while the content overflows. */
+    float h_scroll;
+    /*! 1 while the user is dragging the horizontal scrollbar thumb, so the
+     *  shared scrollbar-drag handler routes the drag to h_scroll rather than to
+     *  the vertical scroll position. */
+    int h_scroll_dragging;
     /*! item height in pixels */
     float item_height;
     /*! optional bitmap for the listbox background (NULL = color theme) */
@@ -619,6 +663,12 @@ typedef struct N_GUI_SYNTAXVIEW_DATA {
     int mode;
     /*! first visible line */
     int scroll_offset;
+    /*! horizontal scroll offset in pixels: the view does not wrap, so a line
+     *  wider than the widget is reached by panning rather than by folding */
+    float h_scroll;
+    /*! 1 while the horizontal scrollbar thumb is being dragged (so the shared
+     *  scrollbar-drag handler routes the drag to h_scroll, not to the lines) */
+    int h_scroll_dragging;
     /*! selection start byte offset into text, or -1 when nothing is selected */
     int sel_start;
     /*! selection end byte offset (tracks the cursor while a drag is in progress) */
@@ -633,6 +683,14 @@ typedef struct N_GUI_SYNTAXVIEW_DATA {
     int cached_nb_lines;
     /*! cached first blank-line index (HTTP headers end), or INT_MAX; valid when lines_valid */
     int cached_headers_end;
+    /*! 0 when cached_content_w is stale. Cleared by n_gui_syntaxview_set_text
+     *  and whenever the widget is drawn with a font other than metrics_font. */
+    int width_valid;
+    /*! cached pixel width of the widest line, valid when width_valid */
+    float cached_content_w;
+    /*! font cached_content_w was measured with (a text keeps its width only for
+     *  as long as the font it was measured in stays the one in use) */
+    const ALLEGRO_FONT* metrics_font;
 } N_GUI_SYNTAXVIEW_DATA;
 
 /*! one data grid column definition */
@@ -1726,6 +1784,21 @@ int n_gui_window_get_resize_policy(N_GUI_CTX* ctx, int window_id);
  *  want the new position to be the adaptive reference point. */
 void n_gui_window_update_normalized(N_GUI_CTX* ctx, int window_id);
 
+/*! @brief move and resize a window at runtime, rescaling its child widgets from
+ *  their normalized coordinates (what a split-pane divider drag or a collapsing
+ *  panel needs, since the adaptive pass only runs on a display resize). The
+ *  window's own norms are recaptured against the current display size. Widget
+ *  groups that lay themselves out (kvtable, tab panel, section list) cannot see
+ *  this call: follow it with their own _relayout. */
+void n_gui_window_set_rect(N_GUI_CTX* ctx, int window_id, float x, float y, float w, float h);
+
+/*! @brief n_gui_window_set_rect with per-axis reflow control. scale_y = 0 keeps
+ *  the widgets' vertical layout, so a shorter window shows less of a page of
+ *  fixed-height rows (and scrolls it, with N_GUI_WIN_AUTO_SCROLLBAR) instead of
+ *  squeezing the rows; the width still tracks the window. The skipped axis's
+ *  norms are refreshed from the kept pixel layout. */
+void n_gui_window_set_rect_axes(N_GUI_CTX* ctx, int window_id, float x, float y, float w, float h, int scale_x, int scale_y);
+
 /*! @brief apply adaptive resize: reposition/resize all windows according to their
  *  policies for the new display dimensions. Called automatically from
  *  n_gui_set_display_size() when in ADAPTIVE mode, but can also be called
@@ -1748,6 +1821,13 @@ int n_gui_button_is_toggled(N_GUI_CTX* ctx, int widget_id);
 
 /*! replace the label text drawn on a button */
 void n_gui_button_set_label(N_GUI_CTX* ctx, int widget_id, const char* label);
+/*! draw an N_GUI_GLYPH_* icon (primitives, in the button's text colour) instead
+ *  of the label; N_GUI_GLYPH_NONE restores the label. Out-of-range values and
+ *  non-button widgets are ignored */
+void n_gui_button_set_glyph(N_GUI_CTX* ctx, int widget_id, int glyph);
+/*! current glyph of a button, or N_GUI_GLYPH_NONE when it draws its label
+ *  (also for a non-button widget) */
+int n_gui_button_get_glyph(N_GUI_CTX* ctx, int widget_id);
 /*! skin a button or toggle button with caller-owned per-state bitmaps (switches its shape to N_GUI_SHAPE_BITMAP; toggled-on renders `active`) */
 void n_gui_button_set_state_bitmaps(N_GUI_CTX* ctx, int widget_id, ALLEGRO_BITMAP* normal, ALLEGRO_BITMAP* hover, ALLEGRO_BITMAP* active);
 /*! set (or clear with "" / NULL) the tooltip text shown after the pointer rests on a widget */
@@ -1812,6 +1892,10 @@ void n_gui_set_widget_theme(N_GUI_CTX* ctx, int widget_id, N_GUI_THEME theme);
 void n_gui_reset_all_widget_themes(N_GUI_CTX* ctx);
 /*! set widget visibility */
 void n_gui_set_widget_visible(N_GUI_CTX* ctx, int widget_id, int visible);
+/*! move/resize a widget after creation, refreshing the normalized coordinates
+ *  the resize passes read. For hosts that compute their own layout; the owning
+ *  window is found open or closed, so hidden tab pages can be laid out too */
+void n_gui_widget_set_rect(N_GUI_CTX* ctx, int widget_id, float x, float y, float w, float h);
 /*! set widget enabled state (0 = disabled: drawn dimmed and ignores all input) */
 void n_gui_set_widget_enabled(N_GUI_CTX* ctx, int widget_id, int enabled);
 /*! check if a widget is enabled */
@@ -1893,6 +1977,16 @@ void n_gui_listbox_set_selected(N_GUI_CTX* ctx, int widget_id, int index, int se
 int n_gui_listbox_get_scroll_offset(N_GUI_CTX* ctx, int widget_id);
 /*! set the scroll offset (in items), clamps to valid range */
 void n_gui_listbox_set_scroll_offset(N_GUI_CTX* ctx, int widget_id, int offset);
+/*! width in pixels the widest item needs to be drawn in full (text padding
+ *  included), or 0 for an empty list / non-listbox widget. When this exceeds
+ *  the room left for the items, the listbox scrolls horizontally instead of
+ *  truncating the text */
+float n_gui_listbox_content_width(N_GUI_CTX* ctx, int widget_id);
+/*! current horizontal scroll offset in pixels (0 = leftmost) */
+float n_gui_listbox_get_h_scroll(N_GUI_CTX* ctx, int widget_id);
+/*! set the horizontal scroll offset in pixels; clamped to >= 0 here and to the
+ *  live content width by the draw path, so a stale value after a refill is harmless */
+void n_gui_listbox_set_h_scroll(N_GUI_CTX* ctx, int widget_id, float px);
 
 /* split pane */
 
@@ -1934,8 +2028,17 @@ char* n_gui_syntaxview_get_selected_text(N_GUI_CTX* ctx, int widget_id);
 void n_gui_syntaxview_set_selection(N_GUI_CTX* ctx, int widget_id, int start, int end);
 /*! select the entire text of a syntax view */
 void n_gui_syntaxview_select_all(N_GUI_CTX* ctx, int widget_id);
-/*! scroll a syntax view so the line holding the given byte offset is vertically centered */
+/*! scroll a syntax view so the line holding the given byte offset is vertically centered,
+ *  and horizontally so the offset itself is inside the visible width */
 void n_gui_syntaxview_scroll_to_offset(N_GUI_CTX* ctx, int widget_id, int byte_offset);
+/*! pixel width the widest line of a syntax view needs, padding included */
+float n_gui_syntaxview_content_width(N_GUI_CTX* ctx, int widget_id);
+/*! current horizontal scroll offset of a syntax view, in pixels. Pair with
+ *  n_gui_syntaxview_set_h_scroll to preserve the horizontal view across a set_text. */
+float n_gui_syntaxview_get_h_scroll(N_GUI_CTX* ctx, int widget_id);
+/*! set the horizontal scroll offset of a syntax view, in pixels (clamped to the
+ *  content width by the draw path) */
+void n_gui_syntaxview_set_h_scroll(N_GUI_CTX* ctx, int widget_id, float px);
 
 /* data grid */
 
@@ -2388,6 +2491,10 @@ void n_gui_tab_set_content_window(N_GUI_TAB_PANEL* panel, int tab_index, int win
 void n_gui_tab_set_active(N_GUI_TAB_PANEL* panel, int index);
 /*! get the active tab index */
 int n_gui_tab_get_active(const N_GUI_TAB_PANEL* panel);
+/*! move/resize the button row after creation (a host-owned or resizable layout);
+ *  pass <= 0 for button_w / button_h to keep the current value. Content windows
+ *  are separate windows, place them with n_gui_window_set_rect */
+void n_gui_tab_relayout(N_GUI_TAB_PANEL* panel, float x, float y, float button_w, float button_h);
 /*! free a tab panel (does not destroy the N_GUI widgets) */
 void n_gui_tab_free(N_GUI_TAB_PANEL** panel);
 
@@ -2498,6 +2605,25 @@ typedef struct N_GUI_TREE {
     int mouse_b1_prev;            /*!< previous frame's b1 state */
 } N_GUI_TREE;
 
+/*! maximum number of expanded paths remembered by an N_GUI_TREE_STATE */
+#define N_GUI_TREE_STATE_MAX 512
+/*! maximum length of a node path (labels from the root, joined) */
+#define N_GUI_TREE_PATH_MAX 1024
+/*! separator joining the labels of a node path. A unit separator cannot appear
+ *  in a label, so a path can never be ambiguous */
+#define N_GUI_TREE_PATH_SEP '\x1f'
+
+/*! A tree's view state, captured by path so it survives a rebuild that
+ *  replaces every node (a reloaded model has new pointers and new indices).
+ *  Owns its strings: release with n_gui_tree_state_free. */
+typedef struct N_GUI_TREE_STATE {
+    char* expanded[N_GUI_TREE_STATE_MAX]; /*!< paths of the expanded nodes */
+    int nb_expanded;                      /*!< number of paths stored */
+    char* selected;                       /*!< path of the selected node, or NULL */
+    int scroll_offset;                    /*!< first visible row */
+    float h_scroll;                       /*!< horizontal scroll offset in pixels */
+} N_GUI_TREE_STATE;
+
 /*! create a tree view in an existing window */
 N_GUI_TREE* n_gui_tree_create(N_GUI_CTX* ctx, int window_id, float x, float y, float w, float h, void (*on_select)(int, void*), void* user_data);
 /*! add a node to the tree */
@@ -2529,6 +2655,24 @@ void n_gui_tree_rebuild(N_GUI_TREE* tree);
 /*! free a tree view (does not destroy the N_GUI listbox) */
 void n_gui_tree_free(N_GUI_TREE** tree);
 
+/*! write the path of a node (its label and its ancestors', joined by
+ *  N_GUI_TREE_PATH_SEP) into @p buf. Returns 0 on success, -1 on a bad node or
+ *  a path that does not fit */
+int n_gui_tree_node_path(const N_GUI_TREE* tree, int node_index, char* buf, size_t bufsz);
+/*! index of the first node with the given path, or -1. Paths survive a rebuild
+ *  that replaces every node, which pointers and indices do not */
+int n_gui_tree_find_by_path(const N_GUI_TREE* tree, const char* path);
+/*! capture which nodes are expanded, which one is selected, and where the view
+ *  is scrolled, all by path. Call before a rebuild that replaces the nodes (a
+ *  reloaded model), then n_gui_tree_state_apply after it, so the user does not
+ *  lose their unfolded branches and their place. Returns 0 on success */
+int n_gui_tree_state_save(const N_GUI_TREE* tree, N_GUI_TREE_STATE* out);
+/*! re-expand, re-select and re-scroll a rebuilt tree from a saved state. Nodes
+ *  that no longer exist are skipped; nodes that appeared stay collapsed */
+void n_gui_tree_state_apply(N_GUI_TREE* tree, const N_GUI_TREE_STATE* state);
+/*! release the strings owned by a saved state (safe on a zeroed struct) */
+void n_gui_tree_state_free(N_GUI_TREE_STATE* state);
+
 /*! install (or clear, with NULL) a drag-reorder drop callback.
  *  Drag state is only tracked when on_drop is non-NULL. */
 void n_gui_tree_set_on_drop(N_GUI_TREE* tree,
@@ -2555,6 +2699,9 @@ typedef struct N_GUI_KV_ROW {
     int desc_id;    /*!< textarea widget ID for the description */
     int enabled_id; /*!< checkbox widget ID for the enabled toggle */
     int remove_id;  /*!< button widget ID for the remove action */
+    int up_id;      /*!< button widget ID for the move-up action (row actions only) */
+    int down_id;    /*!< button widget ID for the move-down action (row actions only) */
+    int dup_id;     /*!< button widget ID for the duplicate action (row actions only) */
     int active;     /*!< 1 if active, 0 if removed */
 } N_GUI_KV_ROW;
 
@@ -2580,6 +2727,7 @@ typedef struct N_GUI_KVTABLE {
     int show_value;                  /*!< 1 to show the Value column (default 1) */
     int show_desc;                   /*!< 1 to show the Description column (default 1) */
     int show_enabled;                /*!< 1 to show the enabled-checkbox column (default 1) */
+    int show_actions;                /*!< 1 to show the per-row move-up / move-down / duplicate buttons (default 0) */
     char* key_placeholder;           /*!< owned hint shown in each key textarea, or NULL */
     char* value_placeholder;         /*!< owned hint shown in each value textarea, or NULL */
     float top_offset;                /*!< unscaled y offset of the header row from the window top (default 0), to reserve space above the table for other widgets */
@@ -2606,6 +2754,22 @@ void n_gui_kvtable_clear(N_GUI_KVTABLE* table);
  *  to hide a column for a simpler table, e.g. a single-value list (0,0,0). Hidden
  *  columns' widgets are hidden and the visible columns reflow to fill the width. */
 void n_gui_kvtable_set_columns(N_GUI_KVTABLE* table, int show_value, int show_desc, int show_enabled);
+/*! show (1) or hide (0, the default) the per-row action buttons: move up, move
+ *  down and duplicate, drawn as glyphs next to the remove button. Use for tables
+ *  whose row ORDER is meaningful (query parameters, headers) and where copying a
+ *  row is common; leave off for unordered tables. The text columns reflow to make
+ *  room, and the remove button switches to a matching cross glyph. Moving swaps a
+ *  row with its neighbour; duplicating inserts the copy right after the source. */
+void n_gui_kvtable_set_row_actions(N_GUI_KVTABLE* table, int enabled);
+/*! move the row at @p row_index one position up (direction < 0) or down
+ *  (direction > 0) among the ACTIVE rows, by swapping their contents.
+ *  @return the row index the contents landed on, or -1 when the row is invalid
+ *  or already at that end */
+int n_gui_kvtable_move_row(N_GUI_KVTABLE* table, int row_index, int direction);
+/*! insert a copy of the row at @p row_index directly after it.
+ *  @return the row index holding the copy, or -1 when the row is invalid or the
+ *  table is full (N_GUI_KV_MAX) */
+int n_gui_kvtable_duplicate_row(N_GUI_KVTABLE* table, int row_index);
 /*! set the placeholder/hint text shown in each row's key (and value) textarea
  *  while it is empty. Applies to existing rows and to rows added afterwards.
  *  Either argument may be NULL to clear that hint. */

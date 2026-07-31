@@ -523,6 +523,18 @@ static int _text_line_count(const char* s);
 /*! forward declaration: (re)build a syntaxview's cached line count and
  *  headers-end index when stale. Defined near the syntaxview draw code. */
 static void _syntaxview_ensure_lines(N_GUI_SYNTAXVIEW_DATA* yd);
+/*! forward declaration: (re)build a syntaxview's cached content width when
+ *  stale. Defined near the syntaxview draw code. */
+static void _syntaxview_ensure_width(N_GUI_SYNTAXVIEW_DATA* yd, ALLEGRO_FONT* font, const N_GUI_STYLE* style);
+/*! forward declaration: syntaxview horizontal-scroll metrics, shared by the draw
+ *  path and every mouse handler. Defined near the syntaxview draw code. */
+static void _syntaxview_hmetrics(const N_GUI_WIDGET* wgt, N_GUI_SYNTAXVIEW_DATA* yd, ALLEGRO_FONT* font, const N_GUI_STYLE* style, float* content_w, float* pane_w, int* need_hsb, int* visible);
+/*! forward declaration: clamp a syntaxview's horizontal scroll to its content.
+ *  Defined near the syntaxview draw code. */
+static void _syntaxview_clamp_h(N_GUI_SYNTAXVIEW_DATA* yd, float content_w, float pane_w);
+/*! forward declaration: pixel width of the first n bytes of a line. Defined
+ *  near the syntaxview draw code. */
+static float _syntax_prefix_w(ALLEGRO_FONT* font, const char* s, int n);
 
 static void _destroy_widget(void* ptr) {
     if (!ptr) return;
@@ -2140,6 +2152,7 @@ int n_gui_add_button(N_GUI_CTX* ctx, int window_id, const char* label, float x, 
     bd->bitmap_hover = NULL;
     bd->bitmap_active = NULL;
     bd->shape = shape;
+    bd->glyph = N_GUI_GLYPH_NONE;
     bd->toggle_mode = 0;
     bd->toggled = 0;
     bd->keycode = 0;
@@ -2225,6 +2238,46 @@ void n_gui_button_set_label(N_GUI_CTX* ctx, int widget_id, const char* label) {
         N_GUI_BUTTON_DATA* bd = (N_GUI_BUTTON_DATA*)w->data;
         snprintf(bd->label, sizeof(bd->label), "%s", label);
     }
+}
+
+/**
+ * @brief Draw a glyph on a button instead of its text label.
+ *
+ * The glyph is built from primitives in the button's text colour, so it needs
+ * no bitmap, follows the active theme, and stays crisp at any button size.
+ * Meant for the small square buttons where a label does not fit: a row of
+ * move-up / move-down / duplicate actions, arrow toolbars, close buttons.
+ *
+ * The label is kept, so a caller can set both and switch back with
+ * N_GUI_GLYPH_NONE. Out-of-range glyph values and non-button widgets are
+ * ignored.
+ *
+ * @param ctx the GUI context
+ * @param widget_id the button widget
+ * @param glyph one of the N_GUI_GLYPH_* values
+ */
+void n_gui_button_set_glyph(N_GUI_CTX* ctx, int widget_id, int glyph) {
+    N_GUI_WIDGET* w = n_gui_get_widget(ctx, widget_id);
+    if (glyph < 0 || glyph >= N_GUI_GLYPH_COUNT) return;
+    if (w && w->type == N_GUI_TYPE_BUTTON && w->data) {
+        ((N_GUI_BUTTON_DATA*)w->data)->glyph = glyph;
+        if (ctx) ctx->dirty = 1;
+    }
+}
+
+/**
+ * @brief Get the glyph currently drawn on a button
+ * @param ctx the GUI context
+ * @param widget_id the button widget
+ * @return the N_GUI_GLYPH_* value, or N_GUI_GLYPH_NONE when the button draws
+ *         its label or the widget is not a button
+ */
+int n_gui_button_get_glyph(N_GUI_CTX* ctx, int widget_id) {
+    const N_GUI_WIDGET* w = n_gui_get_widget(ctx, widget_id);
+    if (w && w->type == N_GUI_TYPE_BUTTON && w->data) {
+        return ((const N_GUI_BUTTON_DATA*)w->data)->glyph;
+    }
+    return N_GUI_GLYPH_NONE;
 }
 
 /**
@@ -2739,7 +2792,7 @@ int n_gui_add_hexview(N_GUI_CTX* ctx, int window_id, float x, float y, float w, 
  * @param y widget y within the window content area
  * @param w widget width
  * @param h widget height
- * @param mode highlighting mode (N_GUI_SYNTAX_PLAIN, _HTTP, _JSON, _XML, _YAML or _JS)
+ * @param mode highlighting mode (N_GUI_SYNTAX_PLAIN, _HTTP, _JSON, _XML, _YAML, _JS or _DIFF)
  * @return widget id, or -1 on error
  */
 int n_gui_add_syntaxview(N_GUI_CTX* ctx, int window_id, float x, float y, float w, float h, int mode) {
@@ -2757,9 +2810,17 @@ int n_gui_add_syntaxview(N_GUI_CTX* ctx, int window_id, float x, float y, float 
     yd->len = 0;
     yd->mode = mode;
     yd->scroll_offset = 0;
+    yd->h_scroll = 0.0f;
+    yd->h_scroll_dragging = 0;
     yd->sel_start = -1;
     yd->sel_end = -1;
     yd->sel_dragging = 0;
+    yd->lines_valid = 0;
+    yd->cached_nb_lines = 0;
+    yd->cached_headers_end = 0;
+    yd->width_valid = 0;
+    yd->cached_content_w = 0.0f;
+    yd->metrics_font = NULL;
     wgt->data = yd;
     wgt->norm_x = 0.0f;
     wgt->norm_y = 0.0f;
@@ -3075,6 +3136,56 @@ void n_gui_reset_all_widget_themes(N_GUI_CTX* ctx) {
 void n_gui_set_widget_visible(N_GUI_CTX* ctx, int widget_id, int visible) {
     N_GUI_WIDGET* w = n_gui_get_widget(ctx, widget_id);
     if (w) w->visible = visible;
+}
+
+/**
+ * @brief Move and resize a widget after creation.
+ *
+ * Widgets are placed by the n_gui_add_* call that creates them, which is all a
+ * static dialog needs. A host that computes its own layout (a resizable panel,
+ * the two sides of a split pane) has to place them again on every relayout, and
+ * reaching into N_GUI_WIDGET from application code would skip the normalized
+ * coordinates the resize passes read.
+ *
+ * The rectangle is applied and the widget's norms are recaptured against its
+ * window, so n_gui_apply_adaptive_resize and n_gui_window_set_rect keep scaling
+ * it correctly from its new position. The owning window is found whether it is
+ * open or closed, so the pages of a tab panel can be laid out while hidden.
+ *
+ * @param ctx the GUI context
+ * @param widget_id the widget to place
+ * @param x new x, relative to the window's content area
+ * @param y new y, relative to the window's content area
+ * @param w new width (negative is clamped to 0)
+ * @param h new height (negative is clamped to 0)
+ */
+void n_gui_widget_set_rect(N_GUI_CTX* ctx, int widget_id, float x, float y, float w, float h) {
+    __n_assert(ctx, return);
+    N_GUI_WIDGET* wgt = n_gui_get_widget(ctx, widget_id);
+    if (!wgt) return;
+    if (w < 0.0f) w = 0.0f;
+    if (h < 0.0f) h = 0.0f;
+    wgt->x = x;
+    wgt->y = y;
+    wgt->w = w;
+    wgt->h = h;
+    list_foreach(wnode, ctx->windows) {
+        N_GUI_WINDOW* win = (N_GUI_WINDOW*)wnode->ptr;
+        int found = 0;
+        if (!win) continue;
+        list_foreach(wgn, win->widgets) {
+            const N_GUI_WIDGET* it = (const N_GUI_WIDGET*)wgn->ptr;
+            if (it && it->id == widget_id) {
+                found = 1;
+                break;
+            }
+        }
+        if (found) {
+            _n_gui_widget_capture_normalized(win, wgt);
+            break;
+        }
+    }
+    ctx->dirty = 1;
 }
 
 /**
@@ -3421,6 +3532,8 @@ void n_gui_listbox_clear(N_GUI_CTX* ctx, int widget_id) {
         N_GUI_LISTBOX_DATA* ld = (N_GUI_LISTBOX_DATA*)w->data;
         ld->nb_items = 0;
         ld->scroll_offset = 0;
+        ld->h_scroll = 0.0f;
+        ld->h_scroll_dragging = 0;
     }
 }
 
@@ -3527,6 +3640,66 @@ void n_gui_listbox_set_scroll_offset(N_GUI_CTX* ctx, int widget_id, int offset) 
     ld->scroll_offset = offset;
 }
 
+/**
+ *@brief width the widest item of a listbox needs to be drawn in full
+ *
+ * Text padding included, so it can be compared directly with the room left for
+ * the items. Past that width the listbox scrolls horizontally rather than
+ * cutting the text short with an ellipsis.
+ *
+ *@param ctx GUI context
+ *@param widget_id id of the listbox widget
+ *@return the content width in pixels, or 0 for an empty list, a listbox with no
+ *        usable font, or a widget that is not a listbox
+ */
+float n_gui_listbox_content_width(N_GUI_CTX* ctx, int widget_id) {
+    const N_GUI_WIDGET* w = n_gui_get_widget(ctx, widget_id);
+    float cw = 0.0f;
+    if (!w || w->type != N_GUI_TYPE_LISTBOX || !w->data) return 0.0f;
+    {
+        const N_GUI_LISTBOX_DATA* ld = (const N_GUI_LISTBOX_DATA*)w->data;
+        ALLEGRO_FONT* font = w->font ? w->font : ctx->default_font;
+        size_t i;
+        if (!font) return 0.0f;
+        for (i = 0; i < ld->nb_items; i++) {
+            float tw = _text_w(font, ld->items[i].text);
+            if (tw > cw) cw = tw;
+        }
+        if (cw > 0.0f) cw += ctx->style.item_text_padding * 2.0f;
+    }
+    return cw;
+}
+
+/**
+ *@brief get a listbox's horizontal scroll offset in pixels (0 = leftmost)
+ *@param ctx GUI context
+ *@param widget_id id of the listbox widget
+ *@return the offset, or 0 when the widget is not a listbox
+ */
+float n_gui_listbox_get_h_scroll(N_GUI_CTX* ctx, int widget_id) {
+    const N_GUI_WIDGET* w = n_gui_get_widget(ctx, widget_id);
+    if (!w || w->type != N_GUI_TYPE_LISTBOX || !w->data) return 0.0f;
+    return ((const N_GUI_LISTBOX_DATA*)w->data)->h_scroll;
+}
+
+/**
+ *@brief set a listbox's horizontal scroll offset in pixels
+ *
+ * Clamped to >= 0 here; the draw path re-clamps to the live content width every
+ * frame, so a value left over from a wider list is harmless.
+ *
+ *@param ctx GUI context
+ *@param widget_id id of the listbox widget
+ *@param px the offset in pixels
+ */
+void n_gui_listbox_set_h_scroll(N_GUI_CTX* ctx, int widget_id, float px) {
+    N_GUI_WIDGET* w = n_gui_get_widget(ctx, widget_id);
+    if (!w || w->type != N_GUI_TYPE_LISTBOX || !w->data) return;
+    if (px < 0.0f) px = 0.0f;
+    ((N_GUI_LISTBOX_DATA*)w->data)->h_scroll = px;
+    if (ctx) ctx->dirty = 1;
+}
+
 /* split pane helpers */
 
 /**
@@ -3628,8 +3801,11 @@ void n_gui_syntaxview_set_text(N_GUI_CTX* ctx, int widget_id, const char* text) 
     FreeNoLog(yd->text);
     yd->len = 0;
     yd->scroll_offset = 0;
-    /* the cached line count / headers-end no longer describe this text */
+    yd->h_scroll = 0.0f;
+    yd->h_scroll_dragging = 0;
+    /* the cached line count / headers-end / width no longer describe this text */
     yd->lines_valid = 0;
+    yd->width_valid = 0;
     /* the byte offsets no longer refer to anything, so drop any selection */
     yd->sel_start = -1;
     yd->sel_end = -1;
@@ -3650,7 +3826,7 @@ void n_gui_syntaxview_set_text(N_GUI_CTX* ctx, int widget_id, const char* text) 
  *@brief set the highlighting mode of a syntax view
  *@param ctx GUI context
  *@param widget_id id of the syntax view widget
- *@param mode one of the N_GUI_SYNTAX_* modes (PLAIN, HTTP, JSON, XML, YAML, JS)
+ *@param mode one of the N_GUI_SYNTAX_* modes (PLAIN, HTTP, JSON, XML, YAML, JS, DIFF)
  */
 void n_gui_syntaxview_set_mode(N_GUI_CTX* ctx, int widget_id, int mode) {
     N_GUI_WIDGET* w = n_gui_get_widget(ctx, widget_id);
@@ -3743,7 +3919,8 @@ void n_gui_syntaxview_select_all(N_GUI_CTX* ctx, int widget_id) {
 }
 
 /**
- *@brief scroll a syntax view so the line holding a byte offset is vertically centered
+ *@brief scroll a syntax view so the line holding a byte offset is vertically centered,
+ *       and horizontally so the offset itself is inside the visible width
  *@param ctx GUI context
  *@param widget_id id of the syntax view widget
  *@param byte_offset byte offset into the text (clamped to the text length)
@@ -3757,25 +3934,80 @@ void n_gui_syntaxview_scroll_to_offset(N_GUI_CTX* ctx, int widget_id, int byte_o
     if ((size_t)byte_offset > yd->len) byte_offset = (int)yd->len;
 
     int line = 0;
+    int line_start = 0;
     for (int it = 0; it < byte_offset; it++) {
-        if (yd->text[it] == '\n') line++;
+        if (yd->text[it] == '\n') {
+            line++;
+            line_start = it + 1;
+        }
     }
 
     /* mirror the row math of _draw_syntaxview so the clamp agrees with it */
     ALLEGRO_FONT* font = w->font ? w->font : (ctx ? ctx->default_font : NULL);
     if (!font) return;
-    float fh = (float)al_get_font_line_height(font);
     float pad = ctx->style.textarea_padding;
-    float row_h = fh + 2.0f;
-    int visible = (int)((w->h - pad * 2.0f) / row_h);
-    if (visible < 1) visible = 1;
-    int nb_lines = (_syntaxview_ensure_lines(yd), yd->cached_nb_lines);
-    int max_off = nb_lines - visible;
+    float content_w = 0.0f, pane_w = w->w;
+    int need_hsb = 0, visible = 1;
+    _syntaxview_hmetrics(w, yd, font, &ctx->style, &content_w, &pane_w, &need_hsb, &visible);
+    int max_off = yd->cached_nb_lines - visible;
     if (max_off < 0) max_off = 0;
     int target = line - visible / 2;
     if (target > max_off) target = max_off;
     if (target < 0) target = 0;
     yd->scroll_offset = target;
+
+    /* A hit far along a wide line is on screen only once the view is panned to
+       it: leave the pan alone while the offset already shows, otherwise put it
+       a third of the way in, which keeps some of its context on both sides. */
+    if (need_hsb) {
+        float x = _syntax_prefix_w(font, yd->text + line_start, byte_offset - line_start);
+        float view_w = pane_w - pad * 2.0f;
+        if (view_w < 1.0f) view_w = 1.0f;
+        if (x < yd->h_scroll || x > yd->h_scroll + view_w) {
+            yd->h_scroll = x - view_w / 3.0f;
+        }
+        _syntaxview_clamp_h(yd, content_w, pane_w);
+    }
+}
+
+/**
+ *@brief pixel width the widest line of a syntax view needs, padding included
+ *@param ctx GUI context
+ *@param widget_id id of the syntax view widget
+ *@return the content width in pixels, or 0 if the widget is invalid or empty
+ */
+float n_gui_syntaxview_content_width(N_GUI_CTX* ctx, int widget_id) {
+    N_GUI_WIDGET* w = n_gui_get_widget(ctx, widget_id);
+    if (!w || w->type != N_GUI_TYPE_SYNTAXVIEW || !w->data) return 0.0f;
+    ALLEGRO_FONT* font = w->font ? w->font : (ctx ? ctx->default_font : NULL);
+    _syntaxview_ensure_width((N_GUI_SYNTAXVIEW_DATA*)w->data, font, &ctx->style);
+    return ((const N_GUI_SYNTAXVIEW_DATA*)w->data)->cached_content_w;
+}
+
+/**
+ *@brief get the horizontal scroll offset of a syntax view
+ *@param ctx GUI context
+ *@param widget_id id of the syntax view widget
+ *@return the offset in pixels, or 0 if the widget is invalid
+ */
+float n_gui_syntaxview_get_h_scroll(N_GUI_CTX* ctx, int widget_id) {
+    const N_GUI_WIDGET* w = n_gui_get_widget(ctx, widget_id);
+    if (!w || w->type != N_GUI_TYPE_SYNTAXVIEW || !w->data) return 0.0f;
+    return ((const N_GUI_SYNTAXVIEW_DATA*)w->data)->h_scroll;
+}
+
+/**
+ *@brief set the horizontal scroll offset of a syntax view
+ *@param ctx GUI context
+ *@param widget_id id of the syntax view widget
+ *@param px the offset in pixels (negative values are clamped to 0, the upper
+ *          bound is applied by the draw path against the live content width)
+ */
+void n_gui_syntaxview_set_h_scroll(N_GUI_CTX* ctx, int widget_id, float px) {
+    N_GUI_WIDGET* w = n_gui_get_widget(ctx, widget_id);
+    if (!w || w->type != N_GUI_TYPE_SYNTAXVIEW || !w->data) return;
+    if (px < 0.0f) px = 0.0f;
+    ((N_GUI_SYNTAXVIEW_DATA*)w->data)->h_scroll = px;
 }
 
 /* data grid helpers */
@@ -5690,6 +5922,56 @@ static int _shape_rounded(const N_GUI_STYLE* style, int widget_shape) {
 }
 
 /*! draw a button widget */
+/*! draw an N_GUI_GLYPH_* icon centred on (cx, cy), sized to a half-extent of s.
+ *  fg is the button's text colour and bg its current background, so a glyph
+ *  built from overlapping shapes (COPY) can mask what it covers. */
+static void _draw_glyph(int glyph, float cx, float cy, float s, ALLEGRO_COLOR fg, ALLEGRO_COLOR bg, float thick) {
+    float hw = s;        /* triangle half-width */
+    float hh = s * 0.8f; /* triangle half-height */
+    /* Stroke glyphs are drawn heavy enough to read as icons next to the filled
+       arrows: a hairline plus or cross beside a solid triangle looks broken.
+       The style thickness stays the floor, so a theme can still ask for more. */
+    float stroke = s * 0.42f;
+    if (stroke < thick) stroke = thick;
+    thick = stroke;
+    switch (glyph) {
+        case N_GUI_GLYPH_ARROW_UP:
+            al_draw_filled_triangle(cx, cy - hh, cx - hw, cy + hh, cx + hw, cy + hh, fg);
+            break;
+        case N_GUI_GLYPH_ARROW_DOWN:
+            al_draw_filled_triangle(cx, cy + hh, cx - hw, cy - hh, cx + hw, cy - hh, fg);
+            break;
+        case N_GUI_GLYPH_ARROW_LEFT:
+            al_draw_filled_triangle(cx - hh, cy, cx + hh, cy - hw, cx + hh, cy + hw, fg);
+            break;
+        case N_GUI_GLYPH_ARROW_RIGHT:
+            al_draw_filled_triangle(cx + hh, cy, cx - hh, cy - hw, cx - hh, cy + hw, fg);
+            break;
+        case N_GUI_GLYPH_PLUS:
+            al_draw_line(cx - s, cy, cx + s, cy, fg, thick);
+            al_draw_line(cx, cy - s, cx, cy + s, fg, thick);
+            break;
+        case N_GUI_GLYPH_MINUS:
+            al_draw_line(cx - s, cy, cx + s, cy, fg, thick);
+            break;
+        case N_GUI_GLYPH_CROSS:
+            al_draw_line(cx - s, cy - s, cx + s, cy + s, fg, thick);
+            al_draw_line(cx + s, cy - s, cx - s, cy + s, fg, thick);
+            break;
+        case N_GUI_GLYPH_COPY: {
+            /* two offset sheets: the back one peeks out top-left, the front one
+               is filled with the background so the overlap reads as depth */
+            float off = s * 0.45f;
+            al_draw_rectangle(cx - s, cy - s, cx + s - off * 2.0f, cy + s - off * 2.0f, fg, thick);
+            al_draw_filled_rectangle(cx - s + off * 2.0f, cy - s + off * 2.0f, cx + s, cy + s, bg);
+            al_draw_rectangle(cx - s + off * 2.0f, cy - s + off * 2.0f, cx + s, cy + s, fg, thick);
+            break;
+        }
+        default:
+            break;
+    }
+}
+
 static void _draw_button(N_GUI_WIDGET* wgt, float ox, float oy, ALLEGRO_FONT* default_font, const N_GUI_STYLE* style) {
     N_GUI_BUTTON_DATA* bd = (N_GUI_BUTTON_DATA*)wgt->data;
     float ax = ox + wgt->x;
@@ -5722,7 +6004,17 @@ static void _draw_button(N_GUI_WIDGET* wgt, float ox, float oy, ALLEGRO_FONT* de
         _draw_themed_rect(&wgt->theme, draw_state, ax, ay, wgt->w, wgt->h, rounded);
     }
 
-    if (font && bd->label[0]) {
+    if (bd->glyph != N_GUI_GLYPH_NONE) {
+        /* a glyph replaces the label: it is drawn from primitives in the
+           button's text colour, so it follows the theme and any size */
+        float smaller = (wgt->w < wgt->h) ? wgt->w : wgt->h;
+        float s = smaller * 0.25f;
+        if (s < 2.0f) s = 2.0f;
+        _draw_glyph(bd->glyph, ax + wgt->w * 0.5f, ay + wgt->h * 0.5f, s,
+                    _text_for_state(&wgt->theme, draw_state),
+                    _bg_for_state(&wgt->theme, draw_state),
+                    _min_thickness(style->tb_btn_glyph_thickness));
+    } else if (font && bd->label[0]) {
         ALLEGRO_COLOR tc = _text_for_state(&wgt->theme, draw_state);
         int bbx = 0, bby = 0, bbw = 0, bbh = 0;
         _text_dims(font, bd->label, &bbx, &bby, &bbw, &bbh);
@@ -6533,15 +6825,59 @@ static int _text_line_count(const char* s) {
     return n;
 }
 
-/*! draw a run of text and advance the pen x by its width */
-static void _syntax_run(ALLEGRO_FONT* font, ALLEGRO_COLOR col, float* cx, float y, const char* s, int len) {
+/*! draw a run of text and advance the pen x by its width. Runs longer than the
+ *  stack buffer are drawn in successive chunks rather than cut short, which a
+ *  whole-line mode (plain text, a diff line) would otherwise do to any long
+ *  line. Chunks never split a UTF-8 sequence. */
+/*! the horizontal window one syntax line is drawn into, plus the pen carried
+ *  between its coloured runs. A run that ends left of x_min is measured but not
+ *  drawn, and the run that takes the pen past x_max ends the line. Without that
+ *  a single very long line costs one al_draw_text plus one uncached measurement
+ *  per 511 bytes on every frame, nearly all of it off screen: measured on a
+ *  1 MB line, 151 ms per frame before, 0.5 ms after. */
+typedef struct SYNTAX_RUN {
+    /*! font every run of the line is drawn with */
+    ALLEGRO_FONT* font;
+    /*! pen x, advanced by the width of each run */
+    float cx;
+    /*! pen y, constant for the whole line */
+    float y;
+    /*! left edge of the visible area */
+    float x_min;
+    /*! right edge of the visible area */
+    float x_max;
+    /*! 1 once the pen passed x_max, so the tokenizer stops walking the line */
+    int done;
+} SYNTAX_RUN;
+
+/*! draw one coloured run of a syntax line and advance the pen past it. Runs
+ *  outside the window are measured but not drawn (the pen still has to land in
+ *  the right place), and the run that crosses the right edge sets done. */
+static void _syntax_run(SYNTAX_RUN* r, ALLEGRO_COLOR col, const char* s, int len) {
     char buf[512];
-    if (len <= 0) return;
-    if (len > (int)sizeof(buf) - 1) len = (int)sizeof(buf) - 1;
-    memcpy(buf, s, (size_t)len);
-    buf[len] = '\0';
-    al_draw_text(font, col, *cx, y, 0, buf);
-    *cx += _text_w(font, buf);
+    const int chunk_max = (int)sizeof(buf) - 1;
+    if (!r || r->done || len <= 0) return;
+    while (len > 0) {
+        int take = (len > chunk_max) ? chunk_max : len;
+        float w;
+        if (len > chunk_max) {
+            /* back off to a lead byte so a multi-byte glyph is not cut in two */
+            while (take > 0 && ((unsigned char)s[take] & 0xC0) == 0x80) take--;
+            if (take == 0) take = chunk_max;
+        }
+        memcpy(buf, s, (size_t)take);
+        buf[take] = '\0';
+        w = _text_w(r->font, buf);
+        if (r->cx + w >= r->x_min && r->cx <= r->x_max)
+            al_draw_text(r->font, col, r->cx, r->y, 0, buf);
+        r->cx += w;
+        if (r->cx > r->x_max) {
+            r->done = 1;
+            return;
+        }
+        s += take;
+        len -= take;
+    }
 }
 
 /*! whether the n bytes at s are a keyword after which an expression (and
@@ -6578,29 +6914,65 @@ static int _syntax_js_keyword(const char* s, int n) {
     return 0;
 }
 
-/*! draw one text line with mode-specific highlighting starting at (x,y) */
-static void _syntax_draw_line(ALLEGRO_FONT* font, N_GUI_THEME* th, float x, float y, const char* s, int n, int mode, int line_idx, int in_headers) {
-    float cx = x;
+/*! unified diff line colours. Added and removed carry meaning the way an HTTP
+ *  status colour does, so they must not shift with the theme; they are picked
+ *  mid-range to stay legible on light and dark backgrounds alike. */
+static ALLEGRO_COLOR _syntax_diff_add(void) {
+    return al_map_rgb(64, 160, 72);
+}
+/*! see _syntax_diff_add: colour of a removed line */
+static ALLEGRO_COLOR _syntax_diff_del(void) {
+    return al_map_rgb(200, 72, 72);
+}
+/*! see _syntax_diff_add: colour of a hunk header line */
+static ALLEGRO_COLOR _syntax_diff_hunk(void) {
+    return al_map_rgb(96, 148, 200);
+}
+
+/*! draw one text line with mode-specific highlighting starting at (x,y), inside
+ *  the horizontal window [x_min,x_max] (see SYNTAX_RUN) */
+static void _syntax_draw_line(ALLEGRO_FONT* font, N_GUI_THEME* th, float x, float y, const char* s, int n, int mode, int line_idx, int in_headers, float x_min, float x_max) {
+    SYNTAX_RUN r;
+    r.font = font;
+    r.cx = x;
+    r.y = y;
+    r.x_min = x_min;
+    r.x_max = x_max;
+    r.done = 0;
+    if (mode == N_GUI_SYNTAX_DIFF) {
+        /* the marker is the first byte of the line, so one look decides the
+           colour of the whole line; anything else is context */
+        if (n >= 2 && s[0] == '@' && s[1] == '@') {
+            _syntax_run(&r, _syntax_diff_hunk(), s, n);
+        } else if (n >= 1 && s[0] == '+') {
+            _syntax_run(&r, _syntax_diff_add(), s, n);
+        } else if (n >= 1 && s[0] == '-') {
+            _syntax_run(&r, _syntax_diff_del(), s, n);
+        } else {
+            _syntax_run(&r, th->text_normal, s, n);
+        }
+        return;
+    }
     if (mode == N_GUI_SYNTAX_HTTP) {
         if (line_idx == 0) {
-            _syntax_run(font, th->text_active, &cx, y, s, n);
+            _syntax_run(&r, th->text_active, s, n);
             return;
         }
         if (in_headers && n > 0) {
             int c = 0;
             while (c < n && s[c] != ':') c++;
             if (c > 0 && c < n) {
-                _syntax_run(font, th->border_active, &cx, y, s, c);
-                _syntax_run(font, th->text_normal, &cx, y, s + c, n - c);
+                _syntax_run(&r, th->border_active, s, c);
+                _syntax_run(&r, th->text_normal, s + c, n - c);
                 return;
             }
         }
-        _syntax_run(font, th->text_normal, &cx, y, s, n);
+        _syntax_run(&r, th->text_normal, s, n);
         return;
     }
     if (mode == N_GUI_SYNTAX_JSON) {
         int i = 0;
-        while (i < n) {
+        while (i < n && !r.done) {
             char c = s[i];
             if (c == '"') {
                 int j = i + 1;
@@ -6609,20 +6981,20 @@ static void _syntax_draw_line(ALLEGRO_FONT* font, N_GUI_THEME* th, float x, floa
                     j++;
                 }
                 if (j < n) j++;
-                _syntax_run(font, th->text_active, &cx, y, s + i, j - i);
+                _syntax_run(&r, th->text_active, s + i, j - i);
                 i = j;
             } else if ((c >= '0' && c <= '9') || (c == '-' && i + 1 < n && s[i + 1] >= '0' && s[i + 1] <= '9')) {
                 int j = i + 1;
                 while (j < n && ((s[j] >= '0' && s[j] <= '9') || s[j] == '.' || s[j] == 'e' || s[j] == 'E' || s[j] == '+' || s[j] == '-')) j++;
-                _syntax_run(font, th->border_active, &cx, y, s + i, j - i);
+                _syntax_run(&r, th->border_active, s + i, j - i);
                 i = j;
             } else if (c == '{' || c == '}' || c == '[' || c == ']' || c == ':' || c == ',') {
-                _syntax_run(font, th->border_hover, &cx, y, s + i, 1);
+                _syntax_run(&r, th->border_hover, s + i, 1);
                 i++;
             } else {
                 int j = i + 1;
                 while (j < n && !(s[j] == '"' || (s[j] >= '0' && s[j] <= '9') || s[j] == '{' || s[j] == '}' || s[j] == '[' || s[j] == ']' || s[j] == ':' || s[j] == ',')) j++;
-                _syntax_run(font, th->text_normal, &cx, y, s + i, j - i);
+                _syntax_run(&r, th->text_normal, s + i, j - i);
                 i = j;
             }
         }
@@ -6630,50 +7002,50 @@ static void _syntax_draw_line(ALLEGRO_FONT* font, N_GUI_THEME* th, float x, floa
     }
     if (mode == N_GUI_SYNTAX_XML) {
         int i = 0;
-        while (i < n) {
+        while (i < n && !r.done) {
             if (s[i] == '<') {
                 if (i + 4 <= n && memcmp(s + i, "<!--", 4) == 0) {
                     /* comment: color until --> or the end of the line */
                     int j = i + 4;
                     while (j + 3 <= n && memcmp(s + j, "-->", 3) != 0) j++;
                     j = (j + 3 <= n) ? j + 3 : n;
-                    _syntax_run(font, th->border_hover, &cx, y, s + i, j - i);
+                    _syntax_run(&r, th->border_hover, s + i, j - i);
                     i = j;
                     continue;
                 }
                 /* '<' plus optional '/', '!' or '?' */
                 int j = i + 1;
                 while (j < n && (s[j] == '/' || s[j] == '!' || s[j] == '?')) j++;
-                _syntax_run(font, th->border_hover, &cx, y, s + i, j - i);
+                _syntax_run(&r, th->border_hover, s + i, j - i);
                 i = j;
                 /* element name (j continues from the delimiter run) */
                 while (j < n && (isalnum((unsigned char)s[j]) || s[j] == ':' || s[j] == '-' || s[j] == '_')) j++;
-                if (j > i) _syntax_run(font, th->border_active, &cx, y, s + i, j - i);
+                if (j > i) _syntax_run(&r, th->border_active, s + i, j - i);
                 i = j;
                 /* attributes until '>' (quote aware) */
-                while (i < n && s[i] != '>') {
+                while (i < n && s[i] != '>' && !r.done) {
                     char q = s[i];
                     if (q == '"' || q == '\'') {
                         j = i + 1;
                         while (j < n && s[j] != q) j++;
                         if (j < n) j++;
-                        _syntax_run(font, th->text_active, &cx, y, s + i, j - i);
+                        _syntax_run(&r, th->text_active, s + i, j - i);
                         i = j;
                     } else {
                         j = i + 1;
                         while (j < n && s[j] != '>' && s[j] != '"' && s[j] != '\'') j++;
-                        _syntax_run(font, th->text_normal, &cx, y, s + i, j - i);
+                        _syntax_run(&r, th->text_normal, s + i, j - i);
                         i = j;
                     }
                 }
                 if (i < n) {
-                    _syntax_run(font, th->border_hover, &cx, y, s + i, 1);
+                    _syntax_run(&r, th->border_hover, s + i, 1);
                     i++;
                 }
             } else {
                 int j = i + 1;
                 while (j < n && s[j] != '<') j++;
-                _syntax_run(font, th->text_normal, &cx, y, s + i, j - i);
+                _syntax_run(&r, th->text_normal, s + i, j - i);
                 i = j;
             }
         }
@@ -6683,17 +7055,17 @@ static void _syntax_draw_line(ALLEGRO_FONT* font, N_GUI_THEME* th, float x, floa
         int i = 0;
         /* leading indentation, then '- ' list markers */
         while (i < n && (s[i] == ' ' || s[i] == '\t')) i++;
-        if (i > 0) _syntax_run(font, th->text_normal, &cx, y, s, i);
+        if (i > 0) _syntax_run(&r, th->text_normal, s, i);
         while (i < n && s[i] == '-' && (i + 1 >= n || s[i + 1] == ' ')) {
-            _syntax_run(font, th->border_hover, &cx, y, s + i, 1);
+            _syntax_run(&r, th->border_hover, s + i, 1);
             i++;
             if (i < n) {
-                _syntax_run(font, th->text_normal, &cx, y, s + i, 1);
+                _syntax_run(&r, th->text_normal, s + i, 1);
                 i++;
             }
         }
         if (i < n && s[i] == '#') {
-            _syntax_run(font, th->border_hover, &cx, y, s + i, n - i);
+            _syntax_run(&r, th->border_hover, s + i, n - i);
             return;
         }
         /* key: up to the first ':' followed by a space or the line end, outside quotes */
@@ -6716,27 +7088,27 @@ static void _syntax_draw_line(ALLEGRO_FONT* font, N_GUI_THEME* th, float x, floa
                 }
             }
             if (key_end >= 0) {
-                _syntax_run(font, th->border_active, &cx, y, s + i, key_end - i);
-                _syntax_run(font, th->border_hover, &cx, y, s + key_end, 1);
+                _syntax_run(&r, th->border_active, s + i, key_end - i);
+                _syntax_run(&r, th->border_hover, s + key_end, 1);
                 i = key_end + 1;
             }
         }
         /* value: quoted runs, a trailing comment, plain text */
-        while (i < n) {
+        while (i < n && !r.done) {
             char c = s[i];
             if (c == '"' || c == '\'') {
                 int j = i + 1;
                 while (j < n && s[j] != c) j++;
                 if (j < n) j++;
-                _syntax_run(font, th->text_active, &cx, y, s + i, j - i);
+                _syntax_run(&r, th->text_active, s + i, j - i);
                 i = j;
             } else if (c == '#') {
-                _syntax_run(font, th->border_hover, &cx, y, s + i, n - i);
+                _syntax_run(&r, th->border_hover, s + i, n - i);
                 i = n;
             } else {
                 int j = i + 1;
                 while (j < n && s[j] != '"' && s[j] != '\'' && s[j] != '#') j++;
-                _syntax_run(font, th->text_normal, &cx, y, s + i, j - i);
+                _syntax_run(&r, th->text_normal, s + i, j - i);
                 i = j;
             }
         }
@@ -6746,17 +7118,17 @@ static void _syntax_draw_line(ALLEGRO_FONT* font, N_GUI_THEME* th, float x, floa
         int i = 0;
         char last_sig = 0;
         int kw_regex = 0;
-        while (i < n) {
+        while (i < n && !r.done) {
             char c = s[i];
             if (c == '/' && i + 1 < n && s[i + 1] == '/') {
-                _syntax_run(font, th->border_hover, &cx, y, s + i, n - i);
+                _syntax_run(&r, th->border_hover, s + i, n - i);
                 return;
             }
             if (c == '/' && i + 1 < n && s[i + 1] == '*') {
                 int j = i + 2;
                 while (j + 2 <= n && memcmp(s + j, "*/", 2) != 0) j++;
                 j = (j + 2 <= n) ? j + 2 : n;
-                _syntax_run(font, th->border_hover, &cx, y, s + i, j - i);
+                _syntax_run(&r, th->border_hover, s + i, j - i);
                 i = j;
             } else if (c == '/' && (kw_regex || _syntax_js_regex_possible(last_sig))) {
                 /* regex literal: escapes and character classes honored */
@@ -6782,7 +7154,7 @@ static void _syntax_draw_line(ALLEGRO_FONT* font, N_GUI_THEME* th, float x, floa
                 if (closed) {
                     while (j < n && isalpha((unsigned char)s[j])) j++;
                 }
-                _syntax_run(font, th->text_active, &cx, y, s + i, j - i);
+                _syntax_run(&r, th->text_active, s + i, j - i);
                 last_sig = '/';
                 kw_regex = 0;
                 i = j;
@@ -6793,31 +7165,31 @@ static void _syntax_draw_line(ALLEGRO_FONT* font, N_GUI_THEME* th, float x, floa
                     j++;
                 }
                 if (j < n) j++;
-                _syntax_run(font, th->text_active, &cx, y, s + i, j - i);
+                _syntax_run(&r, th->text_active, s + i, j - i);
                 last_sig = c;
                 kw_regex = 0;
                 i = j;
             } else if (c >= '0' && c <= '9') {
                 int j = i + 1;
                 while (j < n && (isalnum((unsigned char)s[j]) || s[j] == '.')) j++;
-                _syntax_run(font, th->border_active, &cx, y, s + i, j - i);
+                _syntax_run(&r, th->border_active, s + i, j - i);
                 last_sig = s[j - 1];
                 kw_regex = 0;
                 i = j;
             } else if (isalpha((unsigned char)c) || c == '_' || c == '$') {
                 int j = i + 1;
                 while (j < n && (isalnum((unsigned char)s[j]) || s[j] == '_' || s[j] == '$')) j++;
-                _syntax_run(font, _syntax_js_keyword(s + i, j - i) ? th->border_active : th->text_normal, &cx, y, s + i, j - i);
+                _syntax_run(&r, _syntax_js_keyword(s + i, j - i) ? th->border_active : th->text_normal, s + i, j - i);
                 last_sig = s[j - 1];
                 kw_regex = _syntax_js_regex_kw(s + i, j - i);
                 i = j;
             } else if (c == '{' || c == '}' || c == '[' || c == ']' || c == '(' || c == ')' || c == ';' || c == ',' || c == ':') {
-                _syntax_run(font, th->border_hover, &cx, y, s + i, 1);
+                _syntax_run(&r, th->border_hover, s + i, 1);
                 last_sig = c;
                 kw_regex = 0;
                 i++;
             } else {
-                _syntax_run(font, th->text_normal, &cx, y, s + i, 1);
+                _syntax_run(&r, th->text_normal, s + i, 1);
                 if (c != ' ' && c != '\t') {
                     last_sig = c;
                     kw_regex = 0;
@@ -6827,17 +7199,42 @@ static void _syntax_draw_line(ALLEGRO_FONT* font, N_GUI_THEME* th, float x, floa
         }
         return;
     }
-    _syntax_run(font, th->text_normal, &cx, y, s, n);
+    _syntax_run(&r, th->text_normal, s, n);
 }
 
-/*! pixel width of the first @p n bytes of @p s in @p font (bounded copy). */
-static float _syntax_prefix_w(ALLEGRO_FONT* font, const char* s, int n) {
-    char buf[4096];
+/*! pixel width of the first @p n bytes of @p s in @p font, of any length: the
+ *  measurement needs a NUL-terminated copy, so it accumulates over chunks of the
+ *  same size _syntax_run draws in, which keeps the two in step. A single fixed
+ *  buffer instead would silently stop measuring at its end, and put a selection
+ *  highlight or a click far from the glyphs it belongs to on a long line.
+ *  @p limit stops the walk once the width passes it, for callers that only need
+ *  to know where something lands on screen (anything past the right edge is
+ *  clipped to the same pixel); pass 0 or less to measure the whole prefix. */
+static float _syntax_prefix_w_lim(ALLEGRO_FONT* font, const char* s, int n, float limit) {
+    char buf[512];
+    const int chunk_max = (int)sizeof(buf) - 1;
+    float w = 0.0f;
     if (!font || !s || n <= 0) return 0.0f;
-    if (n > (int)sizeof(buf) - 1) n = (int)sizeof(buf) - 1;
-    memcpy(buf, s, (size_t)n);
-    buf[n] = '\0';
-    return _text_w(font, buf);
+    while (n > 0) {
+        if (limit > 0.0f && w > limit) break;
+        int take = (n > chunk_max) ? chunk_max : n;
+        if (n > chunk_max) {
+            /* back off to a lead byte so a multi-byte glyph is not cut in two */
+            while (take > 0 && ((unsigned char)s[take] & 0xC0) == 0x80) take--;
+            if (take == 0) take = chunk_max;
+        }
+        memcpy(buf, s, (size_t)take);
+        buf[take] = '\0';
+        w += _text_w(font, buf);
+        s += take;
+        n -= take;
+    }
+    return w;
+}
+
+/*! exact pixel width of the first n bytes of s, see _syntax_prefix_w_lim */
+static float _syntax_prefix_w(ALLEGRO_FONT* font, const char* s, int n) {
+    return _syntax_prefix_w_lim(font, s, n, 0.0f);
 }
 
 /*! Map a mouse position over a syntax view to a byte offset into its text. The view
@@ -6867,15 +7264,33 @@ static int _syntaxview_offset_from_mouse(const N_GUI_SYNTAXVIEW_DATA* yd, ALLEGR
     const char* nl = strchr(p, '\n');
     int dlen = nl ? (int)(nl - p) : (int)strlen(p);
     if (dlen > 0 && p[dlen - 1] == '\r') dlen--;
-    float target = mx - (ax + pad);
+    float target = mx - (ax + pad) + yd->h_scroll;
     if (target <= 0.0f) return (int)line_start;
-    float prevw = 0.0f;
-    int col;
-    for (col = 1; col <= dlen; col++) {
-        float ww = _syntax_prefix_w(font, p, col);
-        if (ww >= target)
-            return (int)line_start + ((target - prevw < ww - target) ? (col - 1) : col);
-        prevw = ww;
+    /* Walk in chunks first, then column by column inside the one chunk that
+       holds the target. Measuring every prefix from the line start instead is
+       quadratic in the line length, which a very long line turns into a visible
+       stall on a single click. */
+    {
+        const int chunk_max = 511;
+        int base = 0, col;
+        float base_w = 0.0f, prevw;
+        while (base + chunk_max < dlen) {
+            int take = chunk_max;
+            float cw;
+            while (take > 0 && ((unsigned char)p[base + take] & 0xC0) == 0x80) take--;
+            if (take == 0) take = chunk_max;
+            cw = _syntax_prefix_w(font, p + base, take);
+            if (base_w + cw >= target) break;
+            base_w += cw;
+            base += take;
+        }
+        prevw = base_w;
+        for (col = 1; base + col <= dlen; col++) {
+            float ww = base_w + _syntax_prefix_w(font, p + base, col);
+            if (ww >= target)
+                return (int)line_start + base + ((target - prevw < ww - target) ? (col - 1) : col);
+            prevw = ww;
+        }
     }
     return (int)line_start + dlen;
 }
@@ -6930,6 +7345,80 @@ static void _syntaxview_ensure_lines(N_GUI_SYNTAXVIEW_DATA* yd) {
     yd->lines_valid = 1;
 }
 
+/*! (re)build a syntax view's cached content width: the pixel width of its widest
+ *  line, plus the padding on both sides. Measured once per text (and once per
+ *  font change), not once per frame the way the listbox can afford to: a
+ *  reformatted document runs to tens of thousands of lines. */
+static void _syntaxview_ensure_width(N_GUI_SYNTAXVIEW_DATA* yd, ALLEGRO_FONT* font, const N_GUI_STYLE* style) {
+    const char* p;
+    float maxw = 0.0f;
+    if (!yd) return;
+    if (yd->width_valid && yd->metrics_font == font) return;
+    p = yd->text;
+    while (p && *p) {
+        const char* nl = strchr(p, '\n');
+        int len = nl ? (int)(nl - p) : (int)strlen(p);
+        float w;
+        if (len > 0 && p[len - 1] == '\r') len--;
+        w = _syntax_prefix_w(font, p, len);
+        if (w > maxw) maxw = w;
+        if (!nl) break;
+        p = nl + 1;
+    }
+    yd->cached_content_w = (maxw > 0.0f) ? maxw + style->textarea_padding * 2.0f : 0.0f;
+    yd->metrics_font = font;
+    yd->width_valid = 1;
+}
+
+/*! Syntax view horizontal-scroll metrics, computed identically by the draw path
+ *  and the mouse handlers so the thumb and the hit test never drift apart.
+ *  @p content_w is the width the widest line needs, @p pane_w the room left for
+ *  the text (widget width minus a vertical scrollbar), @p need_hsb whether the
+ *  content overflows that room, and @p visible the number of lines that fit
+ *  above the horizontal scrollbar. Any output pointer may be NULL. */
+static void _syntaxview_hmetrics(const N_GUI_WIDGET* wgt, N_GUI_SYNTAXVIEW_DATA* yd, ALLEGRO_FONT* font, const N_GUI_STYLE* style, float* content_w, float* pane_w, int* need_hsb, int* visible) {
+    float fh = font ? (float)al_get_font_line_height(font) : 16.0f;
+    float row_h = fh + 2.0f;
+    float pad = style->textarea_padding;
+    float cw, pw;
+    int vis, need_vsb, hsb;
+
+    _syntaxview_ensure_lines(yd);
+    _syntaxview_ensure_width(yd, font, style);
+    cw = yd->cached_content_w;
+
+    if (row_h <= 0.0f) row_h = 1.0f;
+    vis = (int)((wgt->h - pad * 2.0f) / row_h);
+    if (vis < 1) vis = 1;
+    need_vsb = (yd->cached_nb_lines > vis) ? 1 : 0;
+    pw = wgt->w - (need_vsb ? style->scrollbar_size : 0.0f);
+    hsb = (cw > pw + 1.0f) ? 1 : 0;
+    /* a horizontal scrollbar steals a row, which can be what makes the vertical
+       one necessary; resolve that here rather than letting the draw path and the
+       hit test disagree by a row */
+    if (hsb) {
+        vis = (int)((wgt->h - style->scrollbar_size - pad * 2.0f) / row_h);
+        if (vis < 1) vis = 1;
+        if (!need_vsb && yd->cached_nb_lines > vis) {
+            pw = wgt->w - style->scrollbar_size;
+            hsb = (cw > pw + 1.0f) ? 1 : 0;
+        }
+    }
+
+    if (content_w) *content_w = cw;
+    if (pane_w) *pane_w = pw;
+    if (need_hsb) *need_hsb = hsb;
+    if (visible) *visible = vis;
+}
+
+/*! clamp a syntax view's horizontal scroll to the room its content actually needs */
+static void _syntaxview_clamp_h(N_GUI_SYNTAXVIEW_DATA* yd, float content_w, float pane_w) {
+    float max_off = content_w - pane_w;
+    if (max_off < 0.0f) max_off = 0.0f;
+    if (yd->h_scroll > max_off) yd->h_scroll = max_off;
+    if (yd->h_scroll < 0.0f) yd->h_scroll = 0.0f;
+}
+
 static void _draw_syntaxview(N_GUI_WIDGET* wgt, float ox, float oy, ALLEGRO_FONT* default_font, N_GUI_STYLE* style) {
     N_GUI_SYNTAXVIEW_DATA* yd = (N_GUI_SYNTAXVIEW_DATA*)wgt->data;
     float ax = ox + wgt->x;
@@ -6938,19 +7427,22 @@ static void _draw_syntaxview(N_GUI_WIDGET* wgt, float ox, float oy, ALLEGRO_FONT
     float fh = font ? (float)al_get_font_line_height(font) : 16.0f;
     float pad = style->textarea_padding;
     float row_h = fh + 2.0f;
-    _syntaxview_ensure_lines(yd);
-    int nb_lines = yd->cached_nb_lines;
-    int visible = (int)((wgt->h - pad * 2.0f) / row_h);
-    int need_sb, max_off, headers_end, line_no, drawn, pcx, pcy, pcw, pch;
+    int nb_lines, visible = 1;
+    int need_sb, need_hsb = 0, max_off, headers_end, line_no, drawn, pcx, pcy, pcw, pch;
     int has_sel, sel_lo = 0, sel_hi = 0;
-    float sb_w;
+    float sb_w, sb_h, content_w = 0.0f, pane_w = wgt->w, text_x;
     const char* p;
+
+    _syntaxview_hmetrics(wgt, yd, font, style, &content_w, &pane_w, &need_hsb, &visible);
+    nb_lines = yd->cached_nb_lines;
+    _syntaxview_clamp_h(yd, content_w, pane_w);
+    text_x = ax + pad - yd->h_scroll;
 
     al_draw_filled_rectangle(ax, ay, ax + wgt->w, ay + wgt->h, wgt->theme.bg_normal);
     al_draw_rectangle(ax, ay, ax + wgt->w, ay + wgt->h, wgt->theme.border_normal, _min_thickness(wgt->theme.border_thickness));
-    if (visible < 1) visible = 1;
     need_sb = (nb_lines > visible) ? 1 : 0;
     sb_w = need_sb ? style->scrollbar_size : 0.0f;
+    sb_h = need_hsb ? style->scrollbar_size : 0.0f;
     max_off = nb_lines - visible;
     if (max_off < 0) max_off = 0;
     if (yd->scroll_offset > max_off) yd->scroll_offset = max_off;
@@ -6970,7 +7462,7 @@ static void _draw_syntaxview(N_GUI_WIDGET* wgt, float ox, float oy, ALLEGRO_FONT
     }
 
     al_get_clipping_rectangle(&pcx, &pcy, &pcw, &pch);
-    al_set_clipping_rectangle((int)ax, (int)ay, (int)(wgt->w - sb_w), (int)wgt->h);
+    al_set_clipping_rectangle((int)ax, (int)ay, (int)(wgt->w - sb_w), (int)(wgt->h - sb_h));
     /* skip to the first visible line */
     p = yd->text;
     line_no = 0;
@@ -6989,6 +7481,9 @@ static void _draw_syntaxview(N_GUI_WIDGET* wgt, float ox, float oy, ALLEGRO_FONT
        exists, so the common (no-selection) frame skips it entirely. */
     if (has_sel && p) {
         const char* sp = p;
+        /* widths are measured from the line start, so the right edge of the
+           view sits at the pan plus the pane width */
+        float sel_lim = yd->h_scroll + pane_w;
         for (int sdrawn = 0; sp && *sp && sdrawn < visible; sdrawn++) {
             const char* nl = strchr(sp, '\n');
             int len = nl ? (int)(nl - sp) : (int)strlen(sp);
@@ -6999,8 +7494,11 @@ static void _draw_syntaxview(N_GUI_WIDGET* wgt, float ox, float oy, ALLEGRO_FONT
             int a = sel_lo > ls ? sel_lo : ls;
             int b = sel_hi < le ? sel_hi : le;
             if (a < b) {
-                float x0 = ax + pad + _syntax_prefix_w(font, sp, a - ls);
-                float x1 = ax + pad + _syntax_prefix_w(font, sp, b - ls);
+                /* stop measuring past the right edge: the rectangle is clipped
+                   there anyway, and a selection over a very long line would
+                   otherwise re-measure the whole line on every frame */
+                float x0 = text_x + _syntax_prefix_w_lim(font, sp, a - ls, sel_lim);
+                float x1 = text_x + _syntax_prefix_w_lim(font, sp, b - ls, sel_lim);
                 al_draw_filled_rectangle(x0, ty, x1, ty + row_h, wgt->theme.selection_color);
             }
             if (!nl) break;
@@ -7017,14 +7515,16 @@ static void _draw_syntaxview(N_GUI_WIDGET* wgt, float ox, float oy, ALLEGRO_FONT
         int in_headers = (line_no <= headers_end);
         float ty = ay + pad + (float)drawn * row_h;
         if (len > 0 && p[len - 1] == '\r') len--;
-        _syntax_draw_line(font, &wgt->theme, ax + pad, ty, p, len, yd->mode, line_no, in_headers);
+        _syntax_draw_line(font, &wgt->theme, text_x, ty, p, len, yd->mode, line_no, in_headers, ax, ax + pane_w);
         if (!nl) break;
         p = nl + 1;
     }
     al_hold_bitmap_drawing(false);
     al_set_clipping_rectangle(pcx, pcy, pcw, pch);
     if (need_sb)
-        _draw_rows_scrollbar(ax, ay, wgt->w, wgt->h, nb_lines, visible, yd->scroll_offset, style, &wgt->theme);
+        _draw_rows_scrollbar(ax, ay, wgt->w, wgt->h - sb_h, nb_lines, visible, yd->scroll_offset, style, &wgt->theme);
+    if (need_hsb)
+        _draw_cols_scrollbar(ax, ay + wgt->h - sb_h, pane_w, content_w, yd->h_scroll, style, &wgt->theme);
 }
 
 /*! draw a sortable data grid: fixed header row plus scrollable data rows */
@@ -7200,6 +7700,26 @@ static void _draw_datagrid(N_GUI_WIDGET* wgt, float ox, float oy, ALLEGRO_FONT* 
         _draw_cols_scrollbar(ax, ay + wgt->h - sb_h, pane_w, content_w, gd->h_scroll, style, &wgt->theme);
 }
 
+/*! test whether a point falls on a split pane's draggable divider band.
+ *  The widget spans the whole region it splits, so this is what tells a press
+ *  meant for the divider apart from a press anywhere else over the two panes.
+ *  ax/ay are the widget's absolute top-left corner. */
+static int _splitpane_on_divider(const N_GUI_WIDGET* wgt, float px, float py, float ax, float ay) {
+    const N_GUI_SPLITPANE_DATA* sd;
+    float band;
+    if (!wgt || wgt->type != N_GUI_TYPE_SPLITPANE || !wgt->data) return 0;
+    sd = (const N_GUI_SPLITPANE_DATA*)wgt->data;
+    band = sd->divider * 2.0f;
+    if (sd->orientation == N_GUI_SPLIT_VERTICAL) {
+        float dcx = ax + sd->ratio * wgt->w;
+        return (px >= dcx - band && px <= dcx + band);
+    }
+    {
+        float dcy = ay + sd->ratio * wgt->h;
+        return (py >= dcy - band && py <= dcy + band);
+    }
+}
+
 /*! draw a split pane: only the divider bar is painted (the app fills the two
  *  regions with its own widgets, positioned from the divider ratio) */
 static void _draw_splitpane(N_GUI_WIDGET* wgt, float ox, float oy) {
@@ -7220,6 +7740,57 @@ static void _draw_splitpane(N_GUI_WIDGET* wgt, float ox, float oy) {
         al_draw_filled_rectangle(ax, dy, ax + wgt->w, dy + th, wgt->theme.bg_normal);
         al_draw_line(ax + wgt->w * 0.5f - th * 1.5f, gy, ax + wgt->w * 0.5f + th * 1.5f, gy, bar, 2.0f);
     }
+}
+
+/*! Listbox horizontal-scroll metrics, computed identically by the draw path and
+ *  the mouse handlers so the thumb and the hit test never drift apart.
+ *  @p content_w is the width the widest item needs (text padding included),
+ *  @p pane_w the room left for the items (widget width minus a vertical
+ *  scrollbar), @p need_hsb whether the content overflows that room, and
+ *  @p visible the number of rows that fit above the horizontal scrollbar.
+ *  Any output pointer may be NULL. */
+static void _listbox_hmetrics(const N_GUI_WIDGET* wgt, const N_GUI_LISTBOX_DATA* ld, ALLEGRO_FONT* font, const N_GUI_STYLE* style, float* content_w, float* pane_w, int* need_hsb, int* visible) {
+    float fh = font ? (float)al_get_font_line_height(font) : 16.0f;
+    float ih = ld->item_height > fh ? ld->item_height : fh + style->item_height_pad;
+    float cw = 0.0f, pw;
+    int vis, need_vsb, hsb;
+    size_t i;
+
+    if (ih <= 0.0f) ih = 1.0f;
+    for (i = 0; i < ld->nb_items; i++) {
+        float tw = font ? _text_w(font, ld->items[i].text) : 0.0f;
+        if (tw > cw) cw = tw;
+    }
+    if (cw > 0.0f) cw += style->item_text_padding * 2.0f;
+
+    /* A horizontal scrollbar steals a row, which can be what makes the vertical
+       one necessary; resolve that in one extra pass rather than letting the draw
+       path and the hit test disagree by a row. */
+    vis = (int)(wgt->h / ih);
+    need_vsb = ((int)ld->nb_items > vis) ? 1 : 0;
+    pw = wgt->w - (need_vsb ? style->scrollbar_size : 0.0f);
+    hsb = (cw > pw + 1.0f) ? 1 : 0;
+    if (hsb) {
+        vis = (int)((wgt->h - style->scrollbar_size) / ih);
+        if (!need_vsb && (int)ld->nb_items > vis) {
+            pw = wgt->w - style->scrollbar_size;
+            hsb = (cw > pw + 1.0f) ? 1 : 0;
+        }
+    }
+    if (vis < 0) vis = 0;
+
+    if (content_w) *content_w = cw;
+    if (pane_w) *pane_w = pw;
+    if (need_hsb) *need_hsb = hsb;
+    if (visible) *visible = vis;
+}
+
+/*! clamp a listbox's horizontal scroll to the room its content actually needs */
+static void _listbox_clamp_h(N_GUI_LISTBOX_DATA* ld, float content_w, float pane_w) {
+    float max_off = content_w - pane_w;
+    if (max_off < 0.0f) max_off = 0.0f;
+    if (ld->h_scroll > max_off) ld->h_scroll = max_off;
+    if (ld->h_scroll < 0.0f) ld->h_scroll = 0.0f;
 }
 
 /*! draw a listbox widget */
@@ -7255,8 +7826,19 @@ static void _draw_listbox(N_GUI_WIDGET* wgt, float ox, float oy, ALLEGRO_FONT* d
        producing off-by-N row mismatches. Write the effective value
        back so all consumers agree on one pixel height. */
     ld->item_height = ih;
-    int visible_count = (int)(wgt->h / ih);
     float pad = style->item_text_padding;
+
+    /* Horizontal overflow: when the widest item does not fit, the rows scroll
+       sideways under a horizontal scrollbar instead of being cut short with an
+       ellipsis, which would otherwise hide the tail of a long path or URL for
+       good. */
+    float content_w = 0.0f, pane_w = wgt->w;
+    int need_hsb = 0;
+    int visible_count = 0;
+    _listbox_hmetrics(wgt, ld, font, style, &content_w, &pane_w, &need_hsb, &visible_count);
+    _listbox_clamp_h(ld, content_w, pane_w);
+    float hsb_h = need_hsb ? style->scrollbar_size : 0.0f;
+    float rows_h = wgt->h - hsb_h;
 
     /* clamp scroll_offset to valid range */
     int max_off = (int)ld->nb_items - visible_count;
@@ -7294,36 +7876,59 @@ static void _draw_listbox(N_GUI_WIDGET* wgt, float ox, float oy, ALLEGRO_FONT* d
                                   ax + style->item_selection_inset, iy, item_area_w - style->item_selection_inset * 2, ih, 0);
         }
     }
-    /* pass 2: item labels, batched into one held block (shared font atlas) */
+    /* pass 2: item labels, batched into one held block (shared font atlas).
+       While the list scrolls horizontally the text is drawn in full at the
+       scrolled offset and the clipping rectangle cuts it; the ellipsis
+       truncation only applies when there is no horizontal scrollbar to reach
+       the rest with. */
     {
         float item_max_w = item_area_w - pad * 2.0f;
+        int pcx, pcy, pcw, pch;
+        if (need_hsb) {
+            al_get_clipping_rectangle(&pcx, &pcy, &pcw, &pch);
+            al_set_clipping_rectangle((int)ax, (int)ay, (int)item_area_w, (int)rows_h);
+        }
         al_hold_bitmap_drawing(true);
         for (int i = 0; i < visible_count && (size_t)(i + ld->scroll_offset) < ld->nb_items; i++) {
             int idx = i + ld->scroll_offset;
             float iy = ay + (float)i * ih;
             const N_GUI_LISTITEM* item = &ld->items[idx];
-            _draw_text_truncated(font, item->selected ? wgt->theme.text_active : wgt->theme.text_normal,
-                                 ax + pad, iy + (ih - fh) / 2.0f, item_max_w, item->text);
+            ALLEGRO_COLOR tc = item->selected ? wgt->theme.text_active : wgt->theme.text_normal;
+            if (need_hsb) {
+                al_draw_text(font, tc, ax + pad - ld->h_scroll, iy + (ih - fh) / 2.0f, 0, item->text);
+            } else {
+                _draw_text_truncated(font, tc, ax + pad, iy + (ih - fh) / 2.0f, item_max_w, item->text);
+            }
         }
         al_hold_bitmap_drawing(false);
+        if (need_hsb) al_set_clipping_rectangle(pcx, pcy, pcw, pch);
     }
 
     /* draw scrollbar indicator when items overflow */
     if (need_scrollbar) {
         float sb_x = ax + wgt->w - sb_w;
+        /* the vertical track stops above the horizontal one so the two do not
+           overlap in the corner */
+        float sb_h = rows_h;
         /* scrollbar track */
-        al_draw_filled_rectangle(sb_x, ay, ax + wgt->w, ay + wgt->h, wgt->theme.bg_normal);
-        al_draw_line(sb_x, ay, sb_x, ay + wgt->h, wgt->theme.border_normal, 1.0f);
+        al_draw_filled_rectangle(sb_x, ay, ax + wgt->w, ay + sb_h, wgt->theme.bg_normal);
+        al_draw_line(sb_x, ay, sb_x, ay + sb_h, wgt->theme.border_normal, 1.0f);
         /* thumb */
         float ratio = (float)visible_count / (float)ld->nb_items;
-        float thumb_h = ratio * wgt->h;
+        float thumb_h = ratio * sb_h;
         if (thumb_h < style->scrollbar_thumb_min) thumb_h = style->scrollbar_thumb_min;
-        float track_range = wgt->h - thumb_h;
+        float track_range = sb_h - thumb_h;
         float pos_ratio = (max_off > 0) ? (float)ld->scroll_offset / (float)max_off : 0;
         float thumb_y = ay + pos_ratio * track_range;
         float thumb_pad = style->scrollbar_thumb_padding;
         al_draw_filled_rounded_rectangle(sb_x + thumb_pad, thumb_y, ax + wgt->w - thumb_pad, thumb_y + thumb_h,
                                          2.0f, 2.0f, wgt->theme.bg_hover);
+    }
+
+    /* horizontal scrollbar along the bottom when the widest item overflows */
+    if (need_hsb) {
+        _draw_cols_scrollbar(ax, ay + wgt->h - style->scrollbar_size, pane_w,
+                             content_w, ld->h_scroll, style, &wgt->theme);
     }
 
     /* frame last, over the rows and scrollbar, so no row fill can eat an edge */
@@ -8971,6 +9576,101 @@ void n_gui_window_update_normalized(N_GUI_CTX* ctx, int window_id) {
 }
 
 /**
+ * @brief Move and resize a window at runtime, reflowing its widgets.
+ *
+ * The adaptive pass only runs on a display resize, so a host that resizes a
+ * window itself (a split-pane divider drag, a collapsing panel) had no way to
+ * make the widgets inside follow. This applies the new rectangle and rescales
+ * every child widget from its normalized coordinates, which every widget
+ * captures relative to its window when it is added, whatever the window's
+ * resize policy.
+ *
+ * The window's own normalized geometry is recaptured against the current
+ * display size, so a later n_gui_apply_adaptive_resize keeps the proportions
+ * the caller just set instead of snapping back to the creation layout. Widget
+ * norms are left alone: they already describe the widgets relative to the
+ * window and are what this call reads.
+ *
+ * Helper-owned widget groups do their own math from the window size and cannot
+ * see this call: after resizing a window that hosts one, also call
+ * n_gui_kvtable_relayout() / n_gui_tab_relayout() / n_gui_sectionlist_relayout().
+ *
+ * @param ctx the GUI context
+ * @param window_id the window to move/resize
+ * @param x new window x
+ * @param y new window y
+ * @param w new window width (clamped to at least 1)
+ * @param h new window height (clamped to at least 1)
+ */
+void n_gui_window_set_rect(N_GUI_CTX* ctx, int window_id, float x, float y, float w, float h) {
+    n_gui_window_set_rect_axes(ctx, window_id, x, y, w, h, 1, 1);
+}
+
+/**
+ * @brief n_gui_window_set_rect with per-axis control over the widget reflow.
+ *
+ * Stretching a window's widgets along both axes is right for a canvas or a
+ * body of text, and wrong for a stack of fixed-height rows: a settings page
+ * squeezed into a short pane ends up with 9-pixel rows instead of a scrollbar.
+ * Passing scale_y = 0 keeps the widgets' vertical layout, so a shorter window
+ * simply shows less of the page (and scrolls it, with
+ * N_GUI_WIN_AUTO_SCROLLBAR) while its width still tracks the window. That is
+ * the same rule n_gui_kvtable applies to its rows.
+ *
+ * The skipped axis keeps its normalized coordinates as they were, so the
+ * widgets stay where the host put them rather than drifting.
+ *
+ * @param ctx the GUI context
+ * @param window_id the window to move/resize
+ * @param x new window x
+ * @param y new window y
+ * @param w new window width (clamped to at least 1)
+ * @param h new window height (clamped to at least 1)
+ * @param scale_x non-zero to rescale the widgets horizontally
+ * @param scale_y non-zero to rescale the widgets vertically
+ */
+void n_gui_window_set_rect_axes(N_GUI_CTX* ctx, int window_id, float x, float y, float w, float h, int scale_x, int scale_y) {
+    __n_assert(ctx, return);
+    N_GUI_WINDOW* win = n_gui_get_window(ctx, window_id);
+    if (!win) return;
+    if (w < 1.0f) w = 1.0f;
+    if (h < 1.0f) h = 1.0f;
+
+    win->x = x;
+    win->y = y;
+    win->w = w;
+    win->h = h;
+
+    list_foreach(wgn, win->widgets) {
+        N_GUI_WIDGET* wgt = (N_GUI_WIDGET*)wgn->ptr;
+        if (!wgt) continue;
+        if (scale_x) {
+            wgt->x = wgt->norm_x * w;
+            wgt->w = wgt->norm_w * w;
+        } else if (w > 0.0f) {
+            /* keep the pixel layout, and keep the norms describing it */
+            wgt->norm_x = wgt->x / w;
+            wgt->norm_w = wgt->w / w;
+        }
+        if (scale_y) {
+            wgt->y = wgt->norm_y * h;
+            wgt->h = wgt->norm_h * h;
+        } else if (h > 0.0f) {
+            wgt->norm_y = wgt->y / h;
+            wgt->norm_h = wgt->h / h;
+        }
+    }
+
+    if (ctx->display_w > 0.0f && ctx->display_h > 0.0f) {
+        win->norm_x = x / ctx->display_w;
+        win->norm_y = y / ctx->display_h;
+        win->norm_w = w / ctx->display_w;
+        win->norm_h = h / ctx->display_h;
+    }
+    ctx->dirty = 1;
+}
+
+/**
  * @brief Apply adaptive resize: reposition/resize all windows according to their
  * policies for the new display dimensions. Called automatically from
  * n_gui_set_display_size() when in ADAPTIVE mode, but can also be called manually.
@@ -9824,6 +10524,42 @@ static int _datagrid_resize_hover(N_GUI_CTX* ctx, float px, float py) {
     return over;
 }
 
+/*! report the split-pane divider under a point, for the mouse cursor shape:
+ *  0 = none, 1 = vertical divider (drags left/right), 2 = horizontal divider
+ *  (drags up/down). Windows are walked back to front and widgets bottom to
+ *  top, so the topmost claimant wins. A split pane off its band is
+ *  click-through and therefore does not hide a divider beneath it, while any
+ *  other widget under the point does take the press and clears the verdict. */
+static int _splitpane_cursor_hover(N_GUI_CTX* ctx, float px, float py) {
+    int want = 0;
+    list_foreach(wnode, ctx->windows) {
+        N_GUI_WINDOW* win = (N_GUI_WINDOW*)wnode->ptr;
+        float ox, oy, win_h;
+        if (!win || !(win->state & N_GUI_WIN_OPEN)) continue;
+        if (!_win_on_pass(ctx, win)) continue;
+        win_h = (win->state & N_GUI_WIN_MINIMISED) ? _win_tbh(win) : win->h;
+        if (!_point_in_rect(px, py, win->x, win->y, win->w, win_h)) continue;
+        ox = win->x - win->scroll_x;
+        oy = win->y + _win_tbh(win) - win->scroll_y;
+        /* a window covering the point hides whatever is below it */
+        want = 0;
+        list_foreach(wgn, win->widgets) {
+            const N_GUI_WIDGET* wgt = (const N_GUI_WIDGET*)wgn->ptr;
+            float ax, ay;
+            if (!wgt || !wgt->visible || !wgt->enabled) continue;
+            ax = ox + wgt->x;
+            ay = oy + wgt->y;
+            if (!_point_in_rect(px, py, ax, ay, wgt->w, wgt->h)) continue;
+            if (wgt->type != N_GUI_TYPE_SPLITPANE) {
+                want = 0;
+            } else if (_splitpane_on_divider(wgt, px, py, ax, ay)) {
+                want = (((const N_GUI_SPLITPANE_DATA*)wgt->data)->orientation == N_GUI_SPLIT_VERTICAL) ? 1 : 2;
+            }
+        }
+    }
+    return want;
+}
+
 /**
  * @brief Process an allegro event through the GUI system
  * @param ctx the GUI context
@@ -10045,14 +10781,24 @@ int n_gui_process_event(N_GUI_CTX* ctx, ALLEGRO_EVENT event) {
         } else if (ctx->tooltip_widget_id >= 0) {
             ctx->tooltip_widget_id = -1;
         }
-        /* discoverability: show a horizontal-resize cursor while the pointer rests on a
-           datagrid column border (where a drag resizes the column), and the default
-           cursor elsewhere. Skipped while a button is held so a resize/scroll drag keeps
-           the cursor it started with. Only the applied shape is re-set, to avoid churn. */
+        /* discoverability: show a resize cursor while the pointer rests where a drag
+           would resize something -- a datagrid column border, or a split pane divider
+           (left/right for a vertical divider, up/down for a horizontal one) -- and the
+           default cursor elsewhere. Skipped while a button is held so a resize/scroll
+           drag keeps the cursor it started with. Only the applied shape is re-set, to
+           avoid churn. */
         if (_ctx_io_display(ctx) && !ctx->mouse_b1) {
-            int want = (over_win && _datagrid_resize_hover(ctx, (float)ctx->mouse_x, (float)ctx->mouse_y))
-                           ? ALLEGRO_SYSTEM_MOUSE_CURSOR_RESIZE_E
-                           : ALLEGRO_SYSTEM_MOUSE_CURSOR_DEFAULT;
+            int want = ALLEGRO_SYSTEM_MOUSE_CURSOR_DEFAULT;
+            if (over_win) {
+                int divider = _splitpane_cursor_hover(ctx, (float)ctx->mouse_x, (float)ctx->mouse_y);
+                if (divider == 1) {
+                    want = ALLEGRO_SYSTEM_MOUSE_CURSOR_RESIZE_E;
+                } else if (divider == 2) {
+                    want = ALLEGRO_SYSTEM_MOUSE_CURSOR_RESIZE_N;
+                } else if (_datagrid_resize_hover(ctx, (float)ctx->mouse_x, (float)ctx->mouse_y)) {
+                    want = ALLEGRO_SYSTEM_MOUSE_CURSOR_RESIZE_E;
+                }
+            }
             if (want != ctx->cursor_shape) {
                 al_set_system_mouse_cursor(_ctx_io_display(ctx), (ALLEGRO_SYSTEM_MOUSE_CURSOR)want);
                 ctx->cursor_shape = want;
@@ -10072,6 +10818,12 @@ int n_gui_process_event(N_GUI_CTX* ctx, ALLEGRO_EVENT event) {
         /* end a column-resize drag: notify the host so it can persist the layout */
         if (ctx->scrollbar_drag_widget_id >= 0) {
             N_GUI_WIDGET* up_wgt = n_gui_get_widget(ctx, ctx->scrollbar_drag_widget_id);
+            if (up_wgt && up_wgt->type == N_GUI_TYPE_LISTBOX && up_wgt->data) {
+                ((N_GUI_LISTBOX_DATA*)up_wgt->data)->h_scroll_dragging = 0;
+            }
+            if (up_wgt && up_wgt->type == N_GUI_TYPE_SYNTAXVIEW && up_wgt->data) {
+                ((N_GUI_SYNTAXVIEW_DATA*)up_wgt->data)->h_scroll_dragging = 0;
+            }
             if (up_wgt && up_wgt->type == N_GUI_TYPE_DATAGRID && up_wgt->data) {
                 N_GUI_DATAGRID_DATA* gd = (N_GUI_DATAGRID_DATA*)up_wgt->data;
                 gd->h_scroll_dragging = 0; /* end any horizontal-scrollbar drag */
@@ -10127,10 +10879,18 @@ int n_gui_process_event(N_GUI_CTX* ctx, ALLEGRO_EVENT event) {
                     }
                     case N_GUI_TYPE_LISTBOX: {
                         N_GUI_LISTBOX_DATA* lbd = (N_GUI_LISTBOX_DATA*)drag_wgt->data;
-                        float ih = lbd->item_height > d_fh ? lbd->item_height : d_fh + ctx->style.item_height_pad;
+                        float d_ax = d_ox + drag_wgt->x;
                         float d_ay = d_oy + drag_wgt->y;
-                        int visible = (int)(drag_wgt->h / ih);
-                        lbd->scroll_offset = _scrollbar_calc_scroll_int(d_my, d_ay, drag_wgt->h, visible, (int)lbd->nb_items, ctx->style.scrollbar_thumb_min);
+                        float lb_content_w = 0.0f, lb_pane_w = drag_wgt->w;
+                        int lb_need_hsb = 0, visible = 0;
+                        _listbox_hmetrics(drag_wgt, lbd, d_font, &ctx->style, &lb_content_w, &lb_pane_w, &lb_need_hsb, &visible);
+                        if (lbd->h_scroll_dragging) {
+                            lbd->h_scroll = _scrollbar_calc_scroll(d_mx, d_ax, lb_pane_w, lb_pane_w, lb_content_w, ctx->style.scrollbar_thumb_min);
+                            _listbox_clamp_h(lbd, lb_content_w, lb_pane_w);
+                        } else {
+                            float rows_h = drag_wgt->h - (lb_need_hsb ? ctx->style.scrollbar_size : 0.0f);
+                            lbd->scroll_offset = _scrollbar_calc_scroll_int(d_my, d_ay, rows_h, visible, (int)lbd->nb_items, ctx->style.scrollbar_thumb_min);
+                        }
                         break;
                     }
                     case N_GUI_TYPE_RADIOLIST: {
@@ -10185,12 +10945,18 @@ int n_gui_process_event(N_GUI_CTX* ctx, ALLEGRO_EVENT event) {
                     }
                     case N_GUI_TYPE_SYNTAXVIEW: {
                         N_GUI_SYNTAXVIEW_DATA* yd = (N_GUI_SYNTAXVIEW_DATA*)drag_wgt->data;
-                        float row_h = d_fh + 2.0f;
-                        int nb_lines = (_syntaxview_ensure_lines(yd), yd->cached_nb_lines);
-                        int visible = (int)((drag_wgt->h - ctx->style.textarea_padding * 2.0f) / row_h);
+                        float d_ax = d_ox + drag_wgt->x;
                         float d_ay = d_oy + drag_wgt->y;
-                        if (visible < 1) visible = 1;
-                        yd->scroll_offset = _scrollbar_calc_scroll_int(d_my, d_ay, drag_wgt->h, visible, nb_lines, ctx->style.scrollbar_thumb_min);
+                        float sv_content_w = 0.0f, sv_pane_w = drag_wgt->w;
+                        int sv_need_hsb = 0, visible = 1;
+                        _syntaxview_hmetrics(drag_wgt, yd, d_font, &ctx->style, &sv_content_w, &sv_pane_w, &sv_need_hsb, &visible);
+                        if (yd->h_scroll_dragging) {
+                            yd->h_scroll = _scrollbar_calc_scroll(d_mx, d_ax, sv_pane_w, sv_pane_w, sv_content_w, ctx->style.scrollbar_thumb_min);
+                            _syntaxview_clamp_h(yd, sv_content_w, sv_pane_w);
+                        } else {
+                            float rows_h = drag_wgt->h - (sv_need_hsb ? ctx->style.scrollbar_size : 0.0f);
+                            yd->scroll_offset = _scrollbar_calc_scroll_int(d_my, d_ay, rows_h, visible, yd->cached_nb_lines, ctx->style.scrollbar_thumb_min);
+                        }
                         break;
                     }
                     case N_GUI_TYPE_DATAGRID: {
@@ -10747,6 +11513,18 @@ int n_gui_process_event(N_GUI_CTX* ctx, ALLEGRO_EVENT event) {
                         float ay = content_y + wgt->y;
 
                         if (_point_in_rect(mx, my, ax, ay, wgt->w, wgt->h)) {
+                            /* A split pane paints only its divider but spans the
+                               whole region it splits, so a press that misses the
+                               divider band must fall through to whatever sits
+                               beneath it (another split pane crossing it, a grid,
+                               the panes' own widgets) instead of being swallowed.
+                               Same rule the wheel path applies further down. It
+                               also keeps HOVER (and with it the divider highlight)
+                               limited to the band. */
+                            if (wgt->type == N_GUI_TYPE_SPLITPANE &&
+                                !_splitpane_on_divider(wgt, mx, my, ax, ay)) {
+                                continue;
+                            }
                             wgt->state |= N_GUI_STATE_HOVER;
 
                             /* listbox: translate mouse-Y into the row
@@ -10923,11 +11701,22 @@ int n_gui_process_event(N_GUI_CTX* ctx, ALLEGRO_EVENT event) {
                                     }
                                     if (click_yd && yf && click_yd->text) {
                                         float ypad = ctx->style.textarea_padding;
-                                        int off = _syntaxview_offset_from_mouse(click_yd, yf, mx, my, ax, ay, ypad);
-                                        click_yd->sel_start = off;
-                                        click_yd->sel_end = off;
-                                        click_yd->sel_dragging = 1;
-                                        ctx->selected_syntaxview_id = wgt->id;
+                                        float cl_content_w = 0.0f, cl_pane_w = wgt->w, cl_rows_h;
+                                        int cl_need_hsb = 0, cl_visible = 1;
+                                        int on_bar;
+                                        _syntaxview_hmetrics(wgt, click_yd, yf, &ctx->style, &cl_content_w, &cl_pane_w, &cl_need_hsb, &cl_visible);
+                                        cl_rows_h = wgt->h - (cl_need_hsb ? ctx->style.scrollbar_size : 0.0f);
+                                        /* a press on either scrollbar drives that
+                                           scrollbar (below), not the text cursor */
+                                        on_bar = (cl_need_hsb && my > ay + cl_rows_h) ||
+                                                 (click_yd->cached_nb_lines > cl_visible && mx > ax + wgt->w - ctx->style.scrollbar_size);
+                                        if (!on_bar) {
+                                            int off = _syntaxview_offset_from_mouse(click_yd, yf, mx, my, ax, ay, ypad);
+                                            click_yd->sel_start = off;
+                                            click_yd->sel_end = off;
+                                            click_yd->sel_dragging = 1;
+                                            ctx->selected_syntaxview_id = wgt->id;
+                                        }
                                     }
                                 }
                                 if (wgt->type == N_GUI_TYPE_COMBOBOX) {
@@ -10956,7 +11745,12 @@ int n_gui_process_event(N_GUI_CTX* ctx, ALLEGRO_EVENT event) {
                                     ALLEGRO_FONT* lf = wgt->font ? wgt->font : ctx->default_font;
                                     float lfh = lf ? (float)al_get_font_line_height(lf) : 16.0f;
                                     float lih = lbd->item_height > lfh ? lbd->item_height : lfh + ctx->style.item_height_pad;
-                                    int lb_visible = (int)(wgt->h / lih);
+                                    float lb_content_w = 0.0f, lb_pane_w = wgt->w;
+                                    int lb_need_hsb = 0;
+                                    int lb_visible = 0;
+                                    float lb_rows_h;
+                                    _listbox_hmetrics(wgt, lbd, lf, &ctx->style, &lb_content_w, &lb_pane_w, &lb_need_hsb, &lb_visible);
+                                    lb_rows_h = wgt->h - (lb_need_hsb ? ctx->style.scrollbar_size : 0.0f);
                                     int lb_need_sb = ((int)lbd->nb_items > lb_visible) ? 1 : 0;
                                     float lb_sb_w = lb_need_sb ? ctx->style.scrollbar_size : 0;
                                     /* clamp scroll_offset */
@@ -10964,10 +11758,16 @@ int n_gui_process_event(N_GUI_CTX* ctx, ALLEGRO_EVENT event) {
                                     if (lb_max_off < 0) lb_max_off = 0;
                                     if (lbd->scroll_offset > lb_max_off) lbd->scroll_offset = lb_max_off;
                                     if (lbd->scroll_offset < 0) lbd->scroll_offset = 0;
-                                    /* skip click if on the scrollbar area */
-                                    if (lb_need_sb && mx > ax + wgt->w - lb_sb_w) {
+                                    /* skip click if on either scrollbar area */
+                                    if (lb_need_hsb && my > ay + lb_rows_h) {
+                                        /* horizontal track click: jump + start drag */
+                                        lbd->h_scroll = _scrollbar_calc_scroll(mx, ax, lb_pane_w, lb_pane_w, lb_content_w, ctx->style.scrollbar_thumb_min);
+                                        _listbox_clamp_h(lbd, lb_content_w, lb_pane_w);
+                                        lbd->h_scroll_dragging = 1;
+                                        ctx->scrollbar_drag_widget_id = wgt->id;
+                                    } else if (lb_need_sb && mx > ax + wgt->w - lb_sb_w) {
                                         /* scrollbar track click: jump scroll position + start drag */
-                                        lbd->scroll_offset = _scrollbar_calc_scroll_int(my, ay, wgt->h, lb_visible, (int)lbd->nb_items, ctx->style.scrollbar_thumb_min);
+                                        lbd->scroll_offset = _scrollbar_calc_scroll_int(my, ay, lb_rows_h, lb_visible, (int)lbd->nb_items, ctx->style.scrollbar_thumb_min);
                                         ctx->scrollbar_drag_widget_id = wgt->id;
                                     } else {
                                         int clicked_idx = lbd->scroll_offset + (int)((my - ay) / lih);
@@ -10985,17 +11785,9 @@ int n_gui_process_event(N_GUI_CTX* ctx, ALLEGRO_EVENT event) {
                                     }
                                 }
                                 if (wgt->type == N_GUI_TYPE_SPLITPANE) {
-                                    const N_GUI_SPLITPANE_DATA* spd = (const N_GUI_SPLITPANE_DATA*)wgt->data;
-                                    float band = spd->divider * 2.0f;
-                                    int on_div;
-                                    if (spd->orientation == N_GUI_SPLIT_VERTICAL) {
-                                        float dcx = ax + spd->ratio * wgt->w;
-                                        on_div = (mx >= dcx - band && mx <= dcx + band);
-                                    } else {
-                                        float dcy = ay + spd->ratio * wgt->h;
-                                        on_div = (my >= dcy - band && my <= dcy + band);
-                                    }
-                                    if (on_div) ctx->scrollbar_drag_widget_id = wgt->id;
+                                    /* the scan above only lets a press through
+                                       when it landed on the divider band */
+                                    ctx->scrollbar_drag_widget_id = wgt->id;
                                 }
                                 if (wgt->type == N_GUI_TYPE_HEXVIEW) {
                                     N_GUI_HEXVIEW_DATA* hd = (N_GUI_HEXVIEW_DATA*)wgt->data;
@@ -11018,17 +11810,21 @@ int n_gui_process_event(N_GUI_CTX* ctx, ALLEGRO_EVENT event) {
                                 if (wgt->type == N_GUI_TYPE_SYNTAXVIEW) {
                                     N_GUI_SYNTAXVIEW_DATA* yd = (N_GUI_SYNTAXVIEW_DATA*)wgt->data;
                                     ALLEGRO_FONT* yf = wgt->font ? wgt->font : ctx->default_font;
-                                    float yfh = yf ? (float)al_get_font_line_height(yf) : 16.0f;
-                                    float row_h = yfh + 2.0f;
-                                    int nb_lines = (_syntaxview_ensure_lines(yd), yd->cached_nb_lines);
-                                    int yv_visible = (int)((wgt->h - ctx->style.textarea_padding * 2.0f) / row_h);
-                                    int yv_need_sb;
+                                    float yv_content_w = 0.0f, yv_pane_w = wgt->w, yv_rows_h;
+                                    int yv_need_hsb = 0, yv_visible = 1, yv_need_sb;
                                     float yv_sb_w;
-                                    if (yv_visible < 1) yv_visible = 1;
-                                    yv_need_sb = (nb_lines > yv_visible) ? 1 : 0;
+                                    _syntaxview_hmetrics(wgt, yd, yf, &ctx->style, &yv_content_w, &yv_pane_w, &yv_need_hsb, &yv_visible);
+                                    yv_rows_h = wgt->h - (yv_need_hsb ? ctx->style.scrollbar_size : 0.0f);
+                                    yv_need_sb = (yd->cached_nb_lines > yv_visible) ? 1 : 0;
                                     yv_sb_w = yv_need_sb ? ctx->style.scrollbar_size : 0.0f;
-                                    if (yv_need_sb && mx > ax + wgt->w - yv_sb_w) {
-                                        yd->scroll_offset = _scrollbar_calc_scroll_int(my, ay, wgt->h, yv_visible, nb_lines, ctx->style.scrollbar_thumb_min);
+                                    if (yv_need_hsb && my > ay + yv_rows_h) {
+                                        /* horizontal track click: jump + start drag */
+                                        yd->h_scroll = _scrollbar_calc_scroll(mx, ax, yv_pane_w, yv_pane_w, yv_content_w, ctx->style.scrollbar_thumb_min);
+                                        _syntaxview_clamp_h(yd, yv_content_w, yv_pane_w);
+                                        yd->h_scroll_dragging = 1;
+                                        ctx->scrollbar_drag_widget_id = wgt->id;
+                                    } else if (yv_need_sb && mx > ax + wgt->w - yv_sb_w) {
+                                        yd->scroll_offset = _scrollbar_calc_scroll_int(my, ay, yv_rows_h, yv_visible, yd->cached_nb_lines, ctx->style.scrollbar_thumb_min);
                                         ctx->scrollbar_drag_widget_id = wgt->id;
                                     }
                                 }
@@ -12132,13 +12928,20 @@ int n_gui_process_event(N_GUI_CTX* ctx, ALLEGRO_EVENT event) {
 
                 if (wgt->type == N_GUI_TYPE_LISTBOX) {
                     N_GUI_LISTBOX_DATA* ld = (N_GUI_LISTBOX_DATA*)wgt->data;
+                    ALLEGRO_FONT* lf = wgt->font ? wgt->font : ctx->default_font;
+                    float lb_content_w = 0.0f, lb_pane_w = wgt->w;
+                    int lb_need_hsb = 0, visible_count = 0;
+                    int max_off;
+                    _listbox_hmetrics(wgt, ld, lf, &ctx->style, &lb_content_w, &lb_pane_w, &lb_need_hsb, &visible_count);
+                    /* a tilt wheel (or shift-wheel, which Allegro reports the
+                       same way) pans a horizontally scrolling list */
+                    if (lb_need_hsb && event.mouse.dw != 0) {
+                        ld->h_scroll += (float)event.mouse.dw * ctx->style.scroll_step;
+                        _listbox_clamp_h(ld, lb_content_w, lb_pane_w);
+                    }
                     ld->scroll_offset -= event.mouse.dz;
                     if (ld->scroll_offset < 0) ld->scroll_offset = 0;
-                    ALLEGRO_FONT* lf = wgt->font ? wgt->font : ctx->default_font;
-                    float lfh = lf ? (float)al_get_font_line_height(lf) : 16.0f;
-                    float lih = ld->item_height > lfh ? ld->item_height : lfh + ctx->style.item_height_pad;
-                    int visible_count = (int)(wgt->h / lih);
-                    int max_off = (int)ld->nb_items - visible_count;
+                    max_off = (int)ld->nb_items - visible_count;
                     if (max_off < 0) max_off = 0;
                     if (ld->scroll_offset > max_off) ld->scroll_offset = max_off;
                     scroll_consumed = 1;
@@ -12163,13 +12966,17 @@ int n_gui_process_event(N_GUI_CTX* ctx, ALLEGRO_EVENT event) {
                 if (wgt->type == N_GUI_TYPE_SYNTAXVIEW) {
                     N_GUI_SYNTAXVIEW_DATA* yd = (N_GUI_SYNTAXVIEW_DATA*)wgt->data;
                     ALLEGRO_FONT* yf = wgt->font ? wgt->font : ctx->default_font;
-                    float yfh = yf ? (float)al_get_font_line_height(yf) : 16.0f;
-                    float row_h = yfh + 2.0f;
-                    int nb_lines = (_syntaxview_ensure_lines(yd), yd->cached_nb_lines);
-                    int visible_count = (int)((wgt->h - ctx->style.textarea_padding * 2.0f) / row_h);
+                    float sv_content_w = 0.0f, sv_pane_w = wgt->w;
+                    int sv_need_hsb = 0, visible_count = 1;
                     int max_off;
-                    if (visible_count < 1) visible_count = 1;
-                    max_off = nb_lines - visible_count;
+                    _syntaxview_hmetrics(wgt, yd, yf, &ctx->style, &sv_content_w, &sv_pane_w, &sv_need_hsb, &visible_count);
+                    /* a tilt wheel (or shift-wheel, which Allegro reports the
+                       same way) pans a line too wide for the view */
+                    if (sv_need_hsb && event.mouse.dw != 0) {
+                        yd->h_scroll += (float)event.mouse.dw * ctx->style.scroll_step;
+                        _syntaxview_clamp_h(yd, sv_content_w, sv_pane_w);
+                    }
+                    max_off = yd->cached_nb_lines - visible_count;
                     if (max_off < 0) max_off = 0;
                     yd->scroll_offset -= event.mouse.dz;
                     if (yd->scroll_offset < 0) yd->scroll_offset = 0;
@@ -13319,6 +14126,41 @@ int n_gui_tab_get_active(const N_GUI_TAB_PANEL* panel) {
     return panel ? panel->active_tab : -1;
 }
 
+/**
+ * @brief Move/resize a tab panel's button row after creation.
+ *
+ * The buttons are laid out once, when each tab is added. A host that owns its
+ * own layout (a resizable panel, a split-pane pane) needs to re-place the row
+ * afterwards; this re-applies the origin and button size to every tab and
+ * refreshes their normalized coordinates so they keep following their window.
+ * The content windows are not touched: they are ordinary windows, position
+ * them with n_gui_window_set_rect().
+ *
+ * @param panel the tab panel
+ * @param x new x of the first tab button, in the parent window's coordinates
+ * @param y new y of the button row
+ * @param button_w new per-button width (<= 0 keeps the current one)
+ * @param button_h new button height (<= 0 keeps the current one)
+ */
+void n_gui_tab_relayout(N_GUI_TAB_PANEL* panel, float x, float y, float button_w, float button_h) {
+    if (!panel) return;
+    const N_GUI_WINDOW* win = n_gui_get_window(panel->ctx, panel->parent_window_id);
+    panel->x = x;
+    panel->y = y;
+    if (button_w > 0.0f) panel->button_w = button_w;
+    if (button_h > 0.0f) panel->button_h = button_h;
+    for (int i = 0; i < panel->nb_tabs; i++) {
+        N_GUI_WIDGET* wgt = n_gui_get_widget(panel->ctx, panel->button_ids[i]);
+        if (!wgt) continue;
+        wgt->x = panel->x + (float)i * panel->button_w;
+        wgt->y = panel->y;
+        wgt->w = panel->button_w;
+        wgt->h = panel->button_h;
+        if (win) _n_gui_widget_capture_normalized(win, wgt);
+    }
+    if (panel->ctx) panel->ctx->dirty = 1;
+}
+
 void n_gui_tab_free(N_GUI_TAB_PANEL** panel) {
     if (!panel || !*panel) return;
     FreeNoLog(*panel);
@@ -13563,6 +14405,125 @@ void n_gui_tree_free(N_GUI_TREE** tree) {
     if (!tree || !*tree) return;
     FreeNoLog(*tree);
     *tree = NULL;
+}
+
+/* TREE VIEW STATE (survives a rebuild that replaces every node) */
+
+/**
+ * @brief Write the path of a node into a buffer.
+ *
+ * The path is the node's label preceded by its ancestors', joined by
+ * N_GUI_TREE_PATH_SEP (a unit separator, which cannot occur inside a label, so
+ * the path is unambiguous). It identifies a node across a rebuild, which node
+ * indices and user_data pointers do not when the model behind the tree was
+ * reloaded from disk.
+ *
+ * @param tree the tree
+ * @param node_index the node to describe
+ * @param buf destination buffer
+ * @param bufsz size of @p buf
+ * @return 0 on success, -1 on an invalid node or a path that does not fit
+ */
+int n_gui_tree_node_path(const N_GUI_TREE* tree, int node_index, char* buf, size_t bufsz) {
+    int chain[N_GUI_TREE_MAX];
+    int depth = 0;
+    size_t used = 0;
+    int i;
+
+    if (!tree || !buf || bufsz == 0) return -1;
+    if (node_index < 0 || node_index >= tree->nb_nodes) return -1;
+
+    /* walk up to the root, then emit in root-first order */
+    for (i = node_index; i >= 0 && depth < N_GUI_TREE_MAX; i = tree->nodes[i].parent_index) {
+        chain[depth++] = i;
+        if (tree->nodes[i].parent_index < 0) break;
+    }
+
+    buf[0] = '\0';
+    for (i = depth - 1; i >= 0; i--) {
+        // cppcheck-suppress uninitvar ; node_index is validated above so the walk always stores at least chain[0], and this loop only reads what it stored
+        const char* label = tree->nodes[chain[i]].label;
+        size_t len = strlen(label);
+        size_t need = len + (used > 0 ? 1u : 0u);
+        if (used + need + 1 > bufsz) return -1;
+        if (used > 0) buf[used++] = N_GUI_TREE_PATH_SEP;
+        memcpy(buf + used, label, len);
+        used += len;
+        buf[used] = '\0';
+    }
+    return 0;
+}
+
+int n_gui_tree_find_by_path(const N_GUI_TREE* tree, const char* path) {
+    char buf[N_GUI_TREE_PATH_MAX];
+    int i;
+    if (!tree || !path) return -1;
+    for (i = 0; i < tree->nb_nodes; i++) {
+        if (n_gui_tree_node_path(tree, i, buf, sizeof(buf)) != 0) continue;
+        if (strcmp(buf, path) == 0) return i;
+    }
+    return -1;
+}
+
+int n_gui_tree_state_save(const N_GUI_TREE* tree, N_GUI_TREE_STATE* out) {
+    char buf[N_GUI_TREE_PATH_MAX];
+    int i, sel;
+
+    if (!tree || !out) return -1;
+    memset(out, 0, sizeof(*out));
+
+    for (i = 0; i < tree->nb_nodes && out->nb_expanded < N_GUI_TREE_STATE_MAX; i++) {
+        if (!tree->nodes[i].expanded) continue;
+        if (n_gui_tree_node_path(tree, i, buf, sizeof(buf)) != 0) continue;
+        out->expanded[out->nb_expanded] = strdup(buf);
+        if (out->expanded[out->nb_expanded]) out->nb_expanded++;
+    }
+
+    sel = n_gui_tree_get_selection((N_GUI_TREE*)tree);
+    if (sel >= 0 && n_gui_tree_node_path(tree, sel, buf, sizeof(buf)) == 0) {
+        out->selected = strdup(buf);
+    }
+
+    out->scroll_offset = n_gui_listbox_get_scroll_offset(tree->ctx, tree->listbox_id);
+    out->h_scroll = n_gui_listbox_get_h_scroll(tree->ctx, tree->listbox_id);
+    return 0;
+}
+
+void n_gui_tree_state_apply(N_GUI_TREE* tree, const N_GUI_TREE_STATE* state) {
+    char buf[N_GUI_TREE_PATH_MAX];
+    int i, p;
+
+    if (!tree || !state) return;
+
+    for (i = 0; i < tree->nb_nodes; i++) {
+        if (n_gui_tree_node_path(tree, i, buf, sizeof(buf)) != 0) continue;
+        for (p = 0; p < state->nb_expanded; p++) {
+            if (state->expanded[p] && strcmp(state->expanded[p], buf) == 0) {
+                tree->nodes[i].expanded = 1;
+                break;
+            }
+        }
+    }
+    n_gui_tree_rebuild(tree);
+
+    /* Selection first: it expands the ancestors of the selected node and
+       scrolls to reveal it, which would otherwise undo the scroll restore. */
+    if (state->selected) {
+        int sel = n_gui_tree_find_by_path(tree, state->selected);
+        if (sel >= 0) n_gui_tree_set_selection(tree, sel);
+    }
+    n_gui_listbox_set_scroll_offset(tree->ctx, tree->listbox_id, state->scroll_offset);
+    n_gui_listbox_set_h_scroll(tree->ctx, tree->listbox_id, state->h_scroll);
+}
+
+void n_gui_tree_state_free(N_GUI_TREE_STATE* state) {
+    int i;
+    if (!state) return;
+    for (i = 0; i < state->nb_expanded; i++) {
+        FreeNoLog(state->expanded[i]);
+    }
+    state->nb_expanded = 0;
+    FreeNoLog(state->selected);
 }
 
 /* TREE DRAG-REORDER */
@@ -13811,6 +14772,96 @@ static void _n_gui_kv_remove_clicked(int widget_id, void* user_data) {
     }
 }
 
+static void _n_gui_kv_up_clicked(int widget_id, void* user_data) {
+    N_GUI_KVTABLE* table = (N_GUI_KVTABLE*)user_data;
+    if (!table) return;
+    for (int i = 0; i < table->nb_rows; i++) {
+        if (table->rows[i].up_id == widget_id && table->rows[i].active) {
+            n_gui_kvtable_move_row(table, i, -1);
+            return;
+        }
+    }
+}
+
+static void _n_gui_kv_down_clicked(int widget_id, void* user_data) {
+    N_GUI_KVTABLE* table = (N_GUI_KVTABLE*)user_data;
+    if (!table) return;
+    for (int i = 0; i < table->nb_rows; i++) {
+        if (table->rows[i].down_id == widget_id && table->rows[i].active) {
+            n_gui_kvtable_move_row(table, i, 1);
+            return;
+        }
+    }
+}
+
+static void _n_gui_kv_dup_clicked(int widget_id, void* user_data) {
+    N_GUI_KVTABLE* table = (N_GUI_KVTABLE*)user_data;
+    if (!table) return;
+    for (int i = 0; i < table->nb_rows; i++) {
+        if (table->rows[i].dup_id == widget_id && table->rows[i].active) {
+            n_gui_kvtable_duplicate_row(table, i);
+            return;
+        }
+    }
+}
+
+/* One row's editable content, detached from its widgets so rows can be moved
+   and copied around without any pointer aliasing between the textareas. */
+typedef struct N_GUI_KV_CONTENT {
+    char* key;   /*!< owned copy of the key text */
+    char* value; /*!< owned copy of the value text */
+    char* desc;  /*!< owned copy of the description text */
+    int enabled; /*!< enabled checkbox state */
+} N_GUI_KV_CONTENT;
+
+static char* _n_gui_kv_dup_text(N_GUI_CTX* ctx, int widget_id) {
+    const char* t = n_gui_textarea_get_text(ctx, widget_id);
+    return strdup(t ? t : "");
+}
+
+static void _n_gui_kv_content_grab(N_GUI_KVTABLE* table, int idx, N_GUI_KV_CONTENT* out) {
+    const N_GUI_KV_ROW* row = &table->rows[idx];
+    out->key = _n_gui_kv_dup_text(table->ctx, row->key_id);
+    out->value = _n_gui_kv_dup_text(table->ctx, row->value_id);
+    out->desc = _n_gui_kv_dup_text(table->ctx, row->desc_id);
+    out->enabled = n_gui_checkbox_is_checked(table->ctx, row->enabled_id);
+}
+
+static void _n_gui_kv_content_put(N_GUI_KVTABLE* table, int idx, const N_GUI_KV_CONTENT* in) {
+    const N_GUI_KV_ROW* row = &table->rows[idx];
+    n_gui_textarea_set_text(table->ctx, row->key_id, in->key ? in->key : "");
+    n_gui_textarea_set_text(table->ctx, row->value_id, in->value ? in->value : "");
+    n_gui_textarea_set_text(table->ctx, row->desc_id, in->desc ? in->desc : "");
+    n_gui_checkbox_set_checked(table->ctx, row->enabled_id, in->enabled);
+}
+
+static void _n_gui_kv_content_free(N_GUI_KV_CONTENT* c) {
+    FreeNoLog(c->key);
+    FreeNoLog(c->value);
+    FreeNoLog(c->desc);
+}
+
+/* Fill @p out with the active row slots in display order, returning the count. */
+static int _n_gui_kv_active_order(const N_GUI_KVTABLE* table, int* out) {
+    int n = 0;
+    for (int i = 0; i < table->nb_rows; i++) {
+        if (table->rows[i].active) out[n++] = i;
+    }
+    return n;
+}
+
+/* Enable/disable the move buttons of every active row so the first row cannot
+   be moved up and the last cannot be moved down. */
+static void _n_gui_kv_refresh_actions(N_GUI_KVTABLE* table) {
+    int order[N_GUI_KV_MAX];
+    int n = _n_gui_kv_active_order(table, order);
+    for (int p = 0; p < n; p++) {
+        const N_GUI_KV_ROW* row = &table->rows[order[p]];
+        n_gui_set_widget_enabled(table->ctx, row->up_id, (p > 0) ? 1 : 0);
+        n_gui_set_widget_enabled(table->ctx, row->down_id, (p < n - 1) ? 1 : 0);
+    }
+}
+
 /* Apply full layout to all KV table widgets: positions, sizes, and norms.
    Scales horizontal metrics by the parent window's current width relative to
    the width captured at create time, so the table tracks the window the same
@@ -13855,6 +14906,7 @@ static void _n_gui_kv_apply_layout(N_GUI_KVTABLE* table) {
     if (lbl_h < 1.0f) lbl_h = 1.0f;
     float chk_w = rw_inner;
     float rem_w = rw_inner;
+    float act_w = rw_inner;
 
     /* Column layout: the key column and the remove ("x") button are always
        shown; Value, Description and the enabled checkbox are optional. A full
@@ -13862,9 +14914,12 @@ static void _n_gui_kv_apply_layout(N_GUI_KVTABLE* table) {
        reduced table divides the remaining width evenly so a single-value list
        fills the row. */
     int text_cols = 1 + (table->show_value ? 1 : 0) + (table->show_desc ? 1 : 0);
-    float trailing = (table->show_enabled ? (chk_w + gap) : 0.0f) + gap + rem_w;
+    float trailing = (table->show_enabled ? (chk_w + gap) : 0.0f) + gap + rem_w +
+                     (table->show_actions ? 3.0f * (act_w + gap) : 0.0f);
     float col_w;
-    if (text_cols == 3) {
+    /* the historical 0.27 proportions leave no room for the action buttons, so
+       a table that shows them divides the remaining width instead */
+    if (text_cols == 3 && !table->show_actions) {
         col_w = total_w * 0.27f;
     } else {
         float avail = total_w - trailing;
@@ -13977,6 +15032,26 @@ static void _n_gui_kv_apply_layout(N_GUI_KVTABLE* table) {
             }
             fx += gap + chk_w;
         }
+        /* per-row actions, left of the remove button and in reading order:
+           move up, move down, duplicate */
+        n_gui_set_widget_visible(table->ctx, row->up_id, table->show_actions);
+        n_gui_set_widget_visible(table->ctx, row->down_id, table->show_actions);
+        n_gui_set_widget_visible(table->ctx, row->dup_id, table->show_actions);
+        if (table->show_actions) {
+            const int act_ids[3] = {row->up_id, row->down_id, row->dup_id};
+            for (int a = 0; a < 3; a++) {
+                fx += gap;
+                w = n_gui_get_widget(table->ctx, act_ids[a]);
+                if (w) {
+                    w->x = fx;
+                    w->y = cy;
+                    w->w = act_w;
+                    w->h = rh_inner;
+                    _n_gui_widget_capture_normalized(win, w);
+                }
+                fx += act_w;
+            }
+        }
         fx += gap;
         w = n_gui_get_widget(table->ctx, row->remove_id);
         if (w) {
@@ -13989,7 +15064,9 @@ static void _n_gui_kv_apply_layout(N_GUI_KVTABLE* table) {
         cy += row_h;
     }
 
-    /* "+" add-row button anchored below the last active row. */
+    /* "+" add-row button anchored below the last active row. A table with row
+       actions draws it as a glyph like the rest of its buttons, which reads far
+       better than a font '+' at this size. */
     w = n_gui_get_widget(table->ctx, table->btn_add);
     if (w) {
         float btn_w = 30.0f * sx;
@@ -14079,6 +15156,9 @@ int n_gui_kvtable_add_row(N_GUI_KVTABLE* table,
         n_gui_set_widget_visible(ctx, row->desc_id, 1);
         n_gui_set_widget_visible(ctx, row->enabled_id, 1);
         n_gui_set_widget_visible(ctx, row->remove_id, 1);
+        n_gui_set_widget_visible(ctx, row->up_id, table->show_actions);
+        n_gui_set_widget_visible(ctx, row->down_id, table->show_actions);
+        n_gui_set_widget_visible(ctx, row->dup_id, table->show_actions);
         n_gui_textarea_set_text(ctx, row->key_id, key ? key : "");
         n_gui_textarea_set_text(ctx, row->value_id, value ? value : "");
         n_gui_textarea_set_text(ctx, row->desc_id, description ? description : "");
@@ -14096,6 +15176,29 @@ int n_gui_kvtable_add_row(N_GUI_KVTABLE* table,
         row->enabled_id = n_gui_add_checkbox(ctx, win, "", pad, pad, rh, rh, enabled, NULL, NULL);
         row->remove_id = n_gui_add_button(ctx, win, "x", pad, pad, rh, rh,
                                           N_GUI_SHAPE_RECT, _n_gui_kv_remove_clicked, table);
+        /* Row actions. The buttons exist on every row but stay hidden until
+           n_gui_kvtable_set_row_actions turns them on, so a table can gain them
+           at any point without rebuilding its rows. They are square and tiny:
+           glyphs rather than labels, with the action name in a tooltip. */
+        row->up_id = n_gui_add_button(ctx, win, "Move up", pad, pad, rh, rh,
+                                      N_GUI_SHAPE_RECT, _n_gui_kv_up_clicked, table);
+        row->down_id = n_gui_add_button(ctx, win, "Move down", pad, pad, rh, rh,
+                                        N_GUI_SHAPE_RECT, _n_gui_kv_down_clicked, table);
+        row->dup_id = n_gui_add_button(ctx, win, "Duplicate", pad, pad, rh, rh,
+                                       N_GUI_SHAPE_RECT, _n_gui_kv_dup_clicked, table);
+        n_gui_button_set_glyph(ctx, row->up_id, N_GUI_GLYPH_ARROW_UP);
+        n_gui_button_set_glyph(ctx, row->down_id, N_GUI_GLYPH_ARROW_DOWN);
+        n_gui_button_set_glyph(ctx, row->dup_id, N_GUI_GLYPH_COPY);
+        n_gui_set_widget_tooltip(ctx, row->up_id, "Move up");
+        n_gui_set_widget_tooltip(ctx, row->down_id, "Move down");
+        n_gui_set_widget_tooltip(ctx, row->dup_id, "Duplicate");
+        n_gui_set_widget_visible(ctx, row->up_id, table->show_actions);
+        n_gui_set_widget_visible(ctx, row->down_id, table->show_actions);
+        n_gui_set_widget_visible(ctx, row->dup_id, table->show_actions);
+        if (table->show_actions) {
+            n_gui_button_set_glyph(ctx, row->remove_id, N_GUI_GLYPH_CROSS);
+            n_gui_set_widget_tooltip(ctx, row->remove_id, "Remove");
+        }
         if (key) n_gui_textarea_set_text(ctx, row->key_id, key);
         if (value) n_gui_textarea_set_text(ctx, row->value_id, value);
         if (description) n_gui_textarea_set_text(ctx, row->desc_id, description);
@@ -14106,6 +15209,7 @@ int n_gui_kvtable_add_row(N_GUI_KVTABLE* table,
     row->active = 1;
     table->nb_active++;
     _n_gui_kv_apply_layout(table);
+    if (table->show_actions) _n_gui_kv_refresh_actions(table);
     return idx;
 }
 
@@ -14118,9 +15222,13 @@ void n_gui_kvtable_remove_row(N_GUI_KVTABLE* table, int row_index) {
     n_gui_set_widget_visible(table->ctx, row->desc_id, 0);
     n_gui_set_widget_visible(table->ctx, row->enabled_id, 0);
     n_gui_set_widget_visible(table->ctx, row->remove_id, 0);
+    n_gui_set_widget_visible(table->ctx, row->up_id, 0);
+    n_gui_set_widget_visible(table->ctx, row->down_id, 0);
+    n_gui_set_widget_visible(table->ctx, row->dup_id, 0);
     row->active = 0;
     table->nb_active--;
     _n_gui_kv_apply_layout(table);
+    if (table->show_actions) _n_gui_kv_refresh_actions(table);
 }
 
 void n_gui_kvtable_clear(N_GUI_KVTABLE* table) {
@@ -14133,6 +15241,9 @@ void n_gui_kvtable_clear(N_GUI_KVTABLE* table) {
         n_gui_set_widget_visible(table->ctx, row->desc_id, 0);
         n_gui_set_widget_visible(table->ctx, row->enabled_id, 0);
         n_gui_set_widget_visible(table->ctx, row->remove_id, 0);
+        n_gui_set_widget_visible(table->ctx, row->up_id, 0);
+        n_gui_set_widget_visible(table->ctx, row->down_id, 0);
+        n_gui_set_widget_visible(table->ctx, row->dup_id, 0);
         row->active = 0;
     }
     table->nb_active = 0;
@@ -14147,6 +15258,137 @@ void n_gui_kvtable_set_columns(N_GUI_KVTABLE* table, int show_value, int show_de
     table->show_desc = show_desc ? 1 : 0;
     table->show_enabled = show_enabled ? 1 : 0;
     _n_gui_kv_apply_layout(table);
+}
+
+/**
+ * @brief Show or hide the per-row move-up / move-down / duplicate buttons.
+ *
+ * Off by default, so existing tables are unchanged. Turn it on for tables whose
+ * row ORDER carries meaning (query parameters, request headers) or where copying
+ * a row is a common edit. The buttons exist on every row from creation and are
+ * only revealed here, so a table can gain or lose them at any time without
+ * rebuilding its rows. The text columns reflow to make room, and the remove
+ * button switches to a cross glyph so the trailing cluster reads as one set of
+ * icons.
+ *
+ * @param table the KV table
+ * @param enabled 1 to show the actions, 0 to hide them
+ */
+void n_gui_kvtable_set_row_actions(N_GUI_KVTABLE* table, int enabled) {
+    if (!table) return;
+    table->show_actions = enabled ? 1 : 0;
+    for (int i = 0; i < table->nb_rows; i++) {
+        const N_GUI_KV_ROW* row = &table->rows[i];
+        n_gui_button_set_glyph(table->ctx, row->remove_id,
+                               table->show_actions ? N_GUI_GLYPH_CROSS : N_GUI_GLYPH_NONE);
+        n_gui_set_widget_tooltip(table->ctx, row->remove_id,
+                                 table->show_actions ? "Remove" : "");
+    }
+    n_gui_button_set_glyph(table->ctx, table->btn_add,
+                           table->show_actions ? N_GUI_GLYPH_PLUS : N_GUI_GLYPH_NONE);
+    n_gui_set_widget_tooltip(table->ctx, table->btn_add,
+                             table->show_actions ? "Add row" : "");
+    _n_gui_kv_apply_layout(table);
+    if (table->show_actions) _n_gui_kv_refresh_actions(table);
+}
+
+/**
+ * @brief Move a row one position up or down among the active rows.
+ *
+ * Row slots are stable (widgets are bound to them and freed slots are reused),
+ * so the CONTENTS are swapped with the neighbouring active row rather than the
+ * slots themselves. Everything that reads the table by walking the rows in slot
+ * order therefore sees the new order with no extra bookkeeping.
+ *
+ * @param table the KV table
+ * @param row_index the row to move
+ * @param direction negative to move up, positive to move down
+ * @return the row index the contents landed on, or -1 when the row is invalid,
+ *         inactive, or already at that end of the table
+ */
+int n_gui_kvtable_move_row(N_GUI_KVTABLE* table, int row_index, int direction) {
+    int order[N_GUI_KV_MAX];
+    int n, pos = -1, target;
+    N_GUI_KV_CONTENT a, b;
+    if (!table || row_index < 0 || row_index >= table->nb_rows) return -1;
+    if (!table->rows[row_index].active || direction == 0) return -1;
+
+    n = _n_gui_kv_active_order(table, order);
+    for (int p = 0; p < n; p++) {
+        if (order[p] == row_index) {
+            pos = p;
+            break;
+        }
+    }
+    if (pos < 0) return -1;
+    target = (direction < 0) ? pos - 1 : pos + 1;
+    if (target < 0 || target >= n) return -1;
+
+    _n_gui_kv_content_grab(table, order[pos], &a);
+    _n_gui_kv_content_grab(table, order[target], &b);
+    _n_gui_kv_content_put(table, order[pos], &b);
+    _n_gui_kv_content_put(table, order[target], &a);
+    _n_gui_kv_content_free(&a);
+    _n_gui_kv_content_free(&b);
+
+    _n_gui_kv_refresh_actions(table);
+    if (table->ctx) table->ctx->dirty = 1;
+    return order[target];
+}
+
+/**
+ * @brief Insert a copy of a row directly after it.
+ *
+ * A new row is appended (reusing a freed slot when there is one, which may sit
+ * anywhere in the array), then every active row's content is rewritten in the
+ * wanted order. Going through detached copies of the text keeps the rewrite
+ * correct whatever slot the new row landed in, instead of depending on the
+ * freed-slot order.
+ *
+ * @param table the KV table
+ * @param row_index the row to copy
+ * @return the row index holding the copy, or -1 when the row is invalid or the
+ *         table is full (N_GUI_KV_MAX rows)
+ */
+int n_gui_kvtable_duplicate_row(N_GUI_KVTABLE* table, int row_index) {
+    N_GUI_KV_CONTENT snap[N_GUI_KV_MAX];
+    int order[N_GUI_KV_MAX];
+    int n, pos = -1, added;
+    if (!table || row_index < 0 || row_index >= table->nb_rows) return -1;
+    if (!table->rows[row_index].active) return -1;
+
+    n = _n_gui_kv_active_order(table, order);
+    for (int p = 0; p < n; p++) {
+        if (order[p] == row_index) {
+            pos = p;
+            break;
+        }
+    }
+    if (pos < 0) return -1;
+    for (int p = 0; p < n; p++) _n_gui_kv_content_grab(table, order[p], &snap[p]);
+
+    added = n_gui_kvtable_add_row(table, "", "", "", 1);
+    if (added < 0) {
+        for (int p = 0; p < n; p++) _n_gui_kv_content_free(&snap[p]);
+        return -1;
+    }
+
+    /* rewrite every active row: the snapshot with the source repeated at pos+1 */
+    {
+        int order2[N_GUI_KV_MAX];
+        int n2 = _n_gui_kv_active_order(table, order2);
+        int copy_slot = -1;
+        for (int p = 0; p < n2; p++) {
+            int src = (p <= pos) ? p : p - 1; /* pos+1 repeats the source */
+            if (src >= n) src = n - 1;
+            _n_gui_kv_content_put(table, order2[p], &snap[src]);
+            if (p == pos + 1) copy_slot = order2[p];
+        }
+        for (int p = 0; p < n; p++) _n_gui_kv_content_free(&snap[p]);
+        if (table->show_actions) _n_gui_kv_refresh_actions(table);
+        if (table->ctx) table->ctx->dirty = 1;
+        return copy_slot;
+    }
 }
 
 void n_gui_kvtable_set_placeholders(N_GUI_KVTABLE* table, const char* key_hint, const char* value_hint) {
